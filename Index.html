@@ -7,100 +7,83 @@
         </head>
         
 <body class="biotechbody" background="Biotech-file/images/biotechnologies_green.jpg">
-  <div id="header">
-    <img src="Biotech-file/images/shelley.jpg" alt="Shelley Biotechnologies" width="395" height="49">
-  </div>
-  <div id="mainnav">
-    <img src="Biotech-file/images/main_nav.jpg" width="564" height="32" usemap="#mainnavmap" border="0">
-
-    <map name="mainnavmap">
-   <area shape="rect" coords="344,6,421,28" href="javascript:showMenu('about');">
-   <area shape="rect" coords="266,6,329,27" href="javascript:showMenu('store');">
-   <area shape= "rect" coords="166,5,252,27" href="javascript:showMenu('research');">
-   <area shape="rect" coords="61,6,146,26" href="javascript:showMenu('products');">
-   <area shape="rect" coords="0,7,45,26" href="javascript:showMenu('news');">
-</map >
-  </div>
   
-  <div id="whiteUnderHeader">
-    <img src="Biotech-file/images/white_dot.jpeg" width="800" height="114">
+<table border="0" cellpadding="4">
+<tr>
+ <td ID="menu-products" width="100" bgcolor="Silver" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
+   <a href="products.html"><b>Products</b></a></td>
+ <td ID="menu-sales" width="100" bgcolor="Silver" onMouseOver="Menu('sales');" onMouseOut="Timeout('sales');">
+   <a href="sales.html"><b>Sales</b></a></td>
+ <td ID="menu-service" width="100" bgcolor="Silver" onMouseOver="Menu('service');" onMouseOut="Timeout('service');">
+  <a href="service.html "><b>Service</b></a></td>
+ <td ID="menu-staff" width="100" bgcolor="Silver" onMouseOver="Menu('staff');" onMouseOut="Timeout('staff');">
+   <a href="staff.html"><b>Staff</b></a></td>
+ <td ID="menu-jobs" width="100" bgcolor="Silver" onMouseOver="Menu('jobs');" onMouseOut="Timeout('jobs');">
+   <a href="jobs.html"><b>Employment</b></a></td>
+</tr>
+</table>
+  <div ID="products" STYLE="position:absolute; visibility: hidden">
+<table width="100%" border="0" cellpadding="4" cellspacing="0">
+<tr>
+ <td width="100%" ID="pl" onMouseOver="Highlight('products', 'p1');" onMouseOut="UnHighlight('products', 'p1');">
+   <a href="equip.html">Equipment</a></td></tr>
+<tr>
+  <td width="100%" ID="p2" onMouseOver="Highlight('products', 'p2');" onMouseOut="UnHighlight('products', 'p2');">
+   <a href="supplies.html">Supplies</a></td>
+</tr>
+</table>
   </div>
-    
-  <div id="sidenav" class="sidenavtext">
-      Home &nbsp;&nbsp;&nbsp; Search &nbsp; &nbsp; &nbsp; Contact
+  <div ID="sales" STYLE="position:absolute; visibility: hidden">
+<table width="100%" border="0" cellpadding="4" cellspacing="0">
+<tr>
+  <td width="100%" ID="s1" onMouseOver="Highlight('sales', 's1');" OnMouseOut="UnHighlight('sales', 's1');">
+   <a href="prices.html ">Price List</a></td></tr>
+<tr>
+  <td width="100%" ID="s2" onMouseOver="Highlight('sales', 's2');" onMouseOut="UnHighlight('sales', 's2');">
+   <a href="order.html">Order Form</a></td></tr>
+<tr>
+  <td width="100%" ID="s3" onMouseOver="Highlight('sales', 's3');" onMouseOut="UnHighlight('sales', 's3');">
+   <a href="specials.html">Specials</a></td>
+</tr>
+</table>
   </div>
-    
-  <div id="hearttext">
-    <img src="Biotech-file/images/heart_text.jpg" width="97" height="139">
+  <div ID="service" STYLE="position:absolute; visibility: hidden">
+<table width="100%" border="0" cellpadding="4" cellspacing="0">
+<tr>
+  <td width="100%" ID="r1" onMouseOver="Highlight('service', 'r1');" onMouseOut="UnHighlight('service', 'r1');">
+   <a href="support.html">Support</a></td></tr> 
+<tr>
+  <td width="100%" ID="r2" onMouseOver="Highlight('service','r2');" onMouseOut="UnHighlight('service','r2');">
+  <a href="service.html">Contact Us</a></td></tr>
+</table>
   </div>
-    
-  <div id="heart">
-    <img src="Biotech-file/images/heart.jpg" width="171" height="222">
+  <div ID="-staff" STYLE="position:absolute; visibility: hidden">
+<table width="100%" border="0" cellpadding="4" cellspacing="0">
+<tr>
+  <td width="100%" ID="t1" onMouseOver="Highlight('staff','t1');" onMouseOut="UnHighlight('staff', 't1');">
+  <a href="staff.html">Meet the Staff</a></td>
+</tr>
+</table>
   </div>
-    
-  <div id="rosehips">
-    <img src="Biotech-file/images/rosehips.jpg" width="200" height="224" border=0>
+  <div ID="jobs" STYLE="position:absolute; visibility: hidden">
+<table width="100%" border="0" cellpadding="4" cellspacing="0">
+<tr>
+  <td width="100%" ID="j1" onMouseOver="Highlight('jobs','j1');" onMouseOut="UnHighlight('jobs','J1');">
+  <a href="jobs.html">Job Listings</a></td></tr>
+</table>
   </div>
-    
-  <div id="news">
-      <span class="secHeader">News</span><p>
-   <a href="news/0426" class="boldlink" title="2025 - Pianeta e Clima">2025 - Pianeta e Clima</a><p>
-   <a href="news/0309" class="boldlink" title="2025 - Partecipazioni ad associazioni">2025 - Partecipazioni ad associazioni</a><p>
-   <a href="news/0301" class="boldlink" title="Notizie e storie">2025 Notizie e storie</a><br> -
-  </div>
-    
-  <div id="products">
-    <p><span class="secHeader">Products</span><br>
-  <a href="news/0426" class="boldlink">BioHomeLab 2.0</a><br>
-  <a href="news/0309" class="boldlink">Focusyn</a><br>
-  <a href="news/0301" class="boldlink">ProZap</a><br>
-  <a href="news/0426" class="boldlink">Inhalozyme</a><br>
-  <a href="news/0309" class="boldlink">Thornacohol</a><br>
-  <a href="news/0301" class="boldlink">Sinoplug</a></p>
-  </div>
-    
-  <div id="research">
-    <p><span class="secHeader">Research</span>
-  <a href="research/insulin" class="boldlink">Finding a way to allow diabetics to take insulin orally</a><br>
-  <a href="research/malebirth" class="boldlink">Male birth controlpill</a><br>
-  <a href="research/bcancer" class="boldlink">Ongoing breastcancer research</a><br>
-  <a href="research/aids" class="boldlink">Ongoing AIDS research</a></p>
-  </div>
-    
-  <div id="store">
-   <p><span class="secHeader">Shelley Store</span><br>
-      <span class="sidenavtext">Our BioHomeLab is now available online!<br>
-  <a href="store/hbl" class="boldlink">Get yours today!</a></span><br>
-  <a href="store/hats" class="boldlink">Shelley hats</a></p>
-     
-  <span class="sidenavtext">Shelley shirts </a>
+ <img align="center" src="Biotech-file/images/biotechlogo.jpg" width="486" height="180" border="0" alt=""><br>
+    <h1>Welcome to Shelley Biotechnologies!</h1>
+ <p class="sidenavtext">Welcome! This is the home page of Shelley Biotechnologies, your source for all sorts of imaginary products.<br>
+  Follow the links below or use the menu above to learn more about our mission and our philosophy.</p>
 <ul>
- <li><a href="store/shirts/selfish.html" class="link">"My gene is more selfish than your gene"</a>
- <li><a href="store/shirts/sucks.html" class="link">"Your genome is greath"</a>
- <li><a href="store/shirts/vegas.html" class="link">"My genome could be better then your"</a>
- <li><a href="store/shirts/science.html" class="link">"Science!"</a>
- <li><a href="store/shirts/blind.html" class="link">"I'm about to blind you with science, baby."</a>
+<li><a href="products.html"><b>Products</b></a></li> 
+<li><a href="sales.html"><b>Sales</b></a></li> 
+<li><a href="service.html"><b>Service</b></a></li> 
+<li><a href="staff.html"><b>Staff</b></a></li> 
+<li><a href="jobs.html"><b>Employment</b></a></li>
 </ul>
-     </div>
-    
-     <div id="about">
-      <p><span class="secHeader">About Shelley</span><br>
-     <a href="about/history" class="boldlink">History</a><br>
-     <a href="about/philosophy" class="boldlink">Philosophy</a><br>
-     <a href="about/giving" class="boldlink">Giving Back</a><br>
-     <a href="about/leadership" class="boldlink">Leadership</a><br>
-     <a href="about/jobs" class="boldlink">Careers</a></p>
-     </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+
      <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
 <span class="subtitle">Mitocondri,</span><span class="biotechtitle"> centrale energetica cellulare sotto forma di ATP</span><br>
 <span class="subtitle">Lisosoma,</span> <span class="biotechtitle"> responsbile distruzione/riciclaggio cellule senescenti (cellule morte).</span><br>
