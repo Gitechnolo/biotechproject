@@ -1,0 +1,96 @@
+ 
+
+ /* element with id */
+
+ #header { position:absolute; left:32; top:20; z-index: 20;}
+        #mainnav { position: absolute; left: 32; top: 82; z-index: 20;}        
+        #whiteUnderHeader {position:absolute;left:32;top:0;z-index:18;}        
+        #sidenav { position:absolute;left: 450; top:120;z-index:0;}        
+        #heart { position:absolute;left:124; top:204;z-index:0;}        
+        #hearttext { position:absolute; left: 32; top:149;z-index:0;}        
+        #rosehips { position:absolute; left: 397; top:213; z-index:0;}        
+        #rosehipstext { position:absolute; left:314; top:149;z-index:0;}        
+        #news
+        {
+        position: absolute;
+        left: 35;
+        top: 120;
+        z-index: 10;
+        visibility: hidden;
+        width: 200;
+        background-color: white;
+        border-width: 3;
+        border-color: #999999;
+        border-style: double;
+        padding: 20;
+        }
+        #products
+        {
+        position: absolute;
+        left: 100;
+        top: 120;
+        z-index: 10;
+        visibility: hidden;
+        width: 200;
+        background-color: white;
+        border-width: 3;
+        border-color: #999999;
+        border-style: double;
+        padding: 20;
+        }
+        #research
+        {
+        position: absolute;
+        left: 200;
+        top: 120;
+        z-index: 10;
+        visibility: hidden;
+        width: 200;
+        background-color: white;
+        border-width: 3;
+        border-color: #999999;
+        border-style: double;
+        padding: 20;
+        }
+        #store
+        {
+        position: absolute;
+        left: 300;
+        top: 120;
+        z-index: 10;
+        visibility: hidden;
+        width: 350;
+        background-color: white;
+        border-width: 3;
+        border-color: #999999;
+        border-style: double;
+        padding: 20;
+        }
+        #about
+        {
+        position: absolute;
+        left: 400;
+        top: 120;
+        z-index: 10;
+        visibility: hidden;
+        width: 200;
+        background-color: white;
+        border-width: 3;
+        border-color: #999999;
+        border-style: double;
+        padding: 20;
+        }
+
+        li {color: whitesmoke; font-weight: bold;}
+
+ /* elements with class */
+.biotechbody {background-color: rgb(1, 61, 1)}
+.sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
+.link {font-family: verdana, sans-serif; font-size:10px; }
+.boldlink {font-family: verdana, sans-serif; font-size: 10px; font-weight: bold;}
+.secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: #999999;}
+.subtitle {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: white;}
+.smalltext {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: whitesmoke; font-style: oblique; text-align: center;}
+.biotechtitle {color: whitesmoke; font-weight: bold;}
+.biotechcenter {text-align: center;}
+.imgcenter {display: block; margin-left: auto; margin-right: auto; width: 50%;}

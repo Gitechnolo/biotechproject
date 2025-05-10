@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+  <html>
+   <head>
+    <title>Shelley Biotechnologies</title>
+      <link rel="stylesheet" href="Biotech-file/Biotech.css">
+       <script src="Biotech-file/Biotech.js"></script>
+        </head>
+<body class="biotechbody" background="Biotech-file/images/biotechnologies_green.jpg">
+
+<SCRIPT LANGUAGE=javascript>
+	
+
+function Mercato(who, where, how, why, competitor, year){
+	this.who = who //Descrizione prodotto da introdurre nel mercato fino al raggiungimento cliente
+	this.where = where
+	this.how = how
+	this.why = why //Posizione differenziata rispetto alla concorrenza
+	this.competitor = competitor
+	this.year = year
+}
+
+var obj = new Mercato("A chi si sta vendendo", "Dove si sta vendendo", "Come si sta vendendo", "Perché si sta vendendo loro", "Chi altro tenta di vendere loro qualcosa di simile", "Cosa vuole effettivamente il mercato attuale");
+
+for (var i in obj) {
+	document.write("oggetto." + i + "=" + obj[i] + "<BR>");
+}
+
+oggetto.who=A chi si sta vendendo
+oggetto.where=Dove si sta vendendo
+oggetto.how=Come si sta vendendo
+oggetto.why=Perché si sta vendendo loro
+oggetto.competitor=Chi altro tenta di vendere loro qualcosa di simile
+oggetto.year=Cosa vuole effettivamente il mercato attuale
+
+</SCRIPT>
+
+    <p class="sidenavtext">Posizione differenziata rispetto alla concorrenza.<br>
+    A chi si sta vendendo.<br>
+    Dove si sta vendendo.<br>
+    Come si sta vendendo.<br>
+    Perché si sta vendendo loro.<br>
+    Chi altro tenta di vendere loro qualcosa di simile.<br> 
+    Cosa vuole effettivamente il mercato attuale.<br>
+    VALUTAZIONE RISCHIO DELLE POSSIBILI CONSEGUENZE.<br>
+    PROGRAMMAZIONE PROGETTI POSSIBILI FUTURI.</p>
+ 	
+<button onclick="document.getElementById('myImage').src='Biotech-file/images/pic_bulbon.gif'">Turn on the light</button>
+<img id="myImage" src="Biotech-file/images/pic_bulboff.gif" style="width:100px">
+<button onclick="document.getElementById('myImage').src='Biotech-file/images/pic_bulboff.gif'">Turn off the light</button>
+    
+  </body> 
+  </html> 
