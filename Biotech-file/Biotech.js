@@ -12,9 +12,9 @@ function Menu (current) {
    box.style.left= m.offsetLeft;
    box.style.top= m.offsetTop + m.offsetHeight;
    box.style.visibility="visible";
-   m.style.backgroundColor="Aqua";
-   box.style.backgroundColor="Aqua";
-   box.style.width="108px";
+   m.style.backgroundColor="CadetBlue";
+   box.style.backgroundColor="CadetBlue";
+   box.style.width="553px";
 }
 function Erase(current) {
    if (!document.getElementById) return;
@@ -39,5 +39,5 @@ function UnHighlight(menu,item) {
    if (!document.getElementById) return;
    Timeout(menu);
    obj=document.getElementById(item);
-   obj.style.backgroundColor="Aqua";
+   obj.style.backgroundColor="CadetBlue";
 }
