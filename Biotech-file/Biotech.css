@@ -1,5 +1,5 @@
  /* element with id */
-#about { color: lightgoldenrodyellow;}
+#about { color: lightgoldenrodyellow; font-family: monospace;}
 
 /* element natural */
  li {color: whitesmoke; font-weight: bold; font-size: 15px;}
