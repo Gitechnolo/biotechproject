@@ -1,12 +1,12 @@
  /* element with id */
-#about { }
+#about { color: lightgoldenrodyellow;}
 
 /* element natural */
  li {color: whitesmoke; font-weight: bold; font-size: 15px;}
  h1 {color: whitesmoke;}
        
 /* elements with class */
-.biotechbody {background-color: rgb(1, 61, 1)}
+.biotechbody {background-color: CadetBlue}
 .sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
 .link {font-family: verdana, sans-serif; font-size:10px; }
 .boldlink {font-family: verdana, sans-serif; font-size: 18px; font-weight: bold;}
