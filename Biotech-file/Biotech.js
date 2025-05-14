@@ -41,3 +41,16 @@ function UnHighlight(menu,item) {
    obj=document.getElementById(item);
    obj.style.backgroundColor="CadetBlue";
 }
+   // Clock
+function Clock() {
+if (!document.getElementById) return;
+theclock=document.getElementById("clock");
+now = new Date();
+hours=now.getHours();
+mins=now.getMinutes();
+secs=now.getSeconds();
+if (secs < 10) secs= "0" + secs;
+if (mins < 10) mins= "0" + mins;
+theclock.innerHTML = hours + ":" + mins + ":" + secs;
+window.setTimeout("Clock();",250);
+}
