@@ -1,6 +1,6 @@
  /* element with id */
 #about {color: lightgoldenrodyellow; font-family: monospace;}
-#clock {color: whitesmoke; position: absolute; left: 3px; top: 213px; font-family: monospace; font-size: 15pt; font-weight: bold;}
+#clock {color: hsla(60, 22%, 96%, 0.5); position: absolute; left: 3px; top: 213px; font-family: monospace; font-size: 15pt; font-weight: bold;}
 
 /* element natural */
  li {color: whitesmoke; font-weight: bold; font-size: 15px;}
@@ -13,7 +13,7 @@
 .boldlink {font-family: verdana, sans-serif; font-size: 18px; font-weight: bold;}
 .secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: whitesmoke;}
 .subtitle {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: white;}
-.quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: whitesmoke; font-style: oblique; text-align: center;}
+.quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
 .biotechtitle {color: whitesmoke; font-weight: bold;}
 .biotechcenter {text-align: center;}
 .imgcenter {display: block; margin-left: auto; margin-right: auto; width: 50%;}
