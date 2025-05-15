@@ -4,14 +4,14 @@
 
 /* element natural */
  li {color: whitesmoke; font-weight: bold; font-size: 15px;}
- h1 {color: whitesmoke;}
+ h1 {color: hsla(60, 22%, 96%, 0.5);}
        
 /* elements with class */
 .biotechbody {background-color: CadetBlue}
 .sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
 .link {font-family: verdana, sans-serif; font-size:10px; }
 .boldlink {font-family: verdana, sans-serif; font-size: 18px; font-weight: bold;}
-.secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: whitesmoke;}
+.secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .subtitle {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: white;}
 .quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
 .biotechtitle {color: whitesmoke; font-weight: bold;}
