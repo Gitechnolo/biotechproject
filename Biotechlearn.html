@@ -7,7 +7,7 @@
     <title>Shelley Biotechnologies</title>
     <link rel="stylesheet" href="Biotech-file/Biotech.css">
     <script src="Biotech-file/Biotech.js"></script>
-   </head>
+    </head>
  <body onLoad="Clock();" class="biotechbody">
 <table width="553"> 
 <tr>
@@ -79,7 +79,7 @@
 </tr>
 </table>
   </div>
- <img align="center" src="Biotech-file/images/biotechlogo.jpg" width="553" height="180" border="0" alt="Welcome!"><br>
+ <img src="Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
  <div ID="clock">00:00:00</div>
     <h1>Welcome to Shelley Biotechnologies!</h1>
  <p class="sidenavtext">Your time is precious here! This is the home page of Shelley Biotechnologies, your source for all sorts of imaginary products.<br>
@@ -91,7 +91,33 @@
 <li><a href="staff.html" class="boldlink" hreflang="it"><b>Staff</b></a></li>
 <li><a href="jobs.html" class="boldlink" hreflang="it"><b>Employment</b></a></li>
 </ul>
- <p><img src="Biotech-file/images/Cellula.jpg" alt="Cellula" class="imgcenter"></p>
+ <p><img id="myImg" src="Biotech-file/images/Cellula.jpg" alt="Cellula" width="300" height="200"></p>
+ <!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
 
-</body>
-</html> 
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+ </body>
+  </html> 
