@@ -1,10 +1,11 @@
  /* element with id */
 #about {color: lightgoldenrodyellow; font-family: monospace;}
-#clock {color: hsla(60, 22%, 96%, 0.5); position: absolute; left: 3px; top: 213px; font-family: monospace; font-size: 15pt; font-weight: bold;}
+#clock {color: hsla(60, 22%, 96%, 0.5); position: absolute; left: 3px; top: 208px; font-family: monospace; font-size: 15pt; font-weight: bold;}
 
 /* element natural */
  li {color: whitesmoke; font-weight: bold; font-size: 15px;}
  h1 {color: hsla(60, 22%, 96%, 0.5);}
+ table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
        
 /* elements with class */
 .biotechbody {background-color: CadetBlue; background-image: url("images/biotechnologies_green.jpg"); margin-left: 0; margin-top: 0;}
@@ -18,5 +19,5 @@
 .biotechcenter {text-align: center;}
 .imgcenter {display: block; margin-left: auto; margin-right: auto; width: 50%;}
 .biotechidden {position: absolute; visibility: hidden;}
-.biotechborder{border: 0; padding: 4;}
-.biotechmenu{width: 100%; border: 0; padding: 4;}
+.biotechmenu{width: 100%; border: 0;}
+.biotechcolor{width: 100; background-color: silver;}
