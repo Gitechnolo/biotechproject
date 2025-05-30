@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+  <html lang="it">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shelley Biotechnologies</title>
+    <link rel="stylesheet" href="Biotech-file/Biotech.css">
+    <script src="Biotech-file/Biotech.js"></script>
+    </head>
+ <body onLoad="Clock();" class="biotechbody">
+<table width="553"> 
+<tr>
+ <td ID="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
+   <a href="index.html" hreflang="it"><b>Home</b></a></td>
+ <td ID="menu-sales" class="biotechcolor" onMouseOver="Menu('sales');" onMouseOut="Timeout('sales');">
+   <a href="Progetti.html" hreflang="it"><b>Progetti</b></a></td>
+ <td ID="menu-service" class="biotechcolor" onMouseOver="Menu('service');" onMouseOut="Timeout('service');">
+  <a href="service.html" hreflang="it"><b>Service</b></a></td>
+ <td ID="menu-staff" class="biotechcolor" onMouseOver="Menu('staff');" onMouseOut="Timeout('staff');">
+   <a href="staff.html" hreflang="it"><b>Staff</b></a></td>
+ <td ID="menu-jobs" class="biotechcolor" onMouseOver="Menu('jobs');" onMouseOut="Timeout('jobs');">
+   <a href="jobs.html" hreflang="it"><b>Employment</b></a></td>
+</tr>
+</table>
+  <div ID="products" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+ <td width="100%" ID="p1" onMouseOver="Highlight('products', 'p1');" onMouseOut="UnHighlight('products', 'p1');">
+   <a href="Cellula.html" hreflang="it">Cellula</a></td>
+</tr>
+<tr>
+ <td width="100%" ID="p2" onMouseOver="Highlight('products', 'p2');" onMouseOut="UnHighlight('products', 'p2');">
+   <a href="Cuore.html" hreflang="it">Cuore</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="sales" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="s1" onMouseOver="Highlight('sales', 's1');" OnMouseOut="UnHighlight('sales', 's1');">
+   <a href="prices.html" hreflang="it">Price List</a></td>
+</tr>
+<tr>
+  <td width="100%" ID="s2" onMouseOver="Highlight('sales', 's2');" onMouseOut="UnHighlight('sales', 's2');">
+   <a href="order.html" hreflang="it">Order Form</a></td>
+</tr>
+<tr>
+  <td width="100%" ID="s3" onMouseOver="Highlight('sales', 's3');" onMouseOut="UnHighlight('sales', 's3');">
+   <a href="specials.html" hreflang="it">Specials</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="service" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="r1" onMouseOver="Highlight('service', 'r1');" onMouseOut="UnHighlight('service', 'r1');">
+   <a href="support.html" hreflang="it">Support</a></td>
+</tr> 
+<tr>
+  <td width="100%" ID="r2" onMouseOver="Highlight('service','r2');" onMouseOut="UnHighlight('service','r2');">
+  <a href="service.html" hreflang="it">Contact Us</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="staff" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="t1" onMouseOver="Highlight('staff','t1');" onMouseOut="UnHighlight('staff', 't1');">
+  <a href="staff.html" hreflang="it">Meet the Staff</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="jobs" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="j1" onMouseOver="Highlight('jobs','j1');" onMouseOut="UnHighlight('jobs','j1');">
+  <a href="jobs.html" hreflang="it">Job Listings</a></td>
+</tr>
+</table>
+  </div>
+ <img src="Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
+ <div ID="clock">00:00:00</div>
+    <h1>Welcome to Shelley Biotechnologies!</h1>
+<p><img id="myImg" src="Biotech-file/images/Cellula.jpg" alt="Cellula" width="300" height="200"></p>
+ <!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+ </body>
+  </html> 
