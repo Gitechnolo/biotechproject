@@ -4,7 +4,7 @@
 
 /* Element natural */
  li {color: whitesmoke; font-weight: bold; font-size: 15px;}
- h1 {color: hsla(60, 22%, 96%, 0.5);}
+ h1 {color: hsla(240, 20%, 97%, 0.836); text-shadow: 2px 2px 4px, 0 0 25px blue, 0 0 5px darkblue; margin-left: 85px;}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
  img {border-radius: 4px;}
        
@@ -13,19 +13,20 @@
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
 .sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
 .link {font-family: verdana, sans-serif; font-size:10px; }
-.text {font-family: verdana, sans-serif; font-size: 14px; font-weight: normal; color: whitesmoke;}
-.yellowtext {font-family: verdana, sans-serif; font-size: 14px; font-weight: normal; color: hwb(56 32% 7%);}
-.greentext {font-family: verdana, sans-serif; font-size: 14px; font-weight: normal; color: hwb(93 2% 3%);}
-.orangetext {font-family: verdana, sans-serif; font-size: 14px; font-weight: normal; color: hwb(27 1% 0%);}
-.biotechbold {font-family: verdana, sans-serif; font-size: 14px; font-weight: bold; color: hwb(56 32% 7%);}
+.text {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: whitesmoke;}
+.yellowtext {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(56 32% 7%);}
+.greentext {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(93 2% 3%);}
+.orangetext {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(27 1% 0%);}
+.biotechbold {font-family: verdana, sans-serif; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%);}
 .secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
-.subtitle {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
+.subtitle {font-family: verdana, sans-serif; font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
 .biotechtitle {color: whitesmoke; font-weight: bold;}
 .biotechcenter {text-align: center;}
 .biotechidden {position: absolute; visibility: hidden;}
 .biotechmenu{width: 100%; border: 0;}
 .biotechcolor{width: 100; background-color: silver;}
+.textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
 
 /* IMG ZOOM */
 #myImg {border-radius: 5px; cursor: pointer; transition: 0.3s;}
