@@ -1,0 +1,122 @@
+ /* Element with id */
+#about {color: lightgoldenrodyellow; font-family: monospace;}
+#clock {color: hsla(60, 22%, 96%, 0.5); position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold;}
+
+/* Element natural */
+ li {color: whitesmoke; font-weight: bold; font-size: 15px;}
+ h1 {color: hsla(60, 22%, 96%, 0.5);}
+ table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
+ img {border-radius: 4px;}
+       
+/* Elements with class */
+.biotechbody {background-color: CadetBlue; background-image: url("images/biotechnologies_green.jpg"); margin-left: 0; margin-top: 0;}
+.logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
+.sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
+.link {font-family: verdana, sans-serif; font-size:10px; }
+.boldtext {font-family: Tahoma, Verdana, Arial, sans-serif; font-size: 18px; font-weight: bold; color: whitesmoke;}
+.secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
+.subtitle {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
+.quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
+.biotechtitle {color: whitesmoke; font-weight: bold;}
+.biotechcenter {text-align: center;}
+.biotechidden {position: absolute; visibility: hidden;}
+.biotechmenu{width: 100%; border: 0;}
+.biotechcolor{width: 100; background-color: silver;}
+
+/* IMG ZOOM */
+#myImg {border-radius: 5px; cursor: pointer; transition: 0.3s;}
+#myImg:hover {opacity: 0.7;}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0; top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+/* Modal Content (image) */
+.modal-content {margin: auto; display: block; width: 80%; max-width: 700px;}
+/* Caption of Modal Image */
+#caption {margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: #ccc; 
+  padding: 10px 0; height: 150px;}
+
+/* Add Animation */
+.modal-content, #caption {animation-name: zoom; animation-duration: 0.6s;}
+
+@keyframes zoom {
+  from {transform: scale(0.1)} 
+  to {transform: scale(1)}
+}
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+
+/* Lightbox Cellula */
+body {margin: 0;}
+* {box-sizing: border-box;}
+.row > .column {padding: 0 8px;}
+.row:after {content: ""; display: table; clear: both;}
+.column {float: left; width: 25%;}
+
+/* The Modal (background) */
+.modal {display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%;
+  overflow: auto; background-color: black;}
+
+/* Modal Content */
+.modal-content {position: relative; background-color: #fefefe; margin: auto; padding: 0; width: 90%; max-width: 1200px;}
+
+/* The Close Button */
+.close {color: white; position: absolute; top: 10px; right: 25px; font-size: 35px; font-weight: bold;}
+.close:hover,
+.close:focus {color: #999; text-decoration: none; cursor: pointer;}
+.mySlides {display: none;}
+.cursor {cursor: pointer;}
+
+/* Next & previous buttons */
+.prev,
+.next {cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white;
+  font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none;
+  -webkit-user-select: none;}
+
+/* Position the "next button" to the right */
+.next {right: 0; border-radius: 3px 0 0 3px;}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {background-color: rgba(0, 0, 0, 0.8);}
+
+/* Number text (1/3 etc) */
+.numbertext {color: #f2f2f2; font-size: 12px; padding: 8px 12px; position: absolute; top: 0;}
+img {margin-bottom: -4px;}
+.caption-container {text-align: center; background-color: black; padding: 2px 16px; color: white;}
+.demo {opacity: 0.6;}
+.active,
+.demo:hover {opacity: 1;}
+img.hover-shadow {transition: 0.3s;}
+.hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
