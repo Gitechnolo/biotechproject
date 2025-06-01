@@ -13,7 +13,9 @@
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
 .sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
 .link {font-family: verdana, sans-serif; font-size:10px; }
-.boldtext {font-family: Tahoma, Verdana, Arial, sans-serif; font-size: 18px; font-weight: bold; color: whitesmoke;}
+.text {font-family: verdana, sans-serif; font-size: 14px; font-weight: normal; color: whitesmoke;}
+.yellowtext {font-family: verdana, sans-serif; font-size: 14px; font-weight: normal; color: hwb(56 32% 7%);}
+.biotechbold {font-family: verdana, sans-serif; font-size: 14px; font-weight: bold; color: hwb(56 32% 7%);}
 .secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .subtitle {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
