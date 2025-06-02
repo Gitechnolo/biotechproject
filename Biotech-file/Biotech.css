@@ -7,7 +7,7 @@
  h1 {color: hsla(240, 20%, 97%, 0.836); text-shadow: 2px 2px 4px, 0 0 25px blue, 0 0 5px darkblue; margin-left: 85px;}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
  img {border-radius: 4px;}
-       
+         
 /* Elements with class */
 .biotechbody {background-color: CadetBlue; background-image: url("images/biotechnologies_green.jpg"); margin-left: 0; margin-top: 0;}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
@@ -27,6 +27,8 @@
 .biotechmenu{width: 100%; border: 0;}
 .biotechcolor{width: 100; background-color: silver;}
 .textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
+.mask {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.opacity {opacity: 0.5;}
 
 /* IMG ZOOM */
 #myImg {border-radius: 5px; cursor: pointer; transition: 0.3s;}
@@ -79,8 +81,6 @@
     width: 100%;
   }
 }
-
-
 
 /* Lightbox Cellula */
 body {margin: 0;}
