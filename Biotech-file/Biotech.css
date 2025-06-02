@@ -11,15 +11,15 @@
 /* Elements with class */
 .biotechbody {background-color: CadetBlue; background-image: url("images/biotechnologies_green.jpg"); margin-left: 0; margin-top: 0;}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
-.sidenavtext {font-family: verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
-.link {font-family: verdana, sans-serif; font-size:10px; }
-.text {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: whitesmoke;}
-.yellowtext {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(56 32% 7%);}
-.greentext {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(93 2% 3%);}
-.orangetext {font-family: verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(27 1% 0%);}
-.biotechbold {font-family: verdana, sans-serif; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%);}
-.secHeader {font-family: verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
-.subtitle {font-family: verdana, sans-serif; font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
+.sidenavtext {font-family: Tahoma, Verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
+.link {font-family: Tahoma, Verdana, sans-serif;}
+.text {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: whitesmoke;}
+.yellowtext {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(56 32% 7%);}
+.greentext {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(93 2% 3%);}
+.orangetext {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: hwb(27 1% 0%);}
+.biotechbold {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%);}
+.secHeader {font-family: Tahoma, Verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
+.subtitle {font-family: Tahoma, Verdana, sans-serif; font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
 .biotechtitle {color: whitesmoke; font-weight: bold;}
 .biotechcenter {text-align: center;}
