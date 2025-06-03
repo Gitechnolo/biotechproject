@@ -12,8 +12,8 @@ function Menu (current) {
    box.style.left= m.offsetLeft;
    box.style.top= m.offsetTop + m.offsetHeight;
    box.style.visibility="visible";
-   m.style.backgroundColor="CadetBlue";
-   box.style.backgroundColor="CadetBlue";
+   m.style.backgroundColor="rgba(209, 206, 206, 0.57)";
+   box.style.backgroundColor="rgba(209, 206, 206, 0.57)";
    box.style.width="553px";
 }
 function Erase(current) {
@@ -39,7 +39,7 @@ function UnHighlight(menu,item) {
    if (!document.getElementById) return;
    Timeout(menu);
    obj=document.getElementById(item);
-   obj.style.backgroundColor="CadetBlue";
+   obj.style.backgroundColor="rgba(209, 206, 206, 0.57)";
 }
 //End drop-down menu
 
