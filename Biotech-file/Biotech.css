@@ -27,7 +27,7 @@
 .biotechmenu{width: 100%; border: 0;}
 .biotechcolor{width: 100; background-color: silver;}
 .textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
-.mask {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .opacity {opacity: 0.5;}
 
 /* IMG ZOOM */
