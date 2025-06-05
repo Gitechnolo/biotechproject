@@ -12,7 +12,7 @@
 * {font-family: myFirstFont;}
           
 /* Elements with class */
-.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("images/background.jpg"); margin-left: 0; margin-top: 0;}
+.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("images/background.jpg"); background-position: 50% 50%;}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
 .sidenavtext {font-family: Tahoma, Verdana, sans-serif; font-size: 18px; font-weight: normal; color: whitesmoke;}
 .link {font-family: Tahoma, Verdana, sans-serif;}
