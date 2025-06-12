@@ -48,12 +48,17 @@ function Clock() {
 if (!document.getElementById) return;
 theclock=document.getElementById("clock");
 now = new Date();
+gg =now.getDate() + "";
+mm =now.getMonth() + 1 + "";
+aaaa =now.getFullYear();
 hours=now.getHours();
 mins=now.getMinutes();
 secs=now.getSeconds();
+ms =now.getMilliseconds(); 
+if (ms < 10) ms= "0" + ms; 
 if (secs < 10) secs= "0" + secs;
 if (mins < 10) mins= "0" + mins;
-theclock.innerHTML = hours + ":" + mins + ":" + secs;
+theclock.innerHTML = " " + gg + "/" + mm + "/" + aaaa + " - " +  hours + ":" + mins + ":" + secs + "&nbsp;" + ms;
 window.setTimeout("Clock();",250);
 }
 //End  Clock
