@@ -7,6 +7,7 @@
 @font-face {font-family: myFirstFont; src: url(sansation_bold.woff); font-weight: bold;}
 * {font-family: myFirstFont;}
  ul.list {list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
+ ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
  h1 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 85px;}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
  img {border-radius: 6px;}
