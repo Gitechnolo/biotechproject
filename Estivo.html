@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+  <html lang="it">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Biotech project</title>
+        
+    <SCRIPT LANGUAGE="JAVASCRIPT">
+// NEW YEAR COUNTDOWN
+let today = new Date(); // Get the current date
+let newYear = today.getFullYear(); // Get the year of the current date
+var holidayCntMsg = "Lascia la festa nelle mani di Midwest Catering"
+var tMonth = today.getMonth()
+ 
+function HolidayDays() {
+switch (tMonth) {
+case 2:
+var tHoliday = new Date("Marzo 17, 2026")
+var curHoliday = tHoliday.getTime()-today.getTime()
+if (curHoliday > 0) {
+curHoliday = Math.ceil(curHoliday / (1000 * 60 * 60 * 24))
+holidayCntMsg = "Solo "+curHoliday+" giorni al St. Patrick's Day!"
+}
+break
+case 5: case 6:
+var tHoliday = new Date("Luglio 4, 2026")
+var curHoliday = tHoliday.getTime()-today.getTime()
+if (curHoliday > 0) {
+curHoliday = Math.ceil(curHoliday / (1000 * 60 * 60 * 24))
+holidayCntMsg = "Solo "+curHoliday+" giorni al 4<SUP>th</SUP> di luglio!"
+}
+break
+case 9:
+var tHoliday = new Date("Ottobre 31, 2026")
+var curHoliday = tHoliday.getTime()-today.getTime()
+if (curHoliday > 0) {
+curHoliday = Math.ceil(curHoliday / (1000 * 60 * 60 * 24)) 
+holidayCntMsg = "Solo "+curHoliday+" giorni ad Halloween!"
+}
+break
+case 11:
+var tHoliday = new Date("Dicembre 25, 2026") 
+var curHoliday = tHoliday.getTime()-today.getTime()
+if (curHoliday > 0) {
+curHoliday = Math.ceil(curHoliday / (1000 * 60 * 60 * 24)) 
+holidayCntMsg = "Solo "+curHoliday+" giorni a Natale!"
+}
+break
+}
+return holidayCntMsg
+}
+// Check if the current date is already past by checking if the month is December and the current day is greater than 31
+if (today.getMonth() == 11 && today.getDate() > 31) {
+newYear = newYear + 1; // Add an year so that the next new year date could be used
+}
+let newYearDate = new Date(newYear, 11, 31); // Get the date of the next New year
+let dayMilliseconds = 1000 * 60 * 60 * 24; // Get the number of milliseconds in 1 day
+let remainingDays = Math.ceil((newYearDate.getTime() - today.getTime()) / (dayMilliseconds)); // Get the remaining amount of days
+document.write(" - " + remainingDays + " giorni al 2026."); // Write it to the page
+// END NEW YEAR COUNTDOWN
+    </SCRIPT>
+   </head>
+<body>
+
+    <h1>Welcome to Biotech Project!</h1>
+<SCRIPT LANGUAGE="JAVASCRIPT">
+var holidayMsg = HolidayDays()
+document.write("<h1><CENTER>"+holidayMsg+"</CENTER></h1>")
+</SCRIPT>
+
+</body>
+  </html>
