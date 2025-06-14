@@ -1,6 +1,7 @@
  /* Element with id */
 #about {color: lightgoldenrodyellow; font-family: monospace;}
 #clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#newyear {color: lightgoldenrodyellow; position: absolute; left: 306px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 
 /* Element natural */
 @font-face {font-family: myFirstFont; src: url(sansation_light.woff);}
