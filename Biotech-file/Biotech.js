@@ -63,7 +63,7 @@ window.setTimeout("Clock();",250);
 }
 //End  Clock
 
-// Lightbox Cellula
+// Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
   document.getElementById("myModal").style.display = "block";
 }
@@ -96,7 +96,7 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
-// End Lightbox Cellula
+// End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
 
 // Get the modal image 1
