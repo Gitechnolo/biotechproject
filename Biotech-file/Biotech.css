@@ -1,7 +1,7 @@
  /* Element with id */
 #about {color: lightgoldenrodyellow; font-family: monospace;}
 #clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-#newyear {color: lightgoldenrodyellow; position: absolute; left: 306px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#newyear {color: lightgoldenrodyellow; position: absolute; left: 302px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 
 /* Element natural */
 @font-face {font-family: myFirstFont; src: url(sansation_light.woff);}
@@ -9,7 +9,6 @@
 * {font-family: myFirstFont;}
  ul.list {list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
  ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
- h1 {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 85px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
  img {border-radius: 6px;}
             
@@ -34,6 +33,7 @@
 .textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
 .menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .opacity {opacity: 0.5;}
+.niceweek {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 28px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 25px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 
 /* IMG ZOOM */
 #myImg {border-radius: 5px; cursor: pointer; transition: 0.3s;}
