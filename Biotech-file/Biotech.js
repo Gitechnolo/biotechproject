@@ -1,4 +1,16 @@
-        // drop-down menu
+//Fade effect (dissolvenza)
+function fadeEffect() { 
+  let text = document.getElementById("fadingText");
+  let visible = true;
+  setInterval(() => {
+      visible = !visible;
+      text.style.opacity = visible ? "1" : "0";
+  }, 2000);
+}
+window.addEventListener("load", fadeEffect);
+// End fade effect (dissolvenza)
+
+// drop-down menu
 var inmenu=false;
 var lastmenu=0;
 function Menu (current) {
