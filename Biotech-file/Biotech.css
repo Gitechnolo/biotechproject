@@ -23,7 +23,12 @@ div.desc {padding: 15px; text-align: center; font-family: Tahoma, Verdana, sans-
 @media only screen and (max-width: 500px) {.responsive {width: 100%;}}
 .clearfix:after {content: ""; display: table; clear: both;}
 /* End Blank Image Gallery */
-            
+
+/* Scrollbar fegato */
+div.scroll-container {border: 1px solid #ccc; border-radius: 6px; background-color: #333 (transparent); overflow: auto; white-space: nowrap; padding: 2px;}
+div.scroll-container img {padding: 2px;}
+/* End scrollbar fegato */ 
+           
 /* Elements with class */
 .biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("images/background.jpg"); background-position: 50% 50%;}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
