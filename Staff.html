@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Biotech project</title>
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
+    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
     </head>
  <body onLoad="Clock();" class="biotechbody">
@@ -89,81 +89,62 @@
 </table>
   </div>
  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
- <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
- <div id="week" class="waviy"></div>
- <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
-<table>
-<tr>
-<td><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.png" alt="Docker cp" style="width:100%;max-width:214px"></td>
-<td><img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/docker_nginx.png" alt="Docker nginx" style="width:100%;max-width:300px"></td>
-<td><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.png" alt="Git Push" style="width:100%;max-width:370px"></td>
-<td><img id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.png" alt="Git Pull" style="width:100%;max-width:370px"><br></td>
-</tr>
-</table>
-    <!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <img class="modal-content" id="img02">
-  <img class="modal-content" id="img03">
-  <img class="modal-content" id="img04">
-  <div id="caption"></div>
+  <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+  <div id="week" class="waviy"></div>
+  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script>
+  <style>
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+.column {float: left; width: 33.3%; margin-bottom: 16px; padding: 0 8px;}
+@media screen and (max-width: 650px) {.column {width: 100%; display: block;}}
+.card {box-shadow: 0 4px 8px 0 rgba(249, 250, 249, 0.2);}
+.container {padding: 0 16px;}
+.container::after, .row::after {content: ""; clear: both; display: table;}
+.title {color: grey;}
+.button {border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: rgba(249, 250, 249, 0.2); text-align: center; cursor: pointer; width: 100%;}
+.button:hover {background-color: #555;}
+</style>
+<p class="secHeader">Responsive "Meet The Staff" Section</p>
+<p class="subtitle">Contatti per collaborazioni e progetti.</p>
+<br>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" alt="Elena" style="width:100%">
+      <div class="container">
+        <p class="sidenavtext">Elena</p>
+        <p class="title">CEO & Founder</p>
+        <p class="yellowtext">Il giusto è razionale, morale, e non solo vigente, ma ancorato nella realtà.</p>
+        <p id="about">Programmer</p>
+        <p><a href="https://gitlab.com/progettisti/biotechproject" target="_blank"><button class="button">Gitlab</button></a></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Fabrizio" style="width:100%">
+      <div class="container">
+        <p class="sidenavtext">Fabrizio</p>
+        <p class="title">Art Director</p>
+        <p class="yellowtext">La padronanza di Apollo non dipende dal plauso di chi lo circonda.</p>
+        <p id="about">Web Architect
+        </p>
+        <p><a href="https://gitlab.com/progettisti/biotechproject" target="_blank"><button class="button">Gitlab</button></a></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.jpg" alt="Frank" style="width:100%">
+      <div class="container">
+        <p class="sidenavtext">Frank</p>
+        <p class="title">Designer</p>
+        <p class="yellowtext">Una mente vera non soffre di noia o solitudine, sa tener compagnia a sè stessa.</p>
+        <p id="about">Web Master</p>
+        <p><a href="https://gitlab.com/progettisti/biotechproject" target="_blank"><button class="button">Gitlab</button></a></p>
+      </div>
+    </div>
+  </div>
 </div>
-<script>
-// Get the modal image 1
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 2
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg2");
-var modalImg = document.getElementById("img02");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 3
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg3");
-var modalImg = document.getElementById("img03");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 4
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg4");
-var modalImg = document.getElementById("img04");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
-</script>
-<p id="about">If you have an idea let me know!</p>
-<button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.gif'">Turn on the light</button>
-<img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif" style="width:100px">
-<button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif'">Turn off the light</button>
 </body>
-  </html> 
+</html>
