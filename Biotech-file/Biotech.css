@@ -149,3 +149,10 @@ img {margin-bottom: -4px;}
 .demo:hover {opacity: 1;}
 img.hover-shadow {transition: 0.3s;}
 .hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+
+/* Video Biomassa */
+#myVideo {position: sticky; left: 0; bottom: 0; min-width: 50%; min-height: 50%;}
+.content {position: sticky; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); color: #f1f1f1; width: 50%; padding: 20px;}
+#myBtn {width: 200px; font-size: 18px; padding: 10px; border: none; background: rgba(0, 0, 0, 0.5); color: #fff; cursor: pointer;}
+#myBtn:hover {background: rgba(249, 250, 249, 0.2); color: #f1f1f1;}
+/* End Video */
