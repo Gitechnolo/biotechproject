@@ -92,9 +92,30 @@
   <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
   <div id="week" class="waviy"></div>
   <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
-  <div id="fadingText">Sito in costruzione, attualmente navigabile: Cellula / Apparato circolatorio / Apparato respiratorio / Sistema linfatico</div>
-  <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><img class="opacity" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/workinprogress.jpg" alt="Sorry"></a></div>
- 
+  <div id="about">Sito in costruzione</div>
+  <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><img class="opacity" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/workinprogress.jpg" alt="Sorry"></a></div><br>
+<video autoplay loop id="myVideo">
+  <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+<div class="content">
+  <p class="subtitle">Singapore</p>
+  <p id="fadingText">Biomassa, il bosco artificiale - Metropoli</p>
+  <button id="myBtn" onclick="myFunction()">Play</button>
+</div>
+<script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
  <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
  <main>Mitocondri</main>;<span class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</span><br>
  <main>Lisosoma</main>;<span class="biotechtitle">Responsbile distruzione/riciclaggio cellule senescenti (cellule morte).</span><br>
