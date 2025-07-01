@@ -221,3 +221,9 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('img[data-src]').forEach(img => {
   observer.observe(img);
 });
+
+// When the user mouseover on div, open the info popup
+function infoFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
