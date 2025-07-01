@@ -94,38 +94,24 @@
   <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
   <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Sito in costruzione<span class="popuptext" id="myPopup">A beve fisiologia umana!</span></div><br>
     <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><img class="opacity" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/workinprogress.jpg" alt="Sorry"></a></div><br>
-  <video autoplay loop id="myVideo">
-    <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
-  <div style="margin: 10px 0;">
-    <label for="volumeControl" class="text">Volume:</label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+  <div id="videoContainer">
+    <video autoplay loop id="myVideo" class="video">
+      <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div style="margin: 10px 0;">
+      <label for="volumeControl" class="text">Volume:</label>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+      <button id="fullscreenBtn" style="margin-left:10px;">Fullscreen</button>
+      <button id="exitFullscreenBtn" style="display:none; margin-left:5px;">Return</button>
+    </div>
   </div>
 <div class="content">
   <p class="subtitle">Singapore</p>
   <p id="fadingText">Biomassa, il bosco artificiale - Metropoli</p>
-  <button id="myBtn" onclick="myFunction()">Play</button>
+  <button id="myBtn" onclick="videoFunction()">Play</button>
 </div>
-<script>
-var video = document.getElementById("myVideo");
-var btn = document.getElementById("myBtn");
-var volumeControl = document.getElementById("volumeControl");
-
-function myFunction() {
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = "Pause";
-  } else {
-    video.pause();
-    btn.innerHTML = "Play";
-  }
-}
-// Volume control event
-volumeControl.addEventListener('input', function() {
-  video.volume = this.value;
-});
-</script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script>
  <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
  <main>Mitocondri</main>;<span class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</span><br>
  <main>Lisosoma</main>;<span class="biotechtitle">Responsbile distruzione/riciclaggio cellule senescenti (cellule morte).</span><br>
