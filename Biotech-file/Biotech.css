@@ -49,6 +49,7 @@ div.scroll-container img {padding: 2px;}
 .biotechcolor{width: 100; background-color: silver;}
 .textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
 .menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.video {max-width:100%; width:50%; height:auto; min-width:unset; min-height:unset;}
 .opacity {opacity: 0.5;}
 .waviy {position: relative; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 28px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 20px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .waviy span {position: relative; display: inline-block; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i))}
