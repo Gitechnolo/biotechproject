@@ -49,6 +49,7 @@ div.scroll-container img {padding: 2px;}
 .biotechcolor{width: 100; background-color: silver;}
 .textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
 .menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.video {max-width:100%; width:50%; height:auto; min-width:unset; min-height:unset;}
 .opacity {opacity: 0.5;}
 .waviy {position: relative; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 28px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 20px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .waviy span {position: relative; display: inline-block; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i))}
@@ -156,3 +157,56 @@ img.hover-shadow {transition: 0.3s;}
 #myBtn {width: 200px; font-size: 18px; padding: 10px; border: none; background: rgba(0, 0, 0, 0.5); color: #fff; cursor: pointer;}
 #myBtn:hover {background: rgba(249, 250, 249, 0.2); color: #f1f1f1;}
 /* End Video */
+
+/* Popup info container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: rgba(249, 250, 249, 0.2);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+/* End popup info container */
