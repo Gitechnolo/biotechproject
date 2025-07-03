@@ -162,31 +162,9 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
+// --- Performance Helpers ---
 
-//Ottimizzazione - Reflow e Repaint
-// Worker.js
-self.onmessage = e => {
-  const offscreen = e.data.canvas;
-  const ctx = offscreen.getContext('2d');
-  // Disegni intensivi...
-  ctx.fillStyle = 'red';
-  ctx.fillRect(0,0,200,200);
-  self.postMessage('done');
-};
-// Main.js
-const worker = new Worker('Worker.js');
-const canvas = document.querySelector('#myCanvas');
-const offscreen = canvas.transferControlToOffscreen();
-worker.postMessage({ canvas: offscreen }, [offscreen]);
-
-function animateBox(timestamp) {
-  // Calcola posizione in base al tempo
-  box.style.transform = 'translateX(${Math.sin(timestamp/500) * 100}px)';
-  requestAnimationFrame(animateBox);
-}
-// Avvia l'animazione
-requestAnimationFrame(animateBox);
-
+// Throttle: limit how often a function can run
 function throttle(fn, limit) {
   let lastCall = 0;
   return function(...args) {
@@ -197,8 +175,7 @@ function throttle(fn, limit) {
     }
   };
 }
-window.addEventListener('scroll', throttle(handleScroll, 100));
-
+// Debounce: run a function only after a pause
 function debounce(fn, delay) {
   let timer;
   return function(...args) {
@@ -206,21 +183,30 @@ function debounce(fn, delay) {
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
 }
-window.addEventListener('resize', debounce(handleResize, 200));
+// Example usage: define your own handlers as needed
+// window.addEventListener('scroll', throttle(() => {
+//   // handle scroll event
+// }, 100));
+// window.addEventListener('resize', debounce(() => {
+//   // handle resize event
+// }, 200));
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      img.src = img.dataset.src;      // Carica immagine "lazy"
-      observer.unobserve(img);        // Non serve più
-    }
+// Lazy loading images with IntersectionObserver
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        observer.unobserve(img);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    observer.observe(img);
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('img[data-src]').forEach(img => {
-  observer.observe(img);
-});
+}
 
 // When the user mouseover on div, open the info popup
 function infoFunction() {
