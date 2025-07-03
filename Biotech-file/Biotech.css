@@ -1,7 +1,7 @@
  /* Element with id */
 #about {color: lightgoldenrodyellow; font-family: monospace; text-align: center;}
 #clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-#newyear {color: lightgoldenrodyellow; position: absolute; left: 302px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#newyear {color: lightgoldenrodyellow; position: absolute; left: 290px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 1.5s ease-in-out;}
 
 /* Element natural */
@@ -152,10 +152,13 @@ img.hover-shadow {transition: 0.3s;}
 .hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 
 /* Video Biomassa */
-#myVideo {position: sticky; left: 0; bottom: 0; min-width: 50%; min-height: 50%;}
-.content {position: sticky; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); color: #f1f1f1; width: 50%; padding: 20px;}
-#myBtn {width: 200px; font-size: 18px; padding: 10px; border: none; background: rgba(0, 0, 0, 0.5); color: #fff; cursor: pointer;}
-#myBtn:hover {background: rgba(249, 250, 249, 0.2); color: #f1f1f1;}
+.yt-video-controls {display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;max-width:600px;margin-left:0;position:relative;top:-6px;}
+.yt-range {flex:1 1 180px;accent-color:#e50914;height:4px;background:#222;border-radius:2px;outline:none;margin:0 6px;}
+.yt-Ctime {color:#fff;font-size:0.95em;min-width:38px;text-align:right;}
+.yt-video-duration {color:#fff;font-size:0.95em;min-width:38px;text-align:right;}
+.yt-vol {width:80px;accent-color:#e50914;}
+#ytVideoContainer {max-width:600px; margin-left:0; margin-right:auto;}
+#ytVideo {display:block; width:100%; max-width:600px; margin-left:0; background:transparent; border:none; box-shadow:none;}
 /* End Video */
 
 /* Popup info container - can be anything you want */
@@ -210,3 +213,21 @@ img.hover-shadow {transition: 0.3s;}
   to {opacity:1 ;}
 }
 /* End popup info container */
+
+/* Portfolio Section */
+* { box-sizing: border-box; }
+.portfolio-main { max-width: 1000px; margin: auto; }
+.portfolio-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0; }
+.portfolio-col { flex: 1 1 30%; max-width: 32%; display: none; transition: box-shadow 0.3s; position: relative; }
+.portfolio-show { display: block; }
+.portfolio-content { background: #fff; padding: 10px; border-radius: 8px; overflow: hidden; position: relative; }
+.portfolio-content img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s, transform 0.3s; }
+.portfolio-content img:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.25); transform: scale(1.03); }
+.fadebox { opacity: 0; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: rgba(0,0,0,0.6); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1em; pointer-events: none; transition: opacity 0.4s; z-index: 2; }
+.portfolio-content:hover .fadebox { opacity: 1; pointer-events: auto; }
+.btn { border: none; outline: none; padding: 12px 16px; background: white; cursor: pointer; transition: background 0.2s; }
+.btn:hover { background: #ddd; }
+.btn.active { background: #666; color: #fff; }
+@media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
+@media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
+/* End portfolio Section */

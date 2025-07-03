@@ -7,9 +7,9 @@
     <title>Biotech project</title>
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
-    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
    </head>
-<body onLoad="Clock();" class="biotechbody">
+<body onload="Clock()" class="biotechbody">
 <table width="553" class="menu"> 
 <tr>
  <td ID="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
@@ -88,10 +88,11 @@
 </tr>
 </table>
   </div>
- <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
- <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
+ <div id="clock">00:00:00</div>
+ <div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
  <div id="week" class="waviy"></div>
- <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
 <main>SISTEMA LINFATICO</main>
 <span class="text">I capillari sanguigni e le vene costituiscono un sistema di drenaggio per i liquidi tissulari.<br>
 La quantità di proteine nel liquido interstiziale è molto piccola, ma in certe condizioni aumenta considerevolmente e sembra improbabile che rientri nel sistema capillare.<br>
@@ -100,36 +101,36 @@ Vi è poi un secondo sistema di drenaggio, quello linfatico, la cui funzione pri
 </p>
 <div class="row">
   <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Sistema linfatico schema 1">
   </div>
-<div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-</div>
-<div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-</div>
-<div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
-</div>
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Sistema linfatico schema 2">
+  </div>
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Sistema linfatico schema 3">
+  </div>
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="Sistema linfatico schema 4">
+  </div>
 </div>
 <div id="myModal" class="modal">
   <span class="close cursor" onclick="closeModal()">&times;</span>
 <div class="modal-content">
 <div class="mySlides">
       <div class="numbertext">1 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" loading="lazy" alt="Scambio tra plasma e liquido tissulare">
 </div>
 <div class="mySlides">
       <div class="numbertext">2 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" loading="lazy" alt="Capillari linfatici e sanguigni nel tessuto">
 </div>
 <div class="mySlides">
       <div class="numbertext">3 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" loading="lazy" alt="Struttura del ganglio linfatico">
 </div>
 <div class="mySlides">
       <div class="numbertext">4 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" loading="lazy" alt="Sistema linfatico">
 </div>
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -137,17 +138,17 @@ Vi è poi un secondo sistema di drenaggio, quello linfatico, la cui funzione pri
       <p id="caption"></p>
 </div>
 <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Scambio tra plasma e liquido tissulare">
-</div>
-<div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Capillari linfatici e sanguigni nel tessuto">
-</div>
-<div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Struttura del ganglio linfatico">
-</div>
-<div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Sistema linfatico">
-</div>
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Scambio tra plasma e liquido tissulare">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Capillari linfatici e sanguigni nel tessuto">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Struttura del ganglio linfatico">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Sistema linfatico">
+    </div>
 </div>
 </div>
 <p class="text">

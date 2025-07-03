@@ -6,9 +6,9 @@
 <title>Biotech project</title>
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
 </head>
-<body onLoad="Clock();" class="biotechbody">
+<body onload="Clock()" class="biotechbody">
 <table width="553" class="menu"> 
 <tr>
  <td ID="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
@@ -87,10 +87,11 @@
 </tr>
 </table>
 </div>
- <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
-<div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
+<div id="clock">00:00:00</div>
+<div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
 <div id="week" class="waviy"></div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
 <main>CELLULA</main>
 <p class="text"><span class="yellowtext">Unità strutturale funzionale di ciascun organismo vivente.</span><br>
 Per svolgere la loro funzione, le cellule risultano essere raggruppate in tessuti,
@@ -106,16 +107,16 @@ due altrettanto identiche.
 </p>
 <div class="row">
   <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula_box.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula_box.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Cellula schema 1">
   </div>
 <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali_box.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali_box.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Cellulestaminali schema 2">
 </div>
 <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/CellulafunzioniLbox.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/CellulafunzioniLbox.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Cellulafunzioni schema 3">
 </div>
 <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna_box.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna_box.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="Celluladna schema 4">
 </div>
 </div>
 <div id="myModal" class="modal">
@@ -123,19 +124,19 @@ due altrettanto identiche.
 <div class="modal-content">
 <div class="mySlides">
       <div class="numbertext">1 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula.jpg" style="width:100%" loading="lazy" alt="Corpo umano">
 </div>
 <div class="mySlides">
       <div class="numbertext">2 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali.jpg" style="width:100%" loading="lazy" alt="Cellula">
 </div>
 <div class="mySlides">
       <div class="numbertext">3 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulafunzioni.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulafunzioni.jpg" style="width:100%" loading="lazy" alt="Composizione cellula">
 </div>
 <div class="mySlides">
       <div class="numbertext">4 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna.jpg" style="width:100%">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna.jpg" style="width:100%" loading="lazy" alt="DNA">
 </div>
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>

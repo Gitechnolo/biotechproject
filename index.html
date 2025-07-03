@@ -7,116 +7,93 @@
     <title>Biotech project</title>
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
-    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
    </head>
- <body onLoad="Clock();" class="biotechbody">
-<table width="553" class="menu"> 
+<body onload="Clock()" class="biotechbody">
+<table width="553" class="menu">
 <tr>
- <td ID="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
+ <td id="menu-products" class="biotechcolor" onmouseover="Menu('products');" onmouseout="Timeout('products');">
    <a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>Home</b></a></td>
- <td ID="menu-sales" class="biotechcolor" onMouseOver="Menu('sales');" onMouseOut="Timeout('sales');">
+ <td id="menu-sales" class="biotechcolor" onmouseover="Menu('sales');" onmouseout="Timeout('sales');">
    <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><b>Progetti</b></a></td>
- <td ID="menu-service" class="biotechcolor" onMouseOver="Menu('service');" onMouseOut="Timeout('service');">
-  <a href="service.html" hreflang="it"><b>Service</b></a></td>
- <td ID="menu-staff" class="biotechcolor" onMouseOver="Menu('staff');" onMouseOut="Timeout('staff');">
+ <td id="menu-service" class="biotechcolor" onmouseover="Menu('service');" onmouseout="Timeout('service');">
+  <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it"><b>Service</b></a></td>
+ <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
    <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
- <td ID="menu-jobs" class="biotechcolor" onMouseOver="Menu('jobs');" onMouseOut="Timeout('jobs');">
-   <a href="jobs.html" hreflang="it"><b>Employment</b></a></td>
+ <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
+   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
 </tr>
 </table>
-  <div ID="products" class="biotechidden">
-<table class="biotechmenu">
-<tr>
- <td width="100%" ID="p1" onMouseOver="Highlight('products', 'p1');" onMouseOut="UnHighlight('products', 'p1');">
-   <a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it"> &#8592; C e l l u l a &#8594; </a></td>
-</tr>
-<tr>
- <td width="100%" ID="p2" onMouseOver="Highlight('products', 'p2');" onMouseOut="UnHighlight('products', 'p2');">
-   <a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">&#8592; A p p a r a t o &nbsp; c i r c o l a t o r i o &#8594;</a></td>
-</tr>
-<tr>
- <td width="100%" ID="p3" onMouseOver="Highlight('products', 'p3');" onMouseOut="UnHighlight('products', 'p3');">
-   <a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">&#8592; A p p a r a t o &nbsp; r e s p i r a t o r i o &#8594;</a></td>
-</tr>
-<tr>
- <td width="100%" ID="p4" onMouseOver="Highlight('products', 'p4');" onMouseOut="UnHighlight('products', 'p4');">
-   <a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">&#8592; A p p a r a t o &nbsp; d i g e r e n t e &#8594;</a></td>
-</tr>
-</table>
+  <div id="products" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="p1" onmouseover="Highlight('products', 'p1');" onmouseout="UnHighlight('products', 'p1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it"> &#8592; C e l l u l a &#8594; </a></td></tr>
+      <tr><td width="100%" id="p2" onmouseover="Highlight('products', 'p2');" onmouseout="UnHighlight('products', 'p2');">
+        <a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">&#8592; A p p a r a t o &nbsp; c i r c o l a t o r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="p3" onmouseover="Highlight('products', 'p3');" onmouseout="UnHighlight('products', 'p3');">
+        <a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">&#8592; A p p a r a t o &nbsp; r e s p i r a t o r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="p4" onmouseover="Highlight('products', 'p4');" onmouseout="UnHighlight('products', 'p4');">
+        <a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">&#8592; A p p a r a t o &nbsp; d i g e r e n t e &#8594;</a></td></tr>
+    </table>
   </div>
-  <div ID="sales" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" ID="s1" onMouseOver="Highlight('sales', 's1');" OnMouseOut="UnHighlight('sales', 's1');">
-   <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td>
-</tr>
-<tr>
-  <td width="100%" ID="s2" onMouseOver="Highlight('sales', 's2');" onMouseOut="UnHighlight('sales', 's2');">
-   <a href="order.html" hreflang="it">Order Form</a></td>
-</tr>
-<tr>
-  <td width="100%" ID="s3" onMouseOver="Highlight('sales', 's3');" onMouseOut="UnHighlight('sales', 's3');">
-   <a href="specials.html" hreflang="it">Specials</a></td>
-</tr>
-</table>
+  <div id="sales" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="s1" onmouseover="Highlight('sales', 's1');" onmouseout="UnHighlight('sales', 's1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
+        <a href="https://gitechnolo.github.io/biotechproject/order.html" hreflang="it">Order Form</a></td></tr>
+      <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
+        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+    </table>
   </div>
-  <div ID="service" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" ID="r1" onMouseOver="Highlight('service', 'r1');" onMouseOut="UnHighlight('service', 'r1');">
-   <a href="support.html" hreflang="it">Support</a></td>
-</tr> 
-<tr>
-  <td width="100%" ID="r2" onMouseOver="Highlight('service','r2');" onMouseOut="UnHighlight('service','r2');">
-  <a href="service.html" hreflang="it">Contact Us</a></td>
-</tr>
-</table>
+  <div id="service" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
+        <a href="https://gitechnolo.github.io/biotechproject/support.html" hreflang="it">Support</a></td></tr>
+      <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
+        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+    </table>
   </div>
-  <div ID="staff" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" ID="t1" onMouseOver="Highlight('staff','t1');" onMouseOut="UnHighlight('staff', 't1');">
-  <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td>
-</tr>
-</table>
+  <div id="staff" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="t1" onmouseover="Highlight('staff','t1');" onmouseout="UnHighlight('staff', 't1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td></tr>
+    </table>
   </div>
-  <div ID="jobs" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" ID="j1" onMouseOver="Highlight('jobs','j1');" onMouseOut="UnHighlight('jobs','j1');">
-  <a href="jobs.html" hreflang="it">Job Listings</a></td>
-</tr>
-</table>
+  <div id="jobs" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="j1" onmouseover="Highlight('jobs','j1');" onmouseout="UnHighlight('jobs','j1');">
+        <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it">Job Listings</a></td></tr>
+    </table>
   </div>
- <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
-  <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
+  <div id="clock">00:00:00</div>
+  <div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
   <div id="week" class="waviy"></div>
-  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
+  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
   <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Sito in costruzione<span class="popuptext" id="myPopup">A beve fisiologia umana!</span></div><br>
     <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><img class="opacity" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/workinprogress.jpg" alt="Sorry"></a></div><br>
-  <div id="videoContainer">
-    <video autoplay loop id="myVideo" class="video">
-      <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
-    <div style="margin: 10px 0;">
-      <label for="volumeControl" class="text">Volume:</label>
-      <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
-      <button id="fullscreenBtn" style="margin-left:10px;">Fullscreen</button>
-      <button id="exitFullscreenBtn" style="display:none; margin-left:5px;">Return</button>
-    </div>
+<div id="ytVideoContainer">
+  <video id="ytVideo" poster="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.jpg" preload="metadata">
+    <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="yt-video-controls">
+    <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
+    <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
+    <span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
+    <button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button>
+    <input type="range" id="ytVolume" min="0" max="1" step="0.01" value="1" class="yt-vol">
+    <button id="ytFullscreen" aria-label="Fullscreen">⛶</button>
+    <button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
   </div>
-<div class="content">
-  <p class="subtitle">Singapore</p>
-  <p id="fadingText">Biomassa, il bosco artificiale - Metropoli</p>
-  <button id="myBtn" onclick="videoFunction()">Play</button>
 </div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script> 
  <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
- <main>Mitocondri</main>;<span class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</span><br>
- <main>Lisosoma</main>;<span class="biotechtitle">Responsbile distruzione/riciclaggio cellule senescenti (cellule morte).</span><br>
- <main>Miochine</main>;<span class="biotechtitle">Antinfiammatori, anticancerogeni, molecole che migliorano le funzioni cognitive.</span><br>
-<main>La pelle</main>;<span class="biotechtitle">Formata da cellule cheratinociti per il 90% e da melanociti per produzione melanina.</span></p>
+ <main>Mitocondri</main><span class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</span><br>
+ <main>Lisosoma</main><span class="biotechtitle">Responsabile distruzione/riciclaggio cellule senescenti (cellule morte).</span><br>
+ <main>Miochine</main><span class="biotechtitle">Antinfiammatori, anticancerogeni, molecole che migliorano le funzioni cognitive.</span><br>
+<main>La pelle</main><span class="biotechtitle">Formata da cellule cheratinociti per il 90% e da melanociti per produzione melanina.</span></p>
 <p class="secHeader">MEDICINA PREVENTIVA;</p>
 <p class="sidenavtext">
   <ul class="list">
