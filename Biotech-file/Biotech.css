@@ -152,10 +152,13 @@ img.hover-shadow {transition: 0.3s;}
 .hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 
 /* Video Biomassa */
-#myVideo {position: sticky; left: 0; bottom: 0; min-width: 50%; min-height: 50%;}
-.content {position: sticky; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); color: #f1f1f1; width: 50%; padding: 20px;}
-#myBtn {width: 200px; font-size: 18px; padding: 10px; border: none; background: rgba(0, 0, 0, 0.5); color: #fff; cursor: pointer;}
-#myBtn:hover {background: rgba(249, 250, 249, 0.2); color: #f1f1f1;}
+.yt-video-controls {display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;max-width:600px;margin-left:0;position:relative;top:-6px;}
+.yt-range {flex:1 1 180px;accent-color:#e50914;height:4px;background:#222;border-radius:2px;outline:none;margin:0 6px;}
+.yt-Ctime {color:#fff;font-size:0.95em;min-width:38px;text-align:right;}
+.yt-video-duration {color:#fff;font-size:0.95em;min-width:38px;text-align:right;}
+.yt-vol {width:80px;accent-color:#e50914;}
+#ytVideoContainer {max-width:600px; margin-left:0; margin-right:auto;}
+#ytVideo {display:block; width:100%; max-width:600px; margin-left:0; background:transparent; border:none; box-shadow:none;}
 /* End Video */
 
 /* Popup info container - can be anything you want */
