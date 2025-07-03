@@ -7,6 +7,7 @@
     <title>Biotech project</title>
     <link rel="stylesheet" href="Biotech-file/Biotech.css">
     <script src="Biotech-file/Biotech.js" defer></script>
+    <script src="Biotech-file/portfolio.js" defer></script>
    </head>
 <body onload="Clock()" class="biotechbody">
 <table width="553" class="menu"> 
@@ -163,29 +164,5 @@
 </div>
 <!-- END MAIN -->
 </div>
-<script>
-// Portfolio filter
-function filterSelection(c) {
-  var x = document.getElementsByClassName("portfolio-col");
-  for (var i = 0; i < x.length; i++) {
-    if (c === 'all' || x[i].classList.contains(c)) {
-      x[i].classList.add('portfolio-show');
-    } else {
-      x[i].classList.remove('portfolio-show');
-    }
-  }
-}
-filterSelection('all');
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = btnContainer.getElementsByClassName("active");
-    if(current.length) current[0].classList.remove("active");
-    this.classList.add("active");
-  });
-}
-</script>
 </body>
   </html>
