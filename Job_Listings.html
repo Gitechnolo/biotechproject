@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Biotech project</title>
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
-    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
-    </head>
- <body onload="Clock()" class="biotechbody">
+    <link rel="stylesheet" href="Biotech-file/Biotech.css">
+    <script src="Biotech-file/Biotech.js" defer></script>
+    <script src="Biotech-file/portfolio.js" defer></script>
+   </head>
+<body onload="Clock()" class="biotechbody">
 <table width="553" class="menu"> 
 <tr>
  <td ID="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
@@ -88,28 +88,81 @@
 </tr>
 </table>
   </div>
- <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
+ <img src="Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
  <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
  <div id="week" class="waviy"></div>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
-<table>
-<tr>
-<td><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.png" alt="Docker cp" style="width:100%;max-width:214px"></td>
-<td><img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/docker_nginx.png" alt="Docker nginx" style="width:100%;max-width:300px"></td>
-<td><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.png" alt="Git Push" style="width:100%;max-width:370px"></td>
-<td><img id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.png" alt="Git Pull" style="width:100%;max-width:370px"><br></td>
-</tr>
-</table>
-    <!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
+ <!-- MAIN (Center website) -->
+<div class="portfolio-main">
+<p class="secHeader">Job Listings</p>
+<hr>
+<p class="subtitle">PORTFOLIO</p>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('nature')"> Nature</button>
+  <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+  <button class="btn" onclick="filterSelection('people')"> People</button>
 </div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
-<p id="about">If you have an idea let me know!</p>
-<button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.gif'">Turn on the light</button>
-<img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif" style="width:100px">
-<button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif'">Turn off the light</button>
+<!-- Portfolio Gallery Grid -->
+<div class="portfolio-row">
+  <div class="portfolio-col nature portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio1.jpg" alt="Apparato circolatorio">
+      <div class="fadebox">Apparato circolatorio: sistema di trasporto del sangue</div>
+      <p class="greentext">Apparato circolatorio</p>
+    </div>
+  </div>
+  <div class="portfolio-col nature portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio2.jpg" alt="Cuore">
+      <div class="fadebox">Cuore: pompa muscolare centrale</div>
+      <p class="greentext">Cuore</p>
+    </div>
+  </div>
+  <div class="portfolio-col nature portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio3.jpg" alt="Vasi sanguigni">
+      <div class="fadebox">Vasi sanguigni: arterie, vene, capillari</div>
+      <p class="greentext">Vasi sanguigni</p>
+    </div>
+  </div>
+  <div class="portfolio-col cars portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/dockercp.png" alt="Docker CP">
+      <div class="fadebox">Docker CP: gestione container</div>
+      <p class="greentext">Docker CP</p>
+    </div>
+  </div>
+  <div class="portfolio-col cars portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/docker_nginx.png" alt="Docker Nginx">
+      <div class="fadebox">Docker Nginx: web server containerizzato</div>
+      <p class="greentext">Docker Nginx</p>
+    </div>
+  </div>
+  <div class="portfolio-col people portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Elena.jpg" alt="Elena">
+      <div class="fadebox">Elena: Biologa</div>
+      <p class="greentext">Elena</p>
+    </div>
+  </div>
+  <div class="portfolio-col people portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Fabrizio.jpg" alt="Fabrizio">
+      <div class="fadebox">Fabrizio: Ricercatore</div>
+      <p class="greentext">Fabrizio</p>
+    </div>
+  </div>
+  <div class="portfolio-col people portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Frank.jpg" alt="Frank">
+      <div class="fadebox">Frank: Tecnico di laboratorio</div>
+      <p class="greentext">Frank</p>
+    </div>
+  </div>
+</div>
+<!-- END MAIN -->
+</div>
 </body>
-  </html> 
+  </html>
