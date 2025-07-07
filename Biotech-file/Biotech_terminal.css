@@ -2,17 +2,17 @@
 .holiday-countdown {
   text-align: center;
   font-family: 'Segoe UI', 'Arial', sans-serif;
-  font-size: 2.1rem;
+  font-size: 1.1rem;
   margin: 1.5em auto 1em auto;
   padding: 0.7em 1.2em;
   border-radius: 1.2em;
   background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
   color: #1a2a3a;
   box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  max-width: 600px;
+  max-width: 300px;
   letter-spacing: 0.02em;
 }
-.holiday-name { font-weight: bold; }
+.holiday-name { font-weight: normal; }
 .holiday-countdown.st-patrick { background: linear-gradient(90deg, #b7f8db 0%, #50a7c2 100%); color: #1b3e2b; }
 .holiday-countdown.july4 { background: linear-gradient(90deg, #fceabb 0%, #f8b500 100%); color: #a13a1a; }
 .holiday-countdown.halloween { background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%); color: #5a2a00; }
