@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = modal.querySelector(".close");
 
   // Attach click event to all images with id starting with 'myImg'
-  ["myImg", "myImg2", "myImg3", "myImg4"].forEach(function (imgId) {
+  ["myImg", "myImg2", "myImg3", "myImg4", "myImg5",].forEach(function (imgId) {
     const img = document.getElementById(imgId);
     if (img) {
       img.addEventListener("click", function () {
