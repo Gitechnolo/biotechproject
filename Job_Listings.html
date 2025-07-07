@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+  <html lang="it">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Job listings</title>
+    <link rel="stylesheet" href="Biotech-file/Biotech.css">
+    <script src="Biotech-file/Biotech.js" defer></script>
+    <script src="Biotech-file/portfolio.js" defer></script>
+   </head>
+<body onload="Clock()" class="biotechbody">
+<table width="553" class="menu"> 
+<tr>
+ <td ID="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
+   <a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>Home</b></a></td>
+ <td ID="menu-sales" class="biotechcolor" onMouseOver="Menu('sales');" onMouseOut="Timeout('sales');">
+   <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><b>Progetti</b></a></td>
+ <td ID="menu-service" class="biotechcolor" onMouseOver="Menu('service');" onMouseOut="Timeout('service');">
+  <a href="service.html" hreflang="it"><b>Service</b></a></td>
+ <td ID="menu-staff" class="biotechcolor" onMouseOver="Menu('staff');" onMouseOut="Timeout('staff');">
+   <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
+ <td ID="menu-jobs" class="biotechcolor" onMouseOver="Menu('jobs');" onMouseOut="Timeout('jobs');">
+   <a href="jobs.html" hreflang="it"><b>Employment</b></a></td>
+</tr>
+</table>
+  <div ID="products" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+ <td width="100%" ID="p1" onMouseOver="Highlight('products', 'p1');" onMouseOut="UnHighlight('products', 'p1');">
+   <a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it"> &#8592; C e l l u l a &#8594; </a></td>
+</tr>
+<tr>
+ <td width="100%" ID="p2" onMouseOver="Highlight('products', 'p2');" onMouseOut="UnHighlight('products', 'p2');">
+   <a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">&#8592; A p p a r a t o &nbsp; c i r c o l a t o r i o &#8594;</a></td>
+</tr>
+<tr>
+ <td width="100%" ID="p3" onMouseOver="Highlight('products', 'p3');" onMouseOut="UnHighlight('products', 'p3');">
+   <a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">&#8592; A p p a r a t o &nbsp; r e s p i r a t o r i o &#8594;</a></td>
+</tr>
+<tr>
+ <td width="100%" ID="p4" onMouseOver="Highlight('products', 'p4');" onMouseOut="UnHighlight('products', 'p4');">
+   <a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">&#8592; A p p a r a t o &nbsp; d i g e r e n t e &#8594;</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="sales" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="s1" onMouseOver="Highlight('sales', 's1');" OnMouseOut="UnHighlight('sales', 's1');">
+   <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td>
+</tr>
+<tr>
+  <td width="100%" ID="s2" onMouseOver="Highlight('sales', 's2');" onMouseOut="UnHighlight('sales', 's2');">
+   <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td>
+</tr>
+<tr>
+  <td width="100%" ID="s3" onMouseOver="Highlight('sales', 's3');" onMouseOut="UnHighlight('sales', 's3');">
+   <a href="specials.html" hreflang="it">Specials</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="service" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="r1" onMouseOver="Highlight('service', 'r1');" onMouseOut="UnHighlight('service', 'r1');">
+   <a href="support.html" hreflang="it">Support</a></td>
+</tr> 
+<tr>
+  <td width="100%" ID="r2" onMouseOver="Highlight('service','r2');" onMouseOut="UnHighlight('service','r2');">
+  <a href="service.html" hreflang="it">Contact Us</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="staff" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="t1" onMouseOver="Highlight('staff','t1');" onMouseOut="UnHighlight('staff', 't1');">
+  <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td>
+</tr>
+</table>
+  </div>
+  <div ID="jobs" class="biotechidden">
+<table class="biotechmenu">
+<tr>
+  <td width="100%" ID="j1" onMouseOver="Highlight('jobs','j1');" onMouseOut="UnHighlight('jobs','j1');">
+  <a href="https://gitechnolo.github.io/biotechproject/Job_Listings.html" hreflang="it">Job Listings</a></td>
+</tr>
+</table>
+  </div>
+ <img src="Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
+ <div ID="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+ <div id="week" class="waviy"></div>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
+ <!-- MAIN (Center website) -->
+<div class="portfolio-main">
+<p class="secHeader">Job Listings</p>
+<hr>
+<p class="subtitle">PORTFOLIO</p>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('cellula')"> Cellula</button>
+  <button class="btn" onclick="filterSelection('dermatologia')"> Dermatologia</button>
+  <button class="btn" onclick="filterSelection('staff')"> Staff</button>
+</div>
+<!-- Portfolio Gallery Grid -->
+<div class="portfolio-row">
+  <div class="portfolio-col cellula portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio1.jpg" alt="Apparato circolatorio">
+      <div class="fadebox">Apparato circolatorio: sistema di trasporto del sangue</div>
+      <p class="greentext">Apparato circolatorio</p>
+    </div>
+  </div>
+  <div class="portfolio-col cellula portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio2.jpg" alt="Cuore">
+      <div class="fadebox">Cuore: pompa muscolare centrale</div>
+      <p class="greentext">Cuore</p>
+    </div>
+  </div>
+  <div class="portfolio-col cellula portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio3.jpg" alt="Vasi sanguigni">
+      <div class="fadebox">Vasi sanguigni: arterie, vene, capillari</div>
+      <p class="greentext">Vasi sanguigni</p>
+    </div>
+  </div>
+  <div class="portfolio-col dermatologia portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/dockercp.png" alt="Docker CP">
+      <div class="fadebox">Docker CP: gestione container</div>
+      <p class="greentext">Docker CP</p>
+    </div>
+  </div>
+  <div class="portfolio-col dermatologia portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Biotech-menu/docker_nginx.png" alt="Docker Nginx">
+      <div class="fadebox">Docker Nginx: web server containerizzato</div>
+      <p class="greentext">Docker Nginx</p>
+    </div>
+  </div>
+  <div class="portfolio-col staff portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Elena.jpg" alt="Elena">
+      <div class="fadebox">Elena: Biologa</div>
+      <p class="greentext">Elena</p>
+    </div>
+  </div>
+  <div class="portfolio-col staff portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Fabrizio.jpg" alt="Fabrizio">
+      <div class="fadebox">Fabrizio: Ricercatore</div>
+      <p class="greentext">Fabrizio</p>
+    </div>
+  </div>
+  <div class="portfolio-col staff portfolio-show">
+    <div class="portfolio-content">
+      <img src="Biotech-file/images/Frank.jpg" alt="Frank">
+      <div class="fadebox">Frank: Tecnico di laboratorio</div>
+      <p class="greentext">Frank</p>
+    </div>
+  </div>
+</div>
+<!-- END MAIN -->
+</div>
+</body>
+  </html>

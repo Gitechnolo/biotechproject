@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Biotech project</title>
-    <link rel="stylesheet" href="Biotech-file/Biotech.css">
-    <link rel="stylesheet" href="Biotech-file/Biotech_gradient.css">
-    <script src="Biotech-file/Biotech.js" defer></script>
+    <title>Staff</title>
+    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
+    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
     </head>
  <body onload="Clock()" class="biotechbody">
 <table width="553" class="menu">
@@ -41,7 +41,7 @@
       <tr><td width="100%" id="s1" onmouseover="Highlight('sales', 's1');" onmouseout="UnHighlight('sales', 's1');">
         <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td></tr>
       <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
-        <a href="order.html" hreflang="it">Order Form</a></td></tr>
+        <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
       <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
         <a href="specials.html" hreflang="it">Specials</a></td></tr>
     </table>
@@ -63,7 +63,7 @@
   <div id="jobs" class="biotechidden">
     <table class="biotechmenu">
       <tr><td width="100%" id="j1" onmouseover="Highlight('jobs','j1');" onmouseout="UnHighlight('jobs','j1');">
-        <a href="jobs.html" hreflang="it">Job Listings</a></td></tr>
+        <a href="https://gitechnolo.github.io/biotechproject/Job_Listings.html" hreflang="it">Job Listings</a></td></tr>
     </table>
   </div>
   <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
@@ -125,5 +125,21 @@ html {box-sizing: border-box;}
     </div>
   </div>
 </div>
+<div id="ytVideoContainer">
+  <video id="ytVideo" poster="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.jpg" preload="metadata">
+    <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="yt-video-controls">
+    <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
+    <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
+    <span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
+    <button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button>
+    <input type="range" id="ytVolume" min="0" max="1" step="0.01" value="1" class="yt-vol">
+    <button id="ytFullscreen" aria-label="Fullscreen">⛶</button>
+    <button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
+  </div>
+</div>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script>
 </body>
 </html>
