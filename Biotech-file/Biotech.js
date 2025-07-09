@@ -213,3 +213,15 @@ function infoFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
+
+// Set last modified date in footer
+function setLastModified() {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    el.textContent = `Ultima modifica: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', setLastModified);
+// End last modified date
