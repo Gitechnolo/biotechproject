@@ -123,6 +123,16 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
 <button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.gif'">Turn on the light</button>
 <img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif" style="width:100px">
 <button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif'">Turn off the light</button>
+<script>
+  function setLastModified() {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    el.textContent = `Last edit: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+  }
+}
+document.addEventListener('DOMContentLoaded', setLastModified);
+</script>
 </p>
 </body>
   </html> 
