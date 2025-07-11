@@ -225,3 +225,16 @@ function setLastModified() {
 
 document.addEventListener('DOMContentLoaded', setLastModified);
 // End last modified date
+
+// Light effect around the bulb image
+function turnOnLight() {
+  const img = document.getElementById('myImage');
+  img.src = 'Biotech-file/images/pic_bulbon.gif';
+  img.classList.add('bulb-glow');
+}
+function turnOffLight() {
+  const img = document.getElementById('myImage');
+  img.src = 'Biotech-file/images/pic_bulboff.gif';
+  img.classList.remove('bulb-glow');
+}
+// End effect around the bulb image

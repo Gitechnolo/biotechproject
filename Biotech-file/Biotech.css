@@ -254,3 +254,17 @@ img.hover-shadow {transition: 0.3s;}
 @media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
 @media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
 /* End portfolio Section */
+
+ /* Bulb light glow effect for pic_bulbon.gif */
+.bulb-glow {
+  border-radius: trasparent;
+  transition: box-shadow 0.1s, background 0.1s;
+  box-shadow:
+    0 -30px 80px 40px rgb(255, 255, 180),   /* Upwards */
+    0 0 60px 30px rgb(255, 255, 180),       /* Centered */
+    0 30px 40px 10px rgb(255, 255, 180),    /* Downwards, subtle */
+    -40px -10px 60px 20px rgb(255, 255, 180), /* Left */
+    40px -10px 60px 20px rgb(255, 255, 180);  /* Right */
+    background-color: rgb(255, 255, 180) ; /* Background glow */
+}
+/* End Bulb light glow effect for pic_bulbon.gif */
