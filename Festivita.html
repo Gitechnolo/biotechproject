@@ -9,8 +9,20 @@
     <link rel="stylesheet" href="Biotech-file/Biotech_terminal.css">
    </head>
 <body>
-    <h1>Welcome to Biotech Project!</h1>
-    <img id="Banner" src="Biotech-file/images/Biotech-menu/banner1.jpg" alt="Banner" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
+    <img id="Banner" src="Biotech-file/images/Biotech-menu/banner1.png" alt="Banner" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
     <div id="holidayMsg"></div>
+    <!-- ...existing code... -->
+<div id="lastModified"></div>
+<script>
+function setLastModified() {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    el.textContent = `Ultima modifica: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+  }
+}
+document.addEventListener('DOMContentLoaded', setLastModified);
+</script>
+<!-- ...existing code... -->
 </body>
   </html>

@@ -3,6 +3,7 @@
 #clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #newyear {color: lightgoldenrodyellow; position: absolute; left: 290px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 1.5s ease-in-out;}
+#imgLeftfl {float: left; padding: 4px;}
 
 /* Element natural */
 @font-face {font-family: myFirstFont; src: url(sansation_light.woff);}
@@ -12,6 +13,7 @@
  ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
  img {border-radius: 6px;}
+ 
 /* Blank Image Gallery */
 div.gallery {border: 1px solid #ccc; border-radius: 6px;}
 div.gallery:hover {border: 1px solid #777; border-radius: 6px;}
@@ -28,6 +30,30 @@ div.desc {padding: 15px; text-align: center; font-family: Tahoma, Verdana, sans-
 div.scroll-container {border: 1px solid #ccc; border-radius: 6px; background-color: #333 (transparent); overflow: auto; white-space: nowrap; padding: 2px;}
 div.scroll-container img {padding: 2px;}
 /* End scrollbar fegato */ 
+
+/* Grid dermatologia*/
+.grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
+.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
+.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
+.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
+.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
+.imgRightfl {float: right; padding: 15px;}
+.imgLeftfl {float: left; padding: 15px;}
+/* End grid dermatologia */
+
+/* Staff Section */
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+.staff-row {display: flex; flex-wrap: wrap; margin: 0 -8px; overflow-x:hidden; max-width:100%;}
+.staff-col {flex: 1 1 33.3%; max-width: 33.3%; margin-bottom: 16px; padding: 0 8px;}
+@media screen and (max-width: 650px) {.staff-col {max-width: 100%; flex: 1 1 100%;}}
+.staff-card {box-shadow: 0 4px 8px 0 rgba(249, 250, 249, 0.2);}
+.staff-container {padding: 0 16px;}
+.staff-container::after, .staff-row::after {content: ""; clear: both; display: table;}
+.staff-title {color: grey;}
+.staff-button {border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: rgba(249, 250, 249, 0.2); text-align: center; cursor: pointer; width: 100%;}
+.staff-button:hover {background-color: #555;}
+/* End Staff Section */
 
 /* Elements with class */
 .biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("images/background.jpg"); background-position: 50% 50%;}
@@ -54,6 +80,12 @@ div.scroll-container img {padding: 2px;}
 .waviy {position: relative; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 28px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 20px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .waviy span {position: relative; display: inline-block; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i))}
 @keyframes flip {0%,80% {transform: rotateY(360deg)}}
+.transparent {opacity: 0.5; transition: 0.7s; filter: brightness(0.8); filter: contrast(0.8); filter: saturate(0.8); filter: hue-rotate(-10deg);}
+.transparent:hover {opacity: 1; transition: 0.7s; filter: brightness(1.2); filter: contrast(1.2); filter: saturate(1.2); filter: hue-rotate(10deg);}
+.div1 {float: inline-end; padding: 10px; text-align: justify;}  
+.div2 {float: left; padding: 10px; text-align: justify;}
+.div3 {padding: 10px; text-align: justify;}
+/* End Elements with class */
 
 /* IMG ZOOM */
 #myImg {border-radius: 5px; cursor: pointer; transition: 0.3s;}
@@ -231,3 +263,17 @@ img.hover-shadow {transition: 0.3s;}
 @media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
 @media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
 /* End portfolio Section */
+
+ /* Bulb light glow effect for pic_bulbon.gif */
+.bulb-glow {
+  border-radius: trasparent;
+  transition: box-shadow 0.1s, background 0.1s;
+  box-shadow:
+    0 -30px 80px 40px rgb(255, 255, 180),   /* Upwards */
+    0 0 60px 30px rgb(255, 255, 180),       /* Centered */
+    0 30px 40px 10px rgb(255, 255, 180),    /* Downwards, subtle */
+    -40px -10px 60px 20px rgb(255, 255, 180), /* Left */
+    40px -10px 60px 20px rgb(255, 255, 180);  /* Right */
+    background-color: rgb(255, 255, 180) ; /* Background glow */
+}
+/* End Bulb light glow effect for pic_bulbon.gif */

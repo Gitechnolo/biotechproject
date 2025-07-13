@@ -3,10 +3,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Banner cycling
   const banners = [
-    "Biotech-file/images/Biotech-menu/banner1.jpg",
-    "Biotech-file/images/Biotech-menu/banner2.jpg",
-    "Biotech-file/images/Biotech-menu/banner3.jpg",
-    "Biotech-file/images/Biotech-menu/banner4.jpg"
+    "Biotech-file/images/Biotech-menu/banner1.png",
+    "Biotech-file/images/Biotech-menu/banner2.png",
+    "Biotech-file/images/Biotech-menu/banner3.png",
+    "Biotech-file/images/Biotech-menu/banner4.png"
   ];
   let bnrCntr = 0;
   const bannerImg = document.getElementById("Banner");
@@ -63,6 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const msgContainer = document.getElementById("holidayMsg");
   if (msgContainer) {
     const holiday = getHolidayMsg();
-    msgContainer.innerHTML = `<h1 class="holiday-countdown ${holiday.style}">${holiday.msg}</h1>`;
+    msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
   }
 });

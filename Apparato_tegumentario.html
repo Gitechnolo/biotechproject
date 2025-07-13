@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+  <html lang="it">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apparato tegumentario</title>
+    <link rel="stylesheet" href="Biotech-file/Biotech.css">
+    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
+    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+   </head>
+   <body onload="Clock()" class="biotechbody">
+<!-- nav -->
+<table width="553" class="menu">
+<tr>
+ <td id="menu-products" class="biotechcolor" onmouseover="Menu('products');" onmouseout="Timeout('products');">
+   <a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>Home</b></a></td>
+ <td id="menu-sales" class="biotechcolor" onmouseover="Menu('sales');" onmouseout="Timeout('sales');">
+   <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><b>Progetti</b></a></td>
+ <td id="menu-service" class="biotechcolor" onmouseover="Menu('service');" onmouseout="Timeout('service');">
+  <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it"><b>Service</b></a></td>
+ <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
+   <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
+ <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
+   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
+</tr>
+</table>
+  <div id="products" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="p1" onmouseover="Highlight('products', 'p1');" onmouseout="UnHighlight('products', 'p1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it"> &#8592; C e l l u l a &#8594; </a></td></tr>
+      <tr><td width="100%" id="p2" onmouseover="Highlight('products', 'p2');" onmouseout="UnHighlight('products', 'p2');">
+        <a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">&#8592; A p p a r a t o &nbsp; c i r c o l a t o r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="p3" onmouseover="Highlight('products', 'p3');" onmouseout="UnHighlight('products', 'p3');">
+        <a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">&#8592; A p p a r a t o &nbsp; r e s p i r a t o r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="p4" onmouseover="Highlight('products', 'p4');" onmouseout="UnHighlight('products', 'p4');">
+        <a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">&#8592; A p p a r a t o &nbsp; d i g e r e n t e &#8594;</a></td></tr>
+      <tr><td width="100%" id="p5" onmouseover="Highlight('products', 'p5');" onmouseout="UnHighlight('products', 'p5');">
+        <a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it">&#8592; A p p a r a t o &nbsp; t e g u m e n t a r i o &#8594;</a></td></tr>
+    </table>
+  </div>
+  <div id="sales" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="s1" onmouseover="Highlight('sales', 's1');" onmouseout="UnHighlight('sales', 's1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
+        <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
+      <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
+        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+    </table>
+  </div>
+  <div id="service" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
+        <a href="https://gitechnolo.github.io/biotechproject/support.html" hreflang="it">Support</a></td></tr>
+      <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
+        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+    </table>
+  </div>
+  <div id="staff" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="t1" onmouseover="Highlight('staff','t1');" onmouseout="UnHighlight('staff', 't1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td></tr>
+    </table>
+  </div>
+  <div id="jobs" class="biotechidden">
+    <table class="biotechmenu">
+      <tr><td width="100%" id="j1" onmouseover="Highlight('jobs','j1');" onmouseout="UnHighlight('jobs','j1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Job_Listings.html" hreflang="it">Job Listings</a></td></tr>
+    </table>
+  </div>
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
+<!-- end nav -->
+  <div id="clock">00:00:00</div>
+  <div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+  <div id="week" class="waviy"></div>
+  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
+  <br>
+  <!-- Dermatologia -->
+ <!--
+  <nav style="margin-bottom:1em;">
+    <a href="Dermatologia.html" hreflang="it">Dermatologia</a> |
+    <a href="Apparato_tegumentario.html" hreflang="it">Apparato tegumentario</a> |
+    <a href="Dermatologia_Cute.html" hreflang="it">Cute</a> |
+    <a href="Dermatologia_Derma.html" hreflang="it">Derma</a> |
+    <a href="Dermatologia_Vascolare_Immunitario.html">Vascolare & Immunitario</a> |
+    <a href="Dermatologia_Capelli.html" hreflang="it">Capelli</a> |
+    <a href="Dermatologia_Chimica.html" hreflang="it">Chimica</a> |
+    <a href="Dermatologia_Cosmetologia.html" hreflang="it">Cosmetologia</a> |
+    <a href="Dermatologia_Anomalie_Cute.html" hreflang="it">Anomalie Cute</a> |
+    <a href="Dermatologia_Anomalie_Capelli.html" hreflang="it">Anomalie Capelli</a> |
+    <a href="Dermatologia_Colorimetria.html" hreflang="it">Colorimetria</a>
+  </nav>
+  -->
+    <main>APPARATO TEGUMENTARIO (O CUTANEO)</main><br>
+<table>
+<tr>
+<td><img id="myImg6" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/apparato_tegumentario.jpg" alt="Apparato tegumentario" style="width:100%;max-width:300px"></td>
+</tr>
+</table>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
+<br>
+<p class="text"><span class="biotechbold">L’apparato tegumentario è l’apparato che riveste tutte le strutture interne del nostro corpo</span>.<br>
+Esso è formato dalla cute (pelle) e da tutte quelle strutture ed annessi ad essa associati (peli,capelli,unghie,ghiandole)<br>
+<span class="greentext">
+ANNESSI CUTANEI<br>
+CUTE<br>
+EPIDERMIDE<br>
+DERMA<br>
+PELI E CAPELLI<br>
+UNGHIE<br>
+<br>
+GHIANDOLE
+IPODERMA</span><br>
+1. Cellule: Fibroblasti, cellule immunitarie;<br>
+2. Sostanza intercellulare: • Sostanza fondamentale: acqua, acido ialuronico; • Componente fibrosa: fibre collagene, fibre reticolari, fibre elastiche.<br>
+3. Vasi sanguigni<br>
+4. Rete nervosa<br>
+<br>
+<span class="greentext">CELLULE</span>:<br>
+1. Cheratinociti 90% (cheratina)<br>
+2. Melanociti (melanina)<br>
+3. Cellule del Merkel<br>
+4. Cellule del Langherans<br>
+<br>
+<span class="greentext">
+SOSTANZA INTERCELLULARE:<br>
+POCA<br>
+SOTTOCUTE
+</span>
+</p>
+<br>
+<main>La cute o pelle</main>
+<span class="biotechbold">La cute è l’organo più esteso del corpo umano</span>.
+<p class="text">
+Essa ha una superficie di circa 2 m² e un peso di circa 3 kg, che corrisponde al 6-8% del peso corporeo.<br>
+La cute è l’organo di rivestimento del corpo umano, che lo protegge dagli agenti esterni e ne regola le funzioni vitali.<br>
+Essa è costituita da due strati principali: l’epidermide e il derma, che poggiano su uno strato di tessuto connettivo, l’ipoderma o tessuto sottocutaneo.<br>
+<span id="about">La cute è un organo complesso</span>, che svolge numerose funzioni, tra cui la protezione del corpo, la regolazione della temperatura, la percezione sensoriale e la produzione di vitamina D.<br>
+<span id="about">La cute è un organo dinamico</span>, che si rinnova continuamente attraverso un processo di desquamazione, in cui le cellule morte dell’epidermide vengono eliminate e sostituite da nuove cellule.<br>
+<span id="about">La cute è un organo vitale</span>, che svolge un ruolo fondamentale nella salute e nel benessere dell’individuo.<br>
+<span id="about">La cute è un organo che può essere colpito da numerose patologie</span>, come le infezioni, le allergie, le malattie autoimmuni e i tumori.<br>
+<span id="about">La cute è un organo che richiede cure e attenzioni particolari</span>, come l’igiene quotidiana, la protezione dai raggi solari, l’idratazione e la nutrizione adeguata.<br>
+<span id="about">La cute è un organo che può essere influenzato da fattori esterni</span>, come l’alimentazione, lo stile di vita, l’ambiente e le emozioni.<br>
+<span id="about">La cute è un organo che può essere influenzato da numerosi fattori</span>, tra cui l'età, la genetica, l'esposizione a sostanze chimiche, l'inquinamento, le condizioni climatiche e lo stress.<br>
+Questi fattori possono alterare la struttura e la funzione della pelle, rendendola più suscettibile a danni, invecchiamento precoce e malattie.<br>
+Per questo motivo, è importante adottare uno stile di vita sano e prendersi cura della propria pelle con prodotti adeguati e protezione dagli agenti esterni.
+</p>
+<div class="grid-container50">
+<div>
+<main>Funzioni della pelle</main>.
+<span class="yellowtext">
+1)Protezione</span>:
+<p class="text">
+- Funzione meccanica: svolta principalmente dallo strato corneo e dal tessuto adiposo, che difendono gli organi interni da urti, colpi e cadute;<br>
+- Funzione fisica: contro gli agenti esterni come la temperatura, le radiazioni solari e l’elettricità. I meccanismi grazie ai quali la cute ci difende dai fenomeni termici sono detti di termoregolazione, e sono: il sudore, la vasocostrizione, la vasodilatazione e l’effetto isolante del tessuto adiposo; la cheratina della pelle ci difende dai fenomeni elettrici, e la melanina dalle radiazioni solari;<br>
+- Funzione chimica: contro sostanze nocive di natura chimica come gli acidi o le basi. Ad impedire che tali sostanze penetrino nei tessuti sottostanti sono lo strato corneo e il film idrolipidico.<br>
+<span class="yellowtext">
+2)Immunitaria; 3)Secretoria/escretoria; 4)Respiratoria; 5) Di assorbimento; 6)Sensoriale.<br></span>
+Inoltre, la pelle è un'importante sede metabolica: è infatti a livello della cute e grazie all’azione dei raggi solari che avviene la maturazione della pre-vitamina D3 in vitamina D 3 attiva, che viene ulteriormente processata dai reni e dal fegato.<br>
+Essa è importante non solo per fissare il calcio e mantenere sane le ossa, ma ha anche un ruolo nella regolazione della divisione cellulare (aiutando a proteggere dai tumori) e del sistema immunitario, proteggendo da disfunzioni di natura autoimmune (carenze di vitamina D sono associati ad esempio al diabete autoimmune e alla sclerosi multipla). 
+</p>
+</div>
+<div>
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/pelle_cute.jpg" class="transparent" alt="pelle cute" style="max-width:100%;">
+</div>
+</div>
+
+<div class="div2">
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/epidermide.jpg" class="transparent" alt="epidermide" style="max-width:100%;">
+</div>
+<div class="div3">
+ <main>L’epidermide</main>
+ <p class="text">
+L’epidermide è lo strato più superficiale della pelle, quindi quello più esterno che vediamo e che tocchiamo. È un tessuto epiteliale di rivestimento, pluristratificato cheratinizzato ed è privo di vasi sanguigni. Di conseguenza il nutrimento è fornito dal tessuto sottostante (derma) nel quale è presente la rete vascolare.<br>
+L’epidermide è formata da cellule di diverso tipo:<br>
+1) Cheratinociti: rappresentano circa il 90% delle cellule presenti nell’epidermide. Essi subiscono un processo di maturazione attraverso il quale vanno incontro ad una serie di trasformazioni. Da uno strato profondo chiamato strato basale, ad intensa attività riproduttiva, migrano verso uno strato più superficiale, chiamato strato corneo, in cui raggiungono la piena maturazione.<br>
+In questo cammino essi cambiano forma e funzione: si appiattiscono, muoiono (perdono organuli citoplasma e nucleo) e accumulano cheratina, fino a trasformarsi nello strato corneo in corneocita o lamella cornea.<br>
+2) Melanociti: sono presenti nello strato più profondo dell’epidermide (basale) interposti ai cheratinociti, rispetto ai quali sono meno numerosi. I melanociti producono la melanina, pigmento tipico della cute la cui funzione è quella di proteggere gli strati sottostanti della cute dalle radiazioni ultravioletti<br>
+3) Cellule di Langerhans: prima difesa immunitaria;<br>
+4) Cellule di Merkel: unità recettoriale sensitiva.<br>
+L’esame dell’epidermide al microscopio mostra la suddivisione di questo tessuto in 5 strati. La stratificazione dell’epidermide è dovuta al processo di maturazione del cheratinocita. Il nome di questi 5 strati indica le caratteristiche tipiche delle cellule di cui sono formate.
+</p>
+</div>
+<div class="div1">
+ <img src="Biotech-file/images/Biotech-menu/Dermatologia/strato_basale_germinativo.jpg" class="transparent" alt="Strato basale o germinativo" style="max-width:100%;">
+</div>
+<div class="div3">
+<main>Strato basale o germinativo</main>
+<p class="text">
+È lo strato più interno e sottile dell’epidermide. È formato da una sola fila di cheratinociti: cellule alte
+di forma cilindrica che presentano il nucleo ricche di citoplasma. La caratteristica di questo strato è
+l’intensa attività riproduttiva. Esse germinano continuamente nuove giovani cellule (da qui il
+nome di strato germinativo). È a questo livello che la cellula si divide formando due nuove cellule di
+cui una resta ancora basale e l’altra invece viene spinta sempre più in superficie subendo continue
+trasformazioni. Questo ciclo è continuo. Nello strato basale si trovano anche i melanociti in
+rapporto di circa 1 melanocita ogni 5/6 cheratinociti.
+</p>
+</div>
+
+<main>Strato spinoso o malpighiano</main>
+<p class="text">
+È lo strato più spesso dell’epidermide, è formato 4-10 file cellulari, prevalentemente cheratinociti. Da
+qui le cellule iniziano ad assumere una forma cuboidale e presentano ancora il nucleo e il
+citoplasma. La caratteristica di queste cellule è quella di avere prolungamenti o spine
+citoplasmatiche, da qui il nome di strato spinoso.<br>
+Queste spine sono in realtà delle giunzioni intercellulari che uniscono le cellule tra loro e le rendono
+più forti e resistenti.<br>
+In questo strato si trovano anche le cellule di Langerhans, che sono cellule
+immunitarie che hanno la funzione di difendere la pelle da agenti patogeni e sostanze estranee.
+</p>
+
+<main>Strato granuloso</main>
+<p class="text">
+Le cellule presenti in questo strato tendono ad assumere una forma sempre più appiattita e a perdere gran parte del citoplasma. Caratteristica di
+queste cellule è la presenza di grossi e numerosi granuli nel citoplasma. Questi granuli contengono cheratoialina, una lipoproteina che interviene nel
+processo di cheratinizzazione.<br>
+<span class="yellowtext">La cheratinizzazione è il processo attraverso il quale le cellule dell’epidermide si trasformano in corneociti, cellule morte che costituiscono lo strato corneo.</span><br>
+<span class="yellowtext">La cheratoialina è una proteina che si combina con la cheratina, formando una sostanza resistente e impermeabile che protegge la pelle dagli agenti esterni.</span><br>
+In questo strato si trovano anche i melanociti, che continuano a produrre melanina, e le cellule di Merkel, che sono cellule sensoriali che rispondono a stimoli tattili e pressori.<br>
+<span class="yellowtext">Le cellule di Merkel sono collegate a terminazioni nervose che formano i corpuscoli di Merkel, che sono recettori sensoriali specializzati per la percezione del tatto e della pressione.</span>
+Il nucleo delle cellule presenti in questo strato cominciano a presentare segni di atrofia.
+</p>
+
+<main>Strato lucido</main>
+<p class="text">
+È uno strato molto sottile, presente solo nelle zone della pelle più spessa (palmo delle mani e pianta dei piedi).
+È formato da 1-2 file di cheratinociti appiattiti che contengono una sostanza oleosa, chiamata eleidina, che al microscopio appare luminosa e lucida.
+Questa tipologia di cellule sono prive di nucleo e citoplasma, traslucide e ricche di eleidina, una sostanza intermedia nella trasformazione della cheratina.<br>
+Questo strato conferisce maggiore resistenza e protezione alle aree soggette a maggiore attrito e pressione.
+</p>
+
+<main>Strato corneo</main>
+<p class="text">
+È lo strato più superficiale dell’epidermide ed il suo spessore varia a seconda della sede: è particolarmente
+elevato sulla pianta del piede e sul palmo della mano. È formato da diverse file di strati di cellule morte (20-30 file) chiamate corneociti o lamelle cornee, molto
+appiattite, disidratate, prive di nucleo, con membrana plasmatica molto inspessita e ripiene invece di cheratina sotto forma di filamenti.<br>
+Questa tipologia di cellule morte, derivano per trasformazione dei cheratinociti dello strato basale, che si sfaldano e vengono eliminate.
+</p>
+
+<div class="grid-container20x80">
+<div><br><br>
+ <img src="Biotech-file/images/Biotech-menu/Dermatologia/cheratogenesi.jpg" class="transparent" alt="Strato corneo" style="max-width:100%;">
+</div>
+<div>
+<main>La cheratina e processo di cheratogenesi</main>
+<p class="text">
+La cheratina è una proteina, e come tutte le proteine è formata da una sequenza di aminoacidi. Nella
+cheratina gli aminoacidi sono disposti a formare un’alfa elica.<br>
+L’aminoacido più importante è la cisteina perché unisce i filamenti di cheratina vicini tramite la formazione dei ponti di solfuro.<br>
+Oltre che nello strato corneo, protettivo della cute, troviamo abbondante cheratina a livello dei derivati epidermici: unghie, peli e capelli.<br>
+L’epidermide è continuamente soggetta a modificazioni cellulari e di rinnovamento. Dallo strato più profondo, basale o germinativo,
+derivano continuamente per attività riproduttiva (mitosi) giovani cellule (cheratinociti) che subiscono modificazioni morfo-funzionali (sua
+della forma che delle funzioni), elaborando la cheratina, vengono trasferite negli strati superiori
+dell’epidermide e vanno a rimpiazzare quelle vecchie che vengono eliminate per
+desquamazione dello strato corneo superficiale.<br>
+In condizioni fisiologiche per ogni cellula che nasce un’altra deve essere eliminata: il processo di riproduzione
+cellulare in profondità e quello di desquamazione in superficie devono essere in equilibrio; questo per
+mantenere lo stesso spessore dell’epidermide e di conseguenza la buona funzionalità cutanea.<br>
+Il tempo di rinnovamento dell’epidermide, detto tempo di turnover, è in media di 25/28 giorni.
+</p>
+</div>
+</div>
+
+<div class="grid-container54x46">
+<div> 
+<main>La melanina e processo di melanogenesi</main>
+<p class="text">
+Il colore della pelle e dei capelli è determinato dalla quantità e dal tipo di pigmento (melanina) presente in
+essi. La melanina si sintetizza a partire da un amminoacido, la tirosina e, una volta prodotta, si presenta in
+due forme:<br>
+• la pheomelanina, che corrisponde ai colori del giallo-rosso,<br>
+• la eumelanina, responsabile del colorito che va dal marrone al nero.<br>
+Rispetto alla pheomelanina, la eumelanina è più efficace nel proteggere la pelle dalle radiazioni UV, evitando
+scottature e interferenze nei processi di sintesi e riparazione del DNA cellulare.<br>
+La pelle chiara, meno protetta nei confronti delle radiazioni solari, è favorita invece nella produzione di
+vitamina D3, necessaria per l’assorbimento del calcio e la fisiologica mineralizzazione delle ossa e dei denti,
+nonché per regolare importanti funzioni ormonali e immunitarie.<br>
+Come avviene il processo di melanogenesi?<br>
+Nell’epidermide a livello dello stato basale, in mezzo ai cheratinociti, sono presenti anche i melanociti che
+sono i diretti responsabili della produzione e dell’accumulo di melanina tramite il processo di
+melanogenesi.<br>
+La forma dei melanociti è stellata e presenta perciò numerosi prolungamenti che si
+insinuano nei piccolissimi spazi che si trovano tra le cellule dello strato basale. Nel loro citoplasma sono
+contenuti particolari organuli o vescicole detti melanosomi, nei quali si trova la melanina prodotta.<br>
+La quantità di pigmento prodotto è influenzata sia da fattori endogeni (interni es. ormone ipofisario
+melanocita stimolante) sia esogeni (esterni es. radiazioni solari, fattori vitaminici, alimentari ecc..): sotto
+l’azione degli stimoli, i melanosomi migrano all’interno dei prolungamenti dei melanociti e sono trasferiti
+nelle cellule dell’epidermide dove la melanina svolge la sua funzione di filtro e protezione contro i raggi uv
+(uva e uvb).
+</p>
+</div>
+<div><br><br><br>
+<img src="Biotech-file/images/Biotech-menu/Dermatologia/processo_melanogenesi.jpg" class="transparent" alt="processo_melanogenesi" style="max-width:100%;">
+</div>
+</div>
+
+
+<div class="grid-container50">
+<div>
+<main>Il derma</main>
+<p class="text">
+Il derma è un tessuto connettivo in grado di svolgere molteplici funzioni, tra cui quella di sostegno, elasticità,
+resistenza, nutrizione ecc…. Lo spessore medio è di circa 1-2 mm.<br>
+Il derma contiene fibre nervose, vasi sanguigni e vasi linfatici e fornisce un’impalcatura all’epidermide. Inoltre, contiene i follicoli piliferi, le
+ghiandole sebacee e sudoripare.<br>
+Nella struttura è possibile distinguere tre diversi strati che differiscono per la quantità di sostanza
+fondamentale, per la disposizione delle fibre di collagene, per la quantità di cellule presenti e per il tipo di
+vasi sanguigni e recettori sensitivi presenti:<br>
+1. Derma papillare o superficiale: costituisce lo strato esterno del derma, immediatamente sotto
+l’epidermide.<br>
+È chiamato papillare perché presenta delle papille dermiche, ossia espansioni o rilievi
+che si incastrano in corrispondenza dell’epidermide formando le creste cutanee. Queste sono ben
+visibili a livello dei polpastrelli e la loro funzione è favorire gli scambi con l'epidermide sovrastante,
+aumentando la superficie di contatto.<br>
+Il derma superficiale è rappresentato da tessuto connettivo lasso costituito da abbondante sostanza
+fondamentale in cui sono immerse fibre sottili di collagene, abbondanti fibroblasti e corpuscoli
+sensitivi, in particolare quelli tattili (di Meisser) e quelli del freddo (di Krause). È poco vascolarizzato;<br>
+2. Derma medio o corion: strato intermedio costituito da una modesta quantità di sostanza
+fondamentale, arteriole e venule di calibro maggiore rispetto al derma papillare e grossi fasci di fibre
+reticolari. In questo tratto di derma si trovano corpuscoli sensitivi;<br>
+3. Derma reticolare o profondo: è lo strato più profondo e stratificato, che costituisce l’80% del derma.
+È composto da tessuto connettivo formato da robuste fibre di collagene, fibre di elastina, abbondanti
+vasi sanguigni (di calibro maggiore rispetto agli altri strati), varie terminazioni nervose sensitive, in
+particolar modo di Ruffini (caldo) e Pacini (pressione).
+</p>
+</div>
+<div><br><br><br>
+<img src="Biotech-file/images/Biotech-menu/Dermatologia/derma.jpg" class="transparent" alt="Derma" style="max-width:100%;">
+</div>
+</div>
+
+<div class="grid-container50">
+<div>
+<main>Cellule del derma</main>
+<p class="text">
+Queste cellule sono di diverso tipo, e a parte i fibroblasti che elaborano i componenti della sostanza
+intercellulare, gli altri elementi cellulari in genere sono destinati alla difesa.<br>
+Distinguiamo quindi:<br>
+1. Fibroblasti: sono le cellule tipiche e più numerose del derma, hanno una forma irregolare, in genere
+stellata. La loro importante funzione è quella di sintetizzare la componente fibrosa del tessuto
+(collagene ed elastina) e la sua sostanza fondamentale (in particolare acido ialuronico);<br>
+2. Cellule di origine ematica (in particolare alcuni tipi di globuli bianchi): in caso di processi infiammatori in atto si riversano nel derma per trasportare
+globuli bianchi come granulociti e linfociti;<br>
+3. Plasmacellule: producono anticorpi;<br>
+4. Macrofagi: sono globuli bianchi che inglobano ed eliminano batteri e altre sostanze estranee, giocando
+un ruolo importante nella risposta immunitaria;<br>
+5. Mastociti: cellule immunitarie che svolgono la loro funzione di sentinelle nell’identificazione di batteri
+e sostanze estranee e avviano le risposte infiammatorie locali contro questi patogeni.<br>
+Le ultime 3 fanno parte del sistema immunitario.<br>
+</p>
+</div>
+<div><br><br><br>
+<img src="Biotech-file/images/Biotech-menu/Dermatologia/cellule_derma.jpg" class="transparent" alt="Cellule del derma" style="max-width:100%;">
+</div>
+</div>
+
+<div class="grid-container10x90">
+<div><br>
+  <img src="Biotech-file/images/Biotech-menu/Dermatologia/fibre.jpg" class="transparent" alt="Fibre del derma" style="max-width:100%;">
+</div>
+<div>
+<main>Le fibre</main>
+<p class="text">
+Le principali sono quelle di collagene. Il collagene è una glicoproteina estremamente
+complessa organizzata in grossi fasci fibrosi e, oltre ad essere la proteina più
+abbondante dell'organismo, nella pelle rappresenta da sola il 70% delle proteine.<br>
+Il collagene ha funzione di sostegno e conferisce una notevole resistenza meccanica al
+derma. Nello strato più superficiale, sono presenti anche fibre di collagene più sottili,
+dette reticolari.<br>
+Oltre alle fibre di collagene, nel derma è presente una piccola quota di fibre elastiche che, nel loro insieme,
+rappresentano soltanto il 2% delle proteine cutanee. Sono costituite da elastina che conferisce alla pelle un
+certo grado di elasticità, indispensabile sia per consentire la mimica facciale, sia per seguire le numerose
+variazioni delle dimensioni corporee che avvengono nel corso della vita.
+</p>
+</div>
+</div>
+
+<main>La sostanza fondamentale</main>
+<p class="text">
+Cellule e fibre del derma sono immerse in una sostanza fondamentale o matrice. Essa è prodotta dai
+fibroblasti ed ha funzione di plasticità e flessibilità.<br>
+Risulta principalmente composta da:<br>
+1. Acqua in abbondante quantità;<br>
+2. Glucosio, sali, vitamine e ioni;<br>
+3. Glicosaminoglicani (gag) detti anche glucosaminoglicani: solforati e non solforati (acido ialuronico il
+più abbondante)<br>
+I G.A.G. sono polisaccaridi costituiti da lunghe catene di disaccaridi, nei quali almeno una delle due unità è un
+amminozucchero (glucosammina o galattosammina).<br>
+I più noti glicosamminoglicani sono l'acido ialuronico e l'eparina. Queste ed altre sostanze appartenenti a
+tale famiglia, hanno la capacità di trattenere molta acqua, formando un gel.
+Un gel è uno stato in cui coesistono una fase dispersa ed una fase disperdente. Nel caso specifico le molecole
+di glicosamminoglicani (fase dispersa) formano una sorta di reticolo tra le cui maglie è contenuta acqua (fase
+disperdente).<br>
+A livello del derma, questo gel occupa la maggior parte dello spazio extracellulare ed è responsabile del
+turgore cutaneo.
+</p>
+
+<div class="div1"><br><br>
+ <img src="Biotech-file/images/Biotech-menu/Dermatologia/struttura_ipoderma.jpg" class="transparent" alt="Struttura ipoderma" style="max-width:100%;">
+</div>
+<div class="div3">
+<main>L’ipoderma</main>
+<p class="text">
+La porzione più profonda della cute è rappresentata dall’ipoderma, esso si trova sotto
+il derma dal quale continua fino a raggiungere in profondità la componente connettiva che riveste
+i muscoli. Fa parte dei tessuti connettori in particolare di tipo adiposo, ricco di cellule
+chiamate adipociti, raggruppate in masse adipose.<br>
+In mezzo agli adipociti ci sono le fibre di collagene, troviamo inoltre: rete sanguigna, linfatica e nervosa,
+ghiandole sudoripare, follicoli pilo sebacei.
+</p><br>
+<main>Funzioni dell’ipoderma</main>:
+<p class="text">
+1. Funzione trofica: rappresenta una vera e propria riserva nutritiva ed energetica;:<br>
+2. Funzione meccanica: sostiene e protegge le strutture sottostanti, fungendo da ammortizzatore nei
+confronti di piccoli traumi e urti;:<br>
+3. Funzione isolante: il tessuto si comporta da isolante termico nei confronti della dispersione del
+calore;:<br>
+4. Funzione plastica: svolge una funzione estetica di modellamento del corpo.
+Le sostanze lipidiche contenute all’interno dell’adipocita sono soprattutto rappresentate da:<br>
+1. Acido oleico;<br>
+2. Acido palmico;<br>
+3. Acido linoleico;<br>
+4. Acido stearico;<br>
+5. Colesterolo, più i pigmenti che donano a questo materiale il colore giallo.<br>
+<br>
+Esistono 2 tipi di tessuto adiposo:<br>
+<img src="Biotech-file/images/Biotech-menu/Dermatologia/tessuto_adiposo_tipologie.jpg" id="imgLeftfl" class="transparent" alt="Tipologie di tessuto adiposo" style="max-width:100%;"><br>
+- BIANCO: il suo nucleo è appiattito e localizzato lontano dal
+centro ed il grasso presente al suo interno è ordinato in un’unica
+grande goccia ed utilizzato prevalentemente come RISERVA
+ENERGETICA;:<br>
+- BRUNO: il suo nucleo è localizzato al centro ed il grasso
+presente al suo interno è ordinato in piccole gocce ed utilizzato
+prevalentemente per produrre ENERGIA TERMICA.:<br>
+Il primo ha un colorito giallognolo, legato al suo contenuto in carotenoidi. Da solo rappresenta la quasi
+totalità del grasso di riserva. Il secondo è abbondante nei mammiferi che vanno in letargo (ibernanti) e nei
+cuccioli.:<br>
+Nell'uomo il tessuto adiposo bruno è presente in piccole quantità nel neonato (zona ascellare ed
+interscapolare). Con la crescita buona parte di questo tessuto si trasforma in tessuto adiposo bianco; per
+questo motivo nell'adulto troviamo soltanto delle tracce di tessuto adiposo bruno, distribuite sotto forma di
+piccole isole cellulari sparse tra i numerosi adipociti bianchi. Pertanto, non esistono depositi esclusivi di
+tessuto adiposo bianco o tessuto adiposo bruno, ma sempre e comunque depositi misti, dove le relative
+percentuali differiscono in base alla localizzazione topografica.
+</p>
+</div>
+
+<main>La rete nervosa cutanea</main>
+<p class="text">
+È grazie alla sua fitta rete nervosa ed a un insieme di recettori cutanei che la pelle è in grado di percepire
+stimoli diversi trasmettendoli al cervello, che li trasforma dopo averli elaborati in sensazioni dolorifiche,
+termiche, tattili e pressorie in tutto il corpo.<br>
+Ogni recettore è sensibile ad un tipo di stimolo, lo definiamo perciò in base alla sensibilità:
+1. Deformazione meccanica;<br>
+2. Termo recettore;<br>
+3. Nocicettore (dolore);<br>
+4. Chemiocettore (sostanze chimiche).<br>
+Tra i recettori più importanti:<br>
+- Corpuscolo PACINI stimoli pressori e vibratori ad alta frequenza(-> sensibili alla pressione), si trovano
+nel derma profondo e ipoderma;<br>
+- Corpuscolo RUFFINI stimoli pressori e termo recettori sensibili alle alte temperature, si trovano nel
+derma profondo;<br>
+- Corpuscolo KRAUSE termo recettori sensibili alle basse temperature, si trovano nel derma superficiale;<br>
+- Corpuscolo MEISSNER stimoli vibratori a bassa frequenza e rilevamento delle irregolarità delle
+superfici (-> sensibilità tattile), si trovano nel derma di polpastrelli e lingua<br>
+- Corpuscolo di MERKEL stimoli tattili prolungati e pressori, si trovano nell’epidermide;<br>
+- FIBRE NERVOSE LIBERE stimoli tattili, vibratori e di stiramento, temperatura e dolore.
+</p>
+<main>Annessi cutanei</main>
+<p class="text">
+Per annessi cutanei si intendono quelle strutture anatomiche associate alla cute, essi comprendono:<br>
+1. Ghiandole sudoripare;<br>
+2. Ghiandole sebacee;<br>
+3. Ghiandole mammarie;<br>
+4. Unghie;<br>
+5. Peli e capelli.<br>
+<br>
+GHIANDOLE<br>
+GHIANDOLE SUDORIPARE;<br>
+Nella struttura delle ghiandole si può distinguere:<br>
+1. una porzione secernente: quella che effettivamente produce il sudore formata da un tubolo raggomitolato detto glomerulo;<br>
+2. un dotto escretore: un tubicino che dal glomerulo elimina all’esterno il sudore.<br>
+il sudore è un liquido acquoso e trasparente composto da un 99% di acqua, e il restante 1% da sali organici e inorganici, vitamina C, anticorpi e tracce di sostanze organiche azotate (urea e ammoniaca) e zuccheri. Il
+sudore svolge varie funzioni:<br>
+1) mantiene costante la temperatura corporea;<br>
+2) aiuta ad eliminare le tossine;<br>
+3) mantiene il pH acido.
+L’eliminazione del sudore è un processo continuo e impercettibile. Nell’arco della giornata ne viene prodotto
+circa 1 litro, in condizioni particolari quando il caldo è eccessivo, durante l’esercizio fisico, paura ed altre esso
+è prodotto in maggiore quantità.<br>
+Le ghiandole sudoripare sono di due tipi:<br>
+GHIANDOLE ECCRINE
+Sono diffuse su tutta la superficie del corpo (con maggiore densità in fronte, sotto le ascelle, sul palmo della mano e sulla pianta
+del piede). Hanno un loro canale di uscita direttamente all’esterno, il poro del sudore.<br>
+GHIANDOLE APOCRINE<br>
+Sono connesse alla struttura dei peli, il loro dotto termina direttamente nel follicolo pilifero. Si trovano solo in alcune zone, le
+ascelle, zona pubica eccetera. Esse producono ferormoni messaggeri odorosi emozionali e sessuali.<br>
+Il prodotto di queste ghiandole è simile in composizione di base a quello delle ghiandole eccrine, diversamente dal sudore però è
+più viscosa e a volte lattiginosa o di colore giallastro.<br>
+Inoltre, è ricco di sostanze organiche (grassi e proteine) che possono essere degradate dalla flora batterica, provocando cattivo odore. La sua produzione inizia nella
+pubertà ed è regolata dagli ormoni sessuali.<br>
+Alterazioni delle ghiandole sudoripare
+Le alterazioni delle ghiandole sudoripare comportano un incremento o una riduzione nella produzione di sudore.<br>
+IPERIDROSI<br>
+Consiste nell’eccessiva produzione di sudore eccrino. Le ghiandole sudoripare in tali casi sono eccessivamente
+reattive agli stimoli nervosi che ricevono dal cervello e che le inducono a produrre sudore. Le zone
+maggiormente colpite sono il palmo della mano e la pianta del piede. A livello ungueale spesso si associa
+fragilità e onicolisi.<br>
+BROMOIDROSI<br>
+Eccessiva produzione di sudore delle ghiandole apocrine che se colonizzato dalla flora batterica sviluppa un
+odore particolarmente acre.<br>
+OLIGOIDROSI.<br>
+Diminuzione della produzione di sudore, a differenza dell’Anidrosi in cui c’è l’assenza congenita delle
+ghiandole sudoripare<br>
+GHIANDOLE SEBACEE<br>
+Sono sparse un po’ su tutta la superficie cutanea tranne le zone palmo plantari. Sono particolarmente
+numerose e di maggiori dimensioni a livello delle zone chiamate seborroiche quali cuoio capelluto e viso, in
+questo caso sono concentrate su fronte naso e mento. Sono situate al livello del derma ed in genere sono
+connesse col colletto del follicolo pilifero in corrispondenza del muscolo erettore del pelo, il quale
+contraendosi permette il loro svuotamento. L’attività ghiandolare di produzione e rilascio del sebo è
+controllata e regolata da fattori costituzionali e ormonali (è stimolata dagli androgeni e inibita dagli
+estrogeni).<br>
+Il sebo risulta formato da una miscela di sostanze grasse:<br>
+1. trigliceridi;<br>
+2. acidi grassi, saturi e insaturi;<br>
+3. cere;<br>
+4. colesterolo.<br>
+Questa composizione permette al sebo di svolgere le seguenti funzioni: emolliente, lubrificante, idratante,
+protettiva e antimicrobica.<br>
+Film idrolipidico di superficie<br>
+Il sebo prodotto dalle ghiandole sebacee si immette sulla superficie dell’epidermide attraverso il dotto pilo-
+sebaceo. Arrivato a destinazione emulsiona il sudore formando una sottile pellicola untuosa detta film
+idrolipidico di superficie che riveste il pelo e l’epidermide al fine di proteggerli dai microbi e dagli agenti
+esterni. L’equilibrio tra sudore e sebo è fondamentale per la difesa dell’epidermide e del cuoio capelluto dagli
+agenti esterni. L’eccessiva presenza di questo film a livello del cuoio capelluto ma soprattutto lungo lo stelo
+dei capelli provoca cattiva pettinabilità e senso di sporco.
+<span id="lastModified"></span>
+</p>
+
+</body>
+  </html>
