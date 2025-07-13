@@ -3,6 +3,7 @@
 #clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #newyear {color: lightgoldenrodyellow; position: absolute; left: 290px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 1.5s ease-in-out;}
+#imgLeftfl {float: left; padding: 4px;}
 
 /* Element natural */
 @font-face {font-family: myFirstFont; src: url(sansation_light.woff);}
@@ -33,7 +34,9 @@ div.scroll-container img {padding: 2px;}
 /* Grid dermatologia*/
 .grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
 .grid-container50 {display: grid; grid-template-columns: 50% 50%;}
+.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
 .grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
+.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
 .imgRightfl {float: right; padding: 15px;}
 .imgLeftfl {float: left; padding: 15px;}
 /* End grid dermatologia */
@@ -82,7 +85,6 @@ html {box-sizing: border-box;}
 .div1 {float: inline-end; padding: 10px; text-align: justify;}  
 .div2 {float: left; padding: 10px; text-align: justify;}
 .div3 {padding: 10px; text-align: justify;}
-.optSpeed {border-radius: 6px; image-rendering: optimizeSpeed; align-items: center; width: 100%; height: auto; border: 0;}
 /* End Elements with class */
 
 /* IMG ZOOM */
