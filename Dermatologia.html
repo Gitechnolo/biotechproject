@@ -11,18 +11,19 @@
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
        </head>
 <body onload="Clock()" class="biotechbody">
-<table width="553" class="menu"> 
+<!-- nav -->
+<table width="553" class="menu">
 <tr>
- <td id="menu-products" class="biotechcolor" onMouseOver="Menu('products');" onMouseOut="Timeout('products');">
+ <td id="menu-products" class="biotechcolor" onmouseover="Menu('products');" onmouseout="Timeout('products');">
    <a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>Home</b></a></td>
- <td id="menu-sales" class="biotechcolor" onMouseOver="Menu('sales');" onMouseOut="Timeout('sales');">
+ <td id="menu-sales" class="biotechcolor" onmouseover="Menu('sales');" onmouseout="Timeout('sales');">
    <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><b>Progetti</b></a></td>
- <td id="menu-service" class="biotechcolor" onMouseOver="Menu('service');" onMouseOut="Timeout('service');">
-  <a href="service.html" hreflang="it"><b>Service</b></a></td>
- <td id="menu-staff" class="biotechcolor" onMouseOver="Menu('staff');" onMouseOut="Timeout('staff');">
+ <td id="menu-service" class="biotechcolor" onmouseover="Menu('service');" onmouseout="Timeout('service');">
+  <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it"><b>Service</b></a></td>
+ <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
    <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
- <td id="menu-jobs" class="biotechcolor" onMouseOver="Menu('jobs');" onMouseOut="Timeout('jobs');">
-   <a href="jobs.html" hreflang="it"><b>Employment</b></a></td>
+ <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
+   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
 </tr>
 </table>
   <div id="products" class="biotechidden">
@@ -40,50 +41,37 @@
     </table>
   </div>
   <div id="sales" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" id="s1" onMouseOver="Highlight('sales', 's1');" OnMouseOut="UnHighlight('sales', 's1');">
-   <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td>
-</tr>
-<tr>
-  <td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
-   <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td>
-</tr>
-<tr>
-  <td width="100%" id="s3" onMouseOver="Highlight('sales', 's3');" onMouseOut="UnHighlight('sales', 's3');">
-   <a href="specials.html" hreflang="it">Specials</a></td>
-</tr>
-</table>
+    <table class="biotechmenu">
+      <tr><td width="100%" id="s1" onmouseover="Highlight('sales', 's1');" onmouseout="UnHighlight('sales', 's1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td></tr>
+      <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
+        <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
+      <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
+        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+    </table>
   </div>
   <div id="service" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" id="r1" onMouseOver="Highlight('service', 'r1');" onMouseOut="UnHighlight('service', 'r1');">
-   <a href="support.html" hreflang="it">Support</a></td>
-</tr> 
-<tr>
-  <td width="100%" id="r2" onMouseOver="Highlight('service','r2');" onMouseOut="UnHighlight('service','r2');">
-  <a href="service.html" hreflang="it">Contact Us</a></td>
-</tr>
-</table>
+    <table class="biotechmenu">
+      <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
+        <a href="https://gitechnolo.github.io/biotechproject/support.html" hreflang="it">Support</a></td></tr>
+      <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
+        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+    </table>
   </div>
   <div id="staff" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" id="t1" onMouseOver="Highlight('staff','t1');" onMouseOut="UnHighlight('staff', 't1');">
-  <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td>
-</tr>
-</table>
+    <table class="biotechmenu">
+      <tr><td width="100%" id="t1" onmouseover="Highlight('staff','t1');" onmouseout="UnHighlight('staff', 't1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td></tr>
+    </table>
   </div>
   <div id="jobs" class="biotechidden">
-<table class="biotechmenu">
-<tr>
-  <td width="100%" id="j1" onMouseOver="Highlight('jobs','j1');" onMouseOut="UnHighlight('jobs','j1');">
-  <a href="https://gitechnolo.github.io/biotechproject/Job_Listings.html" hreflang="it">Job Listings</a></td>
-</tr>
-</table>
+    <table class="biotechmenu">
+      <tr><td width="100%" id="j1" onmouseover="Highlight('jobs','j1');" onmouseout="UnHighlight('jobs','j1');">
+        <a href="https://gitechnolo.github.io/biotechproject/Job_Listings.html" hreflang="it">Job Listings</a></td></tr>
+    </table>
   </div>
- <img src="Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
+<!-- end nav -->
  <div id="clock">00:00:00</div><div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
  <div id="week" class="waviy"></div>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
@@ -156,14 +144,14 @@ connettivo, essendo l’epitelio privo di vasi propri (per la scarsità dello sp
 </ol> 
 </div>
 <div>
- <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti2.jpg" alt="Tessuti" style="max-width:100%;">
+ <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti2.jpg" class="transparent" alt="Tessuti" style="max-width:100%;">
  <ul class="list">
   <li>6. <span class="biotechbold">epitelio cilindrico</span>, costituito da un unico strato di cellule di aspetto cilindrico. Deputato a funzioni di assorbimento e di secrezione a rivestire le superfici di organi cavi. Suddiviso in: epitelio cilindrico ciliato e non ciliato, in base alla presenza o meno di organelli (ciglia).</li>
   <li>7. <span class="biotechbold">epiteli di transizione</span> (urotelio), tipologia con caratteristiche intermedie tra un epitelio pavimentoso pluristratificato e un epitelio cubico pluristratificato. Specializzati nella resistenza alla tossicità dell'urina, riveste infatti l'interno dell'uretere e della vescica urinaria dei mammiferi.</li>
  </ul>
 </div>
 <div>
-  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti3.jpg" alt="Tessuti" style="max-width:100%;">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti3.jpg" class="transparent" alt="Tessuti" style="max-width:100%;">
 </div>
 </div>
 <p class="text"><span class="subtitle">Funzioni degli epiteli di rivestimento.</span><br>
@@ -177,7 +165,7 @@ Le caratteristiche strutturali e funzionali delle singole cellule che compongono
 loro disposizione (in uno o più strati) e la sede in cui l’epitelio è localizzato sono gli elementi che condizionano
 le funzioni che ogni tipo di epitelio di rivestimento può svolgere.<br>
 <br>
-<img class="imgRightfl" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/epiteli_ghiandolari.jpg" alt="Epiteli ghiandolari" style="max-width:100%;">
+<img class="imgRightfl" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/epiteli_ghiandolari.jpg" class="transparent" alt="Epiteli ghiandolari" style="max-width:100%;">
 <span class="subtitle">Epiteli ghiandolari</span>
 <br>
 <span class="yellowtext">Gli epiteli ghiandolari sono costituiti da cellule che producono e secernono (cioè
@@ -197,7 +185,7 @@ caratteristiche del connettivo</span>.<br>
 La sostanza extracellulare del connettivo è costituita da una
 matrice o sostanza fondamentale amorfa e da tre varietà di fibre in essa immerse: fibre collagene,
 reticolari, elastiche.<br>
-<img class="imgLeftfl" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_connettivo.jpg" alt="Tessuto connettivo" style="max-width:100%;"><br>
+<img class="imgLeftfl" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_connettivo.jpg" class="transparent" alt="Tessuto connettivo" style="max-width:100%;"><br>
 La composizione chimica della sostanza fondamentale, la composizione in fibre, la loro
 organizzazione spaziale e, infine, i tipi cellulari presenti, consentono di suddividere il tessuto connettivo in alcune varietà:
 </p>
@@ -219,11 +207,11 @@ organizzazione spaziale e, infine, i tipi cellulari presenti, consentono di sudd
 <span class="yellowtext">Il tessuto adiposo è formato da cellule chiamate adipociti, che hanno la funzione di accumulare grassi in vacuoli citoplasmatici.</span><br>
 <span class="text">Esistono due tipi di tessuto adiposo, bianco e bruno. Il primo ha funzione di riserva energetica mentre il secondo è deputato all’accumulo di riserve che verranno dissipate in energia termica.</span>
   </div>
-  <div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_adiposo.jpg" alt="Tessuto adiposo" style="max-width:100%;">
+  <div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_adiposo.jpg" class="transparent" alt="Tessuto adiposo" style="max-width:100%;">
   </div>
 </div>
 <div class="grid-container20x80">
-  <div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_nervoso.jpg" alt="Tessuto nervoso" style="max-width:100%; padding: 10px;">
+  <div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_nervoso.jpg" class="transparent" alt="Tessuto nervoso" style="max-width:100%; padding: 10px;">
   </div>
   <div>
 <span class="subtitle">Tessuto nervoso</span><br>
@@ -244,8 +232,6 @@ Quando ad un neurone arriva un impulso, viene liberata una sostanza chimica chia
 </p>
   </div>
 </div>
-L’apparato tegumentario
-    <!-- <img src="Biotech-file/images/Biotech-menu/Dermatologia/tegumentario.jpg" alt="Apparato Tegumentario" style="max-width:100%;"> -->
-   <!-- END Dermatologia -->
+<!-- END Dermatologia -->
 </body>
   </html>
