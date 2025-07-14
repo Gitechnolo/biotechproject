@@ -11,6 +11,7 @@
 * {font-family: myFirstFont;}
  ul.list {list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
  ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
+ li::marker {color: rgb(208, 255, 0); content: "~";}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
  img {border-radius: 6px;}
  
