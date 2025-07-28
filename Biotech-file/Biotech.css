@@ -4,6 +4,7 @@
 #newyear {color: lightgoldenrodyellow; position: absolute; left: 300px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 1.5s ease-in-out;}
 #imgLeftfl {float: left; padding: 4px;}
+#imgRight {float: right; padding: 4px;}
 
 /* Element natural */
 @font-face {font-family: myFirstFont; src: url(sansation_light.woff);}
