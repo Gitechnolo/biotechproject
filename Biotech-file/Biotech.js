@@ -238,3 +238,13 @@ function turnOffLight() {
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
+
+function PopupCentrata()
+{
+var w = 760;
+var h = 370;
+var l = Math.floor((screen.width-w)/2);
+var t = Math.floor((screen.height-h)/2);
+
+window.open("https://gitechnolo.github.io/biotechproject/O.S_support.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+}
