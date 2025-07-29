@@ -208,7 +208,7 @@ img.hover-shadow {transition: 0.3s;}
 /* The actual popup */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
+  width: auto;
   background-color: rgba(249, 250, 249, 0.2);
   color: #fff;
   text-align: center;
