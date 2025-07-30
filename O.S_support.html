@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+  <html lang="it">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your O.S.</title>
+    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
+    </head>
+<body class="biotechbody">
+<div class="pioggia"></div>    
+<span class="biotechbold">Your O.S.</span> &nbsp; <button id="likeBtn" class="text">❤️ Mi Piace</button>
+<p id="risolution" class="text"></p>
+<!-- type ChatGPT (֍) -->
+<p id="typeInfo" class="text"></p>
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+<!-- End type ChatGPT (֍) -->
+<!-- DNA animazione -->
+<div class="material">
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+<div class="dna"></div>
+</div>
+<!-- End DNA animazione -->
+<script>
+// Funzione gocce di pioggia      
+      function creaGocce() {
+    const pioggia = document.querySelector('.pioggia');
+    for (let i = 0; i < 100; i++) {
+        const goccia = document.createElement('div');
+        goccia.classList.add('goccia');
+        goccia.style.left = Math.random() * 100 + 'vw';
+        goccia.style.animationDuration = Math.random() * 2 + 1 + 's'; // Durata casuale tra 1 e 3 secondi
+        goccia.style.animationDelay = Math.random() * 3 + 's'; // Ritardo casuale fino a 3 secondi
+        pioggia.appendChild(goccia);
+    }
+}
+      creaGocce();
+// End gocce di pioggia      
+
+// Aggiungi un evento per il pulsante "Mi Piace"
+      document.getElementById("likeBtn").addEventListener("click", function() {
+        this.innerHTML = "❤️ Piaciuto!";
+        this.disabled = true; // Disabilita il pulsante dopo il clic
+      });
+// End evento pulsante "Mi Piace"
+
+// typeInfo ChatGPT
+new TypeIt("#typeInfo", {
+strings: ["<span class='biotechbold'>Cosa significa Do Not Track?</span> &nbsp; <span class='text'>ChatGPT (֍)</span>", "<span class='text'><b>Do Not Track (DNT)</b> è un header HTTP che permette agli utenti di comunicare al server web la loro preferenza riguardo alla raccolta dei dati di navigazione.<br> Quando l'utente attiva la funzione Do Not Track, il browser invia un valore specifico <em>(1)</em> al server, indicando che non desidera essere tracciato.<br> Questo valore <b><em>1</em></b> indica che l'utente non vuole essere tracciato, mentre il valore <em>0</em> indica che l'utente è disposto ad essere tracciato.<br> Do Not Track non è una funzione obbligata, ma è una richiesta dell'utente che dipende dal sito web se rispettarla o meno.</span>"],
+speed: 50,
+waitUntilVisible: true,
+}).go();
+document.getElementById("risolution").innerHTML =  "Your screen resolution is " + window.screen.width + "x" + window.screen.height + " pixels." + "<br>" + "Browser window size " + window.innerWidth + "x" + window.innerHeight + " pixels." + "<br>" + "" + navigator.appName + " version " + navigator.appVersion + "." + "<br>" + "Language: " + navigator.language + "." + " &nbsp; " + "Status: " + (navigator.onLine ? "Online" : "Offline") + "." + " &nbsp; " + "Cookies enabled: " + (navigator.cookieEnabled ? "Yes" : "No") + "." + " &nbsp; " + "JavaScript enabled: " + (typeof navigator.javaEnabled === "function" && navigator.javaEnabled() ? "Yes" : "No") + "." + " &nbsp; " + "Vendor: " + navigator.vendor + "." + " &nbsp; " + "<b>Do Not Track</b>: " + (navigator.doNotTrack ? navigator.doNotTrack : "Not supported") + ".";
+ // End typeInfo ChatGPT
+</script>
+</body>
+  </html>
