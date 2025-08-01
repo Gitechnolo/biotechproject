@@ -4,6 +4,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
 <style>
+/* ...existing styles... */
+.chat-messages {
+  background: rgba(0,0,0,0.15);
+  border-radius: 8px;
+  min-height: 120px;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 15px;
+  color: #fff;
+}
+.chat-message.user {
+  text-align: right;
+  color: #b6ffb6;
+  margin-bottom: 4px;
+}
+.chat-message.system {
+  text-align: left;
+  color: #ffd580;
+  margin-bottom: 4px;
+}
+.chat-status {
+  font-size: 13px;
+  color: #ffbaba;
+  margin-top: 6px;
+}
+/* ...end existing styles... */
+
 body {background-color: rgb(0, 15, 22) !important; background-image: url('https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.jpg'); background-position: 50% 50%;}
 * {box-sizing: border-box;}
 
@@ -94,7 +123,7 @@ body {background-color: rgb(0, 15, 22) !important; background-image: url('https:
 </style>
 </head>
 <body>
-    <span class="biotechbold">Your O.S.</span> &nbsp; <button id="likeBtn" class="text">❤️ Mi Piace</button>
+<span class="biotechbold">Your O.S.</span> &nbsp; <button id="likeBtn" class="text">❤️ Mi Piace</button>
 <p id="risolution" class="text"></p>
 <!-- type ChatGPT (֍) -->
 <p id="typeInfo" class="text"></p>
@@ -118,18 +147,23 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
 // End evento pulsante "Mi Piace"
 </script>
 
+<!-- ...existing code... -->
 
-<button class="open-button" onclick="openForm()">Chat</button>
+<!-- Modern Minimal Static Chat UI with Formspree file upload -->
+<button class="open-button" onclick="openForm()">💬 Chat</button>
 
 <div class="chat-popup" id="formChat">
-  <form action="/action_page.php" class="form-container">
-    <h1>Chat</h1>
-
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-
-    <button type="submit" class="btn">Send</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  <form id="chatForm" class="form-container" autocomplete="off" action="https://formspree.io/f/xdoqzqgp" method="POST" enctype="multipart/form-data">
+    <h1>Contatta Biotech</h1>
+    <div class="chat-messages" id="chatMessages"></div>
+    <label for="msg"><b>Messaggio</b></label>
+    <textarea id="msgInput" placeholder="Scrivi il tuo messaggio..." name="message" required></textarea>
+    <label for="fileInput"><b>Allega file (PDF, immagini, ecc.)</b></label>
+    <input type="file" id="fileInput" name="attachment" accept=".pdf,image/*,.doc,.docx,.txt,.zip,.rar" style="margin-bottom:8px;">
+    <input type="email" name="email" placeholder="La tua email (opzionale)" style="width:100%;margin-bottom:8px;">
+    <button type="submit" class="btn">Invia</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Chiudi</button>
+    <div id="chatStatus" class="chat-status"></div>
   </form>
 </div>
 
@@ -137,11 +171,49 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
 function openForm() {
   document.getElementById("formChat").style.display = "block";
 }
-
 function closeForm() {
   document.getElementById("formChat").style.display = "none";
 }
+
+const chatForm = document.getElementById('chatForm');
+const chatMessages = document.getElementById('chatMessages');
+const chatStatus = document.getElementById('chatStatus');
+const msgInput = document.getElementById('msgInput');
+
+chatForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const msg = msgInput.value.trim();
+  if (!msg) return;
+  appendMessage('user', msg);
+  chatStatus.textContent = "Invio in corso...";
+  // Send to Formspree
+  fetch(chatForm.action, {
+    method: "POST",
+    body: new FormData(chatForm),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      chatStatus.textContent = "Messaggio inviato! Grazie per averci scritto.";
+      msgInput.value = '';
+      chatForm.reset();
+      setTimeout(() => { chatStatus.textContent = ""; }, 2500);
+    } else {
+      chatStatus.textContent = "Errore nell'invio. Riprova.";
+    }
+  }).catch(() => {
+    chatStatus.textContent = "Errore di rete.";
+  });
+});
+
+function appendMessage(sender, text) {
+  const div = document.createElement('div');
+  div.className = 'chat-message ' + sender;
+  div.textContent = (sender === 'user' ? "Tu: " : "Sistema: ") + text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 </script>
+<!-- ...existing code... -->
 
 </body>
 </html>
