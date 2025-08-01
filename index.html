@@ -8,8 +8,20 @@
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
    </head>
 <body onload="Clock()" class="biotechbody">
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>
 <!-- nav -->
 <table width="553" class="menu">
 <tr>
@@ -54,7 +66,7 @@
       <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
         <a href="javascript:PopupCentrata()" hreflang="it">&#8592; O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) &#8594;</a></td></tr>
       <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
-        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+        <a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">&#8592; C o n t a c t &nbsp; U s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="staff" class="biotechidden">
