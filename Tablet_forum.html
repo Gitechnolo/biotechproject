@@ -158,14 +158,17 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
     <div class="chat-messages" id="chatMessages"></div>
     <label for="msg"><b>Messaggio</b></label>
     <textarea id="msgInput" placeholder="Scrivi il tuo messaggio..." name="message" required></textarea>
-    <label for="fileInput"><b>Allega file (PDF, immagini, ecc.)</b></label>
+    <label for="fileInput"><b>Allega file (solo utenti Gold Formspree)</b></label>
     <input type="file" id="fileInput" name="attachment" accept=".pdf,image/*,.doc,.docx,.txt,.zip,.rar" style="margin-bottom:8px;">
+    <small style="color:#ffbaba;">Se il file non viene inviato, puoi scrivere a fabriziobianco2022@libero.it</small>
     <input type="email" name="email" placeholder="La tua email (opzionale)" style="width:100%;margin-bottom:8px;">
     <button type="submit" class="btn">Invia</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Chiudi</button>
     <div id="chatStatus" class="chat-status"></div>
   </form>
 </div>
+
+
 
 <script>
 function openForm() {
