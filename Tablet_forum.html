@@ -4,110 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
 <style>
-/* ...existing styles... */
-.chat-messages {
-  background: rgba(0,0,0,0.15);
-  border-radius: 8px;
-  min-height: 120px;
-  max-height: 180px;
-  overflow-y: auto;
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 15px;
-  color: hsla(0, 100%, 100%, 0.692);
-}
-.chat-message.user {
-  text-align: right;
-  color: #b6ffb6;
-  margin-bottom: 4px;
-}
-.chat-message.system {
-  text-align: left;
-  color: #ffd580;
-  margin-bottom: 4px;
-}
-.chat-status {
-  font-size: 13px;
-  color: #ffbaba;
-  margin-top: 6px;
-}
-/* ...end existing styles... */
-
 body {background-color: rgb(0, 15, 22) !important; background-image: url('https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.jpg'); background-position: 50% 50%;}
 * {box-sizing: border-box;}
-
-/* Button used to open the chat form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: hsla(0, 100%, 100%, 0.692);
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-
-/* The popup chat - hidden by default */
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #969292bd;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: rgba(2, 43, 26, 0.966);
-  color: hwb(56 32% 7%); text-shadow: 2px 2px 5px blueviolet; letter-spacing: 2px; font-style: italic;
-}
-
-/* Full-width textarea */
-.form-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background-color: rgb(0, 15, 22);
-  resize: none;
-  min-height: 140px;
-  color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet;
-}
-
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-  background-color: rgb(0, 15, 22);
-  color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet;
-  outline: none;
-}
-
-/* Set a style for the submit/send button */
-.form-container .btn {
-  background-color: #065c3c;
-  color: hsla(0, 100%, 100%, 0.692);
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Background color to the cancel button */
-.form-container .cancel {
-  background-color: #555;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
 .biotechbold {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); text-shadow: 2px 2px 5px blueviolet; letter-spacing: 2px; font-style: italic;}
 .text {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet;}
 
@@ -120,6 +18,122 @@ body {background-color: rgb(0, 15, 22) !important; background-image: url('https:
 #likeBtn:disabled:hover {color: hwb(93 2% 3% / 0.801); transform: none;}
 #likeBtn:disabled:active {transform: none;}
 /* End style pulsante "Mi Piace" */
+
+/* Chat style inspired by Staff.html */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #969292bd;
+  z-index: 9;
+  background: rgba(2, 43, 26, 0.966);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.form-container {
+  max-width: 340px;
+  padding: 18px 16px 12px 16px;
+  background: rgba(2, 43, 26, 0.966);
+  color: hwb(56 32% 7%);
+  text-shadow: 2px 2px 5px blueviolet;
+  border-radius: 12px;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.form-container label, .form-container input, .form-container textarea, .form-container .btn {
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0 16px 0;
+  border: 1px solid #065c3c;
+  background: rgb(0,15,22);
+  resize: none;
+  min-height: 120px;
+  color: rgb(212,211,211);
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(76,76,231,0.08);
+}
+.form-container textarea:focus {
+  outline: 2px solid #065c3c;
+  background: rgb(0,15,22);
+}
+.form-container input[type="email"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #065c3c;
+  background: rgb(0,15,22);
+  color: rgb(212,211,211);
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.form-container .btn {
+  background: #065c3c;
+  color: #fff;
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  opacity: 0.9;
+  transition: background 0.2s;
+}
+.form-container .btn.cancel {
+  background: #555;
+}
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+  background: #04AA6D;
+}
+.open-button {
+  background: #555;
+  color: #fff;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  border-radius: 8px;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(76,76,231,0.08);
+}
+.chat-messages {
+  background: rgba(0,0,0,0.15);
+  border-radius: 8px;
+  min-height: 80px;
+  max-height: 140px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 15px;
+  color: #fff;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.chat-message.user {
+  text-align: right;
+  color: #b6ffb6;
+  margin-bottom: 4px;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.chat-message.system {
+  text-align: left;
+  color: #ffd580;
+  margin-bottom: 4px;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.chat-status {
+  font-size: 13px;
+  color: #ffbaba;
+  margin-top: 6px;
+  font-family: Tahoma, Verdana, sans-serif;
+}
 </style>
 </head>
 <body>
@@ -147,20 +161,16 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
 // End evento pulsante "Mi Piace"
 </script>
 
-<!-- ...existing code... -->
-
-<!-- Modern Minimal Static Chat UI with Formspree file upload -->
+<!-- Modern Minimal Static Chat UI (no file upload, email only) -->
 <button class="open-button" onclick="openForm()">💬 Chat</button>
 
 <div class="chat-popup" id="formChat">
-  <form id="chatForm" class="form-container" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST" enctype="multipart/form-data">
-    <h1>Contatta Biotech</h1>
+  <form id="chatForm" class="form-container" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST">
+    <h1 class="biotechtitle">Contatta Biotech</h1>
     <div class="chat-messages" id="chatMessages"></div>
-    <label for="msg"><b>Messaggio</b></label>
-    <textarea id="msgInput" placeholder="Scrivi il tuo messaggio..." name="message" required></textarea>
-    <label for="fileInput"><b>Allega file (PDF, immagini, ecc.)</b></label>
-    <input type="file" id="fileInput" name="attachment" accept=".pdf,image/*,.doc,.docx,.txt,.zip,.rar" style="margin-bottom:8px;">
-    <input type="email" name="email" placeholder="La tua email (opzionale)" style="width:100%;margin-bottom:8px;">
+    <label for="msgInput" class="biotechbold"><b>Messaggio</b></label>
+    <textarea id="msgInput" class="text" placeholder="Scrivi il tuo messaggio..." name="message" required></textarea>
+    <input type="email" name="email" class="text" placeholder="La tua email (opzionale)" style="width:100%;margin-bottom:8px;">
     <button type="submit" class="btn">Invia</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Chiudi</button>
     <div id="chatStatus" class="chat-status"></div>
