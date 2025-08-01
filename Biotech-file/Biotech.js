@@ -252,10 +252,10 @@ window.open("https://gitechnolo.github.io/biotechproject/O.S_support.html","","w
 function ChatGPTpopupCenterAI()
 {
 var w = 825;
-var h = 692;
+var h = 672;
 var l = Math.floor((screen.width-w)/2);
 var t = Math.floor((screen.height-h)/2);
 
-window.open("https://gitechnolo.github.io/biotechproject/Table.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
 }
 // End popup
