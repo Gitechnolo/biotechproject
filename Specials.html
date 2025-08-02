@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Biotech project</title>
+    <title>Stem Cells & Robotics | Biotech Specials</title>
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
@@ -87,7 +87,6 @@
   <div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
   <div id="week" class="waviy"></div>
   <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
-  <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Sito in costruzione<span class="popuptext" id="myPopup">A beve fisiologia umana!</span></div></div><br>
 <!-- DNA animation -->
 <div class="material">
  <div class="dna"></div>
@@ -108,56 +107,109 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
-  <div id="ytVideoContainer">
-  <video id="ytVideo" poster="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.jpg" preload="metadata">
-  <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
-  <track src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English">
-  <track src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_it.vtt" kind="subtitles" srclang="it" label="Italian">
-  Your browser does not support the video tag.
-  Your browser does not support HTML5 video.    
-  </video>
-  <div class="yt-video-controls">
-    <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
-    <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
-    <span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
-    <button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button>
-    <input type="range" id="ytVolume" min="0" max="1" step="0.01" value="1" class="yt-vol">
-    <button id="ytFullscreen" aria-label="Fullscreen">⛶</button>
-    <button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
+
+<style>
+    body {
+      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      font-family: 'Tahoma', Verdana, sans-serif;
+      color: #e6e6e6;
+      margin: 0;
+      padding: 0;
+    }
+    .specials-container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      background: rgba(34, 49, 63, 0.92);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 32px 28px;
+    }
+    .specials-title {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #ffe066;
+      text-shadow: 2px 2px 8px #2c5364;
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    .specials-section {
+      margin-bottom: 32px;
+    }
+    .specials-section h2 {
+      color: #aee9f7;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 4px #222;
+    }
+    .specials-section p {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #e6e6e6;
+      margin-bottom: 12px;
+    }
+    .specials-img {
+      display: block;
+      margin: 18px auto 24px auto;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(34,49,63,0.18);
+    }
+    .specials-ref {
+      font-size: 0.95em;
+      color: #b2bec3;
+      text-align: right;
+      margin-top: 18px;
+    }
+    @media (max-width: 600px) {
+      .specials-container { padding: 12px 4px; }
+      .specials-title { font-size: 1.3em; }
+    }
+  </style>
+  <!-- nav ...existing nav code... -->
+
+  <div class="specials-container">
+    <div class="specials-title">Stem Cells and Their Application in Robotics</div>
+
+    <div class="specials-section">
+      <h2>What Are Stem Cells?</h2>
+      <p>
+        Stem cells are undifferentiated biological cells capable of developing into specialized cell types. They play a crucial role in growth, healing, and tissue regeneration. There are two main types: embryonic stem cells (which can become any cell type) and adult stem cells (which are more limited but still vital for repair).
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Final_stem_cell_differentiation_%281%29.svg" alt="Stem Cell Differentiation" class="specials-img">
+      <div class="specials-ref">Source: Wikipedia (<a href="https://en.wikipedia.org/wiki/Stem_cell" target="_blank" style="color:#aee9f7;">Stem cell</a>)</div>
+    </div>
+
+    <div class="specials-section">
+      <h2>Stem Cells in Robotics</h2>
+      <p>
+        The intersection of stem cell research and robotics is a rapidly evolving field. Scientists are exploring how biological principles, such as self-repair and adaptability found in stem cells, can inspire the design of advanced robots. For example, "biohybrid robots" integrate living cells (including stem cells) with synthetic materials to create machines that can heal themselves or adapt to their environment.
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Kinesin_walking.gif" alt="Biohybrid Robot Example" class="specials-img">
+      <div class="specials-ref">Source: Wikipedia (<a href="https://en.wikipedia.org/wiki/Biohybrid_robot" target="_blank" style="color:#aee9f7;">Biohybrid robot</a>)</div>
+    </div>
+
+    <div class="specials-section">
+      <h2>Applications and Future Prospects</h2>
+      <p>
+        Potential applications include medical robots that can repair tissues, soft robots for drug delivery, and adaptive prosthetics. Research is ongoing to use stem cells for growing muscle tissue or nerve cells directly on robotic frameworks, enabling more lifelike movement and self-repair capabilities.
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Soft_Robotics_1.jpg/800px-Soft_Robotics_1.jpg" alt="Soft Robotics Example" class="specials-img">
+      <div class="specials-ref">Source: Wikipedia (<a href="https://en.wikipedia.org/wiki/Soft_robotics" target="_blank" style="color:#aee9f7;">Soft robotics</a>)</div>
+    </div>
+
+    <div class="specials-section">
+      <h2>References & Further Reading</h2>
+      <ul style="color:#ffe066;">
+        <li><a href="https://en.wikipedia.org/wiki/Stem_cell" target="_blank" style="color:#aee9f7;">Stem cell - Wikipedia</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Biohybrid_robot" target="_blank" style="color:#aee9f7;">Biohybrid robot - Wikipedia</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Soft_robotics" target="_blank" style="color:#aee9f7;">Soft robotics - Wikipedia</a></li>
+        <li><a href="https://www.sciencedirect.com/science/article/pii/S2452074819300452" target="_blank" style="color:#aee9f7;">Biohybrid robotics: Review (ScienceDirect)</a></li>
+      </ul>
+    </div>
   </div>
-</div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script> 
- <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
- <main>Mitocondri</main><span class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</span><br>
- <main>Lisosoma</main><span class="biotechtitle">Responsabile distruzione/riciclaggio cellule senescenti (cellule morte).</span><br>
- <main>Miochine</main><span class="biotechtitle">Antinfiammatori, anticancerogeni, molecole che migliorano le funzioni cognitive.</span><br>
-<main>La pelle</main><span class="biotechtitle">Formata da cellule cheratinociti per il 90% e da melanociti per produzione melanina.</span></p>
-<p class="secHeader">MEDICINA PREVENTIVA;</p>
-<p class="sidenavtext">
-  <ul class="list">
-    <li>Sovrappeso e Obesità</li>
-    <li>Abuso di fumo ed alcol</li>
-    <li>Facce “tirate” dallo stress e dalla fretta</li>
-    <li>Assunzione di cibi processati</li>
-    <li>Fuori forma fisica</li>
-    <li>Movimenti impacciati/Scarsa mobilità</li>
-    <li>Isolamento dalle persone e dall’ambiente</li>
-  </ul>
-</p>
-<p class="secHeader">LA CELLULA COME BASE DELLA VITA<br>
-<span class="sidenavtext">SERENITÀ, BENESSERE, LONGEVITÀ;</span></p>
-<p class="biotechtitle">Il nostro destino di salute e la nostra serenità sono le cose più importanti, solo allora iniziamo a contemplare di cambiare quegli aspetti della nostra vita che ci generano disagio psicofisico.<br>
-<br>
-Terapia preventiva dell’attività fisica, dell’alimentazione, di un corretto riposo notturno, allontanamento da dipendenze, spesso travestite da normali abitudini, capacità di far fronte allo stress.<br>
-<br>
-Elaborare in maniera nuova la nostra storia personale, e riscriverla con un cambiamento radicale;<br>
-Variabili organiche, (leggi biologiche) sono profondamente influenzate dallo stile di vita.<br>
-<br>
-Contenimento dell’infiammazione sistemica (dei suoi mediatori), la stimolazione dei fattori neurotrofici che porta ad aumenti nella sinaptogenesi e nei volumi cerebrali regionali, la modifica del sistema immunitario, endocrino e del microbiota.<br>
-Cambiamenti epigenetici possono essere trasmessi attraverso le generazioni.<br>
-</p><br>
-<p class="quotes"><cite>Non è segno di buona salute mentale essere ben adattati ad una società malata<br>
-Jiddu Krishnamurti</cite>                                                                                                
-</p>  
+
+  
+
 </body>
 </html>
