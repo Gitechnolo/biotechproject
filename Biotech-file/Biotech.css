@@ -1,4 +1,4 @@
- /* Element with id */
+/* Element with id */
 #about {color: lightgoldenrodyellow; font-family: monospace; text-align: center;}
 #clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #newyear {color: lightgoldenrodyellow; position: absolute; left: 300px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
@@ -292,13 +292,23 @@ img.hover-shadow {transition: 0.3s;}
 
 /* DNA animazione */ 
   * { margin: 1; padding: 1; box-sizing: border-box; z-index: 1;}
-.material {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center;
-transform-style: preserve-3d; transform: rotateZ(-20deg);}
+.material {
+  position: absolute;
+  top: 110px;
+  left: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transform: rotateZ(-20deg);
+  z-index: 2; /* Ensure above background */
+}
 @keyframes rotate {0% { transform: rotateX(0deg);} 100% { transform: rotateX(360deg);}}
 .dna {/*line*/
     position: relative; width: 1px; height: 80px; border: 0px dotted #e7e7e7;
     box-shadow: 0 0 15px #e7e7e7; background: transparent; margin: 0px 10px;
-    animation: rotate 3s linear infinite;}
+    animation: rotate 3s linear infinite; z-index: 2; /* Ensure above background */
+}
 .dna::before {/*top dot*/
     content: ""; position: absolute; top: -2px; left: -5px; width: 10px; height: 10px;
     background: #ff00ff7e; border-radius: 50%; box-shadow: 0 0 15px #ff00ff80;}
