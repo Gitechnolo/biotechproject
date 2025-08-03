@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Marketing Cibernetica</title>
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
+    <link rel="stylesheet" href="Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
@@ -83,18 +83,40 @@
   </div>
  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
 <div id="clock">00:00:00</div>
-  <div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
-  <div id="week" class="waviy"></div>
-  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script>
+<div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
+<div id="week" class="waviy"></div>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script>
  <!-- end nav -->
+<!-- DNA animation wrapper for layout and z-index -->
+  <div class="material">
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+    <div class="dna"></div>
+  </div>
+<!-- End DNA animation wrapper --> 
+ 
 <!-- Network Market Analysis Section -->
 <div class="staff-row" style="margin-top:30px;">
   <div class="staff-col" style="max-width:100%;">
     <div class="staff-card">
       <div class="staff-container">
-        <p class="secHeader">Analisi di Rete del Marketing Cibernetica <span class="subtitle"><em>(Tendenze mercato globale)</em></span></p>        
-        
-        <canvas id="marketGraph" width="500" height="220" style="background:rgba(255,255,255,0.05);border-radius:8px;margin:20px 0;"></canvas>
+        <span class="subtitle">Benvenuti nella pagina di Marcketing Cibernetica, dove esploriamo le tendenze del mercato globale della cibernetica e come le nostre tecnologie avanzate possono aiutare le aziende a prosperare in questo settore in rapida evoluzione.</span>
+        <p class="secHeader">Analisi di Rete del Marketing Cibernetica <span class="subtitle"><em>(Tendenze mercato globale)</em></span></p>
+               
+         <canvas id="marketGraph" width="500" height="220" style="background:rgba(255,255,255,0.05);border-radius:8px;margin:20px 0;"></canvas>
         <script>
           // Simple market trend graph (mock data)
           const ctx = document.getElementById('marketGraph').getContext('2d');
