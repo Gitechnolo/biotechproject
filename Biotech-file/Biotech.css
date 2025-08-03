@@ -14,6 +14,11 @@
  ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
  li::marker {color: rgb(208, 255, 0); content: "~";}
  table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
+ a:link {color: rgb(9, 9, 148); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.57); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+ a:hover {color: rgb(25, 0, 139); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: Silver; text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+ a:visited {color: rgb(116, 9, 116); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: Silver; text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+ a:active {color: rgb(9, 9, 148); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: Silver; text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+ a:focus {color: rgb(9, 9, 148); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: Silver; text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
  img {border-radius: 6px;}
  
 /* Blank Image Gallery */
