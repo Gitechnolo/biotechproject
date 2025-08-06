@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biotech Chat</title>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_forumChat.css">
+</head>
+<body>
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>  
+<span class="biotechbold">Your O.S.</span> &nbsp; <button id="likeBtn" class="text">❤️ Mi Piace</button>
+<p id="risolution" class="text"></p>
+<!-- type ChatGPT (֍) -->
+<p id="typeInfo" class="text"></p>
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+<!-- End type ChatGPT (֍) -->
+<script>
+// typeInfo ChatGPT
+new TypeIt("#typeInfo", {
+strings: ["<span class='biotechbold'>Biotech Chat Window</span> &nbsp; <span class='text'>ChatGPT (֍)</span>", "<span class='text'>Clicca sul pulsante 'Chat' in basso a destra per iniziare una conversazione con il nostro team di supporto.<br>Siamo qui per aiutarti con qualsiasi domanda o problema tu possa avere.<br>Siamo online dalle 09:00 alle 18:00, dal lunedì al venerdì.<br>Se ci contatti al di fuori di questi orari, ti risponderemo il giorno lavorativo successivo.<br>Per favore assicurati del tuo indirizzo email corretto, in modo da poter rispondere al tuo messaggio.<br>Non condividere informazioni personali sensibili come password o dati bancari tramite questa chat.<br>Per ulteriori informazioni, visita la pagina del</span> <a href='https://gitechnolo.github.io/biotechproject/Staff.html' hreflang='it' target='_blank'>team di supporto:</a><br><span class='text'>Metti un like se ti piace questo progetto.<br>Grazie!</span>"],
+speed: 50,
+waitUntilVisible: true,
+}).go();
+document.getElementById("risolution").innerHTML =  "Your screen resolution is " + window.screen.width + "x" + window.screen.height + " pixels." + "<br>" + "Browser window size " + window.innerWidth + "x" + window.innerHeight + " pixels." + "<br>" + "" + navigator.appName + " version " + navigator.appVersion + "." + "<br>" + "Language: " + navigator.language + "." + " &nbsp; " + "Status: " + (navigator.onLine ? "Online" : "Offline") + "." + " &nbsp; " + "Cookies enabled: " + (navigator.cookieEnabled ? "Yes" : "No") + "." + " &nbsp; " + "JavaScript enabled: " + (typeof navigator.javaEnabled === "function" && navigator.javaEnabled() ? "Yes" : "No") + "." + " &nbsp; " + "Vendor: " + navigator.vendor + "." + " &nbsp; " + "<b>Do Not Track</b>: " + (navigator.doNotTrack ? navigator.doNotTrack : "Not supported") + ".";
+// End typeInfo ChatGPT
+
+// Aggiungi un evento per il pulsante "Mi Piace"
+      document.getElementById("likeBtn").addEventListener("click", function() {
+        this.innerHTML = "❤️ Piaciuto!";
+        this.disabled = true; // Disabilita il pulsante dopo il clic
+      });
+// End evento pulsante "Mi Piace"
+</script>
+
+<!-- Modern Minimal Static Chat UI (no file upload, email only) -->
+<button class="open-button" onclick="openForm()">💬 Chat</button>
+
+<div class="chat-popup" id="formChat">
+  <form id="chatForm" class="form-container" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST">
+    <h1 class="biotechtitle">Contatta Biotech</h1>
+    <div class="chat-messages" id="chatMessages"></div>
+    <label for="msgInput" class="biotechbold"><b>Messaggio</b></label>
+    <textarea id="msgInput" class="text" placeholder="Scrivi il tuo messaggio..." name="message" required></textarea>
+    <input type="email" name="email" class="text" placeholder="La tua email (opzionale)" style="width:100%;margin-bottom:8px;">
+    <button type="submit" class="btn">Invia</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Chiudi</button>
+    <div id="chatStatus" class="chat-status"></div>
+  </form>
+</div>
+<script>
+function openForm() {
+  document.getElementById("formChat").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("formChat").style.display = "none";
+}
+
+const chatForm = document.getElementById('chatForm');
+const chatMessages = document.getElementById('chatMessages');
+const chatStatus = document.getElementById('chatStatus');
+const msgInput = document.getElementById('msgInput');
+
+chatForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const msg = msgInput.value.trim();
+  if (!msg) return;
+  appendMessage('user', msg);
+  chatStatus.textContent = "Invio in corso...";
+  // Send to Formspree
+  fetch(chatForm.action, {
+    method: "POST",
+    body: new FormData(chatForm),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      chatStatus.textContent = "Messaggio inviato! Grazie per averci scritto.";
+      msgInput.value = '';
+      chatForm.reset();
+      setTimeout(() => { chatStatus.textContent = ""; }, 2500);
+    } else {
+      chatStatus.textContent = "Errore nell'invio. Riprova.";
+    }
+  }).catch(() => {
+    chatStatus.textContent = "Errore di rete.";
+  });
+});
+
+function appendMessage(sender, text) {
+  const div = document.createElement('div');
+  div.className = 'chat-message ' + sender;
+  div.textContent = (sender === 'user' ? "Tu: " : "Sistema: ") + text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+</body>
+</html>

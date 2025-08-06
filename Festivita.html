@@ -10,8 +10,19 @@
     <link rel="stylesheet" href="Biotech-file/Biotech.css">
    </head>
 <body class="biotechbody">
-
+<!-- Example usage in Festivita.html or any page -->
 <canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>
+
 <style>
 .background {
   position: absolute;
@@ -30,43 +41,53 @@ canvas#particles-canvas {
   z-index: -1;
 }
 </style>
-<script>
-  window.onload = function() {
-  Particles.init({
-    selector: '.background'
-  });
-};   
-const canvas = document.getElementById("particles-canvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const particles = [];
-for (let i = 0; i < 50; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 1,
-    vy: (Math.random() - 0.5) * 1,
-  });
-}
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p) => {
-    // Update position
-    p.x += p.vx;
-    p.y += p.vy;
-    // Bounce off the edges
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-    // Draw particle
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-    ctx.fillStyle = "#e7e7e77a";
-    ctx.fill();
-  });
-  requestAnimationFrame(animate);
-}
-animate();
+<script>  
+// Modern, reusable particles background effect
+(function () {
+  function initParticles(canvasId, options = {}) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const particleCount = options.count || 50;
+    const color = options.color || "#e7e7e77a";
+    const radius = options.radius || 2;
+    const speed = options.speed || 1;
+    const particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * speed,
+        vy: (Math.random() - 0.5) * speed,
+      });
+    }
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
+  // Expose globally for reuse
+  window.initParticles = initParticles;
+})();
 </script>
 
     <img id="Banner" src="Biotech-file/images/Biotech-menu/banner1.png" alt="Banner" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
@@ -112,9 +133,5 @@ document.addEventListener('DOMContentLoaded', setLastModified);
 <div id="footer" class="sidenavtext">
   <p>© 2025 Biotech. All rights free.</p>
   </div>
-<!--
-<p id="testInfo"></p>
-document.getElementById("testInfo").innerHTML = "<span class='biotechbold'>Cosa significa Do Not Track</span> <br> <span class='text'><b>Do Not Track (DNT)</b> è un header HTTP che permette agli utenti di comunicare al server web la loro preferenza riguardo alla raccolta dei dati di navigazione.<br> Quando l'utente attiva la funzione Do Not Track, il browser invia un valore specifico (1) al server, indicando che non desidera essere tracciato.<br> Questo valore 1 indica che l'utente non vuole essere tracciato, mentre il valore 0 indica che l'utente è disposto a essere tracciato.<br> Do Not Track non è una funzione obbligata, ma è una richiesta dell'utente che dipende dal sito web se rispettarla o meno.</span>";
- -->
 </body>
   </html>

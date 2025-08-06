@@ -6,9 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Your O.S.</title>
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
     </head>
 <body class="biotechbody">
-<div class="pioggia"></div>    
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>      
 <span class="biotechbold">Your O.S.</span> &nbsp; <button id="likeBtn" class="text">❤️ Mi Piace</button>
 <p id="risolution" class="text"></p>
 <!-- type ChatGPT (֍) -->
@@ -36,27 +47,12 @@
 </div>
 <!-- End DNA animazione -->
 <script>
-// Funzione gocce di pioggia      
-      function creaGocce() {
-    const pioggia = document.querySelector('.pioggia');
-    for (let i = 0; i < 100; i++) {
-        const goccia = document.createElement('div');
-        goccia.classList.add('goccia');
-        goccia.style.left = Math.random() * 100 + 'vw';
-        goccia.style.animationDuration = Math.random() * 2 + 1 + 's'; // Durata casuale tra 1 e 3 secondi
-        goccia.style.animationDelay = Math.random() * 3 + 's'; // Ritardo casuale fino a 3 secondi
-        pioggia.appendChild(goccia);
-    }
-}
-      creaGocce();
-// End gocce di pioggia      
-
-// Aggiungi un evento per il pulsante "Mi Piace"
+// Evento pulsante "Mi Piace"
       document.getElementById("likeBtn").addEventListener("click", function() {
         this.innerHTML = "❤️ Piaciuto!";
         this.disabled = true; // Disabilita il pulsante dopo il clic
       });
-// End evento pulsante "Mi Piace"
+// End evento "Mi Piace"
 
 // typeInfo ChatGPT
 new TypeIt("#typeInfo", {

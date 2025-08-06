@@ -239,6 +239,7 @@ function turnOffLight() {
 }
 // End effect around the bulb image
 
+// Popup
 function PopupCentrata()
 {
 var w = 760;
@@ -248,3 +249,13 @@ var t = Math.floor((screen.height-h)/2);
 
 window.open("https://gitechnolo.github.io/biotechproject/O.S_support.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
 }
+function ChatGPTpopupCenterAI()
+{
+var w = 825;
+var h = 672;
+var l = Math.floor((screen.width-w)/2);
+var t = Math.floor((screen.height-h)/2);
+
+window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+}
+// End popup

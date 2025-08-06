@@ -9,8 +9,20 @@
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday.js" defer></script>
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
-    </head>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
+     </head>
  <body onload="Clock()" class="biotechbody">
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>
 <!-- nav -->
 <table width="553" class="menu">
 <tr>
@@ -19,11 +31,11 @@
  <td id="menu-sales" class="biotechcolor" onmouseover="Menu('sales');" onmouseout="Timeout('sales');">
    <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><b>Progetti</b></a></td>
  <td id="menu-service" class="biotechcolor" onmouseover="Menu('service');" onmouseout="Timeout('service');">
-  <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it"><b>Service</b></a></td>
+  <a href="javascript:PopupCentrata()" hreflang="it"><b>Service</b></a></td>
  <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
    <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
  <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
-   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
+   <a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it"><b>Cybernetics Market</b></a></td>
 </tr>
 </table>
   <div id="products" class="biotechidden">
@@ -47,7 +59,7 @@
       <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
         <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
       <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
-        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+        <a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">&#8592; S p e c i a l s &#8594;</a></td></tr>
     </table>
   </div>   
   <div id="service" class="biotechidden">
@@ -55,7 +67,7 @@
       <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
         <a href="javascript:PopupCentrata()" hreflang="it">&#8592; O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) &#8594;</a></td></tr>
       <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
-        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+        <a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">&#8592; C o n t a c t &nbsp; U s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="staff" class="biotechidden">
@@ -97,6 +109,10 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
+ <div class="staff-row" style="margin-top:30px;">
+  <div class="staff-col" style="max-width:100%;">
+    <div class="staff-card">
+      <div class="staff-container">
 <table>
 <tr>
 <td><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.png" alt="Docker cp" style="width:100%;max-width:214px"></td>
@@ -154,5 +170,9 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
 document.addEventListener('DOMContentLoaded', setLastModified);
 </script>
 </p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
   </html> 

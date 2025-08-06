@@ -8,8 +8,20 @@
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
    </head>
 <body onload="Clock()" class="biotechbody">
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>
 <!-- nav -->
 <table width="553" class="menu">
 <tr>
@@ -22,7 +34,7 @@
  <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
    <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
  <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
-   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
+   <a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it"><b>Cybernetics Market</b></a></td>
 </tr>
 </table>
   <div id="products" class="biotechidden">
@@ -46,7 +58,7 @@
       <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
         <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
       <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
-        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+        <a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">&#8592; S p e c i a l s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="service" class="biotechidden">
@@ -54,7 +66,7 @@
       <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
         <a href="javascript:PopupCentrata()" hreflang="it">&#8592; O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) &#8594;</a></td></tr>
       <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
-        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+        <a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">&#8592; C o n t a c t &nbsp; U s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="staff" class="biotechidden">
@@ -74,8 +86,8 @@
   <div id="clock">00:00:00</div>
   <div id="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
   <div id="week" class="waviy"></div>
-  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
-  <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Sito in costruzione<span class="popuptext" id="myPopup">A beve fisiologia umana!</span></div></div><br>
+  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js"></script><br>
+  <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Sito in costruzione<span class="popuptext" id="myPopup">A beve fisiologia umana!</span></div></div>
 <!-- DNA animation -->
 <div class="material">
  <div class="dna"></div>
@@ -96,10 +108,20 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
+ <div class="staff-row" style="margin-top:30px;">
+  <div class="staff-col" style="max-width:100%;">
+    <div class="staff-card">
+      <div class="staff-container">
+<p><span class="emphasytile">Benvenuti nel Progetto Biotech!</span><br>
+<span class="biotechtitle">Qui per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.<br>
+La salute è il nostro bene piú prezioso, la nostra serenità è il nostro destino di salute.</span></p>
   <div id="ytVideoContainer">
   <video id="ytVideo" poster="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.jpg" preload="metadata">
-    <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
+  <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
+  <track src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+  <track src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_it.vtt" kind="subtitles" srclang="it" label="Italian">
+  Your browser does not support the video tag.
+  Your browser does not support HTML5 video.    
   </video>
   <div class="yt-video-controls">
     <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
@@ -143,6 +165,10 @@ Cambiamenti epigenetici possono essere trasmessi attraverso le generazioni.<br>
 </p><br>
 <p class="quotes"><cite>Non è segno di buona salute mentale essere ben adattati ad una società malata<br>
 Jiddu Krishnamurti</cite>                                                                                                
-</p>  
+</p>
+      </div>
+    </div>
+  </div>
+</div>  
 </body>
 </html>

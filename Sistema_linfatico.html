@@ -8,8 +8,20 @@
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
    </head>
 <body onload="Clock()" class="biotechbody">
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>
 <!-- nav -->
 <table width="553" class="menu">
 <tr>
@@ -22,7 +34,7 @@
  <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
    <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
  <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
-   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
+   <a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it"><b>Cybernetics Market</b></a></td>
 </tr>
 </table>
   <div id="products" class="biotechidden">
@@ -46,7 +58,7 @@
       <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
         <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
       <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
-        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+        <a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">&#8592; S p e c i a l s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="service" class="biotechidden">
@@ -54,7 +66,7 @@
       <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
         <a href="javascript:PopupCentrata()" hreflang="it">&#8592; O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) &#8594;</a></td></tr>
       <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
-        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+        <a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">&#8592; C o n t a c t &nbsp; U s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="staff" class="biotechidden">
@@ -95,7 +107,11 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
-<main>SISTEMA LINFATICO</main>
+ <div class="staff-row" style="margin-top:30px;">
+  <div class="staff-col" style="max-width:100%;">
+    <div class="staff-card">
+      <div class="staff-container">
+<span class="emphasytile">SISTEMA LINFATICO</span><br>
 <span class="text">I capillari sanguigni e le vene costituiscono un sistema di drenaggio per i liquidi tissulari.<br>
 La quantità di proteine nel liquido interstiziale è molto piccola, ma in certe condizioni aumenta considerevolmente e sembra improbabile che rientri nel sistema capillare.<br>
 Vi è poi un secondo sistema di drenaggio, quello linfatico, la cui funzione principale è quella di assorbire dagli spazi tissulari le proteine in eccesso.<br>
@@ -191,7 +207,7 @@ La linfa rappresenta un efficace sistema attraverso cui l'organismo raccoglie li
 Cosa accade quando non funziona correttamente?<br>
 Quando il prezioso sistema di drenaggio linfatico va in tilt si possono accumulare notevoli quantità di liquidi negli spazi interstiziali a causa del gradiente osmotico sfavorevole (passaggio di acqua dalla soluzione a concentrazione minore a quella a concentrazione maggiore, cioè dal sangue agli spazi interstiziali). Questa condizione è definita edema e, come ricordato, è la tipica conseguenza dell'immobilizzazione prolungata.<br>
 </p>
-<main>IL SISTEMA IMMUNITARIO</main>
+<span class="emphasytile">SISTEMA IMMUNITARIO</span>
 <p class="text">
 Il sistema immunitario è un insieme di organi e di cellule altamente specializzate con il compito di difendere l'organismo da agenti esterni, i quali possono causare infezioni.<br>
 Tutte le componenti di questo "istituto di vigilanza" si trovano sparse in diverse aree del corpo umano e comunicano tra di loro grazie a interconnessioni chiamate vasi linfatici.<br>
@@ -231,5 +247,9 @@ La risposta innata e quella adattiva si attivano insieme, regolandosi l'una con 
   <li>2. Innata, presente in tutti gli organismi pluricellulari dalla nascita come prima linea di difesa contro i patogeni;</li>
   <li>3. Adattiva, entra in azione quando la prima linea di difesa non basta;</li>
 </ul>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
   </html>

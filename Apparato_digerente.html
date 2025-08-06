@@ -8,8 +8,20 @@
   <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
   <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
   <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
 </head>
 <body onload="Clock()" class="biotechbody">
+<canvas id="particles-canvas" class="background"></canvas>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    initParticles("particles-canvas", {
+      count: 50,
+      color: "#e7e7e77a",
+      radius: 2,
+      speed: 1
+    });
+  });
+</script>  
  <!-- nav -->
 <table width="553" class="menu">
 <tr>
@@ -22,7 +34,7 @@
  <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
    <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
  <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
-   <a href="https://gitechnolo.github.io/biotechproject/jobs.html" hreflang="it"><b>Employment</b></a></td>
+   <a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it"><b>Cybernetics Market</b></a></td>
 </tr>
 </table>
   <div id="products" class="biotechidden">
@@ -46,7 +58,7 @@
       <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
         <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
       <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
-        <a href="https://gitechnolo.github.io/biotechproject/specials.html" hreflang="it">Specials</a></td></tr>
+        <a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">&#8592; S p e c i a l s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="service" class="biotechidden">
@@ -54,7 +66,7 @@
       <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
         <a href="javascript:PopupCentrata()" hreflang="it">&#8592; O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) &#8594;</a></td></tr>
       <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
-        <a href="https://gitechnolo.github.io/biotechproject/service.html" hreflang="it">Contact Us</a></td></tr>
+        <a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">&#8592; C o n t a c t &nbsp; U s &#8594;</a></td></tr>
     </table>
   </div>
   <div id="staff" class="biotechidden">
@@ -95,7 +107,12 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
-<main>INTRODUZIONE DIGESTIONE</main>
+ <div class="staff-row" style="margin-top:30px;">
+  <div class="staff-col" style="max-width:100%;">
+    <div class="staff-card">
+      <div class="staff-container">
+<p class="emphasytile">APPARATO DIGERENTE</p>        
+<span class="biotechbold">Introduzione digestione</span>
 <p class="text"><span class="yellowtext">Necessaria all'uomo per l'accrescimento corporeo, per rinnovare le cellule che via via si distruggono e reintegrare le energie che servono ai vari organi a funzionare, la nutrizione comprende una successione di eventi:</span><br>
  Il primo, detto <span class="biotechbold">alimentazione</span> consiste nell'ingestione dei cibi. Per essere assimilati e rispondere a tali funzioni, i cibi devono subire una serie di profonde trasformazioni che nel loro complesso costituiscono la <span class="biotechbold">digestione</span>. Dette trasformazioni avvengono nel tubo digerente, nel quale vari organi ghiandolari, tramite condotti di connessione o superficie, introducono alcune sostanze chimiche aventi il compito di trasformare gli alimenti ingeriti sino a renderli assorbibili.<br>
  La digestione è infatti un processo di continua semplificazione chimica degli alimenti ingeriti.<br>
@@ -152,8 +169,6 @@
     </div>
   </div>
 </div>
-<br>
-<main>APPARATO DIGERENTE</main>
 <p class="text">L'apparato digerente può essere paragonato ad un lungo tubo continuo, in cui si distinguono alcuni tratti, diversi per lunghezza, forma e volume (→ 1). Il primo tratto è rappresentato dalla <span class="biotechbold">bocca</span>, delimitata anteriormente dalle labbra attraverso le quali comunica con l'esterno. Posteriormente, attraverso l'istmo delle fauci, la bocca comunica con la <span class="biotechbold">faringe</span> situata all'incrocio tra le vie dell'apparato digerente e quelle dell'apparato respiratorio. Dalla faringe si passa nell'<span class="biotechbold">esofago</span>. Anch'esso di forma tubulare, l'esofago congiunge la faringe con lo <span class="biotechbold">stomaco</span>, che costituisce la parte più dilatata dell'intero apparato digerente. La forma di questo può variare in rapporto alle caratteristiche di ciascun individuo (la si è spesso paragonata a una cornamusa). Attraverso lo <span class="biotechbold">sfintere</span> pilorico (3), costituito da fibre muscolari circolari che si addensano maggiormente in questa zona, lo stomaco entra in comunicazione con l'<span class="biotechbold">intestino</span>.<br>
 <br>
 L'intestino è distinto in due tratti principali: il <span class="biotechbold">tenue</span>, lungo circa 6 metri e 80 centimetri, e il <span class="biotechbold">crasso</span>, lungo circa 1 metro e 80 centimetri. Il tenue è diviso a sua volta in <span class="biotechbold">duodeno, digiuno, ileo</span>. Nel duodeno versano il loro secreto due importanti ghiandole annesse, il <span class="biotechbold">pancreas</span> e il <span class="biotechbold">fegato</span>, e numerose altre ghiandole. L'ultimo tratto del tenue, l'<span class="biotechbold">ileo</span>, comunica per mezzo della valvola <span class="biotechbold">ileo-cecale</span> con il crasso, la cui parte iniziale costituisce il <span class="biotechbold">cieco</span>. Questo, proseguendo sul lato destro dell'addome, prende il nome di <span class="biotechbold">colon ascendente</span>. Al livello della superficie inferiore del fegato, esso si ripiega portandosi sul lato sinistro dell'addome con il nome di <span class="biotechbold">colon trasverso</span>, a cui segue il <span class="biotechbold">colon discendente</span> che continua quindi nel <span class="biotechbold">retto</span>. Questo si apre all'esterno mediante lo <span class="biotechbold">sfintere anale</span>.<br>
@@ -182,7 +197,7 @@ Il bolo, una volta compiuto il tratto esofageo, passa attraverso il cardias e gi
     <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg">
       <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg" alt="Masticazione e deglutizione" width="794" height="1123" loading="lazy">
     </a>
-    <div class="desc">Masticazione e deglutizione</div>
+    <div class="desc">Masticazione deglutizione</div>
   </div>
 </div>
 <div class="responsive">
@@ -271,7 +286,10 @@ Un normale metabolismo assicura all'organismo umano la costanza <span class="bio
 <br>
 La quantità minima di energia spesa da un organismo in condizioni base, cioè in riposo assoluto, per mantenere costante la temperatura, contrarre il cuore, respirare, sintetizzare diverse sostanze chimiche, ecc., si dice <span class="biotechbold">metabolismo basale</span>. In condizioni di assoluto riposo il metabolismo corrisponde perciò alla respirazione cellulare.<br>
 Per determinare tale consumo si ricorre ad una speciale apparecchiatura (→ 3) e, in base al consumo di ossigeno e a calcoli che tengono conto dell'età e della superficie corporea, si calcola il fabbisogno energetico di un individuo per unità di tempo. Il metabolismo è influenzato in grandissima parte dall'azione della tiroide su tutte le cellule.
-<br>
 </p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
