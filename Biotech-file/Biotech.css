@@ -8,31 +8,33 @@
 
 /* Element natural */
 @font-face {
-        font-family: 'myFirstFont';
-        src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/sansation_light.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'myFirstFont';
-        src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/sansation_bold.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      * { font-family: 'myFirstFont', Tahoma, Verdana, sans-serif; }
- ul.list {list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
- ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
- li::marker {color: rgb(208, 255, 0); content: "~";}
- table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
- a:link {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
- a:hover {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
- a:visited {color: rgb(116, 9, 116); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
- a:active {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
- a:focus {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
- img {border-radius: 6px;}
- 
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/sansation_light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/sansation_bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+* { font-family: 'myFirstFont', Tahoma, Verdana, sans-serif; }
+ul.list {list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
+ol.list {margin: 1; padding: 1; color: hwb(56 32% 7%);}
+li::marker {color: rgb(208, 255, 0); content: "~";}
+table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
+a:link {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:hover {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:visited {color: rgb(116, 9, 116); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:active {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:focus {color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+img {border-radius: 6px;}
+p {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s; cursor: pointer;}
+p:hover, p:focus {color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+
 /* Blank Image Gallery */
 div.gallery {border: 1px solid #ccc; border-radius: 6px;}
 div.gallery:hover {border: 1px solid #777; border-radius: 6px;}
