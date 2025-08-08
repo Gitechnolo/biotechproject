@@ -66,6 +66,7 @@
 ul.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
 ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; padding: 1; color: hwb(56 32% 7%);}
 li::marker {color: rgb(208, 255, 0); content: "~";}
+li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
 a:link {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 a:hover {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
