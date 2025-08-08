@@ -14,10 +14,10 @@
  /* modern browser version */
    background-clip: text; color: transparent; 
  }
- @font-face {
+@font-face {
   font-family: 'Sansation';
-  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff');
-  font-weight: normal;
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2');
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
-  }
+}
