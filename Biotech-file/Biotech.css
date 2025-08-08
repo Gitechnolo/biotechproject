@@ -68,7 +68,6 @@ a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; 
 img {border-radius: 6px;}
 p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s; cursor: pointer;}
 p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
-
 /* End element natural */
 
 /* Elements with class */
@@ -108,8 +107,8 @@ p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: 
 
 /* Element with id */
 #about {color: lightgoldenrodyellow; letter-spacing: 2px; text-align: center;}
-#clock {color: lightgoldenrodyellow; position: absolute; left: 3px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-#newyear {color: lightgoldenrodyellow; position: absolute; left: 300px; top: 209px; font-family: monospace; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#clock {color: lightgoldenrodyellow; position: absolute; left: 35px; /* Spostato leggermente a destra (prima era 3px) */ top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#newyear {color: lightgoldenrodyellow; position: absolute; left: 289px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 1.5s ease-in-out;}
 #imgLeftfl {float: left; padding: 4px;}
 #imgRight {float: right; padding: 4px;}

@@ -9,5 +9,5 @@ newYear = newYear + 1; // Add an year so that the next new year date could be us
 let newYearDate = new Date(newYear, 11, 31); // Get the date of the next New year
 let dayMilliseconds = 1000 * 60 * 60 * 24; // Get the number of milliseconds in 1 day
 let remainingDays = Math.ceil((newYearDate.getTime() - today.getTime()) / (dayMilliseconds)); // Get the remaining amount of days
-document.write(" - " + remainingDays + " giorni al 2026."); // Write it to the page
+document.write(" &nbsp; " + remainingDays + " giorni al 2026."); // Write it to the page
 // END NEW YEAR COUNTDOWN
