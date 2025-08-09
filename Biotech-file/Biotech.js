@@ -1,3 +1,55 @@
+// QRedshift: Comfort visivo automatico 
+
+function QRedshift() {
+  // Rileva se il sistema ha già una modalità "redshift" attiva 
+  // Se la luminosità/gamma del display è già "calda", QRedshift non si attiva.
+  
+  // Evita doppia applicazione
+  if (document.body.classList.contains('qredshift-active')) return;
+
+  // Orario locale
+  const hour = new Date().getHours();
+  let temp, gamma;
+  if (hour >= 7 && hour < 19) {
+    // Giorno
+    temp = 5900; // Kelvin
+    gamma = 1.0;
+  } else {
+    // Notte
+    temp = 3500;
+    gamma = 1.0;
+  }  
+
+  // Applica filtro CSS per comfort visivo
+  // Usa filter: sepia + hue-rotate + brightness per simulare temperatura colore
+  let filter;
+  if (temp === 5900) {
+    filter = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+  } else {
+    filter = 'sepia(0.5) hue-rotate(-30deg) brightness(1)';
+  }
+
+  document.body.classList.add('qredshift-active');
+  document.body.style.filter = filter;
+  document.body.style.transition = 'filter 0.5s';
+
+  // Icona attiva
+  const icon = document.createElement('div');
+  icon.className = 'qredshift-icon';
+  icon.title = 'Comfort visivo QRedshift attivo';
+  icon.innerHTML = '<span>🌙</span>';
+  document.body.appendChild(icon);
+  icon.addEventListener('click', () => {
+    // Disattiva QRedshift al click sull'icona
+    document.body.classList.remove('qredshift-active');
+    document.body.style.filter = '';
+    icon.remove();
+  });  
+}
+window.addEventListener('DOMContentLoaded', QRedshift);
+
+// End QRredshift
+
 //Fade effect (dissolvenza)
 function fadeEffect() { 
   let text = document.getElementById("fadingText");
