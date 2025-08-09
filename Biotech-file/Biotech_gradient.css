@@ -4,7 +4,7 @@
  /* keyframes that change the color variable */
  @keyframes gradient-change {to {--＠color-1: hsl(210 100% 59%); --＠color-2: hsl(310 100% 59%);}}
  @layer demo.support {main {display: grid; gap: 1lh;}}
- main {font-family: Arial, Helvetica, sans-serif; font-size: 19px; font-weight: normal;
+ main {font-family: 'Sansation', Arial, Helvetica, sans-serif; font-size: 19px;
  /* apply variable changes over time */
  animation: gradient-change 2s linear infinite alternate; background: linear-gradient(to right in oklch, 
  /* use the variables in a gradient (or wherever!) */
@@ -14,3 +14,10 @@
  /* modern browser version */
    background-clip: text; color: transparent; 
  }
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
