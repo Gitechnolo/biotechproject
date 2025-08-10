@@ -414,6 +414,8 @@ canvas#particles-canvas {
   width: 100%;
   height: 100%;
   z-index: -1;
+  /* Escludi dal filtro QRedshift */
+  filter: none !important;
 }
 /* End Background particles */
 
