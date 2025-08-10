@@ -412,7 +412,54 @@ canvas#particles-canvas {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -1;
+  filter: none !important;
+  pointer-events: none;
+  opacity: 0.9;
+  /* Effetto cellule staminali: alone e trasparenza */
+  /* Lo shadowBlur è gestito via JS */
 }
 /* End Background particles */
+
+/* QRedshift Icon Style */
+.qredshift-icon {
+  position: fixed;
+  top: 18px;        
+  right: 18px;      
+  bottom: unset;    
+  z-index: 9999;
+  background: #222e;
+  color: rgba(255, 255, 238, 0.651);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #0006;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7em;
+  border: 1px solid #ffb3009a;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+.qredshift-icon:hover {
+  background: #ffb300cc;
+  color: #222;
+}
+/* Migliora visibilità su mobile */
+@media (max-width: 600px) {
+  .qredshift-icon {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3em;
+  }
+}
+/* Nascondi QRedshift Icon su Tablet_forum.html */
+body[data-page="Tablet_forum"] .qredshift-icon {
+  display: none !important;
+}
+/* End QRedshift Icon Style */

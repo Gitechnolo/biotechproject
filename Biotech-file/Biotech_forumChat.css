@@ -1,9 +1,25 @@
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {background-color: rgb(0, 15, 22) !important; background-image: url('https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.jpg'); background-position: 50% 50%;}
 * {box-sizing: border-box;}
-.biotechbold {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); text-shadow: 2px 2px 5px blueviolet; letter-spacing: 2px; font-style: italic;}
-.text {font-family: Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet;}
-link {color: hwb(56 32% 7%); text-decoration: none; font-weight: bold; font-family: Tahoma, Verdana, sans-serif; font-size: 16px;}
-a:hover {color: hwb(93 0% 43%); text-decoration: underline; font-weight: bold; font-family: Tahoma, Verdana, sans-serif; font-size: 16px;}
+.subtitle {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
+.emphasytile {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.biotechtitle {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; font-weight: normal; cursor: pointer;}
+.biotechtitle:hover, .biotechtitle:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif;color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+.biotechbold {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); text-shadow: 2px 2px 5px blueviolet; letter-spacing: 1px; font-style: italic;}
+.text {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s; cursor: pointer;}
+.text:hover, .text:focus {color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+a:link {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:hover {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:visited {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: rgb(116, 9, 116); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:active {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+img {border-radius: 6px;}
 
 /* Background particles */
 .background {
@@ -19,8 +35,13 @@ canvas#particles-canvas {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -1;
+  filter: none !important;
+  pointer-events: none;
+  opacity: 0.9;
+  /* Effetto cellule staminali: alone e trasparenza */
+  /* Lo shadowBlur è gestito via JS */
 }
 /* End Background particles */
 
@@ -38,25 +59,46 @@ canvas#particles-canvas {
 .chat-popup {
   display: none;
   position: fixed;
-  bottom: 0;
-  right: 15px;
+  bottom: 80px; /* sopra il pulsante */
+  right: 24px;
+  z-index: 10001;
   border: 3px solid #969292bd;
-  z-index: 9;
   background: rgba(2, 43, 26, 0.966);
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-}
-.form-container {
   max-width: 340px;
+  width: 100%;
   padding: 18px 16px 12px 16px;
-  background: rgba(2, 43, 26, 0.966);
-  color: hwb(56 32% 7%);
-  text-shadow: 2px 2px 5px blueviolet;
-  border-radius: 12px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+}
+.open-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10001; /* sopra */
+  background-color: #222e;
+  color: #ffe;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0006;
+  transition: background 0.3s;
+}
+.open-button:hover {
+  background: #ffb300cc;
+  color: #222;
+}
+/* Chat form container */
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .form-container label, .form-container input, .form-container textarea, .form-container .btn {
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 .form-container textarea {
   width: 100%;
@@ -104,48 +146,45 @@ canvas#particles-canvas {
   opacity: 1;
   background: #04AA6D;
 }
-.open-button {
-  background: #555;
-  color: #fff;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-  border-radius: 8px;
-  font-size: 18px;
-  box-shadow: 0 2px 8px rgba(76,76,231,0.08);
-}
 .chat-messages {
-  background: rgba(0,0,0,0.15);
-  border-radius: 8px;
-  min-height: 80px;
-  max-height: 140px;
+  max-height: 120px;
   overflow-y: auto;
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 15px;
-  color: #fff;
-  font-family: Tahoma, Verdana, sans-serif;
+  background: #181818;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 8px;
+  font-size: 1em;
+  color: #ffe;
 }
 .chat-message.user {
   text-align: right;
-  color: #b6ffb6;
+  color: #b3e5fc;
   margin-bottom: 4px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 .chat-message.system {
   text-align: left;
-  color: #ffd580;
+  color: #ffe;
   margin-bottom: 4px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 .chat-status {
-  font-size: 13px;
-  color: #ffbaba;
-  margin-top: 6px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 0.95em;
+  color: #ffb300;
+  margin-top: 4px;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+}
+
+/* Responsive: mobile */
+@media (max-width: 600px) {
+  .open-button, .chat-popup {
+    right: 8px;
+    bottom: 8px;
+    max-width: 98vw;
+    font-size: 1.1em;
+  }
+  .chat-popup {
+    bottom: 60px;
+    padding: 10px 6px 8px 6px;
+  }
 }
