@@ -2,11 +2,11 @@
 (function () {
   function randomStemCellColor() {
     const colors = [
-      "rgba(180,220,255,0.5)",
-      "rgba(220,255,180,0.5)",
-      "rgba(255,220,180,0.5)",
-      "rgba(200,255,220,0.5)",
-      "rgba(255,200,220,0.5)",
+      "rgba(180, 220, 255, 0.26)",
+      "rgba(220, 255, 180, 0.22)",
+      "rgba(255, 220, 180, 0.19)",
+      "rgba(200, 255, 220, 0.21)",
+      "rgba(255, 200, 220, 0.21)",
     ];
     return colors[Math.floor(Math.random() * colors.length)];
   }
@@ -57,10 +57,10 @@
       }
       animate();
     } else {
-      // Effetto cellule staminali
+      // Effetto cellule staminali (dimensioni ridotte)
       const cellCount = options.count || 30;
-      const minRadius = options.minRadius || 12;
-      const maxRadius = options.maxRadius || 32;
+      const minRadius = 1.5;    // ridotto
+      const maxRadius = 4;   // ridotto
       const speed = options.speed || 0.6;
       const cells = [];
       for (let i = 0; i < cellCount; i++) {
