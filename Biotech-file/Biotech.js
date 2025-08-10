@@ -1,12 +1,8 @@
 // QRedshift: Comfort visivo automatico 
 
-function QRedshift() {
-  // Rileva se il sistema ha già una modalità "redshift" attiva 
-  // Se la luminosità/gamma del display è già "calda", QRedshift non si attiva.
-  
+function QRedshift() {   
   // Evita doppia applicazione
   if (document.body.classList.contains('qredshift-active')) return;
-
   // Orario locale
   const hour = new Date().getHours();
   let temp, gamma;
