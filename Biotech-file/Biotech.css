@@ -416,6 +416,8 @@ canvas#particles-canvas {
   z-index: -1;
   /* Escludi dal filtro QRedshift */
   filter: none !important;
+  pointer-events: none; /* Escludi gli eventi del mouse */
+  opacity: 0.5;
 }
 /* End Background particles */
 
