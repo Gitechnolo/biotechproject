@@ -12,7 +12,7 @@
     window.addEventListener("resize", resizeCanvas);
 
     const particleCount = options.count || 50;
-    const color = options.color || "#e7e7e77a";
+    const color = options.color || "#e7e7e73f";
     const radius = options.radius || 2;
     const speed = options.speed || 1;
     const particles = [];
