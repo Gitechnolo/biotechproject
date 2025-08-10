@@ -81,22 +81,43 @@ canvas#particles-canvas {
 .chat-popup {
   display: none;
   position: fixed;
-  bottom: 0;
-  right: 15px;
+  bottom: 80px; /* sopra il pulsante */
+  right: 24px;
+  z-index: 10001;
   border: 3px solid #969292bd;
-  z-index: 9;
   background: rgba(2, 43, 26, 0.966);
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-}
-.form-container {
   max-width: 340px;
+  width: 100%;
   padding: 18px 16px 12px 16px;
-  background: rgba(2, 43, 26, 0.966);
-  color: hwb(56 32% 7%);
-  text-shadow: 2px 2px 5px blueviolet;
-  border-radius: 12px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+}
+.open-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10001; /* sopra qredshift-icon */
+  background-color: #222e;
+  color: #ffe;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0006;
+  transition: background 0.3s;
+}
+.open-button:hover {
+  background: #ffb300cc;
+  color: #222;
+}
+/* Chat form container */
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .form-container label, .form-container input, .form-container textarea, .form-container .btn {
   font-family: Tahoma, Verdana, sans-serif;
@@ -147,48 +168,50 @@ canvas#particles-canvas {
   opacity: 1;
   background: #04AA6D;
 }
-.open-button {
-  background: #555;
-  color: #fff;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-  border-radius: 8px;
-  font-size: 18px;
-  box-shadow: 0 2px 8px rgba(76,76,231,0.08);
-}
 .chat-messages {
-  background: rgba(0,0,0,0.15);
-  border-radius: 8px;
-  min-height: 80px;
-  max-height: 140px;
+  max-height: 120px;
   overflow-y: auto;
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 15px;
-  color: #fff;
-  font-family: Tahoma, Verdana, sans-serif;
+  background: #181818;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 8px;
+  font-size: 1em;
+  color: #ffe;
 }
 .chat-message.user {
   text-align: right;
-  color: #b6ffb6;
+  color: #b3e5fc;
   margin-bottom: 4px;
   font-family: Tahoma, Verdana, sans-serif;
 }
 .chat-message.system {
   text-align: left;
-  color: #ffd580;
+  color: #ffe;
   margin-bottom: 4px;
   font-family: Tahoma, Verdana, sans-serif;
 }
 .chat-status {
-  font-size: 13px;
-  color: #ffbaba;
-  margin-top: 6px;
+  font-size: 0.95em;
+  color: #ffb300;
+  margin-top: 4px;
   font-family: Tahoma, Verdana, sans-serif;
+}
+
+/* Responsive: mobile */
+@media (max-width: 600px) {
+  .open-button, .chat-popup {
+    right: 8px;
+    bottom: 8px;
+    max-width: 98vw;
+    font-size: 1.1em;
+  }
+  .chat-popup {
+    bottom: 60px;
+    padding: 10px 6px 8px 6px;
+  }
+}
+
+/* Assicura che la chat sia sempre sopra la qredshift-icon */
+.qredshift-icon {
+  z-index: 9999 !important;
 }
