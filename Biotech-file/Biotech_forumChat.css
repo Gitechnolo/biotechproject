@@ -75,7 +75,7 @@ canvas#particles-canvas {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 10001; /* sopra qredshift-icon */
+  z-index: 10001; /* sopra */
   background-color: #222e;
   color: #ffe;
   border: none;
@@ -98,7 +98,7 @@ canvas#particles-canvas {
   gap: 8px;
 }
 .form-container label, .form-container input, .form-container textarea, .form-container .btn {
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 .form-container textarea {
   width: 100%;
@@ -160,19 +160,19 @@ canvas#particles-canvas {
   text-align: right;
   color: #b3e5fc;
   margin-bottom: 4px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 .chat-message.system {
   text-align: left;
   color: #ffe;
   margin-bottom: 4px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 .chat-status {
   font-size: 0.95em;
   color: #ffb300;
   margin-top: 4px;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 
 /* Responsive: mobile */
