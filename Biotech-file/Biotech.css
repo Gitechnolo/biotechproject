@@ -415,9 +415,8 @@ canvas#particles-canvas {
   height: 100%;
   z-index: -1;
   /* Escludi dal filtro QRedshift */
-  filter: none !important;
-  pointer-events: none; /* Escludi gli eventi del mouse */
-  opacity: 0.5;
+  filter: none !important;  
+  opacity: 1;
 }
 /* End Background particles */
 
