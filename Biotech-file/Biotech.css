@@ -150,7 +150,7 @@ html {box-sizing: border-box;}
 .staff-container {padding: 0 16px;}
 .staff-container::after, .staff-row::after {content: ""; clear: both; display: table;}
 .staff-title {color: grey;}
-.staff-button {border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: rgba(249, 250, 249, 0.2); text-align: center; cursor: pointer; width: 100%;}
+.staff-button {border-radius: 5px; border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: rgba(249, 250, 249, 0.2); text-align: center; cursor: pointer; width: 100%;}
 .staff-button:hover {background-color: #555;}
 /* End Staff Section */
 
@@ -457,5 +457,9 @@ canvas#particles-canvas {
     height: 36px;
     font-size: 1.3em;
   }
+}
+/* Nascondi QRedshift Icon su Tablet_forum.html */
+body[data-page="Tablet_forum"] .qredshift-icon {
+  display: none !important;
 }
 /* End QRedshift Icon Style */
