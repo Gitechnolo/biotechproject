@@ -150,8 +150,8 @@ html {box-sizing: border-box;}
 .staff-container {padding: 0 16px;}
 .staff-container::after, .staff-row::after {content: ""; clear: both; display: table;}
 .staff-title {color: grey;}
-.staff-button {border-radius: 5px; border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: rgba(249, 250, 249, 0.2); text-align: center; cursor: pointer; width: 100%;}
-.staff-button:hover {background-color: #555;}
+.staff-button {font-family: 'Sansation', Tahoma, Verdana, sans-serif; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); border-radius: 5px; border: none; outline: none; display: inline-block; padding: 7px 20px; color: white; background-color: rgba(249, 250, 249, 0.288); text-align: center; cursor: pointer; width: 100%; transition: all 0.3s ease; box-shadow: 0 0 0 rgba(0, 255, 200, 0.219);}
+.staff-button:hover {background-color: rgba(249, 250, 249, 0.521);}
 .imgStaff {max-width: 100%; height: auto; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .imgStaff:hover {opacity: 0.5 !important; -webkit-mask-image: none !important; mask-image: none !important; transition: opacity 4.0s ease-in-out;}
 /* End Staff Section */
