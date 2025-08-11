@@ -153,7 +153,7 @@ html {box-sizing: border-box;}
 .staff-button {border-radius: 5px; border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: rgba(249, 250, 249, 0.2); text-align: center; cursor: pointer; width: 100%;}
 .staff-button:hover {background-color: #555;}
 .imgStaff {max-width: 100%; height: auto; opacity: 0.7; transition: 0.9s; filter: brightness(0.8); filter: contrast(0.8); filter: saturate(0.8); filter: hue-rotate(-10deg);}
-.imgStaff:hover {opacity: 1; transition: 0.9s; filter: brightness(1.2); filter: contrast(1.2); filter: saturate(1.2); filter: hue-rotate(10deg);}
+.imgStaff:hover {opacity: 1.0; transition: 0.9s; filter: brightness(1.2); filter: contrast(1.2); filter: saturate(1.2); filter: hue-rotate(10deg);}
 /* End Staff Section */
 
 /* IMG ZOOM */
