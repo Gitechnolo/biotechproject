@@ -598,8 +598,25 @@ idrolipidico di superficie che riveste il pelo e l’epidermide al fine di prote
 esterni. L’equilibrio tra sudore e sebo è fondamentale per la difesa dell’epidermide e del cuoio capelluto dagli
 agenti esterni. L’eccessiva presenza di questo film a livello del cuoio capelluto ma soprattutto lungo lo stelo
 dei capelli provoca cattiva pettinabilità e senso di sporco.
-<span id="lastModified"></span>
 </p>
+<div id="about">
+  <!-- Last modified date -->
+<div id="lastModified"></div>
+<script>
+  setLastModified();
+</script>
+<!-- ...... -->
+<script>
+  function setLastModified() {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    el.textContent = `Last edit: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+  }
+}
+document.addEventListener('DOMContentLoaded', setLastModified);
+</script> 
+  </div>
       </div>
     </div>
   </div>
