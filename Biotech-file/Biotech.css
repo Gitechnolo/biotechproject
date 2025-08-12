@@ -94,7 +94,7 @@ p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: 
 .menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .video {max-width:100%; width:50%; height:auto; min-width:unset; min-height:unset;}
 .opacity {opacity: 0.5;}
-.waviy {position: relative; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 26px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 20px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.waviy {position: relative; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 26px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 41px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .waviy span {position: relative; display: inline-block; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i))}
 @keyframes flip {0%,80% {transform: rotateY(360deg)}}
 .transparent {opacity: 0.5; transition: 0.7s; filter: brightness(0.8); filter: contrast(0.8); filter: saturate(0.8); filter: hue-rotate(-10deg);}
