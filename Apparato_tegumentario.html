@@ -600,6 +600,24 @@ agenti esterni. L’eccessiva presenza di questo film a livello del cuoio capell
 dei capelli provoca cattiva pettinabilità e senso di sporco.
 <span id="lastModified"></span>
 </p>
+<div id="about">
+  <!-- Last modified date -->
+<div id="lastModified"></div>
+<script>
+  setLastModified();
+</script>
+<!-- ...... -->
+<script>
+  function setLastModified() {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    el.textContent = `Last edit: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+  }
+}
+document.addEventListener('DOMContentLoaded', setLastModified);
+</script> 
+  </div>
       </div>
     </div>
   </div>
