@@ -130,11 +130,9 @@ window.setTimeout("Clock();",250);
 function openModal() {
   document.getElementById("myModal").style.display = "block";
 }
-
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
-
 var slideIndex = 1;
 
 // Inizializza le slide all'apertura
@@ -143,22 +141,18 @@ showSlides(slideIndex);
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
-
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
-
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
-
   // Verifica che ci siano delle slide
   if (slides.length === 0) {
     return; // Esci se non ci sono slide
   }
-
   // Aggiorna slideIndex con logica circolare
   if (n > slides.length) {
     slideIndex = 1;
@@ -167,20 +161,16 @@ function showSlides(n) {
   } else {
     slideIndex = n; // Assegna solo se valido
   }
-
   // Nascondi tutte le slide
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-
   // Rimuovi la classe 'active' da tutti i dot
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-
   // Mostra la slide corrente
   slides[slideIndex - 1].style.display = "block";
-
   // Aggiorna il dot attivo e il caption, solo se esistono i dot
   if (dots.length > 0 && dots[slideIndex - 1]) {
     dots[slideIndex - 1].className += " active";
@@ -191,18 +181,22 @@ function showSlides(n) {
 }   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
-
-// Get the modal image 1
+// Modified get the modal image 1 
 var modal = document.getElementById("myModal");
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var img = document.getElementById("myImg");
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
+// Only set up the click handler if the image element exists
+if (img && modal && modalImg) {
+  img.onclick = function () {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    if (captionText) {
+      captionText.innerHTML = this.alt;
+    }
+  };
+}   
 // Get the modal image 2
 var modal = document.getElementById("myModal");
 // Get the image and insert it inside the modal - use its "alt" text as a caption
