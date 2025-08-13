@@ -1,5 +1,4 @@
 // QRedshift: Comfort visivo automatico 
-
 function QRedshift() {   
   // Evita doppia applicazione
   if (document.body.classList.contains('qredshift-active')) return;
@@ -15,7 +14,6 @@ function QRedshift() {
     temp = 3500;
     gamma = 1.0;
   }  
-
   // Applica filtro CSS per comfort visivo
   // Usa filter: sepia + hue-rotate + brightness per simulare temperatura colore
   let filter;
@@ -24,11 +22,9 @@ function QRedshift() {
   } else {
     filter = 'sepia(0.5) hue-rotate(-30deg) brightness(1)';
   }
-
   document.body.classList.add('qredshift-active');
   document.body.style.filter = filter;
   document.body.style.transition = 'filter 0.5s';
-
   // Icona attiva
   const icon = document.createElement('div');
   icon.className = 'qredshift-icon';
@@ -43,9 +39,7 @@ function QRedshift() {
   });  
 }
 window.addEventListener('DOMContentLoaded', QRedshift);
-
 // End QRredshift
-
 //Fade effect (dissolvenza)
 function fadeEffect() {
   let text = document.getElementById("fadingText");
@@ -57,11 +51,9 @@ function fadeEffect() {
     text.classList.toggle("fade", !visible);
   }, 2000);
 }
-
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)
-
-// drop-down menu
+// Drop-down menu
 var inmenu=false;
 var lastmenu=0;
 function Menu (current) {
@@ -105,7 +97,6 @@ function UnHighlight(menu,item) {
    obj.style.backgroundColor="rgba(209, 206, 206, 0.57)";
 }
 //End drop-down menu
-
 // Clock
 function Clock() {
 if (!document.getElementById) return;
@@ -125,7 +116,6 @@ theclock.innerHTML = " " + gg + "/" + mm + "/" + aaaa + " - " +  hours + ":" + m
 window.setTimeout("Clock();",250);
 }
 //End  Clock
-
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
   document.getElementById("myModal").style.display = "block";
@@ -134,7 +124,6 @@ function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
 var slideIndex = 1;
-
 // Inizializza le slide all'apertura
 showSlides(slideIndex);
 
@@ -182,7 +171,6 @@ function showSlides(n) {
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
 // --- Performance Helpers ---
-
 // Throttle: limit how often a function can run
 function throttle(fn, limit) {
   let lastCall = 0;
