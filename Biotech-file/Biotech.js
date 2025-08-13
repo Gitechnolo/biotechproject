@@ -47,16 +47,18 @@ window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRredshift
 
 //Fade effect (dissolvenza)
-function fadeEffect() { 
+function fadeEffect() {
   let text = document.getElementById("fadingText");
+  if (!text) return;
+
   let visible = true;
   setInterval(() => {
-      visible = !visible;                                                
-      text.style.opacity = visible ? 1 : 0; // Vecchia sintassi - text.style.opacity = visible ? "1" : "0";
-text.style.filter = visible ? 'alpha(opacity=100)' : 'alpha(opacity=0)';  // Nuova sintassi per IE
+    visible = !visible;
+    text.classList.toggle("fade", !visible);
   }, 2000);
 }
-window.addEventListener("load", fadeEffect);
+
+window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)
 
 // drop-down menu
