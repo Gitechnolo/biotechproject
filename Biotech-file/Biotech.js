@@ -130,35 +130,65 @@ window.setTimeout("Clock();",250);
 function openModal() {
   document.getElementById("myModal").style.display = "block";
 }
+
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
+
 var slideIndex = 1;
+
+// Inizializza le slide all'apertura
 showSlides(slideIndex);
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
+
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
+
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+
+  // Verifica che ci siano delle slide
+  if (slides.length === 0) {
+    return; // Esci se non ci sono slide
+  }
+
+  // Aggiorna slideIndex con logica circolare
+  if (n > slides.length) {
+    slideIndex = 1;
+  } else if (n < 1) {
+    slideIndex = slides.length;
+  } else {
+    slideIndex = n; // Assegna solo se valido
+  }
+
+  // Nascondi tutte le slide
   for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    slides[i].style.display = "none";
   }
+
+  // Rimuovi la classe 'active' da tutti i dot
   for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
+
+  // Mostra la slide corrente
+  slides[slideIndex - 1].style.display = "block";
+
+  // Aggiorna il dot attivo e il caption, solo se esistono i dot
+  if (dots.length > 0 && dots[slideIndex - 1]) {
+    dots[slideIndex - 1].className += " active";
+    if (captionText) {
+      captionText.innerHTML = dots[slideIndex - 1].alt || "";
+    }
+  }
+}   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
 
