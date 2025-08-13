@@ -206,24 +206,8 @@
   <p class="sansation-light-italic">
     Ascolta la nostra musica di sottofondo mentre esplori questa pagina.
   </p> 
-  <!-- Last modified date -->
-<div id="lastModified"></div>
-<script>
-  setLastModified();
-</script>
-<!-- ...... -->
-<script>
-  function setLastModified() {
-  const el = document.getElementById('lastModified');
-  if (el) {
-    const d = new Date(document.lastModified);
-    el.textContent = `Last edit: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-  }
-}
-document.addEventListener('DOMContentLoaded', setLastModified);
-</script> 
+  <div id="lastModified"></div>
   </div>
-
       </div>
     </div>
   </div>
