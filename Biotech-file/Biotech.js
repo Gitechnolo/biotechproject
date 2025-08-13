@@ -51,8 +51,9 @@ function fadeEffect() {
   let text = document.getElementById("fadingText");
   let visible = true;
   setInterval(() => {
-      visible = !visible;
-      text.style.opacity = visible ? "1" : "0";
+      visible = !visible;                                                
+      text.style.opacity = visible ? 1 : 0; // Vecchia sintassi - text.style.opacity = visible ? "1" : "0";
+text.style.filter = visible ? 'alpha(opacity=100)' : 'alpha(opacity=0)';  // Nuova sintassi per IE
   }, 2000);
 }
 window.addEventListener("load", fadeEffect);
