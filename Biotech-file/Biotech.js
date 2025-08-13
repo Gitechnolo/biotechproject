@@ -181,61 +181,51 @@ function showSlides(n) {
 }   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
-// Modified get the modal image 1 
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-// Only set up the click handler if the image element exists
-if (img && modal && modalImg) {
-  img.onclick = function () {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    if (captionText) {
-      captionText.innerHTML = this.alt;
+// MODAL IMAGE
+document.addEventListener("DOMContentLoaded", function () {
+  // Seleziona UNA volta il modal e il caption (tutte le immagini popup)
+  var modal = document.getElementById("myModal");
+  var captionText = document.getElementById("caption");
+  // Seleziona tutte le immagini che iniziano con id="myImg" (myImg, myImg2, myImg3, ecc.)
+  var imgElements = Array.from(document.querySelectorAll("img[id^='myImg']"));
+  // Verifica che ci sia almeno il modal
+  if (!modal) {
+    console.error("Elemento #myModal non trovato.");
+    return;
+  }
+  // Gestisci ogni immagine
+  imgElements.forEach(function(img) {
+    img.onclick = function () {
+      // Trova l'elemento img dentro il modal corrispondente (es. img01, img02...)
+      var targetImgId = "img" + this.id.replace("myImg", "0"); // myImg → img01, myImg2 → img02
+      var modalImg = document.getElementById(targetImgId);
+
+      if (modalImg) {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        if (captionText) {
+          captionText.innerHTML = this.alt || "";
+        }
+      } else {
+        console.warn("Immagine modale mancante: " + targetImgId);
+      }
+    };
+  });
+  // Chiudi il modal con la "X"
+  var span = document.getElementsByClassName("close")[0];
+  if (span) {
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+  }
+  // Facoltativo: chiudi il modal cliccando fuori dall'immagine
+  modal.onclick = function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
     }
   };
-}   
-// Get the modal image 2
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg2");
-var modalImg = document.getElementById("img02");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 3
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg3");
-var modalImg = document.getElementById("img03");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 4
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg4");
-var modalImg = document.getElementById("img04");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
+});
+// END - MODAL IMAGE
 
 // --- Performance Helpers ---
 
