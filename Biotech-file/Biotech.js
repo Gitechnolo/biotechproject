@@ -181,52 +181,6 @@ function showSlides(n) {
 }   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
-// MODAL IMAGE
-document.addEventListener("DOMContentLoaded", function () {
-  // Seleziona UNA volta il modal e il caption (tutte le immagini popup)
-  var modal = document.getElementById("myModal");
-  var captionText = document.getElementById("caption");
-  // Seleziona tutte le immagini che iniziano con id="myImg" (myImg, myImg2, myImg3, ecc.)
-  var imgElements = Array.from(document.querySelectorAll("img[id^='myImg']"));
-  // Verifica che ci sia almeno il modal
-  if (!modal) {
-    console.error("Elemento #myModal non trovato.");
-    return;
-  }
-  // Gestisci ogni immagine
-  imgElements.forEach(function(img) {
-    img.onclick = function () {
-      // Trova l'elemento img dentro il modal corrispondente (es. img01, img02...)
-      var targetImgId = "img" + this.id.replace("myImg", "0"); // myImg → img01, myImg2 → img02
-      var modalImg = document.getElementById(targetImgId);
-
-      if (modalImg) {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        if (captionText) {
-          captionText.innerHTML = this.alt || "";
-        }
-      } else {
-        console.warn("Immagine modale mancante: " + targetImgId);
-      }
-    };
-  });
-  // Chiudi il modal con la "X"
-  var span = document.getElementsByClassName("close")[0];
-  if (span) {
-    span.onclick = function () {
-      modal.style.display = "none";
-    };
-  }
-  // Facoltativo: chiudi il modal cliccando fuori dall'immagine
-  modal.onclick = function (event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  };
-});
-// END - MODAL IMAGE
-
 // --- Performance Helpers ---
 
 // Throttle: limit how often a function can run
