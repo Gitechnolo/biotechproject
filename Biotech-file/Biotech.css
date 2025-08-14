@@ -1,6 +1,6 @@
 /* Element natural */
-@font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff'); font-weight: normal; font-style: normal; font-display: swap;}
-@font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2'), url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff') format('woff'); font-weight: 300; font-style: normal; font-display: swap;}
+@font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap;}
+@font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2'); font-weight: bold; font-style: normal; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2') format('woff2'); font-weight: bold; font-style: italic; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap;}
@@ -225,12 +225,13 @@ img.hover-shadow {transition: 0.3s;}
 #likeBtn:disabled:active {transform: none;}
 /* End style pulsante "Mi Piace" */
 /* DNA animazione */ 
-* { margin: 1; padding: 1; box-sizing: border-box; z-index: 1;}
-.material {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; transform: rotateZ(-20deg); z-index: 2; /* Ensure above background */}
-@keyframes rotate {0% { transform: rotateX(0deg);} 100% { transform: rotateX(360deg);}}
-.dna {/*line*/position: relative; width: 1px; height: 80px; border: 0px dotted #e7e7e7; box-shadow: 0 0 15px #e7e7e7; background: transparent; margin: 0px 10px; animation: rotate 3s linear infinite; z-index: 2; /* Ensure above background */}
-.dna::before {/*top dot*/content: ""; position: absolute; top: -2px; left: -5px; width: 10px; height: 10px; background: #ff00ff7e; border-radius: 50%; box-shadow: 0 0 15px #ff00ff80;}
-.dna::after {/*bottom dot*/content: ''; position: absolute; bottom: -2px; left: -5px; width: 10px; height: 10px; background: rgba(0, 255, 255, 0.5); border-radius: 50%; box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);}
+* {margin: 0; padding: 0; box-sizing: border-box;}
+.material {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; transform: rotateZ(-20deg);}
+@keyframes rotate {0% { transform: rotateX(0deg); } 100% { transform: rotateX(360deg); }}
+.dna {position: relative; width: 1px; height: 80px; border: 0px dotted #e7e7e7; box-shadow: 0 0 15px #e7e7e7; background: transparent; margin: 0 10px; animation: rotate 3s linear infinite;}
+.dna::before {content: ""; position: absolute; top: -2px; left: -5px; width: 10px; height: 10px; background: #ff00ff7e; border-radius: 50%; box-shadow: 0 0 15px #ff00ff80;}
+.dna::after {content: ''; position: absolute; bottom: -2px; left: -5px; width: 10px; height: 10px; background: rgba(0, 255, 255, 0.5); border-radius: 50%; box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);}
+/* Animazione delay */
 .dna:nth-child(1) {animation-delay: -0.15s;}
 .dna:nth-child(2) {animation-delay: -0.3s;}
 .dna:nth-child(3) {animation-delay: -0.45s;}
