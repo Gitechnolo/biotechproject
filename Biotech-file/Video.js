@@ -1,48 +1,69 @@
-// Custom Video Player with Lazy Load, Subtitles & Full Controls
+// 🎯 Video.js universale — supporta più video con caricamento lazy opzionale
 document.addEventListener('DOMContentLoaded', function () {
-  const posterImg = document.getElementById('videoPoster');
-  if (!posterImg) return;
+  // Seleziona tutti i container con [id="ytVideoContainer"] o aggiungi classe .video-container per più flessibilità
+  const containers = document.querySelectorAll('#ytVideoContainer');
 
-  posterImg.addEventListener('click', function () {
-    const container = document.getElementById('ytVideoContainer');
+  containers.forEach(container => {
+    let video = container.querySelector('#ytVideo');
+    const controls = container.querySelector('.yt-video-controls');
 
-    // Crea l'elemento video
+    // Se il video NON c'è (solo poster), lo creiamo al click
+    if (!video) {
+      const poster = container.querySelector('.video-poster');
+      if (!poster) return;
+
+      poster.addEventListener('click', function () {
+        video = createVideoElement(poster);
+        container.replaceChild(video, poster);
+        if (controls) controls.style.display = 'flex';
+        initializeControls(video, controls);
+      });
+    }
+    // Se il video C'È già (come in Staff.html), nascondiamo i controlli finché non serve
+    else {
+      if (controls) {
+        // Inizializza subito i controlli
+        controls.style.display = 'flex'; // o 'none' se vuoi mostrarli solo al play
+        initializeControls(video, controls);
+      }
+    }
+  });
+
+  // 🔧 Crea un nuovo video (per caricamento lazy)
+  function createVideoElement(poster) {
     const video = document.createElement('video');
     video.id = 'ytVideo';
     video.controls = false;
     video.preload = 'metadata';
-    video.poster = posterImg.src;
+    video.poster = poster.src;
 
-    // Aggiungi sorgente video
+    // Sorgente dal data-src o da attributo fisso
     const source = document.createElement('source');
-    source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4';
+    source.src = poster.dataset.src || 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
     source.type = 'video/mp4';
     video.appendChild(source);
 
-    // Aggiungi sottotitoli
-    const trackEN = document.createElement('track');
-    trackEN.kind = 'subtitles';
-    trackEN.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_en.vtt';
-    trackEN.srclang = 'en';
-    trackEN.label = 'English';
-    trackEN.default = true;
-    video.appendChild(trackEN);
+    // Sottotitoli (se presenti)
+    ['en', 'it'].forEach(lang => {
+      const trackSrc = poster.dataset[`track${lang.toUpperCase()}`];
+      if (trackSrc) {
+        const track = document.createElement('track');
+        track.kind = 'subtitles';
+        track.srclang = lang;
+        track.label = lang === 'en' ? 'English' : 'Italian';
+        track.src = trackSrc;
+        if (lang === 'en') track.default = true;
+        video.appendChild(track);
+      }
+    });
 
-    const trackIT = document.createElement('track');
-    trackIT.kind = 'subtitles';
-    trackIT.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_it.vtt';
-    trackIT.srclang = 'it';
-    trackIT.label = 'Italian';
-    video.appendChild(trackIT);
+    return video;
+  }
 
-    // Sostituisci l'immagine con il video
-    container.replaceChild(video, posterImg);
+  // ⚙️ Inizializza i controlli su un video
+  function initializeControls(video, controls) {
+    if (!controls) return;
 
-    // Mostra i controlli personalizzati
-    const controls = document.querySelector('.yt-video-controls');
-    if (controls) controls.style.display = 'flex';
-
-    // === Inizializza i controlli (tutto il tuo codice originale) ===
     const playPauseBtn = controls.querySelector('#ytPlayPause');
     const playPauseIcon = controls.querySelector('#ytPlayPauseIcon');
     const progressBar = controls.querySelector('#ytProgress');
@@ -54,69 +75,61 @@ document.addEventListener('DOMContentLoaded', function () {
     const fullscreenBtn = controls.querySelector('#ytFullscreen');
     const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen');
 
-    // Funzione per formattare il tempo
     function formatTime(time) {
       const minutes = Math.floor(time / 60);
       const seconds = Math.floor(time % 60);
       return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
-
     // Play/Pause
-    playPauseBtn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
-      }
+    playPauseBtn?.addEventListener('click', () => {
+      if (video.paused) video.play();
+      else video.pause();
     });
 
     video.addEventListener('play', () => {
       playPauseIcon.textContent = '⏸️';
     });
-
     video.addEventListener('pause', () => {
       playPauseIcon.textContent = '▶️';
     });
-
-    // Progress bar
+    // Progresso
     video.addEventListener('timeupdate', () => {
-      progressBar.value = video.currentTime;
-      currentTime.textContent = formatTime(video.currentTime);
+      if (progressBar) {
+        progressBar.value = video.currentTime;
+        currentTime.textContent = formatTime(video.currentTime);
+      }
     });
-   
+
     video.addEventListener('loadedmetadata', () => {
-      progressBar.max = video.duration;
+      if (progressBar) {
+        progressBar.max = video.duration;
+      }
       durationEl.textContent = formatTime(video.duration);
       currentTime.textContent = formatTime(video.currentTime);
     });
 
-    progressBar.addEventListener('input', () => {
+    progressBar?.addEventListener('input', () => {
       video.currentTime = progressBar.value;
     });
 
     // Volume
-    volumeControl.addEventListener('input', () => {
+    volumeControl?.addEventListener('input', () => {
       video.volume = volumeControl.value;
-      if (video.volume === 0) {
-        muteIcon.textContent = '🔇';
-      } else {
-        muteIcon.textContent = video.muted ? '🔇' : '🔊';
-      }
+      muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
     });
 
     video.addEventListener('volumechange', () => {
-      volumeControl.value = video.volume;
-      muteIcon.textContent = (video.muted || video.volume === 0) ? '🔇' : '🔊';
+      muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
     });
 
     // Mute/Unmute
-    muteBtn.addEventListener('click', () => {
+    muteBtn?.addEventListener('click', () => {
       video.muted = !video.muted;
-      muteIcon.textContent = video.muted ? '🔇' : (video.volume === 0 ? '🔇' : '🔊');
+      muteIcon.textContent = video.muted ? '🔇' : '🔊';
     });
 
     // Fullscreen
-    fullscreenBtn.addEventListener('click', () => {
+    fullscreenBtn?.addEventListener('click', () => {
       if (video.requestFullscreen) {
         video.requestFullscreen();
       } else if (video.webkitRequestFullscreen) {
@@ -126,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    exitFullscreenBtn.addEventListener('click', () => {
+    exitFullscreenBtn?.addEventListener('click', () => {
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
@@ -136,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Gestione fullscreen change
+    // Gestione uscita fullscreen
     document.addEventListener('fullscreenchange', () => {
       if (document.fullscreenElement === video) {
         fullscreenBtn.style.display = 'none';
@@ -147,21 +160,21 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Tasti rapidi (opzionale)
+    // Tasti rapidi
     video.addEventListener('keydown', (e) => {
       if (e.code === 'Space') {
-        playPauseBtn.click();
+        playPauseBtn?.click();
         e.preventDefault();
       } else if (e.code === 'KeyM') {
-        muteBtn.click();
+        muteBtn?.click();
         e.preventDefault();
       } else if (e.code === 'KeyF') {
-        fullscreenBtn.click();
+        fullscreenBtn?.click();
         e.preventDefault();
       }
     });
 
-    // Assicurarsi che il video sia accessibile da altri script se necessario
+    // Assicura che il video sia accessibile
     window.currentVideo = video;
-  });
+  }
 });   
