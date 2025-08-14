@@ -68,18 +68,31 @@ function Menu(current) {
   var m = document.getElementById("menu-" + current);
   var box = document.getElementById(current);
 
-  // Controllo sicurezza
   if (!m || !box) return;
 
-  // ✅ Aggiungi 'px' altrimenti non funziona
-  box.style.left = m.offsetLeft + 'px';
-  box.style.top = (m.offsetTop + m.offsetHeight) + 'px';
+  // Trova la tabella con classe "menu"
+  var table = document.querySelector('table.menu');
+  if (!table) {
+    // Fallback: usa posizione della cella
+    box.style.left = m.offsetLeft + 'px';
+  } else {
+    // Calcola la posizione X centrata rispetto alla tabella
+    var tableRect = table.getBoundingClientRect();
+    var boxWidth = 553; // larghezza fissa del dropdown
+    var leftOffset = tableRect.left + (tableRect.width / 2) - (boxWidth / 2);
+
+    // Imposta left in px
+    box.style.left = leftOffset + 'px';
+  }
+
+  // Posiziona sotto la tabella
+  box.style.top = (table ? table.offsetTop + table.offsetHeight : m.offsetTop + m.offsetHeight) + 'px';
 
   box.style.visibility = "visible";
   m.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
   box.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
   box.style.width = "553px";
-}
+}   
 
 function Erase(current) {
   if (!document.getElementById) return;
