@@ -56,20 +56,15 @@ window.addEventListener("load", fadeEffect);
 // Drop-down menu
 var inmenu = false;
 var lastmenu = 0;
-
 function Menu(current) {
   if (!document.getElementById) return;
   inmenu = true;
   var oldmenu = lastmenu;
   lastmenu = current;
-
   if (oldmenu) Erase(oldmenu);
-
   var m = document.getElementById("menu-" + current);
   var box = document.getElementById(current);
-
   if (!m || !box) return;
-
   // Trova la tabella con classe "menu"
   var table = document.querySelector('table.menu');
   if (!table) {
@@ -80,11 +75,9 @@ function Menu(current) {
     var tableRect = table.getBoundingClientRect();
     var boxWidth = 553; // larghezza fissa del dropdown
     var leftOffset = tableRect.left + (tableRect.width / 2) - (boxWidth / 2);
-
     // Imposta left in px
     box.style.left = leftOffset + 'px';
   }
-
   // Posiziona sotto la tabella
   box.style.top = (table ? table.offsetTop + table.offsetHeight : m.offsetTop + m.offsetHeight) + 'px';
 
@@ -93,27 +86,21 @@ function Menu(current) {
   box.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
   box.style.width = "553px";
 }   
-
 function Erase(current) {
   if (!document.getElementById) return;
   if (inmenu && lastmenu === current) return;
-
   var m = document.getElementById("menu-" + current);
   var box = document.getElementById(current);
-
   // Controllo sicurezza
   if (!m || !box) return;
-
   box.style.visibility = "hidden";
   m.style.backgroundColor = "Silver";
 }
-
 function Timeout(current) {
   inmenu = false;
   // ✅ Già corretto: uso di funzione, non stringa
   window.setTimeout(() => Erase(current), 500);
 }
-
 function Highlight(menu, item) {
   if (!document.getElementById) return;
   inmenu = true;
@@ -121,7 +108,6 @@ function Highlight(menu, item) {
   var obj = document.getElementById(item); // ✅ Dichiarata con `var`
   if (obj) obj.style.backgroundColor = "Silver";
 }
-
 function UnHighlight(menu, item) {
   if (!document.getElementById) return;
   Timeout(menu);
@@ -205,15 +191,15 @@ function showSlides(n) {
 // --- Performance Helpers ---
 // Throttle: limit how often a function can run
 function throttle(fn, limit) {
-  let lastCall = 0;
-  return function(...args) {
-    const now = Date.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
       fn.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
     }
   };
-}
+}   
 // Debounce: run a function only after a pause
 function debounce(fn, delay) {
   let timer;
@@ -222,37 +208,62 @@ function debounce(fn, delay) {
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
 }
-// Example usage: define your own handlers as needed
-// window.addEventListener('scroll', throttle(() => {
-//   // handle scroll event
-// }, 100));
-// window.addEventListener('resize', debounce(() => {
-//   // handle resize event
-// }, 200));
-
-// Lazy loading images with IntersectionObserver
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        observer.unobserve(img);
-      }
+// End Deounce
+// Lazy loading con cleanup e configurazione flessibile
+function initLazyLoading() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback per vecchi browser: carica tutte le immagini subito
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      img.src = img.dataset.src;
     });
-  }, { threshold: 0.1 });
-
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src'); // Pulizia
+          obs.unobserve(img);
+        }
+      });
+    },
+    { threshold: 0.05 } // Attiva con solo il 5% visibile (più reattivo)
+  );
   document.querySelectorAll('img[data-src]').forEach(img => {
     observer.observe(img);
   });
+  // ✅ Esponi l'observer se devi fermarlo in futuro (es. navigazione dinamica)
+  return observer;
 }
+// Inizializza al caricamento
+const lazyImageObserver = initLazyLoading();   
+// End Lazy loading con cleanup e configurazione flessibile
+// Carica in ritardo script pesanti (es. analytics, chatbot) non necessari all'avvio. 
+function loadScript(src, callback) {
+  // Evita caricamenti duplicati
+  if (document.querySelector(`script[src="${src}"]`)) {
+    if (callback) callback();
+    return;
+  }
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  script.onload = () => callback?.();
+  script.onerror = () => {
+    console.error(`Errore nel caricamento dello script: ${src}`);
+  };
+  document.head.appendChild(script);
+}   
+ // End Carica in ritardo script pesanti.  
+// ---End Performance Helpers ---
 
 // When the user mouseover on div, open the info popup
 function infoFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
-
 // Light effect around the bulb image
 function turnOnLight() {
   const img = document.getElementById('myImage');
@@ -265,7 +276,6 @@ function turnOffLight() {
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
-
 // Popup
 function PopupCentrata()
 {
