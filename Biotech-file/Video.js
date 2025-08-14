@@ -55,19 +55,26 @@ function createVideoElement(poster) {
   video.preload = 'metadata';
   video.poster = poster.src;
 
-  // Sorgente dal data-src (metodo sicuro)
-const source = document.createElement('source');
-const videoSrc = poster.getAttribute('data-src'); // ← Metodo sicuro, evita problemi con dataset
+  // 🔍 Debug completo del poster
+console.log('🔍 Analisi dettagliata del poster al momento del click:');
+console.log('  outerHTML:', poster.outerHTML);
+console.log('  dataset:', poster.dataset);
+console.log('  getAttribute("data-src"):', poster.getAttribute('data-src'));
+console.log('  hasAttribute("data-src"):', poster.hasAttribute('data-src'));
 
-if (videoSrc) {
-  console.log('✅ data-src letto con getAttribute:', videoSrc);
+// Sorgente dal data-src
+const source = document.createElement('source');
+const videoSrc = poster.getAttribute('data-src');
+
+if (videoSrc && videoSrc.trim() !== '') {
+  console.log('✅ ✅ ✅ VIDEO SRC CONFERMATO:', videoSrc);
   source.src = videoSrc;
 } else {
-  console.warn('❌ data-src non trovato! Usa fallback');
+  console.error('❌❌❌ ERRORE: data-src NON LETTO — Usa fallback');
   source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
 }
 
-source.type = 'video/mp4';   
+source.type = 'video/mp4';     
   
   console.log('🎥 Fonte video impostata:', source.src); // 👈 Debug: quale video viene caricato
 
