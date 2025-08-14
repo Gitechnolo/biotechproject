@@ -56,21 +56,20 @@ window.addEventListener("load", fadeEffect);
 // Drop-down menu
 var inmenu=false;
 var lastmenu=0;
-function Menu(current) {
+function Menu (current) {
    if (!document.getElementById) return;
-   inmenu = true;
-   var oldmenu = lastmenu;
-   lastmenu = current;
-   if (oldmenu) Erase(oldmenu);
-   var m = document.getElementById("menu-" + current);
-   var box = document.getElementById(current);
-   if (!m || !box) return; // <-- aggiungi controllo
-   box.style.left = m.offsetLeft + 'px';
-   box.style.top = (m.offsetTop + m.offsetHeight) + 'px';
-   box.style.visibility = "visible";
-   m.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
-   box.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
-   box.style.width = "553px";
+   inmenu=true;
+   oldmenu=lastmenu;
+   lastmenu=current;
+   if (oldmenu) Erase (oldmenu);
+   m=document.getElementById("menu-" + current);
+   box=document.getElementById(current);
+   box.style.left= m.offsetLeft;
+   box.style.top= m.offsetTop + m.offsetHeight;
+   box.style.visibility="visible";
+   m.style.backgroundColor="rgba(209, 206, 206, 0.57)";
+   box.style.backgroundColor="rgba(209, 206, 206, 0.57)";
+   box.style.width="553px";
 }
 function Erase(current) {
    if (!document.getElementById) return;
@@ -81,8 +80,8 @@ function Erase(current) {
    m.style.backgroundColor="Silver";
 }
 function Timeout(current) {
-   inmenu = false;
-   window.setTimeout(() => Erase(current), 500);
+   inmenu=false;
+   window.setTimeout("Erase('" + current + "');",500);
 }
 function Highlight (menu, item) {
    if (!document.getElementById) return;
