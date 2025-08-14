@@ -24,7 +24,7 @@ p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-
 p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
 /* End element natural */
 /* Elements with class */
-.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.jpg"); background-position: 50% 50%;}
+.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.webp"); background-position: 50% 50%;}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .link {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
