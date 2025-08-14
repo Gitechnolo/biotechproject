@@ -118,14 +118,10 @@
 <p class="biotechtitle">Qui per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.<br>
 La salute è il nostro bene piú prezioso, la nostra serenità è il nostro destino di salute.</p>
   <div id="ytVideoContainer">
-  <video fetchpriority="high" id="ytVideo" poster="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.jpg">
-  <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4" type="video/mp4">
-  <track src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English">
-  <track src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_it.vtt" kind="subtitles" srclang="it" label="Italian">
-  Your browser does not support the video tag.
-  Your browser does not support HTML5 video.    
-  </video>
-  <div class="yt-video-controls">
+  <!-- Poster caricato come immagine con priorità alta -->
+  <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.jpg" alt="Video preview: Foresta verticale di Singapore" fetchpriority="high" loading="eager" style="width:100%; height:auto; display:block; cursor:pointer;" onclick="loadAndPlayVideo()">
+  <!-- Controlli (inizialmente nascosti) -->
+  <div class="yt-video-controls" style="display:none;">
     <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
     <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
     <span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
@@ -135,12 +131,12 @@ La salute è il nostro bene piú prezioso, la nostra serenità è il nostro dest
     <button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
   </div>
 </div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script> 
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script><br> 
  <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
  <main>Mitocondri</main><p class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</p>
  <main>Lisosoma</main><p class="biotechtitle">Responsabile distruzione/riciclaggio cellule senescenti (cellule morte).</p>
  <main>Miochine</main><p class="biotechtitle">Antinfiammatori, anticancerogeni, molecole che migliorano le funzioni cognitive.</p>
-<main>La pelle</main><p class="biotechtitle">Formata da cellule cheratinociti per il 90% e da melanociti per produzione melanina.</p>
+<main>La pelle</main><p class="biotechtitle">Formata da cellule cheratinociti per il 90% e da melanociti per produzione melanina.</p><br>
 <p class="secHeader">MEDICINA PREVENTIVA;</p>
 <p class="sidenavtext">
   <ul class="list">
@@ -152,7 +148,7 @@ La salute è il nostro bene piú prezioso, la nostra serenità è il nostro dest
     <li>Movimenti impacciati/Scarsa mobilità</li>
     <li>Isolamento dalle persone e dall’ambiente</li>
   </ul>
-</p>
+</p><br>
 <p class="secHeader">LA CELLULA COME BASE DELLA VITA<br>
 <span class="sidenavtext">SERENITÀ, BENESSERE, LONGEVITÀ;</span></p>
 <p class="biotechtitle">Il nostro destino di salute e la nostra serenità sono le cose più importanti, solo allora iniziamo a contemplare di cambiare quegli aspetti della nostra vita che ci generano disagio psicofisico.<br>
