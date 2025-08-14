@@ -80,8 +80,8 @@ function Erase(current) {
    m.style.backgroundColor="Silver";
 }
 function Timeout(current) {
-   inmenu=false;
-   window.setTimeout("Erase('" + current + "');",500);
+   inmenu = false;
+   window.setTimeout(() => Erase(current), 500);
 }
 function Highlight (menu, item) {
    if (!document.getElementById) return;
