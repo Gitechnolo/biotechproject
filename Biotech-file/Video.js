@@ -30,40 +30,45 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // 🔧 Crea un nuovo video (per caricamento lazy)
-  function createVideoElement(poster) {
-    const video = document.createElement('video');
-    video.id = 'ytVideo';
-    video.controls = false;
-    video.preload = 'metadata';
-    video.poster = poster.src;
+function createVideoElement(poster) {
+  console.log('🔍 Attributi data trovati:', poster.dataset); // 👈 Debug: cosa contiene data-*
+  
+  const video = document.createElement('video');
+  video.id = 'ytVideo';
+  video.controls = false;
+  video.preload = 'metadata';
+  video.poster = poster.src;
 
-    // Sorgente dal data-src o da attributo fisso
-    const source = document.createElement('source');
-    source.src = poster.dataset.src || 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
-    source.type = 'video/mp4';
-    video.appendChild(source);
+  // Sorgente dal data-src o da attributo fisso
+  const source = document.createElement('source');
+  source.src = poster.dataset.src || 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
+  
+  console.log('🎥 Fonte video impostata:', source.src); // 👈 Debug: quale video viene caricato
 
-   // Sottotitoli se presenti (corretto per dataset.tracken, dataset.trackit)
-if (poster.dataset.tracken) {
-  const track = document.createElement('track');
-  track.kind = 'subtitles';
-  track.srclang = 'en';
-  track.label = 'English';
-  track.src = poster.dataset.tracken;
-  track.default = true;
-  video.appendChild(track);
-}
-if (poster.dataset.trackit) {
-  const track = document.createElement('track');
-  track.kind = 'subtitles';
-  track.srclang = 'it';
-  track.label = 'Italian';
-  track.src = poster.dataset.trackit;
-  video.appendChild(track);
-}   
+  source.type = 'video/mp4';
+  video.appendChild(source);
 
-    return video;
+  // Sottotitoli se presenti (corretto per dataset.tracken, dataset.trackit)
+  if (poster.dataset.tracken) {
+    const track = document.createElement('track');
+    track.kind = 'subtitles';
+    track.srclang = 'en';
+    track.label = 'English';
+    track.src = poster.dataset.tracken;
+    track.default = true;
+    video.appendChild(track);
   }
+  if (poster.dataset.trackit) {
+    const track = document.createElement('track');
+    track.kind = 'subtitles';
+    track.srclang = 'it';
+    track.label = 'Italian';
+    track.src = poster.dataset.trackit;
+    video.appendChild(track);
+  }   
+
+  return video;
+}   
 
   // ⚙️ Inizializza i controlli su un video
   function initializeControls(video, controls) {
