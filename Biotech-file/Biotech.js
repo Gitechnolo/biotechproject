@@ -54,49 +54,68 @@ function fadeEffect() {
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)
 // Drop-down menu
-var inmenu=false;
-var lastmenu=0;
-function Menu (current) {
-   if (!document.getElementById) return;
-   inmenu=true;
-   oldmenu=lastmenu;
-   lastmenu=current;
-   if (oldmenu) Erase (oldmenu);
-   m=document.getElementById("menu-" + current);
-   box=document.getElementById(current);
-   box.style.left= m.offsetLeft;
-   box.style.top= m.offsetTop + m.offsetHeight;
-   box.style.visibility="visible";
-   m.style.backgroundColor="rgba(209, 206, 206, 0.57)";
-   box.style.backgroundColor="rgba(209, 206, 206, 0.57)";
-   box.style.width="553px";
+var inmenu = false;
+var lastmenu = 0;
+
+function Menu(current) {
+  if (!document.getElementById) return;
+  inmenu = true;
+  var oldmenu = lastmenu;
+  lastmenu = current;
+
+  if (oldmenu) Erase(oldmenu);
+
+  var m = document.getElementById("menu-" + current);
+  var box = document.getElementById(current);
+
+  // Controllo sicurezza
+  if (!m || !box) return;
+
+  // ✅ Aggiungi 'px' altrimenti non funziona
+  box.style.left = m.offsetLeft + 'px';
+  box.style.top = (m.offsetTop + m.offsetHeight) + 'px';
+
+  box.style.visibility = "visible";
+  m.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
+  box.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
+  box.style.width = "553px";
 }
+
 function Erase(current) {
-   if (!document.getElementById) return;
-   if (inmenu && lastmenu==current) return;
-   m=document.getElementById("menu-" + current);
-   box=document.getElementById(current);
-   box.style.visibility="hidden";
-   m.style.backgroundColor="Silver";
+  if (!document.getElementById) return;
+  if (inmenu && lastmenu === current) return;
+
+  var m = document.getElementById("menu-" + current);
+  var box = document.getElementById(current);
+
+  // Controllo sicurezza
+  if (!m || !box) return;
+
+  box.style.visibility = "hidden";
+  m.style.backgroundColor = "Silver";
 }
+
 function Timeout(current) {
-   inmenu = false;
-   window.setTimeout(() => Erase(current), 500);
+  inmenu = false;
+  // ✅ Già corretto: uso di funzione, non stringa
+  window.setTimeout(() => Erase(current), 500);
 }
-function Highlight (menu, item) {
-   if (!document.getElementById) return;
-   inmenu=true;
-   lastmenu=menu;
-   obj=document.getElementById(item);
-   obj.style.backgroundColor="Silver";
+
+function Highlight(menu, item) {
+  if (!document.getElementById) return;
+  inmenu = true;
+  lastmenu = menu;
+  var obj = document.getElementById(item); // ✅ Dichiarata con `var`
+  if (obj) obj.style.backgroundColor = "Silver";
 }
-function UnHighlight(menu,item) {
-   if (!document.getElementById) return;
-   Timeout(menu);
-   obj=document.getElementById(item);
-   obj.style.backgroundColor="rgba(209, 206, 206, 0.57)";
+
+function UnHighlight(menu, item) {
+  if (!document.getElementById) return;
+  Timeout(menu);
+  var obj = document.getElementById(item); // ✅ Dichiarata con `var`
+  if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
 }
-//End drop-down menu
+// End drop-down menu   
 // Clock
 function Clock() {
 if (!document.getElementById) return;
