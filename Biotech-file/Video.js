@@ -1,7 +1,23 @@
 // 🎯 Video.js universale — supporta più video con caricamento lazy opzionale
 document.addEventListener('DOMContentLoaded', function () {
-  // Seleziona tutti i container con [id="ytVideoContainer"] o aggiungi classe .video-container per più flessibilità
+  console.log('✅ Video.js: script caricato e in esecuzione');
+  console.log('🔍 Controllo i container con id "ytVideoContainer"...');
+  
   const containers = document.querySelectorAll('#ytVideoContainer');
+    console.log('📦 Numero di container trovati:', containers.length);
+
+  containers.forEach((container, index) => {
+    console.log(`📦 Container ${index + 1}:`, container);
+    const video = container.querySelector('#ytVideo');
+    console.log(`  ▶️ Video (#ytVideo) presente:`, video ? 'SÌ' : 'NO');
+    const poster = container.querySelector('.video-poster');
+    console.log(`  🖼️ Poster (.video-poster) presente:`, poster ? 'SÌ' : 'NO');
+    if (poster) {
+      console.log(`  🌐 data-src:`, poster.dataset.src);
+      console.log(`  🌐 data-tracken:`, poster.dataset.tracken);
+      console.log(`  🌐 data-trackit:`, poster.dataset.trackit);
+    }
+  });   
 
   containers.forEach(container => {
     let video = container.querySelector('#ytVideo');
