@@ -1,110 +1,52 @@
-// 🎯 Video.js universale — supporta più video con caricamento lazy opzionale
+// ✅ Video.js: caricamento semplice per index.html
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('✅ Video.js: script caricato e in esecuzione');
-  console.log('🔍 Controllo i container con id "ytVideoContainer"...');
-  
-  const containers = document.querySelectorAll('#ytVideoContainer');
-    console.log('📦 Numero di container trovati:', containers.length);
+  const poster = document.querySelector('#ytVideoContainer .video-poster');
+  if (!poster) return; // Esci se non c'è il poster (es. su altre pagine)
 
-  containers.forEach((container, index) => {
-    console.log(`📦 Container ${index + 1}:`, container);
-    const video = container.querySelector('#ytVideo');
-    console.log(`  ▶️ Video (#ytVideo) presente:`, video ? 'SÌ' : 'NO');
-    const poster = container.querySelector('.video-poster');
-    console.log(`  🖼️ Poster (.video-poster) presente:`, poster ? 'SÌ' : 'NO');
-    if (poster) {
-      console.log(`  🌐 data-src:`, poster.dataset.src);
-      console.log(`  🌐 data-tracken:`, poster.dataset.tracken);
-      console.log(`  🌐 data-trackit:`, poster.dataset.trackit);
-    }
-  });   
-
-  containers.forEach(container => {
-    let video = container.querySelector('#ytVideo');
+  poster.addEventListener('click', function () {
+    const container = document.getElementById('ytVideoContainer');
     const controls = container.querySelector('.yt-video-controls');
 
-    // Se il video NON c'è (solo poster), lo creiamo al click
-    if (!video) {
-      const poster = container.querySelector('.video-poster');
-      if (!poster) return;
+    // Crea il video
+    const video = document.createElement('video');
+    video.id = 'ytVideo';
+    video.controls = false;
+    video.preload = 'metadata';
+    video.poster = poster.src;
 
-      poster.addEventListener('click', function () {
-        video = createVideoElement(poster);
-        container.replaceChild(video, poster);
-        if (controls) controls.style.display = 'flex';
-        initializeControls(video, controls);
-      });
-    }
-    // Se il video C'È già (come in Staff.html), nascondiamo i controlli finché non serve
-    else {
-      if (controls) {
-        // Inizializza subito i controlli
-        controls.style.display = 'flex'; // o 'none' se vuoi mostrarli solo al play
-        initializeControls(video, controls);
-      }
-    }
+    // Aggiungi sorgente video
+    const source = document.createElement('source');
+    source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4';
+    source.type = 'video/mp4';
+    video.appendChild(source);
+
+    // Aggiungi sottotitoli
+    const trackEN = document.createElement('track');
+    trackEN.kind = 'subtitles';
+    trackEN.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_en.vtt';
+    trackEN.srclang = 'en';
+    trackEN.label = 'English';
+    trackEN.default = true;
+    video.appendChild(trackEN);
+
+    const trackIT = document.createElement('track');
+    trackIT.kind = 'subtitles';
+    trackIT.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_it.vtt';
+    trackIT.srclang = 'it';
+    trackIT.label = 'Italian';
+    video.appendChild(trackIT);
+
+    // Sostituisci l'immagine con il video
+    container.replaceChild(video, poster);
+
+    // Mostra i controlli
+    if (controls) controls.style.display = 'flex';
+
+    // Inizializza i controlli
+    initializeVideoControls(video, controls);
   });
 
-  // 🔧 Crea un nuovo video (per caricamento lazy)
-function createVideoElement(poster) {
-  console.log('🔍 Attributi data trovati:', poster.dataset); // 👈 Debug: cosa contiene data-*
-  
-  const video = document.createElement('video');
-  video.id = 'ytVideo';
-  video.controls = false;
-  video.preload = 'metadata';
-  video.poster = poster.src;
-
-  // 🔍 Debug completo del poster
-console.log('🔍 Analisi dettagliata del poster al momento del click:');
-console.log('  outerHTML:', poster.outerHTML);
-console.log('  dataset:', poster.dataset);
-console.log('  getAttribute("data-src"):', poster.getAttribute('data-src'));
-console.log('  hasAttribute("data-src"):', poster.hasAttribute('data-src'));
-
-// Sorgente dal data-src
-const source = document.createElement('source');
-const videoSrc = poster.getAttribute('data-src');
-
-if (videoSrc && videoSrc.trim() !== '') {
-  console.log('✅ ✅ ✅ VIDEO SRC CONFERMATO:', videoSrc);
-  source.src = videoSrc;
-} else {
-  console.error('❌❌❌ ERRORE: data-src NON LETTO — Usa fallback');
-  source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
-}
-
-source.type = 'video/mp4';     
-  
-  console.log('🎥 Fonte video impostata:', source.src); // 👈 Debug: quale video viene caricato
-
-  source.type = 'video/mp4';
-  video.appendChild(source);
-
-  // Sottotitoli se presenti (corretto per dataset.tracken, dataset.trackit)
-  if (poster.dataset.tracken) {
-    const track = document.createElement('track');
-    track.kind = 'subtitles';
-    track.srclang = 'en';
-    track.label = 'English';
-    track.src = poster.dataset.tracken;
-    track.default = true;
-    video.appendChild(track);
-  }
-  if (poster.dataset.trackit) {
-    const track = document.createElement('track');
-    track.kind = 'subtitles';
-    track.srclang = 'it';
-    track.label = 'Italian';
-    track.src = poster.dataset.trackit;
-    video.appendChild(track);
-  }   
-
-  return video;
-}   
-
-  // ⚙️ Inizializza i controlli su un video
-  function initializeControls(video, controls) {
+  function initializeVideoControls(video, controls) {
     if (!controls) return;
 
     const playPauseBtn = controls.querySelector('#ytPlayPause');
@@ -123,6 +65,7 @@ source.type = 'video/mp4';
       const seconds = Math.floor(time % 60);
       return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
     }
+
     // Play/Pause
     playPauseBtn?.addEventListener('click', () => {
       if (video.paused) video.play();
@@ -133,91 +76,4 @@ source.type = 'video/mp4';
       playPauseIcon.textContent = '⏸️';
     });
     video.addEventListener('pause', () => {
-      playPauseIcon.textContent = '▶️';
-    });
-    // Progresso
-    video.addEventListener('timeupdate', () => {
-      if (progressBar) {
-        progressBar.value = video.currentTime;
-        currentTime.textContent = formatTime(video.currentTime);
-      }
-    });
-
-    video.addEventListener('loadedmetadata', () => {
-      if (progressBar) {
-        progressBar.max = video.duration;
-      }
-      durationEl.textContent = formatTime(video.duration);
-      currentTime.textContent = formatTime(video.currentTime);
-    });
-
-    progressBar?.addEventListener('input', () => {
-      video.currentTime = progressBar.value;
-    });
-
-    // Volume
-    volumeControl?.addEventListener('input', () => {
-      video.volume = volumeControl.value;
-      muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
-    });
-
-    video.addEventListener('volumechange', () => {
-      muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
-    });
-
-    // Mute/Unmute
-    muteBtn?.addEventListener('click', () => {
-      video.muted = !video.muted;
-      muteIcon.textContent = video.muted ? '🔇' : '🔊';
-    });
-
-    // Fullscreen
-    fullscreenBtn?.addEventListener('click', () => {
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
-      }
-    });
-
-    exitFullscreenBtn?.addEventListener('click', () => {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-    });
-
-    // Gestione uscita fullscreen
-    document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement === video) {
-        fullscreenBtn.style.display = 'none';
-        exitFullscreenBtn.style.display = 'flex';
-      } else {
-        fullscreenBtn.style.display = 'flex';
-        exitFullscreenBtn.style.display = 'none';
-      }
-    });
-
-    // Tasti rapidi
-    video.addEventListener('keydown', (e) => {
-      if (e.code === 'Space') {
-        playPauseBtn?.click();
-        e.preventDefault();
-      } else if (e.code === 'KeyM') {
-        muteBtn?.click();
-        e.preventDefault();
-      } else if (e.code === 'KeyF') {
-        fullscreenBtn?.click();
-        e.preventDefault();
-      }
-    });
-
-    // Assicura che il video sia accessibile
-    window.currentVideo = video;
-  }
-});   
+      playPauseIcon.textContent =   
