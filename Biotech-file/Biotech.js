@@ -1,5 +1,4 @@
 // QRedshift: Comfort visivo automatico 
-
 function QRedshift() {   
   // Evita doppia applicazione
   if (document.body.classList.contains('qredshift-active')) return;
@@ -15,7 +14,6 @@ function QRedshift() {
     temp = 3500;
     gamma = 1.0;
   }  
-
   // Applica filtro CSS per comfort visivo
   // Usa filter: sepia + hue-rotate + brightness per simulare temperatura colore
   let filter;
@@ -24,11 +22,9 @@ function QRedshift() {
   } else {
     filter = 'sepia(0.5) hue-rotate(-30deg) brightness(1)';
   }
-
   document.body.classList.add('qredshift-active');
   document.body.style.filter = filter;
   document.body.style.transition = 'filter 0.5s';
-
   // Icona attiva
   const icon = document.createElement('div');
   icon.className = 'qredshift-icon';
@@ -43,22 +39,21 @@ function QRedshift() {
   });  
 }
 window.addEventListener('DOMContentLoaded', QRedshift);
-
 // End QRredshift
-
 //Fade effect (dissolvenza)
-function fadeEffect() { 
+function fadeEffect() {
   let text = document.getElementById("fadingText");
+  if (!text) return;
+
   let visible = true;
   setInterval(() => {
-      visible = !visible;
-      text.style.opacity = visible ? "1" : "0";
+    visible = !visible;
+    text.classList.toggle("fade", !visible);
   }, 2000);
 }
-window.addEventListener("load", fadeEffect);
+window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)
-
-// drop-down menu
+// Drop-down menu
 var inmenu=false;
 var lastmenu=0;
 function Menu (current) {
@@ -102,7 +97,6 @@ function UnHighlight(menu,item) {
    obj.style.backgroundColor="rgba(209, 206, 206, 0.57)";
 }
 //End drop-down menu
-
 // Clock
 function Clock() {
 if (!document.getElementById) return;
@@ -122,7 +116,6 @@ theclock.innerHTML = " " + gg + "/" + mm + "/" + aaaa + " - " +  hours + ":" + m
 window.setTimeout("Clock();",250);
 }
 //End  Clock
-
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
   document.getElementById("myModal").style.display = "block";
@@ -131,6 +124,7 @@ function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
 var slideIndex = 1;
+// Inizializza le slide all'apertura
 showSlides(slideIndex);
 
 function plusSlides(n) {
@@ -144,74 +138,39 @@ function showSlides(n) {
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  // Verifica che ci siano delle slide
+  if (slides.length === 0) {
+    return; // Esci se non ci sono slide
+  }
+  // Aggiorna slideIndex con logica circolare
+  if (n > slides.length) {
+    slideIndex = 1;
+  } else if (n < 1) {
+    slideIndex = slides.length;
+  } else {
+    slideIndex = n; // Assegna solo se valido
+  }
+  // Nascondi tutte le slide
   for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    slides[i].style.display = "none";
   }
+  // Rimuovi la classe 'active' da tutti i dot
   for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
+  // Mostra la slide corrente
+  slides[slideIndex - 1].style.display = "block";
+  // Aggiorna il dot attivo e il caption, solo se esistono i dot
+  if (dots.length > 0 && dots[slideIndex - 1]) {
+    dots[slideIndex - 1].className += " active";
+    if (captionText) {
+      captionText.innerHTML = dots[slideIndex - 1].alt || "";
+    }
+  }
+}   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 
-
-// Get the modal image 1
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 2
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg2");
-var modalImg = document.getElementById("img02");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 3
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg3");
-var modalImg = document.getElementById("img03");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the modal image 4
-var modal = document.getElementById("myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg4");
-var modalImg = document.getElementById("img04");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
-
 // --- Performance Helpers ---
-
 // Throttle: limit how often a function can run
 function throttle(fn, limit) {
   let lastCall = 0;
@@ -261,18 +220,6 @@ function infoFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
-
-// Set last modified date in footer
-function setLastModified() {
-  const el = document.getElementById('lastModified');
-  if (el) {
-    const d = new Date(document.lastModified);
-    el.textContent = `Ultima modifica: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-  }
-}
-
-document.addEventListener('DOMContentLoaded', setLastModified);
-// End last modified date
 
 // Light effect around the bulb image
 function turnOnLight() {

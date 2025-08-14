@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Progetti</title>
+    <link rel="preconnect" href="https://example.com">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
     <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday.js" defer></script>
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
-    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>    
-     </head>
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>        
+   </head>
  <body onload="Clock()" class="biotechbody">
 <canvas id="particles-canvas" class="background"></canvas>
 <script>
@@ -84,7 +85,7 @@
         <a href="https://gitechnolo.github.io/biotechproject/Job_Listings.html" hreflang="it">Job Listings</a></td></tr>
     </table>
   </div>
- <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!" loading="lazy"><br>
+ <img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.jpg" class="logomenu" alt="Welcome!"><br>
 <!-- end nav -->
  <div id="clock">00:00:00</div><div ID="newyear"><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script></div>
  <div id="week" class="waviy"></div>
@@ -111,8 +112,8 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
- <div class="staff-row" style="margin-top:30px;">
-  <div class="staff-col" style="max-width:100%;">
+ <div class="staff-row">
+  <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
 <table>
@@ -145,32 +146,12 @@
 If you have new projects to be realized!<br>
 You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechproject" target="_blank">Gitlab</a>!<br>
 <br>
-<br>
-  <!-- Original buttons for turning the light on and off -->
-<!-- <button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.gif'">Turn on the light</button>
-<img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif" style="width:100px">
-<button onclick="document.getElementById('myImage').src='https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif'">Turn off the light</button> -->
-
-<!-- New current buttons -->
+<br>  
 <button onclick="turnOnLight()">Turn on the light</button>
 <img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.gif" style="width:100px">
 <button onclick="turnOffLight()">Turn off the light</button>
-<!-- Last modified date -->
 <div id="lastModified"></div>
-<script>
-  setLastModified();
-</script>
-<!-- ...... -->
-<script>
-  function setLastModified() {
-  const el = document.getElementById('lastModified');
-  if (el) {
-    const d = new Date(document.lastModified);
-    el.textContent = `Last edit: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-  }
-}
-document.addEventListener('DOMContentLoaded', setLastModified);
-</script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js" defer></script>
 </p>
 </div>
       </div>
