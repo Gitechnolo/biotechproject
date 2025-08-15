@@ -177,11 +177,10 @@
   Grazie per averci raggiunti fin qui nella sezione "Meet The Staff", e speriamo di poter lavorare insieme in futuro! 
 </p><br>
 <div id="ytVideoContainer">
-  <video id="ytVideo" poster="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.jpg" preload="metadata">
-    <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
-  <div class="yt-video-controls">
+  <!-- Poster come immagine cliccabile -->
+  <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.jpg" alt="Video preview: Auto del futuro" fetchpriority="high" loading="eager" style="width:100%; height:auto; display:block; cursor:pointer;" onclick="loadAndPlayVideo()">
+    <!-- Controlli personalizzati -->
+  <div class="yt-video-controls" style="display:none;">
     <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
     <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
     <span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
@@ -190,12 +189,10 @@
     <button id="ytFullscreen" aria-label="Fullscreen">⛶</button>
     <button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
   </div>
-</div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js"></script>
+</div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/VideoStaff.js"></script>
 <p class="sansation-light-italic">
  L'auto del futuro, un viaggio verso l'innovazione e la sostenibilità.
 </p>
-
 <div id="about">
   <audio controls autoplay>
   <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Instrumental.mp3" type="audio/mpeg">
