@@ -267,12 +267,12 @@ function infoFunction() {
 // Light effect around the bulb image
 function turnOnLight() {
   const img = document.getElementById('myImage');
-  img.src = 'Biotech-file/images/pic_bulbon.gif';
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
   img.classList.add('bulb-glow');
 }
 function turnOffLight() {
   const img = document.getElementById('myImage');
-  img.src = 'Biotech-file/images/pic_bulboff.gif';
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
