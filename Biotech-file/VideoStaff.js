@@ -1,4 +1,4 @@
-// Video.js - Caricamento dinamico del video al click
+// VideoStaff.js - Caricamento dinamico del video per Staff.html (senza sottotitoli)
 function loadAndPlayVideo() {
   const container = document.getElementById('ytVideoContainer');
   const img = document.getElementById('videoPoster');
@@ -7,7 +7,7 @@ function loadAndPlayVideo() {
   // Crea l'elemento video
   const video = document.createElement('video');
   video.id = 'ytVideo';
-  video.controls = false; // Disabilita i controlli nativi
+  video.controls = false;
   video.preload = 'metadata';
   video.poster = img.src;
   video.style.width = '100%';
@@ -17,32 +17,16 @@ function loadAndPlayVideo() {
   video.style.borderRadius = '8px';
   video.setAttribute('playsinline', ''); // Importante per iOS
 
-  // Sorgente video
+  // Sorgente video (Auto del futuro)
   const source = document.createElement('source');
-  source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4';
+  source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
   source.type = 'video/mp4';
   video.appendChild(source);
-
-  // Sottotitoli
-  const trackEN = document.createElement('track');
-  trackEN.kind = 'subtitles';
-  trackEN.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_en.vtt';
-  trackEN.srclang = 'en';
-  trackEN.label = 'English';
-  trackEN.default = true;
-  video.appendChild(trackEN);
-
-  const trackIT = document.createElement('track');
-  trackIT.kind = 'subtitles';
-  trackIT.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_it.vtt';
-  trackIT.srclang = 'it';
-  trackIT.label = 'Italian';
-  video.appendChild(trackIT);
 
   // Sostituisci l'immagine con il video
   container.replaceChild(video, img);
 
-  // Mostra i controlli personalizzati
+  // Mostra i controlli
   const controls = document.querySelector('.yt-video-controls');
   if (controls) {
     controls.style.display = 'flex';
@@ -64,10 +48,9 @@ function initializeVideoControls(video, controls) {
   const volumeControl = controls.querySelector('#ytVolume');
   const muteBtn = controls.querySelector('#ytMute');
   const muteIcon = controls.querySelector('#ytMuteIcon');
-  const fullscreenBtn = controls.querySelector('#ytFullscreen');
-  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen');
+  const fullscreenBtn = controls.querySelector('#ytFullscreen');  // ✅ Preso l'elemento
+  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen'); // ✅ Aggiunto anche questo
 
-  // Formatta il tempo come mm:ss
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -91,7 +74,7 @@ function initializeVideoControls(video, controls) {
     playPauseIcon.textContent = '▶️';
   });
 
-  // Aggiorna progresso
+  // Progresso
   video.addEventListener('timeupdate', () => {
     progressBar.value = video.currentTime;
     currentTime.textContent = formatTime(video.currentTime);
@@ -134,6 +117,7 @@ function initializeVideoControls(video, controls) {
     }
   });
 
+  // Exit Fullscreen
   exitFullscreenBtn?.addEventListener('click', () => {
     if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -144,7 +128,7 @@ function initializeVideoControls(video, controls) {
     }
   });
 
-  // Gestione fullscreen change
+  // Gestione uscita fullscreen
   document.addEventListener('fullscreenchange', () => {
     if (document.fullscreenElement === video) {
       fullscreenBtn.style.display = 'none';

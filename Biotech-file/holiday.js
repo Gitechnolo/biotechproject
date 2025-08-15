@@ -1,12 +1,12 @@
-// Biotech holiday and banner script for Festivita.html
+// Biotech holiday and banner script
 
 document.addEventListener("DOMContentLoaded", function () {
   // Banner cycling
   const banners = [
-    "Biotech-file/images/Biotech-menu/banner1.png",
-    "Biotech-file/images/Biotech-menu/banner2.png",
-    "Biotech-file/images/Biotech-menu/banner3.png",
-    "Biotech-file/images/Biotech-menu/banner4.png"
+    "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
+    "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
+    "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
+    "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
   ];
   let bnrCntr = 0;
   const bannerImg = document.getElementById("Banner");

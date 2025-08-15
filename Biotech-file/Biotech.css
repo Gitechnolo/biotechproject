@@ -20,16 +20,17 @@ a:visited {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: rgb(116
 a:active {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 img {border-radius: 6px;}
-p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s; cursor: pointer;}
-p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s;}
+p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #fffb00; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none; cursor: default;}
+video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli siano visibili */  
 /* End element natural */
 /* Elements with class */
-.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.webp"); background-position: 50% 50%;}
+.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .link {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-.text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s; cursor: pointer;}
-.text:hover, .text:focus {color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+.text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
+.text:hover, .text:focus {color: hwb(56 18% 9%); text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
 .yellowtext {font-size: 16px; font-weight: normal; color: hwb(56 35% 14%);}
 .greentext { font-size: 16px; font-weight: normal; color: hwb(93 2% 3%);}
 .orangetext {font-size: 16px; font-weight: normal; color: hwb(27 1% 0%);}
@@ -59,8 +60,8 @@ p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: 
 /* End Elements with class */
 /* Element with id */
 #about {color: lightgoldenrodyellow; letter-spacing: 2px; text-align: center;}
-#clock {color: lightgoldenrodyellow; position: absolute; left: 35px; /* Spostato leggermente a destra (prima era 3px) */ top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-#newyear {color: lightgoldenrodyellow; position: absolute; left: 289px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#clock {color: lightgoldenrodyellow; position: absolute; left: 50px; /* Spostato leggermente a destra (prima era 3px) */ top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#newyear {color: lightgoldenrodyellow; position: absolute; left: 264px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 0.5s ease-in-out;}
 #fadingText.fade {opacity: 0;}
 #imgLeftfl {float: left; padding: 4px;}
@@ -108,24 +109,11 @@ html {box-sizing: border-box;}
 #myImg {border-radius: 5px; cursor: pointer; transition: 0.3s;}
 #myImg:hover {opacity: 0.7;}
 /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0; top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
+.modal {display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.9);}
 /* Modal Content (image) */
 .modal-content {margin: auto; display: block; width: 80%; max-width: 700px;}
 /* Caption of Modal Image */
-#caption {margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: #ccc; 
-  padding: 10px 0; height: 150px;}
-
+#caption {margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: #ccc; padding: 10px 0; height: 150px;}
 /* Add Animation */
 .modal-content, #caption {animation-name: zoom; animation-duration: 0.6s;}
 @keyframes zoom {from {transform: scale(0.1)} to {transform: scale(1)}}
@@ -134,36 +122,27 @@ html {box-sizing: border-box;}
 .close:hover,.close:focus {color: #bbb; text-decoration: none; cursor: pointer;}
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){.modal-content {width: 100%;}}
-
 /* Lightbox Cellula */
 body {margin: 0;}
 * {box-sizing: border-box;}
 .row > .column {padding: 0 8px;}
 .row:after {content: ""; display: table; clear: both;}
 .column {float: left; width: 25%;}
-
 /* The Modal (background) */
-.modal {display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%;
-  overflow: auto; background-color: black;}
-
+.modal {display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: black;}
 /* Modal Content */
 .modal-content {position: relative; background-color: #fefefe; margin: auto; padding: 0; width: 90%; max-width: 1200px;}
-
 /* The Close Button */
 .close {color: white; position: absolute; top: 10px; right: 25px; font-size: 35px; font-weight: bold;}
 .close:hover,.close:focus {color: #999; text-decoration: none; cursor: pointer;}
 .mySlides {display: none;}
 .cursor {cursor: pointer;}
-
 /* Next & previous buttons */
 .prev,.next {cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -50px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; -webkit-user-select: none;}
-
 /* Position the "next button" to the right */
 .next {right: 0; border-radius: 3px 0 0 3px;}
-
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover,.next:hover {background-color: rgba(0, 0, 0, 0.8);}
-
 /* Number text (1/3 etc) */
 .numbertext {color: #f2f2f2; font-size: 12px; padding: 8px 12px; position: absolute; top: 0;}
 img {margin-bottom: -4px;}
@@ -173,7 +152,6 @@ img {margin-bottom: -4px;}
 .demo:hover {opacity: 1;}
 img.hover-shadow {transition: 0.3s;}
 .hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
-
 /* Video Biomassa */
 .yt-video-controls {display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;max-width:600px;margin-left:0;position:relative;top:-6px;}
 .yt-range {flex:1 1 180px;accent-color:#e50914;height:4px;background:#222;border-radius:2px;outline:none;margin:0 6px;}

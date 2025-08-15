@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project-1 : Countdown Timer</title>
+  <link rel="stylesheet" href="Biotech-file/Biotech.css">
+</head>
+<body class="biotechbody">  
+  <!-- End DNA animation -->
+ <div class="staff-row" style="margin-top:30px;">
+  <div class="staff-col" style="max-width:100%;">
+  
+
+
+ <p><span id="giorni">00</span> Giorni &nbsp; <span id="ore">00</span> Ore &nbsp; <span id="minuti">00</span> Min &nbsp; <span id="secondi">00</span> Sec &nbsp; Al nuovo anno!</p>
+    
+  <script>
+    const giorni=document.querySelector("#giorni");
+const ore=document.querySelector("#ore");
+const minuti=document.querySelector("#minuti");
+const secondi=document.querySelector("#secondi");
+// const msecondi=document.querySelector("#msecondi");
+
+const currentYear=new Date().getFullYear();
+const newYear=new Date(`January 1 ${currentYear+1} 00:00:00`);
+
+function UpdateTime(){
+  const currentDate=new Date();
+  const diff=newYear-currentDate;
+  const d=Math.floor(diff/1000/60/60/24);
+  const h=Math.floor((diff/1000/60/60)%24);
+  const m=Math.floor((diff/1000/60)%60);
+  const s=Math.floor((diff/1000)%60);
+  const ms=Math.floor(diff%1000);
+
+  giorni.innerHTML=d<10?"0"+d:d;
+  ore.innerHTML=h<10?"0"+h:h;
+  minuti.innerHTML=m<10?"0"+m:m;
+  secondi.innerHTML=s<10?"0"+s:s;
+  // msecondi.innerHTML=ms<10?"0"+ms:ms;
+}
+setInterval(UpdateTime,1000);
+  </script>
+ 
+
+</body>
+</html>

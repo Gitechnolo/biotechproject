@@ -126,11 +126,9 @@ aaaa =now.getFullYear();
 hours=now.getHours();
 mins=now.getMinutes();
 secs=now.getSeconds();
-ms =now.getMilliseconds(); 
-if (ms < 10) ms= "0" + ms; 
 if (secs < 10) secs= "0" + secs;
 if (mins < 10) mins= "0" + mins;
-theclock.innerHTML = " " + gg + "/" + mm + "/" + aaaa + " - " +  hours + ":" + mins + ":" + secs + "&nbsp;" + ms;
+theclock.innerHTML = " " + gg + "/" + mm + "/" + aaaa + " - " +  hours + ":" + mins + ":" + secs;
 window.setTimeout("Clock();",250);
 }
 //End  Clock
@@ -267,12 +265,12 @@ function infoFunction() {
 // Light effect around the bulb image
 function turnOnLight() {
   const img = document.getElementById('myImage');
-  img.src = 'Biotech-file/images/pic_bulbon.gif';
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
   img.classList.add('bulb-glow');
 }
 function turnOffLight() {
   const img = document.getElementById('myImage');
-  img.src = 'Biotech-file/images/pic_bulboff.gif';
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
