@@ -29,8 +29,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .link {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-.text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s; cursor: pointer;}
-.text:hover, .text:focus {color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+.text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
+.text:hover, .text:focus {color: hwb(56 18% 9%); text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
 .yellowtext {font-size: 16px; font-weight: normal; color: hwb(56 35% 14%);}
 .greentext { font-size: 16px; font-weight: normal; color: hwb(93 2% 3%);}
 .orangetext {font-size: 16px; font-weight: normal; color: hwb(27 1% 0%);}
