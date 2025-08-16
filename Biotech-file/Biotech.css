@@ -64,32 +64,11 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 #newyear {color: lightgoldenrodyellow; position: absolute; left: 264px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 0.5s ease-in-out;}
 #fadingText.fade {opacity: 0;}
-#imgLeftfl {float: left; padding: 4px;}
-#imgRight {float: right; padding: 4px;}
-/* Blank Image Gallery */
-div.gallery {border: 1px solid #ccc; border-radius: 6px;}
-div.gallery:hover {border: 1px solid #777; border-radius: 6px;}
-div.gallery img {width: 100%; height: auto;}
-div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; text-align: center; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); font-style: italic;}
-* {box-sizing: border-box;}
-.responsive {padding: 0 6px; float: left; width: 24.99999%;}
-@media only screen and (max-width: 700px) {.responsive {width: 49.99999%; margin: 6px 0;}}
-@media only screen and (max-width: 500px) {.responsive {width: 100%;}}
-.clearfix:after {content: ""; display: table; clear: both;}
-/* End Blank Image Gallery */
+/* End element id */
 /* Scrollbar fegato */
 div.scroll-container {border: 1px solid #ccc; border-radius: 6px; background-color: #333 (transparent); overflow: auto; white-space: nowrap; padding: 2px;}
 div.scroll-container img {padding: 2px;}
 /* End scrollbar fegato */ 
-/* Grid dermatologia*/
-.grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
-.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
-.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
-.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
-.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
-.imgRightfl {float: right; padding: 15px;}
-.imgLeftfl {float: left; padding: 15px;}
-/* End grid dermatologia */
 /* Staff Section */
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
@@ -173,26 +152,6 @@ img.hover-shadow {transition: 0.3s;}
 @-webkit-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
 @keyframes fadeIn {from {opacity: 0;} to {opacity:1 ;}}
 /* End popup info container */
-/* Portfolio Section */
-* { box-sizing: border-box; }
-.portfolio-main { max-width: 1000px; margin: auto; }
-.portfolio-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0; }
-.portfolio-col { flex: 1 1 30%; max-width: 32%; display: none; transition: box-shadow 0.3s; position: relative; }
-.portfolio-show { display: block; }
-.portfolio-content { background: #fff; padding: 10px; border-radius: 8px; overflow: hidden; position: relative; }
-.portfolio-content img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s, transform 0.3s; }
-.portfolio-content img:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.25); transform: scale(1.03); }
-.fadebox { opacity: 0; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: rgba(0,0,0,0.6); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1em; pointer-events: none; transition: opacity 0.4s; z-index: 2; }
-.portfolio-content:hover .fadebox { opacity: 1; pointer-events: auto; }
-.btn { border: none; outline: none; padding: 12px 16px; background: white; cursor: pointer; transition: background 0.2s; }
-.btn:hover { background: #ddd; }
-.btn.active { background: #666; color: #fff; }
-@media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
-@media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
-/* End portfolio Section */
-/* Bulb light glow effect for pic_bulbon.gif */
-.bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
-/* End Bulb light glow effect for pic_bulbon.gif */
 /* Style pulsante "Mi Piace" */
 #likeBtn {font-size: 20px; background: none; border: none; cursor: pointer; transition: transform 0.2s;}
 #likeBtn.active {color: rgba(255, 0, 0, 0.897); transform: scale(1.3);}
