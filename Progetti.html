@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
     <title>Progetti</title>
     <link rel="preconnect" href="https://example.com">
     <script type="text/javascript" src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer crossorigin="anonymous"></script>
@@ -11,8 +12,12 @@
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday.js" defer></script>
-    </head>
- <body onload="Clock()" class="biotechbody">
+    <style>
+  #Banner {transition: opacity 1s ease-in-out; opacity: 1;}
+  .banner-fade-out {opacity: 0;}
+</style>  
+   </head>
+<body onload="Clock()" class="biotechbody">
 <canvas id="particles-canvas" class="background"></canvas>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -139,7 +144,7 @@
   <span class="text">A project for the future of biotechnology<br>
   Created by <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a><br>
   Version: 1.0.0<br>
-  <span id="lastModified"></span></span><br>
+  <div id="about"><div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js" defer></script></div></span><br>
 <br>
 If you have new projects to be realized!<br>
 You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechproject" target="_blank">Gitlab</a>!<br>
@@ -148,9 +153,8 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
 <button onclick="turnOnLight()">Turn on the light</button>
 <img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif" style="width:100px">
 <button onclick="turnOffLight()">Turn off the light</button>
-<div id="lastModified"></div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js" defer></script>
 </p>
+<br>
 </div>
       </div>
     </div>
