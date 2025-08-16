@@ -39,7 +39,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .subtitle {font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
 .biotechtitle {color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; font-weight: normal; cursor: pointer;}
-.biotechtitle:hover, .biotechtitle:focus {color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;} 
+.biotechtitle:hover, .biotechtitle:focus {color: hwb(56 18% 9%); text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;} 
 .biotechcenter {text-align: center;}
 .biotechidden {position: absolute; visibility: hidden;}
 .biotechmenu{width: 100%; border: 0;}
