@@ -90,8 +90,13 @@ canvas#particles-canvas {
 })();
 </script>
 
-    <img id="Banner" src="Biotech-file/images/Biotech-menu/banner1.png" alt="Banner" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
+    <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
     <div id="holidayMsg"></div>
+
+
+
+
+    
 
 <p id="risolution" class="text"></p>
 <p id="typeInfo" class="text"></p>
@@ -106,32 +111,7 @@ waitUntilVisible: true,
 document.getElementById("risolution").innerHTML =  "Your screen resolution is " + window.screen.width + "x" + window.screen.height + " pixels." + "<br>" + "Browser window size " + window.innerWidth + "x" + window.innerHeight + " pixels." + "<br>" + "" + navigator.appName + " version " + navigator.appVersion + "." + "<br>" + "Language: " + navigator.language + "." + " &nbsp; " + "Status: " + (navigator.onLine ? "Online" : "Offline") + "." + " &nbsp; " + "Cookies enabled: " + (navigator.cookieEnabled ? "Yes" : "No") + "." + " &nbsp; " + "JavaScript enabled: " + (typeof navigator.javaEnabled === "function" && navigator.javaEnabled() ? "Yes" : "No") + "." + " &nbsp; " + "Vendor: " + navigator.vendor + "." + " &nbsp; " + "Do Not Track: " + (navigator.doNotTrack ? navigator.doNotTrack : "Not supported") + ".";
 </script>
 
-<style>
-  .centered-element {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-60%, -50%);
-  text-align: center;
-}
-</style>
 
-<div class="centered-element">
-    <!-- ...existing code... -->
-<div id="lastModified" class="sidenavtext"></div>
-<script>
-function setLastModified() {
-  const el = document.getElementById('lastModified');
-  if (el) {
-    const d = new Date(document.lastModified);
-    el.textContent = `Ultima modifica: ${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
-  }
-}
-document.addEventListener('DOMContentLoaded', setLastModified);
-</script>
-<!-- ...existing code... -->
-<div id="footer" class="sidenavtext">
-  <p>© 2025 Biotech. All rights free.</p>
-  </div>
+
 </body>
   </html>

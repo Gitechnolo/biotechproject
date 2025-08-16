@@ -10,159 +10,91 @@
     <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
     <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>    
     </head>
-<body class="biotechbody"><div id="clock"></div>
+<body class="biotechbody">
+  
+  <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
+
+  <!-- Assicurati che nel tuo CSS siano presenti queste classi per transizioni fluide -->
+<style>
+  #Banner {transition: opacity 1s ease-in-out; opacity: 1;}
+  .banner-fade-out {opacity: 0;}
+</style>   
 
 <script>
-  const clockEl = document.getElementById("clock");
+  document.addEventListener("DOMContentLoaded", function () {
+  // === BANNER CYCLING CON PRELOAD E TRANSIZIONI FLUIDE ===
+  const bannerImg = document.getElementById("Banner");
+  if (bannerImg) {
+    const banners = [
+      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
+      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
+      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
+      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
+    ];
 
-  if (clockEl) {
-    // Funzione di formattazione
-    function updateClock() {
-      const now = new Date();
-      const gg = String(now.getDate()).padStart(2, '0');
-      const mm = String(now.getMonth() + 1).padStart(2, '0');
-      const aaaa = now.getFullYear();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const mins = String(now.getMinutes()).padStart(2, '0');
-      const secs = String(now.getSeconds()).padStart(2, '0');
+    // Pre-carica le immagini
+    const preloadedImages = banners.map(src => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    });
 
-      // Aggiorna solo una volta al secondo
-      clockEl.textContent = `${gg}/${mm}/${aaaa} - ${hours}:${mins}:${secs}`;
+    let bnrCntr = 0;
+
+    function cycleBanner() {
+      bannerImg.classList.add("banner-fade-out");
+      
+      // Attendiamo la transizione prima di cambiare l'immagine
+      setTimeout(() => {
+        bnrCntr = (bnrCntr + 1) % banners.length;
+        bannerImg.src = banners[bnrCntr];
+        bannerImg.classList.remove("banner-fade-out");
+      }, 500); // Dovrebbe corrispondere alla durata della transizione CSS
     }
 
-    // Primo aggiornamento
-    updateClock();
-
-    // Aggiorna ogni secondo
-    const clockInterval = setInterval(updateClock, 1000);
-
-    // Pulizia opzionale (utile in SPA)
-    // window.addEventListener('beforeunload', () => clearInterval(clockInterval));
+    // Cambia banner ogni 3.5 secondi (3s visualizzazione + 0.5s transizione)
+    setInterval(cycleBanner, 3500);
   }
-</script>   
 
 
+  // === CONTATORE FESTIVITÀ: CALCOLO OTTIMIZZATO ===
+  function getNextHoliday() {
+    const now = new Date();
+    const year = now.getFullYear();
 
+    const holidays = [
+      { name: "St. Patrick's Day", date: new Date(`${year}-03-17`), style: "st-patrick" },
+      { name: "4th di luglio", date: new Date(`${year}-07-04`), style: "july4" },
+      { name: "Halloween", date: new Date(`${year}-10-31`), style: "halloween" },
+      { name: "Natale", date: new Date(`${year}-12-25`), style: "natale" }
+    ];
 
-
-
-    <div id="week" class="waviy"></div>
-    <style>
-        #week span {
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
-  animation-delay: calc(0.1s * var(--i));
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}   
-    </style>
-<script>
-    // Mappa dei giorni della settimana con i messaggi corrispondenti
-const greetings = {
-  0: "domenica!",
-  1: "lunedì!",
-  2: "martedì!",
-  3: "mercoledì!",
-  4: "giovedì!",
-  5: "venerdì!",
-  6: "sabato!"
-};
-
-// Funzione per generare una sequenza di span con stile CSS personalizzato
-function createStyledText(text, startI = 1) {
-  return text.split('').map((char, index) => 
-    `<span style='--i:${startI + index}'>${char}</span>`
-  ).join('');
-}
-
-// Ottieni il giorno corrente
-const today = new Date().getDay();
-const dayGreeting = greetings[today];
-
-// Crea il testo stilizzato
-const fullText = "Biotech Project vi augura " + dayGreeting;
-const styledText = createStyledText(fullText);
-
-// Inserisci nel DOM
-document.getElementById("week").innerHTML = styledText;   
-</script>  
-  <style>
-.imgStaff {opacity: 0.7; transition: 0.9s; filter: brightness(0.8); filter: contrast(0.8); filter: saturate(0.8); filter: hue-rotate(-10deg);}
-.imgStaff:hover {opacity: 1; transition: 0.9s; filter: brightness(1.2); filter: contrast(1.2); filter: saturate(1.2); filter: hue-rotate(10deg);}
-  </style>
-  <img src="Biotech-file/images/Fabrizio.jpg" alt="Fabrizio" class="imgStaff">
-  
-  
-  
-  <br><br><br>
-  <div class="timerWeek">
-    <p>Un Titolo Interessante</p>
-    <p>Questo paragrafo comparirà con un'animazione morbida e piacevole.</p>
-</div>
-
-<style>
-    .timerWeek {
-    opacity: 0; /* Nasconde l'elemento inizialmente */    
-    transform: translateY(20px); /* Lo sposta leggermente in basso */    
-    animation: fadeInSlideUp 0.8s ease-out forwards; /* Animazione di 0.8 secondi, con un effetto di easing */      
-    animation-delay: 2.2s; /* Ritardo di 2.2 secondi prima che inizi l'animazione */      
-}
-@keyframes fadeInSlideUp {
-    to {
-        opacity: 1; /* Lo rende visibile */
-        transform: translateY(0); /* Lo riporta alla sua posizione originale */
+    // Se siamo dopo Natale, considera la prossima St. Patrick's Day dell'anno successivo
+    if (now > holidays[3].date) {
+      holidays[0].date = new Date(`${year + 1}-03-17`);
     }
-}
 
-/* Esempio di come potresti usarlo in una lista */
-.lista-elementi .elemento-animato {
-    /* Applica un delay progressivo agli elementi della lista */
-    animation-delay: calc(var(--item-index) * 0.1s);    
-}
+    // Trova la prossima festività
+    const nextHoliday = holidays.find(h => h.date > now) || holidays[0];
 
-</style>
+    const daysLeft = Math.ceil((nextHoliday.date - now) / (1000 * 60 * 60 * 24));
+    
+    return {
+      msg: `Solo ${daysLeft} giorni a <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
+      style: nextHoliday.style
+    };
+  }
 
-<br>
-</br>
-<a href="#" class="link-animato">Link con Sottolineatura Animata</a>
-<style>
-    .link-animato {
-    display: inline-block; /* Permette al pseudo-elemento di posizionarsi correttamente */
-    position: relative; /* Contenitore per il pseudo-elemento */
-    color: #007bff; /* Colore del testo di esempio */
-    text-decoration: none; /* Rimuove la sottolineatura di default */
-    overflow: hidden; /* Nasconde la parte del pseudo-elemento fuori dai bordi */
-    padding-bottom: 2px; /* Spazio tra testo e sottolineatura */
-}
-
-.link-animato::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0; /* Partenza da sinistra */
-    width: 100%; /* L'elemento copre tutta la larghezza del link */
-    height: 2px; /* Spessore della sottolineatura */
-    background-color: #007bff; /* Colore della sottolineatura */
-    transform: scaleX(0); /* Inizialmente non visibile (larghezza zero) */
-    transform-origin: bottom left; /* Punto di origine dell'espansione (da sinistra) */
-    transition: transform 0.3s ease-out; /* Animazione della scala */
-}
-
-.link-animato:hover::after {
-    transform: scaleX(1); /* Espande al 100% al passaggio del mouse */
-}
-
-/* Variante: espansione dal centro */
-.link-animato.centro::after {
-    transform-origin: bottom center; /* Punto di origine al centro */
-}
-
-</style>
-
+ // Inserisci il messaggio festivo
+  const msgContainer = document.getElementById("holidayMsg");
+  if (msgContainer) {
+    const holiday = getNextHoliday();
+    msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
+  }
+});
+     
+</script>
+<div id="holidayMsg"></div>
  
 
 </body>

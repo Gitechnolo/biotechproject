@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-  <html lang="it">
-   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
-    <title>Apparato tegumentario</title>
-    <link rel="preconnect" href="https://example.com">
-    <script type="text/javascript" src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
-    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css">
-   </head>
-   <body onload="Clock()" class="biotechbody">
-   <canvas id="particles-canvas" class="background"></canvas>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
+<title>Apparato tegumentario</title>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2" as="style">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_terminal.css?v=1.2">
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer crossorigin="anonymous"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
+<style type="text/css">
+.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
+.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
+.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
+.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
+#imgLeftfl {float: left; padding: 4px;}
+#imgRight {float: right; padding: 4px;}
+</style>
+</head>
+<body onload="Clock()" class="biotechbody">
+<canvas id="particles-canvas" class="background"></canvas>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     initParticles("particles-canvas", {

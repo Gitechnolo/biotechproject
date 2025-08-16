@@ -4,6 +4,14 @@
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2'); font-weight: bold; font-style: normal; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2') format('woff2'); font-weight: bold; font-style: italic; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap;}
+/* Gradient text */
+@property --color-1 {syntax: "<color>"; inherits: false; initial-value: hsl(98 100% 62%);}
+@property --color-2 {syntax: "<color>"; inherits: false; initial-value: hsl(204 100% 59%);}
+@keyframes gradient-change {0% {--color-1: hsl(98 100% 62%); --color-2: hsl(204 100% 59%);} 100% {--color-1: hsl(210 100% 59%); --color-2: hsl(310 100% 59%);}}
+main {font-family: 'Sansation', Arial, Helvetica, sans-serif; font-size: 19px; animation: gradient-change 2s linear infinite alternate; background: linear-gradient(to right in oklch, var(--color-1), var(--color-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent;}
+@layer demo.support {main {display: grid; gap: 1lh;}}
+@supports not (background-clip: text) { main { color: hsl(204 100% 59%); animation: none;}}
+/* End gradient text */
 /* Utility classes */
 .sansation-bold {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-size: 34px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .sansation-bold-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-style: italic;}
@@ -14,11 +22,11 @@ ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; paddi
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
-a:link {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
-a:hover {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:link {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:hover {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 a:visited {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: rgb(116, 9, 116); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
-a:active {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
-a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #02596e; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:active {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 img {border-radius: 6px;}
 p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 0.3s, text-shadow 0.3s;}
 p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #fffb00; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none; cursor: default;}
@@ -39,7 +47,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .subtitle {font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
 .biotechtitle {color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; font-weight: normal; cursor: pointer;}
-.biotechtitle:hover, .biotechtitle:focus {color: #00ffe7; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;} 
+.biotechtitle:hover, .biotechtitle:focus {color: hwb(56 18% 9%); text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;} 
 .biotechcenter {text-align: center;}
 .biotechidden {position: absolute; visibility: hidden;}
 .biotechmenu{width: 100%; border: 0;}
@@ -64,32 +72,11 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 #newyear {color: lightgoldenrodyellow; position: absolute; left: 264px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 0.5s ease-in-out;}
 #fadingText.fade {opacity: 0;}
-#imgLeftfl {float: left; padding: 4px;}
-#imgRight {float: right; padding: 4px;}
-/* Blank Image Gallery */
-div.gallery {border: 1px solid #ccc; border-radius: 6px;}
-div.gallery:hover {border: 1px solid #777; border-radius: 6px;}
-div.gallery img {width: 100%; height: auto;}
-div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; text-align: center; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); font-style: italic;}
-* {box-sizing: border-box;}
-.responsive {padding: 0 6px; float: left; width: 24.99999%;}
-@media only screen and (max-width: 700px) {.responsive {width: 49.99999%; margin: 6px 0;}}
-@media only screen and (max-width: 500px) {.responsive {width: 100%;}}
-.clearfix:after {content: ""; display: table; clear: both;}
-/* End Blank Image Gallery */
+/* End element id */
 /* Scrollbar fegato */
 div.scroll-container {border: 1px solid #ccc; border-radius: 6px; background-color: #333 (transparent); overflow: auto; white-space: nowrap; padding: 2px;}
 div.scroll-container img {padding: 2px;}
 /* End scrollbar fegato */ 
-/* Grid dermatologia*/
-.grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
-.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
-.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
-.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
-.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
-.imgRightfl {float: right; padding: 15px;}
-.imgLeftfl {float: left; padding: 15px;}
-/* End grid dermatologia */
 /* Staff Section */
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
@@ -173,35 +160,6 @@ img.hover-shadow {transition: 0.3s;}
 @-webkit-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
 @keyframes fadeIn {from {opacity: 0;} to {opacity:1 ;}}
 /* End popup info container */
-/* Portfolio Section */
-* { box-sizing: border-box; }
-.portfolio-main { max-width: 1000px; margin: auto; }
-.portfolio-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0; }
-.portfolio-col { flex: 1 1 30%; max-width: 32%; display: none; transition: box-shadow 0.3s; position: relative; }
-.portfolio-show { display: block; }
-.portfolio-content { background: #fff; padding: 10px; border-radius: 8px; overflow: hidden; position: relative; }
-.portfolio-content img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s, transform 0.3s; }
-.portfolio-content img:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.25); transform: scale(1.03); }
-.fadebox { opacity: 0; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: rgba(0,0,0,0.6); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1em; pointer-events: none; transition: opacity 0.4s; z-index: 2; }
-.portfolio-content:hover .fadebox { opacity: 1; pointer-events: auto; }
-.btn { border: none; outline: none; padding: 12px 16px; background: white; cursor: pointer; transition: background 0.2s; }
-.btn:hover { background: #ddd; }
-.btn.active { background: #666; color: #fff; }
-@media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
-@media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
-/* End portfolio Section */
-/* Bulb light glow effect for pic_bulbon.gif */
-.bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
-/* End Bulb light glow effect for pic_bulbon.gif */
-/* Style pulsante "Mi Piace" */
-#likeBtn {font-size: 20px; background: none; border: none; cursor: pointer; transition: transform 0.2s;}
-#likeBtn.active {color: rgba(255, 0, 0, 0.897); transform: scale(1.3);}
-#likeBtn:hover {color: rgba(255, 0, 0, 0.897); transform: scale(1.2);}
-#likeBtn:active {transform: scale(1.1);}
-#likeBtn:disabled {color: hwb(93 2% 3% / 0.801); cursor: not-allowed;}
-#likeBtn:disabled:hover {color: hwb(93 2% 3% / 0.801); transform: none;}
-#likeBtn:disabled:active {transform: none;}
-/* End style pulsante "Mi Piace" */
 /* DNA animazione */ 
 * {margin: 0; padding: 0; box-sizing: border-box;}
 .material {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; transform: rotateZ(-20deg);}
