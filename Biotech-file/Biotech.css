@@ -4,6 +4,14 @@
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2'); font-weight: bold; font-style: normal; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2') format('woff2'); font-weight: bold; font-style: italic; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap;}
+/* Gradient text */
+@property --color-1 {syntax: "<color>"; inherits: false; initial-value: hsl(98 100% 62%);}
+@property --color-2 {syntax: "<color>"; inherits: false; initial-value: hsl(204 100% 59%);}
+@keyframes gradient-change {0% {--color-1: hsl(98 100% 62%); --color-2: hsl(204 100% 59%);} 100% {--color-1: hsl(210 100% 59%); --color-2: hsl(310 100% 59%);}}
+main {font-family: 'Sansation', Arial, Helvetica, sans-serif; font-size: 19px; animation: gradient-change 2s linear infinite alternate; background: linear-gradient(to right in oklch, var(--color-1), var(--color-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent;}
+@layer demo.support {main {display: grid; gap: 1lh;}}
+@supports not (background-clip: text) { main { color: hsl(204 100% 59%); animation: none;}}
+/* End gradient text */
 /* Utility classes */
 .sansation-bold {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-size: 34px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .sansation-bold-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-style: italic;}
