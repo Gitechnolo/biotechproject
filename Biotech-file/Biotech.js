@@ -115,12 +115,13 @@ function UnHighlight(menu, item) {
   if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
 }
 // End drop-down menu   
-// Clock (retrocompatibile)
-let clockInterval; // Variabile globale per evitare multipli avvii
+// Clock retrocompatibilità
 function Clock() {
+// Inizializza solo se non già attivo
+if (window.__clockInitialized) return;
+window.__clockInitialized = true;
 const el = document.getElementById("clock");
-if (!el) return; // Esci se l'elemento non esiste
-if (clockInterval) return; // Evita di avviare più volte
+if (!el) return;
 function update() {
 const d = new Date();
 const pad = n => n < 10 ? '0' + n : n;
@@ -132,9 +133,9 @@ const mins = pad(d.getMinutes());
 const secs = pad(d.getSeconds());
 el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
 }
-update(); // Mostra subito l'ora
-clockInterval = setInterval(update, 1000); // Aggiorna ogni secondo
-}   
+update();
+setInterval(update, 1000);
+}      
 //End  Clock
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
