@@ -26,7 +26,7 @@
 @media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
 </style> 
   </head>
-<body onload="Clock()" class="biotechbody">
+<body class="biotechbody">
 <canvas id="particles-canvas" class="background"></canvas>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -99,7 +99,7 @@
   </div>
  <img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="logomenu" alt="Welcome!"><br>
 <!-- end nav -->
- <div id="clock">00:00:00</div>
+ <div id="clock">--/--/---- - --:--:--</div>
  <div id="newyear">&nbsp;<span id="countdown-days">0</span> giorni al nuovo anno!</div>
  <div id="week" class="waviy"></div>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
@@ -208,5 +208,6 @@
 <script type="text/javascript" src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
+<script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>

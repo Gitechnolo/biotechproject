@@ -15,7 +15,7 @@
 .bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
 </style>  
 </head>
-<body onload="Clock()" class="biotechbody">
+<body class="biotechbody">
 <canvas id="particles-canvas" class="background"></canvas>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -88,7 +88,7 @@
   </div>
  <img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="logomenu" alt="Welcome!"><br>
 <!-- end nav -->
- <div id="clock">00:00:00</div><div id="newyear">&nbsp;<span id="countdown-days">0</span> giorni al nuovo anno!</div>
+ <div id="clock">--/--/---- - --:--:--</div><div id="newyear">&nbsp;<span id="countdown-days">0</span> giorni al nuovo anno!</div>
  <div id="week" class="waviy"></div>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
 <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
@@ -162,5 +162,6 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday.js"></script>
+<script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html> 
