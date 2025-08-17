@@ -115,22 +115,26 @@ function UnHighlight(menu, item) {
   if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
 }
 // End drop-down menu   
-// Clock
+// Clock (retrocompatibile)
+let clockInterval; // Variabile globale per evitare multipli avvii
 function Clock() {
-if (!document.getElementById) return;
-theclock=document.getElementById("clock");
-now = new Date();
-gg =now.getDate() + "";
-mm =now.getMonth() + 1 + "";
-aaaa =now.getFullYear();
-hours=now.getHours();
-mins=now.getMinutes();
-secs=now.getSeconds();
-if (secs < 10) secs= "0" + secs;
-if (mins < 10) mins= "0" + mins;
-theclock.innerHTML = " " + gg + "/" + mm + "/" + aaaa + " - " +  hours + ":" + mins + ":" + secs;
-window.setTimeout("Clock();",250);
+const el = document.getElementById("clock");
+if (!el) return; // Esci se l'elemento non esiste
+if (clockInterval) return; // Evita di avviare più volte
+function update() {
+const d = new Date();
+const pad = n => n < 10 ? '0' + n : n;
+const day = pad(d.getDate());
+const month = pad(d.getMonth() + 1);
+const year = d.getFullYear();
+const hours = pad(d.getHours());
+const mins = pad(d.getMinutes());
+const secs = pad(d.getSeconds());
+el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
 }
+update(); // Mostra subito l'ora
+clockInterval = setInterval(update, 1000); // Aggiorna ogni secondo
+}   
 //End  Clock
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
