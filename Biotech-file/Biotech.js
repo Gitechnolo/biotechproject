@@ -115,11 +115,12 @@ function UnHighlight(menu, item) {
   if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
 }
 // End drop-down menu   
-// Clock retrocompatibilità
+// ———————————————————————
+// ✅ 1. Clock - Funzione legacy per clienti (da mantenere)
+// ———————————————————————
 function Clock() {
-// Inizializza solo se non già attivo
-if (window.__clockInitialized) return;
-window.__clockInitialized = true;
+if (window.__clockLegacyRunning) return;
+window.__clockLegacyRunning = true;
 const el = document.getElementById("clock");
 if (!el) return;
 function update() {
@@ -135,7 +136,32 @@ el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
 }
 update();
 setInterval(update, 1000);
-}      
+}
+// ———————————————————————
+// ✅ 2. Funzione evolution
+// ———————————————————————
+function startModernClock() {
+const el = document.getElementById("clock");
+if (!el) return;
+// Usa TextDecoder per evitare ritardi
+function pad(n) { return n < 10 ? '0' + n : n; }
+function update() {
+const now = new Date();
+const day = pad(now.getDate());
+const month = pad(now.getMonth() + 1);
+const year = now.getFullYear();
+const hours = pad(now.getHours());
+const mins = pad(now.getMinutes());
+const secs = pad(now.getSeconds());
+el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
+}
+// Aggiorna subito
+update();
+// Usa 1000ms — sufficiente per un orologio
+const intervalId = setInterval(update, 1000);
+// Pulizia opzionale (se usi SPA o dinamica)
+return () => clearInterval(intervalId);
+}   
 //End  Clock
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
