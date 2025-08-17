@@ -1,13 +1,27 @@
-// NEW YEAR COUNTDOWN
-let today = new Date(); // Get the current date
-let newYear = today.getFullYear(); // Get the year of the current date
-    
-// Check if the current date is already past by checking if the month is December and the current day is greater than 31
-if (today.getMonth() == 11 && today.getDate() > 31) {
-newYear = newYear + 1; // Add an year so that the next new year date could be used
+// BIOTECH NEW YEAR COUNTDOWN - Retrocompatibile
+(function () {
+// Metodo 1: Aggiorna l'elemento con id="countdown-days"
+const element = document.getElementById('countdown-days');
+if (element) {
+const now = new Date();
+let newYear = new Date(now.getFullYear(), 11, 31);
+if (newYear < now) {
+newYear.setFullYear(newYear.getFullYear() + 1);
 }
-let newYearDate = new Date(newYear, 11, 31); // Get the date of the next New year
-let dayMilliseconds = 1000 * 60 * 60 * 24; // Get the number of milliseconds in 1 day
-let remainingDays = Math.ceil((newYearDate.getTime() - today.getTime()) / (dayMilliseconds)); // Get the remaining amount of days
-document.currentScript.insertAdjacentHTML('afterend', '&nbsp;' + remainingDays + ' giorni al nuovo anno!'); // Write it to the page
-// END NEW YEAR COUNTDOWN
+const remainingDays = Math.ceil((newYear - now) / 86400000);
+element.textContent = remainingDays;
+return; // End: aggiorna l'elemento con id="countdown-days"
+}
+// Metodo 2: Retrocompatibilità per clienti (inserimento dopo lo script)
+const nowFallback = new Date();
+let newYearFallback = new Date(nowFallback.getFullYear(), 11, 31);
+if (newYearFallback < nowFallback) {
+ newYearFallback.setFullYear(newYearFallback.getFullYear() + 1);
+ }
+ const remainingDaysFallback = Math.ceil((newYearFallback - nowFallback) / 86400000);
+// Inserisce il testo dopo lo script (come prima)
+document.currentScript.insertAdjacentHTML(
+'afterend',
+'&nbsp;' + remainingDaysFallback + ' giorni al nuovo anno!'
+);
+})();
