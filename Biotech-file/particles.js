@@ -20,12 +20,20 @@ let animationId;
 const FRAME_DELAY = 100; // ~10 FPS invece di 60
 let lastFrameTime = 0;
 function resizeCanvas() {
-const dpr = window.devicePixelRatio || 1;
-canvas.width = window.innerWidth * dpr;
-canvas.height = window.innerHeight * dpr;
-canvas.style.width = window.innerWidth + 'px';
-canvas.style.height = window.innerHeight + 'px';
-ctx.scale(dpr, dpr);
+  const dpr = window.devicePixelRatio || 1;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+
+  // Dimensioni di rendering (risoluzione)
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+
+  // Dimensioni di visualizzazione (layout)
+  canvas.style.width = '100vw';   // ← Usa vw, non px
+  canvas.style.height = '100vh';
+
+  // Scalatura per DPI
+  ctx.scale(dpr, dpr);
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
