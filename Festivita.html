@@ -11,17 +11,7 @@
    </head>
 <body class="biotechbody">
 <!-- Example usage in Festivita.html or any page -->
-<canvas id="particles-canvas" class="background"></canvas>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    initParticles("particles-canvas", {
-      count: 50,
-      color: "#e7e7e77a",
-      radius: 2,
-      speed: 1
-    });
-  });
-</script>
+<canvas id="particles-canvas"></canvas>
 
 <style> 
 .background {
@@ -112,6 +102,6 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
 </script>
 
 
-
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 </body>
   </html>

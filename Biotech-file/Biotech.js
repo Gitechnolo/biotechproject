@@ -115,12 +115,14 @@ function UnHighlight(menu, item) {
   if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
 }
 // End drop-down menu   
-// Clock (retrocompatibile)
-let clockInterval; // Variabile globale per evitare multipli avvii
+// ———————————————————————
+// ✅ 1. Clock - Funzione legacy per clienti (da mantenere)
+// ———————————————————————
 function Clock() {
+if (window.__clockLegacyRunning) return;
+window.__clockLegacyRunning = true;
 const el = document.getElementById("clock");
-if (!el) return; // Esci se l'elemento non esiste
-if (clockInterval) return; // Evita di avviare più volte
+if (!el) return;
 function update() {
 const d = new Date();
 const pad = n => n < 10 ? '0' + n : n;
@@ -132,8 +134,33 @@ const mins = pad(d.getMinutes());
 const secs = pad(d.getSeconds());
 el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
 }
-update(); // Mostra subito l'ora
-clockInterval = setInterval(update, 1000); // Aggiorna ogni secondo
+update();
+setInterval(update, 1000);
+}
+// ———————————————————————
+// ✅ 2. Funzione evolution
+// ———————————————————————
+function startModernClock() {
+const el = document.getElementById("clock");
+if (!el) return;
+// Usa TextDecoder per evitare ritardi
+function pad(n) { return n < 10 ? '0' + n : n; }
+function update() {
+const now = new Date();
+const day = pad(now.getDate());
+const month = pad(now.getMonth() + 1);
+const year = now.getFullYear();
+const hours = pad(now.getHours());
+const mins = pad(now.getMinutes());
+const secs = pad(now.getSeconds());
+el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
+}
+// Aggiorna subito
+update();
+// Usa 1000ms — sufficiente per un orologio
+const intervalId = setInterval(update, 1000);
+// Pulizia opzionale (se usi SPA o dinamica)
+return () => clearInterval(intervalId);
 }   
 //End  Clock
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
