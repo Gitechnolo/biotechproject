@@ -1,3 +1,8 @@
+/* Reset globale */
+*,
+*::before,
+*::after {margin: 0; padding: 0; box-sizing: border-box;}
+body, html {max-width: 100vw !important; overflow-x: hidden !important; width: 100%; margin: 0; padding: 0;}   
 /* Element natural */
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap;}
@@ -34,7 +39,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* End element natural */
 /* Elements with class */
 .biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
-.logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553; height: 180; border: 0;}
+.logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553px; height: 180px; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .link {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 .text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
@@ -56,7 +61,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .video {max-width:100%; width:50%; height:auto; min-width:unset; min-height:unset;}
 .opacity {opacity: 0.5;}
-.waviy {position: relative; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 26px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 41px; margin-top: 20px; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.waviy {position: relative; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 26px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 16px; margin-top: 20px; margin-right: auto; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .waviy span {position: relative; display: inline-block; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i))}
 @keyframes flip {0%,80% {transform: rotateY(360deg)}}
 .transparent {opacity: 0.5; transition: 0.7s; filter: brightness(0.8); filter: contrast(0.8); filter: saturate(0.8); filter: hue-rotate(-10deg);}
@@ -111,7 +116,6 @@ html {box-sizing: border-box;}
 @media only screen and (max-width: 700px){.modal-content {width: 100%;}}
 /* Lightbox Cellula */
 body {margin: 0;}
-* {box-sizing: border-box;}
 .row > .column {padding: 0 8px;}
 .row:after {content: ""; display: table; clear: both;}
 .column {float: left; width: 25%;}
@@ -161,7 +165,6 @@ img.hover-shadow {transition: 0.3s;}
 @keyframes fadeIn {from {opacity: 0;} to {opacity:1 ;}}
 /* End popup info container */
 /* DNA animazione */ 
-* {margin: 0; padding: 0; box-sizing: border-box;}
 .material {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; transform: rotateZ(-20deg);}
 @keyframes rotate {0% { transform: rotateX(0deg); } 100% { transform: rotateX(360deg); }}
 .dna {position: relative; width: 1px; height: 80px; border: 0px dotted #e7e7e7; box-shadow: 0 0 15px #e7e7e7; background: transparent; margin: 0 10px; animation: rotate 3s linear infinite;}
