@@ -7,20 +7,9 @@
 <meta name="description" content="Biotech Chat - Contact our support team for any questions or issues you may have. We are here to help!">
 <title>Biotech Chat</title>
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_forumChat.css">
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js" defer></script>
 </head>
 <body>
-<canvas id="particles-canvas" class="background"></canvas>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    initParticles("particles-canvas", {
-      count: 50,
-      color: "#e7e7e77a",
-      radius: 2,
-      speed: 1
-    });
-  });
-</script>  
+<canvas id="particles-canvas"></canvas>  
 <span class="biotechbold">Your O.S.</span> &nbsp; <button id="likeBtn" class="text">❤️ Mi Piace</button>
 <p id="risolution" class="text"></p>
 <!-- type ChatGPT (֍) -->
@@ -106,5 +95,7 @@ function appendMessage(sender, text) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 </script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js"></script>
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 </body>
 </html>

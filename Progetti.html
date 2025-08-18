@@ -16,17 +16,7 @@
 </style>  
 </head>
 <body class="biotechbody">
-<canvas id="particles-canvas" class="background"></canvas>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    initParticles("particles-canvas", {
-      count: 50,
-      color: "#e7e7e77a",
-      radius: 2,
-      speed: 1
-    });
-  });
-</script>
+<canvas id="particles-canvas"></canvas>
 <!-- nav -->
 <table width="553" class="menu">
 <tr>
@@ -161,6 +151,7 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
