@@ -228,7 +228,8 @@ function showNotification(message) {
   notification.className = 'notification';
   notification.textContent = message;
   document.body.appendChild(notification);
-
+  notification.innerHTML = '🔄 <strong>Dati aggiornati!</strong>';
+  
   setTimeout(() => notification.remove(), 3000);
 }
 
