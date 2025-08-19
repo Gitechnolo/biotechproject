@@ -216,4 +216,10 @@ document.addEventListener('DOMContentLoaded', () => {
   drawPerformanceChart();        // ← Ora il grafico si vedrà!
   updatePerformanceData();       // ← Prova a recuperare dati reali
   // ... resto del codice
+});
+
+document.getElementById('refresh-btn').addEventListener('click', () => {
+  // Simula il ricaricamento dei dati (es. nuovi risultati PageSpeed)
+  updatePerformanceMetrics(); // Funzione che rigenera i dati simulati
+  showNotification("Dati aggiornati!"); // Feedback visivo
 });   
