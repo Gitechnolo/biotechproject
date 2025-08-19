@@ -224,18 +224,13 @@ function updatePerformanceMetrics() {
 }
 
 function showNotification(message) {
-  // Crea un semplice toast
   const notification = document.createElement('div');
-  notification.style.cssText = `
-    position: fixed; top: 20px; right: 20px; background: #333; color: white;
-    padding: 10px 15px; border-radius: 4px; font-size: 14px; z-index: 1000;
-    animation: fadeOut 3s forwards;
-  `;
+  notification.className = 'notification';
   notification.textContent = message;
   document.body.appendChild(notification);
 
   setTimeout(() => notification.remove(), 3000);
-}   
+}
 
 document.getElementById('refresh-btn').addEventListener('click', () => {
   // Simula il ricaricamento dei dati (es. nuovi risultati PageSpeed)
