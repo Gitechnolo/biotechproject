@@ -8,83 +8,8 @@
 <title>Job listings</title>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2" as="style">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2">
-<style type="text/css">
-* { box-sizing: border-box; }
-.portfolio-main { max-width: 1000px; margin: auto; }
-.portfolio-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0; }
-.portfolio-col { flex: 1 1 30%; max-width: 32%; display: none; transition: box-shadow 0.3s; position: relative; }
-.portfolio-show { display: block; }
-.portfolio-content { background: #fff; padding: 10px; border-radius: 8px; overflow: hidden; position: relative; }
-.portfolio-content img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s, transform 0.3s; }
-.portfolio-content img:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.25); transform: scale(1.03); }
-.fadebox { opacity: 0; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: rgba(0,0,0,0.6); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1em; pointer-events: none; transition: opacity 0.4s; z-index: 2; }
-.portfolio-content:hover .fadebox { opacity: 1; pointer-events: auto; }
-.btn { border: none; outline: none; padding: 12px 16px; background: white; cursor: pointer; transition: background 0.2s; }
-.btn:hover { background: #ddd; }
-.btn.active { background: #666; color: #fff; }
-@media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
-@media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
-/* Container principale - report Biotech */
-.tech-audit-container {position: relative; z-index: 10; max-width: 1100px; margin: 60px auto; padding: 40px 30px; background: rgba(20, 30, 48, 0.85); backdrop-filter: blur(10px); border-radius: 16px; color: #e0f7fa; line-height: 1.8; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 230, 118, 0.3);}
-.tech-audit-container h2 {text-align: center; font-size: 2.2em; color: #a7ffeb; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
-.tech-audit-container p.lead {text-align: center; font-size: 1.2em; color: #b2dfdb; margin-bottom: 40px;}
-/* Griglia metriche */
-.metrics-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 50px 0; text-align: center;}
-/* Cerchio di progresso - versione sicura per sfondo scuro */
-.progress-circle {--value: 0; --size: 140px; --thickness: 12px; width: var(--size); height: var(--size); border-radius: 50%;
-  background: conic-gradient(#00e676 var(--value), #0d47a1 0); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); z-index: 1;}
-/* Buco centrale - nero/trasparente per non interferire */
-.progress-circle::before {content: ''; position: absolute; width: calc(var(--size) - var(--thickness) * 2); height: calc(var(--size) - var(--thickness) * 2); background: #0a1a2a; border-radius: 50%; z-index: 1;}
-/* Testo al centro */
-.progress-circle::after {
-  content: attr(data-value) '%';
-  position: relative; z-index: 2; font-size: 1.4em; font-family: 'Sansation', sans-serif; font-weight: 600; color: #a7ffeb; text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);}   
-#performance-trend {background: rgba(10, 26, 42, 0.6); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 8px; display: block; margin: 30px auto; box-shadow: 0 0 15px rgba(0, 230, 118, 0.1); max-width: 100%;}
-#performance-trend:hover {box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); transform: translateY(-1px); transition: all 0.3s ease;}
-.brave-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-  color: #2d3748;
-  text-decoration: none;
-  border: 1px solid #ccc;
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: #fff;
-  transition: all 0.2s;
-}
-
-.brave-badge:hover {
-  background: #f0f0ff;
-  border-color: #4285f4;
-}
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #2d3748;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  z-index: 10000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-10px); }
-}
-.punteggio {
-    color: blue;
-    font-weight: bold;
-    font-size: 1.2em;
-}   
-</style> 
-  </head>
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.css?v=1.2"> 
+</head>
 <body class="biotechbody">
 <canvas id="particles-canvas"></canvas>
 <!-- nav -->
