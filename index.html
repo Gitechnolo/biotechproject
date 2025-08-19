@@ -105,36 +105,21 @@
 <p class="sansation-bold">Benvenuti nel Progetto Biotech!</p><br>
 <p class="biotechtitle">Qui per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.<br>
 La salute è il nostro bene piú prezioso, la nostra serenità è il nostro destino di salute.</p><br>
-  <!-- Contenitore video: contiene SOLO il poster iniziale e i controlli -->
-<div id="ytVideoContainer">
-<picture>
-<!-- Versione mobile - AVIF -->
-<source media="(max-width: 767px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli%20-348w.avif" type="image/avif">
-<!-- Versione mobile - JPG fallback -->
-<source media="(max-width: 767px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli-348w.jpg" type="image/jpeg">
-<!-- Versione desktop - AVIF -->
-<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" type="image/avif">
-<!-- Fallback desktop - JPG -->
-<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.jpg" type="image/jpeg">
-<!-- Immagine di fallback -->
-<img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli-348w.jpg" alt="Video preview: Foresta verticale di Singapore" fetchpriority="high" loading="eager" style="width:100%; height:auto; display:block; cursor:pointer;" onclick="loadAndPlayVideo()">
-</picture>
-<!-- Controlli personalizzati (inizialmente nascosti) -->
-<div class="yt-video-controls" style="display:none;">
-<button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
-<input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
-<span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
-<button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button>
-<input type="range" id="ytVolume" min="0" max="1" step="0.01" value="1" class="yt-vol">
-<button id="ytFullscreen" aria-label="Fullscreen">⛶</button>
-<button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
-</div>
-</div>
-<!-- Script -->
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js" defer></script>
-<!-- Descrizione del video -->
-<div aria-label="Descrizione del video"><p class="sansation-light-italic">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div>
-</div><br>
+  <div id="ytVideoContainer">
+  <!-- Poster caricato come immagine con priorità alta -->
+  <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" alt="Video preview: Foresta verticale di Singapore" fetchpriority="high" loading="eager" style="width:100%; height:auto; display:block; cursor:pointer;" onclick="loadAndPlayVideo()">
+  <!-- Controlli (inizialmente nascosti) -->
+  <div class="yt-video-controls" style="display:none;">
+    <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
+    <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
+    <span id="ytCurrentTime" class="yt-Ctime">0:00</span> / <span id="ytDuration" class="yt-video-duration">0:00</span>
+    <button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button>
+    <input type="range" id="ytVolume" min="0" max="1" step="0.01" value="1" class="yt-vol">
+    <button id="ytFullscreen" aria-label="Fullscreen">⛶</button>
+    <button id="ytExitFullscreen" style="display:none;" aria-label="Exit Fullscreen">⤫</button>
+  </div>
+</div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Video.js" defer></script>
+<div aria-label="Descrizione del video"><p class="sansation-light-italic">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div><br>
  <p><span class="secHeader">Tutto ciò che non puoi non sapere!</span></p>
  <main>Mitocondri</main><p class="biotechtitle">Centrale energetica cellulare sotto forma di ATP</p>
  <main>Lisosoma</main><p class="biotechtitle">Responsabile distruzione/riciclaggio cellule senescenti (cellule morte).</p>
