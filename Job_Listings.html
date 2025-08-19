@@ -24,6 +24,23 @@
 .btn.active { background: #666; color: #fff; }
 @media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
 @media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
+/* Container principale - report Biotech */
+.tech-audit-container {position: relative; z-index: 10; max-width: 1100px; margin: 60px auto; padding: 40px 30px; background: rgba(20, 30, 48, 0.85); backdrop-filter: blur(10px); border-radius: 16px; color: #e0f7fa; line-height: 1.8; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 230, 118, 0.3);}
+.tech-audit-container h2 {text-align: center; font-size: 2.2em; color: #a7ffeb; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
+.tech-audit-container p.lead {text-align: center; font-size: 1.2em; color: #b2dfdb; margin-bottom: 40px;}
+/* Griglia metriche */
+.metrics-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 50px 0; text-align: center;}
+/* Cerchio di progresso - versione sicura per sfondo scuro */
+.progress-circle {--value: 0; --size: 140px; --thickness: 12px; width: var(--size); height: var(--size); border-radius: 50%;
+  background: conic-gradient(#00e676 var(--value), #0d47a1 0); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); z-index: 1;}
+/* Buco centrale - nero/trasparente per non interferire */
+.progress-circle::before {content: ''; position: absolute; width: calc(var(--size) - var(--thickness) * 2); height: calc(var(--size) - var(--thickness) * 2); background: #0a1a2a; border-radius: 50%; z-index: 1;}
+/* Testo al centro */
+.progress-circle::after {
+  content: attr(data-value) '%';
+  position: relative; z-index: 2; font-size: 1.4em; font-family: 'Sansation', sans-serif; font-weight: 600; color: #a7ffeb; text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);}   
+#performance-trend {background: rgba(10, 26, 42, 0.6); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 8px; display: block; margin: 30px auto; box-shadow: 0 0 15px rgba(0, 230, 118, 0.1); max-width: 100%;}
+#performance-trend:hover {box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); transform: translateY(-1px); transition: all 0.3s ease;}
 </style> 
   </head>
 <body class="biotechbody">
@@ -93,7 +110,7 @@
  <div id="newyear">&nbsp;<span id="countdown-days">0</span> giorni al nuovo anno!</div>
  <div id="week" class="waviy"></div>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_week.js" defer></script><br>
- <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Pagina in costruzione<span class="popuptext" id="myPopup">Scheletro della pagina!</span></div></div>
+ <div class="biotechcenter"><div id="about" class="popup" onmouseover="infoFunction()">Maturità tecnologica Biotech!<span class="popuptext" id="myPopup">Dati tecnici in narrazione visiva!</span></div></div>
  <!-- DNA animation -->
 <div class="material">
  <div class="dna"></div>
@@ -119,8 +136,47 @@
     <div class="staff-card">
       <div class="staff-container">
  <!-- MAIN  -->
+<div class="tech-audit-container">
+  <h2>Stima Tecnologica | Biotech Project</h2>
+  <p class="lead">Risultati verificati di performance, accessibilità e best practice.</p>
+
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="progress-circle" style="--value: 99;" data-value="99"></div>
+      <p>Prestazioni Mobile</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
+      <p>Prestazioni Desktop</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 97;" data-value="97"></div>
+      <p>Accessibilità</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 93;" data-value="93"></div>
+      <p>Best Practices</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
+      <p>SEO</p>
+    </div>
+  </div>
+</div> 
+
+<section class="tech-section">
+  <h3>Andamento delle Prestazioni</h3>
+  <canvas id="performance-trend" width="800" height="200"></canvas>
+  <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
+</section> 
+
+<p style="color:#64ffda; font-size:0.9em; text-align:center;">
+  *Andamento simulato basato su ottimizzazioni reali del progetto Biotech
+</p>
+
+
 <div class="portfolio-main">
-<p class="emphasytile">LIST PROJECT</p>
+<p class="emphasytile">Report Biotech</p>
 
 <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Show all</button>
@@ -199,6 +255,7 @@
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/reportPerformance.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>
