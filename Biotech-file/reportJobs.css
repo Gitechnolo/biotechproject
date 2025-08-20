@@ -16,10 +16,24 @@
 .btn.active { background: #666; color: #fff; }
 @media (max-width: 800px) { .portfolio-col { max-width: 48%; } }
 @media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
-/* Container principale - report Biotech */
-.tech-audit-container {position: relative; z-index: 10; max-width: 1100px; margin: 60px auto; padding: 40px 30px; background: rgba(20, 30, 48, 0.85); backdrop-filter: blur(10px); border-radius: 16px; color: #e0f7fa; line-height: 1.8; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 230, 118, 0.3);}
+/* Sezione container report Biotech - allineata e integrata visivamente con i cerchi */
 .tech-audit-container h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; text-align: center; font-size: 2.2em; color: #a7ffeb; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
-.tech-audit-container p.lead {text-align: center; font-size: 1.2em; color: #b2dfdb; margin-bottom: 40px;}
+.tech-audit-container p.lead {text-align: center; font-size: 1.2em; color: #b2dfdb; margin-bottom: 20px; /* Ridotto da 40px a 20px */}   
+.tech-audit-container {position: relative; z-index: 10; max-width: 1100px; margin: 60px auto; padding: 40px 30px 20px; /* Ridotto il padding in basso per avvicinare al grafico */
+  background: rgba(20, 30, 48, 0.85); backdrop-filter: blur(10px); border-radius: 16px 16px 0 0; /* Arrotonda solo in alto, per continuità con .tech-section */
+  color: #e0f7fa; line-height: 1.8; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 230, 118, 0.3); /* Bordino verde chiaro, coerente con lo stile */
+}
+.tech-section {margin-top: -10px;        /* Avvicina il grafico ai cerchi */
+  padding: 30px 20px 20px;  /* Spazio interno: alto in alto per leggibilità */
+  background: rgba(0, 20, 10, 0.4); /* Fondo scuro leggermente diverso per profondità */
+  border-radius: 0 0 12px 12px;     /* Arrotonda solo in basso, per continuità col container sopra */
+  border-top: 1px solid rgba(0, 230, 118, 0.2); /* Linea sottile che li collega visivamente */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); text-align: center;
+}
+.tech-section .sansation-light-italic {color: #a7ffeb; font-size: 1.1em; margin-bottom: 12px; text-shadow: 0 0 8px rgba(0, 230, 118, 0.3);}
+#performance-trend { max-width: 100%; height: auto; display: block; margin: 0 auto 10px; border-radius: 8px; box-shadow: 0 0 12px rgba(0, 230, 118, 0.2);}
+#refresh-btn {margin-top: 16px; padding: 8px 20px; background: rgba(0, 230, 118, 0.1); color: #a7ffeb; border: 1px solid #00e676; border-radius: 6px; font-family: 'Sansation', sans-serif; font-size: 0.95em; cursor: pointer; transition: all 0.3s ease;}
+#refresh-btn:hover {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
 /* Griglia metriche */
 .metrics-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; margin: 50px 0; text-align: center; justify-content: center; justify-items: center; align-items: start;}
 /* Per schermi grandi: forza 5 colonne e centra il contenitore */
@@ -47,7 +61,4 @@
 .job-title {color: #64ffda; font-size: 1.2em; margin: 0 0 8px 0;}
 /* End Versione attuale - Tema Dark Moderno */
 .performance-metric {color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
-#performance-score {font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 1px 1px 2px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-.pulsante {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; background: transparent; color: rgb(212, 211, 211); text-shadow: 1px 1px 3px blueviolet; transition: color 1.3s, text-shadow 1.8s; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 8px; display: block; margin: 30px auto; box-shadow: 0 0 15px rgba(0, 230, 118, 0.1); cursor: pointer;}
-.pulsante:hover {background: transparent; border-color: #4285f4; color: #fffb00; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
-   
+#performance-score {font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 1px 1px 2px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}   
