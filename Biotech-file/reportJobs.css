@@ -21,10 +21,11 @@
 .tech-audit-container h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; text-align: center; font-size: 2.2em; color: #a7ffeb; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
 .tech-audit-container p.lead {text-align: center; font-size: 1.2em; color: #b2dfdb; margin-bottom: 40px;}
 /* Griglia metriche */
-.metrics-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 50px 0; text-align: center;}
+.metrics-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; margin: 50px 0; text-align: center; justify-content: center; justify-items: center; align-items: start;}
+/* Per schermi grandi: forza 5 colonne e centra il contenitore */
+@media (min-width: 1200px) {.metrics-grid {grid-template-columns: repeat(5, 1fr); max-width: 1150px; margin: 50px auto;}}      
 /* Cerchio di progresso - versione sicura per sfondo scuro */
-.progress-circle {--value: 0; --size: 60px; --thickness: 12px; width: var(--size); height: var(--size); border-radius: 50%;
-  background: conic-gradient(#00e676 var(--value), #0d47a1 0); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); z-index: 1;}
+.progress-circle {--value: 0; --size: 60px; --thickness: 12px; width: var(--size); height: var(--size); border-radius: 50%; background: conic-gradient(#00e676 var(--value), #0d47a1 0); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); z-index: 1;}
 /* Buco centrale - nero/trasparente per non interferire */
 .progress-circle::before {content: ''; position: absolute; width: calc(var(--size) - var(--thickness) * 2); height: calc(var(--size) - var(--thickness) * 2); background: #0a1a2a; border-radius: 50%; z-index: 1;}
 /* Testo al centro */
@@ -49,3 +50,4 @@
 #performance-score {font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 1px 1px 2px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .pulsante {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; background: transparent; color: rgb(212, 211, 211); text-shadow: 1px 1px 3px blueviolet; transition: color 1.3s, text-shadow 1.8s; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 8px; display: block; margin: 30px auto; box-shadow: 0 0 15px rgba(0, 230, 118, 0.1); cursor: pointer;}
 .pulsante:hover {background: transparent; border-color: #4285f4; color: #fffb00; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
+   
