@@ -18,7 +18,7 @@
 @media (max-width: 500px) { .portfolio-col { max-width: 100%; } }
 /* Container principale - report Biotech */
 .tech-audit-container {position: relative; z-index: 10; max-width: 1100px; margin: 60px auto; padding: 40px 30px; background: rgba(20, 30, 48, 0.85); backdrop-filter: blur(10px); border-radius: 16px; color: #e0f7fa; line-height: 1.8; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 230, 118, 0.3);}
-.tech-audit-container h2 {text-align: center; font-size: 2.2em; color: #a7ffeb; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
+.tech-audit-container h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; text-align: center; font-size: 2.2em; color: #a7ffeb; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);}
 .tech-audit-container p.lead {text-align: center; font-size: 1.2em; color: #b2dfdb; margin-bottom: 40px;}
 /* Griglia metriche */
 .metrics-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 50px 0; text-align: center;}
@@ -49,4 +49,3 @@
 #performance-score {font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 1px 1px 2px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .pulsante {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; background: transparent; color: rgb(212, 211, 211); text-shadow: 1px 1px 3px blueviolet; transition: color 1.3s, text-shadow 1.8s; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 8px; display: block; margin: 30px auto; box-shadow: 0 0 15px rgba(0, 230, 118, 0.1); cursor: pointer;}
 .pulsante:hover {background: transparent; border-color: #4285f4; color: #fffb00; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none;}
-h2{font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
