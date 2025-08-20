@@ -8,94 +8,155 @@
     <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_gradient.css">
     <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
-    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>    
+    <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js" defer></script>
+<script src="Biotech-file/reportPerformance.js"></script>
+<style>
+/* Container principale - adatto allo stile Biotech */
+.tech-audit-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: rgba(20, 30, 48, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  color: #e0f7fa;
+  line-height: 1.8;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.tech-audit-container h2 {
+  text-align: center;
+  font-size: 2.2em;
+  color: #a7ffeb;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
+}
+
+.tech-audit-container p.lead {
+  text-align: center;
+  font-size: 1.2em;
+  color: #b2dfdb;
+  margin-bottom: 40px;
+}
+
+/* Griglia metriche */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin: 50px 0;
+  text-align: center;
+}
+
+/* Cerchio di progresso - versione sicura per sfondo scuro */
+.progress-circle {
+  --value: 0;
+  --size: 140px;
+  --thickness: 12px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: conic-gradient(#00e676 var(--value), #0d47a1 0);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
+  z-index: 1;
+}
+
+/* Buco centrale - nero/trasparente per non interferire */
+.progress-circle::before {
+  content: '';
+  position: absolute;
+  width: calc(var(--size) - var(--thickness) * 2);
+  height: calc(var(--size) - var(--thickness) * 2);
+  background: #0a1a2a;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Testo al centro */
+.progress-circle::after {
+  content: attr(data-value) '%';
+  position: relative;
+  z-index: 2;
+  font-size: 1.4em;
+  font-family: 'Sansation', sans-serif;
+  font-weight: 600;
+  color: #a7ffeb;
+  text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);
+}   
+#performance-trend {
+  background: rgba(10, 26, 42, 0.6);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: 8px;
+  display: block;
+  margin: 30px auto;
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.1);
+  max-width: 100%;
+}
+
+#performance-trend:hover {
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}         
+</style>    
     </head>
 <body class="biotechbody">
-  
-  <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
-
-  <!-- Assicurati che nel tuo CSS siano presenti queste classi per transizioni fluide -->
-<style>
-  #Banner {transition: opacity 1s ease-in-out; opacity: 1;}
-  .banner-fade-out {opacity: 0;}
-</style>   
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  // === BANNER CYCLING CON PRELOAD E TRANSIZIONI FLUIDE ===
-  const bannerImg = document.getElementById("Banner");
-  if (bannerImg) {
-    const banners = [
-      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
-      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
-      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
-      "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
-    ];
-
-    // Pre-carica le immagini
-    const preloadedImages = banners.map(src => {
-      const img = new Image();
-      img.src = src;
-      return img;
-    });
-
-    let bnrCntr = 0;
-
-    function cycleBanner() {
-      bannerImg.classList.add("banner-fade-out");
-      
-      // Attendiamo la transizione prima di cambiare l'immagine
-      setTimeout(() => {
-        bnrCntr = (bnrCntr + 1) % banners.length;
-        bannerImg.src = banners[bnrCntr];
-        bannerImg.classList.remove("banner-fade-out");
-      }, 500); // Dovrebbe corrispondere alla durata della transizione CSS
-    }
-
-    // Cambia banner ogni 3.5 secondi (3s visualizzazione + 0.5s transizione)
-    setInterval(cycleBanner, 3500);
-  }
 
 
-  // === CONTATORE FESTIVITÀ: CALCOLO OTTIMIZZATO ===
-  function getNextHoliday() {
-    const now = new Date();
-    const year = now.getFullYear();
+<div class="tech-audit-container">
+  <h2>Stima Tecnologica | Biotech Project</h2>
+  <p class="lead">Risultati verificati di performance, accessibilità e best practice.</p>
 
-    const holidays = [
-      { name: "St. Patrick's Day", date: new Date(`${year}-03-17`), style: "st-patrick" },
-      { name: "4th di luglio", date: new Date(`${year}-07-04`), style: "july4" },
-      { name: "Halloween", date: new Date(`${year}-10-31`), style: "halloween" },
-      { name: "Natale", date: new Date(`${year}-12-25`), style: "natale" }
-    ];
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="progress-circle" style="--value: 99;" data-value="99"></div>
+      <p>Prestazioni Mobile</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
+      <p>Prestazioni Desktop</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 97;" data-value="97"></div>
+      <p>Accessibilità</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 93;" data-value="93"></div>
+      <p>Best Practices</p>
+    </div>
+    <div class="metric">
+      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
+      <p>SEO</p>
+    </div>
+  </div>
+</div> 
 
-    // Se siamo dopo Natale, considera la prossima St. Patrick's Day dell'anno successivo
-    if (now > holidays[3].date) {
-      holidays[0].date = new Date(`${year + 1}-03-17`);
-    }
+<section class="tech-section">
+  <h3>Andamento delle Prestazioni</h3>
+  <canvas id="performance-trend" width="800" height="200"></canvas>
+  <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
+</section> 
 
-    // Trova la prossima festività
-    const nextHoliday = holidays.find(h => h.date > now) || holidays[0];
+<p style="color:#64ffda; font-size:0.9em; text-align:center;">
+  *Andamento simulato basato su ottimizzazioni reali del progetto Biotech
+</p>   
 
-    const daysLeft = Math.ceil((nextHoliday.date - now) / (1000 * 60 * 60 * 24));
-    
-    return {
-      msg: `Solo ${daysLeft} giorni a <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
-      style: nextHoliday.style
-    };
-  }
 
- // Inserisci il messaggio festivo
-  const msgContainer = document.getElementById("holidayMsg");
-  if (msgContainer) {
-    const holiday = getNextHoliday();
-    msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
-  }
-});
-     
-</script>
-<div id="holidayMsg"></div>
- 
-
+<section aria-labelledby="jobs-title">
+  <h2 id="jobs-title">Posizioni Aperte</h2>
+  <article class="job-listing">...</article>
+  <article class="job-listing">...</article>
+  <span aria-label="Luogo">📍</span> Roma
+<!-- Oppure -->
+<span class="visually-hidden">Luogo:</span> 📍 Roma
+</section> 
 </body>
 </html>
