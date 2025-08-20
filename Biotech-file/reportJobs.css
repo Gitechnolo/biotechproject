@@ -1,6 +1,8 @@
-/* ==================== 
-   Sezione Lavori Aperti 
-   ==================== */
+/* 
+ * Biotech Project - Report Dashboard Styles
+ * Ottimizzato per allineamento cerchi + grafico (v1.1)
+ * https://github.com/Gitechnolo/biotechproject
+ */   
 * { box-sizing: border-box; }
 .portfolio-main { max-width: 1000px; margin: auto; }
 .portfolio-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0; }
