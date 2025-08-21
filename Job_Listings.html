@@ -107,28 +107,28 @@
   <h2>Stima Tecnologica | Biotech Project</h2>
   <p class="lead">Risultati verificati di performance, accessibilità e best practice.</p>
 
-  <div class="metrics-grid">
-    <div class="metric">
-      <div class="progress-circle" style="--value: 99;" data-value="99"></div>
-      <p>Prestazioni Mobile</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
-      <p>Prestazioni Desktop</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 97;" data-value="97"></div>
-      <p>Accessibilità</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 93;" data-value="93"></div>
-      <p>Best Practices</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
-      <p>SEO</p>
-    </div>
+<div class="metrics-grid">
+  <div class="metric">
+    <div class="progress-circle" style="--value: 99;" data-value="99" data-metric="performance"></div>
+    <p>Prestazioni Mobile</p>
   </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 100;" data-value="100" data-metric="seo"></div>
+    <p>SEO</p>
+  </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 97;" data-value="97" data-metric="accessibility"></div>
+    <p>Accessibilità</p>
+  </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 93;" data-value="93" data-metric="best-practices"></div>
+    <p>Best Practices</p>
+  </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 100;" data-value="100"></div>
+    <p>Prestazioni Desktop</p>
+  </div>
+</div>   
 </div> 
 
 <section class="tech-section">
@@ -140,9 +140,21 @@
 <div class="biotechcenter">
   <p class="sansation-light-italic">Performance Score</p>
   <span id="performance-score">92</span> <!-- Valore iniziale sovrascritto da JS -->
-  <p class="lead">*Andamento simulato basato su ottimizzazioni reali del progetto Biotech</p>
+  <p class="lead">*Dati reali aggiornati ogni 24 ore tramite Google PageSpeed Insights</p>   
 </div>
 
+<table class="visually-hidden">
+  <caption>Andamento delle prestazioni nel tempo</caption>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Prestazioni (%)</th>
+    </tr>
+  </thead>
+  <tbody id="chart-data-body">
+    <!-- Popolato via JavaScript -->
+  </tbody>
+</table>
 
 <div class="portfolio-main">
 <p class="emphasytile">Report Biotech</p>
@@ -230,7 +242,7 @@
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/reportPerformance.js"></script>
+<script src="Biotech-file/reportPerformance.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>
