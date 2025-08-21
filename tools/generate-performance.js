@@ -4,7 +4,7 @@ const path = require('path');
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 
-// Lista delle pagine da analizzare - SOLO quelle esistenti
+// Lista delle pagine da analizzare
 const pages = [
   { url: 'http://127.0.0.1:8080/index.html', label: 'Homepage', slug: 'index', category: 'cellula' },
   { url: 'http://127.0.0.1:8080/Apparato_circolatorio.html', label: 'Apparato circolatorio', slug: 'apparato-circolatorio', category: 'cellula' },
@@ -29,10 +29,17 @@ const pages = [
   const results = [];
 
   try {
-   // Avvia Chrome in modalità headless
+    // Avvia Chrome in modalità headless
     chrome = await chromeLauncher.launch({
-      chromeFlags: ['--headless', '--disable-gpu', '--no-sandbox', '--no-zygote', '--single-process'],
-      port: 9222
+      chromeFlags: [
+        '--headless',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--no-zygote',
+        '--single-process'
+      ],
+      port: 9222,
+      executablePath: '/usr/bin/chromium-browser' // Cruciale per GitHub Actions
     });
 
     const options = {
@@ -62,7 +69,6 @@ const pages = [
         console.warn(`❌ Fallito: ${page.label} (${page.url})`);
         console.warn(`   Errore: ${pageError.message}`);
 
-        // In caso di errore, inserisci un risultato con score 0 e messaggio
         results.push({
           ...page,
           performanceScore: 0,
@@ -117,4 +123,4 @@ const pages = [
     console.error('❌ Errore nella scrittura del file:', writeError);
     process.exit(1);
   }
-})();
+})();   

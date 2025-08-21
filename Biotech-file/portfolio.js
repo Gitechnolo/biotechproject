@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- 5. Carica dati da JSON e popola la dashboard ---
 async function loadPerformanceData() {
   try {
-    const response = await fetch('https://gitechnolo.github.io/biotechproject/Biotech-file/performance-data.json');
+    const response = await fetch('/Biotech-file/performance-data.json');
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();

@@ -1,0 +1,61 @@
+name: Generate Performance Report
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # Permette di eseguire manualmente da GitHub
+
+jobs:
+  generate-report:
+    name: Generate performance-data.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          cd tools
+          npm install lighthouse chrome-launcher
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 8080 &
+          sleep 10  # Attendi che il server si avvii
+        shell: bash
+
+      - name: Generate performance-data.json
+        run: |
+          node tools/generate-performance.js
+
+      - name: Check if performance-data.json changed
+        id: changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git diff --exit-code Biotech-file/performance-data.json; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+            echo "No changes in performance-data.json"
+          else
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+            echo "Changes detected, will commit"
+          fi
+
+      - name: Commit and push if changed
+        if: steps.changes.outputs.no_changes == 'false'
+        run: |
+          git add Biotech-file/performance-data.json
+          git commit -m "📊 Automated: Update performance-data.json"
+          git push
