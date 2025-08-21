@@ -1,0 +1,17 @@
+{
+  "name": "biotech-performance-tools",
+  "version": "1.0.0",
+  "description": "Strumenti per il monitoraggio delle prestazioni del sito",
+  "main": "generate-performance.js",
+  "scripts": {
+    "generate": "node generate-performance.js"
+  },
+  "dependencies": {
+    "lighthouse": "^10.0.0",
+    "chrome-launcher": "^0.15.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}

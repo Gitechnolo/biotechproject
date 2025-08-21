@@ -8,7 +8,7 @@
 <title>Job listings</title>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2" as="style">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2">
-<link rel="stylesheet" href="Biotech-file/reportJobs.css?v=1.2"> 
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.css?v=1.2"> 
 </head>
 <body class="biotechbody">
 <canvas id="particles-canvas"></canvas>
@@ -107,28 +107,28 @@
   <h2>Stima Tecnologica | Biotech Project</h2>
   <p class="lead">Risultati verificati di performance, accessibilità e best practice.</p>
 
-  <div class="metrics-grid">
-    <div class="metric">
-      <div class="progress-circle" style="--value: 99;" data-value="99"></div>
-      <p>Prestazioni Mobile</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
-      <p>Prestazioni Desktop</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 97;" data-value="97"></div>
-      <p>Accessibilità</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 93;" data-value="93"></div>
-      <p>Best Practices</p>
-    </div>
-    <div class="metric">
-      <div class="progress-circle" style="--value: 100;" data-value="100"></div>
-      <p>SEO</p>
-    </div>
+<div class="metrics-grid">
+  <div class="metric">
+    <div class="progress-circle" style="--value: 99;" data-value="99" data-metric="performance"></div>
+    <p>Prestazioni Mobile</p>
   </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 100;" data-value="100" data-metric="seo"></div>
+    <p>SEO</p>
+  </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 97;" data-value="97" data-metric="accessibility"></div>
+    <p>Accessibilità</p>
+  </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 93;" data-value="93" data-metric="best-practices"></div>
+    <p>Best Practices</p>
+  </div>
+  <div class="metric">
+    <div class="progress-circle" style="--value: 100;" data-value="100"></div>
+    <p>Prestazioni Desktop</p>
+  </div>
+</div>   
 </div> 
 
 <section class="tech-section">
@@ -139,13 +139,25 @@
 </section> 
 <div class="biotechcenter">
   <p class="sansation-light-italic">Performance Score</p>
-  <span id="performance-score">92</span> <!-- Valore iniziale sovrascritto da JS -->
-  <p class="lead">*Andamento simulato basato su ottimizzazioni reali del progetto Biotech</p>
+  <span id="performance-score">-</span> <!-- Valore iniziale sovrascritto da dati reali -->
+  <p class="lead">*Dati reali aggiornati ogni 24 ore</p>   
 </div>
 
+<table class="visually-hidden">
+  <caption>Andamento delle prestazioni nel tempo</caption>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Prestazioni (%)</th>
+    </tr>
+  </thead>
+  <tbody id="chart-data-body">
+    <!-- Popolato via JavaScript -->
+  </tbody>
+</table>
 
 <div class="portfolio-main">
-<p class="emphasytile">Report Biotech</p>
+<div class="biotechcenter"><p class="lead">Dashboard delle prestazioni aggiornata</p></div>     
 
 <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Show all</button>
@@ -213,18 +225,26 @@
   </div>
 </div>
 <!-- END MAIN -->
-</div><br>
+</div>
+<p class="sansation-light-italic">Ultimo controllo: 21 ago 2025</p>   
+<div class="biotechcenter"><button id="refresh-btn">🔄 Aggiorna dati</button></div>
+<section aria-labelledby="jobs-title">
+  <h2 id="jobs-title">Posizioni Aperte</h2>
+  <article class="job-listing">...</article>
+  <article class="job-listing">...</article>
+  <span aria-label="Luogo">📍</span> Roma
+<br>
 <div id="about"><a href="https://brave.com" target="_blank" class="brave-badge"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/brave-logo.svg" alt="Brave Browser" width="20" height="23">Only the Brave</a><div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js"></script></div>
       </div>
     </div>
   </div>
 </div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/particles.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script type="text/javascript" src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/reportPerformance.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-performance.min.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>
