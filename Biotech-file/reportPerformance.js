@@ -1,4 +1,4 @@
-// Aggiunge dati iniziali per far apparire il grafico
+// Assicura che ci siano dati iniziali per il grafico
 function ensureInitialData() {
   const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
   if (history.length === 0) {
@@ -13,23 +13,47 @@ function ensureInitialData() {
     ];
     localStorage.setItem('performanceHistory', JSON.stringify(testData));
   }
-}
-
-// Funzione principale: recupera dati da PageSpeed Insights (mobile + desktop)
+}   
+// Funzione principale: recupera dati reali da Google PageSpeed Insights
 async function updatePerformanceData() {
   const url = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
   const target = 'https://gitechnolo.github.io/biotechproject/index.html';
 
   try {
-    // --- Recupera dati Mobile ---
-    const mobileRes = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=mobile`);
-    const mobileData = await mobileRes.json();
+    // Chiamata per strategia mobile
+    const mobileResponse = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=mobile`);
+    
+    if (!mobileResponse.ok) {
+      throw new Error(`Errore API (mobile): ${mobileResponse.status}`);
+    }
 
-    // --- Recupera dati Desktop ---
-    const desktopRes = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=desktop`);
-    const desktopData = await desktopRes.json();
+    const mobileData = await mobileResponse.json();
 
-    // --- Estrai tutte le metriche ---
+    // Chiamata per strategia desktop
+    const desktopResponse = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=desktop`);
+    
+    if (!desktopResponse.ok) {
+      throw new Error(`Errore API (desktop): ${desktopResponse.status}`);
+    }
+
+    const desktopData = await desktopResponse.json();
+
+    // Verifica che i dati siano validi
+    if (!mobileData.lighthouseResult?.categories) {
+      console.error('Dati mobile non validi:', mobileData);
+      drawPerformanceChart();
+      updatePerformanceScore();
+      return;
+    }
+
+    if (!desktopData.lighthouseResult?.categories) {
+      console.error('Dati desktop non validi:', desktopData);
+      drawPerformanceChart();
+      updatePerformanceScore();
+      return;
+    }
+
+    // Estrai tutte le metriche
     const metrics = {
       performance: mobileData.lighthouseResult.categories.performance.score * 100,
       accessibility: mobileData.lighthouseResult.categories.accessibility.score * 100,
@@ -38,7 +62,7 @@ async function updatePerformanceData() {
       'performance-desktop': desktopData.lighthouseResult.categories.performance.score * 100
     };
 
-    // --- Aggiorna tutti i cerchi ---
+    // Aggiorna tutti i cerchi con data-metric
     Object.keys(metrics).forEach(metric => {
       const circle = document.querySelector(`.progress-circle[data-metric="${metric}"]`);
       if (circle) {
@@ -48,7 +72,7 @@ async function updatePerformanceData() {
       }
     });
 
-    // --- Salva in localStorage (solo mobile per il grafico) ---
+    // Salva nuovo record in localStorage
     const log = {
       date: new Date().toISOString().split('T')[0],
       performance: Math.round(metrics.performance),
@@ -62,25 +86,21 @@ async function updatePerformanceData() {
     if (!existing) {
       history.push(log);
       localStorage.setItem('performanceHistory', JSON.stringify(history));
+      console.log('Nuovo dato salvato:', log);
     }
 
-    // --- Aggiorna UI ---
+    // Aggiorna grafico e punteggio
     drawPerformanceChart();
     updatePerformanceScore();
 
-    const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) {
-      lastUpdate.textContent = `Aggiornato il: ${today}`;
-    }
 
-  } catch (error) {
-    console.error('Errore nel recupero dei dati di performance:', error);
-    drawPerformanceChart();
-    updatePerformanceScore();
-  }
-}
+      // Aggiorna timestamp UI
+const lastUpdate = document.getElementById('last-update');
+if (lastUpdate) {
+  lastUpdate.textContent = `Aggiornato il: ${today}`;
+} 
 
-// Disegna il grafico a linee
+// Disegna il grafico a linee delle prestazioni
 function drawPerformanceChart() {
   const ctx = document.getElementById('performance-trend').getContext('2d');
   const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
@@ -96,7 +116,6 @@ function drawPerformanceChart() {
     return;
   }
 
-  // Estrai etichette e dati
   const labels = history.map(entry => entry.date);
   const data = history.map(entry => entry.performance);
 
@@ -169,30 +188,34 @@ function drawPerformanceChart() {
   ctx.fillStyle = gradient;
   ctx.fill();
 
-  // Disegna i punti sul grafico
-  ctx.beginPath();
-  for (let i = 0; i < data.length; i++) {
-    const x = padding + (xStep * i);
-    const y = valueToY(data[i]);
-    ctx.moveTo(x, y);
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
-  }
-  ctx.fillStyle = '#a7ffeb';
-  ctx.fill();
-  ctx.strokeStyle = '#00e676';
-  ctx.lineWidth = 2;
-  ctx.stroke();
+  
 
-  // Mostra l'ultimo valore sopra l'ultimo punto
-  const lastX = padding + (xStep * (data.length - 1));
-  const lastY = valueToY(data[data.length - 1]);
-  ctx.font = '14px Sansation, sans-serif';
-  ctx.fillStyle = '#ffffff';
-  ctx.textAlign = 'center';
-  ctx.fillText(data[data.length - 1] + '%', lastX, lastY - 10);
+
+    // Disegna i punti sul grafico
+ctx.beginPath();
+for (let i = 0; i < data.length; i++) {
+  const x = padding + (xStep * i);
+  const y = valueToY(data[i]);
+  ctx.moveTo(x, y);
+  ctx.arc(x, y, 5, 0, Math.PI * 2);
 }
+ctx.fillStyle = '#a7ffeb';
+ctx.fill();
+ctx.strokeStyle = '#00e676';
+ctx.lineWidth = 2;
+ctx.stroke();
 
-// Aggiorna il punteggio centrale
+// Mostra l'ultimo valore sopra l'ultimo punto
+const lastX = padding + (xStep * (data.length - 1));
+const lastY = valueToY(data[data.length - 1]);
+ctx.font = '14px Sansation, sans-serif';
+ctx.fillStyle = '#ffffff';
+ctx.textAlign = 'center';
+ctx.fillText(data[data.length - 1] + '%', lastX, lastY - 10);
+}  
+
+
+// Aggiorna il grande punteggio centrale
 function updatePerformanceScore() {
   const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
   const score = history.length > 0 ? history[history.length - 1].performance : 90;
@@ -200,13 +223,15 @@ function updatePerformanceScore() {
   if (scoreElement) {
     scoreElement.textContent = Math.round(score);
   }
-}
+}   
+
+
 
 // Esegui al caricamento della pagina
 document.addEventListener('DOMContentLoaded', () => {
   ensureInitialData();
   drawPerformanceChart();
-  updatePerformanceData();
+  updatePerformanceScore();
 
   // Aggiorna ogni 24 ore
   const lastRun = localStorage.getItem('lastPerformanceCheck');
@@ -224,9 +249,11 @@ document.addEventListener('DOMContentLoaded', () => {
       showNotification('🔄 Dati aggiornati!');
     });
   }
-});
+});   
 
-// Mostra una notifica temporanea
+
+
+// Mostra una notifica in alto a destra
 function showNotification(message) {
   const notification = document.createElement('div');
   notification.className = 'notification';
