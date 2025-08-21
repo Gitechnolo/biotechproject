@@ -1,4 +1,4 @@
-// Aggiungi dati iniziali per far apparire il grafico
+// Aggiunge dati iniziali per far apparire il grafico
 function ensureInitialData() {
   const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
   if (history.length === 0) {
@@ -13,48 +13,46 @@ function ensureInitialData() {
     ];
     localStorage.setItem('performanceHistory', JSON.stringify(testData));
   }
-}   
+}
 
-
-// Funzione principale: recupera dati da PageSpeed Insights
+// Funzione principale: recupera dati da PageSpeed Insights (mobile + desktop)
 async function updatePerformanceData() {
   const url = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
   const target = 'https://gitechnolo.github.io/biotechproject/index.html';
 
   try {
-    const response = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=mobile`);
-    const data = await response.json();
+    // --- Recupera dati Mobile ---
+    const mobileRes = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=mobile`);
+    const mobileData = await mobileRes.json();
 
-    const performance = data.lighthouseResult.categories.performance.score * 100;
-    const accessibility = data.lighthouseResult.categories.accessibility.score * 100;
+    // --- Recupera dati Desktop ---
+    const desktopRes = await fetch(`${url}?url=${encodeURIComponent(target)}&strategy=desktop`);
+    const desktopData = await desktopRes.json();
 
-    // Aggiorna i cerchi di progresso
-    const perfCircle = document.querySelector('.progress-circle[data-metric="performance"]');
-    const accessCircle = document.querySelector('.progress-circle[data-metric="accessibility"]');
+    // --- Estrai tutte le metriche ---
+    const metrics = {
+      performance: mobileData.lighthouseResult.categories.performance.score * 100,
+      accessibility: mobileData.lighthouseResult.categories.accessibility.score * 100,
+      'best-practices': mobileData.lighthouseResult.categories['best-practices'].score * 100,
+      seo: mobileData.lighthouseResult.categories.seo.score * 100,
+      'performance-desktop': desktopData.lighthouseResult.categories.performance.score * 100
+    };
 
-    if (perfCircle) {
-      perfCircle.style.setProperty('--value', Math.round(performance));
-    }
-    if (accessCircle) {
-      accessCircle.style.setProperty('--value', Math.round(accessibility));
-    }
+    // --- Aggiorna tutti i cerchi ---
+    Object.keys(metrics).forEach(metric => {
+      const circle = document.querySelector(`.progress-circle[data-metric="${metric}"]`);
+      if (circle) {
+        const value = Math.round(metrics[metric]);
+        circle.style.setProperty('--value', value);
+        circle.dataset.value = value;
+      }
+    });
 
-    // Aggiorna il testo nei <span>
-    const perfSpan = document.querySelector('.progress-circle[data-metric="performance"] span');
-    const accessSpan = document.querySelector('.progress-circle[data-metric="accessibility"] span');
-
-    if (perfSpan) {
-      perfSpan.textContent = Math.round(performance) + '%';
-    }
-    if (accessSpan) {
-      accessSpan.textContent = Math.round(accessibility) + '%';
-    }
-
-    // Salva in localStorage con timestamp
+    // --- Salva in localStorage (solo mobile per il grafico) ---
     const log = {
-      date: new Date().toISOString().split('T')[0], // es. "2025-08-19"
-      performance: Math.round(performance),
-      accessibility: Math.round(accessibility)
+      date: new Date().toISOString().split('T')[0],
+      performance: Math.round(metrics.performance),
+      accessibility: Math.round(metrics.accessibility)
     };
 
     const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
@@ -66,10 +64,10 @@ async function updatePerformanceData() {
       localStorage.setItem('performanceHistory', JSON.stringify(history));
     }
 
-    // Aggiorna il grafico
+    // --- Aggiorna UI ---
     drawPerformanceChart();
+    updatePerformanceScore();
 
-    // Mostra l'ultimo aggiornamento
     const lastUpdate = document.getElementById('last-update');
     if (lastUpdate) {
       lastUpdate.textContent = `Aggiornato il: ${today}`;
@@ -77,8 +75,8 @@ async function updatePerformanceData() {
 
   } catch (error) {
     console.error('Errore nel recupero dei dati di performance:', error);
-    // Comunque disegna il grafico con i dati esistenti
     drawPerformanceChart();
+    updatePerformanceScore();
   }
 }
 
@@ -98,6 +96,7 @@ function drawPerformanceChart() {
     return;
   }
 
+  // Estrai etichette e dati
   const labels = history.map(entry => entry.date);
   const data = history.map(entry => entry.performance);
 
@@ -113,7 +112,7 @@ function drawPerformanceChart() {
     return padding + chartHeight - (ratio * chartHeight);
   };
 
-    // Linee orizzontali
+  // Linee orizzontali della griglia
   ctx.beginPath();
   ctx.strokeStyle = 'rgba(167, 255, 235, 0.2)';
   ctx.lineWidth = 1;
@@ -154,13 +153,12 @@ function drawPerformanceChart() {
     ctx.lineTo(x, y);
   }
 
-  // Colore e stile della linea
   ctx.strokeStyle = '#00e676';
   ctx.lineWidth = 3;
   ctx.lineCap = 'round';
   ctx.stroke();
 
-  // Area sotto la linea (effetto riempimento con gradiente)
+  // Area sotto la linea (gradiente)
   const gradient = ctx.createLinearGradient(0, padding, 0, ctx.canvas.height);
   gradient.addColorStop(0, 'rgba(0, 230, 118, 0.3)');
   gradient.addColorStop(1, 'rgba(0, 230, 118, 0.05)');
@@ -171,7 +169,7 @@ function drawPerformanceChart() {
   ctx.fillStyle = gradient;
   ctx.fill();
 
-  // Disegna i punti
+  // Disegna i punti sul grafico
   ctx.beginPath();
   for (let i = 0; i < data.length; i++) {
     const x = padding + (xStep * i);
@@ -192,15 +190,22 @@ function drawPerformanceChart() {
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'center';
   ctx.fillText(data[data.length - 1] + '%', lastX, lastY - 10);
-}   
+}
 
+// Aggiorna il punteggio centrale
+function updatePerformanceScore() {
+  const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
+  const score = history.length > 0 ? history[history.length - 1].performance : 90;
+  const scoreElement = document.getElementById('performance-score');
+  if (scoreElement) {
+    scoreElement.textContent = Math.round(score);
+  }
+}
 
 // Esegui al caricamento della pagina
 document.addEventListener('DOMContentLoaded', () => {
-  // Disegna il grafico subito (anche senza dati freschi)
+  ensureInitialData();
   drawPerformanceChart();
-
-  // Prova ad aggiornare i dati
   updatePerformanceData();
 
   // Aggiorna ogni 24 ore
@@ -210,31 +215,22 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePerformanceData();
     localStorage.setItem('lastPerformanceCheck', now);
   }
-});   
-document.addEventListener('DOMContentLoaded', () => {
-  ensureInitialData();           // ← Forza i dati iniziali
-  drawPerformanceChart();        // ← Ora il grafico si vedrà!
-  updatePerformanceData();       // ← Prova a recuperare dati reali
-  // ... resto del codice
-});
-function updatePerformanceMetrics() {
-  // Esempio: rigenera valori simulati (da adattare al tuo codice)
-  const score = Math.floor(Math.random() * 30) + 70; // 70-100
-  document.getElementById('performance-score').textContent = score;
-}
 
+  // Pulsante "Aggiorna ora"
+  const refreshBtn = document.getElementById('refresh-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      updatePerformanceData();
+      showNotification('🔄 Dati aggiornati!');
+    });
+  }
+});
+
+// Mostra una notifica temporanea
 function showNotification(message) {
   const notification = document.createElement('div');
   notification.className = 'notification';
-  notification.textContent = message;
+  notification.innerHTML = message;
   document.body.appendChild(notification);
-  notification.innerHTML = '🔄 <strong>Dati aggiornati!</strong>';
-  
   setTimeout(() => notification.remove(), 3000);
-}
-
-document.getElementById('refresh-btn').addEventListener('click', () => {
-  // Simula il ricaricamento dei dati (es. nuovi risultati PageSpeed)
-  updatePerformanceMetrics(); // Funzione che rigenera i dati simulati
-  showNotification("Dati aggiornati!"); // Feedback visivo
-});   
+}   
