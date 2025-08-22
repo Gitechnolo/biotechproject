@@ -197,3 +197,5 @@ canvas#particles-canvas {position: fixed; top: 0; left: 0; width: 100vw; height:
 /* Nascondi QRedshift Icon su Tablet_forum.html */
 body[data-page="Tablet_forum"] .qredshift-icon {display: none !important;}
 /* End QRedshift Icon Style */
+.brave-badge {display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; color: #2d3748; text-decoration: none; border: 1px solid rgba(0, 230, 118, 0.2); padding: 6px 10px; border-radius: 6px; background: transparent; transition: all 0.2s;}
+.brave-badge:hover {background: transparent; border-color: #4285f4; transform: translateY(-1px);}

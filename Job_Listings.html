@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
 <title>Job listings</title>
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2" as="style">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css?v=1.2">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.css?v=1.2"> 
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css?v=1.2"> 
 </head>
 <body class="biotechbody">
 <canvas id="particles-canvas"></canvas>
@@ -159,71 +159,64 @@
 <div class="portfolio-main">
 <div class="biotechcenter"><p class="lead">Dashboard delle prestazioni aggiornata</p></div>     
 
+<!-- Menu di filtro per livello di maturità tecnologica -->
 <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-  <button class="btn" onclick="filterSelection('cellula')"> Cellula</button>
-  <button class="btn" onclick="filterSelection('dermatologia')"> Dermatologia</button>
-  <button class="btn" onclick="filterSelection('staff')"> Staff</button>
+  <button class="btn" onclick="filterSelection('compatible')"> Compatible</button>
+  <button class="btn" onclick="filterSelection('optimized')"> Optimized</button>
+  <button class="btn" onclick="filterSelection('needs-improvement')"> Needs Improvement</button>
+  <button class="btn" onclick="filterSelection('deprecated')"> Deprecated</button>
 </div>
-<!-- Portfolio Gallery Grid -->
+
+<!-- Griglia delle pagine (analisi prestazioni) -->
 <div class="portfolio-row">
-  <div class="portfolio-col cellula portfolio-show">
+  <!-- Esempio: Pagina ben ottimizzata -->
+  <div class="portfolio-col optimized portfolio-show">
     <div class="portfolio-content">
-      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio1.jpg" alt="Apparato circolatorio">
-      <div class="fadebox">Apparato circolatorio: sistema di trasporto del sangue</div>
-      <p class="greentext">Apparato circolatorio</p>
+      <div class="fadebox">Pagina /home: caricamento rapido, SEO ottimizzata, conforme WCAG</div>
+      <p class="greentext">/home — Optimized</p>
     </div>
   </div>
-  <div class="portfolio-col cellula portfolio-show">
+
+  <!-- Esempio: Pagina compatibile ma non ottimizzata -->
+  <div class="portfolio-col compatible portfolio-show">
     <div class="portfolio-content">
-      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio2.jpg" alt="Cuore">
-      <div class="fadebox">Cuore: pompa muscolare centrale</div>
-      <p class="greentext">Cuore</p>
+      <div class="fadebox">Pagina /about: funziona su tutti i browser, ma tempi di caricamento elevati</div>
+      <p class="greentext">/about — Compatible</p>
     </div>
   </div>
-  <div class="portfolio-col cellula portfolio-show">
+
+  <!-- Esempio: Pagina da migliorare -->
+  <div class="portfolio-col "needs-improvement" portfolio-show">
     <div class="portfolio-content">
-      <img src="Biotech-file/images/Biotech-menu/Apparatocircolatorio3.jpg" alt="Vasi sanguigni">
-      <div class="fadebox">Vasi sanguigni: arterie, vene, capillari</div>
-      <p class="greentext">Vasi sanguigni</p>
+      <div class="fadebox">Pagina /services: errori di accessibilità, script bloccanti</div>
+      <p class="greentext">/services — Needs Improvement</p>
     </div>
   </div>
-  <div class="portfolio-col dermatologia portfolio-show">
+
+  <!-- Esempio: Pagina deprecata -->
+  <div class="portfolio-col deprecated portfolio-show">
     <div class="portfolio-content">
-      <img src="Biotech-file/images/Biotech-menu/dockercp.png" alt="Docker CP">
-      <div class="fadebox">Docker CP: gestione container</div>
-      <p class="greentext">Docker CP</p>
+      <div class="fadebox">Pagina /legacy: tecnologie obsolete (jQuery 1.x), non mantenuta</div>
+      <p class="greentext">/legacy — Deprecated</p>
     </div>
   </div>
-  <div class="portfolio-col dermatologia portfolio-show">
+
+  <!-- Altre pagine di esempio -->
+  <div class="portfolio-col optimized portfolio-show">
     <div class="portfolio-content">
-      <img src="Biotech-file/images/Biotech-menu/docker_nginx.png" alt="Docker Nginx">
-      <div class="fadebox">Docker Nginx: web server containerizzato</div>
-      <p class="greentext">Docker Nginx</p>
+      <div class="fadebox">Pagina /contact: PWA installabile, offline support</div>
+      <p class="greentext">/contact — Optimized</p>
     </div>
   </div>
-  <div class="portfolio-col staff portfolio-show">
+
+  <div class="portfolio-col compatible portfolio-show">
     <div class="portfolio-content">
-      <img src="Biotech-file/images/Elena.jpg" alt="Elena">
-      <div class="fadebox">Elena: Biologa</div>
-      <p class="greentext">Elena</p>
+      <div class="fadebox">Pagina /faq: nessun errore critico, ma mobile non perfetto</div>
+      <p class="greentext">/faq — Compatible</p>
     </div>
   </div>
-  <div class="portfolio-col staff portfolio-show">
-    <div class="portfolio-content">
-      <img src="Biotech-file/images/Fabrizio.jpg" alt="Fabrizio">
-      <div class="fadebox">Fabrizio: Ricercatore</div>
-      <p class="greentext">Fabrizio</p>
-    </div>
-  </div>
-  <div class="portfolio-col staff portfolio-show">
-    <div class="portfolio-content">
-      <img src="Biotech-file/images/Frank.jpg" alt="Frank">
-      <div class="fadebox">Frank: Tecnico di laboratorio</div>
-      <p class="greentext">Frank</p>
-    </div>
-  </div>
-</div>
+</div>   
 <!-- END MAIN -->
 </div>
 <p class="sansation-light-italic">Ultimo controllo: 21 ago 2025</p>   
@@ -243,7 +236,7 @@
 <script type="text/javascript" src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
+<script src="Biotech-file/portfolio.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-performance.min.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
