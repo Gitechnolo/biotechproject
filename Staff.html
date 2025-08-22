@@ -106,10 +106,14 @@
 <div class="staff-row">
 <div class="staff-col">
 <div class="staff-card">
-<picture>
-<source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.avif" type="image/avif">
-<source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" type="image/jpeg">
-<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" alt="Elena, CEO & Founder di Biotech Project" class="imgStaff" loading="lazy" width="604" height="408">
+<picture><!-- Schermi piccoli: usa la versione 348px (AVIF se supportato) -->
+<source media="(max-width: 603px)" srcset=" https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena-348w.avif 348w" type="image/avif">
+<source media="(max-width: 603px)" srcset=" https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena-348w.jpg 348w" type="image/jpeg">
+<!-- Schermi grandi: usa la versione 604px -->
+<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.avif 604w, https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg 604w" type="image/avif">
+<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg 604w" type="image/jpeg">
+<!-- Immagine fallback con dimensioni fisse -->
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" alt="Elena, CEO & Founder di Biotech Project" class="imgStaff" loading="lazy" width="604" height="408" sizes="(max-width: 603px) 100vw, 604px">
 </picture>   
 <div class="staff-container">
 <p class="sidenavtext">Elena</p>
@@ -123,9 +127,11 @@
 <div class="staff-col">
 <div class="staff-card">
 <picture>
-<source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.avif" type="image/avif">
-<source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" type="image/jpeg">
-<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Fabrizio, Art Director di Biotech Project" class="imgStaff" loading="lazy" width="604" height="408">
+<source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.avif 348w" type="image/avif">
+<source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.jpg 348w" type="image/jpeg">
+<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.avif 604w" type="image/avif">
+<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg 604w" type="image/jpeg">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Fabrizio, Art Director di Biotech Project" class="imgStaff" loading="lazy" width="604" height="408" sizes="(max-width: 603px) 100vw, 604px">
 </picture>
 <div class="staff-container">
 <p class="sidenavtext">Fabrizio</p>
@@ -139,10 +145,12 @@
 <div class="staff-col">
 <div class="staff-card">
 <picture>
-<source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.avif" type="image/avif">
-<source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.jpg" type="image/jpeg">
-<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.jpg" alt="Frank, Designer di Biotech Project" class="imgStaff" loading="lazy" width="604" height="408">
-</picture>
+<source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank-348w.avif 348w" type="image/avif">
+<source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank-348w.jpg 348w" type="image/jpeg">
+<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.avif 604w" type="image/avif">
+<source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.jpg 604w" type="image/jpeg">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Frank.jpg" alt="Frank, Designer di Biotech Project" class="imgStaff" loading="lazy" width="604" height="408" sizes="(max-width: 603px) 100vw, 604px">
+</picture>   
 <div class="staff-container">
 <p class="sidenavtext">Frank</p>
 <p class="staff-title">Designer</p><br>
