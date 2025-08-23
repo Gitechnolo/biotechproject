@@ -229,7 +229,6 @@
     margin: 50px auto;
   }
 }
-
 /* Cerchio di progresso - versione sicura per sfondo scuro */
 .progress-circle {
   --value: 0;
@@ -246,7 +245,9 @@
   margin: 0 auto;
   box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
   z-index: 1;
-}
+  /* Animazione riempimento del cerchio */
+  transition: background 1.2s ease;
+}   
 .progress-circle::before {
   content: '';
   position: absolute;
@@ -393,4 +394,68 @@
   text-align: center;
   line-height: 1.4;
 }   
+/* === PULSANTE ESPORTA DATI === */
+.action-btn {
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: rgba(103, 58, 183, 0.1); /* Viola scuro (tono Biotech) */
+  color: #b39ddb; /* Viola chiaro */
+  border: 1px solid #7c4dff;
+  border-radius: 6px;
+  font-family: 'Sansation', sans-serif;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
 
+.action-btn:hover {
+  background: rgba(103, 58, 183, 0.3);
+  box-shadow: 0 0 10px rgba(124, 77, 255, 0.4);
+  transform: translateY(-1px);
+  border-color: #b39ddb;
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+.action-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.3);
+}
+.metric {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.metric:nth-child(1) { animation-delay: 0.1s; }
+.metric:nth-child(2) { animation-delay: 0.2s; }
+.metric:nth-child(3) { animation-delay: 0.3s; }
+.metric:nth-child(4) { animation-delay: 0.4s; }
+.metric:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#trend-indicator {
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  margin-left: 6px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+#trend-indicator:hover {
+  transform: scale(1.3);
+}

@@ -18,7 +18,12 @@ function ensureInitialData() {
   }
   cleanupOldHistory(); // Pulizia dati vecchi
 }
-
+function formatChartDate(dateStr) {
+  const date = new Date(dateStr);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  return `${day}/${month}`;
+}
 // Pulisce i dati più vecchi di 30 giorni
 function cleanupOldHistory() {
   const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
@@ -74,16 +79,15 @@ async function updatePerformanceData() {
       seo: Math.round(mobileData.lighthouseResult.categories.seo.score * 100),
       'performance-desktop': Math.round(desktopData.lighthouseResult.categories.performance.score * 100)
     };
-       // Aggiorna cerchi
-    Object.keys(metrics).forEach(metric => {
-      const circle = document.querySelector(`.progress-circle[data-metric="${metric}"]`);
-      if (circle) {
-        const value = metrics[metric];
-        circle.style.setProperty('--value', value);
-        circle.dataset.value = value;
-      }
-    });
-
+    // Aggiorna cerchi
+  Object.keys(metrics).forEach(metric => {
+  const circle = document.querySelector(`.progress-circle[data-metric="${metric}"]`);
+  if (circle) {
+    const value = metrics[metric];
+    circle.style.setProperty('--value', value + '%');  // ← Aggiunto '%'
+    circle.dataset.value = value; // opzionale: per accesso futuro
+  }
+});
     // Salva nuovo record storico
     const today = new Date().toISOString().split('T')[0];
     const log = {
@@ -100,12 +104,70 @@ async function updatePerformanceData() {
       localStorage.setItem('performanceHistory', JSON.stringify(history));
       console.log('Nuovo dato salvato:', log);
     }
-
     // Aggiorna grafico e punteggio
-    drawPerformanceChart();
-    updatePerformanceScore();
+    drawPerformanceChart(); // ← Disegna il grafico
+    updatePerformanceScore(); // ← Aggiorna il punteggio grande
 
-    // Aggiorna timestamp UI
+    // === TOOLTIP ===
+const canvas = ctx.canvas;
+const tooltip = document.getElementById('chart-tooltip');
+
+// Assicurati che tooltip esista
+if (!tooltip) return;
+
+// Dati per il tooltip
+const points = labels.map((label, i) => ({
+  x: padding + (xStep * i),
+  y: valueToY(data[i]),
+  label: label,
+  score: data[i]
+}));
+// Rimuovi eventi precedenti per evitare duplicati
+canvas.removeEventListener('mousemove', handleMouseMove);
+canvas.removeEventListener('mouseout', handleMouseOut);
+
+// Aggiungi nuovi eventi
+canvas.addEventListener('mousemove', handleMouseMove);
+canvas.addEventListener('mouseout', handleMouseOut);
+
+function handleMouseMove(e) {
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+
+  // Trova il punto più vicino
+  let closest = null;
+  let minDist = 30; // Massimo 30px di distanza
+
+    for (const point of points) {
+    const dist = Math.abs(mouseX - point.x);
+    if (dist < minDist) {
+      minDist = dist;
+      closest = point;
+    }
+  }
+  if (closest) {
+    // Mostra tooltip
+    const date = new Date(closest.label);
+    const formattedDate = date.toLocaleDateString('it-IT', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
+
+    tooltip.innerHTML = `${formattedDate}<br><b>${closest.score}%</b>`;
+    tooltip.style.left = `${e.clientX + 10}px`;
+    tooltip.style.top = `${e.clientY - 30}px`;
+    tooltip.style.opacity = '1';
+  } else {
+    tooltip.style.opacity = '0';
+  }
+}
+
+function handleMouseOut() {
+  tooltip.style.opacity = '0';
+}   
+
+// Aggiorna timestamp UI
     const lastUpdate = document.getElementById('last-update');
     if (lastUpdate) {
       const now = new Date();
@@ -190,22 +252,27 @@ function drawPerformanceChart() {
     const y = padding + (chartHeight * i / 5);
     ctx.fillText(value + '%', padding - 10, y + 4);
   }
+// Etichette asse X (date) - versione migliorata
+ctx.textAlign = 'center';
+ctx.fillStyle = '#a7ffeb';
+ctx.font = '12px "Sansation", sans-serif';
 
-  // Etichette asse X (date)
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#a7ffeb';
-  ctx.font = '12px "Sansation", sans-serif';
-  if (labels.length === 1) {
-    ctx.fillText(labels[0], ctx.canvas.width / 2, ctx.canvas.height - 10);
-  } else {
-    const step = Math.ceil(labels.length / 5); // max 5 etichette
-    for (let i = 0; i < labels.length; i += step) {
-      const x = padding + (xStep * i);
-      ctx.fillText(labels[i], x, ctx.canvas.height - 10);
+if (labels.length === 1) {
+  const x = ctx.canvas.width / 2;
+  if (x >= padding && x <= ctx.canvas.width - padding) {
+    ctx.fillText(formatChartDate(labels[0]), x, ctx.canvas.height - 10);
+  }
+} else {
+  const step = Math.ceil(labels.length / 5);
+  for (let i = 0; i < labels.length; i += step) {
+  const x = padding + (xStep * i);
+  // Disegna solo se l'etichetta è dentro i margini
+  if (x >= padding && x <= ctx.canvas.width - padding) {
+   ctx.fillText(formatChartDate(labels[i]), x, ctx.canvas.height - 10);
     }
   }
-
-  // Disegna la linea delle prestazioni
+}
+// Disegna la linea delle prestazioni
   ctx.beginPath();
   ctx.moveTo(padding, valueToY(data[0]));
   for (let i = 1; i < data.length; i++) {
@@ -270,11 +337,55 @@ function showNotification(message) {
   setTimeout(() => notification.remove(), 3000);
 }
 
+// === ESPORTA DATI ===
+function exportData() {
+  const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
+  if (history.length === 0) {
+    showNotification('⚠️ Nessun dato da esportare');
+    return;
+  }
+
+  const filename = `performance-data-${new Date().toISOString().split('T')[0]}`;
+
+  // Scegli formato
+  const choice = prompt('Scegli formato:\n1 - JSON\n2 - CSV\n\nInserisci 1 o 2');
+  if (choice === '1') {
+    const jsonStr = JSON.stringify(history, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    downloadFile(url, `${filename}.json`);
+  } else if (choice === '2') {
+    const csv = [
+      ['Data', 'Performance', 'Accessibilità'].join(','),
+      ...history.map(e => [e.date, e.performance, e.accessibility].join(','))
+    ].join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    downloadFile(url, `${filename}.csv`);
+  }
+}
+
+function downloadFile(url, filename) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showNotification(`✅ ${filename} scaricato`);
+}   
+
 // Esegui al caricamento della pagina
 document.addEventListener('DOMContentLoaded', () => {
   ensureInitialData();
   drawPerformanceChart();
   updatePerformanceScore();
+  // Pulsante esporta
+document.getElementById('export-data-btn')?.addEventListener('click', () => {
+  exportData();
+});   
 
 // Aggiorna ogni 24 ore
   const lastRun = localStorage.getItem('lastPerformanceCheck');
@@ -293,4 +404,48 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePerformanceData();
     });
   }
-});   
+});
+
+
+function updatePerformanceScore() {
+  const history = JSON.parse(localStorage.getItem('performanceHistory') || '[]');
+  const scoreElement = document.getElementById('performance-score');
+  const trendElement = document.getElementById('trend-indicator');
+
+  if (history.length === 0) {
+    if (scoreElement) scoreElement.textContent = '–';
+    if (trendElement) trendElement.textContent = '';
+    return;
+  }
+
+  const latest = history[history.length - 1].performance;
+  const previous = history.length > 1 
+    ? history[history.length - 2].performance 
+    : latest;
+
+  const diff = latest - previous;
+
+  if (scoreElement) {
+    scoreElement.textContent = Math.round(latest);
+  }
+
+  if (trendElement) {
+    trendElement.style.marginLeft = '8px';
+    trendElement.style.fontSize = '1.4em';
+    trendElement.style.verticalAlign = 'top';
+
+    if (diff > 0) {
+      trendElement.textContent = '▲';
+      trendElement.style.color = '#4CAF50'; // Verde
+    } else if (diff < 0) {
+      trendElement.textContent = '▼';
+      trendElement.style.color = '#F44336'; // Rosso
+    } else {
+      trendElement.textContent = '●';
+      trendElement.style.color = '#FF9800'; // Arancione (stabile)
+    }
+
+    // Aggiungi tooltip
+    trendElement.title = `Ultimo: ${previous}% | Variazione: ${diff > 0 ? '+' : ''}${diff}%`;
+  }
+}   

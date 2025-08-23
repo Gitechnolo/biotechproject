@@ -8,7 +8,7 @@
 <title>Job listings</title>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css?v=1.2"> 
+<link rel="stylesheet" href="Biotech-file/reportJobs.css?v=1.2"> 
 </head>
 <body class="biotechbody">
 <canvas id="particles-canvas"></canvas>
@@ -109,8 +109,8 @@
 
 <div class="metrics-grid">
   <div class="metric">
-    <div class="progress-circle" style="--value: 99;" data-value="99" data-metric="performance"></div>
-    <p>Prestazioni Mobile</p>
+    <div class="progress-circle" data-value="99" data-metric="performance"></div>
+  <p><strong>📱 Mobile</strong><br>Prestazioni</p>
   </div>
   <div class="metric">
     <div class="progress-circle" style="--value: 100;" data-value="100" data-metric="seo"></div>
@@ -125,8 +125,8 @@
     <p>Best Practices</p>
   </div>
   <div class="metric">
-    <div class="progress-circle" style="--value: 100;" data-value="100"></div>
-    <p>Prestazioni Desktop</p>
+    <div class="progress-circle" data-value="100" data-metric="performance-desktop"></div>
+  <p><strong>💻 Desktop</strong><br>Prestazioni</p>
   </div>
 </div>   
 </div> 
@@ -136,12 +136,19 @@
   <canvas id="performance-trend" width="800" height="200"></canvas>
   <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
 <button id="refresh-btn">Aggiorna ora</button>
-</section> 
+</section>
+<div class="biotechcenter">
+  <button id="export-data-btn" class="action-btn" title="Esporta dati storici in JSON o CSV">
+    💾 Esporta dati
+  </button>
+</div>   
 <div class="biotechcenter">
   <p class="sansation-light-italic">Performance Score</p>
-  <span id="performance-score">-</span> <!-- Valore iniziale sovrascritto da dati reali -->
+  <span id="performance-score">-</span>
+  <span id="trend-indicator"></span>
   <p class="lead">*Dati reali aggiornati ogni 24 ore</p>   
-</div>
+</div>   
+
 
 <table class="visually-hidden">
   <caption>Andamento delle prestazioni nel tempo</caption>
@@ -161,16 +168,16 @@
 
 <!-- Menu di filtro per livello di maturità tecnologica -->
 <div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-  <button class="btn" onclick="filterSelection('compatible')"> Compatible</button>
-  <button class="btn" onclick="filterSelection('optimized')"> Optimized</button>
-  <button class="btn" onclick="filterSelection('needs-improvement')"> Needs Improvement</button>
-  <button class="btn" onclick="filterSelection('deprecated')"> Deprecated</button>
+  <button class="btn active" data-filter="all">Show all</button>
+  <button class="btn" data-filter="compatible">Compatible</button>
+  <button class="btn" data-filter="optimized">Optimized</button>
+  <button class="btn" data-filter="needs-improvement">Needs Improvement</button>
+  <button class="btn" data-filter="deprecated">Deprecated</button>
 </div>
 
-<!-- Griglia delle pagine (analisi prestazioni) -->
+<!-- Griglia delle pagine -->
 <div class="portfolio-row">
-  <!-- Esempio: Pagina ben ottimizzata -->
+  <!-- Pagina ottimizzata -->
   <div class="portfolio-col optimized portfolio-show">
     <div class="portfolio-content">
       <div class="fadebox">Pagina /home: caricamento rapido, SEO ottimizzata, conforme WCAG</div>
@@ -178,7 +185,7 @@
     </div>
   </div>
 
-  <!-- Esempio: Pagina compatibile ma non ottimizzata -->
+  <!-- Pagina compatibile -->
   <div class="portfolio-col compatible portfolio-show">
     <div class="portfolio-content">
       <div class="fadebox">Pagina /about: funziona su tutti i browser, ma tempi di caricamento elevati</div>
@@ -186,15 +193,15 @@
     </div>
   </div>
 
-  <!-- Esempio: Pagina da migliorare -->
-  <div class="portfolio-col "needs-improvement" portfolio-show">
+  <!-- Pagina da migliorare -->
+  <div class="portfolio-col needs-improvement portfolio-show">
     <div class="portfolio-content">
       <div class="fadebox">Pagina /services: errori di accessibilità, script bloccanti</div>
       <p class="greentext">/services — Needs Improvement</p>
     </div>
   </div>
 
-  <!-- Esempio: Pagina deprecata -->
+  <!-- Pagina deprecata -->
   <div class="portfolio-col deprecated portfolio-show">
     <div class="portfolio-content">
       <div class="fadebox">Pagina /legacy: tecnologie obsolete (jQuery 1.x), non mantenuta</div>
@@ -202,7 +209,7 @@
     </div>
   </div>
 
-  <!-- Altre pagine di esempio -->
+  <!-- Altre pagine -->
   <div class="portfolio-col optimized portfolio-show">
     <div class="portfolio-content">
       <div class="fadebox">Pagina /contact: PWA installabile, offline support</div>
@@ -216,7 +223,10 @@
       <p class="greentext">/faq — Compatible</p>
     </div>
   </div>
-</div>   
+</div>
+
+
+</div>
 <!-- END MAIN -->
 </div>
 <p class="sansation-light-italic">Ultimo controllo: 21 ago 2025</p>   
@@ -227,6 +237,7 @@
   <article class="job-listing">...</article>
   <span aria-label="Luogo">📍</span> Roma
 <br>
+<div id="chart-tooltip" style="position: absolute; background: #0a1a2a; color: #a7ffeb; padding: 6px 10px; border: 1px solid #00e676; border-radius: 4px; font-size: 12px; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 1000; font-family: sans-serif; white-space: nowrap;"></div>   
 <div id="about"><a href="https://brave.com" target="_blank" class="brave-badge"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/brave-logo.svg" alt="Brave Browser" width="20" height="23">Only the Brave</a><div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js"></script></div>
       </div>
     </div>
@@ -237,7 +248,7 @@
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="Biotech-file/portfolio.js"></script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-performance.min.js"></script>
+<script src="Biotech-file/reportPerformance.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>

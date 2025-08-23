@@ -158,5 +158,232 @@
 <!-- Oppure -->
 <span class="visually-hidden">Luogo:</span> 📍 Roma
 </section> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// === FILTRO DINAMICO ===
+document.addEventListener('DOMContentLoaded', () => {
+  // Filtri
+  const buttons = document.querySelectorAll('#myBtnContainer .btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      // Rimuovi active da tutti i pulsanti
+      buttons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      const filter = this.getAttribute('data-filter');
+
+  // Mostra/nascondi colonne
+document.querySelectorAll('.portfolio-col').forEach(col => {
+  if (filter === 'all' || col.classList.contains(filter)) {
+    col.classList.add('portfolio-show');
+  } else {
+    col.classList.remove('portfolio-show');
+  }
+});   
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // === GESTIONE FILTRI ===
+  const buttons = document.querySelectorAll('#myBtnContainer .btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      // Rimuovi classe 'active' da tutti i pulsanti
+      buttons.forEach(b => b.classList.remove('active'));
+      // Aggiungi 'active' al pulsante cliccato
+      this.classList.add('active');
+
+      // Ottieni la categoria da filtrare
+      const filter = this.getAttribute('data-filter');
+
+      // Mostra/nascondi le card in base al filtro
+      document.querySelectorAll('.portfolio-col').forEach(col => {
+        if (filter === 'all' || col.classList.contains(filter)) {
+          col.classList.add('portfolio-show');
+        } else {
+          col.classList.remove('portfolio-show');
+        }
+      });
+    });
+  });
+
+  // === PULSANTE AGGIORNA DATI ===
+  const refreshBtn = document.getElementById('refresh-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', async () => {
+      try {
+        // Mostra feedback all'utente
+        refreshBtn.textContent = '🔄 Aggiornamento...';
+        refreshBtn.disabled = true;
+
+        // Chiama la funzione che carica i dati aggiornati
+        await loadPerformanceData();
+
+        // Ripristina il testo
+        setTimeout(() => {
+          refreshBtn.textContent = '🔄 Aggiorna dati';
+          refreshBtn.disabled = false;
+        }, 2000);
+      } catch (error) {
+        console.warn('Errore durante l\'aggiornamento:', error);
+        refreshBtn.textContent = '⚠️ Errore';
+        setTimeout(() => {
+          refreshBtn.textContent = '🔄 Aggiorna dati';
+          refreshBtn.disabled = false;
+        }, 2000);
+      }
+    });
+  }
+
+  // === FUNZIONE DI CARICAMENTO DATI (da definire altrove o inline) ===
+  async function loadPerformanceData() {
+    // Esempio: fetch del JSON generato dal CI
+    const response = await fetch('/Biotech-file/performance-data.json?t=' + new Date().getTime());
+    const data = await response.json();
+
+    const container = document.querySelector('.portfolio-row');
+    container.innerHTML = ''; // Pulisci
+
+    data.pages.forEach(page => {
+      const col = document.createElement('div');
+      col.className = `portfolio-col ${page.category} portfolio-show`;
+      col.innerHTML = `
+        <div class="portfolio-content">
+          <div class="fadebox">
+            <strong>${page.label}</strong><br>
+            Score: ${page.performanceScore}/100 • ${formatLoadTime(page.loadTime)}
+          </div>
+          <p class="greentext">${page.slug} — ${capitalize(page.category)}</p>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+
+    // Aggiorna data ultimo controllo
+    document.querySelector('.sansation-light-italic').textContent = 
+      'Ultimo controllo: ' + new Date().toLocaleDateString('it-IT');
+  }
+
+  // Funzioni di supporto
+  function formatLoadTime(ms) {
+    return ms < 1000 ? `${ms} ms` : `${(ms / 1000).toFixed(2)} s`;
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).replace('-', ' ');
+  }
+});
+</script>   
+
+
+
+
+<div id="myBtnContainer">
+  <button class="btn active" data-filter="all">Show all</button>
+  <button class="btn" data-filter="compatible">Compatible</button>
+  <button class="btn" data-filter="optimized">Optimized</button>
+  <button class="btn" data-filter="needs-improvement">Needs Improvement</button>
+  <button class="btn" data-filter="deprecated">Deprecated</button>
+</div>
+
+<!-- Griglia delle pagine -->
+<div class="portfolio-row">
+  <!-- Pagina ottimizzata -->
+  <div class="portfolio-col optimized portfolio-show">
+    <div class="portfolio-content">
+      <div class="fadebox">Pagina /home: caricamento rapido, SEO ottimizzata, conforme WCAG</div>
+      <p class="greentext">/home — Optimized</p>
+    </div>
+  </div>
+
+  <!-- Pagina compatibile -->
+  <div class="portfolio-col compatible portfolio-show">
+    <div class="portfolio-content">
+      <div class="fadebox">Pagina /about: funziona su tutti i browser, ma tempi di caricamento elevati</div>
+      <p class="greentext">/about — Compatible</p>
+    </div>
+  </div>
+
+  <!-- Pagina da migliorare -->
+  <div class="portfolio-col needs-improvement portfolio-show">
+    <div class="portfolio-content">
+      <div class="fadebox">Pagina /services: errori di accessibilità, script bloccanti</div>
+      <p class="greentext">/services — Needs Improvement</p>
+    </div>
+  </div>
+
+  <!-- Pagina deprecata -->
+  <div class="portfolio-col deprecated portfolio-show">
+    <div class="portfolio-content">
+      <div class="fadebox">Pagina /legacy: tecnologie obsolete (jQuery 1.x), non mantenuta</div>
+      <p class="greentext">/legacy — Deprecated</p>
+    </div>
+  </div>
+
+  <!-- Altre pagine -->
+  <div class="portfolio-col optimized portfolio-show">
+    <div class="portfolio-content">
+      <div class="fadebox">Pagina /contact: PWA installabile, offline support</div>
+      <p class="greentext">/contact — Optimized</p>
+    </div>
+  </div>
+
+  <div class="portfolio-col compatible portfolio-show">
+    <div class="portfolio-content">
+      <div class="fadebox">Pagina /faq: nessun errore critico, ma mobile non perfetto</div>
+      <p class="greentext">/faq — Compatible</p>
+    </div>
+  </div>
+</div>
+
+<!-- Testo aggiornamento -->
+<p class="sansation-light-italic">Ultimo controllo: 21 ago 2025</p>
+
+<!-- Pulsante aggiorna -->
+<div class="biotechcenter">
+  <button id="refresh-btn">🔄 Aggiorna dati</button>
+</div>   
+
+
+
+
 </body>
 </html>
