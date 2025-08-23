@@ -1,8 +1,9 @@
 // tools/generate-performance.js
-const fs = require('fs');
-const path = require('path');
-const lighthouse = require('lighthouse');
-const chromeLauncher = require('chrome-launcher');
+
+import lighthouse from 'lighthouse';
+import chromeLauncher from 'chrome-launcher';
+import fs from 'fs';
+import path from 'path';
 
 // Lista delle pagine da analizzare
 const pages = [
@@ -21,25 +22,32 @@ const pages = [
   { url: 'http://127.0.0.1:8080/O.S_support.html', label: 'Supporto OS', slug: 'os-support', category: 'altro' },
   { url: 'http://127.0.0.1:8080/Tablet_forum.html', label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
   { url: 'http://127.0.0.1:8080/Specials.html', label: 'Specials', slug: 'specials', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Job_Listings.html', label: 'Offerte di lavoro', slug: 'job-listings', category: 'altro' }
+  { url: 'http://127.0.0.1:8080/Job_Listings.html', label: 'Maturità tecnologica', slug: 'job-listings', category: 'altro' }
 ];
 
-(async () => {
+/**
+ * Funzione principale asincrona
+ */
+async function runPerformanceAnalysis() {
   let chrome;
   const results = [];
 
   try {
     // Avvia Chrome in modalità headless
+    console.log('🚀 Avvio Chrome headless...');
     chrome = await chromeLauncher.launch({
       chromeFlags: [
         '--headless',
         '--disable-gpu',
         '--no-sandbox',
         '--no-zygote',
-        '--single-process'
+        '--single-process',
+        '--remote-debugging-port=9222',
+        '--disable-dev-shm-usage'
       ],
       port: 9222,
-      executablePath: '/usr/bin/chromium-browser' // Cruciale per GitHub Actions
+      // Su GitHub Actions, Chromium è disponibile qui
+      executablePath: process.env.CHROME_PATH || '/usr/bin/chromium-browser'
     });
 
     const options = {
@@ -49,9 +57,11 @@ const pages = [
       logLevel: 'silent'
     };
 
+    console.log('✅ Chrome avviato. Inizio analisi delle pagine...');
+
     for (const page of pages) {
       try {
-        console.log(`🔍 Analizzo: ${page.url}`);
+        console.log(`🔍 Analizzo: ${page.label} (${page.url})`);
         const runnerResult = await lighthouse(page.url, options);
 
         const score = Math.round(runnerResult.lhr.categories.performance.score * 100);
@@ -64,9 +74,9 @@ const pages = [
           lastAnalyzed: new Date().toISOString()
         });
 
-        console.log(`✅ ${page.label}: Score ${score}`);
+        console.log(`✅ ${page.label}: Punteggio performance ${score}`);
       } catch (pageError) {
-        console.warn(`❌ Fallito: ${page.label} (${page.url})`);
+        console.warn(`❌ Fallito: ${page.label}`);
         console.warn(`   Errore: ${pageError.message}`);
 
         results.push({
@@ -79,12 +89,13 @@ const pages = [
       }
     }
   } catch (overallError) {
-    console.error('🚨 Errore critico nell\'avvio di Chrome:', overallError);
+    console.error('🚨 Errore critico nell\'avvio di Chrome:', overallError.message);
     process.exit(1);
   } finally {
     if (chrome) {
       try {
         await chrome.kill();
+        console.log('⏹️ Chrome chiuso correttamente');
       } catch (killError) {
         console.warn('⚠️ Impossibile terminare Chrome:', killError.message);
       }
@@ -92,7 +103,7 @@ const pages = [
   }
 
   // Percorso di output: Biotech-file/performance-data.json
-  const outputDir = path.resolve(__dirname, '../Biotech-file');
+  const outputDir = path.resolve(new URL(import.meta.url).pathname, '../Biotech-file');
   const outputPath = path.join(outputDir, 'performance-data.json');
 
   // Assicura che la cartella esista
@@ -120,7 +131,13 @@ const pages = [
       console.warn(`⚠️  ${output.summary.failed} pagine non analizzate.`);
     }
   } catch (writeError) {
-    console.error('❌ Errore nella scrittura del file:', writeError);
+    console.error('❌ Errore nella scrittura del file:', writeError.message);
     process.exit(1);
   }
-})();   
+}
+
+// Esegui la funzione principale
+runPerformanceAnalysis().catch(err => {
+  console.error('🚨 Errore non gestito:', err);
+  process.exit(1);
+});   

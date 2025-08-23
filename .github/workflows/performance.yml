@@ -11,51 +11,48 @@ jobs:
   generate-report:
     name: Generate performance-data.json
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-      - name: Checkout code
+      - name: 🔁 Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref }}
-          persist-credentials: false
 
-      - name: Setup Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install dependencies
-        run: |
-          cd tools
-          npm install lighthouse chrome-launcher
+      - name: 📦 Install dependencies
+        run: npm install
 
-      - name: Start local server
+      - name: 🌐 Start local server
         run: |
+          echo "Avvio server su http://127.0.0.1:8080"
           python3 -m http.server 8080 &
-          sleep 10  # Attendi che il server si avvii
+          sleep 15  # Dà tempo al server di avviarsi e servire le pagine
         shell: bash
 
-      - name: Generate performance-data.json
-        run: |
-          node tools/generate-performance.js
+      - name: 🚀 Generate performance-data.json
+        run: node tools/generate-performance.js
 
-      - name: Check if performance-data.json changed
+      - name: 📂 Check if performance-data.json changed
         id: changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           if git diff --exit-code Biotech-file/performance-data.json; then
-            echo "no_changes=true" >> $GITHUB_OUTPUT
             echo "No changes in performance-data.json"
+            echo "no_changes=true" >> $GITHUB_OUTPUT
           else
+            echo "Changes detected in performance-data.json"
             echo "no_changes=false" >> $GITHUB_OUTPUT
-            echo "Changes detected, will commit"
           fi
 
-      - name: Commit and push if changed
+      - name: 💾 Commit and push if changed
         if: steps.changes.outputs.no_changes == 'false'
         run: |
           git add Biotech-file/performance-data.json
-          git commit -m "📊 Automated: Update performance-data.json"
-          git push
+          git commit -m "📊 Automated: Update performance-data.json with latest Lighthouse scores"
+          git push  
