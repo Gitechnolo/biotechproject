@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- 3. Carica dati da JSON e popola la dashboard ---
 async function loadPerformanceData() {
   try {
-    const response = await fetch('/Biotech-file/performance-data.json');
+    const response = await fetch('tools/performance-data.json');
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();

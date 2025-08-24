@@ -22,7 +22,7 @@ const pages = [
   { url: 'http://127.0.0.1:8080/O.S_support.html', label: 'Supporto OS', slug: 'os-support', category: 'altro' },
   { url: 'http://127.0.0.1:8080/Tablet_forum.html', label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
   { url: 'http://127.0.0.1:8080/Specials.html', label: 'Specials', slug: 'specials', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Tech_Maturity.html', label: 'Maturità tecnologica', slug: 'job-listings', category: 'altro' }
+  { url: 'http://127.0.0.1:8080/Tech_Maturity.html', label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'altro' }
 ];
 
 /**
@@ -46,7 +46,6 @@ async function runPerformanceAnalysis() {
         '--disable-dev-shm-usage'
       ],
       port: 9222,
-      // Su GitHub Actions, Chromium è disponibile qui
       executablePath: process.env.CHROME_PATH || '/usr/bin/chromium-browser'
     });
 
@@ -59,6 +58,7 @@ async function runPerformanceAnalysis() {
 
     console.log('✅ Chrome avviato. Inizio analisi delle pagine...');
 
+    // Analizza ogni pagina
     for (const page of pages) {
       try {
         console.log(`🔍 Analizzo: ${page.label} (${page.url})`);
@@ -102,14 +102,9 @@ async function runPerformanceAnalysis() {
     }
   }
 
-  // Percorso di output: Biotech-file/performance-data.json
-  const outputDir = path.resolve(new URL(import.meta.url).pathname, '../Biotech-file');
+  // Percorso di output: salva in tools/performance-data.json
+  const outputDir = path.resolve(new URL(import.meta.url).pathname, '..'); // Cartella padre (tools)
   const outputPath = path.join(outputDir, 'performance-data.json');
-
-  // Assicura che la cartella esista
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
 
   // Dati finali da salvare
   const output = {

@@ -1,21 +1,24 @@
 /* 
  * Biotech Project - Report Dashboard Styles
- * Ottimizzato per allineamento cerchi + grafico (v1.2)
+ * Versione ottimizzata: v1.3
  * https://github.com/Gitechnolo/biotechproject
  * 
- * ✅ Filtro portfolio funzionante
- * ✅ Stile pulsanti coerente con #refresh-btn
- * ✅ Nessuna interferenza con grafici e cerchi
- * ✅ Design moderno, responsive e accessibile
+ * ✅ Risolto conflitto ID #refresh-btn → .refresh-btn
+ * ✅ Layout responsive completo (fino a 480px)
+ * ✅ Coerenza con .biotechcenter (definito in altro file)
+ * ✅ Design moderno, accessibile e performante
  */
 
+/* --- Reset e base --- */
 * {
   box-sizing: border-box;
 }
 
+/* --- Contenitore principale portfolio --- */
 .portfolio-main {
   max-width: 1000px;
   margin: auto;
+  padding: 0 16px;
 }
 
 /* --- Griglia portfolio --- */
@@ -94,14 +97,15 @@
   color: #226a42;
 }
 
-/* --- Menu di filtro: stile coerente con #refresh-btn --- */
+/* --- Menu di filtro: stile coerente --- */
 #myBtnContainer {
   text-align: center;
   margin: 2rem 0;
   padding: 1rem;
 }
 
-#myBtnContainer .btn {
+.filter-btn,
+.refresh-btn {
   border: none;
   outline: none;
   padding: 10px 16px;
@@ -116,20 +120,22 @@
   margin: 0 6px;
 }
 
-#myBtnContainer .btn:hover {
+.filter-btn:hover,
+.refresh-btn:hover {
   background: rgba(0, 230, 118, 0.3);
   box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
   transform: translateY(-1px);
 }
 
-#myBtnContainer .btn.active {
+.filter-btn.active {
   background: rgba(0, 230, 118, 0.4);
   color: #ffffff;
   box-shadow: 0 0 14px rgba(0, 230, 118, 0.5);
   font-weight: 500;
   border-color: #00e676;
 }
-/* Sezione report Biotech - allineata ai cerchi */
+
+/* --- Sezione report Biotech - allineata ai cerchi --- */
 .tech-audit-container h2 {
   font-family: 'Sansation', Tahoma, Verdana, sans-serif;
   text-align: center;
@@ -177,6 +183,8 @@
   margin-bottom: 12px;
   text-shadow: 0 0 8px rgba(0, 230, 118, 0.3);
 }   
+
+/* --- Grafico performance --- */
 #performance-trend {
   max-width: 100%;
   height: auto;
@@ -187,29 +195,14 @@
   border: 1px solid rgba(0, 230, 118, 0.3);
   box-shadow: 0 0 12px rgba(0, 230, 118, 0.2);
 }
+
 #performance-trend:hover {
   box-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
   transform: translateY(-1px);
   transition: all 0.3s ease;
 }
-#refresh-btn {
-  margin-top: 16px;
-  padding: 8px 20px;
-  background: rgba(0, 230, 118, 0.1);
-  color: #a7ffeb;
-  border: 1px solid #00e676;
-  border-radius: 6px;
-  font-family: 'Sansation', sans-serif;
-  font-size: 0.95em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-#refresh-btn:hover {
-  background: rgba(0, 230, 118, 0.3);
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
-  transform: translateY(-1px);
-}   
-/* Griglia metriche */
+
+/* --- Griglia metriche --- */
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -229,9 +222,10 @@
     margin: 50px auto;
   }
 }
-/* Cerchio di progresso - versione sicura per sfondo scuro */
+
+/* --- Cerchio di progresso --- */
 .progress-circle {
-  --value: 0;
+  --value: 0%;
   --size: 60px;
   --thickness: 12px;
   width: var(--size);
@@ -245,9 +239,9 @@
   margin: 0 auto;
   box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
   z-index: 1;
-  /* Animazione riempimento del cerchio */
   transition: background 1.2s ease;
 }   
+
 .progress-circle::before {
   content: '';
   position: absolute;
@@ -268,6 +262,8 @@
   color: #a7ffeb;
   text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);
 }   
+
+/* --- Badge Brave --- */
 .brave-badge {
   display: inline-flex;
   align-items: center;
@@ -288,7 +284,7 @@
   transform: translateY(-1px);
 }
 
-/* Notifica (es. messaggio di aggiornamento) */
+/* --- Notifica (es. messaggio di aggiornamento) --- */
 .notification {
   position: fixed;
   top: 20px;
@@ -309,7 +305,7 @@
   100% { opacity: 0; transform: translateY(-10px); }
 }
 
-/* Dettagli job (se presenti) */
+/* --- Dettagli job (se presenti) --- */
 .job-location,
 .job-type,
 .job-salary,
@@ -319,7 +315,7 @@
   margin: 4px 0;
 }
 
-/* Testo nascosto per accessibilità */
+/* --- Testo nascosto per accessibilità --- */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -332,7 +328,7 @@
   border: 0;
 }
 
-/* Variabili globali */
+/* --- Variabili globali --- */
 :root {
   --primary-color: #64ffda;
   --text-color: #ccc;
@@ -342,7 +338,7 @@
   --spacing-md: 16px;
 }
 
-/* Versione attuale - Tema Dark Moderno */
+/* --- Stile per job listing --- */
 .job-listing {
   background-color: #1a1a1a;
   border: 1px solid #444;
@@ -357,7 +353,7 @@
   margin: 0 0 8px 0;
 }
 
-/* Metrica prestazioni */
+/* --- Metrica prestazioni --- */
 .performance-metric {
   color: rgb(212, 211, 211);
   text-shadow: 2px 2px 5px blueviolet;
@@ -365,7 +361,7 @@
   cursor: default;
 }
 
-/* Stile testo Biotech Center */
+/* --- Stile testo Biotech Center --- */
 .biotechcenter .sansation-light-italic {
   color: #a7ffeb;
   font-size: 1.1em;
@@ -394,12 +390,13 @@
   text-align: center;
   line-height: 1.4;
 }   
+
 /* === PULSANTE ESPORTA DATI === */
 .action-btn {
   margin-top: 12px;
   padding: 8px 18px;
-  background: rgba(103, 58, 183, 0.1); /* Viola scuro (tono Biotech) */
-  color: #b39ddb; /* Viola chiaro */
+  background: rgba(103, 58, 183, 0.1);
+  color: #b39ddb;
   border: 1px solid #7c4dff;
   border-radius: 6px;
   font-family: 'Sansation', sans-serif;
@@ -427,6 +424,8 @@
   outline: none;
   box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.3);
 }
+
+/* --- Animazione metriche --- */
 .metric {
   opacity: 0;
   transform: translateY(10px);
@@ -445,6 +444,8 @@
     transform: translateY(0);
   }
 }
+
+/* --- Indicatore di tendenza (▲/▼) --- */
 #trend-indicator {
   transition: transform 0.3s ease, color 0.3s ease;
   display: inline-block;
@@ -459,3 +460,122 @@
 #trend-indicator:hover {
   transform: scale(1.3);
 }
+
+/* --- Media query per dispositivi mobili --- */
+
+/* Tablet e piccoli desktop */
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 30px 0;
+  }
+
+  .metric p {
+    font-size: 0.95em;
+  }
+
+  .tech-audit-container {
+    margin: 30px auto;
+    padding: 20px 15px 10px;
+    border-radius: 12px;
+  }
+
+  .tech-section {
+    padding: 20px 15px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  #performance-trend {
+    max-height: 200px;
+  }
+
+  .portfolio-col {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+
+  #myBtnContainer .btn,
+  .refresh-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    margin: 2px 4px;
+  }
+
+  .action-btn {
+    font-size: 0.9em;
+    padding: 8px 16px;
+    gap: 6px;
+  }
+
+  .portfolio-main {
+    padding: 0 12px;
+  }
+}
+
+/* Smartphone (schermi piccoli) */
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .metric p {
+    font-size: 0.9em;
+  }
+
+  .tech-audit-container h2 {
+    font-size: 1.8em;
+  }
+
+  .tech-audit-container {
+    margin: 20px auto;
+    padding: 16px 12px 8px;
+    border-radius: 10px;
+  }
+
+  .tech-section {
+    padding: 16px 12px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  #performance-trend {
+    max-height: 180px;
+  }
+
+  .portfolio-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  #myBtnContainer {
+    padding: 0.8rem;
+  }
+
+  #myBtnContainer .btn,
+  .refresh-btn {
+    padding: 6px 10px;
+    font-size: 0.85em;
+    margin: 2px 3px;
+  }
+
+  .action-btn {
+    font-size: 0.85em;
+    padding: 6px 12px;
+    gap: 4px;
+  }
+
+  .brave-badge {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .notification {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+}
+
+/* --- Fine del file CSS --- */   

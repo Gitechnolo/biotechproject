@@ -144,12 +144,12 @@
   <p class="sansation-light-italic">Andamento delle Prestazioni</p>
   <canvas id="performance-trend" width="800" height="200"></canvas>
   <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
-<button id="refresh-btn">Aggiorna ora</button>
+<button class="refresh-btn">Aggiorna ora</button>
 </section>
 <div class="biotechcenter">
   <button id="export-data-btn" class="action-btn" title="Esporta dati storici in JSON o CSV">
-    💾 Esporta dati
-  </button>
+  💾 Esporta dati
+</button>
 </div>   
 <div class="biotechcenter">
   <p class="sansation-light-italic">Performance Score</p>
@@ -177,11 +177,11 @@
 
 <!-- Menu di filtro per livello di maturità tecnologica -->
 <div id="myBtnContainer">
-  <button class="btn active" data-filter="all">Mostra tutti</button>
-  <button class="btn" data-filter="compatible">Compatibili</button>
-  <button class="btn" data-filter="optimized">Ottimizzate</button>
-  <button class="btn" data-filter="needs-improvement">Da migliorare</button>
-  <button class="btn" data-filter="deprecated">Obsoleti</button>
+  <button class="filter-btn active" data-filter="all">Mostra tutti</button>
+  <button class="filter-btn" data-filter="compatible">Compatibili</button>
+  <button class="filter-btn" data-filter="optimized">Ottimizzate</button>
+  <button class="filter-btn" data-filter="needs-improvement">Da migliorare</button>
+  <button class="filter-btn" data-filter="deprecated">Obsoleti</button>
 </div>
 
 <!-- Griglia delle pagine -->
@@ -194,7 +194,7 @@
 <!-- END MAIN -->
 </div>
 <p class="sansation-light-italic">Ultimo controllo: 21 ago 2025</p>   
-<div class="biotechcenter"><button id="refresh-btn">🔄 Aggiorna dati</button></div>
+<div class="biotechcenter"><button class="refresh-btn">🔄 Aggiorna dati</button></div>
 <section aria-labelledby="jobs-title">
   <h2 id="jobs-title">Posizioni Aperte</h2>
   <article class="job-listing">...</article>

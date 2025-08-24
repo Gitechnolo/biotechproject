@@ -26,11 +26,26 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 🌐 Start local server
+      - name: 🌐 Start local server & wait for readiness
         run: |
-          echo "Avvio server su http://127.0.0.1:8080"
+          echo "🚀 Avvio del server locale su http://127.0.0.1:8080..."
           python3 -m http.server 8080 &
-          sleep 15  # Dà tempo al server di avviarsi e servire le pagine
+
+          echo "⏳ In attesa che il server risponda..."
+          for i in {1..30}; do
+            if curl -s --head http://127.0.0.1:8080 | grep "200 OK" > /dev/null; then
+              echo "✅ Server pronto dopo $i tentativi."
+              break
+            fi
+            echo "⏱️  Tentativo $i/30: server non ancora disponibile. Attendo 2 secondi..."
+            sleep 2
+          done
+
+          # Verifica finale
+          if ! curl -s http://127.0.0.1:8080 >/dev/null; then
+            echo "❌ Errore: il server non si è avviato entro il tempo massimo."
+            exit 1
+          fi
         shell: bash
 
       - name: 🚀 Generate performance-data.json
@@ -42,17 +57,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          if git diff --exit-code Biotech-file/performance-data.json; then
-            echo "No changes in performance-data.json"
+          if git diff --exit-code tools/performance-data.json; then
+            echo "✅ Nessun cambiamento rilevato in tools/performance-data.json"
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
-            echo "Changes detected in performance-data.json"
+            echo "🔄 Cambiamenti rilevati in tools/performance-data.json"
             echo "no_changes=false" >> $GITHUB_OUTPUT
           fi
 
       - name: 💾 Commit and push if changed
         if: steps.changes.outputs.no_changes == 'false'
         run: |
-          git add Biotech-file/performance-data.json
+          git add tools/performance-data.json
           git commit -m "📊 Automated: Update performance-data.json with latest Lighthouse scores"
-          git push  
+          git push      
