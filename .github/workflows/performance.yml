@@ -5,7 +5,12 @@ on:
     branches:
       - main
       - master
-  workflow_dispatch: # Permette di eseguire manualmente da GitHub
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL da analizzare (default: homepage)'
+        required: false
+        default: 'https://gitechnolo.github.io/biotechproject/'
 
 jobs:
   generate-report:
@@ -17,83 +22,66 @@ jobs:
       - name: 🔁 Checkout code
         uses: actions/checkout@v4
         with:
-          # Assicura che il repository sia clonato con tutta la cronologia
           fetch-depth: 0
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'  # Usa package-lock.json in root (come configurato)
+          cache: 'npm'
 
       - name: 📦 Install dependencies
         run: |
           cd tools
           npm install
+          # Assicurati che puppeteer/lighthouse siano installati
 
-      - name: 🌐 Start local server & wait for readiness
+      - name: 🌐 Start local server
         run: |
-          echo "🚀 Avvio del server locale su http://127.0.0.1:8080..."
           (cd tools && python3 -m http.server 8080) &
           
-          echo "⏳ In attesa che il server risponda..."
+          echo "⏳ Waiting for server..."
           for i in {1..30}; do
             if curl -s --head http://127.0.0.1:8080 | grep "200 OK" > /dev/null; then
-              echo "✅ Server pronto dopo $i tentativi."
+              echo "✅ Server ready"
               break
             fi
             sleep 2
           done
 
           if ! curl -s http://127.0.0.1:8080 >/dev/null; then
-            echo "❌ Errore: il server non si è avviato entro il tempo massimo."
+            echo "❌ Server failed to start"
             exit 1
           fi
         shell: bash
 
-      - name: 🚀 Generate performance-data.json
+      - name: 🚀 Run Performance Analysis
+        id: analyze
         run: |
           cd tools
           node generate-performance.js
 
           # Verifica che il file sia stato generato
-          if [ ! -f tools/performance-data.json ]; then
-            echo "❌ Errore: lo script non ha generato tools/performance-data.json"
+          if [ ! -f performance-data.json ]; then
+            echo "❌ Error: performance-data.json not generated"
             exit 1
           fi
-          echo "✅ performance-data.json generato correttamente."
+          echo "✅ performance-data.json created"
 
-      - name: 📂 Check if performance-data.json changed
+      - name: 📂 Check for changes
         id: changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Verifica l'esistenza del file
           if [ ! -f tools/performance-data.json ]; then
-            echo "❌ Errore: il file tools/performance-data.json non esiste."
+            echo "❌ File not found"
             exit 1
           fi
 
-          # Aggiungi il file allo staging
           git add tools/performance-data.json
 
-          # Controlla se ci sono cambiamenti da committare
           if git diff --cached --exit-code; then
-            echo "✅ Nessun cambiamento rilevato in performance-data.json"
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
-            echo "🔄 Cambiamenti rilevati: il file sarà aggiornato"
-            echo "no_changes=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: 💾 Commit and push if changed
-        if: steps.changes.outputs.no_changes == 'false'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git commit -m "📊 Automated: Update performance-data.json with latest performance scores"
-          
-          # Push diretto (ora permesso, dopo aver rimosso le protezioni)
-          git push origin main 
+            echo "no_changes=false" 
