@@ -22,7 +22,7 @@ const pages = [
   { url: 'http://127.0.0.1:8080/O.S_support.html', label: 'Supporto OS', slug: 'os-support', category: 'altro' },
   { url: 'http://127.0.0.1:8080/Tablet_forum.html', label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
   { url: 'http://127.0.0.1:8080/Specials.html', label: 'Specials', slug: 'specials', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Job_Listings.html', label: 'Maturità tecnologica', slug: 'job-listings', category: 'altro' }
+  { url: 'http://127.0.0.1:8080/Tech_Maturity.html', label: 'Maturità tecnologica', slug: 'job-listings', category: 'altro' }
 ];
 
 /**
