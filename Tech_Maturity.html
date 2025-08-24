@@ -8,7 +8,7 @@
 <title>Tech Maturity</title>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
-<link rel="stylesheet" href="Biotech-file/reportJobs.css?v=1.2"> 
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.css?v=1.2"> 
 </head>
 <body class="biotechbody">
 <canvas id="particles-canvas"></canvas>
@@ -98,15 +98,6 @@
  <div class="dna"></div>
 </div>
 <!-- End DNA animation -->
-
-
-
-
-
-
-
-
-
  <div class="staff-row">
   <div class="staff-col">
     <div class="staff-card">
@@ -186,7 +177,22 @@
 
 <!-- Griglia delle pagine -->
 <div class="portfolio-row">
-<p>Caricamento in corso...</p>
+  <!-- Fallback statico: visibile se fetch fallisce -->
+  <div class="portfolio-col optimized portfolio-show" data-page="index">
+    <div class="portfolio-content">
+      <div class="perf-meter" style="background: conic-gradient(#4CAF50 99%, #e0e0e0 99%)"><span>99</span></div>
+      <div class="fadebox"><strong>Homepage</strong><br>Score: 99/100 • 1.2 s</div>
+      <p class="greentext">index — Optimized</p>
+    </div>
+  </div>
+  <div class="portfolio-col compatible portfolio-show" data-page="cuore">
+    <div class="portfolio-content">
+      <div class="perf-meter" style="background: conic-gradient(#8BC34A 85%, #e0e0e0 85%)"><span>85</span></div>
+      <div class="fadebox"><strong>Cuore</strong><br>Score: 85/100 • 1.8 s</div>
+      <p class="greentext">cuore — Compatible</p>
+    </div>
+  </div>
+  <!-- Altre card di esempio... -->
 </div>
 
 
@@ -211,8 +217,8 @@
 <script type="text/javascript" src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_newyear.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
-<script src="Biotech-file/portfolio.js"></script>
-<script src="Biotech-file/reportPerformance.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/portfolio.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/reportPerformance.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>
