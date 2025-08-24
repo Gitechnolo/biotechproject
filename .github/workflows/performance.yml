@@ -16,32 +16,35 @@ jobs:
     steps:
       - name: 🔁 Checkout code
         uses: actions/checkout@v4
+        with:
+          # Assicura che il repository sia clonato con tutta la cronologia
+          fetch-depth: 0
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'npm'  # Usa package-lock.json in root (come configurato)
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: |
+          cd tools
+          npm install
 
       - name: 🌐 Start local server & wait for readiness
         run: |
           echo "🚀 Avvio del server locale su http://127.0.0.1:8080..."
-          python3 -m http.server 8080 &
-
+          (cd tools && python3 -m http.server 8080) &
+          
           echo "⏳ In attesa che il server risponda..."
           for i in {1..30}; do
             if curl -s --head http://127.0.0.1:8080 | grep "200 OK" > /dev/null; then
               echo "✅ Server pronto dopo $i tentativi."
               break
             fi
-            echo "⏱️  Tentativo $i/30: server non ancora disponibile. Attendo 2 secondi..."
             sleep 2
           done
 
-          # Verifica finale
           if ! curl -s http://127.0.0.1:8080 >/dev/null; then
             echo "❌ Errore: il server non si è avviato entro il tempo massimo."
             exit 1
@@ -49,7 +52,16 @@ jobs:
         shell: bash
 
       - name: 🚀 Generate performance-data.json
-        run: node tools/generate-performance.js
+        run: |
+          cd tools
+          node generate-performance.js
+
+          # Verifica che il file sia stato generato
+          if [ ! -f tools/performance-data.json ]; then
+            echo "❌ Errore: lo script non ha generato tools/performance-data.json"
+            exit 1
+          fi
+          echo "✅ performance-data.json generato correttamente."
 
       - name: 📂 Check if performance-data.json changed
         id: changes
@@ -57,17 +69,31 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          if git diff --exit-code tools/performance-data.json; then
-            echo "✅ Nessun cambiamento rilevato in tools/performance-data.json"
+          # Verifica l'esistenza del file
+          if [ ! -f tools/performance-data.json ]; then
+            echo "❌ Errore: il file tools/performance-data.json non esiste."
+            exit 1
+          fi
+
+          # Aggiungi il file allo staging
+          git add tools/performance-data.json
+
+          # Controlla se ci sono cambiamenti da committare
+          if git diff --cached --exit-code; then
+            echo "✅ Nessun cambiamento rilevato in performance-data.json"
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
-            echo "🔄 Cambiamenti rilevati in tools/performance-data.json"
+            echo "🔄 Cambiamenti rilevati: il file sarà aggiornato"
             echo "no_changes=false" >> $GITHUB_OUTPUT
           fi
 
       - name: 💾 Commit and push if changed
         if: steps.changes.outputs.no_changes == 'false'
         run: |
-          git add tools/performance-data.json
-          git commit -m "📊 Automated: Update performance-data.json with latest Lighthouse scores"
-          git push      
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git commit -m "📊 Automated: Update performance-data.json with latest performance scores"
+          
+          # Push diretto (ora permesso, dopo aver rimosso le protezioni)
+          git push origin main 
