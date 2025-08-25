@@ -1,138 +1,170 @@
 {
-  "lastUpdated": "2025-08-21T10:00:00Z",
+  "lastUpdated": "2025-08-25T06:50:30.988Z",
   "summary": {
     "totalPages": 16,
-    "analyzed": 16,
-    "failed": 0
+    "analyzed": 0,
+    "failed": 16
   },
   "pages": [
     {
-      "slug": "index",
-      "title": "index.html",
+      "url": "http://127.0.0.1:8080/index.html",
       "label": "Homepage",
-      "performanceScore": 90,
-      "loadTime": 1100,
-      "category": "cellula"
+      "slug": "index",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:27.745Z",
+      "error": "Non raggiungibile - Protocol error (Target.createTarget): Target closed..."
     },
     {
-      "slug": "apparato-circolatorio",
-      "title": "Apparato_circolatorio.html",
+      "url": "http://127.0.0.1:8080/Apparato_circolatorio.html",
       "label": "Apparato circolatorio",
-      "performanceScore": 85,
-      "loadTime": 1400,
-      "category": "cellula"
+      "slug": "apparato-circolatorio",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:27.978Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "cuore",
-      "title": "Cuore.html",
+      "url": "http://127.0.0.1:8080/Cuore.html",
       "label": "Cuore",
-      "performanceScore": 88,
-      "loadTime": 1200,
-      "category": "cellula"
+      "slug": "cuore",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:28.214Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "apparato-respiratorio",
-      "title": "Apparato_respiratorio.html",
+      "url": "http://127.0.0.1:8080/Apparato_respiratorio.html",
       "label": "Apparato respiratorio",
-      "performanceScore": 82,
-      "loadTime": 1500,
-      "category": "cellula"
+      "slug": "apparato-respiratorio",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:28.416Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "apparato-digerente",
-      "title": "Apparato_digerente.html",
+      "url": "http://127.0.0.1:8080/Apparato_digerente.html",
       "label": "Apparato digerente",
-      "performanceScore": 80,
-      "loadTime": 1600,
-      "category": "cellula"
+      "slug": "apparato-digerente",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:28.636Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "apparato-tegumentario",
-      "title": "Apparato_tegumentario.html",
+      "url": "http://127.0.0.1:8080/Apparato_tegumentario.html",
       "label": "Apparato tegumentario",
-      "performanceScore": 78,
-      "loadTime": 1700,
-      "category": "cellula"
+      "slug": "apparato-tegumentario",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:28.841Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "sistema-linfatico",
-      "title": "Sistema_linfatico.html",
+      "url": "http://127.0.0.1:8080/Sistema_linfatico.html",
       "label": "Sistema linfatico",
-      "performanceScore": 76,
-      "loadTime": 1800,
-      "category": "cellula"
+      "slug": "sistema-linfatico",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:29.063Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "cellula",
-      "title": "Cellula.html",
-      "label": "Cellula",
-      "performanceScore": 84,
-      "loadTime": 1300,
-      "category": "cellula"
-    },
-    {
-      "slug": "dermatologia",
-      "title": "Dermatologia.html",
+      "url": "http://127.0.0.1:8080/Dermatologia.html",
       "label": "Dermatologia",
-      "performanceScore": 86,
-      "loadTime": 1350,
-      "category": "dermatologia"
+      "slug": "dermatologia",
+      "category": "dermatologia",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:29.274Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "staff",
-      "title": "Staff.html",
+      "url": "http://127.0.0.1:8080/Cellula.html",
+      "label": "Cellula",
+      "slug": "cellula",
+      "category": "cellula",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:29.502Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+    },
+    {
+      "url": "http://127.0.0.1:8080/Staff.html",
       "label": "Staff",
-      "performanceScore": 89,
-      "loadTime": 1150,
-      "category": "staff"
+      "slug": "staff",
+      "category": "staff",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:29.726Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "progetti",
-      "title": "Progetti.html",
+      "url": "http://127.0.0.1:8080/Progetti.html",
       "label": "Progetti",
-      "performanceScore": 83,
-      "loadTime": 1450,
-      "category": "altro"
+      "slug": "progetti",
+      "category": "altro",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:29.927Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "marketing",
-      "title": "Marketing.html",
+      "url": "http://127.0.0.1:8080/Marketing.html",
       "label": "Marketing",
-      "performanceScore": 81,
-      "loadTime": 1550,
-      "category": "altro"
+      "slug": "marketing",
+      "category": "altro",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:30.139Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "os-support",
-      "title": "O.S_support.html",
+      "url": "http://127.0.0.1:8080/O.S_support.html",
       "label": "Supporto OS",
-      "performanceScore": 87,
-      "loadTime": 1250,
-      "category": "altro"
+      "slug": "os-support",
+      "category": "altro",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:30.361Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "tablet-forum",
-      "title": "Tablet_forum.html",
+      "url": "http://127.0.0.1:8080/Tablet_forum.html",
       "label": "Forum Tablet",
-      "performanceScore": 79,
-      "loadTime": 1650,
-      "category": "altro"
+      "slug": "tablet-forum",
+      "category": "altro",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:30.576Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "specials",
-      "title": "Specials.html",
+      "url": "http://127.0.0.1:8080/Specials.html",
       "label": "Specials",
-      "performanceScore": 85,
-      "loadTime": 1300,
-      "category": "altro"
+      "slug": "specials",
+      "category": "altro",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:30.773Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     },
     {
-      "slug": "Maturità tecnologica",
-      "title": "Tech_Maturity.html",
+      "url": "http://127.0.0.1:8080/Tech_Maturity.html",
       "label": "Maturità tecnologica",
-      "performanceScore": 88,
-      "loadTime": 1400,
-      "category": "altro"
+      "slug": "tech-maturity",
+      "category": "altro",
+      "performanceScore": 0,
+      "loadTime": 0,
+      "lastAnalyzed": "2025-08-25T06:50:30.978Z",
+      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
     }
   ]
-}   
+}
