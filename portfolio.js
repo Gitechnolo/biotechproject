@@ -153,39 +153,17 @@ console.log('Fallback attivato: uso del contenuto HTML statico.');
 }
 // --- 10. Mostra notifica temporanea ---
 function showNotification(message) {
-  // Crea l'elemento notifica
   const notif = document.createElement('div');
-  notif.className = 'notification';
+  notif.className = 'notification2';
   notif.textContent = message;
+  notif.setAttribute('aria-live', 'polite');
+  notif.setAttribute('role', 'status');
 
-  // Applica stili in linea (o usa CSS esterno)
-  notif.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #0a1a2a;
-    color: #a7ffeb;
-    padding: 12px 20px;
-    border: 1px solid #00e676;
-    border-radius: 6px;
-    font-size: 14px;
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    font-family: 'Sansation', sans-serif;
-    white-space: nowrap;
-  `;
   document.body.appendChild(notif);
-  // Mostra con fade-in
-  setTimeout(() => {
-    notif.style.opacity = '1';
-  }, 100);
-  // Nasconde e rimuove
+
+  setTimeout(() => { notif.style.opacity = '1'; }, 100);
   setTimeout(() => {
     notif.style.opacity = '0';
-    setTimeout(() => {
-      notif.remove();
-    }, 300);
+    setTimeout(() => notif.remove(), 300);
   }, 3000);
-}   
+}     
