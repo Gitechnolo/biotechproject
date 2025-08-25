@@ -12,7 +12,6 @@ function filterSelection(category) {
     });
   });
 }
-
 // --- 2. Gestione pulsanti filtro ---
 document.addEventListener('DOMContentLoaded', () => {
   // Inizializza i pulsanti del filtro
@@ -27,13 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
   // Pulsante di aggiornamento
   document.getElementById('refresh-btn')?.addEventListener('click', async () => {
     await loadPerformanceData();
     showNotification('Dati aggiornati con successo');
   });
-
   // Gestisci altri pulsanti "Aggiorna"
   document.querySelectorAll('.refresh-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
@@ -41,11 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
       showNotification('Dati aggiornati con successo');
     });
   });
-
   // ✅ Inizializza il filtro anche se non c'è fetch (fallback)
   filterSelection('all');
 });
-
 // --- 3. Carica dati da JSON o usa fallback ---
 async function loadPerformanceData() {
   try {
@@ -55,16 +50,13 @@ async function loadPerformanceData() {
     const data = await response.json();
     const container = document.querySelector('.portfolio-row');
     if (!container) return;
-
     // Pulisce il contenuto esistente
     container.innerHTML = '';
-
     // Genera le card dinamicamente
     data.pages.forEach(page => {
       const cell = createPerformanceCard(page);
       container.appendChild(cell);
     });
-
    // ✅ Riattiva lazy loading
 const newImages = document.querySelectorAll('.portfolio-content img[data-src]');
 if ('IntersectionObserver' in window && newImages.length > 0) {
@@ -82,7 +74,6 @@ if ('IntersectionObserver' in window && newImages.length > 0) {
 
   newImages.forEach(img => observer.observe(img));
 }
-
 // ✅ Aggiorna data ultimo aggiornamento
 const lastUpdate = document.getElementById('last-update');
 if (lastUpdate) {
@@ -90,7 +81,6 @@ if (lastUpdate) {
   const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
   lastUpdate.textContent = `Aggiornato il: ${now.toLocaleString('it-IT', options)}`;
 }
-
 // ✅ DOPO aver caricato i dati: applica il filtro iniziale
 filterSelection(document.querySelector('#myBtnContainer .btn.active')?.dataset.filter || 'all');
 
@@ -100,7 +90,7 @@ console.warn('Errore nel caricamento dei dati di performance:', err.message);
 // ✅ Fallback: usa il contenuto HTML già presente nel DOM
 fallbackToStaticContent();
 
-// ✅ Assicurati che il filtro funzioni anche sulle card statiche
+// ✅ Assicura che il filtro funzioni anche sulle card statiche
 filterSelection('all'); // Inizializza il filtro sulle card esistenti
 
 // Aggiorna messaggio
@@ -110,7 +100,6 @@ if (lastUpdate) {
 }
 }
 }
-
 // --- 4. Crea una card delle performance ---
 function createPerformanceCard(page) {
 const category = getMaturityCategory(page.performanceScore);
@@ -132,10 +121,8 @@ col.innerHTML = `
     <p class="greentext">${page.slug} — ${capitalize(category)}</p>
   </div>
 `;
-
 return col;
 }
-
 // --- 5. Mappa il punteggio a un colore ---
 function getScoreColor(score) {
 if (score >= 90) return '#4CAF50';   // Verde
@@ -143,7 +130,6 @@ if (score >= 75) return '#8BC34A';   // Verde chiaro
 if (score >= 60) return '#FF9800';   // Arancione
 return '#F44336';                    // Rosso
 }
-
 // --- 6. Calcola categoria di maturità ---
 function getMaturityCategory(score) {
 if (score >= 90) return 'optimized';
@@ -151,23 +137,19 @@ if (score >= 75) return 'compatible';
 if (score >= 60) return 'needs-improvement';
 return 'deprecated';
 }
-
 // --- 7. Formatta il tempo di caricamento ---
 function formatLoadTime(ms) {
 if (!ms) return '– ms';
 return ms < 1000 ? `${ms} ms` : `${(ms / 1000).toFixed(2)} s`;
 }
-
 // --- 8. Capitalizza la prima lettera ---
 function capitalize(str) {
 return str.charAt(0).toUpperCase() + str.slice(1).replace('-', ' ');
 }
-
 // --- 9. Fallback: usa contenuto statico ---
 function fallbackToStaticContent() {
 console.log('Fallback attivato: uso del contenuto HTML statico.');
 // Il contenuto già nel DOM (in Tech_Maturity.html) rimane visibile
-// Non serve fare nulla, ma puoi aggiungere una notifica se vuoi
 }
 // --- 10. Mostra notifica temporanea ---
 function showNotification(message) {
@@ -194,14 +176,11 @@ function showNotification(message) {
     font-family: 'Sansation', sans-serif;
     white-space: nowrap;
   `;
-
   document.body.appendChild(notif);
-
   // Mostra con fade-in
   setTimeout(() => {
     notif.style.opacity = '1';
   }, 100);
-
   // Nasconde e rimuove
   setTimeout(() => {
     notif.style.opacity = '0';
