@@ -1,32 +1,60 @@
-# Codice di Condotta della Comunità
+# Code of Conduct 🌱
 
-BiotechProject si impegna a fornire un ambiente **aperto, sicuro e rispettoso** per chiunque, indipendentemente da genere, identità, orientamento, etnia, disabilità, età, nazionalità, religione o esperienza tecnica.
+This project, **BiotechProject**, is committed to fostering a welcoming, respectful, and harassment-free environment for everyone, regardless of background, identity, or experience.
 
-## 🌱 Aspettative
+We follow the principles of openness, kindness, and constructive collaboration. By participating in this project, you agree to uphold this Code of Conduct.
 
-- **Sii gentile e costruttivo.** Le parole contano.
-- **Rispetta le opinioni altrui**, anche quando sei in disaccordo.
-- **Dai il benvenuto ai principianti.** Ognuno ha iniziato da qualche parte.
-- **Fornisci feedback utile**, mai personale.
-- **Segnala comportamenti inappropriati** (vedi "Responsabilità").
+---
 
-## 🚫 Comportamenti non accettati
+## 🧭 Our Pledge
 
-- Linguaggio o contenuti offensivi, sessisti, razzisti, omofobici
-- Harassment, minacce, comportamenti intimidatori
-- Spam o autopromozione eccessiva
-- Violazione della privacy altrui
+We pledge to treat all contributors and community members with fairness, dignity, and respect.  
+We value diversity in technology, science, and culture, and we strive to create a space where everyone feels safe to contribute.
 
-## 🛠️ Responsabilità
+---
 
-I manutentori del progetto hanno il diritto e la responsabilità di rimuovere, modificare o rifiutare commenti, commit, codice, issue e altre forme di contributo che non rispettano questo codice.
+## 🚫 Expected Behavior
 
-## 📞 Come segnalare
+- ✅ Be respectful and empathetic in communication  
+- ✅ Use inclusive language (avoid sexist, racist, or discriminatory terms)  
+- ✅ Be open to feedback and constructive criticism  
+- ✅ Give credit where it's due  
+- ✅ Focus on the project’s mission: **using technology to serve science and health**
 
-Se assisti o subisci un comportamento inaccettabile, contatta il team via issue o email (se disponibile). Prenderemo provvedimenti rapidi e discreti.
+---
 
-## 📄 Licenza
+## 🚫 Unacceptable Behavior
 
-Questo codice di condotta è adattato da [Contributor Covenant](https://www.contributor-covenant.org), versione 2.1.
+- ❌ Harassment, discrimination, or personal attacks  
+- ❌ Offensive comments related to gender, gender identity, sexual orientation, race, religion, disability, or age  
+- ❌ Trolling, insults, or inflammatory behavior  
+- ❌ Spam or self-promotion unrelated to the project  
+- ❌ Impersonating others or misrepresenting affiliations
 
-Ultimo aggiornamento: 25 agosto 2025   
+---
+
+## 🛠 Enforcement
+
+If someone engages in unacceptable behavior, the project maintainers have the right to:
+- Remove or edit offensive content
+- Warn the individual
+- Temporarily or permanently ban contributors from the project
+
+Reports can be made by:
+- Opening a private issue (tagged `@moderator`)
+- Contacting the maintainers via email (if public)
+
+We take all reports seriously and will act promptly and fairly.
+
+---
+
+## 🌐 Read in Other Languages
+[Italiano 🇮🇹](CODE_OF_CONDUCT.it.md)
+
+---
+
+## 💬 Questions?
+
+If you have any questions about this Code of Conduct, please open a [Discussion](https://github.com/Gitechnolo/biotechproject/discussions) or contact the maintainers directly.
+
+Thank you for helping make BiotechProject a positive, inclusive space for innovation. 🌍✨   

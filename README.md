@@ -2,10 +2,25 @@
   <img src="BiotechProjectBanner.png" alt="BiotechProject Banner" width="100%" />
 </div>
 
-# BiotechProject 🧬✨
+# BiotechProject 🧬 🇬🇧
 
-**Un progetto open source che unisce scienza, salute e tecnologia web.**  
-Dove la biotecnologia incontra il codice per costruire strumenti digitali per la ricerca e l'innovazione.
+🌐 **Read in other languages:**  
+[Italiano 🇮🇹](README.it.md) | 
+[English 🇬🇧](README.md) | 
+[Español 🇪🇸](README.es.md) | 
+[Français 🇫🇷](README.fr.md) | 
+[Deutsch 🇩🇪](README.de.md) | 
+[Português (BR) 🇧🇷](README.pt-br.md)
+
+> 🌍 *"Welcome everyone. We don’t speak all languages, but we speak the same one: collaboration."*  
+> English is not a barrier — it’s a bridge.  
+> 🔹 To contribute or learn about project guidelines, visit the main files in English:  
+> - [Contributing Guidelines](CONTRIBUTING.md)  
+> - [Code of Conduct](CODE_OF_CONDUCT.md)  
+> Using English fosters international collaboration.
+
+**An open-source project uniting science, health, and web technology.**  
+Where biotechnology meets code to build digital tools for research and innovation.
 
 ![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)
 ![Workflow Status](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml/badge.svg)
@@ -13,74 +28,76 @@ Dove la biotecnologia incontra il codice per costruire strumenti digitali per la
 
 ---
 
-## 🌱 Cos'è BiotechProject?
+## 🌱 What is BiotechProject?
 
-BiotechProject è un **laboratorio digitale aperto** dedicato alla **biotecnologia, alla salute e alla divulgazione scientifica** attraverso il web.
+BiotechProject is an **open digital lab** dedicated to **biotechnology, health, and scientific outreach** through the web.
 
-Il progetto combina:
-- 🧪 Contenuti scientifici su biologia, medicina e biotecnologie
-- 💻 Sviluppo web moderno (HTML, CSS, JavaScript)
-- 📊 Monitoraggio automatico delle performance con Lighthouse
-- 🚀 Automazione continua tramite GitHub Actions
+The project combines:
+- 🧪 Scientific content on biology, medicine, and biotechnology
+- 💻 Modern web development (HTML, CSS, JavaScript)
+- 📊 Automated performance monitoring with Lighthouse
+- 🚀 Continuous automation via GitHub Actions
 
-È uno spazio collaborativo per sviluppatori, ricercatori e appassionati che vogliono esplorare **come la tecnologia può servire la scienza**.
-
----
-
-## 🚀 Funzionalità principali
-
-✅ **Dashboard di performance automatica**  
-→ Analisi continua di tutte le pagine con aggiornamento di `performance-data.json`
-
-✅ **Filtro dinamico per categoria**  
-→ Interfaccia interattiva per esplorare lo stato di maturità tecnologica
-
-✅ **Workflow CI/CD integrato**  
-→ Test, analisi e aggiornamento automatico su ogni modifica
-
-✅ **Design responsive e accessibile**  
-→ Funziona su tutti i dispositivi, con attenzione all'usabilità
-
-✅ **Open by design**  
-→ Aperto a contributi, idee e collaborazioni
+It’s a collaborative space for developers, researchers, and enthusiasts who want to explore **how technology can serve science**.
 
 ---
 
-## 🛠️ Tecnologie utilizzate
+## 🚀 Key Features
+
+✅ **Automated Performance Dashboard**  
+→ Continuous analysis of all pages with updates to `performance-data.json`
+
+✅ **Dynamic Category Filter**  
+→ Interactive interface to explore technological maturity status
+
+✅ **Integrated CI/CD Workflow**  
+→ Automatic testing, analysis, and updates on every change
+
+✅ **Responsive and Accessible Design**  
+→ Works across all devices, with a focus on usability
+
+✅ **Open by Design**  
+→ Open to contributions, ideas, and collaborations
+
+---
+
+## 🛠️ Technologies Used
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES Modules)
-- **Analisi**: Lighthouse, Chrome Launcher
-- **Automazione**: GitHub Actions
-- **Monitoraggio**: `performance-data.json` + dashboard dinamica
+- **Analysis**: Lighthouse, Chrome Launcher
+- **Automation**: GitHub Actions
+- **Monitoring**: `performance-data.json` + dynamic dashboard
 - **Deployment**: GitHub Pages
 
 ---
 
-## 📊 Dashboard delle Performance
+## 📊 Performance Dashboard
 
-Il progetto include un sistema automatico per monitorare la qualità tecnica delle pagine:
+The project includes an automated system to monitor the technical quality of pages:
 
-- Punteggio di performance (0–100)
-- Tempo di caricamento
-- Categoria di maturità: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- Aggiornamento giornaliero tramite workflow
+- Performance score (0–100)
+- Load time
+- Maturity category: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+- Daily updates via GitHub Actions workflow
 
-👉 Vedi il report in tempo reale: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 View the real-time report: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🔗 Esplora il progetto
+## 🔗 Explore the Project
 - 🏠 [Homepage](https://gitechnolo.github.io/biotechproject/)   
+- 📄 [Tech Maturity Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
+---
 
-## 🤝 Come Contribuire
+## 🤝 How to Contribute
 
-Grazie per il tuo interesse! Ogni contributo è benvenuto 🎉
+Thank you for your interest! All contributions are welcome 🎉
 
-### 1. Forka il repository
-Clicca su **"Fork"** in alto a destra.
+### 1. Fork the Repository
+Click **"Fork"** in the top-right corner.
 
-### 2. Clona il tuo fork
+### 2. Clone Your Fork
 ```bash
 git clone https://github.com/your-username/biotechproject.git
 cd biotechproject   
