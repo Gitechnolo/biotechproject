@@ -18,11 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
+    # ✅ Abilita i permessi per fare push al repository
+    permissions:
+      contents: write
+
     steps:
       - name: 🔁 Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -54,7 +59,6 @@ jobs:
             exit 1
           fi
 
-          # Salva il PID del server per fermarlo dopo
           echo "SERVER_PID=$SERVER_PID" >> $GITHUB_ENV
         shell: bash
 
@@ -102,5 +106,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git commit -m "📈 Automated: Update performance-data.json"
-          git push origin HEAD:main  
+          git commit -m "📈 Automated: Update performance-data.json [skip ci]"
+          git push origin HEAD:main   
