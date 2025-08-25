@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="BiotechProjectBanner.png" alt="BiotechProject Banner" width="100%" />
+</div>
+
 # BiotechProject 🧬✨
 
 **Un progetto open source che unisce scienza, salute e tecnologia web.**  
