@@ -71,8 +71,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* End Elements with class */
 /* Element with id */
 #about {color: lightgoldenrodyellow; letter-spacing: 2px; text-align: center;}
-#clock {color: lightgoldenrodyellow; position: absolute; left: 10px; /* Spostato leggermente a destra (prima era 3px) */ top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-#newyear {color: lightgoldenrodyellow; position: absolute; left: 235px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#clock {color: lightgoldenrodyellow; position: absolute; left: 16px; /* Spostato leggermente a destra (prima era 3px) */ top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+#newyear {color: lightgoldenrodyellow; position: absolute; left: 265px; top: 209px; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 15pt; font-weight: bold; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 0.5s ease-in-out;}
 #fadingText.fade {opacity: 0;}
 /* End element id */
