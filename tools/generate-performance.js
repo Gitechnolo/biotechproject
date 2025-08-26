@@ -190,3 +190,35 @@ runPerformanceAnalysis().catch(err => {
   console.error('🚨 Errore non gestito:', err);
   process.exit(1);
 });  
+
+// Aggiornamento  emulatedFormFactor: 'mobile' senza conflitto
+const options = {
+  port: chrome.port,
+  output: 'json',
+  logLevel: 'silent',
+  disableStorageReset: true,
+  onlyCategories: ['performance'],
+  skipAudits: ['metrics', 'diagnostics', 'audit-refs'],
+  useDevtoolsLogs: true,
+
+  // ✅ FORZA IL FORM FACTOR A DESKTOP
+  emulatedFormFactor: 'desktop',
+
+  throttling: {
+    rttMs: 150,
+    throughputKbps: 1500,
+    cpuSlowdownMultiplier: 4,
+    requestLatencyMs: 0,
+    downloadThroughputKbps: 0,
+    uploadThroughputKbps: 0
+  },
+  throttlingMethod: 'devtools',
+  screenEmulation: {
+    mobile: false,                 // coerente
+    width: 1350,
+    height: 940,
+    deviceScaleFactor: 1,
+    disabled: false
+  },
+  predefinedSettings: 'desktop',   // coerente
+};   
