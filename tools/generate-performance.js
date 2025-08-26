@@ -33,16 +33,17 @@ async function runPerformanceAnalysis() {
   const results = [];
 
   try {
-   // Avvia Chrome in modalità headless
+    // Avvia Chrome in modalità headless
     console.log('🚀 Avvio Chrome headless...');
     chrome = await chromeLauncher.launch({
       chromeFlags: [
-        '--headless',
+        '--headless=new',               // Modalità headless moderna
         '--disable-gpu',
-        '--no-sandbox',
+        '--no-sandbox',                 // Necessario in ambienti container
         '--no-zygote',
         '--single-process',
         '--remote-debugging-port=9222',
+        '--remote-debugging-address=0.0.0.0', // Permette al debugger di accettare connessioni esterne (necessario in Codespaces)
         '--disable-dev-shm-usage',
         '--disable-background-networking',
         '--disable-background-timer-throttling',
@@ -59,41 +60,44 @@ async function runPerformanceAnalysis() {
         '--no-first-run',
         '--enable-automation',
         '--password-store=basic',
-        '--use-mock-keychain'
+        '--use-mock-keychain',
+        '--disable-setuid-sandbox'
       ],
-      port: 9222,
-      // Usa Chromium preinstallato su GitHub Actions (più veloce)
-      executablePath: process.env.CHROME_PATH || '/usr/bin/chromium-browser'
+      port: 9222
+      // chrome-launcher cercherà automaticamente Chromium (es. /usr/bin/chromium-browser)
     });
 
-    // Configurazione ottimizzata per analisi locale veloce e ripetibile
+    // Configurazione Lighthouse: analisi performance desktop
     const options = {
       port: chrome.port,
       output: 'json',
       onlyCategories: ['performance'],
       logLevel: 'silent',
-      disableStorageReset: true, // Evita reset inutili
+      disableStorageReset: true,
 
-      // Throttling realistico ma ottimizzato per velocità
+      // ✅ Obbligatorio per evitare errore: "screenEmulation mobile false does not match formFactor mobile"
+      formFactor: 'desktop',
+
       throttling: {
-        rttMs: 150,                    // Simula rete 3G
-        throughputKbps: 1500,          // Banda limitata
-        cpuSlowdownMultiplier: 4,      // CPU 4x più lenta (mobile mid-tier)
+        rttMs: 150,
+        throughputKbps: 1500,
+        cpuSlowdownMultiplier: 4,
         requestLatencyMs: 0,
         downloadThroughputKbps: 0,
         uploadThroughputKbps: 0
       },
       throttlingMethod: 'devtools',
-      useDevtoolsLogs: true,           // Usa solo dati locali, NO API REMOTA
+      useDevtoolsLogs: true,
+
       screenEmulation: {
-        mobile: false,                 // Desktop (cambia a true per mobile)
+        mobile: false,
         width: 1350,
         height: 940,
         deviceScaleFactor: 1,
         disabled: false
       },
-      predefinedSettings: 'desktop',   // Coerente con screenEmulation
-      skipAudits: [                    // Audits non critici per velocità
+      predefinedSettings: 'desktop',
+      skipAudits: [
         'metrics',
         'diagnostics',
         'audit-refs'
@@ -108,9 +112,9 @@ async function runPerformanceAnalysis() {
         console.log(`🔍 Analizzo: ${page.label} (${page.url})`);
         const runnerResult = await lighthouse(page.url, options);
 
-        // Estrai punteggio e tempo di caricamento
+        // Usa Largest Contentful Paint come metrica di tempo significativo
         const score = Math.round(runnerResult.lhr.categories.performance.score * 100);
-        const loadTime = runnerResult.lhr.audits['interactive']?.numericValue || 0;
+        const loadTime = runnerResult.lhr.audits['largest-contentful-paint']?.numericValue || 0;
 
         results.push({
           ...page,
@@ -146,11 +150,12 @@ async function runPerformanceAnalysis() {
       }
     }
   }
-  // Percorso di output: salva in tools/performance-data.json
+
+  // Percorso di output: tools/performance-data.json
   const outputDir = path.resolve(new URL(import.meta.url).pathname, '..');
   const outputPath = path.join(outputDir, 'performance-data.json');
 
-  // Dati finali da salvare
+  // Dati finali
   const output = {
     lastUpdated: new Date().toISOString(),
     summary: {
@@ -161,7 +166,7 @@ async function runPerformanceAnalysis() {
     pages: results
   };
 
-  // Assicura che la cartella esista (utile in alcuni ambienti)
+  // Assicura che la cartella esista
   try {
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
@@ -189,36 +194,4 @@ async function runPerformanceAnalysis() {
 runPerformanceAnalysis().catch(err => {
   console.error('🚨 Errore non gestito:', err);
   process.exit(1);
-});  
-
-// Aggiornamento  emulatedFormFactor: 'mobile' senza conflitto
-const options = {
-  port: chrome.port,
-  output: 'json',
-  logLevel: 'silent',
-  disableStorageReset: true,
-  onlyCategories: ['performance'],
-  skipAudits: ['metrics', 'diagnostics', 'audit-refs'],
-  useDevtoolsLogs: true,
-
-  // ✅ FORZA IL FORM FACTOR A DESKTOP
-  emulatedFormFactor: 'desktop',
-
-  throttling: {
-    rttMs: 150,
-    throughputKbps: 1500,
-    cpuSlowdownMultiplier: 4,
-    requestLatencyMs: 0,
-    downloadThroughputKbps: 0,
-    uploadThroughputKbps: 0
-  },
-  throttlingMethod: 'devtools',
-  screenEmulation: {
-    mobile: false,                 // coerente
-    width: 1350,
-    height: 940,
-    deviceScaleFactor: 1,
-    disabled: false
-  },
-  predefinedSettings: 'desktop',   // coerente
-};   
+});   
