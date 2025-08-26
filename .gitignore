@@ -1,0 +1,16 @@
+# Dipendenze
+node_modules/
+tools/node_modules/
+
+# Editor
+.vscode/
+
+# File temporanei
+*.log
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
