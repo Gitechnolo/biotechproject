@@ -2,32 +2,20 @@ name: Generate Performance Report
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ main, master ]
   workflow_dispatch:
-    inputs:
-      url:
-        description: 'URL da analizzare (default: homepage)'
-        required: false
-        default: 'https://gitechnolo.github.io/biotechproject/'
 
 jobs:
   generate-report:
-    name: Generate performance-data.json
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # ✅ Usa 22.04, non 24.04 (Noble)
     timeout-minutes: 20
 
-    # ✅ Abilita i permessi per fare push al repository
     permissions:
       contents: write
 
     steps:
       - name: 🔁 Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -36,75 +24,33 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🌐 Start server
         run: |
-          cd tools
-          npm install
-
-      - name: 🌐 Start local server
-        run: |
-          (cd tools && python3 -m http.server 8080) &
-          SERVER_PID=$!
-          
-          echo "⏳ Waiting for server..."
-          for i in {1..30}; do
-            if curl -s --head http://127.0.0.1:8080 | grep "200 OK" > /dev/null; then
-              echo "✅ Server ready"
-              break
-            fi
-            sleep 2
-          done
-
-          if ! curl -s http://127.0.0.1:8080 >/dev/null; then
-            echo "❌ Server failed to start"
-            exit 1
-          fi
-
-          echo "SERVER_PID=$SERVER_PID" >> $GITHUB_ENV
-        shell: bash
+          python3 -m http.server 8080 &
+          echo "Waiting for server..."
+          sleep 5
 
       - name: 🚀 Run Performance Analysis
-        id: analyze
         run: |
-          cd tools
-          node generate-performance.js
+          node tools/generate-performance.js
 
-          if [ ! -f performance-data.json ]; then
+          if [ ! -f tools/performance-data.json ]; then
             echo "❌ Error: performance-data.json not generated"
             exit 1
           fi
-          echo "✅ performance-data.json created"
-
-      - name: 📂 Check for changes
-        id: changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          if [ ! -f tools/performance-data.json ]; then
-            echo "❌ File not found"
-            exit 1
-          fi
-
-          git add tools/performance-data.json
-
-          if git diff --cached --exit-code; then
-            echo "no_changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "no_changes=false" >> $GITHUB_OUTPUT
-          fi
-        shell: bash
-
-      - name: 🔚 Stop server
-        if: env.SERVER_PID
-        run: |
-          kill $SERVER_PID || true
-          echo "🛑 Server stopped"
 
       - name: 💾 Commit and Push if changed
-        if: steps.changes.outputs.no_changes == 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git commit -m "📈 Automated: Update performance-data.json [skip ci]"
-          git push origin HEAD:main   
+          git add tools/performance-data.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📈 Update performance-data.json [skip ci]"
+            git push
+          fi
+        shell: bash 
