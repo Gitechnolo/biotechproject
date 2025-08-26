@@ -39,7 +39,6 @@ jobs:
         run: |
           cd tools
           npm install
-
       - name: 🌐 Start local server
         run: |
           (cd tools && python3 -m http.server 8080) &
@@ -53,12 +52,10 @@ jobs:
             fi
             sleep 2
           done
-
           if ! curl -s http://127.0.0.1:8080 >/dev/null; then
             echo "❌ Server failed to start"
             exit 1
           fi
-
           echo "SERVER_PID=$SERVER_PID" >> $GITHUB_ENV
         shell: bash
 
@@ -67,26 +64,21 @@ jobs:
         run: |
           cd tools
           node generate-performance.js
-
           if [ ! -f performance-data.json ]; then
             echo "❌ Error: performance-data.json not generated"
             exit 1
           fi
           echo "✅ performance-data.json created"
-
       - name: 📂 Check for changes
         id: changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           if [ ! -f tools/performance-data.json ]; then
             echo "❌ File not found"
             exit 1
           fi
-
           git add tools/performance-data.json
-
           if git diff --cached --exit-code; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
@@ -99,7 +91,6 @@ jobs:
         run: |
           kill $SERVER_PID || true
           echo "🛑 Server stopped"
-
       - name: 💾 Commit and Push if changed
         if: steps.changes.outputs.no_changes == 'false'
         run: |

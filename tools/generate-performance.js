@@ -1,7 +1,7 @@
 // tools/generate-performance.js
 
 import lighthouse from 'lighthouse';
-import chromeLauncher from 'chrome-launcher';
+import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
@@ -29,55 +29,72 @@ const pages = [
  * Funzione principale asincrona
  */
 async function runPerformanceAnalysis() {
-  let chrome;
   const results = [];
+  let browser;
+  let page;
 
   try {
-    // Avvia Chrome in modalità headless
-    console.log('🚀 Avvio Chrome headless...');
-    chrome = await chromeLauncher.launch({
-      chromeFlags: [
-        '--headless=new',               // Modalità headless moderna
-        '--disable-gpu',
-        '--no-sandbox',                 // Necessario in ambienti container
-        '--no-zygote',
-        '--single-process',
-        '--remote-debugging-port=9222',
-        '--remote-debugging-address=0.0.0.0', // Permette al debugger di accettare connessioni esterne (necessario in Codespaces)
-        '--disable-dev-shm-usage',
-        '--disable-background-networking',
-        '--disable-background-timer-throttling',
-        '--disable-breakpad',
-        '--disable-client-side-phishing-detection',
-        '--disable-component-extensions-with-background-pages',
-        '--disable-default-apps',
-        '--disable-extensions',
-        '--disable-features=TranslateUI',
-        '--disable-ipc-flooding-protection',
-        '--disable-renderer-backgrounding',
-        '--force-color-profile=srgb',
-        '--metrics-recording-only',
-        '--no-first-run',
-        '--enable-automation',
-        '--password-store=basic',
-        '--use-mock-keychain',
-        '--disable-setuid-sandbox'
-      ],
-      port: 9222
-      // chrome-launcher cercherà automaticamente Chromium (es. /usr/bin/chromium-browser)
-    });
+  // 🚀 Avvia Chromium con Puppeteer (più affidabile in ambienti cloud)
+  console.log('🚀 Avvio Chromium con Puppeteer...');
+  browser = await puppeteer.launch({
+  headless: 'chrome', // 🔥 Usa 'chrome', non 'new'
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-gpu',
+    '--disable-software-rasterizer', // 🔥 Evita l'uso della GPU
+    '--disable-features=VizDisplayCompositor', // 🔥 Fondamentale: disabilita il compositore grafico
+    '--disable-features=AudioServiceOutOfProcess',
+    '--disable-features=TranslateUI',
+    '--disable-features=ImprovedCookieControls',
+    '--disable-features=SameSiteByDefaultCookies',
+    '--disable-features=AutofillServerCommunication',
+    '--disable-features=PasswordBreachDetection',
+    '--disable-features=PrivacySandboxSettings4',
+    '--disable-features=SigninSuccessNotification',
+    '--no-first-run',
+    '--no-zygote',
+    '--deterministic-fetch',
+    '--disable-backgrounding-occluded-windows',
+    '--disable-renderer-backgrounding',
+    '--disable-ipc-flooding-protection',
+    '--disable-breakpad',
+    '--single-process', // Utile in ambienti con poca RAM
+    '--window-size=1350,940',
+    '--remote-debugging-port=9222',
+    '--remote-debugging-address=0.0.0.0',
+    '--disable-background-networking',
+    '--disable-background-timer-throttling'
+  ],
+  defaultViewport: {
+    width: 1350,
+    height: 940,
+    deviceScaleFactor: 1
+  }
+});      
+
+// Ottieni una nuova pagina
+    page = await browser.newPage();
+
+    // Estrai la porta di debug da Puppeteer
+    const { port } = new URL(browser.wsEndpoint());
 
     // Configurazione Lighthouse: analisi performance desktop
     const options = {
-      port: chrome.port,
+      port,
       output: 'json',
       onlyCategories: ['performance'],
       logLevel: 'silent',
       disableStorageReset: true,
-
-      // ✅ Obbligatorio per evitare errore: "screenEmulation mobile false does not match formFactor mobile"
       formFactor: 'desktop',
-
+      screenEmulation: {
+        mobile: false,
+        width: 1350,
+        height: 940,
+        deviceScaleFactor: 1,
+        disabled: false
+      },
       throttling: {
         rttMs: 150,
         throughputKbps: 1500,
@@ -88,15 +105,6 @@ async function runPerformanceAnalysis() {
       },
       throttlingMethod: 'devtools',
       useDevtoolsLogs: true,
-
-      screenEmulation: {
-        mobile: false,
-        width: 1350,
-        height: 940,
-        deviceScaleFactor: 1,
-        disabled: false
-      },
-      predefinedSettings: 'desktop',
       skipAudits: [
         'metrics',
         'diagnostics',
@@ -104,49 +112,61 @@ async function runPerformanceAnalysis() {
       ]
     };
 
-    console.log('✅ Chrome avviato. Inizio analisi delle pagine...');
+    console.log('✅ Chromium avviato. Inizio analisi delle pagine...');
 
     // Analizza ogni pagina
-    for (const page of pages) {
+    for (const pageData of pages) {
       try {
-        console.log(`🔍 Analizzo: ${page.label} (${page.url})`);
-        const runnerResult = await lighthouse(page.url, options);
+        console.log(`🔍 Analizzo: ${pageData.label} (${pageData.url})`);
+        
+        // Vai alla pagina
+        await page.goto(pageData.url, {
+          waitUntil: 'networkidle0',
+          timeout: 30000
+        });
 
-        // Usa Largest Contentful Paint come metrica di tempo significativo
+        // Esegui Lighthouse
+        const runnerResult = await lighthouse(pageData.url, options);
+
+        // Estrai punteggio e metriche
         const score = Math.round(runnerResult.lhr.categories.performance.score * 100);
         const loadTime = runnerResult.lhr.audits['largest-contentful-paint']?.numericValue || 0;
 
         results.push({
-          ...page,
+          ...pageData,
           performanceScore: score,
           loadTime: Math.round(loadTime),
           lastAnalyzed: new Date().toISOString()
         });
 
-        console.log(`✅ ${page.label}: Punteggio performance ${score}`);
+        console.log(`✅ ${pageData.label}: Punteggio performance ${score}`);
       } catch (pageError) {
-        console.warn(`❌ Fallito: ${page.label}`);
+        console.warn(`❌ Fallito: ${pageData.label}`);
         console.warn(`   Errore: ${pageError.message}`);
 
         results.push({
-          ...page,
+          ...pageData,
           performanceScore: 0,
           loadTime: 0,
           lastAnalyzed: new Date().toISOString(),
           error: `Non raggiungibile - ${pageError.message.substring(0, 100)}...`
         });
       }
+
+      // Pausa tra una pagina e l'altra (evita sovraccarico)
+      await new Promise(resolve => setTimeout(resolve, 2000));
     }
   } catch (overallError) {
-    console.error('🚨 Errore critico nell\'avvio di Chrome:', overallError.message);
+    console.error('🚨 Errore critico:', overallError.message);
     process.exit(1);
   } finally {
-    if (chrome) {
+    // Chiudi il browser
+    if (browser) {
       try {
-        await chrome.kill();
-        console.log('⏹️ Chrome chiuso correttamente');
-      } catch (killError) {
-        console.warn('⚠️ Impossibile terminare Chrome:', killError.message);
+        await browser.close();
+        console.log('⏹️ Chromium chiuso correttamente');
+      } catch (closeError) {
+        console.warn('⚠️ Impossibile chiudere il browser:', closeError.message);
       }
     }
   }
@@ -194,4 +214,4 @@ async function runPerformanceAnalysis() {
 runPerformanceAnalysis().catch(err => {
   console.error('🚨 Errore non gestito:', err);
   process.exit(1);
-});   
+});
