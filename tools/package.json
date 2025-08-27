@@ -5,14 +5,14 @@
   "main": "generate-performance.js",
   "type": "module",
   "scripts": {
-    "generate": "node tools/generate-performance.js"
+    "generate": "node generate-performance.js"
   },
   "dependencies": {
     "lighthouse": "^12.0.0",
-    "chrome-launcher": "^0.15.2"
+    "puppeteer": "^22.0.0"
   },
   "engines": {
     "node": ">=18"
   },
   "private": true
-} 
+}    
