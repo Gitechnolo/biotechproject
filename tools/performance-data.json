@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2025-08-26T14:13:34.226Z",
+  "lastUpdated": "2025-08-27T09:02:50.647Z",
   "summary": {
     "totalPages": 16,
-    "analyzed": 0,
-    "failed": 16
+    "analyzed": 16,
+    "failed": 0
   },
   "pages": [
     {
@@ -13,8 +13,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:30.928Z",
-      "error": "Non raggiungibile - Protocol error (Target.createTarget): Target closed..."
+      "lastAnalyzed": "2025-08-27T08:58:37.712Z"
     },
     {
       "url": "http://127.0.0.1:8080/Apparato_circolatorio.html",
@@ -23,8 +22,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:31.180Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T08:58:54.373Z"
     },
     {
       "url": "http://127.0.0.1:8080/Cuore.html",
@@ -33,8 +31,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:31.393Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T08:59:10.822Z"
     },
     {
       "url": "http://127.0.0.1:8080/Apparato_respiratorio.html",
@@ -43,8 +40,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:31.610Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T08:59:27.649Z"
     },
     {
       "url": "http://127.0.0.1:8080/Apparato_digerente.html",
@@ -53,8 +49,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:31.846Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T08:59:44.348Z"
     },
     {
       "url": "http://127.0.0.1:8080/Apparato_tegumentario.html",
@@ -63,8 +58,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:32.063Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:00:00.783Z"
     },
     {
       "url": "http://127.0.0.1:8080/Sistema_linfatico.html",
@@ -73,8 +67,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:32.270Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:00:17.582Z"
     },
     {
       "url": "http://127.0.0.1:8080/Dermatologia.html",
@@ -83,8 +76,7 @@
       "category": "dermatologia",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:32.507Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:00:34.185Z"
     },
     {
       "url": "http://127.0.0.1:8080/Cellula.html",
@@ -93,8 +85,7 @@
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:32.724Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:00:51.080Z"
     },
     {
       "url": "http://127.0.0.1:8080/Staff.html",
@@ -103,8 +94,7 @@
       "category": "staff",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:32.930Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:01:08.010Z"
     },
     {
       "url": "http://127.0.0.1:8080/Progetti.html",
@@ -113,8 +103,7 @@
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:33.163Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:01:24.948Z"
     },
     {
       "url": "http://127.0.0.1:8080/Marketing.html",
@@ -123,8 +112,7 @@
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:33.376Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:01:41.659Z"
     },
     {
       "url": "http://127.0.0.1:8080/O.S_support.html",
@@ -133,8 +121,7 @@
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:33.579Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:01:58.179Z"
     },
     {
       "url": "http://127.0.0.1:8080/Tablet_forum.html",
@@ -143,8 +130,7 @@
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:33.786Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:02:15.165Z"
     },
     {
       "url": "http://127.0.0.1:8080/Specials.html",
@@ -153,8 +139,7 @@
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:34.017Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:02:31.902Z"
     },
     {
       "url": "http://127.0.0.1:8080/Tech_Maturity.html",
@@ -163,8 +148,7 @@
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-08-26T14:13:34.216Z",
-      "error": "Non raggiungibile - Failed to fetch browser webSocket URL from http://127.0.0.1:9222/json/version: fetch failed..."
+      "lastAnalyzed": "2025-08-27T09:02:48.544Z"
     }
   ]
 }
