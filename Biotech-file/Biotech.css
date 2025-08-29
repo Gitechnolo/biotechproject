@@ -38,6 +38,35 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* End element natural */
 /* Elements with class */
 .biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
+/* === STILE MODERNO PER PAGINE AGGIORNATE === */
+/* Logo centrato sotto il menu */
+.modern-logo {display: block; margin: 15px auto 20px; width: 553px; max-width: 90vw; height: auto; border: 0; border-radius: 8px; box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2); opacity: 0.9;}
+/* Orologio moderno - centrato o in basso a sinistra */
+.modern-clock {color: #a7ffeb; font-family: 'Sansation', sans-serif; font-size: 14pt; font-weight: bold; text-align: center; margin: 10px auto; max-width: 300px; padding: 8px 12px; background: rgba(0, 230, 118, 0.1); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; box-shadow: 0 0 10px rgba(0, 230, 118, 0.2); backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+/* === Conto alla rovescia moderno === */
+.modern-countdown { color: #a7ffeb; font-family: 'Sansation', sans-serif; font-size: 1.2em; font-weight: bold; text-align: center; margin: 8px auto; max-width: 380px; padding: 10px 16px; background: rgba(255, 215, 0, 0.1);/* Oro tenue */ border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 6px; box-shadow: 0 0 12px rgba(255, 215, 0, 0.2); backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); opacity: 0.95; letter-spacing: 0.5px; line-height: 1.4;}
+/* Augurio moderno */
+.modern-greeting {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.9; text-shadow: 0 0 8px rgba(0, 230, 118, 0.3); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); letter-spacing: 0.5px;}   
+/* --- Contenitore del menu moderno --- */
+.tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
+/* Pulsanti del menu */
+.tech-nav-btn {background: rgba(0, 230, 118, 0.1); color: #a7ffeb; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 10px 16px; font-family: 'Sansation', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; outline: none; min-width: 120px; white-space: nowrap;}
+.tech-nav-btn:hover, .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.2); box-shadow: 0 0 12px rgba(0, 230, 118, 0.35); transform: translateY(-1px);}
+.tech-nav-btn:active {transform: translateY(0);}
+/* Dropdown */
+.tech-dropdown {position: absolute; top: 100%; left: 50%; transform: translateY(-10px) translateX(-50%); background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(0, 230, 118, 0.4); border-radius: 10px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 230, 118, 0.3); overflow: hidden; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; z-index: 10000; min-width: 280px; max-width: 90vw;}
+.tech-dropdown.show {opacity: 1; visibility: visible; transform: translateY(0) translateX(-50%);}
+.tech-dropdown-content {display: flex; flex-direction: column; padding: 12px 0;}
+.tech-dropdown a {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 0.95rem; text-decoration: none; padding: 10px 20px; white-space: nowrap; transition: background 0.3s ease, color 0.3s ease; display: block;}
+.tech-dropdown a:hover, .tech-dropdown a:focus {background: rgba(0, 230, 118, 0.15); color: #a7ffeb; outline: none;}
+.tech-dropdown a:focus {box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.4);}   
+/* --- Responsive: adatta il menu su mobile --- */
+@media (max-width: 768px) {.tech-nav-container {flex-direction: column; align-items: center; padding: 12px; gap: 4px;} .tech-nav-btn {width: 100%; max-width: 280px; justify-content: center;} .tech-dropdown {min-width: 300px; max-width: 90vw; left: 50%; transform: translateY(0) translateX(-50%);} .tech-dropdown a {font-size: 1rem; padding: 12px 20px;}}
+@media (max-width: 480px) {.tech-nav-container {padding: 8px;}.tech-nav-btn {font-size: 0.95rem; padding: 9px 14px;} .tech-dropdown {min-width: 260px;} .tech-dropdown a {font-size: 0.95rem; padding: 10px 16px;}}
+@media (prefers-reduced-motion: reduce) {.tech-dropdown, .tech-nav-btn {transition: none;}}
+/* --- Singola voce del menu (wrapper per pulsante + dropdown) --- */
+.tech-menu-item {position: relative; display: flex; flex-direction: column; align-items: center;}
+:root {color-scheme: dark; /* ... */}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553px; height: 180px; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}

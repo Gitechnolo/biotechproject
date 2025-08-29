@@ -141,7 +141,7 @@ setInterval(update, 1000);
 // ✅ 2. Funzione evolution
 // ———————————————————————
 function startModernClock() {
-const el = document.getElementById("clock");
+const el = document.getElementById("clock2");
 if (!el) return;
 // Usa TextDecoder per evitare ritardi
 function pad(n) { return n < 10 ? '0' + n : n; }
@@ -163,6 +163,24 @@ const intervalId = setInterval(update, 1000);
 return () => clearInterval(intervalId);
 }   
 //End  Clock
+// === Conto alla rovescia al nuovo anno ===
+const countdownEl = document.getElementById('modern-countdown');
+const daysSpan = countdownEl?.querySelector('#countdown-days');
+if (countdownEl && daysSpan) {
+function updateCountdown() {
+const now = new Date();
+const currentYear = now.getFullYear();
+const nextYear = currentYear + 1;
+const newYear = new Date(`January 1, ${nextYear} 00:00:00`);
+const diff = newYear - now;
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+daysSpan.textContent = days;
+}
+// Aggiorna subito
+updateCountdown();
+// Aggiorna ogni ora (non serve ogni secondo)
+setInterval(updateCountdown, 3600000); // 1 ora
+}   
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
   document.getElementById("myModal").style.display = "block";
@@ -216,7 +234,6 @@ function showSlides(n) {
   }
 }   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
-
 // --- Performance Helpers ---
 // Throttle: limit how often a function can run
 function throttle(fn, limit) {
@@ -325,3 +342,51 @@ var t = Math.floor((screen.height-h)/2);
 window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
 }
 // End popup
+// ———————————————————————
+// ✅ NUOVO MENU MODERNO - Solo su pagine con data-modern-menu
+// ———————————————————————
+(function () {
+// ✅ Esci subito se non siamo in una pagina moderna
+if (!document.body.hasAttribute('data-modern-menu')) return;
+// ✅ Codice del nuovo menu
+document.addEventListener('DOMContentLoaded', function () {
+const menuItems = document.querySelectorAll('.tech-menu-item');
+let openDropdown = null;
+menuItems.forEach(item => {
+const btn = item.querySelector('.tech-nav-btn');
+const dropdown = item.querySelector('.tech-dropdown');
+btn.addEventListener('click', function (e) {
+e.stopPropagation();
+if (openDropdown && openDropdown !== dropdown) {
+openDropdown.classList.remove('show');
+openDropdown.previousElementSibling?.setAttribute('aria-expanded', 'false');
+}
+const isShowing = dropdown.classList.contains('show');
+if (isShowing) {
+dropdown.classList.remove('show');
+btn.setAttribute('aria-expanded', 'false');
+openDropdown = null;
+} else {
+dropdown.classList.add('show');
+btn.setAttribute('aria-expanded', 'true');
+openDropdown = dropdown;
+}
+});
+document.body.addEventListener('click', () => {
+if (dropdown.classList.contains('show')) {
+dropdown.classList.remove('show');
+btn.setAttribute('aria-expanded', 'false');
+openDropdown = null;
+}
+});
+dropdown.addEventListener('click', e => e.stopPropagation());
+});
+document.addEventListener('keydown', e => {
+if (e.key === 'Escape' && openDropdown) {
+openDropdown.classList.remove('show');
+openDropdown.closest('.tech-menu-item')?.querySelector('.tech-nav-btn')?.setAttribute('aria-expanded', 'false');
+openDropdown = null;
+}
+});
+});
+})();
