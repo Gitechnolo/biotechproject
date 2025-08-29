@@ -17,74 +17,59 @@
 .imgLeftfl {float: left; padding: 15px;}
 </style> 
 </head>
-<body class="biotechbody">
-<canvas id="particles-canvas"></canvas>  
-<!-- nav -->
-<table width="553" class="menu">
-<tr>
- <td id="menu-products" class="biotechcolor" onmouseover="Menu('products');" onmouseout="Timeout('products');">
-   <a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>Home</b></a></td>
- <td id="menu-sales" class="biotechcolor" onmouseover="Menu('sales');" onmouseout="Timeout('sales');">
-   <a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it"><b>Progetti</b></a></td>
- <td id="menu-service" class="biotechcolor" onmouseover="Menu('service');" onmouseout="Timeout('service');">
-  <a href="javascript:PopupCentrata()" hreflang="it"><b>Service</b></a></td>
- <td id="menu-staff" class="biotechcolor" onmouseover="Menu('staff');" onmouseout="Timeout('staff');">
-   <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it"><b>Staff</b></a></td>
- <td id="menu-jobs" class="biotechcolor" onmouseover="Menu('jobs');" onmouseout="Timeout('jobs');">
-   <a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it"><b>Cybernetics Market</b></a></td>
-</tr>
-</table>
-  <div id="products" class="biotechidden">
-    <table class="biotechmenu">
-      <tr><td width="100%" id="p1" onmouseover="Highlight('products', 'p1');" onmouseout="UnHighlight('products', 'p1');">
-        <a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it"> &#8592; C e l l u l a &#8594; </a></td></tr>
-      <tr><td width="100%" id="p2" onmouseover="Highlight('products', 'p2');" onmouseout="UnHighlight('products', 'p2');">
-        <a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">&#8592; A p p a r a t o &nbsp; c i r c o l a t o r i o &#8594;</a></td></tr>
-      <tr><td width="100%" id="p3" onmouseover="Highlight('products', 'p3');" onmouseout="UnHighlight('products', 'p3');">
-        <a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">&#8592; A p p a r a t o &nbsp; r e s p i r a t o r i o &#8594;</a></td></tr>
-      <tr><td width="100%" id="p4" onmouseover="Highlight('products', 'p4');" onmouseout="UnHighlight('products', 'p4');">
-        <a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">&#8592; A p p a r a t o &nbsp; d i g e r e n t e &#8594;</a></td></tr>
-      <tr><td width="100%" id="p5" onmouseover="Highlight('products', 'p5');" onmouseout="UnHighlight('products', 'p5');">
-        <a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it">&#8592; A p p a r a t o &nbsp; t e g u m e n t a r i o &#8594;</a></td></tr>
-    </table>
-  </div>
-  <div id="sales" class="biotechidden">
-    <table class="biotechmenu">
-      <tr><td width="100%" id="s1" onmouseover="Highlight('sales', 's1');" onmouseout="UnHighlight('sales', 's1');">
-        <a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">&#8592; S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o &#8594;</a></td></tr>
-      <tr><td width="100%" id="s2" onmouseover="Highlight('sales', 's2');" onmouseout="UnHighlight('sales', 's2');">
-        <a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">&#8592; D e r m a t o l o g i a &nbsp; i n t r o &#8594;</a></td></tr>
-      <tr><td width="100%" id="s3" onmouseover="Highlight('sales', 's3');" onmouseout="UnHighlight('sales', 's3');">
-        <a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">&#8592; S p e c i a l s &#8594;</a></td></tr>
-    </table>
-  </div>
-  <div id="service" class="biotechidden">
-    <table class="biotechmenu">
-      <tr><td width="100%" id="r1" onmouseover="Highlight('service', 'r1');" onmouseout="UnHighlight('service', 'r1');">
-        <a href="javascript:PopupCentrata()" hreflang="it">&#8592; O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) &#8594;</a></td></tr>
-      <tr><td width="100%" id="r2" onmouseover="Highlight('service','r2');" onmouseout="UnHighlight('service','r2');">
-        <a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">&#8592; C o n t a c t &nbsp; U s &#8594;</a></td></tr>
-    </table>
-  </div>
-  <div id="staff" class="biotechidden">
-    <table class="biotechmenu">
-      <tr><td width="100%" id="t1" onmouseover="Highlight('staff','t1');" onmouseout="UnHighlight('staff', 't1');">
-        <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Meet the Staff</a></td></tr>
-    </table>
-  </div>
-  <div id="jobs" class="biotechidden">
-    <table class="biotechmenu">
-      <tr><td width="100%" id="j1" onmouseover="Highlight('jobs','j1');" onmouseout="UnHighlight('jobs','j1');">
-        <a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it">Tech Maturity</a></td></tr>
-    </table>
-  </div>
- <img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="logomenu" alt="Welcome!"><br>
-<!-- end nav -->
- <div id="clock">--/--/---- - --:--:--</div>
- <div id="newyear">&nbsp;<span id="countdown-days">0</span> giorni al nuovo anno!</div>
- <div id="week" class="waviy"></div>
- <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script><br>
-<br>
+<body class="biotechbody" data-modern-menu>
+<canvas id="particles-canvas"></canvas>
+<!-- Nav Menu Moderno - Stile Tech_Maturity -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
+<!-- VOCE: Home -->
+<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Home</b></button>
+<div id="products" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>← H o m e →</b></a></div>
+</div>
+</div>
+<!-- VOCE: Fisiologia -->
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Fisiologia</b></button>
+<div id="sales" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it">← C e l l u l a →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">← A p p a r a t o &nbsp; c i r c o l a t o r i o →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">← A p p a r a t o &nbsp; r e s p i r a t o r i o →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">← A p p a r a t o &nbsp; d i g e r e n t e →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it">← A p p a r a t o &nbsp; t e g u m e n t a r i o →</a>  
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">← S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">← D e r m a t o l o g i a →</a></div>
+</div>
+</div>
+<!-- VOCE: Service -->
+<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Service</b></button>
+<div id="service" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
+<a href="javascript:PopupCentrata()" hreflang="it">← O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) →</a>
+<a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">← C o n t a c t &nbsp; U s →</a></div>
+</div>
+</div>
+<!-- VOCE: Staff -->
+<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Staff</b></button>
+<div id="staff" class="tech-dropdown biotechidden">
+<div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">← M e e t &nbsp; t h e &nbsp; S t a f f →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it">← T e c h &nbsp; M a t u r i t y →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it">← P r o g e t t i →</a></div>
+</div>
+</div>
+<!-- VOCE: Technologies -->
+<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Technologies</b></button>
+<div id="jobs" class="tech-dropdown biotechidden">
+<div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it">← C y b e r n e t i c s &nbsp; M a r k e t →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">← S p e c i a l s →</a></div>
+</div>
+</div>
+</div>
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo" alt="Welcome to BiotechProject">   
+<div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
+<div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
+<div class="modern-greeting" id="week"></div>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script>
+<!-- End Nav Menu Moderno -->
 <!-- DNA animation -->
 <div class="material">
  <div class="dna"></div>
