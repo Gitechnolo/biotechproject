@@ -17,7 +17,7 @@ main {font-family: 'Sansation', Arial, Helvetica, sans-serif; font-size: 19px; a
 @supports not (background-clip: text) { main { color: hsl(204 100% 59%); animation: none;}}
 /* End gradient text */
 /* Utility classes */
-.sansation-bold {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-size: 34px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.sansation-bold {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-size: 34px; color: #a7ffeb; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); }
 .sansation-bold-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-style: italic;}
 .sansation-light {font-family: 'Sansation', Tahoma, Verdana, sans-serif;font-weight: 300;}
 .sansation-light-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: 300; font-style: italic;}
@@ -26,18 +26,18 @@ ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; paddi
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
-a:link {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
-a:hover {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:link {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:hover {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 a:visited {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: rgb(116, 9, 116); text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
-a:active {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
-a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #023440; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:active {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
+a:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 2px 2px 5px blueviolet; text-decoration: underline; text-decoration-color:rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px;}
 img {border-radius: 6px;}
 p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s;}
 p:hover, p:focus {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #fffb00; text-shadow: 2px 2px 5px blueviolet, 2px 2px 5px blueviolet; outline: none; cursor: default;}
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
 /* End element natural */
 /* Elements with class */
-.biotechbody {background-color: rgb(0, 15, 22) !important; background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
+.biotechbody {background-color: rgb(0, 15, 22); background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
 /* === STILE MODERNO PER PAGINE AGGIORNATE === */
 /* Logo centrato sotto il menu */
 .modern-logo {display: block; margin: 15px auto 20px; width: 553px; max-width: 90vw; height: auto; border: 0; border-radius: 8px; box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2); opacity: 0.9;}
