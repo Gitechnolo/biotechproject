@@ -34,7 +34,7 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 20000; /* <--- Cambiato da 1 a 20000 */
   padding-top: 1px; /* Location of the box */
   left: 0; top: 0;
   width: 100%; /* Full width */
