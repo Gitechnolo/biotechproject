@@ -342,27 +342,37 @@ var t = Math.floor((screen.height-h)/2);
 window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
 }
 // End popup
-/*// ———————————————————————
-// ✅ NUOVO MENU MODERNO - Solo su pagine con data-modern-menu
+// ———————————————————————
+// ✅ MENU MODERNO - Solo su pagine con data-modern-menu
 // ———————————————————————
 (function () {
-// ✅ Esci subito se non siamo in una pagina moderna
+// Esci subito se non siamo in una pagina con menu moderno
 if (!document.body.hasAttribute('data-modern-menu')) return;
-// ✅ Codice del nuovo menu
 document.addEventListener('DOMContentLoaded', function () {
-const menuItems = document.querySelectorAll('.tech-menu-item');
 let openDropdown = null;
-menuItems.forEach(item => {
-const btn = item.querySelector('.tech-nav-btn');
-const dropdown = item.querySelector('.tech-dropdown');
-btn.addEventListener('click', function (e) {
+// Inizializza tutti i pulsanti del menu
+document.querySelectorAll('.tech-nav-btn').forEach(btn => {
+const dropdown = btn.nextElementSibling;
+// Salta se non c'è dropdown o non è della classe corretta
+if (!dropdown || !dropdown.classList.contains('tech-dropdown')) {
+console.warn('Dropdown non trovato o classe errata per:', btn);
+return;
+}
+// Inizializza ARIA
+btn.setAttribute('aria-haspopup', 'true');
+btn.setAttribute('aria-expanded', 'false');
+// Click sul pulsante
+btn.addEventListener('click', e => {
 e.stopPropagation();
+const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+// Chiudi altro dropdown aperto
 if (openDropdown && openDropdown !== dropdown) {
 openDropdown.classList.remove('show');
-openDropdown.previousElementSibling?.setAttribute('aria-expanded', 'false');
+const prevBtn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
+prevBtn?.setAttribute('aria-expanded', 'false');
 }
-const isShowing = dropdown.classList.contains('show');
-if (isShowing) {
+// Toggle corrente
+if (isExpanded) {
 dropdown.classList.remove('show');
 btn.setAttribute('aria-expanded', 'false');
 openDropdown = null;
@@ -372,96 +382,32 @@ btn.setAttribute('aria-expanded', 'true');
 openDropdown = dropdown;
 }
 });
-document.body.addEventListener('click', () => {
-if (dropdown.classList.contains('show')) {
-dropdown.classList.remove('show');
-btn.setAttribute('aria-expanded', 'false');
+// Supporto tastiera: Enter o Space
+btn.addEventListener('keydown', e => {
+if (e.key === 'Enter' || e.key === ' ') {
+e.preventDefault();
+btn.click();
+}
+});
+});
+// Chiudi il dropdown al click fuori
+document.addEventListener('click', () => {
+if (openDropdown) {
+openDropdown.classList.remove('show');
+const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
+btn?.setAttribute('aria-expanded', 'false');
 openDropdown = null;
 }
 });
-dropdown.addEventListener('click', e => e.stopPropagation());
-});
+// Chiudi con tasto ESC
 document.addEventListener('keydown', e => {
 if (e.key === 'Escape' && openDropdown) {
 openDropdown.classList.remove('show');
-openDropdown.closest('.tech-menu-item')?.querySelector('.tech-nav-btn')?.setAttribute('aria-expanded', 'false');
+const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
+btn?.setAttribute('aria-expanded', 'false');
+btn?.focus(); // Riporta il focus sul pulsante per accessibilità
 openDropdown = null;
 }
 });
-});
-})();*/
-
-
-// ———————————————————————
-// ✅ MENU MODERNO - Solo su pagine con data-modern-menu
-// ———————————————————————
-(function () {
-  if (!document.body.hasAttribute('data-modern-menu')) return;
-
-  document.addEventListener('DOMContentLoaded', function () {
-    let openDropdown = null;
-
-    // Inizializza tutti i pulsanti del menu
-    document.querySelectorAll('.tech-nav-btn').forEach(btn => {
-      const dropdown = btn.nextElementSibling;
-      if (!dropdown || !dropdown.classList.contains('tech-dropdown')) return;
-
-      // ARIA iniziale
-      btn.setAttribute('aria-haspopup', 'true');
-      btn.setAttribute('aria-expanded', 'false');
-
-      // Click sul pulsante
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
-        // Chiudi altro dropdown aperto
-        if (openDropdown && openDropdown !== dropdown) {
-          openDropdown.classList.remove('show');
-          openDropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-        }
-
-        // Toggle corrente
-        if (isExpanded) {
-          dropdown.classList.remove('show');
-          btn.setAttribute('aria-expanded', 'false');
-          openDropdown = null;
-        } else {
-          dropdown.classList.add('show');
-          btn.setAttribute('aria-expanded', 'true');
-          openDropdown = dropdown;
-        }
-      });
-
-      // Supporto tastiera: Enter o Space
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  });
-
-  // Chiudi il dropdown al click fuori
-  document.addEventListener('click', () => {
-    if (openDropdown) {
-      openDropdown.classList.remove('show');
-      const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
-      btn?.setAttribute('aria-expanded', 'false');
-      openDropdown = null;
-    }
-  });
-
-  // Chiudi con tasto ESC
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && openDropdown) {
-      openDropdown.classList.remove('show');
-      const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
-      btn?.setAttribute('aria-expanded', 'false');
-      btn?.focus(); // Riporta il focus sul pulsante
-      openDropdown = null;
-    }
-  });
 });
 })();
