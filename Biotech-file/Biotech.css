@@ -201,7 +201,7 @@ img.hover-shadow {transition: 0.3s;}
 @keyframes fadeIn {from {opacity: 0;} to {opacity:1 ;}}
 /* End popup info container */
 /* DNA animazione - 8 eliche ottimizzate */
-.dna-container-8 {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; transform: rotateZ(-20deg); z-index: 9; /* Sotto .tech-nav-container (z-index:10) */}
+.dna-container-8 {position: absolute; top: 110px; left: 33%; display: flex; justify-content: center; align-items: center; transform-style: preserve-3d; transform: rotateZ(-20deg); z-index: 9; /* Sopra il logo, sotto il menu */}
 @keyframes rotate-8 {0% { transform: rotateX(0deg); } 100% { transform: rotateX(360deg); } }
 .dna-helix-8 {position: relative; width: 1px; height: 80px; border: 0px dotted #e7e7e7; box-shadow: 0 0 15px #e7e7e7; background: transparent; margin: 0 10px; animation: rotate-8 3s linear infinite;}
 .dna-helix-8::before {content: ""; position: absolute; top: -2px; left: -5px; width: 10px; height: 10px; background: #ff00ff7e; border-radius: 50%; box-shadow: 0 0 15px #ff00ff80;}
