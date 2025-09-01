@@ -380,33 +380,49 @@ openDropdown = null;
 dropdown.classList.add('show');
 btn.setAttribute('aria-expanded', 'true');
 openDropdown = dropdown;
+console.log('Menu aperto, openDropdown =', dropdown.id || 'senza id');
 }
 });
 // Supporto tastiera: Enter o Space
 btn.addEventListener('keydown', e => {
 if (e.key === 'Enter' || e.key === ' ') {
 e.preventDefault();
+const isExpanded = btn.getAttribute('aria-expanded') === 'true';
 btn.click();
+// Se il menu si sta aprendo, sposta il focus sul primo link
+if (!isExpanded) {
+setTimeout(() => {
+const firstLink = dropdown.querySelector('a');
+if (firstLink) firstLink.focus();
+}, 100);
+}
 }
 });
 });
 // Chiudi il dropdown al click fuori
-document.addEventListener('click', () => {
-if (openDropdown) {
+document.addEventListener('click', (e) => {
+const isClickInside = e.target.closest('.tech-menu-item') || e.target.closest('.tech-dropdown');
+if (!isClickInside && openDropdown) {
+console.log('Click fuori → chiusura menu');
 openDropdown.classList.remove('show');
 const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
 btn?.setAttribute('aria-expanded', 'false');
+btn?.focus();
 openDropdown = null;
 }
 });
 // Chiudi con tasto ESC
 document.addEventListener('keydown', e => {
+console.log('Tasto premuto:', e.key, 'openDropdown attuale:', openDropdown);
 if (e.key === 'Escape' && openDropdown) {
+console.log('Esc premuto: chiusura menu');
 openDropdown.classList.remove('show');
 const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
 btn?.setAttribute('aria-expanded', 'false');
 btn?.focus(); // Riporta il focus sul pulsante per accessibilità
 openDropdown = null;
+} else if (e.key === 'Escape') {
+console.log('Esc premuto, ma openDropdown è', openDropdown);
 }
 });
 });

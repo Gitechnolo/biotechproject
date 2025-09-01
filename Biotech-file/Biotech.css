@@ -58,17 +58,18 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
 /* Pulsanti del menu */
 .tech-nav-btn {background: rgba(0, 230, 118, 0.1); color: #a7ffeb; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 10px 16px; font-family: 'Sansation', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; outline: none; min-width: 120px; white-space: nowrap;}
-.tech-nav-btn:hover, .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.2); box-shadow: 0 0 12px rgba(0, 230, 118, 0.35); transform: translateY(-1px);}
+.tech-nav-btn:hover, .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}
 .tech-nav-btn:active {transform: translateY(0);}
 /* === MENU DROPDOWN ANIMATO (moderno) === */
 .tech-dropdown {position: absolute; top: 100%; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96); transform-origin: top center; background: rgba(20, 30, 48, 0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 230, 118, 0.4); border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 230, 118, 0.25); overflow: hidden; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1), transform 0.34s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000; min-width: 280px; max-width: 90vw; will-change: transform, opacity;}
-.tech-dropdown.show {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}
+.tech-dropdown.show {opacity: 1 !important; transform: translateY(0) translateX(-50%) scale(1) !important; visibility: visible !important; pointer-events: auto !important;}
 .tech-dropdown-content {display: flex; flex-direction: column; padding: 12px 0;}
 .tech-dropdown a {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 0.95rem; text-decoration: none; padding: 10px 20px; white-space: nowrap; transition: background 0.3s ease, color 0.3s ease; display: block;}
 .tech-dropdown a:hover, .tech-dropdown a:focus {background: rgba(0, 230, 118, 0.15); color: #a7ffeb; outline: none;}
 .tech-dropdown a:focus {box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.4);}
-/* Aggiunto Supporto hover, focus, tastiera */
-.tech-menu-item:hover .tech-dropdown, .tech-nav-btn:focus + .tech-dropdown, .tech-dropdown:focus-within {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}   
+/* ✅ MANTIENI HOVER SU DESKTOP (solo con mouse) */
+.tech-menu-item:hover .tech-dropdown {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}
+.tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}    
 /* --- Responsive: adatta il menu su mobile --- */
 @media (max-width: 768px) {.tech-nav-container {flex-direction: column; align-items: center; padding: 12px; gap: 4px;} .tech-nav-btn {width: 100%; max-width: 280px; justify-content: center;} .tech-dropdown {min-width: 300px; max-width: 90vw; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96);} .tech-dropdown a {font-size: 1rem; padding: 12px 20px;}}
 @media (max-width: 480px) {.tech-nav-container {padding: 8px;}.tech-nav-btn {font-size: 0.95rem; padding: 9px 14px;} .tech-dropdown {min-width: 260px;} .tech-dropdown a {font-size: 0.95rem; padding: 10px 16px;}}
@@ -255,3 +256,8 @@ body[data-page="Tablet_forum"] .qredshift-icon {display: none !important;}
 .dna:nth-child(15) {animation-delay: -2.25s;}
 .dna:nth-child(16) {animation-delay: -2.4s;}
 /* End DNA animazione Mantenimento retrocompatibilità */
+/* Badge di accessibilità */
+.hover-effect img {height: 42px; border: none; transition: transform 0.3s ease, filter 0.3s ease;}
+.hover-effect:hover img {transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));}
+#lastModified {text-align: center; font-size: 0.85em; color: #64ffda; opacity: 0.8; margin: 8px 0 4px; /* ridotto: meno spazio sopra e sotto */padding: 0;}
+.biotech-copyright {text-align: center; font-size: 0.9em; color: #64ffda; opacity: 0.9; margin: 4px 0 12px; /* poco spazio sopra, un po’ sotto */padding: 0;}
