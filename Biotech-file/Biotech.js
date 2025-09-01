@@ -53,7 +53,7 @@ function fadeEffect() {
 }
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)
-// Drop-down menu
+// Drop-down menu (Mantenuto per retrocompatibilità)
 var inmenu = false;
 var lastmenu = 0;
 function Menu(current) {
@@ -323,6 +323,7 @@ function turnOffLight() {
 }
 // End effect around the bulb image
 // ———————————————————————
+// ———————————————————————
 // ✅ MENU MODERNO - Solo su pagine con data-modern-menu
 // ———————————————————————
 (function () {
@@ -406,7 +407,8 @@ console.log('Esc premuto, ma openDropdown è', openDropdown);
 }
 });
 });
-})();
+})();  
+// End MENU MODERNO 
 // ———————————————————————
 // 🔹 FUNZIONI VECCHIE – PER RETROCOMPATIBILITÀ
 // (Non modificare: usate in documenti clienti)
@@ -431,40 +433,80 @@ function ChatGPTpopupCenterAI() {
 // ———————————————————————
 // Funzione generica per aprire popup centrati
 function openPopup(url, title, width, height) {
-  const left = Math.floor((screen.width - width) / 2);
-  const top = Math.floor((screen.height - height) / 2);
-  const options = `
-    width=${width},
-    height=${height},
-    top=${top},
-    left=${left},
-    resizable=yes,
-    scrollbars=yes,
-    toolbar=no,
-    menubar=no,
-    location=no
-  `;
-  const popup = window.open(url, title, options);
-  if (!popup) {
-    alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
-  } else {
-    popup.focus();
-  }
+const left = Math.floor((screen.width - width) / 2);
+const top = Math.floor((screen.height - height) / 2);
+const options = `
+width=${width},
+height=${height},
+top=${top},
+left=${left},
+resizable=yes,
+scrollbars=yes,
+toolbar=no,
+menubar=no,
+location=no
+`;
+const popup = window.open(url, title, options);
+if (!popup) {
+alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
+} else {
+popup.focus();
+}
 }
 // Nuove funzioni specifiche per il menu
 function openSupportPopup() {
-  openPopup(
-    'https://gitechnolo.github.io/biotechproject/O.S_support.html',
-    'O.S. Support Chat GPT',
-    760,
-    370
+openPopup(
+'https://gitechnolo.github.io/biotechproject/O.S_support.html',
+'O.S. Support Chat GPT',
+760,
+370
   );
 }
 function openContactPopup() {
-  openPopup(
-    'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
-    'Contattaci - Forum ChatGPT',
-    825,
-    672
-  );
+openPopup(
+'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
+'Contattaci - Forum ChatGPT',
+825,
+672
+ );
 }
+// ———————————————————————
+// ✅ GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
+// ———————————————————————
+document.addEventListener("DOMContentLoaded", function () {
+// === 1. Controllo pagina (opzionale) ===
+if (!document.body.hasAttribute('data-modern-menu')) return;
+// === 2. Riferimenti agli elementi ===
+const toggleBtn = document.getElementById("keyboard-nav-toggle");
+const body = document.body;
+let keyboardNavActive = false;
+// === 3. Funzione per attivare/disattivare la modalità tastiera ===
+function toggleKeyboardNavigation() {
+keyboardNavActive = !keyboardNavActive;
+if (keyboardNavActive) {
+body.classList.add("keyboard-navigation-on");
+toggleBtn?.setAttribute("aria-pressed", "true");
+toggleBtn?.setAttribute("data-active", "true");
+toggleBtn.textContent = "✅ Navigazione Attiva";
+} else {
+body.classList.remove("keyboard-navigation-on");
+toggleBtn?.setAttribute("aria-pressed", "false");
+toggleBtn?.setAttribute("data-active", "false");
+toggleBtn.textContent = "🔧 Navigazione Tastiera";
+ }
+ }
+// === 4. Click sul pulsante ===
+toggleBtn?.addEventListener("click", toggleKeyboardNavigation);
+// === 5. Attivazione automatica con Tab ===
+document.addEventListener("keydown", function (e) {
+if (e.key === "Tab") {
+if (!keyboardNavActive) {
+toggleKeyboardNavigation();
+}
+}
+});
+// === 6. Rimuovi la classe 'hint' dopo l'animazione (dopo ~2.5s) ===
+setTimeout(() => {
+toggleBtn?.classList.remove("hint");
+}, 2500);
+});

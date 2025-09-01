@@ -18,6 +18,8 @@
 </style> 
 </head>
 <body class="biotechbody" data-modern-menu>
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button">🔧 Navigazione Tastiera<span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
 <canvas id="particles-canvas"></canvas>
 <!-- DNA animation -->
 <div class="dna-container-8">
@@ -34,21 +36,21 @@
 <!-- Nav Menu Moderno -->
 <div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
 <!-- VOCE: Home -->
-<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Home</b></button>
+<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button>
 <div id="products" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it"><b>← H o m e →</b></a></div>
+<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" aria-label="Home"><b>← H o m e →</b></a></div>
 </div>
 </div>
 <!-- VOCE: Fisiologia -->
-<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Fisiologia</b></button>
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
 <div id="sales" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it">← C e l l u l a →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it">← A p p a r a t o &nbsp; c i r c o l a t o r i o →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it">← A p p a r a t o &nbsp; r e s p i r a t o r i o →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it">← A p p a r a t o &nbsp; d i g e r e n t e →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it">← A p p a r a t o &nbsp; t e g u m e n t a r i o →</a>  
-<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it">← S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it">← D e r m a t o l o g i a →</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" aria-label="Cellula">← C e l l u l a →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" aria-label="Apparato circolatorio">← A p p a r a t o &nbsp; c i r c o l a t o r i o →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" aria-label="Apparato respiratorio">← A p p a r a t o &nbsp; r e s p i r a t o r i o →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" aria-label="Apparato digerente">← A p p a r a t o &nbsp; d i g e r e n t e →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" aria-label="Apparato tegumentario">← A p p a r a t o &nbsp; t e g u m e n t a r i o →</a>  
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" aria-label="Sistema linfatico immunitario">← S i s t e m a &nbsp; l i n f a t i c o / i m m u n i t a r i o →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" aria-label="Dermatologia">← D e r m a t o l o g i a →</a></div>
 </div>
 </div>
 <!-- VOCE: Service -->
@@ -59,22 +61,20 @@
 <!-- Contattaci -->
 <button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">← C o n t a c t &nbsp; U s →</button></div>
 </div>
-</div>
+</div>   
 <!-- VOCE: Staff -->
-<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Staff</b></button>
-<div id="staff" class="tech-dropdown biotechidden">
-<div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">← M e e t &nbsp; t h e &nbsp; S t a f f →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it">← T e c h &nbsp; M a t u r i t y →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it">← P r o g e t t i →</a></div>
+<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button>
+<div id="staff" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" aria-label="Incontra lo Staff">← M e e t &nbsp; t h e &nbsp; S t a f f →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" aria-label="Maturità tecnologica">← T e c h &nbsp; M a t u r i t y →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" aria-label="Progetti">← P r o g e t t i →</a></div>
 </div>
 </div>
 <!-- VOCE: Technologies -->
-<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Technologies</b></button>
-<div id="jobs" class="tech-dropdown biotechidden">
-<div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it">← C y b e r n e t i c s &nbsp; M a r k e t →</a>
-<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it">← S p e c i a l s →</a></div>
+<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button>
+<div id="jobs" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" aria-label="Mercato cibernetica">← C y b e r n e t i c s &nbsp; M a r k e t →</a>
+<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" aria-label="Speciali">← S p e c i a l s →</a></div>
 </div>
 </div>
 </div>
