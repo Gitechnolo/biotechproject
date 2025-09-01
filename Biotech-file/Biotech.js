@@ -322,26 +322,6 @@ function turnOffLight() {
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
-// Popup
-function PopupCentrata()
-{
-var w = 760;
-var h = 370;
-var l = Math.floor((screen.width-w)/2);
-var t = Math.floor((screen.height-h)/2);
-
-window.open("https://gitechnolo.github.io/biotechproject/O.S_support.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
-}
-function ChatGPTpopupCenterAI()
-{
-var w = 825;
-var h = 672;
-var l = Math.floor((screen.width-w)/2);
-var t = Math.floor((screen.height-h)/2);
-
-window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
-}
-// End popup
 // ———————————————————————
 // ✅ MENU MODERNO - Solo su pagine con data-modern-menu
 // ———————————————————————
@@ -427,3 +407,64 @@ console.log('Esc premuto, ma openDropdown è', openDropdown);
 });
 });
 })();
+// ———————————————————————
+// 🔹 FUNZIONI VECCHIE – PER RETROCOMPATIBILITÀ
+// (Non modificare: usate in documenti clienti)
+// ———————————————————————
+function PopupCentrata() {
+  var w = 760;
+  var h = 370;
+  var l = Math.floor((screen.width - w) / 2);
+  var t = Math.floor((screen.height - h) / 2);
+  window.open("https://gitechnolo.github.io/biotechproject/O.S_support.html", "", "width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+}
+function ChatGPTpopupCenterAI() {
+  var w = 825;
+  var h = 672;
+  var l = Math.floor((screen.width - w) / 2);
+  var t = Math.floor((screen.height - h) / 2);
+  window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html", "", "width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+}
+// ———————————————————————
+// 🔹 FUNZIONI NUOVE – PER IL MENU MODERNO (accessibili e sicure)
+// (Usate nel nuovo HTML del menu a tendina)
+// ———————————————————————
+// Funzione generica per aprire popup centrati
+function openPopup(url, title, width, height) {
+  const left = Math.floor((screen.width - width) / 2);
+  const top = Math.floor((screen.height - height) / 2);
+  const options = `
+    width=${width},
+    height=${height},
+    top=${top},
+    left=${left},
+    resizable=yes,
+    scrollbars=yes,
+    toolbar=no,
+    menubar=no,
+    location=no
+  `;
+  const popup = window.open(url, title, options);
+  if (!popup) {
+    alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
+  } else {
+    popup.focus();
+  }
+}
+// Nuove funzioni specifiche per il menu
+function openSupportPopup() {
+  openPopup(
+    'https://gitechnolo.github.io/biotechproject/O.S_support.html',
+    'O.S. Support Chat GPT',
+    760,
+    370
+  );
+}
+function openContactPopup() {
+  openPopup(
+    'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
+    'Contattaci - Forum ChatGPT',
+    825,
+    672
+  );
+}

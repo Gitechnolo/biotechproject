@@ -43,10 +43,12 @@
 </div>
 </div>
 <!-- VOCE: Service -->
-<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false"><b>Service</b></button>
+<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
 <div id="service" class="tech-dropdown biotechidden"><div class="tech-dropdown-content">
-<a href="javascript:PopupCentrata()" hreflang="it">← O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) →</a>
-<a href="javascript:ChatGPTpopupCenterAI()" hreflang="it">← C o n t a c t &nbsp; U s →</a></div>
+<!-- O.S. Support Chat GPT -->
+<button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">← O.S. &nbsp; S u p p o r t &nbsp; C h a t &nbsp; G P T (֍) →</button>
+<!-- Contattaci -->
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">← C o n t a c t &nbsp; U s →</button></div>
 </div>
 </div>
 <!-- VOCE: Staff -->

@@ -61,12 +61,87 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .tech-nav-btn:hover, .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}
 .tech-nav-btn:active {transform: translateY(0);}
 /* === MENU DROPDOWN ANIMATO (moderno) === */
-.tech-dropdown {position: absolute; top: 100%; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96); transform-origin: top center; background: rgba(20, 30, 48, 0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 230, 118, 0.4); border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 230, 118, 0.25); overflow: hidden; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1), transform 0.34s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000; min-width: 280px; max-width: 90vw; will-change: transform, opacity;}
-.tech-dropdown.show {opacity: 1 !important; transform: translateY(0) translateX(-50%) scale(1) !important; visibility: visible !important; pointer-events: auto !important;}
-.tech-dropdown-content {display: flex; flex-direction: column; padding: 12px 0;}
-.tech-dropdown a {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 0.95rem; text-decoration: none; padding: 10px 20px; white-space: nowrap; transition: background 0.3s ease, color 0.3s ease; display: block;}
-.tech-dropdown a:hover, .tech-dropdown a:focus {background: rgba(0, 230, 118, 0.15); color: #a7ffeb; outline: none;}
-.tech-dropdown a:focus {box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.4);}
+.tech-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateY(-12px) translateX(-50%) scale(0.96);
+  transform-origin: top center;
+  background: rgba(20, 30, 48, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 230, 118, 0.25);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1), transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10000;
+  min-width: 280px;
+  max-width: 90vw;
+  will-change: transform, opacity;
+}
+
+.tech-dropdown.show {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(-50%) scale(1) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.tech-dropdown-content {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
+
+/* ✅ MODIFICA: aggiunto 'button' al selettore */
+.tech-dropdown a,
+.tech-dropdown button {
+  color: #b2dfdb;
+  font-family: 'Sansation', sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 10px 20px;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: block;
+}
+
+/* Stile per hover/focus sui link */
+.tech-dropdown a:hover,
+.tech-dropdown a:focus {
+  background: rgba(0, 230, 118, 0.15);
+  color: #a7ffeb;
+  outline: none;
+}
+
+.tech-dropdown a:focus {
+  box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.4);
+}
+
+/* ✅ Aggiungi queste regole per i pulsanti (mantenendo lo stile esistente) */
+.tech-dropdown button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.tech-dropdown button:hover,
+.tech-dropdown button:focus {
+  background: rgba(0, 230, 118, 0.15);
+  color: #a7ffeb;
+  outline: none;
+}
+
+.tech-dropdown button:focus {
+  box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.4);
+}   
 /* ✅ MANTIENI HOVER SU DESKTOP (solo con mouse) */
 .tech-menu-item:hover .tech-dropdown {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}
 .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}    

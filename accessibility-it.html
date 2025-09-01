@@ -45,6 +45,17 @@
     <li><strong>Animazioni</strong>: Effetti visivi opzionali; disattivati se l'utente preferisce <code>prefers-reduced-motion</code>.</li>
   </ul>
 
+  <h2>Aggiornamento: menu a tendina accessibile (2025)</h2>
+<p>Abbiamo migliorato l'accessibilità del menu principale introducendo:</p>
+<ul>
+  <li>Uso di <code>aria-label</code> per descrivere chiaramente la funzione di ogni voce di menu</li>
+  <li>Attributo <code>aria-controls</code> per collegare esplicitamente i pulsanti ai relativi dropdown</li>
+  <li>Sostituzione di <code>&lt;a href="javascript:..."&gt;</code> con <code>&lt;button&gt;</code> per una semantica corretta</li>
+  <li>Supporto completo alla navigazione da tastiera (Tab, Invio, Esc)</li>
+  <li>Mantenimento della retrocompatibilità con documenti esistenti</li>
+</ul>
+<p>Queste modifiche migliorano l'esperienza per utenti con disabilità visive e motorie, garantendo un accesso più equo al contenuto.</p>
+
   <h2>🛠️ Tecnologie utilizzate</h2>
   <p>HTML5, CSS3, JavaScript (vanilla), ARIA, WAI-ARIA.</p>
 
