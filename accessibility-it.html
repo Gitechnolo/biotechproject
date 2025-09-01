@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Accessibilità - BiotechProject</title>
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Accessibilità - BiotechProject</title>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
     body {
       font-family: 'Sansation', sans-serif;
-      background: #0b1a2c;
       color: #a7ffeb;
-      margin: 40px auto;
       max-width: 900px;
-      line-height: 1.6;
-      padding: 20px;
+      line-height: 1.6;     
     }
     h1, h2 {
       color: #00e676;
@@ -29,7 +29,12 @@
 }   
   </style>
 </head>
-<body>
+<body class="biotechbody">
+  <canvas id="particles-canvas"></canvas>
+  <div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
   <h1>📌 Dichiarazione di Accessibilità</h1>
   <p><strong>BiotechProject</strong> è impegnato a garantire che il progetto sia accessibile a tutti, inclusi utenti con disabilità visive, uditive, cognitive o motorie.</p>
 
@@ -61,15 +66,21 @@
 
   <h2>📞 Feedback e segnalazioni</h2>
   <p>Se riscontri problemi di accessibilità, ti invitiamo a segnalarcelo. Il tuo feedback ci aiuta a migliorare.</p>
-  <p><a href="javascript:ChatGPTpopupCenterAI()">Contattaci</a></p>
+  <button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
 
   <h2>📅 Data ultima verifica</h2>
   <p>31 agosto 2025</p>
 
   <p>"BiotechProject non è solo scienza: è inclusione! Ogni linea di codice è pensata per essere accessibile a tutti."</p>
- <a href="accessibility-it.html" aria-label="Dichiarazione di accessibilità del sito" title="Questo sito è conforme agli standard WCAG 2.1 AA">
-  <img src="Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito" style="border: none; transition: transform 0.3s ease;">
+ <a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" aria-label="Dichiarazione di accessibilità del sito" title="Questo sito è conforme agli standard WCAG 2.1 AA">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito" style="border: none; transition: transform 0.3s ease;">
 </a>
-<p>BiotechProject. Un progetto per un web più inclusivo.</p>
+<p class="sansation-light-italic">BiotechProject. Un progetto per un web più inclusivo.</p>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
+</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>   
