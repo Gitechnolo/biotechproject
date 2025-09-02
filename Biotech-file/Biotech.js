@@ -370,15 +370,50 @@ if (e.key === 'Enter' || e.key === ' ') {
 e.preventDefault();
 const isExpanded = btn.getAttribute('aria-expanded') === 'true';
 btn.click();
-// Se il menu si sta aprendo, sposta il focus sul primo link
+// ✅ Spostare il focus sul primo elemento con role="menuitem"
 if (!isExpanded) {
 setTimeout(() => {
-const firstLink = dropdown.querySelector('a');
-if (firstLink) firstLink.focus();
+const firstItem = dropdown.querySelector('[role="menuitem"]');
+if (firstItem) firstItem.focus();  // ✅ Usa firstItem
 }, 100);
 }
 }
 });
+// Navigazione con frecce, Home, End e Escape DENTRO il dropdown
+dropdown.addEventListener('keydown', function (e) {
+  const items = Array.from(dropdown.querySelectorAll('[role="menuitem"]:not([disabled])'));
+  const currentIndex = items.indexOf(document.activeElement);
+// Freccia giù
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    const nextIndex = (currentIndex + 1) % items.length;
+    items[nextIndex]?.focus();
+  }
+// Freccia su
+  else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    const prevIndex = (currentIndex - 1 + items.length) % items.length;
+    items[prevIndex]?.focus();
+  }
+// Home → primo elemento
+  else if (e.key === 'Home') {
+    e.preventDefault();
+    items[0]?.focus();
+  }
+// End → ultimo elemento
+  else if (e.key === 'End') {
+    e.preventDefault();
+    items[items.length - 1]?.focus();
+  }
+// Escape → chiude il menu (doppia sicurezza)
+  else if (e.key === 'Escape') {
+    e.stopPropagation(); // Evita che scatti anche l'altro listener su document
+    dropdown.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+    openDropdown = null;
+  }
+});   
 });
 // Chiudi il dropdown al click fuori
 document.addEventListener('click', (e) => {
@@ -510,18 +545,11 @@ setTimeout(() => {
 toggleBtn?.classList.remove("hint");
 }, 2500);
 });
-
-
-
-
-
-
 // === GESTIONE TEMA DINAMICO - BiotechProject (versione accessibile) ===
 function initThemeToggle() {
   const themeBtn = document.getElementById('theme-toggle');
   if (!themeBtn) return;
-
-  // Temi compatibili con il glassmorphism
+// Temi compatibili con il glassmorphism
   const themes = [
     { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
     { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
@@ -529,15 +557,12 @@ function initThemeToggle() {
     { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
     { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
   ];
-
   let currentThemeIndex = 0;
-
-  // 🔹 Miglioramento 1: tema predefinito in base al contrasto preferito
+// 🔹 Miglioramento 1: tema predefinito in base al contrasto preferito
   if (window.matchMedia('(prefers-contrast: high)').matches) {
     currentThemeIndex = themes.findIndex(t => t.name === 'Blu Profondo') || 0;
   }
-
-  // Ripristina il tema salvato (ha priorità su prefers-contrast)
+// Ripristina il tema salvato (ha priorità su prefers-contrast)
   const savedTheme = localStorage.getItem('biotech-theme');
   if (savedTheme !== null) {
     const index = parseInt(savedTheme, 10);
@@ -545,8 +570,7 @@ function initThemeToggle() {
       currentThemeIndex = index;
     }
   }
-
-  // 🔹 Funzione per aggiornare l'aria-label dinamicamente
+// 🔹 Funzione per aggiornare l'aria-label dinamicamente
   function updateAriaLabel(themeName) {
     themeBtn.setAttribute(
       'aria-label',
@@ -554,7 +578,7 @@ function initThemeToggle() {
     );
   }
 
-  // Applica il tema corrente
+// Applica il tema corrente
   function applyTheme(index) {
     const theme = themes[index];
     document.documentElement.style.setProperty('--color-accent-rgb', theme.rgb);
@@ -562,25 +586,20 @@ function initThemeToggle() {
     document.documentElement.style.setProperty('--color-accent-s', theme.s);
     document.documentElement.style.setProperty('--color-accent-l', theme.l);
     document.documentElement.style.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
-
-    // Aggiorna testo e aria-label
+// Aggiorna testo e aria-label
     themeBtn.textContent = `← 🎨 T e m a (${theme.name}) →`;
     updateAriaLabel(theme.name);
   }
-
-  // Applica il tema al caricamento
+// Applica il tema al caricamento
   applyTheme(currentThemeIndex);
-
-  // Cambia tema al click
+// Cambia tema al click
   themeBtn.addEventListener('click', (e) => {
     e.preventDefault();
     currentThemeIndex = (currentThemeIndex + 1) % themes.length;
     applyTheme(currentThemeIndex);
-
-    // Salva la scelta
+// Salva la scelta
     localStorage.setItem('biotech-theme', currentThemeIndex);
   });
 }
-
 // Inizializza al caricamento
 window.addEventListener('DOMContentLoaded', initThemeToggle); 
