@@ -510,3 +510,77 @@ setTimeout(() => {
 toggleBtn?.classList.remove("hint");
 }, 2500);
 });
+
+
+
+
+
+
+// === GESTIONE TEMA DINAMICO - BiotechProject (versione accessibile) ===
+function initThemeToggle() {
+  const themeBtn = document.getElementById('theme-toggle');
+  if (!themeBtn) return;
+
+  // Temi compatibili con il glassmorphism
+  const themes = [
+    { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
+    { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
+    { name: 'Viola', rgb: '138, 43, 226', h: 270, s: '75%', l: '53%' },
+    { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
+    { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
+  ];
+
+  let currentThemeIndex = 0;
+
+  // 🔹 Miglioramento 1: tema predefinito in base al contrasto preferito
+  if (window.matchMedia('(prefers-contrast: high)').matches) {
+    currentThemeIndex = themes.findIndex(t => t.name === 'Blu Profondo') || 0;
+  }
+
+  // Ripristina il tema salvato (ha priorità su prefers-contrast)
+  const savedTheme = localStorage.getItem('biotech-theme');
+  if (savedTheme !== null) {
+    const index = parseInt(savedTheme, 10);
+    if (index >= 0 && index < themes.length) {
+      currentThemeIndex = index;
+    }
+  }
+
+  // 🔹 Funzione per aggiornare l'aria-label dinamicamente
+  function updateAriaLabel(themeName) {
+    themeBtn.setAttribute(
+      'aria-label',
+      `Cambia tema colore: attualmente ${themeName}, clicca per passare al successivo`
+    );
+  }
+
+  // Applica il tema corrente
+  function applyTheme(index) {
+    const theme = themes[index];
+    document.documentElement.style.setProperty('--color-accent-rgb', theme.rgb);
+    document.documentElement.style.setProperty('--color-accent-h', theme.h);
+    document.documentElement.style.setProperty('--color-accent-s', theme.s);
+    document.documentElement.style.setProperty('--color-accent-l', theme.l);
+    document.documentElement.style.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
+
+    // Aggiorna testo e aria-label
+    themeBtn.textContent = `← 🎨 T e m a (${theme.name}) →`;
+    updateAriaLabel(theme.name);
+  }
+
+  // Applica il tema al caricamento
+  applyTheme(currentThemeIndex);
+
+  // Cambia tema al click
+  themeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    applyTheme(currentThemeIndex);
+
+    // Salva la scelta
+    localStorage.setItem('biotech-theme', currentThemeIndex);
+  });
+}
+
+// Inizializza al caricamento
+window.addEventListener('DOMContentLoaded', initThemeToggle); 

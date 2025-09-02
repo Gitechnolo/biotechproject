@@ -1,37 +1,51 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
-<title>Progetti</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Accessibilità - BiotechProject</title>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_terminal.min.css?v=1.2">
-<style type="text/css">
-#Banner {transition: opacity 1s ease-in-out; opacity: 1;}
-.banner-fade-out {opacity: 0;}
-.bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
-</style>  
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+    body {
+      font-family: 'Sansation', sans-serif;
+      color: #a7ffeb;
+      max-width: 900px;
+      line-height: 1.6;     
+    }
+    h1, h2 {
+      color: #00e676;
+    }
+    ul { padding-left: 20px; }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #64ffda;
+    }
+    a:hover img {
+  transform: translateY(-2px) scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));
+}   
+  </style>
 </head>
 <body class="biotechbody" data-modern-menu>
-<!-- Pulsante attivazione navigazione da tastiera -->
-<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button">🔧 Navigazione Tastiera<span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+  <!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button">🔧 Navigazione Tastiera<span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>
 <canvas id="particles-canvas"></canvas>
 <!-- DNA animation -->
 <div class="dna-container-8">
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
-  <div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
+<div class="dna-helix-8"></div>
 </div>
 <!-- End DNA animation -->
-<!-- Nav Menu Moderno -->
+ <!-- Nav Menu Moderno -->
 <div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
 <!-- VOCE: Home -->
 <div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button>
@@ -85,52 +99,72 @@
 <div class="modern-greeting" id="week"></div>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script>
 <!-- End Nav Menu Moderno -->
-<img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
- <div id="holidayMsg"></div>
-<div class="staff-row">
+  <div class="staff-row">
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<table>
-<tr>
-<td><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.avif" alt="Docker cp" style="width:100%;max-width:214px"></td>
-<td><img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/docker_nginx.avif" alt="Docker nginx" style="width:100%;max-width:300px"></td>
-<td><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.avif" alt="Git Push" style="width:100%;max-width:370px"></td>
-<td><img fetchpriority="high" id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.avif" alt="Git Pull" style="width:100%;max-width:370px"><br></td>
-</tr>
-</table>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-</div>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
-<div id="about">
-  <audio controls autoplay>
-  <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/epic-background-music.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-<br>  
-  <p class="sidenavtext">Welcome to the Biotech Project<br>
-  <span class="text">A project for the future of biotechnology<br>
-  Created by <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a><br>
-  Version: 1.0.0<br>
-  <!-- Badge di accessibilità -->
-<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito" title="Questo sito è conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito"></a></div>
-<div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js"></script>
-<p class="biotechcenter biotech-copyright sansation-light-italic">BiotechProject. Un progetto per un web più inclusivo.</p></span><br>
-<br>
-If you have new projects to be realized!<br>
-You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechproject" target="_blank">Gitlab</a>!<br>
-<br>
-<br>  
-<button onclick="turnOnLight()">Turn on the light</button>
-<img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif" style="width:100px">
-<button onclick="turnOffLight()">Turn off the light</button>
-</p>
-<br>
-</div>
+<p><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" lang="en">Italian version available</a></p>
+        <h1>📌 Accessibility Statement</h1>
+        <p><strong>BiotechProject</strong> is committed to ensuring that the project is accessible to everyone, including users with visual, auditory, cognitive, or motor disabilities.</p>
+
+        <h2>🎯 Compliance with Standards</h2>
+        <p>This website follows the principles of the <strong>Web Content Accessibility Guidelines (WCAG) 2.1</strong>, level <strong>AA</strong>.</p>
+
+        <h2>✅ Accessibility Features</h2>
+        <ul>
+          <li><strong>Keyboard navigation</strong>: All functionality is accessible using only the <kbd>Tab</kbd>, <kbd>Enter</kbd>, <kbd>Space</kbd>, and <kbd>Esc</kbd> keys.</li>
+          <li><strong>Screen reader compatibility</strong>: Semantic HTML structure, ARIA labels, and dynamic states are properly managed.</li>
+          <li><strong>Text/background contrast</strong>: All text meets the minimum 4.5:1 contrast ratio required by WCAG AA.</li>
+          <li><strong>Adaptable text</strong>: Content remains readable even at 200% zoom.</li>
+          <li><strong>Animations</strong>: Visual effects are optional; disabled if the user prefers <code>prefers-reduced-motion</code>.</li>
+        </ul>
+
+        <h2>🔄 Update: Accessible Dropdown Menu (2025)</h2>
+        <p>We've improved the accessibility of the main menu by introducing:</p>
+        <ul>
+          <li>Use of <code>aria-label</code> to clearly describe the function of each menu item</li>
+          <li><code>aria-controls</code> attribute to explicitly link buttons to their dropdowns</li>
+          <li>Replacement of <code>&lt;a href="javascript:..."&gt;</code> with <code>&lt;button&gt;</code> for correct semantic structure</li>
+          <li>Full keyboard navigation support (Tab, Enter, Esc)</li>
+          <li>Maintained backward compatibility with existing documents</li>
+        </ul>
+        <p>These changes enhance the experience for users with visual and motor disabilities, ensuring fairer access to content.</p>
+
+        <h2>🎨 New: Dynamic Visual Theme (2025)</h2>
+        <p>We've introduced a <strong>color theme switcher</strong> directly in the <strong>Service</strong> menu to offer a personalized and more accessible visual experience.</p>
+        <ul>
+          <li><strong>Customizable colors</strong>: choose between Green, Cyan, Violet, Orange, and Deep Blue to adapt the interface to your visual preferences.</li>
+          <li><strong>Colorblind support</strong>: some colors (e.g. Deep Blue) are easier to distinguish for users with certain color vision deficiencies.</li>
+          <li><strong>Automatic adaptation</strong>: if the system detects <code>prefers-contrast: high</code>, the default theme becomes <strong>Deep Blue</strong> for better readability.</li>
+          <li><strong>Saved preference</strong>: your selected theme is stored in the browser and restored on your next visit.</li>
+          <li><strong>Keyboard and screen reader accessible</strong>: the button is navigable with <kbd>Tab</kbd> and the label updates dynamically to describe the current theme.</li>
+        </ul>
+        <p>This tool is particularly useful for:</p>
+        <ul>
+          <li>Users with <strong>light sensitivity</strong> or visual contrast issues</li>
+          <li>Those using the site in <strong>very bright or very dark environments</strong></li>
+          <li>Users with <strong>color blindness</strong> or other visual conditions</li>
+        </ul>
+        <p>The dynamic theme is an example of how <strong>futuristic design and accessibility can coexist</strong> — without compromise.</p>
+
+        <h2>🛠️ Technologies Used</h2>
+          
+        <p>HTML5, CSS3, JavaScript (vanilla), ARIA, WAI-ARIA.</p>
+
+        <h2>📞 Feedback and Reporting</h2>
+        <p>If you encounter any accessibility issues, we invite you to report them. Your feedback helps us improve.</p>
+        <button role="menuitem" onclick="openContactPopup()" aria-label="Contact us via ChatGPT forum" lang="en">Contact Us</button>
+
+        <h2>📅 Last Verification Date</h2>
+        <p>August 31, 2025</p>
+
+        <p>"BiotechProject is not just science: it's inclusion! Every line of code is designed to be accessible to everyone."</p>
+        
+        <a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" aria-label="Accessibility statement of the website" title="This site conforms to WCAG 2.1 AA standards">
+          <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Accessibility statement of the website" style="border: none; transition: transform 0.3s ease;">
+        </a>
+        
+        <p class="sansation-light-italic">BiotechProject. A project for a more inclusive web.</p>
       </div>
     </div>
   </div>
@@ -139,7 +173,6 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
-  </html> 
+</html> 

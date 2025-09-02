@@ -56,10 +56,66 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-greeting {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.9; text-shadow: 0 0 8px rgba(0, 230, 118, 0.3); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); letter-spacing: 0.5px;}   
 /* --- Contenitore del menu moderno --- */
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
-/* Pulsanti del menu */
-.tech-nav-btn {background: rgba(0, 230, 118, 0.1); color: #a7ffeb; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 10px 16px; font-family: 'Sansation', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; outline: none; min-width: 120px; white-space: nowrap;}
-.tech-nav-btn:hover, .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}
-.tech-nav-btn:active {transform: translateY(0);}
+/* PULSANTI DEL MENU */
+.tech-nav-btn {
+  /* ✅ Sfondo trasparente: parte fondamentale del glassmorphism */
+  background: var(--color-accent-bg);
+  /* ✅ Testo neon, come nel resto del sito */
+  color: #a7ffeb;
+  /* ✅ Bordo sottile, leggermente più visibile */
+  border: 1px solid rgba(var(--color-accent-rgb), 0.25);
+  /* ✅ Bordi arrotondati */
+  border-radius: 6px;
+  /* ✅ Spaziatura interna */
+  padding: 10px 16px;
+  /* ✅ Tipografia */
+  font-family: 'Sansation', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  /* ✅ Cursori e interazioni */
+  cursor: pointer;
+  outline: none;
+  /* ✅ Minima larghezza per allineamento */
+  min-width: 120px;
+  white-space: nowrap;
+  /* ✅ Ombra sottile (non invasiva) */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  /* ✅ Effetto glass: blur interno */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px); /* Safari */
+  /* ✅ Transizione fluida */
+  transition: all var(--duration) var(--ease-out);
+}
+/* === HOVER: solo per mouse/touchpad === */
+.tech-nav-btn:hover {
+  background: var(--color-accent-bg-hover);
+  color: white;
+  border-color: rgba(var(--color-accent-rgb), 0.4);
+  box-shadow: 
+    0 0 8px rgba(var(--color-accent-rgb), 0.3),
+    0 0 16px rgba(var(--color-accent-rgb), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+/* === FOCUS: solo quando l'utente naviga da tastiera === */
+.tech-nav-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+/* === FOCUS + modalità tastiera attiva === */
+.keyboard-navigation-on .tech-nav-btn:focus {
+  outline: 2px solid #00e676;
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.4),
+    0 0 20px rgba(0, 230, 118, 0.25),
+    0 0 0 1px rgba(0, 255, 180, 0.2);
+}   
+.tech-nav-btn:active {
+  background: var(--color-accent-bg-active);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 /* === MENU DROPDOWN ANIMATO (moderno) === */
 .tech-dropdown {position: absolute; top: 100%; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96); transform-origin: top center; background: rgba(20, 30, 48, 0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(0, 230, 118, 0.4); border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 230, 118, 0.25); overflow: hidden; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1), transform 0.34s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000; min-width: 280px; max-width: 90vw; will-change: transform, opacity;}
 .tech-dropdown.show {opacity: 1 !important; transform: translateY(0) translateX(-50%) scale(1) !important; visibility: visible !important; pointer-events: auto !important;}
@@ -80,7 +136,22 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 @media (prefers-reduced-motion: reduce) {.tech-dropdown, .tech-nav-btn {transition: none;}}
 /* --- Singola voce del menu (wrapper per pulsante + dropdown) --- */
 .tech-menu-item {position: relative; display: flex; flex-direction: column; align-items: center;}
-:root {color-scheme: dark; /* ... */}
+:root {color-scheme: dark;
+/* Colore principale dinamico */
+  --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
+  --color-accent-h: 143;
+  --color-accent-s: 100%;
+  --color-accent-l: 45%;
+/* Sfumature trasparenti */
+  --color-accent-bg: rgba(var(--color-accent-rgb), 0.08);
+  --color-accent-bg-hover: rgba(var(--color-accent-rgb), 0.18);
+  --color-accent-bg-active: rgba(var(--color-accent-rgb), 0.12);
+/* Colore glow per focus */
+  --color-glow: hsl(var(--color-accent-h), 100%, 70%);
+/* Transizioni */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.3s;
+}
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553px; height: 180px; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
@@ -285,3 +356,23 @@ body[data-page="Tablet_forum"] .qredshift-icon {display: none !important;}
 .keyboard-toggle-btn.hint {animation: hint-pulse 1.5s ease-out 0.8s 1; animation-fill-mode: forwards;}
 /* === Testo solo per screen reader (accessibilità) === */
 .sr-only {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; /* Visibile solo ai lettori schermo */}
+@media (prefers-contrast: high) {
+  .tech-nav-btn {
+    background: #000 !important;
+    border: 2px solid #00ffcc !important;
+    box-shadow: none !important;
+    color: #00ffcc !important;
+  }
+  .tech-nav-btn:hover,
+  .tech-nav-btn:focus-visible {
+    background: #001a0d !important;
+    color: white !important;
+  }
+  /* Si può applicare anche ad altri elementi chiave */
+  .keyboard-toggle-btn,
+  .modern-clock,
+  .modern-countdown {
+    border: 2px solid #00ffcc !important;
+    box-shadow: none !important;
+  }
+}   
