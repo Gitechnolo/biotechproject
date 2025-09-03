@@ -49,7 +49,20 @@ main {font-family: 'Sansation', Arial, Helvetica, sans-serif; font-size: 19px; a
   font-style: italic;
   color: #a7ffeb;
   font-size: 18px;
-}      
+}
+h2.atkinson-bold,
+  h3.atkinson-bold {
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  ul.atkinson-regular {
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .atkinson-regular {
+    display: block;
+    margin-bottom: 12px;
+  }   
 ul.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
 ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; padding: 1; color: hwb(56 32% 7%);}
 li::marker {color: rgb(208, 255, 0); content: "~";}
