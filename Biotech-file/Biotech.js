@@ -587,7 +587,7 @@ function initThemeToggle() {
     document.documentElement.style.setProperty('--color-accent-l', theme.l);
     document.documentElement.style.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
 // Aggiorna testo e aria-label
-    themeBtn.textContent = `← 🎨 T e m a (${theme.name}) →`;
+    themeBtn.textContent = `🎨 Tema: (${theme.name})`;
     updateAriaLabel(theme.name);
   }
 // Applica il tema al caricamento
