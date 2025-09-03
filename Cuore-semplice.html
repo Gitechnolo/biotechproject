@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
+<title>Apparato circolatorio semplice</title>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
+</head>
+<body class="biotechbody" data-modern-menu>
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+<canvas id="particles-canvas"></canvas>
+<!-- DNA animation -->
+<div class="dna-container-8">
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+</div>
+<!-- End DNA animation -->
+<!-- Nav Menu Moderno -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
+<!-- VOCE: Home -->
+<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="products" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button>
+<div id="products" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" role="menuitem" aria-label="Home"><b>Home</b></a></div>
+</div>
+</div>
+<!-- VOCE: Fisiologia -->
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
+<div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia">Dermatologia</a></div>
+</div>
+</div>
+<!-- VOCE: Service -->
+<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
+<div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a></div>
+</div>
+</div>
+<!-- VOCE: Staff -->
+<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="staff" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button>
+<div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
+<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti">Progetti</a></div>
+</div>
+</div>
+<!-- VOCE: Technologies -->
+<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jobs" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button>
+<div id="jobs" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" role="menuitem" aria-label="Mercato cibernetica">Cybernetics Market</a>
+<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" role="menuitem" aria-label="Speciali">Specials</a></div>
+</div>
+</div>   
+</div>
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="Welcome to BiotechProject">   
+<div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
+<div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
+<div class="modern-greeting" id="week"></div>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script>
+<!-- End Nav Menu Moderno -->
+<p class="biotech-simple-link-container"><a href="https://gitechnolo.github.io/biotechproject/Cuore.html" class="biotech-simple-link" aria-label="Leggi questa pagina in versione originale"><span class="icon">🔍</span><span class="text">Leggi in versione originale</span></a></p>
+<div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
+<h2 class="atkinson-bold">Apparato circolatorio</h2>
+
+<span class="atkinson-regular">
+  L’apparato circolatorio porta ossigeno e sostanze utili a tutte le cellule del corpo.
+</span>
+
+<span class="atkinson-regular">
+  Grazie a lui, le cellule ricevono ciò di cui hanno bisogno e eliminano le sostanze di scarto.
+</span>
+
+<span class="atkinson-regular">
+  Questo processo è molto importante per mantenere viva e sana ogni parte del corpo.
+</span>
+<div class="row">
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Apparatocircolatorio schema 1">
+  </div>
+<div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Apparatocircolatorio schema 2">
+</div>
+<div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Apparatocircolatorio schema 3">
+</div>
+<div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="Apparatocircolatorio schema 4">
+</div>
+</div>
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+<div class="modal-content">
+<div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio1.jpg" style="width:100%" loading="lazy" alt="Apparato circolatorio">
+</div>
+<div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio2.jpg" style="width:100%" loading="lazy" alt="Organi e organismo">
+</div>
+<div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio3.jpg" style="width:100%" loading="lazy" alt="Vie della circolazione">
+</div>
+<div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio4.jpg" style="width:100%" loading="lazy" alt="Il cuore">
+</div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<div class="caption-container">
+      <p id="caption"></p>
+</div>
+<div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio1.jpg" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Apparato circolatorio">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio2.jpg" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Organi e organismo">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio3.jpg" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Vie della circolazione">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio4.jpg" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Il cuore">
+    </div>
+</div>
+</div>
+<h3 class="atkinson-bold">Il sangue</h3>
+<span class="atkinson-regular">
+  Il sangue è il liquido che circola in tutto il corpo.
+</span>
+<span class="atkinson-regular">
+  Trasporta:
+</span>
+<ul class="atkinson-regular">
+  <li>Ossigeno</li>
+  <li>Nutrienti</li>
+  <li>Ormoni</li>
+  <li>Cellule difensive (per combattere le infezioni)</li>
+</ul>
+<span class="atkinson-regular">
+  Il sangue raccoglie anche le sostanze di scarto, come la CO₂, e le porta agli organi che le eliminano.
+</span>
+
+<h3 class="atkinson-bold">Il cuore</h3>
+<span class="atkinson-regular">
+  Il cuore è una pompa muscolare.
+</span>
+<span class="atkinson-regular">
+  Spinge il sangue nei vasi sanguigni.
+</span>
+<span class="atkinson-regular">
+  Batte continuamente, giorno e notte, per tutta la vita.
+</span>
+<h3 class="atkinson-bold">I vasi sanguigni</h3>
+<span class="atkinson-regular">
+  Sono tubi che portano il sangue in tutto il corpo. Sono di tre tipi:
+</span>
+
+<h4 class="atkinson-bold">Arterie</h4>
+<ul class="atkinson-regular">
+  <li>Portano il sangue dal cuore agli organi</li>
+  <li>Hanno pareti spesse e resistenti</li>
+  <li>Il sangue nelle arterie è ricco di ossigeno</li>
+</ul>
+
+<h4 class="atkinson-bold">Vene</h4>
+<ul class="atkinson-regular">
+  <li>Riportano il sangue dal corpo al cuore</li>
+  <li>Hanno valvole per evitare che il sangue torni indietro</li>
+  <li>Il sangue nelle vene ha meno ossigeno</li>
+</ul>
+
+<h4 class="atkinson-bold">Capillari</h4>
+<ul class="atkinson-regular">
+  <li>Sono vasi molto sottili</li>
+  <li>Si ramificano in tutti i tessuti</li>
+  <li>Sono permeabili: qui avvengono gli scambi</li>
+  <li>Ossigeno e nutrienti passano dal sangue alle cellule</li>
+  <li>Le cellule rilasciano CO₂ e scarti nel sangue</li>
+</ul>
+
+<h3 class="atkinson-bold">Come funziona la circolazione</h3>
+<span class="atkinson-regular">
+  Il sangue fa due giri principali:
+</span>
+
+<h4 class="atkinson-bold">Circolazione sistemica</h4>
+<span class="atkinson-regular">
+  Il sangue ossigenato esce dal cuore, va in tutto il corpo e ritorna al cuore con anidride carbonica.
+</span>
+
+<h4 class="atkinson-bold">Circolazione polmonare</h4>
+<span class="atkinson-regular">
+  Il sangue con poca ossigeno (ricco di CO₂) va dal cuore ai polmoni.
+</span>
+<span class="atkinson-regular">
+  Nei polmoni, il sangue rilascia l’anidride carbonica (quando espiriamo) e assorbe l’ossigeno (quando inspiriamo).
+</span>
+<span class="atkinson-regular">
+  Poi il sangue ossigenato torna al cuore, pronto per ripartire verso il corpo.
+</span>   
+
+<h3 class="atkinson-bold">Come entra l’ossigeno e il cibo?</h3>
+<span class="atkinson-regular">
+  Il corpo ha bisogno di ossigeno e cibo. Questi arrivano grazie ad altri apparati.
+</span>
+
+<h4 class="atkinson-bold">Apparato respiratorio</h4>
+<span class="atkinson-regular">
+  L’aria entra nei polmoni. Nei polmoni ci sono tanti sacchetti piccoli: gli <strong>alveoli</strong>.
+</span>
+<span class="atkinson-regular">
+  Qui l’ossigeno passa dal respiro al sangue. Il sangue lo porta a tutte le cellule.
+</span>
+
+<h4 class="atkinson-bold">Apparato digerente</h4>
+<span class="atkinson-regular">
+  Il cibo entra dalla bocca e viene trasformato nello stomaco e nell’intestino.
+</span>
+<span class="atkinson-regular">
+  Nei villi intestinali, le sostanze utili (come zuccheri, proteine, grassi) passano nel sangue.
+</span>
+<span class="atkinson-regular">
+  Il sangue le distribuisce alle cellule che ne hanno bisogno.
+</span>
+
+<h4 class="atkinson-bold">Il fegato: filtro e centrale</h4>
+<span class="atkinson-regular">
+  Il fegato è un organo molto importante. Fa tante cose:
+</span>
+<ul class="atkinson-regular">
+  <li>Filtra il sangue dai veleni</li>
+  <li>Trattiene sostanze utili come riserva</li>
+  <li>Trasforma il cibo in energia</li>
+  <li>Mantiene stabile la composizione del sangue tra un pasto e l’altro</li>
+</ul>
+
+<h3 class="atkinson-bold">Come escono i rifiuti?</h3>
+<span class="atkinson-regular">
+  Il corpo produce scarti. Ogni apparato li elimina in modo diverso:
+</span>
+<ul class="atkinson-regular">
+  <li><strong>Polmoni</strong>: eliminano la CO₂ (anidride carbonica) quando espiriamo</li>
+  <li><strong>Reni</strong>: filtrano il sangue e producono l’urina (elimina sali e tossine)</li>
+  <li><strong>Intestino</strong>: espelle le feci (resti non digeriti del cibo)</li>
+</ul>
+
+<h3 class="atkinson-bold">Controllo del corpo: sistema nervoso ed endocrino</h3>
+<span class="atkinson-regular">
+  Tutti gli apparati devono lavorare insieme. A coordinarli sono due sistemi:
+</span>
+
+<h4 class="atkinson-bold">Sistema nervoso</h4>
+<span class="atkinson-regular">
+  Usa i nervi per mandare messaggi veloci. Ti permette di muoverti, pensare, sentire.
+</span>
+
+<h4 class="atkinson-bold">Sistema endocrino</h4>
+<span class="atkinson-regular">
+  Usa gli <strong>ormoni</strong> che viaggiano nel sangue.
+</span>
+<span class="atkinson-regular">
+  Gli ormoni regolano:
+</span>
+<ul class="atkinson-regular">
+  <li>La crescita</li>
+  <li>Il metabolismo</li>
+  <li>L’umore</li>
+  <li>La riproduzione</li>
+</ul>
+<span class="atkinson-regular">
+  Anche gli ormoni viaggiano grazie all’apparato circolatorio.
+</span>
+
+<h3 class="atkinson-bold">Il sangue: un tessuto speciale</h3>
+<span class="atkinson-regular">
+  Il sangue è un tessuto fluido. Ha tante funzioni importanti per il corpo.
+</span>
+<span class="atkinson-regular">
+  Trasporta ossigeno, nutrizioni, ormoni e raccoglie i rifiuti.
+</span>
+<span class="atkinson-regular">
+  È formato da una parte liquida e da cellule.
+</span>
+
+<h4 class="atkinson-bold">Quanto sangue abbiamo?</h4>
+<span class="atkinson-regular">
+  In un adulto, il sangue è circa 1/13 del peso corporeo.
+</span>
+<span class="atkinson-regular">
+  Negli uomini: circa 5 litri.
+</span>
+<span class="atkinson-regular">
+  Nelle donne: un po’ meno.
+</span>
+<span class="atkinson-regular">
+  La quantità cambia con l’età e il peso.
+</span>
+
+<h3 class="atkinson-bold">Analisi del sangue</h3>
+<span class="atkinson-regular">
+  I medici fanno l’analisi del sangue per capire se una persona è sana o malata.
+</span>
+
+<h4 class="atkinson-bold">Cosa controllano?</h4>
+<ul class="atkinson-regular">
+  <li><strong>Emoglobina e globuli rossi</strong>: se sono bassi, c’è <strong>anemia</strong></li>
+  <li><strong>Numero di globuli bianchi</strong>: se è alto, potrebbe esserci un’infezione</li>
+  <li><strong>Aspetto delle cellule</strong>: se sono strane, potrebbero indicare una malattia</li>
+  <li><strong>Percentuali dei leucociti</strong>: si chiama “formula leucocitaria”</li>
+</ul>
+
+<h4 class="atkinson-bold">Formula leucocitaria normale</h4>
+<ul class="atkinson-regular">
+  <li><strong>Neutrofili</strong>: 60–70%</li>
+  <li><strong>Linfociti</strong>: 20–30%</li>
+  <li><strong>Monociti</strong>: 6%</li>
+  <li><strong>Eosinofili</strong>: 1–2%</li>
+  <li><strong>Basofili</strong>: 0–1%</li>
+</ul>
+<span class="atkinson-regular">
+  Questi valori aiutano a capire il tipo di problema (infezione batterica, virale, allergia, ecc.).
+</span>
+
+<h3 class="atkinson-bold">Come si coagula il sangue?</h3>
+<span class="atkinson-regular">
+  Quando un vaso si rompe, il sangue deve fermarsi. Questo è il processo di coagulazione.
+</span>
+
+<h4 class="atkinson-bold">Passaggi principali</h4>
+<ol class="atkinson-regular">
+  <li>Le <strong>piastrine</strong> si attivano e formano un tappo temporaneo</li>
+  <li>Una proteina del plasma, il <strong>fibrinogeno</strong>, si trasforma in <strong>fibrina</strong></li>
+  <li>La <strong>fibrina</strong> forma una rete che rinforza il tappo</li>
+  <li>Il coagulo si stringe e rilascia il <strong>siero</strong> (plasma senza fibrinogeno)</li>
+</ol>
+
+<h4 class="atkinson-bold">Chi guida la coagulazione?</h4>
+<span class="atkinson-regular">
+  La <strong>trombina</strong> trasforma il fibrinogeno in fibrina.
+</span>
+<span class="atkinson-regular">
+  La trombina viene prodotta dalla <strong>protrombina</strong>, che si trova nel plasma.
+</span>
+<span class="atkinson-regular">
+  La protrombina si attiva grazie a un sistema a cascata, con due vie:
+</span>
+<ul class="atkinson-regular">
+  <li><strong>Via intrinseca</strong>: parte dal sangue stesso (quando esce dal vaso)</li>
+  <li><strong>Via estrinseca</strong>: parte dai tessuti danneggiati</li>
+</ul>
+<span class="atkinson-regular">
+  Queste due vie si attivano rapidamente, come una reazione a catena, per fermare la perdita di sangue nel minor tempo possibile.
+</span>
+<span class="atkinson-regular">
+  Anche le <strong>piastrine</strong> aiutano molto: si aggregano sul punto della rottura e formano una barriera fisica.
+</span>
+
+<h4 class="atkinson-bold">Perché è importante la coagulazione?</h4>
+<ul class="atkinson-regular">
+  <li>Evita di perdere troppo sangue</li>
+  <li>Protegge la ferita da batteri</li>
+  <li>Permette alla pelle di ripararsi</li>
+</ul>
+<span class="atkinson-regular">
+  Se la coagulazione non funziona bene, si possono avere emorragie o, al contrario, trombi (coaguli dove non servono).
+</span>
+<br><!-- Badge di accessibilità -->
+<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito" title="Questo sito è conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito"></a></div>
+<div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js"></script>
+<p class="biotechcenter biotech-copyright sansation-light-italic">BiotechProject. Un progetto per un web più inclusivo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
+<script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
+</body>
+</html>
