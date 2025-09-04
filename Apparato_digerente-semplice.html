@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
+<title>Apparato digerente semplice</title>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
+<style type="text/css">
+div.gallery {border: 1px solid #ccc; border-radius: 6px;}
+div.gallery:hover {border: 1px solid #777; border-radius: 6px;}
+div.gallery img {width: 100%; height: auto;}
+div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; text-align: center; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); font-style: italic;}
+* {box-sizing: border-box;}
+.responsive {padding: 0 6px; float: left; width: 24.99999%;}
+@media only screen and (max-width: 700px) {.responsive {width: 49.99999%; margin: 6px 0;}}
+@media only screen and (max-width: 500px) {.responsive {width: 100%;}}
+.clearfix:after {content: ""; display: table; clear: both;}
+</style>
+</head>
+<body class="biotechbody" data-modern-menu>
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+<canvas id="particles-canvas"></canvas>
+<!-- DNA animation -->
+<div class="dna-container-8">
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+</div>
+<!-- End DNA animation -->
+<!-- Nav Menu Moderno -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
+<!-- VOCE: Home -->
+<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="products" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button>
+<div id="products" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" role="menuitem" aria-label="Home"><b>Home</b></a></div>
+</div>
+</div>
+<!-- VOCE: Fisiologia -->
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
+<div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia">Dermatologia</a></div>
+</div>
+</div>
+<!-- VOCE: Service -->
+<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
+<div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a></div>
+</div>
+</div>
+<!-- VOCE: Staff -->
+<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="staff" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button>
+<div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
+<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti">Progetti</a></div>
+</div>
+</div>
+<!-- VOCE: Technologies -->
+<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jobs" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button>
+<div id="jobs" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" role="menuitem" aria-label="Mercato cibernetica">Cybernetics Market</a>
+<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" role="menuitem" aria-label="Speciali">Specials</a></div>
+</div>
+</div>   
+</div>
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="Welcome to BiotechProject">   
+<div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
+<div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
+<div class="modern-greeting" id="week"></div>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script>
+<!-- End Nav Menu Moderno -->
+<p class="biotech-simple-link-container"><a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" class="biotech-simple-link" aria-label="Leggi questa pagina in versione originale"><span class="icon">🔍</span><span class="text">Leggi in versione originale</span></a></p>
+<div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
+<span class="atkinson-bold" style="font-size: 42px; margin: 20px 0;">APPARATO DIGERENTE</span>
+<span class="atkinson-italic">Introduzione digestione</span>
+<span class="atkinson-regular">L’uomo ha bisogno di nutrirsi per:</span>
+<ul class="atkinson-regular">
+    <li>Crescere.</li>
+    <li>Sostituire le cellule che si rompono.</li>
+    <li>Riprendere l’energia che i vari organi usano.</li>
+</ul>
+<span class="atkinson-regular">Il primo passo si chiama 
+<span class="atkinson-bold">alimentazione</span>: è quando mangiamo il cibo.</span>
+<span class="atkinson-regular">Il cibo non può essere usato subito dal corpo. Deve essere trasformato. Questo processo si chiama <span class="atkinson-bold">digestione</span>.</span>
+<span class="atkinson-regular">La digestione avviene nell’<span class="atkinson-bold">apparato digerente</span>.</span>
+<span class="atkinson-regular">Durante questo processo, organi speciali (glandole) rilasciano sostanze chimiche. Queste sostanze aiutano a spezzare il cibo in pezzi più piccoli.</span>
+<span class="atkinson-regular">La digestione è quindi un processo che <span class="atkinson-italic">semplifica il cibo</span> fino a renderlo assorbibile dal corpo.</span>   
+
+<div class="row">
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 1">
+  </div>
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 2">
+  </div>
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 3">
+  </div>
+  <div class="column">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 4">
+  </div>
+</div>
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema dell'apparato digerente">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Struttura dell'apparato digerente">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dello sfintere pilorico">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella degli enzimi digestivi">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Schema dell'apparato digerente">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Struttura dell'apparato digerente">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Sezione dello sfintere pilorico">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Tabella degli enzimi digestivi">
+    </div>
+  </div>
+</div>
+
+<span class="atkinson-regular">
+    L’apparato digerente è come un lungo tubo che va dalla bocca all’ano.
+    È formato da diversi tratti. Ognuno ha una forma, una lunghezza e una funzione diversa.
+</span>
+
+<span class="atkinson-bold">I tratti principali</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Bocca</span>: è l’ingresso del cibo. È chiusa dalle labbra davanti e collegata alla faringe dietro.</li>
+    <li><span class="atkinson-bold">Faringe</span>: punto di incontro tra cibo e aria. Il cibo passa nell’esofago, l’aria nei polmoni.</li>
+    <li><span class="atkinson-bold">Esofago</span>: tubo che collega la faringe allo stomaco.</li>
+    <li><span class="atkinson-bold">Stomaco</span>: parte più larga del tubo. Ha una forma simile a una cornamusa. Cambia a seconda della persona.</li>
+    <li><span class="atkinson-bold">Intestino</span>: segue lo stomaco. È diviso in due parti: tenue e crasso.</li>
+</ul>
+
+<span class="atkinson-bold">L’intestino tenue</span>
+
+<span class="atkinson-regular">
+    È lungo circa 6 metri e 80 centimetri. Ha tre parti:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Duodeno</span>: qui arrivano i succhi del <span class="atkinson-bold">fegato</span> e del <span class="atkinson-bold">pancreas</span>. Aiutano a digerire il cibo.</li>
+    <li><span class="atkinson-bold">Digiuno</span></li>
+    <li><span class="atkinson-bold">Ileo</span>: ultima parte del tenue. Si collega all’intestino crasso.</li>
+</ul>
+
+<span class="atkinson-bold">L’intestino crasso</span>
+
+<span class="atkinson-regular">
+    È lungo circa 1 metro e 80 centimetri. Ha queste parti:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Cieco</span>: inizio del crasso. L’ileo si collega qui con una valvola: la <span class="atkinson-bold">valvola ileo-cecale</span>.</li>
+    <li><span class="atkinson-bold">Colon ascendente</span>: sale sul lato destro dell’addome.</li>
+    <li><span class="atkinson-bold">Colon trasverso</span>: va da destra a sinistra, sotto il fegato.</li>
+    <li><span class="atkinson-bold">Colon discendente</span>: scende sul lato sinistro.</li>
+    <li><span class="atkinson-bold">Retto</span>: ultima parte. Le feci si accumulano qui.</li>
+    <li><span class="atkinson-bold">Sfintere anale</span>: muscolo che apre e chiude l’ano. Permette l’espulsione delle feci.</li>
+</ul>
+
+<span class="atkinson-bold">La superficie interna dell’intestino</span>
+
+<span class="atkinson-regular">
+    All’interno, l’intestino ha una mucosa speciale. Nel tenue ci sono:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Valvole conniventi</span>: pieghe della mucosa. Aumentano la superficie.</li>
+    <li><span class="atkinson-bold">Villi intestinali</span>: piccole sporgenze. Assorbono i nutrienti del cibo.</li>
+</ul>  
+<span class="atkinson-regular">Sono come minuscoli peli che catturano zuccheri, proteine e grassi digeriti.</span>
+
+<span class="atkinson-bold">Funzione dell’intestino crasso</span>
+
+<span class="atkinson-regular">
+    L’intestino crasso digerisce poco.  
+    Ma ha un ruolo importante grazie ai <span class="atkinson-bold">batteri</span> che vive dentro di esso (la flora intestinale).
+</span>
+
+<span class="atkinson-regular">
+    Questi microrganismi:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Aiutano a produrre alcune <span class="atkinson-bold">vitamine</span> (come la vitamina K).</li>
+    <li>Digeriscono alcune parti del cibo che il resto dell’intestino non può elaborare.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Anche se sono utili, troppi batteri o batteri sbagliati possono causare malattie.  
+    Per questo, dal punto di vista medico, l’intestino crasso è più studiato per le malattie che per il suo normale funzionamento.
+</span>
+
+<span class="atkinson-bold">Le feci</span>
+
+<span class="atkinson-regular">
+    Le feci non sono solo avanzi di cibo.  
+    Sono formate da:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Residui non digeriti del cibo (es. fibre).</li>
+    <li>Materiale proveniente dall’apparato digerente (come cellule morte e muco).</li>
+    <li>Miliardi di <span class="atkinson-bold">batteri intestinali</span> morti.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Le feci vengono espulse all’esterno attraverso l’<span class="atkinson-bold">ano</span>,  
+    controllato dal muscolo dello <span class="atkinson-bold">sfintere anale</span>.
+</span>   
+
+
+<span class="atkinson-bold">MASTICAZIONE E DEGLUTIZIONE</span>
+
+<span class="atkinson-bold">La masticazione</span>
+
+<span class="atkinson-regular">
+    La masticazione è il primo passo della digestione.
+</span>
+
+<span class="atkinson-regular">
+    I denti tagliano, spezzano e schiacciano il cibo.
+    La lingua e le guance muovono il cibo nella bocca.
+    Così si mescola con la saliva.
+</span>
+
+<span class="atkinson-regular">
+    Questo processo crea una pallina morbida chiamata <span class="atkinson-bold">bolo alimentare</span>.
+    Il bolo è più facile da deglutire.
+</span>
+
+<span class="atkinson-regular">
+    I movimenti della mascella sono controllati dal cervello.
+    In particolare da aree nel <span class="atkinson-bold">bulbo</span> e nella <span class="atkinson-bold">corteccia temporale</span>.
+    I muscoli coinvolti sono:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Masseteri</li>
+    <li>Temporali</li>
+    <li>Pterigoidei (interno ed esterno)</li>
+    <li>Muscoli abbassatori della mandibola</li>
+</ul>
+
+<span class="atkinson-bold">Gli enzimi: i piccoli aiutanti della digestione</span>
+
+<span class="atkinson-regular">
+    Gli enzimi sono sostanze che aiutano a trasformare il cibo.
+    Sono come <span class="atkinson-italic">catalizzatori</span>: accelerano le reazioni chimiche senza cambiare loro stessi.
+</span>
+
+<span class="atkinson-regular">
+    Ogni enzima lavora su un solo tipo di cibo. Esempi:
+</span>
+
+<ul class="atkinson-regular">
+    <li>La <span class="atkinson-bold">pepsina</span> digerisce le proteine, non i grassi né gli zuccheri.</li>
+    <li>Il <span class="atkinson-bold">caglio</span> fa solidificare la caseina del latte.</li>
+    <li>La <span class="atkinson-bold">maltasi</span> spezza il maltosio, ma non il saccarosio.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Gli enzimi si possono rompere con il calore o con sostanze tossiche.
+    Ma se usati bene, durano a lungo.
+</span>
+
+<span class="atkinson-regular">
+    Già nel 1700, lo scienziato <span class="atkinson-bold">Lazzaro Spallanzani</span> capì che i succhi dello stomaco (con gli enzimi) trasformano il cibo.
+</span>
+
+<span class="atkinson-bold">Le ghiandole salivari e la saliva</span>
+
+<span class="atkinson-regular">
+    Tre coppie di ghiandole producono la saliva:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Parotidi</span></li>
+    <li><span class="atkinson-bold">Sottolinguali</span></li>
+    <li><span class="atkinson-bold">Sottomascellari</span></li>
+</ul>
+
+<span class="atkinson-bold">Cosa contiene la saliva?</span>
+
+<span class="atkinson-regular">
+    La saliva è fatta per lo più di acqua (98,7%).
+    Ha anche sostanze organiche e inorganiche.
+</span>
+
+<span class="atkinson-bold">Sostanze inorganiche:</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Cloruri</span>: aiutano l’enzima amilasi a lavorare.</li>
+    <li><span class="atkinson-bold">Bicarbonati e fosfati</span>: mantengono il pH della saliva vicino al neutro.  
+        Questo è importante perché gli enzimi funzionano meglio in questo ambiente.</li>
+</ul>
+
+<span class="atkinson-bold">Sostanze organiche:</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Mucina</span>: rende la saliva vischiosa.  
+        Aiuta a lubrificare il cibo e l’interno della bocca.</li>
+    <li><span class="atkinson-bold">Enzimi</span>: il più importante è la <span class="atkinson-bold">ptialina</span>.</li>
+</ul>
+
+<span class="atkinson-bold">La ptialina</span>
+
+<span class="atkinson-regular">
+    La ptialina attacca l’<span class="atkinson-bold">amido</span> presente nel cibo.
+</span>
+
+<span class="atkinson-regular">
+    Lo spezza in piccole parti chiamate <span class="atkinson-bold">destrine</span> e <span class="atkinson-bold">maltosio</span>.
+</span>
+
+<span class="atkinson-regular">
+    Funziona meglio quando:
+</span>
+
+<ul class="atkinson-regular">
+    <li>L’amido è <span class="atkinson-italic">cotto</span> (es. pasta, patate).</li>
+    <li>Il pH è neutro (come nella bocca).</li>
+</ul>
+
+<span class="atkinson-regular">
+    Nello stomaco, l’acido cloridrico <span class="atkinson-bold">ferma</span> l’azione della ptialina.  
+    Quindi il suo lavoro finisce lì.
+</span>
+
+<span class="atkinson-bold">A cosa serve la saliva?</span>
+
+<ul class="atkinson-regular">
+    <li>Aiuta a <span class="atkinson-bold">masticare</span> meglio.</li>
+    <li>Favorisce la formazione del <span class="atkinson-bold">bolo alimentare</span>.</li>
+    <li>Rende più facile la <span class="atkinson-bold">deglutizione</span>.</li>
+    <li>La <span class="atkinson-bold">mucina</span> lubrifica il cibo e protegge l’esofago.</li>
+    <li>Aiuta il <span class="atkinson-bold">senso del gusto</span>.</li>
+    <li>Protegge i <span class="atkinson-bold">denti</span> dal deterioramento.</li>
+    <li>Regola il <span class="atkinson-bold">ricambio d’acqua</span> nel corpo: la sete è un segnale importante.</li>
+</ul>
+
+<span class="atkinson-bold">Come si produce la saliva?</span>
+
+<span class="atkinson-regular">
+    La saliva si produce sempre, ma in quantità diverse.
+</span>
+
+<span class="atkinson-regular">
+    Si produce di più quando:
+</span>
+
+<ul class="atkinson-regular">
+    <li>C’è cibo in bocca.</li>
+    <li>Il cibo è secco o ha un sapore forte.</li>
+    <li>Si vede, si annusa o si pensa al cibo (anche solo ricordarlo).</li>
+</ul>
+
+<span class="atkinson-regular">
+    Il processo è controllato da un <span class="atkinson-bold">riflesso nervoso</span>.
+</span>
+
+<span class="atkinson-regular">
+    Ecco come funziona:
+</span>
+
+<ol class="atkinson-regular">
+    <li>Stimoli nella bocca (tatto, sapore) attivano i <span class="atkinson-bold">recettori</span>.</li>
+    <li>Il segnale va al <span class="atkinson-bold">bulbo</span> nel cervello.</li>
+    <li>Il bulbo manda un ordine alle ghiandole salivari.</li>
+    <li>Le ghiandole producono più saliva.</li>
+</ol>
+
+<span class="atkinson-regular">
+    Le fibre del <span class="atkinson-bold">sistema nervoso parasimpatico</span> stimolano la produzione di saliva.  
+    Hanno un effetto più forte delle fibre del sistema simpatico.
+</span>
+
+<span class="atkinson-bold">Tipi diversi di saliva</span>
+
+<span class="atkinson-regular">
+    Le ghiandole salivari hanno la forma di piccoli grappoli (come acini d’uva).  
+    Ma producono tipi diversi di saliva:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Parotidi</span>: producono saliva chiara e liquida.  
+        Ricca di <span class="atkinson-bold">ptialina</span>.  
+        Escono vicino al secondo molare superiore, attraverso il <span class="atkinson-bold">dotto di Stenone</span>.</li>
+    
+    <li><span class="atkinson-bold">Sottolinguali</span>: producono saliva densa e vischiosa.  
+        Ricca di <span class="atkinson-bold">mucina</span>, ma senza ptialina.  
+        Hanno tanti dotti piccoli (15-30), ognuno con la sua apertura sotto la lingua.</li>
+    
+    <li><span class="atkinson-bold">Sottomascellari</span>: producono saliva mista.  
+        Contiene sia <span class="atkinson-bold">ptialina</span> che <span class="atkinson-bold">mucina</span>.  
+        Si aprono ai lati del frenulo della lingua con il <span class="atkinson-bold">dotto di Wharton</span>.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Grazie a queste ghiandole, la bocca rimane umida, il cibo si prepara bene per lo stomaco  
+    e la digestione può cominciare nel modo giusto.
+</span>   
+
+<span class="atkinson-regular">
+    Dopo la masticazione, il cibo diventa un impasto morbido e uniforme.  
+    Si chiama <span class="atkinson-bold">bolo alimentare</span>.
+</span>
+
+<span class="atkinson-bold">La deglutizione</span>
+
+<span class="atkinson-regular">
+    Il bolo passa dalla bocca alla <span class="atkinson-bold">faringe</span>.  
+    Questo passaggio si chiama <span class="atkinson-bold">deglutizione</span>.
+</span>
+
+<span class="atkinson-regular">
+    Da questo momento, il cibo non è più sotto il nostro controllo.  
+    Il suo movimento è automatico.  
+    È gestito da riflessi controllati dal <span class="atkinson-bold">bulbo</span>.
+</span>
+
+<span class="atkinson-bold">Cosa succede durante la deglutizione?</span>
+
+<ul class="atkinson-regular">
+    <li>Il <span class="atkinson-bold">velo palatino</span> si solleva.  
+        Blocca il passaggio verso il naso.</li>
+    
+    <li>L’<span class="atkinson-bold">epiglottide</span> si abbassa.  
+        Copre la laringe.  
+        Impedisce al cibo di entrare nelle vie respiratorie.</li>
+    
+    <li>La respirazione si ferma per un attimo: è l’<span class="atkinson-bold">apnea da deglutizione</span>.</li>
+    
+    <li>Il bolo entra nell’<span class="atkinson-bold">esofago</span>.</li>
+</ul>
+
+<span class="atkinson-bold">Il movimento nell’esofago: la peristalsi</span>
+
+<span class="atkinson-regular">
+    L’esofago spinge il bolo verso lo stomaco con movimenti muscolari.
+</span>
+
+<span class="atkinson-regular">
+    Questi movimenti sono chiamati <span class="atkinson-bold">peristalsi</span>.  
+    Sono onde lente di contrazione e rilassamento:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Un tratto dell’esofago si <span class="atkinson-bold">contrae</span> e spinge il bolo avanti.</li>
+    <li>Il tratto successivo si <span class="atkinson-bold">rilassa</span> per accoglierlo.</li>
+    <li>Poi si contrae a sua volta, e così via.</li>
+</ul>
+
+<span class="atkinson-regular">
+    La peristalsi comincia nell’esofago  
+    e continua in tutto l’apparato digerente.
+</span>
+
+<span class="atkinson-bold">Dall’esofago allo stomaco</span>
+
+<span class="atkinson-regular">
+    Il bolo raggiunge la fine dell’esofago.  
+    Qui incontra un muscolo chiamato <span class="atkinson-bold">cardias</span>.  
+    È uno <span class="atkinson-bold">sfintere</span>: si apre e si chiude.
+</span>
+
+<span class="atkinson-regular">
+    L’onda peristaltica rallenta.  
+    Lo sfintere del cardias si rilassa e si apre.  
+    Il bolo entra nello <span class="atkinson-bold">stomaco</span>.
+</span>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg" alt="Masticazione e deglutizione" width="794" height="1123" loading="lazy">
+    </a>
+    <div class="desc">Masticazione deglutizione</div>
+  </div>
+</div>
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.jpg">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.jpg" alt="Digestione gastrica" width="794" height="1123" loading="lazy">
+    </a>
+    <div class="desc">Digestione gastrica</div>
+  </div>
+</div>
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.jpg">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.jpg" alt="Digestione intestinale" width="794" height="1123" loading="lazy">
+    </a>
+    <div class="desc">Digestione intestinale</div>
+  </div>
+</div>
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.jpg">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.jpg" alt="Assorbimento metabolismo" width="794" height="1123" loading="lazy">
+    </a>
+    <div class="desc">Assorbimento metabolismo</div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+<span class="atkinson-bold">DIGESTIONE GASTRICA</span>
+
+<span class="atkinson-bold">Quanto dura la digestione nello stomaco?</span>
+
+<span class="atkinson-regular">
+    Dipende dal tipo e dalla quantità di cibo.
+</span>
+
+<ul class="atkinson-regular">
+    <li>I <span class="atkinson-bold">grassi</span> rallentano la digestione.</li>
+    <li>Per un pasto normale, ci vogliono circa <span class="atkinson-bold">3-4 ore</span>.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Durante questo tempo, il cibo subisce due tipi di trasformazione:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Meccanica</span>: movimenti dello stomaco che mescolano il cibo.</li>
+    <li><span class="atkinson-bold">Chimica</span>: azione dei succhi gastrici.</li>
+</ul>
+
+<span class="atkinson-bold">I movimenti dello stomaco</span>
+
+<span class="atkinson-regular">
+    La muscolatura dello stomaco si contrae in onde: è la <span class="atkinson-bold">peristalsi</span>.  
+    Questi movimenti:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Mescolano bene il cibo.</li>
+    <li>Aiutano a svuotare lo stomaco lentamente.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Anche quando lo stomaco è vuoto, può contrarsi forte.  
+    Questo provoca la <span class="atkinson-bold">sensazione di fame</span>.
+</span>
+
+<span class="atkinson-bold">Struttura dello stomaco</span>
+
+<span class="atkinson-regular">
+    Le pareti dello stomaco hanno più strati. I principali sono:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Tunica muscolare</span>: formata da tre strati di fibre:
+        <ul>
+            <li>Longitudinali (esterne)</li>
+            <li>Circolari (interne)</li>
+        </ul>
+    </li>
+    <li><span class="atkinson-bold">Tunica mucosa</span>: riveste l’interno dello stomaco.</li>
+</ul>
+
+<span class="atkinson-bold">Le ghiandole dello stomaco</span>
+
+<span class="atkinson-regular">
+    La mucosa ha tanti solchi. Forma zone esagonali: sono le <span class="atkinson-bold">aree gastriche</span>.  
+    Al centro di ogni area ci sono aperture: qui sboccano le <span class="atkinson-bold">ghiandole gastriche</span>.
+</span>
+
+<span class="atkinson-regular">
+    Sono milioni di tubicini piccoli. Producono il succo gastrico.
+</span>
+
+<span class="atkinson-bold">Due tipi di cellule importanti:</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Cellule principali</span>: producono una sostanza inattiva chiamata <span class="atkinson-bold">pepsinogeno</span>.</li>
+    <li><span class="atkinson-bold">Cellule parietali</span> (o <span class="atkinson-bold">ossintiche</span>): producono <span class="atkinson-bold">acido cloridrico</span>.</li>
+</ul>
+
+<span class="atkinson-bold">Il succo gastrico</span>
+
+<span class="atkinson-regular">
+    È un liquido chiaro formato da:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Acido cloridrico</span></li>
+    <li><span class="atkinson-bold">Pepsina</span></li>
+    <li><span class="atkinson-bold">Mucina</span></li>
+    <li>Altri componenti minori</li>
+</ul>
+
+<span class="atkinson-bold">La pepsina</span>
+
+<span class="atkinson-regular">
+    È l’enzima che digerisce le <span class="atkinson-bold">proteine</span>.
+</span>
+
+<span class="atkinson-regular">
+    Non è presente subito come enzima attivo.  
+    Viene prodotta prima come <span class="atkinson-bold">pepsinogeno</span> (forma inattiva).
+</span>
+
+<span class="atkinson-regular">
+    Nello stomaco, l’<span class="atkinson-bold">acido cloridrico</span> trasforma il pepsinogeno in <span class="atkinson-bold">pepsina</span>.
+</span>
+
+<span class="atkinson-regular">
+    Una volta attivata, la pepsina:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Digerisce le proteine, spezzandole in pezzi più piccoli: i <span class="atkinson-bold">peptoni</span>.</li>
+    <li>Aiuta a trasformare altro pepsinogeno in pepsina.</li>
+</ul>
+
+<span class="atkinson-bold">A cosa serve l’acido cloridrico?</span>
+
+<ul class="atkinson-regular">
+    <li>Crea un ambiente <span class="atkinson-bold">acido</span>: è necessario perché la pepsina possa lavorare.</li>
+    <li>Uccide molti <span class="atkinson-bold">batteri</span> presenti nel cibo (azione antisettica).</li>
+    <li>Protegge lo stomaco da infezioni.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Già Lazzaro Spallanzani osservò che la carne immersa nel succo gastrico si decomponga più lentamente.  
+    Questo dimostra il suo potere <span class="atkinson-italic">antiputrefattivo</span>.
+</span>
+
+<span class="atkinson-bold">La rennina (chimosina)</span>
+
+<span class="atkinson-regular">
+    È un enzima presente nel succo gastrico dei <span class="atkinson-bold">lattanti</span>.
+</span>
+
+<span class="atkinson-regular">
+    Fa solidificare il <span class="atkinson-bold">latte</span>, trasformandolo in una massa più densa.
+</span>
+
+<span class="atkinson-regular">
+    Questo serve perché:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Il latte rimane più a lungo nello stomaco.</li>
+    <li>La pepsina ha più tempo per digerire le proteine del latte.</li>
+</ul>
+
+<span class="atkinson-bold">Altri componenti del succo gastrico</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Lipasi gastrica</span>: inizia a digerire i grassi.  
+        Ma il suo ruolo è piccolo, soprattutto negli adulti.</li>
+    
+    <li><span class="atkinson-bold">Mucina</span>: protegge la parete dello stomaco.  
+        Forma una barriera contro l’acido cloridrico e la pepsina.  
+        Senza di essa, lo stomaco si <span class="atkinson-italic">digerirebbe da solo</span>.</li>
+</ul>
+
+<span class="atkinson-bold">Quando si produce il succo gastrico?</span>
+
+<span class="atkinson-regular">
+    Non si produce sempre.  
+    Comincia quando:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Si mangia.</li>
+    <li>Si vede, si annusa o si pensa al cibo.</li>
+    <li>Si ha appetito (stimolo psicologico).</li>
+</ul>
+
+<span class="atkinson-bold">Due fasi principali:</span>
+
+<ol class="atkinson-regular">
+    <li><span class="atkinson-bold">Fase cefalica</span>:  
+        Inizia prima ancora di mangiare.  
+        È controllata dai <span class="atkinson-bold">nervi vaghi</span>.  
+        Risponde a vista, odore, pensiero del cibo.</li>
+    
+    <li><span class="atkinson-bold">Fase gastrica</span>:  
+        Comincia quando il cibo entra nello stomaco.  
+        La mucosa pilorica rilascia un ormone: la <span class="atkinson-bold">gastrina</span>.  
+        La gastrina stimola la produzione di più succo gastrico.</li>
+</ol>
+
+<span class="atkinson-bold">Da bolo a chimo</span>
+
+<span class="atkinson-regular">
+    Alla fine della digestione gastrica, il cibo cambia aspetto.  
+    Diventa una sostanza liquida e biancastra chiamata <span class="atkinson-bold">chimo</span>.
+</span>
+
+<span class="atkinson-bold">Svuotamento dello stomaco</span>
+
+<span class="atkinson-regular">
+    Il chimo lascia lo stomaco a piccoli <span class="atkinson-bold">fiotti</span>.  
+    Questo avviene grazie a forti contrazioni dell’<span class="atkinson-bold">antro pilorico</span> (la parte finale dello stomaco).
+</span>
+
+<span class="atkinson-regular">
+    Lo <span class="atkinson-bold">sfintere pilorico</span> si apre in modo controllato:
+</span>
+
+<ul class="atkinson-regular">
+    <li>È chiuso durante la digestione.</li>
+    <li>Si apre periodicamente per far passare il chimo nel <span class="atkinson-bold">duodeno</span>.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Appena un po’ di chimo entra nel duodeno,  
+    scatta un riflesso che <span class="atkinson-bold">chiude lo sfintere</span>.  
+    Così il resto del chimo aspetta.
+</span>
+
+<span class="atkinson-regular">
+    Questo meccanismo permette uno svuotamento <span class="atkinson-italic">lento e regolato</span>,  
+    per dare al resto dell’intestino il tempo di digerire bene.
+</span>   
+
+<span class="atkinson-bold">LA DIGESTIONE NELL'INTESTINO TENUE, LA FUNZIONE DELL'INTESTINO CRASSO</span>
+
+<span class="atkinson-bold">La digestione continua nell’intestino tenue</span>
+
+<span class="atkinson-regular">
+    Nello stomaco il cibo è solo parzialmente digerito.  
+    La parte più importante della digestione avviene nell’<span class="atkinson-bold">intestino tenue</span>.
+</span>
+
+<span class="atkinson-regular">
+    Qui arrivano enzimi da tre fonti:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Intestino (succo enterico)</li>
+    <li>Pancreas (succo pancreatico)</li>
+    <li>Fegato (bile)</li>
+</ul>
+
+<span class="atkinson-regular">
+    Tutti questi liquidi si versano nel <span class="atkinson-bold">duodeno</span>,  
+    il primo tratto dell’intestino tenue.
+</span>
+
+<span class="atkinson-bold">Una superficie speciale per assorbire</span>
+
+<span class="atkinson-regular">
+    L’interno dell’intestino tenue non è liscio.  
+    Ha pieghe, villi e microvilli che aumentano tantissimo la superficie.
+</span>
+
+<span class="atkinson-regular">
+    I <span class="atkinson-bold">villi intestinali</span> sono piccole sporgenze simili a peli.  
+    Sono presenti soprattutto nell’<span class="atkinson-bold">ileo</span> (ultimo tratto del tenue).  
+    Ce ne possono essere fino a <span class="atkinson-bold">1000 per cm²</span>.
+</span>
+
+<span class="atkinson-regular">
+    I villi non ci sono nell’intestino crasso.
+</span>
+
+<span class="atkinson-bold">Cosa contiene un villo?</span>
+
+<ul class="atkinson-regular">
+    <li>Uno strato esterno di <span class="atkinson-bold">cellule epiteliali</span>.</li>
+    <li>Un tessuto interno con:
+        <ul>
+            <li>Vasi sanguigni</li>
+            <li>Vasi linfatici (chiamati <span class="atkinson-bold">lattiferi</span>)</li>
+            <li>Fibre nervose</li>
+            <li>Cellule che si contraggono per muovere il villo</li>
+        </ul>
+    </li>
+</ul>
+
+<span class="atkinson-bold">Il succo enterico</span>
+
+<span class="atkinson-regular">
+    È prodotto dalle ghiandole dell’intestino tenue:  
+    le <span class="atkinson-bold">ghiandole di Lieberkühn</span> (e nel duodeno anche le <span class="atkinson-bold">ghiandole di Brunner</span>).
+</span>
+
+<span class="atkinson-regular">
+    Il succo enterico è:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Alcalino</span>: neutralizza l’acidità del chimo.</li>
+    <li>Ricco di <span class="atkinson-bold">muco</span>: protegge la mucosa.</li>
+    <li>Forte di <span class="atkinson-bold">enzimi</span>: completano la digestione.</li>
+</ul>
+
+<span class="atkinson-bold">Enzimi importanti nel succo enterico</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Enterokinasi</span>: attiva il <span class="atkinson-bold">tripsinogeno</span> (del pancreas) → diventa <span class="atkinson-bold">tripsina</span>.</li>
+    <li><span class="atkinson-bold">Endopeptidasi</span>: spezzano le proteine dentro la catena.</li>
+    <li><span class="atkinson-bold">Esopeptidasi</span>: spezzano le estremità delle proteine.</li>
+    <li><span class="atkinson-bold">Nucleasi</span>: digeriscono gli acidi nucleici (DNA e RNA).</li>
+    <li><span class="atkinson-bold">Enzimi sui villi</span>: trasformano gli zuccheri complessi:
+        <ul>
+            <li><span class="atkinson-bold">Lattasi</span>: lattosio → glucosio + galattosio</li>
+            <li><span class="atkinson-bold">Maltasi</span>: maltosio → glucosio + glucosio</li>
+            <li><span class="atkinson-bold">Saccarasi</span>: saccarosio → glucosio + fruttosio</li>
+        </ul>
+    </li>
+</ul>
+
+<span class="atkinson-bold">Ormoni del duodeno: la regia della digestione</span>
+
+<span class="atkinson-regular">
+    La mucosa del duodeno produce ormoni che controllano la digestione.
+</span>
+
+<span class="atkinson-bold">1. Secretina</span>
+
+<ul class="atkinson-regular">
+    <li>Viene rilasciata quando il chimo è acido.</li>
+    <li>Stimola il pancreas a produrre liquido ricco di <span class="atkinson-bold">bicarbonati</span> (per neutralizzare l’acido).</li>
+    <li>Ferma la produzione di succo gastrico nello stomaco: non serve più!</li>
+</ul>
+
+<span class="atkinson-bold">2. Pancreozimina-Colecistochinina (CCK)</span>
+
+<ul class="atkinson-regular">
+    <li>Stimola il pancreas a rilasciare <span class="atkinson-bold">enzimi digestivi</span>.</li>
+    <li>Fa contrarre la <span class="atkinson-bold">colecisti</span>: così la bile entra nel duodeno.</li>
+    <li>Aumenta i movimenti dell’intestino tenue.</li>
+</ul>
+
+<span class="atkinson-bold">Il succo pancreatico</span>
+
+<span class="atkinson-regular">
+    Arriva nel duodeno attraverso due canali:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Dotto di Wirsung</span> (principale)</li>
+    <li><span class="atkinson-bold">Dotto accessorio di Santorini</span></li>
+</ul>
+
+<span class="atkinson-regular">
+    È prodotto dal pancreas e contiene tre enzimi principali:
+</span>
+
+<span class="atkinson-bold">1. Tripsinogeno → Tripsina</span>
+
+<ul class="atkinson-regular">
+    <li>Attivato dall’enterokinasi.</li>
+    <li>Trasforma proteine e peptoni in <span class="atkinson-bold">amminoacidi</span>.</li>
+    <li>A sua volta attiva altri enzimi pancreatici.</li>
+</ul>
+
+<span class="atkinson-bold">2. Amilasi pancreatica</span>
+
+<ul class="atkinson-regular">
+    <li>Digerisce l’amido non ancora trasformato.</li>
+    <li>Lo spezza in <span class="atkinson-bold">disaccaridi</span> (es. maltosio).</li>
+</ul>
+
+<span class="atkinson-bold">3. Lipasi pancreatica</span>
+
+<ul class="atkinson-regular">
+    <li>Digerisce i <span class="atkinson-bold">grassi neutri</span>.</li>
+    <li>Li spezza in <span class="atkinson-bold">acidi grassi</span> e <span class="atkinson-bold">glicerina</span>.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Ma la lipasi non può agire subito sui grassi.  
+    Prima serve la <span class="atkinson-bold">bile</span> del fegato.
+</span>
+
+<span class="atkinson-bold">Come lavorano bile e lipasi insieme?</span>
+
+<ol class="atkinson-regular">
+    <li>La <span class="atkinson-bold">bile</span> contiene <span class="atkinson-bold">sali biliari</span>.</li>
+    <li>I sali biliari avvolgono i grassi, formando le <span class="atkinson-bold">micelle</span>.</li>
+    <li>Le micelle creano una superficie acqua-grasso.</li>
+    <li>Qui la <span class="atkinson-bold">lipasi pancreatica</span> può agire e spezzare i grassi.</li>
+</ol>
+
+<span class="atkinson-regular">
+    Senza la bile, la lipasi non riuscirebbe a digerire bene i grassi.
+</span>
+
+<span class="atkinson-bold">I movimenti dell’intestino tenue</span>
+
+<span class="atkinson-regular">
+    L’intestino tenue si muove in modo speciale per mescolare bene il chimo.
+</span>
+
+<span class="atkinson-regular">
+    Non spinge il cibo avanti in continuazione.  
+    Fa movimenti di <span class="atkinson-bold">rimescolamento</span>, chiamati <span class="atkinson-bold">pendolari</span>.
+</span>
+
+<span class="atkinson-regular">
+    Questi movimenti:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Allungano e accorciano piccoli tratti di intestino.</li>
+    <li>Mescolano il chimo con i succhi digestivi.</li>
+    <li>Favoriscono il contatto con i villi per l’assorbimento.</li>
+</ul>
+
+<span class="atkinson-bold">La funzione dell’intestino crasso</span>
+
+<span class="atkinson-regular">
+    L’intestino crasso non digerisce quasi più il cibo.  
+    Il suo ruolo principale è <span class="atkinson-bold">assorbire acqua e sali minerali</span> dal materiale che arriva dal tenue.
+</span>
+
+<span class="atkinson-regular">
+    Così trasforma il liquido in feci più solide.
+</span>
+
+<span class="atkinson-bold">La flora batterica: amici dentro l’intestino</span>
+
+<span class="atkinson-regular">
+    L’intestino crasso contiene miliardi di batteri: è la <span class="atkinson-bold">flora intestinale</span>.
+</span>
+
+<span class="atkinson-regular">
+    Questi batteri:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Producono alcune <span class="atkinson-bold">vitamine</span> (es. vitamina K e alcune del gruppo B).</li>
+    <li>Aiutano a digerire fibre e altre sostanze non digeribili.</li>
+    <li>Difendono l’intestino da batteri cattivi.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Anche se utili, un eccesso di batteri o batteri sbagliati possono causare problemi.
+</span>
+
+<span class="atkinson-bold">Formazione delle feci</span>
+
+<span class="atkinson-regular">
+    Le feci non sono solo avanzi di cibo.  
+    Sono formate da:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Residui indigeribili (es. fibre vegetali).</li>
+    <li>Cellule morte della mucosa intestinale.</li>
+    <li>Muco.</li>
+    <li>Miliardi di <span class="atkinson-bold">batteri morti</span>.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Le feci vengono spinte verso il <span class="atkinson-bold">retto</span> con movimenti lenti.
+</span>
+
+<span class="atkinson-regular">
+    Quando il retto si riempie, si avverte l’<span class="atkinson-bold">involontario</span> di andare in bagno.
+</span>
+
+<span class="atkinson-regular">
+    L’<span class="atkinson-bold">espulsione</span> avviene attraverso l’<span class="atkinson-bold">ano</span>,  
+    controllato dallo <span class="atkinson-bold">sfintere anale</span> (muscolo che si apre e si chiude).
+</span>   
+
+<span class="atkinson-bold">La bile: alleata nella digestione</span>
+
+<span class="atkinson-regular">
+    Il fegato produce continuamente la <span class="atkinson-bold">bile</span>.  
+    Circa <span class="atkinson-bold">1 litro al giorno</span>.
+</span>
+
+<span class="atkinson-regular">
+    La maggior parte va nella <span class="atkinson-bold">vescica biliare</span>, dove si concentra.
+</span>
+
+<span class="atkinson-regular">
+    Nella vescica:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Si aggiunge del <span class="atkinson-bold">muco</span>.</li>
+    <li>Acqua e altre sostanze si concentrano.</li>
+</ul>
+
+<span class="atkinson-bold">Cosa contiene la bile?</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Pigmenti biliari</span> (es. bilirubina, da vecchi globuli rossi)</li>
+    <li><span class="atkinson-bold">Sali biliari</span> (aiutano a digerire i grassi)</li>
+    <li>Acqua</li>
+    <li>Piccole quantità di enzimi e grassi</li>
+</ul>
+
+<span class="atkinson-bold">Quando la bile entra nell’intestino?</span>
+
+<span class="atkinson-regular">
+    Non sempre. Solo durante la digestione.  
+    Esce dalla vescica e va nel duodeno attraverso il <span class="atkinson-bold">coledoco</span>.
+</span>
+
+<span class="atkinson-regular">
+    A stimolare questo rilascio è l’ormone <span class="atkinson-bold">pancreozimina-colecistochinina</span> (CCK),  
+    prodotto dal duodeno quando c’è del cibo.
+</span>
+
+<span class="atkinson-bold">A cosa serve la bile?</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Aiuta la lipasi</span> a digerire i grassi (formando le micelle).</li>
+    <li><span class="atkinson-bold">Neutralizza l’acido</span> del chimo che arriva dallo stomaco.</li>
+    <li><span class="atkinson-bold">Facilita l’assorbimento</span> dei grassi e delle vitamine liposolubili (A, D, E, K).</li>
+    <li><span class="atkinson-bold">Stimola la peristalsi</span> dell’intestino.</li>
+    <li><span class="atkinson-bold">Protegge dall’eccesso di batteri</span> grazie alla sua azione antisettica.</li>
+</ul>
+
+<span class="atkinson-bold">Dai cibi al chilo</span>
+
+<span class="atkinson-regular">
+    Dopo la digestione, il contenuto dell’intestino tenue diventa un liquido bianco e denso:  
+    si chiama <span class="atkinson-bold">chilo</span>.
+</span>
+
+<span class="atkinson-bold">L’assorbimento: il passo più importante</span>
+
+<span class="atkinson-regular">
+    Dopo la digestione, l’intestino tenue assorbe le sostanze utili.  
+    Questo processo avviene soprattutto nei <span class="atkinson-bold">villi intestinali</span>.
+</span>
+
+<span class="atkinson-regular">
+    I villi si muovono (si allungano e si accorciano)  
+    per far passare le sostanze nei vasi sanguigni e linfatici.
+</span>
+
+<span class="atkinson-bold">Cosa assorbe l’intestino?</span>
+
+<span class="atkinson-regular">
+    <span class="atkinson-bold">Nel sangue</span> (attraverso i capillari dei villi) vanno:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Amminoacidi</span> (dalle proteine)</li>
+    <li><span class="atkinson-bold">Monosaccaridi</span> (es. glucosio dagli zuccheri)</li>
+    <li><span class="atkinson-bold">Glicerina</span> (da alcuni grassi)</li>
+    <li><span class="atkinson-bold">Vitamine idrosolubili</span> (del gruppo B, C)</li>
+    <li><span class="atkinson-bold">Acqua e sali minerali</span></li>
+</ul>
+
+<span class="atkinson-regular">
+    Queste sostanze entrano nelle <span class="atkinson-bold">vene mesenteriche</span>.  
+    Poi formano la <span class="atkinson-bold">vena porta</span>, che porta tutto direttamente al <span class="atkinson-bold">fegato</span>.
+</span>
+
+<span class="atkinson-regular">
+    Il fegato:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Controlla le sostanze assorbite.</li>
+    <li>Le filtra.</li>
+    <li>Ne regola la quantità.</li>
+    <li>Ne immagazzina alcune.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Dopo il fegato, il sangue passa nelle <span class="atkinson-bold">vene epatiche</span>,  
+    poi nella <span class="atkinson-bold">vena cava inferiore</span>,  
+    e torna nella circolazione generale.
+</span>
+
+<span class="atkinson-bold">Nei vasi linfatici (lattiferi)</span>
+
+<span class="atkinson-regular">
+    Assorbono soprattutto:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Acidi grassi</span></li>
+    <li><span class="atkinson-bold">Vitamine liposolubili</span> (A, D, E, K)</li>
+</ul>
+
+<span class="atkinson-regular">
+    Queste sostanze entrano nei <span class="atkinson-bold">vasi linfatici</span> dei villi (chiamati <span class="atkinson-bold">lattiferi</span>).
+</span>
+
+<span class="atkinson-regular">
+    Poi:
+</span>
+
+<ol class="atkinson-regular">
+    <li>Vanno alla <span class="atkinson-bold">cisterna del Pecquet</span> (nella pancia).</li>
+    <li>Passano nel <span class="atkinson-bold">dotto toracico</span>.</li>
+    <li>Il dotto toracico si butta nella <span class="atkinson-bold">vena succlavia sinistra</span>.</li>
+    <li>Da qui entrano nel sangue.</li>
+</ol>
+
+<span class="atkinson-bold">Dal tenue al crasso</span>
+
+<span class="atkinson-regular">
+    Man mano che le sostanze utili vengono assorbite,  
+    il contenuto intestinale perde liquidi e diventa più denso.
+</span>
+
+<span class="atkinson-regular">
+    La peristalsi lo spinge verso l’<span class="atkinson-bold">intestino crasso</span>.
+</span>
+
+<span class="atkinson-bold">Nell’intestino crasso: niente digestione, tanta trasformazione</span>
+
+<span class="atkinson-regular">
+    Nell’intestino crasso <span class="atkinson-bold">non ci sono enzimi</span>.  
+    Quindi <span class="atkinson-italic">non avviene digestione</span>.
+</span>
+
+<span class="atkinson-regular">
+    Ma succedono altre cose importanti:
+</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Assorbimento di acqua e sali minerali</span>:  
+        il materiale diventa sempre più solido.</li>
+    
+    <li><span class="atkinson-bold">Azione dei batteri</span>:  
+        fermentano alcune fibre e producono gas e vitamine.</li>
+    
+    <li><span class="atkinson-bold">Formazione delle feci</span>:  
+        si accumulano residui indigeribili, cellule morte, muco e batteri.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Grazie all’assorbimento di acqua, il materiale diventa sempre più denso  
+    e si trasforma in <span class="atkinson-bold">feci</span>.
+</span>
+
+<span class="atkinson-bold">Movimenti nell’intestino crasso</span>
+
+<span class="atkinson-regular">
+    L’intestino crasso si muove lentamente.  
+    Ogni tanto fa contrazioni forti chiamate <span class="atkinson-bold">massive peristalsis</span>.  
+    Queste spingono le feci verso il <span class="atkinson-bold">retto</span>.
+</span>
+
+<span class="atkinson-bold">L’espulsione delle feci</span>
+
+<span class="atkinson-regular">
+    Quando il retto si riempie, il corpo avverte l’<span class="atkinson-bold">involontario</span> di andare in bagno.
+</span>
+
+<span class="atkinson-regular">
+    L’<span class="atkinson-bold">espulsione</span> è controllata dallo <span class="atkinson-bold">sfintere anale</span>:  
+    un muscolo che può aprirsi e chiudersi volontariamente.
+</span>
+
+<span class="atkinson-regular">
+    In condizioni normali, le feci vengono espulse una o due volte al giorno,  
+    ma ogni persona è diversa.
+</span>   
+
+<span id="about">Scrolla per vedere le altre immagini</span>
+<div class="scroll-container">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato.jpg" alt="Fegato" width="794" height="566" loading="lazy">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box1.jpg" alt="Fegato - schema della circolazione portale" width="794" height="566" loading="lazy">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box2.jpg" alt="Fegato - struttura fine del fegato" width="794" height="566" loading="lazy">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box3.jpg" alt="Fegato - struttura macroscopica del fegato e dei suoi diversi componenti" width="794" height="566" loading="lazy">
+</div>
+
+<span class="atkinson-bold">IL FEGATO</span>
+
+<span class="atkinson-regular">
+    Il fegato <span class="atkinson-italic">non serve solo a produrre la bile</span>.  
+    Quella è solo una delle sue tante funzioni.  
+    In realtà, è un <span class="atkinson-bold">grande laboratorio</span> del corpo.
+</span>
+
+<span class="atkinson-regular">
+    Pesa circa <span class="atkinson-bold">1500 grammi</span>.  
+    Si trova nella parte alta destra dell’addome.
+</span>
+
+<span class="atkinson-regular">
+    Riceve:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Le sostanze assorbite dall’intestino, tramite la <span class="atkinson-bold">vena porta</span>.</li>
+    <li>I <span class="atkinson-bold">rifiuti</span> prodotti dalle cellule del corpo.</li>
+</ul>
+
+<span class="atkinson-bold">Funzioni principali del fegato</span>
+
+<ol class="atkinson-regular">
+    <li><span class="atkinson-bold">Produce amminoacidi essenziali</span>:  
+        servono per costruire le proteine delle cellule e del sangue.</li>
+    
+    <li><span class="atkinson-bold">Sintetizza le albumine</span>:  
+        proteine importanti del plasma sanguigno.</li>
+    
+    <li><span class="atkinson-bold">Sintetizza le globuline</span>:  
+        aiutano la coagulazione del sangue e il sistema immunitario.</li>
+    
+    <li><span class="atkinson-bold">Trasforma il glucosio in glicogeno</span>:  
+        lo immagazzina come <span class="atkinson-bold">riserva di energia</span>.</li>
+    
+    <li><span class="atkinson-bold">Gestisce zuccheri e grassi</span>:  
+        regola il metabolismo di glucosio e lipidi.</li>
+    
+    <li><span class="atkinson-bold">Rende innocue le sostanze tossiche</span>:  
+        come alcol, farmaci o scorie del corpo.</li>
+    
+    <li><span class="atkinson-bold">Produce colesterolo, acidi biliari e bilirubina</span>:  
+        componenti principali della bile.</li>
+</ol>
+
+<span class="atkinson-bold">IL METABOLISMO</span>
+
+<span class="atkinson-regular">
+    Il <span class="atkinson-bold">metabolismo</span> è l’insieme delle reazioni chimiche  
+    che permettono al corpo di vivere, crescere e produrre energia.
+</span>
+
+<span class="atkinson-bold">Due fasi principali</span>
+
+<ul class="atkinson-regular">
+    <li><span class="atkinson-bold">Fase anabolica</span> (costruttiva):  
+        il corpo trasforma il cibo in energia o in nuova materia.  
+        Si chiama anche <span class="atkinson-bold">assimilazione</span>.</li>
+    
+    <li><span class="atkinson-bold">Fase catabolica</span> (distruttiva):  
+        il corpo smonta le sostanze usate.  
+        I rifiuti escono con urina, sudore e anidride carbonica.</li>
+</ul>
+
+<span class="atkinson-bold">Bilancio del metabolismo</span>
+
+<ul class="atkinson-regular">
+    <li>Nell’<span class="atkinson-bold">età giovanile</span>: prevale la fase <span class="atkinson-bold">anabolica</span> → si cresce.</li>
+    <li>Nell’<span class="atkinson-bold">età adulta</span>: le due fasi sono in <span class="atkinson-bold">equilibrio</span>.</li>
+    <li>Nella <span class="atkinson-bold">vecchiaia</span>: prevale la fase <span class="atkinson-bold">catabolica</span> → si perdono massa e tessuti.</li>
+</ul>
+
+<span class="atkinson-bold">Enzimi e condizioni del corpo</span>
+
+<span class="atkinson-regular">
+    Il metabolismo dipende da migliaia di <span class="atkinson-bold">enzimi</span> (fermenti).  
+    Ce ne sono circa <span class="atkinson-bold">25.000</span> e molti altri sono ancora da scoprire.
+</span>
+
+<span class="atkinson-regular">
+    Gli enzimi lavorano solo se:
+</span>
+
+<ul class="atkinson-regular">
+    <li>L’ambiente ha la giusta <span class="atkinson-bold">acidità</span>.</li>
+    <li>Sono presenti <span class="atkinson-bold">catalizzatori</span> (come sali minerali o vitamine).</li>
+    <li>La <span class="atkinson-bold">temperatura</span> è corretta.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Molte di queste reazioni <span class="atkinson-italic">non si possono riprodurre in laboratorio</span>.  
+    Per esempio, la sintesi completa delle proteine molto lunghe  
+    è stata ottenuta solo in parte, e con l’aiuto di sistemi artificiali.
+</span>
+
+<span class="atkinson-bold">Omeostasi: l’equilibrio del corpo</span>
+
+<span class="atkinson-regular">
+    Un metabolismo normale mantiene stabili le condizioni interne del corpo.  
+    Questo equilibrio si chiama <span class="atkinson-bold">omeostasi</span>.
+</span>
+
+<span class="atkinson-regular">
+    Include:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Composizione dei liquidi (sangue, linfa).</li>
+    <li>Temperatura corporea.</li>
+    <li>Livelli di zucchero e sali minerali.</li>
+</ul>
+
+<span class="atkinson-bold">Metabolismo basale</span>
+
+<span class="atkinson-regular">
+    È la <span class="atkinson-bold">minima quantità di energia</span> che il corpo usa  
+    quando è a completo riposo.
+</span>
+
+<span class="atkinson-regular">
+    Serve per funzioni essenziali come:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Mantenere la temperatura.</li>
+    <li>Fare battere il cuore.</li>
+    <li>Respirare.</li>
+    <li>Produrre sostanze chimiche.</li>
+</ul>
+
+<span class="atkinson-regular">
+    Il metabolismo basale corrisponde alla <span class="atkinson-bold">respirazione cellulare</span>.
+</span>
+
+<span class="atkinson-bold">Come si misura?</span>
+
+<span class="atkinson-regular">
+    Si usa un apparecchio speciale che misura il <span class="atkinson-bold">consumo di ossigeno</span>.
+</span>
+
+<span class="atkinson-regular">
+    Poi, con calcoli che tengono conto di:
+</span>
+
+<ul class="atkinson-regular">
+    <li>Età</li>
+    <li>Peso</li>
+    <li>Altezza</li>
+    <li>Superficie corporea</li>
+</ul>
+
+<span class="atkinson-regular">
+    si stima il <span class="atkinson-bold">fabbisogno energetico giornaliero</span>.
+</span>
+
+<span class="atkinson-bold">La tiroide regola il metabolismo</span>
+
+<span class="atkinson-regular">
+    La ghiandola <span class="atkinson-bold">tiroide</span> influenza il metabolismo di tutte le cellule.  
+    Se produce troppi ormoni, il metabolismo accelera.  
+    Se ne produce troppo poco, rallenta.
+</span>   
+<br>
+<!-- Badge di accessibilità -->
+<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito" title="Questo sito è conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito"></a></div>
+<div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js"></script>
+<p class="biotechcenter biotech-copyright sansation-light-italic">BiotechProject. Un progetto per un web più inclusivo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
+<script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
+</body>
+</html>
