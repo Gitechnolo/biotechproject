@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
+<title>Dermatologia semplice</title>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_terminal.min.css?v=1.2">
+<style type="text/css">
+.grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
+.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
+.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
+.imgRightfl {float: right; padding: 15px;}
+.imgLeftfl {float: left; padding: 15px;}
+</style> 
+</head>
+<body class="biotechbody" data-modern-menu>
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+<canvas id="particles-canvas"></canvas>
+<!-- DNA animation -->
+<div class="dna-container-8">
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+</div>
+<!-- End DNA animation -->
+<!-- Nav Menu Moderno -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
+<!-- VOCE: Home -->
+<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="products" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button>
+<div id="products" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" role="menuitem" aria-label="Home"><b>Home</b></a></div>
+</div>
+</div>
+<!-- VOCE: Fisiologia -->
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
+<div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia">Dermatologia</a></div>
+</div>
+</div>
+<!-- VOCE: Service -->
+<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
+<div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a></div>
+</div>
+</div>
+<!-- VOCE: Staff -->
+<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="staff" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button>
+<div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
+<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti">Progetti</a></div>
+</div>
+</div>
+<!-- VOCE: Technologies -->
+<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jobs" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button>
+<div id="jobs" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" role="menuitem" aria-label="Mercato cibernetica">Cybernetics Market</a>
+<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" role="menuitem" aria-label="Speciali">Specials</a></div>
+</div>
+</div>   
+</div>
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="Welcome to BiotechProject">   
+<div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
+<div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
+<div class="modern-greeting" id="week"></div>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script>
+<!-- End Nav Menu Moderno -->
+<p class="biotech-simple-link-container"><a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" class="biotech-simple-link" aria-label="Leggi questa pagina in versione originale"><span class="icon">🔍</span><span class="text">Leggi in versione originale</span></a></p> 
+<div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
+<h2 class="atkinson-bold" style="font-size: 42px; margin: 20px 0;">DERMATOLOGIA</h2>
+<!-- Immagine -->
+  <div class="atkinson-regular" style="text-align: center;"><img src="Biotech-file/images/Biotech-menu/Dermatologia/organizzazione.png" alt="Organizzazione"></div>
+<span class="atkinson-regular">La dermatologia è la parte della medicina che studia la pelle, i capelli e le unghie.</span>
+<span class="atkinson-regular">Si occupa di:</span>
+
+<ul class="atkinson-regular">
+  <li>diagnosi: scoprire di quale malattia si tratta;</li>
+  <li>trattamento: curare la malattia.</li>
+</ul>
+
+<span class="atkinson-regular">
+  Le malattie della pelle possono essere comuni o più serie.  
+  Esempi:
+</span>
+
+<ul class="atkinson-regular">
+  <li><strong>Acne</strong>: punti neri, brufoli, soprattutto in adolescenza.</li>
+  <li><strong>Dermatiti</strong>: pelle rossa, secca, pruriginosa (che dà fastidio).</li>
+  <li><strong>Psoriasi</strong>: chiazze spesse e squamose sulla pelle.</li>
+  <li><strong>Melanoma</strong>: un tipo di tumore della pelle, molto serio ma curabile se scoperto presto.</li>
+</ul>
+
+<span class="atkinson-regular">
+  Il dermatologo è il medico specializzato in queste malattie.  
+  Aiuta a mantenere la pelle sana e a prevenire problemi.
+</span>   
+
+  <h1 class="atkinson-bold">I tessuti</h1>
+
+  <span class="atkinson-regular">
+    Un tessuto è un insieme di cellule simili tra loro.  
+    Hanno la stessa forma, struttura e funzione.  
+    Sono unite da una sostanza tra le cellule, chiamata sostanza intercellulare.  
+    Questa sostanza cambia a seconda del tessuto.
+  </span>
+
+  <span class="atkinson-regular">
+    I tessuti principali sono quattro:
+  </span>
+
+  <ol class="atkinson-regular">
+    <li>Tessuto epiteliale</li>
+    <li>Tessuto connettivale</li>
+    <li>Tessuto muscolare</li>
+    <li>Tessuto nervoso</li>
+  </ol>
+
+  <h2 class="atkinson-bold">Tessuto epiteliale</h2>
+
+  <span class="atkinson-regular">
+    <span class="atkinson-italic">Il tessuto epiteliale è fatto di cellule molto vicine tra loro.</span>  
+    Gli spazi tra una cellula e l’altra sono quasi assenti.
+  </span>
+
+  <span class="atkinson-regular">
+    Le cellule si tengono unite grazie a strutture speciali sulle loro superfici.  
+    Queste strutture si incastrano come pezzi di un puzzle.  
+    Insieme formano il complesso giunzionale.
+  </span>
+
+  <span class="atkinson-regular">
+    Esistono tre tipi principali di epitelio:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li><strong>Epitelio di rivestimento</strong>: copre la pelle e le superfici interne. Protegge, assorbe, scambia sostanze.</li>
+    <li><strong>Epitelio ghiandolare</strong>: produce e rilascia sostanze (come sudore, enzimi, ormoni).</li>
+    <li><strong>Epitelio sensoriale</strong>: aiuta a percepire sapori, odori e altri stimoli (es. lingua, naso).</li>
+  </ul>
+
+  <span class="atkinson-regular">
+    L’epitelio poggia sempre su un tessuto più profondo: il tessuto connettivo.  
+    Tra i due c’è una <strong>membrana basale</strong>, una sottile pellicola che li unisce.  
+    Il tessuto connettivo fornisce sostanze nutritive, perché l’epitelio non ha vasi sanguigni propri.
+  </span>
+
+  <h3 class="atkinson-bold">Tipi di epitelio di rivestimento</h3>
+
+  <span class="atkinson-regular">
+    Gli epiteli di rivestimento si dividono in base al numero di strati cellulari:
+  </span>
+
+  <ol class="atkinson-regular">
+    <li>
+      <span class="atkinson-italic">Epitelio semplice (monostratificato)</span>: un solo strato di cellule.
+    </li>
+    <li>
+      <span class="atkinson-italic">Epitelio composto (pluristratificato)</span>: più strati di cellule.
+    </li>
+    <li>
+      <span class="atkinson-italic">Epitelio pseudostratificato</span>: sembra avere più strati, ma è uno solo.  
+      I nuclei sono a diverse altezze, quindi sembra stratificato.
+    </li>
+    <li>
+      <span class="atkinson-italic">Epitelio pavimentoso</span>: cellule piatte e sottili.  
+      Permette il passaggio di gas e liquidi.  
+      Si trova nei polmoni (alveoli), nei reni, nei vasi sanguigni (endotelio), e nelle sierose (pleura, pericardio, peritoneo).
+    </li>
+    <li>
+      <span class="atkinson-italic">Epitelio cubico</span>: cellule a forma di cubo.  
+      Riveste condotti e tubi.  
+      Ha funzioni   di assorbimento e protezione.  
+      Si trova in diversi organi:  
+      nei tubuli renali,  
+      nei dotti delle ghiandole (come quelle salivari e il pancreas),  
+      nell’ovaio,  
+      nei plessi corioidei del cervello,  
+      sulla capsula del cristallino  
+      e nella retina (epitelio pigmentato).
+    </li>
+    <li>
+      <span class="atkinson-italic">Epitelio cilindrico</span>: cellule alte e sottili, a forma di cilindro.  
+      Riveste organi cavi come l’intestino e le vie respiratorie.  
+      Ha funzioni di assorbimento e secrezione.  
+      Può essere:
+      <ul>
+        <li><strong>con ciglia</strong> (ciliato): muove muco e particelle (es. trachea);</li>
+        <li><strong>senza ciglia</strong> (non ciliato): assorbe sostanze (es. intestino).</li>
+      </ul>
+    </li>
+    <li>
+      <span class="atkinson-italic">Epitelio di transizione (urotelio)</span>: tipo speciale di epitelio.  
+      Ha caratteristiche tra epitelio pavimentoso e cubico.  
+      È elastico e resistente all’urina.  
+      Riveste l’interno della vescica e dell’uretere.
+    </li>
+  </ol>
+
+  <!-- Immagini posizionate sotto, in colonna per maggiore accessibilità -->
+  <div class="atkinson-regular" style="margin-top: 24px; text-align: center;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti2.jpg" 
+         alt="Rappresentazione degli epiteli di rivestimento" 
+         style="max-width: 100%; border-radius: 8px; margin-bottom: 16px;">
+    
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti3.jpg" 
+         alt="Dettaglio dei tipi di cellule epiteliali" 
+         style="max-width: 100%; border-radius: 8px;">
+  </div>  
+<!-- Immagine -->
+  <div class="atkinson-regular" style="text-align: center; margin: 20px 0;">
+    <img 
+      src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti3.jpg" 
+      alt="Struttura degli epiteli di rivestimento" 
+      style="max-width: 100%; border-radius: 8px;">
+  </div>
+
+  <h2 class="atkinson-bold">Funzioni degli epiteli di rivestimento</h2>
+
+  <span class="atkinson-regular">
+    Gli epiteli di rivestimento coprono molte superfici del corpo.
+  </span>
+
+  <ul class="atkinson-regular">
+    <li><strong>Superficie esterna</strong>: come la pelle (epidermide).</li>
+    <li><strong>Superfici interne</strong>: di organi vuoti che comunicano con l’esterno (es. intestino, bocca).</li>
+    <li><strong>Vasi sanguigni</strong>: rivestono l’interno e si chiamano <strong>endotelio</strong>.</li>
+    <li><strong>Grandi cavità del corpo</strong>: come torace e addome. Rivestono anche gli organi dentro queste cavità. In questo caso si chiamano <strong>mesotelio</strong>.</li>
+  </ul>
+
+  <span class="atkinson-regular">
+    Il tipo di funzione dipende da:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li>come sono fatte le cellule;</li>
+    <li>se sono in uno o più strati;</li>
+    <li>dove si trovano nel corpo.</li>
+  </ul>
+
+  <!-- Immagine Epiteli ghiandolari -->
+  <div class="atkinson-regular" style="text-align: center; margin: 24px 0;">
+    <img 
+      src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/epiteli_ghiandolari.jpg" 
+      alt="Epiteli ghiandolari e tipi di ghiandole" 
+      style="max-width: 100%; border-radius: 8px;">
+  </div>
+
+  <h2 class="atkinson-bold">Epiteli ghiandolari</h2>
+
+  <span class="atkinson-regular">
+    <span class="atkinson-italic">Questi epiteli sono fatti di cellule che producono e rilasciano sostanze, chiamate secreti.</span>
+  </span>
+
+  <span class="atkinson-regular">
+    Le cellule possono essere:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li>sparsе tra altre cellule;</li>
+    <li>raggruppate in organi specializzati: le <strong>ghiandole</strong>.</li>
+  </ul>
+
+  <span class="atkinson-regular">
+    Le ghiandole si dividono in due tipi, a seconda di dove va il secreto:
+  </span>
+
+  <ol class="atkinson-regular">
+    <li>
+      <span class="atkinson-bold">Ghiandole esocrine</span>  
+      Rilasciano il secreto all’esterno del corpo o dentro organi (es. sudore, saliva).  
+      Usano dei <strong>dotti</strong> (tubicini) per portare fuori la sostanza.
+    </li>
+    <li>
+      <span class="atkinson-bold">Ghiandole endocrine</span>  
+      Rilasciano gli <strong>ormoni</strong> direttamente nel sangue.  
+      Non hanno dotti.  
+      Esempi: tiroide, ipofisi, surreni.
+    </li>
+  </ol>
+<!-- Immagine Tessuto connettivo -->
+  <div class="atkinson-regular" style="text-align: center; margin: 24px 0;">
+    <img 
+      src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_connettivo.jpg" 
+      alt="Struttura del tessuto connettivo con cellule e fibre" 
+      style="max-width: 100%; border-radius: 8px;">
+  </div>
+
+  <h2 class="atkinson-bold">Tessuto connettivo</h2>
+
+  <span class="atkinson-regular">
+    <span class="atkinson-italic">Il tessuto connettivo ha tanta sostanza tra le cellule, chiamata sostanza extracellulare.</span>  
+    Al suo interno ci sono cellule e fibre.
+  </span>
+
+  <span class="atkinson-regular">
+    La sostanza extracellulare è fatta di:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li><strong>Matrice amorfa</strong>: una specie di gel che riempie gli spazi.</li>
+    <li><strong>Fibre</strong>: immerse nella matrice. Sono di tre tipi:
+      <ul style="margin-top: 8px;">
+        <li><strong>Collagene</strong>: resistenti e forti (come corde);</li>
+        <li><strong>Reticolari</strong>: sottili e a rete, sostengono organi come fegato e milza;</li>
+        <li><strong>Elastiche</strong>: si allungano e tornano indietro (come elastici).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <span class="atkinson-regular">
+    A seconda del tipo di cellule, fibre e matrice, il tessuto connettivo si divide in quattro tipi principali:
+  </span>
+
+  <ol class="atkinson-regular">
+    <li><strong>Tessuto connettivo propriamente detto</strong>: si trova sotto la pelle, attorno ai muscoli e agli organi. Dà sostegno e unisce le parti del corpo.</li>
+    <li><strong>Tessuto cartilagineo</strong>: flessibile e resistente. Riveste le articolazioni, forma il naso e le orecchie.</li>
+    <li><strong>Tessuto adiposo</strong>: formato da cellule piene di grasso. Conserva energia e isola il corpo dal freddo. Si trova sotto la pelle e attorno agli organi.</li>
+    <li><strong>Tessuto osseo</strong>: duro e resistente. Forma lo scheletro. Protegge organi importanti (es. cranio) e permette il movimento.</li>
+  </ol>
+
+  <span class="atkinson-regular">
+    Il tessuto connettivo ha funzioni importanti:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li>Dà forma e sostegno al corpo;</li>
+    <li>Protegge gli organi;</li>
+    <li>Immagazzina energia (grasso);</li>
+    <li>Trasporta sostanze (nel sangue, che è un tipo di tessuto connettivo);</li>
+    <li>Partecipa alla difesa (con cellule del sistema immunitario).</li>
+  </ul>
+
+  <h2 class="atkinson-bold">Funzioni del tessuto connettivo</h2>
+
+  <span class="atkinson-regular">
+    <span class="atkinson-italic">Il tessuto connettivo ha molte funzioni importanti nel corpo.</span>
+  </span>
+
+  <ol class="atkinson-regular">
+    <li><strong>Connette</strong> tessuti e organi tra loro.</li>
+    <li><strong>Sostiene</strong> tutto il corpo (es. lo scheletro).  
+        Protegge gli organi e ne forma la struttura interna.</li>
+    <li><strong>Trasporta sostanze</strong> e fornisce nutrimento alle cellule.</li>
+    <li><strong>Difende</strong> l’organismo, soprattutto dalle infezioni.</li>
+  </ol>
+
+  <span class="atkinson-regular">
+    In sintesi, il tessuto connettivo serve per:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li>nutrire;</li>
+    <li>sostenere;</li>
+    <li>proteggere;</li>
+    <li>difendere.</li>
+  </ul>
+
+  <h2 class="atkinson-bold">Tessuto adiposo</h2>
+
+  <span class="atkinson-regular">
+    Il tessuto adiposo è formato da cellule chiamate <strong>adipociti</strong>.  
+    Queste cellule accumulano grassi al loro interno.
+  </span>
+
+  <span class="atkinson-regular">
+    Esistono due tipi principali:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li><strong>Tessuto adiposo bianco</strong>:  
+        Conserva energia sotto forma di grasso.  
+        È il tipo più comune.</li>
+    <li><strong>Tessuto adiposo bruno</strong>:  
+        Trasforma il grasso in calore.  
+        Aiuta a mantenere la temperatura del corpo.  
+        È più presente nei neonati e negli animali che vanno in letargo.</li>
+  </ul>
+
+  <!-- Immagine tessuto adiposo -->
+  <div class="atkinson-regular" style="text-align: center; margin: 24px 0;">
+    <img 
+      src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_adiposo.jpg" 
+      alt="Tessuto adiposo: cellule con accumuli di grasso (adipociti)" 
+      style="max-width: 100%; border-radius: 8px;">
+  </div>
+
+  <h2 class="atkinson-bold">Tessuto nervoso</h2>
+
+  <span class="atkinson-regular">
+    <span class="atkinson-italic">Il tessuto nervoso è formato da cellule specializzate e dai loro prolungamenti.</span>
+  </span>
+
+  <span class="atkinson-regular">
+    La cellula principale è il <strong>neurone</strong>.  
+    È capace di ricevere, generare e trasmettere segnali elettrici, chiamati <strong>impulsi nervosi</strong>.
+  </span>
+
+  <span class="atkinson-regular">
+    Ogni neurone ha:
+  </span>
+
+  <ul class="atkinson-regular">
+    <li><strong>Corpo cellulare</strong>: contiene il nucleo. La forma e la dimensione cambiano a seconda della zona del corpo.</li>
+    <li><strong>Dendriti</strong>: prolungamenti corti.  
+        Ricevono gli impulsi da altri neuroni e li mandano al corpo cellulare.</li>
+    <li><strong>Assone</strong>: prolungamento lungo.  
+        Manda l’impulso dal corpo cellulare ad altri neuroni, muscoli o ghiandole.</li>
+  </ul>
+
+<h2 class="atkinson-bold">I neuroni sono le cellule fondamentali del sistema nervoso.</h2>
+<span class="atkinson-regular">Il sistema nervoso riceve, elabora e trasmette informazioni.</span> 
+<span class="atkinson-regular">Grazie a lui, il corpo può rispondere agli stimoli esterni (come luce, suono, dolore) e interni (come fame o sete).</span>
+
+
+<span class="atkinson-regular">
+    Più neuroni possono unirsi per formare un <strong>nervo</strong>.  
+    I nervi portano i segnali dal cervello e dal midollo spinale al resto del corpo.
+</span>
+
+<span class="atkinson-regular">
+    <strong>Attenzione:</strong> i neuroni non si dividono né si rigenerano facilmente.  
+    Una volta formati, in genere non si riproducono.  
+    Per questo è importante proteggere il sistema nervoso.
+</span>
+
+<span class="atkinson-regular">
+    Ogni cellula nervosa ha due proprietà principali:
+</span>
+
+<ol class="atkinson-regular">
+    <li>
+        <span class="atkinson-bold">Eccitabilità</span>:  
+        capacità di reagire agli stimoli (es. tocco, luce)  
+        e trasformarli in un impulso nervoso.
+    </li>
+    <li>
+        <span class="atkinson-bold">Conducibilità</span>:  
+        capacità di trasmettere l’impulso nervoso lungo il neurone.
+    </li>
+</ol>
+
+<span class="atkinson-regular">
+    Il passaggio di informazioni da un neurone all’altro avviene in un punto speciale: la <strong>sinapsi</strong>.
+</span>
+
+<span class="atkinson-regular">
+    Quando l’impulso arriva alla fine dell’assone:
+</span>
+
+<ol class="atkinson-regular" style="margin-top: 8px;">
+    <li>viene rilasciata una sostanza chimica: il <strong>neurotrasmettitore</strong>;</li>
+    <li>questa sostanza attraversa lo spazio tra i due neuroni;</li>
+    <li>raggiunge il neurone successivo e trasmette il segnale.</li>
+</ol>
+
+<span class="atkinson-regular">
+    Questo meccanismo permette al corpo di:
+</span>
+
+<ul class="atkinson-regular">
+    <li>pensare;</li>
+    <li>muoversi;</li>
+    <li>sudare;</li>
+    <li>battere il cuore;</li>
+    <li>sentire emozioni.</li>
+</ul>
+
+<!-- Immagine tessuto nervoso -->
+<div class="atkinson-regular" style="text-align: center; margin: 24px 0;">
+    <img 
+      src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_nervoso.jpg" 
+      alt="Struttura di un neurone: corpo cellulare, dendriti, assone" 
+      style="max-width: 100%; border-radius: 8px; padding: 10px; background-color: #111; display: inline-block;">
+</div>
+
+<span class="atkinson-regular" style="font-style: italic; color: #a7ffeb;">
+    Il tessuto nervoso è essenziale per la vita: coordina tutte le funzioni del corpo in modo rapido ed efficiente.
+</span>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <br>
+<!-- Badge di accessibilità -->
+<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito" title="Questo sito è conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito"></a></div>
+<div id="lastModified"></div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/ModifyInfo.js"></script>
+<p class="biotechcenter biotech-copyright sansation-light-italic">BiotechProject. Un progetto per un web più inclusivo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
+<script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
+</body>
+  </html>
