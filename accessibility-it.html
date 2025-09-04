@@ -115,7 +115,7 @@
   <li>Test di navigazione da tastiera e dispositivi mobili</li>
   <li>Verifica delle preferenze utente (riduzione movimento, alto contrasto)</li>
 </ul>
-<p>Ultima verifica effettuata il: <strong>3 settembre 2025</strong>.</p>
+<p>Ultima verifica effettuata il: <strong>5 settembre 2025</strong>.</p>
 
 <h2>✅ Caratteristiche di accessibilità</h2>
 <ul>
@@ -154,8 +154,7 @@
 <ul>
   <li><strong>Uso di <code>role="menu"</code> nei dropdown di navigazione</strong>: Attualmente, i menu a tendina utilizzano <code>role="menu"</code> e <code>role="menuitem"</code> per garantire un comportamento avanzato con tastiera. Tuttavia, questo pattern è tecnicamente riservato a componenti simili a barre dei menu applicativi. Stiamo valutando una transizione a un modello semantico più semplice (solo <code>&lt;button&gt;</code> + <code>&lt;a&gt;</code>) per migliorare la compatibilità con screen reader, mantenendo comunque la piena funzionalità da tastiera.</li>
   <li><strong>Animazioni decorative</strong>: Alcune animazioni (es. logo pulsante, DNA rotante, particelle di sfondo) sono puramente estetiche. Sono state progettate per essere lente e non lampeggianti, e sono disattivate con <code>@media (prefers-reduced-motion: reduce)</code>. Tuttavia, non sono ancora completamente disattivabili tramite un pulsante dedicato. Stiamo sviluppando un’opzione manuale per disattivarle completamente.</li>
-  <li><strong>Form non presenti</strong>: Il sito non include moduli compilabili. Se in futuro verranno aggiunti, saranno progettati per rispettare pienamente i criteri WCAG 3.3.x (Etichette, istruzioni, prevenzione errori).</li>
-</ul>
+ </ul>
 
 <h2>📞 Feedback e segnalazioni</h2>
 <p>Il tuo feedback è fondamentale per migliorare l’accessibilità del nostro progetto. Se riscontri barriere nell’accesso ai contenuti, difficoltà nell’uso delle funzionalità o hai suggerimenti per renderlo più inclusivo, ti invitiamo a contattarci.</p>
