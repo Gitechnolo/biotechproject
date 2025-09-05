@@ -612,23 +612,3 @@ function handleVideoPosterKey(event) {
   }
 }
 // End Accessibilità video  
-// Gestione caricamento del CSS con fade-in
-const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
-if (preloaded) {
-preloaded.onload = () => {
-preloaded.rel = 'stylesheet';
-// Ora che il CSS è applicato, mostra il contenuto
-const mainContent = document.getElementById('main-content');
-if (mainContent) {
-mainContent.style.opacity = '1';
-}
-};
-}
-// Se il CSS è già caricato (cache), forza l'evento
-if (preloaded && preloaded.sheet) {
-preloaded.rel = 'stylesheet';
-const mainContent = document.getElementById('main-content');
-if (mainContent) {
-mainContent.style.opacity = '1';
-}
-}  
