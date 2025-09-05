@@ -16,22 +16,37 @@
 </noscript>
 <!-- Preload font (se usato) -->
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
-<!-- Script attivazione CSS -->
+<style>
+html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
+#main-content {opacity: 0; transition: opacity 0.3s ease;}
+#Banner {transition: opacity 1s ease-in-out; opacity: 1;}
+.banner-fade-out {opacity: 0;}
+.bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
+</style>
 <script>
+// Gestione caricamento del CSS con fade-in
 const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
 if (preloaded) {
 preloaded.onload = () => {
 preloaded.rel = 'stylesheet';
+// Ora che il CSS è applicato, mostra il contenuto
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+mainContent.style.opacity = '1';
+}
 };
+}
+// Se il CSS è già caricato (cache), forza l'evento
+if (preloaded && preloaded.sheet) {
+preloaded.rel = 'stylesheet';
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+mainContent.style.opacity = '1';
+}
 }
 </script>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico">
-<style type="text/css">
-#Banner {transition: opacity 1s ease-in-out; opacity: 1;}
-.banner-fade-out {opacity: 0;}
-.bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
-</style>  
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Pulsante attivazione navigazione da tastiera -->
@@ -151,6 +166,10 @@ You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechpr
     </div>
   </div>
 </div>
+
+ <!-- Contenuto principale: fadeIn dopo il CSS -->
+<div id="main-content" class="biotechbody"></div>
+
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>

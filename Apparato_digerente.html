@@ -4,11 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
-<title>Apparato digerente</title>
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">
-<style type="text/css">
+<meta name="description" content="Il processo di digestione e l'assorbimento dei nutrienti.">
+<title>Apparato digerente umano, la struttura e la funzione</title>
+<!-- Preload CSS critico -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2"></noscript>
+<!-- Preload font -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
+#main-content {opacity: 0; transition: opacity 0.3s ease;}
 div.gallery {border: 1px solid #ccc; border-radius: 6px;}
 div.gallery:hover {border: 1px solid #777; border-radius: 6px;}
 div.gallery img {width: 100%; height: auto;}
@@ -19,6 +24,30 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 @media only screen and (max-width: 500px) {.responsive {width: 100%;}}
 .clearfix:after {content: ""; display: table; clear: both;}
 </style>
+<script>
+// Gestione caricamento del CSS con fade-in
+const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
+if (preloaded) {
+preloaded.onload = () => {
+preloaded.rel = 'stylesheet';
+// Ora che il CSS è applicato, mostra il contenuto
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+mainContent.style.opacity = '1';
+}
+};
+}
+// Se il CSS è già caricato (cache), forza l'evento
+if (preloaded && preloaded.sheet) {
+preloaded.rel = 'stylesheet';
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+mainContent.style.opacity = '1';
+}
+}
+</script>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico">
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Pulsante attivazione navigazione da tastiera -->
@@ -277,6 +306,10 @@ Per determinare tale consumo si ricorre ad una speciale apparecchiatura (→ 3) 
     </div>
   </div>
 </div>
+
+<!-- Contenuto principale: fadeIn dopo il CSS -->
+<div id="main-content" class="biotechbody"></div>
+
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>

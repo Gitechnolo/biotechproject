@@ -11,13 +11,30 @@
 <noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2"></noscript>
 <!-- Preload font -->
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
-<!-- Script attivazione CSS -->
+<style>
+html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
+#main-content {opacity: 0; transition: opacity 0.3s ease;}
+</style>
 <script>
+// Gestione caricamento del CSS con fade-in
 const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
 if (preloaded) {
 preloaded.onload = () => {
 preloaded.rel = 'stylesheet';
+// Ora che il CSS è applicato, mostra il contenuto
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+mainContent.style.opacity = '1';
+}
 };
+}
+// Se il CSS è già caricato (cache), forza l'evento
+if (preloaded && preloaded.sheet) {
+preloaded.rel = 'stylesheet';
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+mainContent.style.opacity = '1';
+}
 }
 </script>
 <!-- Favicon -->
@@ -138,6 +155,10 @@ preloaded.rel = 'stylesheet';
   </div>
 </div>
 <!-- End Network Market Analysis Section -->
+ 
+<!-- Contenuto principale: fadeIn dopo il CSS -->
+<div id="main-content" class="biotechbody"></div>
+
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
