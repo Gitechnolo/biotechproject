@@ -602,4 +602,13 @@ function initThemeToggle() {
   });
 }
 // Inizializza al caricamento
-window.addEventListener('DOMContentLoaded', initThemeToggle); 
+window.addEventListener('DOMContentLoaded', initThemeToggle);
+
+// Accessibilità video: supporto tastiera ai poster. Caricamento video solo al click (lazy load avanzato)
+function handleVideoPosterKey(event) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    loadAndPlayVideo();
+  }
+}
+// End Accessibilità video  

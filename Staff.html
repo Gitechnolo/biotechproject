@@ -4,10 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
-<title>Staff</title>
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">   
+<meta name="description" content="Scopri il team di Biotech Project: scienziati, ingegneri e innovatori che lavorano insieme per un futuro sostenibile e tecnologico">
+<title>Biotech Project: Incontra il Nostro Team di Innovatori</title>
+<!-- Preload CSS critico -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2"></noscript>
+<!-- Preload font -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Script attivazione CSS -->
+  <script>
+    const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
+    if (preloaded) {
+      preloaded.onload = () => {
+        preloaded.rel = 'stylesheet';
+      };
+    }
+  </script>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico">   
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Pulsante attivazione navigazione da tastiera -->
@@ -167,8 +181,8 @@
 </p><br>
 <div id="ytVideoContainer">
   <!-- Poster come immagine cliccabile -->
-  <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.avif" alt="Video preview: Auto del futuro" fetchpriority="high" loading="eager" style="width:100%; height:auto; display:block; cursor:pointer;" onclick="loadAndPlayVideo()">
-    <!-- Controlli personalizzati -->
+ <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.avif" alt="Anteprima video: Auto del futuro – un viaggio verso l'innovazione e la sostenibilità" fetchpriority="high" loading="eager" role="button" tabindex="0" aria-label="Riproduci video: Auto del futuro – un viaggio verso l'innovazione e la sostenibilità" onkeydown="handleVideoPosterKey(event)" onclick="loadAndPlayVideo()" style="width:100%; height:auto; display:block; cursor:pointer; border:none;">
+ <!-- Controlli personalizzati -->
   <div class="yt-video-controls" style="display:none;">
     <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
     <input type="range" id="ytProgress" min="0" value="0" step="0.01" class="yt-range">
