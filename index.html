@@ -13,15 +13,45 @@
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
 <!-- Script attivazione CSS -->
   <script>
-    const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
-    if (preloaded) {
-      preloaded.onload = () => {
-        preloaded.rel = 'stylesheet';
-      };
+  const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
+  if (preloaded) {
+    preloaded.onload = () => {
+      preloaded.rel = 'stylesheet';
+      // Ora che il CSS è applicato, mostra il contenuto
+      const mainContent = document.getElementById('main-content');
+      if (mainContent) {
+        mainContent.style.opacity = '1';
+      }
+    };
+  }
+  // Se il CSS è già caricato (cache), forza l'evento
+  if (preloaded && preloaded.sheet) {
+    preloaded.rel = 'stylesheet';
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.style.opacity = '1';
     }
-  </script>
+  }
+</script>   
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000f16;
+    color: #d4d3d3;
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  #main-content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+</style>   
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Pulsante attivazione navigazione da tastiera -->
@@ -39,6 +69,8 @@
   <div class="dna-helix-8"></div>
 </div>
 <!-- End DNA animation -->
+<!-- Contenuto principale: fadeIn dopo il CSS -->
+<div id="main-content" class="biotechbody">
 <!-- Nav Menu Moderno -->
 <div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
 <!-- VOCE: Home -->
@@ -153,6 +185,12 @@ Jiddu Krishnamurti</cite></p><br>
       </div>
     </div>
   </div>
+
+
+
+</div>
+
+
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
