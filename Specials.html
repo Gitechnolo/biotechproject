@@ -4,10 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="Biotech project - Esplora il mondo della biotecnologia e dell'innovazione tecnologica. Scopri i nostri progetti e il nostro team.">
-<title>Stem Cells & Robotics | Biotech Specials</title>
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2">   
+<meta name="description" content="Esplora come la biotecnologia sta rivoluzionando il futuro della robotica con applicazioni innovative e promettenti.">
+<title>L'incredibile connessione tra cellule staminali e robotica.</title>
+<!-- Preload CSS critico -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.2"></noscript>
+<!-- Preload font -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Script attivazione CSS -->
+  <script>
+    const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
+    if (preloaded) {
+      preloaded.onload = () => {
+        preloaded.rel = 'stylesheet';
+      };
+    }
+  </script>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico">   
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Pulsante attivazione navigazione da tastiera -->
