@@ -611,4 +611,4 @@ function handleVideoPosterKey(event) {
     loadAndPlayVideo();
   }
 }
-// End Accessibilità video  
+// End Accessibilità video
