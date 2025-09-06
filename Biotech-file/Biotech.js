@@ -1,45 +1,142 @@
-// QRedshift: Comfort visivo automatico 
-function QRedshift() {   
+// QRedshift: Comfort visivo automatico con integrazione menu e fallback accessibile
+function QRedshift() {
   // Evita doppia applicazione
   if (document.body.classList.contains('qredshift-active')) return;
-  // Orario locale
+
   const hour = new Date().getHours();
-  let temp, gamma;
+  let filter;
   if (hour >= 7 && hour < 19) {
     // Giorno
-    temp = 5900; // Kelvin
-    gamma = 1.0;
-  } else {
-    // Notte
-    temp = 3500;
-    gamma = 1.0;
-  }  
-  // Applica filtro CSS per comfort visivo
-  // Usa filter: sepia + hue-rotate + brightness per simulare temperatura colore
-  let filter;
-  if (temp === 5900) {
     filter = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
   } else {
+    // Notte
     filter = 'sepia(0.5) hue-rotate(-30deg) brightness(1)';
   }
+  // Applica filtro
   document.body.classList.add('qredshift-active');
   document.body.style.filter = filter;
   document.body.style.transition = 'filter 0.5s';
-  // Icona attiva
-  const icon = document.createElement('div');
-  icon.className = 'qredshift-icon';
-  icon.title = 'Comfort visivo QRedshift attivo';
-  icon.innerHTML = '<span>🌙</span>';
-  document.body.appendChild(icon);
-  icon.addEventListener('click', () => {
-    // Disattiva QRedshift al click sull'icona
-    document.body.classList.remove('qredshift-active');
-    document.body.style.filter = '';
-    icon.remove();
-  });  
+
+  // === INTEGRAZIONE MENU (SOLO PER BIOTECH) ===
+  const menuContainer = document.getElementById('tech-main-menu');
+
+  if (menuContainer) {
+    // Crea pulsante integrato nel menu
+    const menuItem = document.createElement('div');
+    menuItem.className = 'tech-menu-item';
+    menuItem.setAttribute('data-menu', 'qredshift');
+
+    const button = document.createElement('button');
+    button.className = 'tech-nav-btn';
+    button.type = 'button';
+    button.setAttribute('aria-haspopup', 'false');
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-pressed', 'true');
+    button.setAttribute('aria-label', 'Modalità comfort visivo attiva: Notte');
+    button.innerHTML = '<b>🌙 Comfort</b>';
+
+    menuItem.appendChild(button);
+    menuContainer.appendChild(menuItem); // Inserisci alla fine del menu
+
+    // Disattiva effetti visivi pesanti (solo in Biotech)
+    button.addEventListener('click', function () {
+      document.body.classList.remove('qredshift-active');
+      document.body.style.filter = '';
+
+      const particles = document.getElementById('particles-canvas');
+      if (particles) particles.style.display = 'none';
+
+      const dna = document.querySelector('.dna-container-8');
+      if (dna) dna.style.display = 'none';
+
+      // Aggiorna stato UI
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
+      button.innerHTML = '<b>☀️ Comfort</b>';
+    });
+
+  } else {
+    // === FALLBACK: per clienti esterni (nessun menu) ===
+    const icon = document.createElement('div');
+    icon.className = 'qredshift-icon';
+    icon.setAttribute('role', 'button');
+    icon.setAttribute('tabindex', '0');
+    icon.setAttribute('aria-label', 'Disattiva comfort visivo');
+    icon.title = 'Comfort visivo QRedshift attivo - clicca per disattivare';
+
+    // Stile inline con transizione e ombra
+    icon.style.cssText = `
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0, 100, 130, 0.8);
+      color: #a0e0ff;
+      border: 1px solid rgba(100, 200, 255, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 9999;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      box-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
+      font-family: sans-serif;
+      transition: all 0.3s ease;
+    `;
+
+    // 🔥 Ottimizzazione rendering: attiva il layer GPU
+    icon.style.willChange = 'transform, box-shadow';
+
+    icon.innerHTML = '🌙';
+    document.body.appendChild(icon);
+
+    // Comportamento: clic per disattivare
+    const disableEffect = () => {
+      document.body.classList.remove('qredshift-active');
+      document.body.style.filter = '';
+      icon.remove();
+    };
+
+    icon.addEventListener('click', disableEffect);
+
+    // Supporto tastiera (accessibilità)
+    icon.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        disableEffect();
+      }
+    });
+
+    // Effetti hover
+    icon.addEventListener('mouseenter', () => {
+      icon.style.transform = 'scale(1.1)';
+      icon.style.boxShadow = '0 0 14px rgba(120, 220, 255, 0.5)';
+    });
+
+    icon.addEventListener('mouseleave', () => {
+      icon.style.transform = 'scale(1)';
+      icon.style.boxShadow = '0 0 10px rgba(100, 200, 255, 0.3)';
+    });
+
+    // Reset stile al leave (sicurezza)
+    icon.addEventListener('focus', () => {
+      icon.style.outline = '2px solid #66ccff';
+      icon.style.outlineOffset = '2px';
+    });
+
+    icon.addEventListener('blur', () => {
+      icon.style.outline = '';
+    });
+  }
 }
-window.addEventListener('DOMContentLoaded', QRedshift);
-// End QRredshift
+// Attiva al caricamento della pagina
+window.addEventListener('DOMContentLoaded', QRedshift);  
+// End QRedshift: Comfort visivo automatico e menu e fallback accessibile 
+
 //Fade effect (dissolvenza)
 function fadeEffect() {
   let text = document.getElementById("fadingText");
@@ -611,39 +708,4 @@ function handleVideoPosterKey(event) {
     loadAndPlayVideo();
   }
 }
-// End Accessibilità video
-
-
-// === Estensione QRedshift: disattiva particelle e DNA al clic sull'icona ===
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === 1 && node.classList?.contains('qredshift-icon')) {
-          // Rimuovi eventi precedenti
-          node.onclick = null;
-
-          node.addEventListener('click', function () {
-            // 1. Rimuovi filtro
-            document.body.classList.remove('qredshift-active');
-            document.body.style.filter = '';
-
-            // 2. Nascondi particelle
-            const particlesCanvas = document.getElementById('particles-canvas');
-            if (particlesCanvas) particlesCanvas.style.display = 'none';
-
-            // 3. Nascondi DNA
-            const dnaContainer = document.querySelector('.dna-container-8');
-            if (dnaContainer) dnaContainer.style.display = 'none';
-
-            // 4. Rimuovi icona
-            node.remove();
-          });
-        }
-      });
-    });
-  });
-
-  // Inizia osservazione del body
-  observer.observe(document.body, { childList: true, subtree: true });
-});   
+// End Accessibilità video   

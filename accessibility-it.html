@@ -137,11 +137,29 @@
       <li><strong>Pagine semplificate</strong>: Per ogni pagina principale, è disponibile una <strong>versione semplificata</strong> del contenuto, scritta con linguaggio chiaro, frasi brevi e supporto visivo. Questa funzionalità supporta utenti con dislessia, difficoltà cognitive o livelli diversi di alfabetizzazione, in conformità con WCAG 3.1.5 (Reading Level, Livello AA) e come passo verso il livello AAA.</li>
       <li><strong>Accessibilità dei dati visivi</strong>: I grafici e i cerchi di progresso sono accompagnati da tabelle nascoste (<code>visually-hidden</code>) e testi alternativi strutturati, per garantire che i dati siano accessibili a screen reader e strumenti assistivi.</li>
       <li><strong>Esportazione dati</strong>: È possibile esportare i dati di performance e accessibilità in formato JSON o CSV, promuovendo trasparenza e audit indipendenti.</li>
-      <li><strong>Comfort visivo automatico (QRedshift)</strong>: Il sito applica automaticamente un filtro di temperatura colore più caldo la sera per ridurre l’affaticamento oculare. L’effetto può essere disattivato cliccando sull’icona <code>🌙</code> in alto a destra. Il sistema rispetta <code>prefers-reduced-motion</code> disattivando le transizioni.</li>
+      <li><strong>Comfort visivo automatico (QRedshift)</strong>: Il sito applica automaticamente un filtro di temperatura colore più caldo la sera per ridurre l’affaticamento oculare, in linea con i ritmi circadiani.</li>
+    </ul>
+    <ul>
+     <li>In <strong>BiotechProject</strong>, il pulsante è integrato nel menu come <code>&lt;button&gt;</code> con classe <code>.tech-nav-btn</code>, navigabile con <kbd>Tab</kbd>, attivabile con <kbd>Enter</kbd> o <kbd>Spazio</kbd>, e supporta <kbd>Esc</kbd> se il focus è su un altro elemento modale.</li>
+     <li>Lo stato è comunicato dinamicamente tramite <code>aria-pressed</code> e <code>aria-label</code>, accessibile a screen reader (NVDA, VoiceOver).</li>
+     <li>Al clic, disattiva anche le animazioni non essenziali (sfondo particelle, DNA) per ridurre carico visivo e GPU.</li>
+     <li>Nei progetti clienti senza menu, un'icona <code>🌙</code> in alto a destra funge da fallback: è <strong>focusabile</strong>, supporta tastiera, e include effetti hover/focus con <code>will-change</code> per rendering fluido.</li>
+     <li>Rispetta <code>prefers-reduced-motion</code>: filtri e transizioni sono disattivati se richiesto dall’utente.</li>
     </ul>
 
+
     <h2>🛠️ Tecnologie utilizzate</h2>
-    <p>HTML5, CSS3 (con Custom Properties), JavaScript (vanilla, senza framework), ARIA 1.2, WAI-ARIA, <code>prefers-reduced-motion</code>, <code>prefers-contrast</code>, <code>localStorage</code>, <code>IntersectionObserver</code>, AVIF, WebP.</p>
+<p>Il sito è costruito con tecnologie moderne, leggere e accessibili:</p>
+<ul>
+  <li><strong>HTML5</strong> semantico</li>
+  <li><strong>CSS3</strong> con Custom Properties e media query per preferenze utente</li>
+  <li><strong>JavaScript vanilla</strong> (zero framework, massima accessibilità e prestazioni)</li>
+  <li><strong>ARIA 1.2</strong> per interazioni dinamiche e stato</li>
+  <li><strong>Media query</strong>: <code>prefers-reduced-motion</code>, <code>prefers-contrast</code></li>
+  <li><strong>Persistenza</strong>: <code>localStorage</code> per tema e stato navigazione</li>
+  <li><strong>Ottimizzazioni</strong>: <code>IntersectionObserver</code> (lazy loading), <code>MutationObserver</code> (integrazione dinamica)</li>
+  <li><strong>Immagini</strong>: AVIF e WebP per prestazioni e qualità</li>
+</ul>   
 
     <h2>🎯 Conformità in corso verso il livello AAA</h2>
     <p>Stiamo implementando ulteriori caratteristiche per avvicinarci al livello <strong>AAA</strong> delle WCAG 2.1:</p>
@@ -150,7 +168,6 @@
       <li><strong>Spiegazione di acronimi</strong>: Uso di <code>&lt;abbr title="..."&gt;</code> per espandere sigle come "PCR", "ATP", "DNA" al primo utilizzo.</li>
       <li><strong>Link con testo descrittivo</strong>: Verifica continua che tutti i link abbiano un testo comprensibile anche fuori contesto (WCAG 2.4.9).</li>
       <li><strong>Migrazione da popup a modali accessibili</strong>: Sostituzione progressiva delle finestre <code>window.open()</code> con modali interne dotate di <code>role="dialog"</code>, trapping del focus e supporto a <kbd>Esc</kbd>.</li>
-      <li><strong>Miglioramento del contrasto notturno</strong>: Ottimizzazione dei colori in modalità QRedshift per garantire un contrasto sufficiente anche con il filtro attivo.</li>
     </ul>
 
     <h2>❌ Non conformità parziali o eccezioni</h2>
@@ -162,21 +179,22 @@
     </ul>
 
     <h2>📞 Feedback e segnalazioni</h2>
-    <p>Il tuo feedback è fondamentale per migliorare l’accessibilità del nostro progetto. Se riscontri barriere nell’accesso ai contenuti, difficoltà nell’uso delle funzionalità o hai suggerimenti per renderlo più inclusivo, ti invitiamo a contattarci.</p>
-    <button onclick="openContactPopup()" aria-haspopup="dialog" aria-expanded="false" id="contact-btn">
-      Contattaci
-    </button>
-
+<p>Il tuo feedback è fondamentale per migliorare l’accessibilità del nostro progetto. Se riscontri barriere nell’accesso ai contenuti, difficoltà nell’uso delle funzionalità o hai suggerimenti per renderlo più inclusivo, ti invitiamo a contattarci.</p>
+<button onclick="openContactPopup()" aria-haspopup="dialog" aria-expanded="false" id="contact-btn" type="button">Contattaci</button>   
+<script>
+  document.getElementById('contact-btn')?.addEventListener('click', function() {
+    this.setAttribute('aria-expanded', 'true');
+  });
+</script>
     <h2>📅 Data ultima verifica</h2>
-    <p><time datetime="2025-09-05">5 settembre 2025</time></p>
+    <p><time datetime="2025-09-06">6 settembre 2025</time></p>
 
     <h2>🔄 Aggiornamenti futuri</h2>
     <p>Questa dichiarazione sarà aggiornata regolarmente per riflettere i miglioramenti implementati. I prossimi aggiornamenti includeranno:</p>
     <ul>
       <li>Migrazione completa a modali interni al posto di <code>window.open()</code>.</li>
-      <li>Introduzione di un pulsante per disattivare manualmente tutte le animazioni.</li>
-      <li>Ottimizzazione del modello ARIA per i menu di navigazione.</li>
-      <li>Miglioramento del contrasto in modalità notturna (QRedshift).</li>
+      <li>Ottimizzazione del modello di navigazione: valutazione di un pattern ARIA più semplice per i menu.</li>
+      <li>Miglioramento del contrasto in modalità notturna (QRedshift) per garantire 4.5:1 anche con filtro attivo.</li>
     </ul>
 
     <p><em>“BiotechProject non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e umana.”</em></p>
