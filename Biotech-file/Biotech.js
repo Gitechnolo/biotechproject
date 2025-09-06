@@ -612,3 +612,38 @@ function handleVideoPosterKey(event) {
   }
 }
 // End Accessibilità video
+
+
+// === Estensione QRedshift: disattiva particelle e DNA al clic sull'icona ===
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1 && node.classList?.contains('qredshift-icon')) {
+          // Rimuovi eventi precedenti
+          node.onclick = null;
+
+          node.addEventListener('click', function () {
+            // 1. Rimuovi filtro
+            document.body.classList.remove('qredshift-active');
+            document.body.style.filter = '';
+
+            // 2. Nascondi particelle
+            const particlesCanvas = document.getElementById('particles-canvas');
+            if (particlesCanvas) particlesCanvas.style.display = 'none';
+
+            // 3. Nascondi DNA
+            const dnaContainer = document.querySelector('.dna-container-8');
+            if (dnaContainer) dnaContainer.style.display = 'none';
+
+            // 4. Rimuovi icona
+            node.remove();
+          });
+        }
+      });
+    });
+  });
+
+  // Inizia osservazione del body
+  observer.observe(document.body, { childList: true, subtree: true });
+});   
