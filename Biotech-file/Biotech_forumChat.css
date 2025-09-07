@@ -1,5 +1,5 @@
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff'); font-weight: normal; font-style: normal; font-display: swap;}
-body {background-color: rgb(0, 15, 22) !important; background-image: url('https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.jpg'); background-position: 50% 50%;}
+body {background-color: rgb(0, 15, 22); background-image: url('https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.jpg'); background-position: 50% 50%;}
 * {box-sizing: border-box;}
 .subtitle {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .emphasytile {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
@@ -27,23 +27,329 @@ canvas#particles-canvas {display: block; position: absolute; top: 0; left: 0; wi
 #likeBtn:disabled:hover {color: hwb(93 2% 3% / 0.801); transform: none;}
 #likeBtn:disabled:active {transform: none;}
 /* End style pulsante "Mi Piace" */
-/* Chat */
-.chat-popup {display: none; position: fixed; bottom: 80px; right: 24px; z-index: 10001; border: 3px solid #969292bd; background: rgba(2, 43, 26, 0.966); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); max-width: 340px; width: 100%; padding: 18px 16px 12px 16px; font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-.open-button {position: fixed; bottom: 24px; right: 24px; z-index: 10001; background-color: #222e; color: #ffe; border: none; border-radius: 50px; padding: 12px 18px; font-size: 1.5em; cursor: pointer; box-shadow: 0 2px 8px #0006; transition: background 0.3s;}
-.open-button:hover {background: #ffb300cc; color: #222;}
-/* Chat form container */
-.form-container {width: 100%; display: flex; flex-direction: column; gap: 8px;}
-.form-container label, .form-container input, .form-container textarea, .form-container .btn {
-  font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-.form-container textarea {width: 100%; padding: 12px; margin: 5px 0 16px 0; border: 1px solid #065c3c; background: rgb(0,15,22); resize: none; min-height: 120px; color: rgb(212,211,211); border-radius: 8px; font-size: 16px; box-shadow: 0 2px 8px rgba(76,76,231,0.08);}
-.form-container textarea:focus {outline: 2px solid #065c3c; background: rgb(0,15,22);}
-.form-container input[type="email"] {padding: 10px; border-radius: 8px; border: 1px solid #065c3c; background: rgb(0,15,22); color: rgb(212,211,211); margin-bottom: 10px; font-size: 15px;}
-.form-container .btn {background: #065c3c; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); color: #fff; padding: 12px 16px; border: none; width: 100%; margin-bottom: 8px; border-radius: 8px; font-size: 16px; opacity: 0.9; transition: background 0.2s;}
-.form-container .btn.cancel {background: #555; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-.form-container .btn:hover, .open-button:hover {opacity: 1; background: #04AA6D;}
-.chat-messages {max-height: 120px; overflow-y: auto; background: #181818; border-radius: 6px; padding: 6px; margin-bottom: 8px; font-size: 1em; color: #ffe;}
-.chat-message.user {text-align: right; color: #b3e5fc; margin-bottom: 4px; font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-.chat-message.system {text-align: left; color: #ffe; margin-bottom: 4px; font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-.chat-status {font-size: 0.95em; color: #ffb300; margin-top: 4px; font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-/* Responsive: mobile */
-@media (max-width: 600px) {.open-button, .chat-popup {right: 8px; bottom: 8px; max-width: 98vw; font-size: 1.1em;} .chat-popup {bottom: 60px; padding: 10px 6px 8px 6px;}}
+/* === CHAT: Popup moderno con effetto glassmorphism === */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  z-index: 10001;
+  max-width: 340px;
+  width: 100%;
+  background: rgba(20, 30, 48, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: 16px;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 230, 118, 0.2);
+  padding: 18px 16px 12px;
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+  color: #a7ffeb;
+  transition: all 0.3s ease;
+}
+
+/* === PULSANTE APERTURA CHAT (stile Biotech) === */
+.open-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10001;
+  background-color: rgba(0, 230, 118, 0.1);
+  color: #a7ffeb;
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(0, 230, 118, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.open-button:hover {
+  background-color: rgba(0, 230, 118, 0.2);
+  color: white;
+  box-shadow: 
+    0 0 12px rgba(0, 230, 118, 0.5),
+    0 0 20px rgba(0, 255, 180, 0.3);
+  transform: translateY(-1px);
+}
+
+.open-button:active {
+  transform: translateY(0);
+}
+
+/* === CONTENITORE FORM === */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container label,
+.form-container input,
+.form-container textarea,
+.form-container .btn {
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+}
+
+/* === AREA MESSAGGI (stile Biotech) === */
+.chat-messages {
+  max-height: 160px;
+  overflow-y: auto;
+  background: rgba(0, 20, 30, 0.4);
+  border: 1px solid rgba(0, 230, 118, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #b2dfdb;
+  line-height: 1.5;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 230, 118, 0.5) transparent;
+}
+
+/* Scrollbar personalizzata (Firefox) */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 230, 118, 0.5);
+  border-radius: 3px;
+}
+
+/* Messaggi inviati dall'utente e dal sistema */
+.chat-message {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.chat-message.user {
+  background: rgba(0, 230, 118, 0.15);
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+  text-align: right;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-message.system {
+  background: rgba(0, 191, 255, 0.12);
+  color: #a7ffeb;
+  align-self: flex-start;
+  text-align: left;
+  border-bottom-left-radius: 4px;
+}
+
+/* Contenitore flessibile per allineamento messaggi */
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+/* === AREA TESTO (textarea) === */
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  min-height: 100px;
+  max-height: 140px;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 15, 22, 0.7);
+  color: #e0f7fa;
+  font-size: 15px;
+  resize: vertical;
+  font-family: 'Sansation', sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.form-container textarea:focus {
+  outline: none;
+  background: rgba(0, 20, 30, 0.8);
+  border-color: rgba(0, 255, 180, 0.6);
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.4),
+    0 0 20px rgba(0, 255, 180, 0.2);
+  color: white;
+}
+
+/* === CAMPO EMAIL === */
+.form-container input[type="email"] {
+  padding: 10px;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 15, 22, 0.7);
+  color: #e0f7fa;
+  font-size: 15px;
+  font-family: 'Sansation', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-container input[type="email"]:focus {
+  outline: none;
+  background: rgba(0, 20, 30, 0.8);
+  border-color: rgba(0, 255, 180, 0.6);
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.4),
+    0 0 20px rgba(0, 255, 180, 0.2);
+  color: white;
+}
+
+/* === PULSANTI (Invia / Chiudi) === */
+.form-container .btn {
+  background: rgba(0, 230, 118, 0.1);
+  color: #a7ffeb;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: 'Sansation', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0.95;
+}
+
+/* Pulsante "Invia" */
+.form-container .btn {
+  background: rgba(0, 230, 118, 0.1);
+  color: #a7ffeb;
+}
+
+.form-container .btn:hover,
+.form-container .btn:focus {
+  background: rgba(0, 230, 118, 0.2);
+  color: white;
+  border-color: rgba(0, 255, 180, 0.5);
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.4),
+    0 0 20px rgba(0, 255, 180, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.form-container .btn:active {
+  transform: translateY(0);
+  background: rgba(0, 230, 118, 0.12);
+}
+
+/* Pulsante "Chiudi" */
+.form-container .btn.cancel {
+  background: rgba(255, 152, 0, 0.1);
+  border-color: rgba(255, 152, 0, 0.3);
+  color: #ffd700;
+}
+
+.form-container .btn.cancel:hover,
+.form-container .btn.cancel:focus {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffecb3;
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 
+    0 0 10px rgba(255, 152, 0, 0.4),
+    0 0 20px rgba(255, 215, 0, 0.25);
+}
+
+/* === STATO DEL MESSAGGIO (es. "Messaggio inviato!") === */
+.chat-status {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 4px;
+  padding: 6px 0;
+  color: #ffb300;
+  background: rgba(255, 152, 0, 0.08);
+  border-radius: 6px;
+  opacity: 0.9;
+  min-height: 18px;
+  transition: opacity 0.3s ease;
+}
+
+/* === RESPONSIVE: Adatta su mobile === */
+@media (max-width: 600px) {
+  .open-button,
+  .chat-popup {
+    right: 8px;
+    bottom: 8px;
+    max-width: 98vw;
+  }
+
+  .chat-popup {
+    bottom: 60px;
+    padding: 10px 6px 8px 6px;
+    width: calc(100% - 16px);
+  }
+
+  .open-button {
+    font-size: 1.3em;
+    padding: 10px 16px;
+  }
+
+  .form-container textarea,
+  .form-container input[type="email"],
+  .form-container .btn {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .chat-messages {
+    max-height: 140px;
+    font-size: 13px;
+  }
+}
+
+/* === FEEDBACK DA TASTIERA: SOLO PER IL FORM === */
+
+/* Stile focus avanzato quando è attiva la tastiera */
+.keyboard-ui.keyboard-active textarea:focus,
+.keyboard-ui.keyboard-active input[type="email"]:focus {
+  outline: 2px solid #00bfff;
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.5),
+    0 0 20px rgba(0, 255, 180, 0.3),
+    0 0 0 4px rgba(0, 191, 255, 0.2);
+  border-color: rgba(0, 255, 180, 0.6);
+  background: rgba(0, 30, 50, 0.6);
+}
+
+.keyboard-ui.keyboard-active .btn:focus,
+.keyboard-ui.keyboard-active .btn:hover {
+  outline: 2px solid #00bfff;
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.5),
+    0 0 20px rgba(0, 255, 180, 0.3),
+    0 0 0 4px rgba(0, 191, 255, 0.2);
+  border-color: rgba(0, 255, 180, 0.6);
+  background: rgba(0, 230, 118, 0.2);
+  color: white;
+}
+
+/* Assicura che il focus sia visibile anche senza .keyboard-active (base) */
+.form-container textarea:focus,
+.form-container input[type="email"]:focus,
+.form-container .btn:focus {
+  z-index: 1;
+  transition: all 0.3s ease;
+}   

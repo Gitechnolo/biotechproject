@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="description" content="Biotech Chat - Contact our support team for any questions or issues you may have. We are here to help!">
+<meta name="description" content="Biotech Chat - Contatta il nostro team di supporto, siamo qui per aiutarti!">
 <title>Biotech Chat</title>
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_forumChat.css">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
 </head>
 <body>
 <canvas id="particles-canvas"></canvas>  
@@ -37,8 +38,8 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
 <!-- Modern Minimal Static Chat UI (no file upload, email only) -->
 <button class="open-button" onclick="openForm()">💬 Chat</button>
 
-<div class="chat-popup" id="formChat">
-  <form id="chatForm" class="form-container" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST">
+<div class="chat-popup" id="formChat" tabindex="-1">
+  <form id="chatForm" class="form-container keyboard-ui" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST">
     <p class="emphasytile">Contatta Biotech</p>
     <div class="chat-messages" id="chatMessages"></div>
     <label for="msgInput"><b><span class="subtitle">Messaggio</span></b></label>
@@ -95,6 +96,27 @@ function appendMessage(sender, text) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 </script>
+
+<script>
+// Rileva l'uso della tastiera SOLO per il form
+document.getElementById('chatForm').addEventListener('keydown', function(e) {
+  // Quando si preme Tab all'interno del form
+  if (e.key === 'Tab') {
+    // Aggiungi classe solo al form
+    this.classList.add('keyboard-active');
+    
+    // Rimuovi la classe se si clicca (torna al mouse)
+    const removeKeyboard = () => {
+      this.classList.remove('keyboard-active');
+      document.removeEventListener('mousedown', removeKeyboard);
+    };
+    
+    // Riattiva al prossimo Tab
+    document.addEventListener('mousedown', removeKeyboard, { once: true });
+  }
+});
+</script>   
+
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 </body>
