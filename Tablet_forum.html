@@ -6,6 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="description" content="Biotech Chat - Contatta il nostro team di supporto, siamo qui per aiutarti!">
 <title>Biotech Chat</title>
+<style>
+/* === ANTI-FLASH: solo per il corpo della pagina === */
+html, body {margin: 0; padding: 0; background: #000f16; color: #d4d3d3; font-family: 'Sansation', sans-serif; min-height: 100%;}
+/* Nascondi il form finché non è pronto */
+#formChat {opacity: 0; transition: opacity 0.3s ease;}
+body.loaded #formChat {opacity: 1;}
+</style>   
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech_forumChat.css">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/Biotech.css">
 </head>
@@ -38,7 +45,7 @@ document.getElementById("risolution").innerHTML =  "Your screen resolution is " 
 <!-- Modern Minimal Static Chat UI (no file upload, email only) -->
 <button class="open-button" onclick="openForm()">💬 Chat</button>
 
-<div class="chat-popup" id="formChat" tabindex="-1">
+<div class="chat-popup" id="formChat" tabindex="-1" style="background: #000f16; display: none;">
   <form id="chatForm" class="form-container keyboard-ui" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST">
     <p class="emphasytile">Contatta Biotech</p>
     <div class="chat-messages" id="chatMessages"></div>
@@ -116,6 +123,18 @@ document.getElementById('chatForm').addEventListener('keydown', function(e) {
   }
 });
 </script>   
+
+<script>
+  // Mostra il form quando la pagina è pronta
+  document.addEventListener('DOMContentLoaded', function () {
+    document.body.classList.add('loaded');
+  });
+
+  // Sicurezza: mostra comunque dopo 1.5s
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 1500);
+</script>    
 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
