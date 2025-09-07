@@ -17,7 +17,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 .responsive {padding: 0 6px; float: left; width: 24.99999%;}
 @media only screen and (max-width: 700px) {.responsive {width: 49.99999%; margin: 6px 0;}}
 @media only screen and (max-width: 500px) {.responsive {width: 100%;}}
-.clearfix:after {content: ""; display: table; clear: both;}
+.digestion-step:focus {outline: 3px solid #a7ffeb; border-radius: 12px; box-shadow: 0 0 8px rgba(167, 255, 235, 0.4); transition: outline 0.2s ease, box-shadow 0.2s ease;}  
 </style>
 </head>
 <body class="biotechbody" data-modern-menu>
@@ -107,60 +107,79 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <span class="atkinson-regular">La digestione avviene nell’<span class="atkinson-bold">apparato digerente</span>.</span>
 <span class="atkinson-regular">Durante questo processo, organi speciali (glandole) rilasciano sostanze chimiche. Queste sostanze aiutano a spezzare il cibo in pezzi più piccoli.</span>
 <span class="atkinson-regular">La digestione è quindi un processo che <span class="atkinson-italic">semplifica il cibo</span> fino a renderlo assorbibile dal corpo.</span>   
-
-<div class="row">
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 1">
-  </div>
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 2">
-  </div>
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 3">
-  </div>
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 4">
-  </div>
+<!-- Miniature in basso - navigazione semplice e accessibile -->
+<div class="carousel-thumbnails" style="display: flex; justify-content: center; gap: 12px; margin: 30px 0; flex-wrap: wrap;" role="group" aria-label="Seleziona una immagine dell'apparato digerente">
+  <button onclick="openModal(); currentSlide(1)" aria-label="Apri immagine 1: Schema generale dell'apparato digerente" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box1.jpg" 
+         alt="Anteprima 1: Schema generale dell'apparato digerente" 
+         class="hover-shadow cursor" 
+         style="width: 130px; height: auto; border-radius: 10px; border: 4px solid transparent;">
+  </button>
+  <button onclick="openModal(); currentSlide(2)" aria-label="Apri immagine 2: Struttura dettagliata dell'apparato digerente" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box2.jpg" 
+         alt="Anteprima 2: Struttura dettagliata" 
+         class="hover-shadow cursor" 
+         style="width: 130px; height: auto; border-radius: 10px; border: 4px solid transparent;">
+  </button>
+  <button onclick="openModal(); currentSlide(3)" aria-label="Apri immagine 3: Sezione dello sfintere pilorico" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box3.jpg" 
+         alt="Anteprima 3: Sezione dello sfintere pilorico" 
+         class="hover-shadow cursor" 
+         style="width: 130px; height: auto; border-radius: 10px; border: 4px solid transparent;">
+  </button>
+  <button onclick="openModal(); currentSlide(4)" aria-label="Apri immagine 4: Tabella degli enzimi digestivi" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box4.jpg" 
+         alt="Anteprima 4: Tabella degli enzimi digestivi" 
+         class="hover-shadow cursor" 
+         style="width: 130px; height: auto; border-radius: 10px; border: 4px solid transparent;">
+  </button>
 </div>
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-    <div class="mySlides">
-      <div class="numbertext">1 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema dell'apparato digerente">
-    </div>
-    <div class="mySlides">
-      <div class="numbertext">2 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Struttura dell'apparato digerente">
-    </div>
-    <div class="mySlides">
-      <div class="numbertext">3 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dello sfintere pilorico">
-    </div>
-    <div class="mySlides">
-      <div class="numbertext">4 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella degli enzimi digestivi">
-    </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    <div class="caption-container">
-      <p id="caption"></p>
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Schema dell'apparato digerente">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Struttura dell'apparato digerente">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Sezione dello sfintere pilorico">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Tabella degli enzimi digestivi">
-    </div>
-  </div>
+<!-- Lightbox MODALE -->
+<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<span class="close cursor" onclick="closeModal()" aria-label="Chiudi finestra">&times;</span>
+<div class="modal-content">
+<!-- Slide -->
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema generale dell'apparato digerente">
 </div>
-
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Struttura dettagliata dell'apparato digerente">
+</div>
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dello sfintere pilorico">
+</div>
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella degli enzimi digestivi">
+</div>
+<!-- Pulsanti di navigazione -->
+<a class="prev" onclick="plusSlides(-1)" aria-label="Immagine precedente">&#10094;</a>
+<a class="next" onclick="plusSlides(1)" aria-label="Immagine successiva">&#10095;</a>
+<!-- Didascalia -->
+<div class="caption-container">
+<p id="caption" class="atkinson-regular" style="color: #a7ffeb; text-align: center; padding: 10px 0; margin: 0;"></p>
+</div>
+<!-- Miniature sotto nel modal (opzionali, ma utili) -->
+<div class="row" style="text-align: center; margin-top: 10px;">
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Vai a: Schema generale" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">1. Schema generale</div>
+</div>
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Vai a: Struttura dettagliata" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">2. Struttura</div>
+</div>
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Vai a: Sfintere pilorico" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">3. Sfintere pilorico</div>
+</div>
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Vai a: Enzimi digestivi" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">4. Enzimi</div>
+</div>
+</div>
+</div>
+</div>   
+<!-- Fine Lightbox MODALE -->
 <span class="atkinson-regular">
     L’apparato digerente è come un lungo tubo che va dalla bocca all’ano.
     È formato da diversi tratti. Ognuno ha una forma, una lunghezza e una funzione diversa.
@@ -256,6 +275,26 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 
 
 <span class="atkinson-bold">MASTICAZIONE E DEGLUTIZIONE</span>
+<!-- Immagine 1: Masticazione e deglutizione -->
+<div class="digestion-step" 
+     style="max-width: 900px; margin: 30px auto; padding: 16px; border-radius: 12px; background: #1e1e1e;" 
+     tabindex="0">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg" 
+       alt="Fase 1: Masticazione e deglutizione. Il cibo viene spezzettato dai denti e mandato nello stomaco." 
+       style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <h3 class="atkinson-bold" style="margin: 16px 0 8px;">1. Masticazione e deglutizione</h3>
+  <span class="atkinson-regular" 
+        role="paragraph" 
+        style="display: block; margin: 0;">
+    Il cibo viene spezzettato dai denti e mandato nello stomaco attraverso l’esofago.
+  </span>
+  <span class="atkinson-regular" 
+        role="paragraph" 
+        style="display: block; margin: 0;">
+    Poi il cibo arriva nello stomaco, dove viene mescolato con i succhi gastrici per diventare una massa semiliquida.
+  </span>
+</div>   
+
 
 <span class="atkinson-bold">La masticazione</span>
 
@@ -515,41 +554,26 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
     Il bolo entra nello <span class="atkinson-bold">stomaco</span>.
 </span>
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.jpg" alt="Masticazione e deglutizione" width="794" height="1123" loading="lazy">
-    </a>
-    <div class="desc">Masticazione deglutizione</div>
-  </div>
-</div>
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.jpg">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.jpg" alt="Digestione gastrica" width="794" height="1123" loading="lazy">
-    </a>
-    <div class="desc">Digestione gastrica</div>
-  </div>
-</div>
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.jpg">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.jpg" alt="Digestione intestinale" width="794" height="1123" loading="lazy">
-    </a>
-    <div class="desc">Digestione intestinale</div>
-  </div>
-</div>
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.jpg">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.jpg" alt="Assorbimento metabolismo" width="794" height="1123" loading="lazy">
-    </a>
-    <div class="desc">Assorbimento metabolismo</div>
-  </div>
-</div>
-<div class="clearfix"></div>
-
 <span class="atkinson-bold">DIGESTIONE GASTRICA</span>
+
+<!-- Immagine 2: Digestione gastrica -->
+<div class="digestion-step" 
+     style="max-width: 900px; margin: 30px auto; padding: 16px; border-radius: 12px; background: #1e1e1e;" 
+     tabindex="0">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.jpg" 
+       alt="Fase 2: Digestione gastrica. Il cibo arriva nello stomaco e viene mescolato con i succhi gastrici." 
+       style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <h3 class="atkinson-bold" style="margin: 16px 0 8px;">2. Digestione gastrica</h3>
+  <span class="atkinson-regular" 
+        role="paragraph" 
+        style="display: block; margin: 0;">
+    Nello stomaco, il cibo viene mescolato con i succhi gastrici per diventare una specie di crema.
+  </span>
+</div>
+
+<p class="atkinson-regular">
+  Successivamente, il cibo parzialmente digerito entra nel piccolo intestino, dove avviene la separazione dei nutrienti.
+</p>   
 
 <span class="atkinson-bold">Quanto dura la digestione nello stomaco?</span>
 
@@ -764,6 +788,25 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 </span>   
 
 <span class="atkinson-bold">LA DIGESTIONE NELL'INTESTINO TENUE, LA FUNZIONE DELL'INTESTINO CRASSO</span>
+<!-- Immagine 3: Digestione intestinale -->
+<div class="digestion-step" 
+     style="max-width: 900px; margin: 30px auto; padding: 16px; border-radius: 12px; background: #1e1e1e;" 
+     tabindex="0">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.jpg" 
+       alt="Fase 3: Digestione intestinale. I nutrienti vengono separati nel piccolo intestino." 
+       style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <h3 class="atkinson-bold" style="margin: 16px 0 8px;">3. Digestione intestinale</h3>
+  <span class="atkinson-regular" 
+        role="paragraph" 
+        style="display: block; margin: 0;">
+    Nel piccolo intestino, i nutrienti vengono separati e preparati per l’assorbimento.
+  </span>
+  <span class="atkinson-regular" 
+        role="paragraph" 
+        style="display: block; margin: 0;">
+    Infine, i nutrienti passano dal intestino al sangue e vengono distribuiti in tutto il corpo per produrre energia e far funzionare le cellule.
+  </span>
+</div>   
 
 <span class="atkinson-bold">La digestione continua nell’intestino tenue</span>
 
@@ -1066,6 +1109,20 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 </span>
 
 <span class="atkinson-bold">L’assorbimento: il passo più importante</span>
+<!-- Immagine 4: Assorbimento e metabolismo -->
+<div class="digestion-step" 
+     style="max-width: 900px; margin: 30px auto; padding: 16px; border-radius: 12px; background: #1e1e1e;" 
+     tabindex="0">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.jpg" 
+       alt="Fase 4: Assorbimento e metabolismo. I nutrienti entrano nel sangue e vengono usati dal corpo." 
+       style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <h3 class="atkinson-bold" style="margin: 16px 0 8px;">4. Assorbimento e metabolismo</h3>
+  <span class="atkinson-regular" 
+        role="paragraph" 
+        style="display: block; margin: 0;">
+    I nutrienti passano dal intestino al sangue e vengono portati in tutto il corpo per dare energia e far funzionare gli organi.
+  </span>
+</div>   
 
 <span class="atkinson-regular">
     Dopo la digestione, l’intestino tenue assorbe le sostanze utili.  
@@ -1201,13 +1258,74 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
     ma ogni persona è diversa.
 </span>   
 
-<span id="about">Scrolla per vedere le altre immagini</span>
-<div class="scroll-container">
-  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato.jpg" alt="Fegato" width="794" height="566" loading="lazy">
-  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box1.jpg" alt="Fegato - schema della circolazione portale" width="794" height="566" loading="lazy">
-  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box2.jpg" alt="Fegato - struttura fine del fegato" width="794" height="566" loading="lazy">
-  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box3.jpg" alt="Fegato - struttura macroscopica del fegato e dei suoi diversi componenti" width="794" height="566" loading="lazy">
+
+
+
+<!-- Galleria orizzontale con ID per il controllo -->
+<div id="fegato-gallery" class="scroll-container" 
+     tabindex="0" 
+     role="region" 
+     aria-label="Galleria immagini del fegato"
+     aria-describedby="gallery-instructions"
+     style="border: 1px solid #ccc; 
+            border-radius: 6px; 
+            background-color: #333; 
+            overflow-x: auto; 
+            white-space: nowrap; 
+            padding: 2px; 
+            margin: 20px auto; 
+            max-width: 900px; 
+            scroll-behavior: smooth;">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato.jpg" 
+       alt="Fegato - Vista generale dell'organo nel corpo umano" 
+       style="display: inline-block; width: 75%; height: auto; margin: 0; padding: 2px; border-radius: 4px;">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box1.jpg" 
+       alt="Fegato - Schema della circolazione portale" 
+       style="display: inline-block; width: 75%; height: auto; margin: 0; padding: 2px; border-radius: 4px;">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box2.jpg" 
+       alt="Fegato - Struttura fine del fegato (lobuli epatici)" 
+       style="display: inline-block; width: 75%; height: auto; margin: 0; padding: 2px; border-radius: 4px;">
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fegato_box3.jpg" 
+       alt="Fegato - Struttura macroscopica e componenti principali" 
+       style="display: inline-block; width: 75%; height: auto; margin: 0; padding: 2px; border-radius: 4px;">
 </div>
+
+<!-- Testo nascosto per screen reader -->
+<p id="gallery-instructions" style="position: absolute; left: -9999px;">
+  Usa i pulsanti Indietro e Avanti oppure le frecce sinistra e destra della tastiera per navigare tra le immagini del fegato. 
+  Ci sono 4 immagini in totale.
+</p>
+
+<!-- Pulsanti di navigazione -->
+<div style="text-align: center; margin: 16px 0;">
+  <button onclick="scrollGallery(-1)" class="atkinson-bold" 
+          style="margin: 0 12px; padding: 12px 24px;" 
+          aria-label="Mostra immagine precedente">
+    Indietro
+  </button>
+  <button onclick="scrollGallery(1)" class="atkinson-bold" 
+          style="margin: 0 12px; padding: 12px 24px;" 
+          aria-label="Mostra immagine successiva">
+    Avanti
+  </button>
+</div>
+
+<!-- Indicatore di posizione (opzionale ma utile) -->
+<div style="text-align: center; margin: 8px 0;">
+  <span id="gallery-counter" class="atkinson-regular" style="color: #a7ffeb;">
+    Immagine 1 di 4
+  </span>
+</div>   
+  
+
+
+
+
+
+
+
+
+
 
 <span class="atkinson-bold">IL FEGATO</span>
 
@@ -1382,6 +1500,53 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
     </div>
   </div>
 </div>
+
+<script>
+  // Riferimento alla galleria e al contatore
+  const gallery = document.getElementById("fegato-gallery");
+  const counter = document.getElementById("gallery-counter");
+  const imageWidth = 750; // Adatta in base alla tua larghezza effettiva (immagine + padding)
+
+  // Funzione per aggiornare il contatore
+  function updateCounter() {
+    if (!gallery || !counter) return;
+    const index = Math.round(gallery.scrollLeft / imageWidth) + 1;
+    const total = 4; // Numero totale di immagini
+    counter.textContent = `Immagine ${index} di ${total}`;
+  }
+
+  // Funzione per scorrere
+  function scrollGallery(direction) {
+   if (gallery) {
+      gallery.scrollLeft += direction * imageWidth;
+    }
+  }
+
+  // Aggiorna il contatore all'avvio e durante lo scroll
+  gallery?.addEventListener("scroll", updateCounter);
+  window.addEventListener("load", updateCounter);
+
+  // Navigazione con tastiera
+  gallery?.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      scrollGallery(-1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      scrollGallery(1);
+    }
+  });
+
+  // Permetti di navigare con Tab e usare Invio/Spazio
+  gallery?.setAttribute("tabindex", "0");
+</script>   
+
+
+
+
+
+
+
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>

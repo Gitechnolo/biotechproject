@@ -174,7 +174,6 @@
     <p>Nonostante il forte impegno verso l’inclusività, alcune parti del sito non soddisfano pienamente tutti i criteri WCAG 2.1, per motivi tecnici, contestuali o di usabilità avanzata:</p>
     <ul>
       <li><strong>Uso di <code>role="menu"</code> nei dropdown di navigazione</strong>: Attualmente, i menu a tendina utilizzano <code>role="menu"</code> e <code>role="menuitem"</code> per garantire un comportamento avanzato con tastiera. Tuttavia, questo pattern è tecnicamente riservato a componenti simili a barre dei menu applicativi. Stiamo valutando una transizione a un modello semantico più semplice (solo <code>&lt;button&gt;</code> + <code>&lt;a&gt;</code>) per migliorare la compatibilità con screen reader, mantenendo comunque la piena funzionalità da tastiera.</li>
-      <li><strong>Animazioni decorative</strong>: Alcune animazioni (es. logo pulsante, DNA rotante, particelle di sfondo) sono puramente estetiche. Sono state progettate per essere lente e non lampeggianti, e sono disattivate con <code>@media (prefers-reduced-motion: reduce)</code>. Stiamo sviluppando un’opzione manuale per disattivarle completamente.</li>
       <li><strong>Popup basati su <code>window.open()</code></strong>: Alcuni link aprono finestre esterne per retrocompatibilità. Stiamo migrando verso modali interni accessibili per garantire un’esperienza più inclusiva.</li>
     </ul>
 
