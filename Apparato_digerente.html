@@ -128,58 +128,79 @@ mainContent.style.opacity = '1';
  Il primo, detto <span class="biotechbold">alimentazione</span> consiste nell'ingestione dei cibi. Per essere assimilati e rispondere a tali funzioni, i cibi devono subire una serie di profonde trasformazioni che nel loro complesso costituiscono la <span class="biotechbold">digestione</span>. Dette trasformazioni avvengono nel tubo digerente, nel quale vari organi ghiandolari, tramite condotti di connessione o superficie, introducono alcune sostanze chimiche aventi il compito di trasformare gli alimenti ingeriti sino a renderli assorbibili.<br>
  La digestione è infatti un processo di continua semplificazione chimica degli alimenti ingeriti.<br>
  </p>
-<div class="row">
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 1">
-  </div>
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 2">
-  </div>
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 3">
-  </div>
-  <div class="column">
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="Apparatodigerente schema 4">
-  </div>
+<!-- Miniature in basso - navigazione semplice e accessibile -->
+<div class="carousel-thumbnails" style="display: flex; justify-content: center; gap: 12px; margin: 30px 0; flex-wrap: wrap;" role="group" aria-label="Seleziona una immagine dell'apparato digerente">
+  <button onclick="openModal(); currentSlide(1)" aria-label="Apri immagine 1: Schema generale dell'apparato digerente" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box1.jpg" 
+         alt="Anteprima 1: Schema generale dell'apparato digerente" 
+         class="hover-shadow cursor" 
+         style="border-radius: 10px; border: 4px solid transparent;">
+  </button>
+  <button onclick="openModal(); currentSlide(2)" aria-label="Apri immagine 2: Struttura dettagliata dell'apparato digerente" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box2.jpg" 
+         alt="Anteprima 2: Struttura dettagliata" 
+         class="hover-shadow cursor" 
+         style="border-radius: 10px; border: 4px solid transparent;">
+  </button>
+  <button onclick="openModal(); currentSlide(3)" aria-label="Apri immagine 3: Sezione dello sfintere pilorico" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box3.jpg" 
+         alt="Anteprima 3: Sezione dello sfintere pilorico" 
+         class="hover-shadow cursor" 
+         style="border-radius: 10px; border: 4px solid transparent;">
+  </button>
+  <button onclick="openModal(); currentSlide(4)" aria-label="Apri immagine 4: Tabella degli enzimi digestivi" style="border: none; background: none; padding: 0;">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_box4.jpg" 
+         alt="Anteprima 4: Tabella degli enzimi digestivi" 
+         class="hover-shadow cursor" 
+         style="border-radius: 10px; border: 4px solid transparent;">
+  </button>
 </div>
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-    <div class="mySlides">
-      <div class="numbertext">1 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema dell'apparato digerente">
-    </div>
-    <div class="mySlides">
-      <div class="numbertext">2 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Struttura dell'apparato digerente">
-    </div>
-    <div class="mySlides">
-      <div class="numbertext">3 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dello sfintere pilorico">
-    </div>
-    <div class="mySlides">
-      <div class="numbertext">4 / 4</div>
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella degli enzimi digestivi">
-    </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    <div class="caption-container">
-      <p id="caption"></p>
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Schema dell'apparato digerente">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Struttura dell'apparato digerente">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Sezione dello sfintere pilorico">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Tabella degli enzimi digestivi">
-    </div>
-  </div>
+<!-- Lightbox MODALE -->
+<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<span class="close cursor" onclick="closeModal()" aria-label="Chiudi finestra">&times;</span>
+<div class="modal-content">
+<!-- Slide -->
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema generale dell'apparato digerente">
 </div>
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Struttura dettagliata dell'apparato digerente">
+</div>
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dello sfintere pilorico">
+</div>
+<div class="mySlides">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella degli enzimi digestivi">
+</div>
+<!-- Pulsanti di navigazione -->
+<a class="prev" onclick="plusSlides(-1)" aria-label="Immagine precedente">&#10094;</a>
+<a class="next" onclick="plusSlides(1)" aria-label="Immagine successiva">&#10095;</a>
+<!-- Didascalia -->
+<div class="caption-container">
+<p id="caption" class="atkinson-regular" style="color: #a7ffeb; text-align: center; padding: 10px 0; margin: 0;"></p>
+</div>
+<!-- Miniature sotto nel modal (opzionali, ma utili) -->
+<div class="row" style="text-align: center; margin-top: 10px;">
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Vai a: Schema generale" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">1. Schema generale</div>
+</div>
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Vai a: Struttura dettagliata" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">2. Struttura</div>
+</div>
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Vai a: Sfintere pilorico" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">3. Sfintere pilorico</div>
+</div>
+<div class="column">
+<img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Vai a: Enzimi digestivi" loading="lazy">
+<div class="atkinson-regular" style="font-size: 14px; color: #a7ffeb;">4. Enzimi</div>
+</div>
+</div>
+</div>
+</div>   
+<!-- Fine Lightbox MODALE -->
 <p class="text">L'apparato digerente può essere paragonato ad un lungo tubo continuo, in cui si distinguono alcuni tratti, diversi per lunghezza, forma e volume (→ 1). Il primo tratto è rappresentato dalla <span class="biotechbold">bocca</span>, delimitata anteriormente dalle labbra attraverso le quali comunica con l'esterno. Posteriormente, attraverso l'istmo delle fauci, la bocca comunica con la <span class="biotechbold">faringe</span> situata all'incrocio tra le vie dell'apparato digerente e quelle dell'apparato respiratorio. Dalla faringe si passa nell'<span class="biotechbold">esofago</span>. Anch'esso di forma tubulare, l'esofago congiunge la faringe con lo <span class="biotechbold">stomaco</span>, che costituisce la parte più dilatata dell'intero apparato digerente. La forma di questo può variare in rapporto alle caratteristiche di ciascun individuo (la si è spesso paragonata a una cornamusa). Attraverso lo <span class="biotechbold">sfintere</span> pilorico (3), costituito da fibre muscolari circolari che si addensano maggiormente in questa zona, lo stomaco entra in comunicazione con l'<span class="biotechbold">intestino</span>.<br>
 <br>
 L'intestino è distinto in due tratti principali: il <span class="biotechbold">tenue</span>, lungo circa 6 metri e 80 centimetri, e il <span class="biotechbold">crasso</span>, lungo circa 1 metro e 80 centimetri. Il tenue è diviso a sua volta in <span class="biotechbold">duodeno, digiuno, ileo</span>. Nel duodeno versano il loro secreto due importanti ghiandole annesse, il <span class="biotechbold">pancreas</span> e il <span class="biotechbold">fegato</span>, e numerose altre ghiandole. L'ultimo tratto del tenue, l'<span class="biotechbold">ileo</span>, comunica per mezzo della valvola <span class="biotechbold">ileo-cecale</span> con il crasso, la cui parte iniziale costituisce il <span class="biotechbold">cieco</span>. Questo, proseguendo sul lato destro dell'addome, prende il nome di <span class="biotechbold">colon ascendente</span>. Al livello della superficie inferiore del fegato, esso si ripiega portandosi sul lato sinistro dell'addome con il nome di <span class="biotechbold">colon trasverso</span>, a cui segue il <span class="biotechbold">colon discendente</span> che continua quindi nel <span class="biotechbold">retto</span>. Questo si apre all'esterno mediante lo <span class="biotechbold">sfintere anale</span>.<br>
