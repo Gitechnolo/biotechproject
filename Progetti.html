@@ -24,26 +24,26 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
 </style>
 <script>
-// Gestione caricamento del CSS con fade-in
-const preloaded = document.querySelector(`[rel="preload"][as="style"]`);
-if (preloaded) {
-preloaded.onload = () => {
-preloaded.rel = 'stylesheet';
-// Ora che il CSS è applicato, mostra il contenuto
-const mainContent = document.getElementById('main-content');
-if (mainContent) {
-mainContent.style.opacity = '1';
-}
-};
-}
-// Se il CSS è già caricato (cache), forza l'evento
-if (preloaded && preloaded.sheet) {
-preloaded.rel = 'stylesheet';
-const mainContent = document.getElementById('main-content');
-if (mainContent) {
-mainContent.style.opacity = '1';
-}
-}
+!function(){
+  const l = document.getElementById('preload-style');
+  const show = () => {
+    const c = document.getElementById('main-content');
+    if (c) c.style.setProperty('opacity', '1');
+  };
+
+  if (l) {
+    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
+    if (l.sheet) l.rel = 'stylesheet';
+  }
+
+  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', show);
+  } else {
+    show();
+  }
+  setTimeout(show, 3000); // sicurezza finale
+}();
 </script>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico">
