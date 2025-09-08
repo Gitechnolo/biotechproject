@@ -30,19 +30,26 @@ Dove la biotecnologia incontra il codice per costruire strumenti digitali per la
 
 ## 🌱 Cos'è BiotechProject?
 
-BiotechProject è un **laboratorio digitale aperto** dedicato alla **biotecnologia, alla salute e alla divulgazione scientifica** attraverso il web.
+BiotechProject è un **laboratorio digitale aperto** che combina **biotecnologia, salute e sviluppo web** in un sistema integrato progettato per essere:
 
-Il progetto combina:
-- 🧪 Contenuti scientifici su biologia, medicina e biotecnologie
-- 💻 Sviluppo web moderno (HTML, CSS, JavaScript)
-- 📊 Monitoraggio automatico delle performance con Lighthouse
-- 🚀 Automazione continua tramite GitHub Actions
+- 🔍 **Scientificamente affidabile**
+- 💻 **Tecnicamente robusto**
+- 🌐 **Accessibile a tutti**, inclusi utenti con disabilità
+- 🤝 **Aperto alla collaborazione globale**
 
-È uno spazio collaborativo per sviluppatori, ricercatori e appassionati che vogliono esplorare **come la tecnologia può servire la scienza**.
+Nasce con l’obiettivo di dimostrare come la tecnologia possa servire la scienza e la salute, garantendo al contempo un accesso equo a chiunque, indipendentemente da capacità sensoriali, cognitive o motorie.
+
+È uno spazio collaborativo per sviluppatori, ricercatori e appassionati che vogliono esplorare **come il web può diventare uno strumento di inclusione e innovazione scientifica**.
 
 ---
 
 ## 🚀 Funzionalità principali
+
+✅ **Open by design**  
+→ Aperto a contributi, idee e collaborazioni internazionali
+
+✅ **Workflow CI/CD integrato**  
+→ Test, analisi e aggiornamento automatico su ogni modifica
 
 ✅ **Dashboard di performance automatica**  
 → Analisi continua di tutte le pagine con aggiornamento di `performance-data.json`
@@ -50,54 +57,157 @@ Il progetto combina:
 ✅ **Filtro dinamico per categoria**  
 → Interfaccia interattiva per esplorare lo stato di maturità tecnologica
 
-✅ **Workflow CI/CD integrato**  
-→ Test, analisi e aggiornamento automatico su ogni modifica
-
 ✅ **Design responsive e accessibile**  
-→ Funziona su tutti i dispositivi, con attenzione all'usabilità
-
-✅ **Open by design**  
-→ Aperto a contributi, idee e collaborazioni
+→ Funziona su tutti i dispositivi, con attenzione all'usabilità e ai requisiti WCAG
 
 ---
 
-## 🛠️ Tecnologie utilizzate
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES Modules)
-- **Analisi**: Lighthouse, Chrome Launcher
-- **Automazione**: GitHub Actions
-- **Monitoraggio**: `performance-data.json` + dashboard dinamica
-- **Deployment**: GitHub Pages
-
----
+Il progetto include un sistema automatico per monitorare la qualità tecnica delle pagine, con aggiornamento giornaliero tramite GitHub Actions.
 
 ## 📊 Dashboard delle Performance
-
-Il progetto include un sistema automatico per monitorare la qualità tecnica delle pagine:
 
 - Punteggio di performance (0–100)
 - Tempo di caricamento
 - Categoria di maturità: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- Aggiornamento giornaliero tramite workflow
 
 👉 Vedi il report in tempo reale: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🔗 Esplora il progetto
+## 🔗 Esplora il progetto BiotechProject
 - 🏠 [Homepage](https://gitechnolo.github.io/biotechproject/)   
 - 📄 [Tech Maturity Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+   
+
+---
+
+## 🌐 Accessibilità
+
+Il sito è **parzialmente conforme** alle **Linee guida WCAG 2.1 livello AA**, in conformità al Decreto Legislativo 10 agosto 2018, n. 106.
+
+La conformità è stata verificata il **8 settembre 2025** con:
+- Audit automatici (axe, WAVE, Lighthouse)
+- Test manuali con screen reader (NVDA, VoiceOver)
+- Navigazione da tastiera e validazione W3C
+
+📄 **Dichiarazione completa:**  
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)  
+👉 [Read Accessibility Statement (EN)](accessibility-en.html)
+
+---
+
+## 💡 Vuoi contribuire?
+
+Benvenuto!  
+BiotechProject è un progetto **aperto a tutti**, in uno spirito simile a Wikipedia.
+
+🔹 Per iniziare:
+- Leggi le [**Contributing Guidelines**](CONTRIBUTING.md)
+- Rispetta il [**Code of Conduct**](CODE_OF_CONDUCT.md)
+
+Puoi aiutare con:
+- Nuovi contenuti scientifici
+- Miglioramenti tecnici o di accessibilità
+- Traduzioni
+- Bug report e suggerimenti
+
+---
+
+## 🛠️ Tecnologie utilizzate
+- HTML5 semantico
+- CSS3 con Custom Properties
+- JavaScript vanilla (zero framework)
+- ARIA 1.2 per interazioni dinamiche
+- GitHub Actions per CI/CD
+- Lighthouse per monitoraggio performance
+
+---
+
+## 📄 Licenza
+
+📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
+Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.
+
+---
+
+## 🙌 Autore
+
+Autore: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
+Progetto disponibile su: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
 
 
+---
 
-## 🤝 Come Contribuire
+## ✅ Caratteristiche di accessibilità implementate
 
-Grazie per il tuo interesse! Ogni contributo è benvenuto 🎉
+Il progetto adotta un approccio **"accessibilità fin dall’origine"** (*accessibility by design*). Tra le principali funzionalità:
 
-### 1. Forka il repository
-Clicca su **"Fork"** in alto a destra.
+- **Navigazione da tastiera completa**: Tutte le funzionalità sono accessibili tramite tastiera, con un pulsante dedicato che attiva un’evidenziazione avanzata.
+- **Supporto avanzato ai menu**: Menu a tendina navigabili con frecce, <kbd>Home</kbd>, <kbd>End</kbd> e <kbd>Esc</kbd>, con gestione corretta del focus.
+- **Compatibilità con screen reader**: Struttura HTML semantica, uso corretto di `ARIA` e gestione dinamica dello stato.
+- **Contrasto sufficiente**: Tutti i testi rispettano il rapporto minimo 4.5:1 (testo normale) e 3:1 per elementi UI (WCAG 1.4.3, 1.4.11).
+- **Testo ridimensionabile**: Funzionale fino al 200% di zoom senza sovrapposizioni (WCAG 1.4.4, 1.4.10).
+- **Controllo delle animazioni**: Disattivate automaticamente con `prefers-reduced-motion: reduce`, più opzione manuale tramite pulsante “Comfort”.
+- **Supporto al contrasto elevato**: Applica automaticamente un tema blu profondo se `prefers-contrast: high` è attivo (WCAG 1.4.12, livello AAA).
+- **Tema visivo dinamico**: Cinque varianti cromatiche (Verde, Ciano, Viola, Arancione, Blu Profondo) per supportare diverse condizioni visive, inclusi vari tipi di daltonismo.
+- **Persistenza delle preferenze**: Il tema e lo stato della navigazione da tastiera vengono salvati in `localStorage` e ripristinati alla visita successiva.
+- **Popup accessibili**: Finestre modali con gestione corretta del focus, supporto a <kbd>Esc</kbd> e transizione verso `role="dialog"` per migliorare l’accessibilità.
+- **Lazy loading sicuro**: Immagini caricate con `IntersectionObserver`, fallback per browser vecchi, e testo alternativo sempre presente.
+- **Orologi e contatori accessibili**: Aggiornati dinamicamente con `aria-live="polite"` per screen reader.
+- **Design resiliente**: Zero framework esterni. JavaScript vanilla, CSS moderno ma retrocompatibile, HTML semantico.
+- **Pagine semplificate**: Versioni con linguaggio chiaro, frasi brevi e supporto visivo per utenti con dislessia o difficoltà cognitive (WCAG 3.1.5).
+- **Accessibilità dei dati visivi**: Grafici accompagnati da tabelle nascoste (`visually-hidden`) e testi alternativi strutturati.
+- **Esportazione dati**: Possibilità di esportare dati di performance e accessibilità in JSON o CSV per audit trasparenti.
+- **Comfort visivo automatico (QRedshift)**: Filtro di temperatura colore più caldo la sera, basato sull’ora locale, disattivabile manualmente.
+- **Supporto alla pronuncia e comprensione**: Uso del tag `<ruby>` per definizioni e pronuncia di termini scientifici complessi (WCAG 3.1.3, 3.1.5).
+- **Video accessibile**: Senza autoplay, controlli personalizzati con `aria-label`, descrizioni testuali e navigazione da tastiera.
 
-### 2. Clona il tuo fork
-```bash
-git clone https://github.com/your-username/biotechproject.git
-cd biotechproject  
+
+## 🚀 Conformità in corso verso WCAG 2.1 Livello AAA
+
+Stiamo implementando ulteriori miglioramenti per avvicinarci al livello **AAA**:
+
+- **Pronuncia di termini tecnici**: Espansione dell’uso di `<ruby>` con sillabazione e IPA (es. "CRISPR", "epigenetica").
+- **Spiegazione di acronimi**: Implementazione progressiva di `<abbr title="...">` per sigle come "PCR", "ATP", "DNA".
+- **Link con testo descrittivo**: Verifica continua che ogni link sia comprensibile anche fuori contesto (WCAG 2.4.9).
+- **Migrazione da popup a modali accessibili**: Sostituzione di `window.open()` con modali interni dotati di `role="dialog"`, trapping del focus e supporto completo da tastiera.   
+
+
+## ⚠️ Non conformità parziali o eccezioni
+
+Nonostante l’impegno, alcune parti non soddisfano pienamente tutti i criteri WCAG:
+
+- **Uso di `role="menu"` nei dropdown**: Attualmente utilizzato per un comportamento avanzato da tastiera, ma tecnicamente riservato a barre dei menu applicativi. In valutazione una transizione a un modello semantico più semplice e compatibile.
+- **Popup basati su `window.open()`**: Alcuni link aprono finestre esterne per retrocompatibilità con sistemi legacy. In fase di migrazione verso modali interni accessibili.
+
+
+## 💬 Feedback e segnalazioni
+
+Il tuo feedback è fondamentale per migliorare l’accessibilità del progetto.  
+Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattaci](accessibility-it.html#feedback) (sezione "Feedback e segnalazioni" della dichiarazione).
+
+## 📅 Data dell’ultima verifica
+**8 settembre 2025**   
+
+
+## 🔮 Aggiornamenti futuri
+
+La dichiarazione sarà aggiornata regolarmente. I prossimi miglioramenti includeranno:
+
+- Migrazione completa a modali interni.
+- Valutazione di pattern ARIA più semplici per i menu, per maggiore compatibilità con screen reader.
+- Ottimizzazione del contrasto in modalità notturna (QRedshift) per garantire un rapporto minimo di 4.5:1 anche con il filtro attivo.
+- Integrazione di trascrizioni complete e sottotitoli per tutti i video futuri.
+
+## 🌱 Filosofia del progetto
+
+> *“BiotechProject non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e umana.”*
+
+Questo progetto è un esempio pratico di **sviluppo responsabile**, dove tecnologia, etica e usabilità si incontrano. È pensato per ispirare una cultura del web più inclusiva, in cui l’accessibilità non è un’appendice, ma il fondamento.
+
+---
+
+📌 **Progetto individuale sviluppato interamente da [Il Tuo Nome]**  
+🔧 Tecnologie: HTML5, CSS3, JavaScript vanilla, ARIA, W3C standards  
+🌍 Hosting: GitHub Pages  
+📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale. 

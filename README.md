@@ -12,14 +12,14 @@
 [Deutsch 🇩🇪](README.de.md) | 
 [Português (BR) 🇧🇷](README.pt-br.md)
 
-> 🌍 *"Welcome everyone. We don’t speak all languages, but we speak the same one: collaboration."*  
-> English is not a barrier — it’s a bridge.  
-> 🔹 To contribute or learn about project guidelines, visit the main files in English:  
+> 🌍 *"We don't all speak the same languages, but we speak the same language: collaboration."*  
+> English is not a barrier — it's a bridge.  
+> 🔹 To contribute or review project guidelines, visit the main English files:  
 > - [Contributing Guidelines](CONTRIBUTING.md)  
 > - [Code of Conduct](CODE_OF_CONDUCT.md)  
-> Using English fosters international collaboration.
+> Using English supports international collaboration.
 
-**An open-source project uniting science, health, and web technology.**  
+**An open source project that unites science, health, and web technology.**  
 Where biotechnology meets code to build digital tools for research and innovation.
 
 ![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)
@@ -30,74 +30,110 @@ Where biotechnology meets code to build digital tools for research and innovatio
 
 ## 🌱 What is BiotechProject?
 
-BiotechProject is an **open digital lab** dedicated to **biotechnology, health, and scientific outreach** through the web.
+BiotechProject is an **open digital lab** that combines **biotechnology, health, and web development** into an integrated system designed to be:
 
-The project combines:
-- 🧪 Scientific content on biology, medicine, and biotechnology
-- 💻 Modern web development (HTML, CSS, JavaScript)
-- 📊 Automated performance monitoring with Lighthouse
-- 🚀 Continuous automation via GitHub Actions
+- 🔍 **Scientifically reliable**
+- 💻 **Technically robust**
+- 🌐 **Accessible to everyone**, including users with disabilities
+- 🤝 **Open to global collaboration**
 
-It’s a collaborative space for developers, researchers, and enthusiasts who want to explore **how technology can serve science**.
+It was created to show how technology can serve science and healthcare, while ensuring equitable access for all — regardless of sensory, cognitive, or motor abilities.
+
+It's a collaborative space for developers, researchers, and enthusiasts who want to explore **how the web can become a tool for inclusion and scientific innovation**.
 
 ---
 
 ## 🚀 Key Features
 
-✅ **Automated Performance Dashboard**  
+✅ **Open by design**  
+→ Open to contributions, ideas, and international collaboration
+
+✅ **Integrated CI/CD workflow**  
+→ Automated testing, analysis, and updates on every change
+
+✅ **Automated performance dashboard**  
 → Continuous analysis of all pages with updates to `performance-data.json`
 
-✅ **Dynamic Category Filter**  
+✅ **Dynamic filter by category**  
 → Interactive interface to explore technological maturity status
 
-✅ **Integrated CI/CD Workflow**  
-→ Automatic testing, analysis, and updates on every change
-
-✅ **Responsive and Accessible Design**  
-→ Works across all devices, with a focus on usability
-
-✅ **Open by Design**  
-→ Open to contributions, ideas, and collaborations
+✅ **Responsive and accessible design**  
+→ Works across all devices, with strong focus on usability and WCAG compliance
 
 ---
 
-## 🛠️ Technologies Used
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES Modules)
-- **Analysis**: Lighthouse, Chrome Launcher
-- **Automation**: GitHub Actions
-- **Monitoring**: `performance-data.json` + dynamic dashboard
-- **Deployment**: GitHub Pages
-
----
+The project includes an automated system to monitor the technical quality of pages, with daily updates via GitHub Actions.
 
 ## 📊 Performance Dashboard
-
-The project includes an automated system to monitor the technical quality of pages:
 
 - Performance score (0–100)
 - Load time
 - Maturity category: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- Daily updates via GitHub Actions workflow
 
-👉 View the real-time report: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 View real-time report: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🔗 Explore the Project
+## 🔗 Explore BiotechProject
 - 🏠 [Homepage](https://gitechnolo.github.io/biotechproject/)   
 - 📄 [Tech Maturity Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🤝 How to Contribute
+## 🌐 Accessibility
 
-Thank you for your interest! All contributions are welcome 🎉
+The site is **partially conformant** with **WCAG 2.1 Level AA**, in accordance with Legislative Decree 10 August 2018, n. 106 (implementing EU Directive 2016/2102).
 
-### 1. Fork the Repository
-Click **"Fork"** in the top-right corner.
+Conformance was verified on **8 September 2025** through:
+- Automated audits (axe, WAVE, Lighthouse)
+- Manual testing with screen readers (NVDA, VoiceOver)
+- Keyboard navigation and W3C validation
 
-### 2. Clone Your Fork
-```bash
-git clone https://github.com/your-username/biotechproject.git
-cd biotechproject   
+📄 **Full accessibility statement:**  
+👉 [Read Accessibility Statement (EN)](accessibility-en.html)  
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)
+
+---
+
+## 💡 Want to contribute?
+
+You're welcome!  
+BiotechProject is an **open project for everyone**, inspired by the collaborative spirit of Wikipedia.
+
+🔹 To get started:
+- Read the [**Contributing Guidelines**](CONTRIBUTING.md)
+- Follow the [**Code of Conduct**](CODE_OF_CONDUCT.md)
+
+You can help with:
+- Scientific content
+- Technical or accessibility improvements
+- Translations
+- Bug reports and suggestions
+
+Every contribution — big or small — helps make science more accessible.
+
+---
+
+## 🛠️ Technologies Used
+- Semantic HTML5
+- CSS3 with Custom Properties
+- Vanilla JavaScript (no frameworks)
+- ARIA 1.2 for dynamic interactions
+- GitHub Actions for CI/CD
+- Lighthouse for performance monitoring
+
+---
+
+## 📄 License
+
+📄 License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
+You are free to share, adapt, and use the project commercially, as long as you **give appropriate credit**.
+
+---
+
+## 🙌 Author
+
+Author: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
+Project available at: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
+
+> “Anyone can contribute. Just respect the origin, and keep building with care.”   
