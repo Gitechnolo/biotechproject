@@ -138,10 +138,16 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
 <div id="about">
-  <audio controls autoplay>
-  <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/epic-background-music.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <section aria-labelledby="audio-title">
+  <h2 id="audio-title" class="sr-only">Musica di sottofondo</h2>
+  <p class="sansation-light-italic">
+    Ascolta la nostra musica di sottofondo mentre esplori questa pagina.
+  </p>
+  <audio controls preload="none">
+    <source src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Instrumental.mp3" type="audio/mpeg">
+    Il tuo browser non supporta l'elemento audio.
+  </audio>
+</section>   
 <br>  
   <p class="sidenavtext">Welcome to the Biotech Project<br>
   <span class="text">A project for the future of biotechnology<br>
