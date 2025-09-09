@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -133,24 +133,25 @@
         
 
 <main id="main-content">
-  <h1>Accessibility Statement</h1>
+    <h1>Accessibility Statement</h1>
 
-  <p><strong>BiotechProject</strong> is deeply committed to ensuring that its website is accessible to all users, including those with visual, auditory, motor, cognitive, or neurodiverse disabilities. Accessibility is not an afterthought, but a foundational principle in our design, development, and scientific communication. We believe science should be open, inclusive, and usable by everyone.</p>
+    <p><strong>BiotechProject</strong> is deeply committed to ensuring that its website is accessible to all people, including users with visual, auditory, motor, cognitive, or neurodiverse disabilities. Accessibility is not just a technical requirement, but a foundational principle in our design, development, and scientific communication. We believe science should be open, inclusive, and usable by everyone — regardless of sensory, cognitive, or technological capabilities.</p>
 
     <h2>Conformance to Standards</h2>
-  <p>The BiotechProject website is <strong>partially conformant</strong> with the <strong>Web Content Accessibility Guidelines (WCAG) 2.1</strong> at Level <strong>AA</strong>, in accordance with Legislative Decree No. 106 of 10 August 2018, which implements EU Directive (EU) 2016/2102.</p>
+    <p>The <strong>main pages</strong> of the BiotechProject website are <strong>conformant with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>, in accordance with Legislative Decree 10 August 2018, No. 106, which implements EU Directive (EU) 2016/2102.</p>
 
-  <p>Conformance was evaluated through a combined approach:</p>
-  <ul>
-    <li>Technical audits using automated tools (axe, WAVE, Lighthouse)</li>
-    <li>Manual testing for keyboard navigation, screen readers (NVDA, VoiceOver), and mobile devices</li>
-    <li>Verification of user preference support (reduced motion, high contrast, zoom up to 200%)</li>
-    <li>Validation of HTML and CSS code via W3C validators</li>
-  </ul>
-  <p><strong>Last review conducted on: <time datetime="2025-09-08">8 September 2025</time></strong>.</p>
+    <p>Conformance has been verified through a combined approach:</p>
+    <ul>
+      <li>Technical audits using automated tools (axe, WAVE, Lighthouse)</li>
+      <li>Manual testing with keyboard navigation, screen readers (NVDA, VoiceOver), and mobile devices</li>
+      <li>Verification of user preference support (reduced motion, high contrast, zoom up to 200%)</li>
+      <li>Validation of HTML and CSS code via W3C validators</li>
+    </ul>
+    <p><strong>Last verified on: <time datetime="2025-09-08">8 September 2025</time></strong>.</p>
+
 
   <h2>Implemented Accessibility Features</h2>
-  <p>The site was designed with an “accessibility from the start” (<em>accessibility by design</em>) approach. Key features include:</p>
+  <p>The site was designed with an “accessibility by design” approach. Key features include:</p>
   <ul>
     <li><strong>Full keyboard navigation</strong>: All functionality is accessible via keyboard. A dedicated button enables advanced visual highlighting for keyboard users.</li>
     <li><strong>Advanced menu support</strong>: Dropdown menus are navigable via arrow keys, <kbd>Home</kbd>, <kbd>End</kbd>, and <kbd>Esc</kbd>, with proper focus management.</li>
@@ -199,7 +200,7 @@
   <p>Despite our strong commitment to inclusivity, some parts of the site do not fully satisfy all WCAG 2.1 criteria, due to technical, contextual, or backward-compatibility reasons. These cases are documented and actively being improved:</p>
   <ul>
     <li><strong>Use of <code>role="menu"</code> in dropdown navigation</strong>: Currently, dropdown menus use <code>role="menu"</code> and <code>role="menuitem"</code> to ensure advanced keyboard behavior (arrow keys, <kbd>Home</kbd>/<kbd>End</kbd>, <kbd>Esc</kbd>). However, this pattern is technically intended for application-like menu bars. We are evaluating a transition to a simpler semantic model — based on <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> — to improve screen reader compatibility while maintaining full keyboard functionality.</li>
-    <li><strong>Popups based on <code>window.open()</code></strong>: Some links open external windows to ensure backward compatibility with legacy client systems. We are actively migrating to accessible internal modals to provide a more inclusive and controlled user experience.</li>
+    <li><strong>Popups based on <code>window.open()</code></strong>: Some links open external windows to ensure backward compatibility with legacy client systems. We are actively migrating to accessible internal modals for a more inclusive and controlled experience.</li>
   </ul>
 
   <h2>Feedback and Reporting</h2>
@@ -223,14 +224,16 @@
     <li>Integration of full transcripts and captions for all future videos.</li>
   </ul>
 
-  <p><em>"BiotechProject is not just science: it's inclusion. Every line of code is designed to be accessible, resilient, and human."</em></p>
+  <p class="sansation-light-italic" style="text-align: center; margin: 2rem 0; color: #64ffda; font-size: 1.1em;">
+  “BiotechProject is not just science: it’s inclusion. Every line of code is designed to be accessible, resilient, and human.”
+</p>   
 
-  <div class="biotech-center">
+  <div style="text-align: center;">
     <a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" aria-label="Dichiarazione di accessibilità del sito BiotechProject" title="This site conforms to WCAG 2.1 Level AA standards">
       <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Accessibility statement for BiotechProject website" class="badge">
     </a>
   </div>
-  <p class="biotech-center" style="font-size: 0.9em; color: #64ffda; opacity: 0.9; margin-top: 1rem;">
+  <p style="text-align: center; font-size: 0.9em; color: #64ffda; opacity: 0.9; margin-top: 1rem;">
     BiotechProject. A project for a more inclusive web.
   </p>
 </main>

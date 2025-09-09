@@ -82,12 +82,21 @@ The project includes an automated system to monitor the technical quality of pag
 
 ## 🌐 Accessibility
 
-The site is **partially conformant** with **WCAG 2.1 Level AA**, in accordance with Legislative Decree 10 August 2018, n. 106 (implementing EU Directive 2016/2102).
+The site is **conformant with WCAG 2.1 Level AA** for all main pages.  
+Conformance has been verified through:
 
-Conformance was verified on **8 September 2025** through:
-- Automated audits (axe, WAVE, Lighthouse)
+- Automated audits (Lighthouse, axe, WAVE)
 - Manual testing with screen readers (NVDA, VoiceOver)
-- Keyboard navigation and W3C validation
+- Full keyboard navigation (tab, shift+tab, enter, space, arrows)
+- W3C code validation
+- Direct code inspection for semantic structure and correct ARIA usage
+
+The project is **partially conformant with Level AAA**, particularly in:
+- Color contrast (most text exceeds 7:1 ratio)
+- Hierarchical heading structure
+- Use of descriptive alternative text
+
+However, some AAA criteria are not applicable or required in the current context (e.g. video captions, extended plain language).   
 
 📄 **Full accessibility statement:**  
 👉 [Read Accessibility Statement (EN)](accessibility-en.html)  

@@ -12,93 +12,136 @@
 [Deutsch 🇩🇪](README.de.md) | 
 [Português (BR) 🇧🇷](README.pt-br.md)
 
-> 🌍 *"Willkommen alle miteinander. Wir sprechen nicht alle Sprachen, aber wir sprechen dieselbe: die Zusammenarbeit."*  
-> Englisch ist kein Hindernis, sondern eine Brücke.  
-> 🔹 Um beizutragen oder die Projekt-Richtlinien zu lesen, besuche die Hauptdateien in Englisch:  
-> - [Contributing Guidelines](CONTRIBUTING.md)  
-> - [Code of Conduct](CODE_OF_CONDUCT.md)  
+> 🌍 *"Wir sprechen nicht alle dieselbe Sprache, aber wir sprechen dieselbe Sprache: Zusammenarbeit."*  
+> Englisch ist kein Hindernis – es ist eine Brücke.  
+> 🔹 Um Beiträge zu leisten oder Projekt-Richtlinien einzusehen, besuchen Sie die Hauptdateien in Englisch:  
+> - [Beitragshinweise](CONTRIBUTING.md)  
+> - [Verhaltenskodex](CODE_OF_CONDUCT.md)  
 > Die Verwendung von Englisch fördert die internationale Zusammenarbeit.
 
-**Ein Open-Source-Projekt, das Wissenschaft, Gesundheit und Webtechnologie verbindet.**  
-Wo Biotechnologie auf Code trifft, um digitale Werkzeuge für Forschung und Innovation zu schaffen.
+**Ein Open-Source-Projekt, das Wissenschaft, Gesundheit und Webtechnologie vereint.**  
+Wo Biotechnologie auf Code trifft, um digitale Werkzeuge für Forschung und Innovation zu entwickeln.
 
 ![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)
 ![Workflow Status](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml/badge.svg)
-![Last Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)
+![Letzter Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)
 
 ---
 
 ## 🌱 Was ist BiotechProject?
 
-BiotechProject ist ein **offenes digitales Labor** für **Biotechnologie, Gesundheit und wissenschaftliche Bildung** über das Web.
+BiotechProject ist ein **offenes digitales Labor**, das **Biotechnologie, Gesundheit und Webentwicklung** zu einem integrierten System verbindet, das folgende Merkmale aufweist:
 
-Das Projekt verbindet:
-- 🧪 Wissenschaftliche Inhalte zu Biologie, Medizin und Biotechnologie
-- 💻 Modernes Webdevelopment (HTML, CSS, JavaScript)
-- 📊 Automatisierte Leistungsüberwachung mit Lighthouse
-- 🚀 Kontinuierliche Automatisierung mittels GitHub Actions
+- 🔍 **Wissenschaftlich fundiert**
+- 💻 **Technisch robust**
+- 🌐 **Für alle zugänglich**, einschließlich Nutzer mit Behinderungen
+- 🤝 **Offen für globale Zusammenarbeit**
 
-Es ist ein gemeinsamer Raum für Entwickler, Forscher und Interessierte, die erkunden möchten, **wie Technologie der Wissenschaft dienen kann**.
+Es wurde entwickelt, um zu zeigen, wie Technologie Wissenschaft und Gesundheitswesen unterstützen kann, und gleichzeitig gerechten Zugang für alle sicherstellt – unabhängig von sensorischen, kognitiven oder motorischen Fähigkeiten.
+
+Ein kollaborativer Raum für Entwickler, Forscher und Enthusiasten, die erforschen möchten, **wie das Web zu einem Werkzeug für Inklusion und wissenschaftliche Innovation werden kann**.
 
 ---
 
-## 🚀 Hauptfunktionen
+## 🚀 Wichtige Funktionen
 
-✅ **Automatisiertes Leistungs-Dashboard**  
-→ Kontinuierliche Analyse aller Seiten mit Aktualisierung von `performance-data.json`
-
-✅ **Dynamischer Filter nach Kategorie**  
-→ Interaktive Oberfläche zur Anzeige des technologischen Reifegrads
+✅ **Grundsätzlich offen**  
+→ Offen für Beiträge, Ideen und internationale Zusammenarbeit
 
 ✅ **Integrierter CI/CD-Workflow**  
-→ Automatische Tests, Analysen und Updates bei jeder Änderung
+→ Automatisierte Tests, Analysen und Updates bei jeder Änderung
+
+✅ **Automatisiertes Leistungs-Dashboard**  
+→ Kontinuierliche Analyse aller Seiten mit Aktualisierungen von `performance-data.json`
+
+✅ **Dynamischer Filter nach Kategorie**  
+→ Interaktive Oberfläche zur Erforschung des technologischen Reifegrads
 
 ✅ **Responsives und barrierefreies Design**  
-→ Funktioniert auf allen Geräten, mit Fokus auf Benutzerfreundlichkeit
-
-✅ **Von Grund auf offen**  
-→ Offen für Beiträge, Ideen und Zusammenarbeit
+→ Funktioniert auf allen Geräten, mit starker Betonung von Bedienbarkeit und WCAG-Konformität
 
 ---
 
-## 🛠️ Verwendete Technologien
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES-Module)
-- **Analyse**: Lighthouse, Chrome Launcher
-- **Automatisierung**: GitHub Actions
-- **Überwachung**: `performance-data.json` + dynamisches Dashboard
-- **Deployment**: GitHub Pages
-
----
+Das Projekt beinhaltet ein automatisiertes System zur Überwachung der technischen Qualität der Seiten, mit täglichen Updates über GitHub Actions.
 
 ## 📊 Leistungs-Dashboard
-
-Das Projekt enthält ein automatisiertes System zur Überwachung der technischen Qualität der Seiten:
 
 - Leistungswert (0–100)
 - Ladezeit
 - Reifegrad-Kategorie: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- Tägliche Aktualisierung über Workflows
 
-👉 Aktuellen Bericht anzeigen: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 Aktuellen Bericht ansehen: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🔗 Projekt erkunden
+## 🔗 BiotechProject erkunden
 - 🏠 [Startseite](https://gitechnolo.github.io/biotechproject/)   
-- 📄 [Technologie-Reife-Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+- 📄 [Tech-Reifegrad-Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🤝 So kannst du beitragen
+## 🌐 Barrierefreiheit
 
-Vielen Dank für dein Interesse! Jeder Beitrag ist willkommen 🎉
+Die Website ist **konform mit den WCAG 2.1 Level AA** für alle Hauptseiten.  
+Die Konformität wurde überprüft durch:
 
-### 1. Erstelle einen Fork des Repositorys
-Klicke oben rechts auf **"Fork"**.
+- Automatisierte Audits (Lighthouse, axe, WAVE)
+- Manuelle Tests mit Screenreadern (NVDA, VoiceOver)
+- Vollständige Tastaturnavigation (Tab, Shift+Tab, Enter, Leertaste, Pfeiltasten)
+- W3C-Code-Validierung
+- Direkte Code-Überprüfung auf semantische Struktur und korrekte ARIA-Nutzung
 
-### 2. Klonen deines Forks
-```bash
-git clone https://github.com/dein-benutzername/biotechproject.git
-cd biotechproject   
--   
+Das Projekt ist **teilweise konform mit Level AAA**, insbesondere bei:
+- Farbkontrast (der Großteil des Textes übertrifft das Verhältnis 7:1)
+- Hierarchische Überschriftenstruktur
+- Verwendung beschreibender Alternativtexte
+
+Einige AAA-Kriterien sind jedoch im aktuellen Kontext nicht anwendbar oder nicht erforderlich (z. B. Untertitel für Videos, ausführliche Leichte-Sprache).    
+
+📄 **Vollständige Barrierefreiheitserklärung:**  
+👉 [Barrierefreiheitserklärung lesen (EN)](accessibility-en.html)  
+👉 [Dichiarazione di Accessibilità lesen (IT)](accessibility-it.html)    
+
+
+## 💡 Möchten Sie beitragen?
+
+Sie sind herzlich willkommen!  
+BiotechProject ist ein **offenes Projekt für alle**, inspiriert vom kollaborativen Geist von Wikipedia.
+
+🔹 So können Sie beginnen:
+- Lesen Sie die [**Beitragshinweise**](CONTRIBUTING.md)
+- Befolgen Sie den [**Verhaltenskodex**](CODE_OF_CONDUCT.md)
+
+Sie können helfen bei:
+- Wissenschaftlichen Inhalten
+- Technischen oder barrierefreiheitsbezogenen Verbesserungen
+- Übersetzungen
+- Fehlermeldungen und Vorschlägen
+
+Jeder Beitrag – groß oder klein – trägt dazu bei, Wissenschaft zugänglicher zu machen.
+
+---
+
+## 🛠️ Verwendete Technologien
+- Semantisches HTML5
+- CSS3 mit Custom Properties
+- Vanilla JavaScript (keine Frameworks)
+- ARIA 1.2 für dynamische Interaktionen
+- GitHub Actions für CI/CD
+- Lighthouse für die Leistungsüberwachung
+
+---
+
+## 📄 Lizenz
+
+📄 Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
+Sie dürfen das Projekt frei nutzen, anpassen und kommerziell verwenden, solange Sie **angemessen urheberrechtlich nennen**.
+
+---
+
+## 🙌 Autor
+
+Autor: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
+Projekt verfügbar unter: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
+
+> „Jeder kann beitragen. Respektieren Sie einfach den Ursprung und bauen Sie sorgfältig weiter.“

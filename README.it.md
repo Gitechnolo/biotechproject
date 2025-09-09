@@ -83,12 +83,21 @@ Il progetto include un sistema automatico per monitorare la qualità tecnica del
 
 ## 🌐 Accessibilità
 
-Il sito è **parzialmente conforme** alle **Linee guida WCAG 2.1 livello AA**, in conformità al Decreto Legislativo 10 agosto 2018, n. 106.
+Il sito è **conforme alle Linee guida WCAG 2.1 Livello AA** per tutte le pagine principali.  
+La conformità è stata verificata tramite:
 
-La conformità è stata verificata il **8 settembre 2025** con:
-- Audit automatici (axe, WAVE, Lighthouse)
+- Audit automatizzati (Lighthouse, axe, WAVE)
 - Test manuali con screen reader (NVDA, VoiceOver)
-- Navigazione da tastiera e validazione W3C
+- Navigazione completa da tastiera (tab, shift+tab, invio, spazio, frecce)
+- Validazione W3C del codice HTML
+- Ispezione diretta del codice per struttura semantica e uso corretto di ARIA
+
+Il progetto è **parzialmente conforme al Livello AAA**, in particolare per:
+- Contrasto del colore (maggior parte dei testi supera il rapporto 7:1)
+- Struttura gerarchica dei titoli
+- Uso di testo alternativo descrittivo
+
+Tuttavia, alcuni criteri AAA non sono applicabili o non sono richiesti nel contesto attuale (es. sottotitoli per video, testo in lingua semplice esteso).
 
 📄 **Dichiarazione completa:**  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)  
