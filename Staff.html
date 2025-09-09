@@ -15,28 +15,7 @@
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 </style>
-<script>
-!function(){
-  const l = document.getElementById('preload-style');
-  const show = () => {
-    const c = document.getElementById('main-content');
-    if (c) c.style.setProperty('opacity', '1');
-  };
-
-  if (l) {
-    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
-    if (l.sheet) l.rel = 'stylesheet';
-  }
-
-  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', show);
-  } else {
-    show();
-  }
-  setTimeout(show, 3000); // sicurezza finale
-}();
-</script>
+<script>!function(){const l=document.getElementById('preload-style');const show=()=>{const c=document.getElementById('main-content');if(c)c.style.setProperty('opacity','1');};if(l){l.onload=()=>{l.rel='stylesheet';setTimeout(show,50)};if(l.sheet)l.rel='stylesheet'}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',show)}else{show()}setTimeout(show,3000)}()</script>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico">   
 </head>
@@ -143,11 +122,11 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.jpg 348w" type="image/jpeg">
 <source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.avif 604w" type="image/avif">
 <source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg 604w" type="image/jpeg">
-<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Fabrizio, Art Director di Biotech Project" class="imgStaff" fetchpriority="high" width="604" height="408" sizes="(max-width: 603px) 100vw, 604px">
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Fabrizio, Founder & Art Director di Biotech Project" class="imgStaff" fetchpriority="high" width="604" height="408" sizes="(max-width: 603px) 100vw, 604px">
 </picture>
 <div class="staff-container">
 <p class="sidenavtext">Fabrizio</p>
-<p class="staff-title">Art Director</p><br>
+<p class="staff-title">Founder & Art Director</p><br>
 <p class="yellowtext">La passione, recepire per elaborare, l'azione consapevole in un giorno qualunque!</p><br>
 <p id="about">Web Architect</p><br>
 <p><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank"><button class="staff-button">GitHub</button></a></p><br>
