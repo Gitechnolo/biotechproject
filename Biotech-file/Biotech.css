@@ -353,8 +353,16 @@ img.hover-shadow {transition: 0.3s;}
 .dna-helix-8:nth-child(7) { animation-delay: -2.625s; }
 .dna-helix-8:nth-child(8) { animation-delay: -3.0s; }
 /* End DNA animazione - 8 eliche ottimizzate */     
-/* Background particles */
-canvas#particles-canvas {position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; opacity: 0.9;}   
+/* Background particles - new version */
+canvas#particles-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  opacity: 0.9;
+  /* Rimuossi: position, top, left, z-index, width/height in vw/vh */
+}   
 /* End Background particles */
 /* Contenitore stabile per il canvas */
 .canvas-wrapper {
