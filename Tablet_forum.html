@@ -111,9 +111,7 @@
 
   <!-- === INFO IN ALTO A SINISTRA === -->
   <div class="info-container">
-    <span class="biotechbold">Your O.S.</span>
-    <p id="risolution" class="text"></p>
-
+    
     <!-- Testo statico -->
     <p class="text">
       <span class="biotechbold">Biotech Chat Window</span><br>
@@ -145,24 +143,6 @@
       <div id="chatStatus" class="chat-status"></div>
     </form>
   </div>
-
-  <!-- === SCRIPT: Informazioni dispositivo === -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const risolution = document.getElementById('risolution');
-      if (risolution) {
-        risolution.innerHTML = 
-          "Your screen resolution is " + window.screen.width + "x" + window.screen.height + " pixels." + "<br>" +
-          "Browser window size " + window.innerWidth + "x" + window.innerHeight + " pixels." + "<br>" +
-          "" + navigator.appName + " version " + navigator.appVersion + "." + "<br>" +
-          "Language: " + navigator.language + "." + " &nbsp; " + "Status: " + (navigator.onLine ? "Online" : "Offline") + "." + " &nbsp; " +
-          "Cookies enabled: " + (navigator.cookieEnabled ? "Yes" : "No") + "." + " &nbsp; " +
-          "JavaScript enabled: " + (typeof navigator.javaEnabled === "function" && navigator.javaEnabled() ? "Yes" : "No") + "." + " &nbsp; " +
-          "Vendor: " + navigator.vendor + "." + " &nbsp; " +
-          "<b>Do Not Track</b>: " + (navigator.doNotTrack ? navigator.doNotTrack : "Not supported") + ".";
-      }
-    });
-  </script>
 
   <!-- === SCRIPT: Form di chat === -->
   <script>
