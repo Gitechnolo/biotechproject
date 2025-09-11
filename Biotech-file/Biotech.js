@@ -591,7 +591,7 @@ openPopup(
 'https://gitechnolo.github.io/biotechproject/O.S_support.html',
 'O.S. Support Chat GPT',
 760,
-400
+440
   );
 }
 function openContactPopup() {
