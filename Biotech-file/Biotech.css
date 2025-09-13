@@ -514,4 +514,22 @@ textarea:focus,
 }
 .biotech-simple-link:active {
   transform: translateY(0);
-}   
+}
+/* link "Skip to main" link salto per tastiera */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 4px 4px 0 0;
+  z-index: 1000;
+  transition: top 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.skip-link:focus {
+  top: 0;
+}
