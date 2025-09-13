@@ -709,3 +709,19 @@ function handleVideoPosterKey(event) {
   }
 }
 // End Accessibilità video   
+
+// === Ultima modifica pagina (integrazione diretta) ===
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    const options = { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    el.textContent = `Last edit: ${d.toLocaleDateString('it-IT', options)}`;
+  }
+});   
