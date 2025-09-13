@@ -724,4 +724,62 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     el.textContent = `Last edit: ${d.toLocaleDateString('it-IT', options)}`;
   }
-});   
+});
+// === End ultima modifica pagina (integrazione diretta) ===
+
+// === 🔊 PRONUNCIA TERMINI TECNICI - Accessibilità avanzata ===
+// Funzione principale: riproduce la pronuncia di un termine
+function speakTerm(term, language = 'italiano') {
+  // Interrompi eventuali letture in corso
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+  }
+// Mappa personalizzata per pronunce scientifiche
+  const customPronunciations = {
+    'CRISPR': 'Clustered Regularly Interspaced Short Palindromic Repeats',
+    'epigenetica': 'Epi-jen-etica',
+    'plasmide': 'Plaz-mi-de',
+    'mitocondri': 'Mi-to-con-dri',
+    'lisosoma': 'Li-so-so-ma',
+    'miochine': 'Mi-o-ki-ne',
+    'sinaptogenesi': 'Si-na-to-jen-e-si',
+    'epigenetici': 'E-pi-je-ne-ti-ci',
+    'ATP': 'Adenosina trifosfato',
+    'DNA': 'Acido desossiribonucleico',
+    'RNA': 'Acido ribonucleico',
+    'cellula': 'Chel-loo-la',
+    'tegumento': 'Te-gu-men-to',
+    'cheratinociti': 'Ke-ra-ti-no-chi-ti',
+    'melanociti': 'Me-la-no-chi-ti',
+    'infiammazione': 'In-fia-mma-zio-ne',
+    'neurotrofici': 'Neu-ro-tro-fi-ci',
+    'microbiota': 'Mi-cro-bi-o-ta'
+  };
+const utterance = new SpeechSynthesisUtterance(customPronunciations[term] || term);
+// Mappa lingue
+  const langMap = {
+    'italiano': 'it-IT',
+    'inglese': 'en-US'
+  };
+  utterance.lang = langMap[language] || 'it-IT';
+  utterance.rate = 0.8;   // Velocità leggermente ridotta per chiarezza
+  utterance.pitch = 1;    // Tono naturale
+  utterance.volume = 1;
+// Annuncio accessibile (per screen reader)
+  const announcement = document.getElementById('sr-announcement');
+  if (announcement) {
+    announcement.textContent = `Lettura avviata: ${term}.`;
+    setTimeout(() => announcement.textContent = '', 1000);
+  }
+// Log per debug (opzionale)
+  console.log(`Pronuncia attivata: ${term} (${language})`);
+
+  speechSynthesis.speak(utterance);
+}
+// Gestione tastiera per i pulsanti di pronuncia
+function handlePronounceKey(event, term, language = 'italiano') {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    speakTerm(term, language);
+  }
+}   

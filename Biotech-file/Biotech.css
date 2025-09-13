@@ -522,3 +522,55 @@ textarea:focus,
 .biotech-simple-link:active {
   transform: translateY(0);
 }
+
+/* === STILE PER LA PRONUNCIA E ACCESSIBILITÀ === */
+/* Contenitore ruby navigabile */
+.pronounceable {
+  cursor: default;
+  display: inline;
+}
+/* Testo di pronuncia (sillabazione) */
+.pronounceable .pronunciation-text {
+  font-size: 12px; /* Chiaro, costante, leggibile */
+  color: hsla(60, 15%, 92%, 1);
+  /* background: rgba(0, 30, 0, 0.8); Rimosso */
+  padding: 1px 0; /* Riduce o rimuove padding senza background */
+  border-radius: 3px;
+  line-height: 1.4;
+  font-weight: 500;
+  margin-left: 4px;
+}
+/* Pulsante audio */
+.pronounceable .pronounce-btn {
+  background: none;
+  border: none;
+  font-size: 13px; /* o 0.85em */
+  cursor: pointer;
+  margin-left: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.pronounceable .pronounce-btn:hover,
+.pronounceable .pronounce-btn:focus {
+  opacity: 1;
+  transform: scale(1.1);
+  outline: 1px solid #0f8;
+  border-radius: 2px;
+}
+/* Nascondi il pulsante su stampa o schermi con bassa risoluzione */
+@media print, (max-width: 480px) {
+  .pronounceable .pronounce-btn {
+    display: none;
+  }
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}   
