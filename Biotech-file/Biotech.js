@@ -728,17 +728,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // === End ultima modifica pagina (integrazione diretta) ===
 
 // === 🔊 PRONUNCIA TERMINI TECNICI - Accessibilità avanzata ===
-// Funzione principale: riproduce la pronuncia di un termine
+// Funzione principale: riproduce la pronuncia di un termine con supporto per termini scientifici personalizzati
+
 function speakTerm(term, language = 'italiano') {
-  // Interrompi eventuali letture in corso
+  // Interrompi qualsiasi sintesi vocale in corso per evitare sovrapposizioni
   if (speechSynthesis.speaking) {
     speechSynthesis.cancel();
   }
-// Mappa personalizzata per pronunce scientifiche
+  // Mappa personalizzata per pronunce scientifiche (lettura estesa o sillabata)
   const customPronunciations = {
     'CRISPR': 'Clustered Regularly Interspaced Short Palindromic Repeats',
-    'epigenetica': 'Epi-jen-etica',
-    'plasmide': 'Plaz-mi-de',
     'mitocondri': 'Mi-to-con-dri',
     'lisosoma': 'Li-so-so-ma',
     'miochine': 'Mi-o-ki-ne',
@@ -747,39 +746,52 @@ function speakTerm(term, language = 'italiano') {
     'ATP': 'Adenosina trifosfato',
     'DNA': 'Acido desossiribonucleico',
     'RNA': 'Acido ribonucleico',
-    'cellula': 'Chel-loo-la',
     'tegumento': 'Te-gu-men-to',
-    'cheratinociti': 'Ke-ra-ti-no-chi-ti',
-    'melanociti': 'Me-la-no-chi-ti',
-    'infiammazione': 'In-fia-mma-zio-ne',
-    'neurotrofici': 'Neu-ro-tro-fi-ci',
-    'microbiota': 'Mi-cro-bi-o-ta'
+    'Pecquet': 'Pes-ché'     
   };
-const utterance = new SpeechSynthesisUtterance(customPronunciations[term] || term);
-// Mappa lingue
+  // Mappa delle lingue supportate
   const langMap = {
     'italiano': 'it-IT',
     'inglese': 'en-US'
   };
+  // Ottieni la pronuncia personalizzata o usa il termine originale
+  const utteranceText = customPronunciations[term.toLowerCase()] || term;
+
+  // Crea l'istanza di SpeechSynthesisUtterance
+  const utterance = new SpeechSynthesisUtterance(utteranceText);
+
+  // Imposta la lingua, con fallback a italiano
   utterance.lang = langMap[language] || 'it-IT';
-  utterance.rate = 0.8;   // Velocità leggermente ridotta per chiarezza
-  utterance.pitch = 1;    // Tono naturale
-  utterance.volume = 1;
-// Annuncio accessibile (per screen reader)
+
+  // Parametri vocali ottimizzati per chiarezza
+  utterance.rate = 0.8;   // Velocità leggermente ridotta
+  utterance.pitch = 1.0;  // Tono neutro e naturale
+  utterance.volume = 1.0; // Volume massimo
+
+  // Feedback accessibile per screen reader
   const announcement = document.getElementById('sr-announcement');
   if (announcement) {
     announcement.textContent = `Lettura avviata: ${term}.`;
-    setTimeout(() => announcement.textContent = '', 1000);
+    // Pulisce il messaggio dopo 1 secondo per non disturbare
+    setTimeout(() => {
+      if (announcement.textContent.includes(term)) {
+        announcement.textContent = '';
+      }
+    }, 1000);
   }
-// Log per debug (opzionale)
-  console.log(`Pronuncia attivata: ${term} (${language})`);
 
+  // Log per debug (opzionale)
+  console.log(`🔊 Pronuncia attivata: "${term}" come "${utteranceText}" (${utterance.lang})`);
+
+  // Avvia la sintesi vocale
   speechSynthesis.speak(utterance);
 }
-// Gestione tastiera per i pulsanti di pronuncia
+
+// Gestione tastiera per i pulsanti di pronuncia (accessibilità da tastiera)
 function handlePronounceKey(event, term, language = 'italiano') {
+  // Supporta sia Invio che barra spaziatrice
   if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
+    event.preventDefault(); // Evita comportamenti indesiderati
     speakTerm(term, language);
   }
 }   
