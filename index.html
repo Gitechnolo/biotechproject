@@ -128,8 +128,9 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
 <a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a>
 <button role="menuitem" id="lang-toggle" aria-label="Cambia lingua in inglese" onclick="toggleLanguage()" lang="it">
-  <span id="lang-flag">🇮🇹 Cambia lingua</span><span id="lang-text" class="sr-only">Italiano</span>
-</button>   
+  <span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span>
+  <span id="lang-label">Cambia lingua</span>
+</button>         
 </div>
 </div>
 </div>
@@ -163,9 +164,9 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<h1>Benvenuti nel Progetto Biotech!</h1><br>
-<p class="biotechtitle">Qui per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.<br>
-La salute è il nostro bene più prezioso, la nostra serenità è il nostro destino di salute.</p><br>
+<h1 data-lang-key="main-heading">Benvenuti nel Progetto Biotech!</h1><br>
+<p class="biotechtitle" data-lang-key="main-subheading">Qui per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.</p>
+<p class="biotechtitle" data-lang-key="main-description">La salute è il nostro bene più prezioso, la nostra serenità è il nostro destino di salute.</p><br>
   <div id="ytVideoContainer">
   <!-- Poster caricato come immagine con priorità alta. (accessibilità video con supporto tastiera) -->
 <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" alt="Anteprima video: Foresta verticale di Singapore" fetchpriority="high" loading="eager" role="button" tabindex="0" aria-label="Riproduci video: Foresta verticale di Singapore" onkeydown="handleVideoPosterKey(event)" onclick="loadAndPlayVideo()" style="width:100%; height:auto; display:block; cursor:pointer;">   
@@ -180,36 +181,33 @@ La salute è il nostro bene più prezioso, la nostra serenità è il nostro dest
     <button id="ytExitFullscreen" style="display:none;" aria-label="Esci dalla modalità schermo intero" title="Exit Fullscreen">⤫</button>   
   </div>
 </div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/video.min.js" defer></script>
-<div aria-label="Descrizione del video"><p class="sansation-light-italic">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div><br>
-<p class="secHeader">Tutto ciò che non puoi non sapere!</p>
-<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Mitocondri"><span class="highlight">Mitocondri</span><rp>(</rp><rt><span class="pronunciation-text">Mi-to-con-dri</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Mitocondri" onclick="speakTerm('mitocondri', 'italiano')" onkeydown="handlePronounceKey(event, 'mitocondri', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle">Producono energia sotto forma di ATP.</p>    
-<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Lisosoma"><span class="highlight">Lisosoma</span><rp>(</rp><rt><span class="pronunciation-text">Li-so-so-ma</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Lisosoma" onclick="speakTerm('lisosoma', 'italiano')" onkeydown="handlePronounceKey(event, 'lisosoma', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle">Responsabile della distruzione e del riciclaggio delle cellule senescenti.</p>   
-<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Miochine"><span class="highlight">Miochine</span><rp>(</rp><rt><span class="pronunciation-text">Mi-o-ki-ne</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Miochine" onclick="speakTerm('miochine', 'italiano')" onkeydown="handlePronounceKey(event, 'miochine', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle">Antinfiammatori, anticancerogeni, molecole che migliorano le funzioni cognitive.</p>   
-<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: La pelle"><span class="highlight">La pelle</span><rp>(</rp><rt><span class="pronunciation-text">Te-gu-men-to uma-no</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Tegumento umano" onclick="speakTerm('tegumento', 'italiano')" onkeydown="handlePronounceKey(event, 'tegumento', 'italiano')">🔊</button></rt><rp>)</rp></ruby>   <p class="biotechtitle">Formata da cheratinociti (90%) e melanociti per la produzione di melanina.</p>   
+<div aria-label="Descrizione del video"><p class="sansation-light-italic" data-lang-key="video-desc">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div><br>
+<p class="secHeader" data-lang-key="section-science">Tutto ciò che non puoi non sapere!</p>
+<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Mitocondri"><span class="highlight" data-lang-key="mitocondri-term">Mitocondri</span><rp>(</rp><rt><span class="pronunciation-text">Mi-to-con-dri</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Mitocondri" onclick="speakTerm('mitocondri', 'italiano')" onkeydown="handlePronounceKey(event, 'mitocondri', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle" data-lang-key="mitocondri-def">Producono energia sotto forma di ATP.</p>    
+<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Lisosoma"><span class="highlight" data-lang-key="lisosoma-term">Lisosoma</span><rp>(</rp><rt><span class="pronunciation-text">Li-so-so-ma</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Lisosoma" onclick="speakTerm('lisosoma', 'italiano')" onkeydown="handlePronounceKey(event, 'lisosoma', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle" data-lang-key="lisosoma-def">Responsabile della distruzione e del riciclaggio delle cellule senescenti.</p>   
+<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Miochine"><span class="highlight" data-lang-key="miochine-term">Miochine</span><rp>(</rp><rt><span class="pronunciation-text">Mi-o-ki-ne</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Miochine" onclick="speakTerm('miochine', 'italiano')" onkeydown="handlePronounceKey(event, 'miochine', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle" data-lang-key="miochine-def">Antinfiammatori, anticancerogeni, molecole che migliorano le funzioni cognitive.</p>   
+<ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: La pelle"><span class="highlight" data-lang-key="pelle-term">La pelle</span><rp>(</rp><rt><span class="pronunciation-text">Te-gu-men-to uma-no</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Tegumento umano" onclick="speakTerm('tegumento', 'italiano')" onkeydown="handlePronounceKey(event, 'tegumento', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle" data-lang-key="pelle-def">Formata da cheratinociti (90%) e melanociti per la produzione di melanina.</p>   
 <br>
-<h2 id="preventiva" class="secHeader">MEDICINA PREVENTIVA</h2>
+<h2 id="preventiva" class="secHeader" data-lang-key="section-preventive">MEDICINA PREVENTIVA</h2>
 <ul class="list" aria-labelledby="preventiva">
-    <li>Sovrappeso e Obesità</li>
-    <li>Abuso di fumo ed alcol</li>
-    <li>Facce “tirate” dallo stress e dalla fretta</li>
-    <li>Assunzione di cibi processati</li>
-    <li>Fuori forma fisica</li>
-    <li>Movimenti impacciati/Scarsa mobilità</li>
-    <li>Isolamento dalle persone e dall’ambiente</li>
+    <li data-lang-key="preventive-1">Sovrappeso e Obesità</li>
+    <li data-lang-key="preventive-2">Abuso di fumo ed alcol</li>
+    <li data-lang-key="preventive-3">Facce “tirate” dallo stress e dalla fretta</li>
+    <li data-lang-key="preventive-4">Assunzione di cibi processati</li>
+    <li data-lang-key="preventive-5">Fuori forma fisica</li>
+    <li data-lang-key="preventive-6">Movimenti impacciati/Scarsa mobilità</li>
+    <li data-lang-key="preventive-7">Isolamento dalle persone e dall’ambiente</li>
 </ul>
 <br>
-<h2 class="secHeader">LA CELLULA COME BASE DELLA VITA</h2>
-<p class="sidenavtext">SERENITÀ, BENESSERE, LONGEVITÀ;</p>
-<p class="biotechtitle">Il nostro destino di salute e la nostra serenità sono le cose più importanti, solo allora iniziamo a contemplare di cambiare quegli aspetti della nostra vita che ci generano disagio psicofisico.<br>
+<h2 class="secHeader" data-lang-key="section-cell">LA CELLULA COME BASE DELLA VITA</h2>
+<p class="sidenavtext" data-lang-key="wellbeing">SERENITÀ, BENESSERE, LONGEVITÀ;</p>
+<p class="biotechtitle" data-lang-key="cell-desc">Il nostro destino di salute e la nostra serenità sono le cose più importanti, solo allora iniziamo a contemplare di cambiare quegli aspetti della nostra vita che ci generano disagio psicofisico.</p>
+<p class="biotechtitle" data-lang-key="preventive-therapy">Terapia preventiva dell’attività fisica, dell’alimentazione, di un corretto riposo notturno, allontanamento da dipendenze, spesso travestite da normali abitudini, capacità di far fronte allo stress.</p>
+<p class="biotechtitle" data-lang-key="rewrite-life">Elaborare in maniera nuova la nostra storia personale, e riscriverla con un cambiamento radicale;</p>
+<p class="biotechtitle" data-lang-key="biological-factors">Variabili organiche, (leggi biologiche) sono profondamente influenzate dallo stile di vita.</p>
+<p class="biotechtitle"><span data-lang-key="inflammation">Contenimento dell’infiammazione sistemica (dei suoi mediatori), la stimolazione dei fattori neurotrofici che porta ad aumenti nella</span> <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Sinaptogenesi"><span class="highlight" data-lang-key="sinaptogenesi-term">Sinaptogenesi</span><rp>(</rp><rt><span class="pronunciation-text">Si-na-to-jen-e-si</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Sinaptogenesi" onclick="speakTerm('sinaptogenesi', 'italiano')" onkeydown="handlePronounceKey(event, 'sinaptogenesi', 'italiano')">🔊</button></rt><rp>)</rp></ruby> <span data-lang-key="sinaptogenesi-def"> nei volumi cerebrali regionali, la modifica del sistema immunitario, endocrino e del microbiota. Cambiamenti;</span></p>
+<p class="biotechtitle"><ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Epigenetici"><span class="highlight" data-lang-key="epigenetici-term">Epigenetici</span><rp>(</rp><rt><span class="pronunciation-text">E-pi-je-ne-ti-ci</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Epigenetici" onclick="speakTerm('epigenetici', 'italiano')" onkeydown="handlePronounceKey(event, 'epigenetici', 'italiano')">🔊</button></rt><rp>)</rp></ruby> <span data-lang-key="epigenetici-def"> essere trasmessi attraverso le generazioni.</span></p>
 <br>
-Terapia preventiva dell’attività fisica, dell’alimentazione, di un corretto riposo notturno, allontanamento da dipendenze, spesso travestite da normali abitudini, capacità di far fronte allo stress.<br>
-<br>
-Elaborare in maniera nuova la nostra storia personale, e riscriverla con un cambiamento radicale;<br>
-Variabili organiche, (leggi biologiche) sono profondamente influenzate dallo stile di vita.<br>
-<br>
-Contenimento dell’infiammazione sistemica (dei suoi mediatori), la stimolazione dei fattori neurotrofici che porta ad aumenti nella <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Sinaptogenesi"><span class="highlight">Sinaptogenesi</span><rp>(</rp><rt><span class="pronunciation-text">Si-na-to-jen-e-si</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Sinaptogenesi" onclick="speakTerm('sinaptogenesi', 'italiano')" onkeydown="handlePronounceKey(event, 'sinaptogenesi', 'italiano')">🔊</button></rt><rp>)</rp></ruby> e nei volumi cerebrali regionali, la modifica del sistema immunitario, endocrino e del microbiota.<br>
-Cambiamenti <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Epigenetici"><span class="highlight">Epigenetici</span><rp>(</rp><rt><span class="pronunciation-text">E-pi-je-ne-ti-ci</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Epigenetici" onclick="speakTerm('epigenetici', 'italiano')" onkeydown="handlePronounceKey(event, 'epigenetici', 'italiano')">🔊</button></rt><rp>)</rp></ruby> possono essere trasmessi attraverso le generazioni.<br>
-</p><br>
 <p class="quotes"><cite>Non è segno di buona salute mentale essere ben adattati ad una società malata<br>
 Jiddu Krishnamurti</cite></p><br>
 <!-- Badge di accessibilità -->

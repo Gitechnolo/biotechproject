@@ -837,14 +837,17 @@ function setLanguage(lang) {
   const flag = document.getElementById('lang-flag');
   const text = document.getElementById('lang-text');
   const button = document.getElementById('lang-toggle');
+  const label = document.getElementById('lang-label'); // Testo visibile
 
   if (lang === 'it') {
     flag.textContent = '🇮🇹';
     text.textContent = 'Italiano';
+    label.textContent = 'Cambia lingua';
     button.setAttribute('aria-label', 'Cambia lingua in inglese');
   } else {
     flag.textContent = '🇬🇧';
     text.textContent = 'English';
+    label.textContent = 'Switch language';
     button.setAttribute('aria-label', 'Switch to Italian');
   }
 
@@ -856,4 +859,4 @@ function setLanguage(lang) {
 function toggleLanguage() {
   const newLang = currentLang === 'it' ? 'en' : 'it';
   setLanguage(newLang);
-} 
+}   
