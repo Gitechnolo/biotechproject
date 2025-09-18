@@ -794,4 +794,66 @@ function handlePronounceKey(event, term, language = 'italiano') {
     event.preventDefault(); // Evita comportamenti indesiderati
     speakTerm(term, language);
   }
-}   
+}
+
+// ===========================
+// GESTIONE LINGUA (IT/EN)
+// ===========================
+
+let currentLang = 'it';
+const translations = {};
+
+// Carica il file JSON con le traduzioni
+fetch('https://gitechnolo.github.io/biotechproject/translations.json')
+  .then(response => {
+    if (!response.ok) throw new Error('File translations.json non trovato o danneggiato');
+    return response.json();
+  })
+  .then(data => {
+    Object.assign(translations, data);
+    // Imposta la lingua: salvata o del browser
+    const savedLang = localStorage.getItem('preferred-language');
+    const userLang = savedLang || (navigator.language.startsWith('en') ? 'en' : 'it');
+    setLanguage(userLang);
+  })
+  .catch(err => {
+    console.warn('Traduzioni non disponibili:', err);
+    // Fallback: lascia il testo in italiano (già presente in HTML)
+  });
+
+// Funzione per cambiare lingua
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+
+  // Aggiorna tutti gli elementi con data-lang-key
+  document.querySelectorAll('[data-lang-key]').forEach(el => {
+    const key = el.getAttribute('data-lang-key');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  // Aggiorna pulsante lingua
+  const flag = document.getElementById('lang-flag');
+  const text = document.getElementById('lang-text');
+  const button = document.getElementById('lang-toggle');
+
+  if (lang === 'it') {
+    flag.textContent = '🇮🇹';
+    text.textContent = 'Italiano';
+    button.setAttribute('aria-label', 'Cambia lingua in inglese');
+  } else {
+    flag.textContent = '🇬🇧';
+    text.textContent = 'English';
+    button.setAttribute('aria-label', 'Switch to Italian');
+  }
+
+  localStorage.setItem('preferred-language', lang);
+  currentLang = lang;
+}
+
+// Funzione chiamata dal pulsante per alternare lingua
+function toggleLanguage() {
+  const newLang = currentLang === 'it' ? 'en' : 'it';
+  setLanguage(newLang);
+} 
