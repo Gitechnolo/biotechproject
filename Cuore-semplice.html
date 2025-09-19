@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" dir="ltr">
+<html lang="it" dir="ltr" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -518,7 +518,10 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <!-- End container: prevenzione CLS -->
 </main>
 <!-- End contenuto principale (per Skip to main e accessibilità) -->
-<div class="noscript-banner" style="display:none"><noscript style="display:block"><p class="text">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p class="text">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Avviso per utenti senza JavaScript --> 
+<div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
