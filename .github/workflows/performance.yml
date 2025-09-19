@@ -18,22 +18,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
-    # ✅ Abilita i permessi per fare push al repository
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: 🔁 Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # cache: 'npm'  # ❌ Disabilitato perché il lock file è in /tools, non in root
 
       - name: 📦 Install dependencies
         run: |
@@ -61,7 +59,6 @@ jobs:
         shell: bash
 
       - name: 🚀 Run Performance Analysis
-        id: analyze
         run: |
           cd tools
           node generate-performance.js
@@ -71,7 +68,6 @@ jobs:
           fi
           echo "✅ performance-data.json created"
 
-      # ✅ Copia il report in una cartella pubblica
       - name: 📂 Copy report to public data folder
         run: |
           mkdir -p public/data
@@ -93,19 +89,26 @@ jobs:
           else
             echo "no_changes=false" >> $GITHUB_OUTPUT
           fi
-        shell: bash
 
       - name: 🔚 Stop server
         if: env.SERVER_PID
         run: |
           kill $SERVER_PID || true
           echo "🛑 Server stopped"
+        shell: bash
 
-      - name: 💾 Commit and Push if changed
+      - name: 🛠 Create Pull Request
         if: steps.changes.outputs.no_changes == 'false'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git commit -m "📈 Automated: Update performance-data.json and public/data/performance-latest.json [skip ci]"
-          git push origin HEAD:main       
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: auto/performance-update
+          title: "🤖 Auto-update performance data"
+          body: |
+            Questa PR aggiorna automaticamente i dati di performance con i valori reali generati dallo script.
+
+            ✅ Verificare che i dati siano corretti prima del merge.
+
+            Il file `performance-latest.json` è stato aggiornato automaticamente.
+          commit-message: "chore: update performance-data.json and performance-latest.json"
+          labels: automated, data-update
+          base: main   
