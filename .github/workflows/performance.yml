@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          # cache: 'npm'  # ❌ Disabilitato perché il lock file è in /tools, non in root
 
       - name: 📦 Install dependencies
         run: |
@@ -71,7 +71,7 @@ jobs:
           fi
           echo "✅ performance-data.json created"
 
-      # ✅ Nuovo step: copia il report in una cartella pubblica
+      # ✅ Copia il report in una cartella pubblica
       - name: 📂 Copy report to public data folder
         run: |
           mkdir -p public/data
@@ -108,4 +108,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           git commit -m "📈 Automated: Update performance-data.json and public/data/performance-latest.json [skip ci]"
-          git push origin HEAD:main    
+          git push origin HEAD:main       
