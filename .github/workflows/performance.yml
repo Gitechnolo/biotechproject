@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
+    # ✅ Permessi necessari per creare una PR
     permissions:
       contents: write
       pull-requests: write
