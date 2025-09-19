@@ -39,6 +39,7 @@ jobs:
         run: |
           cd tools
           npm install
+
       - name: 🌐 Start local server
         run: |
           (cd tools && python3 -m http.server 8080) &
@@ -69,6 +70,14 @@ jobs:
             exit 1
           fi
           echo "✅ performance-data.json created"
+
+      # ✅ Nuovo step: copia il report in una cartella pubblica
+      - name: 📂 Copy report to public data folder
+        run: |
+          mkdir -p public/data
+          cp tools/performance-data.json public/data/performance-latest.json
+          echo "✅ Copiato in public/data/performance-latest.json"
+
       - name: 📂 Check for changes
         id: changes
         run: |
@@ -78,7 +87,7 @@ jobs:
             echo "❌ File not found"
             exit 1
           fi
-          git add tools/performance-data.json
+          git add tools/performance-data.json public/data/performance-latest.json
           if git diff --cached --exit-code; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
@@ -91,11 +100,12 @@ jobs:
         run: |
           kill $SERVER_PID || true
           echo "🛑 Server stopped"
+
       - name: 💾 Commit and Push if changed
         if: steps.changes.outputs.no_changes == 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git commit -m "📈 Automated: Update performance-data.json [skip ci]"
-          git push origin HEAD:main 
+          git commit -m "📈 Automated: Update performance-data.json and public/data/performance-latest.json [skip ci]"
+          git push origin HEAD:main    
