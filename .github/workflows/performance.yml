@@ -113,3 +113,4 @@ jobs:
           commit-message: "chore: update performance-data.json and performance-latest.json"
           labels: automated, data-update
           base: main   
+          token: ${{ secrets.PAT }}  
