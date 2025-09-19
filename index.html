@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" dir="ltr">
+<html lang="it" dir="ltr" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -208,13 +208,13 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <p class="biotechtitle"><span data-lang-key="inflammation">Contenimento dell’infiammazione sistemica (dei suoi mediatori), la stimolazione dei fattori neurotrofici che porta ad aumenti nella</span> <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Sinaptogenesi"><span class="highlight" data-lang-key="sinaptogenesi-term">Sinaptogenesi</span><rp>(</rp><rt><span class="pronunciation-text">Si-na-to-jen-e-si</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Sinaptogenesi" onclick="speakTerm('sinaptogenesi', 'italiano')" onkeydown="handlePronounceKey(event, 'sinaptogenesi', 'italiano')">🔊</button></rt><rp>)</rp></ruby> <span data-lang-key="sinaptogenesi-def"> nei volumi cerebrali regionali, la modifica del sistema immunitario, endocrino e del microbiota. Cambiamenti;</span></p>
 <p class="biotechtitle"><ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Epigenetici"><span class="highlight" data-lang-key="epigenetici-term">Epigenetici</span><rp>(</rp><rt><span class="pronunciation-text">E-pi-je-ne-ti-ci</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Epigenetici" onclick="speakTerm('epigenetici', 'italiano')" onkeydown="handlePronounceKey(event, 'epigenetici', 'italiano')">🔊</button></rt><rp>)</rp></ruby> <span data-lang-key="epigenetici-def"> essere trasmessi attraverso le generazioni.</span></p>
 <br>
-<p class="quotes"><cite>Non è segno di buona salute mentale essere ben adattati ad una società malata<br>
+<p class="quotes"><cite data-lang-key="quote">Non è segno di buona salute mentale essere ben adattati ad una società malata<br>
 Jiddu Krishnamurti</cite></p><br>
 <!-- Badge di accessibilità -->
 <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito BiotechProject - Conforme agli standard WCAG 2.1 AA" title="Dichiarazione di accessibilità del sito - Conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito BiotechProject"></a></div>
 <div id="lastModified"></div>
-<p class="biotechcenter biotech-copyright sansation-light-italic">BiotechProject. Un progetto per un web più inclusivo.</p>
-<p class="biotechcenter"><a href="https://www.linkedin.com/in/biotechproject" target="_blank" rel="noopener" class="hover-effect" aria-label="Segui il progetto Biotech su LinkedIn (apre in una nuova finestra)">🔗 Segui Biotech Project su LinkedIn</a></p>
+<p class="biotechcenter biotech-copyright sansation-light-italic" data-lang-key="footer-project">BiotechProject. Un progetto per un web più inclusivo.</p>
+<p class="biotechcenter" data-lang-key="linkedin-link"><a href="https://www.linkedin.com/in/biotechproject" target="_blank" rel="noopener" class="hover-effect" aria-label="Segui il progetto Biotech su LinkedIn (apre in una nuova finestra)">🔗 Segui Biotech Project su LinkedIn</a></p>
 </div>
       </div>
     </div>
@@ -225,7 +225,10 @@ Jiddu Krishnamurti</cite></p><br>
 <!-- End container: prevenzione CLS -->
 </main>
 <!-- End contenuto principale (per Skip to main e accessibilità) -->
-<div class="noscript-banner" style="display:none"><noscript style="display:block"><p class="text">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p class="text">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Avviso per utenti senza JavaScript --> 
+<div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>     
 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
