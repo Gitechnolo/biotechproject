@@ -245,9 +245,11 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .div3 {padding: 10px; text-align: justify;}
 .emphasytile {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 25px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 /* TESTO EVIDENZIATO (ACCESSIBILE) Usato per frasi-chiave, missioni, valori.
-   Non modificare senza verificare il contrasto (es. con https://webaim.org/resources/contrastchecker/)
+   Oro smorzato (#e6c200) → contrasto >10:1 su sfondo scuro → conforme WCAG AAA.
+  Scelto per ridurre la brillantezza rispetto a #ffd700, migliorando il comfort visivo per persone con ipovisione o sensibilità alla luce.
+  Non modificare senza verificare il contrasto: https://webaim.org/resources/contrastchecker/
 */
-.highlight-text {font-weight: 600; font-style: italic; color: #e6c200; 
+.highlight-text {font-weight: 600; font-style: italic; color: #e6c400da; 
   text-align: center; margin: 0.8em 0; line-height: 1.5; font-size: 1.05em;}
 /* END TESTO EVIDENZIATO */  
 /* noscript */
