@@ -69,11 +69,11 @@ jobs:
           fi
           echo "✅ performance-data.json created"
 
-      - name: 📂 Copy report to public data folder
+      - name: 📂 Copy report to root data folder
         run: |
-          mkdir -p public/data
-          cp tools/performance-data.json public/data/performance-latest.json
-          echo "✅ Copiato in public/data/performance-latest.json"
+          mkdir -p data
+          cp tools/performance-data.json data/performance-latest.json
+          echo "✅ Copiato in data/performance-latest.json"
 
       - name: 📂 Check for changes
         id: changes
@@ -84,7 +84,7 @@ jobs:
             echo "❌ File not found"
             exit 1
           fi
-          git add tools/performance-data.json public/data/performance-latest.json
+          git add tools/performance-data.json data/performance-latest.json
           if git diff --cached --exit-code; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
