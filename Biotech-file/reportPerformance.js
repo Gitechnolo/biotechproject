@@ -3,7 +3,7 @@
 // --- Fallback: popola tutti i cerchi con dati di esempio ---
 function populateAllCirclesFallback() {
   const fallbackMetrics = {
-    performance: 99,
+    performance: 98,
     accessibility: 100,
     'best-practices': 100,
     seo: 100,
