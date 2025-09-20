@@ -448,4 +448,31 @@ function updatePerformanceScore() {
     // Aggiungi tooltip
     trendElement.title = `Ultimo: ${previous}% | Variazione: ${diff > 0 ? '+' : ''}${diff}%`;
   }
+}
+
+
+
+// Aggiorna cerchi (fallback: riempi tutti)
+function populateAllCirclesFallback() {
+  const fallbackMetrics = {
+    performance: 90,
+    accessibility: 96,
+    'best-practices': 92,
+    seo: 94,
+    'performance-desktop': 88
+  };
+
+  Object.keys(fallbackMetrics).forEach(metric => {
+    const circle = document.querySelector(`.progress-circle[data-metric="${metric}"]`);
+    if (circle) {
+      const value = fallbackMetrics[metric];
+      circle.style.setProperty('--value', value + '%');
+      circle.dataset.value = value;
+      // Aggiorna il testo visibile nel cerchio (se presente)
+      const valueElement = circle.querySelector('.value');
+      if (valueElement) {
+        valueElement.textContent = value;
+      }
+    }
+  });
 }   
