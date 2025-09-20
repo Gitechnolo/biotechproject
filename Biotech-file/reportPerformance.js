@@ -1,33 +1,57 @@
-// Biotech-file/reportPerformance.js
+// reportPerformance.js
 
-// --- Fallback: popola tutti i cerchi con dati di esempio ---
-function populateAllCirclesFallback() {
-  const fallbackMetrics = {
-    performance: 98,
-    accessibility: 100,
-    'best-practices': 100,
-    seo: 100,
-    'performance-desktop': 100
-  };
-
-  Object.keys(fallbackMetrics).forEach(metric => {
-    const circle = document.querySelector(`.progress-circle[data-metric="${metric}"]`);
-    if (circle) {
-      const value = fallbackMetrics[metric];
-      circle.style.setProperty('--value', value + '%');
-      circle.dataset.value = value;
-      const valueEl = circle.querySelector('.value');
-      if (valueEl) valueEl.textContent = value;
+// Function to fetch performance data and populate the Chart.js graph
+async function fetchPerformanceData() {
+    try {
+        const response = await fetch('performance-data.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        populateChart(data);
+        fillProgressCircles(data);
+    } catch (error) {
+        console.error('Error fetching performance data:', error);
     }
-  });
 }
 
-// --- Mostra notifica all'utente ---
-function showNotification(message) {
-  const notification = document.getElementById('notification');
-  if (notification) {
-    notification.textContent = message;
-    notification.classList.add('show');
-    setTimeout(() => notification.classList.remove('show'), 3000);
-  }
-}          
+// Function to populate the Chart.js graph
+function populateChart(data) {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',  // Change this to your preferred chart type
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'Performance',
+                data: data.values,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Function to fill .progress-circle elements with data
+function fillProgressCircles(data) {
+    const progressElements = document.querySelectorAll('.progress-circle');
+    progressElements.forEach((el, index) => {
+        if (data.progress && data.progress[index]) {
+            el.style.width = `${data.progress[index]}%`;
+            el.textContent = `${data.progress[index]}%`;
+        } else {
+            console.warn(`No progress data for element at index ${index}`);
+        }
+    });
+}
+
+// Initialize the fetching process
+fetchPerformanceData();
