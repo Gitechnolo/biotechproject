@@ -3,11 +3,11 @@
 // --- Fallback: popola tutti i cerchi con dati di esempio ---
 function populateAllCirclesFallback() {
   const fallbackMetrics = {
-    performance: 90,
-    accessibility: 96,
-    'best-practices': 92,
-    seo: 94,
-    'performance-desktop': 88
+    performance: 99,
+    accessibility: 100,
+    'best-practices': 100,
+    seo: 100,
+    'performance-desktop': 100
   };
 
   Object.keys(fallbackMetrics).forEach(metric => {
