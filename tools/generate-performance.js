@@ -6,24 +6,26 @@ import fs from 'fs';
 import path from 'path';
 
 // Lista delle pagine da analizzare
+const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
+
 const pages = [
-  { url: 'http://127.0.0.1:8080/index.html', label: 'Homepage', slug: 'index', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Apparato_circolatorio.html', label: 'Apparato circolatorio', slug: 'apparato-circolatorio', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Cuore.html', label: 'Cuore', slug: 'cuore', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Apparato_respiratorio.html', label: 'Apparato respiratorio', slug: 'apparato-respiratorio', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Apparato_digerente.html', label: 'Apparato digerente', slug: 'apparato-digerente', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Apparato_tegumentario.html', label: 'Apparato tegumentario', slug: 'apparato-tegumentario', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Sistema_linfatico.html', label: 'Sistema linfatico', slug: 'sistema-linfatico', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Dermatologia.html', label: 'Dermatologia', slug: 'dermatologia', category: 'dermatologia' },
-  { url: 'http://127.0.0.1:8080/Cellula.html', label: 'Cellula', slug: 'cellula', category: 'cellula' },
-  { url: 'http://127.0.0.1:8080/Staff.html', label: 'Staff', slug: 'staff', category: 'staff' },
-  { url: 'http://127.0.0.1:8080/Progetti.html', label: 'Progetti', slug: 'progetti', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Marketing.html', label: 'Marketing', slug: 'marketing', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/O.S_support.html', label: 'Supporto OS', slug: 'os-support', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Tablet_forum.html', label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Specials.html', label: 'Specials', slug: 'specials', category: 'altro' },
-  { url: 'http://127.0.0.1:8080/Tech_Maturity.html', label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'altro' }
-];
+  { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'cellula' },
+  { url: `${BASE_URL}/Apparato_circolatorio.html`, label: 'Apparato circolatorio', slug: 'apparato-circolatorio', category: 'cellula' },
+  { url: `${BASE_URL}/Cuore.html`, label: 'Cuore', slug: 'cuore', category: 'cellula' },
+  { url: `${BASE_URL}/Apparato_respiratorio.html`, label: 'Apparato respiratorio', slug: 'apparato-respiratorio', category: 'cellula' },
+  { url: `${BASE_URL}/Apparato_digerente.html`, label: 'Apparato digerente', slug: 'apparato-digerente', category: 'cellula' },
+  { url: `${BASE_URL}/Apparato_tegumentario.html`, label: 'Apparato tegumentario', slug: 'apparato-tegumentario', category: 'cellula' },
+  { url: `${BASE_URL}/Sistema_linfatico.html`, label: 'Sistema linfatico', slug: 'sistema-linfatico', category: 'cellula' },
+  { url: `${BASE_URL}/Dermatologia.html`, label: 'Dermatologia', slug: 'dermatologia', category: 'dermatologia' },
+  { url: `${BASE_URL}/Cellula.html`, label: 'Cellula', slug: 'cellula', category: 'cellula' },
+  { url: `${BASE_URL}/Staff.html`, label: 'Staff', slug: 'staff', category: 'staff' },
+  { url: `${BASE_URL}/Progetti.html`, label: 'Progetti', slug: 'progetti', category: 'altro' },
+  { url: `${BASE_URL}/Marketing.html`, label: 'Marketing', slug: 'marketing', category: 'altro' },
+  { url: `${BASE_URL}/O.S_support.html`, label: 'Supporto OS', slug: 'os-support', category: 'altro' },
+  { url: `${BASE_URL}/Tablet_forum.html`, label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
+  { url: `${BASE_URL}/Specials.html`, label: 'Specials', slug: 'specials', category: 'altro' },
+  { url: `${BASE_URL}/Tech_Maturity.html`, label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'altro' }
+];   
 
 /**
  * Funzione principale asincrona
