@@ -62,21 +62,22 @@ Ein kollaborativer Raum für Entwickler, Forscher und Enthusiasten, die erforsch
 
 ---
 
-Das Projekt beinhaltet ein automatisiertes System zur Überwachung der technischen Qualität der Seiten, mit täglichen Updates über GitHub Actions.
+## 📊 Technische Qualitätsüberwachung
 
-## 📊 Leistungs-Dashboard
+Das Projekt verfügt über ein automatisiertes System zur Überwachung der technischen Qualität der Seiten, das täglich über GitHub Actions aktualisiert wird.  
+Seit September 2025 wurde ein **erweitertes System zur Verfolgung der technologischen Reife** eingeführt, das reale Daten und Prognosen kombiniert, um die gesamte Projekttwicklung darzustellen.
 
-- Leistungswert (0–100)
-- Ladezeit
-- Reifegrad-Kategorie: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+### Funktionen des Dashboards
+- ✅ **Leistungswert** (0–100) pro Seite
+- ✅ **Ladezeit** und Optimierungsstatus
+- ✅ **Reifestufe**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+- 📈 **Entwicklungsverlauf** (historische Daten + Prognose bis 100 %)
+- 💾 **Datenexport** in JSON/CSV für externe Analysen
+- 🕒 Aktualisierung alle 24 Stunden (oder manuell über „Aktualisieren“)
 
-👉 Aktuellen Bericht ansehen: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+📊 Das System zeigt sowohl den **aktuellen Projektstatus** als auch eine **realistische Projektion zum Abschluss des Entwicklungszyklus** (voraussichtlich Februar 2026), basierend auf tatsächlichen Verbesserungen (z. B. Barrierefreiheit, Benutzerfreundlichkeit, Performance).
 
----
-
-## 🔗 BiotechProject erkunden
-- 🏠 [Startseite](https://gitechnolo.github.io/biotechproject/)   
-- 📄 [Tech-Reifegrad-Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 Zum Live-Dashboard: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
 
 ---
 

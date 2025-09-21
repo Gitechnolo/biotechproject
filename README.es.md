@@ -62,21 +62,22 @@ Es un espacio colaborativo para desarrolladores, investigadores y entusiastas qu
 
 ---
 
-El proyecto incluye un sistema automatizado para monitorear la calidad técnica de las páginas, con actualizaciones diarias mediante GitHub Actions.
+## 📊 Monitorización de la Calidad Técnica
 
-## 📊 Panel de rendimiento
+El proyecto incluye un sistema automatizado para monitorear la calidad técnica de sus páginas, con actualizaciones diarias mediante GitHub Actions.  
+Desde septiembre de 2025, se ha implementado un **sistema avanzado de seguimiento de la madurez tecnológica**, que combina datos reales y proyecciones para visualizar la evolución general del proyecto.
 
-- Puntuación de rendimiento (0–100)
-- Tiempo de carga
-- Categoría de madurez: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+### Funcionalidades del panel
+- ✅ **Puntuación de rendimiento** (0–100) por página
+- ✅ **Tiempo de carga** y estado de optimización
+- ✅ **Nivel de madurez**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+- 📈 **Gráfico de evolución** (datos históricos + proyección hasta el 100%)
+- 💾 **Exportación de datos** en JSON/CSV para análisis externos
+- 🕒 Datos actualizados cada 24 horas (o manualmente con "Actualizar ahora")
 
-👉 Ver informe en tiempo real: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+📊 El sistema muestra tanto el **estado actual del proyecto** como una **proyección realista hacia la finalización del ciclo de desarrollo** (prevista para febrero de 2026), basada en mejoras reales (por ejemplo: accesibilidad, UX, rendimiento).
 
----
-
-## 🔗 Explorar BiotechProject
-- 🏠 [Página principal](https://gitechnolo.github.io/biotechproject/)   
-- 📄 [Panel de madurez tecnológica](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 Accede al panel en tiempo real: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
 
 ---
 

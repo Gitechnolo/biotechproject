@@ -62,21 +62,22 @@ C'est un espace collaboratif pour les développeurs, chercheurs et passionnés q
 
 ---
 
-Le projet inclut un système automatisé de surveillance de la qualité technique des pages, mis à jour quotidiennement via GitHub Actions.
+## 📊 Suivi de la Qualité Technique
 
-## 📊 Tableau de bord des performances
+Le projet inclut un système automatisé de surveillance de la qualité technique des pages, mis à jour quotidiennement via GitHub Actions.  
+Depuis septembre 2025, un **système avancé de suivi de la maturité technologique** a été mis en place, combinant données réelles et prévisions pour visualiser l'évolution globale du projet.
 
-- Score de performance (0–100)
-- Temps de chargement
-- Catégorie de maturité : `optimized`, `compatible`, `needs-improvement`, `deprecated`
+### Fonctionnalités du tableau de bord
+- ✅ **Score de performance** (0–100) par page
+- ✅ **Temps de chargement** et statut d'optimisation
+- ✅ **Niveau de maturité** : `optimized`, `compatible`, `needs-improvement`, `deprecated`
+- 📈 **Courbe d'évolution** (données historiques + prévision jusqu'à 100 %)
+- 💾 **Exportation des données** en JSON/CSV pour analyse externe
+- 🕒 Mise à jour toutes les 24 heures (ou manuellement via « Actualiser »)
 
-👉 Voir le rapport en temps réel : [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+📊 Le système affiche à la fois **l'état actuel du projet** et une **projection réaliste vers l'achèvement du cycle de développement** (prévu pour février 2026), basée sur des améliorations concrètes (ex. : accessibilité, expérience utilisateur, performances).
 
----
-
-## 🔗 Explorer BiotechProject
-- 🏠 [Page d'accueil](https://gitechnolo.github.io/biotechproject/)   
-- 📄 [Tableau de bord de maturité technologique](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 Accéder au tableau de bord en temps réel : [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
 
 ---
 
