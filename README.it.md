@@ -62,27 +62,22 @@ Nasce con l’obiettivo di dimostrare come la tecnologia possa servire la scienz
 
 ---
 
+## 📊 Monitoraggio della Qualità Tecnica
+
 Il progetto include un sistema automatico per monitorare la qualità tecnica delle pagine, con aggiornamento giornaliero tramite GitHub Actions.  
 A partire da settembre 2025, è stato introdotto un **sistema avanzato di monitoraggio della maturità tecnologica del progetto**, che combina dati reali e previsioni per tracciare l'evoluzione complessiva del sito.
 
-## 📊 Dashboard delle Performance
-
+### Funzionalità della dashboard
 - ✅ **Punteggio di performance** (0–100) per ogni pagina
 - ✅ **Tempo di caricamento** e stato di ottimizzazione
 - ✅ **Categoria di maturità**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- 📈 **Andamento della maturità tecnologica** (grafico storico + previsione fino a 100%)
+- 📈 **Grafico di maturità** (dati storici + previsione fino al 100%)
 - 💾 **Esportazione dati** in JSON/CSV per analisi esterne
 - 🕒 Dati aggiornati ogni 24 ore (o manualmente con "Aggiorna ora")
 
 📊 Il sistema mostra sia il **livello corrente** che una **proiezione realistica fino al completamento del ciclo di sviluppo** (previsto febbraio 2026), basata su miglioramenti effettivi (es. accessibilità, UX, ottimizzazione).
 
-👉 Vedi il report in tempo reale: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
-
----
-
-## 🔗 Esplora il progetto BiotechProject
-- 🏠 [Homepage](https://gitechnolo.github.io/biotechproject/)   
-- 📄 [Tech Maturity Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
+👉 Vedi la dashboard in tempo reale: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
    
 
 ---
@@ -225,4 +220,4 @@ Questo progetto è un esempio pratico di **sviluppo responsabile**, dove tecnolo
 📌 **Progetto individuale sviluppato interamente da [Il Tuo Nome]**  
 🔧 Tecnologie: HTML5, CSS3, JavaScript vanilla, ARIA, W3C standards  
 🌍 Hosting: GitHub Pages  
-📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale. 
+📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.
