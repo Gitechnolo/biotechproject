@@ -11,8 +11,8 @@ const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
 // Lista delle pagine da analizzare
 const pages = [
   { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'cellula' },
-  { url: `${BASE_URL}/Apparato_circolatorio.html`, label: 'Apparato circolatorio', slug: 'apparato-circolatorio', category: 'cellula' },
   { url: `${BASE_URL}/Cuore.html`, label: 'Cuore', slug: 'cuore', category: 'cellula' },
+  { url: `${BASE_URL}/Cuore-semplice.html`, label: 'Cuore (versione semplificata)', slug: 'cuore-semplice', category: 'accessibilità' },
   { url: `${BASE_URL}/Apparato_respiratorio.html`, label: 'Apparato respiratorio', slug: 'apparato-respiratorio', category: 'cellula' },
   { url: `${BASE_URL}/Apparato_digerente.html`, label: 'Apparato digerente', slug: 'apparato-digerente', category: 'cellula' },
   { url: `${BASE_URL}/Apparato_tegumentario.html`, label: 'Apparato tegumentario', slug: 'apparato-tegumentario', category: 'cellula' },
