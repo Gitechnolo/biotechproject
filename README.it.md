@@ -220,4 +220,4 @@ Questo progetto è un esempio pratico di **sviluppo responsabile**, dove tecnolo
 📌 **Progetto individuale sviluppato interamente da [Il Tuo Nome]**  
 🔧 Tecnologie: HTML5, CSS3, JavaScript vanilla, ARIA, W3C standards  
 🌍 Hosting: GitHub Pages  
-📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale. 
+📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.

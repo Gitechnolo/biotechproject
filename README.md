@@ -146,4 +146,4 @@ You are free to share, adapt, and use the project commercially, as long as you *
 Author: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Project available at: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
 
-> “Anyone can contribute. Just respect the origin, and keep building with care.”   
+> “Anyone can contribute. Just respect the origin, and keep building with care.”
