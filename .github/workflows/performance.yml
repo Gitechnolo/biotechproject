@@ -14,20 +14,16 @@ on:
 
 jobs:
   generate-report:
-    name: Generate performance-data.json
+    name: Generate performance-latest.json
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
-    # ✅ Permessi necessari per creare una PR
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - name: 🔁 Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -43,7 +39,6 @@ jobs:
         run: |
           (cd tools && python3 -m http.server 8080) &
           SERVER_PID=$!
-          
           echo "⏳ Waiting for server..."
           for i in {1..30}; do
             if curl -s --head http://127.0.0.1:8080 | grep "200 OK" > /dev/null; then
@@ -75,20 +70,19 @@ jobs:
           cp tools/performance-data.json data/performance-latest.json
           echo "✅ Copiato in data/performance-latest.json"
 
-      - name: 📂 Check for changes
-        id: changes
+      - name: 📂 Commit & Push data/performance-latest.json to main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ ! -f tools/performance-data.json ]; then
-            echo "❌ File not found"
-            exit 1
-          fi
-          git add tools/performance-data.json data/performance-latest.json
+          git add data/performance-latest.json
           if git diff --cached --exit-code; then
-            echo "no_changes=true" >> $GITHUB_OUTPUT
+            echo "No changes in performance-latest.json"
           else
-            echo "no_changes=false" >> $GITHUB_OUTPUT
+            git commit -m "chore: update performance-latest.json [auto]"
+            git pull --rebase --strategy=recursive -X theirs origin main || true
+            git push origin HEAD:main
           fi
 
       - name: 🔚 Stop server
@@ -96,21 +90,4 @@ jobs:
         run: |
           kill $SERVER_PID || true
           echo "🛑 Server stopped"
-        shell: bash
-
-      - name: 🛠 Create Pull Request
-        if: steps.changes.outputs.no_changes == 'false'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          branch: auto/performance-update
-          title: "🤖 Auto-update performance data"
-          body: |
-            Questa PR aggiorna automaticamente i dati di performance con i valori reali generati dallo script.
-
-            ✅ Verificare che i dati siano corretti prima del merge.
-
-            Il file `performance-latest.json` è stato aggiornato automaticamente.
-          commit-message: "chore: update performance-data.json and performance-latest.json"
-          labels: automated, data-update
-          base: main   
-          token: ${{ secrets.PAT }}  
+        shell: bash  
