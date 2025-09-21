@@ -62,21 +62,22 @@ It's a collaborative space for developers, researchers, and enthusiasts who want
 
 ---
 
-The project includes an automated system to monitor the technical quality of pages, with daily updates via GitHub Actions.
+## 📊 Technical Quality Monitoring
 
-## 📊 Performance Dashboard
+The project includes an automated system to monitor the technical quality of its pages, with daily updates via GitHub Actions.  
+Starting from September 2025, an **advanced technological maturity tracking system** has been introduced, combining real data and forecasts to visualize the project’s overall evolution.
 
-- Performance score (0–100)
-- Load time
-- Maturity category: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+### Dashboard Features
+- ✅ **Performance score** (0–100) per page
+- ✅ **Page load time** and optimization status
+- ✅ **Maturity level**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
+- 📈 **Maturity trend graph** (historical data + forecast up to 100%)
+- 💾 **Data export** in JSON/CSV for external analysis
+- 🕒 Data updated every 24 hours (or manually via "Refresh now")
 
-👉 View real-time report: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+📊 The system displays both the **current project status** and a **realistic projection to full development completion** (estimated February 2026), based on actual improvements (e.g., accessibility, UX, performance).
 
----
-
-## 🔗 Explore BiotechProject
-- 🏠 [Homepage](https://gitechnolo.github.io/biotechproject/)   
-- 📄 [Tech Maturity Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 View the live dashboard: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
 
 ---
 
