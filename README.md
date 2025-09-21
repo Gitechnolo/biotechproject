@@ -77,7 +77,7 @@ Starting from September 2025, an **advanced technological maturity tracking syst
 
 📊 The system displays both the **current project status** and a **realistic projection to full development completion** (estimated February 2026), based on actual improvements (e.g., accessibility, UX, performance).
 
-👉 View the live dashboard: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
+👉 View the live dashboard: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)    
 
 ---
 
@@ -146,4 +146,4 @@ You are free to share, adapt, and use the project commercially, as long as you *
 Author: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Project available at: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
 
-> “Anyone can contribute. Just respect the origin, and keep building with care.”   
+> “Anyone can contribute. Just respect the origin, and keep building with care.”
