@@ -1,13 +1,14 @@
 // tools/generate-performance.js
 
 import lighthouse from 'lighthouse';
-import puppeteer from 'puppeteer';
+import chromeLauncher from 'chrome-launcher';
 import fs from 'fs';
 import path from 'path';
 
-// Lista delle pagine da analizzare
+// URL base del sito
 const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
 
+// Lista delle pagine da analizzare
 const pages = [
   { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'cellula' },
   { url: `${BASE_URL}/Apparato_circolatorio.html`, label: 'Apparato circolatorio', slug: 'apparato-circolatorio', category: 'cellula' },
@@ -25,77 +26,61 @@ const pages = [
   { url: `${BASE_URL}/Tablet_forum.html`, label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
   { url: `${BASE_URL}/Specials.html`, label: 'Specials', slug: 'specials', category: 'altro' },
   { url: `${BASE_URL}/Tech_Maturity.html`, label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'altro' }
-];   
+];
+
+// Configurazione di Chrome per Lighthouse
+const launchChrome = async () => {
+  return await chromeLauncher.launch({
+    chromeFlags: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--headless',
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-renderer-backgrounding',
+      '--disable-ipc-flooding-protection',
+      '--disable-breakpad',
+      '--disable-component-extensions-with-background-pages',
+      '--disable-default-apps',
+      '--disable-features=TranslateUI',
+      '--disable-features=AudioServiceOutOfProcess',
+      '--allow-running-insecure-content',
+      '--disable-web-security',
+      '--window-size=1350,940'
+    ],
+    port: 9222, // Porta fissa per debug (opzionale)
+    logLevel: 'silent'
+  });
+};
 
 /**
- * Funzione principale asincrona
+ * Funzione principale: analizza tutte le pagine
  */
 async function runPerformanceAnalysis() {
   const results = [];
-  let browser;
-  let page;
+  let chrome;
 
   try {
-  // 🚀 Avvia Chromium con Puppeteer (più affidabile in ambienti cloud)
-  console.log('🚀 Avvio Chromium con Puppeteer...');
-  browser = await puppeteer.launch({
-  headless: 'chrome', // 🔥 Usa 'chrome', non 'new'
-  args: [
-    '--no-sandbox',
-    '--disable-setuid-sandbox',
-    '--disable-dev-shm-usage',
-    '--disable-gpu',
-    '--disable-software-rasterizer', // 🔥 Evita l'uso della GPU
-    '--disable-features=VizDisplayCompositor', // 🔥 Fondamentale: disabilita il compositore grafico
-    '--disable-features=AudioServiceOutOfProcess',
-    '--disable-features=TranslateUI',
-    '--disable-features=ImprovedCookieControls',
-    '--disable-features=SameSiteByDefaultCookies',
-    '--disable-features=AutofillServerCommunication',
-    '--disable-features=PasswordBreachDetection',
-    '--disable-features=PrivacySandboxSettings4',
-    '--disable-features=SigninSuccessNotification',
-    '--no-first-run',
-    '--no-zygote',
-    '--deterministic-fetch',
-    '--disable-backgrounding-occluded-windows',
-    '--disable-renderer-backgrounding',
-    '--disable-ipc-flooding-protection',
-    '--disable-breakpad',
-    '--single-process', // Utile in ambienti con poca RAM
-    '--window-size=1350,940',
-    '--remote-debugging-port=9222',
-    '--remote-debugging-address=0.0.0.0',
-    '--disable-background-networking',
-    '--disable-background-timer-throttling'
-  ],
-  defaultViewport: {
-    width: 1350,
-    height: 940,
-    deviceScaleFactor: 1
-  }
-});      
+    // 🚀 Avvia Chrome con chrome-launcher
+    console.log('🚀 Avvio Chrome per Lighthouse...');
+    chrome = await launchChrome();
+    console.log(`✅ Chrome avviato sulla porta ${chrome.port}`);
 
-// Ottieni una nuova pagina
-    page = await browser.newPage();
-
-    // Estrai la porta di debug da Puppeteer
-    const { port } = new URL(browser.wsEndpoint());
-
-    // Configurazione Lighthouse: analisi performance desktop
-    const options = {
-      port,
+    // Configurazione comune per Lighthouse
+    const lighthouseConfig = {
+      port: chrome.port,
       output: 'json',
-      onlyCategories: ['performance'],
       logLevel: 'silent',
-      disableStorageReset: true,
+      disableStorageReset: false, // Permette a Lighthouse di pulire cache/sessione
       formFactor: 'desktop',
       screenEmulation: {
         mobile: false,
         width: 1350,
         height: 940,
         deviceScaleFactor: 1,
-        disabled: false
+        disabled: true // Disabilita emulazione (usiamo desktop reale)
       },
       throttling: {
         rttMs: 150,
@@ -106,78 +91,76 @@ async function runPerformanceAnalysis() {
         uploadThroughputKbps: 0
       },
       throttlingMethod: 'devtools',
-      useDevtoolsLogs: true,
+      onlyCategories: ['performance'],
       skipAudits: [
-        'metrics',
-        'diagnostics',
-        'audit-refs'
+        'metrics',           // Non calcolare metriche aggiuntive (LCP, FCP, ecc.) se non necessarie
+        'diagnostics',       // Rimuove audit diagnostici (riduce rumore)
+        'audit-refs'         // Ottimizza output
       ]
     };
 
-    console.log('✅ Chromium avviato. Inizio analisi delle pagine...');
-
-    // Analizza ogni pagina
+    // 🔍 Analisi di ogni pagina
     for (const pageData of pages) {
       try {
         console.log(`🔍 Analizzo: ${pageData.label} (${pageData.url})`);
-        
-        // Vai alla pagina
-        await page.goto(pageData.url, {
-          waitUntil: 'networkidle0',
-          timeout: 30000
-        });
 
-        // Esegui Lighthouse
-        const runnerResult = await lighthouse(pageData.url, options);
+        // ✅ Lighthouse gestisce TUTTA la navigazione
+        const runnerResult = await lighthouse(pageData.url, lighthouseConfig);
 
-        // Estrai punteggio e metriche
-        const score = Math.round(runnerResult.lhr.categories.performance.score * 100);
-        const loadTime = runnerResult.lhr.audits['largest-contentful-paint']?.numericValue || 0;
+        // Estrai risultati
+        const lhr = runnerResult.lhr;
+        const performanceScore = Math.round(lhr.categories.performance.score * 100);
+        const lcp = lhr.audits['largest-contentful-paint']?.numericValue || 0;
+        const fcp = lhr.audits['first-contentful-paint']?.numericValue || 0;
 
         results.push({
           ...pageData,
-          performanceScore: score,
-          loadTime: Math.round(loadTime),
+          performanceScore,
+          loadTime: Math.round(lcp),
+          firstPaint: Math.round(fcp),
           lastAnalyzed: new Date().toISOString()
         });
 
-        console.log(`✅ ${pageData.label}: Punteggio performance ${score}`);
-      } catch (pageError) {
+        console.log(`✅ ${pageData.label}: Punteggio ${performanceScore}, LCP: ${Math.round(lcp)}ms`);
+
+      } catch (auditError) {
         console.warn(`❌ Fallito: ${pageData.label}`);
-        console.warn(`   Errore: ${pageError.message}`);
+        console.warn(`   Errore: ${auditError.message.substring(0, 100)}...`);
 
         results.push({
           ...pageData,
           performanceScore: 0,
           loadTime: 0,
+          firstPaint: 0,
           lastAnalyzed: new Date().toISOString(),
-          error: `Non raggiungibile - ${pageError.message.substring(0, 100)}...`
+          error: `Analisi fallita - ${auditError.message.substring(0, 100)}...`
         });
       }
 
-      // Pausa tra una pagina e l'altra (evita sovraccarico)
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // ⏸️ Pausa tra una pagina e l'altra (gentile verso il server)
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
+
   } catch (overallError) {
-    console.error('🚨 Errore critico:', overallError.message);
+    console.error('🚨 Errore critico durante l’analisi:', overallError.message);
     process.exit(1);
   } finally {
-    // Chiudi il browser
-    if (browser) {
+    // 🔚 Chiudi Chrome in modo sicuro
+    if (chrome) {
       try {
-        await browser.close();
-        console.log('⏹️ Chromium chiuso correttamente');
+        await chrome.kill();
+        console.log('⏹️ Chrome chiuso correttamente');
       } catch (closeError) {
-        console.warn('⚠️ Impossibile chiudere il browser:', closeError.message);
+        console.warn('⚠️ Impossibile chiudere Chrome:', closeError.message);
       }
     }
   }
 
-  // Percorso di output: tools/performance-data.json
+  // 📁 Percorso di output: tools/performance-data.json
   const outputDir = path.resolve(new URL(import.meta.url).pathname, '..');
   const outputPath = path.join(outputDir, 'performance-data.json');
 
-  // Dati finali
+  // 📊 Dati finali
   const output = {
     lastUpdated: new Date().toISOString(),
     summary: {
@@ -194,11 +177,11 @@ async function runPerformanceAnalysis() {
       fs.mkdirSync(outputDir, { recursive: true });
       console.log(`📁 Cartella creata: ${outputDir}`);
     }
-  } catch (mkdirError) {
+  } catch (mkdirError) { 
     console.warn(`⚠️  Impossibile creare la cartella: ${mkdirError.message}`);
   }
 
-  // Scrive il file JSON
+  // 📥 Scrive il file JSON
   try {
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
     console.log(`✅ Report salvato in: ${outputPath}`);
@@ -212,8 +195,8 @@ async function runPerformanceAnalysis() {
   }
 }
 
-// Esegui la funzione principale
+// ✅ Esegui l'analisi
 runPerformanceAnalysis().catch(err => {
   console.error('🚨 Errore non gestito:', err);
   process.exit(1);
-});
+});   

@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "lighthouse": "^12.0.0",
-    "puppeteer": "^22.0.0"
+    "chrome-launcher": "^0.15.1"
   },
   "engines": {
     "node": ">=18"
   },
   "private": true
-}    
+}       
