@@ -1,154 +1,170 @@
 {
-  "lastUpdated": "2025-09-21T20:17:49.632Z",
+  "lastUpdated": "2025-09-21T21:55:34.027Z",
   "summary": {
     "totalPages": 16,
-    "analyzed": 16,
-    "failed": 0
+    "analyzed": 0,
+    "failed": 16
   },
   "pages": [
     {
-      "url": "http://127.0.0.1:8080/index.html",
+      "url": "https://gitechnolo.github.io/biotechproject/index.html",
       "label": "Homepage",
       "slug": "index",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:13:37.714Z"
+      "lastAnalyzed": "2025-09-21T21:55:01.989Z",
+      "error": "Non raggiungibile - Navigating frame was detached..."
     },
     {
-      "url": "http://127.0.0.1:8080/Apparato_circolatorio.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Apparato_circolatorio.html",
       "label": "Apparato circolatorio",
       "slug": "apparato-circolatorio",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:13:54.333Z"
+      "lastAnalyzed": "2025-09-21T21:55:03.992Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Cuore.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Cuore.html",
       "label": "Cuore",
       "slug": "cuore",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:14:10.811Z"
+      "lastAnalyzed": "2025-09-21T21:55:05.994Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Apparato_respiratorio.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html",
       "label": "Apparato respiratorio",
       "slug": "apparato-respiratorio",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:14:27.290Z"
+      "lastAnalyzed": "2025-09-21T21:55:07.996Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Apparato_digerente.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Apparato_digerente.html",
       "label": "Apparato digerente",
       "slug": "apparato-digerente",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:14:44.098Z"
+      "lastAnalyzed": "2025-09-21T21:55:09.999Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Apparato_tegumentario.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html",
       "label": "Apparato tegumentario",
       "slug": "apparato-tegumentario",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:15:00.887Z"
+      "lastAnalyzed": "2025-09-21T21:55:12.002Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Sistema_linfatico.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html",
       "label": "Sistema linfatico",
       "slug": "sistema-linfatico",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:15:17.367Z"
+      "lastAnalyzed": "2025-09-21T21:55:14.003Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Dermatologia.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Dermatologia.html",
       "label": "Dermatologia",
       "slug": "dermatologia",
       "category": "dermatologia",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:15:34.151Z"
+      "lastAnalyzed": "2025-09-21T21:55:16.005Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Cellula.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Cellula.html",
       "label": "Cellula",
       "slug": "cellula",
       "category": "cellula",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:15:50.661Z"
+      "lastAnalyzed": "2025-09-21T21:55:18.007Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Staff.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Staff.html",
       "label": "Staff",
       "slug": "staff",
       "category": "staff",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:16:07.116Z"
+      "lastAnalyzed": "2025-09-21T21:55:20.009Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Progetti.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Progetti.html",
       "label": "Progetti",
       "slug": "progetti",
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:16:24.056Z"
+      "lastAnalyzed": "2025-09-21T21:55:22.012Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Marketing.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Marketing.html",
       "label": "Marketing",
       "slug": "marketing",
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:16:40.937Z"
+      "lastAnalyzed": "2025-09-21T21:55:24.014Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/O.S_support.html",
+      "url": "https://gitechnolo.github.io/biotechproject/O.S_support.html",
       "label": "Supporto OS",
       "slug": "os-support",
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:16:57.508Z"
+      "lastAnalyzed": "2025-09-21T21:55:26.017Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Tablet_forum.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Tablet_forum.html",
       "label": "Forum Tablet",
       "slug": "tablet-forum",
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:17:13.978Z"
+      "lastAnalyzed": "2025-09-21T21:55:28.019Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Specials.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Specials.html",
       "label": "Specials",
       "slug": "specials",
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:17:30.452Z"
+      "lastAnalyzed": "2025-09-21T21:55:30.022Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     },
     {
-      "url": "http://127.0.0.1:8080/Tech_Maturity.html",
+      "url": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html",
       "label": "Maturità tecnologica",
       "slug": "tech-maturity",
       "category": "altro",
       "performanceScore": 0,
       "loadTime": 0,
-      "lastAnalyzed": "2025-09-21T20:17:47.537Z"
+      "lastAnalyzed": "2025-09-21T21:55:32.024Z",
+      "error": "Non raggiungibile - Attempted to use detached Frame '8271C9040CCB07AC549FD330F7808AF1'...."
     }
   ]
 }
