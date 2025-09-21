@@ -196,7 +196,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>   
 </div> 
 <section class="tech-section">
-  <p class="sansation-light-italic">Andamento delle Prestazioni - momentaneamente non disponibile!</p>
+  <p class="sansation-light-italic">Andamento delle Prestazioni!</p>
   <canvas id="performance-trend" width="800" height="200"></canvas>
   <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
 <button class="refresh-btn">Aggiorna ora</button>
@@ -257,7 +257,6 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>
 <!-- END MAIN -->
 </div>
-<p class="sansation-light-italic">Ultimo controllo: 21 ago 2025</p>   
 <div class="biotechcenter"><button class="refresh-btn">🔄 Aggiorna dati</button></div>
 <section aria-labelledby="jobs-title">
   <h2 id="jobs-title">Posizioni Aperte</h2>
@@ -283,14 +282,13 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/reportPerformance.js"></script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js" defer></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>
