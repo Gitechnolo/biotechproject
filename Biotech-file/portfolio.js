@@ -1,33 +1,85 @@
 // Biotech-file/portfolio.js
+// --- Carica dati performance da JSON ---
+async function loadPerformanceData() {
+  try {
+    const response = await fetch('data/performance-latest.json');
+    if (!response.ok) throw new Error('Dati non disponibili');
 
-document.addEventListener('DOMContentLoaded', () => {
-  // --- 1. Funzione per creare una card di performance ---
-  function createPerformanceCard(page) {
-    const cell = document.createElement('div');
-    cell.className = 'portfolio-col dynamic portfolio-show';
-    if (page.status) cell.classList.add(page.status);
+    const data = await response.json();
+    const container = document.querySelector('.portfolio-row');
+    if (!container) return;
 
-    const url = page.url || 'Pagina sconosciuta';
-    const fileName = url.split('/').pop() || 'index.html';
-    const performance = Math.round((page.performance || 0) * 100);
-    const accessibility = Math.round((page.accessibility || 0) * 100);
-    const bestPractices = Math.round((page['best-practices'] || 0) * 100);
-    const seo = Math.round((page.seo || 0) * 100);
-    const loadTime = page.loadTime ? (page.loadTime / 1000).toFixed(1) : '?';
+    // Pulisci tutto e ricostruisci
+    container.innerHTML = '';
 
-    cell.innerHTML = `
-      <div class="portfolio-content">
-        <div class="perf-meter" style="background: conic-gradient(#4CAF50 ${performance}%, #e0e0e0 ${performance}%)"><span>${performance}</span></div>
-        <div class="fadebox">
-          <strong>${fileName}</strong><br>Score: ${performance}/100 • ${loadTime} s
-        </div>
-        <p class="greentext">${fileName} — ${page.status?.charAt(0).toUpperCase() + page.status?.slice(1) || 'Compatibile'}</p>
-      </div>
-    `;
-    return cell;
+    // Estrai la homepage dal JSON con ricerca robusta
+    const homePage = data.pages.find(p => p.url.endsWith('/index.html'));
+
+    // Data e ora generazione report (se presenti)
+    const reportTime = data.lastUpdated
+      ? new Date(data.lastUpdated)
+      : new Date();
+
+    // Aggiorna #last-update
+    const lastUpdate = document.getElementById('last-update');
+    if (lastUpdate) {
+      const dateStr = reportTime.toLocaleDateString('it-IT');
+      const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+      lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
+    }
+
+    // Usa il punteggio reale della homepage
+    const performanceScoreValue = homePage
+      ? homePage.performanceScore
+      : 85;
+
+    // Tempo di caricamento reale (in secondi, una cifra decimale)
+    const loadTimeValue = homePage
+      ? (homePage.loadTime / 1000).toFixed(1)
+      : '?';
+
+    // Aggiorna punteggio e trend
+    aggiornaPerformanceScore(performanceScoreValue);
+
+    // Genera tutte le card dinamicamente
+    data.pages.forEach(page => {
+      const cell = createPerformanceCard(page);
+      container.appendChild(cell);
+    });
+
+    // Inizializza filtri (se presenti)
+    if (typeof filterSelection === 'function') {
+      filterSelection('all');
+    }
+
+    // Ora crea il grafico con dati stimati/placeholder
+    creaGrafico();
+
+  } catch (error) {
+    console.warn('Impossibile caricare i dati di performance:', error);
+
+    // Usa dati di fallback
+    if (typeof populateAllCirclesFallback === 'function') {
+      populateAllCirclesFallback();
+    }
+
+    // Aggiorna score e grafico con valore di esempio
+    aggiornaPerformanceScore(85);
+    creaGrafico(); // Mostra comunque il trend storico
+
+    const lastUpdate = document.getElementById('last-update');
+    if (lastUpdate) {
+      lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
+    }
+
+    if (typeof showNotification === 'function') {
+      showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
+    }
   }
+}
 
-  // --- 2. Pulsanti di aggiornamento ---
+// --- Gestione pulsanti di aggiornamento ---
+function setupRefreshButtons() {
   document.getElementById('refresh-btn')?.addEventListener('click', async () => {
     await loadPerformanceData();
     showNotification('Dati aggiornati con successo');
@@ -39,92 +91,68 @@ document.addEventListener('DOMContentLoaded', () => {
       showNotification('Dati aggiornati con successo');
     });
   });
+}
 
-  // --- 3. Carica dati da JSON o usa fallback ---
-  async function loadPerformanceData() {
-    try {
-      const response = await fetch('https://gitechnolo.github.io/biotechproject/data/performance-latest.json');
-      if (!response.ok) throw new Error('Dati non disponibili');
-
-      const data = await response.json();
-      const container = document.querySelector('.portfolio-row');
-      if (!container) return;
-
-      // Rimuove le card di esempio (non dinamiche)
-      container.querySelectorAll('.portfolio-col:not(.dynamic)').forEach(card => card.remove());
-      // Pulisce il resto
-      container.innerHTML = '';
-
-      // Estrai data del report dalla homepage
-      const homePage = data.pages.find(p => 
-        p.url.includes('/index.html') || 
-        p.url === 'https://gitechnolo.github.io/biotechproject/' ||
-        p.url === window.location.origin + '/biotechproject/'
-      );
-
-      const reportTime = homePage?.generatedTime 
-        ? new Date(homePage.generatedTime) 
-        : new Date();
-
-      // Aggiorna #last-update
-      const lastUpdate = document.getElementById('last-update');
-      if (lastUpdate) {
-        const dateStr = reportTime.toLocaleDateString('it-IT');
-        const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
-        lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
-      }
-
-      // Aggiorna #performance-score
-      const performanceScore = homePage 
-        ? Math.round(homePage.performance * 100) 
-        : Math.round((data.pages[0]?.performance || 0.9) * 100);
-      const scoreEl = document.getElementById('performance-score');   
-        if (scoreEl) {
-        scoreEl.textContent = performanceScore;
-      }
-
-      // Genera le card dinamicamente
-      data.pages.forEach(page => {
-        const cell = createPerformanceCard(page);
-        container.appendChild(cell);
-      });
-
-      // Aggiorna i filtri (se implementati)
-      if (typeof filterSelection === 'function') {
-        filterSelection('all');
-      }
-
-    } catch (error) {
-      console.warn('Impossibile caricare i dati di performance:', error);
-
-      // Popola tutti i cerchi con valori di esempio
-      if (typeof populateAllCirclesFallback === 'function') {
-        populateAllCirclesFallback();
-      }
-
-      // Aggiorna grafico e punteggio principale, se presenti
-      if (typeof drawPerformanceChart === 'function') {
-        drawPerformanceChart();
-      }
-      const scoreEl = document.getElementById('performance-score');
-      if (scoreEl) {
-        scoreEl.textContent = '90'; // valore di esempio
-      }
-      const lastUpdate = document.getElementById('last-update');
-      if (lastUpdate) {
-        lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
-      }
-
-      // Mostra notifica all'utente
-      if (typeof showNotification === 'function') {
-        showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
-      }
-    }
+// --- Aggiorna punteggio e trend ---
+function aggiornaPerformanceScore(performanceScoreValue) {
+  const scoreEl = document.getElementById('tech-maturity-score');
+  if (scoreEl) {
+    scoreEl.textContent = `${performanceScoreValue}%`;
   }
+  const trendIndicator = document.getElementById('trend-indicator');
+  if (trendIndicator) {
+    // Stima: confronto con valore storico fisso, personalizza se vuoi
+    const trend = performanceScoreValue - 82;
+    trendIndicator.textContent = trend > 0 ? '↑' : trend < 0 ? '↓' : '→';
+    trendIndicator.style.color = trend > 0 ? '#10b981' : trend < 0 ? '#ef4444' : '#f59e0b';
+  }
+}
 
-  // --- 4. Inizializza il caricamento dati ---
-  loadPerformanceData();
+// --- Funzione che genera la card per la griglia ---
+function createPerformanceCard(page) {
+  // Stima: puoi personalizzare la classe in base a score e filtri
+  let perfClass = 'needs-improvement';
+  if (page.performanceScore >= 90) perfClass = 'optimized';
+  else if (page.performanceScore >= 80) perfClass = 'compatible';
+  else if (page.performanceScore >= 60) perfClass = 'needs-improvement';
+  else perfClass = 'deprecated';
+
+  const card = document.createElement('div');
+  card.className = `portfolio-col ${perfClass} portfolio-show dynamic`;
+  card.dataset.page = page.slug;
+
+  card.innerHTML = `
+    <div class="portfolio-content">
+      <div class="perf-meter" style="background: conic-gradient(#4CAF50 ${page.performanceScore}%, #e0e0e0 ${page.performanceScore}%);"><span>${page.performanceScore}</span></div>
+      <div class="fadebox"><strong>${page.label}</strong><br>Score: ${page.performanceScore}/100 • ${(page.loadTime / 1000).toFixed(1)} s</div>
+      <p class="greentext">${page.slug} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
+    </div>
+  `;
+  return card;
+}
+
+// --- Inizializzazione unica ---
+document.addEventListener('DOMContentLoaded', () => {
+  setupRefreshButtons();
+  loadPerformanceData(); // Carica dati e inizializza grafico
 });
+
+// --- Qui rimangono intatte le funzioni per il grafico ---
+// creaGrafico(), populateAllCirclesFallback(), filterSelection(), showNotification()
+// ... (non modificate, rimangono come sono per grafico stimato, filtri e notifiche)
+
+
+
+
+
+
+
+
+
+
+
+
+
 // --- Funzione ausiliaria: mostra notifica (sicura) ---
 if (typeof showNotification === 'undefined') {
   function showNotification(message) {
