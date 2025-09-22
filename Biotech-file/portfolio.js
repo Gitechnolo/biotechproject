@@ -308,7 +308,7 @@ function filterSelection(filter) {
     }
   });
 
-  // Mostra messaggio se nessuna card visibile
+  // Messaggio se nessuna card visibile
   const container = document.querySelector('.portfolio-row');
   const message = document.getElementById('filter-message');
 
@@ -317,15 +317,22 @@ function filterSelection(filter) {
     msgEl.id = 'filter-message';
     msgEl.style.color = '#a0aec0';
     msgEl.style.textAlign = 'center';
-    msgEl.style.fontStyle = 'italic';  
+    msgEl.style.fontStyle = 'italic';
     msgEl.style.padding = '20px';
     container.parentNode.insertBefore(msgEl, container.nextSibling);
   }
 
   const msgEl = document.getElementById('filter-message');
-  if (visibleCount === 0) {
-    msgEl.textContent = 'Nessuna pagina trovata con questo stato di maturità.';
-  } else {
-    msgEl.textContent = '';
-  }
-}     
+  msgEl.textContent = visibleCount === 0 
+    ? 'Nessuna pagina trovata con questo stato di maturità.'
+    : '';
+}
+
+// 2. Aggiungi gli event listener in modo pulito (senza onclick nell'HTML)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterSelection(btn.dataset.filter);
+    });
+  });
+});   
