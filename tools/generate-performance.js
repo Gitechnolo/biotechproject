@@ -10,22 +10,30 @@ const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
 
 // Lista delle pagine da analizzare
 const pages = [
-  { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'cellula' },
-  { url: `${BASE_URL}/Cuore.html`, label: 'Cuore', slug: 'cuore', category: 'cellula' },
+  { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'biotecnologie' },
+  { url: `${BASE_URL}/Cuore.html`, label: 'Cuore', slug: 'cuore', category: 'fisiologia' },
   { url: `${BASE_URL}/Cuore-semplice.html`, label: 'Cuore (versione semplificata)', slug: 'cuore-semplice', category: 'accessibilità' },
-  { url: `${BASE_URL}/Apparato_respiratorio.html`, label: 'Apparato respiratorio', slug: 'apparato-respiratorio', category: 'cellula' },
-  { url: `${BASE_URL}/Apparato_digerente.html`, label: 'Apparato digerente', slug: 'apparato-digerente', category: 'cellula' },
-  { url: `${BASE_URL}/Apparato_tegumentario.html`, label: 'Apparato tegumentario', slug: 'apparato-tegumentario', category: 'cellula' },
-  { url: `${BASE_URL}/Sistema_linfatico.html`, label: 'Sistema linfatico', slug: 'sistema-linfatico', category: 'cellula' },
-  { url: `${BASE_URL}/Dermatologia.html`, label: 'Dermatologia', slug: 'dermatologia', category: 'dermatologia' },
-  { url: `${BASE_URL}/Cellula.html`, label: 'Cellula', slug: 'cellula', category: 'cellula' },
+  { url: `${BASE_URL}/Apparato_respiratorio.html`, label: 'Apparato respiratorio', slug: 'apparato-respiratorio', category: 'fisiologia' },
+  { url: `${BASE_URL}/Apparato_respiratorio-semplice.html`, label: 'Apparato respiratorio (versione semplificata)', slug: 'apparato-respiratorio-semplice', category: 'accessibilità' },   
+  { url: `${BASE_URL}/Apparato_digerente.html`, label: 'Apparato digerente', slug: 'apparato-digerente', category: 'fisiologia' },
+  { url: `${BASE_URL}/Apparato_digerente-semplice.html`, label: 'Apparato digerente (versione semplificata)', slug: 'apparato-digerente-semplice', category: 'accessibilità' },   
+  { url: `${BASE_URL}/Apparato_tegumentario.html`, label: 'Apparato tegumentario', slug: 'apparato-tegumentario', category: 'fisiologia' },
+  { url: `${BASE_URL}/Apparato_tegumentario-semplice.html`, label: 'Apparato tegumentario (versione semplificata)', slug: 'apparato-tegumentario-semplice', category: 'accessibilità' },   
+  { url: `${BASE_URL}/Sistema_linfatico.html`, label: 'Sistema linfatico', slug: 'sistema-linfatico', category: 'fisiologia' },
+  { url: `${BASE_URL}/Sistema_linfatico-semplice.html`, label: 'Sistema linfatico (versione semplificata)', slug: 'sistema-linfatico-semplice', category: 'accessibilità'},   
+  { url: `${BASE_URL}/Dermatologia.html`, label: 'Dermatologia', slug: 'dermatologia', category: 'fisiologia' },
+  { url: `${BASE_URL}/Dermatologia-semplice.html`, label: 'Dermatologia (versione semplificata)', slug: 'dermatologia-semplice', category: 'accessibilità'},   
+  { url: `${BASE_URL}/Cellula.html`, label: 'Cellula', slug: 'cellula', category: 'fisiologia' },
+  { url: `${BASE_URL}/Cellula-semplice.html`, label: 'Cellula (versione semplificata)', slug: 'cellula-semplice', category: 'accessibilità' },   
   { url: `${BASE_URL}/Staff.html`, label: 'Staff', slug: 'staff', category: 'staff' },
   { url: `${BASE_URL}/Progetti.html`, label: 'Progetti', slug: 'progetti', category: 'altro' },
-  { url: `${BASE_URL}/Marketing.html`, label: 'Marketing', slug: 'marketing', category: 'altro' },
-  { url: `${BASE_URL}/O.S_support.html`, label: 'Supporto OS', slug: 'os-support', category: 'altro' },
-  { url: `${BASE_URL}/Tablet_forum.html`, label: 'Forum Tablet', slug: 'tablet-forum', category: 'altro' },
-  { url: `${BASE_URL}/Specials.html`, label: 'Specials', slug: 'specials', category: 'altro' },
-  { url: `${BASE_URL}/Tech_Maturity.html`, label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'altro' }
+  { url: `${BASE_URL}/Marketing.html`, label: 'Marketing', slug: 'marketing', category: 'mercato cibernetica' },
+  { url: `${BASE_URL}/O.S_support.html`, label: 'Supporto OS', slug: 'os-support', category: 'supporto' },
+  { url: `${BASE_URL}/Tablet_forum.html`, label: 'Forum Tablet', slug: 'tablet-forum', category: 'forum' },
+  { url: `${BASE_URL}/Specials.html`, label: 'Specials', slug: 'specials', category: 'cellule staminali robotica' },
+  { url: `${BASE_URL}/Tech_Maturity.html`, label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'maturità tecnologica' },
+  { url: `${BASE_URL}/accessibility-it.html`, label: 'Accessibilità (informazioni)', slug: 'accessibility-it', category: 'accessibilità' }, 
+  { url: `${BASE_URL}/accessibility-en.html`, label: 'Accessibility (information)', slug: 'accessibility-en', category: 'accessibilità' },     
 ];
 
 // Configurazione di Chrome per Lighthouse
