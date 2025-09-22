@@ -37,4 +37,22 @@ function fillProgressCircles(data) {
       el.style.setProperty('--value', value);
     }
   });
-}   
+} 
+// Function to fetch performance data and populate circles
+async function fetchPerformanceData() {
+  try {
+    const response = await fetch('/biotechproject/data/performance-latest.json');
+    if (!response.ok) throw new Error('Dati non disponibili');
+
+    const data = await response.json();
+    fillProgressCircles(data);
+  } catch (error) {
+    console.warn('Errore nel caricamento dei dati:', error);
+    // Opzionale: usa dati di fallback
+    const fakeData = { pages: [{ url: '/index.html', performanceScore: 85 }] };
+    fillProgressCircles(fakeData);
+  }
+}
+
+// Inizializza al caricamento della pagina
+document.addEventListener('DOMContentLoaded', fetchPerformanceData);   
