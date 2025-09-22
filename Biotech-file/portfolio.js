@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }); 
 
 
-// --- Filtra le card in base al livello di maturità ---
+// --- Filtra le card in base al livello di maturità delle pagine ---
 function filterSelection(filter) {
   // Aggiorna pulsanti attivi
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -309,4 +309,43 @@ function filterSelection(filter) {
 // Inizializza il filtro all'avvio
 document.addEventListener('DOMContentLoaded', () => {
   filterSelection('all'); // Mostra tutti di default
-});   
+});
+
+// UX del filtro - messaggio quando non ci sono risultati:
+function filterSelection(filter) {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+
+  const cards = document.querySelectorAll('.portfolio-col');
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    if (filter === 'all' || card.classList.contains(filter)) {
+      card.style.display = 'flex';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+// Mostra messaggio se nessuna card visibile
+  const container = document.querySelector('.portfolio-row');
+  const message = document.getElementById('filter-message');
+
+  if (!message) {
+    const msgEl = document.createElement('p');
+    msgEl.id = 'filter-message';
+    msgEl.style.color = '#a0aec0';
+    msgEl.style.textAlign = 'center';
+    msgEl.style.fontStyle = 'italic'; 
+    msgEl.style.padding = '20px';
+    container.parentNode.insertBefore(msgEl, container.nextSibling);
+  }
+
+  const msgEl = document.getElementById('filter-message');
+  if (visibleCount === 0) {
+    msgEl.textContent = 'Nessuna pagina trovata con questo stato di maturità.';
+  } else {
+    msgEl.textContent = '';
+  }
+}   
