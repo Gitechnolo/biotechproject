@@ -1,6 +1,7 @@
 // Biotech-file/portfolio.js
 // --- Carica dati performance da JSON ---
 async function loadPerformanceData() {
+  console.log('🔧 loadPerformanceData() in esecuzione'); // 🔍 Debug
   try {
     const response = await fetch('data/performance-latest.json');
     if (!response.ok) throw new Error('Dati non disponibili');
@@ -140,17 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- Qui rimangono intatte le funzioni per il grafico ---
 // creaGrafico(), populateAllCirclesFallback(), filterSelection(), showNotification()
 // ... (non modificate, rimangono come sono per grafico stimato, filtri e notifiche)
-
-
-
-
-
-
-
-
-
-
-
 
 
 // --- Funzione ausiliaria: mostra notifica (sicura) ---

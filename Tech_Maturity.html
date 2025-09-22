@@ -234,25 +234,29 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   <button class="filter-btn" data-filter="needs-improvement">Da migliorare</button>
   <button class="filter-btn" data-filter="deprecated">Obsoleti</button>
 </div>
+
+<style>
+.portfolio-row {
+  min-height: 200px; /* Evita il collassamento */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  justify-content: flex-start;
+}
+
+.portfolio-row:empty::before {
+  content: "Caricamento...";
+  color: #999;
+  font-style: italic;
+  align-self: center;
+  justify-self: center;
+}   
+</style>
 <!-- Griglia delle pagine -->
 <div class="portfolio-row">
-  <!-- Fallback statico: visibile se fetch fallisce -->
-  <div class="portfolio-col optimized portfolio-show" data-page="index">
-    <div class="portfolio-content">
-      <div class="perf-meter" style="background: conic-gradient(#4CAF50 99%, #e0e0e0 99%)"><span>99</span></div>
-      <div class="fadebox"><strong>Homepage</strong><br>Score: 99/100 • 1.2 s</div>
-      <p class="greentext">index — Optimized</p>
-    </div>
-  </div>
-  <div class="portfolio-col compatible portfolio-show" data-page="cuore">
-    <div class="portfolio-content">
-      <div class="perf-meter" style="background: conic-gradient(#8BC34A 85%, #e0e0e0 85%)"><span>85</span></div>
-      <div class="fadebox"><strong>Cuore</strong><br>Score: 85/100 • 1.8 s</div>
-      <p class="greentext">cuore — Compatible</p>
-    </div>
-  </div>
-  <!-- Altre card di esempio... -->
-</div>
+  <!-- Card generate dinamicamente da JavaScript -->
+</div>   
 
 </div>
 <!-- END MAIN -->
@@ -283,7 +287,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/reportPerformance.js"></script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js" defer></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
 </body>
   </html>
