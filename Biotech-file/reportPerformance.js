@@ -1,57 +1,40 @@
-// reportPerformance.js
-
-// Function to fetch performance data / populate the Chart.js graph
-async function fetchPerformanceData() {
-    try {
-        const response = await fetch('data/performance-latest.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        populateChart(data);
-        fillProgressCircles(data);
-    } catch (error) {
-        console.error('Error fetching performance data:', error);
-    }
-}
-
-// Function to populate the Chart.js graph
-function populateChart(data) {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'bar',  // Change this to your preferred chart type
-        data: {
-            labels: data.labels,
-            datasets: [{
-                label: 'Performance',
-                data: data.values,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-}
-
 // Function to fill .progress-circle elements with data
 function fillProgressCircles(data) {
-    const progressElements = document.querySelectorAll('.progress-circle');
-    progressElements.forEach((el, index) => {
-        if (data.progress && data.progress[index]) {
-            el.style.width = `${data.progress[index]}%`;
-            el.textContent = `${data.progress[index]}%`;
-        } else {
-            console.warn(`No progress data for element at index ${index}`);
-        }
-    });
-}
+  // Trova la homepage
+  const homePage = data.pages.find(p => p.url.endsWith('/index.html'));
+  const performanceScore = homePage ? homePage.performanceScore : 85;
 
-// Initialize the fetching process
-fetchPerformanceData();
+  // Seleziona tutti i cerchi
+  const progressElements = document.querySelectorAll('.progress-circle');
+
+  progressElements.forEach((el, index) => {
+    let value;
+
+    switch (el.dataset.metric) {
+      case 'performance':
+      case 'performance-desktop':
+        value = performanceScore;
+        break;
+      case 'seo':
+        value = 90; // Valore stimato o da aggiungere in futuro
+        break;
+      case 'accessibility':
+        value = 88;
+        break;
+      case 'best-practices':
+        value = 85;
+        break;
+      default:
+        value = 75;
+    }
+
+    // Aggiorna lo stile e il testo
+    el.dataset.value = value;
+    el.textContent = `${value}%`;
+
+    // Se usi CSS con --value (come in style="--value: 100")
+    if (el.style.setProperty) {
+      el.style.setProperty('--value', value);
+    }
+  });
+}   
