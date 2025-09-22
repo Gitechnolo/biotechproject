@@ -94,6 +94,16 @@ function createPerformanceCard(page) {
   const fileName = url.split('/').pop() || 'index.html';
   const loadTime = page.loadTime ? (page.loadTime / 1000).toFixed(1) : '?';
 
+  // Crea il badge
+  const badgeHTML = `
+    <span class="status-badge badge-${perfClass}">
+      ${perfClass.replace('needs-improvement', 'Needs Improvement')
+                 .replace('deprecated', 'Deprecated')
+                 .replace('compatible', 'Compatible')
+                 .replace('optimized', 'Optimized')}
+    </span>
+  `;
+
   const card = document.createElement('div');
   card.className = `portfolio-col ${perfClass} portfolio-show dynamic`;
   card.dataset.page = page.slug || fileName;
@@ -101,7 +111,7 @@ function createPerformanceCard(page) {
   card.innerHTML = `
     <div class="portfolio-content">
       <div class="fadebox">
-        <strong>${fileName}</strong><br>
+        <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 • ${loadTime} s
       </div>
       <p class="greentext">${fileName} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
@@ -109,7 +119,7 @@ function createPerformanceCard(page) {
   `;
 
   return card;
-}
+}   
 
 // --- Gestione pulsanti di aggiornamento ---
 function setupRefreshButtons() {

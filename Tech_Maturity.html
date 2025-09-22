@@ -66,6 +66,11 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-row {min-height: 200px; /* Evita il collassamento */
   display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1rem; justify-content: flex-start;}
 .portfolio-row:empty::before {content: "Caricamento..."; color: #999; font-style: italic; align-self: center; justify-self: center;}
+.status-badge {font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 10px; margin-left: 6px; text-transform: none; color: white; vertical-align: middle;}
+.badge-compatible { background: #2ecc71; } /* Verde */
+.badge-optimized  { background: #1abc9c; } /* Verde acqua */
+.badge-needs-improvement { background: #f39c12; } /* Arancione */
+.badge-deprecated { background: #e74c3c; } /* Rosso */
 </style>
 <script>
 !function(){
