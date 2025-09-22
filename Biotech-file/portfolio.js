@@ -338,10 +338,10 @@ async function loadPerformanceData() {
       lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
     }
 
-    // Usa il punteggio reale della homepage
+    // Usa il punteggio reale del JSON
     const performanceScoreValue = homePage 
-      ? Math.round(homePage.performance * 100) 
-      : 85;
+  ? homePage.performanceScore 
+  : 85;
 
     // Aggiorna punteggio e trend
     aggiornaPerformanceScore(performanceScoreValue);
