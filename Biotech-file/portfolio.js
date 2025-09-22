@@ -287,4 +287,26 @@ if (typeof showNotification === 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData(); // Carica dati e inizializza grafico
+}); 
+
+
+// --- Filtra le card in base al livello di maturità ---
+function filterSelection(filter) {
+  // Aggiorna pulsanti attivi
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+// Filtra le card
+  const cards = document.querySelectorAll('.portfolio-col');
+  cards.forEach(card => {
+    if (filter === 'all' || card.classList.contains(filter)) {
+      card.style.display = 'flex'; // Usa 'flex' come in .portfolio-col
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+// Inizializza il filtro all'avvio
+document.addEventListener('DOMContentLoaded', () => {
+  filterSelection('all'); // Mostra tutti di default
 });   
