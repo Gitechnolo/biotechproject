@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 3. Carica dati da JSON o usa fallback ---
   async function loadPerformanceData() {
     try {
-      const response = await fetch('data/performance-latest.json');
+      const response = await fetch('https://gitechnolo.github.io/biotechproject/data/performance-latest.json');
       if (!response.ok) throw new Error('Dati non disponibili');
 
       const data = await response.json();
