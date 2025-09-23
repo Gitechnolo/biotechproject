@@ -179,6 +179,25 @@ async function runPerformanceAnalysis() {
     pages: results
   };
 
+  // 🔁 Leggi il vecchio JSON per estrarre i valori precedenti
+  let previousData = null;
+  const previousPath = path.join(outputDir, 'performance-latest.json');
+
+  if (fs.existsSync(previousPath)) {
+    try {
+      const rawData = fs.readFileSync(previousPath, 'utf-8');
+      previousData = JSON.parse(rawData);
+    } catch (err) {
+      console.warn('⚠️  Impossibile leggere il file precedente:', err.message);
+    }
+  }
+
+  // 🔄 Associa il valore precedente a ogni pagina
+  output.pages.forEach(page => {
+    const prevPage = previousData?.pages.find(p => p.slug === page.slug);
+    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : undefined;
+  });
+
   // Assicura che la cartella esista
   try {
     if (!fs.existsSync(outputDir)) {
@@ -189,7 +208,7 @@ async function runPerformanceAnalysis() {
     console.warn(`⚠️  Impossibile creare la cartella: ${mkdirError.message}`);
   }
 
-  // 📥 Scrive il file JSON
+  // 📥 Scrive il file JSON (sovrascrive il vecchio)
   try {
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
     console.log(`✅ Report salvato in: ${outputPath}`);
@@ -201,7 +220,7 @@ async function runPerformanceAnalysis() {
     console.error('❌ Errore nella scrittura del file:', writeError.message);
     process.exit(1);
   }
-}
+}   
 
 // ✅ Esegui l'analisi
 runPerformanceAnalysis().catch(err => {

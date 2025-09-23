@@ -112,7 +112,12 @@ function createPerformanceCard(page) {
     <div class="portfolio-content">
       <div class="fadebox">
         <strong>${fileName}${badgeHTML}</strong><br>
-        Score: ${performance}/100 • ${loadTime} s
+        Score: ${performance}/100 
+       <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
+             style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
+         ${getTrendArrow(performance, page.previousPerformanceScore)}
+       </span>
+       • ${loadTime} s 
       </div>
       <p class="greentext">${fileName} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
     </div>
@@ -345,4 +350,22 @@ document.addEventListener('DOMContentLoaded', () => {
       filterSelection(btn.dataset.filter);
     });
   });
-});   
+});  
+
+
+// --- Calcola freccia di tendenza per singola pagina ---
+function getTrendArrow(current, previous) {
+  if (previous === undefined || previous === null) return '→';
+  const diff = current - previous;
+  if (diff > 0) return '▲';
+  if (diff < 0) return '▼';
+  return '→';
+}
+
+// --- Determina la classe colore del badge della freccia ---
+function getTrendColorClass(current, previous) {
+  if (previous === undefined || previous === null) return 'badge-needs-improvement';
+  return current > previous ? 'badge-optimized' :  // ▲ verde acqua
+         current < previous ? 'badge-deprecated' : // ▼ rosso
+                            'badge-compatible';   // ➔ verde
+}   
