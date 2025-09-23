@@ -19,6 +19,7 @@
 
 
 
+/* 1. Stile base: per TUTTI i browser */
 .fadebox {
   font-family: 'Sansation', Tahoma, Verdana, sans-serif;
   opacity: 0.7;
@@ -26,9 +27,7 @@
   font-size: 0.95rem;
   color: #ffffff;
   border: 1px solid #2ecc71;
-  background-color: rgba(0, 230, 118, 0.2);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.4); /* ✅ Fallback per tutti */
   padding: 0.8rem 1rem;
   border-radius: 8px;
   text-align: center;
@@ -39,8 +38,19 @@
   outline: none;
 }
 
+/* 2. Miglioramento per browser moderni */
+@supports (backdrop-filter: blur(2px)) {
+  .fadebox {
+    background-color: rgba(0, 230, 118, 0.2); /* ✅ Sfondo trasparente solo se supportato */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+}   
+
 .fadebox:hover,
 .fadebox:focus {
+  outline: 2px solid #2ecc71;
+  outline-offset: 2px;  
   opacity: 1;
   transform: translateY(-2px);
   box-shadow: 
