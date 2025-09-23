@@ -74,7 +74,9 @@ async function loadPerformanceData() {
   }
 }
 
-// --- Crea la card per ogni pagina ---
+
+
+// --- Crea la card per ogni pagina (Accessibilità) ---
 function createPerformanceCard(page) {
   // Gestisci entrambi i formati: score 0-100 o 0.0-1.0
   const performance = page.performanceScore !== undefined
@@ -93,6 +95,7 @@ function createPerformanceCard(page) {
   const url = page.url || 'Pagina sconosciuta';
   const fileName = url.split('/').pop() || 'index.html';
   const loadTime = page.loadTime ? (page.loadTime / 1000).toFixed(1) : '?';
+  const tooltipId = `tooltip-${sanitizeId(fileName)}`; // ID univoco per ARIA
 
   // Crea il badge
   const badgeHTML = `
@@ -108,27 +111,81 @@ function createPerformanceCard(page) {
   card.className = `portfolio-col ${perfClass} portfolio-show dynamic`;
   card.dataset.page = page.slug || fileName;
 
+  // 🔹 HTML aggiornato: tooltip accessibile con ARIA e posizionamento corretto
   card.innerHTML = `
     <div class="portfolio-content">
-      <div class="fadebox">
+      <div 
+        class="fadebox" 
+        tabindex="0" 
+        role="button"
+        aria-describedby="${tooltipId}"
+        aria-label="Mostra dettagli prestazioni per ${fileName}"
+      >
         <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 
-       <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
-             style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
-         ${getTrendArrow(performance, page.previousPerformanceScore)}
-         ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined ? 
-           (performance > page.previousPerformanceScore ? '+' : '') + 
-           (performance - page.previousPerformanceScore) 
-           : ''}
-       </span>
-       • ${loadTime} s  
+        <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
+              style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
+          ${getTrendArrow(performance, page.previousPerformanceScore)}
+          ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
+            ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+            : ''}
+        </span>
+        • ${loadTime} s
+        <div 
+          id="${tooltipId}" 
+          class="trend-details" 
+          role="tooltip"
+        >
+          <div><strong>Punteggio:</strong> ${performance}/100</div>
+          ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
+            ? `<div><strong>Precedente:</strong> ${page.previousPerformanceScore}</div>
+               <div><strong>Trend:</strong> ${getTrendArrow(performance, page.previousPerformanceScore)}${performance - page.previousPerformanceScore}</div>`
+            : `<div><strong>Trend:</strong> Nessun dato precedente</div>`}
+          <div><strong>Tempo di caricamento:</strong> ${loadTime} s</div>
+        </div>
       </div>
       <p class="greentext">${fileName} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
     </div>
   `;
 
+  // 🔹 Riferimenti agli elementi
+  const fadebox = card.querySelector('.fadebox');
+  const trendDetails = card.querySelector('.trend-details');
+
+  // 🔹 Mostra tooltip su focus (tastiera)
+  fadebox.addEventListener('focus', () => {
+    trendDetails.style.display = 'block';
+  });
+
+  // 🔹 Nasconde tooltip su blur
+  fadebox.addEventListener('blur', () => {
+    trendDetails.style.display = 'none';
+  });
+
+  // 🔹 Mostra/nasconde su click (mouse/touch)
+  fadebox.addEventListener('click', () => {
+    const isDisplayed = trendDetails.style.display === 'block';
+    trendDetails.style.display = isDisplayed ? 'none' : 'block';
+  });
+
+  // 🔹 Chiude con tasto ESC
+  fadebox.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      trendDetails.style.display = 'none';
+      fadebox.blur();
+    }
+  });
+
   return card;
+}
+
+// 🔹 Funzione di utilità per generare ID sicuri
+function sanitizeId(str) {
+  return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }   
+
+
+
 
 // --- Gestione pulsanti di aggiornamento ---
 function setupRefreshButtons() {
