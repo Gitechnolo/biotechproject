@@ -116,8 +116,12 @@ function createPerformanceCard(page) {
        <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
              style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
          ${getTrendArrow(performance, page.previousPerformanceScore)}
+         ${page.previousPerformanceScore !== undefined ? 
+           (performance > page.previousPerformanceScore ? '+' : '') + 
+           (performance - page.previousPerformanceScore) 
+           : ''}
        </span>
-       • ${loadTime} s 
+       • ${loadTime} s  
       </div>
       <p class="greentext">${fileName} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
     </div>
