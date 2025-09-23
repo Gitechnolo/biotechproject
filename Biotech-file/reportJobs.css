@@ -16,7 +16,7 @@
 /* --- Contenuto interno card --- */
 .portfolio-content {display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem; width: 100%; transition: transform 0.2s;}
 /* Testo descrittivo (hover) */
-.fadebox {opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; font-size: 0.95rem; color: #ffffff; background-color: rgba(0, 230, 118, 0.3); padding: 0.8rem 1rem; border-radius: 8px; text-align: center; margin-top: 0.5rem; box-shadow: 0 0 20px rgba(0, 230, 119, 0.836); transform: translateY(4px);}
+.fadebox {opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; font-size: 0.95rem; color: #ffffff; background-color: rgba(0, 230, 118, 0.3); padding: 0.8rem 1rem; border-radius: 8px; text-align: center; margin-top: 0.5rem; box-shadow: 0 2px 6px rgba(0, 230, 118, 0.4); transform: translateY(4px);}
 .portfolio-col:hover .fadebox {opacity: 1; transform: translateY(0);}
 /* Testo principale (es. nome pagina) */
 .greentext {font-weight: 600; color: #2e8b57; margin: 0.5rem 0 0; font-size: 1rem; transition: color 0.3s ease;}
