@@ -110,19 +110,21 @@ function createPerformanceCard(page) {
 
   card.innerHTML = `
     <div class="portfolio-content">
-      <div class="fadebox">
-        <strong>${fileName}${badgeHTML}</strong><br>
-        Score: ${performance}/100 
-       <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
-             style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
-         ${getTrendArrow(performance, page.previousPerformanceScore)}
-         ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined ? 
-           (performance > page.previousPerformanceScore ? '+' : '') + 
-           (performance - page.previousPerformanceScore) 
-           : ''}
-       </span>
-       • ${loadTime} s  
-      </div>
+      <div class="fadebox" data-tooltip="true">
+  <strong>${fileName}${badgeHTML}</strong><br>
+  Score: ${performance}/100 
+  <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
+        style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
+    ${getTrendArrow(performance, page.previousPerformanceScore)}
+    ${page.previousPerformanceScore !== null 
+      ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+      : ''}
+  </span>
+  • ${loadTime} s
+  <div class="trend-details" style="display: none;">
+    <div class="trend-bar">${createTrendBar(performance, page.previousPerformanceScore)}</div>
+  </div>
+</div>
       <p class="greentext">${fileName} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
     </div>
   `;

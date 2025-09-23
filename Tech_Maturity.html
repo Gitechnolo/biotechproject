@@ -66,6 +66,36 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-row {min-height: 200px; /* Evita il collassamento */
   display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1rem; justify-content: flex-start;}
 .portfolio-row:empty::before {content: "Caricamento..."; color: #999; font-style: italic; align-self: center; justify-self: center;}
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]:hover .trend-details {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(30, 41, 59, 0.95);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  margin-top: 4px;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border: 1px solid #4b5563;
+}
+
+.trend-bar {
+  font-family: monospace;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  font-size: 14px;
+  text-align: center;
+}   
 </style>
 <script>
 !function(){
