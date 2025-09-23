@@ -66,8 +66,14 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-row {min-height: 200px; /* Evita il collassamento */
   display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1rem; justify-content: flex-start;}
 .portfolio-row:empty::before {content: "Caricamento..."; color: #999; font-style: italic; align-self: center; justify-self: center;}
+
 .fadebox:hover .trend-details {
   display: block;
+}   
+.fadebox:focus {
+  outline: 3px solid #10b981;        /* Verde brillante (Tailwind green-500) */
+  outline-offset: 3px;
+  border-radius: 8px;
 }   
 </style>
 <script>
