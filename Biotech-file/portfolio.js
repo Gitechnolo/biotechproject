@@ -108,27 +108,56 @@ function createPerformanceCard(page) {
   card.className = `portfolio-col ${perfClass} portfolio-show dynamic`;
   card.dataset.page = page.slug || fileName;
 
+  // Inserisci HTML con tooltip accessibile
   card.innerHTML = `
     <div class="portfolio-content">
-      <div class="fadebox">
+      <div class="fadebox" tabindex="0" aria-label="Dettagli performance per ${fileName}">
         <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 
-       <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
-             style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
-         ${getTrendArrow(performance, page.previousPerformanceScore)}
-         ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined ? 
-           (performance > page.previousPerformanceScore ? '+' : '') + 
-           (performance - page.previousPerformanceScore) 
-           : ''}
-       </span>
-       • ${loadTime} s  
+        <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
+              style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
+          ${getTrendArrow(performance, page.previousPerformanceScore)}
+          ${page.previousPerformanceScore !== null 
+            ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+            : ''}
+        </span>
+        • ${loadTime} s
+        <div class="trend-details" style="display: none;">
+          <div><strong>Punteggio:</strong> ${performance}/100</div>
+          ${page.previousPerformanceScore !== null 
+            ? `<div><strong>Precedente:</strong> ${page.previousPerformanceScore}</div>
+               <div><strong>Trend:</strong> ${getTrendArrow(performance, page.previousPerformanceScore)}${performance - page.previousPerformanceScore}</div>`
+            : `<div><strong>Trend:</strong> Nessun dato precedente</div>`}
+          <div><strong>Tempo di caricamento:</strong> ${loadTime} s</div>
+        </div>
       </div>
       <p class="greentext">${fileName} — ${perfClass.charAt(0).toUpperCase() + perfClass.slice(1)}</p>
     </div>
   `;
 
+  // 🔹 Accessibilità: mostra tooltip con focus (tastiera)
+  const fadebox = card.querySelector('.fadebox');
+  const trendDetails = card.querySelector('.trend-details');
+
+  fadebox.addEventListener('focus', () => {
+    trendDetails.style.display = 'block';
+  });
+
+  fadebox.addEventListener('blur', () => {
+    trendDetails.style.display = 'none';
+  });
+
+  // 🔹 Accessibilità: supporto touch (tap per mostrare/nascondere)
+  fadebox.addEventListener('click', () => {
+    if (trendDetails.style.display === 'block') {
+      trendDetails.style.display = 'none';
+    } else {
+      trendDetails.style.display = 'block';
+    }
+  });
+
   return card;
-}   
+}      
 
 // --- Gestione pulsanti di aggiornamento ---
 function setupRefreshButtons() {
