@@ -30,6 +30,16 @@ jobs:
         with:
           node-version: '20'
 
+      - name: 📂 Restore previous report to tools/
+        run: |
+          mkdir -p tools
+          if [ -f data/performance-latest.json ]; then
+            cp data/performance-latest.json tools/performance-latest.json
+            echo "✅ Vecchio report disponibile per il confronto"
+          else
+            echo "🟡 Nessun report precedente"
+          fi
+
       - name: 📦 Install dependencies
         run: |
           cd tools
@@ -45,13 +55,13 @@ jobs:
           fi
           echo "✅ performance-data.json created"
 
-      - name: 📂 Copy report to root data folder
+      - name: 📂 Copy result to /data
         run: |
           mkdir -p data
           cp tools/performance-data.json data/performance-latest.json
           echo "✅ Copiato in data/performance-latest.json"
 
-      - name: 📂 Commit & Push data/performance-latest.json to main
+      - name: 📂 Commit & Push data/performance-latest.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -64,4 +74,4 @@ jobs:
             git commit -m "chore: update performance-latest.json [auto]"
             git pull --rebase --strategy=recursive -X theirs origin main || true
             git push origin HEAD:main
-          fi   
+          fi      
