@@ -116,7 +116,7 @@ function createPerformanceCard(page) {
        <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
              style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
          ${getTrendArrow(performance, page.previousPerformanceScore)}
-         ${page.previousPerformanceScore !== undefined ? 
+         ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined ? 
            (performance > page.previousPerformanceScore ? '+' : '') + 
            (performance - page.previousPerformanceScore) 
            : ''}
