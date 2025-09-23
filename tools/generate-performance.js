@@ -195,7 +195,7 @@ async function runPerformanceAnalysis() {
   // 🔄 Associa il valore precedente a ogni pagina
   output.pages.forEach(page => {
     const prevPage = previousData?.pages.find(p => p.slug === page.slug);
-    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : undefined;
+    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : null;   
   });
 
   // Assicura che la cartella esista
