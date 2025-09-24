@@ -48,7 +48,7 @@ jobs:
       - name: 🚀 Run Performance Analysis
         run: |
           cd tools
-          node generate-performance.js
+          node generate-performance.cjs
           if [ ! -f performance-data.json ]; then
             echo "❌ Error: performance-data.json not generated"
             exit 1
