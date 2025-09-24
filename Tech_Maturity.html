@@ -171,33 +171,146 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     <div class="staff-card">
       <div class="staff-container">
  <!-- MAIN  -->
-<div class="tech-audit-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="tech-audit-container">
   <h2>Stima Tecnologica | Biotech Project</h2>
   <p class="lead">Risultati verificati di performance, accessibilità e best practice.</p>
 
-<div class="metrics-grid">
-  <div class="metric">
-    <div class="progress-circle" data-value="100" data-metric="performance"></div>
-  <p><strong>📱 Mobile</strong><br>Prestazioni</p>
-  </div>
-  <div class="metric">
-    <div class="progress-circle" style="--value: 100;" data-value="100" data-metric="seo"></div>
-    <p>SEO</p>
-  </div>
-  <div class="metric">
-    <div class="progress-circle" style="--value: 100;" data-value="100" data-metric="accessibility"></div>
-    <p>Accessibilità</p>
-  </div>
-  <div class="metric">
-    <div class="progress-circle" style="--value: 100;" data-value="100" data-metric="best-practices"></div>
-    <p>Best Practices</p>
-  </div>
-  <div class="metric">
-    <div class="progress-circle" data-value="100" data-metric="performance-desktop"></div>
-  <p><strong>💻 Desktop</strong><br>Prestazioni</p>
-  </div>
-</div>   
-</div>
+  <div class="tech-section">
+    <div class="metrics-grid">
+      <!-- MOBILE PERFORMANCE -->
+      <div class="metric">
+        <div
+          class="progress-circle"
+          data-metric="performance"
+          role="meter"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Prestazioni mobile"
+          data-value="--"
+        ></div>
+        <p><strong>📱 Mobile</strong><br>Prestazioni</p>
+        <button class="tooltip-btn" data-tooltip="performance-mobile" aria-label="Info prestazioni mobile">ⓘ</button>
+        <div class="trend-details" id="tooltip-performance-mobile" hidden>
+          <strong>Prestazioni Mobile</strong><br>
+          Velocità di caricamento, First Paint e interattività. Punteggio da 0 a 100.
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="metric">
+        <div
+          class="progress-circle"
+          data-metric="seo"
+          role="meter"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Ottimizzazione SEO"
+          data-value="--"
+        ></div>
+        <p>SEO</p>
+        <button class="tooltip-btn" data-tooltip="seo" aria-label="Info SEO">ⓘ</button>
+        <div class="trend-details" id="tooltip-seo" hidden>
+          <strong>SEO</strong><br>
+          Titoli, meta description, link strutturati e contenuti ottimizzati per i motori di ricerca.
+        </div>
+      </div>
+
+      <!-- ACCESSIBILITÀ -->
+      <div class="metric">
+        <div
+          class="progress-circle"
+          data-metric="accessibility"
+          role="meter"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Livello di accessibilità"
+          data-value="--"
+        ></div>
+        <p>Accessibilità</p>
+        <button class="tooltip-btn" data-tooltip="accessibility" aria-label="Info accessibilità">ⓘ</button>
+        <div class="trend-details" id="tooltip-accessibility" hidden>
+          <strong>Accessibilità</strong><br>
+          Fruibiltà con screen reader, tastiera, contrasto e navigazione logica.
+        </div>
+      </div>
+
+      <!-- BEST PRACTICES -->
+      <div class="metric">
+        <div
+          class="progress-circle"
+          data-metric="best-practices"
+          role="meter"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Best practice di sviluppo"
+          data-value="--"
+        ></div>
+        <p>Best Practices</p>
+        <button class="tooltip-btn" data-tooltip="best-practices" aria-label="Info best practices">ⓘ</button>
+        <div class="trend-details" id="tooltip-best-practices" hidden>
+          <strong>Best Practices</strong><br>
+          Verifica l'uso di HTTPS, codice moderno, sicurezza, e pratiche di sviluppo consigliate da Google e W3C.
+        </div>
+      </div>
+
+      <!-- DESKTOP PERFORMANCE -->
+      <div class="metric">
+        <div
+          class="progress-circle"
+          data-metric="performance-desktop"
+          role="meter"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Prestazioni desktop"
+          data-value="--"
+        ></div>
+        <p><strong>💻 Desktop</strong><br>Prestazioni</p>
+        <button class="tooltip-btn" data-tooltip="performance-desktop" aria-label="Info prestazioni desktop">ⓘ</button>
+        <div class="trend-details" id="tooltip-performance-desktop" hidden>
+          <strong>Prestazioni Desktop</strong><br>
+          Velocità di caricamento e interattività su connessione veloce (4G o Wi-Fi). Misurata con Lighthouse.
+        </div>
+      </div>
+    </div> <!-- /metrics-grid -->
+
+    <!-- 🔺 Indicatore di tendenza globale (opzionale) -->
+    <div style="margin-top: 16px; font-size: 0.9em; color: #a7ffeb; text-align: center;">
+      Ultimo aggiornamento: <span id="last-updated">--/--/----</span>
+      <span id="trend-indicator" aria-live="polite" class="visually-hidden">Stabile</span>
+    </div>
+  </div> <!-- /tech-section -->
+</div> <!-- /tech-audit-container -->   
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section class="tech-section">
   <p class="sansation-light-italic">Andamento delle Prestazioni!</p>
