@@ -169,15 +169,21 @@ async function runPerformanceAnalysis() {
   const outputPath = path.join(outputDir, 'performance-data.json');
 
   // 📊 Dati finali
-  const output = {
-    lastUpdated: new Date().toISOString(),
-    summary: {
-      totalPages: pages.length,
-      analyzed: results.filter(r => !r.error).length,
-      failed: results.filter(r => r.error).length
-    },
-    pages: results
-  };
+const validPages = results.filter(r => !r.error && r.performanceScore > 0);
+const averagePerformance = validPages.length > 0
+  ? Math.round(validPages.reduce((sum, r) => sum + r.performanceScore, 0) / validPages.length)
+  : null;
+
+const output = {
+  lastUpdated: new Date().toISOString(),
+  summary: {
+    totalPages: pages.length,
+    analyzed: validPages.length,
+    failed: results.filter(r => r.error).length,
+    averagePerformance: averagePerformance
+  },
+  pages: results
+};   
 
   // 🔁 Leggi il vecchio JSON per estrarre i valori precedenti
   let previousData = null;
