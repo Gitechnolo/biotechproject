@@ -3,6 +3,9 @@
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA
 // ———————————————————————
 
+// --- Variabile globale per il grafico ---
+let performanceChart;
+
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
   console.log('🔧 loadPerformanceData() in esecuzione');
@@ -46,24 +49,37 @@ async function loadPerformanceData() {
       container.appendChild(card);
     });
 
-    // Inizializza filtri (se presenti)
-    if (typeof filterSelection === 'function') {
-      filterSelection('all');
+    // Inizializza filtri
+    filterSelection('all');
+
+    // Costruisci cronologia minima da dati reali
+    const history = [];
+
+    // Aggiungi punto precedente se disponibile
+    if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
+      history.push({
+        date: subtractDays(reportTime, 5),
+        score: homePage.previousPerformanceScore,
+        note: 'Misurazione precedente'
+      });
     }
 
-    // Aggiorna grafico (usa dati stimati per ora)
-    creaGrafico();
+    // Aggiungi punto attuale
+    history.push({
+      date: formatDate(reportTime),
+      score: performanceScoreValue,
+      note: 'Misurazione attuale'
+    });
+
+    // Aggiorna grafico con dati reali
+    creaGrafico(history);
 
   } catch (error) {
     console.warn('⚠️ Impossibile caricare i dati reali:', error);
 
     // Fallback visivo
-    if (typeof populateAllCirclesFallback === 'function') {
-      populateAllCirclesFallback();
-    }
-
     aggiornaPerformanceScore(85);
-    creaGrafico(); // Mostra trend stimato
+    creaGrafico(); // Usa dati simulati come fallback
 
     const lastUpdate = document.getElementById('last-update');
     if (lastUpdate) {
@@ -74,18 +90,14 @@ async function loadPerformanceData() {
   }
 }
 
-
-
 // --- Crea la card per ogni pagina (Accessibilità) ---
 function createPerformanceCard(page) {
-  // Gestisci entrambi i formati: score 0-100 o 0.0-1.0
   const performance = page.performanceScore !== undefined
     ? page.performanceScore
     : page.performance !== undefined
       ? Math.round(page.performance * 100)
       : 85;
 
-  // Determina classe CSS in base al punteggio
   let perfClass = 'needs-improvement';
   if (performance >= 90) perfClass = 'optimized';
   else if (performance >= 80) perfClass = 'compatible';
@@ -95,9 +107,8 @@ function createPerformanceCard(page) {
   const url = page.url || 'Pagina sconosciuta';
   const fileName = url.split('/').pop() || 'index.html';
   const loadTime = page.loadTime ? (page.loadTime / 1000).toFixed(1) : '?';
-  const tooltipId = `tooltip-${sanitizeId(fileName)}`; // ID univoco per ARIA
+  const tooltipId = `tooltip-${sanitizeId(fileName)}`;
 
-  // Crea il badge
   const badgeHTML = `
     <span class="status-badge badge-${perfClass}">
       ${perfClass.replace('needs-improvement', 'Needs Improvement')
@@ -182,10 +193,7 @@ function createPerformanceCard(page) {
 // 🔹 Funzione di utilità per generare ID sicuri
 function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-}   
-
-
-
+}
 
 // --- Gestione pulsanti di aggiornamento ---
 function setupRefreshButtons() {
@@ -216,51 +224,46 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
 
   const trendIndicator = document.getElementById('trend-indicator');
   if (trendIndicator) {
-    const trend = performanceScoreValue - 82; // confronto con valore precedente
-    trendIndicator.textContent = trend > 0 ? '↑' : trend < 0 ? '↓' : '→';
+    const trend = performanceScoreValue - 82; // confronto con valore precedente   
+    trendIndicator.textContent = trend > 0 ? ' ↑' : trend < 0 ? ' ↓' : ' →';
     trendIndicator.style.color = trend > 0 ? '#10b981' : trend < 0 ? '#ef4444' : '#f59e0b';
+    trendIndicator.setAttribute('aria-label', 
+      trend > 0 ? 'Trend in aumento' : 
+      trend < 0 ? 'Trend in diminuzione' : 'Trend stabile'
+    );
   }
 }
 
-// --- Dati storici e previsioni per il grafico ---
-const datiStorici = [
-  { data: '2024-09-01', valore: 30, descrizione: 'Avvio progetto - Struttura base' },
-  { data: '2024-10-15', valore: 38, descrizione: 'Primi contenuti scientifici' },
-  { data: '2024-12-01', valore: 45, descrizione: 'Integrazione versioni semplici' },
-  { data: '2025-01-20', valore: 52, descrizione: 'Ottimizzazione mobile' },
-  { data: '2025-03-10', valore: 60, descrizione: 'Implementazione accessibilità WCAG' },
-  { data: '2025-05-05', valore: 70, descrizione: 'Forum interattivo integrato' },
-  { data: '2025-07-01', valore: 78, descrizione: 'Dashboard tecnica attiva' },
-  { data: '2025-09-15', valore: 85, descrizione: 'Completa coerenza UI/UX e navigazione' }
-];
+// --- Funzioni ausiliarie per formattazione date ---
+function subtractDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() - days);
+  return formatDate(d);
+}
 
-const previsione = [
-  { data: '2025-10-15', valore: 88, descrizione: 'Prev: Audit accessibilità completa' },
-  { data: '2025-11-30', valore: 91, descrizione: 'Prev: Ottimizzazione SEO avanzata' },
-  { data: '2025-12-15', valore: 94, descrizione: 'Prev: Test usabilità utenti reali' },
-  { data: '2026-01-30', valore: 97, descrizione: 'Prev: Documentazione tecnica finale' },
-  { data: '2026-02-28', valore: 100, descrizione: 'Prev: Maturità tecnologica completa' }
-];
-
-const datiCompleti = [...datiStorici, ...previsione];
-const labels = datiCompleti.map(d => formatDate(d.data));
-const valori = datiCompleti.map(d => d.valore);
-
-function formatDate(dateString) {
+function formatDate(date) {
   const options = { month: 'short', year: '2-digit' };
-  return new Date(dateString).toLocaleDateString('it-IT', options)
+  return new Date(date).toLocaleDateString('it-IT', options)
     .replace('.', '')
     .replace(' ', ' ');
 }
 
-// --- Variabile globale per il grafico ---
-let performanceChart;
+// --- Dati simulati (solo come fallback visivo) ---
+const datiSimulati = [
+  { date: '2024-09-01', score: 30, note: 'Avvio progetto' },
+  { date: '2024-10-15', score: 38, note: 'Contenuti iniziali' },
+  { date: '2024-12-01', score: 45, note: 'Versioni semplici' },
+  { date: '2025-01-20', score: 52, note: 'Ottimizzazione mobile' },
+  { date: '2025-03-10', score: 60, note: 'Accessibilità WCAG' },
+  { date: '2025-05-05', score: 70, note: 'Forum integrato' },
+  { date: '2025-07-01', score: 78, note: 'Dashboard attiva' },
+  { date: '2025-09-15', score: 85, note: 'UI/UX coerente' }
+];
 
 // --- Funzione: crea o aggiorna il grafico ---
-function creaGrafico() {
+function creaGrafico(history = []) {
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
-
   const chartCtx = ctx.getContext('2d');
 
   // Distruggi grafico esistente
@@ -268,20 +271,29 @@ function creaGrafico() {
     performanceChart.destroy();
   }
 
+  // Usa dati reali se disponibili, altrimenti fallback simulato
+  const dataToShow = history.length > 0 ? history : datiSimulati;
+
+  const labels = dataToShow.map(d => d.date);
+  const values = dataToShow.map(d => d.score);
+
+  // Identifica dove finiscono i dati reali (per colori)
+  const realDataEndIndex = history.length;
+
   performanceChart = new Chart(chartCtx, {
     type: 'line',
     data: {
       labels: labels,
       datasets: [{
         label: 'Maturità Tecnologica del Sito (%)',
-        data: valori,
+        data: values,
         borderColor: '#10b981',
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
         borderWidth: 3,
         pointRadius: 5,
         pointBackgroundColor: (context) => {
-          // Punti storici in verde, previsioni in arancione
-          return context.dataIndex < datiStorici.length ? '#10b981' : '#f59e0b';
+          // Dati reali in verde, fallback in arancione
+          return context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b';
         },
         fill: true,
         tension: 0.3
@@ -301,9 +313,10 @@ function creaGrafico() {
           borderWidth: 1,
           callbacks: {
             label: (context) => {
-              const isPrevisto = context.dataIndex >= datiStorici.length;
-              const tipo = isPrevisto ? ' (previsto)' : ' (reale)';
-              return `${context.parsed.y}%${tipo} - ${datiCompleti[context.dataIndex].descrizione}`;
+              const isReal = context.dataIndex < realDataEndIndex;
+              const tipo = isReal ? ' (reale)' : ' (stimato)';
+              const note = dataToShow[context.dataIndex]?.note || '';
+              return `${context.parsed.y}%${tipo} - ${note}`;
             }
           }
         }
@@ -324,21 +337,21 @@ function creaGrafico() {
   });
 
   // Aggiorna tabella accessibile
-  aggiornaTabellaDati();
+  aggiornaTabellaDati(dataToShow);
 }
 
 // --- Aggiorna tabella accessibile con dati del grafico ---
-function aggiornaTabellaDati() {
+function aggiornaTabellaDati(data) {
   const tbody = document.getElementById('chart-data-body');
   if (!tbody) return;
 
   tbody.innerHTML = '';
-  datiCompleti.forEach(item => {
+  data.forEach(item => {
     const tr = document.createElement('tr');
     const tdData = document.createElement('td');
     const tdValore = document.createElement('td');
-    tdData.textContent = item.data;
-    tdValore.textContent = `${item.valore}%`;
+    tdData.textContent = item.date;
+    tdValore.textContent = `${item.score}%`;
     tr.appendChild(tdData);
     tr.appendChild(tdValore);
     tbody.appendChild(tr);
@@ -358,13 +371,6 @@ if (typeof showNotification === 'undefined') {
     }
   }
 }
-
-// --- Inizializzazione unica ---
-document.addEventListener('DOMContentLoaded', () => {
-  setupRefreshButtons();
-  loadPerformanceData(); // Carica dati e inizializza grafico
-}); 
-
 
 // --- Filtra le card in base al livello di maturità delle pagine ---
 function filterSelection(filter) {
@@ -404,16 +410,6 @@ function filterSelection(filter) {
     : '';
 }
 
-// 2. Aggiungi gli event listener in modo pulito (senza onclick nell'HTML)
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterSelection(btn.dataset.filter);
-    });
-  });
-});  
-
-
 // --- Calcola freccia di tendenza per singola pagina ---
 function getTrendArrow(current, previous) {
   if (previous === undefined || previous === null) return '→';
@@ -429,4 +425,17 @@ function getTrendColorClass(current, previous) {
   return current > previous ? 'badge-optimized' :  // ▲ verde acqua
          current < previous ? 'badge-deprecated' : // ▼ rosso
                             'badge-compatible';   // ➔ verde
-}   
+}
+
+// --- Inizializzazione unica ---
+document.addEventListener('DOMContentLoaded', () => {
+  setupRefreshButtons();
+  loadPerformanceData(); // Carica dati e inizializza grafico
+
+  // Aggiungi event listener ai pulsanti di filtro
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterSelection(btn.dataset.filter);
+    });
+  });
+});   
