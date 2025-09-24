@@ -242,11 +242,15 @@ function subtractDays(date, days) {
 }
 
 function formatDate(date) {
-  const options = { month: 'short', year: '2-digit' };
-  return new Date(date).toLocaleDateString('it-IT', options)
-    .replace('.', '')
-    .replace(' ', ' ');
-}
+  const d = new Date(date);
+  const day = d.getDate();
+  const options = { month: 'short' };
+  const month = d.toLocaleDateString('it-IT', options).replace('.', '');
+  // Aggiungi anno solo se non è l'anno corrente
+  const year = d.getFullYear();
+  const currentYear = new Date().getFullYear();
+  return year === currentYear ? `${day} ${month}` : `${day} ${month} '${year.toString().slice(-2)}`;
+}   
 
 // --- Dati simulati (solo come fallback visivo) ---
 const datiSimulati = [
@@ -262,6 +266,7 @@ const datiSimulati = [
 
 // --- Funzione: crea o aggiorna il grafico ---
 function creaGrafico(history = []) {
+  console.log('Dati grafico:', history); // 🔍 Verifica
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
   const chartCtx = ctx.getContext('2d');
