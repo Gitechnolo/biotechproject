@@ -154,4 +154,37 @@ document.addEventListener('DOMContentLoaded', async () => {
       setTimeout(() => notification.style.opacity = 0, 2000);
     }, 100);
   }
-});   
+}); 
+
+
+
+// 🔹 Carica dati e aggiorna il report visivo
+async function updateVisualReport() {
+  try {
+    const response = await fetch('/biotechproject/data/performance-latest.json');
+    if (!response.ok) throw new Error('Dati non disponibili');
+
+    const data = await response.json();
+
+    // 🔹 Media prestazioni
+    const avgPerf = document.getElementById('avg-performance');
+    if (avgPerf && data.summary?.averagePerformance) {
+      avgPerf.textContent = `${data.summary.averagePerformance}%`;
+    }
+
+    // 🔹 Ultimo aggiornamento
+    const lastUpdated = document.getElementById('last-updated-report');
+    if (lastUpdated && data.lastUpdated) {
+      const date = new Date(data.lastUpdated);
+      lastUpdated.textContent = date.toLocaleDateString('it-IT');
+    }
+
+  } catch (error) {
+    console.warn('Errore nel caricamento del report visivo:', error);
+    document.getElementById('avg-performance').textContent = 'N/D';
+    document.getElementById('last-updated-report').textContent = 'Errore';
+  }
+}
+
+// Esegui al caricamento
+document.addEventListener('DOMContentLoaded', updateVisualReport);   
