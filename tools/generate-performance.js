@@ -228,6 +228,33 @@ const output = {
   }
 }   
 
+
+// 🎖️ Genera badge.json per shields.io
+const badgePath = path.join(outputDir, 'badge.json');
+const avg = output.summary.averagePerformance;
+let color = 'lightgrey';
+if (avg >= 90) color = 'brightgreen';
+else if (avg >= 80) color = 'green';
+else if (avg >= 70) color = 'yellowgreen';
+else if (avg >= 60) color = 'yellow';
+else if (avg >= 50) color = 'orange';
+else color = 'red';
+
+const badgeData = {
+  schemaVersion: 1,
+  label: 'performance',
+  message: `${avg}%`,
+  color: color
+};
+
+try {
+  fs.writeFileSync(badgePath, JSON.stringify(badgeData, null, 2), 'utf-8');
+  console.log(`✅ Badge generato: ${badgePath}`);
+} catch (badgeError) {
+  console.warn('⚠️  Errore nella generazione di badge.json:', badgeError.message);
+}   
+
+
 // ✅ Esegui l'analisi
 runPerformanceAnalysis().catch(err => {
   console.error('🚨 Errore non gestito:', err);
