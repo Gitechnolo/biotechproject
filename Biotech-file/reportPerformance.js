@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-// 🔹 Carica dati e aggiorna il report visivo
+// 🔹 Aggiorna il report visivo con dati reali
 async function updateVisualReport() {
   try {
     const response = await fetch('/biotechproject/data/performance-latest.json');
@@ -166,25 +166,37 @@ async function updateVisualReport() {
 
     const data = await response.json();
 
-    // ✅ Aggiorna media prestazioni
+    // ✅ Pagine analizzate
+    const analyzedCount = document.getElementById('analyzed-count');
+    if (analyzedCount) {
+      analyzedCount.textContent = data.summary.analyzed;
+    }
+
+    // ⚡ Media prestazioni
     const avgPerf = document.getElementById('avg-performance');
-    if (avgPerf && data.summary?.averagePerformance !== null) {
+    if (avgPerf && data.summary.averagePerformance !== null) {
       avgPerf.textContent = `${data.summary.averagePerformance}%`;
     }
 
-    // ✅ Aggiorna data
+    // 🔍 Ultimo aggiornamento
     const lastUpdated = document.getElementById('last-updated-report');
     if (lastUpdated && data.lastUpdated) {
       const date = new Date(data.lastUpdated);
       lastUpdated.textContent = date.toLocaleDateString('it-IT');
+      lastUpdated.setAttribute('datetime', date.toISOString());
     }
 
   } catch (error) {
-    console.warn('Errore nel caricamento del report visivo:', error);
-    const avgPerf = document.getElementById('avg-performance');
-    if (avgPerf) avgPerf.textContent = 'N/D';
+    console.warn('🔧 reportPerformance.js: Errore nel caricamento del report visivo', error);
+
+    // Fallback visivo
+    const elements = ['analyzed-count', 'avg-performance', 'last-updated-report'];
+    elements.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = 'N/D';
+    });
   }
 }
 
 // Esegui al caricamento
-document.addEventListener('DOMContentLoaded', updateVisualReport);      
+document.addEventListener('DOMContentLoaded', updateVisualReport);       

@@ -382,45 +382,60 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 
 
 <!-- === VISUAL REPORT CARD === -->
-<div class="visual-report">
-  <h3>📊 Stato del Progetto</h3>
+<div class="visual-report" aria-labelledby="report-title">
+  <h3 id="report-title">📊 Stato del Progetto</h3>
   <div class="report-grid">
-    <div class="report-item">
-      <span class="report-icon">✅</span>
+    
+    <!-- Pagine analizzate -->
+    <div class="report-item" role="article" aria-label="Pagine analizzate">
+      <span class="report-icon" aria-hidden="true">✅</span>
       <div>
         <strong>Pagine analizzate</strong>
-        <p>24 su 24</p>
+        <p>
+          <span id="analyzed-count">--</span> su 
+          <span id="total-pages">24</span>
+        </p>
       </div>
     </div>
-    <div class="report-item">
-      <span class="report-icon">⚡</span>
+
+    <!-- Prestazioni medie -->
+    <div class="report-item" role="article" aria-label="Prestazioni medie">
+      <span class="report-icon" aria-hidden="true">⚡</span>
       <div>
         <strong>Prestazioni medie</strong>
         <p id="avg-performance">--%</p>
       </div>
     </div>
-    <div class="report-item">
-      <span class="report-icon">♿</span>
+
+    <!-- Accessibilità -->
+    <div class="report-item" role="article" aria-label="Accessibilità">
+      <span class="report-icon" aria-hidden="true">♿</span>
       <div>
         <strong>Accessibilità</strong>
-        <p>Alto contrasto, navigabile da tastiera</p>
+        <p>Alto contrasto, navigabile da tastiera, compatibile con screen reader</p>
       </div>
     </div>
-    <div class="report-item">
-      <span class="report-icon">🔍</span>
+
+    <!-- Ultimo aggiornamento -->
+    <div class="report-item" role="article" aria-label="Ultimo aggiornamento">
+      <span class="report-icon" aria-hidden="true">🔍</span>
       <div>
         <strong>Ultimo aggiornamento</strong>
-        <p id="last-updated-report">--/--/----</p>
+        <p>
+          <time id="last-updated-report" datetime="">--/--/----</time>
+        </p>
       </div>
     </div>
+
   </div>
+
   <p class="report-note">
-  Dati aggiornati automaticamente. 
-  <a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link">Scarica JSON</a> 
-  o 
-  <a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link">vedi su GitHub</a>.
-</p>      
-</div>   
+    Dati aggiornati automaticamente. 
+    <a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link">Scarica JSON</a> 
+    o 
+    <a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link">vedi su GitHub</a>.
+  </p>
+</div>     
 
 
 
