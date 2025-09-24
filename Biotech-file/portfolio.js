@@ -295,11 +295,16 @@ function creaGrafico(history = []) {
         borderColor: '#10b981',
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
         borderWidth: 3,
-        pointRadius: 5,
+        pointRadius: (context) => {
+  const isLast = context.dataIndex === values.length - 1;
+  return isLast ? 8 : 5; // ultimo punto più grande
+},   
         pointBackgroundColor: (context) => {
-          // Dati reali in verde, fallback in arancione
-          return context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b';
-        },
+  if (context.dataIndex === values.length - 1) {
+    return '#4ade80'; // verde brillante per l'ultimo valore
+  }
+  return context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b';
+}   ,
         fill: true,
         tension: 0.3
       }]
