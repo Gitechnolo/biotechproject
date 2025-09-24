@@ -1,229 +1,167 @@
 // tools/generate-performance.js
+const lighthouse = require('lighthouse');
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
 
-import lighthouse from 'lighthouse';
-import chromeLauncher from 'chrome-launcher';
-import fs from 'fs';
-import path from 'path';
-
-// URL base del sito
-const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
-
-// Lista delle pagine da analizzare
-const pages = [
-  { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'biotecnologie' },
-  { url: `${BASE_URL}/Cuore.html`, label: 'Cuore', slug: 'cuore', category: 'fisiologia' },
-  { url: `${BASE_URL}/Cuore-semplice.html`, label: 'Cuore (versione semplificata)', slug: 'cuore-semplice', category: 'accessibilità' },
-  { url: `${BASE_URL}/Apparato_respiratorio.html`, label: 'Apparato respiratorio', slug: 'apparato-respiratorio', category: 'fisiologia' },
-  { url: `${BASE_URL}/Apparato_respiratorio-semplice.html`, label: 'Apparato respiratorio (versione semplificata)', slug: 'apparato-respiratorio-semplice', category: 'accessibilità' },   
-  { url: `${BASE_URL}/Apparato_digerente.html`, label: 'Apparato digerente', slug: 'apparato-digerente', category: 'fisiologia' },
-  { url: `${BASE_URL}/Apparato_digerente-semplice.html`, label: 'Apparato digerente (versione semplificata)', slug: 'apparato-digerente-semplice', category: 'accessibilità' },   
-  { url: `${BASE_URL}/Apparato_tegumentario.html`, label: 'Apparato tegumentario', slug: 'apparato-tegumentario', category: 'fisiologia' },
-  { url: `${BASE_URL}/Apparato_tegumentario-semplice.html`, label: 'Apparato tegumentario (versione semplificata)', slug: 'apparato-tegumentario-semplice', category: 'accessibilità' },   
-  { url: `${BASE_URL}/Sistema_linfatico.html`, label: 'Sistema linfatico', slug: 'sistema-linfatico', category: 'fisiologia' },
-  { url: `${BASE_URL}/Sistema_linfatico-semplice.html`, label: 'Sistema linfatico (versione semplificata)', slug: 'sistema-linfatico-semplice', category: 'accessibilità'},   
-  { url: `${BASE_URL}/Dermatologia.html`, label: 'Dermatologia', slug: 'dermatologia', category: 'fisiologia' },
-  { url: `${BASE_URL}/Dermatologia-semplice.html`, label: 'Dermatologia (versione semplificata)', slug: 'dermatologia-semplice', category: 'accessibilità'},   
-  { url: `${BASE_URL}/Cellula.html`, label: 'Cellula', slug: 'cellula', category: 'fisiologia' },
-  { url: `${BASE_URL}/Cellula-semplice.html`, label: 'Cellula (versione semplificata)', slug: 'cellula-semplice', category: 'accessibilità' },   
-  { url: `${BASE_URL}/Staff.html`, label: 'Staff', slug: 'staff', category: 'staff' },
-  { url: `${BASE_URL}/Progetti.html`, label: 'Progetti', slug: 'progetti', category: 'altro' },
-  { url: `${BASE_URL}/Marketing.html`, label: 'Marketing', slug: 'marketing', category: 'mercato cibernetica' },
-  { url: `${BASE_URL}/O.S_support.html`, label: 'Supporto OS', slug: 'os-support', category: 'supporto' },
-  { url: `${BASE_URL}/Tablet_forum.html`, label: 'Forum Tablet', slug: 'tablet-forum', category: 'forum' },
-  { url: `${BASE_URL}/Specials.html`, label: 'Specials', slug: 'specials', category: 'cellule staminali robotica' },
-  { url: `${BASE_URL}/Tech_Maturity.html`, label: 'Maturità tecnologica', slug: 'tech-maturity', category: 'maturità tecnologica' },
-  { url: `${BASE_URL}/accessibility-it.html`, label: 'Accessibilità (informazioni)', slug: 'accessibility-it', category: 'accessibilità' }, 
-  { url: `${BASE_URL}/accessibility-en.html`, label: 'Accessibility (information)', slug: 'accessibility-en', category: 'accessibilità' },     
+// 🔗 Lista delle pagine da analizzare
+// Aggiorna con tutte le pagine del tuo progetto
+const PAGES = [
+  { url: 'https://gitechnolo.github.io/biotechproject/index.html', label: 'Homepage', slug: 'index', category: 'biotecnologie' },
+  { url: 'https://gitechnolo.github.io/biotechproject/Cuore.html', label: 'Cuore', slug: 'cuore', category: 'fisiologia' },
+  { url: 'https://gitechnolo.github.io/biotechproject/Tech_Maturity.html', label: 'Tech Maturity', slug: 'tech-maturity', category: 'tecnologia' },
+  // 🔽 Aggiungi altre pagine qui:
+  // { url: 'https://gitechnolo.github.io/biotechproject/altra-pagina.html', label: 'Etichetta', slug: 'altra', category: 'categoria' }
 ];
 
-// Configurazione di Chrome per Lighthouse
-const launchChrome = async () => {
-  return await chromeLauncher.launch({
-    chromeFlags: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--headless',
-      '--disable-background-timer-throttling',
-      '--disable-backgrounding-occluded-windows',
-      '--disable-renderer-backgrounding',
-      '--disable-ipc-flooding-protection',
-      '--disable-breakpad',
-      '--disable-component-extensions-with-background-pages',
-      '--disable-default-apps',
-      '--disable-features=TranslateUI',
-      '--disable-features=AudioServiceOutOfProcess',
-      '--allow-running-insecure-content',
-      '--disable-web-security',
-      '--window-size=1350,940'
-    ],
-    port: 9222, // Porta fissa per debug (opzionale)
-    logLevel: 'silent'
-  });
-};
+// 📂 Percorso del report precedente (per i trend)
+const PREVIOUS_REPORT_PATH = path.join(__dirname, 'performance-latest.json');
 
-/**
- * Funzione principale: analizza tutte le pagine
- */
-async function runPerformanceAnalysis() {
-  const results = [];
-  let chrome;
-
+async function runLighthouse(url) {
+  let browser;
   try {
-    // 🚀 Avvia Chrome con chrome-launcher
-    console.log('🚀 Avvio Chrome per Lighthouse...');
-    chrome = await launchChrome();
-    console.log(`✅ Chrome avviato sulla porta ${chrome.port}`);
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
+    });
 
-    // Configurazione comune per Lighthouse
-    const lighthouseConfig = {
-      port: chrome.port,
-      output: 'json',
-      logLevel: 'silent',
-      disableStorageReset: false, // Permette a Lighthouse di pulire cache/sessione
-      formFactor: 'desktop',
-      screenEmulation: {
-        mobile: false,
-        width: 1350,
-        height: 940,
-        deviceScaleFactor: 1,
-        disabled: true // Disabilita emulazione (usiamo desktop reale)
-      },
-      throttling: {
-        rttMs: 150,
-        throughputKbps: 1500,
-        cpuSlowdownMultiplier: 4,
-        requestLatencyMs: 0,
-        downloadThroughputKbps: 0,
-        uploadThroughputKbps: 0
-      },
-      throttlingMethod: 'devtools',
-      onlyCategories: ['performance'],
-      skipAudits: [
-        'metrics',           // Non calcolare metriche aggiuntive (LCP, FCP, ecc.) se non necessarie
-        'diagnostics',       // Rimuove audit diagnostici (riduce rumore)
-        'audit-refs'         // Ottimizza output
-      ]
+    const port = browser.wsEndpoint().split(':')[2].split('/')[0];
+
+    const config = {
+      extends: 'lighthouse:default',
+      settings: {
+        onlyCategories: ['performance', 'accessibility', 'seo', 'best-practices'],
+        formFactor: 'mobile',
+        throttling: 'simulate4G',
+        screenEmulation: { mobile: true, width: 375, height: 667 },
+        emulatedUserAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1',
+        skipAudits: [] // esegui tutti gli audit
+      }
     };
 
-    // 🔍 Analisi di ogni pagina
-    for (const pageData of pages) {
-      try {
-        console.log(`🔍 Analizzo: ${pageData.label} (${pageData.url})`);
+    const runnerResult = await lighthouse(url, { port, output: 'json' }, config);
+    const report = runnerResult.lhr;
 
-        // ✅ Lighthouse gestisce TUTTA la navigazione
-        const runnerResult = await lighthouse(pageData.url, lighthouseConfig);
-
-        // Estrai risultati
-        const lhr = runnerResult.lhr;
-        const performanceScore = Math.round(lhr.categories.performance.score * 100);
-        const lcp = lhr.audits['largest-contentful-paint']?.numericValue || 0;
-        const fcp = lhr.audits['first-contentful-paint']?.numericValue || 0;
-
-        results.push({
-          ...pageData,
-          performanceScore,
-          loadTime: Math.round(lcp),
-          firstPaint: Math.round(fcp),
-          lastAnalyzed: new Date().toISOString()
-        });
-
-        console.log(`✅ ${pageData.label}: Punteggio ${performanceScore}, LCP: ${Math.round(lcp)}ms`);
-
-      } catch (auditError) {
-        console.warn(`❌ Fallito: ${pageData.label}`);
-        console.warn(`   Errore: ${auditError.message.substring(0, 100)}...`);
-
-        results.push({
-          ...pageData,
-          performanceScore: 0,
-          loadTime: 0,
-          firstPaint: 0,
-          lastAnalyzed: new Date().toISOString(),
-          error: `Analisi fallita - ${auditError.message.substring(0, 100)}...`
-        });
-      }
-
-      // ⏸️ Pausa tra una pagina e l'altra (gentile verso il server)
-      await new Promise(resolve => setTimeout(resolve, 3000));
-    }
-
-  } catch (overallError) {
-    console.error('🚨 Errore critico durante l’analisi:', overallError.message);
-    process.exit(1);
+    return {
+      performanceScore: Math.round(report.categories.performance.score * 100),
+      accessibilityScore: Math.round(report.categories.accessibility.score * 100),
+      seoScore: Math.round(report.categories.seo.score * 100),
+      bestPracticesScore: Math.round(report.categories['best-practices'].score * 100),
+      loadTime: report.timing.total,
+      firstPaint: report.audits['first-contentful-paint']?.numericValue || null,
+      speedIndex: report.audits['speed-index']?.numericValue || null,
+      interactive: report.audits['interactive']?.numericValue || null,
+      lastAnalyzed: new Date().toISOString()
+    };
+  } catch (error) {
+    console.error(`❌ Errore nell'analisi di ${url}:`, error.message);
+    return {
+      performanceScore: null,
+      accessibilityScore: null,
+      seoScore: null,
+      bestPracticesScore: null,
+      loadTime: null,
+      firstPaint: null,
+      lastAnalyzed: new Date().toISOString(),
+      error: error.message
+    };
   } finally {
-    // 🔚 Chiudi Chrome in modo sicuro
-    if (chrome) {
-      try {
-        await chrome.kill();
-        console.log('⏹️ Chrome chiuso correttamente');
-      } catch (closeError) {
-        console.warn('⚠️ Impossibile chiudere Chrome:', closeError.message);
-      }
+    if (browser) await browser.close();
+  }
+}
+
+async function main() {
+  console.log('🚀 Inizio analisi Lighthouse per tutte le pagine...');
+
+  // 🔹 Leggi il report precedente per mantenere i previousScore
+  let previousData = {};
+  if (fs.existsSync(PREVIOUS_REPORT_PATH)) {
+    try {
+      const rawData = fs.readFileSync(PREVIOUS_REPORT_PATH, 'utf8');
+      const json = JSON.parse(rawData);
+      previousData = json.pages.reduce((acc, page) => {
+        acc[page.url] = {
+          performanceScore: page.performanceScore || null,
+          accessibilityScore: page.accessibilityScore || null,
+          seoScore: page.seoScore || null,
+          bestPracticesScore: page.bestPracticesScore || null
+        };
+        return acc;
+      }, {});
+      console.log(`✅ Caricati i dati precedenti per ${Object.keys(previousData).length} pagine`);
+    } catch (err) {
+      console.warn('⚠️ Errore nel parsing del report precedente:', err.message);
     }
+  } else {
+    console.log('🟡 Nessun report precedente trovato');
   }
 
-  // 📁 Percorso di output: tools/performance-data.json
-  const outputDir = path.resolve(new URL(import.meta.url).pathname, '..');
-  const outputPath = path.join(outputDir, 'performance-data.json');
+  // 🔹 Analizza ogni pagina
+  const results = [];
+  for (const page of PAGES) {
+    console.log(`🔍 Analisi in corso: ${page.url}`);
+    const lighthouseData = await runLighthouse(page.url);
 
-  // 📊 Dati finali
-  const output = {
+    // 🔁 Recupera i punteggi precedenti
+    const prev = previousData[page.url] || {};
+
+    // 🔗 Unisci tutti i dati
+    const fullPageData = {
+      url: page.url,
+      label: page.label,
+      slug: page.slug,
+      category: page.category,
+      ...lighthouseData,
+      // ✅ Aggiungi i previousScore per il trend
+      previousPerformanceScore: prev.performanceScore,
+      previousAccessibilityScore: prev.accessibilityScore,
+      previousSeoScore: prev.seoScore,
+      previousBestPracticesScore: prev.bestPracticesScore
+    };
+
+    results.push(fullPageData);
+  }
+
+  // 🔹 Crea il report finale
+  const finalReport = {
     lastUpdated: new Date().toISOString(),
     summary: {
-      totalPages: pages.length,
+      totalPages: PAGES.length,
       analyzed: results.filter(r => !r.error).length,
-      failed: results.filter(r => r.error).length
+      failed: results.filter(r => r.error).length,
+      ...(results.filter(r => !r.error).length > 0 && {
+        averagePerformance: Math.round(
+          results
+            .filter(r => r.performanceScore !== null)
+            .reduce((sum, r) => sum + r.performanceScore, 0) / results.filter(r => r.performanceScore !== null).length
+        ),
+        averageAccessibility: Math.round(
+          results
+            .filter(r => r.accessibilityScore !== null)
+            .reduce((sum, r) => sum + r.accessibilityScore, 0) / results.filter(r => r.accessibilityScore !== null).length
+        )
+      })
     },
     pages: results
   };
 
-  // 🔁 Leggi il vecchio JSON per estrarre i valori precedenti
-  let previousData = null;
-  const previousPath = path.join(outputDir, 'performance-latest.json');
-
-  if (fs.existsSync(previousPath)) {
-    try {
-      const rawData = fs.readFileSync(previousPath, 'utf-8');
-      previousData = JSON.parse(rawData);
-    } catch (err) {
-      console.warn('⚠️  Impossibile leggere il file precedente:', err.message);
-    }
-  }
-
-  // 🔄 Associa il valore precedente a ogni pagina
-  output.pages.forEach(page => {
-    const prevPage = previousData?.pages.find(p => p.slug === page.slug);
-    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : null;   
-  });
-
-  // Assicura che la cartella esista
+  // 🔹 Salva il nuovo report
+  const OUTPUT_PATH = path.join(__dirname, 'performance-data.json');
   try {
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-      console.log(`📁 Cartella creata: ${outputDir}`);
+    fs.writeFileSync(OUTPUT_PATH, JSON.stringify(finalReport, null, 2), 'utf8');
+    console.log(`✅ Report generato con successo: ${OUTPUT_PATH}`);
+    console.log(`📈 Pagine analizzate: ${finalReport.summary.analyzed}/${finalReport.summary.totalPages}`);
+    if (finalReport.summary.failed > 0) {
+      console.warn(`⚠️  Pagine fallite: ${finalReport.summary.failed}`);
     }
-  } catch (mkdirError) { 
-    console.warn(`⚠️  Impossibile creare la cartella: ${mkdirError.message}`);
-  }
-
-  // 📥 Scrive il file JSON (sovrascrive il vecchio)
-  try {
-    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
-    console.log(`✅ Report salvato in: ${outputPath}`);
-    console.log(`📊 Analisi completata: ${results.length} pagine processate.`);
-    if (output.summary.failed > 0) {
-      console.warn(`⚠️  ${output.summary.failed} pagine non analizzate.`);
-    }
-  } catch (writeError) {
-    console.error('❌ Errore nella scrittura del file:', writeError.message);
+  } catch (err) {
+    console.error('❌ Errore nel salvataggio del report:', err.message);
     process.exit(1);
   }
-}   
+}
 
-// ✅ Esegui l'analisi
-runPerformanceAnalysis().catch(err => {
-  console.error('🚨 Errore non gestito:', err);
+// 🚀 Esegui
+main().catch(err => {
+  console.error('❌ Errore fatale:', err);
   process.exit(1);
 });   
