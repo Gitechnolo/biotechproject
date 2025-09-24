@@ -166,13 +166,13 @@ async function updateVisualReport() {
 
     const data = await response.json();
 
-    // 🔹 Media prestazioni
+    // ✅ Aggiorna media prestazioni
     const avgPerf = document.getElementById('avg-performance');
-    if (avgPerf && data.summary?.averagePerformance) {
+    if (avgPerf && data.summary?.averagePerformance !== null) {
       avgPerf.textContent = `${data.summary.averagePerformance}%`;
     }
 
-    // 🔹 Ultimo aggiornamento
+    // ✅ Aggiorna data
     const lastUpdated = document.getElementById('last-updated-report');
     if (lastUpdated && data.lastUpdated) {
       const date = new Date(data.lastUpdated);
@@ -181,10 +181,10 @@ async function updateVisualReport() {
 
   } catch (error) {
     console.warn('Errore nel caricamento del report visivo:', error);
-    document.getElementById('avg-performance').textContent = 'N/D';
-    document.getElementById('last-updated-report').textContent = 'Errore';
+    const avgPerf = document.getElementById('avg-performance');
+    if (avgPerf) avgPerf.textContent = 'N/D';
   }
 }
 
 // Esegui al caricamento
-document.addEventListener('DOMContentLoaded', updateVisualReport);   
+document.addEventListener('DOMContentLoaded', updateVisualReport);      
