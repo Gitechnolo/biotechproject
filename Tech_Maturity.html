@@ -66,29 +66,6 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-row {min-height: 200px; /* Evita il collassamento */
   display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1rem; justify-content: flex-start;}
 .portfolio-row:empty::before {content: "Caricamento..."; color: #999; font-style: italic; align-self: center; justify-self: center;}
-.chart-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-50%);
-  background: rgba(30, 41, 59, 0.9);
-  color: #4ade80;
-  font-family: 'Sansation', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  pointer-events: none; /* Non interferisce con il mouse */
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-  z-index: 10;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  border: 1px solid #10b981;
-}
-.chart-label.show {
-  opacity: 1;
-}   
 </style>
 <script>
 !function(){
@@ -225,7 +202,6 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <section class="tech-section">
   <p class="sansation-light-italic">Andamento delle Prestazioni!</p>
   <canvas id="performance-trend" width="800" height="200"></canvas>
-  <div id="last-value-label" class="chart-label"></div>
   <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
 <button class="refresh-btn">Aggiorna ora</button>
 </section>

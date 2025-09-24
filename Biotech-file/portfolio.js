@@ -350,58 +350,6 @@ function creaGrafico(history = []) {
   aggiornaTabellaDati(dataToShow);
 }
 
-
-
-
-
-
-
-// --- Posiziona l'etichetta sull'ultimo valore del grafico  ---
-function posizionaUltimaEtichetta() {
-  if (!performanceChart || !document.getElementById('last-value-label')) return;
-
-  const chart = performanceChart;
-  const ctx = chart.ctx;
-  const xAxis = chart.scales.x;
-  const yAxis = chart.scales.y;
-  const data = chart.data.datasets[0].data;
-  const labels = chart.data.labels;
-
-  // Trova l'indice dell'ultimo punto
-  const lastIndex = data.length - 1;
-  if (lastIndex < 0) return;
-
-  const lastLabel = labels[lastIndex];
-  const lastValue = data[lastIndex];
-
-  // Ottieni la posizione X dell'ultimo punto
-  const x = xAxis.getPixelForTick ? xAxis.getPixelForTick(lastIndex) : xAxis.getPixelForValue(lastLabel);
-  const y = yAxis.getPixelForValue(lastValue);
-
-  // Seleziona l'etichetta
-  const labelEl = document.getElementById('last-value-label');
-  labelEl.textContent = `${lastValue}%`;
-  labelEl.style.left = `${x + 10}px`;  // +10 per centrare meglio
-  labelEl.style.top = `${y - 20}px`;   // sopra il punto
-  labelEl.classList.add('show');
-}
-
-// Chiama la funzione DOPO la creazione del grafico
-posizionaUltimaEtichetta();
-
-// E anche dopo l'aggiornamento (se usi reload)
-if (performanceChart) {
-  performanceChart.config.options.animation.onComplete = posizionaUltimaEtichetta;
-}   
-
-
-
-
-
-
-
-
-
 // --- Aggiorna tabella accessibile con dati del grafico ---
 function aggiornaTabellaDati(data) {
   const tbody = document.getElementById('chart-data-body');
