@@ -1,35 +1,26 @@
-// ———————————————————————
 // Biotech-file/portfolio.js
-// GESTIONE PERFORMANCE, PORTFOLIO, CERCHI, TOOLTIP E GRAFICO
+// ———————————————————————
+// GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA
 // ———————————————————————
 
 // --- Variabile globale per il grafico ---
 let performanceChart;
 
-// --- Funzioni principali del portfolio ---
-
-/**
- * Carica i dati dal JSON e inizializza grafico, card e filtri
- */
-async function loadPerformanceData(auditData) {
+// --- Funzione principale: carica dati reali dal JSON ---
+async function loadPerformanceData() {
   console.log('🔧 loadPerformanceData() in esecuzione');
-  let data;
   try {
-    if (auditData) {
-      data = auditData;
-    } else {
-      const response = await fetch('data/performance-latest.json');
-      if (!response.ok) throw new Error('Dati non disponibili');
-      data = await response.json();
-    }
+    const response = await fetch('data/performance-latest.json');
+    if (!response.ok) throw new Error('Dati non disponibili');
 
+    const data = await response.json();
     const container = document.querySelector('.portfolio-row');
     if (!container) return;
 
     // Pulisci container
     container.innerHTML = '';
 
-    // Estrai homepage
+    // Estrai homepage per data e punteggio
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
       p.url === 'https://gitechnolo.github.io/biotechproject/' ||
@@ -61,8 +52,10 @@ async function loadPerformanceData(auditData) {
     // Inizializza filtri
     filterSelection('all');
 
-    // Costruisci cronologia minima
+    // Costruisci cronologia minima da dati reali
     const history = [];
+
+    // Aggiungi punto precedente se disponibile
     if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
       history.push({
         date: subtractDays(reportTime, 5),
@@ -70,6 +63,8 @@ async function loadPerformanceData(auditData) {
         note: 'Misurazione precedente'
       });
     }
+
+    // Aggiungi punto attuale
     history.push({
       date: formatDate(reportTime),
       score: performanceScoreValue,
@@ -84,17 +79,19 @@ async function loadPerformanceData(auditData) {
 
     // Fallback visivo
     aggiornaPerformanceScore(85);
-    creaGrafico(); // Usa dati simulati
+    creaGrafico(); // Usa dati simulati come fallback
+
     const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
+    if (lastUpdate) {
+      lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
+    }
+
     showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
   }
 }
 
-/**
- * Crea la card per ogni pagina (Accessibilità)
- */
-  function createPerformanceCard(page) {
+// --- Crea la card per ogni pagina (Accessibilità) ---
+function createPerformanceCard(page) {
   const performance = page.performanceScore !== undefined
     ? page.performanceScore
     : page.performance !== undefined
@@ -125,6 +122,7 @@ async function loadPerformanceData(auditData) {
   card.className = `portfolio-col ${perfClass} portfolio-show dynamic`;
   card.dataset.page = page.slug || fileName;
 
+  // 🔹 HTML aggiornato: tooltip accessibile con ARIA e posizionamento corretto
   card.innerHTML = `
     <div class="portfolio-content">
       <div 
@@ -161,22 +159,27 @@ async function loadPerformanceData(auditData) {
     </div>
   `;
 
+  // 🔹 Riferimenti agli elementi
   const fadebox = card.querySelector('.fadebox');
   const trendDetails = card.querySelector('.trend-details');
 
+  // 🔹 Mostra tooltip su focus (tastiera)
   fadebox.addEventListener('focus', () => {
     trendDetails.style.display = 'block';
   });
 
+  // 🔹 Nasconde tooltip su blur
   fadebox.addEventListener('blur', () => {
     trendDetails.style.display = 'none';
   });
 
+  // 🔹 Mostra/nasconde su click (mouse/touch)
   fadebox.addEventListener('click', () => {
     const isDisplayed = trendDetails.style.display === 'block';
     trendDetails.style.display = isDisplayed ? 'none' : 'block';
   });
 
+  // 🔹 Chiude con tasto ESC
   fadebox.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       trendDetails.style.display = 'none';
@@ -187,12 +190,14 @@ async function loadPerformanceData(auditData) {
   return card;
 }
 
-// --- Funzioni ausiliarie ---
+// 🔹 Funzione di utilità per generare ID sicuri
 function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }
 
+// --- Gestione pulsanti di aggiornamento ---
 function setupRefreshButtons() {
+  // Evita doppia inizializzazione
   if (window.refreshButtonsSetup) return;
   window.refreshButtonsSetup = true;
 
@@ -209,6 +214,7 @@ function setupRefreshButtons() {
   });
 }
 
+// --- Aggiorna punteggio principale e trend ---
 function aggiornaPerformanceScore(performanceScoreValue = 85) {
   const scoreEl = document.getElementById('performance-score') || 
                  document.getElementById('tech-maturity-score');
@@ -228,6 +234,7 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
   }
 }
 
+// --- Funzioni ausiliarie per formattazione date ---
 function subtractDays(date, days) {
   const d = new Date(date);
   d.setDate(d.getDate() - days);
@@ -239,12 +246,13 @@ function formatDate(date) {
   const day = d.getDate();
   const options = { month: 'short' };
   const month = d.toLocaleDateString('it-IT', options).replace('.', '');
+  // Aggiungi anno solo se non è l'anno corrente
   const year = d.getFullYear();
   const currentYear = new Date().getFullYear();
   return year === currentYear ? `${day} ${month}` : `${day} ${month} '${year.toString().slice(-2)}`;
 }   
 
-// --- Dati simulati (fallback) ---
+// --- Dati simulati (solo come fallback visivo) ---
 const datiSimulati = [
   { date: '2024-09-01', score: 30, note: 'Avvio progetto' },
   { date: '2024-10-15', score: 38, note: 'Contenuti iniziali' },
@@ -256,20 +264,25 @@ const datiSimulati = [
   { date: '2025-09-15', score: 85, note: 'UI/UX coerente' }
 ];
 
-// --- Crea o aggiorna il grafico ---
+// --- Funzione: crea o aggiorna il grafico ---
 function creaGrafico(history = []) {
-  console.log('Dati grafico:', history);
+  console.log('Dati grafico:', history); // 🔍 Verifica
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
   const chartCtx = ctx.getContext('2d');
 
+  // Distruggi grafico esistente
   if (performanceChart) {
     performanceChart.destroy();
   }
 
+  // Usa dati reali se disponibili, altrimenti fallback simulato
   const dataToShow = history.length > 0 ? history : datiSimulati;
+
   const labels = dataToShow.map(d => d.date);
   const values = dataToShow.map(d => d.score);
+
+  // Identifica dove finiscono i dati reali (per colori)
   const realDataEndIndex = history.length;
 
   performanceChart = new Chart(chartCtx, {
@@ -283,15 +296,15 @@ function creaGrafico(history = []) {
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
         borderWidth: 3,
         pointRadius: (context) => {
-          const isLast = context.dataIndex === values.length - 1;
-          return isLast ? 8 : 5;
-        },
+        const isLast = context.dataIndex === values.length - 1;
+        return isLast ? 8 : 5; // ultimo punto più grande
+},   
         pointBackgroundColor: (context) => {
-          if (context.dataIndex === values.length - 1) {
-            return '#4ade80';
-          }
-          return context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b';
-        },
+        if (context.dataIndex === values.length - 1) {
+        return '#4ade80'; // verde brillante per l'ultimo valore
+  }
+        return context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b';
+},
         fill: true,
         tension: 0.3
       }]
@@ -337,9 +350,7 @@ function creaGrafico(history = []) {
   aggiornaTabellaDati(dataToShow);
 }
 
-/**
- * Aggiorna la tabella accessibile con i dati del grafico
- */
+// --- Aggiorna tabella accessibile con dati del grafico ---
 function aggiornaTabellaDati(data) {
   const tbody = document.getElementById('chart-data-body');
   if (!tbody) return;
@@ -371,237 +382,70 @@ if (typeof showNotification === 'undefined') {
   }
 }
 
-// ———————————————————————
-// 🔹 FUNZIONI UNIFICATE DA reportPerformance.js
-// ———————————————————————
+// --- Filtra le card in base al livello di maturità delle pagine ---
+function filterSelection(filter) {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
 
-/**
- * Aggiorna i cerchi di progresso, trend e dati del report
- */
-async function updateVisualReport(auditData) {
-  try {
-    let data;
-    if (auditData) {
-      data = auditData;
+  const cards = document.querySelectorAll('.portfolio-col');
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    if (filter === 'all' || card.classList.contains(filter)) {
+      card.style.display = 'flex';
+      visibleCount++;
     } else {
-      const response = await fetch('/biotechproject/data/performance-latest.json');
-      if (!response.ok) throw new Error('Dati non disponibili');
-      data = await response.json();
+      card.style.display = 'none';
     }
+  });
 
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    const isTechMaturityPage = currentPath.toLowerCase() === 'tech_maturity.html';
+  // Messaggio se nessuna card visibile
+  const container = document.querySelector('.portfolio-row');
+  const message = document.getElementById('filter-message');
 
-    const currentPage = data.pages.find(p => p.url.endsWith(currentPath));
-    const homePage = data.pages.find(p => p.url.endsWith('index.html'));
-
-    // Mappa delle metriche
-    const metricMap = isTechMaturityPage
-      ? {
-          performance: data.summary.averagePerformance ?? 85,
-          'performance-desktop': Math.min((data.summary.averagePerformance ?? 85) + 2, 100),
-          accessibility: data.summary.averageAccessibility ?? 94,
-          seo: data.summary.averageSeo ?? 96,
-          'best-practices': data.summary.averageBestPractices ?? 97
-        }
-      : {
-          performance: currentPage?.performanceScore ?? homePage?.performanceScore ?? 85,
-          'performance-desktop': (() => {
-            const score = currentPage?.performanceScore || homePage?.performanceScore;
-            return score ? Math.min(score + 5, 100) : 90;
-          })(),
-          accessibility: currentPage?.accessibilityScore ?? homePage?.accessibilityScore ?? 88,
-          seo: currentPage?.seoScore ?? homePage?.seoScore ?? 90,
-          'best-practices': currentPage?.bestPracticesScore ?? homePage?.bestPracticesScore ?? 85
-        };
-
-    // Aggiorna i cerchi
-    document.querySelectorAll('.progress-circle').forEach(circle => {
-      const metric = circle.dataset.metric;
-      const value = metricMap[metric] || 75;
-      const roundedValue = Math.round(value);
-      circle.style.setProperty('--value', `${roundedValue}%`);
-      circle.dataset.value = roundedValue;
-      circle.setAttribute('aria-valuenow', roundedValue);
-
-      // Aggiorna classe per glow dinamico (high/medium/low)
-      circle.classList.remove('low', 'medium', 'high');
-      if (roundedValue >= 75) {
-        circle.classList.add('high');
-      } else if (roundedValue >= 50) {
-        circle.classList.add('medium');
-      } else {
-        circle.classList.add('low');
-      }
-    });
-
-    // Aggiorna data ultimo aggiornamento
-    const lastUpdated = document.getElementById('last-updated');
-    if (lastUpdated && data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      lastUpdated.textContent = date.toLocaleDateString('it-IT', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    }
-
-    // Calcola trend (usa homepage)
-    const trendIndicator = document.getElementById('trend-indicator');
-    if (trendIndicator && homePage) {
-      const currentScore = homePage.performanceScore;
-      const previousScore = homePage.previousPerformanceScore;
-
-      if (previousScore !== undefined) {
-        const diff = currentScore - previousScore;
-        trendIndicator.classList.remove('visually-hidden');
-
-        if (diff > 0) {
-          trendIndicator.textContent = '▲';
-          trendIndicator.style.color = '#66bb6a';
-          trendIndicator.setAttribute('aria-label', `Migliorato di ${diff} punti`);
-        } else if (diff < 0) {
-          trendIndicator.textContent = '▼';
-          trendIndicator.style.color = '#ef5350';
-          trendIndicator.setAttribute('aria-label', `Diminuito di ${Math.abs(diff)} punti`);
-        } else {
-          trendIndicator.textContent = '●';
-          trendIndicator.style.color = '#ffa726';
-          trendIndicator.setAttribute('aria-label', 'Stabile');
-        }
-
-        // Anima leggermente
-        trendIndicator.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-          trendIndicator.style.transform = 'scale(1)';
-        }, 300);
-      }
-    }
-
-  } catch (error) {
-    console.warn('Errore in updateVisualReport:', error);
-
-    // Fallback per cerchi
-    document.querySelectorAll('.progress-circle').forEach(circle => {
-      const value = circle.dataset.metric === 'performance' ? 85 : 90;
-      circle.style.setProperty('--value', `${value}%`);
-      circle.dataset.value = value;
-      circle.setAttribute('aria-valuenow', value);
-    });
-
-    const lastUpdated = document.getElementById('last-updated');
-    if (lastUpdated) {
-      lastUpdated.textContent = 'Dati non disponibili';
-      lastUpdated.style.color = '#ef5350';
-    }
-
-    const notification = document.createElement('div');
-    notification.className = 'notification2';
-    notification.textContent = '⚠️ Dati temporaneamente non disponibili';
-    notification.setAttribute('role', 'status');
-    notification.setAttribute('aria-live', 'polite');
-    document.body.appendChild(notification);
-    setTimeout(() => { notification.style.opacity = 1; }, 100);
-    setTimeout(() => { notification.style.opacity = 0; }, 2100);
+  if (!message) {
+    const msgEl = document.createElement('p');
+    msgEl.id = 'filter-message';
+    msgEl.style.color = '#a0aec0';
+    msgEl.style.textAlign = 'center';
+    msgEl.style.fontStyle = 'italic';
+    msgEl.style.padding = '20px';
+    container.parentNode.insertBefore(msgEl, container.nextSibling);
   }
+
+  const msgEl = document.getElementById('filter-message');
+  msgEl.textContent = visibleCount === 0 
+    ? 'Nessuna pagina trovata con questo stato di maturità.'
+    : '';
 }
 
-/**
- * Inizializza tooltip interattivi con ARIA e tastiera
- */
-function initTooltips() {
-  document.querySelectorAll('.tooltip-btn').forEach(btn => {
-    const tooltipId = btn.dataset.tooltip;
-    const tooltip = document.getElementById(`tooltip-${tooltipId}`);
-    if (!tooltip) return;
+// --- Calcola freccia di tendenza per singola pagina ---
+function getTrendArrow(current, previous) {
+  if (previous === undefined || previous === null) return '→';
+  const diff = current - previous;
+  if (diff > 0) return '▲';
+  if (diff < 0) return '▼';
+  return '→';
+}
 
-    const show = () => {
-      tooltip.hidden = false;
-      btn.setAttribute('aria-expanded', 'true');
-    };
+// --- Determina la classe colore del badge della freccia ---
+function getTrendColorClass(current, previous) {
+  if (previous === undefined || previous === null) return 'badge-needs-improvement';
+  return current > previous ? 'badge-optimized' :  // ▲ verde acqua
+         current < previous ? 'badge-deprecated' : // ▼ rosso
+                            'badge-compatible';   // ➔ verde
+}
 
-    const hide = () => {
-      tooltip.hidden = true;
-      btn.setAttribute('aria-expanded', 'false');
-    };
+// --- Inizializzazione unica ---
+document.addEventListener('DOMContentLoaded', () => {
+  setupRefreshButtons();
+  loadPerformanceData(); // Carica dati e inizializza grafico
 
-    btn.addEventListener('mouseenter', show);
-    btn.addEventListener('focus', show);
-    btn.addEventListener('mouseleave', hide);
-    btn.addEventListener('blur', hide);
-
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !tooltip.hidden) {
-        hide();
-        btn.focus();
-      }
-    });
-
-    tooltip.tabIndex = -1;
-    tooltip.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        hide();
-        btn.focus();
-      }
+  // Aggiungi event listener ai pulsanti di filtro
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterSelection(btn.dataset.filter);
     });
   });
-}
-
-/**
- * Anima ingresso delle metriche (fade + slide)
- */
-function animateMetrics() {
-  document.querySelectorAll('.metric').forEach((el, i) => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(10px)';
-    setTimeout(() => {
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-    }, 50 + i * 100);
-  });
-}
-
-// ———————————————————————
-// 🔹 INIT GLOBALE: esegui tutto al caricamento del DOM
-// ———————————————————————
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    // 1. Carica i dati una volta sola
-    const response = await fetch('/biotechproject/data/performance-latest.json');
-    if (!response.ok) throw new Error('Dati non disponibili');
-    const auditData = await response.json();
-
-    // 2. Passa i dati alle funzioni principali
-    loadPerformanceData(auditData);
-    updateVisualReport(auditData);
-
-    // 3. Inizializza interazioni
-    initTooltips();
-    animateMetrics();
-    setupRefreshButtons();
-
-    // 4. Inizializza filtri
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterSelection(btn.dataset.filter);
-      });
-    });
-
-    // 5. Imposta filtro iniziale
-    filterSelection('all');
-
-  } catch (error) {
-    console.warn('Errore nel caricamento dei dati principali:', error);
-
-    // Fallback: esegui comunque le funzioni con dati simulati
-    loadPerformanceData();
-    updateVisualReport();
-    initTooltips();
-    animateMetrics();
-    setupRefreshButtons();
-    filterSelection('all');
-  }
 });   
