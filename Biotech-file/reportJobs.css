@@ -381,14 +381,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 /* --- Cerchio di progresso: stile base --- */
 .progress-circle {
   --value: 0%;
@@ -460,12 +452,6 @@
     0 0 10px rgba(100, 255, 218, 0.5),
     0 0 2px rgba(0, 180, 90, 0.8);
 }
-
-
-
-
-
-
 
 
 /* --- GLOW DINAMICO IN BASE AL LIVELLO (CORRETTO) --- */
