@@ -410,18 +410,27 @@
   transition: all 1.2s ease;
 }
 
-/* ::before: buco centrale + effetto OLED */
+/* ::before: buco centrale + effetto OLED (migliorato) */
 .progress-circle::before {
   content: '';
   position: absolute;
   width: calc(var(--size) - var(--thickness) * 2);
   height: calc(var(--size) - var(--thickness) * 2);
-  background: var(--bg-dark);
+  background: #000d1a; /* Blu scuro profondo, più contrastante */
   border-radius: 50%;
+  border: 1px solid rgba(0, 230, 118, 0.1); /* Bordo sottile per definizione */
+  box-shadow: 
+    inset 0 0 10px rgba(0, 230, 118, 0.2), /* Alone interno più forte */
+    0 0 3px rgba(0, 230, 118, 0.05); /* Leggero glow esterno al buco */
   z-index: 1;
-  /* Effetto OLED interno */
-  box-shadow: inset 0 0 8px rgba(0, 230, 118, 0.2);
-}
+}   
+
+/* ::before: effetto di luminosità interna solo per i punteggi alti */
+.progress-circle.high::before {
+  box-shadow: 
+    inset 0 0 12px rgba(0, 230, 118, 0.25),
+    0 0 4px rgba(0, 230, 118, 0.1);
+}   
 
 /* ::after: testo centrale + glow avanzato */
 .progress-circle::after {
