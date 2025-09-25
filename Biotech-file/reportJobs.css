@@ -662,4 +662,35 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+} 
+
+@media (max-width: 480px) {
+  .trend-details {
+    min-width: 160px;
+    max-width: 90vw;
+    font-size: 13px;
+    padding: 10px 14px;
+    top: calc(100% + 4px);
+    left: 0;
+    transform: none;
+    text-align: left;
+    white-space: normal;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  /* Aumenta il margine sotto le colonne per evitare collisioni verticali */
+  .portfolio-col {
+    margin-bottom: 3rem; /* Aumentato da 2rem per dare più spazio ai tooltip */
+  }
+
+  /* Assicurati che il contenuto non causi overflow orizzontale */
+  .portfolio-content {
+    padding: 0.8rem 1rem;
+  }
+
+  /* Se ci sono più tooltip in una riga, forza il wrapping corretto */
+  .portfolio-row {
+    gap: 20px; /* Leggermente aumentato su mobile */
+  }
 }   
