@@ -380,7 +380,19 @@
   }
 }
 
-/* --- Cerchio di progresso --- */
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Cerchio di progresso: stile base --- */
 .progress-circle {
   --value: 0%;
   --size: var(--size-sm);
@@ -394,11 +406,11 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
   z-index: 1;
-  transition: var(--transition-bg);
+  transition: all 1.2s ease;
 }
 
+/* ::before: buco centrale + effetto OLED */
 .progress-circle::before {
   content: '';
   position: absolute;
@@ -407,8 +419,11 @@
   background: var(--bg-dark);
   border-radius: 50%;
   z-index: 1;
+  /* Effetto OLED interno */
+  box-shadow: inset 0 0 8px rgba(0, 230, 118, 0.2);
 }
 
+/* ::after: testo centrale + glow avanzato */
 .progress-circle::after {
   content: attr(data-value) '%';
   position: relative;
@@ -417,8 +432,65 @@
   font-family: var(--font-main);
   font-weight: 300;
   color: var(--primary-text);
-  text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);
+  text-shadow: 
+    0 0 5px rgba(0, 230, 118, 0.7),
+    0 0 10px rgba(100, 255, 218, 0.5),
+    0 0 2px rgba(0, 180, 90, 0.8);
 }
+
+/* --- GLOW DINAMICO IN BASE AL LIVELLO --- */
+
+/* 🔹 High: 75–100 */
+.progress-circle.high[value^="7"],
+.progress-circle.high[value^="8"],
+.progress-circle.high[value^="9"],
+.progress-circle.high[value="100"] {
+  box-shadow: 0 0 22px rgba(0, 230, 118, 0.65);
+}
+
+/* 🔹 Medium: 50–74 */
+.progress-circle.medium[value^="5"],
+.progress-circle.medium[value^="6"],
+.progress-circle.medium[value^="70"],
+.progress-circle.medium[value^="71"],
+.progress-circle.medium[value^="72"],
+.progress-circle.medium[value^="73"],
+.progress-circle.medium[value^="74"] {
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.45);
+}
+
+/* 🔹 Low: 0–49 */
+.progress-circle.low[value^="0"],
+.progress-circle.low[value^="1"],
+.progress-circle.low[value^="2"],
+.progress-circle.low[value^="3"],
+.progress-circle.low[value^="40"],
+.progress-circle.low[value^="41"],
+.progress-circle.low[value^="42"],
+.progress-circle.low[value^="43"],
+.progress-circle.low[value^="44"],
+.progress-circle.low[value^="45"],
+.progress-circle.low[value^="46"],
+.progress-circle.low[value^="47"],
+.progress-circle.low[value^="48"],
+.progress-circle.low[value^="49"] {
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+  filter: brightness(0.95);
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --- Animazione metriche --- */
 .metric {
