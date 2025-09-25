@@ -206,9 +206,6 @@
 .progress-circle {--value: 0%; --size: 60px; --thickness: 12px; width: var(--size); height: var(--size); border-radius: 50%; background: conic-gradient(#00e676 var(--value), #0d47a1 0); position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 230, 118, 0.2); z-index: 1; transition: background 1.2s ease;}   
 .progress-circle::before {content: ''; position: absolute; width: calc(var(--size) - var(--thickness) * 2); height: calc(var(--size) - var(--thickness) * 2); background: #0a1a2a; border-radius: 50%; z-index: 1;}
 .progress-circle::after {content: attr(data-value) '%'; position: relative; z-index: 2; font-size: 1.4em; font-family: 'Sansation', sans-serif; font-weight: 300; color: #a7ffeb; text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);}   
-/* --- Badge Brave --- */
-.brave-badge {display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; color: #2d3748; text-decoration: none; border: 1px solid rgba(0, 230, 118, 0.2); padding: 6px 10px; border-radius: 6px; background: transparent; transition: all 0.2s;}
-.brave-badge:hover {background: transparent; border-color: #4285f4; transform: translateY(-1px);}
 /* --- Notifica (es. messaggio di aggiornamento) --- */
 .notification {position: fixed; top: 20px; right: 20px; background: #2d3748; color: white; padding: 12px 16px; border-radius: 6px; font-size: 14px; z-index: 10000; box-shadow: 0 2px 8px rgba(0,0,0,0.2); animation: fadeOut 3s forwards;}
 .notification2 {position: fixed; top: 20px; right: 20px; background: #0a1a2a; color: #a7ffeb; padding: 12px 20px; border: 1px solid #00e676; border-radius: 6px; font-size: 14px; z-index: 9999; opacity: 0; transition: opacity 0.3s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); font-family: 'Sansation', sans-serif; white-space: nowrap; pointer-events: none;}   
