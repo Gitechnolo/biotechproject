@@ -664,33 +664,55 @@
   }
 } 
 
+/* --- TOOLTIP MOBILE: Nessuna sovrapposizione --- */
 @media (max-width: 480px) {
   .trend-details {
-    min-width: 160px;
-    max-width: 90vw;
-    font-size: 13px;
-    padding: 10px 14px;
-    top: calc(100% + 4px);
-    left: 0;
+    /* Rimuovi il posizionamento assoluto che causa sovrapposizioni */
+    position: static;
+    top: auto;
+    left: auto;
     transform: none;
+    z-index: auto;
+    display: none; /* Nascondi di default */
+    
+    /* Dimensioni adattate a mobile */
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.5;
     text-align: left;
     white-space: normal;
+    word-wrap: break-word;
+    
+    /* Stile coerente con il design esistente */
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+    border: 1px solid #00e676;
+    border-radius: 6px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
   }
 
-  /* Aumenta il margine sotto le colonne per evitare collisioni verticali */
+  /* Mostra il tooltip quando attivo (via JS o stile inline) */
+  .trend-details[style*="block"],
+  .trend-details.active {
+    display: block !important;
+  }
+
+  /* Aumenta lo spazio tra le card per dare respiro al tooltip */
   .portfolio-col {
-    margin-bottom: 3rem; /* Aumentato da 2rem per dare più spazio ai tooltip */
+    margin-bottom: 4.5rem; /* Fondamentale: spazio per il tooltip espanso */
   }
 
-  /* Assicurati che il contenuto non causi overflow orizzontale */
+  /* Riduci leggermente il contenuto per bilanciare */
   .portfolio-content {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem;
   }
 
-  /* Se ci sono più tooltip in una riga, forza il wrapping corretto */
-  .portfolio-row {
-    gap: 20px; /* Leggermente aumentato su mobile */
+  /* Se hai più colonne, forza una card per riga */
+  .portfolio-col {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 }   
