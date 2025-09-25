@@ -438,45 +438,45 @@
     0 0 2px rgba(0, 180, 90, 0.8);
 }
 
-/* --- GLOW DINAMICO IN BASE AL LIVELLO --- */
+/* --- GLOW DINAMICO IN BASE AL LIVELLO (CORRETTO) --- */
 
 /* 🔹 High: 75–100 */
-.progress-circle.high[value^="7"],
-.progress-circle.high[value^="8"],
-.progress-circle.high[value^="9"],
-.progress-circle.high[value="100"] {
+.progress-circle.high[data-value^="7"],
+.progress-circle.high[data-value^="8"],
+.progress-circle.high[data-value^="9"],
+.progress-circle.high[data-value="100"] {
   box-shadow: 0 0 22px rgba(0, 230, 118, 0.65);
 }
 
 /* 🔹 Medium: 50–74 */
-.progress-circle.medium[value^="5"],
-.progress-circle.medium[value^="6"],
-.progress-circle.medium[value^="70"],
-.progress-circle.medium[value^="71"],
-.progress-circle.medium[value^="72"],
-.progress-circle.medium[value^="73"],
-.progress-circle.medium[value^="74"] {
+.progress-circle.medium[data-value^="5"],
+.progress-circle.medium[data-value^="6"],
+.progress-circle.medium[data-value^="70"],
+.progress-circle.medium[data-value^="71"],
+.progress-circle.medium[data-value^="72"],
+.progress-circle.medium[data-value^="73"],
+.progress-circle.medium[data-value^="74"] {
   box-shadow: 0 0 16px rgba(0, 230, 118, 0.45);
 }
 
 /* 🔹 Low: 0–49 */
-.progress-circle.low[value^="0"],
-.progress-circle.low[value^="1"],
-.progress-circle.low[value^="2"],
-.progress-circle.low[value^="3"],
-.progress-circle.low[value^="40"],
-.progress-circle.low[value^="41"],
-.progress-circle.low[value^="42"],
-.progress-circle.low[value^="43"],
-.progress-circle.low[value^="44"],
-.progress-circle.low[value^="45"],
-.progress-circle.low[value^="46"],
-.progress-circle.low[value^="47"],
-.progress-circle.low[value^="48"],
-.progress-circle.low[value^="49"] {
+.progress-circle.low[data-value^="0"],
+.progress-circle.low[data-value^="1"],
+.progress-circle.low[data-value^="2"],
+.progress-circle.low[data-value^="3"],
+.progress-circle.low[data-value^="40"],
+.progress-circle.low[data-value^="41"],
+.progress-circle.low[data-value^="42"],
+.progress-circle.low[data-value^="43"],
+.progress-circle.low[data-value^="44"],
+.progress-circle.low[data-value^="45"],
+.progress-circle.low[data-value^="46"],
+.progress-circle.low[data-value^="47"],
+.progress-circle.low[data-value^="48"],
+.progress-circle.low[data-value^="49"] {
   box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
   filter: brightness(0.95);
-}   
+}      
 
 
 
