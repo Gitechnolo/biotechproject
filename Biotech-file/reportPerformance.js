@@ -7,37 +7,46 @@ document.addEventListener('DOMContentLoaded', async () => {
     const auditData = await response.json();
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
-    // 🔹 Trova i dati della pagina corrente
-    const currentPage = auditData.pages.find(p => p.url.endsWith(currentPath));
+    // 🔹 Rileva se siamo su Tech_Maturity.html
+    const isTechMaturityPage = currentPath.toLowerCase() === 'tech_maturity.html';
 
-    if (!currentPage) {
+    // 🔹 Trova la pagina corrente (per fallback e trend)
+    const currentPage = auditData.pages.find(p => p.url.endsWith(currentPath));
+    const homePage = auditData.pages.find(p => p.url.endsWith('index.html'));
+
+    if (!currentPage && !isTechMaturityPage) {
       console.warn('Pagina non trovata nei dati di audit:', currentPath);
-      // Usa homepage come fallback
-      const homePage = auditData.pages.find(p => p.url.endsWith('index.html'));
-      if (homePage) currentPage = homePage;
     }
 
-    // 🔹 Mappa delle metriche (JSON → HTML data-metric)
-    const metricMap = {
-      performance: currentPage?.performanceScore || 85,
-      'performance-desktop': currentPage?.performanceScore ? Math.min(currentPage.performanceScore + 5, 100) : 90,
-      accessibility: currentPage?.accessibilityScore || 88,
-      seo: currentPage?.seoScore || 90,
-      'best-practices': currentPage?.bestPracticesScore || 85
-    };
+    // 🔹 Mappa delle metriche: usa dati GLOBALI su Tech_Maturity, altrimenti dati pagina
+    const metricMap = isTechMaturityPage
+      ? {
+          performance: auditData.summary.averagePerformance ?? 85,
+          'performance-desktop': Math.min((auditData.summary.averagePerformance ?? 85) + 2, 100),
+          accessibility: auditData.summary.averageAccessibility ?? 94,
+          seo: auditData.summary.averageSeo ?? 96,
+          'best-practices': auditData.summary.averageBestPractices ?? 97
+        }
+      : {
+          performance: currentPage?.performanceScore ?? homePage?.performanceScore ?? 85,
+          'performance-desktop': (() => {
+            const score = currentPage?.performanceScore || homePage?.performanceScore;
+            return score ? Math.min(score + 5, 100) : 90;
+          })(),
+          accessibility: currentPage?.accessibilityScore ?? homePage?.accessibilityScore ?? 88,
+          seo: currentPage?.seoScore ?? homePage?.seoScore ?? 90,
+          'best-practices': currentPage?.bestPracticesScore ?? homePage?.bestPracticesScore ?? 85
+        };
 
     // 🔹 Aggiorna i cerchi
     document.querySelectorAll('.progress-circle').forEach(circle => {
       const metric = circle.dataset.metric;
       const value = metricMap[metric] || 75;
+      const roundedValue = Math.round(value);
 
-      // Aggiorna stile e ARIA
-      circle.style.setProperty('--value', `${value}%`);
-      circle.dataset.value = Math.round(value);
-      circle.setAttribute('aria-valuenow', Math.round(value));
-
-      // Aggiorna testo (se usi data-value nell'HTML)
-      // Il tuo CSS usa ::after { content: attr(data-value) '%' }, quindi va bene!
+      circle.style.setProperty('--value', `${roundedValue}%`);
+      circle.dataset.value = roundedValue;
+      circle.setAttribute('aria-valuenow', roundedValue);
     });
 
     // 🔹 Aggiorna data ultimo aggiornamento
@@ -53,11 +62,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    // 🔹 Calcola il trend (es. rispetto al punteggio precedente)
+    // 🔹 Calcola il trend (usa SEMPRE la homepage)
     const trendIndicator = document.getElementById('trend-indicator');
-    if (trendIndicator && currentPage) {
-      const currentScore = currentPage.performanceScore;
-      const previousScore = currentPage.previousPerformanceScore;
+    if (trendIndicator && homePage) {
+      const currentScore = homePage.performanceScore;
+      const previousScore = homePage.previousPerformanceScore;
 
       if (previousScore !== undefined) {
         const diff = currentScore - previousScore;
@@ -85,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
 
-    // 🔹 Tooltip interattivi (usa il tuo stile .trend-details)
+    // 🔹 Tooltip interattivi
     document.querySelectorAll('.tooltip-btn').forEach(btn => {
       const tooltipId = btn.dataset.tooltip;
       const tooltip = document.getElementById(`tooltip-${tooltipId}`);
@@ -109,33 +118,42 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Per tastiera: Esc per chiudere
       btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (!tooltip.hidden) hide();
+        if (e.key === 'Escape' && !tooltip.hidden) {
+          hide();
+          btn.focus();
         }
       });
 
-      // Collega tooltip al pulsante (accessibilità)
-      tooltip.setAttribute('aria-hidden', 'true');
+      // Opzionale: rendi il tooltip focusabile (per screen reader avanzati)
+      tooltip.tabIndex = -1;
+      tooltip.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          hide();
+          btn.focus();
+        }
+      });
     });
 
-    // 🔹 Animazione ingresso metriche (usa fadeInUp del tuo CSS)
+    // 🔹 Animazione ingresso metriche
     document.querySelectorAll('.metric').forEach((el, i) => {
       el.style.opacity = 0;
       el.style.transform = 'translateY(10px)';
       setTimeout(() => {
-        el.style.animation = `fadeInUp 0.6s ease forwards`;
-        el.style.animationDelay = `${0.1 + i * 0.1}s`;
-      }, 50);
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      }, 50 + i * 100);
     });
 
   } catch (error) {
     console.warn('Errore nel caricamento dei dati di audit:', error);
 
-    // 🔹 Fallback visivo in caso di errore
+    // 🔹 Fallback visivo
     document.querySelectorAll('.progress-circle').forEach(circle => {
       const value = circle.dataset.metric === 'performance' ? 85 : 90;
       circle.style.setProperty('--value', `${value}%`);
       circle.dataset.value = value;
+      circle.setAttribute('aria-valuenow', value);
     });
 
     const lastUpdated = document.getElementById('last-updated');
@@ -144,21 +162,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       lastUpdated.style.color = '#ef5350';
     }
 
-    // Mostra notifica non invasiva
+    // 🔹 Notifica accessibile
     const notification = document.createElement('div');
     notification.className = 'notification2';
     notification.textContent = '⚠️ Dati temporaneamente non disponibili';
+    notification.setAttribute('role', 'status');
+    notification.setAttribute('aria-live', 'polite');
     document.body.appendChild(notification);
-    setTimeout(() => {
-      notification.style.opacity = 1;
-      setTimeout(() => notification.style.opacity = 0, 2000);
-    }, 100);
+
+    setTimeout(() => { notification.style.opacity = 1; }, 100);
+    setTimeout(() => { notification.style.opacity = 0; }, 2100);
   }
-}); 
+}); // ✅ Chiusura completa di document.addEventListener
 
 
-
-// 🔹 Aggiorna il report visivo con dati reali
+      // 🔹 Aggiorna il report visivo con dati reali
 async function updateVisualReport() {
   try {
     const response = await fetch('/biotechproject/data/performance-latest.json');
@@ -174,29 +192,58 @@ async function updateVisualReport() {
 
     // ⚡ Media prestazioni
     const avgPerf = document.getElementById('avg-performance');
-    if (avgPerf && data.summary.averagePerformance !== null) {
+    if (avgPerf && data.summary.averagePerformance !== undefined) {
       avgPerf.textContent = `${data.summary.averagePerformance}%`;
     }
 
-    // 🔍 Ultimo aggiornamento
-    const lastUpdated = document.getElementById('last-updated-report');
-    if (lastUpdated && data.lastUpdated) {
+    // ♿ Media accessibilità
+    const avgA11y = document.getElementById('avg-accessibility');
+    if (avgA11y && data.summary.averageAccessibility !== undefined) {
+      avgA11y.textContent = `${data.summary.averageAccessibility}%`;
+    }
+
+    // 🔍 Media SEO
+    const avgSeo = document.getElementById('avg-seo');
+    if (avgSeo && data.summary.averageSeo !== undefined) {
+      avgSeo.textContent = `${data.summary.averageSeo}%`;
+    }
+
+    // ✅ Media Best Practices
+    const avgBestPractices = document.getElementById('avg-best-practices');
+    if (avgBestPractices && data.summary.averageBestPractices !== undefined) {
+      avgBestPractices.textContent = `${data.summary.averageBestPractices}%`;
+    }
+
+    // 📅 Ultimo aggiornamento
+    const lastUpdatedReport = document.getElementById('last-updated-report');
+    if (lastUpdatedReport && data.lastUpdated) {
       const date = new Date(data.lastUpdated);
-      lastUpdated.textContent = date.toLocaleDateString('it-IT');
-      lastUpdated.setAttribute('datetime', date.toISOString());
+      lastUpdatedReport.textContent = date.toLocaleDateString('it-IT', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+      lastUpdatedReport.setAttribute('datetime', date.toISOString());
     }
 
   } catch (error) {
     console.warn('🔧 reportPerformance.js: Errore nel caricamento del report visivo', error);
 
-    // Fallback visivo
-    const elements = ['analyzed-count', 'avg-performance', 'last-updated-report'];
-    elements.forEach(id => {
+    // 🔁 Fallback per tutti gli elementi del report
+    const ids = [
+      'analyzed-count',
+      'avg-performance',
+      'avg-accessibility',
+      'avg-seo',
+      'avg-best-practices',
+      'last-updated-report'
+    ];
+    ids.forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = 'N/D';
     });
   }
 }
 
-// Esegui al caricamento
-document.addEventListener('DOMContentLoaded', updateVisualReport);       
+// ✅ Esegui updateVisualReport al caricamento
+document.addEventListener('DOMContentLoaded', updateVisualReport);   
