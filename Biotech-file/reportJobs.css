@@ -389,9 +389,6 @@
 
 
 
-
-
-
 /* --- Cerchio di progresso: stile base --- */
 .progress-circle {
   --value: 0%;
@@ -416,20 +413,37 @@
   position: absolute;
   width: calc(var(--size) - var(--thickness) * 2);
   height: calc(var(--size) - var(--thickness) * 2);
-  background: #000d1a; /* Blu scuro profondo, più contrastante */
+  background: #000d1a;
   border-radius: 50%;
-  border: 1px solid rgba(0, 230, 118, 0.1); /* Bordo sottile per definizione */
+  border: 1px solid rgba(0, 230, 118, 0.1);
   box-shadow: 
-    inset 0 0 10px rgba(0, 230, 118, 0.2), /* Alone interno più forte */
-    0 0 3px rgba(0, 230, 118, 0.05); /* Leggero glow esterno al buco */
+    inset 0 0 10px rgba(0, 230, 118, 0.2),
+    0 0 3px rgba(0, 230, 118, 0.05);
   z-index: 1;
-}   
+}
 
-/* ::before: effetto di luminosità interna solo per i punteggi alti */
+/* ::before: effetto di luminosità interna per punteggi alti */
 .progress-circle.high::before {
   box-shadow: 
     inset 0 0 12px rgba(0, 230, 118, 0.25),
     0 0 4px rgba(0, 230, 118, 0.1);
+}
+
+/* 🔹 Puntino centrale luminoso (effetto high-tech) */
+.progress-circle::before::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: #64ffda;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 6px rgba(100, 255, 218, 0.7),
+    0 0 2px rgba(100, 255, 218, 0.5);
+  z-index: 2;
 }   
 
 /* ::after: testo centrale + glow avanzato */
@@ -446,6 +460,13 @@
     0 0 10px rgba(100, 255, 218, 0.5),
     0 0 2px rgba(0, 180, 90, 0.8);
 }
+
+
+
+
+
+
+
 
 /* --- GLOW DINAMICO IN BASE AL LIVELLO (CORRETTO) --- */
 
