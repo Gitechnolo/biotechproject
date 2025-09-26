@@ -66,7 +66,7 @@
     "footer-project": "BiotechProject. Un progetto per un web più inclusivo.",
     "linkedin-link": "🔗 Segui Biotech Project su LinkedIn",
     "noscript-text": "Per un'esperienza ottimale, abilita JavaScript nel tuo browser.",
-    "noscript-welcome": "Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.",
+    "noscript-welcome": "Benvenuto in Biotech Project – Innovazione al servizio della salute.",
     "staff-subtitle": "Contatti per collaborazioni e progetti.",
     "staff-quoteElena": "Il giusto è razionale, morale, e non solo vigente, ma ancorato nella realtà!",
     "staff-quoteFabrizio": "La passione, recepire per elaborare, l'azione consapevole in un giorno qualunque!",
@@ -220,7 +220,7 @@
 
 "simple_lymph_why_fatty_title": "Perché è ricca di grassi?",
 "simple_lymph_why_fatty_1": "Dopo aver mangiato, i grassi assorbiti dall’intestino entrano nel sistema linfatico.",
-"simple_lymph_why_fatty_2": "Viaggiano sotto forma di piccole sfere chiamate <strong>chilomicroni</strong>.",
+"simple_lymph_why_fatty_2": "Viaggiano sotto forma di piccole sfere chiamate chilomicroni.",
 "simple_lymph_why_fatty_3": "Poi la linfa li porta nel sangue.",
 "simple_lymph_drainage_how_title": "Come funziona il drenaggio",
 "simple_lymph_drainage_1": "I capillari sanguigni sono permeabili: lasciano passare acqua e sostanze.",
@@ -236,7 +236,7 @@
 
 "lymphatic_failure_title": "Cosa succede se non funziona?",
 "lymphatic_failure_1": "Se il sistema linfatico non drena bene, il liquido si accumula nei tessuti.",
-"lymphatic_failure_2": "Questo si chiama <strong>edema</strong>.",
+"lymphatic_failure_2": "Questo si chiama edema.",
 "lymphatic_failure_3": "Si vede come un rigonfiamento, soprattutto in gambe, piedi o mani.",
 "lymphatic_failure_4": "Succede spesso dopo lunghi periodi di immobilità.",
 "immune_system_title": "Sistema immunitario",
@@ -245,11 +245,23 @@
 "immune_system_intro_3": "Si trova in tutto l’organismo e comunica attraverso i vasi linfatici.",
 "immune_system_composition_title": "Cosa forma il sistema immunitario?",
 "immune_cells_title": "1. Cellule difensive (globuli bianchi)",
-"immune_cells_1": "Si chiamano anche <strong>leucociti</strong>. Circolano nel sangue e nei tessuti.",
+"immune_cells_1": "Si chiamano anche leucociti. Circolano nel sangue e nei tessuti.",
 "immune_cells_2": "Si dividono in:",
-"immune_cells_granulocytes": "<strong>Granulociti</strong> – attaccano batteri e parassiti",
-"immune_cells_monocytes": "<strong>Monociti</strong> – diventano macrofagi e \"mangiano\" i germi",
-"immune_cells_lymphocytes": "<strong>Linfociti</strong> – producono anticorpi e ricordano le infezioni passate"
+"immune_cells_granulocytes": "Granulociti – attaccano batteri e parassiti",
+"immune_cells_monocytes": "Monociti – diventano macrofagi e \"mangiano\" i germi",
+"immune_cells_lymphocytes": "Linfociti – producono anticorpi e ricordano le infezioni passate",
+
+"immune_organs_title": "2. Organi linfatici",
+"immune_organs_bone_marrow_thymus": "Midollo osseo e timio: producono le cellule immunitarie",
+"immune_organs_filter_organs": "Linfonodi, milza, tonsille, appendice, placche di Peyer: filtrano germi e attivano la difesa",
+"defense_proteins_title": "3. Proteine di difesa (citochine)",
+"defense_proteins_1": "Sono messaggeri chimici",
+"defense_proteins_2": "Aiutano le cellule a comunicare e organizzare la risposta immunitaria",
+"immune_response_title": "Come risponde il corpo a un'infezione?",
+"immune_response_step_1": "Scoperta: un germe (antigene) viene riconosciuto",
+"immune_response_step_2": "Attivazione: il sistema immunitario si prepara e manda le cellule difensive",
+"immune_response_step_3": "Attacco: i germi vengono bloccati e distrutti",
+"immune_response_step_4": "Fine: l'infezione è sconfitta, il corpo si riposa"
 
   },
   "en": {
@@ -318,7 +330,7 @@
     "footer-project": "BiotechProject. A project for a more inclusive web.",
     "linkedin-link": "🔗 Follow Biotech Project on LinkedIn",
     "noscript-text": "For an optimal experience, please enable JavaScript in your browser.",
-    "noscript-welcome": "Welcome to <strong>Biotech Project</strong> – Innovation at the service of health.",
+    "noscript-welcome": "Welcome to Biotech Project – Innovation at the service of health.",
     "staff-subtitle": "Contact for collaborations and projects.",
     "staff-quoteElena": "The right is rational, moral, and not merely current, but grounded in reality!",
     "staff-quoteFabrizio": "Passion, receiving in order to process, mindful action on any ordinary day!",
@@ -472,7 +484,7 @@
 
 "simple_lymph_why_fatty_title": "Why is it rich in fats?",
 "simple_lymph_why_fatty_1": "After eating, fats absorbed from the intestine enter the lymphatic system.",
-"simple_lymph_why_fatty_2": "They travel as tiny spheres called <strong>chylomicrons</strong>.",
+"simple_lymph_why_fatty_2": "They travel as tiny spheres called chylomicrons.",
 "simple_lymph_why_fatty_3": "Then, lymph carries them into the blood.",
 "simple_lymph_drainage_how_title": "How drainage works",
 "simple_lymph_drainage_1": "Blood capillaries are permeable: they let water and substances pass through.",
@@ -488,7 +500,7 @@
 
 "lymphatic_failure_title": "What happens if it doesn't work?",
 "lymphatic_failure_1": "If the lymphatic system does not drain well, fluid builds up in the tissues.",
-"lymphatic_failure_2": "This is called <strong>edema</strong>.",
+"lymphatic_failure_2": "This is called edema.",
 "lymphatic_failure_3": "It shows as swelling, especially in the legs, feet or hands.",
 "lymphatic_failure_4": "It often happens after long periods of not moving.",
 "immune_system_title": "Immune System",
@@ -497,10 +509,22 @@
 "immune_system_intro_3": "It is in the whole body and communicates through lymph vessels.",
 "immune_system_composition_title": "What makes up the immune system?",
 "immune_cells_title": "1. Defense cells (white blood cells)",
-"immune_cells_1": "They are also called <strong>leukocytes</strong>. They move in the blood and tissues.",
+"immune_cells_1": "They are also called leukocytes. They move in the blood and tissues.",
 "immune_cells_2": "They are divided into:",
-"immune_cells_granulocytes": "<strong>Granulocytes</strong> – attack bacteria and parasites",
-"immune_cells_monocytes": "<strong>Monociti</strong> – become macrophages and \"eat\" germs",
-"immune_cells_lymphocytes": "<strong>Lymphocytes</strong> – make antibodies and remember past infections"   
+"immune_cells_granulocytes": "Granulocytes – attack bacteria and parasites",
+"immune_cells_monocytes": "Monociti – become macrophages and \"eat\" germs",
+"immune_cells_lymphocytes": "Lymphocytes – make antibodies and remember past infections",
+
+"immune_organs_title": "2. Lymphatic organs",
+"immune_organs_bone_marrow_thymus": "Bone marrow and thymus: produce immune cells",
+"immune_organs_filter_organs": "Lymph nodes, spleen, tonsils, appendix, Peyer's patches: filter germs and activate defense",
+"defense_proteins_title": "3. Defense proteins (cytokines)",
+"defense_proteins_1": "They are chemical messengers",
+"defense_proteins_2": "They help cells communicate and organize the immune response",
+"immune_response_title": "How does the body respond to an infection?",
+"immune_response_step_1": "Detection: a germ (antigen) is recognized",
+"immune_response_step_2": "Activation: the immune system prepares and sends defense cells",
+"immune_response_step_3": "Attack: germs are blocked and destroyed",
+"immune_response_step_4": "Resolution: the infection is defeated, the body rests"
   }
 }   
