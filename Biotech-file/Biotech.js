@@ -800,6 +800,27 @@ function handlePronounceKey(event, term, language = 'italiano') {
 // GESTIONE LINGUA (IT/EN)
 // ===========================
 
+let currentLang = 'it';
+const translations = {};
+
+// Carica il file JSON con le traduzioni
+fetch('https://gitechnolo.github.io/biotechproject/translations.json')
+  .then(response => {
+    if (!response.ok) throw new Error('File translations.json non trovato o danneggiato');
+    return response.json();
+  })
+  .then(data => {
+    Object.assign(translations, data);
+    // Imposta la lingua: salvata o del browser
+    const savedLang = localStorage.getItem('preferred-language');
+    const userLang = savedLang || (navigator.language.startsWith('en') ? 'en' : 'it');
+    setLanguage(userLang);
+  })
+  .catch(err => {
+    console.warn('Traduzioni non disponibili:', err);
+    // Fallback: lascia il testo in italiano (già presente in HTML)
+  });
+
 // Funzione per cambiare lingua
 function setLanguage(lang) {
   if (!translations[lang]) return;
@@ -808,8 +829,7 @@ function setLanguage(lang) {
   document.querySelectorAll('[data-lang-key]').forEach(el => {
     const key = el.getAttribute('data-lang-key');
     if (translations[lang] && translations[lang][key]) {
-      // ✅ Usa innerHTML per rendere i tag HTML
-      el.innerHTML = translations[lang][key];
+      el.textContent = translations[lang][key];
     }
   });
 
@@ -833,4 +853,10 @@ function setLanguage(lang) {
 
   localStorage.setItem('preferred-language', lang);
   currentLang = lang;
-}      
+}
+
+// Funzione chiamata dal pulsante per alternare lingua
+function toggleLanguage() {
+  const newLang = currentLang === 'it' ? 'en' : 'it';
+  setLanguage(newLang);
+}   
