@@ -140,7 +140,19 @@
 "immune_step_1": "1. l'agente esterno potenzialmente pericoloso, chiamato antigene, viene scoperto e identificato;",
 "immune_step_2": "2. il sistema immunitario si attiva mobilitando tutti i suoi difensori, o cellule;",
 "immune_step_3": "3. l'agente viene accerchiato e attaccato;",
-"immune_step_4": "4. l'aggressione viene domata e conclusa;"
+"immune_step_4": "4. l'aggressione viene domata e conclusa;",
+"immune_bone_marrow_role": "L'organo responsabile della produzione delle cellule del sistema immunitario è il midollo osseo.",
+"immune_bone_marrow_location": "Quest'ultimo è un organo disperso, che si trova all'interno: di alcuni tipi di ossa del nostro corpo, e cioè all'interno di quelle larghe e piatte, come ad esempio il bacino del tessuto osseo spugnoso.",
+"immune_key_cells": "Le cellule immunitarie più importanti sono i globuli bianchi che si distinguono in tre categorie: granulociti, monociti e linfociti.",
+"immune_other_components": "Gli altri componenti del sistema immunitario appartengono al sistema linfatico.",
+"immune_lymphatic_function": "Quest'ultimo è un sistema \"a senso unico\" che trasporta i fluidi da piccoli spazi presenti tra le varie cellule dei tessuti, chiamati spazi interstiziali, verso il sistema circolatorio principale.",
+"immune_lymphatic_role": "Il ruolo del sistema linfatico non è solo quello di drenare e di filtrare ma anche di consegnare tutti gli agenti estranei agli organi che si occupano della difesa, e cioè:",
+"immune_spleen": "La milza, organo linfatico principale localizzato nell'addome, che rappresenta il luogo in cui vengono portati e neutralizzati tutti gli agenti estranei;",
+"immune_lymph_nodes": "I linfonodi, che rappresentano delle stazioni intermedie del sistema linfatico, dove le cellule immunitarie si moltiplicano per combattere contro un antigene specifico;",
+"immune_lymphatic_vessels": "i vasi linfatici, che costituiscono un vero e proprio sistema circolatorio dedicato al trasporto della linfa, un fluido trasparente contenente globuli bianchi.",
+"immune_how_many_responses_question": "Quanti tipi di risposte immunitarie possono essere attivate?",
+"immune_response_types_intro": "Al fine di difendere il nostro organismo contro i patogeni esterni, il sistema immunitario può attivare tre diversi tipi di risposta: la risposta innata, la risposta adattiva e la risposta meccanica o chimica.",
+"immune_innate_adaptive_cooperation": "La risposta innata e quella adattiva si attivano insieme, regolandosi l'una con l'altra."
 
   },
   "en": {
@@ -283,6 +295,18 @@
 "immune_step_1": "1. The potentially dangerous external agent, called an antigen, is detected and identified;",
 "immune_step_2": "2. The immune system activates, mobilizing all its defenders, or cells;",
 "immune_step_3": "3. The antigen is surrounded and attacked;",
-"immune_step_4": "4. The attack is subdued and concluded;"   
+"immune_step_4": "4. The attack is subdued and concluded;",
+"immune_bone_marrow_role": "The organ responsible for producing immune system cells is the bone marrow.",
+"immune_bone_marrow_location": "It is a diffuse organ located inside certain types of bones in our body, specifically within flat and broad bones such as the pelvis and spongy bone tissue.",
+"immune_key_cells": "The most important immune cells are white blood cells, which are divided into three categories: granulocytes, monocytes, and lymphocytes.",
+"immune_other_components": "The other components of the immune system belong to the lymphatic system.",
+"immune_lymphatic_function": "The latter is a \"one-way\" system that transports fluids from small spaces between tissue cells, called interstitial spaces, toward the main circulatory system.",
+"immune_lymphatic_role": "The role of the lymphatic system is not only to drain and filter, but also to deliver all foreign agents to the organs responsible for defense, namely:",
+"immune_spleen": "The spleen, a primary lymphoid organ located in the abdomen, which serves as the site where foreign agents are transported and neutralized;",
+"immune_lymph_nodes": "Lymph nodes, which act as intermediate stations of the lymphatic system, where immune cells multiply to fight against a specific antigen;",
+"immune_lymphatic_vessels": "lymphatic vessels, which form a dedicated circulatory system for transporting lymph, a clear fluid containing white blood cells.",
+"immune_how_many_responses_question": "How many types of immune responses can be activated?",
+"immune_response_types_intro": "In order to defend our body against external pathogens, the immune system can activate three different types of response: innate, adaptive, and mechanical or chemical.",
+"immune_innate_adaptive_cooperation": "The innate and adaptive responses are activated together, regulating each other."   
   }
 }   
