@@ -155,7 +155,20 @@
 "immune_innate_adaptive_cooperation": "La risposta innata e quella adattiva si attivano insieme, regolandosi l'una con l'altra.",
 "immune_response_mechanical": "1. Chimica o meccanica, corrisponde alle barriere di superficie del corpo;",
 "immune_response_innate": "2. Innata, presente in tutti gli organismi pluricellulari dalla nascita come prima linea di difesa contro i patogeni;",
-"immune_response_adaptive": "3. Adattiva, entra in azione quando la prima linea di difesa non basta;"
+"immune_response_adaptive": "3. Adattiva, entra in azione quando la prima linea di difesa non basta;",
+
+"_section_lymphatic_simple": "=== SISTEMA LINFATICO SEMPLICE ===",
+"simple_lymph_title": "Sistema linfatico",
+"simple_lymph_intro_1": "Il sistema linfatico aiuta a pulire il corpo e a difenderlo dalle infezioni.",
+"simple_lymph_intro_2": "È collegato al sistema circolatorio, ma ha vasi e funzioni diverse.",
+"simple_lymph_purpose_title": "A cosa serve?",
+"simple_lymph_purpose_1": "Il sangue filtra nei tessuti, ma non tutto ritorna subito. Rimane un po’ di liquido con proteine.",
+"simple_lymph_purpose_2": "Il sistema linfatico lo raccoglie e lo riporta in circolo.",
+"simple_lymph_vessels_title": "I vasi linfatici",
+"simple_lymph_vessels_intro": "Sono tubi molto sottili, simili ai capillari del sangue, ma con alcune differenze:",
+"simple_lymph_vessel_feature_1": "Sono a fondo cieco (non fanno un anello)",
+"simple_lymph_vessel_feature_2": "Hanno pareti più sottili e fori più grandi",
+"simple_lymph_vessel_feature_3": "Hanno valvole che fanno viaggiare la linfa in una sola direzione"
 
   },
   "en": {
@@ -313,6 +326,19 @@
 "immune_innate_adaptive_cooperation": "The innate and adaptive responses are activated together, regulating each other.",
 "immune_response_mechanical": "1. Mechanical or chemical, corresponds to the body's surface barriers;",
 "immune_response_innate": "2. Innate, present in all multicellular organisms from birth as the first line of defense against pathogens;",
-"immune_response_adaptive": "3. Adaptive, activates when the first line of defense is insufficient;"   
+"immune_response_adaptive": "3. Adaptive, activates when the first line of defense is insufficient;",
+
+"_section_lymphatic_simple": "=== LYMPHATIC SYSTEM SIMPLE ===",
+"simple_lymph_title": "Lymphatic System",
+"simple_lymph_intro_1": "The lymphatic system helps clean the body and defend it from infections.",
+"simple_lymph_intro_2": "It is connected to the circulatory system, but has different vessels and functions.",
+"simple_lymph_purpose_title": "What is it for?",
+"simple_lymph_purpose_1": "Blood leaks into tissues, but not all of it returns right away. Some fluid with proteins is left behind.",
+"simple_lymph_purpose_2": "The lymphatic system collects it and returns it to circulation.",
+"simple_lymph_vessels_title": "Lymphatic vessels",
+"simple_lymph_vessels_intro": "They are very thin tubes, similar to blood capillaries, but with some differences:",
+"simple_lymph_vessel_feature_1": "They are blind-ended (they don’t form a loop)",
+"simple_lymph_vessel_feature_2": "They have thinner walls and larger openings",
+"simple_lymph_vessel_feature_3": "They have valves that make lymph flow in one direction only"
   }
 }   
