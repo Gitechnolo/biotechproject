@@ -127,7 +127,20 @@
 "lymph_waste_system": "La linfa rappresenta un efficace sistema attraverso cui l'organismo raccoglie liquidi e materiale di scarto dalla periferia per poi veicolarlo agli organi di depurazione (fegato, reni, polmoni, linfonodi).",
 "lymph_venous_comparison": "Sotto questo punto di vista, la funzione del sistema linfatico è quindi molto simile a quella del circolo venoso.",
 "lymph_dysfunction_question": "Cosa accade quando non funziona correttamente?",
-"lymph_edema_mechanism": "Quando il prezioso sistema di drenaggio linfatico va in tilt si possono accumulare notevoli quantità di liquidi negli spazi interstiziali a causa del gradiente osmotico sfavorevole (passaggio di acqua dalla soluzione a concentrazione minore a quella a concentrazione maggiore, cioè dal sangue agli spazi interstiziali). Questa condizione è definita edema e, come ricordato, è la tipica conseguenza dell'immobilizzazione prolungata." 
+"lymph_edema_mechanism": "Quando il prezioso sistema di drenaggio linfatico va in tilt si possono accumulare notevoli quantità di liquidi negli spazi interstiziali a causa del gradiente osmotico sfavorevole (passaggio di acqua dalla soluzione a concentrazione minore a quella a concentrazione maggiore, cioè dal sangue agli spazi interstiziali). Questa condizione è definita edema e, come ricordato, è la tipica conseguenza dell'immobilizzazione prolungata.",
+"immune_title": "SISTEMA IMMUNITARIO",
+"immune_overview": "Il sistema immunitario è un insieme di organi e di cellule altamente specializzate con il compito di difendere l'organismo da agenti esterni, i quali possono causare infezioni.",
+"immune_network": "Tutte le componenti di questo \"istituto di vigilanza\" si trovano sparse in diverse aree del corpo umano e comunicano tra di loro grazie a interconnessioni chiamate vasi linfatici.",
+"immune_composition_intro": "Nello specifico il sistema immunitario è costituito da;",
+"immune_cells": "Cellule specializzate, chiamate globuli bianchi o leucociti, capaci di circolare sia nel sangue che nei tessuti. Queste cellule si suddividono ulteriormente in granulociti, monociti e linfociti;",
+"immune_organs": "Organi linfatici principali, e cioè midollo osseo e timo, e organi linfatici secondari, e cioè linfonodi, milza e tessuto linfoide associato alle mucose (tonsille, appendice e placche intestinali di Peyer);",
+"immune_proteins": "Proteine specializzate nel ruolo di mediatori chimici, chiamate citochine: queste proteine orchestrano le diverse risposte immunitarie, scambiandosi segnali tra di loro al fine di controllare il lavoro dei diversi organi e dei tessuti linfatici.",
+"immune_how_question": "Come funziona il sistema immunitario?",
+"immune_response_intro": "Una normale risposta immunitaria si articola secondo questi passaggi:",
+"immune_step_1": "1. l'agente esterno potenzialmente pericoloso, chiamato antigene, viene scoperto e identificato;",
+"immune_step_2": "2. il sistema immunitario si attiva mobilitando tutti i suoi difensori, o cellule;",
+"immune_step_3": "3. l'agente viene accerchiato e attaccato;",
+"immune_step_4": "4. l'aggressione viene domata e conclusa;"
 
   },
   "en": {
@@ -257,6 +270,19 @@
 "lymph_waste_system": "Lymph represents an effective system through which the body collects fluids and waste material from the periphery and transports them to detoxifying organs (liver, kidneys, lungs, lymph nodes).",
 "lymph_venous_comparison": "From this perspective, the function of the lymphatic system is therefore very similar to that of the venous circulation.",
 "lymph_dysfunction_question": "What happens when it does not work properly?",
-"lymph_edema_mechanism": "When the valuable lymphatic drainage system malfunctions, significant amounts of fluid can accumulate in the interstitial spaces due to an unfavorable osmotic gradient (movement of water from a solution with lower concentration to one with higher concentration, i.e., from blood into interstitial spaces). This condition is known as edema and, as noted, is the typical consequence of prolonged immobilization."   
+"lymph_edema_mechanism": "When the valuable lymphatic drainage system malfunctions, significant amounts of fluid can accumulate in the interstitial spaces due to an unfavorable osmotic gradient (movement of water from a solution with lower concentration to one with higher concentration, i.e., from blood into interstitial spaces). This condition is known as edema and, as noted, is the typical consequence of prolonged immobilization.",
+"immune_title": "IMMUNE SYSTEM",
+"immune_overview": "The immune system is a network of organs and highly specialized cells whose task is to defend the body from external agents, which can cause infections.",
+"immune_network": "All components of this \"surveillance system\" are scattered throughout various areas of the human body and communicate with each other through connections called lymphatic vessels.",
+"immune_composition_intro": "Specifically, the immune system is composed of;",
+"immune_cells": "Specialized cells, known as white blood cells or leukocytes, capable of circulating in both blood and tissues. These cells are further divided into granulocytes, monocytes, and lymphocytes;",
+"immune_organs": "Primary lymphoid organs, namely bone marrow and thymus, and secondary lymphoid organs, namely lymph nodes, spleen, and mucosa-associated lymphoid tissue (tonsils, appendix, and Peyer's patches);",
+"immune_proteins": "Specialized proteins acting as chemical mediators, called cytokines: these proteins orchestrate different immune responses by exchanging signals among themselves to regulate the activity of various lymphoid organs and tissues.",
+"immune_how_question": "How does the immune system work?",
+"immune_response_intro": "A normal immune response unfolds in the following steps:",
+"immune_step_1": "1. The potentially dangerous external agent, called an antigen, is detected and identified;",
+"immune_step_2": "2. The immune system activates, mobilizing all its defenders, or cells;",
+"immune_step_3": "3. The antigen is surrounded and attacked;",
+"immune_step_4": "4. The attack is subdued and concluded;"   
   }
 }   
