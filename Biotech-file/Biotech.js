@@ -797,152 +797,47 @@ function handlePronounceKey(event, term, language = 'italiano') {
 }
 
 // ===========================
-// 🔤 GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
+// GESTIONE LINGUA (IT/EN)
 // ===========================
+
 let currentLang = 'it';
-const translations = { common: {} };
+const translations = {};
 
-// === 1. Mappa il nome della pagina al file JSON corrispondente ===
-function getTranslationFile() {
-  const path = window.location.pathname;
-  const filename = path.split('/').pop().replace('.html', '');
-  const baseName = filename
-    .replace(/-semplice$/, '')
-    .replace(/-it$/, '')
-    .replace(/-en$/, '');
+// Carica il file JSON con le traduzioni
+fetch('https://gitechnolo.github.io/biotechproject/translations.json')
+  .then(response => {
+    if (!response.ok) throw new Error('File translations.json non trovato o danneggiato');
+    return response.json();
+  })
+  .then(data => {
+    Object.assign(translations, data);
+    // Imposta la lingua: salvata o del browser
+    const savedLang = localStorage.getItem('preferred-language');
+    const userLang = savedLang || (navigator.language.startsWith('en') ? 'en' : 'it');
+    setLanguage(userLang);
+  })
+  .catch(err => {
+    console.warn('Traduzioni non disponibili:', err);
+    // Fallback: lascia il testo in italiano (già presente in HTML)
+  });
 
-  // 🔒 Esclusioni: pagine senza traduzione dinamica
-  if ([
-    'accessibility',
-    'tablet_forum',
-    'marketing',
-    'progetti',
-    'Tech_Maturity'
-  ].includes(baseName)) {
-    return 'common';
-  }
+// Funzione per cambiare lingua
+function setLanguage(lang) {
+  if (!translations[lang]) return;
 
-  // 🔗 Mappa le pagine ai file JSON
-  const map = {
-    'index': 'home',
-    'Staff': 'staff',
-    'Specials': 'specials',
-    'Dermatologia': 'dermatologia',
-    'Cuore': 'cuore',
-    'Cellula': 'cellula',
-    'Apparato_tegumentario': 'apparato_tegumentario',
-    'Apparato_respiratorio': 'apparato_respiratorio',
-    'Apparato_digerente': 'apparato_digerente',
-    'Sistema_linfatico': 'sistema_linfatico'
-  };
-
-  return map[baseName] || 'common';
-}
-
-// === 2. Carica un file JSON con gestione errori ===
-async function loadJSON(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.json();
-  } catch (err) {
-    console.warn(`⚠️ Impossibile caricare: ${url}`, err);
-    return null;
-  }
-}
-
-// === 3. Applica le traduzioni al DOM (con aggiornamento di textContent e aria-label) ===
-function applyTranslations(data) {
+  // Aggiorna tutti gli elementi con data-lang-key
   document.querySelectorAll('[data-lang-key]').forEach(el => {
     const key = el.getAttribute('data-lang-key');
-    if (data[key]) {
-      // Aggiorna il testo (textContent o value)
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.value = data[key];
-      } else {
-        el.textContent = data[key];
-      }
-
-      // 🔁 Aggiorna aria-label se presente
-      const ariaLabelAttr = el.getAttribute('aria-label');
-      if (ariaLabelAttr) {
-        // Cerca una traduzione specifica per aria-label, es. "aria-nav-contact"
-        const ariaKey = `aria-${key}`;
-        const translatedAria = data[ariaKey] || data[key]; // fallback al testo normale
-        el.setAttribute('aria-label', translatedAria);
-      }
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
     }
   });
 
-  // Aggiorna il titolo della pagina, se presente
-  if (data.title) {
-    document.title = data.title;
-  }
-}
-
-// === 4. Carica e unisce common + pagina-specifico ===
-async function loadTranslations() {
-  const lang = currentLang;
-  const pageKey = getTranslationFile();
-  const baseUrl = 'https://gitechnolo.github.io/biotechproject/Biotech-file';
-  const commonUrl = `${baseUrl}/assets/translations/common.json`;
-  const pageUrl = `${baseUrl}/assets/translations/${pageKey}.json`;
-
-  try {
-    // Carica common.json (una volta sola)
-    if (!translations.common[lang]) {
-      const commonData = await loadJSON(commonUrl);
-      if (commonData) {
-        translations.common = commonData;
-      } else {
-        console.warn('⚠️ common.json non disponibile. Fallback a testo HTML.');
-      }
-    }
-
-    // Carica il file specifico della pagina (se non è 'common')
-    let pageData = null;
-    if (pageKey !== 'common') {
-      pageData = await loadJSON(pageUrl);
-      if (pageData) {
-        // Salva in cache
-        if (!translations[pageKey]) {
-          translations[pageKey] = pageData;
-        }
-      } else {
-        console.warn(`⚠️ ${pageKey}.json non disponibile. Usa solo common.`);
-      }
-    }
-
-    // Unisci: common + pagina (pagina ha priorità)
-    const commonPart = translations.common[lang] || {};
-    const pagePart = pageData ? pageData[lang] || {} : {};
-    const merged = { ...commonPart, ...pagePart };
-
-    // Applica al DOM
-    applyTranslations(merged);
-
-    console.debug(`✅ Traduzioni caricate per: ${pageKey} (${lang})`);
-  } catch (err) {
-    console.warn('❌ Errore nel caricamento delle traduzioni:', err);
-  }
-}
-
-// === 5. Cambia lingua (senza ricaricare la pagina) ===
-function setLanguage(lang) {
-  if (['it', 'en'].includes(lang)) {
-    currentLang = lang;
-    localStorage.setItem('preferred-language', lang);
-    loadTranslations(); // Ricarica il JSON corrente nella nuova lingua
-    updateLanguageUI(lang);
-  }
-}
-
-// === 6. Aggiorna UI del pulsante lingua ===
-function updateLanguageUI(lang) {
+  // Aggiorna pulsante lingua
   const flag = document.getElementById('lang-flag');
   const text = document.getElementById('lang-text');
   const button = document.getElementById('lang-toggle');
-  const label = document.getElementById('lang-label');
+  const label = document.getElementById('lang-label'); // Testo visibile
 
   if (lang === 'it') {
     flag.textContent = '🇮🇹';
@@ -955,17 +850,13 @@ function updateLanguageUI(lang) {
     label.textContent = 'Switch language';
     button.setAttribute('aria-label', 'Switch to Italian');
   }
+
+  localStorage.setItem('preferred-language', lang);
+  currentLang = lang;
 }
 
-// === 7. Toggle lingua (da pulsante) ===
+// Funzione chiamata dal pulsante per alternare lingua
 function toggleLanguage() {
   const newLang = currentLang === 'it' ? 'en' : 'it';
   setLanguage(newLang);
-}
-
-// === 8. Inizializza al caricamento ===
-document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('preferred-language');
-  const userLang = savedLang || (navigator.language.startsWith('en') ? 'en' : 'it');
-  setLanguage(userLang);
-});   
+}   
