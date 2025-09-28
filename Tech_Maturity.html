@@ -297,31 +297,26 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 
 <!-- === VISUAL REPORT CARD === -->
 <div class="visual-report" aria-labelledby="report-title">
-  <h3 id="report-title" data-lang-key="tech-maturity-report-title">📊 Stato del Progetto</h3>   
+  <h3 id="report-title" data-lang-key="tech-maturity-report-title">📊 Stato del Progetto</h3>
   <div class="report-grid">
     
     <!-- Pagine analizzate -->
-<div class="report-item" role="article">
-  <span class="report-icon" aria-hidden="true">✅</span>
-  <div>
-    <strong 
-      data-lang-key="report-pages"
-      aria-label="Pagine analizzate">
-      Pagine analizzate
-    </strong>   
-    <p>
-      <span id="analyzed-count">--</span> 
-      <span data-lang-key="tech-maturity-of">su</span> 
-      <span id="total-pages">24</span>
-    </p>
-  </div>
-</div>   
+    <div class="report-item" role="article" aria-label="Pagine analizzate">
+      <span class="report-icon" aria-hidden="true">✅</span>
+      <div>
+        <strong>Pagine analizzate</strong>
+        <p>
+          <span id="analyzed-count">--</span> su 
+          <span id="total-pages">24</span>
+        </p>
+      </div>
+    </div>
 
     <!-- Prestazioni medie -->
     <div class="report-item" role="article" aria-label="Prestazioni medie">
       <span class="report-icon" aria-hidden="true">⚡</span>
       <div>
-        <strong data-lang-key="tech-maturity-performance">Prestazioni medie</strong>
+        <strong>Prestazioni medie</strong>
         <p id="avg-performance">--%</p>
       </div>
     </div>
@@ -330,8 +325,8 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     <div class="report-item" role="article" aria-label="Accessibilità">
       <span class="report-icon" aria-hidden="true">♿</span>
       <div>
-<strong data-lang-key="tech-maturity-accessibility">Accessibilità</strong>
-<p data-lang-key="tech-maturity-accessibility-desc">Alto contrasto, navigabile da tastiera, compatibile con screen reader</p>   
+        <strong>Accessibilità</strong>
+        <p>Alto contrasto, navigabile da tastiera, compatibile con screen reader</p>
       </div>
     </div>
 
@@ -348,18 +343,12 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 
   </div>
 
-  <p class="report-note" data-lang-key="tech-maturity-report-note">
-  Dati aggiornati automaticamente. 
-  <a href="/biotechproject/data/performance-latest.json" 
-     target="_blank" 
-     class="report-link" 
-     data-lang-key="tech-maturity-download-json">Scarica JSON</a> 
-  o 
-  <a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" 
-     target="_blank" 
-     class="report-link" 
-     data-lang-key="tech-maturity-view-on-github">vedi su GitHub</a>.
-</p>   
+  <p class="report-note">
+    Dati aggiornati automaticamente. 
+    <a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link">Scarica JSON</a> 
+    o 
+    <a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link">vedi su GitHub</a>.
+  </p>
 </div>     
 
 
