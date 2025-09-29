@@ -415,12 +415,45 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   </button>
 </div>   
 
-<div class="biotechcenter">
-  <p class="sansation-light-italic">Performance Score</p>
-  <span id="performance-score">-</span>
-  <span id="trend-indicator"></span>
-  <p class="lead">*Dati reali aggiornati ogni 24 ore</p>   
-</div>   
+
+
+<div class="biotechcenter" role="region" aria-labelledby="score-label">
+  <!-- Etichetta del punteggio -->
+  <p 
+    id="score-label" 
+    class="sansation-light-italic" 
+    data-lang-key="performance-score-label"
+  >
+    Performance Score
+  </p>
+
+  <!-- Valore dinamico del punteggio -->
+  <span 
+    id="performance-score" 
+    aria-live="polite" 
+    aria-atomic="true"
+    style="font-size: 2em; font-weight: bold;">
+    -
+  </span>
+
+  <!-- Indicatore di tendenza (es. ↑ ↓) -->
+  <span 
+    id="trend-indicator" 
+    aria-live="polite"
+    style="font-size: 1.5em; margin-left: 8px;">
+  </span>
+
+  <!-- Nota sul refresh dati -->
+  <p 
+    class="lead" 
+    data-lang-key="performance-score-note"
+    style="margin-top: 10px;">
+    *Dati reali aggiornati ogni 24 ore
+  </p>   
+</div>     
+
+
+
 <table class="visually-hidden">
   <caption>Andamento delle prestazioni nel tempo</caption>
   <thead>
