@@ -396,16 +396,61 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     <!-- Popolato via JavaScript -->
   </tbody>
 </table>
+
+
 <div class="portfolio-main">
-<div class="biotechcenter"><p class="lead">Dashboard delle prestazioni aggiornata</p></div>     
+<div class="biotechcenter">
+  <p class="lead" data-lang-key="performance-dashboard-title">Dashboard delle prestazioni aggiornata</p>
+</div>   
+
 <!-- Menu di filtro per livello di maturità tecnologica -->
-<div id="myBtnContainer">
-  <button class="filter-btn active" data-filter="all">Mostra tutti</button>
-  <button class="filter-btn" data-filter="compatible">Compatibili</button>
-  <button class="filter-btn" data-filter="optimized">Ottimizzate</button>
-  <button class="filter-btn" data-filter="needs-improvement">Da migliorare</button>
-  <button class="filter-btn" data-filter="deprecated">Obsoleti</button>
-</div>
+<div id="myBtnContainer" role="group" aria-label="Filtri prestazioni">
+  <button 
+    class="filter-btn active" 
+    data-filter="all"
+    data-lang-key="filter-all"
+    aria-pressed="true"
+    title="Mostra tutte le pagine"
+  >
+    Mostra tutti
+  </button>
+  <button 
+    class="filter-btn" 
+    data-filter="compatible"
+    data-lang-key="filter-compatible"
+    aria-pressed="false"
+    title="Pagine compatibili: punteggio 90-100"
+  >
+    Compatibili
+  </button>
+  <button 
+    class="filter-btn" 
+    data-filter="optimized"
+    data-lang-key="filter-optimized"
+    aria-pressed="false"
+    title="Pagine ottimizzate: punteggio 75-89"
+  >
+    Ottimizzate
+  </button>
+  <button 
+    class="filter-btn" 
+    data-filter="needs-improvement"
+    data-lang-key="filter-needs-improvement"
+    aria-pressed="false"
+    title="Pagine da migliorare: punteggio 50-74"
+  >
+    Da migliorare
+  </button>
+  <button 
+    class="filter-btn" 
+    data-filter="deprecated"
+    data-lang-key="filter-deprecated"
+    aria-pressed="false"
+    title="Pagine obsolete: punteggio sotto 50"
+  >
+    Obsoleti
+  </button>
+</div>   
 
 <!-- Griglia delle pagine -->
 <div class="portfolio-row">
