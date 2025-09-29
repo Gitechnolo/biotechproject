@@ -297,20 +297,20 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 
 <!-- === VISUAL REPORT CARD === -->
 <div class="visual-report" aria-labelledby="report-title">
-  <h3 id="report-title">📊 Stato del Progetto</h3>
+  <h3 id="report-title" data-lang-key="tech-maturity-report-title">📊 Stato del Progetto</h3>
   <div class="report-grid">
     
     <!-- Pagine analizzate -->
-    <div class="report-item" role="article" aria-label="Pagine analizzate">
-      <span class="report-icon" aria-hidden="true">✅</span>
-      <div>
-        <strong>Pagine analizzate</strong>
-        <p>
-          <span id="analyzed-count">--</span> su 
-          <span id="total-pages">24</span>
-        </p>
-      </div>
-    </div>
+<div class="report-item" role="article" aria-labelledby="pages-analyzed-label">
+  <span class="report-icon" aria-hidden="true">✅</span>
+  <div>
+    <strong id="pages-analyzed-label" data-lang-key="tech-maturity-pages-analyzed">Pagine analizzate</strong>
+    <p>
+      <span id="analyzed-count">--</span> <span data-lang-key="tech-maturity-of">su</span>
+      <span id="total-pages">24</span>
+    </p>
+  </div>
+</div>   
 
     <!-- Prestazioni medie -->
     <div class="report-item" role="article" aria-label="Prestazioni medie">
