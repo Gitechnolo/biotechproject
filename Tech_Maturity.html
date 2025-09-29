@@ -384,8 +384,21 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   aria-labelledby="chart-title" 
   aria-describedby="chart-desc">
 </canvas>   
-  <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
-<button class="refresh-btn">Aggiorna ora</button>
+  <p 
+  id="last-update" 
+  style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;"
+  data-lang-key="last-update-label"
+  aria-live="polite"
+>
+  Aggiornato il: caricamento...
+</p>   
+<button 
+  class="refresh-btn" 
+  data-lang-key="refresh-btn-label"
+  title="Aggiorna i dati del grafico"
+>
+  Aggiorna ora
+</button>   
 </section>
 <div class="biotechcenter">
   <button id="export-data-btn" class="action-btn" title="Esporta dati storici in JSON o CSV">
