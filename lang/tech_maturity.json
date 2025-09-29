@@ -27,7 +27,9 @@
 "export-data-btn-label": "Esporta dati",
 "export-data-btn-title": "Esporta dati storici in JSON o CSV",
 "performance-score-label": "Punteggio Prestazioni",
-"performance-score-note": "*Dati reali aggiornati ogni 24 ore"
+"performance-score-note": "*Dati reali aggiornati ogni 24 ore",
+"refresh-btn-bottom-label": "Aggiorna dati",
+"refresh-btn-bottom-title": "Aggiorna i dati del report in tempo reale"
   },
   "en": {
 "tech-maturity-title": "System Audit | Biotech Project",
@@ -57,6 +59,8 @@
 "export-data-btn-label": "Export data",
 "export-data-btn-title": "Export historical data in JSON or CSV",
 "performance-score-label": "Performance Score",
-"performance-score-note": "*Real data updated every 24 hours"
+"performance-score-note": "*Real data updated every 24 hours",
+"refresh-btn-bottom-label": "Refresh data",
+"refresh-btn-bottom-title": "Refresh report data in real time"
   }
 }
