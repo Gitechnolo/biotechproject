@@ -400,11 +400,21 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   Aggiorna ora
 </button>   
 </section>
+
 <div class="biotechcenter">
-  <button id="export-data-btn" class="action-btn" title="Esporta dati storici in JSON o CSV">
-  💾 Esporta dati
-</button>
+  <button 
+    id="export-data-btn" 
+    class="action-btn" 
+    data-lang-key="export-data-btn-label"
+    title="Esporta dati storici in JSON o CSV"
+    data-lang-title="export-data-btn-title"
+    aria-label="Esporta dati storici"
+  >
+    <span aria-hidden="true">💾</span>
+    <span data-lang-key="export-data-btn-label">Esporta dati</span>
+  </button>
 </div>   
+
 <div class="biotechcenter">
   <p class="sansation-light-italic">Performance Score</p>
   <span id="performance-score">-</span>
