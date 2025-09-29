@@ -368,8 +368,22 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 
 
 <section class="tech-section">
-  <p class="sansation-light-italic">Andamento delle Prestazioni!</p>
-  <canvas id="performance-trend" width="800" height="200"></canvas>
+  <p 
+  id="chart-title" 
+  class="sansation-light-italic" 
+  data-lang-key="chart-performance-trend"
+>
+  Andamento delle Prestazioni!
+</p>
+
+<canvas 
+  id="performance-trend" 
+  width="800" 
+  height="200" 
+  role="img" 
+  aria-labelledby="chart-title" 
+  aria-describedby="chart-desc">
+</canvas>   
   <p id="last-update" style="color:#b2dfdb; font-size:0.9em; text-align:center; margin-top:10px;">Aggiornato il: caricamento...</p>
 <button class="refresh-btn">Aggiorna ora</button>
 </section>
@@ -419,7 +433,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     data-filter="compatible"
     data-lang-key="filter-compatible"
     aria-pressed="false"
-    title="Pagine compatibili: punteggio 90-100"
+    title="Pagine compatibili: punteggio 75-89"
   >
     Compatibili
   </button>
@@ -428,7 +442,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     data-filter="optimized"
     data-lang-key="filter-optimized"
     aria-pressed="false"
-    title="Pagine ottimizzate: punteggio 75-89"
+    title="Pagine ottimizzate: punteggio 90-100"
   >
     Ottimizzate
   </button>
