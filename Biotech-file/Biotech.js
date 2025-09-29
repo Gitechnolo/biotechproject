@@ -796,67 +796,254 @@ function handlePronounceKey(event, term, language = 'italiano') {
   }
 }
 
+
+
+
 // ===========================
-// GESTIONE LINGUA (IT/EN)
+// GESTIONE LINGUA MODULARE (IT/EN)
+// BioTechProject - Versione completa con supporto universale al menu
 // ===========================
 
 let currentLang = 'it';
-const translations = {};
 
-// Carica il file JSON con le traduzioni
-fetch('https://gitechnolo.github.io/biotechproject/translations.json')
-  .then(response => {
-    if (!response.ok) throw new Error('File translations.json non trovato o danneggiato');
-    return response.json();
-  })
-  .then(data => {
-    Object.assign(translations, data);
-    // Imposta la lingua: salvata o del browser
-    const savedLang = localStorage.getItem('preferred-language');
-    const userLang = savedLang || (navigator.language.startsWith('en') ? 'en' : 'it');
-    setLanguage(userLang);
-  })
-  .catch(err => {
-    console.warn('Traduzioni non disponibili:', err);
-    // Fallback: lascia il testo in italiano (già presente in HTML)
-  });
+// Mappa delle pagine che hanno un JSON specifico
+const translatablePages = [
+  'index',
+  'Progetti',
+  'Staff',
+  'Marketing',
+  'Tech_Maturity',
+  'Dermatologia',
+  'Cuore',
+  'Cellula',
+  'Apparato_digerente',
+  'Apparato_respiratorio',
+  'Apparato_tegumentario',
+  'Sistema_linfatico'
+  // Aggiungi altre pagine se necessario
+];
 
-// Funzione per cambiare lingua
-function setLanguage(lang) {
-  if (!translations[lang]) return;
+// Mappa nome pagina → nome file JSON
+function getPageKey(pageName) {
+  const map = {
+    'index': 'home',
+    'Tech_Maturity': 'tech_maturity',
+    'Apparato_digerente': 'apparato_digerente',
+    'Apparato_respiratorio': 'apparato_respiratorio',
+    'Apparato_tegumentario': 'apparato_tegumentario',
+    'Sistema_linfatico': 'sistema_linfatico'
+  };
+  return map[pageName] || pageName.toLowerCase();
+}
 
-  // Aggiorna tutti gli elementi con data-lang-key
+// Estrae il nome della pagina (senza -semplice)
+function getPageName() {
+  const path = window.location.pathname;
+  const fileName = path.split('/').pop().replace('.html', '');
+  return fileName.replace('-semplice', '');
+}
+
+// Carica un file JSON
+async function loadTranslation(path) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`File non trovato: ${path}`);
+    return await res.json();
+  } catch (err) {
+    console.warn(err);
+    return null;
+  }
+}
+
+// ===========================
+// INIZIALIZZA IL SISTEMA DI TRADUZIONE
+// ===========================
+async function initTranslations() {
+  const pageName = getPageName();
+  const savedLang = getSavedLanguage();
+
+  // ===========================
+  // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
+  // → Carica SOLO common.json per tradurre menu, footer, pulsante lingua
+  // ===========================
+  if (!translatablePages.includes(pageName)) {
+    const common = await loadTranslation('lang/common.json');
+    const translations = {
+      it: { ...(common?.it || {}) },
+      en: { ...(common?.en || {}) }
+    };
+
+    // Applica solo le traduzioni comuni
+    applyTranslations(translations, savedLang);
+    updateLanguageButton(savedLang);
+
+    // Imposta lang sull'html
+    document.documentElement.lang = savedLang;
+
+    // Inizializza il toggle anche qui
+    const button = document.getElementById('lang-toggle');
+    if (button) {
+      button.addEventListener('click', () => {
+        const newLang = savedLang === 'it' ? 'en' : 'it';
+        localStorage.setItem('preferred-language', newLang);
+        window.location.reload();
+      });
+    }
+
+    return;
+  }
+
+  // ===========================
+  // CASO 2: Pagina traducibile
+  // → Carica common.json + file specifico
+  // ===========================
+  const translations = { it: {}, en: {} };
+
+  // 1. Carica common.json
+  const common = await loadTranslation('lang/common.json');
+  if (common) {
+    translations.it = { ...common.it };
+    translations.en = { ...common.en };
+  }
+
+  // 2. Carica JSON specifico della pagina
+  const pageKey = getPageKey(pageName);
+  const pageData = await loadTranslation(`lang/${pageKey}.json`);
+  if (pageData) {
+    if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+    if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+  }
+
+  // 3. Applica traduzioni
+  applyTranslations(translations, savedLang);
+  updateLanguageButton(savedLang);
+  document.documentElement.lang = savedLang;
+  currentLang = savedLang;
+}
+
+// ===========================
+// APPLICA LE TRADUZIONI AGLI ELEMENTI DEL DOM
+// ===========================
+function applyTranslations(translations, lang) {
   document.querySelectorAll('[data-lang-key]').forEach(el => {
     const key = el.getAttribute('data-lang-key');
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
+    const value = translations[lang]?.[key];
+
+    if (value !== undefined && value !== null) {
+      // Gestisci diversi tipi di elemento
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.setAttribute('placeholder', value);
+      } else if (el.tagName === 'IMG') {
+        el.setAttribute('alt', value);
+      } else if (el.hasAttribute('aria-label')) {
+        el.setAttribute('aria-label', value);
+      } else {
+        el.textContent = value;
+      }
     }
   });
+}
 
-  // Aggiorna pulsante lingua
+// ===========================
+// OTTIENI LA LINGUA PREFERITA
+// ===========================
+function getSavedLanguage() {
+  return localStorage.getItem('preferred-language') || 
+         (navigator.language.startsWith('en') ? 'en' : 'it');
+}
+
+// ===========================
+// CAMBIA LINGUA (chiamato dal pulsante)
+// ===========================
+function setLanguage(lang) {
+  // Ripete il caricamento per la pagina corrente
+  const pageName = getPageName();
+
+  // Se non è una pagina traducibile, carica solo common.json
+  if (!translatablePages.includes(pageName)) {
+    loadTranslation('lang/common.json').then(common => {
+      if (!common) return;
+      const translations = {
+        it: common.it || {},
+        en: common.en || {}
+      };
+      applyTranslations(translations, lang);
+      updateLanguageButton(lang);
+      document.documentElement.lang = lang;
+      currentLang = lang;
+      localStorage.setItem('preferred-language', lang);
+    });
+    return;
+  }
+
+  // Altrimenti: carica common + pagina specifica
+  const pageKey = getPageKey(pageName);
+  const commonPromise = loadTranslation('lang/common.json');
+  const pagePromise = loadTranslation(`lang/${pageKey}.json`);
+
+  Promise.all([commonPromise, pagePromise]).then(([common, pageData]) => {
+    const translations = { it: {}, en: {} };
+
+    // Unisci common
+    if (common) {
+      translations.it = { ...common.it };
+      translations.en = { ...common.en };
+    }
+
+    // Unisci pagina specifica
+    if (pageData) {
+      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+    }
+
+    applyTranslations(translations, lang);
+    updateLanguageButton(lang);
+    document.documentElement.lang = lang;
+    currentLang = lang;
+    localStorage.setItem('preferred-language', lang);
+  });
+}
+
+// ===========================
+// AGGIORNA IL PULSANTE LINGUA
+// ===========================
+function updateLanguageButton(lang) {
   const flag = document.getElementById('lang-flag');
   const text = document.getElementById('lang-text');
   const button = document.getElementById('lang-toggle');
-  const label = document.getElementById('lang-label'); // Testo visibile
+  const label = document.getElementById('lang-label'); // testo nel menu
+
+  if (!flag || !button) return;
 
   if (lang === 'it') {
-    flag.textContent = '🇮🇹';
-    text.textContent = 'Italiano';
-    label.textContent = 'Cambia lingua';
-    button.setAttribute('aria-label', 'Cambia lingua in inglese');
-  } else {
     flag.textContent = '🇬🇧';
-    text.textContent = 'English';
-    label.textContent = 'Switch language';
-    button.setAttribute('aria-label', 'Switch to Italian');
+    if (text) text.textContent = 'English';
+    if (label) label.textContent = 'Switch language';
+    button.setAttribute('aria-label', 'Switch to English');
+  } else {
+    flag.textContent = '🇮🇹';
+    if (text) text.textContent = 'Italiano';
+    if (label) label.textContent = 'Cambia lingua';
+    button.setAttribute('aria-label', 'Cambia lingua in italiano');
   }
-
-  localStorage.setItem('preferred-language', lang);
-  currentLang = lang;
 }
 
-// Funzione chiamata dal pulsante per alternare lingua
+// ===========================
+// CAMBIA LINGUA AL CLICK
+// ===========================
 function toggleLanguage() {
   const newLang = currentLang === 'it' ? 'en' : 'it';
   setLanguage(newLang);
-}   
+}
+
+// ===========================
+// AVVIO AL CARICAMENTO DELLA PAGINA
+// ===========================
+document.addEventListener('DOMContentLoaded', () => {
+  initTranslations().catch(err => {
+    console.error('Errore nel caricamento delle traduzioni:', err);
+  });
+
+// Esporre globalmente per gli onclick HTML
+  window.toggleLanguage = toggleLanguage;
+});   
