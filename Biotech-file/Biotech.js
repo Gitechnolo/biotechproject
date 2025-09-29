@@ -799,14 +799,18 @@ function handlePronounceKey(event, term, language = 'italiano') {
 
 
 
-// ===========================
-// GESTIONE LINGUA MODULARE (IT/EN)
-// BioTechProject - Versione completa con supporto universale al menu
-// ===========================
+
+
+
+
+// =====================================================
+// GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
+// Supporta menu con <b>, ritardo sicuro, localStorage
+// =====================================================
 
 let currentLang = 'it';
 
-// Mappa delle pagine che hanno un JSON specifico
+// Pagine che hanno un JSON specifico
 const translatablePages = [
   'index',
   'Progetti',
@@ -820,7 +824,6 @@ const translatablePages = [
   'Apparato_respiratorio',
   'Apparato_tegumentario',
   'Sistema_linfatico'
-  // Aggiungi altre pagine se necessario
 ];
 
 // Mappa nome pagina → nome file JSON
@@ -856,73 +859,7 @@ async function loadTranslation(path) {
 }
 
 // ===========================
-// INIZIALIZZA IL SISTEMA DI TRADUZIONE
-// ===========================
-async function initTranslations() {
-  const pageName = getPageName();
-  const savedLang = getSavedLanguage();
-
-  // ===========================
-  // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
-  // → Carica SOLO common.json per tradurre menu, footer, pulsante lingua
-  // ===========================
-  if (!translatablePages.includes(pageName)) {
-    const common = await loadTranslation('lang/common.json');
-    const translations = {
-      it: { ...(common?.it || {}) },
-      en: { ...(common?.en || {}) }
-    };
-
-    // Applica solo le traduzioni comuni
-    applyTranslations(translations, savedLang);
-    updateLanguageButton(savedLang);
-
-    // Imposta lang sull'html
-    document.documentElement.lang = savedLang;
-
-    // Inizializza il toggle anche qui
-    const button = document.getElementById('lang-toggle');
-    if (button) {
-      button.addEventListener('click', () => {
-        const newLang = savedLang === 'it' ? 'en' : 'it';
-        localStorage.setItem('preferred-language', newLang);
-        window.location.reload();
-      });
-    }
-
-    return;
-  }
-
-  // ===========================
-  // CASO 2: Pagina traducibile
-  // → Carica common.json + file specifico
-  // ===========================
-  const translations = { it: {}, en: {} };
-
-  // 1. Carica common.json
-  const common = await loadTranslation('lang/common.json');
-  if (common) {
-    translations.it = { ...common.it };
-    translations.en = { ...common.en };
-  }
-
-  // 2. Carica JSON specifico della pagina
-  const pageKey = getPageKey(pageName);
-  const pageData = await loadTranslation(`lang/${pageKey}.json`);
-  if (pageData) {
-    if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-    if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-  }
-
-  // 3. Applica traduzioni
-  applyTranslations(translations, savedLang);
-  updateLanguageButton(savedLang);
-  document.documentElement.lang = savedLang;
-  currentLang = savedLang;
-}
-
-// ===========================
-// APPLICA LE TRADUZIONI AGLI ELEMENTI DEL DOM
+// APPLICA LE TRADUZIONI SENZA DISTRUGGERE IL DOM
 // ===========================
 function applyTranslations(translations, lang) {
   document.querySelectorAll('[data-lang-key]').forEach(el => {
@@ -930,18 +867,91 @@ function applyTranslations(translations, lang) {
     const value = translations[lang]?.[key];
 
     if (value !== undefined && value !== null) {
-      // Gestisci diversi tipi di elemento
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.setAttribute('placeholder', value);
       } else if (el.tagName === 'IMG') {
         el.setAttribute('alt', value);
       } else if (el.hasAttribute('aria-label')) {
         el.setAttribute('aria-label', value);
+        const bold = el.querySelector('b');
+        if (bold) {
+          bold.textContent = value;
+        } else {
+          el.textContent = value;
+        }
       } else {
-        el.textContent = value;
+        const bold = el.querySelector('b');
+        if (bold) {
+          bold.textContent = value;
+        } else {
+          el.textContent = value;
+        }
       }
     }
   });
+
+  console.log(`✅ Traduzioni applicate in ${lang}`);
+}
+
+// ===========================
+// INIZIALIZZA IL SISTEMA DI TRADUZIONE (CON RITARDO SICURO)
+// ===========================
+async function initTranslations() {
+  setTimeout(async () => {
+    const pageName = getPageName();
+    const savedLang = getSavedLanguage();
+
+    // ===========================
+    // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
+    // ===========================
+    if (!translatablePages.includes(pageName)) {
+      const common = await loadTranslation('lang/common.json');
+      const translations = {
+        it: { ...(common?.it || {}) },
+        en: { ...(common?.en || {}) }
+      };
+
+      applyTranslations(translations, savedLang);
+      updateLanguageButton(savedLang);
+      document.documentElement.lang = savedLang;
+
+      const button = document.getElementById('lang-toggle');
+      if (button) {
+        button.addEventListener('click', () => {
+          const newLang = savedLang === 'it' ? 'en' : 'it';
+          localStorage.setItem('preferred-language', newLang);
+          window.location.reload();
+        });
+      }
+
+      return;
+    }
+
+    // ===========================
+    // CASO 2: Pagina traducibile → carica common + specifico
+    // ===========================
+    const translations = { it: {}, en: {} };
+
+    const common = await loadTranslation('lang/common.json');
+    if (common) {
+      translations.it = { ...common.it };
+      translations.en = { ...common.en };
+    }
+
+    const pageKey = getPageKey(pageName);
+    const pageData = await loadTranslation(`lang/${pageKey}.json`);
+    if (pageData) {
+      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+    }
+
+    // Applica le traduzioni
+    applyTranslations(translations, savedLang);
+    updateLanguageButton(savedLang);
+    document.documentElement.lang = savedLang;
+    currentLang = savedLang;
+
+  }, 150); // Ritardo per sicurezza: lascia tempo ad altri script di completare
 }
 
 // ===========================
@@ -953,65 +963,13 @@ function getSavedLanguage() {
 }
 
 // ===========================
-// CAMBIA LINGUA (chiamato dal pulsante)
-// ===========================
-function setLanguage(lang) {
-  // Ripete il caricamento per la pagina corrente
-  const pageName = getPageName();
-
-  // Se non è una pagina traducibile, carica solo common.json
-  if (!translatablePages.includes(pageName)) {
-    loadTranslation('lang/common.json').then(common => {
-      if (!common) return;
-      const translations = {
-        it: common.it || {},
-        en: common.en || {}
-      };
-      applyTranslations(translations, lang);
-      updateLanguageButton(lang);
-      document.documentElement.lang = lang;
-      currentLang = lang;
-      localStorage.setItem('preferred-language', lang);
-    });
-    return;
-  }
-
-  // Altrimenti: carica common + pagina specifica
-  const pageKey = getPageKey(pageName);
-  const commonPromise = loadTranslation('lang/common.json');
-  const pagePromise = loadTranslation(`lang/${pageKey}.json`);
-
-  Promise.all([commonPromise, pagePromise]).then(([common, pageData]) => {
-    const translations = { it: {}, en: {} };
-
-    // Unisci common
-    if (common) {
-      translations.it = { ...common.it };
-      translations.en = { ...common.en };
-    }
-
-    // Unisci pagina specifica
-    if (pageData) {
-      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-    }
-
-    applyTranslations(translations, lang);
-    updateLanguageButton(lang);
-    document.documentElement.lang = lang;
-    currentLang = lang;
-    localStorage.setItem('preferred-language', lang);
-  });
-}
-
-// ===========================
 // AGGIORNA IL PULSANTE LINGUA
 // ===========================
 function updateLanguageButton(lang) {
   const flag = document.getElementById('lang-flag');
   const text = document.getElementById('lang-text');
   const button = document.getElementById('lang-toggle');
-  const label = document.getElementById('lang-label'); // testo nel menu
+  const label = document.getElementById('lang-label');
 
   if (!flag || !button) return;
 
@@ -1031,6 +989,56 @@ function updateLanguageButton(lang) {
 // ===========================
 // CAMBIA LINGUA AL CLICK
 // ===========================
+function setLanguage(lang) {
+  const pageName = getPageName();
+
+  if (!translatablePages.includes(pageName)) {
+    loadTranslation('lang/common.json').then(common => {
+      if (!common) return;
+      const translations = {
+        it: common.it || {},
+        en: common.en || {}
+      };
+      setTimeout(() => {
+        applyTranslations(translations, lang);
+        updateLanguageButton(lang);
+        document.documentElement.lang = lang;
+        currentLang = lang;
+        localStorage.setItem('preferred-language', lang);
+      }, 100);
+    });
+    return;
+  }
+
+  const pageKey = getPageKey(pageName);
+  const commonPromise = loadTranslation('lang/common.json');
+  const pagePromise = loadTranslation(`lang/${pageKey}.json`);
+
+  Promise.all([commonPromise, pagePromise]).then(([common, pageData]) => {
+    const translations = { it: {}, en: {} };
+
+    if (common) {
+      translations.it = { ...common.it };
+      translations.en = { ...common.en };
+    }
+    if (pageData) {
+      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+    }
+
+    setTimeout(() => {
+      applyTranslations(translations, lang);
+      updateLanguageButton(lang);
+      document.documentElement.lang = lang;
+      currentLang = lang;
+      localStorage.setItem('preferred-language', lang);
+    }, 100);
+  });
+}
+
+// ===========================
+// TOGGLE LINGUA (chiamato da onclick)
+// ===========================
 function toggleLanguage() {
   const newLang = currentLang === 'it' ? 'en' : 'it';
   setLanguage(newLang);
@@ -1044,6 +1052,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Errore nel caricamento delle traduzioni:', err);
   });
 
-// Esporre globalmente per gli onclick HTML
+  // Rendi disponibile globalmente
   window.toggleLanguage = toggleLanguage;
 });   
