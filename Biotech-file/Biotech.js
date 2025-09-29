@@ -796,13 +796,6 @@ function handlePronounceKey(event, term, language = 'italiano') {
   }
 }
 
-
-
-
-
-
-
-
 // =====================================================
 // GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
 // Supporta menu con <b>, ritardo sicuro, localStorage
@@ -857,7 +850,6 @@ async function loadTranslation(path) {
     return null;
   }
 }
-
 // ===========================
 // APPLICA LE TRADUZIONI SENZA DISTRUGGERE IL DOM
 // ===========================
@@ -892,7 +884,6 @@ function applyTranslations(translations, lang) {
 
   console.log(`✅ Traduzioni applicate in ${lang}`);
 }
-
 // ===========================
 // INIZIALIZZA IL SISTEMA DI TRADUZIONE (CON RITARDO SICURO)
 // ===========================
@@ -926,7 +917,6 @@ async function initTranslations() {
 
       return;
     }
-
     // ===========================
     // CASO 2: Pagina traducibile → carica common + specifico
     // ===========================
@@ -944,7 +934,6 @@ async function initTranslations() {
       if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
       if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
     }
-
     // Applica le traduzioni
     applyTranslations(translations, savedLang);
     updateLanguageButton(savedLang);
@@ -953,7 +942,6 @@ async function initTranslations() {
 
   }, 150); // Ritardo per sicurezza: lascia tempo ad altri script di completare
 }
-
 // ===========================
 // OTTIENI LA LINGUA PREFERITA
 // ===========================
@@ -961,7 +949,6 @@ function getSavedLanguage() {
   return localStorage.getItem('preferred-language') || 
          (navigator.language.startsWith('en') ? 'en' : 'it');
 }
-
 // ===========================
 // AGGIORNA IL PULSANTE LINGUA
 // ===========================
@@ -985,7 +972,6 @@ function updateLanguageButton(lang) {
     button.setAttribute('aria-label', 'Cambia lingua in italiano');
   }
 }
-
 // ===========================
 // CAMBIA LINGUA AL CLICK
 // ===========================
@@ -1035,7 +1021,6 @@ function setLanguage(lang) {
     }, 100);
   });
 }
-
 // ===========================
 // TOGGLE LINGUA (chiamato da onclick)
 // ===========================
@@ -1043,7 +1028,6 @@ function toggleLanguage() {
   const newLang = currentLang === 'it' ? 'en' : 'it';
   setLanguage(newLang);
 }
-
 // ===========================
 // AVVIO AL CARICAMENTO DELLA PAGINA
 // ===========================
@@ -1051,7 +1035,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTranslations().catch(err => {
     console.error('Errore nel caricamento delle traduzioni:', err);
   });
-
-  // Rendi disponibile globalmente
+// Rendi disponibile globalmente
   window.toggleLanguage = toggleLanguage;
 });   
