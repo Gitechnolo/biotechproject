@@ -105,6 +105,42 @@ However, some AAA criteria are not applicable or required in the current context
 
 ---
 
+## 🌍 Multilingual Management (i18n)
+
+BiotechProject supports **multiple languages** through a **modular, lightweight, and accessible** translation system, designed to work seamlessly on static pages hosted on GitHub Pages.
+
+The system enables:
+- ✅ Real-time content translation  
+- ✅ Persistent language selection across pages (like Wikipedia or Google)  
+- ✅ Support for simplified versions for dyslexic users  
+- ✅ Easy extension by contributors  
+
+### 🧩 System Architecture
+
+- **Modular JSON files**: each page has its own translation file in the `lang/` directory  
+- **Common.json**: contains shared texts (menu, footer, language button)  
+- **No backend required**: everything runs in pure JavaScript  
+- **LocalStorage**: remembers the user's selected language  
+- **`data-lang-key`**: HTML attribute to identify translatable elements  
+
+### 📁 Structure of the `lang/` folder
+   
+lang/
+├── common.json               → menu, footer, language button
+├── home.json                 → index.html
+├── progetti.json             → Progetti.html
+├── staff.json                → Staff.html
+├── marketing.json            → Marketing.html
+├── tech_maturity.json        → Tech_Maturity.html
+├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
+├── cuore.json                → Cuore.html and Cuore-semplice.html
+├── cellula.json              → Cellula.html and Cellula-semplice.html
+├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
+├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
+├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
+├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html
+
+
 ## 💡 Want to contribute?
 
 You're welcome!  

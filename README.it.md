@@ -138,7 +138,7 @@ Il sistema permette di:
 ├── apparato_digerente.json   → Apparato_digerente.html e -semplice.html
 ├── apparato_respiratorio.json → Apparato_respiratorio.html e -semplice.html
 ├── apparato_tegumentario.json → Apparato_tegumentario.html e -semplice.html
-
+├── sistema_linfatico.json     → Sistema_linfatico.html e -semplice.html
 
 
 ## 💡 Vuoi contribuire?

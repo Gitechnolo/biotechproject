@@ -103,6 +103,42 @@ Cependant, certains critères AAA ne sont pas applicables ou requis dans le cont
 👉 [Lire la Déclaration d’accessibilité (EN)](accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)   
 
+
+## 🌍 Gestion multilingue (i18n)
+
+BiotechProject prend en charge **plusieurs langues** grâce à un système de traduction **modulaire, léger et accessible**, conçu pour fonctionner sur des pages statiques hébergées sur GitHub Pages.
+
+Le système permet de :
+- ✅ Traduire les contenus en temps réel  
+- ✅ Mémoriser la langue choisie entre les pages (comme Wikipedia ou Google)  
+- ✅ Prendre en charge des versions simplifiées pour les utilisateurs dyslexiques  
+- ✅ Être facilement étendu par les contributeurs  
+
+### 🧩 Architecture du système
+
+- **Fichiers JSON modulaires** : chaque page a son propre fichier de traduction dans `lang/`  
+- **Common.json** : contient les textes partagés (menu, pied de page, bouton langue)  
+- **Aucun backend** : tout fonctionne en JavaScript pur  
+- **LocalStorage** : la langue sélectionnée est mémorisée  
+- **`data-lang-key`** : attribut HTML pour identifier les éléments traduisibles  
+
+### 📁 Structure du dossier `lang/`
+  lang/
+├── common.json               → menu, footer, language button
+├── home.json                 → index.html
+├── progetti.json             → Progetti.html
+├── staff.json                → Staff.html
+├── marketing.json            → Marketing.html
+├── tech_maturity.json        → Tech_Maturity.html
+├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
+├── cuore.json                → Cuore.html and Cuore-semplice.html
+├── cellula.json              → Cellula.html and Cellula-semplice.html
+├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
+├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
+├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
+├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html 
+
+
 ## 💡 Vous souhaitez contribuer ?
 
 Vous êtes le bienvenu !  

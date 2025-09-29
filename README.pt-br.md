@@ -104,6 +104,40 @@ No entanto, alguns critérios AAA não são aplicáveis ou exigidos no contexto 
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)   
 
 
+## 🌍 Gerenciamento Multilíngue (i18n)
+
+O BiotechProject suporta **múltiplos idiomas** por meio de um sistema de tradução **modular, leve e acessível**, projetado para funcionar em páginas estáticas hospedadas no GitHub Pages.
+
+O sistema permite:
+- ✅ Traduzir conteúdos em tempo real  
+- ✅ Lembrar o idioma escolhido entre as páginas (como Wikipedia ou Google)  
+- ✅ Oferecer versões simplificadas para usuários com dislexia  
+- ✅ Ser facilmente expandido por colaboradores  
+
+### 🧩 Arquitetura do Sistema
+
+- **Arquivos JSON modulares**: cada página tem seu próprio arquivo de tradução na pasta `lang/`  
+- **Common.json**: contém textos compartilhados (menu, rodapé, botão de idioma)  
+- **Sem backend**: tudo funciona com JavaScript puro  
+- **LocalStorage**: o idioma selecionado é armazenado  
+- **`data-lang-key`**: atributo HTML para identificar elementos traduzíveis  
+
+### 📁 Estrutura da pasta `lang/`
+  lang/
+├── common.json               → menu, footer, pulsante lingua
+├── home.json                 → index.html
+├── progetti.json             → Progetti.html
+├── staff.json                → Staff.html
+├── marketing.json            → Marketing.html
+├── tech_maturity.json        → Tech_Maturity.html
+├── dermatologia.json         → Dermatologia.html e Dermatologia-semplice.html
+├── cuore.json                → Cuore.html e Cuore-semplice.html
+├── cellula.json              → Cellula.html e Cellula-semplice.html
+├── apparato_digerente.json   → Apparato_digerente.html e -semplice.html
+├── apparato_respiratorio.json → Apparato_respiratorio.html e -semplice.html
+├── apparato_tegumentario.json → Apparato_tegumentario.html e -semplice.html
+├── sistema_linfatico.json     → Sistema_linfatico.html e -semplice.html
+
 
 ## 💡 Deseja contribuir?
 

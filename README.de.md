@@ -104,6 +104,41 @@ Einige AAA-Kriterien sind jedoch im aktuellen Kontext nicht anwendbar oder nicht
 👉 [Dichiarazione di Accessibilità lesen (IT)](accessibility-it.html)    
 
 
+## 🌍 Mehrsprachige Verwaltung (i18n)
+
+BiotechProject unterstützt **mehrere Sprachen** durch ein **modulares, leichtgewichtiges und barrierearmes** Übersetzungssystem, das für statische Seiten auf GitHub Pages konzipiert ist.
+
+Das System ermöglicht:
+- ✅ Echtzeit-Übersetzung von Inhalten  
+- ✅ Speicherung der gewählten Sprache über mehrere Seiten hinweg (wie bei Wikipedia oder Google)  
+- ✅ Unterstützung vereinfachter Versionen für Nutzer mit Legasthenie  
+- ✅ Einfache Erweiterung durch Mitwirkende  
+
+### 🧩 Systemarchitektur
+
+- **Modulare JSON-Dateien**: Jede Seite hat ihre eigene Übersetzungsdatei im Ordner `lang/`  
+- **Common.json**: Enthält gemeinsame Texte (Menü, Footer, Sprachumschalter)  
+- **Kein Backend**: Alles funktioniert mit reinem JavaScript  
+- **LocalStorage**: Die ausgewählte Sprache wird gespeichert  
+- **`data-lang-key`**: HTML-Attribut zur Kennzeichnung übersetzbarer Elemente  
+
+### 📁 Struktur des `lang/`-Ordners
+lang/
+├── common.json               → menu, footer, language button
+├── home.json                 → index.html
+├── progetti.json             → Progetti.html
+├── staff.json                → Staff.html
+├── marketing.json            → Marketing.html
+├── tech_maturity.json        → Tech_Maturity.html
+├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
+├── cuore.json                → Cuore.html and Cuore-semplice.html
+├── cellula.json              → Cellula.html and Cellula-semplice.html
+├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
+├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
+├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
+├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html 
+
+
 ## 💡 Möchten Sie beitragen?
 
 Sie sind herzlich willkommen!  

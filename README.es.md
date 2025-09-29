@@ -103,6 +103,42 @@ Sin embargo, algunos criterios AAA no son aplicables o no son necesarios en el c
 👉 [Leer Declaración de Accesibilidad (EN)](accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)   
 
+
+## 🌍 Gestión multilingüe (i18n)
+
+BiotechProject soporta **múltiples idiomas** mediante un sistema de traducción **modular, ligero y accesible**, diseñado para funcionar en páginas estáticas alojadas en GitHub Pages.
+
+El sistema permite:
+- ✅ Traducir contenidos en tiempo real  
+- ✅ Recordar el idioma seleccionado entre páginas (como Wikipedia o Google)  
+- ✅ Soportar versiones simplificadas para usuarios con dislexia  
+- ✅ Ser fácilmente ampliado por colaboradores  
+
+### 🧩 Arquitectura del sistema
+
+- **Archivos JSON modulares**: cada página tiene su propio archivo de traducción en `lang/`  
+- **Common.json**: contiene textos compartidos (menú, pie de página, botón de idioma)  
+- **Sin backend**: todo funciona con JavaScript puro  
+- **LocalStorage**: el idioma seleccionado se guarda automáticamente  
+- **`data-lang-key`**: atributo HTML para identificar elementos traducibles  
+
+### 📁 Estructura de la carpeta `lang/`
+lang/
+├── common.json               → menu, footer, language button
+├── home.json                 → index.html
+├── progetti.json             → Progetti.html
+├── staff.json                → Staff.html
+├── marketing.json            → Marketing.html
+├── tech_maturity.json        → Tech_Maturity.html
+├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
+├── cuore.json                → Cuore.html and Cuore-semplice.html
+├── cellula.json              → Cellula.html and Cellula-semplice.html
+├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
+├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
+├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
+├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html
+
+
 ## 💡 Quiere contribuir?
 
 ¡Es bienvenido!  
