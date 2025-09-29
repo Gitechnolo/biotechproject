@@ -325,24 +325,26 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>   
 
     <!-- Accessibilità -->
-    <div class="report-item" role="article" aria-label="Accessibilità">
-      <span class="report-icon" aria-hidden="true">♿</span>
-      <div>
-        <strong>Accessibilità</strong>
-        <p>Alto contrasto, navigabile da tastiera, compatibile con screen reader</p>
-      </div>
-    </div>
+<div class="report-item" role="article" aria-labelledby="accessibility-label">
+  <span class="report-icon" aria-hidden="true">♿</span>
+  <div>
+    <strong id="accessibility-label" data-lang-key="tech-maturity-a11y-heading">Accessibilità</strong>
+    <p data-lang-key="tech-maturity-a11y-desc">
+      Alto contrasto, navigabile da tastiera, compatibile con screen reader
+    </p>
+  </div>
+</div>   
 
     <!-- Ultimo aggiornamento -->
-    <div class="report-item" role="article" aria-label="Ultimo aggiornamento">
-      <span class="report-icon" aria-hidden="true">🔍</span>
-      <div>
-        <strong>Ultimo aggiornamento</strong>
-        <p>
-          <time id="last-updated-report" datetime="">--/--/----</time>
-        </p>
-      </div>
-    </div>
+<div class="report-item" role="article" aria-labelledby="last-update-label">
+  <span class="report-icon" aria-hidden="true">🔍</span>
+  <div>
+    <strong id="last-update-label" data-lang-key="tech-maturity-last-update">Ultimo aggiornamento</strong>
+    <p>
+      <time id="last-updated-report" datetime="">--/--/----</time>
+    </p>
+  </div>
+</div>   
 
   </div>
 
