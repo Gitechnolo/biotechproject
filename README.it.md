@@ -106,6 +106,41 @@ Tuttavia, alcuni criteri AAA non sono applicabili o non sono richiesti nel conte
 
 ---
 
+## 🌍 Gestione Multilingua (i18n)
+
+BiotechProject supporta **più lingue** con un sistema di traduzione **modulare, leggero e accessibile**, progettato per funzionare su pagine statiche ospitate su GitHub Pages.
+
+Il sistema permette di:
+- ✅ Tradurre contenuti in tempo reale
+- ✅ Ricordare la lingua scelta tra le pagine (come Wikipedia o Google)
+- ✅ Supportare versioni semplici per utenti dislessici
+- ✅ Essere esteso facilmente da collaboratori
+
+### 🧩 Architettura del sistema
+
+- **File JSON modulari**: ogni pagina ha il suo file di traduzione in `lang/`
+- **Common.json**: contiene testi condivisi (menu, footer, pulsante lingua)
+- **Nessun backend**: tutto funziona in JavaScript puro
+- **LocalStorage**: la lingua selezionata viene ricordata
+- **data-lang-key**: attributo HTML per identificare elementi traducibili
+
+### 📁 Struttura della cartella `lang/`
+   lang/
+├── common.json               → menu, footer, pulsante lingua
+├── home.json                 → index.html
+├── progetti.json             → Progetti.html
+├── staff.json                → Staff.html
+├── marketing.json            → Marketing.html
+├── tech_maturity.json        → Tech_Maturity.html
+├── dermatologia.json         → Dermatologia.html e Dermatologia-semplice.html
+├── cuore.json                → Cuore.html e Cuore-semplice.html
+├── cellula.json              → Cellula.html e Cellula-semplice.html
+├── apparato_digerente.json   → Apparato_digerente.html e -semplice.html
+├── apparato_respiratorio.json → Apparato_respiratorio.html e -semplice.html
+├── apparato_tegumentario.json → Apparato_tegumentario.html e -semplice.html
+
+
+
 ## 💡 Vuoi contribuire?
 
 Benvenuto!  
@@ -217,7 +252,7 @@ Questo progetto è un esempio pratico di **sviluppo responsabile**, dove tecnolo
 
 ---
 
-📌 **Progetto individuale sviluppato interamente da [Il Tuo Nome]**  
+📌 **Progetto**  
 🔧 Tecnologie: HTML5, CSS3, JavaScript vanilla, ARIA, W3C standards  
 🌍 Hosting: GitHub Pages  
 📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.
