@@ -46,7 +46,23 @@
 "connective_function_defense": "partecipa ai processi difensivi, in particolare contro le infezioni. In sintesi, il tessuto connettivo svolge funzioni nutritive, di sostegno, protezione meccanica e di difesa",
 "adipose_tissue_adipocytes": "Tessuto adiposo",
 "adipose_tissue_description": "Il tessuto adiposo è formato da cellule chiamate adipociti, che hanno la funzione di accumulare grassi in vacuoli citoplasmatici",
-"adipose_tissue_types": "Esistono due tipi di tessuto adiposo, bianco e bruno. Il primo ha funzione di riserva energetica mentre il secondo è deputato all’accumulo di riserve che verranno dissipate in energia termica"
+"adipose_tissue_types": "Esistono due tipi di tessuto adiposo, bianco e bruno. Il primo ha funzione di riserva energetica mentre il secondo è deputato all’accumulo di riserve che verranno dissipate in energia termica",
+"nervous_tissue_neurons": "Tessuto nervoso",
+"nervous_tissue_composition": "Il tessuto nervoso è costituito da vari tipi di cellule e dai prolungamenti che da queste cellule originano.",
+"neurons_definition": "Le principali cellule costituenti il tessuto nervoso sono i neuroni (Figura 36), cellule irritabili (o eccitabili), capaci di generare e trasmettere impulsi nervosi in risposta a stimoli specifici.",
+"neuron_structure": "I neuroni sono costituiti da un corpo cellulare avente forma e dimensioni diverse nelle diverse parti del sistema nervoso, provvisto di un numero variabile di prolungamenti brevi, detti dendriti, e un prolungamento, in genere lungo, detto assone.",
+"dendrites_axon_function": "I dendriti ricevono gli impulsi nervosi da altri neuroni e li trasmettono al corpo cellulare, mentre l’assone trasmette gli impulsi nervosi dal corpo cellulare ad altri neuroni, a cellule muscolari o ghiandolari.",
+"neuron_specialization": "I neuroni sono cellule altamente specializzate, che si differenziano in modo da poter svolgere le loro funzioni in modo ottimale. La loro forma e la loro struttura sono strettamente correlate alla loro funzione.",
+"neurons_nervous_system": "I neuroni sono le cellule fondamentali del sistema nervoso",
+"nervous_system_function": "che è l’insieme di organi e tessuti deputati alla ricezione, elaborazione e trasmissione di informazioni, che permettono all’organismo di rispondere agli stimoli provenienti dall’ambiente esterno e da quello interno.",
+"nerves_formation": "Più neuroni si possono associare a formare dei nervi. A differenza delle altre cellule, i neuroni appena formati non si dividono più, questo significa che i neuroni non si riproducono.",
+"nerve_cell_properties": "La cellula nervosa è in grado di ricevere, condurre e trasmettere impulsi nervosi ed è caratterizzata da due proprietà:",
+"excitability": "l’eccitabilità",
+"excitability_definition": "cioè la capacità di reagire agli stimoli provenienti dall’ambiente esterno trasformandoli in impulsi nervosi;",
+"conductivity": "la conducibilità",
+"conductivity_definition": "cioè la capacità di trasmettere impulsi nervosi.",
+"synapse_definition": "Il meccanismo di trasmissione di informazioni tra un neurone ed un altro è detto sinapsi.",
+"neurotransmitter_function": "Quando ad un neurone arriva un impulso, viene liberata una sostanza chimica chiamata neurotrasmettitore che viene trasmesso alla cellula adiacente e così via, consentendo così all’organismo di svolgere varie funzioni."
   },
   "en": {
 "dermatology-title": "DERMATOLOGY",
@@ -95,6 +111,22 @@
 "connective_function_defense": "participates in defense processes, particularly against infections. In summary, connective tissue performs nutritional, supportive, mechanical protection, and defense functions",
 "adipose_tissue_adipocytes": "Adipose Tissue",
 "adipose_tissue_description": "Adipose tissue is made up of cells called adipocytes, which store fats in cytoplasmic vacuoles",
-"adipose_tissue_types": "There are two types of adipose tissue: white and brown. The former serves as an energy reserve, while the latter stores reserves that will be dissipated as thermal energy"
+"adipose_tissue_types": "There are two types of adipose tissue: white and brown. The former serves as an energy reserve, while the latter stores reserves that will be dissipated as thermal energy",
+"nervous_tissue_neurons": "Nervous Tissue",
+"nervous_tissue_composition": "Nervous tissue is composed of various types of cells and the extensions originating from these cells.",
+"neurons_definition": "The main cells constituting nervous tissue are neurons (Figure 36), excitable cells capable of generating and transmitting nerve impulses in response to specific stimuli.",
+"neuron_structure": "Neurons consist of a cell body with varying shape and size depending on the region of the nervous system, equipped with a variable number of short extensions called dendrites, and a generally long extension called the axon.",
+"dendrites_axon_function": "Dendrites receive nerve impulses from other neurons and transmit them to the cell body, while the axon transmits nerve impulses from the cell body to other neurons, muscle or glandular cells.",
+"neuron_specialization": "Neurons are highly specialized cells, differentiated to optimally perform their functions. Their shape and structure are closely related to their function.",
+"neurons_nervous_system": "Neurons are the fundamental cells of the nervous system",
+"nervous_system_function": "which is the set of organs and tissues responsible for receiving, processing, and transmitting information, enabling the organism to respond to stimuli from both the external and internal environment.",
+"nerves_formation": "Multiple neurons can associate to form nerves. Unlike other cells, newly formed neurons do not divide anymore, meaning neurons do not reproduce.",
+"nerve_cell_properties": "Nerve cells are capable of receiving, conducting, and transmitting nerve impulses and are characterized by two properties:",
+"excitability": "excitability",
+"excitability_definition": "the ability to respond to stimuli from the external environment by converting them into nerve impulses;",
+"conductivity": "conductivity",
+"conductivity_definition": "the ability to transmit nerve impulses.",
+"synapse_definition": "The mechanism of information transmission between one neuron and another is called a synapse.",
+"neurotransmitter_function": "When a nerve impulse reaches a neuron, a chemical substance called a neurotransmitter is released and transmitted to the adjacent cell, and so on, enabling the organism to perform various functions."
   }
 }
