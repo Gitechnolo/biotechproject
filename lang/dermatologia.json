@@ -1,10 +1,32 @@
 {
   "it": {
 "dermatology-title": "DERMATOLOGIA",
-"dermatology-description": "La dermatologia è la branca della medicina che si occupa dello studio, della diagnosi e del trattamento delle malattie della pelle, dei capelli e delle unghie.\nEssa comprende una vasta gamma di condizioni, dalle più comuni come acne e dermatiti, a malattie più complesse come psoriasi e melanoma."   
+"dermatology-description": "La dermatologia è la branca della medicina che si occupa dello studio, della diagnosi e del trattamento delle malattie della pelle, dei capelli e delle unghie.\nEssa comprende una vasta gamma di condizioni, dalle più comuni come acne e dermatiti, a malattie più complesse come psoriasi e melanoma.",
+"tissues_title": "I tessuti",
+"tissues_description": "Un tessuto è un raggruppamento di cellule aventi forma struttura e funzioni simili, tenute insieme da una sostanza intercellulare più o meno abbondante e di composizione e consistenza variabile da tessuto a tessuto. I principali tessuti sono:",
+"epithelial_tissue": "tessuto epiteliale",
+"connective_tissue": "tessuto connettivale",
+"muscle_tissue": "tessuto muscolare",
+"nervous_tissue": "tessuto nervoso",
+"epithelial_tissue_description": "Tessuto epiteliale",
+"epithelial_description": "Il tessuto epiteliale è costituito da cellule strettamente addossate tra loro, per cui gli spazi extracellulari sono estremamente ridotti",
+"epithelial_junctions": "Negli epiteli le cellule sono tenute insieme per mezzo di particolari modificazioni delle membrane di cellule adiacenti, che possono incastrarsi l’una nell’altra saldando strettamente tra loro le cellule epiteliali. Sono spesso presenti strutture di collegamento particolari, che formano, nell’insieme, il complesso giunzionale.",
+"epithelial_types": "Distinguiamo epiteli di rivestimento, che rivestono le superfici corporee (con funzione protettiva, assorbente ecc.), epiteli ghiandolari (a funzione secretiva), epiteli sensoriali (come i recettori gustativi e quelli olfattivi).",
+"epithelial_basement": "L’epitelio poggia sempre sul tessuto connettivo sottostante che lo sostiene e lo nutre: a esso, infatti, si fissa, mediante l’interposizione della membrana basale (uno straterello denso a composizione complessa), attraverso la quale, inoltre, diffondono le sostanze nutritive, che giungono all’epitelio dai vasi sanguigni del connettivo, essendo l’epitelio privo di vasi propri (per la scarsità dello spazio extracellulare)." 
   },
   "en": {
 "dermatology-title": "DERMATOLOGY",
-"dermatology-description": "Dermatology is the branch of medicine that deals with the study, diagnosis, and treatment of diseases of the skin, hair, and nails.\nIt covers a wide range of conditions, from common ones such as acne and dermatitis, to more complex diseases like psoriasis and melanoma."   
+"dermatology-description": "Dermatology is the branch of medicine that deals with the study, diagnosis, and treatment of diseases of the skin, hair, and nails.\nIt covers a wide range of conditions, from common ones such as acne and dermatitis, to more complex diseases like psoriasis and melanoma.",
+"tissues_title": "Tissues",
+"tissues_description": "A tissue is a group of cells with similar shape, structure, and function, held together by an extracellular substance that varies in amount, composition, and consistency from one tissue to another. The main types of tissues are:",
+"epithelial_tissue": "epithelial tissue",
+"connective_tissue": "connective tissue",
+"muscle_tissue": "muscle tissue",
+"nervous_tissue": "nervous tissue",
+"epithelial_tissue_description": "Epithelial Tissue",
+"epithelial_description": "Epithelial tissue consists of tightly packed cells, resulting in extremely reduced extracellular spaces.",
+"epithelial_junctions": "In epithelia, cells are held together by specialized modifications of adjacent cell membranes, which can interlock and firmly bind epithelial cells. Specialized junctional structures are often present, forming collectively the junctional complex.",
+"epithelial_types": "We distinguish covering epithelia, which line body surfaces (with protective, absorptive, etc. functions), glandular epithelia (with secretory function), and sensory epithelia (such as taste and olfactory receptors).",
+"epithelial_basement": "Epithelium always rests on the underlying connective tissue that supports and nourishes it. It attaches to it via the basement membrane (a dense layer of complex composition), through which nutrients diffuse from blood vessels in the connective tissue to the epithelium, since the epithelium lacks its own blood vessels (due to minimal extracellular space)."  
   }
 }
