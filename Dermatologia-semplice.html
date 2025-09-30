@@ -154,25 +154,30 @@
 </div>
 </div>
 <!-- VOCE: Fisiologia -->
-<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it" data-lang-key="nav-physiology"><b>Fisiologia</b></button>
 <div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula">Cellula</a>
-<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio">Apparato circolatorio</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio">Apparato respiratorio</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente">Apparato digerente</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario">Apparato tegumentario</a>
-<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario">Sistema linfatico / immunitario</a>
-<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia">Dermatologia</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula" data-lang-key="nav-cell">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio" data-lang-key="nav-circulatory">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio" data-lang-key="nav-respiratory">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente" data-lang-key="nav-digestive">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario" data-lang-key="nav-integumentary">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario" data-lang-key="nav-lymphatic">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia" data-lang-key="nav-dermatology">Dermatologia</a></div>
 </div>
 </div>
 <!-- VOCE: Service -->
 <div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
 <div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
 <button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
-<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
-<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto">Accessibilità</a>
-<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
-<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a></div>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it" data-lang-key="nav-contact">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto" data-lang-key="nav-accessibility">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project" data-lang-key="nav-accessibility-en">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it" data-lang-key="nav-theme">🎨 Tema pulsanti</a>
+<button role="menuitem" id="lang-toggle" aria-label="Cambia lingua in inglese" onclick="toggleLanguage()" lang="it">
+  <span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span>
+  <span id="lang-label">Cambia lingua</span>
+</button>         
+</div>
 </div>
 </div>
 <!-- VOCE: Staff -->
@@ -180,7 +185,7 @@
 <div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
 <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
 <a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
-<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti">Progetti</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti" data-lang-key="nav-progetti">Progetti</a></div>
 </div>
 </div>
 <!-- VOCE: Technologies -->
@@ -191,7 +196,7 @@
 </div>
 </div>   
 </div>
-<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180">   
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180"> 
 <div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
 <div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
 <div class="modern-greeting" id="week"></div>
@@ -206,33 +211,25 @@
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<h2 class="atkinson-bold" style="font-size: 42px; margin: 20px 0;">DERMATOLOGIA</h2>
-<!-- Immagine -->
-  <div class="atkinson-regular" style="text-align: center;"><img src="Biotech-file/images/Biotech-menu/Dermatologia/organizzazione.png" alt="Organizzazione"></div>
-<span class="atkinson-regular">La dermatologia è la parte della medicina che studia la pelle, i capelli e le unghie.</span>
-<span class="atkinson-regular">Si occupa di:</span>
+<h2 class="atkinson-bold" style="font-size: 42px; margin: 20px 0;" data-lang-key="dermatologia.titolo">DERMATOLOGIA</h2>
+
+<div class="atkinson-regular" style="text-align: center;">
+  <img src="Biotech-file/images/Biotech-menu/Dermatologia/organizzazione.png" alt="Organizzazione">
+</div>
+
+<span class="atkinson-regular" data-lang-key="dermatologia.descrizione">La dermatologia è la parte della medicina che studia la pelle, i capelli e le unghie.</span>
+<span class="atkinson-regular" data-lang-key="dermatologia.diagnosi">diagnosi: scoprire di quale malattia si tratta;</span>
+<span class="atkinson-regular" data-lang-key="dermatologia.trattamento">trattamento: curare la malattia.</span>
 
 <ul class="atkinson-regular">
-  <li>diagnosi: scoprire di quale malattia si tratta;</li>
-  <li>trattamento: curare la malattia.</li>
+  <li data-lang-key="dermatologia.malattie.comuni">Le malattie della pelle possono essere comuni o più serie. Esempi:</li>
+  <li data-lang-key="dermatologia.acne"><strong>Acne</strong>: punti neri, brufoli, soprattutto in adolescenza.</li>
+  <li data-lang-key="dermatologia.dermatiti"><strong>Dermatiti</strong>: pelle rossa, secca, pruriginosa (che dà fastidio).</li>
+  <li data-lang-key="dermatologia.psoriasi"><strong>Psoriasi</strong>: chiazze spesse e squamose sulla pelle.</li>
+  <li data-lang-key="dermatologia.melanoma"><strong>Melanoma</strong>: un tipo di tumore della pelle, molto serio ma curabile se scoperto presto.</li>
 </ul>
 
-<span class="atkinson-regular">
-  Le malattie della pelle possono essere comuni o più serie.  
-  Esempi:
-</span>
-
-<ul class="atkinson-regular">
-  <li><strong>Acne</strong>: punti neri, brufoli, soprattutto in adolescenza.</li>
-  <li><strong>Dermatiti</strong>: pelle rossa, secca, pruriginosa (che dà fastidio).</li>
-  <li><strong>Psoriasi</strong>: chiazze spesse e squamose sulla pelle.</li>
-  <li><strong>Melanoma</strong>: un tipo di tumore della pelle, molto serio ma curabile se scoperto presto.</li>
-</ul>
-
-<span class="atkinson-regular">
-  Il dermatologo è il medico specializzato in queste malattie.  
-  Aiuta a mantenere la pelle sana e a prevenire problemi.
-</span>   
+<span class="atkinson-regular" data-lang-key="dermatologia.dermatologo">Il dermatologo è il medico specializzato in queste malattie. Aiuta a mantenere la pelle sana e a prevenire problemi.</span>      
 
   <h1 class="atkinson-bold">I tessuti</h1>
 
