@@ -1,7 +1,12 @@
 {
   "it": {
     "main-heading": "Benvenuti nel Progetto Biotech!",
-    "main-subheading": "Qui per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.",
+    "manifesto_title": "Un ponte tra biologia e tecnologia, per guidarvi verso la scienza della biotecnologia e l'innovazione tecnologica.",
+    "manifesto_intro": "Questo portale è concepito come un ponte tra la complessità della comunicazione scientifica e le opportunità della tecnologia web. Un progetto educativo open source dedicato a rendere la biologia umana accessibile a tutti, rompendo le barriere di accesso all'informazione.",
+    "manifesto_pillars_title": "I nostri pilastri:",
+    "manifesto_pillar_1": "Accessibilità Cognitiva: Progettato per un pubblico eterogeneo, offre versioni scientifiche dettagliate e versioni semplificate e ad alta leggibilità, ottimizzate specificamente per dislessia e Disturbi Specifici dell'Apprendimento (DSA), in linea con gli standard WCAG 2.1.",
+    "manifesto_pillar_2": "Tecnologia e Performance: Combiniamo solidi fondamenti di sviluppo web, con un'avanzata ottimizzazione per i motori di ricerca (SEO) tramite JSON-LD e il monitoraggio costante delle performance con GSC, per garantire che il contenuto raggiunga chiunque ne abbia bisogno, ovunque si trovi.",
+    "manifesto_goal": "Il nostro obiettivo finale è ambizioso: democratizzare la scienza, offrendo uno strumento intuitivo e affidabile che ispiri la curiosità e il sapere in ogni persona.",
     "main-description": "La salute è il nostro bene più prezioso, la nostra serenità è il nostro destino di salute.",
     "btn-explore": "Esplora il Progetto",
     "video-alt": "Anteprima video: Foresta verticale di Singapore",
@@ -38,7 +43,12 @@
   },
   "en": {
     "main-heading": "Welcome to Biotech Project!",
-    "main-subheading": "Here to guide you towards biotechnology science and technological innovation.",
+    "manifesto_title": "A bridge between biology and technology, to guide you towards the science of biotechnology and technological innovation.",
+    "manifesto_intro": "This portal is conceived as a bridge between the complexity of scientific communication and the opportunities of web technology. An open-source educational project dedicated to making human biology accessible to everyone, breaking down barriers to information access.",
+    "manifesto_pillars_title": "Our pillars:",
+    "manifesto_pillar_1": "Cognitive Accessibility: Designed for a diverse audience, it offers detailed scientific versions and simplified, highly readable versions, specifically optimized for dyslexia and Specific Learning Disabilities (SLD), in line with WCAG 2.1 standards.",
+    "manifesto_pillar_2": "Technology and Performance: We combine solid web development fundamentals with advanced search engine optimization (SEO) via JSON-LD and continuous performance monitoring with GSC, to ensure content reaches anyone who needs it, wherever they are.",
+    "manifesto_goal": "Our ultimate goal is ambitious: to democratize science, by offering an intuitive and reliable tool that inspires curiosity and knowledge in every person.",    
     "main-description": "Health is our most precious asset, our serenity is our health destiny.",
     "btn-explore": "Explore the Project",
     "video-alt": "Video preview: Singapore’s vertical forest",
