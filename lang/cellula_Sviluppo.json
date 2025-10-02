@@ -178,7 +178,22 @@
     "neuron_property_excitability": "l’eccitabilità, cioè la capacità di reagire agli stimoli provenienti dall’ambiente esterno trasformandoli in impulsi nervosi;",
     "neuron_property_conductivity": "la conducibilità, cioè la capacità di trasmettere impulsi nervosi.",
     "synapse_title": "Sinapsi",
-    "synapse_description": "Il meccanismo di trasmissione di informazioni tra un neurone ed un altro è detto sinapsi. Quando ad un neurone arriva un impulso, viene liberata una sostanza chimica chiamata neurotrasmettitore che viene trasmesso alla cellula adiacente e così via, consentendo così all’organismo di svolgere varie funzioni."
+    "synapse_description": "Il meccanismo di trasmissione di informazioni tra un neurone ed un altro è detto sinapsi. Quando ad un neurone arriva un impulso, viene liberata una sostanza chimica chiamata neurotrasmettitore che viene trasmesso alla cellula adiacente e così via, consentendo così all’organismo di svolgere varie funzioni.",
+
+    "_section_dyslexia": "=== Versione semplice per dislessia e ipovisione  ===",
+    "cell_title": "CELLULA",
+    "cell_definition": "La cellula è l'unità più piccola di ogni essere vivente. È come un mattone che costruisce il corpo.",
+    "cell_hierarchy_1": "Le cellule si uniscono per formare i tessuti.",
+    "cell_hierarchy_2": "I tessuti formano gli organi.",
+    "cell_hierarchy_3": "Gli organi lavorano insieme in apparati e sistemi.",
+    "cell_importance": "Il corpo umano ha tantissimi tipi di cellule. Sono tutte importanti per stare bene.",
+    "cell_functions_intro": "Le cellule fanno funzionare il corpo. Grazie a loro:",
+    "heart_function": "Il cuore batte",
+    "brain_function": "Il cervello pensa",
+    "kidney_function": "I reni puliscono il sangue",
+    "skin_function": "La pelle si rigenera",
+    "cell_reproduction": "Ogni cellula nasce da un’altra cellula. Si divide in due cellule identiche. Questo processo si chiama",
+    "mitosis_name": "mitosi"
   },
   "en": {
     "cellula_title": "CELL",
@@ -359,6 +374,21 @@
     "neuron_property_excitability": "excitability, meaning the ability to react to stimuli from the external environment by transforming them into nerve impulses;",
     "neuron_property_conductivity": "conductivity, meaning the ability to transmit nerve impulses.",
     "synapse_title": "Synapse",
-    "synapse_description": "The mechanism for transmitting information from one neuron to another is called a synapse. When an impulse arrives at a neuron, a chemical substance called a neurotransmitter is released and transmitted to the adjacent cell, and so on, thus allowing the organism to perform various functions."
+    "synapse_description": "The mechanism for transmitting information from one neuron to another is called a synapse. When an impulse arrives at a neuron, a chemical substance called a neurotransmitter is released and transmitted to the adjacent cell, and so on, thus allowing the organism to perform various functions.",
+
+    "_section_dyslexia": "=== Simple version for dyslexia and low vision  ===",
+    "cell_title": "CELL",
+    "cell_definition": "The cell is the smallest unit of every living thing. It's like a brick that builds the body.",
+    "cell_hierarchy_1": "Cells join together to form tissues.",
+    "cell_hierarchy_2": "Tissues form organs.",
+    "cell_hierarchy_3": "Organs work together in systems.",
+    "cell_importance": "The human body has many types of cells. They are all important for staying healthy.",
+    "cell_functions_intro": "Cells make the body work. Thanks to them:",
+    "heart_function": "The heart beats",
+    "brain_function": "The brain thinks",
+    "kidney_function": "The kidneys clean the blood",
+    "skin_function": "The skin regenerates",
+    "cell_reproduction": "Every cell is born from another cell. It divides into two identical cells. This process is called",
+    "mitosis_name": "mitosis"
   }
 }
