@@ -229,7 +229,18 @@
     "oligohidrosis": "OLIGOIDROSI",
     "oligohidrosis_desc": "Diminuzione della produzione di sudore, a differenza dell’Anidrosi in cui c’è l’assenza congenita delle ghiandole sudoripare",
     "sebaceous_glands_title": "GHIANDOLE SEBACEE",
-    "sebaceous_glands_info": "Sono sparse un po’ su tutta la superficie cutanea tranne le zone palmo-plantari. Sono particolarmente numerose e di maggiori dimensioni a livello delle zone chiamate seborroiche quali cuoio capelluto e viso, in questo caso sono concentrate su fronte, naso e mento. Sono situate al livello del derma ed in genere sono connesse col colletto del follicolo pilifero in corrispondenza del muscolo erettore del pelo, il quale contraendosi permette il loro svuotamento. L’attività ghiandolare di produzione e rilascio del sebo è controllata e regolata da fattori costituzionali e ormonali (è stimolata dagli androgeni e inibita dagli estrogeni)"
+    "sebaceous_glands_info": "Sono sparse un po’ su tutta la superficie cutanea tranne le zone palmo-plantari. Sono particolarmente numerose e di maggiori dimensioni a livello delle zone chiamate seborroiche quali cuoio capelluto e viso, in questo caso sono concentrate su fronte, naso e mento. Sono situate al livello del derma ed in genere sono connesse col colletto del follicolo pilifero in corrispondenza del muscolo erettore del pelo, il quale contraendosi permette il loro svuotamento. L’attività ghiandolare di produzione e rilascio del sebo è controllata e regolata da fattori costituzionali e ormonali (è stimolata dagli androgeni e inibita dagli estrogeni)",
+    "sebum_function": "Il sebo è prodotto dalle ghiandole sebacee ed ha la funzione di mantenere la pelle idratata e protetta.",
+    "sebum_composition_intro": "È formato da una miscela di sostanze grasse, (una miscela di lipidi, oleosa e viscosa), tra cui;",
+    "triglycerides": "1. Trigliceridi",
+    "fatty_acids": "2. Acidi grassi, saturi e insaturi",
+    "waxes": "3. Cere",
+    "cholesterol": "4. Colesterolo",
+    "sebum_functions": "Questa composizione permette al sebo di svolgere le seguenti funzioni: emolliente, lubrificante, idratante, protettiva e antimicrobica.",
+    "hydrolipidic_film": "Film idrolipidico di superficie",
+    "hydrolipidic_film_formation": "Il sebo prodotto dalle ghiandole sebacee si immette sulla superficie dell’epidermide attraverso il dotto pilo-sebaceo. Arrivato a destinazione emulsiona il sudore formando una sottile pellicola untuosa detta film idrolipidico di superficie che riveste il pelo e l’epidermide al fine di proteggerli dai microbi e dagli agenti esterni.",
+    "sebum_sweat_balance": "L’equilibrio tra sudore e sebo è fondamentale per la difesa dell’epidermide e del cuoio capelluto dagli agenti esterni.",
+    "excess_film_effects": "L’eccessiva presenza di questo film a livello del cuoio capelluto ma soprattutto lungo lo stelo dei capelli provoca cattiva pettinabilità e senso di sporco."
   },
   "en": {
     "tegumentary_system_title": "THE INTEGUMENTARY (OR CUTANEOUS) SYSTEM",
@@ -461,6 +472,17 @@
     "oligohidrosis": "OLIGOHYDROSIS",
     "oligohidrosis_desc": "Reduced sweat production, unlike anhidrosis where there is a congenital absence of sweat glands",
     "sebaceous_glands_title": "SEBACEOUS GLANDS",
-    "sebaceous_glands_info": "They are scattered across the entire skin surface except for the palmoplantar areas. They are particularly numerous and larger in size in seborrheic areas such as the scalp and face, concentrated on the forehead, nose, and chin. They are located in the dermis and generally connected to the hair follicle collar at the level of the arrector pili muscle, which, when contracting, allows their emptying. Glandular activity for sebum production and release is controlled and regulated by constitutional and hormonal factors (stimulated by androgens and inhibited by estrogens)"
+    "sebaceous_glands_info": "They are scattered across the entire skin surface except for the palmoplantar areas. They are particularly numerous and larger in size in seborrheic areas such as the scalp and face, concentrated on the forehead, nose, and chin. They are located in the dermis and generally connected to the hair follicle collar at the level of the arrector pili muscle, which, when contracting, allows their emptying. Glandular activity for sebum production and release is controlled and regulated by constitutional and hormonal factors (stimulated by androgens and inhibited by estrogens)",
+    "sebum_function": "Sebum is produced by sebaceous glands and functions to keep the skin hydrated and protected.",
+    "sebum_composition_intro": "It is composed of a mixture of fatty substances (an oily and viscous lipid mixture), including;",
+    "triglycerides": "1. Triglycerides",
+    "fatty_acids": "2. Fatty acids, saturated and unsaturated",
+    "waxes": "3. Waxes",
+    "cholesterol": "4. Cholesterol",
+    "sebum_functions": "This composition allows sebum to perform the following functions: emollient, lubricant, hydrating, protective, and antimicrobial.",
+    "hydrolipidic_film": "Surface hydrolipidic film",
+    "hydrolipidic_film_formation": "Sebum produced by sebaceous glands reaches the surface of the epidermis through the pilosebaceous duct. Upon arrival, it emulsifies with sweat, forming a thin oily film called the surface hydrolipidic film, which coats the hair and epidermis to protect them from microbes and external agents.",
+    "sebum_sweat_balance": "The balance between sweat and sebum is essential for protecting the epidermis and scalp from external agents.",
+    "excess_film_effects": "Excessive presence of this film on the scalp, and especially along the hair shaft, causes poor combability and a greasy feeling."
   }
 }
