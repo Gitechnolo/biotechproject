@@ -120,10 +120,11 @@
 <style>
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
-.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
-.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
-.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
-.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
+.grid-container, .grid-container50, .grid-container20x80 {display: grid; gap: 1rem; grid-template-columns: 1fr; /* Singola colonna su mobile */}
+@media (min-width: 768px) {.grid-container { grid-template-columns: 37% 31% 31%; } .grid-container50 { grid-template-columns: 1fr 1fr; } .grid-container20x80 { grid-template-columns: 20% 80%; }}   
+.imgRightfl, .imgLeftfl {display: flex; margin: 10px;}
+.imgRightfl {margin-left: auto;}
+.imgLeftfl {margin-right: auto;}
 </style>
 <script>
 !function(){
@@ -681,9 +682,9 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
          class="transparent" 
          alt="Schema del processo di melanogenesi. Mostra un melanocita stellato nello strato basale con prolungamenti. I melanosomi trasportano la melanina verso i cheratinociti circostanti. Freccie indicano il movimento della melanina dai melanosomi, attraverso i prolungamenti, fino alle cellule dell'epidermide. Il sole attiva il processo." 
          style="max-width:100%;">
-    <figcaption class="atkinson-regular">
-      Figura: il processo di melanogenesi. La melanina si forma nei melanociti e viene trasferita alle cellule vicine per proteggere la pelle dal sole.
-    </figcaption>
+    <figcaption class="atkinson-regular" data-lang-key="melanogenesis_figure">
+  Figura: il processo di melanogenesi. La melanina si forma nei melanociti e viene trasferita alle cellule vicine per proteggere la pelle dal sole.
+</figcaption>   
   </figure>
  </div>
 </div>
@@ -691,178 +692,114 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <div class="grid-container50">
   <!-- Testo a sinistra -->
   <div>
-    <h2 class="atkinson-bold">Il derma</h2>
+  <h2 class="atkinson-bold" data-lang-key="dermis">Il derma</h2>
 
-    <span class="atkinson-regular">
-      Il derma è lo strato sotto l’epidermide.
-      È fatto di tessuto connettivo forte ed elastico.
-    </span>
+  <span class="atkinson-regular" data-lang-key="dermis_location">Il derma è lo strato sotto l’epidermide. È fatto di tessuto connettivo forte ed elastico.</span>
 
-    <span class="atkinson-regular">
-      Ha uno spessore di 1-2 mm.
-      Svolge molte funzioni:
-    </span>
+  <span class="atkinson-regular" data-lang-key="dermis_thickness">Ha uno spessore di 1-2 mm. Svolge molte funzioni:</span>
 
-    <ul class="atkinson-regular">
-      <li>Sostiene la pelle</li>
-      <li>La mantiene elastica e resistente</li>
-      <li>La nutre attraverso i vasi sanguigni</li>
-    </ul>
+  <ul class="atkinson-regular">
+    <li data-lang-key="dermis_support">Sostiene la pelle</li>
+    <li data-lang-key="dermis_elasticity">La mantiene elastica e resistente</li>
+    <li data-lang-key="dermis_nutrition">La nutre attraverso i vasi sanguigni</li>
+  </ul>
 
-    <span class="atkinson-regular">
-      Nel derma ci sono:
-    </span>
+  <span class="atkinson-regular" data-lang-key="dermis_components">Nel derma ci sono:</span>
 
-    <ul class="atkinson-regular">
-      <li>Vasi sanguigni e linfatici</li>
-      <li>Nervi</li>
-      <li>Follicoli dei peli</li>
-      <li>Ghiandole sebacee e sudoripare</li>
-    </ul>
+  <ul class="atkinson-regular">
+    <li data-lang-key="dermis_vessels">Vasi sanguigni e linfatici</li>
+    <li data-lang-key="dermis_nerves">Nervi</li>
+    <li data-lang-key="dermis_hair_follicles">Follicoli dei peli</li>
+    <li data-lang-key="dermis_glands">Ghiandole sebacee e sudoripare</li>
+  </ul>
 
-    <span class="atkinson-regular">
-      Il derma ha tre strati:
-    </span>
+  <span class="atkinson-regular" data-lang-key="dermis_layers">Il derma ha tre strati:</span>
 
-    <h3 class="atkinson-bold">1) Derma papillare (superficiale)</h3>
-    <span class="atkinson-regular">
-      È lo strato più vicino all’epidermide.
-    </span>
-    <span class="atkinson-regular">
-      Ha delle piccole sporgenze: le papille dermiche.
-      Si incastrano con l’epidermide e formano le creste cutanee (visibili sui polpastrelli).
-    </span>
-    <span class="atkinson-regular">
-      Servono a migliorare lo scambio di sostanze tra derma ed epidermide.
-    </span>
-    <span class="atkinson-regular">
-      È fatto di tessuto connettivo lasso con:
-    </span>
-    <ul class="atkinson-regular">
-      <li>Fibre sottili di collagene</li>
-      <li>Molta sostanza fondamentale (liquido)</li>
-      <li>Tanti fibroblasti</li>
-      <li>Recettori del tatto (corpuscoli di Meissner) e del freddo (di Krause)</li>
-    </ul>
-    <span class="atkinson-regular">
-      Ha pochi vasi sanguigni.
-    </span>
+  <h3 class="atkinson-bold" data-lang-key="papillary_dermis">1) Derma papillare (superficiale)</h3>
+  <span class="atkinson-regular" data-lang-key="papillary_location">È lo strato più vicino all’epidermide.</span>
+  <span class="atkinson-regular" data-lang-key="papillary_papillae">Ha delle piccole sporgenze: le papille dermiche. Si incastrano con l’epidermide e formano le creste cutanee (visibili sui polpastrelli).</span>
+  <span class="atkinson-regular" data-lang-key="papillary_exchange">Servono a migliorare lo scambio di sostanze tra derma ed epidermide.</span>
+  <span class="atkinson-regular" data-lang-key="papillary_structure">È fatto di tessuto connettivo lasso con:</span>
+  <ul class="atkinson-regular">
+    <li data-lang-key="papillary_collagen">Fibre sottili di collagene</li>
+    <li data-lang-key="papillary_ground_substance">Molta sostanza fondamentale (liquido)</li>
+    <li data-lang-key="papillary_fibroblasts">Tanti fibroblasti</li>
+    <li data-lang-key="papillary_receptors">Recettori del tatto (corpuscoli di Meissner) e del freddo (di Krause)</li>
+  </ul>
+  <span class="atkinson-regular" data-lang-key="papillary_vessels">Ha pochi vasi sanguigni.</span>
 
-    <h3 class="atkinson-bold">2) Derma medio (corion)</h3>
-    <span class="atkinson-regular">
-      Strato intermedio.
-      Ha meno sostanza fondamentale del derma papillare.
-    </span>
-    <span class="atkinson-regular">
-      Contiene:
-    </span>
-    <ul class="atkinson-regular">
-      <li>Vasi sanguigni più grandi</li>
-      <li>Fasci di fibre reticolari</li>
-      <li>Altri recettori sensitivi</li>
-    </ul>
+  <h3 class="atkinson-bold" data-lang-key="middle_dermis">2) Derma medio (corion)</h3>
+  <span class="atkinson-regular" data-lang-key="middle_dermis_description">Strato intermedio. Ha meno sostanza fondamentale del derma papillare.</span>
+  <span class="atkinson-regular" data-lang-key="middle_dermis_contains">Contiene:</span>
+  <ul class="atkinson-regular">
+    <li data-lang-key="middle_dermis_blood_vessels">Vasi sanguigni più grandi</li>
+    <li data-lang-key="middle_dermis_reticular_fibers">Fasci di fibre reticolari</li>
+    <li data-lang-key="middle_dermis_sensory_receptors">Altri recettori sensitivi</li>
+  </ul>
 
-    <h3 class="atkinson-bold">3) Derma reticolare (profondo)</h3>
-    <span class="atkinson-regular">
-      È lo strato più spesso: forma l’80% del derma.
-    </span>
-    <span class="atkinson-regular">
-      È molto resistente, grazie a:
-    </span>
-    <ul class="atkinson-regular">
-      <li>Fibre forti di collagene</li>
-      <li>Fibre elastiche (elastina)</li>
-    </ul>
-    <span class="atkinson-regular">
-      Ha tanti vasi sanguigni di grosso calibro.
-      Ci sono anche terminazioni nervose sensibili.
-    </span>
-    <span class="atkinson-regular">In questo strato si trovano i corpuscoli:</span>
-<ul class="atkinson-regular">
-  <li><strong>Di Ruffini</strong>: sentono il caldo</li>
-  <li><strong>Di Pacini</strong>: sentono la pressione</li>
-</ul>
-<span class="atkinson-regular">Il derma profondo dà forza ed elasticità alla pelle.</span>
-<span class="atkinson-regular">Aiuta anche a percepire il calore e la pressione grazie ai recettori presenti.</span>   
-</div>
+  <h3 class="atkinson-bold" data-lang-key="reticular_dermis">3) Derma reticolare (profondo)</h3>
+  <span class="atkinson-regular" data-lang-key="reticular_dermis_thickness">È lo strato più spesso: forma l’80% del derma.</span>
+  <span class="atkinson-regular" data-lang-key="reticular_dermis_strength">È molto resistente, grazie a:</span>
+  <ul class="atkinson-regular">
+    <li data-lang-key="reticular_collagen">Fibre forti di collagene</li>
+    <li data-lang-key="reticular_elastin">Fibre elastiche (elastina)</li>
+  </ul>
+  <span class="atkinson-regular" data-lang-key="reticular_vessels_nerves">Ha tanti vasi sanguigni di grosso calibro. Ci sono anche terminazioni nervose sensibili.</span>
+  <span class="atkinson-regular" data-lang-key="reticular_corpuscles">In questo strato si trovano i corpuscoli:</span>
+  <ul class="atkinson-regular">
+    <li data-lang-key="ruffini_corpuscle_heat">Di Ruffini: sentono il caldo</li>
+    <li data-lang-key="pacinian_corpuscle_pressure">Di Pacini: sentono la pressione</li>
+  </ul>
+  <span class="atkinson-regular" data-lang-key="reticular_function">Il derma profondo dà forza ed elasticità alla pelle.</span>
+  <span class="atkinson-regular" data-lang-key="reticular_sensation">Aiuta anche a percepire il calore e la pressione grazie ai recettori presenti.</span>   
+</div>   
 </div>
 
 <div class="grid-container50">
   <!-- Testo a sinistra -->
   <div>
-    <h2 class="atkinson-bold">Cellule del derma</h2>
+  <h2 class="atkinson-bold" data-lang-key="dermis_cells">Cellule del derma</h2>
 
-    <span class="atkinson-regular">
-      Nel derma ci sono diversi tipi di cellule.
-    </span>
+  <span class="atkinson-regular" data-lang-key="dermis_cell_types">Nel derma ci sono diversi tipi di cellule.</span>
 
-    <span class="atkinson-regular">
-      I fibroblasti producono le fibre e la sostanza che tengono insieme il tessuto.
-      Gli altri tipi di cellule difendono la pelle da germi e sostanze estranee.
-    </span>
+  <span class="atkinson-regular" data-lang-key="fibroblasts_function">I fibroblasti producono le fibre e la sostanza che tengono insieme il tessuto. Gli altri tipi di cellule difendono la pelle da germi e sostanze estranee.</span>
 
-    <h3 class="atkinson-bold">1) Fibroblasti</h3>
-    <span class="atkinson-regular">
-      Sono le cellule più numerose del derma.
-      Hanno forma stellata.
-    </span>
-    <span class="atkinson-regular">
-      Producono:
-    </span>
-    <ul class="atkinson-regular">
-      <li>Fibre di collagene ed elastina</li>
-      <li>Sostanza fondamentale (es. acido ialuronico)</li>
-    </ul>
-    <span class="atkinson-regular">
-      Queste sostanze danno forza ed elasticità alla pelle.
-    </span>
+  <h3 class="atkinson-bold" data-lang-key="fibroblasts">1) Fibroblasti</h3>
+  <span class="atkinson-regular" data-lang-key="fibroblasts_abundance">Sono le cellule più numerose del derma. Hanno forma stellata.</span>
+  <span class="atkinson-regular" data-lang-key="fibroblasts_production">Producono:</span>
+  <ul class="atkinson-regular">
+    <li data-lang-key="fibroblasts_fibers">Fibre di collagene ed elastina</li>
+    <li data-lang-key="fibroblasts_ground_substance">Sostanza fondamentale (es. acido ialuronico)</li>
+  </ul>
+  <span class="atkinson-regular" data-lang-key="fibroblasts_role">Queste sostanze danno forza ed elasticità alla pelle.</span>
 
-    <h3 class="atkinson-bold">2) Cellule di origine ematica</h3>
-    <span class="atkinson-regular">
-      Sono globuli bianchi che entrano nel derma quando c’è un’infezione o un’infiammazione.
-    </span>
-    <span class="atkinson-regular">
-      Portano nel derma:
-    </span>
-    <ul class="atkinson-regular">
-      <li>Granulociti</li>
-      <li>Linfociti</li>
-    </ul>
-    <span class="atkinson-regular">
-      Aiutano a combattere i germi.
-    </span>
+  <h3 class="atkinson-bold" data-lang-key="blood_cells">2) Cellule di origine ematica</h3>
+  <span class="atkinson-regular" data-lang-key="blood_cells_function">Sono globuli bianchi che entrano nel derma quando c’è un’infezione o un’infiammazione.</span>
+  <span class="atkinson-regular" data-lang-key="blood_cells_types">Portano nel derma:</span>
+  <ul class="atkinson-regular">
+    <li data-lang-key="granulocytes">Granulociti</li>
+    <li data-lang-key="lymphocytes">Linfociti</li>
+  </ul>
+  <span class="atkinson-regular" data-lang-key="blood_cells_defense">Aiutano a combattere i germi.</span>
 
-    <h3 class="atkinson-bold">3) Plasmacellule</h3>
-    <span class="atkinson-regular">
-      Producono anticorpi.
-    </span>
-    <span class="atkinson-regular">
-      Gli anticorpi riconoscono e neutralizzano i germi.
-    </span>
+  <h3 class="atkinson-bold" data-lang-key="plasma_cells">3) Plasmacellule</h3>
+  <span class="atkinson-regular" data-lang-key="plasma_cells_antibodies">Producono anticorpi.</span>
+  <span class="atkinson-regular" data-lang-key="antibodies_function">Gli anticorpi riconoscono e neutralizzano i germi.</span>
 
-    <h3 class="atkinson-bold">4) Macrofagi</h3>
-    <span class="atkinson-regular">
-      Sono globuli bianchi che “mangiano” batteri, cellule morte e sostanze estranee.
-    </span>
-    <span class="atkinson-regular">
-      Sono molto importanti per la difesa del corpo.
-    </span>
+  <h3 class="atkinson-bold" data-lang-key="macrophages">4) Macrofagi</h3>
+  <span class="atkinson-regular" data-lang-key="macrophages_phagocytosis">Sono globuli bianchi che “mangiano” batteri, cellule morte e sostanze estranee.</span>
+  <span class="atkinson-regular" data-lang-key="macrophages_importance">Sono molto importanti per la difesa del corpo.</span>
 
-    <h3 class="atkinson-bold">5) Mastociti</h3>
-    <span class="atkinson-regular">
-      Sono cellule di difesa, come sentinelle.
-    </span>
-    <span class="atkinson-regular">
-      Riconoscono batteri e sostanze estranee.
-    </span>
-    <span class="atkinson-regular">
-      Quando trovano un pericolo, avviano la risposta infiammatoria.
-    </span>
+  <h3 class="atkinson-bold" data-lang-key="mast_cells">5) Mastociti</h3>
+  <span class="atkinson-regular" data-lang-key="mast_cells_role">Sono cellule di difesa, come sentinelle.</span>
+  <span class="atkinson-regular" data-lang-key="mast_cells_recognition">Riconoscono batteri e sostanze estranee.</span>
+  <span class="atkinson-regular" data-lang-key="mast_cells_inflammation">Quando trovano un pericolo, avviano la risposta infiammatoria.</span>
 
-    <span class="atkinson-regular">
-      Plasmacellule, macrofagi e mastociti fanno parte del sistema immunitario.
-    </span>
-  </div>
+  <span class="atkinson-regular" data-lang-key="immune_cells_summary">Plasmacellule, macrofagi e mastociti fanno parte del sistema immunitario.</span>
+</div>   
+
+
+
 
   <!-- Immagine a destra -->
   <div>
