@@ -119,12 +119,11 @@
 <style>
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
-.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
-.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
-.grid-container54x46 {display: grid; grid-template-columns: 54% 46%;}
-.grid-container10x90 {display: grid; grid-template-columns: 10% 90%;}
-#imgLeftfl {float: left; padding: 4px;}
-#imgRight {float: right; padding: 4px;}
+.grid-container, .grid-container50, .grid-container20x80 {display: grid; gap: 1rem; grid-template-columns: 1fr; /* Singola colonna su mobile */}
+@media (min-width: 768px) {.grid-container { grid-template-columns: 37% 31% 31%; } .grid-container50 { grid-template-columns: 1fr 1fr; } .grid-container20x80 { grid-template-columns: 20% 80%; }}   
+.imgRightfl, .imgLeftfl {display: flex; margin: 10px;}
+.imgRightfl {margin-left: auto;}
+.imgLeftfl {margin-right: auto;}
 </style>
 <script>
 !function(){
@@ -525,7 +524,6 @@ Unità recettoriale sensitiva, che risponde a stimoli tattili e pressori. Sono p
 </p>   
 </div>
 
-
 <span class="highlight" data-lang-key="cutaneous_nervous_network">La rete nervosa cutanea</span>
 <p class="text">
   <span data-lang-key="skin_perception">È grazie alla sua fitta rete nervosa ed a un insieme di recettori cutanei che la pelle è in grado di percepire stimoli diversi trasmettendoli al cervello, che li trasforma dopo averli elaborati in sensazioni dolorifiche, termiche, tattili e pressorie in tutto il corpo.</span><br>
@@ -548,36 +546,37 @@ Unità recettoriale sensitiva, che risponde a stimoli tattili e pressori. Sono p
   <span class="yellowtext" data-lang-key="free_nerve_endings">- TERMINAZIONI NERVOSE LIBERE</span> <span data-lang-key="free_nerve_endings_function">stimoli tattili, vibratori e di stiramento, temperatura e dolore.</span>
 </p>   
 
-<span class="highlight">Annessi cutanei</span>
+<span class="highlight" data-lang-key="cutaneous_appendages">Annessi cutanei</span>
 <p class="text">
-<span class="biotechbold">Per annessi cutanei si intendono quelle strutture anatomiche associate alla cute</span>, essi comprendono:<br>
-<span class="yellowtext">1. Ghiandole sudoripare</span>;<br>
-<span class="yellowtext">2. Ghiandole sebacee</span>;<br>
-<span class="yellowtext">3. Ghiandole mammarie</span>;<br>
-<span class="yellowtext">4. Unghie</span>;<br>
-<span class="yellowtext">5. Peli e capelli</span>.<br>
+  <span class="biotechbold" data-lang-key="cutaneous_appendages_definition">Per annessi cutanei si intendono quelle strutture anatomiche associate alla cute</span>, <span data-lang-key="appendages_list">essi comprendono:</span><br>
+  <span class="yellowtext" data-lang-key="sweat_glands">1. Ghiandole sudoripare</span>;<br>
+  <span class="yellowtext" data-lang-key="sebaceous_glands">2. Ghiandole sebacee</span>;<br>
+  <span class="yellowtext" data-lang-key="mammary_glands">3. Ghiandole mammarie</span>;<br>
+  <span class="yellowtext" data-lang-key="nails">4. Unghie</span>;<br>
+  <span class="yellowtext" data-lang-key="hair">5. Peli e capelli</span>.<br>
 </p>
-<span class="highlight">GHIANDOLE</span>
+<span class="highlight" data-lang-key="glands">GHIANDOLE</span>
 <p class="text">
-<span class="biotechbold">Le ghiandole sono organi che producono e secernono sostanze utili per l’organismo</span>.<br>
-<span class="yellowtext">GHIANDOLE SUDORIPARE</span>;<br>
-Nella struttura delle ghiandole si può distinguere:
-<ul class="list">
-  <ol>1. porzione secernente</ol>
-  <ol>2. dotto escretore</ol>
-</ul>
-</p>
+  <span class="biotechbold" data-lang-key="glands_function">Le ghiandole sono organi che producono e secernono sostanze utili per l’organismo</span>.<br>
+  <span class="yellowtext" data-lang-key="sudoriparous_glands">GHIANDOLE SUDORIPARE</span>;<br>
+  <span data-lang-key="glands_structure">Nella struttura delle ghiandole si può distinguere:</span>
+  <ul class="list">
+    <li data-lang-key="secretory_portion">1. porzione secernente</li>
+    <li data-lang-key="excretory_duct">2. dotto escretore</li>
+  </ul>
+</p>   
 <p class="text">
-<span class="yellowtext">Porzione secernente</span>: quella che effettivamente produce il sudore formata da un tubolo raggomitolato detto glomerulo;<br>
-<span class="yellowtext">Dotto escretore</span>: un tubicino che dal glomerulo elimina all’esterno il sudore.<br>
-il sudore è un liquido acquoso e trasparente composto da un 99% di acqua, e il restante 1% da sali organici e inorganici, vitamina C, anticorpi e tracce di sostanze organiche azotate (urea e ammoniaca) e zuccheri.<br>
-<span class="yellowtext">Il sudore svolge varie funzioni</span>:
-<ul class="list">
-  <ol>1. Termoregolazione (mantiene costante la temperatura corporea)</ol>
-  <ol>2. Eliminazione di tossine</ol>
-  <ol>3. Mantenimento del pH acido della pelle</ol>
-</ul>
-</p>
+  <span class="yellowtext" data-lang-key="secretory_portion_detail">Porzione secernente</span>: <span data-lang-key="secretory_portion_desc">quella che effettivamente produce il sudore formata da un tubolo raggomitolato detto glomerulo</span>;<br>
+  <span class="yellowtext" data-lang-key="excretory_duct_detail">Dotto escretore</span>: <span data-lang-key="excretory_duct_desc">un tubicino che dal glomerulo elimina all’esterno il sudore</span>.<br>
+  <span data-lang-key="sweat_composition">il sudore è un liquido acquoso e trasparente composto da un 99% di acqua, e il restante 1% da sali organici e inorganici, vitamina C, anticorpi e tracce di sostanze organiche azotate (urea e ammoniaca) e zuccheri</span>.<br>
+  <span class="yellowtext" data-lang-key="sweat_functions_title">Il sudore svolge varie funzioni</span>:
+  <ul class="list">
+    <li data-lang-key="thermoregulation">1. Termoregolazione (mantiene costante la temperatura corporea)</li>
+    <li data-lang-key="toxin_elimination">2. Eliminazione di tossine</li>
+    <li data-lang-key="ph_maintenance">3. Mantenimento del pH acido della pelle</li>
+  </ul>
+</p>   
+
 <p class="text">
 <span class="biotechbold">La produzione di sudore è controllata dal sistema nervoso autonomo</span>;<br>
 In particolare dal sistema simpatico, che regola la  temperatura corporea attraverso la secrezione delle ghiandole sudoripare in risposta a stimoli come il caldo, l'esercizio fisico, lo stress e le emozioni.<br>
