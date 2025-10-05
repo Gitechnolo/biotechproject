@@ -195,7 +195,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/video.min.js" defer></script>
 <div aria-label="Descrizione del video"><p class="sansation-light-italic" data-lang-key="video-desc">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div><br>
 <p class="text highlight-text" data-lang-key="simple_cellular_understanding_intro">Comprendere il nostro corpo a livello cellulare è il primo passo verso un benessere consapevole. Ecco alcuni concetti fondamentali:</p>
-<p class="secHeader" data-lang-key="section-science">Tutto ciò che non puoi non sapere!</p>
+<h2 class="secHeader" data-lang-key="section-science">Tutto ciò che non puoi non sapere!</h2>
 
 <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Mitocondri"><span class="highlight" data-lang-key="mitocondri-term">Mitocondri</span><rp>(</rp><rt><span class="pronunciation-text">Mi-to-con-dri</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Mitocondri" onclick="speakTerm('mitocondri', 'italiano')" onkeydown="handlePronounceKey(event, 'mitocondri', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle" data-lang-key="mitocondri-analogy">Sono le "centrali energetiche" della cellula.</p><p class="biotechtitle" data-lang-key="mitocondri-function">Producono l'energia necessaria a tutte le funzioni vitali, trasformando i nutrienti in ATP, il "carburante" universale della cellula.</p><p class="biotechtitle" data-lang-key="mitocondri-process-name">Questo processo è noto come respirazione cellulare.</p>
 <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Lisosoma"><span class="highlight" data-lang-key="lisosoma-term">Lisosoma</span><rp>(</rp><rt><span class="pronunciation-text">Li-so-so-ma</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Lisosoma" onclick="speakTerm('lisosoma', 'italiano')" onkeydown="handlePronounceKey(event, 'lisosoma', 'italiano')">🔊</button></rt><rp>)</rp></ruby><p class="biotechtitle" data-lang-key="lisosoma-analogy">Immagina i lisosomi come la "discarica" e il "centro di riciclaggio" della cellula.</p><p class="biotechtitle" data-lang-key="lisosoma-function">Il loro compito è distruggere le parti vecchie o danneggiate e i germi, per poi riciclare i materiali utili per costruire nuove strutture.</p><p class="biotechtitle" data-lang-key="lisosoma-summary">In questo modo, aiutano la cellula a mantenersi pulita e sana.</p>
@@ -243,9 +243,19 @@ Jiddu Krishnamurti</cite></p><br>
 </main>
 <!-- End contenuto principale (per Skip to main e accessibilità) -->
 <!-- Avviso per utenti senza JavaScript --> 
-<div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
-<!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
-<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>     
+<div class="noscript-banner" role="alert" aria-live="polite">
+  <noscript>
+    <p lang="it">Per un'esperienza completa su <strong>Biotech Project</strong>, abilita JavaScript oppure <a href="/accessibile" aria-label="Vai alla versione accessibile del sito senza JavaScript">visita la versione alternativa del sito</a>.</p>
+    <button aria-label="Chiudi avviso">✕</button>
+  </noscript>
+</div>
+<script>
+  // Nasconde il banner se JS è abilitato
+  document.documentElement.classList.add('js');
+  document.querySelector('.noscript-banner button')?.addEventListener('click', function() {
+    this.parentElement.style.display = 'none';
+  });
+</script>        
 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
