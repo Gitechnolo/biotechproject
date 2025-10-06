@@ -1,8 +1,32 @@
 {
   "it": {
-   
+   "apparato_respiratorio": "APPARATO RESPIRATORIO",
+    "respirazione_titolo": "La Respirazione",
+    "respirazione_testo": "La respirazione, nel senso più ampio, comprende i seguenti processi:",
+    "respirazione_lista": [
+      "passaggio dell'aria attraverso le vie respiratorie sino agli alveoli polmonari",
+      "passaggio al sangue dell'ossigeno alveolare",
+      "trasporto dell'ossigeno attraverso il sangue e sua distribuzione a tutto l'organismo",
+      "utilizzazione dell'ossigeno (O2) da parte delle cellule",
+      "produzione cellulare di anidride carbonica",
+      "trasporto attraverso il sangue dell'anidride carbonica",
+      "passaggio dell'anidride carbonica dal sangue agli alveoli polmonari",
+      "espulsione dell'aria dai polmoni"
+    ]
   },
   "en": {
-   
+   "apparato_respiratorio": "RESPIRATORY SYSTEM",
+    "respirazione_titolo": "Respiration",
+    "respirazione_testo": "Respiration, in the broadest sense, includes the following processes:",
+    "respirazione_lista": [
+      "air passage through the respiratory tract to the pulmonary alveoli",
+      "transfer of alveolar oxygen into the blood",
+      "oxygen transport through the blood and its distribution throughout the body",
+      "oxygen (O2) utilization by cells",
+      "cellular production of carbon dioxide",
+      "transport of carbon dioxide through the blood",
+      "transfer of carbon dioxide from the blood to the pulmonary alveoli",
+      "expulsion of air from the lungs"
+    ]
   }
 }
