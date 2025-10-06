@@ -154,7 +154,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->
 <a href="#main" class="skip-link">Vai al contenuto principale</a>  
 <!-- Pulsante attivazione navigazione da tastiera -->
-<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text" data-lang-key="keyboard-toggle">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
 <div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
 <!-- DNA animation -->
 <div class="dna-container-8">
@@ -177,25 +177,30 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 </div>
 </div>
 <!-- VOCE: Fisiologia -->
-<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it" data-lang-key="nav-physiology"><b>Fisiologia</b></button>
 <div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula">Cellula</a>
-<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio">Apparato circolatorio</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio">Apparato respiratorio</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente">Apparato digerente</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario">Apparato tegumentario</a>
-<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario">Sistema linfatico / immunitario</a>
-<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia">Dermatologia</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula" data-lang-key="nav-cell">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio" data-lang-key="nav-circulatory">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio" data-lang-key="nav-respiratory">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente" data-lang-key="nav-digestive">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario" data-lang-key="nav-integumentary">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario" data-lang-key="nav-lymphatic">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia" data-lang-key="nav-dermatology">Dermatologia</a></div>
 </div>
 </div>
 <!-- VOCE: Service -->
 <div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
 <div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
 <button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
-<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
-<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto">Accessibilità</a>
-<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
-<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a></div>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it" data-lang-key="nav-contact">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto" data-lang-key="nav-accessibility">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project" data-lang-key="nav-accessibility-en">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it" data-lang-key="nav-theme">🎨 Tema pulsanti</a>
+<button role="menuitem" id="lang-toggle" aria-label="Cambia lingua in inglese" onclick="toggleLanguage()" lang="it">
+  <span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span>
+  <span id="lang-label">Cambia lingua</span>
+</button>         
+</div>
 </div>
 </div>
 <!-- VOCE: Staff -->
@@ -203,7 +208,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
 <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
 <a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
-<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti">Progetti</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti" data-lang-key="nav-progetti">Progetti</a></div>
 </div>
 </div>
 <!-- VOCE: Technologies -->
@@ -214,7 +219,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 </div>
 </div>   
 </div>
-<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180">   
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180"> 
 <div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
 <div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
 <div class="modern-greeting" id="week"></div>
@@ -224,7 +229,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <main id="main">
 <!-- Container: prevenzione CLS -->
 <div class="staff-layout-container" id="main-content">
-<p class="biotech-simple-link-container"><a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" class="biotech-simple-link" aria-label="Leggi questa pagina in versione originale"><span class="icon">🔍</span><span class="text">Leggi in versione originale</span></a></p>
+<p class="biotech-simple-link-container"><a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" class="biotech-simple-link" aria-label="Leggi questa pagina in versione originale" data-lang-key="read_original"><span class="icon">🔍</span><span class="text">Leggi in versione originale</span></a></p>
 <div class="staff-row">
   <div class="staff-col">
     <div class="staff-card">
