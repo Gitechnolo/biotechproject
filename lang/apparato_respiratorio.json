@@ -1,32 +1,28 @@
 {
   "it": {
-   "apparato_respiratorio": "APPARATO RESPIRATORIO",
+    "apparato_respiratorio": "APPARATO RESPIRATORIO",
     "respirazione_titolo": "La Respirazione",
     "respirazione_testo": "La respirazione, nel senso più ampio, comprende i seguenti processi:",
-    "respirazione_lista": [
-      "passaggio dell'aria attraverso le vie respiratorie sino agli alveoli polmonari",
-      "passaggio al sangue dell'ossigeno alveolare",
-      "trasporto dell'ossigeno attraverso il sangue e sua distribuzione a tutto l'organismo",
-      "utilizzazione dell'ossigeno (O2) da parte delle cellule",
-      "produzione cellulare di anidride carbonica",
-      "trasporto attraverso il sangue dell'anidride carbonica",
-      "passaggio dell'anidride carbonica dal sangue agli alveoli polmonari",
-      "espulsione dell'aria dai polmoni"
-    ]
+    "respirazione_1": "passaggio dell'aria attraverso le vie respiratorie sino agli alveoli polmonari",
+    "respirazione_2": "passaggio al sangue dell'ossigeno alveolare",
+    "respirazione_3": "trasporto dell'ossigeno attraverso il sangue e sua distribuzione a tutto l'organismo",
+    "respirazione_4": "utilizzazione dell'ossigeno (O2) da parte delle cellule",
+    "respirazione_5": "produzione cellulare di anidride carbonica",
+    "respirazione_6": "trasporto attraverso il sangue dell'anidride carbonica",
+    "respirazione_7": "passaggio dell'anidride carbonica dal sangue agli alveoli polmonari",
+    "respirazione_8": "espulsione dell'aria dai polmoni"
   },
   "en": {
-   "apparato_respiratorio": "RESPIRATORY SYSTEM",
+    "apparato_respiratorio": "RESPIRATORY SYSTEM",
     "respirazione_titolo": "Respiration",
     "respirazione_testo": "Respiration, in the broadest sense, includes the following processes:",
-    "respirazione_lista": [
-      "air passage through the respiratory tract to the pulmonary alveoli",
-      "transfer of alveolar oxygen into the blood",
-      "oxygen transport through the blood and its distribution throughout the body",
-      "oxygen (O2) utilization by cells",
-      "cellular production of carbon dioxide",
-      "transport of carbon dioxide through the blood",
-      "transfer of carbon dioxide from the blood to the pulmonary alveoli",
-      "expulsion of air from the lungs"
-    ]
+    "respirazione_1": "air passage through the respiratory tract to the pulmonary alveoli",
+    "respirazione_2": "transfer of alveolar oxygen into the blood",
+    "respirazione_3": "oxygen transport through the blood and its distribution throughout the body",
+    "respirazione_4": "oxygen (O2) utilization by cells",
+    "respirazione_5": "cellular production of carbon dioxide",
+    "respirazione_6": "transport of carbon dioxide through the blood",
+    "respirazione_7": "transfer of carbon dioxide from the blood to the pulmonary alveoli",
+    "respirazione_8": "expulsion of air from the lungs"
   }
-}
+}   
