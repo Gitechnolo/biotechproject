@@ -218,7 +218,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
-.yellowtext {font-size: 16px; font-weight: normal; color: #FFC72C;}
+.yellowtext {font-size: 16px; font-weight: normal; color: #E0FFFF;} /* Bianco Ciano Pallido */
 .greentext { font-size: 16px; font-weight: normal; color: #ffffff;}
 .orangetext {font-size: 16px; font-weight: bold; color: whitesmoke;}
 .biotechbold {font-size: 16px; font-weight: bold; color: #B5EAD7; /* Menta Chiaro */ text-shadow: none ; letter-spacing: normal; font-style: normal;}
