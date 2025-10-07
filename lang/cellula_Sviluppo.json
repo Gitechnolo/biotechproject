@@ -43,11 +43,9 @@
     "chromosomes_title": "CROMOSOMI",
     "chromosomes_description": "(portatori dei caratteri ereditari) I cromosomi sono strutture a bastoncino costituiti principalmente da DNA e PROTEINE presenti nel nucleo cellulare, per poi migrare nella cellula nelle varie fasi della Mitosi.",
     "life_basis_title": "LA CELLULA COME BASE DELLA VITA",
-
     "cell_theory_point1": "1) tutti i viventi sono formati da una o più cellule;",
     "cell_theory_point2": "2)le cellule costituiscono le unità fondamentali di ciascun organismo;",
     "cell_theory_point3": "3) tutte le cellule derivano da altre cellule.",
-    
     "organisms_classification_p1": "Tutti i viventi sono costituiti da una o più cellule: in base a questa caratteristica possono essere suddivisi, rispettivamente, in organismi ",
     "organisms_classification_enfasi_classi": "unicellulari e pluricellulari",
     "organisms_classification_p2": ". Al primo gruppo appartengono ",
@@ -55,32 +53,26 @@
     "organisms_classification_p3": "; il secondo gruppo comprende ",
     "organisms_classification_enfasi_pluri": "le piante, gli animali, e i funghi pluricellulari",
     "organisms_classification_p4": ".",
-    
     "cell_types_intro_p1": "In natura esistono due tipi di cellule: la ",
     "cell_types_intro_enfasi": "cellula eucariote e la cellula procariote",
     "cell_types_intro_p2": ".",
-    
     "cell_components_intro": "Per poter svolgere le loro molte attività tutte le cellule devono disporre di:",
-    
     "component1_title": "1) Un corpo cellulare",
     "component1_description_p1": " riempito dal ",
     "component1_description_enfasi_citoplasma": "citoplasma",
     "component1_description_p2": ", un liquido in cui ",
     "component1_description_enfasi_reazioni": "avvengono tutte le reazioni chimiche necessarie al mantenimento in vita delle cellule e alla loro riproduzione",
     "component1_description_p3": ";",
-    
     "component2_title": "2) Una membrana:",
     "component2_description_p1": " il confine che ",
     "component2_description_enfasi_separa": "separa le cellule dall’ambiente circostante",
     "component2_description_p2": ", e ne ",
     "component2_description_enfasi_garantisce": "garantisce la comunicazione con l’ambiente extracellulare",
     "component2_description_p3": ";",
-    
     "component3_title": "3) Un insieme di istruzioni genetiche (dna)",
     "component3_description_p1": " in cui è contenuto il “",
     "component3_description_enfasi_programma": "programma” per il loro sviluppo, la loro specializzazione e riproduzione",
     "component3_description_p2": ".",
-    
     "eukaryotes_prokaryotes_comparison_p1": "Queste tre componenti fondamentali si trovano sia nelle cellule procariote sia nelle cellule eucariote: le prime caratterizzano ",
     "eukaryotes_prokaryotes_comparison_enfasi_batteri": "i batteri",
     "eukaryotes_prokaryotes_comparison_p2": "; le seconde sono tipiche di ",
@@ -90,7 +82,6 @@
     "eukaryotes_prokaryotes_comparison_p4": ". Presentano invece una ",
     "eukaryotes_prokaryotes_comparison_enfasi_medesima": "membrana plasmatica dotata di una medesima struttura",
     "eukaryotes_prokaryotes_comparison_p5": ".",
-    
     "eukaryotic_details_title": "Le cellule eucariotiche",
     "eukaryotic_details_description_p1": " sono le più ",
     "eukaryotic_details_description_enfasi_evolute": "evolute",
@@ -111,7 +102,6 @@
     "eukaryotic_details_description_p9": ". Sono inoltre prive di organuli, ad eccezione dei ",
     "eukaryotic_details_description_enfasi_ribosomi": "ribosomi, preposti alla sintesi delle proteine",
     "eukaryotic_details_description_p10": ". Le funzioni cellulari sono comunque effettuate da complessi enzimatici analoghi a quelli delle cellule eucariotiche. Tutti i batteri sono costituiti da una sola cellula procariotica (unicellulari).",
-    
     "cytoplasm_details_p1": "Ogni cellula è a contatto con l’ambiente circostante, il quale è costituito principalmente da acqua. L’interno della cellula è il ",
     "cytoplasm_details_enfasi_citoplasma": "CITOPLASMA",
     "cytoplasm_details_p2": ", formato da una componente semifluida, ",
@@ -121,7 +111,6 @@
     "cytoplasm_details_p4": ", in cui si trovano immerse tutte le strutture dette ",
     "cytoplasm_details_enfasi_organuli": "organuli o organelli",
     "cytoplasm_details_p5": ".",
-    
     "cell_membrane_details_p1": "Per evitare la perdita e la dispersione dei minerali contenuti nella cellula esiste uno strato che separa ed agisce come barriera tra l’esterno e l’interno ed ha struttura stabile non mescolabile con l’acqua. Tale barriera, che viene chiamata ",
     "cell_membrane_details_enfasi_nome": "MEMBRANA CELLULARE O PLASMATICA",
     "cell_membrane_details_p2": ", è costituita da un ",
@@ -129,7 +118,6 @@
     "cell_membrane_details_p3": ", attraversata parzialmente o completamente da ",
     "cell_membrane_details_enfasi_proteine": "numerose proteine",
     "cell_membrane_details_p4": ".",
-    
     "fluid_mosaic_model_p1": "I ",
     "fluid_mosaic_model_enfasi_fosfolipidi": "fosfolipidi",
     "fluid_mosaic_model_p2": " sono particolari grassi, formati da una “",
@@ -139,12 +127,7 @@
     "fluid_mosaic_model_p4": ", perciò la membrana ha una struttura dinamica denominata anche “",
     "fluid_mosaic_model_enfasi_modello": "modello a mosaico fluido",
     "fluid_mosaic_model_p5": "”.",
-
-
-
-
-
-     "plasma_membrane_permeability_intro_p1": "La ",
+    "plasma_membrane_permeability_intro_p1": "La ",
     "plasma_membrane_permeability_intro_enfasi_membrana": "membrana plasmatica",
     "plasma_membrane_permeability_intro_p2": " è ",
     "plasma_membrane_permeability_intro_enfasi_selettiva": "selettivamente permeabile",
@@ -157,7 +140,6 @@
     "plasma_membrane_permeability_intro_p6": " o di una struttura formata da una grossa proteina inserita all’interno dello spessore della membrana e dotata di una cavità centrale, che fa da ",
     "plasma_membrane_permeability_intro_enfasi_canale": "canale di passaggio",
     "plasma_membrane_permeability_intro_p7": ".",
-
     "plasma_membrane_recognition_p1": "La membrana rappresenta anche il mezzo con cui la cellula si “",
     "plasma_membrane_recognition_enfasi_riconoscere": "fa riconoscere” dalle altre cellule",
     "plasma_membrane_recognition_p2": ". Essa contiene ",
@@ -169,7 +151,6 @@
     "plasma_membrane_recognition_p5": "” in base alla quale la cellula viene riconosciuta come facente parte dell’organismo stesso e non viene attaccata dal ",
     "plasma_membrane_recognition_enfasi_immunitario": "sistema immunitario",
     "plasma_membrane_recognition_p6": ". Al contrario, se estranea, viene distrutta.",
-    
     "cytoskeleton_intro_p1": "Al di sotto della membrana nel ",
     "cytoskeleton_intro_enfasi_citoplasma": "citoplasma delle cellule eucarioti",
     "cytoskeleton_intro_p2": " si trova una ",
@@ -183,9 +164,7 @@
     "cytoskeleton_function_p3": ". Tale funzione viene svolta solo in parte dalla membrana, la quale è aiutata da ",
     "cytoskeleton_function_enfasi_organuli": "diversi organuli cellulari presenti al proprio interno",
     "cytoskeleton_function_p4": ".",
-
     "organelles_list_intro": "Questi organuli sono:",
-    
     "endoplasmic_reticulum_description_p1": ", il quale somiglia ad un piccolo labirinto formato da membrane ripiegate e impilate tra loro e si divide in ",
     "endoplasmic_reticulum_description_enfasi_forme": "due forme distinte e con diverse funzioni",
     "endoplasmic_reticulum_description_p2": ". Il Reticolo Endoplasmatico Liscio (",
@@ -202,7 +181,6 @@
     "endoplasmic_reticulum_description_p7": ") viene così chiamato per la presenza sulla membrana di piccole strutture chiamate ",
     "endoplasmic_reticulum_description_enfasi_ribosomi": "ribosomi, essenziali nel processo di produzione delle proteine",
     "endoplasmic_reticulum_description_p8": ".",
-
     "ribosomes_title": "Ribosomi",
     "ribosomes_description_p1": ", come già detto, rappresentano la ",
     "ribosomes_description_enfasi_sede": "sede della sintesi delle proteine",
@@ -211,14 +189,12 @@
     "ribosomes_description_p3": " e possono essere associati al R.E.R. oppure ",
     "ribosomes_description_enfasi_liberi": "liberi nel citoplasma",
     "ribosomes_description_p4": ".",
-    
     "golgi_apparatus_description_nucleus": ", normalmente collocato vicino al nucleo, è costituito da pile di cisterne appiattite (piccole vescicole piatte).",
     "golgi_apparatus_description_p1": " Rappresenta una zona di ",
     "golgi_apparatus_description_enfasi_raccolta": "raccolta, elaborazione e smaltimento delle molecole prodotte dalla cellula nel loro passaggio verso l’esterno",
     "golgi_apparatus_description_p2": ". In particolar modo ",
     "golgi_apparatus_description_enfasi_esportare": "rielaborare, selezionare ed esportare i prodotti del reticolo endoplasmatico",
     "golgi_apparatus_description_p3": ".",
-    
     "mitochondria_title": "Mitocondri",
     "mitochondria_description_p1": ", sono delle ",
     "mitochondria_description_enfasi_centrali": "centrali di produzione dell’energia",
@@ -232,29 +208,68 @@
     "mitochondria_description_enfasi_membrane": "due membrane",
     "mitochondria_description_p6": ".",
 
-
-
-
-
-     "lysosomes_title": "Lisosomi",
-    "lysosomes_description": "sono vescicole delimitate da una membrana e contengono enzimi capaci di digerire numerose molecole inutili o nocive per la cellula, organelli e organismi estranei.",
+    "lysosomes_title": "Lisosomi",
+    "lysosomes_description_p1": " sono ",
+    "lysosomes_description_enfasi_struttura": "vescicole delimitate da una membrana",
+    "lysosomes_description_p2": " e contengono ",
+    "lysosomes_description_enfasi_enzimi": "enzimi capaci di digerire",
+    "lysosomes_description_p3": " numerose molecole inutili o nocive per la cellula, organelli e organismi estranei.",
     "nucleus_title": "Nucleo cellulare",
-    "nucleus_description": "rappresenta il principale organello cellulare delimitato da una doppia membrana non continua ma interrotta da piccoli canali di comunicazione con l’esterno chiamati pori, che permettono lo scambio tra il nucleoplasma e il citoplasma. In nucleo contiene al suo interno acidi nucleici (DNA e RNA) e proteine. Tra queste ultime vi sono le proteine istoniche, le quali associate ai lunghi filamenti di DNA li organizzano compattandoli in modo tale da adattarli al ridotto volume del nucleo. Questa struttura così organizzata viene chiamata cromatina.",
+    "nucleus_description_p1": " rappresenta il principale organello cellulare delimitato da una ",
+    "nucleus_description_enfasi_doppia_membrana": "doppia membrana non continua",
+    "nucleus_description_p2": " ma interrotta da piccoli canali di comunicazione con l’esterno chiamati ",
+    "nucleus_description_enfasi_pori": "pori",
+    "nucleus_description_p3": ", che permettono lo ",
+    "nucleus_description_enfasi_scambio": "scambio tra il nucleoplasma e il citoplasma",
+    "nucleus_description_p4": ". Il nucleo contiene al suo interno ",
+    "nucleus_description_enfasi_acidi": "acidi nucleici (DNA e RNA) e proteine",
+    "nucleus_description_p5": ". Tra queste ultime vi sono le ",
+    "nucleus_description_enfasi_istoniche": "proteine istoniche",
+    "nucleus_description_p6": ", le quali associate ai lunghi filamenti di DNA li ",
+    "nucleus_description_enfasi_compattano": "organizzano compattandoli in modo tale da adattarli al ridotto volume del nucleo",
+    "nucleus_description_p7": ". Questa struttura così organizzata viene chiamata ",
+    "nucleus_description_enfasi_cromatina": "cromatina",
+    "nucleus_description_p8": ".",
     "dna_heredity": "DNA: molecola dell’ereditarietà",
-    "dna_description": "Il DNA è una macromolecola (formata cioè da unità fondamentale che si ripete chiamata NUCLEOTIDE) cui struttura ricorda molto quella di una scaletta a chiocciola, è costituita infatti da due catene parallele avvolte a spirale.",
+    "dna_description_p1": "Il DNA è una ",
+    "dna_description_enfasi_macro": "macromolecola",
+    "dna_description_p2": " (formata cioè da unità fondamentale che si ripete chiamata ",
+    "dna_description_enfasi_nucleotide": "NUCLEOTIDE",
+    "dna_description_p3": ") cui struttura ricorda molto quella di una ",
+    "dna_description_enfasi_scaletta": "scaletta a chiocciola",
+    "dna_description_p4": ", è costituita infatti da ",
+    "dna_description_enfasi_catene": "due catene parallele avvolte a spirale",
+    "dna_description_p5": ".",
     "nucleotide_intro": "I nucleotidi che compongono i filamenti o catene sono formati da:",
     "nucleotide_external": "Una porzione esterna:",
     "nucleotide_phosphate": "Gruppo fosfato",
     "nucleotide_sugar": "Zucchero (desossiribosio)",
-    "nucleotide_internal": "Una porzione interna",
+    "nucleotide_internal": "Una porzione interna:",
     "nucleotide_bases": "Base azotata: adenina guanina citosina timina",
-    "dna_bonding_description": "I nucleotidi si susseguono gli uni agli altri legando il gruppo fosfato di uno allo zucchero di quello immediatamente successivo. I legami tra le basi tengono unite le due catene e rappresentano i gradini della scaletta; l’adenina-timina e guanina-citosina. Le basi e la loro sequenza sono la parte più importante del DNA perché portano l’informazione genetica; zuccheri e gruppi fosforici servono da sostegno.",
-    "genetic_code_description": "Il DNA presenta perciò scritti nella sua molecola, in un codice speciale che è detto CODICE GENETICO, i nostri “dati al completo” e perciò tutte le specifiche caratteristiche morfologiche e biochimiche del nostro organismo.",
+    "dna_bonding_description_p1": "I nucleotidi si susseguono gli uni agli altri legando il ",
+    "dna_bonding_description_enfasi_legame_zucchero": "gruppo fosfato di uno allo zucchero di quello immediatamente successivo",
+    "dna_bonding_description_p2": ". I legami tra le basi tengono unite le due catene e rappresentano i gradini della scaletta; ",
+    "dna_bonding_description_enfasi_legame_basi": "l’adenina-timina e guanina-citosina",
+    "dna_bonding_description_p3": ". Le ",
+    "dna_bonding_description_enfasi_basi_importanti": "basi e la loro sequenza sono la parte più importante del DNA",
+    "dna_bonding_description_p4": " perché ",
+    "dna_bonding_description_enfasi_informazione": "portano l’informazione genetica",
+    "dna_bonding_description_p5": "; zuccheri e gruppi fosforici servono da ",
+    "dna_bonding_description_enfasi_sostegno": "sostegno",
+    "dna_bonding_description_p6": ".",
+    "genetic_code_description_p1": "Il DNA presenta perciò scritti nella sua molecola, in un codice speciale che è detto ",
+    "genetic_code_description_enfasi_codice": "CODICE GENETICO",
+    "genetic_code_description_p2": ", i nostri “",
+    "genetic_code_description_enfasi_dati": "dati al completo”",
+    "genetic_code_description_p3": " e perciò tutte le specifiche ",
+    "genetic_code_description_enfasi_caratteristiche": "caratteristiche morfologiche e biochimiche del nostro organismo",
+    "genetic_code_description_p4": ".",
     "diagram_label_nucleotide": "Nucleotide",
     "diagram_label_sugar": "Zucchero",
     "diagram_label_phosphate": "Gruppo fosfato",
     "diagram_label_base": "Base azotata",
-     "genes_and_proteins_intro": "Il DNA ordina ai diversi componenti cellulari cosa devono o non devono fare. I “pezzi di DNA” in cui sono scritti i messaggi sono detti GENI; un gene è un pezzettino di DNA in cui è scritto un messaggio che si traduce nella produzione di una proteina. Le proteine così prodotte sono NECESSARIE per la SOPRAVVIVENZA, MOLTIPLICAZIONE, SPECIALIZZAZIONE della cellula stessa.",
+
+    "genes_and_proteins_intro": "Il DNA ordina ai diversi componenti cellulari cosa devono o non devono fare. I “pezzi di DNA” in cui sono scritti i messaggi sono detti GENI; un gene è un pezzettino di DNA in cui è scritto un messaggio che si traduce nella produzione di una proteina. Le proteine così prodotte sono NECESSARIE per la SOPRAVVIVENZA, MOLTIPLICAZIONE, SPECIALIZZAZIONE della cellula stessa.",
     "individual_proteins_role": "Ogni specie animale o vegetale ed in particolare ogni individuo ha delle proteine proprie responsabili dell’individualità e che condizionano il manifestarsi dei diversi caratteri.",
     "protein_synthesis_intro": "Più precisamente il complesso meccanismo che porta alla sintesi delle proteine può essere così semplificato:",
     "synthesis_diagram_heading1": "AVVIENE NEL NUCLEO",
@@ -453,17 +468,14 @@
     "chromosomes_title": "CHROMOSOMES",
     "chromosomes_description": "(carriers of hereditary traits) Chromosomes are rod-shaped structures consisting mainly of DNA and PROTEINS present in the cell nucleus, which then migrate into the cell during the various phases of Mitosis.",
     "life_basis_title": "THE CELL AS THE BASIS OF LIFE",
-
     "life_basis_intro_p1": "Living organisms are all composed of ",
     "life_basis_intro_enfasi_unita": "fundamental units called cells",
     "life_basis_intro_p2": ", organized essentially in the same way. The collective studies under the microscope and observations by numerous researchers led to the ",
     "life_basis_intro_enfasi_teoria": "cell theory",
     "life_basis_intro_p3": " , according to which:",
-    
     "cell_theory_point1": "1) all living things are formed by one or more cells;",
     "cell_theory_point2": "2) cells constitute the fundamental units of every organism;",
     "cell_theory_point3": "3) all cells derive from other cells.",
-    
     "organisms_classification_p1": "All living things are composed of one or more cells: based on this characteristic, they can be subdivided, respectively, into ",
     "organisms_classification_enfasi_classi": "unicellular and multicellular organisms",
     "organisms_classification_p2": ". The first group includes ",
@@ -471,32 +483,26 @@
     "organisms_classification_p3": "; the second group includes ",
     "organisms_classification_enfasi_pluri": "plants, animals, and multicellular fungi",
     "organisms_classification_p4": ".",
-    
     "cell_types_intro_p1": "Two types of cells exist in nature: the ",
     "cell_types_intro_enfasi": "eukaryotic cell and the prokaryotic cell",
     "cell_types_intro_p2": ".",
-    
     "cell_components_intro": "To perform their many activities, all cells must have:",
-    
     "component1_title": "1) A cell body",
     "component1_description_p1": " filled with ",
     "component1_description_enfasi_citoplasma": "cytoplasm",
     "component1_description_p2": ", a liquid in which ",
     "component1_description_enfasi_reazioni": "all chemical reactions necessary for the survival and reproduction of cells take place",
     "component1_description_p3": ";",
-    
     "component2_title": "2) A membrane:",
     "component2_description_p1": " the boundary that ",
     "component2_description_enfasi_separa": "separates the cells from the surrounding environment",
     "component2_description_p2": ", and ",
     "component2_description_enfasi_garantisce": "ensures communication with the extracellular environment",
     "component2_description_p3": ";",
-    
     "component3_title": "3) A set of genetic instructions (dna)",
     "component3_description_p1": " which contains the “",
     "component3_description_enfasi_programma": "program” for their development, specialization, and reproduction",
     "component3_description_p2": ".",
-    
     "eukaryotes_prokaryotes_comparison_p1": "These three fundamental components are found in both prokaryotic and eukaryotic cells: the former characterize ",
     "eukaryotes_prokaryotes_comparison_enfasi_batteri": "bacteria",
     "eukaryotes_prokaryotes_comparison_p2": "; the latter are typical of ",
@@ -506,7 +512,6 @@
     "eukaryotes_prokaryotes_comparison_p4": ". They do, however, have a ",
     "eukaryotes_prokaryotes_comparison_enfasi_medesima": "plasma membrane with the same structure",
     "eukaryotes_prokaryotes_comparison_p5": ".",
-    
     "eukaryotic_details_title": "Eukaryotic cells",
     "eukaryotic_details_description_p1": " are the most ",
     "eukaryotic_details_description_enfasi_evolute": "evolved",
@@ -527,7 +532,6 @@
     "eukaryotic_details_description_p9": ". They also lack organelles, with the exception of ",
     "eukaryotic_details_description_enfasi_ribosomi": "ribosomes, responsible for protein synthesis",
     "eukaryotic_details_description_p10": ". Cellular functions are still carried out by enzyme complexes analogous to those of eukaryotic cells. All bacteria are made up of a single prokaryotic cell (unicellular).",
-    
     "cytoplasm_details_p1": "Each cell is in contact with the surrounding environment, which is mainly composed of water. The interior of the cell is the ",
     "cytoplasm_details_enfasi_citoplasma": "CYTOPLASM",
     "cytoplasm_details_p2": ", formed by a semifluid component, ",
@@ -537,7 +541,6 @@
     "cytoplasm_details_p4": ", in which all the structures called ",
     "cytoplasm_details_enfasi_organuli": "organelles",
     "cytoplasm_details_p5": " are immersed.",
-    
     "cell_membrane_details_p1": "To prevent the loss and dispersion of minerals contained in the cell, there is a layer that separates and acts as a barrier between the outside and the inside and has a stable structure that is not miscible with water. This barrier, which is called the ",
     "cell_membrane_details_enfasi_nome": "CELL OR PLASMA MEMBRANE",
     "cell_membrane_details_p2": ", is composed of a ",
@@ -545,7 +548,6 @@
     "cell_membrane_details_p3": ", partially or completely crossed by ",
     "cell_membrane_details_enfasi_proteine": "numerous proteins",
     "cell_membrane_details_p4": ".",
-    
     "fluid_mosaic_model_p1": "The ",
     "fluid_mosaic_model_enfasi_fosfolipidi": "phospholipids",
     "fluid_mosaic_model_p2": " are specific fats, formed by a “",
@@ -555,11 +557,6 @@
     "fluid_mosaic_model_p4": ", therefore the membrane has a dynamic structure also known as the “",
     "fluid_mosaic_model_enfasi_modello": "fluid mosaic model",
     "fluid_mosaic_model_p5": "”.",
-
-
-
-
-
     "plasma_membrane_permeability_intro_p1": "The ",
     "plasma_membrane_permeability_intro_enfasi_membrana": "plasma membrane",
     "plasma_membrane_permeability_intro_p2": " is ",
@@ -573,7 +570,6 @@
     "plasma_membrane_permeability_intro_p6": " or a structure formed by a large protein inserted within the thickness of the membrane and equipped with a central cavity, which acts as a ",
     "plasma_membrane_permeability_intro_enfasi_canale": "passage channel",
     "plasma_membrane_permeability_intro_p7": ".",
-
     "plasma_membrane_recognition_p1": "The membrane also represents the means by which the cell “",
     "plasma_membrane_recognition_enfasi_riconoscere": "makes itself recognized” by other cells",
     "plasma_membrane_recognition_p2": ". It contains ",
@@ -585,7 +581,6 @@
     "plasma_membrane_recognition_p5": "” based on which the cell is recognized as part of the organism itself and is not attacked by the ",
     "plasma_membrane_recognition_enfasi_immunitario": "immune system",
     "plasma_membrane_recognition_p6": ". Conversely, if foreign, it is destroyed.",
-    
     "cytoskeleton_intro_p1": "Beneath the membrane in the ",
     "cytoskeleton_intro_enfasi_citoplasma": "cytoplasm of eukaryotic cells",
     "cytoskeleton_intro_p2": " is a ",
@@ -599,9 +594,7 @@
     "cytoskeleton_function_p3": ". This function is performed only partly by the membrane, which is aided by ",
     "cytoskeleton_function_enfasi_organuli": "various cellular organelles present within it",
     "cytoskeleton_function_p4": ".",
-
     "organelles_list_intro": "These organelles are:",
-    
     "endoplasmic_reticulum_description_p1": ", which resembles a small labyrinth formed by folded and stacked membranes and is divided into ",
     "endoplasmic_reticulum_description_enfasi_forme": "two distinct forms with different functions",
     "endoplasmic_reticulum_description_p2": ". The Smooth Endoplasmic Reticulum (",
@@ -618,7 +611,6 @@
     "endoplasmic_reticulum_description_p7": ") is so named due to the presence of small structures on its membrane called ",
     "endoplasmic_reticulum_description_enfasi_ribosomi": "ribosomes, essential in the process of protein production",
     "endoplasmic_reticulum_description_p8": ".",
-
     "ribosomes_title": "Ribosomes",
     "ribosomes_description_p1": ", as previously mentioned, represent the ",
     "ribosomes_description_enfasi_sede": "site of protein synthesis",
@@ -627,14 +619,12 @@
     "ribosomes_description_p3": " and can be associated with the R.E.R. or ",
     "ribosomes_description_enfasi_liberi": "free in the cytoplasm",
     "ribosomes_description_p4": ".",
-    
     "golgi_apparatus_description_nucleus": ", normally located near the nucleus, is composed of stacks of flattened cisternae (small flat vesicles).",
     "golgi_apparatus_description_p1": " It represents an area for the ",
     "golgi_apparatus_description_enfasi_raccolta": "collection, processing, and disposal of molecules produced by the cell on their way out",
     "golgi_apparatus_description_p2": ". Specifically, it ",
     "golgi_apparatus_description_enfasi_esportare": "reprocesses, selects, and exports the products of the endoplasmic reticulum",
     "golgi_apparatus_description_p3": ".",
-    
     "mitochondria_title": "Mitochondria",
     "mitochondria_description_p1": ", are the ",
     "mitochondria_description_enfasi_centrali": "powerhouses of energy production",
@@ -647,31 +637,68 @@
     "mitochondria_description_p5": ", derived from the breakdown of nutrients, in the presence of oxygen. They are scattered in the cytoplasm, have an elongated shape, and are composed of ",
     "mitochondria_description_enfasi_membrane": "two membranes",
     "mitochondria_description_p6": ".",
-    
-    
-    
-    
-    
-    
-    
+     
     "lysosomes_title": "Lysosomes",
-    "lysosomes_description": "are vesicles bounded by a membrane and contain enzymes capable of digesting numerous molecules that are useless or harmful to the cell, as well as organelles and foreign organisms.",
-    "nucleus_title": "Cell nucleus",
-    "nucleus_description": "is the main cellular organelle bounded by a non-continuous double membrane but interrupted by small communication channels with the outside called pores, which allow the exchange between the nucleoplasm and the cytoplasm. The nucleus contains nucleic acids (DNA and RNA) and proteins. Among the latter are histone proteins, which are associated with the long DNA filaments and organize them by compacting them in such a way as to adapt them to the reduced volume of the nucleus. This organized structure is called chromatin.",
-    "dna_heredity": "DNA: The molecule of heredity",
-    "dna_description": "DNA is a macromolecule (i.e., formed by a fundamental repeating unit called a NUCLEOTIDE) whose structure is very reminiscent of a spiral staircase, as it is made up of two parallel chains coiled into a spiral.",
-    "nucleotide_intro": "The nucleotides that make up the filaments or chains are formed by:",
+    "lysosomes_description_p1": " are ",
+    "lysosomes_description_enfasi_struttura": "vesicles bounded by a membrane",
+    "lysosomes_description_p2": " and contain ",
+    "lysosomes_description_enfasi_enzimi": "enzymes capable of digesting",
+    "lysosomes_description_p3": " numerous molecules useless or harmful to the cell, organelles, and foreign organisms.",
+    "nucleus_title": "Cell Nucleus",
+    "nucleus_description_p1": " represents the main cell organelle delimited by a ",
+    "nucleus_description_enfasi_doppia_membrana": "non-continuous double membrane",
+    "nucleus_description_p2": " but interrupted by small communication channels with the outside called ",
+    "nucleus_description_enfasi_pori": "pores",
+    "nucleus_description_p3": ", which allow ",
+    "nucleus_description_enfasi_scambio": "exchange between the nucleoplasm and the cytoplasm",
+    "nucleus_description_p4": ". The nucleus contains ",
+    "nucleus_description_enfasi_acidi": "nucleic acids (DNA and RNA) and proteins",
+    "nucleus_description_p5": " within it. Among the latter are the ",
+    "nucleus_description_enfasi_istoniche": "histone proteins",
+    "nucleus_description_p6": ", which, associated with the long DNA filaments, ",
+    "nucleus_description_enfasi_compattano": "organize them by compacting them in such a way as to adapt them to the reduced volume of the nucleus",
+    "nucleus_description_p7": ". This structure so organized is called ",
+    "nucleus_description_enfasi_cromatina": "chromatin",
+    "nucleus_description_p8": ".",
+    "dna_heredity": "DNA: the molecule of heredity",
+    "dna_description_p1": "DNA is a ",
+    "dna_description_enfasi_macro": "macromolecule",
+    "dna_description_p2": " (meaning it's formed by a repeating fundamental unit called a ",
+    "dna_description_enfasi_nucleotide": "NUCLEOTIDE",
+    "dna_description_p3": ") whose structure closely resembles that of a ",
+    "dna_description_enfasi_scaletta": "spiral staircase",
+    "dna_description_p4": ", being composed of ",
+    "dna_description_enfasi_catene": "two parallel chains wound in a spiral",
+    "dna_description_p5": ".",
+    "nucleotide_intro": "The nucleotides that make up the filaments or chains are composed of:",
     "nucleotide_external": "An external portion:",
     "nucleotide_phosphate": "Phosphate group",
     "nucleotide_sugar": "Sugar (deoxyribose)",
-    "nucleotide_internal": "An internal portion",
+    "nucleotide_internal": "An internal portion:",
     "nucleotide_bases": "Nitrogenous base: adenine guanine cytosine thymine",
-    "dna_bonding_description": "The nucleotides follow one another by linking the phosphate group of one to the sugar of the one immediately following it. The bonds between the bases hold the two chains together and represent the steps of the staircase; adenine-thymine and guanine-cytosine. The bases and their sequence are the most important part of the DNA because they carry genetic information; sugars and phosphate groups serve as support.",
-    "genetic_code_description": "DNA therefore has written in its molecule, in a special code that is called the GENETIC CODE, our “complete data” and therefore all the specific morphological and biochemical characteristics of our organism.",
+    "dna_bonding_description_p1": "Nucleotides follow one another by linking the ",
+    "dna_bonding_description_enfasi_legame_zucchero": "phosphate group of one to the sugar of the immediately subsequent one",
+    "dna_bonding_description_p2": ". The bonds between the bases hold the two chains together and represent the steps of the staircase; ",
+    "dna_bonding_description_enfasi_legame_basi": "adenine-thymine and guanine-cytosine",
+    "dna_bonding_description_p3": ". The ",
+    "dna_bonding_description_enfasi_basi_importanti": "bases and their sequence are the most important part of DNA",
+    "dna_bonding_description_p4": " because they ",
+    "dna_bonding_description_enfasi_informazione": "carry genetic information",
+    "dna_bonding_description_p5": "; sugars and phosphate groups serve as ",
+    "dna_bonding_description_enfasi_sostegno": "support",
+    "dna_bonding_description_p6": ".",
+    "genetic_code_description_p1": "DNA therefore has written in its molecule, in a special code called the ",
+    "genetic_code_description_enfasi_codice": "GENETIC CODE",
+    "genetic_code_description_p2": ", our “",
+    "genetic_code_description_enfasi_dati": "complete data”",
+    "genetic_code_description_p3": " and thus all the specific ",
+    "genetic_code_description_enfasi_caratteristiche": "morphological and biochemical characteristics of our organism",
+    "genetic_code_description_p4": ".",
     "diagram_label_nucleotide": "Nucleotide",
     "diagram_label_sugar": "Sugar",
-    "diagram_label_phosphate": "Phosphate group",
-    "diagram_label_base": "Nitrogenous base",
+    "diagram_label_phosphate": "Phosphate Group",
+    "diagram_label_base": "Nitrogenous Base",
+
     "genes_and_proteins_intro": "DNA instructs the various cellular components on what they should or should not do. The 'pieces of DNA' in which these messages are written are called GENES; a gene is a small piece of DNA with a message that translates into the production of a protein. The proteins thus produced are NECESSARY for the SURVIVAL, MULTIPLICATION, and SPECIALIZATION of the cell itself.",
     "individual_proteins_role": "Each animal or plant species and, in particular, each individual has its own specific proteins responsible for individuality that influence the manifestation of different traits.",
     "protein_synthesis_intro": "More precisely, the complex mechanism that leads to protein synthesis can be simplified as follows:",
