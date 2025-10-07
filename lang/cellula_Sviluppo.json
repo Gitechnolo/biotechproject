@@ -269,7 +269,6 @@
     "diagram_label_sugar": "Zucchero",
     "diagram_label_phosphate": "Gruppo fosfato",
     "diagram_label_base": "Base azotata",
-
   "genes_proteins_intro_p1": "Il ",
   "genes_proteins_intro_dna": "DNA",
   "genes_proteins_intro_p2": " ordina ai diversi ",
@@ -423,10 +422,7 @@
   "haploid_diploid_details_p10": " ",
   "haploid_diploid_details_diploidi": "diploidi",
   "haploid_diploid_details_p11": ".",
-
-
-
-    "cell_division_title": "Divisione cellulare",
+  "cell_division_title": "Divisione cellulare",
   "mitosis_intro": "Le cellule sono capaci di riprodursi: ciascuna di esse si divide in due cellule figlie mediante un processo di divisione equazionale che prende il nome di ",
   "mitosis_intro_p2": ".",
   "mitosis_result": "Da una cellula madre si formano due cellule figlie, uguali per forma e funzioni. Le cellule figlie devono contenere l’intero corredo di molecole, di microstrutture e di organelli che possiede la cellula madre. In particolare, devono avere la loro membrana cellulare perfettamente efficiente e un nucleo che contenga il patrimonio genetico (anche quest’ultimo quindi deve duplicarsi).",
@@ -483,18 +479,13 @@
   "fertilization_process_p5": " dei due corredi dimezzati (materno e paterno) e \"rimescolati\" ricostituisce il corredo intero e dà origine ad una singola nuova cellula, detta ",
   "fertilization_process_zigote": "zigote",
   "fertilization_process_p6": ", che diverrà il nuovo individuo.",
-
-    
-    "tissues_title": "I TESSUTI",
-    "tissues_definition": "Un tessuto è un raggruppamento di cellule aventi forma struttura e funzioni simili, tenute insieme da una sostanza intercellulare più o meno abbondante e di composizione e consistenza variabile da tessuto a tessuto.",
-    "tissues_list_intro": "I principali tessuti sono:",
-    "tissue_list_epiteliale": "– tessuto epiteliale;",
-    "tissue_list_connettivale": "– tessuto connettivale;",
-    "tissue_list_muscolare": "– tessuto muscolare;",
-    "tissue_list_nervoso": "– tessuto nervoso.",
-
-
-
+  "tissues_title": "I TESSUTI",
+  "tissues_definition": "Un tessuto è un raggruppamento di cellule aventi forma struttura e funzioni simili, tenute insieme da una sostanza intercellulare più o meno abbondante e di composizione e consistenza variabile da tessuto a tessuto.",
+  "tissues_list_intro": "I principali tessuti sono:",
+  "tissue_list_epiteliale": "– tessuto epiteliale;",
+  "tissue_list_connettivale": "– tessuto connettivale;",
+  "tissue_list_muscolare": "– tessuto muscolare;",
+  "tissue_list_nervoso": "– tessuto nervoso.",
   "epithelial_tissue_title": "Tessuto epiteliale",
   "epithelial_tissue_definition_p1": "È costituito da ",
   "epithelial_tissue_definition_cellule_addossate": "cellule strettamente addossate tra loro",
@@ -526,14 +517,8 @@
   "compound_epithelium_details": ", costituito da più strati di cellule;",
   "pseudostratified_epithelium_title": "epitelio pseudostratificato o a più file di nuclei",
   "pseudostratified_epithelium_details": ", costituito da un solo strato di cellule, che hanno però i nuclei disposti ad altezze diverse del corpo cellulare, simulando così vari strati cellulari.",
-
-
-
-    "epithelial_functions_title": "Funzioni degli epiteli di rivestimento",
-
-
-
-    "epithelial_functions_intro_p1": "Gli epiteli di rivestimento rivestono la superficie esterna del corpo (l’",
+  "epithelial_functions_title": "Funzioni degli epiteli di rivestimento",
+  "epithelial_functions_intro_p1": "Gli epiteli di rivestimento rivestono la superficie esterna del corpo (l’",
   "epithelial_functions_intro_epidermide": "epidermide",
   "epithelial_functions_intro_p2": ", strato più superficiale della pelle), la superficie interna degli organi cavi, comunicanti con l’esterno (di cui costituiscono la ",
   "epithelial_functions_intro_mucosa": "tonaca mucosa",
@@ -563,31 +548,71 @@
 
 
     "connective_tissue_title": "Tessuto connettivo",
-    "connective_tissue_definition": "Il tessuto connettivo è caratterizzato dalla presenza di una notevole quantità di sostanza extracellulare, la sostanza fondamentale, nella quale sono immerse le cellule e le fibre caratteristiche del connettivo. La sostanza extracellulare del connettivo è costituita da una matrice o sostanza fondamentale amorfa e da tre varietà di fibre in essa immerse: fibre collagene, reticolari, elastiche.",
-    "connective_tissue_subdivisions_intro": "La composizione chimica della sostanza fondamentale, la composizione in fibre, la loro organizzazione spaziale e, infine, i tipi cellulari presenti, consentono di suddividere il tessuto connettivo in alcune varietà:",
-    "connective_tissue_list_1": "1) tessuto connettivo propriamente detto;",
-    "connective_tissue_list_2": "2) tessuto cartilagineo;",
-    "connective_tissue_list_3": "3) tessuto adiposo;",
-    "connective_tissue_list_4": "4) tessuto osseo.",
+  "connective_tissue_definition_p1": "Il tessuto connettivo è caratterizzato dalla presenza di una notevole quantità di ",
+  "connective_tissue_definition_sostanza_extracellulare": "sostanza extracellulare",
+  "connective_tissue_definition_p2": ", la ",
+  "connective_tissue_definition_sostanza_fondamentale": "sostanza fondamentale",
+  "connective_tissue_definition_p3": ", nella quale sono immerse le cellule e le fibre caratteristiche del connettivo. La sostanza extracellulare del connettivo è costituita da una ",
+  "connective_tissue_definition_matrice": "matrice o sostanza fondamentale amorfa",
+  "connective_tissue_definition_p4": " e da tre varietà di ",
+  "connective_tissue_definition_fibre": "fibre",
+  "connective_tissue_definition_p5": " in essa immerse: ",
+  "connective_tissue_definition_fibre_tipi": "fibre collagene, reticolari, elastiche",
+  "connective_tissue_definition_p6": ".",
+  "connective_tissue_subdivisions_intro": "La composizione chimica della sostanza fondamentale, la composizione in fibre, la loro organizzazione spaziale e, infine, i tipi cellulari presenti, consentono di suddividere il tessuto connettivo in alcune varietà:",
+  "connective_tissue_list_1": "tessuto connettivo propriamente detto;",
+  "connective_tissue_list_2": "tessuto cartilagineo;",
+  "connective_tissue_list_3": "tessuto adiposo;",
+  "connective_tissue_list_4": "tessuto osseo.",
+
+
+
     "connective_tissue_functions_title": "Funzioni del tessuto connettivo",
-    "connective_tissue_functions_intro": "Il tessuto connettivo svolge importanti funzioni:",
-    "connective_function_1": "1) “connette”, ossia collega tra loro tessuti, organi, parti diverse del corpo;",
-    "connective_function_2": "2) sostiene l’intero organismo (per mezzo dello scheletro osseo), contiene e protegge i vari organi, dei quali costituisce la fi ne “impalcatura” di sostegno;",
-    "connective_function_3": "3) permette lo scambio e il trasporto di sostanze, off rendo nutrimento alle cellule dei vari organi e tessuti;",
-    "connective_function_4": "4) partecipa ai processi difensivi, in particolare contro le infezioni. In sintesi, il tessuto connettivo svolge funzioni nutritive, di sostegno, protezione meccanica e di difesa.",
+  "connective_tissue_functions_intro": "Il tessuto connettivo svolge importanti funzioni:",
+  "connective_function_1": "“connette”, ossia collega tra loro tessuti, organi, parti diverse del corpo;",
+  "connective_function_2": "sostiene l’intero organismo (per mezzo dello scheletro osseo), contiene e protegge i vari organi, dei quali costituisce la fine “impalcatura” di sostegno;",
+  "connective_function_3": "permette lo scambio e il trasporto di sostanze, offrendo nutrimento alle cellule dei vari organi e tessuti;",
+  "connective_function_4": "partecipa ai processi difensivi, in particolare contro le infezioni.",
+  "connective_function_summary": "In sintesi, il tessuto connettivo svolge funzioni nutritive, di sostegno, protezione meccanica e di difesa.",
+
+
+
     "adipose_tissue_title": "Tessuto adiposo",
-    "adipose_tissue_definition": "Il tessuto adiposo è formato da cellule chiamate adipociti, che hanno la funzione di accumulare grassi in vacuoli citoplasmatici.",
-    "adipose_tissue_types": "Esistono due tipi di tessuto adiposo, bianco e bruno. Il primo ha funzione di riserva energetica mentre il secondo è deputato all’accumulo di riserve che verranno dissipate in energia termica.",
-    "nervous_tissue_title": "Tessuto nervoso",
-    "nervous_tissue_definition": "Il tessuto nervoso è costituito da vari tipi di cellule e dai prolungamenti che da queste cellule originano. Le principali cellule costituenti il tessuto nervoso sono i neuroni, cellule irritabili (o eccitabili), capaci di generare e trasmettere impulsi nervosi in risposta a stimoli specifici.",
-    "neuron_structure": "I neuroni sono costituiti da un corpo cellulare avente forma e dimensioni diverse nelle diverse parti del sistema nervoso, provvisto di un numero variabile di prolungamenti brevi, detti dendriti, e un prolungamento, in genere lungo, detto assone.",
-    "neuron_association": "Più neuroni si possono associare a formare dei nervi.",
-    "neuron_reproduction_note": "A differenza delle altre cellule, i neuroni appena formati non si dividono più, questo significa che i neuroni non si riproducono.",
-    "neuron_properties_intro": "La cellula nervosa è in grado di ricevere, condurre e trasmettere impulsi nervosi ed è caratterizzata da due proprietà:",
-    "neuron_property_excitability": "l’eccitabilità, cioè la capacità di reagire agli stimoli provenienti dall’ambiente esterno trasformandoli in impulsi nervosi;",
-    "neuron_property_conductivity": "la conducibilità, cioè la capacità di trasmettere impulsi nervosi.",
-    "synapse_title": "Sinapsi",
-    "synapse_description": "Il meccanismo di trasmissione di informazioni tra un neurone ed un altro è detto sinapsi. Quando ad un neurone arriva un impulso, viene liberata una sostanza chimica chiamata neurotrasmettitore che viene trasmesso alla cellula adiacente e così via, consentendo così all’organismo di svolgere varie funzioni.",
+  "adipose_tissue_definition_p1": "Il tessuto adiposo è formato da cellule chiamate ",
+  "adipose_tissue_definition_adipociti": "adipociti",
+  "adipose_tissue_definition_p2": ", che hanno la funzione di accumulare grassi in ",
+  "adipose_tissue_definition_vacuoli": "vacuoli citoplasmatici",
+  "adipose_tissue_definition_p3": ".",
+  "adipose_tissue_types_p1": "Esistono due tipi di tessuto adiposo, ",
+  "adipose_tissue_types_bianco_bruno": "bianco e bruno",
+  "adipose_tissue_types_p2": ". Il primo ha funzione di riserva energetica mentre il secondo è deputato all’accumulo di riserve che verranno dissipate in energia termica.",
+  "nervous_tissue_title": "Tessuto nervoso",
+  "nervous_tissue_definition_p1": "Il tessuto nervoso è costituito da vari tipi di cellule e dai prolungamenti che da queste cellule originano. Le principali cellule costituenti il tessuto nervoso sono i ",
+  "nervous_tissue_definition_neuroni": "neuroni",
+  "nervous_tissue_definition_p2": ", cellule ",
+  "nervous_tissue_definition_irritabili": "irritabili (o eccitabili)",
+  "nervous_tissue_definition_p3": ", capaci di generare e trasmettere impulsi nervosi in risposta a stimoli specifici.",
+  "neuron_structure_p1": "I neuroni sono costituiti da un corpo cellulare avente forma e dimensioni diverse nelle diverse parti del sistema nervoso, provvisto di un numero variabile di prolungamenti brevi, detti ",
+  "neuron_structure_dendriti": "dendriti",
+  "neuron_structure_p2": ", e un prolungamento, in genere lungo, detto ",
+  "neuron_structure_assone": "assone",
+  "neuron_structure_p3": ".",
+  "neuron_association": "Più neuroni si possono associare a formare dei nervi.",
+  "neuron_reproduction_note_p1": "A differenza delle altre cellule, i neuroni appena formati ",
+  "neuron_reproduction_note_non_si_riproducono": "non si dividono più, questo significa che i neuroni non si riproducono",
+  "neuron_reproduction_note_p2": ".",
+  "neuron_properties_intro": "La cellula nervosa è in grado di ricevere, condurre e trasmettere impulsi nervosi ed è caratterizzata da due proprietà:",
+  "neuron_property_excitability": "l’eccitabilità",
+  "neuron_property_excitability_details": ", cioè la capacità di reagire agli stimoli provenienti dall’ambiente esterno trasformandoli in impulsi nervosi;",
+  "neuron_property_conductivity": "la conducibilità",
+  "neuron_property_conductivity_details": ", cioè la capacità di trasmettere impulsi nervosi.",
+  "synapse_description_p1": "Il meccanismo di trasmissione di informazioni tra un neurone ed un altro è detto ",
+  "synapse_description_sinapsi": "sinapsi",
+  "synapse_description_p2": ". Quando ad un neurone arriva un impulso, viene liberata una sostanza chimica chiamata ",
+  "synapse_description_neurotrasmettitore": "neurotrasmettitore",
+  "synapse_description_p3": " che viene trasmesso alla cellula adiacente e così via, consentendo così all’organismo di svolgere varie funzioni.",
+
+
 
     "_section_dyslexia": "=== Versione semplice per dislessia e ipovisione  ===",
     "cell_title": "CELLULA",
@@ -873,7 +898,6 @@
     "mitochondria_description_p5": ", derived from the breakdown of nutrients, in the presence of oxygen. They are scattered in the cytoplasm, have an elongated shape, and are composed of ",
     "mitochondria_description_enfasi_membrane": "two membranes",
     "mitochondria_description_p6": ".",
-     
     "lysosomes_title": "Lysosomes",
     "lysosomes_description_p1": " are ",
     "lysosomes_description_enfasi_struttura": "vesicles bounded by a membrane",
@@ -934,8 +958,7 @@
     "diagram_label_sugar": "Sugar",
     "diagram_label_phosphate": "Phosphate Group",
     "diagram_label_base": "Nitrogenous Base",
-
-"genes_proteins_intro_p1": "The ",
+  "genes_proteins_intro_p1": "The ",
   "genes_proteins_intro_dna": "DNA",
   "genes_proteins_intro_p2": " commands the various ",
   "genes_proteins_intro_componenti": "cellular components",
@@ -1088,10 +1111,7 @@
   "haploid_diploid_details_p10": " ",
   "haploid_diploid_details_diploidi": "diploid",
   "haploid_diploid_details_p11": ".",
-    
-    
-    
-    "cell_division_title": "Cell Division",
+  "cell_division_title": "Cell Division",
   "mitosis_intro": "Cells are capable of reproduction: each one divides into two daughter cells through a process of equational division known as ",
   "mitosis_intro_p2": ".",
   "mitosis_result": "Two daughter cells, identical in shape and function, are formed from a mother cell. The daughter cells must contain the entire complement of molecules, microstructures, and organelles possessed by the mother cell. Specifically, they must have a perfectly efficient cell membrane and a nucleus containing the genetic material (which must also be duplicated).",
@@ -1148,19 +1168,13 @@
   "fertilization_process_p5": " of the two halved (maternal and paternal) and \"reshuffled\" sets reconstitutes the entire complement and gives rise to a single new cell, called a ",
   "fertilization_process_zigote": "zygote",
   "fertilization_process_p6": ", which will become the new individual.",
-    
-    
-    "tissues_title": "TISSUES",
-    "tissues_definition": "A tissue is a group of cells with similar shape, structure, and functions, held together by an intercellular substance of varying abundance, composition, and consistency from tissue to tissue.",
-    "tissues_list_intro": "The main tissues are:",
-    "tissue_list_epiteliale": "– epithelial tissue;",
-    "tissue_list_connettivale": "– connective tissue;",
-    "tissue_list_muscolare": "– muscular tissue;",
-    "tissue_list_nervoso": "– nervous tissue.",
-
-
-
-
+  "tissues_title": "TISSUES",
+  "tissues_definition": "A tissue is a group of cells with similar shape, structure, and functions, held together by an intercellular substance of varying abundance, composition, and consistency from tissue to tissue.",
+  "tissues_list_intro": "The main tissues are:",
+  "tissue_list_epiteliale": "– epithelial tissue;",
+  "tissue_list_connettivale": "– connective tissue;",
+  "tissue_list_muscolare": "– muscular tissue;",
+  "tissue_list_nervoso": "– nervous tissue.",
   "epithelial_tissue_title": "Epithelial Tissue",
   "epithelial_tissue_definition_p1": "It is composed of ",
   "epithelial_tissue_definition_cellule_addossate": "cells tightly packed together",
@@ -1192,15 +1206,8 @@
   "compound_epithelium_details": ", consisting of multiple layers of cells;",
   "pseudostratified_epithelium_title": "pseudostratified epithelium or epithelium with multiple nuclear rows",
   "pseudostratified_epithelium_details": ", consisting of a single layer of cells, which, however, have nuclei arranged at different heights of the cell body, thus simulating various cell layers.",
-    
-    
-    
-    
-    "epithelial_functions_title": "Functions of Covering Epithelia",
-
-
-
-    "epithelial_functions_intro_p1": "Covering epithelia line the external surface of the body (the ",
+  "epithelial_functions_title": "Functions of Covering Epithelia",
+  "epithelial_functions_intro_p1": "Covering epithelia line the external surface of the body (the ",
   "epithelial_functions_intro_epidermide": "epidermis",
   "epithelial_functions_intro_p2": ", the outermost layer of the skin), the internal surface of hollow organs that communicate with the outside (of which they constitute the ",
   "epithelial_functions_intro_mucosa": "mucous coat",
@@ -1230,31 +1237,71 @@
 
 
     "connective_tissue_title": "Connective Tissue",
-    "connective_tissue_definition": "Connective tissue is characterized by the presence of a significant amount of extracellular substance, the ground substance, in which the characteristic cells and fibers of the connective tissue are embedded. The extracellular substance of connective tissue consists of an amorphous matrix or ground substance and three varieties of fibers embedded in it: collagen, reticular, and elastic fibers.",
-    "connective_tissue_subdivisions_intro": "The chemical composition of the ground substance, the composition of the fibers, their spatial organization, and, finally, the cell types present, allow for the subdivision of connective tissue into several varieties:",
-    "connective_tissue_list_1": "1) connective tissue proper;",
-    "connective_tissue_list_2": "2) cartilage tissue;",
-    "connective_tissue_list_3": "3) adipose tissue;",
-    "connective_tissue_list_4": "4) bone tissue.",
+  "connective_tissue_definition_p1": "Connective tissue is characterized by the presence of a considerable amount of ",
+  "connective_tissue_definition_sostanza_extracellulare": "extracellular substance",
+  "connective_tissue_definition_p2": ", the ",
+  "connective_tissue_definition_sostanza_fondamentale": "ground substance",
+  "connective_tissue_definition_p3": ", in which the cells and characteristic fibers of the connective tissue are immersed. The extracellular substance of connective tissue consists of an ",
+  "connective_tissue_definition_matrice": "amorphous matrix or ground substance",
+  "connective_tissue_definition_p4": " and three varieties of ",
+  "connective_tissue_definition_fibre": "fibers",
+  "connective_tissue_definition_p5": " immersed within it: ",
+  "connective_tissue_definition_fibre_tipi": "collagen, reticular, and elastic fibers",
+  "connective_tissue_definition_p6": ".",
+  "connective_tissue_subdivisions_intro": "The chemical composition of the ground substance, the composition of the fibers, their spatial organization, and finally, the cell types present, allow for the subdivision of connective tissue into several varieties:",
+  "connective_tissue_list_1": "connective tissue proper;",
+  "connective_tissue_list_2": "cartilaginous tissue;",
+  "connective_tissue_list_3": "adipose tissue;",
+  "connective_tissue_list_4": "bone tissue.",
+
+
+
     "connective_tissue_functions_title": "Functions of Connective Tissue",
-    "connective_tissue_functions_intro": "Connective tissue performs important functions:",
-    "connective_function_1": "1) “Connects,” meaning it links together tissues, organs, and different parts of the body;",
-    "connective_function_2": "2) supports the entire organism (by means of the bone skeleton), contains and protects the various organs, of which it forms the 'scaffolding' for support;",
-    "connective_function_3": "3) allows the exchange and transport of substances, providing nourishment to the cells of the various organs and tissues;",
-    "connective_function_4": "4) participates in defensive processes, particularly against infections. In summary, connective tissue performs nutritive, supportive, mechanical protection, and defense functions.",
+  "connective_tissue_functions_intro": "Connective tissue performs important functions:",
+  "connective_function_1": "It “connects,” meaning it links tissues, organs, and different parts of the body together;",
+  "connective_function_2": "It supports the entire organism (by means of the bone skeleton), contains and protects the various organs, for which it constitutes the fine supporting “framework” (scaffolding);",
+  "connective_function_3": "It allows the exchange and transport of substances, offering nourishment to the cells of various organs and tissues;",
+  "connective_function_4": "It participates in defensive processes, particularly against infections.",
+  "connective_function_summary": "In summary, connective tissue performs nutritive, supportive, mechanical protection, and defense functions.",
+    
+    
+    
     "adipose_tissue_title": "Adipose Tissue",
-    "adipose_tissue_definition": "Adipose tissue is made of cells called adipocytes, which have the function of accumulating fats in cytoplasmic vacuoles.",
-    "adipose_tissue_types": "There are two types of adipose tissue: white and brown. The former serves as an energy reserve, while the latter is responsible for accumulating reserves that will be dissipated as thermal energy.",
-    "nervous_tissue_title": "Nervous Tissue",
-    "nervous_tissue_definition": "Nervous tissue is composed of various types of cells and the extensions that originate from these cells. The main cells that make up nervous tissue are neurons, which are irritable (or excitable) cells capable of generating and transmitting nerve impulses in response to specific stimuli.",
-    "neuron_structure": "Neurons consist of a cell body with different shapes and sizes in the different parts of the nervous system, provided with a variable number of short extensions, called dendrites, and one extension, generally long, called the axon.",
-    "neuron_association": "Multiple neurons can associate to form nerves.",
-    "neuron_reproduction_note": "Unlike other cells, neurons, once formed, no longer divide. This means that neurons do not reproduce.",
-    "neuron_properties_intro": "The nerve cell is able to receive, conduct, and transmit nerve impulses and is characterized by two properties:",
-    "neuron_property_excitability": "excitability, meaning the ability to react to stimuli from the external environment by transforming them into nerve impulses;",
-    "neuron_property_conductivity": "conductivity, meaning the ability to transmit nerve impulses.",
-    "synapse_title": "Synapse",
-    "synapse_description": "The mechanism for transmitting information from one neuron to another is called a synapse. When an impulse arrives at a neuron, a chemical substance called a neurotransmitter is released and transmitted to the adjacent cell, and so on, thus allowing the organism to perform various functions.",
+  "adipose_tissue_definition_p1": "Adipose tissue is made up of cells called ",
+  "adipose_tissue_definition_adipociti": "adipocytes",
+  "adipose_tissue_definition_p2": ", which have the function of accumulating fats in ",
+  "adipose_tissue_definition_vacuoli": "cytoplasmic vacuoles",
+  "adipose_tissue_definition_p3": ".",
+  "adipose_tissue_types_p1": "There are two types of adipose tissue, ",
+  "adipose_tissue_types_bianco_bruno": "white and brown",
+  "adipose_tissue_types_p2": ". The former serves as an energy reserve while the latter is dedicated to accumulating reserves that will be dissipated as thermal energy.",
+  "nervous_tissue_title": "Nervous Tissue",
+  "nervous_tissue_definition_p1": "Nervous tissue is composed of various types of cells and the extensions that originate from these cells. The main cells constituting nervous tissue are ",
+  "nervous_tissue_definition_neuroni": "neurons",
+  "nervous_tissue_definition_p2": ", which are ",
+  "nervous_tissue_definition_irritabili": "irritable (or excitable) cells",
+  "nervous_tissue_definition_p3": ", capable of generating and transmitting nerve impulses in response to specific stimuli.",
+  "neuron_structure_p1": "Neurons consist of a cell body with varying shapes and sizes in different parts of the nervous system, provided with a variable number of short extensions, called ",
+  "neuron_structure_dendriti": "dendrites",
+  "neuron_structure_p2": ", and one extension, generally long, called the ",
+  "neuron_structure_assone": "axon",
+  "neuron_structure_p3": ".",
+  "neuron_association": "Multiple neurons can associate to form nerves.",
+  "neuron_reproduction_note_p1": "Unlike other cells, newly formed neurons ",
+  "neuron_reproduction_note_non_si_riproducono": "do not divide anymore, meaning that neurons do not reproduce",
+  "neuron_reproduction_note_p2": ".",
+  "neuron_properties_intro": "The nerve cell is capable of receiving, conducting, and transmitting nerve impulses and is characterized by two properties:",
+  "neuron_property_excitability": "excitability",
+  "neuron_property_excitability_details": ", which is the ability to react to stimuli from the external environment by transforming them into nerve impulses;",
+  "neuron_property_conductivity": "conductivity",
+  "neuron_property_conductivity_details": ", which is the ability to transmit nerve impulses.",
+  "synapse_description_p1": "The mechanism of information transmission between one neuron and another is called a ",
+  "synapse_description_sinapsi": "synapse",
+  "synapse_description_p2": ". When an impulse reaches a neuron, a chemical substance called a ",
+  "synapse_description_neurotrasmettitore": "neurotransmitter",
+  "synapse_description_p3": " is released, which is transmitted to the adjacent cell and so on, thus allowing the organism to perform various functions.",
+
+
 
     "_section_dyslexia": "=== Simple version for dyslexia and low vision  ===",
     "cell_title": "CELL",
