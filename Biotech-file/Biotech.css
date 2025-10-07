@@ -220,8 +220,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
 .yellowtext {font-size: 16px; font-weight: normal; color: hwb(56 35% 14%);}
 .greentext { font-size: 16px; font-weight: normal; color: hwb(93 2% 3%);}
-.orangetext {font-size: 16px; font-weight: normal; color: hwb(27 1% 0%);}
-.biotechbold {font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); text-shadow: 2px 2px 5px blueviolet; letter-spacing: 2px; font-style: italic;}
+.orangetext {font-size: 16px; font-weight: normal; color: #ff80ab;}
+.biotechbold {font-size: 16px; font-weight: bold; color: #b89900; text-shadow: 2px 2px 5px blueviolet; letter-spacing: 2px; font-style: italic;}
 .secHeader {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .subtitle {font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
