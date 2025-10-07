@@ -221,7 +221,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .yellowtext {font-size: 16px; font-weight: normal; color: #FFD700;}
 .greentext { font-size: 16px; font-weight: normal; color: #7FFFD4;}
 .orangetext {font-size: 16px; font-weight: bold; color: #ffffff;}
-.biotechbold {font-size: 16px; font-weight: bold; color: #00FFFF; /* Ciano Elettrico */ text-shadow: none ; letter-spacing: normal; font-style: normal;}
+.biotechbold {font-size: 16px; font-weight: bold; color: #B5EAD7; /* Menta Chiaro */ text-shadow: none ; letter-spacing: normal; font-style: normal;}
 .secHeader {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .subtitle {font-size: 19px; font-weight: normal; color: hsla(60, 22%, 96%, 0.5);}
 .quotes {color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center;}
