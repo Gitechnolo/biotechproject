@@ -78,8 +78,8 @@ h2.atkinson-bold,
     display: block;
     margin-bottom: 12px;
   }   
-ul.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; list-style-type: none; margin: 1; padding: 1; color: hwb(56 32% 7%);}
-ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; padding: 1; color: hwb(56 32% 7%);}
+ul.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; list-style-type: none; margin: 1; padding: 1; color: #B5EAD7; /* Menta Chiaro */;}
+ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; padding: 1; color: #B5EAD7; /* Menta Chiaro */;}
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
