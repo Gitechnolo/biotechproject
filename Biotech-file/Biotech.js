@@ -869,21 +869,20 @@ function applyTranslations(translations, lang) {
         if (bold) {
           bold.textContent = value;
         } else {
-          el.textContent = value;
+          el.innerHTML = value; // Supporta HTML
         }
       } else {
         const bold = el.querySelector('b');
         if (bold) {
           bold.textContent = value;
         } else {
-          el.textContent = value;
+          el.innerHTML = value; // Supporta HTML
         }
       }
     }
   });
-
   console.log(`✅ Traduzioni applicate in ${lang}`);
-}
+}   
 // ===========================
 // INIZIALIZZA IL SISTEMA DI TRADUZIONE (CON RITARDO SICURO)
 // ===========================
