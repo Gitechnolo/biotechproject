@@ -780,7 +780,12 @@
     "pyloric_sphincter_control": "Lo sfintere pilorico si apre in modo controllato:",
     "sphincter_closed_during_digestion": "È chiuso durante la digestione.",
     "sphincter_opens_periodically": "Si apre periodicamente per far passare il chimo nel duodeno.",
-    "duodenal_reflex": "Appena un po’ di chimo entra nel duodeno, scatta un riflesso che chiude lo sfintere. Così il resto del chimo aspetta."
+    "duodenal_reflex": "Appena un po’ di chimo entra nel duodeno, scatta un riflesso che chiude lo sfintere. Così il resto del chimo aspetta.",
+    "meccanismo_svuotamento_lento": "Questo meccanismo permette uno svuotamento <span class=\"atkinson-italic\">lento e regolato</span>, per dare al resto dell’intestino il tempo di digerire bene.",
+    "titolo_intestino_tenue_crasso": "LA DIGESTIONE NELL'INTESTINO TENUE, LA FUNZIONE DELL'INTESTINO CRASSO",
+    "titolo_fase_3": "3. Digestione intestinale",
+    "desc_fase_3_p1": "Nel piccolo intestino, i nutrienti vengono separati e preparati per l’assorbimento.",
+    "desc_fase_3_p2": "Infine, i nutrienti passano dal intestino al sangue e vengono distribuiti in tutto il corpo per produrre energia e far funzionare le cellule."
   },
   "en": {
     "apparato_digerente": "DIGESTIVE SYSTEM",
@@ -1570,6 +1575,11 @@
     "pyloric_sphincter_control": "The pyloric sphincter opens in a controlled way:",
     "sphincter_closed_during_digestion": "It is closed during digestion.",
     "sphincter_opens_periodically": "It opens periodically to allow chyme to pass into the duodenum.",
-    "duodenal_reflex": "As soon as some chyme enters the duodenum, a reflex is triggered that closes the sphincter. Thus, the rest of the chyme waits."
+    "duodenal_reflex": "As soon as some chyme enters the duodenum, a reflex is triggered that closes the sphincter. Thus, the rest of the chyme waits.",
+    "meccanismo_svuotamento_lento": "This mechanism allows for a <span class=\"atkinson-italic\">slow and regulated</span> emptying, giving the rest of the intestine time to digest properly.",
+    "titolo_intestino_tenue_crasso": "DIGESTION IN THE SMALL INTESTINE, THE FUNCTION OF THE LARGE INTESTINE",
+    "titolo_fase_3": "3. Intestinal Digestion",
+    "desc_fase_3_p1": "In the small intestine, nutrients are separated and prepared for absorption.",
+    "desc_fase_3_p2": "Finally, nutrients pass from the intestine into the blood and are distributed throughout the body to produce energy and make the cells work."
   }
 }   
