@@ -1417,133 +1417,134 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
        style="display: inline-block; width: 75%; height: auto; margin: 0; padding: 2px; border-radius: 4px;">
 </div>
 
-<!-- Testo nascosto per screen reader -->
-<p id="gallery-instructions" style="position: absolute; left: -9999px;">
+<p id="gallery-instructions" 
+   style="position: absolute; left: -9999px;"
+   data-lang-key="gallery_instructions">
   Usa i pulsanti Indietro e Avanti oppure le frecce sinistra e destra della tastiera per navigare tra le immagini del fegato. 
   Ci sono 4 immagini in totale.
 </p>
 
-<!-- Pulsanti di navigazione -->
 <div style="text-align: center; margin: 16px 0;">
   <button onclick="scrollGallery(-1)" class="atkinson-bold" 
           style="margin: 0 12px; padding: 12px 24px;" 
-          aria-label="Mostra immagine precedente">
+          aria-label="Mostra immagine precedente"
+          data-lang-key="button_indietro">
     Indietro
   </button>
   <button onclick="scrollGallery(1)" class="atkinson-bold" 
           style="margin: 0 12px; padding: 12px 24px;" 
-          aria-label="Mostra immagine successiva">
+          aria-label="Mostra immagine successiva"
+          data-lang-key="button_avanti">
     Avanti
   </button>
 </div>
 
-<!-- Indicatore di posizione (opzionale ma utile) -->
 <div style="text-align: center; margin: 8px 0;">
   <span id="gallery-counter" class="atkinson-regular" style="color: #a7ffeb;">
     Immagine 1 di 4
   </span>
 </div>   
 
-<span class="atkinson-bold">IL FEGATO</span>
+<span class="atkinson-bold" data-lang-key="titolo_fegato">IL FEGATO</span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="fegato_laboratorio">
     Il fegato <span class="atkinson-italic">non serve solo a produrre la bile</span>.  
     Quella è solo una delle sue tante funzioni.  
     In realtà, è un <span class="atkinson-bold">grande laboratorio</span> del corpo.
 </span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="fegato_peso_posizione">
     Pesa circa <span class="atkinson-bold">1500 grammi</span>.  
     Si trova nella parte alta destra dell’addome.
 </span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="fegato_riceve_titolo">
     Riceve:
 </span>
 
 <ul class="atkinson-regular">
-    <li>Le sostanze assorbite dall’intestino, tramite la <span class="atkinson-bold">vena porta</span>.</li>
-    <li>I <span class="atkinson-bold">rifiuti</span> prodotti dalle cellule del corpo.</li>
+    <li data-lang-key="fegato_riceve_sostanze">Le sostanze assorbite dall’intestino, tramite la <span class="atkinson-bold">vena porta</span>.</li>
+    <li data-lang-key="fegato_riceve_rifiuti">I <span class="atkinson-bold">rifiuti</span> prodotti dalle cellule del corpo.</li>
 </ul>
 
-<span class="atkinson-bold">Funzioni principali del fegato</span>
+<span class="atkinson-bold" data-lang-key="titolo_funzioni_fegato">Funzioni principali del fegato</span>
 
 <ol class="atkinson-regular">
-    <li><span class="atkinson-bold">Produce amminoacidi essenziali</span>:  
+    <li data-lang-key="fegato_funzione_amminoacidi"><span class="atkinson-bold">Produce amminoacidi essenziali</span>:  
         servono per costruire le proteine delle cellule e del sangue.</li>
     
-    <li><span class="atkinson-bold">Sintetizza le albumine</span>:  
+    <li data-lang-key="fegato_funzione_albumine"><span class="atkinson-bold">Sintetizza le albumine</span>:  
         proteine importanti del plasma sanguigno.</li>
     
-    <li><span class="atkinson-bold">Sintetizza le globuline</span>:  
+    <li data-lang-key="fegato_funzione_globuline"><span class="atkinson-bold">Sintetizza le globuline</span>:  
         aiutano la coagulazione del sangue e il sistema immunitario.</li>
     
-    <li><span class="atkinson-bold">Trasforma il glucosio in glicogeno</span>:  
+    <li data-lang-key="fegato_funzione_glucosio"><span class="atkinson-bold">Trasforma il glucosio in glicogeno</span>:  
         lo immagazzina come <span class="atkinson-bold">riserva di energia</span>.</li>
     
-    <li><span class="atkinson-bold">Gestisce zuccheri e grassi</span>:  
+    <li data-lang-key="fegato_funzione_metabolismo"><span class="atkinson-bold">Gestisce zuccheri e grassi</span>:  
         regola il metabolismo di glucosio e lipidi.</li>
     
-    <li><span class="atkinson-bold">Rende innocue le sostanze tossiche</span>:  
+    <li data-lang-key="fegato_funzione_innocue"><span class="atkinson-bold">Rende innocue le sostanze tossiche</span>:  
         come alcol, farmaci o scorie del corpo.</li>
     
-    <li><span class="atkinson-bold">Produce colesterolo, acidi biliari e bilirubina</span>:  
+    <li data-lang-key="fegato_funzione_bile_comp"><span class="atkinson-bold">Produce colesterolo, acidi biliari e bilirubina</span>:  
         componenti principali della bile.</li>
 </ol>
 
-<span class="atkinson-bold">IL METABOLISMO</span>
+<span class="atkinson-bold" data-lang-key="titolo_metabolismo">IL METABOLISMO</span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="metabolismo_desc">
     Il <span class="atkinson-bold">metabolismo</span> è l’insieme delle reazioni chimiche  
     che permettono al corpo di vivere, crescere e produrre energia.
 </span>
 
-<span class="atkinson-bold">Due fasi principali</span>
+<span class="atkinson-bold" data-lang-key="titolo_fasi_metabolismo">Due fasi principali</span>
 
 <ul class="atkinson-regular">
-    <li><span class="atkinson-bold">Fase anabolica</span> (costruttiva):  
+    <li data-lang-key="fase_anabolica"><span class="atkinson-bold">Fase anabolica</span> (costruttiva):  
         il corpo trasforma il cibo in energia o in nuova materia.  
         Si chiama anche <span class="atkinson-bold">assimilazione</span>.</li>
     
-    <li><span class="atkinson-bold">Fase catabolica</span> (distruttiva):  
+    <li data-lang-key="fase_catabolica_distruttiva"><span class="atkinson-bold">Fase catabolica</span> (distruttiva):  
         il corpo smonta le sostanze usate.  
         I rifiuti escono con urina, sudore e anidride carbonica.</li>
 </ul>
 
-<span class="atkinson-bold">Bilancio del metabolismo</span>
+<span class="atkinson-bold" data-lang-key="titolo_bilancio_metabolismo">Bilancio del metabolismo</span>
 
 <ul class="atkinson-regular">
-    <li>Nell’<span class="atkinson-bold">età giovanile</span>: prevale la fase <span class="atkinson-bold">anabolica</span> → si cresce.</li>
-    <li>Nell’<span class="atkinson-bold">età adulta</span>: le due fasi sono in <span class="atkinson-bold">equilibrio</span>.</li>
-    <li>Nella <span class="atkinson-bold">vecchiaia</span>: prevale la fase <span class="atkinson-bold">catabolica</span> → si perdono massa e tessuti.</li>
+    <li data-lang-key="bilancio_giovanile">Nell’<span class="atkinson-bold">età giovanile</span>: prevale la fase <span class="atkinson-bold">anabolica</span> → si cresce.</li>
+    <li data-lang-key="bilancio_adulta">Nell’<span class="atkinson-bold">età adulta</span>: le due fasi sono in <span class="atkinson-bold">equilibrio</span>.</li>
+    <li data-lang-key="bilancio_vecchiaia">Nella <span class="atkinson-bold">vecchiaia</span>: prevale la fase <span class="atkinson-bold">catabolica</span> → si perdono massa e tessuti.</li>
 </ul>
 
-<span class="atkinson-bold">Enzimi e condizioni del corpo</span>
+<span class="atkinson-bold" data-lang-key="titolo_enzimi_condizioni">Enzimi e condizioni del corpo</span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="enzimi_desc">
     Il metabolismo dipende da migliaia di <span class="atkinson-bold">enzimi</span> (fermenti).  
     Ce ne sono circa <span class="atkinson-bold">25.000</span> e molti altri sono ancora da scoprire.
 </span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="enzimi_lavorano_solo_se">
     Gli enzimi lavorano solo se:
 </span>
 
 <ul class="atkinson-regular">
-    <li>L’ambiente ha la giusta <span class="atkinson-bold">acidità</span>.</li>
-    <li>Sono presenti <span class="atkinson-bold">catalizzatori</span> (come sali minerali o vitamine).</li>
-    <li>La <span class="atkinson-bold">temperatura</span> è corretta.</li>
+    <li data-lang-key="enzimi_condizione_acidita">L’ambiente ha la giusta <span class="atkinson-bold">acidità</span>.</li>
+    <li data-lang-key="enzimi_condizione_catalizzatori">Sono presenti <span class="atkinson-bold">catalizzatori</span> (come sali minerali o vitamine).</li>
+    <li data-lang-key="enzimi_condizione_temperatura">La <span class="atkinson-bold">temperatura</span> è corretta.</li>
 </ul>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="reazioni_laboratorio">
     Molte di queste reazioni <span class="atkinson-italic">non si possono riprodurre in laboratorio</span>.  
     Per esempio, la sintesi completa delle proteine molto lunghe  
     è stata ottenuta solo in parte, e con l’aiuto di sistemi artificiali.
 </span>
 
-<span class="atkinson-bold">Omeostasi: l’equilibrio del corpo</span>
+<span class="atkinson-bold" data-lang-key="titolo_omeostasi">Omeostasi: l’equilibrio del corpo</span>
 
-<span class="atkinson-regular">
+<span class="atkinson-regular" data-lang-key="omeostasi_desc">
     Un metabolismo normale mantiene stabili le condizioni interne del corpo.  
     Questo equilibrio si chiama <span class="atkinson-bold">omeostasi</span>.
 </span>
