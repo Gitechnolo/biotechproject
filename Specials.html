@@ -67,6 +67,10 @@
 <style>
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
+.specials-ref {font-size: 0.95em; color: #b2bec3; text-align: right; margin-top: 18px;}
+.specials-img {display: block; margin: 18px auto; max-width: 420px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
+  background: rgba(220, 230, 220, 0.5); /* Sfondo semi-trasparente */
+  backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
 </style>
 <script>
 !function(){
@@ -97,7 +101,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->
 <a href="#main" class="skip-link">Vai al contenuto principale</a>  
 <!-- Pulsante attivazione navigazione da tastiera -->
-<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text" data-lang-key="keyboard-toggle">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
 <div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
 <!-- DNA animation -->
 <div class="dna-container-8">
@@ -120,25 +124,30 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>
 </div>
 <!-- VOCE: Fisiologia -->
-<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it"><b>Fisiologia</b></button>
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it" data-lang-key="nav-physiology"><b>Fisiologia</b></button>
 <div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
-<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula">Cellula</a>
-<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio">Apparato circolatorio</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio">Apparato respiratorio</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente">Apparato digerente</a>
-<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario">Apparato tegumentario</a>
-<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario">Sistema linfatico / immunitario</a>
-<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia">Dermatologia</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula" data-lang-key="nav-cell">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio" data-lang-key="nav-circulatory">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio" data-lang-key="nav-respiratory">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente" data-lang-key="nav-digestive">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario" data-lang-key="nav-integumentary">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario" data-lang-key="nav-lymphatic">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia" data-lang-key="nav-dermatology">Dermatologia</a></div>
 </div>
 </div>
 <!-- VOCE: Service -->
 <div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
 <div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
 <button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
-<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it">Contattaci</button>
-<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto">Accessibilità</a>
-<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project">Accessibility</a>
-<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it">🎨 Tema pulsanti</a></div>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it" data-lang-key="nav-contact">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto" data-lang-key="nav-accessibility">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project" data-lang-key="nav-accessibility-en">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it" data-lang-key="nav-theme">🎨 Tema pulsanti</a>
+<button role="menuitem" id="lang-toggle" aria-label="Cambia lingua in inglese" onclick="toggleLanguage()" lang="it">
+  <span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span>
+  <span id="lang-label">Cambia lingua</span>
+</button>         
+</div>
 </div>
 </div>
 <!-- VOCE: Staff -->
@@ -146,7 +155,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
 <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
 <a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
-<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti">Progetti</a></div>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti" data-lang-key="nav-progetti">Progetti</a></div>
 </div>
 </div>
 <!-- VOCE: Technologies -->
@@ -157,7 +166,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>
 </div>   
 </div>
-<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180">   
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180"> 
 <div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
 <div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
 <div class="modern-greeting" id="week"></div>
@@ -171,53 +180,21 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<style>
-   .specials-section {
-      margin-bottom: 32px;
-    }
-    .specials-section h2 {
-      color: #aee9f7;
-      font-size: 1.4em;
-      margin-bottom: 10px;
-      text-shadow: 1px 1px 4px #222;
-    }
-    .specials-section p {
-      font-size: 1.1em;
-      line-height: 1.7;
-      color: #e6e6e6;
-      margin-bottom: 12px;
-    }
-    .specials-img {
-      display: block;
-      margin: 18px auto 24px auto;
-      max-width: 420px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(34,49,63,0.18);
-      background-color: #aee9f7;
-    }
-    .specials-ref {
-      font-size: 0.95em;
-      color: #b2bec3;
-      text-align: right;
-      margin-top: 18px;
-    }
-    
-  </style>
   <!-- nav -->
   <div class="tech-content-wrapper">
-<div class="sansation-bold">Cellule Staminali e le Loro Applicazioni nella Robotica</div>
+<div class="sansation-bold" data-lang-key="stem-cells-title">Cellule Staminali e le Loro Applicazioni nella Robotica</div>
 
-<div class="specials-section">
-  <h2>Che Cos'è una Cellula Stamminale?</h2>
+<div>
+  <h2 class="secHeader" data-lang-key="what-are-stem-cells">Che Cos'è una Cellula Stamminale?</h2>
   <p>
     Le cellule staminali sono cellule biologiche non differenziate capaci di svilupparsi in tipi cellulari specializzati. Svolgono un ruolo fondamentale nella crescita, nella guarigione e nella rigenerazione dei tessuti. Esistono due tipi principali: le cellule staminali embrionali (che possono trasformarsi in qualsiasi tipo cellulare) e le cellule staminali adulte (più limitate, ma comunque vitali per la riparazione).
   </p>
   <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Final_stem_cell_differentiation.png" alt="Differenziazione della Cellula Stamminale" class="specials-img">
   <div class="specials-ref">Fonte: Wikipedia (<a href="https://en.wikipedia.org/wiki/Stem_cell" target="_blank" style="color:#aee9f7;">Stem cell</a>)</div>
-</div>
+</div>   
 
-<div class="specials-section">
-  <h2>Cellule Staminali nella Robotica</h2>
+<div>
+  <h2 class="secHeader">Cellule Staminali nella Robotica</h2>
   <p>
     L'intersezione tra la ricerca sulle cellule staminali e la robotica è un campo in rapida evoluzione. Gli scienziati stanno esplorando come i principi biologici, come l'auto-riparazione e l'adattabilità presenti nelle cellule staminali, possano ispirare la progettazione di robot avanzati. Ad esempio, i "robot bio-ibridi" integrano cellule vive (inclusi le cellule staminali) con materiali sintetici per creare macchine in grado di autoripararsi o adattarsi all'ambiente.
   </p>
@@ -225,8 +202,8 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   <div class="specials-ref">Fonte: Wikipedia (<a href="https://en.wikipedia.org/wiki/Biohybrid_robot" target="_blank" style="color:#aee9f7;">Biohybrid robot</a>)</div>
 </div>
 
-<div class="specials-section">
-  <h2>Applicazioni e Prospettive Future</h2>
+<div>
+  <h2 class="secHeader">Applicazioni e Prospettive Future</h2>
   <p>
     Le possibili applicazioni includono robot medici in grado di riparare tessuti, robot morbidi per il rilascio di farmaci e protesi adattive. La ricerca è in corso per utilizzare le cellule staminali nella coltivazione di tessuti muscolari o cellule nervose direttamente su strutture robotiche, abilitando movimenti più simili a quelli naturali e capacità di auto-riparazione.
   </p>
@@ -235,28 +212,28 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   <div class="specials-ref">Fonte: Wikipedia (<a href="https://en.wikipedia.org/wiki/Soft_robotics" target="_blank" style="color:#aee9f7;">Soft robotics</a>)</div>
 </div>
 
-<div class="specials-section">
-  <h2>Interfacce Cervello-Computer (BCI) e Applicazioni Cliniche</h2>
+<div>
+  <h2 class="secHeader">Interfacce Cervello-Computer (BCI) e Applicazioni Cliniche</h2>
   <p>Nel 2025, le <strong>interfacce cervello-computer (BCI)</strong> stanno rivoluzionando la medicina riabilitativa. Aziende come Neuralink e progetti in Cina stanno testando dispositivi in grado di tradurre gli impulsi cerebrali in comandi per arti robotici o comunicazione digitale. I trial clinici hanno già dimostrato che pazienti con lesioni al midollo spinale possono <strong>mangiare, bere e afferrare oggetti</strong> dopo nove mesi di utilizzo. Questi sistemi rappresentano un salto in avanti verso protesi intelligenti e autonomia per persone con disabilità gravi.</p>
 </div>
-
-<div class="specials-section">
-  <h2>Xenobots e Microrobot a Base di Cellule Staminali</h2>
+<br>
+<div>
+  <h2 class="secHeader">Xenobots e Microrobot a Base di Cellule Staminali</h2>
   <p>Una delle innovazioni più recenti riguarda i <strong>Xenobots</strong>, robot viventi sviluppati da cellule staminali di rana. Questi bio-robot sono capaci di <strong>muoversi autonomamente, autoripararsi e trasportare carichi microscopici</strong>. Grazie alla loro biocompatibilità e biodegradabilità, sono ideali per applicazioni mediche come il <strong>rilascio mirato di farmaci</strong> o la rimozione di placche aterosclerotiche. Studi recenti mostrano progressi nell’integrazione di <strong>neuroni derivati da cellule staminali</strong> per controllare muscoli artificiali in modo autonomo.</p>
 </div>
-
-<div class="specials-section">
-  <h2>Robot Bio-Ibridi con Capacità Sensoriali</h2>
+<br>
+<div>
+  <h2 class="secHeader">Robot Bio-Ibridi con Capacità Sensoriali</h2>
   <p>I nuovi robot bio-ibridi integrano non solo muscoli, ma anche <strong>reti neurali artificiali e sensori biologici</strong>, permettendo loro di rispondere a stimoli ambientali in modo adattivo. Ricerche all’Università dell’Illinois hanno sviluppato robot nuotanti comandati da cellule muscolari cardiache di ratto. Questi sistemi sono testati per <strong>monitorare inquinanti</strong> o <strong>rimuovere microplastiche</strong> in ambienti acquatici, aprendo scenari di robotica ecologica sostenibile.</p>
 </div>
-
-<div class="specials-section">
-  <h2>Prospettive Future: Auto-Replicazione e Integrazione Neurale</h2>
+<br>
+<div>
+  <h2 class="secHeader">Prospettive Future: Auto-Replicazione e Integrazione Neurale</h2>
   <p>La frontiera della ricerca punta a <strong>sistemi auto-replicanti</strong> e <strong>robot con capacità di apprendimento</strong> grazie a reti neurali ibride. L’obiettivo è creare dispositivi che possano <strong>adattarsi, evolversi e operare in autonomia</strong> all’interno del corpo umano o in ambienti estremi. Il mercato della robotica morbida, strettamente legato a questa tecnologia, dovrebbe raggiungere <strong>5,3 miliardi di dollari entro il 2031</strong>.</p>
 </div>   
-
-<div class="specials-section">
-  <h2>Riferimenti e Letture Consigliate</h2>
+<br>
+<div>
+  <h2 class="secHeader">Riferimenti e Letture Consigliate</h2>
   <ul style="color:#ffe066;">
     <li><a href="https://en.wikipedia.org/wiki/Stem_cell" target="_blank" style="color:#aee9f7;">Stem cell - Wikipedia</a></li>
     <li><a href="https://en.wikipedia.org/wiki/Biohybrid_robot" target="_blank" style="color:#aee9f7;">Biohybrid robot - Wikipedia</a></li>
@@ -265,7 +242,8 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   </ul>
 </div>
 </div>
-
+<br>
+<br>
 <p class="quotes"><cite>La scienza è un modo di vivere raffinato, che richiede una mente aperta e una continua curiosità.<br>
   La ricerca sulle cellule staminali e la robotica non è solo un campo di studio, ma un viaggio verso il futuro della tecnologia e della biologia.</cite></p>   
 <br>

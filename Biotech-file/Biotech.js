@@ -816,7 +816,8 @@ const translatablePages = [
   'Apparato_digerente',
   'Apparato_respiratorio',
   'Apparato_tegumentario',
-  'Sistema_linfatico'
+  'Sistema_linfatico',
+  'Specials'
 ];
 
 // Mappa nome pagina → nome file JSON
