@@ -1,22 +1,26 @@
 {
   "it": {
-    "stem-cells-title": "Cellule Staminali e le Loro Applicazioni nella Robotica",
-    "what-are-stem-cells": "Che Cos'è una Cellula Stamminale?",
-    "stem-cells-in-robotics": "Cellule Staminali nella Robotica",
-    "applications": "Applicazioni e Prospettive Future",
-    "bci-clinical": "Interfacce Cervello-Computer (BCI) e Applicazioni Cliniche",
-    "xenobots": "Xenobots e Microrobot a Base di Cellule Staminali",
-    "biohybrid-sensory": "Robot Bio-Ibridi con Capacità Sensoriali",
-    "future-prospects": "Prospettive Future: Auto-Replicazione e Integrazione Neurale"
+"stem-cells-title": "Cellule Staminali e le Loro Applicazioni nella Robotica",
+"what-are-stem-cells": "Che Cos'è una Cellula Stamminale?",
+"stem-cells-description": "Le cellule staminali sono cellule biologiche non differenziate capaci di svilupparsi in tipi cellulari specializzati. Svolgono un ruolo fondamentale nella crescita, nella guarigione e nella rigenerazione dei tessuti. Esistono due tipi principali: le cellule staminali embrionali (che possono trasformarsi in qualsiasi tipo cellulare) e le cellule staminali adulte (più limitate, ma comunque vitali per la riparazione).",
+"stem-cells-in-robotics": "Cellule Staminali nella Robotica",
+"biohybrid-robots-description": "L'intersezione tra la ricerca sulle cellule staminali e la robotica è un campo in rapida evoluzione. Gli scienziati stanno esplorando come i principi biologici, come l'auto-riparazione e l'adattabilità presenti nelle cellule staminali, possano ispirare la progettazione di robot avanzati. Ad esempio, i \"robot bio-ibridi\" integrano cellule vive (inclusi le cellule staminali) con materiali sintetici per creare macchine in grado di autoripararsi o adattarsi all'ambiente.",
+"applications": "Applicazioni e Prospettive Future",
+"future-applications-description": "Le possibili applicazioni includono robot medici in grado di riparare tessuti, robot morbidi per il rilascio di farmaci e protesi adattive. La ricerca è in corso per utilizzare le cellule staminali nella coltivazione di tessuti muscolari o cellule nervose direttamente su strutture robotiche, abilitando movimenti più simili a quelli naturali e capacità di auto-riparazione.",
+"bci-clinical": "Interfacce Cervello-Computer (BCI) e Applicazioni Cliniche",
+"bci-clinical-description": "Nel 2025, le <strong>interfacce cervello-computer (BCI)</strong> stanno rivoluzionando la medicina riabilitativa. Aziende come Neuralink e progetti in Cina stanno testando dispositivi in grado di tradurre gli impulsi cerebrali in comandi per arti robotici o comunicazione digitale. I trial clinici hanno già dimostrato che pazienti con lesioni al midollo spinale possono <strong>mangiare, bere e afferrare oggetti</strong> dopo nove mesi di utilizzo. Questi sistemi rappresentano un salto in avanti verso protesi intelligenti e autonomia per persone con disabilità gravi."
+    
   },
   "en": {
-    "stem-cells-title": "Stem Cells and Their Applications in Robotics",
-    "what-are-stem-cells": "What Are Stem Cells?",
-    "stem-cells-in-robotics": "Stem Cells in Robotics",
-    "applications": "Applications and Future Prospects",
-    "bci-clinical": "Brain-Computer Interfaces (BCI) and Clinical Applications",
-    "xenobots": "Xenobots and Stem Cell-Based Microrobots",
-    "biohybrid-sensory": "Biohybrid Robots with Sensory Capabilities",
-    "future-prospects": "Future Prospects: Self-Replication and Neural Integration"
+"stem-cells-title": "Stem Cells and Their Applications in Robotics",
+"what-are-stem-cells": "What Are Stem Cells?",
+"stem-cells-description": "Stem cells are undifferentiated biological cells capable of developing into specialized cell types. They play a crucial role in growth, healing, and tissue regeneration. There are two main types: embryonic stem cells (which can become any cell type) and adult stem cells (which are more limited but still vital for repair).",
+"stem-cells-in-robotics": "Stem Cells in Robotics",
+"biohybrid-robots-description": "The intersection of stem cell research and robotics is a rapidly evolving field. Scientists are exploring how biological principles, such as self-repair and adaptability found in stem cells, can inspire the design of advanced robots. For example, \"biohybrid robots\" integrate living cells (including stem cells) with synthetic materials to create machines that can heal themselves or adapt to their environment.",
+"applications": "Applications and Future Prospects",
+"future-applications-description": "Potential applications include medical robots that can repair tissues, soft robots for drug delivery, and adaptive prosthetics. Research is ongoing to use stem cells for growing muscle tissue or nerve cells directly on robotic frameworks, enabling more lifelike movement and self-repair capabilities.",
+"bci-clinical": "Brain-Computer Interfaces (BCI) and Clinical Applications",
+"bci-clinical-description": "In 2025, <strong>brain-computer interfaces (BCI)</strong> are revolutionizing rehabilitative medicine. Companies like Neuralink and projects in China are testing devices capable of translating brain signals into commands for robotic limbs or digital communication. Clinical trials have already shown that patients with spinal cord injuries can <strong>eat, drink, and grasp objects</strong> after nine months of use. These systems represent a leap forward toward intelligent prosthetics and autonomy for people with severe disabilities."
+   
   }
 }   
