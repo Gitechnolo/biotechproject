@@ -183,7 +183,7 @@ table caption {caption-side: bottom;}
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-        <h2 class="sansation-bold">Progetti del Biotech Project</h2>
+      <h2 class="sansation-bold" data-lang-key="projects-title">Progetti del Biotech Project</h2>
 <table>
   <tr>
     <th><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.avif" alt="Docker cp" style="width:100%;max-width:214px" loading="lazy"></th>
@@ -191,7 +191,7 @@ table caption {caption-side: bottom;}
     <th><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.avif" alt="Git Push" style="width:100%;max-width:370px" loading="lazy"></th>
     <th><img fetchpriority="high" id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.avif" alt="Git Pull" style="width:100%;max-width:370px" loading="lazy"></th>
   </tr>
-  <caption>Comandi Docker e Git utilizzati nel progetto</caption>
+  <caption data-lang-key="commands-caption">Comandi Docker e Git utilizzati nel progetto</caption>
 </table>
 <!-- The Modal -->
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -201,21 +201,32 @@ table caption {caption-side: bottom;}
   <div id="caption"></div>
 </div>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
-<p class="biotechcenter text">Esplora i nostri progetti innovativi nel campo della biotecnologia e della tecnologia.</p>
+<p class="biotechcenter text" data-lang-key="explore-text">Esplora i nostri progetti innovativi nel campo della biotecnologia e della tecnologia.</p>
 <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
  <div id="holidayMsg"></div>
 <a href="https://github.com/Gitechnolo/biotechproject" title="Vai al repository GitHub del progetto"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/GitHub_project.png" alt="Repository GitHub del Biotech Project" class="specials-img" width="895" height="651" loading="lazy"></a>
+<p class="biotechcenter text" data-lang-key="call-to-action">
+  Unisciti al progetto, contribuisci con le tue idee e aiutaci a plasmare il futuro della biotecnologia.
+</p>   
 <div id="about">
-<p class="sidenavtext"><span class="text">A project for the future of biotechnology<br>
-  Created by <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a><br>
-  Version: 1.0.0</span><br>
-If you have new projects to be realized!<br>
-You can collaborate with us on <a href="https://gitlab.com/progettisti/biotechproject" target="_blank">Gitlab</a>!
-<br>
-<button onclick="turnOnLight()">Turn on the light</button>
-<img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif" style="width:100px" alt="bulboff image">
-<button onclick="turnOffLight()">Turn off the light</button>
+<p class="sidenavtext" data-lang-key="project-info">
+  <span class="text">
+    Un progetto per il futuro della biotecnologia<br>
+    Creato da <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a><br>
+    Versione: 1.0.0
+  </span>
 </p>
+<p class="sidenavtext" data-lang-key="collaboration-call">
+  Hai idee per nuovi progetti?<br>
+  Collabora con noi su <a href="https://gitlab.com/progettisti/biotechproject" target="_blank">GitLab</a>!
+</p>
+<div class="light-controls">
+  <button onclick="turnOnLight()" data-lang-key="light-on" class="tech-nav-btn">Accendi la luce</button>
+  <img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif" alt="Immagine lampadina spenta" style="width:100px">
+  <button onclick="turnOffLight()" data-lang-key="light-off" class="tech-nav-btn">Spegni la luce</button>
+</div>
+<br>
+<br>   
 <section aria-labelledby="audio-title" aria-describedby="audio-description">
   <h2 id="audio-title" class="sr-only">Musica di sottofondo</h2>
   <audio controls preload="none">
