@@ -70,7 +70,9 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 #Banner {transition: opacity 1s ease-in-out; opacity: 1;}
 .banner-fade-out {opacity: 0;}
 .bulb-glow {border-radius: trasparent; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
-.specials-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
+table caption {caption-side: bottom;}   
+.specials-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.specials-img:hover {transform: scale(1.02); box-shadow: 0 8px 24px rgba(0, 230, 118, 0.35);}
 </style>
 <script>
 !function(){
@@ -183,16 +185,17 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
       <div class="staff-container">
         <h2 class="sansation-bold">Progetti del Biotech Project</h2>
 <table>
-  <caption>Comandi Docker e Git utilizzati nel progetto</caption>
   <tr>
     <th><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.avif" alt="Docker cp" style="width:100%;max-width:214px" loading="lazy"></th>
     <th><img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/docker_nginx.avif" alt="Docker nginx" style="width:100%;max-width:300px" loading="lazy"></th>
     <th><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.avif" alt="Git Push" style="width:100%;max-width:370px" loading="lazy"></th>
     <th><img fetchpriority="high" id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.avif" alt="Git Pull" style="width:100%;max-width:370px" loading="lazy"></th>
   </tr>
+  <caption>Comandi Docker e Git utilizzati nel progetto</caption>
 </table>
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <h2 id="modal-title" class="sr-only">Immagine ingrandita</h2>
   <span class="close">&times;</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
@@ -201,7 +204,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <p class="biotechcenter text">Esplora i nostri progetti innovativi nel campo della biotecnologia e della tecnologia.</p>
 <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" style="display:block;margin:0 auto;max-width:100%;height:auto;" />
  <div id="holidayMsg"></div>
-<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/GitHub_project.png" class="specials-img" width="895" height="651" loading="lazy">
+<a href="https://github.com/Gitechnolo/biotechproject" title="Vai al repository GitHub del progetto"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/GitHub_project.png" alt="Repository GitHub del Biotech Project" class="specials-img" width="895" height="651" loading="lazy"></a>
 <div id="about">
 <p class="sidenavtext"><span class="text">A project for the future of biotechnology<br>
   Created by <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a><br>
