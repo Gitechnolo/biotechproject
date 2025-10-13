@@ -9,8 +9,8 @@ const ctx = document.getElementById('marketGraph').getContext('2d');
   // Pulizia del canvas
   ctx.clearRect(0, 0, 500, 220);
 
-  // Sfondo scuro
-  ctx.fillStyle = "#1a1a1a";
+  // Sfondo trasparente
+  ctx.fillStyle = "transparent";
   ctx.fillRect(0, 0, 500, 220);
 
   // --- Dati Storici (linea bianca) ---
