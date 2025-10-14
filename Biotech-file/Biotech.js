@@ -597,9 +597,7 @@ function openPopup(url, title, width, height) {
   popup.focus();
 }
 
-
 // Funzioni specifiche chiamate dai pulsanti HTML 
-
 function openSupportPopup() {
   openPopup(
     'https://gitechnolo.github.io/biotechproject/O.S_support.html',
@@ -608,7 +606,6 @@ function openSupportPopup() {
     440
   );
 }
-
 function openContactPopup() {
   openPopup(
     'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
