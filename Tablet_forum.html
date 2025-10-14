@@ -59,31 +59,6 @@
     .info-container a:hover {
       text-decoration: underline;
     }
-    
-    /* Stile per il pulsante di chiusura (X) in alto a destra */
-#closeBtn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  /* Stile visivo come una X */
-  font-size: 30px;
-  font-weight: bold;
-  background: none;
-  border: none;
-  color: rgb(212, 211, 211);
-  cursor: pointer;
-  z-index: 10; /* Assicura che sia sopra gli altri elementi */
-  padding: 0;
-  line-height: 1; /* Allineamento verticale corretto per la 'X' */
-  transition: color 0.2s;
-}
-
-#closeBtn:hover,
-#closeBtn:focus {
-  color: #0f0; /* Il colore al passaggio del mouse e al focus */
-  outline: 2px solid #0f0; /* Evidenziazione focus per accessibilità */
-  outline-offset: 2px;
-}
 
     /* === Form chat === */
     #formChat {
@@ -130,9 +105,7 @@
   </noscript>
 </head>
 <body>
-<button id="closeBtn" onclick="window.close()" aria-label="Chiudi finestra di supporto (tasto Enter)" title="Chiudi (tasto Enter)">
-    &times;
-</button>
+
   <!-- === CANVAS PARTICELLE === -->   
   <div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
 
