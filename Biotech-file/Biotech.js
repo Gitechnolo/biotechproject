@@ -560,47 +560,62 @@ function ChatGPTpopupCenterAI() {
   window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html", "", "width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
 }
 // ———————————————————————
-// 🔹 FUNZIONI NUOVE – PER IL MENU MODERNO (accessibili e sicure)
-// (Usate nel nuovo HTML del menu a tendina)
+// 🔹 FUNZIONI UNIFICATE – Popup (Senza Alert Post-Chiusura)
 // ———————————————————————
-// Funzione generica per aprire popup centrati
+/**
+ * Funzione generica per aprire popup centrati, mantiene il focus immediato. 
+ */
 function openPopup(url, title, width, height) {
-const left = Math.floor((screen.width - width) / 2);
-const top = Math.floor((screen.height - height) / 2);
-const options = `
-width=${width},
-height=${height},
-top=${top},
-left=${left},
-resizable=yes,
-scrollbars=yes,
-toolbar=no,
-menubar=no,
-location=no
-`;
-const popup = window.open(url, title, options);
-if (!popup) {
-alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
-} else {
-popup.focus();
+  // Calcolo delle posizioni per il centramento
+  const left = Math.floor((screen.width - width) / 2);
+  const top = Math.floor((screen.height - height) / 2);
+
+  // Stringa delle opzioni.
+  const options = `
+    width=${width},
+    height=${height},
+    top=${top},
+    left=${left},
+    resizable=yes,
+    scrollbars=yes,
+    toolbar=no,
+    menubar=no,
+    location=no
+  `;
+  
+  // Apre il popup.
+  const popup = window.open(url, title, options);
+
+  // --- Gestione Errore (Controllo Immediato) ---
+  // Verifica se il browser ha bloccato il popup immediatamente.
+  if (!popup || popup.closed || typeof popup.closed == 'undefined') {
+    alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
+    return;
+  }
+  
+  // Mette a fuoco la finestra immediatamente.
+  popup.focus();
 }
-}
-// Nuove funzioni specifiche per il menu
+
+
+// Funzioni specifiche chiamate dai pulsanti HTML 
+
 function openSupportPopup() {
-openPopup(
-'https://gitechnolo.github.io/biotechproject/O.S_support.html',
-'O.S. Support Chat GPT',
-760,
-440
+  openPopup(
+    'https://gitechnolo.github.io/biotechproject/O.S_support.html',
+    'O.S. Support Chat GPT',
+    760,
+    440
   );
 }
+
 function openContactPopup() {
-openPopup(
-'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
-'Contattaci - Forum ChatGPT',
-825,
-672
- );
+  openPopup(
+    'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
+    'Contattaci - Forum ChatGPT',
+    825,
+    672
+  );
 }
 // ———————————————————————
 // ✅ GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
