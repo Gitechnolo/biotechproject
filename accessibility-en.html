@@ -152,7 +152,7 @@
       <li>Verification of user preference support (reduced motion, high contrast, zoom up to 200%)</li>
       <li>Validation of HTML and CSS code via W3C validators</li>
     </ul>
-    <p><strong>Last verified on: <time datetime="2025-09-08">8 September 2025</time></strong>.</p>
+    <p><strong>Last verified on: <time datetime="2025-10-15">15 October 2025</time></strong>.</p>
 
 
   <h2>Implemented Accessibility Features</h2>
@@ -167,7 +167,7 @@
     <li><strong>High contrast support</strong>: The site respects the user preference <code>prefers-contrast: high</code>. In such cases, a high-contrast theme (deep blue) is applied automatically to improve readability, in line with WCAG 1.4.12 (Text Spacing, Level AAA).</li>
     <li><strong>Dynamic color theme</strong>: A color selector in the <strong>Service</strong> menu allows users to choose among five color variants (Green, Cyan, Purple, Orange, Deep Blue), designed to support various visual conditions, including different types of color blindness.</li>
     <li><strong>Persistence of user preferences</strong>: Theme choice and keyboard navigation state are saved in <code>localStorage</code> and restored on subsequent visits, ensuring a consistent experience.</li>
-    <li><strong>Accessible modals and popups</strong>: Modal windows and popups open centered, with proper focus handling and <kbd>Esc</kbd> support. We are progressively migrating to internal modals with <code>role="dialog"</code> to further improve accessibility and usability.</li>
+    <li><strong>Accessible popups</strong>: Popup windows are opened centered, with proper focus management on open and close via the <kbd>Esc</kbd> key or an accessible close button (activated with the <kbd>Enter</kbd> key). Focus is trapped while the popup is active and restored correctly upon closing, conforming to <strong>WCAG 2.1 2.1.1 (Keyboard)</strong> and <strong>2.4.3 (Focus Order)</strong>. The close button is positioned in the top-right corner and is navigable with <kbd>Tab</kbd>, ensuring a predictable and accessible experience. The popup container includes <code>role="dialog"</code> and <code>aria-modal="true"</code> to ensure proper perception by assistive technologies.</li>
     <li><strong>Safe lazy loading</strong>: Images are loaded lazily via <code>IntersectionObserver</code>, with fallback for older browsers. Alternative text (<code>alt</code>) is always present before loading.</li>
     <li><strong>Accessible clocks and counters</strong>: The live clock and countdown are updated dynamically and marked with <code>aria-live="polite"</code> to announce changes to screen readers.</li>
     <li><strong>Resilient design</strong>: No external framework dependencies. Vanilla JavaScript, modern yet backward-compatible CSS, and semantic HTML ensure long-term robustness, performance, and accessibility.</li>

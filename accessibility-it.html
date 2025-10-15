@@ -166,7 +166,7 @@
       <li><strong>Supporto al contrasto elevato</strong>: Il sito rispetta la preferenza utente <code>prefers-contrast: high</code>. In questi casi, viene applicato automaticamente un tema ad alto contrasto (blu profondo) per migliorare la leggibilità, in conformità a WCAG 1.4.12 (Text Spacing, livello AAA).</li>
       <li><strong>Tema visivo dinamico</strong>: È disponibile un selettore di colori nel menu <strong>Service</strong> che permette di scegliere tra cinque varianti cromatiche (Verde, Ciano, Viola, Arancione, Blu Profondo), progettate per supportare diverse condizioni visive, inclusi vari tipi di daltonismo.</li>
       <li><strong>Persistenza delle preferenze</strong>: La scelta del tema e lo stato della navigazione da tastiera vengono salvati in <code>localStorage</code> e ripristinati alla successiva visita, garantendo un’esperienza coerente.</li>
-      <li><strong>Popup accessibili</strong>: Le finestre modali e i popup sono aperti in modo centrato, con gestione corretta del focus e supporto al tasto <kbd>Esc</kbd>. Stiamo migrando progressivamente verso modali interni (lightbox) con <code>role="dialog"</code> per migliorare ulteriormente accessibilità e usabilità.</li>
+      <li><strong>Popup accessibili</strong>: Le finestre popup sono aperte in modo centrato, con gestione del focus all’apertura e chiusura tramite tasto <kbd>Esc</kbd> o pulsante accessibile da tastiera (tasto <kbd>Enter</kbd>). Il focus è trappolato durante l’uso e ripristinato correttamente alla chiusura, in conformità ai criteri <strong>WCAG 2.1 2.1.1 (Keyboard)</strong> e <strong>2.4.3 (Focus Order)</strong>. Il pulsante di chiusura è posizionato in alto a destra ed è navigabile con <kbd>Tab</kbd>, garantendo un'esperienza accessibile e prevedibile. Il contenitore del popup include <code>role="dialog"</code> e <code>aria-modal="true"</code> per garantire una corretta percezione da parte delle tecnologie assistive.</li>
       <li><strong>Lazy loading sicuro</strong>: Le immagini vengono caricate in modo differito tramite <code>IntersectionObserver</code>, con fallback per browser vecchi. Il testo alternativo (<code>alt</code>) è sempre presente prima del caricamento.</li>
       <li><strong>Orologi e contatori accessibili</strong>: L’orologio e il conto alla rovescia sono aggiornati dinamicamente e contrassegnati con <code>aria-live="polite"</code> per annunciare i cambiamenti agli screen reader.</li>
       <li><strong>Design resiliente</strong>: Nessuna dipendenza da framework esterni. JavaScript vanilla, CSS moderno ma retrocompatibile, e HTML semantico assicurano robustezza, prestazioni e accessibilità a lungo termine.</li>
@@ -217,7 +217,7 @@
     </script>
 
     <h2>Data dell’ultima verifica</h2>
-    <p><time datetime="2025-09-08">8 settembre 2025</time></p>
+    <p><time datetime="2025-10-15">15 Ottobre 2025</time></p>
 
     <h2>Aggiornamenti futuri</h2>
     <p>Questa dichiarazione sarà aggiornata regolarmente per riflettere i miglioramenti implementati. I prossimi aggiornamenti includeranno:</p>
