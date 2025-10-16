@@ -151,8 +151,21 @@
       Per ulteriori informazioni, visita la pagina del 
       <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" target="_blank">team di supporto</a>.<br>
       Grazie per il tuo interesse!<br>
-      Se ti piace questo progetto, apprezziamo <a href="https://forms.gle/2PADrR9y4N9Qjy487" target="_blank">il tuo feedback.</a>
+      Se ti piace questo progetto, apprezziamo il tuo feedback.
     </p>
+    <!-- === FORM SODDISFAZIONE === -->
+<div id="satisfactionForm" style="margin:15px 0; padding:12px; background:#0f1b22; border:1px solid #00eaff; border-radius:6px; font-size:14px; color:#d4d3d3; text-align:center;">
+  <p style="margin:0 0 10px; font-size:13px;">Soddisfazione complessiva?</p>
+  <div id="rating" style="display:flex; justify-content:space-around; margin:8px 0;">
+  <span data-val="1" tabindex="0" role="button" aria-label="Molto insoddisfatto" style="font-size:24px; cursor:pointer; opacity:0.6;">😞</span>
+  <span data-val="2" tabindex="0" role="button" aria-label="Neutro" style="font-size:24px; cursor:pointer; opacity:0.6;">😐</span>
+  <span data-val="3" tabindex="0" role="button" aria-label="Molto soddisfatto" style="font-size:24px; cursor:pointer; opacity:0.6;">😊</span>
+</div>   
+  <input type="hidden" id="ratingValue" name="rating">
+  <button id="sendFeedback" style="background:#00eaff; color:#000f16; border:none; padding:6px 12px; border-radius:4px; font-size:12px; font-weight:bold; cursor:pointer;">
+    Invia
+  </button>
+</div>
   </div>
 
   <!-- === MODAL CHAT === -->
@@ -253,6 +266,48 @@
       }, 2000); // Leggero ritardo (a 1500 se veloce)
     });
   </script>
+
+<!-- === FORM SODDISFAZIONE === -->
+  <script>
+let selected = null;
+
+document.querySelectorAll('#rating span').forEach(emoji => {
+  emoji.addEventListener('click', () => {
+    selectEmoji(emoji);
+  });
+
+  emoji.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      selectEmoji(emoji);
+    }
+  });
+});
+
+function selectEmoji(emoji) {
+  selected = emoji.getAttribute('data-val');
+  document.querySelectorAll('#rating span').forEach(e => e.style.opacity = '0.6');
+  emoji.style.opacity = '1';
+  document.getElementById('ratingValue').value = selected;
+}
+
+document.getElementById('sendFeedback').addEventListener('click', async () => {
+  if (!selected) {
+    alert('Seleziona una valutazione');
+    return;
+  }
+  const formData = new FormData();
+  formData.append('rating', selected);
+  const res = await fetch('https://formspree.io/f/mrblazog', {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  });
+  if (res.ok) {
+    document.getElementById('satisfactionForm').innerHTML = '<p>Grazie!</p>';
+  }
+});
+</script>      
 
 </body>
 </html>   
