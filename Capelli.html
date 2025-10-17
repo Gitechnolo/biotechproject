@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Biotech Project - Capelli</title>
+<meta name="description" content="">
+<meta name="google-site-verification" content="Gpt5PTNSnDEI_NT2_bynuXH9pOAdVbiZZ36LyKGsyTc" />
+<meta name="author" content="Biotech Project Team">
+<link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">   
+<!-- Schema.org structured data (JSON-LD) -->
+<script type="application/ld+json">
+
+</script>       
+<!-- Preload CSS critico -->
+<link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.3"></noscript>
+<!-- Preload font -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
+#main-content {opacity: 0; transition: opacity 0.3s ease;}
+</style>
+<script>
+!function(){
+  const l = document.getElementById('preload-style');
+  const show = () => {
+    const c = document.getElementById('main-content');
+    if (c) c.style.setProperty('opacity', '1');
+  };
+
+  if (l) {
+    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
+    if (l.sheet) l.rel = 'stylesheet';
+  }
+
+  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', show);
+  } else {
+    show();
+  }
+  setTimeout(show, 3000); // sicurezza finale
+}();
+</script>   
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico"> 
+</head>
+<body class="biotechbody" data-modern-menu>
+<div id="sr-announcement" aria-live="polite" class="visually-hidden"></div>
+<!-- Link "Skip to main" salto per tastiera (accessibilità) -->
+<a href="#main" class="skip-link">Vai al contenuto principale</a>  
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text" data-lang-key="keyboard-toggle">🔧 Navigazione Tastiera</span><span class="sr-only" data-lang-key="keyboard-sr">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>     
+<!-- Contenitore stabile per il canvas -->
+<div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
+<!-- DNA animation -->
+<div class="dna-container-8">
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+  <div class="dna-helix-8"></div>
+</div>
+<!-- End DNA animation -->
+<!-- Nav Menu Moderno -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu">
+<!-- VOCE: Home -->
+<div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="products" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button>
+<div id="products" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" role="menuitem" aria-label="Home"><b>Home</b></a></div>
+</div>
+</div>
+<!-- VOCE: Fisiologia -->
+<div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it" data-lang-key="nav-physiology"><b>Fisiologia</b></button>
+<div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula" data-lang-key="nav-cell">Cellula</a>
+<a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio" data-lang-key="nav-circulatory">Apparato circolatorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio" data-lang-key="nav-respiratory">Apparato respiratorio</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente" data-lang-key="nav-digestive">Apparato digerente</a>
+<a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario" data-lang-key="nav-integumentary">Apparato tegumentario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario" data-lang-key="nav-lymphatic">Sistema linfatico / immunitario</a>
+<a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia" data-lang-key="nav-dermatology">Dermatologia</a></div>
+</div>
+</div>
+<!-- VOCE: Service -->
+<div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button>
+<div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<button role="menuitem" onclick="openSupportPopup()" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button>
+<button role="menuitem" onclick="openContactPopup()" aria-label="Contattaci tramite il forum ChatGPT" lang="it" data-lang-key="nav-contact">Contattaci</button>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto" data-lang-key="nav-accessibility">Accessibilità</a>
+<a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project" data-lang-key="nav-accessibility-en">Accessibility</a>
+<a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore: attualmente Verde, clicca per passare al successivo" hreflang="it" data-lang-key="nav-theme">🎨 Tema pulsanti</a>
+<button role="menuitem" id="lang-toggle" aria-label="Cambia lingua in inglese" onclick="toggleLanguage()" lang="it">
+  <span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span>
+  <span id="lang-label">Cambia lingua</span>
+</button>         
+</div>
+</div>
+</div>
+<!-- VOCE: Staff -->
+<div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="staff" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button>
+<div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a>
+<a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a>
+<a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti" data-lang-key="nav-progetti">Progetti</a></div>
+</div>
+</div>
+<!-- VOCE: Technologies -->
+<div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jobs" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button>
+<div id="jobs" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content">
+<a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" role="menuitem" aria-label="Mercato cibernetica">Cybernetics Market</a>
+<a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" role="menuitem" aria-label="Speciali">Specials</a></div>
+</div>
+</div>   
+</div>
+<img fetchpriority="high" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="553" height="180"> 
+<div class="modern-clock" id="clock2">--/--/---- - --:--:--</div>
+<div class="modern-countdown" id="modern-countdown"><span id="countdown-days">0</span> giorni al nuovo anno!</div>
+<div class="modern-greeting" id="week"></div>
+ <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_week.min.js" defer></script>
+<!-- End Nav Menu Moderno -->
+<!-- Contenuto principale (per Skip to main e accessibilità) --> 
+<main id="main">
+<!-- Container: prevenzione CLS -->
+<div class="staff-layout-container" id="main-content">
+<div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
+<h1 class="sansation-bold">CAPELLI: ANATOMIA, STRUTTURA E CICLO VITALE</h1>
+<h2 class="secHeader">ANATOMIA DEL CAPELLO E APPARATO PILO-SEBACEO</h2>
+    
+    <p class="text">
+        I peli e i capelli sono derivati epidermici <span class="biotechbold">filamentosi e corneificati (cheratinizzati)</span>. Nascono nei <span class="biotechbold">follicoli piliferi</span>, invaginazioni dell’epidermide del cuoio capelluto che raggiungono il derma.
+    </p>
+
+    <p class="text">
+        La parte profonda termina con una formazione concava: il <span class="biotechbold">BULBO</span>. La lunghezza, lo spessore e la distribuzione variano in relazione a diverse sedi anatomiche, sesso, età e razza.
+    </p>
+
+    <ul class="list">
+        <li>Il segmento che emerge sulla superficie si definisce <span class="orangetext">FUSTO o STELO</span>.</li>
+        <li>La zona di impianto nel derma è la <span class="orangetext">RADICE</span>, che termina in profondità con la <span class="biotechbold">PAPILLA DERMICA</span>, riccamente vascolarizzata e innervata, deputata al <span class="greentext">nutrimento del capello</span>.</li>
+        <li>Tra la parete interna del bulbo e quella della radice vi è lo <span class="biotechbold">STRATO GERMINATIVO o MATRICE DEL CAPELLO</span>, responsabile della <span class="greentext">sintesi delle componenti del capello</span>.</li>
+    </ul>
+
+    <p class="subtitle">Componenti dell'Apparato Pilo-Sebaceo</p>
+    <p class="text">Il complesso apparato comprende, oltre al capello:</p>
+    <ul class="list">
+        <li><span class="biotechbold">FOLLICOLO PILIFERO:</span> Formazione epidermica inclinata, profonda nel derma (1-3 mm). Il numero totale di follicoli sul cuoio capelluto è in media di <span class="yellowtext">100.000</span>, <span class="greentext">geneticamente determinato e definitivo dal 7° mese di gravidanza</span>.</li>
+        <li><span class="biotechbold">GHIANDOLA SEBACEA:</span> Sbocca nel follicolo e produce il <span class="orangetext">sebo</span> (ricco di trigliceridi, squalene e colesterolo), essenziale per <span class="greentext">lubrificare, ammorbidire e impermeabilizzare</span> il capello. La sua funzione è regolata da fattori endocrini, alimentari, nervosi.</li>
+        <li><span class="biotechbold">MUSCOLO PILO-ERETTORE:</span> Fascio di fibre muscolari lisce. La sua contrazione, stimolata da freddo o stati emotivi (pelle d'oca), provoca la <span class="greentext">verticalizzazione del pelo</span> e favorisce la fuoriuscita del sebo.</li>
+    </ul>
+
+    <p class="biotechidden">30</p>
+    <h2 class="secHeader">IL CAPELLO: STRUTTURA E COMPONENTI CHIMICHE</h2>
+
+    <p class="text">Il capello è una fibra complessa, il cui fusto è costituito da tre strati, protetti da uno strato di sebo:</p>
+    <ul class="list">
+        <li><span class="biotechbold">Cuticola:</span> Parte più esterna, composta da otto strati di cellule appiattite e sovrapposte (come tegole).</li>
+        <li><span class="biotechbold">Corteccia:</span> Strato intermedio e maggioritario, conferisce le <span class="orangetext">proprietà meccaniche</span>. Contiene la maggior parte della <span class="orangetext">melanina</span> (che determina il colore).</li>
+        <li><span class="biotechbold">Midollo:</span> Quasi assente nella zona della matrice e in profondità nel fusto. Costituito da grandi cellule cheratinizzate lassamente connesse, contiene melanina, aria e filamenti di cheratina.</li>
+    </ul>
+
+    <p class="subtitle">Le Molecole Principali</p>
+    <p class="text">L'analisi chimica evidenzia che il capello è composto da: <span class="biotechbold">Cheratina</span> (proteina principale), <span class="biotechbold">Melanina</span> (pigmento), <span class="biotechbold">Lipidi</span>, <span class="biotechbold">Minerali</span> e acqua (10-30%).</p>
+
+    <h3 class="emphasytile biotechcenter">CHERATINA: La Struttura Proteica Fondamentale</h3>
+
+    <p class="text">La <span class="biotechbold">cheratina</span> è la proteina principale del capello (circa l'<span class="yellowtext">80% del peso secco</span>), sintetizzata dai <span class="orangetext">cheratinociti</span>. È un polimero di 18 aminoacidi concatenati secondo precise informazioni genetiche.</p>
+    <p class="greentext">I principali aminoacidi che compongono la cheratina includono: cistina (17,5%), serina (11,7%) e acido glutammico (11,1%).</p>
+
+    <p class="text">Si distinguono due forme di cheratina:</p>
+    <ul class="list">
+        <li><span class="orangetext">Cheratina Filamentosa:</span> Organizzata in <span class="biotechbold">fibrille</span>, localizzata nella corteccia.</li>
+        <li><span class="orangetext">Cheratina Amorfa:</span> Riempie e <span class="greentext">stabilizza gli spazi vuoti</span> tra le fibrille.</li>
+    </ul>
+
+    <p class="subtitle">Organizzazione Ultrastrutturale (Dalla Catena alla Corteccia)</p>
+    <p class="text">Le catene di aminoacidi si avvolgono a spirale ($\alpha$-elica), aggregandosi in strutture sempre più complesse:</p>
+    <ol class="list">
+        <li><span class="biotechbold">Protofibrilla</span> (3 $\alpha$-eliche unite)</li>
+        <li><span class="biotechbold">Microfibrilla</span> (11 protofibrille)</li>
+        <li><span class="biotechbold">Macrofibrilla</span></li>
+        <li><span class="biotechbold">Fuso</span></li>
+        <li><span class="biotechbold">Corteccia</span> (formata da numerosi fusi)</li>
+    </ol>
+    <p class="biotechidden">31</p>
+
+    <h3 class="emphasytile biotechcenter">Stabilità dell'Ultrastruttura: I Ponti</h3>
+    
+    <p class="text">Le lunghe catene polipeptidiche (aminoacidi) sono unite e stabilizzate da "ponti" che si creano tra aminoacidi di catene diverse. Questi legami determinano <span class="orangetext">resistenza e curvatura</span> del capello.</p>
+    <p class="greentext">In generale, ciascuno dei tre tipi di legame contribuisce a circa 1/3 della resistenza e della curvatura dei capelli.</p>
+
+    <p class="subtitle">Tipologie di Legami (Ponti)</p>
+    <ul class="list">
+        <li><span class="biotechbold">PONTI IDROGENO:</span> <span class="yellowtext">Legami estremamente deboli</span>, rotti da acqua o calore (es. messa in piega). Conferiscono <span class="greentext">stabilità e flessibilità</span>.</li>
+        <li><span class="biotechbold">PONTI SALINI:</span> <span class="yellowtext">Mediamente forti</span>, rotti da forte calore o da cambiamenti di pH (acidi/basi). Sono interazioni elettrostatiche, circa il <span class="orangetext">doppio dei legami disolfuro</span>. Conferiscono <span class="greentext">resistenza e stabilità</span>.</li>
+        <li><span class="biotechbold">PONTI DISOLFURO (-S-S-):</span> <span class="yellowtext">Legami molto forti (covalenti)</span>, formati da due atomi di zolfo di amminoacidi di cisteina e/o metionina. Sono cruciali per la <span class="orangetext">stabilizzazione della struttura terziaria</span> delle proteine e determinano <span class="greentext">struttura, stabilità e consistenza</span> (es. capelli ricci naturali). Possono essere spezzati solo fornendo <span class="orangetext">alta energia</span> (reazioni di ossido-riduzioni nei trattamenti chimici come permanente, tinta, decolorazione).</li>
+    </ul>
+    <p class="biotechidden">32, 33</p>
+
+    <h3 class="subtitle">Minerali e Lipidi</h3>
+    
+    <p class="text">Una carenza di <span class="biotechbold">minerali</span> rende i capelli <span class="orangetext">fragili, secchi e opachi</span>, con deficit a livello bulbare. Sono essenziali anche perché <span class="greentext">trattengono acqua</span>.</p>
+    <ul class="list">
+        <li><span class="yellowtext">FERRO (4-12 MG/G):</span> Carenza porta a fragilità strutturale e caduta.</li>
+        <li><span class="yellowtext">MAGNESIO (30-45 MG/G):</span> Necessario per la biosintesi di complessi indispensabili.</li>
+        <li><span class="yellowtext">RAME (16-50 MG/G):</span> Indispensabile per la sintesi della melanina. La carenza <span class="orangetext">inibisce la formazione dei ponti disolfuro</span>.</li>
+        <li><span class="yellowtext">ZINCO (150-180 MG/G):</span> Indispensabile per la corretta attività delle <span class="greentext">cellule germinative della matrice</span>. La carenza causa fragilità.</li>
+    </ul>
+
+    <p class="text">I <span class="biotechbold">lipidi</span> (cere, trigliceridi, colesterolo, acidi grassi) derivano in gran parte dal sebo. Di particolare importanza sono i <span class="orangetext">fosfolipidi</span>, presenti sulle membrane cellulari, che legano l'acqua stabilendo il <span class="greentext">giusto grado di umidità e idratazione</span> del capello.</p>
+
+    <h3 class="subtitle">Melanine e Colore del Capello</h3>
+
+    <p class="text">La <span class="biotechbold">melanina</span>, il pigmento naturale, si trova nella <span class="orangetext">corteccia</span> ed è prodotta dai <span class="biotechbold">melanociti</span> nella papilla pilifera. La sua concentrazione determina le tonalità naturali. Il capello bianco <span class="greentext">non ha melanina</span>.</p>
+    
+    <p class="text">Esistono tre tipi di pigmenti:</p>
+    <ul class="list">
+        <li><span class="yellowtext">EUMELANINA:</span> Caratteristica dei capelli <span class="biotechbold">castani e neri</span> (pigmento puro <span class="orangetext">blu</span>). Grossi granuli, disposti nella parte più esterna della corteccia.</li>
+        <li><span class="yellowtext">FEOMELANINA:</span> Caratteristica dei capelli <span class="biotechbold">rossi e biondi</span> (pigmento puro <span class="orangetext">giallo</span>). Piccoli granuli (pigmento in diffusione), disposti nella parte più interna della corteccia.</li>
+        <li><span class="yellowtext">TRICOCROMI:</span> Caratterizzano i capelli <span class="biotechbold">rossi</span> (pigmento puro <span class="orangetext">rosso</span>). Contengono la proteina <span class="orangetext">TRICOSIDERINA</span>. Pigmenti di media grandezza, disposti al centro della corteccia.</li>
+    </ul>
+
+    <p class="greentext">Nota sulla Biosintesi: L'Eumelanina deriva dalla <span class="biotechbold">tirosina</span> (in dopamina e poi dopachinone) grazie all'enzima <span class="biotechbold">tirosinasi</span>. La Feomelanina segue un processo simile ma con l'intervento della <span class="biotechbold">cisteina</span>, che interagisce con il dopachinone.</p>
+
+    <p class="text">L'<span class="orangetext">albinismo</span> è un'anomalia ereditaria dovuta a una mutazione nel gene dell'enzima tirosinasi, che ne fa perdere l'attività catalitica e causa la <span class="greentext">mancata sintesi di melanina</span>.</p>
+    <p class="biotechidden">34, 35, 36</p>
+
+    <h2 class="secHeader">IL CICLO VITALE DEL CAPELLO</h2>
+    
+    <p class="text">Il ricambio dei capelli avviene a "mosaico", con cicli di crescita e riposo alternati in ogni follicolo. La potenzialità di ogni follicolo è illimitata, ma la durata della vita umana consente al massimo <span class="yellowtext">30 cicli</span>.</p>
+
+    <h3 class="subtitle">Le Tre Fasi del Ciclo Riproduttivo</h3>
+    <ol class="list">
+        <li><span class="biotechbold">ANAGEN (Fase di Crescita):</span>
+            <p class="greentext">Dura in media <span class="orangetext">2-4 anni nell'uomo e 3-7 anni nella donna</span> (più breve per altre regioni corporee). La sua durata dipende da fattori ereditari e determina la lunghezza massima del capello (crescita di circa <span class="yellowtext">1 cm al mese</span>). L'anagen si riduce moltissimo (3-5 mesi) nei follicoli affetti da calvizie.</p>
+            <p class="text">È suddivisa in una <span class="orangetext">fase proliferativa</span> (iniziale, avvio dell'attività mitotica) e una <span class="orangetext">fase differenziativa</span> (la maggior parte dell'anagen, in cui i cheratinociti si trasformano in cheratina).</p>
+        </li>
+        <li><span class="biotechbold">CATAGEN (Fase di Transizione):</span>
+            <p class="greentext">Fase molto breve, dura <span class="orangetext">2-4 settimane</span>. La matrice interrompe l'attività e il follicolo risale verso la superficie.</p>
+        </li>
+        <li><span class="biotechbold">TELOGEN (Fase di Riposo):</span>
+            <p class="greentext">Periodo terminale, dura circa <span class="orangetext">3 mesi</span>. L'attività mitotica è cessata. Il capello cade solo quando, alla fine del telogen, il follicolo riprende l'attività e un <span class="yellowtext">nuovo capello spinge fuori quello vecchio</span>.</p>
+            <p class="text">Il fenomeno del <span class="biotechbold">kenogen</span> si verifica quando il follicolo rimane temporaneamente vuoto dopo la caduta.</p>
+        </li>
+    </ol>
+
+
+
+
+
+<!-- Badge di accessibilità -->
+<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito BiotechProject - Conforme agli standard WCAG 2.1 AA" title="Dichiarazione di accessibilità del sito - Conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito BiotechProject"></a></div>
+<div id="lastModified"></div>
+<p class="biotechcenter biotech-copyright sansation-light-italic" data-lang-key="footer-project">BiotechProject. Un progetto per un web più inclusivo.</p>
+<p class="biotechcenter"><a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=biotechproject" target="_blank" rel="noopener" class="hover-effect" aria-label="Segui il progetto Biotech su LinkedIn (apre in una nuova finestra)" data-lang-key="linkedin-link">🔗 Segui Biotech Project su LinkedIn</a></p>
+</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>  
+<!-- End container: prevenzione CLS -->
+</main>
+<!-- End contenuto principale (per Skip to main e accessibilità) -->
+<!-- Avviso per utenti senza JavaScript --> 
+<div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>     
+
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_newyear.min.js"></script>
+<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
+<script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
+</body>
+</html>
