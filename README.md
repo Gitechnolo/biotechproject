@@ -173,7 +173,12 @@ Every contribution — big or small — helps make science more accessible.
 ## 📄 License
 
 📄 License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
-You are free to share, adapt, and use the project commercially, as long as you **give appropriate credit**.
+You are free to share, adapt, and use the project commercially, as long as you give appropriate credit.
+
+- **Content (text, graphics, educational material)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **Source code**: [MIT License](https://opensource.org/licenses/MIT)
+
+"Anyone can contribute. Just respect the origin, and keep building with care."   
 
 ---
 

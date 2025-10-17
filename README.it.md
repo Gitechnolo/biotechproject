@@ -173,6 +173,11 @@ Puoi aiutare con:
 📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
 Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.
 
+- **Contenuti (testo, grafica, materiale didattico)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **Codice sorgente**: [Licenza MIT](https://opensource.org/licenses/MIT)
+
+"Chiunque può contribuire. Basta rispettare l'origine e continuare a costruire con cura."   
+
 ---
 
 ## 🙌 Autore
