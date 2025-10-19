@@ -11,7 +11,6 @@
 <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">   
 <!-- Schema.org structured data (JSON-LD) -->
 <script type="application/ld+json">
-
 </script>       
 <!-- Preload CSS critico -->
 <link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -22,9 +21,58 @@
 <style>
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
-.specials-img {max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
+/* Stile per il contenitore Flexbox */
+.image-text-wrapper {
+    display: flex;
+    flex-direction: row; /* Affiancamento orizzontale su desktop */
+    gap: 20px; /* Spazio tra immagine e testo */
+    margin-bottom: 30px; /* Spazio sotto il blocco affiancato */
+    align-items: flex-start; /* Allinea il contenuto in alto */
+    flex-wrap: wrap; /* A capo su schermi stretti */
+}
+/* Stile per il blocco che contiene l'immagine */
+.image-side {
+    /* Larghezza fissa (o flessibile) per l'immagine su desktop. Scegliere valore che si adatti bene. */
+    flex: 0 0 480px; 
+    max-width: 100%; /* Assicura che non superi la larghezza del contenitore su mobile */
+}
+/* Stile per il blocco che contiene il testo */
+.text-side {
+    flex: 1; /* Il testo occupa lo spazio rimanente */
+    min-width: 300px; /* Larghezza minima per evitare che il testo sia troppo stretto */
+}
+/* Media Query per Mobile (Schermi fino a 768px) */
+@media (max-width: 768px) {
+    .image-text-wrapper {
+        flex-direction: column; /* Impila verticalmente immagine e testo su mobile */
+    }
+    
+    .image-text-wrapper .image-side {
+        flex: 1 1 auto; /* L'immagine prende tutta la larghezza */
+        margin: 0 auto; /* Centra l'immagine/figure su mobile */
+    }
+}
+/* Stile aggiuntivo per centrare le altre immagini che non sono affiancate */
+.specials-img {max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
   background: rgba(220, 230, 220, 0.5); /* Sfondo semi-trasparente */
-  backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
+  backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);
+}
+/* Stile per invertire l'ordine: Immagine a Sinistra */
+.image-text-wrapper-reversed {
+    display: flex;
+    flex-direction: row-reverse; /* Inverte l'ordine degli elementi */
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap; 
+}
+/* Media Query Aggiuntivo per Mobile (assicura che l'inversione sparisca su schermi stretti) */
+@media (max-width: 768px) {
+    /* Su mobile, entrambi i wrapper devono tornare a 'column' senza inversione, così l'immagine resta sempre in cima */
+    .image-text-wrapper, .image-text-wrapper-reversed {
+        flex-direction: column; 
+    }
+} 
 </style>
 <script>
 !function(){
@@ -138,430 +186,422 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     <div class="staff-card">
       <div class="staff-container">
 <h1 class="sansation-bold">CAPELLI: ANATOMIA, STRUTTURA E CICLO VITALE</h1>
-<!-- PRIMA SEZIONE: INTRODUZIONE E STRUTTURE -->
-    <p class="text">
-        I peli e i capelli sono derivati epidermici filamentosi e corneificati (cheratinizzati). Nascono nei follicoli piliferi che sono
-        invaginazioni dell’epidermide del cuoio capelluto, raggiungendo il derma sottostante e terminano in profondità con
-        una formazione concava: <span class="biotechbold">IL BULBO</span>.
-    </p>
-    <p class="text">
-        La loro lunghezza, lo spessore, e la distribuzione variano in relazione alle diverse sedi anatomiche, al sesso, all’età e
-        alla razza.
-    </p>
-    <p class="text">
-        Il segmento del capello che emerge sulla superficie si definisce <span class="biotechbold">FUSTO o STELO</span> e la zona di impianto nel derma, al di
-        sopra del collo del bulbo, si chiama <span class="biotechbold">RADICE</span>. La radice termina in profondità con un’estremità slargata, dove in
-        profondità al suo interno vi è una papilla conica chiamata <span class="biotechbold">PAPILLA DERMICA</span>, riccamente vascolarizzata e innervata,
-        deputata al nutrimento del capello. Tra la parete interna del bulbo e quella della radice vi è uno strato detto <span class="biotechbold">STRATO
-        GERMINATIVO o MATRICE DEL CAPELLO</span> il cui compito è la sintesi delle componenti del capello.
-    </p>
-    <p class="text">
-        Infine, la radice e il bulbo sono accolti in un’invaginazione dell’epidermide, nel derma, chiamata <span class="biotechbold">FOLLICOLO PILIFERO</span>,
-        che è orientato in modo obliquo.
-    </p>
-    <p class="text">
-        Queste, assieme ad altre componenti formano l’<span class="biotechbold">APPARATO PILO SEBACEO</span>.
-    </p><br>
-<figure>
-    <img class="specials-img" src="Biotech-file/images/Biotech-menu/Capello_anatomia.avif"
-         alt="Anatomia del capello" width="354" height="236" loading="lazy">
-    <figcaption class="text">
-        Sezione anatomica dell'APPARATO PILO SEBACEO.
-    </figcaption>
-</figure>
-    <!-- APPARATO PILO-SEBACEO -->
-    <h2 class="secHeader biotechcenter">L’APPARATO PILO-SEBACEO comprende:</h2>
-    <ul class="text">
-        <li>- <span class="yellowtext">FOLLICOLO PILIFERO</span> con il relativo pelo o capello</li>
-        <li>- <span class="yellowtext">MUSCOLO PILO ERETTORE</span></li>
-        <li>- <span class="yellowtext">GHIANDOLA SEBACEA</span>, talvolta è presente anche una ghiandola sudoripara</li>
-    </ul>
 
-    <!-- DETTAGLI COMPONENTI -->
-    <p><span class="biotechtitle">FOLLICOLO PILIFERO:</span> <span class="text">Il follicolo pilifero è una formazione epidermica, inclinata rispetto la cute, affonda profondamente
-    nel derma (da 1 a 3 mm di profondità) e costituita dal pelo e dalle guaine.
-    Il numero totale dei follicoli della superficie cutanea di un uomo è circa 5 milioni, in media 100.000 si trovano sul cuoio
-    capelluto. Questo numero è geneticamente determinato, infatti lo sviluppo dei follicoli inizia precocemente, già
-    intorno al 4° mese di gravidanza e continuano a formarsi fino al 7° mese, dopodichè non se ne formano più.</span></p>
+<div class="image-text-wrapper">
+    <div class="text-side">
+        <p class="text">
+            I peli e i capelli sono derivati epidermici filamentosi e corneificati (cheratinizzati). Nascono nei follicoli piliferi che sono
+            invaginazioni dell’epidermide del cuoio capelluto, raggiungendo il derma sottostante e terminano in profondità con
+            una formazione concava: <span class="biotechbold">IL BULBO</span>.
+        </p>
+        <p class="text">
+            La loro lunghezza, lo spessore, e la distribuzione variano in relazione alle diverse sedi anatomiche, al sesso, all’età e
+            alla razza.
+        </p>
+        <p class="text">
+            Il segmento del capello che emerge sulla superficie si definisce <span class="biotechbold">FUSTO o STELO</span> e la zona di impianto nel derma, al di
+            sopra del collo del bulbo, si chiama <span class="biotechbold">RADICE</span>. La radice termina in profondità con un’estremità slargata, dove in
+            profondità al suo interno vi è una papilla conica chiamata <span class="biotechbold">PAPILLA DERMICA</span>, riccamente vascolarizzata e innervata,
+            deputata al nutrimento del capello. Tra la parete interna del bulbo e quella della radice vi è uno strato detto <span class="biotechbold">STRATO
+            GERMINATIVO o MATRICE DEL CAPELLO</span> il cui compito è la sintesi delle componenti del capello.
+        </p>
+        <p class="text">
+            Infine, la radice e il bulbo sono accolti in un’invaginazione dell’epidermide, nel derma, chiamata <span class="biotechbold">FOLLICOLO PILIFERO</span>,
+            che è orientato in modo obliquo.
+        </p>
+        <p class="text">
+            Queste, assieme ad altre componenti formano l’<span class="biotechbold">APPARATO PILO SEBACEO</span>.
+        </p>
+    </div>
+    
+    <figure class="image-side">
+        <img class="specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Capello_anatomia.avif"
+             alt="Anatomia del capello" width="354" height="236" loading="lazy">
+        <figcaption class="text sansation-light-italic">
+            Sezione anatomica dell'APPARATO PILO SEBACEO.
+        </figcaption>
+    </figure>
+</div>
 
-    <p><span class="biotechtitle">GHIANDOLA SEBACEA:</span> <span class="text">Sbocca nel follicolo pilifero con il dotto sebaceo attraverso il quale emette il <span class="biotechbold">sebo</span>, una sostanza
-    ricca di trigliceridi, squalene e colesterolo, che serve a lubrificare, ammorbidire e impermeabilizzare la superficie
-    esterna del capello via via che questo si allunga. Esso è presente solo nella parte superiore del follicolo e non
-    interferisce in alcun modo con l’attività della matrice (cioè l’attività di sintesi dei costituenti del capello).
-    Una volta fuoriuscito dal follicolo, il sebo si deposita sulla cute del cuoio capelluto e quindi si diffonde sul capello.
-    Il corretto funzionamento della ghiandola sebacea è fondamentale per mantenere sani cute e capello ed è regolato da
-    vari fattori: endocrini, alimentari, nervosi, ...</span></p>
+<h2 class="secHeader biotechcenter">L’APPARATO PILO-SEBACEO comprende:</h2>
+        <ul class="text">
+            <li>- <span class="yellowtext">FOLLICOLO PILIFERO</span> con il relativo pelo o capello</li>
+            <li>- <span class="yellowtext">MUSCOLO PILO ERETTORE</span></li>
+            <li>- <span class="yellowtext">GHIANDOLA SEBACEA</span>, talvolta è presente anche una ghiandola sudoripara</li>
+        </ul>
+        <p><span class="biotechtitle">FOLLICOLO PILIFERO:</span> <span class="text">Il follicolo pilifero è una formazione epidermica, inclinata rispetto la cute, affonda profondamente
+        nel derma (da 1 a 3 mm di profondità) e costituita dal pelo e dalle guaine.
+        Il numero totale dei follicoli della superficie cutanea di un uomo è circa 5 milioni, in media 100.000 si trovano sul cuoio
+        capelluto. Questo numero è geneticamente determinato, infatti lo sviluppo dei follicoli inizia precocemente, già
+        intorno al 4° mese di gravidanza e continuano a formarsi fino al 7° mese, dopodichè non se ne formano più.</span></p>
 
-    <p><span class="biotechtitle">MUSCOLO PILO-ERETTORE:</span> <span class="text">Si inserisce sul follicolo pilifero al di sotto della ghiandola sebacea, è formato da un fascio
-    di fibre muscolari lisce e grazie alla sua azione permette allo stelo di non adagiarsi sulla cute.
-    La sua contrazione è stimolata dal freddo o da stati emotivi come stupore o paura e provoca la verticalizzazione del
-    pelo (pelle d’oca). Inoltre, favorisce la fuoriuscita del sebo.</span></p>
+        <p><span class="biotechtitle">GHIANDOLA SEBACEA:</span> <span class="text">Sbocca nel follicolo pilifero con il dotto sebaceo attraverso il quale emette il <span class="biotechbold">sebo</span>, una sostanza
+        ricca di trigliceridi, squalene e colesterolo, che serve a lubrificare, ammorbidire e impermeabilizzare la superficie
+        esterna del capello via via che questo si allunga. Esso è presente solo nella parte superiore del follicolo e non
+        interferisce in alcun modo con l’attività della matrice (cioè l’attività di sintesi dei costituenti del capello).
+        Una volta fuoriuscito dal follicolo, il sebo si deposita sulla cute del cuoio capelluto e quindi si diffonde sul capello.
+        Il corretto funzionamento della ghiandola sebacea è fondamentale per mantenere sani cute e capello ed è regolato da
+        vari fattori: endocrini, alimentari, nervosi, ...</span></p>
 
-   <h2 class="secHeader biotechcenter">APPARATO PILOSEBACEO NEL DETTAGLIO</h2>
-<figure>
-    <img class="specials-img" src="Biotech-file/images/Biotech-menu/Apparato_pilosebaceo.avif"
-         alt="Apparato_pilosebaceo" width="576" height="439" loading="lazy" style="display: block; margin: 18px auto;">
-    <figcaption class="text biotechcenter">
-        Rappresentazione dettagliata dell'Apparato Pilo-Sebaceo completo, che include Follicolo, Ghiandola Sebacea e Muscolo Pilo-Erettore.
-    </figcaption>
-</figure>
+        <p><span class="biotechtitle">MUSCOLO PILO-ERETTORE:</span> <span class="text">Si inserisce sul follicolo pilifero al di sotto della ghiandola sebacea, è formato da un fascio
+        di fibre muscolari lisce e grazie alla sua azione permette allo stelo di non adagiarsi sulla cute.
+        La sua contrazione è stimolata dal freddo o da stati emotivi come stupore o paura e provoca la verticalizzazione del
+        pelo (pelle d’oca). Inoltre, favorisce la fuoriuscita del sebo.</span></p>
 <br>
-    <!-- SECONDA SEZIONE: STRUTTURA DEL CAPELLO (Contenuto precedente) -->
-    <h2 class="secHeader biotechcenter">IL CAPELLO: STRUTTURA</h2>
-
-    <p class="text">
-        ll capello è una fibra molto complessa costituita da varie componenti e da differenti costituenti chimici.
-        Il suo contenuto in acqua è variabile dal 10 al 30% in peso, a seconda delle condizioni climatiche cui i capelli si
-        trovano sottoposti). Sono ricoperti da sebo distribuito su tutta la loro lunghezza, contenente grassi quali trigliceridi,
-        cere, colesterolo, fosfolipidi e squalene, allo scopo di proteggerli da agenti fisici e chimici dell’ambiente esterno.
-    </p>
-
-    <p class="text"><span class="biotechbold">Il fusto del capello è costituito da tre strati:</span></p>
-    <ul class="text" style="padding-left: 40px;">
-        <li><span class="orangetext">- Cuticola:</span> parte più esterna del capello, è composta a sua volta da otto strati di cellule appiattite e
-            parzialmente sovrapposte le une alle altre, come le tegole di un tetto.</li>
-        <li><span class="orangetext">- Corteccia:</span> situata al di sotto della cuticola, costituisce la maggior parte del capello e gli dona le sue proprietà
-            meccaniche. Contiene la maggior parte della melanina presente nel capello, la cui concentrazione determina
-            il colore del capello.</li>
-        <li><span class="orangetext">- Midollo:</span> è quasi assente sopra la zona della matrice, ben rappresentato in prossimità del bulbo e tende poi a
-            diminuire distalmente nel fusto, è costituito da grandi cellule cheratinizzate, lassamente connesse, disposte
-            in filiere ordinate contenenti granuli di melanina, "bollicine" d 'aria e filamenti di cheratina.</li>
-    </ul>
-
-    <p class="text">
-        Le molecole principali che costituiscono il capello sono la <span class="biotechbold">cheratina</span> (in forma di α-cheratina), la <span class="biotechbold">melanina</span> (in
-        forma di granuli di pigmenti), e <span class="biotechbold">oligoelementi</span> allo stato atomico.
-    </p>
-
-    <!-- CHERATINA: Tipi e Struttura -->
-    <div style="margin-top: 30px;">
+<h2 class="secHeader biotechcenter">APPARATO PILOSEBACEO NEL DETTAGLIO - IL CAPELLO: STRUTTURA</h2>
+<div class="image-text-wrapper-reversed">
+    <div class="text-side">
         <p class="text">
-            La struttura del capello è piuttosto complessa nella
-            sua organizzazione, l’analisi chimica del capello ci
-            indica quelli che sono i costituenti principali, oltre
-            all’acqua, del capello: cheratina, lipidi, minerali e
-            pigmenti.
+            ll capello è una fibra molto complessa costituita da varie componenti e da differenti costituenti chimici.
+            Il suo contenuto in acqua è variabile dal 10 al 30% in peso, a seconda delle condizioni climatiche cui i capelli si
+            trovano sottoposti). Sono ricoperti da sebo distribuito su tutta la loro lunghezza, contenente grassi quali trigliceridi,
+            cere, colesterolo, fosfolipidi e squalene, allo scopo di proteggerli da agenti fisici e chimici dell’ambiente esterno.
         </p>
-        <h2 class="secHeader" style="margin-top: 10px; font-size: 24px;">CHERATINA</h2>
-
-        <p class="text">
-            In realtà le cheratine del capello sono due, che per le loro caratteristiche strutturali vengono definite
-            <span class="biotechbold">cheratina filamentosa</span> e <span class="biotechbold">cheratina amorfa</span>. La cheratina filamentosa forma una ultra-struttura complessa
-            organizzata in <span class="biotechbold">fasci o fibrille</span>, che si trovano nella corteccia del capello, mentre la cheratina amorfa riempie
-            gli spazi vuoti tra le fibrille, stabilizzandone la struttura.
-            Le catene unite si avvolgono su se stesse, assumendo una forma a spirale simile a quella del DNA.
-        </p>
-
-        <p class="list-header" style="padding-left: 20px;">Organizzazione ultra-strutturale della cheratina:</p>
+        <p class="text"><span class="biotechbold">Il fusto del capello è costituito da tre strati:</span></p>
         <ul class="text" style="padding-left: 40px;">
-            <li>Tre eliche si uniscono a formare una <span class="yellowtext">protofibrilla</span>.</li>
-            <li>Undici protofibrille si uniscono in una <span class="yellowtext">microfibrilla</span>.</li>
-            <li>Numerose microfibrille formano una <span class="yellowtext">macrofibrilla</span>.</li>
-            <li>Numerose macrofibrille formano un <span class="yellowtext">fuso</span>.</li>
-            <li>Numerosi fusi formano la <span class="yellowtext">corteccia</span>.</li>
-        </ul>
-        <p class="greentext">
-            Si tratta dunque di una struttura molto
-            complessa, formata dalla aggregazione di
-            numerosissime singole unità uguali fino a
-            formare la corteccia.
-        </p>
-    </div>
-
-    <!-- STABILITÀ E PONTI CHIMICI -->
-    <h2 class="secHeader biotechcenter">MA COME FA QUESTA ULTRASTRUTTURA A MANTENERSI STABILE?</h2>
-    <p class="text">
-        Le tante lunghissime catene di aminoacidi (chiamate anche catene polipeptidiche) devono essere unite tra
-        loro grazie a “ponti” che si creano tra aminoacidi di catene diverse.
-    </p>
-    <p class="text"><span class="biotechbold">Si conoscono 3 differenti tipi di ponti:</span></p>
-
-    <h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">PONTI IDROGENO</h3>
-    <p class="text">
-        Sono legami estremamente deboli, che possono essere spezzati anche solo dall’acqua e dal calore, quindi
-        semplicemente facendo una messa in piega o bagnando i capelli. Si creano tra l’O del gruppo carbossilico
-        e l’H del gruppo amminico di due aminoacidi. Possono trovarsi all’interno della struttura alpha-elica e tra un
-        giro-elica e l’altro. Contribuiscono a conferire stabilità e flessibilità al capello.
-    </p>
-
-    <h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">PONTI SALINI</h3>
-    <p class="text">
-        Mediamente forti, possono essere spezzati da forte calore o da sostanze che inducono un cambiamento
-        del pH (acidi/basi). I legami salini sono interazioni elettrostatiche che si creano tra i gruppi laterali di due
-        amminoacidi (di natura basica o acida) appartenenti a due alpha-eliche adiacenti. Sono all’incirca il doppio dei
-        legami disolfuro. Contribuiscono a conferire resistenza e stabilità.
-    </p>
-
-    <h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">PONTI DISOLFURO</h3>
-    <p class="text">
-        Legami molto forti, chiamati anche <span class="biotechbold">legami covalenti</span>.
-        Sono costituiti da 2 atomi di zolfo (-S-S-) appartenenti ad
-        aminoacidi di cisteina e/o metionina di 2 alpha-eliche
-        adiacenti. È quindi un legame interno alla struttura dell’alpha-elica ma si può creare anche tra aminoacidi solforosi
-        (cisteina e metionina) presenti nella cheratina filamentosa
-        e quelli presenti nella cheratina amorfa,proprio per
-        mantenere adeso il complesso dell’ultrastruttura.
-    </p>
-    <p class="text">
-        Il ponte disolfuro è un gruppo funzionale che riveste una notevole importanza nella stabilizzazione della
-        struttura terziaria di molte proteine e quindi determina la struttura, stabilità e consistenza di capelli e
-        unghie. In alcune persone infatti, la formazione di questi ponti fa sì che le catene proteiche si ripieghino
-        parzialmente su sé stesse, dando così origine al fenomeno dei <span class="biotechbold">capelli ricci naturali</span>. Questi ponti possono
-        essere spezzati fornendo un’alta energia e questo può essere ottenuto attraverso reazioni di ossido-
-        riduzioni presenti nei processi chimici che avvengono durante i trattamenti chimici al capello (tinta ad
-        ossidazione, decolorazione, permanente).
-    </p>
-
-    <p class="text">
-        I ponti salini e quelli idrogeno sono più deboli dei disolfurici, ma sono più numerosi. In generale ciascuno di
-        questi tipi di legame contribuisce a circa <span class="biotechbold">1/3 della resistenza e della curvatura dei capelli</span>.
-    </p>
-    <p class="greentext">
-        A seconda della posizione di questi tre ponti, del numero e della regolarità con cui si dispongono tra le alpha-
-        eliche e i beta foglietti (in particolare i ponti disolfuro) si determina un’ultrastruttura ripiegata a spirale di
-        fibre cheratiniche, che determineranno la forma del capello.
-    </p>
-
-    <!-- MINERALI -->
-    <h2 class="secHeader">MINERALI</h2>
-    <p class="text">
-        I minerali rappresentano una componente essenziale per il capello. Una carenza di
-        minerali comporta capelli più fragili nella struttura, più secchi e opachi e deficit a livello bulbare.
-    </p>
-    <p class="text"><span class="biotechbold">I principali minerali sono:</span></p>
-
-    <ul class="text" style="padding-left: 40px;">
-        <li><span class="orangetext">FERRO (4-12 MG/G):</span> La sua carenza porta a fragilità strutturale e a episodi di caduta
-            eccessiva. È abbondante nei capelli rossi.</li>
-        <li><span class="orangetext">MAGNESIO (30-45 MG/G):</span> Necessario per la biosintesi di complessi indispensabili al capello.
-            È abbondante nei capelli bruni.</li>
-        <li><span class="orangetext">RAME (16-50 MG/G):</span> Indispensabile nel processo di sinesi della melanina. La sua
-            carenza inibisce la formazione dei ponti disolfuro tra le cheratine.</li>
-        <li><span class="orangetext">ZINCO (150-180 MG/G):</span> Indispensabile per la corretta attività delle cellule germinative
-            della matrice. La sua carenza inibisce il metabolismo di queste cellule causando fragilità del capello.</li>
-    </ul>
-    <p class="text">
-        I minerali sono fondamentali all’interno della struttura del capello anche perché trattengono acqua; una
-        carenza di acqua fa allungare i fusi per occupare gli spazi vuoti, rendendo fragilissima la struttura stessa.
-    </p>
-
-    <!-- LIPIDI -->
-    <h2 class="secHeader">LIPIDI</h2>
-    <p class="text">
-        I lipidi nel capello sono presenti in forma di cere, trigliceridi, colesterolo, acidi grassi liberi, in gran
-        parte derivanti dal sebo.
-    </p>
-    <p class="text">
-        Di considerevole importanza sono però i <span class="biotechbold">fosfolipidi</span>, presenti sulle membrane di tutte le cellule del nostro
-        corpo e quindi anche su quelle che compongono il capello. I fosfolipidi sono in grado di legarsi con l’acqua
-        e stabilire così il giusto grado di umidità e la corretta idratazione del capello.
-    </p>
-
-   <!-- MELANINE -->
-    <h2 class="secHeader">MELANINE</h2>
-    <p class="text">
-        la melanina si trova nella <span class="biotechbold">corteccia</span> (strato intermedio
-        del capello) ed è il suo pigmento naturale. Essa è
-        prodotta dai <span class="biotechbold">melanociti</span> che risiedono nella papilla
-        pilifera. I pigmenti colorati, a seconda della loro
-        concentrazione all’interno del capello, generano le
-        tonalità naturali di quest ultimo. (Il capello bianco
-        non ha melanina e quindi non ha pigmenti).
-    </p>
-    <p class="text"><span class="biotechbold">Questi pigmenti sono:</span></p>
-    <ul class="text" style="padding-left: 40px;">
-        <li>- due tipi di melanina, presenti a varie
-            concentrazioni all’interno del capello:
-            l’ <span class="yellowtext">EUMELANINA</span>, caratteristica dei capelli castani e
-            neri e la <span class="yellowtext">FEOMELANINA</span> , caratteristica dei capelli
-            rossi e biondi.</li>
-        <li>- Pigmenti particolari chiamati <span class="yellowtext">TRICOCROMI</span>,
-            diffusi soprattutto tra le popolazioni celtiche
-            (irlandesi e scozzesi), che caratterizzano i capelli
-            rossi. Questi pigmenti contengono la proteina
-            <span class="yellowtext">TRICOSIDERINA</span>. I capelli rossi sono il risultato
-            dell’attivazione di un gene recessivo, per questo
-            sono rari.</li>
-    </ul>
-
-    <!-- BIOSINTESI DELLE MELANINE -->
-    <h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">BIOSINTESI DELLE MELANINE:</h3>
-    <p class="text">
-        L’eumelanina è una proteina ottenuta dalla trasformazione
-        dell’amminoacido <span class="biotechbold">tirosina</span> prima in dopamina poi in dopachinone, grazie all’azione dell’enzima <span class="biotechbold">tirosinasi</span>;
-        successivamente le molecole, così formatesi, si aggregano stabilmente per formare il pigmento. L’attività
-        dell’enzima è proporzionale alla produzione di eumelanina, determinando in questo modo le varie tonalità
-        del marrone, dal più chiaro al più scuro, fino al nero.
-    </p>
-
-    <div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
-        <div style="flex: 1 1 300px;">
-            <p class="text">
-                Il processo di formazione della feomelanina è
-                molto simile al precedente, con l’unica differenza
-                che nelle fasi iniziali vi è l’intervento della <span class="biotechbold">cisteina</span>,
-                la quale interagisce con il dopachinone, portando
-                alla produzione di quest’altra molecola. Il suo
-                colore varia dal giallo arancio, rispettivamente a
-                seguito della minore o maggiore concentrazione
-                di cisteina nella sintesi.
-            </p>
-        </div>
-        <div style="flex: 1 1 300px;">
-            <p class="text">
-                L’albinismo è un’anomalia
-                genetica ereditaria caratterizzata dall’assenza o
-                dalla significativa riduzione della pigmentazione
-                melanica della cute, dei peli e degli occhi, è
-                dovuta al gene dell’enzima tirosinasi, in cui si
-                verifica una mutazione puntiforme della sequenza
-                del DNA che fa incorporare nella catena peptidica
-                un amminoacido errato, cioè una cisteina anziché
-                una serina. Ciò fa perdere l’attività catalitica
-                dell’enzima che si traduce nella mancata sintesi di
-                melanina.
-            </p>
-        </div>
-    </div>
-
-    <p class="text">
-        In ogni tipo di capello naturale sono presenti tutti e tre i tipi di melanine:
-        <span class="biotechbold">EUMELANINA, TRICOSIDERINA, FEOMELANINA</span>.
-    </p>
-    <ul class="text" style="padding-left: 40px;">
-        <li><span class="yellowtext">L’eumelanina:</span> è caratterizzata da grossi granuli
-            disposti nella parte più esterna della corteccia.
-            Contiene il pigmento puro <span class="biotechbold">blu</span> e la sua predominanza
-            nel capello caratterizza i capelli scuri.</li>
-        <li><span class="yellowtext">La tricosiderina:</span> è caratterizzata da pigmenti di
-            media grandezza, disposti al centro della corteccia.
-            Contiene il pigmento puro <span class="biotechbold">rosso</span> e la sua
-            predominanza nel capello caratterizza i capelli rossi,
-            ramati.</li>
-        <li><span class="yellowtext">La feomelanina:</span> invece è caratterizzata da granuli
-            piccoli tali da considerarsi pigmento in diffusione. In
-            genere è disposta nella parte più interna della
-            corteccia, vicino il midollo. Contiene il pigmento puro
-            <span class="biotechbold">giallo</span> e la sua predominanza nel capello caratterizza i
-            capelli biondi.</li>
-    </ul>
-
-    <p class="text">
-        La diversa percentuale delle tre melanine all’interno dei capelli determina quindi la <span class="biotechbold">scala dei toni del capello
-        naturale</span>.
-    </p>
-
-    <!-- CICLO VITALE DEL CAPELLO -->
-    <h1 class="secHeader biotechcenter">CICLO VITALE DEL CAPELLO</h1>
-    <p class="text">
-        Nel follicolo si alternano cicli di crescita e cicli di riposo: normalmente ogni volta che un capello in telogen è caduto il
-        follicolo ne forma uno nuovo in anagen.
-        Solo di rado lo stesso follicolo dà origine a più di un pelo.
-    </p>
-    <p class="text"><span class="biotechbold">Il ciclo riproduttivo del capello (e del pelo) viene suddiviso in tre fasi.</span></p>
-
-    <h3 class="secHeader" style="font-size: 22px; color: #B5EAD7;">- Fase di crescita ANAGEN:</h3>
-    <p class="text">
-        è suddiviso a sua volta in 6 sottofasi che iniziano con l'avvio dell'attività mitotica
-        delle cellule staminali della zona germinativa fino alla formazione completa del pelo.
-        A livello del cuoio capelluto il periodo anagen dura in media <span class="biotechbold">2 - 4 anni nell'uomo e 3-7 anni nella donna</span>.
-        Quindi quando il capello “vecchio” cade è sostituito da un nuovo capello “giovane”.
-        A livello di altre regioni del corpo la durata dell’anagen è molto più breve: ad esempio 1-6 mesi per le ciglia,
-        20-40 giorni per la peluria delle braccia o delle gambe.
-    </p>
-    <p class="text">
-        La durata dell’anagen dipende da fattori ereditari e determina la lunghezza del capello, che normalmente
-        cresce di circa <span class="biotechbold">1 cm al mese, anche 1,5 per le donne</span>. L’anagen è più lungo nelle donne che non nell’uomo e
-        nei soggetti di razza asiatica.
-        La durata dell’anagen varia anche leggermente a seconda delle diverse zone del cuoio capelluto: i follicoli
-        della nuca hanno un anagen di durata più lunga rispetto a quelli delle tempie. Anche la velocità di crescita
-        del capello è diversa nelle diverse zone della testa: i capelli della regione del vertice crescono più
-        velocemente di quelli della nuca.
-    </p>
-    <p class="text">
-        Nei follicoli affetti da calvizie la durata dell’anagen si riduce moltissimo (3-5 mesi) ed i capelli raggiungono
-        una lunghezza massima di 3-5 cm.
-        Con il passare degli anni la durata dell’anagen si riduce e con questo di conseguenza la lunghezza massima
-        che i capelli possono raggiungere.
-    </p>
-    <p class="text" style="font-style: italic;">
-        N.B.: Non è vero che ciascun follicolo può produrre un numero limitato e prestabilito di capelli, anzi la potenzialità
-        del follicolo è illimitata, è invece la durata limitata della vita umana, che fa sì che ogni follicolo completi al massimo
-        <span class="biotechbold">30 cicli</span>.
-    </p>
-
-   <h3 class="secHeader" style="font-size: 22px; color: #B5EAD7;">- Fase di progressivo arresto delle varie funzioni vitali, CATAGEN:</h3>
-    <p class="text">
-        è una fase di transizione molto breve, può
-        durare dalle <span class="biotechbold">2 alle 4 settimane</span>. In questa fase la matrice interrompe la sua attività e il follicolo inizia a risalire
-        verso la porzione più superficiale della cute, dove trascorrerà la sua fase di riposo.
-    </p>
-
-    <h3 class="secHeader" style="font-size: 22px; color: #B5EAD7;">- Fase di riposo funzionale, TELOGEN:</h3>
-    <p class="text">
-        è il periodo terminale del ciclo durante il quale il capello si trova ancora
-        nel follicolo pilifero ma in cui le attività mitotiche sono completamente cessate. Il follicolo in pratica entra in
-        fase di riposo, interrompe la sua attività produttiva per circa <span class="biotechbold">3 mesi</span> in quanto la matrice è ormai scomparsa.
-        Questo è infatti il tempo necessario perché scompaiano gradualmente i sistemi di ancoraggio con il follicolo
-        (cioè le guaine). Il capello cade solo quando, alla fine del telogen, il follicolo riprende le sue attività e inizia a
-        produrre un nuovo capello che spinge fuori quello vecchio. Normalmente quindi quando un capello cade è
-        perché sotto ne sta crescendo uno nuovo e questo assicura un corretto ricambio.
-    </p>
-    <p class="text">
-        A volte però il pelo in
-        riposo cade prima del tempo ed il follicolo rimane temporaneamente vuoto per qualche settimana o per
-        qualche mese, questo fenomeno (<span class="biotechbold">kenogen</span>) è presente anche nel cuoio capelluto normale ma diviene più
-        evidente in corso di alcune patologie come l’alopecia androgenetica.
-    </p>
-    <p class="text">
-        Se il pelo in riposo (in telogen) viene asportato meccanicamente, il follicolo interrompe il suo riposo ed inizia
-        precocemente un nuovo anagen. Il pallino bianco visibile ad occhio nudo in corrispondenza della radice dei
-        capelli che cadono, altro non è che la <span class="biotechbold">radice in riposo del capello in telogen</span>.
-    </p>
-    <p class="text">
-        Nell'essere umano, a differenza degli animali, il ricambio dei capelli avviene a "mosaico", cioè ogni follicolo
-        produce il suo capello indipendentemente da quelli vicini; in questo modo non si alternano, come per gli
-        animali, periodi in cui si hanno i capelli a periodi in cui questi non ci sono (muta). Una "accelerazione" del
-        ricambio è tuttavia presente nella maggioranza degli individui in primavera e autunno (effluvium stagionale
-        fisiologico). Il capello in telogen può cadere da solo o essere sospinto fuori da quello nuovo in crescita.
-    </p>
-
-    <!-- RIASSUNTO FASI CICLO -->
-    <div style="margin-top: 30px;">
-        <p class="greentext" style="border-left: 3px solid #9fe8d0; padding-left: 10px;">
-            Dal punto di vista funzionale, tuttavia, le
-            fasi del ciclo sono solo due:
-        </p>
-        <ul class="text" style="padding-left: 40px; margin-top: 10px;">
-            <li>- Una <span class="yellowtext">proliferativa</span>, dominata dalla
-                proliferazione verso il basso della colonna
-                cheratinocitaria, che occupa la parte
-                iniziale dell'anagen, piuttosto breve (fasi
-                anagen 1° - 5°);</li>
-            <li>- l'<span class="yellowtext">altra differenziativa</span>, che occupa la
-                maggior parte dell'anagen (anagen 6°),
-                nella quale i cheratinociti si trasformano
-                in cheratina e l'attività mitotica si riduce
-                al ritmo che minimo necessario a
-                rimpiazzare le cellule differenziate. Nel
-                catagen l'attività mitotica cessa e la
-                differenziazione investe tutti i
-                cheratinociti rimasti. Il telogen è una fase
-                di silenzio mitotico e differenziativo la cui finalità è quella di dare il tempo necessario al "nuovo" pelo di
-                crescere senza lasciare il follicolo vuoto.</li>
+            <li><span class="orangetext">- Cuticola:</span> parte più esterna del capello, è composta a sua volta da otto strati di cellule appiattite e
+                parzialmente sovrapposte le une alle altre, come le tegole di un tetto.</li>
+            <li><span class="orangetext">- Corteccia:</span> situata al di sotto della cuticola, costituisce la maggior parte del capello e gli dona le sue proprietà
+                meccaniche. Contiene la maggior parte della melanina presente nel capello, la cui concentrazione determina
+                il colore del capello.</li>
+            <li><span class="orangetext">- Midollo:</span> è quasi assente sopra la zona della matrice, ben rappresentato in prossimità del bulbo e tende poi a
+                diminuire distalmente nel fusto, è costituito da grandi cellule cheratinizzate, lassamente connesse, disposte
+                in filiere ordinate contenenti granuli di melanina, "bollicine" d 'aria e filamenti di cheratina.</li>
         </ul>
         <p class="text">
-            La durata del ciclo del pelo varia a seconda della regione corporea. Al cuoio capelluto ed alla barba il ciclo dura da 3 a
-            6 anni, occupato quasi totalmente dall'anagen 6°, con un telogen di tre mesi, mentre al pube una durata molto più
-            breve con un telogen più lungo dell'anagen. Anche ciglia e sopracciglia hanno anagen brevi e, nell'ambito del cuoio
-            capelluto, le regioni temporali ed occipitali hanno telogen più lunghi delle regioni parietali. La diversa durata delle
-            fasi rende conto di alcune caratteristiche della patologia pilare.
+            Le molecole principali che costituiscono il capello sono la <span class="biotechbold">cheratina</span> (in forma di α-cheratina), la <span class="biotechbold">melanina</span> (in
+            forma di granuli di pigmenti), e <span class="biotechbold">oligoelementi</span> allo stato atomico.
         </p>
     </div>
+    
+    <figure class="image-side">
+        <img class="specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparato_pilosebaceo.avif"
+             alt="Apparato_pilosebaceo" width="480" height="336" loading="lazy">
+        <figcaption class="text biotechcenter sansation-light-italic">
+            Rappresentazione dettagliata dell'Apparato Pilo-Sebaceo completo.
+        </figcaption>
+    </figure>
+</div>
+
+<div style="margin-top: 30px;">
+    <p class="text">
+        La struttura del capello è piuttosto complessa nella
+        sua organizzazione, l’analisi chimica del capello ci
+        indica quelli che sono i costituenti principali, oltre
+        all’acqua, del capello: cheratina, lipidi, minerali e
+        pigmenti.
+    </p>
+    <h2 class="secHeader" style="margin-top: 10px; font-size: 24px;">CHERATINA</h2>
+
+    <p class="text">
+        In realtà le cheratine del capello sono due, che per le loro caratteristiche strutturali vengono definite
+        <span class="biotechbold">cheratina filamentosa</span> e <span class="biotechbold">cheratina amorfa</span>. La cheratina filamentosa forma una ultra-struttura complessa
+        organizzata in <span class="biotechbold">fasci o fibrille</span>, che si trovano nella corteccia del capello, mentre la cheratina amorfa riempie
+        gli spazi vuoti tra le fibrille, stabilizzandone la struttura.
+        Le catene unite si avvolgono su se stesse, assumendo una forma a spirale simile a quella del DNA.
+    </p>
+    </div>
+    <br>
+    <br>
+<h2 class="secHeader biotechcenter">MA COME FA QUESTA ULTRASTRUTTURA A MANTENERSI STABILE?</h2>
+<p class="text">
+    Le tante lunghissime catene di aminoacidi (chiamate anche catene polipeptidiche) devono essere unite tra
+    loro grazie a “ponti” che si creano tra aminoacidi di catene diverse.
+</p>
+<p class="text"><span class="biotechbold">Si conoscono 3 differenti tipi di ponti:</span></p>
+
+<h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">PONTI IDROGENO</h3>
+<p class="text">
+    Sono legami estremamente deboli, che possono essere spezzati anche solo dall’acqua e dal calore, quindi
+    semplicemente facendo una messa in piega o bagnando i capelli. Si creano tra l’O del gruppo carbossilico
+    e l’H del gruppo amminico di due aminoacidi. Possono trovarsi all’interno della struttura alpha-elica e tra un
+    giro-elica e l’altro. Contribuiscono a conferire stabilità e flessibilità al capello.
+</p>
+
+<h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">PONTI SALINI</h3>
+<p class="text">
+    Mediamente forti, possono essere spezzati da forte calore o da sostanze che inducono un cambiamento
+    del pH (acidi/basi). I legami salini sono interazioni elettrostatiche che si creano tra i gruppi laterali di due
+    amminoacidi (di natura basica o acida) appartenenti a due alpha-eliche adiacenti. Sono all’incirca il doppio dei
+    legami disolfuro. Contribuiscono a conferire resistenza e stabilità.
+</p>
+
+<h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">PONTI DISOLFURO</h3>
+<p class="text">
+    Legami molto forti, chiamati anche <span class="biotechbold">legami covalenti</span>.
+    Sono costituiti da 2 atomi di zolfo (-S-S-) appartenenti ad
+    aminoacidi di cisteina e/o metionina di 2 alpha-eliche
+    adiacenti. È quindi un legame interno alla struttura dell’alpha-elica ma si può creare anche tra aminoacidi solforosi
+    (cisteina e metionina) presenti nella cheratina filamentosa
+    e quelli presenti nella cheratina amorfa,proprio per
+    mantenere adeso il complesso dell’ultrastruttura.
+</p>
+<p class="text">
+    Il ponte disolfuro è un gruppo funzionale che riveste una notevole importanza nella stabilizzazione della
+    struttura terziaria di molte proteine e quindi determina la struttura, stabilità e consistenza di capelli e
+    unghie. In alcune persone infatti, la formazione di questi ponti fa sì che le catene proteiche si ripieghino
+    parzialmente su sé stesse, dando così origine al fenomeno dei <span class="biotechbold">capelli ricci naturali</span>. Questi ponti possono
+    essere spezzati fornendo un’alta energia e questo può essere ottenuto attraverso reazioni di ossido-
+    riduzioni presenti nei processi chimici che avvengono durante i trattamenti chimici al capello (tinta ad
+    ossidazione, decolorazione, permanente).
+</p>
+
+<p class="text">
+    I ponti salini e quelli idrogeno sono più deboli dei disolfurici, ma sono più numerosi. In generale ciascuno di
+    questi tipi di legame contribuisce a circa <span class="biotechbold">1/3 della resistenza e della curvatura dei capelli</span>.
+</p>
+<p class="greentext">
+    A seconda della posizione di questi tre ponti, del numero e della regolarità con cui si dispongono tra le alpha-
+    eliche e i beta foglietti (in particolare i ponti disolfuro) si determina un’ultrastruttura ripiegata a spirale di
+    fibre cheratiniche, che determineranno la forma del capello.
+</p>
+
+<h2 class="secHeader">MINERALI</h2>
+<p class="text">
+    I minerali rappresentano una componente essenziale per il capello. Una carenza di
+    minerali comporta capelli più fragili nella struttura, più secchi e opachi e deficit a livello bulbare.
+</p>
+<p class="text"><span class="biotechbold">I principali minerali sono:</span></p>
+
+<ul class="text" style="padding-left: 40px;">
+    <li><span class="orangetext">FERRO (4-12 MG/G):</span> La sua carenza porta a fragilità strutturale e a episodi di caduta
+        eccessiva. È abbondante nei capelli rossi.</li>
+    <li><span class="orangetext">MAGNESIO (30-45 MG/G):</span> Necessario per la biosintesi di complessi indispensabili al capello.
+        È abbondante nei capelli bruni.</li>
+    <li><span class="orangetext">RAME (16-50 MG/G):</span> Indispensabile nel processo di sinesi della melanina. La sua
+        carenza inibisce la formazione dei ponti disolfuro tra le cheratine.</li>
+    <li><span class="orangetext">ZINCO (150-180 MG/G):</span> Indispensabile per la corretta attività delle cellule germinative
+        della matrice. La sua carenza inibisce il metabolismo di queste cellule causando fragilità del capello.</li>
+</ul>
+<p class="text">
+    I minerali sono fondamentali all’interno della struttura del capello anche perché trattengono acqua; una
+    carenza di acqua fa allungare i fusi per occupare gli spazi vuoti, rendendo fragilissima la struttura stessa.
+</p>
+
+<h2 class="secHeader">LIPIDI</h2>
+<p class="text">
+    I lipidi nel capello sono presenti in forma di cere, trigliceridi, colesterolo, acidi grassi liberi, in gran
+    parte derivanti dal sebo.
+</p>
+<p class="text">
+    Di considerevole importanza sono però i <span class="biotechbold">fosfolipidi</span>, presenti sulle membrane di tutte le cellule del nostro
+    corpo e quindi anche su quelle che compongono il capello. I fosfolipidi sono in grado di legarsi con l’acqua
+    e stabilire così il giusto grado di umidità e la corretta idratazione del capello.
+</p>
+
+<h2 class="secHeader">MELANINE</h2>
+<p class="text">
+    la melanina si trova nella <span class="biotechbold">corteccia</span> (strato intermedio
+    del capello) ed è il suo pigmento naturale. Essa è
+    prodotta dai <span class="biotechbold">melanociti</span> che risiedono nella papilla
+    pilifera. I pigmenti colorati, a seconda della loro
+    concentrazione all’interno del capello, generano le
+    tonalità naturali di quest ultimo. (Il capello bianco
+    non ha melanina e quindi non ha pigmenti).
+</p>
+<p class="text"><span class="biotechbold">Questi pigmenti sono:</span></p>
+<ul class="text" style="padding-left: 40px;">
+    <li>- due tipi di melanina, presenti a varie
+        concentrazioni all’interno del capello:
+        l’ <span class="yellowtext">EUMELANINA</span>, caratteristica dei capelli castani e
+        neri e la <span class="yellowtext">FEOMELANINA</span> , caratteristica dei capelli
+        rossi e biondi.</li>
+    <li>- Pigmenti particolari chiamati <span class="yellowtext">TRICOCROMI</span>,
+        diffusi soprattutto tra le popolazioni celtiche
+        (irlandesi e scozzesi), che caratterizzano i capelli
+        rossi. Questi pigmenti contengono la proteina
+        <span class="yellowtext">TRICOSIDERINA</span>. I capelli rossi sono il risultato
+        dell’attivazione di un gene recessivo, per questo
+        sono rari.</li>
+</ul>
+
+<h3 class="secHeader" style="font-size: 22px; color: #E0FFFF;">BIOSINTESI DELLE MELANINE:</h3>
+<p class="text">
+    L’eumelanina è una proteina ottenuta dalla trasformazione
+    dell’amminoacido <span class="biotechbold">tirosina</span> prima in dopamina poi in dopachinone, grazie all’azione dell’enzima <span class="biotechbold">tirosinasi</span>;
+    successivamente le molecole, così formatesi, si aggregano stabilmente per formare il pigmento. L’attività
+    dell’enzima è proporzionale alla produzione di eumelanina, determinando in questo modo le varie tonalità
+    del marrone, dal più chiaro al più scuro, fino al nero.
+</p>
+
+<div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+    <div style="flex: 1 1 300px;">
+        <p class="text">
+            Il processo di formazione della feomelanina è
+            molto simile al precedente, con l’unica differenza
+            che nelle fasi iniziali vi è l’intervento della <span class="biotechbold">cisteina</span>,
+            la quale interagisce con il dopachinone, portando
+            alla produzione di quest’altra molecola. Il suo
+            colore varia dal giallo arancio, rispettivamente a
+            seguito della minore o maggiore concentrazione
+            di cisteina nella sintesi.
+        </p>
+    </div>
+    <div style="flex: 1 1 300px;">
+        <p class="text">
+            L’albinismo è un’anomalia
+            genetica ereditaria caratterizzata dall’assenza o
+            dalla significativa riduzione della pigmentazione
+            melanica della cute, dei peli e degli occhi, è
+            dovuta al gene dell’enzima tirosinasi, in cui si
+            verifica una mutazione puntiforme della sequenza
+            del DNA che fa incorporare nella catena peptidica
+            un amminoacido errato, cioè una cisteina anziché
+            una serina. Ciò fa perdere l’attività catalitica
+            dell’enzima che si traduce nella mancata sintesi di
+            melanina.
+        </p>
+    </div>
+</div>
+
+<p class="text">
+    In ogni tipo di capello naturale sono presenti tutti e tre i tipi di melanine:
+    <span class="biotechbold">EUMELANINA, TRICOSIDERINA, FEOMELANINA</span>.
+</p>
+<ul class="text" style="padding-left: 40px;">
+    <li><span class="yellowtext">L’eumelanina:</span> è caratterizzata da grossi granuli
+        disposti nella parte più esterna della corteccia.
+        Contiene il pigmento puro <span class="biotechbold">blu</span> e la sua predominanza
+        nel capello caratterizza i capelli scuri.</li>
+    <li><span class="yellowtext">La tricosiderina:</span> è caratterizzata da pigmenti di
+        media grandezza, disposti al centro della corteccia.
+        Contiene il pigmento puro <span class="biotechbold">rosso</span> e la sua
+        predominanza nel capello caratterizza i capelli rossi,
+        ramati.</li>
+    <li><span class="yellowtext">La feomelanina:</span> invece è caratterizzata da granuli
+        piccoli tali da considerarsi pigmento in diffusione. In
+        genere è disposta nella parte più interna della
+        corteccia, vicino il midollo. Contiene il pigmento puro
+        <span class="biotechbold">giallo</span> e la sua predominanza nel capello caratterizza i
+        capelli biondi.</li>
+</ul>
+
+<p class="text">
+    La diversa percentuale delle tre melanine all’interno dei capelli determina quindi la <span class="biotechbold">scala dei toni del capello
+    naturale</span>.
+</p>
 <br>
 <br>
+<h1 class="secHeader biotechcenter">CICLO VITALE DEL CAPELLO</h1>
 
+<div class="image-text-wrapper">
+    <div class="text-side">
+        <p class="text">
+            Nel follicolo si alternano cicli di crescita e cicli di riposo: normalmente ogni volta che un capello in telogen è caduto il
+            follicolo ne forma uno nuovo in anagen.
+            Solo di rado lo stesso follicolo dà origine a più di un pelo.
+        </p>
+        <p class="text"><span class="biotechbold">Il ciclo riproduttivo del capello (e del pelo) viene suddiviso in tre fasi.</span></p>
 
+        <h3 class="secHeader" style="font-size: 22px; color: #B5EAD7;">- Fase di crescita ANAGEN:</h3>
+        <p class="text">
+            è suddiviso a sua volta in 6 sottofasi che iniziano con l'avvio dell'attività mitotica
+            delle cellule staminali della zona germinativa fino alla formazione completa del pelo.
+            A livello del cuoio capelluto il periodo anagen dura in media <span class="biotechbold">2 - 4 anni nell'uomo e 3-7 anni nella donna</span>.
+            Quindi quando il capello “vecchio” cade è sostituito da un nuovo capello “giovane”.
+            A livello di altre regioni del corpo la durata dell’anagen è molto più breve: ad esempio 1-6 mesi per le ciglia,
+            20-40 giorni per la peluria delle braccia o delle gambe.
+        </p>
+        <p class="text">
+            La durata dell’anagen dipende da fattori ereditari e determina la lunghezza del capello, che normalmente
+            cresce di circa <span class="biotechbold">1 cm al mese, anche 1,5 per le donne</span>. L’anagen è più lungo nelle donne che non nell’uomo e
+            nei soggetti di razza asiatica.
+            La durata dell’anagen varia anche leggermente a seconda delle diverse zone del cuoio capelluto: i follicoli
+            della nuca hanno un anagen di durata più lunga rispetto a quelli delle tempie. Anche la velocità di crescita
+            del capello è diversa nelle diverse zone della testa: i capelli della regione del vertice crescono più
+            velocemente di quelli della nuca.
+        </p>
+    </div>
+    
+    <figure class="image-side">
+        <img class="specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Ciclo_capello.avif"
+             alt="Ciclo del capello" width="480" height="393" loading="lazy">
+        <figcaption class="text biotechcenter sansation-light-italic">
+            L'immagine mostra le tre fasi del ciclo vita del capello.
+        </figcaption>
+    </figure>
+<p class="text">
+            Nei follicoli affetti da calvizie la durata dell’anagen si riduce moltissimo (3-5 mesi) ed i capelli raggiungono
+            una lunghezza massima di 3-5 cm.
+            Con il passare degli anni la durata dell’anagen si riduce e con questo di conseguenza la lunghezza massima
+            che i capelli possono raggiungere.
+        </p>
+        <p class="text" style="font-style: italic;">
+            N.B.: Non è vero che ciascun follicolo può produrre un numero limitato e prestabilito di capelli, anzi la potenzialità
+            del follicolo è illimitata, è invece la durata limitata della vita umana, che fa sì che ogni follicolo completi al massimo
+            <span class="biotechbold">30 cicli</span>.
+</p>    
+</div>
+
+<h3 class="secHeader" style="font-size: 22px; color: #B5EAD7;">- Fase di progressivo arresto delle varie funzioni vitali, CATAGEN:</h3>
+<p class="text">
+    è una fase di transizione molto breve, può
+    durare dalle <span class="biotechbold">2 alle 4 settimane</span>. In questa fase la matrice interrompe la sua attività e il follicolo inizia a risalire
+    verso la porzione più superficiale della cute, dove trascorrerà la sua fase di riposo.
+</p>
+
+<h3 class="secHeader" style="font-size: 22px; color: #B5EAD7;">- Fase di riposo funzionale, TELOGEN:</h3>
+<p class="text">
+    è il periodo terminale del ciclo durante il quale il capello si trova ancora
+    nel follicolo pilifero ma in cui le attività mitotiche sono completamente cessate. Il follicolo in pratica entra in
+    fase di riposo, interrompe la sua attività produttiva per circa <span class="biotechbold">3 mesi</span> in quanto la matrice è ormai scomparsa.
+    Questo è infatti il tempo necessario perché scompaiano gradualmente i sistemi di ancoraggio con il follicolo
+    (cioè le guaine). Il capello cade solo quando, alla fine del telogen, il follicolo riprende le sue attività e inizia a
+    produrre un nuovo capello che spinge fuori quello vecchio. Normalmente quindi quando un capello cade è
+    perché sotto ne sta crescendo uno nuovo e questo assicura un corretto ricambio.
+</p>
+<p class="text">
+    A volte però il pelo in
+    riposo cade prima del tempo ed il follicolo rimane temporaneamente vuoto per qualche settimana o per
+    qualche mese, questo fenomeno (<span class="biotechbold">kenogen</span>) è presente anche nel cuoio capelluto normale ma diviene più
+    evidente in corso di alcune patologie come l’alopecia androgenetica.
+</p>
+<p class="text">
+    Se il pelo in riposo (in telogen) viene asportato meccanicamente, il follicolo interrompe il suo riposo ed inizia
+    precocemente un nuovo anagen. Il pallino bianco visibile ad occhio nudo in corrispondenza della radice dei
+    capelli che cadono, altro non è che la <span class="biotechbold">radice in riposo del capello in telogen</span>.
+</p>
+<p class="text">
+    Nell'essere umano, a differenza degli animali, il ricambio dei capelli avviene a "mosaico", cioè ogni follicolo
+    produce il suo capello indipendentemente da quelli vicini; in questo modo non si alternano, come per gli
+    animali, periodi in cui si hanno i capelli a periodi in cui questi non ci sono (muta). Una "accelerazione" del
+    ricambio è tuttavia presente nella maggioranza degli individui in primavera e autunno (effluvium stagionale
+    fisiologico). Il capello in telogen può cadere da solo o essere sospinto fuori da quello nuovo in crescita.
+</p>
+
+<div style="margin-top: 30px;">
+    <p class="greentext" style="border-left: 3px solid #9fe8d0; padding-left: 10px;">
+        Dal punto di vista funzionale, tuttavia, le
+        fasi del ciclo sono solo due:
+    </p>
+    <ul class="text" style="padding-left: 40px; margin-top: 10px;">
+        <li>- Una <span class="yellowtext">proliferativa</span>, dominata dalla
+            proliferazione verso il basso della colonna
+            cheratinocitaria, che occupa la parte
+            iniziale dell'anagen, piuttosto breve (fasi
+            anagen 1° - 5°);</li>
+        <li>- l'<span class="yellowtext">altra differenziativa</span>, che occupa la
+            maggior parte dell'anagen (anagen 6°),
+            nella quale i cheratinociti si trasformano
+            in cheratina e l'attività mitotica si riduce
+            al ritmo che minimo necessario a
+            rimpiazzare le cellule differenziate. Nel
+            catagen l'attività mitotica cessa e la
+            differenziazione investe tutti i
+            cheratinociti rimasti. Il telogen è una fase
+            di silenzio mitotico e differenziativo la cui finalità è quella di dare il tempo necessario al "nuovo" pelo di
+            crescere senza lasciare il follicolo vuoto.</li>
+    </ul>
+    <p class="text">
+        La durata del ciclo del pelo varia a seconda della regione corporea. Al cuoio capelluto ed alla barba il ciclo dura da 3 a
+        6 anni, occupato quasi totalmente dall'anagen 6°, con un telogen di tre mesi, mentre al pube una durata molto più
+        breve con un telogen più lungo dell'anagen. Anche ciglia e sopracciglia hanno anagen brevi e, nell'ambito del cuoio
+        capelluto, le regioni temporali ed occipitali hanno telogen più lunghi delle regioni parietali. La diversa durata delle
+        fasi rende conto di alcune caratteristiche della patologia pilare.
+    </p>
+</div>
+<br>
+<br>
 <!-- Badge di accessibilità -->
 <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito BiotechProject - Conforme agli standard WCAG 2.1 AA" title="Dichiarazione di accessibilità del sito - Conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito BiotechProject"></a></div>
 <div id="lastModified"></div>
