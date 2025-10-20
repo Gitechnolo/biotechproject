@@ -458,10 +458,7 @@ body[data-page="Tablet_forum"] .qredshift-icon {display: none !important;}
 .hover-effect:hover img {transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));}
 #lastModified {text-align: center; font-size: 0.85em; color: #64ffda; opacity: 0.8; margin: 8px 0 4px; /* ridotto: meno spazio sopra e sotto */padding: 0;}
 .biotech-copyright {text-align: center; font-size: 0.9em; color: #64ffda; opacity: 0.9; margin: 4px 0 12px; /* poco spazio sopra, un po’ sotto */padding: 0;}
-
-
 /* === MODALITÀ NAVIGAZIONE DA TASTIERA === */
-
 /* Focus base: sempre visibile (WCAG 2.4.7) */
 a:focus,
 button:focus,
@@ -474,7 +471,6 @@ textarea:focus,
   outline-offset: 3px;
   box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.3);
 }
-
 /* Mostra evidenziazione solo in modalità attiva (Contrasto e Stile avanzato) */
 .keyboard-navigation-on .tech-nav-btn:focus, .keyboard-navigation-on .tech-dropdown a:focus, .keyboard-navigation-on .tech-dropdown button:focus, .keyboard-navigation-on a:focus,
 .keyboard-navigation-on button:focus, .keyboard-navigation-on input:focus, .keyboard-navigation-on [role="menuitem"]:focus, .keyboard-navigation-on .imgStaff:focus,
@@ -485,7 +481,6 @@ textarea:focus,
     outline-offset: 3px; 
     box-shadow: 0 0 8px rgba(0, 230, 118, 0.5), 0 0 16px rgba(0, 230, 118, 0.3), 0 0 0 4px rgba(0, 191, 255, 0.2);
 }
-
 /* === PULSANTE DI ATTIVAZIONE - Posizionato in alto a SINISTRA === */
 .keyboard-toggle-btn {
     position: absolute; 
@@ -508,7 +503,6 @@ textarea:focus,
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); 
     white-space: nowrap;
 }
-
 .keyboard-toggle-btn:hover, 
 .keyboard-toggle-btn:focus {
     background: rgba(0, 30, 40, 0.95); 
@@ -517,29 +511,24 @@ textarea:focus,
     box-shadow: 0 0 12px rgba(0, 230, 118, 0.4), 0 0 20px rgba(0, 255, 180, 0.3), 0 0 0 1px rgba(0, 255, 180, 0.3); 
     outline: none;
 }
-
 .keyboard-toggle-btn:active {
     transform: translateY(1px);
 }
-
 .keyboard-toggle-btn[data-active="true"] {
     color: #00ffcc; 
     box-shadow: 0 0 12px rgba(0, 230, 118, 0.5), 0 0 24px rgba(0, 255, 180, 0.4), 0 0 0 1px rgba(0, 255, 180, 0.4);
 }
-
 /* Animazione: lieve pulsazione per attirare l’attenzione (una volta sola) */
 @keyframes hint-pulse {
     0% { transform: scale(1); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); } 
     50% { transform: scale(1.02); box-shadow: 0 0 14px rgba(0, 230, 118, 0.4); } 
     100% { transform: scale(1); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); }
 }
-
 /* Applica l'animazione solo al caricamento */
 .keyboard-toggle-btn.hint {
     animation: hint-pulse 1.5s ease-out 0.8s 1; 
     animation-fill-mode: forwards;
 }
-
 /* === Link "Skip to main" link salto per tastiera - Posizionato in alto a SINISTRA === */
 .skip-link {
     position: absolute; 
@@ -562,7 +551,6 @@ textarea:focus,
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); 
     white-space: nowrap;
 }
-
 .skip-link:hover, 
 .skip-link:focus {
     top: 48px; /* Posizione visibile standard (sotto il pulsante) */
@@ -572,25 +560,22 @@ textarea:focus,
     box-shadow: 0 0 12px rgba(0, 230, 118, 0.4), 0 0 20px rgba(0, 255, 180, 0.3), 0 0 0 1px rgba(0, 255, 180, 0.3); 
     outline: none;
 }
-
 .skip-link:active {
     transform: translateY(1px);
-}   
+}
 
 /* === MOBILE/TABLET OPTIMIZATION (Schermi piccoli) === */
 @media (max-width: 768px) {
-    /* Nasconde il pulsante di attivazione sui dispositivi mobili (come da tua logica) */
+    /* Nasconde il pulsante di attivazione sui dispositivi mobili (come smartphone) */
     .keyboard-toggle-btn {
         display: none !important;
     }
-    
     /* CORREZIONE CRITICA: Sposta lo Skip Link in alto (12px) quando il pulsante (48px) è nascosto */
     .skip-link:focus {
         top: 12px !important; 
     }
-    
     /* Rimuove la media query ERRATA che nascondeva completamente lo skip-link su mobile.
-       Ora funziona correttamente anche con tastiera esterna su tablet. */
+       Funziona correttamente anche con tastiera esterna su tablet. */
 }   
 /* End link "Skip to main" link salto per tastiera */
 
@@ -628,8 +613,6 @@ textarea:focus,
     box-shadow: none !important;
   }
 }
-
-
 .biotech-simple-link-container {
   text-align: center;
   margin: 30px 16px;
