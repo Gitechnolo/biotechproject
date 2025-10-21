@@ -155,6 +155,16 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
         flex-direction: column; 
     }
 } 
+/* Ridimensionamento tabelle su device*/
+@media only screen and (max-width: 768px) {table, thead, tbody, th, td, tr {display: block;}
+  thead { display: none; }
+  tr { margin: 10px 0; border-bottom: 2px solid #ccc; }
+  td { position: relative; padding-left: 50% !important; border: none;}
+  td:before { content: attr(data-label) ": ";
+    position: absolute; left: 0; width: 45%; font-weight: bold; white-space: nowrap;} }   
+/* End ridimensionamento tabelle su device*/
+.Pilosebaceo {padding: 8px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.biotech-img {margin: 2px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
 </style>
 <script>
 !function(){
@@ -787,7 +797,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <p>
 <figure>
 <img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Legame_ionico.avif" width="480" height="198" alt="Legame ionico" loading="lazy"><br>
-<img class="transparent specials-img" src="Biotech-file/images/Biotech-menu/Cristallino.avif" width="192" height="170" alt="Cristallino" loading="lazy">
+<img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cristallino.avif" width="192" height="170" alt="Cristallino" loading="lazy">
 </figure>
 <figcaption class="sansation-light-italic">
 [Image of Sodium Chloride (NaCl) Ionic Crystal Lattice]<br>
@@ -821,7 +831,7 @@ RETICOLO CRISTALLINO FORMATO DAGLI IONI Na+ E Cl- TENUTI INSIEME DA LEGAMI IONIC
 <p class="text">
     Struttura caratterizzata da <strong>ioni positivi</strong> immersi in un <strong>“mare di elettroni”</strong> (elettroni di valenza) relativamente liberi di muoversi (<strong>delocalizzati</strong>).
 </p>
-<img class="transparent specials-img" src="Biotech-file/images/Biotech-menu/Ione_metallico.avif" width="338" height="149" alt="Ione metallico" loading="lazy">        
+<img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Ione_metallico.avif" width="338" height="149" alt="Ione metallico" loading="lazy">        
 <p class="yellowtext" style="padding: 0,5px; background-color: rgba(138, 43, 226, 0.1);">
     È dovuto all’attrazione elettrostatica che si stabilisce tra gli elettroni di valenza “mobili” e gli ioni positivi.
 </p>   
@@ -849,7 +859,7 @@ RETICOLO CRISTALLINO FORMATO DAGLI IONI Na+ E Cl- TENUTI INSIEME DA LEGAMI IONIC
 <p class="text">
     Nel ghiaccio, i legami a idrogeno formano una struttura tetraedrica esagonale stabile, che aumenta il volume e <strong>riduce la densità</strong>, facendo galleggiare il ghiaccio sull'acqua. In fase liquida, questi legami si rompono e riformano continuamente, conferendo all'acqua un'elevata coesione, tensione superficiale, calore specifico e punto di ebollizione.
 </p>   
-<img class="transparent biotechcenter" src="Biotech-file/images/Biotech-menu/Tipi_di_molecole.avif" width="" height="" alt="Tipi di molecole" loading="lazy" style="display: block; margin: 18px auto;">    
+<img class="transparent biotechcenter" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Tipi_di_molecole.avif" width="" height="" alt="Tipi di molecole" loading="lazy" style="display: block; margin: 18px auto;">    
     <h2 class="secHeader biotechcenter">REAZIONI CHIMICHE: Tipi e Rappresentazione 🧪</h2>
     
     <p class="text">
@@ -1049,25 +1059,61 @@ Mg O + H2 O &rarr; Mg (OH)2 = idrossido di magnesio; Ca O + H2 O &rarr; Ca (OH)2
 <table class="text" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
     <thead>
         <tr style="background-color: rgba(0, 191, 255, 0.2);">
-            <th style="padding: 8px; border: 1px solid #333;">Prodotto</th>
-            <th style="padding: 8px; border: 1px solid #333;">pH Target</th>
+            <th class="Pilosebaceo">Prodotto</th>
+            <th class="Pilosebaceo">pH Target</th>
         </tr>
     </thead>
     <tbody>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Crema Viso / Corpo</td><td style="padding: 8px; border: 1px solid #333;">5,5 – 6,0</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Latte Detergente Viso</td><td style="padding: 8px; border: 1px solid #333;">6,0 – 7,0</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Tonico Viso</td><td style="padding: 8px; border: 1px solid #333;">4,5 – 5,5</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Esfoliante Viso / Corpo (D'urto)</td><td style="padding: 8px; border: 1px solid #333;"><span class="orangetext">3,5 ca.</span></td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Esfoliante Viso / Corpo (Pelli Sensibili)</td><td style="padding: 8px; border: 1px solid #333;">4,5 ca.</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Contorno Occhi</td><td style="padding: 8px; border: 1px solid #333;">6,0 ca. (Compromesso tra pelle ≈ 5,5 e occhio ≈ 7)</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Doccia Corpo</td><td style="padding: 8px; border: 1px solid #333;">5,5 – 6,5</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Prodotto Intimo</td><td style="padding: 8px; border: 1px solid #333;"><span class="greentext">4,0 – 4,5</span> (Maggiore acidità protettiva)</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Shampoo Capelli</td><td style="padding: 8px; border: 1px solid #333;">4,5 – 5,0</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Balsamo Capelli</td><td style="padding: 8px; border: 1px solid #333;">4,5 ca.</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Deodorante Ascelle</td><td style="padding: 8px; border: 1px solid #333;">4,0 – 5,0</td></tr>
-        <tr><td style="padding: 8px; border: 1px solid #333;">Sapone (Tradizionale)</td><td style="padding: 8px; border: 1px solid #333;"><span class="orangetext">8,5 – 9,5</span> (Netta alcalinità)</td></tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Crema Viso / Corpo</td>
+            <td data-label="pH Target" class="Pilosebaceo">5,5 – 6,0</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Latte Detergente Viso</td>
+            <td data-label="pH Target" class="Pilosebaceo">6,0 – 7,0</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Tonico Viso</td>
+            <td data-label="pH Target" class="Pilosebaceo">4,5 – 5,5</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Esfoliante Viso / Corpo (D'urto)</td>
+            <td data-label="pH Target" class="Pilosebaceo"><span class="orangetext">3,5 ca.</span></td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Esfoliante Viso / Corpo (Pelli Sensibili)</td>
+            <td data-label="pH Target" class="Pilosebaceo">4,5 ca.</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Contorno Occhi</td>
+            <td data-label="pH Target" class="Pilosebaceo">6,0 ca. (Compromesso tra pelle ≈ 5,5 e occhio ≈ 7)</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Doccia Corpo</td>
+            <td data-label="pH Target" class="Pilosebaceo">5,5 – 6,5</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Prodotto Intimo</td>
+            <td data-label="pH Target" class="Pilosebaceo"><span class="greentext">4,0 – 4,5</span> (Maggiore acidità protettiva)</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Shampoo Capelli</td>
+            <td data-label="pH Target" class="Pilosebaceo">4,5 – 5,0</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Balsamo Capelli</td>
+            <td data-label="pH Target" class="Pilosebaceo">4,5 ca.</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Deodorante Ascelle</td>
+            <td data-label="pH Target" class="Pilosebaceo">4,0 – 5,0</td>
+        </tr>
+        <tr>
+            <td data-label="Prodotto" class="Pilosebaceo">Sapone (Tradizionale)</td>
+            <td data-label="pH Target" class="Pilosebaceo"><span class="orangetext">8,5 – 9,5</span> (Netta alcalinità)</td>
+        </tr>
     </tbody>
-</table>   
+</table>      
     
     <h3 class="subtitle">Regolazione del pH in Formulazione</h3>
 <p class="text">
@@ -1192,7 +1238,14 @@ Mg O + H2 O &rarr; Mg (OH)2 = idrossido di magnesio; Ca O + H2 O &rarr; Ca (OH)2
     <p><span class="biotechbold">Polivinilpirrolidone (PVP):</span> Storico filmogeno. Crea uno strato rigido e solubile in acqua, responsabile dell'<strong>effetto bagnato</strong>.</p>
     <p><span class="biotechbold">Sistemi Moderni (PVP + Silicone):</span> Il <strong>Polidimetilsilossano</strong> forma uno strato esterno protettivo che ripara il PVP dall'acqua. Mantiene la tenuta <strong>senza effetto bagnato</strong>, per un look più naturale.</p>
 </div>
-    
+
+<figure>
+<img class="transparent biotech-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Silicone.avif" width="480" height="143" alt="Disposizione PVP e polidimetilsilossano su capello" loading="lazy">
+</figure>
+<figcaption class="sansation-light-italic">
+Il disegno mostra la disposizione di PVP e polidimetilsilossano sul capello.
+</figcaption>
+
 <p class="text">
     Per favorire la distribuzione in schiuma, si usa un <strong>copolimero siliconico</strong> (dimethicone copolyol), ottenuto dall'unione di un polisilossano e un polietere. La componente eterea idrofila migliora la solubilità in acqua/alcol e conferisce lucentezza.
 </p>
@@ -1220,6 +1273,14 @@ Mg O + H2 O &rarr; Mg (OH)2 = idrossido di magnesio; Ca O + H2 O &rarr; Ca (OH)2
 <p class="text">
     A differenza delle tinture a ossidazione, l’henné <strong>non penetra nella corteccia</strong>, ma si deposita sulla <strong>cuticola</strong>, legandosi alla cheratina tramite <strong>legami idrogeno</strong> (elettrostatici).
 </p>
+
+<figure>
+<img class="transparent biotech-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Hennè.avif" width="192" height="213" alt="Hennè" loading="lazy">
+</figure>
+<figcaption class="sansation-light-italic">
+Henné deposito.
+</figcaption>
+
 <ul class="text" style="padding: 10px; border-left: 3px solid #9fe8d0;">
     <li><span class="biotechbold">Agente Colorante:</span> <strong>Lawsone</strong>, estratto da *Lawsonia inermis*.</li>
     <li><span class="biotechbold">Effetto Sostantivante:</span> Aumenta leggermente il diametro del capello, conferendo volume, lucentezza e resistenza.</li>
@@ -1344,21 +1405,41 @@ Mg O + H2 O &rarr; Mg (OH)2 = idrossido di magnesio; Ca O + H2 O &rarr; Ca (OH)2
 
     <h3 class="subtitle">Classi di Tensioattivi e Carica Elettrica</h3>
     <table class="text" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-        <thead>
-            <tr style="background-color: rgba(0, 191, 255, 0.2);">
-                <th style="padding: 8px; border: 1px solid #333;">Tipo</th>
-                <th style="padding: 8px; border: 1px solid #333;">Carica</th>
-                <th style="padding: 8px; border: 1px solid #333;">Esempio</th>
-                <th style="padding: 8px; border: 1px solid #333;">Uso Specifico</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td style="padding: 8px; border: 1px solid #333;">Anionici</td><td style="padding: 8px; border: 1px solid #333;">Negativa</td><td style="padding: 8px; border: 1px solid #333;">Lauril Solfato di Sodio (SLS)</td><td style="padding: 8px; border: 1px solid #333;">Detergenza principale (più comuni)</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #333;">Anfoteri</td><td style="padding: 8px; border: 1px solid #333;">Dipende dal $\text{pH}$</td><td style="padding: 8px; border: 1px solid #333;">Derivati della Betaina</td><td style="padding: 8px; border: 1px solid #333;">Formulazioni delicate e shampoo per bambini</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #333;">Non-Ionici</td><td style="padding: 8px; border: 1px solid #333;">Neutrale</td><td style="padding: 8px; border: 1px solid #333;">Alcanolammidi grasse</td><td style="padding: 8px; border: 1px solid #333;">Coadiuvanti e stabilizzanti</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #333;">Cationici</td><td style="padding: 8px; border: 1px solid #333;">Positiva</td><td style="padding: 8px; border: 1px solid #333;">Cloruro di Distearil Dimetilammonio</td><td style="padding: 8px; border: 1px solid #333;">Capelli gravemente danneggiati (si assorbono per carica positiva)</td></tr>
-        </tbody>
-    </table>
+    <thead>
+        <tr style="background-color: rgba(0, 191, 255, 0.2);">
+            <th class="Pilosebaceo">Tipo</th>
+            <th class="Pilosebaceo">Carica</th>
+            <th class="Pilosebaceo">Esempio</th>
+            <th class="Pilosebaceo">Uso Specifico</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="Pilosebaceo" data-label="Tipo">Anionici</td>
+            <td class="Pilosebaceo" data-label="Carica">Negativa</td>
+            <td class="Pilosebaceo" data-label="Esempio">Lauril Solfato di Sodio (SLS)</td>
+            <td class="Pilosebaceo" data-label="Uso Specifico">Detergenza principale (più comuni)</td>
+        </tr>
+        <tr>
+            <td class="Pilosebaceo" data-label="Tipo">Anfoteri</td>
+            <td class="Pilosebaceo" data-label="Carica">Dipende dal pH</td>
+            <td class="Pilosebaceo" data-label="Esempio">Derivati della Betaina</td>
+            <td class="Pilosebaceo" data-label="Uso Specifico">Formulazioni delicate e shampoo per bambini</td>
+        </tr>
+        <tr>
+            <td class="Pilosebaceo" data-label="Tipo">Non-Ionici</td>
+            <td class="Pilosebaceo" data-label="Carica">Neutrale</td>
+            <td class="Pilosebaceo" data-label="Esempio">Alcanolammidi grasse</td>
+            <td class="Pilosebaceo" data-label="Uso Specifico">Coadiuvanti e stabilizzanti</td>
+        </tr>
+        <tr>
+            <td class="Pilosebaceo" data-label="Tipo">Cationici</td>
+            <td class="Pilosebaceo" data-label="Carica">Positiva</td>
+            <td class="Pilosebaceo" data-label="Esempio">Cloruro di Distearil Dimetilammonio</td>
+            <td class="Pilosebaceo" data-label="Uso Specifico">Capelli gravemente danneggiati</td>
+        </tr>
+    </tbody>
+</table>   
 
     <h3 class="subtitle">Meccanismo di Detersione (Micelle)</h3>
 <p class="text">
