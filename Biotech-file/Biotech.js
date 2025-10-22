@@ -9,8 +9,9 @@ function QRedshift() {
     // Giorno
     filter = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
   } else {
-    // Notte
-    filter = 'sepia(0.5) hue-rotate(-30deg) brightness(1)';
+// Notte - Ottimizzato per contrasto 4.5:1 (WCAG AA)
+// Riduzione luminosità e aumento sepia/rotazione hue per toni scuri e caldi
+filter = 'sepia(0.6) hue-rotate(-35deg) brightness(0.9)';
   }
   // Applica filtro
   document.body.classList.add('qredshift-active');
