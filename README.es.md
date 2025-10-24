@@ -101,8 +101,8 @@ El proyecto es **parcialmente conforme con el Nivel AAA**, especialmente en:
 Sin embargo, algunos criterios AAA no son aplicables o no son necesarios en el contexto actual (p. ej. subtítulos para vídeos, lenguaje sencillo extendido). 
 
 📄 **Declaración completa de accesibilidad:**  
-👉 [Leer Declaración de Accesibilidad (EN)](accessibility-en.html)  
-👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)   
+👉 [Leer Declaración de Accesibilidad (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)   
 
 
 ## 🌍 Gestión multilingüe (i18n)

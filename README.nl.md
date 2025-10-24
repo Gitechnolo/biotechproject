@@ -101,7 +101,7 @@ Het project is **gedeeltelijk conform aan Niveau AAA**, met name voor:
 Echter, sommige AAA-criteria zijn niet van toepassing of niet vereist in de huidige context (bijv. ondertitels voor video's, uitgebreide eenvoudige taal).
 
 📄 **Volledige verklaring:**  
-👉 [Lees de Toegankelijkheidsverklaring (NL)](https://gitechnolo.github.io/biotechproject/accessibility-nl.html)  
+👉 [Lees de Toegankelijkheidsverklaring (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
 ---
