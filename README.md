@@ -100,8 +100,8 @@ The project is **partially conformant with Level AAA**, particularly in:
 However, some AAA criteria are not applicable or required in the current context (e.g. video captions, extended plain language).   
 
 📄 **Full accessibility statement:**  
-👉 [Read Accessibility Statement (EN)](accessibility-en.html)  
-👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)
+👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
 ---
 
