@@ -101,8 +101,8 @@ Il progetto è **parzialmente conforme al Livello AAA**, in particolare per:
 Tuttavia, alcuni criteri AAA non sono applicabili o non sono richiesti nel contesto attuale (es. sottotitoli per video, testo in lingua semplice esteso).
 
 📄 **Dichiarazione completa:**  
-👉 [Leggi la Dichiarazione di Accessibilità (IT)](accessibility-it.html)  
-👉 [Read Accessibility Statement (EN)](accessibility-en.html)
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)  
+👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
 ---
 
@@ -234,7 +234,7 @@ Nonostante l’impegno, alcune parti non soddisfano pienamente tutti i criteri W
 ## 💬 Feedback e segnalazioni
 
 Il tuo feedback è fondamentale per migliorare l’accessibilità del progetto.  
-Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattaci](accessibility-it.html#feedback) (sezione "Feedback e segnalazioni" della dichiarazione).
+Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattaci](https://gitechnolo.github.io/biotechproject/accessibility-it.html#feedback) (sezione "Feedback e segnalazioni" della dichiarazione).
 
 ## 📅 Data dell’ultima verifica
 **8 settembre 2025**   
