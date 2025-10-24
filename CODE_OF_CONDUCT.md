@@ -55,6 +55,6 @@ We take all reports seriously and will act promptly and fairly.
 
 ## 💬 Questions?
 
-If you have any questions about this Code of Conduct, please open a [Discussion](https://github.com/Gitechnolo/biotechproject/discussions) or contact the maintainers directly.
+If you have any questions about this Code of Conduct, please open a [Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) or contact the maintainers directly.
 
 Thank you for helping make BiotechProject a positive, inclusive space for innovation. 🌍  

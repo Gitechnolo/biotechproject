@@ -55,6 +55,6 @@ Prendiamo tutte le segnalazioni seriamente e agiremo prontamente e in modo equo.
 
 ## 💬 Domande?
 
-Se hai domande su questo Codice di Condotta, apri una [Discussione](https://github.com/Gitechnolo/biotechproject/discussions) o contatta direttamente i responsabili.
+Se hai domande su questo Codice di Condotta, apri una [Discussione](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) o contatta direttamente i responsabili.
 
 Grazie per contribuire a rendere BiotechProject uno spazio positivo e inclusivo per l'innovazione. 🌍
