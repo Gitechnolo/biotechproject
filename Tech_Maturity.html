@@ -516,25 +516,32 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/reportPerformance.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio.js"></script>
 <script>document.addEventListener("DOMContentLoaded", startModernClock);</script>
-<!-- Libreria html2pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-<!-- Funzione per generare il PDF -->
 <script>
 async function generaReportPDF() {
+  // Attendi che i dati e il grafico siano fully caricati
+  await new Promise(resolve => setTimeout(resolve, 600));
+  
   const element = document.getElementById('report-container') || document.body;
   const options = {
     margin: 1,
     filename: 'BiotechProject_Report.pdf',
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: 'cm', format: 'a4', orientation: 'landscape' }
+    html2canvas: { 
+      scale: 2, 
+      useCORS: true,
+      allowTaint: true 
+    },
+    jsPDF: { 
+      unit: 'cm', 
+      format: 'a4', 
+      orientation: 'landscape' 
+    }
   };
   await html2pdf().from(element).set(options).save();
 }
 
-// Collega il pulsante (assicurati che abbia id="export-pdf-btn")
-document.getElementById('export-data-btn')?.addEventListener('click', generaReportPDF);   
+// Collega il pulsante esistente
+document.getElementById('export-data-btn')?.addEventListener('click', generaReportPDF);
 </script>   
 </body>
   </html>
