@@ -450,8 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }); 
 
-
-// Funzione: esporta JSON + grafico in PDF
+// FUNZIONE: ESPORTA JSON + GRAFICO IN PDF
   async function exportToPDF() {
     const btn = document.getElementById('export-data-btn');
     const originalLabel = btn?.textContent || 'Esporta dati';
