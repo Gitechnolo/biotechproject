@@ -25,6 +25,8 @@ const pages = [
   { url: `${BASE_URL}/Dermatologia-semplice.html`, label: 'Dermatologia (versione semplificata)', slug: 'dermatologia-semplice', category: 'accessibilità'},   
   { url: `${BASE_URL}/Cellula.html`, label: 'Cellula', slug: 'cellula', category: 'fisiologia' },
   { url: `${BASE_URL}/Cellula-semplice.html`, label: 'Cellula (versione semplificata)', slug: 'cellula-semplice', category: 'accessibilità' },   
+  { url: `${BASE_URL}/Capelli.html`, label: 'Capelli', slug: 'capelli', category: 'fisiologia' },
+  { url: `${BASE_URL}/Capelli-semplice.html`, label: 'Capelli (versione semplificata)', slug: 'capelli-semplice', category: 'accessibilità' },
   { url: `${BASE_URL}/Staff.html`, label: 'Staff', slug: 'staff', category: 'staff' },
   { url: `${BASE_URL}/Progetti.html`, label: 'Progetti', slug: 'progetti', category: 'altro' },
   { url: `${BASE_URL}/Marketing.html`, label: 'Marketing', slug: 'marketing', category: 'mercato cibernetica' },
