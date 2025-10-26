@@ -242,9 +242,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .waviy {position: relative; font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 26px; color: hsla(240, 20%, 98%, 0.658); text-shadow: 2px 2px 4px, 0 0 25px rgba(76, 76, 231, 0.315), 0 0 5px rgba(6, 6, 150, 0.301); margin-left: 16px; margin-top: 20px; margin-right: auto; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .waviy span {position: relative; display: inline-block; animation: flip 2s infinite; animation-delay: calc(.2s * var(--i))}
 @keyframes flip {0%,80% {transform: rotateY(360deg)}}
-.transparent {opacity: 0.8; /* Minimo per mantenere contrasto sufficiente */
-  transition: opacity 0.7s, filter 0.7s; filter: brightness(0.9) contrast(1) saturate(1) hue-rotate(-5deg);}
-.transparent:hover {opacity: 1; filter: brightness(1.2) contrast(1.1) saturate(1.1) hue-rotate(10deg);}   
+.transparent {opacity: 0.8; transition: opacity 0.7s, filter 0.7s; filter: brightness(0.9) contrast(1) saturate(1) hue-rotate(-5deg);}
+.transparent:hover {opacity: 1; filter: brightness(1.1) contrast(1.05) saturate(1.05) hue-rotate(5deg); /* Evita eccessivo schiarimento */}      
 .div1 {float: inline-end; padding: 10px; text-align: justify;}  
 .div2 {float: left; padding: 10px; text-align: justify;}
 .div3 {padding: 10px; text-align: justify;}
