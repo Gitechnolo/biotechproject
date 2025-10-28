@@ -107,6 +107,13 @@ Tuttavia, alcuni criteri AAA non sono applicabili o non sono richiesti nel conte
 
 ---
 
+## Accessibilità & Case Study
+
+Siamo impegnati a costruire una piattaforma inclusiva. Scopri come abbiamo implementato la conformità WCAG 2.1 AA e il supporto multilingue:
+
+[![Case Study - Costruire una Piattaforma Biotech Accessibile](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibilit%C3%A0-brightgreen?logo=github&labelColor=222)](biotechproject-case-study.md)   
+
+
 ## 🌍 Gestione Multilingua (i18n)
 
 BiotechProject supporta **più lingue** con un sistema di traduzione **modulare, leggero e accessibile**, progettato per funzionare su pagine statiche ospitate su GitHub Pages.

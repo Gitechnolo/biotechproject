@@ -106,6 +106,13 @@ Echter, sommige AAA-criteria zijn niet van toepassing of niet vereist in de huid
 
 ---
 
+## Toegankelijkheid & Casus
+
+We streven naar een inclusief platform. Ontdek hoe we WCAG 2.1 AA-conformiteit en meertalige ondersteuning hebben geïmplementeerd:
+
+[![Casus - Een toegankelijk biotechplatform bouwen](https://img.shields.io/badge/Case%20Study-BiotechProject%20Toegankelijkheid-brightgreen?logo=github&labelColor=222)](biotechproject-case-study.md)   
+
+
 ## 🌍 Meertalig Beheer (i18n)
 
 BiotechProject ondersteunt **meerdere talen** via een **modulair, lichtgewicht en toegankelijk** vertalingssysteem, ontworpen voor statische pagina's op GitHub Pages.

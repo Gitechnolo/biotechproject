@@ -102,7 +102,15 @@ Einige AAA-Kriterien sind jedoch im aktuellen Kontext nicht anwendbar oder nicht
 
 📄 **Vollständige Barrierefreiheitserklärung:**  
 👉 [Barrierefreiheitserklärung lesen (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
-👉 [Dichiarazione di Accessibilità lesen (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)    
+👉 [Dichiarazione di Accessibilità lesen (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
+
+
+## Barrierefreiheit & Fallstudie
+
+Wir engagieren uns für eine inklusive Plattform. Erfahren Sie, wie wir die Konformität mit WCAG 2.1 AA und Mehrsprachigkeit umgesetzt haben:
+
+[![Fallstudie - Einen barrierefreien Biotech-Plattform aufbauen](https://img.shields.io/badge/Case%20Study-BiotechProject%20Barrierefreiheit-brightgreen?logo=github&labelColor=222)](biotechproject-case-study.md)   
+
 
 
 ## 🌍 Mehrsprachige Verwaltung (i18n)
