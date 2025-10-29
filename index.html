@@ -183,23 +183,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 
   <div id="ytVideoContainer">
   <!-- Poster caricato come immagine con priorità alta. (accessibilità video con supporto tastiera) -->
-<img 
-  id="videoPoster"
-  src="Singapore_boscoartificiale-Metropoli-348w.avif"
-  srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli-348w.avif 348w,
-          https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif 633w"
-  sizes="(max-width: 600px) 100vw, 633px"
-  alt="Anteprima video: Foresta verticale di Singapore"
-  fetchpriority="high"
-  loading="eager"
-  role="button"
-  tabindex="0"
-  aria-label="Riproduci video: Foresta verticale di Singapore"
-  onkeydown="handleVideoPosterKey(event)"
-  onclick="loadAndPlayVideo()"
-  style="width:100%; height:auto; display:block; cursor:pointer;"
-  width="633"
-  height="281">   
+<img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" alt="Anteprima video: Foresta verticale di Singapore" fetchpriority="high" loading="eager" role="button" tabindex="0" aria-label="Riproduci video: Foresta verticale di Singapore" onkeydown="handleVideoPosterKey(event)" onclick="loadAndPlayVideo()" style="width:100%; height:auto; display:block; cursor:pointer;" width="633" height="281">
 <!-- Controlli (inizialmente nascosti) -->
   <div class="yt-video-controls" style="display:none;">
     <button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button>
