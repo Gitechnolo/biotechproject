@@ -3,6 +3,7 @@ Accessible Front-End Engineer | Inclusive Digital Solutions | Public Sector Inno
 🌐 GitHub Repository: [BiotechProject](https://github.com/Gitechnolo/biotechproject)
 🔗 BiotechProject – [Accessibility Statement](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 🌍 Live Project: https://gitechnolo.github.io/biotechproject/index.html
+🌐 [Trailblazer Profile](https://www.salesforce.com/trailblazer/fabrizioporzia-biotech)   
 📧 teambiotechproject@proton.me
 📍 Rome, Italy  
 
