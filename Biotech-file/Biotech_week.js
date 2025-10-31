@@ -56,15 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const daySpans = createSpans(message, 26);
     const titleSpans = createSpans(title, 1);
 
-    // Inserimento con classe .modern-greeting
     weekElement.innerHTML = `
         <div class="greeting-time">${greeting}</div>
         <div class="modern-greeting">${titleSpans + daySpans}</div>
     `;
 
-    // Attivazione animazione
+    // Attiva l'effetto lettera per lettera
     setTimeout(() => {
-        document.querySelectorAll('.modern-greeting, .greeting-time').forEach(el => {
+        document.querySelectorAll('.greeting-time, .modern-greeting').forEach(el => {
             el.classList.add('show');
         });
     }, 100);
