@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hour = new Date().getHours();
     let greetingIndex = 1;
     if (hour < 6) greetingIndex = 0;
-    else if (hour < 13) greetingIndex = 1; // -> 12:59:59 PM
+    else if (hour < 14) greetingIndex = 1; // -> 13:59:59 PM
     else if (hour < 18) greetingIndex = 2;
     else greetingIndex = 3;
 
