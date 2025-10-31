@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hour = new Date().getHours();
     let greetingIndex = 1;
     if (hour < 6) greetingIndex = 0;
-    else if (hour < 14) greetingIndex = 1;
+    else if (hour < 14) greetingIndex = 1; // -> 13:59:59 PM
     else if (hour < 18) greetingIndex = 2;
     else greetingIndex = 3;
 
@@ -56,15 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const daySpans = createSpans(message, 26);
     const titleSpans = createSpans(title, 1);
 
-    weekElement.innerHTML = `
-        <div class="greeting-time">${greeting}</div>
-        <div class="modern-greeting">${titleSpans + daySpans}</div>
-    `;
-
-    // Attiva l'effetto lettera per lettera
-    setTimeout(() => {
-        document.querySelectorAll('.greeting-time, .modern-greeting').forEach(el => {
-            el.classList.add('show');
-        });
-    }, 100);
-});            
+    weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
+});         
