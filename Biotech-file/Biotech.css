@@ -112,19 +112,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* === Conto alla rovescia moderno === */
 .modern-countdown { color: #a7ffeb; font-family: 'Sansation', sans-serif; font-size: 1.2em; font-weight: bold; text-align: center; margin: 8px auto; max-width: 380px; padding: 10px 16px; background: rgba(255, 215, 0, 0.1);/* Oro tenue */ border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 6px; box-shadow: 0 0 12px rgba(255, 215, 0, 0.2); backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); opacity: 0.95; letter-spacing: 0.5px; line-height: 1.4;}
 /* Augurio moderno */
+.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin-bottom: 4px; font-style: italic; opacity: 0.9; text-shadow: 0 0 8px rgba(0, 230, 118, 0.3); letter-spacing: 0.5px; font-weight: normal;}
 .modern-greeting {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.9; text-shadow: 0 0 8px rgba(0, 230, 118, 0.3); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); letter-spacing: 0.5px;}   
-.greeting-time {
-  text-align: center;
-  margin-bottom: 8px;
-  font-family: 'Sansation', sans-serif;
-  font-size: 1.1em;
-  color: #b2dfdb;
-  opacity: 0.9;
-  text-shadow: 0 0 8px rgba(0, 230, 118, 0.3);
-  letter-spacing: 0.5px;
-  font-style: italic;
-  font-weight: normal;
-}   
 /* --- Contenitore del menu moderno --- */
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
 /* PULSANTI DEL MENU */
