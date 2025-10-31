@@ -28,14 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
         pt: 'Biotech Project deseja a você '
     };
 
+    const greetings = {
+        it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'],
+        en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'],
+        es: ['Buenas noches', 'Buenos días', 'Buenas tardes', 'Buenas noches'],
+        fr: ['Bonne nuit', 'Bonjour', 'Bon après-midi', 'Bonne soirée'],
+        de: ['Gute Nacht', 'Guten Morgen', 'Guten Tag', 'Guten Abend'],
+        nl: ['Welterusten', 'Goedemorgen', 'Goede middag', 'Goede avond'],
+        pt: ['Boa noite', 'Bom dia', 'Boa tarde', 'Boa noite']
+    };
+
     const userLang = (navigator.language || 'it').slice(0, 2).toLowerCase();
     const lang = messages[userLang] ? userLang : 'it';
+
+    const hour = new Date().getHours();
+    let greetingIndex = 1;
+    if (hour < 6) greetingIndex = 0;
+    else if (hour < 12) greetingIndex = 1;
+    else if (hour < 18) greetingIndex = 2;
+    else greetingIndex = 3;
 
     const today = new Date().getDay();
     const message = messages[lang][today];
     const title = titles[lang] || baseTitle;
 
+    const greeting = greetings[lang][greetingIndex];
     const daySpans = createSpans(message, 26);
     const titleSpans = createSpans(title, 1);
-    weekElement.innerHTML = titleSpans + daySpans;
-});      
+
+    weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
+});         
