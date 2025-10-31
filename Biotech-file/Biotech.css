@@ -114,6 +114,14 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}
 .modern-greeting {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
+.modern-greeting, .greeting-time {
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+}
+
+.modern-greeting.show, .greeting-time.show {
+  opacity: 1;
+}   
 /* --- Contenitore del menu moderno --- */
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
 /* PULSANTI DEL MENU */
