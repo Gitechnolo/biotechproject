@@ -37,8 +37,11 @@ async function loadPerformanceData() {
       lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
     }
 
-    // Usa punteggio reale
-    const performanceScoreValue = homePage?.performanceScore ?? 85;
+    // Calcola la media di tutte le pagine
+const avgPerf = Math.round(
+  data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
+);
+const performanceScoreValue = avgPerf;
 
     // Aggiorna punteggio principale
     aggiornaPerformanceScore(performanceScoreValue);
