@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const summary = data.summary || {};
     const pages = Array.isArray(data.pages) ? data.pages : [];
 
-    // ✅ Calcolo sicuro delle medie
+    // Calcolo sicuro delle medie
     const avgPerf = summary.averagePerformance ??
       (pages.length > 0 
         ? Math.round(pages.reduce((a, b) => a + (b.performanceScore || 0), 0) / pages.length)
@@ -20,17 +20,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     const avgSeo = summary.averageSeo ?? 96;
     const avgBest = summary.averageBestPractices ?? 97;
 
-    // 📊 Aggiorna cerchi
+    // Aggiorna cerchi e testo
     document.querySelectorAll('.progress-circle').forEach(circle => {
       const metric = circle.dataset.metric;
-      const value = { performance: avgPerf, 'performance-desktop': Math.min(avgPerf + 2, 100), accessibility: avgA11y, seo: avgSeo, 'best-practices': avgBest }[metric] || 75;
+      const value = { 
+        performance: avgPerf, 
+        'performance-desktop': Math.min(avgPerf + 2, 100), 
+        accessibility: avgA11y, 
+        seo: avgSeo, 
+        'best-practices': avgBest 
+      }[metric] || 75;
       const rounded = Math.round(value);
       circle.style.setProperty('--value', `${rounded}%`);
       circle.setAttribute('aria-valuenow', rounded);
       circle.dataset.value = rounded;
     });
 
-    // 📅 Aggiorna data
+    // 🔴 Aggiorna performance-score con la media
+    const scoreEl = document.getElementById('performance-score');
+    if (scoreEl) scoreEl.textContent = `${avgPerf}%`;
+
+    // Aggiorna data
     const lastUpdated = document.getElementById('last-updated');
     if (lastUpdated && data.lastUpdated) {
       const date = new Date(data.lastUpdated);
@@ -39,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    // 📈 Trend (homepage)
+    // Trend (homepage)
     const trendEl = document.getElementById('trend-indicator');
     const home = pages.find(p => p.url.includes('/index.html'));
     if (trendEl && home) {
@@ -51,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       trendEl.classList.remove('visually-hidden');
     }
 
-    // 📋 Aggiorna report visivo
+    // Aggiorna report visivo
     const update = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
@@ -69,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
     }
 
-    // ✅ Animazione sicura
+    // Animazione sicura
     setTimeout(() => {
       document.querySelectorAll('.metric').forEach((el, i) => {
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
