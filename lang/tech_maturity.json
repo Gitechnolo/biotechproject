@@ -29,7 +29,9 @@
 "performance-score-label": "Punteggio Prestazioni",
 "performance-score-note": "*Dati reali aggiornati ogni 24 ore",
 "refresh-btn-bottom-label": "Aggiorna dati",
-"refresh-btn-bottom-title": "Aggiorna i dati del report in tempo reale"
+"refresh-btn-bottom-title": "Aggiorna i dati del report in tempo reale",
+"dati_laboratorio": "Dati di laboratorio (ambiente controllato), utili per debug e ottimizzazioni specifiche.",
+"update_dati": "Ultimo aggiornamento:"
   },
   "en": {
 "tech-maturity-title": "System Audit | Biotech Project",
@@ -61,6 +63,8 @@
 "performance-score-label": "Performance Score",
 "performance-score-note": "*Real data updated every 24 hours",
 "refresh-btn-bottom-label": "Refresh data",
-"refresh-btn-bottom-title": "Refresh report data in real time"
+"refresh-btn-bottom-title": "Refresh report data in real time",
+"dati_laboratorio": "Lab data (controlled environment), useful for debugging and specific optimizations.",
+"update_dati": "Last update:"
   }
 }
