@@ -482,13 +482,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }); 
 
-// FUNZIONE: ESPORTA JSON + GRAFICO IN PDF
+// --- Caricamento dinamico di chart.js al click ---
+document.getElementById('show-chart-btn')?.addEventListener('click', () => {
+  if (window.Chart) return;
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+  script.async = true;
+  script.onload = () => creaGrafico();
+  document.head.appendChild(script);
+});
+
+// --- Modifica exportToPDF per caricare jsPDF dinamicamente ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
+    // Carica jsPDF dinamicamente se non presente
+    if (!window.jspdf) {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+      script.async = true;
+      await new Promise(resolve => script.onload = resolve);
+    }
+
+    // Prova a caricare i dati JSON
     let jsonUrl = 'data/performance-latest.json';
     let data;
     try {
@@ -501,6 +520,7 @@ async function exportToPDF() {
       data = await fres.json();
     }
 
+    // Genera il PDF
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const marginLeft = 40;
@@ -573,7 +593,8 @@ async function exportToPDF() {
   }
 }
 
+// Collega il pulsante all'azione
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('export-data-btn');
   if (btn) btn.addEventListener('click', exportToPDF);
-});   
+});      
