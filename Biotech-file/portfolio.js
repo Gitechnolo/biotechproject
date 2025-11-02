@@ -38,10 +38,10 @@ async function loadPerformanceData() {
     }
 
     // Calcola la media di tutte le pagine
-const avgPerf = Math.round(
-  data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
-);
-const performanceScoreValue = avgPerf;
+    const avgPerf = Math.round(
+      data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
+    );
+    const performanceScoreValue = avgPerf;
 
     // Aggiorna punteggio principale
     aggiornaPerformanceScore(performanceScoreValue);
@@ -76,6 +76,77 @@ const performanceScoreValue = avgPerf;
 
     // Aggiorna grafico con dati reali
     creaGrafico(history);
+
+    // --- INIZIO: Codice da reportPerformance.js ---
+    const summary = data.summary || {};
+
+    const avgA11y = summary.averageAccessibility ?? 94;
+    const avgSeo = summary.averageSeo ?? 96;
+    const avgBest = summary.averageBestPractices ?? 97;
+
+    // Aggiorna cerchi e testo
+    document.querySelectorAll('.progress-circle').forEach(circle => {
+      const metric = circle.dataset.metric;
+      const value = { 
+        performance: avgPerf, 
+        'performance-desktop': Math.min(avgPerf + 2, 100), 
+        accessibility: avgA11y, 
+        seo: avgSeo, 
+        'best-practices': avgBest 
+      }[metric] || 75;
+      const rounded = Math.round(value);
+      circle.style.setProperty('--value', `${rounded}%`);
+      circle.setAttribute('aria-valuenow', rounded);
+      circle.dataset.value = rounded;
+    });
+
+    // Aggiorna data
+    const lastUpdated = document.getElementById('last-updated');
+    if (lastUpdated && data.lastUpdated) {
+      const date = new Date(data.lastUpdated);
+      lastUpdated.textContent = date.toLocaleDateString('it-IT', {
+        day: '2-digit', month: '2-digit', year: 'numeric'
+      });
+    }
+
+    // Trend (homepage)
+    const trendEl = document.getElementById('trend-indicator');
+    if (trendEl && homePage) {
+      const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
+      const icons = { 1: '▲', 0: '●', '-1': '▼' };
+      const color = diff > 0 ? '#66bb6a' : diff < 0 ? '#ef5350' : '#ffa726';
+      trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
+      trendEl.style.color = color;
+      trendEl.classList.remove('visually-hidden');
+    }
+
+    // Aggiorna report visivo
+    const update = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    update('analyzed-count', summary.analyzed || data.pages.length);
+    update('avg-performance', `${avgPerf}%`);
+    update('avg-accessibility', `${avgA11y}%`);
+    update('avg-seo', `${avgSeo}%`);
+    update('avg-best-practices', `${avgBest}%`);
+
+    if (data.lastUpdated) {
+      const date = new Date(data.lastUpdated);
+      update('last-updated-report', date.toLocaleDateString('it-IT'));
+      document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
+    }
+
+    // Animazione sicura
+    setTimeout(() => {
+      document.querySelectorAll('.metric').forEach((el, i) => {
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      });
+    }, 100);
+    // --- FINE: Codice da reportPerformance.js ---
 
   } catch (error) {
     console.warn('⚠️ Impossibile caricare i dati reali:', error);
@@ -125,7 +196,6 @@ function createPerformanceCard(page) {
   card.className = `portfolio-col ${perfClass} portfolio-show dynamic`;
   card.dataset.page = page.slug || fileName;
 
-  // 🔹 HTML aggiornato: tooltip accessibile con ARIA e posizionamento corretto
   card.innerHTML = `
     <div class="portfolio-content">
       <div 
@@ -162,27 +232,22 @@ function createPerformanceCard(page) {
     </div>
   `;
 
-  // 🔹 Riferimenti agli elementi
   const fadebox = card.querySelector('.fadebox');
   const trendDetails = card.querySelector('.trend-details');
 
-  // 🔹 Mostra tooltip su focus (tastiera)
   fadebox.addEventListener('focus', () => {
     trendDetails.style.display = 'block';
   });
 
-  // 🔹 Nasconde tooltip su blur
   fadebox.addEventListener('blur', () => {
     trendDetails.style.display = 'none';
   });
 
-  // 🔹 Mostra/nasconde su click (mouse/touch)
   fadebox.addEventListener('click', () => {
     const isDisplayed = trendDetails.style.display === 'block';
     trendDetails.style.display = isDisplayed ? 'none' : 'block';
   });
 
-  // 🔹 Chiude con tasto ESC
   fadebox.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       trendDetails.style.display = 'none';
@@ -193,14 +258,11 @@ function createPerformanceCard(page) {
   return card;
 }
 
-// 🔹 Funzione di utilità per generare ID sicuri
 function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }
 
-// --- Gestione pulsanti di aggiornamento ---
 function setupRefreshButtons() {
-  // Evita doppia inizializzazione
   if (window.refreshButtonsSetup) return;
   window.refreshButtonsSetup = true;
 
@@ -217,7 +279,6 @@ function setupRefreshButtons() {
   });
 }
 
-// --- Aggiorna punteggio principale e trend ---
 function aggiornaPerformanceScore(performanceScoreValue = 85) {
   const scoreEl = document.getElementById('performance-score') || 
                  document.getElementById('tech-maturity-score');
@@ -227,7 +288,7 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
 
   const trendIndicator = document.getElementById('trend-indicator');
   if (trendIndicator) {
-    const trend = performanceScoreValue - 82; // confronto con valore precedente   
+    const trend = performanceScoreValue - 82;
     trendIndicator.textContent = trend > 0 ? ' ↑' : trend < 0 ? ' ↓' : ' →';
     trendIndicator.style.color = trend > 0 ? '#10b981' : trend < 0 ? '#ef4444' : '#f59e0b';
     trendIndicator.setAttribute('aria-label', 
@@ -237,7 +298,6 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
   }
 }
 
-// --- Funzioni ausiliarie per formattazione date ---
 function subtractDays(date, days) {
   const d = new Date(date);
   d.setDate(d.getDate() - days);
@@ -249,13 +309,11 @@ function formatDate(date) {
   const day = d.getDate();
   const options = { month: 'short' };
   const month = d.toLocaleDateString('it-IT', options).replace('.', '');
-  // Aggiungi anno solo se non è l'anno corrente
   const year = d.getFullYear();
   const currentYear = new Date().getFullYear();
   return year === currentYear ? `${day} ${month}` : `${day} ${month} '${year.toString().slice(-2)}`;
 }   
 
-// --- Dati simulati (solo come fallback visivo) ---
 const datiSimulati = [
   { date: '2024-09-01', score: 30, note: 'Avvio progetto' },
   { date: '2024-10-15', score: 38, note: 'Contenuti iniziali' },
@@ -267,25 +325,19 @@ const datiSimulati = [
   { date: '2025-09-15', score: 85, note: 'UI/UX coerente' }
 ];
 
-// --- Funzione: crea o aggiorna il grafico ---
 function creaGrafico(history = []) {
-  console.log('Dati grafico:', history); // 🔍 Verifica
+  console.log('Dati grafico:', history);
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
   const chartCtx = ctx.getContext('2d');
 
-  // Distruggi grafico esistente
   if (performanceChart) {
     performanceChart.destroy();
   }
 
-  // Usa dati reali se disponibili, altrimenti fallback simulato
   const dataToShow = history.length > 0 ? history : datiSimulati;
-
   const labels = dataToShow.map(d => d.date);
   const values = dataToShow.map(d => d.score);
-
-  // Identifica dove finiscono i dati reali (per colori)
   const realDataEndIndex = history.length;
 
   performanceChart = new Chart(chartCtx, {
@@ -298,16 +350,10 @@ function creaGrafico(history = []) {
         borderColor: '#10b981',
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
         borderWidth: 3,
-        pointRadius: (context) => {
-        const isLast = context.dataIndex === values.length - 1;
-        return isLast ? 8 : 5; // ultimo punto più grande
-},   
-        pointBackgroundColor: (context) => {
-        if (context.dataIndex === values.length - 1) {
-        return '#4ade80'; // verde brillante per l'ultimo valore
-  }
-        return context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b';
-},
+        pointRadius: (context) => context.dataIndex === values.length - 1 ? 8 : 5,
+        pointBackgroundColor: (context) =>
+          context.dataIndex === values.length - 1 ? '#4ade80' :
+          context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b',
         fill: true,
         tension: 0.3
       }]
@@ -315,9 +361,7 @@ function creaGrafico(history = []) {
     options: {
       responsive: true,
       plugins: {
-        legend: {
-          labels: { color: '#ffffff' }
-        },
+        legend: { labels: { color: '#ffffff' } },
         tooltip: {
           backgroundColor: '#1f2937',
           titleColor: '#ffffff',
@@ -335,16 +379,8 @@ function creaGrafico(history = []) {
         }
       },
       scales: {
-        x: {
-          ticks: { color: '#b2dfdb' },
-          grid: { color: 'rgba(178, 223, 219, 0.1)' }
-        },
-        y: {
-          min: 0,
-          max: 100,
-          ticks: { color: '#b2dfdb' },
-          grid: { color: 'rgba(178, 223, 219, 0.1)' }
-        }
+        x: { ticks: { color: '#b2dfdb' }, grid: { color: 'rgba(178, 223, 219, 0.1)' } },
+        y: { min: 0, max: 100, ticks: { color: '#b2dfdb' }, grid: { color: 'rgba(178, 223, 219, 0.1)' } }
       }
     }
   });
@@ -353,7 +389,6 @@ function creaGrafico(history = []) {
   aggiornaTabellaDati(dataToShow);
 }
 
-// --- Aggiorna tabella accessibile con dati del grafico ---
 function aggiornaTabellaDati(data) {
   const tbody = document.getElementById('chart-data-body');
   if (!tbody) return;
@@ -371,7 +406,6 @@ function aggiornaTabellaDati(data) {
   });
 }
 
-// --- Funzione ausiliaria: mostra notifica (sicura) ---
 if (typeof showNotification === 'undefined') {
   function showNotification(message) {
     const notification = document.getElementById('notification');
@@ -385,7 +419,6 @@ if (typeof showNotification === 'undefined') {
   }
 }
 
-// --- Filtra le card in base al livello di maturità delle pagine ---
 function filterSelection(filter) {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.filter === filter);
@@ -403,7 +436,6 @@ function filterSelection(filter) {
     }
   });
 
-  // Messaggio se nessuna card visibile
   const container = document.querySelector('.portfolio-row');
   const message = document.getElementById('filter-message');
 
@@ -423,7 +455,6 @@ function filterSelection(filter) {
     : '';
 }
 
-// --- Calcola freccia di tendenza per singola pagina ---
 function getTrendArrow(current, previous) {
   if (previous === undefined || previous === null) return '→';
   const diff = current - previous;
@@ -432,20 +463,18 @@ function getTrendArrow(current, previous) {
   return '→';
 }
 
-// --- Determina la classe colore del badge della freccia ---
 function getTrendColorClass(current, previous) {
   if (previous === undefined || previous === null) return 'badge-needs-improvement';
-  return current > previous ? 'badge-optimized' :  // ▲ verde acqua
-         current < previous ? 'badge-deprecated' : // ▼ rosso
-                            'badge-compatible';   // ➔ verde
+  return current > previous ? 'badge-optimized' : 
+         current < previous ? 'badge-deprecated' : 
+                            'badge-compatible';
 }
 
 // --- Inizializzazione unica ---
 document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
-  loadPerformanceData(); // Carica dati e inizializza grafico
+  loadPerformanceData();
 
-  // Aggiungi event listener ai pulsanti di filtro
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       filterSelection(btn.dataset.filter);
@@ -454,110 +483,97 @@ document.addEventListener('DOMContentLoaded', () => {
 }); 
 
 // FUNZIONE: ESPORTA JSON + GRAFICO IN PDF
-  async function exportToPDF() {
-    const btn = document.getElementById('export-data-btn');
-    const originalLabel = btn?.textContent || 'Esporta dati';
+async function exportToPDF() {
+  const btn = document.getElementById('export-data-btn');
+  const originalLabel = btn?.textContent || 'Esporta dati';
+  try {
+    if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
+
+    let jsonUrl = 'data/performance-latest.json';
+    let data;
     try {
-      if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
+      const res = await fetch(jsonUrl);
+      if (!res.ok) throw new Error('relative-fail');
+      data = await res.json();
+    } catch (err) {
+      const fallback = '/biotechproject/data/performance-latest.json';
+      const fres = await fetch(fallback);
+      data = await fres.json();
+    }
 
-      // Prova a caricare il JSON da path relativo, fallback al percorso assoluto usato altrove
-      let jsonUrl = 'data/performance-latest.json';
-      let data;
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    const marginLeft = 40;
+    let cursorY = 40;
+
+    doc.setFontSize(16);
+    doc.text('Biotech Project - Performance Report', marginLeft, cursorY);
+    cursorY += 18;
+    doc.setFontSize(10);
+    doc.text('Generato: ' + new Date().toLocaleString(), marginLeft, cursorY);
+    cursorY += 18;
+
+    const canvas = document.getElementById('performance-trend');
+    if (canvas) {
       try {
-        const res = await fetch(jsonUrl);
-        if (!res.ok) throw new Error('relative-fail');
-        data = await res.json();
-      } catch (err) {
-        // fallback
-        const fallback = '/biotechproject/data/performance-latest.json';
-        const fres = await fetch(fallback);
-        data = await fres.json();
+        const imgData = canvas.toDataURL('image/png');
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const maxWidth = pageWidth - marginLeft * 2;
+        const imgWidth = Math.min(maxWidth, 520);
+        const imgHeight = (canvas.height / canvas.width) * imgWidth;
+        doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
+        cursorY += imgHeight + 16;
+      } catch (e) {
+        console.warn('Impossibile catturare canvas:', e);
       }
+    }
 
-      // Prepara jsPDF
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-      const marginLeft = 40;
-      let cursorY = 40;
-
-      // Header
-      doc.setFontSize(16);
-      doc.text('Biotech Project - Performance Report', marginLeft, cursorY);
-      cursorY += 18;
-      doc.setFontSize(10);
-      doc.text('Generato: ' + new Date().toLocaleString(), marginLeft, cursorY);
-      cursorY += 18;
-
-      // Inserisci immagine del grafico (se canvas presente)
-      const canvas = document.getElementById('performance-trend');
-      if (canvas) {
-        try {
-          const imgData = canvas.toDataURL('image/png');
-          // Calcola dimensionamento mantenendo proporzioni e larghezza massima
-          const pageWidth = doc.internal.pageSize.getWidth();
-          const maxWidth = pageWidth - marginLeft * 2;
-          const imgWidth = Math.min(maxWidth, 520);
-          const imgHeight = (canvas.height / canvas.width) * imgWidth;
-          doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-          cursorY += imgHeight + 16;
-        } catch (e) {
-          console.warn('Impossibile catturare canvas:', e);
-        }
-      }
-
-      // Summary
-      if (data && data.summary) {
-        doc.setFontSize(12);
-        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
-        cursorY += 14;
-        doc.setFontSize(10);
-        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-        cursorY += 18;
-      }
-
-      // Intestazione tabella semplificata
-      doc.setFontSize(11);
-      doc.text('Elenco pagine e punteggi (label — score — url):', marginLeft, cursorY);
+    if (data && data.summary) {
+      doc.setFontSize(12);
+      doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
       cursorY += 14;
+      doc.setFontSize(10);
+      doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
+      cursorY += 18;
+    }
 
-      // Aggiungi righe per ogni pagina; se necessario crea nuove pagine
-      const pages = (data && data.pages) ? data.pages : [];
-      doc.setFontSize(9);
-      for (let i = 0; i < pages.length; i++) {
-        const p = pages[i];
-        const line = `${p.label} — ${p.performanceScore ?? '-'}% — ${p.url}`;
-        // spezza la riga se troppo lunga
-        const split = doc.splitTextToSize(line, doc.internal.pageSize.getWidth() - marginLeft * 2);
-        if (cursorY + split.length * 12 > doc.internal.pageSize.getHeight() - 40) {
-          doc.addPage();
-          cursorY = 40;
-        }
-        doc.text(split, marginLeft, cursorY);
-        cursorY += (split.length * 12);
-      }
+    doc.setFontSize(11);
+    doc.text('Elenco pagine e punteggi (label — score — url):', marginLeft, cursorY);
+    cursorY += 14;
 
-      // Footer note
-      if (cursorY + 40 > doc.internal.pageSize.getHeight()) {
+    const pages = (data && data.pages) ? data.pages : [];
+    doc.setFontSize(9);
+    for (let i = 0; i < pages.length; i++) {
+      const p = pages[i];
+      const line = `${p.label} — ${p.performanceScore ?? '-'}% — ${p.url}`;
+      const split = doc.splitTextToSize(line, doc.internal.pageSize.getWidth() - marginLeft * 2);
+      if (cursorY + split.length * 12 > doc.internal.pageSize.getHeight() - 40) {
         doc.addPage();
         cursorY = 40;
       }
-      cursorY += 8;
-      doc.setFontSize(9);
-      doc.text('Dati da performance-latest.json', marginLeft, cursorY);
-
-      // Scarica PDF
-      doc.save('biotech-performance-report.pdf');
-
-    } catch (err) {
-      console.error('Errore export PDF:', err);
-      alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
-    } finally {
-      if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+      doc.text(split, marginLeft, cursorY);
+      cursorY += (split.length * 12);
     }
-  }
 
-  // Collega il pulsante esistente all'azione
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('export-data-btn');
-    if (btn) btn.addEventListener('click', exportToPDF);
-  });
+    if (cursorY + 40 > doc.internal.pageSize.getHeight()) {
+      doc.addPage();
+      cursorY = 40;
+    }
+    cursorY += 8;
+    doc.setFontSize(9);
+    doc.text('Dati da performance-latest.json', marginLeft, cursorY);
+
+    doc.save('biotech-performance-report.pdf');
+
+  } catch (err) {
+    console.error('Errore export PDF:', err);
+    alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('export-data-btn');
+  if (btn) btn.addEventListener('click', exportToPDF);
+});   
