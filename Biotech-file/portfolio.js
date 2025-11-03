@@ -554,14 +554,15 @@ async function exportToPDF() {
     cursorY += 14;
 
     const pages = (data && data.pages) ? data.pages : [];
-    const tableData = pages.map(p => {
-        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
-        return [
-            p.label,
-            `${score}%`,
-            p.url.length > 50 ? p.url.substring(0, 47) + '...' : p.url // Tronca URL troppo lunghi
-        ];
-    });
+    //  (Mostra sempre l'URL completo)
+const tableData = pages.map(p => {
+    const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
+    return [
+        p.label,
+        `${score}%`,
+        p.url // <---  L'URL COMPLETO
+    ];
+});
 
     // Colori condizionali (background e testo)
     const getColor = (score) => {
@@ -586,10 +587,14 @@ async function exportToPDF() {
             valign: 'middle' 
         },
         columnStyles: {
-            0: { cellWidth: 160 },
-            1: { cellWidth: 60, halign: 'center' },
-            2: { cellWidth: 'auto' }
-        },
+    // Colonna 0: Etichetta Pagina (ridotta a 120)
+    0: { cellWidth: 120 }, 
+    // Colonna 1: Punteggio (lasciata a 60)
+    1: { cellWidth: 60, halign: 'center' },
+    // Colonna 2: URL (Impostata su 320, garantendo più spazio)
+    // 120 + 60 + 320 = 500pt (circa 15pt di margine)
+    2: { cellWidth: 320 } 
+},
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
                 // Estrae il punteggio numerico (es. da "95%")
