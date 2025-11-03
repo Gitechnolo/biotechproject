@@ -1,11 +1,11 @@
 // Biotech-file/portfolio.js
 // ———————————————————————
-// GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA
+// GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA (OTTIMIZZATO)
 // ———————————————————————
 
 let performanceChart;
 
-// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
+// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente e in parallelo ---
 async function loadJsPDF() {
   if (window.jspdf && window.autoTable) return;
 
@@ -18,10 +18,12 @@ async function loadJsPDF() {
   });
 
   try {
-    // 1. Carica jsPDF
-    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-    // 2. Carica jspdf-autotable
-    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js');
+    // Avvia i caricamenti contemporaneamente (in parallelo)
+    const p1 = loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    const p2 = loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js');
+    
+    // Attendi il completamento di entrambi
+    await Promise.all([p1, p2]);
   } catch (error) {
     console.error(error.message);
     throw error;
@@ -63,10 +65,15 @@ async function loadPerformanceData() {
 
     aggiornaPerformanceScore(performanceScoreValue);
 
+    // *** OTTIMIZZAZIONE 2: Uso di DocumentFragment ***
+    const fragment = document.createDocumentFragment();
+
     data.pages.forEach(page => {
       const card = createPerformanceCard(page);
-      container.appendChild(card);
+      fragment.appendChild(card);
     });
+    
+    container.appendChild(fragment); // Inserimento nel DOM con una singola operazione
 
     filterSelection('all');
 
@@ -142,13 +149,9 @@ async function loadPerformanceData() {
       document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
     }
 
-    setTimeout(() => {
-      document.querySelectorAll('.metric').forEach((el, i) => {
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        el.style.opacity = 1;
-        el.style.transform = 'translateY(0)';
-      });
-    }, 100);
+    // *** OTTIMIZZAZIONE 3: Sostituzione di setTimeout con l'aggiunta di una classe CSS ***
+    // La classe '.portfolio-loaded' nel body gestirà l'animazione via CSS.
+    document.body.classList.add('portfolio-loaded');
 
   } catch (error) {
     console.warn('⚠️ Impossibile caricare i dati reali:', error);
@@ -159,6 +162,7 @@ async function loadPerformanceData() {
       lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
     }
     showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
+    document.body.classList.add('portfolio-loaded'); // Assicura che gli elementi non rimangano nascosti in caso di fallimento
   }
 }
 
@@ -467,7 +471,7 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF (OTTIMIZZATA) ---
+// --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
@@ -476,7 +480,7 @@ async function exportToPDF() {
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
-    await loadJsPDF(); // Carica jsPDF e Autotable
+    await loadJsPDF(); // Carica jsPDF e Autotable (ora in parallelo!)
 
     let jsonUrl = 'data/performance-latest.json';
     let data;
@@ -554,15 +558,15 @@ async function exportToPDF() {
     cursorY += 14;
 
     const pages = (data && data.pages) ? data.pages : [];
-    //  (Mostra sempre l'URL completo)
-const tableData = pages.map(p => {
-    const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
-    return [
-        p.label,
-        `${score}%`,
-        p.url // <---  L'URL COMPLETO
-    ];
-});
+    // (Mostra sempre l'URL completo)
+    const tableData = pages.map(p => {
+        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
+        return [
+            p.label,
+            `${score}%`,
+            p.url 
+        ];
+    });
 
     // Colori condizionali (background e testo)
     const getColor = (score) => {
@@ -587,14 +591,10 @@ const tableData = pages.map(p => {
             valign: 'middle' 
         },
         columnStyles: {
-    // Colonna 0: Etichetta Pagina (ridotta a 120)
-    0: { cellWidth: 120 }, 
-    // Colonna 1: Punteggio (lasciata a 60)
-    1: { cellWidth: 60, halign: 'center' },
-    // Colonna 2: URL (Impostata su 320, garantendo più spazio)
-    // 120 + 60 + 320 = 500pt (circa 15pt di margine)
-    2: { cellWidth: 320 } 
-},
+            0: { cellWidth: 120 }, 
+            1: { cellWidth: 60, halign: 'center' },
+            2: { cellWidth: 320 } 
+        },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
                 // Estrae il punteggio numerico (es. da "95%")

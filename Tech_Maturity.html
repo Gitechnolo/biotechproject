@@ -66,6 +66,21 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-row {min-height: 200px; /* Evita il collassamento */
   display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1rem; justify-content: flex-start;}
 .portfolio-row:empty::before {content: "Caricamento..."; color: #999; font-style: italic; align-self: center; justify-self: center;}
+/* CSS Aggiunto per l'ottimizzazione delle performance */
+
+/* 1. Stato Iniziale: Rende le metriche pronte per l'animazione */
+.metric {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: none; /* Disabilita la transizione nello stato iniziale */
+}
+
+/* 2. Stato Finale: Attivato dopo il caricamento dei dati (dalla classe aggiunta al body) */
+.portfolio-loaded .metric {
+    opacity: 1; 
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */
+}
 </style>
 <script>
 !function(){
