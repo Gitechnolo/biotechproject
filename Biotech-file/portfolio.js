@@ -456,8 +456,6 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// ... (tutto il codice precedente rimane invariato fino a exportToPDF)
-
 // --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
@@ -465,18 +463,7 @@ async function exportToPDF() {
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
-    await loadJsPDF();
-
-    // Carica autoTable e applica il plugin
-    if (typeof window['jspdf-autotable'] === 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js';
-      await new Promise(resolve => script.onload = () => {
-        window['jspdf-autotable'](window.jspdf.jsPDF);
-        resolve();
-      });
-      document.head.appendChild(script);
-    }
+    await loadJsPDF(); // Carica jsPDF solo quando serve
 
     let jsonUrl = 'data/performance-latest.json';
     let data;
@@ -495,63 +482,61 @@ async function exportToPDF() {
     const marginLeft = 40;
     let cursorY = 40;
 
-    // Logo
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
-    await new Promise(resolve => img.onload = resolve);
-    doc.addImage(img, 'PNG', marginLeft, cursorY, 16, 16);
-
-    // Titolo
-    doc.setFont('helvetica', 'bold');
     doc.setFontSize(16);
-    doc.text('Biotech Project - Performance Report', marginLeft + 24, cursorY + 12, { baseline: 'middle' });
-    cursorY += 30;
-
-    doc.setFont('helvetica', 'normal');
+    doc.text('Biotech Project - Performance Report', marginLeft, cursorY);
+    cursorY += 18;
     doc.setFontSize(10);
     doc.text('Generato: ' + new Date().toLocaleString(), marginLeft, cursorY);
-    cursorY += 20;
+    cursorY += 18;
 
-    // Grafico
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
-      const imgData = canvas.toDataURL('image/png');
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const maxWidth = pageWidth - marginLeft * 2;
-      const imgWidth = Math.min(maxWidth, 520);
-      const imgHeight = (canvas.height / canvas.width) * imgWidth;
-      doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-      cursorY += imgHeight + 16;
+      try {
+        const imgData = canvas.toDataURL('image/png');
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const maxWidth = pageWidth - marginLeft * 2;
+        const imgWidth = Math.min(maxWidth, 520);
+        const imgHeight = (canvas.height / canvas.width) * imgWidth;
+        doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
+        cursorY += imgHeight + 16;
+      } catch (e) {
+        console.warn('Impossibile catturare canvas:', e);
+      }
     }
 
-    // Riepilogo
-    doc.setFontSize(12);
-    doc.text(`Riepilogo: ${data.summary?.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
+    if (data && data.summary) {
+      doc.setFontSize(12);
+      doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
+      cursorY += 14;
+      doc.setFontSize(10);
+      doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
+      cursorY += 18;
+    }
+
+    doc.setFontSize(11);
+    doc.text('Elenco pagine e punteggi (label — score — url):', marginLeft, cursorY);
     cursorY += 14;
-    doc.setFontSize(10);
-    doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-    cursorY += 20;
 
-    // Tabella formattata
-    const pages = (data.pages || []).map(p => [p.label, `${p.performanceScore ?? '-'}%`, p.url]);
-    doc.autoTable({
-      head: [['Pagina', 'Punteggio', 'URL']],
-      body: pages,
-      startY: cursorY,
-      theme: 'striped',
-      styles: { fontSize: 8, cellPadding: 4 },
-      headStyles: { fillColor: [16, 185, 129], textColor: [255, 255, 255] },
-      columnStyles: {
-        0: { cellWidth: 80 },
-        1: { cellWidth: 30, halign: 'center' },
-        2: { cellWidth: 'auto' }
+    const pages = (data && data.pages) ? data.pages : [];
+    doc.setFontSize(9);
+    for (let i = 0; i < pages.length; i++) {
+      const p = pages[i];
+      const line = `${p.label} — ${p.performanceScore ?? '-'}% — ${p.url}`;
+      const split = doc.splitTextToSize(line, doc.internal.pageSize.getWidth() - marginLeft * 2);
+      if (cursorY + split.length * 12 > doc.internal.pageSize.getHeight() - 40) {
+        doc.addPage();
+        cursorY = 40;
       }
-    });
+      doc.text(split, marginLeft, cursorY);
+      cursorY += (split.length * 12);
+    }
 
-    // Info finale
-    cursorY = doc.lastAutoTable.finalY + 10;
-    doc.setFontSize(8);
+    if (cursorY + 40 > doc.internal.pageSize.getHeight()) {
+      doc.addPage();
+      cursorY = 40;
+    }
+    cursorY += 8;
+    doc.setFontSize(9);
     doc.text('Dati da performance-latest.json', marginLeft, cursorY);
 
     doc.save('biotech-performance-report.pdf');
@@ -575,8 +560,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Collega il pulsante di esportazione
   const exportBtn = document.getElementById('export-data-btn');
   if (exportBtn) {
     exportBtn.addEventListener('click', exportToPDF);
   }
-});         
+});      
