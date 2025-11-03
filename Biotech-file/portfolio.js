@@ -3,8 +3,19 @@
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA
 // ———————————————————————
 
-// --- Variabile globale per il grafico ---
 let performanceChart;
+
+// --- Funzione per caricare jsPDF dinamicamente ---
+async function loadJsPDF() {
+  if (window.jspdf) return;
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('Errore nel caricamento di jsPDF'));
+    document.head.appendChild(script);
+  });
+}
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
@@ -17,10 +28,8 @@ async function loadPerformanceData() {
     const container = document.querySelector('.portfolio-row');
     if (!container) return;
 
-    // Pulisci container
     container.innerHTML = '';
 
-    // Estrai homepage per data e punteggio
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
       p.url === 'https://gitechnolo.github.io/biotechproject/' ||
@@ -29,7 +38,6 @@ async function loadPerformanceData() {
 
     const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : new Date();
 
-    // Aggiorna data in #last-update
     const lastUpdate = document.getElementById('last-update');
     if (lastUpdate) {
       const dateStr = reportTime.toLocaleDateString('it-IT');
@@ -37,28 +45,21 @@ async function loadPerformanceData() {
       lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
     }
 
-    // Calcola la media di tutte le pagine
     const avgPerf = Math.round(
       data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
     );
     const performanceScoreValue = avgPerf;
 
-    // Aggiorna punteggio principale
     aggiornaPerformanceScore(performanceScoreValue);
 
-    // Genera tutte le card
     data.pages.forEach(page => {
       const card = createPerformanceCard(page);
       container.appendChild(card);
     });
 
-    // Inizializza filtri
     filterSelection('all');
 
-    // Costruisci cronologia minima da dati reali
     const history = [];
-
-    // Aggiungi punto precedente se disponibile
     if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
       history.push({
         date: subtractDays(reportTime, 5),
@@ -66,25 +67,20 @@ async function loadPerformanceData() {
         note: 'Misurazione precedente'
       });
     }
-
-    // Aggiungi punto attuale
     history.push({
       date: formatDate(reportTime),
       score: performanceScoreValue,
       note: 'Misurazione attuale'
     });
 
-    // Aggiorna grafico con dati reali
     creaGrafico(history);
 
-    // --- INIZIO: Codice da reportPerformance.js ---
     const summary = data.summary || {};
 
     const avgA11y = summary.averageAccessibility ?? 94;
     const avgSeo = summary.averageSeo ?? 96;
     const avgBest = summary.averageBestPractices ?? 97;
 
-    // Aggiorna cerchi e testo
     document.querySelectorAll('.progress-circle').forEach(circle => {
       const metric = circle.dataset.metric;
       const value = { 
@@ -100,7 +96,6 @@ async function loadPerformanceData() {
       circle.dataset.value = rounded;
     });
 
-    // Aggiorna data
     const lastUpdated = document.getElementById('last-updated');
     if (lastUpdated && data.lastUpdated) {
       const date = new Date(data.lastUpdated);
@@ -109,7 +104,6 @@ async function loadPerformanceData() {
       });
     }
 
-    // Trend (homepage)
     const trendEl = document.getElementById('trend-indicator');
     if (trendEl && homePage) {
       const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
@@ -120,7 +114,6 @@ async function loadPerformanceData() {
       trendEl.classList.remove('visually-hidden');
     }
 
-    // Aggiorna report visivo
     const update = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
@@ -138,7 +131,6 @@ async function loadPerformanceData() {
       document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
     }
 
-    // Animazione sicura
     setTimeout(() => {
       document.querySelectorAll('.metric').forEach((el, i) => {
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -146,25 +138,20 @@ async function loadPerformanceData() {
         el.style.transform = 'translateY(0)';
       });
     }, 100);
-    // --- FINE: Codice da reportPerformance.js ---
 
   } catch (error) {
     console.warn('⚠️ Impossibile caricare i dati reali:', error);
-
-    // Fallback visivo
     aggiornaPerformanceScore(85);
-    creaGrafico(); // Usa dati simulati come fallback
-
+    creaGrafico();
     const lastUpdate = document.getElementById('last-update');
     if (lastUpdate) {
       lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
     }
-
     showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
   }
 }
 
-// --- Crea la card per ogni pagina (Accessibilità) ---
+// --- Crea la card per ogni pagina ---
 function createPerformanceCard(page) {
   const performance = page.performanceScore !== undefined
     ? page.performanceScore
@@ -385,7 +372,6 @@ function creaGrafico(history = []) {
     }
   });
 
-  // Aggiorna tabella accessibile
   aggiornaTabellaDati(dataToShow);
 }
 
@@ -470,24 +456,14 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Inizializzazione unica ---
-document.addEventListener('DOMContentLoaded', () => {
-  setupRefreshButtons();
-  loadPerformanceData();
-
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterSelection(btn.dataset.filter);
-    });
-  });
-}); 
-
-// FUNZIONE: ESPORTA JSON + GRAFICO IN PDF
+// --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
+
+    await loadJsPDF(); // Carica jsPDF solo quando serve
 
     let jsonUrl = 'data/performance-latest.json';
     let data;
@@ -573,7 +549,20 @@ async function exportToPDF() {
   }
 }
 
+// --- Inizializzazione ---
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('export-data-btn');
-  if (btn) btn.addEventListener('click', exportToPDF);
-});   
+  setupRefreshButtons();
+  loadPerformanceData();
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterSelection(btn.dataset.filter);
+    });
+  });
+
+  // Collega il pulsante di esportazione
+  const exportBtn = document.getElementById('export-data-btn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportToPDF);
+  }
+});      
