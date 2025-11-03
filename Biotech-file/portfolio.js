@@ -5,16 +5,27 @@
 
 let performanceChart;
 
-// --- Funzione per caricare jsPDF dinamicamente ---
+// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
-  if (window.jspdf) return;
-  return new Promise((resolve, reject) => {
+  if (window.jspdf && window.autoTable) return;
+
+  const loadScript = (src) => new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Errore nel caricamento di jsPDF'));
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = () => reject(new Error(`Errore nel caricamento di ${src}`));
     document.head.appendChild(script);
   });
+
+  try {
+    // 1. Carica jsPDF
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    // 2. Carica jspdf-autotable
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js');
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
 }
 
 // --- Funzione principale: carica dati reali dal JSON ---
@@ -456,14 +467,16 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF ---
+// --- Funzione: Esporta JSON + Grafico in PDF (OTTIMIZZATA) ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
+  const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
+
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
-    await loadJsPDF(); // Carica jsPDF solo quando serve
+    await loadJsPDF(); // Carica jsPDF e Autotable
 
     let jsonUrl = 'data/performance-latest.json';
     let data;
@@ -478,66 +491,136 @@ async function exportToPDF() {
     }
 
     const { jsPDF } = window.jspdf;
+    // Impostazioni iniziali
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const marginLeft = 40;
     let cursorY = 40;
+    const pageWidth = doc.internal.pageSize.getWidth();
 
-    doc.setFontSize(16);
-    doc.text('Biotech Project - Performance Report', marginLeft, cursorY);
-    cursorY += 18;
+    // 1. Intestazione con Logo 🖼️
+    const logoSize = 64; // Dimensione del logo (64x64 pt)
+    const titleText = 'Biotech Project - Performance Report';
+    
+    // Carica l'immagine (assicurati che il server di hosting permetta il cross-origin)
+    const logoImage = await new Promise(resolve => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous'; // Necessario per caricare da domini esterni
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null); // Gestisce l'errore se non si carica
+        img.src = LOGO_URL;
+    });
+
+    if (logoImage) {
+        doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
+    }
+
+    // Posiziona il titolo accanto al logo
+    const titleX = marginLeft + logoSize + 15; 
+    doc.setFontSize(22);
+    doc.text(titleText, titleX, cursorY + 20); // Allineato verticalmente
+
+    cursorY += logoSize + 10; // Spazio dopo il logo
+
+    // Sottotitoli e Riepilogo
     doc.setFontSize(10);
-    doc.text('Generato: ' + new Date().toLocaleString(), marginLeft, cursorY);
-    cursorY += 18;
+    doc.text('Generato: ' + new Date().toLocaleString('it-IT'), marginLeft, cursorY);
+    cursorY += 14;
 
+    if (data && data.summary) {
+        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
+        cursorY += 12;
+        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
+        cursorY += 18;
+    }
+
+    // 2. Grafico
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
       try {
         const imgData = canvas.toDataURL('image/png');
-        const pageWidth = doc.internal.pageSize.getWidth();
         const maxWidth = pageWidth - marginLeft * 2;
         const imgWidth = Math.min(maxWidth, 520);
         const imgHeight = (canvas.height / canvas.width) * imgWidth;
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 16;
+        cursorY += imgHeight + 20;
       } catch (e) {
         console.warn('Impossibile catturare canvas:', e);
       }
     }
 
-    if (data && data.summary) {
-      doc.setFontSize(12);
-      doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
-      cursorY += 14;
-      doc.setFontSize(10);
-      doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-      cursorY += 18;
-    }
-
-    doc.setFontSize(11);
-    doc.text('Elenco pagine e punteggi (label — score — url):', marginLeft, cursorY);
+    // 3. Tabella Pagine e Punteggi 📊
+    doc.setFontSize(14);
+    doc.text('Dettaglio Pagine e Punteggi', marginLeft, cursorY);
     cursorY += 14;
 
     const pages = (data && data.pages) ? data.pages : [];
-    doc.setFontSize(9);
-    for (let i = 0; i < pages.length; i++) {
-      const p = pages[i];
-      const line = `${p.label} — ${p.performanceScore ?? '-'}% — ${p.url}`;
-      const split = doc.splitTextToSize(line, doc.internal.pageSize.getWidth() - marginLeft * 2);
-      if (cursorY + split.length * 12 > doc.internal.pageSize.getHeight() - 40) {
+    const tableData = pages.map(p => {
+        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
+        return [
+            p.label,
+            `${score}%`,
+            p.url.length > 50 ? p.url.substring(0, 47) + '...' : p.url // Tronca URL troppo lunghi
+        ];
+    });
+
+    // Colori condizionali (background e testo)
+    const getColor = (score) => {
+        if (score >= 90) return { bg: '#d4edda', text: '#155724' }; // Optimized (Verde chiaro)
+        if (score >= 80) return { bg: '#fff3cd', text: '#856404' }; // Compatible (Giallo chiaro)
+        return { bg: '#f8d7da', text: '#721c24' }; // Needs Improvement (Rosso chiaro)
+    };
+
+    doc.autoTable({
+        startY: cursorY,
+        head: [['Etichetta Pagina', 'Punteggio', 'URL']],
+        body: tableData,
+        theme: 'striped',
+        headStyles: { 
+            fillColor: [39, 174, 96], // Verde scuro per l'intestazione
+            textColor: 255, 
+            fontSize: 10 
+        },
+        styles: { 
+            fontSize: 9, 
+            cellPadding: 3,
+            valign: 'middle' 
+        },
+        columnStyles: {
+            0: { cellWidth: 160 },
+            1: { cellWidth: 60, halign: 'center' },
+            2: { cellWidth: 'auto' }
+        },
+        didParseCell: (hookData) => {
+            if (hookData.section === 'body' && hookData.column.index === 1) {
+                // Estrae il punteggio numerico (es. da "95%")
+                const score = parseInt(hookData.cell.text[0].replace('%', ''));
+                if (!isNaN(score)) {
+                    const colors = getColor(score);
+                    hookData.cell.styles.fillColor = colors.bg;
+                    hookData.cell.styles.textColor = colors.text;
+                    hookData.cell.styles.fontStyle = 'bold';
+                }
+            }
+        },
+        didDrawPage: (data) => {
+            cursorY = data.cursor.y; // Aggiorna la posizione Y
+            // Piè di pagina con numero di pagina
+            doc.setFontSize(8);
+            doc.setTextColor(150);
+            doc.text(`Pagina ${data.pageNumber} di ${doc.internal.pages.length - 1}`, data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
+        }
+    });
+
+    cursorY = doc.autoTable.previous.finalY + 12; // Aggiorna Y dopo la tabella
+
+    // Riferimento al file sorgente
+    if (cursorY + 20 > doc.internal.pageSize.getHeight() - 40) {
         doc.addPage();
         cursorY = 40;
-      }
-      doc.text(split, marginLeft, cursorY);
-      cursorY += (split.length * 12);
     }
-
-    if (cursorY + 40 > doc.internal.pageSize.getHeight()) {
-      doc.addPage();
-      cursorY = 40;
-    }
-    cursorY += 8;
     doc.setFontSize(9);
-    doc.text('Dati da performance-latest.json', marginLeft, cursorY);
+    doc.setTextColor(0); // Colore testo nero
+    doc.text('Dati estratti da performance-latest.json', marginLeft, cursorY);
 
     doc.save('biotech-performance-report.pdf');
 
