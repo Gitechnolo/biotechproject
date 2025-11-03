@@ -465,7 +465,7 @@ async function exportToPDF() {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
     // await: logica "senza popup di blocco al download"
-    await loadJsPDF(); 
+    await loadJsPDF(); // Carica jsPDF solo quando serve 
 
     let jsonUrl = 'data/performance-latest.json';
     let data;
