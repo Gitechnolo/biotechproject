@@ -1,11 +1,11 @@
 // Biotech-file/portfolio.js
 // ———————————————————————
-// GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA (FINALE)
+// GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
 // ———————————————————————
 
 let performanceChart;
 
-// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale mantenuta) ---
+// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale) ---
 async function loadJsPDF() {
   if (window.jspdf && window.autoTable) return;
 
@@ -467,7 +467,7 @@ async function exportToPDF() {
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
-    // Manteniamo l'await in questo punto: è la chiave per la logica "senza popup"
+    // await: logica "senza l'alert popup bloccante al download"
     await loadJsPDF(); 
 
     let jsonUrl = 'data/performance-latest.json';
@@ -576,9 +576,12 @@ async function exportToPDF() {
         },
         // *** OTTIMIZZAZIONE PDF: Larghezza colonne corretta per il layout ***
         columnStyles: {
-            0: { cellWidth: 150 }, // Etichetta Pagina (Aumentata)
-            1: { cellWidth: 60, halign: 'center' }, // Punteggio
-            2: { cellWidth: 290 } // URL (Bilanciata)
+            // Colonna 0: Etichetta Pagina (130pt)
+            0: { cellWidth: 130 }, 
+            // Colonna 1: Punteggio (60pt)
+            1: { cellWidth: 60, halign: 'center' },
+            // Colonna 2: URL (310pt)
+            2: { cellWidth: 310 } 
         },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
@@ -630,7 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Collega il pulsante di esportazione (CONFERMATO PRESENTE)
+  // Collega il pulsante di esportazione 
   const exportBtn = document.getElementById('export-data-btn');
   if (exportBtn) {
     exportBtn.addEventListener('click', exportToPDF);
