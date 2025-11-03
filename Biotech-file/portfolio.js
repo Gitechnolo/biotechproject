@@ -18,7 +18,6 @@ async function loadJsPDF() {
   });
 
   try {
-    // Caricamento sequenziale per compatibilità con il flusso click-download
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js');
   } catch (error) {
@@ -62,7 +61,7 @@ async function loadPerformanceData() {
 
     aggiornaPerformanceScore(performanceScoreValue);
 
-    // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment per migliorare il rendering ***
+    // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
     const fragment = document.createDocumentFragment();
 
     data.pages.forEach(page => {
@@ -147,7 +146,6 @@ async function loadPerformanceData() {
     }
 
     // *** OTTIMIZZAZIONE CSS: Sostituzione di setTimeout con l'aggiunta di una classe CSS ***
-    // (Richiede l'aggiunta delle classi .metric e .portfolio-loaded nel CSS)
     document.body.classList.add('portfolio-loaded');
 
 
@@ -164,10 +162,9 @@ async function loadPerformanceData() {
   }
 }
 
-// --- Crea la card per ogni pagina (omesso per brevità, è rimasto invariato tranne l'ottimizzazione DOM) ---
+// --- Crea la card per ogni pagina ---
 function createPerformanceCard(page) {
-    // ... (Logica della card)
-    const performance = page.performanceScore !== undefined
+  const performance = page.performanceScore !== undefined
     ? page.performanceScore
     : page.performance !== undefined
       ? Math.round(page.performance * 100)
@@ -458,7 +455,7 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF (Ottimizzata) ---
+// --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
@@ -467,7 +464,7 @@ async function exportToPDF() {
   try {
     if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
-    // await: logica "senza l'alert popup bloccante al download"
+    // await: logica "senza popup di blocco al download"
     await loadJsPDF(); 
 
     let jsonUrl = 'data/performance-latest.json';
@@ -544,12 +541,18 @@ async function exportToPDF() {
     cursorY += 14;
 
     const pages = (data && data.pages) ? data.pages : [];
+    
+    // *** MODIFICA CHIAVE PER IL LAYOUT: Mostra solo il nome del file (percorso relativo) ***
     const tableData = pages.map(p => {
         const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
+        
+        // Estrae solo il nome del file (es. index.html o Cuore.html)
+        const relativePath = p.url.split('/').pop() || '/';
+
         return [
             p.label,
             `${score}%`,
-            p.url 
+            relativePath // <--- UTILIZZA SOLO IL PERCORSO RELATIVO (STRINGA CORTA)
         ];
     });
 
@@ -561,7 +564,7 @@ async function exportToPDF() {
 
     doc.autoTable({
         startY: cursorY,
-        head: [['Etichetta Pagina', 'Punteggio', 'URL']],
+        head: [['Etichetta Pagina', 'Punteggio', 'File Pagina']], // Aggiorna intestazione per chiarezza
         body: tableData,
         theme: 'striped',
         headStyles: { 
@@ -574,14 +577,11 @@ async function exportToPDF() {
             cellPadding: 3,
             valign: 'middle' 
         },
-        // *** OTTIMIZZAZIONE PDF: Larghezza colonne corretta per il layout ***
+        // BILANCIAMENTO OTTIMALE: Più spazio all'etichetta, l'URL è relativo
         columnStyles: {
-            // Colonna 0: Etichetta Pagina (130pt)
-            0: { cellWidth: 130 }, 
-            // Colonna 1: Punteggio (60pt)
-            1: { cellWidth: 60, halign: 'center' },
-            // Colonna 2: URL (310pt)
-            2: { cellWidth: 310 } 
+            0: { cellWidth: 190 }, // Etichetta Pagina 
+            1: { cellWidth: 60, halign: 'center' }, // Punteggio
+            2: { cellWidth: 250 } // Nome del file 
         },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
@@ -610,7 +610,8 @@ async function exportToPDF() {
     }
     doc.setFontSize(9);
     doc.setTextColor(0); 
-    doc.text('Dati estratti da performance-latest.json', marginLeft, cursorY);
+    // Aggiungi una nota che specifica che l'URL è relativo
+    doc.text('Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.', marginLeft, cursorY);
 
     doc.save('biotech-performance-report.pdf');
 
@@ -632,8 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
       filterSelection(btn.dataset.filter);
     });
   });
-
-  // Collega il pulsante di esportazione 
+// Collega il pulsante di esportazione
   const exportBtn = document.getElementById('export-data-btn');
   if (exportBtn) {
     exportBtn.addEventListener('click', exportToPDF);
