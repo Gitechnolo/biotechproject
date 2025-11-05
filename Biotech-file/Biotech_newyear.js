@@ -1,27 +1,10 @@
-// BIOTECH NEW YEAR COUNTDOWN - Retrocompatibile
-(function () {
-// Metodo 1: Aggiorna l'elemento con id="countdown-days"
 const element = document.getElementById('countdown-days');
 if (element) {
-const now = new Date();
-let newYear = new Date(now.getFullYear(), 11, 31);
-if (newYear < now) {
-newYear.setFullYear(newYear.getFullYear() + 1);
-}
-const remainingDays = Math.ceil((newYear - now) / 86400000);
-element.textContent = remainingDays;
-return; // End: aggiorna l'elemento con id="countdown-days"
-}
-// Metodo 2: Retrocompatibilità per clienti (inserimento dopo lo script)
-const nowFallback = new Date();
-let newYearFallback = new Date(nowFallback.getFullYear(), 11, 31);
-if (newYearFallback < nowFallback) {
- newYearFallback.setFullYear(newYearFallback.getFullYear() + 1);
- }
- const remainingDaysFallback = Math.ceil((newYearFallback - nowFallback) / 86400000);
-// Inserisce il testo dopo lo script (come prima)
-document.currentScript.insertAdjacentHTML(
-'afterend',
-'&nbsp;' + remainingDaysFallback + ' giorni al nuovo anno!'
-);
-})();
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const newYear = now.getMonth() === 11 && now.getDate() === 31 && now.getHours() === 23 ? 
+        new Date(currentYear + 1, 11, 31) : 
+        new Date(currentYear, 11, 31);
+    const remainingDays = Math.ceil((newYear - now) / 86400000);
+    element.textContent = remainingDays;
+}   
