@@ -258,7 +258,8 @@ update();
 const intervalId = setInterval(update, 1000);
 // Pulizia opzionale (se usi SPA o dinamica)
 return () => clearInterval(intervalId);
-}   
+}
+document.addEventListener("DOMContentLoaded", startModernClock);   
 //End  Clock
 // === Conto alla rovescia al nuovo anno ===
 const countdownEl = document.getElementById('modern-countdown');
