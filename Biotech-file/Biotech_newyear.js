@@ -1,3 +1,4 @@
+// BIOTECH NEW YEAR COUNTDOWN
 const element = document.getElementById('countdown-days');
 if (element) {
     const now = new Date();
