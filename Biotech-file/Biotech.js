@@ -1,11 +1,11 @@
 /**
  * Biotech.js - Script principale per BiotechProject
- * Versione ottimizzata: accessibile, performante, modulare
+ * Versione finale: menu con Enter, DNA animato correttamente, accessibilità completa
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     // ======================
-    // 1. QRedshift: Comfort Visivo
+    // 1. QRedshift + DNA: Comfort Visivo
     // ======================
     const applyQRedshift = () => {
         const hour = new Date().getHours();
@@ -54,49 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const particles = document.getElementById('particles-canvas');
                 const dna = document.querySelector('.dna-container-8');
                 if (particles) particles.style.display = 'block';
-                if (dna) dna.style.display = 'block';
+                if (dna) {
+                    dna.style.display = 'block';
+                    void dna.offsetWidth; // Forza reflow
+                    dna.classList.remove('dna-container-8');
+                    setTimeout(() => dna.classList.add('dna-container-8'), 10);
+                }
             }
         });
     };
     applyQRedshift();
 
     // ======================
-    // 2. Orologio Moderno
-    // ======================
-    const clockEl = document.getElementById('clock2');
-    if (clockEl) {
-        const pad = n => n < 10 ? '0' + n : n;
-        const updateClock = () => {
-            const d = new Date();
-            clockEl.textContent = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} - ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-        };
-        updateClock();
-        setInterval(updateClock, 1000);
-    }
-
-    // ======================
-    // 3. Countdown al Nuovo Anno
-    // ======================
-    const countdownEl = document.getElementById('countdown-days');
-    if (countdownEl) {
-        const now = new Date();
-        const nextYear = new Date(now.getFullYear() + 1, 0, 1);
-        const days = Math.ceil((nextYear - now) / 86400000);
-        countdownEl.textContent = days;
-    }
-
-    // ======================
-    // 4. Ultima Modifica Pagina
-    // ======================
-    const lastModEl = document.getElementById('lastModified');
-    if (lastModEl) {
-        const d = new Date(document.lastModified);
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-        lastModEl.textContent = `Last edit: ${d.toLocaleDateString('it-IT', options)}`;
-    }
-
-    // ======================
-    // 5. Dropdown Menu Accessibile
+    // 2. Dropdown Menu - Con Enter
     // ======================
     const menu = document.getElementById('tech-main-menu');
     if (menu) {
@@ -140,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Navigazione nel dropdown
         menu.addEventListener('keydown', e => {
             const dropdown = openDropdown;
             if (!dropdown) return;
@@ -166,13 +135,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Chiudi su click esterno o Esc
         document.addEventListener('click', e => !menu.contains(e.target) && closeAll());
         document.addEventListener('keydown', e => e.key === 'Escape' && closeAll());
     }
 
     // ======================
-    // 6. Lightbox per Immagini
+    // 3. Orologio Moderno
+    // ======================
+    const clockEl = document.getElementById('clock2');
+    if (clockEl) {
+        const pad = n => n < 10 ? '0' + n : n;
+        const updateClock = () => {
+            const d = new Date();
+            clockEl.textContent = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} - ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    // ======================
+    // 4. Countdown al Nuovo Anno
+    // ======================
+    const countdownEl = document.getElementById('countdown-days');
+    if (countdownEl) {
+        const now = new Date();
+        const nextYear = new Date(now.getFullYear() + 1, 0, 1);
+        const days = Math.ceil((nextYear - now) / 86400000);
+        countdownEl.textContent = days;
+    }
+
+    // ======================
+    // 5. Ultima Modifica Pagina
+    // ======================
+    const lastModEl = document.getElementById('lastModified');
+    if (lastModEl) {
+        const d = new Date(document.lastModified);
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+        lastModEl.textContent = `Last edit: ${d.toLocaleDateString('it-IT', options)}`;
+    }
+
+    // ======================
+    // 6. Lightbox
     // ======================
     const modal = document.getElementById('myModal');
     if (modal) {
@@ -218,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================
-    // 7. Lazy Loading per Video e Immagini
+    // 7. Lazy Loading
     // ======================
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries, obs) => {
@@ -231,9 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (target.tagName === 'VIDEO' && target.dataset.poster) {
                         target.poster = target.dataset.poster;
                         target.querySelectorAll('source').forEach(source => {
-                            if (source.dataset.src) {
-                                source.src = source.dataset.src;
-                            }
+                            if (source.dataset.src) source.src = source.dataset.src;
                         });
                         target.load();
                     }
@@ -254,13 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================
-    // 8. Accessibilità Video: Supporto Tastiera
+    // 8. Accessibilità Video
     // ======================
     document.querySelectorAll('video[data-poster]').forEach(video => {
         video.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                video.play().catch(() => console.warn('Riproduzione video bloccata (autoplay).'));
+                video.play().catch(() => console.warn('Riproduzione bloccata.'));
             }
         });
     });
@@ -374,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================
-    // 11. Pronuncia Termini Scientifici
+    // 11. Pronuncia Termini
     // ======================
     window.speakTerm = (term, language = 'italiano') => {
         if (speechSynthesis.speaking) speechSynthesis.cancel();
@@ -394,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ======================
-    // 12. Popup Centrati Accessibili
+    // 12. Popup Centrati
     // ======================
     window.openPopup = (url, title, w, h) => {
         const left = (screen.width - w) / 2;
