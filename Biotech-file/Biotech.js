@@ -215,31 +215,16 @@ function UnHighlight(menu, item) {
 
 // === OROLOGIO MODERNO ===
 // ———————————————————————
-// ✅ Funzione evolution
-// ———————————————————————
-function startModernClock() {
-const el = document.getElementById("clock2");
-if (!el) return;
-// Usa TextDecoder per evitare ritardi
-function pad(n) { return n < 10 ? '0' + n : n; }
-function update() {
-const now = new Date();
-const day = pad(now.getDate());
-const month = pad(now.getMonth() + 1);
-const year = now.getFullYear();
-const hours = pad(now.getHours());
-const mins = pad(now.getMinutes());
-const secs = pad(now.getSeconds());
-el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
-}
-// Aggiorna subito
-update();
-// Usa 1000ms — sufficiente per un orologio
-const intervalId = setInterval(update, 1000);
-// Pulizia opzionale (se usi SPA o dinamica)
-return () => clearInterval(intervalId);
-}
-document.addEventListener("DOMContentLoaded", startModernClock);   
+const clockEl = document.getElementById('clock2');
+    if (clockEl) {
+        const pad = n => n < 10 ? '0' + n : n;
+        const updateClock = () => {
+            const d = new Date();
+            clockEl.textContent = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} - ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+    }   
 //End  Clock
 // === Conto alla rovescia al nuovo anno ===
 const countdownEl = document.getElementById('modern-countdown');
