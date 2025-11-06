@@ -1,411 +1,1050 @@
-/**
- * Biotech.js - Script principale per BiotechProject
- * Versione finale: menu con Enter, DNA animato correttamente, accessibilità completa
- */
+// QRedshift: Comfort visivo automatico con integrazione menu e fallback accessibile
+function QRedshift() {
+  // Evita doppia applicazione
+  if (document.body.classList.contains('qredshift-active')) return;
 
-document.addEventListener('DOMContentLoaded', () => {
-    // ======================
-    // 1. QRedshift + DNA: Comfort Visivo
-    // ======================
-    const applyQRedshift = () => {
-        const hour = new Date().getHours();
-        const isNight = hour < 7 || hour >= 19;
-        const filter = isNight
-            ? 'sepia(0.6) hue-rotate(-30deg) brightness(1)'
-            : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+  const hour = new Date().getHours();
+  let filter;
+  if (hour >= 7 && hour < 19) {
+    // Giorno
+    filter = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+  } else {
+    // Notte
+    filter = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
+  }
+  // Applica filtro
+  document.body.classList.add('qredshift-active');
+  document.body.style.filter = filter;
+  document.body.style.transition = 'filter 0.5s';
 
-        document.body.style.transition = 'filter 0.5s';
-        document.body.style.filter = filter;
+  // === INTEGRAZIONE MENU (SOLO PER BIOTECH) ===
+  const menuContainer = document.getElementById('tech-main-menu');
 
-        const menuContainer = document.getElementById('tech-main-menu');
-        if (!menuContainer) return;
+  if (menuContainer) {
+    // Crea pulsante integrato nel menu
+    const menuItem = document.createElement('div');
+    menuItem.className = 'tech-menu-item';
+    menuItem.setAttribute('data-menu', 'qredshift');
 
-        const button = document.createElement('button');
-        button.className = 'tech-nav-btn';
-        button.type = 'button';
-        button.setAttribute('aria-pressed', 'true');
-        button.setAttribute('aria-label', isNight ? 'Modalità comfort attiva: Notte' : 'Modalità comfort attiva: Giorno');
-        button.innerHTML = `<b>${isNight ? '🌙' : '☀️'} Comfort</b>`;
+    const button = document.createElement('button');
+    button.className = 'tech-nav-btn';
+    button.type = 'button';
+    button.setAttribute('aria-haspopup', 'false');
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-pressed', 'true');
+    button.setAttribute('aria-label', 'Modalità comfort visivo attiva: Notte');
+    button.innerHTML = '<b>🌙 Comfort</b>';
 
-        const menuItem = document.createElement('div');
-        menuItem.className = 'tech-menu-item';
-        menuItem.appendChild(button);
-        menuContainer.appendChild(menuItem);
+    menuItem.appendChild(button);
+    menuContainer.appendChild(menuItem); // Inserisci alla fine del menu
 
-        button.addEventListener('click', () => {
-            if (button.getAttribute('aria-pressed') === 'true') {
-                document.body.style.filter = '';
-                document.body.classList.remove('qredshift-active');
-                button.setAttribute('aria-pressed', 'false');
-                button.setAttribute('aria-label', 'Modalità comfort disattivata');
-                button.innerHTML = '<b>🟢 Disattivato</b>';
+    // Disattiva effetti visivi pesanti (solo in Biotech)
+    button.addEventListener('click', function () {
+      document.body.classList.remove('qredshift-active');
+      document.body.style.filter = '';
 
-                const particles = document.getElementById('particles-canvas');
-                const dna = document.querySelector('.dna-container-8');
-                if (particles) particles.style.display = 'none';
-                if (dna) dna.style.display = 'none';
-            } else {
-                document.body.style.filter = filter;
-                document.body.classList.add('qredshift-active');
-                button.setAttribute('aria-pressed', 'true');
-                button.setAttribute('aria-label', isNight ? 'Modalità comfort attiva: Notte' : 'Modalità comfort attiva: Giorno');
-                button.innerHTML = `<b>${isNight ? '🌙' : '☀️'} Comfort</b>`;
+      const particles = document.getElementById('particles-canvas');
+      if (particles) particles.style.display = 'none';
 
-                const particles = document.getElementById('particles-canvas');
-                const dna = document.querySelector('.dna-container-8');
-                if (particles) particles.style.display = 'block';
-                if (dna) {
-                    dna.style.display = 'block';
-                    void dna.offsetWidth; // Forza reflow
-                    dna.classList.remove('dna-container-8');
-                    setTimeout(() => dna.classList.add('dna-container-8'), 10);
-                }
-            }
-        });
-    };
-    applyQRedshift();
+      const dna = document.querySelector('.dna-container-8');
+      if (dna) dna.style.display = 'none';
 
-    // ======================
-    // 2. Dropdown Menu - Con Enter
-    // ======================
-    const menu = document.getElementById('tech-main-menu');
-    if (menu) {
-        const buttons = menu.querySelectorAll('.tech-nav-btn[aria-haspopup="true"]');
-        let openDropdown = null;
-
-        const closeAll = () => {
-            if (openDropdown) {
-                openDropdown.classList.add('biotechidden');
-                openDropdown.setAttribute('aria-hidden', 'true');
-                const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
-                btn?.setAttribute('aria-expanded', 'false');
-                openDropdown = null;
-            }
-        };
-
-        buttons.forEach(btn => {
-            const dropdown = document.getElementById(btn.getAttribute('aria-controls'));
-            if (!dropdown) return;
-
-            btn.setAttribute('aria-expanded', 'false');
-            dropdown.setAttribute('aria-hidden', 'true');
-
-            btn.addEventListener('click', () => {
-                const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-                closeAll();
-                if (!isExpanded) {
-                    dropdown.classList.remove('biotechidden');
-                    dropdown.setAttribute('aria-hidden', 'false');
-                    btn.setAttribute('aria-expanded', 'true');
-                    openDropdown = dropdown;
-                }
-            });
-
-            btn.addEventListener('keydown', e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    btn.click();
-                    setTimeout(() => dropdown.querySelector('[role="menuitem"]')?.focus(), 100);
-                }
-            });
-        });
-
-        menu.addEventListener('keydown', e => {
-            const dropdown = openDropdown;
-            if (!dropdown) return;
-            const items = [...dropdown.querySelectorAll('[role="menuitem"]:not([disabled])')];
-            const index = items.indexOf(document.activeElement);
-
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                items[(index + 1) % items.length]?.focus();
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                items[(index - 1 + items.length) % items.length]?.focus();
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                items[0]?.focus();
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                items[items.length - 1]?.focus();
-            } else if (e.key === 'Escape') {
-                e.stopPropagation();
-                closeAll();
-                document.querySelector(`[aria-controls="${dropdown.id}"]`)?.focus();
-            }
-        });
-
-        document.addEventListener('click', e => !menu.contains(e.target) && closeAll());
-        document.addEventListener('keydown', e => e.key === 'Escape' && closeAll());
-    }
-
-    // ======================
-    // 3. Orologio Moderno
-    // ======================
-    const clockEl = document.getElementById('clock2');
-    if (clockEl) {
-        const pad = n => n < 10 ? '0' + n : n;
-        const updateClock = () => {
-            const d = new Date();
-            clockEl.textContent = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} - ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-        };
-        updateClock();
-        setInterval(updateClock, 1000);
-    }
-
-    // ======================
-    // 4. Countdown al Nuovo Anno
-    // ======================
-    const countdownEl = document.getElementById('countdown-days');
-    if (countdownEl) {
-        const now = new Date();
-        const nextYear = new Date(now.getFullYear() + 1, 0, 1);
-        const days = Math.ceil((nextYear - now) / 86400000);
-        countdownEl.textContent = days;
-    }
-
-    // ======================
-    // 5. Ultima Modifica Pagina
-    // ======================
-    const lastModEl = document.getElementById('lastModified');
-    if (lastModEl) {
-        const d = new Date(document.lastModified);
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-        lastModEl.textContent = `Last edit: ${d.toLocaleDateString('it-IT', options)}`;
-    }
-
-    // ======================
-    // 6. Lightbox
-    // ======================
-    const modal = document.getElementById('myModal');
-    if (modal) {
-        let slideIndex = 1;
-        const showSlide = n => {
-            const slides = document.getElementsByClassName("mySlides");
-            const dots = document.getElementsByClassName("demo");
-            if (slides.length === 0) return;
-            slideIndex = n > slides.length ? 1 : n < 1 ? slides.length : n;
-            Array.from(slides).forEach(s => s.style.display = 'none');
-            Array.from(dots).forEach(d => d.className = d.className.replace(" active", ""));
-            slides[slideIndex - 1].style.display = 'block';
-            if (dots[slideIndex - 1]) {
-                dots[slideIndex - 1].className += " active";
-                document.getElementById("caption").innerHTML = dots[slideIndex - 1].alt || "";
-            }
-        };
-
-        document.querySelectorAll('[data-modal-open]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.style.display = 'block';
-                showSlide(1);
-            });
-        });
-
-        modal.querySelector('.close')?.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && modal.style.display === 'block') {
-                modal.querySelector('.close')?.click();
-            } else if (e.key === 'ArrowRight') {
-                plusSlides(1);
-            } else if (e.key === 'ArrowLeft') {
-                plusSlides(-1);
-            }
-        });
-
-        window.plusSlides = n => showSlide(slideIndex + n);
-        window.currentSlide = n => showSlide(n);
-        showSlide(1);
-    }
-
-    // ======================
-    // 7. Lazy Loading
-    // ======================
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = entry.target;
-                    if (target.tagName === 'IMG' && target.dataset.src) {
-                        target.src = target.dataset.src;
-                        target.removeAttribute('data-src');
-                    } else if (target.tagName === 'VIDEO' && target.dataset.poster) {
-                        target.poster = target.dataset.poster;
-                        target.querySelectorAll('source').forEach(source => {
-                            if (source.dataset.src) source.src = source.dataset.src;
-                        });
-                        target.load();
-                    }
-                    obs.unobserve(target);
-                }
-            });
-        }, { threshold: 0.05 });
-
-        document.querySelectorAll('img[data-src], video[data-poster]').forEach(el => observer.observe(el));
-    } else {
-        document.querySelectorAll('img[data-src]').forEach(img => img.src = img.dataset.src);
-        document.querySelectorAll('video[data-poster]').forEach(video => {
-            video.querySelectorAll('source').forEach(source => {
-                if (source.dataset.src) source.src = source.dataset.src;
-            });
-            video.load();
-        });
-    }
-
-    // ======================
-    // 8. Accessibilità Video
-    // ======================
-    document.querySelectorAll('video[data-poster]').forEach(video => {
-        video.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                video.play().catch(() => console.warn('Riproduzione bloccata.'));
-            }
-        });
+      // Aggiorna stato UI
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
+      button.innerHTML = '<b>☀️ Comfort</b>';
     });
 
-    // ======================
-    // 9. Tema Dinamico
-    // ======================
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-        const themes = [
-            { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
-            { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
-            { name: 'Viola', rgb: '138, 43, 226', h: 270, s: '75%', l: '53%' },
-            { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
-            { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
-        ];
+  } else {
+    // === FALLBACK: per clienti esterni (nessun menu) ===
+    const icon = document.createElement('div');
+    icon.className = 'qredshift-icon';
+    icon.setAttribute('role', 'button');
+    icon.setAttribute('tabindex', '0');
+    icon.setAttribute('aria-label', 'Disattiva comfort visivo');
+    icon.title = 'Comfort visivo QRedshift attivo - clicca per disattivare';
 
-        let currentThemeIndex = parseInt(localStorage.getItem('biotech-theme') || 0, 10) % themes.length;
+    // Stile inline con transizione e ombra
+    icon.style.cssText = `
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0, 100, 130, 0.8);
+      color: #a0e0ff;
+      border: 1px solid rgba(100, 200, 255, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 9999;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      box-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
+      font-family: sans-serif;
+      transition: all 0.3s ease;
+    `;
 
-        const applyTheme = index => {
-            const t = themes[index];
-            document.documentElement.style.setProperty('--color-accent-rgb', t.rgb);
-            document.documentElement.style.setProperty('--color-accent-h', t.h);
-            document.documentElement.style.setProperty('--color-accent-s', t.s);
-            document.documentElement.style.setProperty('--color-accent-l', t.l);
-            document.documentElement.style.setProperty('--color-glow', `hsl(${t.h}, 100%, 70%)`);
-            themeBtn.textContent = `🎨 Tema: (${t.name})`;
-            themeBtn.setAttribute('aria-label', `Cambia tema colore: attualmente ${t.name}, clicca per passare al successivo`);
-        };
+    // 🔥 Ottimizzazione rendering: attiva il layer GPU
+    icon.style.willChange = 'transform, box-shadow';
 
-        applyTheme(currentThemeIndex);
+    icon.innerHTML = '🌙';
+    document.body.appendChild(icon);
 
-        themeBtn.addEventListener('click', () => {
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            applyTheme(currentThemeIndex);
-            localStorage.setItem('biotech-theme', currentThemeIndex);
-        });
-    }
-
-    // ======================
-    // 10. Gestione Lingua
-    // ======================
-    const langBtn = document.getElementById('lang-toggle');
-    if (langBtn) {
-        let currentLang = localStorage.getItem('preferred-language') || (navigator.language.startsWith('en') ? 'en' : 'it');
-
-        const updateButton = lang => {
-            const flag = document.getElementById('lang-flag');
-            const text = document.getElementById('lang-text');
-            const label = document.getElementById('lang-label');
-            if (flag) flag.textContent = lang === 'it' ? '🇬🇧' : '🇮🇹';
-            if (text) text.textContent = lang === 'it' ? 'English' : 'Italiano';
-            if (label) label.textContent = lang === 'it' ? 'Switch language' : 'Cambia lingua';
-            langBtn.setAttribute('aria-label', lang === 'it' ? 'Switch to English' : 'Cambia lingua in italiano');
-        };
-
-        const loadTranslations = async () => {
-            const pageName = window.location.pathname.split('/').pop().replace('.html', '').replace('-semplice', '');
-            const common = await (await fetch('lang/common.json')).json().catch(() => ({}));
-            let translations = { it: { ...common.it }, en: { ...common.en } };
-
-            if (['index', 'Progetti', 'Staff', 'Marketing', 'Tech_Maturity', 'Dermatologia', 'Cuore', 'Cellula', 'Apparato_digerente', 'Apparato_respiratorio', 'Apparato_tegumentario', 'Sistema_linfatico', 'Specials', 'Capelli'].includes(pageName)) {
-                const key = {
-                    'index': 'home',
-                    'Tech_Maturity': 'tech_maturity',
-                    'Apparato_digerente': 'apparato_digerente',
-                    'Apparato_respiratorio': 'apparato_respiratorio',
-                    'Apparato_tegumentario': 'apparato_tegumentario',
-                    'Sistema_linfatico': 'sistema_linfatico'
-                }[pageName] || pageName.toLowerCase();
-                const pageData = await (await fetch(`lang/${key}.json`)).json().catch(() => ({}));
-                if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-                if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-            }
-
-            const apply = (data, lang) => {
-                document.querySelectorAll('[data-lang-key]').forEach(el => {
-                    const key = el.getAttribute('data-lang-key');
-                    const value = data[lang]?.[key];
-                    if (value !== undefined) {
-                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                            el.setAttribute('placeholder', value);
-                        } else if (el.tagName === 'IMG') {
-                            el.setAttribute('alt', value);
-                        } else if (el.hasAttribute('aria-label')) {
-                            el.setAttribute('aria-label', value);
-                            const b = el.querySelector('b');
-                            if (b) b.textContent = value;
-                            else el.innerHTML = value;
-                        } else {
-                            const b = el.querySelector('b');
-                            if (b) b.textContent = value;
-                            else el.innerHTML = value;
-                        }
-                    }
-                });
-            };
-
-            apply(translations, currentLang);
-            document.documentElement.lang = currentLang;
-            updateButton(currentLang);
-        };
-
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'it' ? 'en' : 'it';
-            localStorage.setItem('preferred-language', currentLang);
-            location.reload();
-        });
-
-        loadTranslations();
-    }
-
-    // ======================
-    // 11. Pronuncia Termini
-    // ======================
-    window.speakTerm = (term, language = 'italiano') => {
-        if (speechSynthesis.speaking) speechSynthesis.cancel();
-
-        const custom = {
-            'CRISPR': 'Clustered Regularly Interspaced Short Palindromic Repeats',
-            'mitocondri': 'Mi-to-con-dri', 'lisosoma': 'Li-so-so-ma', 'miochine': 'Mi-o-ki-ne',
-            'sinaptogenesi': 'Si-na-to-jen-e-si', 'epigenetici': 'E-pi-je-ne-ti-ci', 'ATP': 'Adenosina trifosfato',
-            'DNA': 'Acido desossiribonucleico', 'RNA': 'Acido ribonucleico', 'tegumento': 'Te-gu-men-to', 'Pecquet': 'Pes-ché'
-        };
-
-        const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
-        const utterance = new SpeechSynthesisUtterance(custom[term.toLowerCase()] || term);
-        utterance.lang = langMap[language] || 'it-IT';
-        utterance.rate = 0.8; utterance.pitch = 1.0; utterance.volume = 1.0;
-        speechSynthesis.speak(utterance);
+    // Comportamento: clic per disattivare
+    const disableEffect = () => {
+      document.body.classList.remove('qredshift-active');
+      document.body.style.filter = '';
+      icon.remove();
     };
 
-    // ======================
-    // 12. Popup Centrati
-    // ======================
-    window.openPopup = (url, title, w, h) => {
-        const left = (screen.width - w) / 2;
-        const top = (screen.height - h) / 2;
-        const options = `width=${w},height=${h},top=${top},left=${left},resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no`;
-        const popup = window.open(url, title, options);
-        if (!popup || popup.closed) alert("Il popup è stato bloccato. Abilita i popup per questo sito.");
-        else popup.focus();
-    };
+    icon.addEventListener('click', disableEffect);
 
-    window.openSupportPopup = () => openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support Chat GPT', 760, 440);
-    window.openContactPopup = () => openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci - Forum ChatGPT', 825, 672);
-});     
+    // Supporto tastiera (accessibilità)
+    icon.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        disableEffect();
+      }
+    });
+
+    // Effetti hover
+    icon.addEventListener('mouseenter', () => {
+      icon.style.transform = 'scale(1.1)';
+      icon.style.boxShadow = '0 0 14px rgba(120, 220, 255, 0.5)';
+    });
+
+    icon.addEventListener('mouseleave', () => {
+      icon.style.transform = 'scale(1)';
+      icon.style.boxShadow = '0 0 10px rgba(100, 200, 255, 0.3)';
+    });
+
+    // Reset stile al leave (sicurezza)
+    icon.addEventListener('focus', () => {
+      icon.style.outline = '2px solid #66ccff';
+      icon.style.outlineOffset = '2px';
+    });
+
+    icon.addEventListener('blur', () => {
+      icon.style.outline = '';
+    });
+  }
+}
+// Attiva al caricamento della pagina
+window.addEventListener('DOMContentLoaded', QRedshift);  
+// End QRedshift: Comfort visivo automatico e menu e fallback accessibile 
+
+//Fade effect (dissolvenza)
+function fadeEffect() {
+  let text = document.getElementById("fadingText");
+  if (!text) return;
+
+  let visible = true;
+  setInterval(() => {
+    visible = !visible;
+    text.classList.toggle("fade", !visible);
+  }, 2000);
+}
+window.addEventListener("load", fadeEffect);   
+// End fade effect (dissolvenza)
+// Drop-down menu (Mantenuto per retrocompatibilità)
+var inmenu = false;
+var lastmenu = 0;
+function Menu(current) {
+  if (!document.getElementById) return;
+  inmenu = true;
+  var oldmenu = lastmenu;
+  lastmenu = current;
+  if (oldmenu) Erase(oldmenu);
+  var m = document.getElementById("menu-" + current);
+  var box = document.getElementById(current);
+  if (!m || !box) return;
+  // Trova la tabella con classe "menu"
+  var table = document.querySelector('table.menu');
+  if (!table) {
+    // Fallback: usa posizione della cella
+    box.style.left = m.offsetLeft + 'px';
+  } else {
+    // Calcola la posizione X centrata rispetto alla tabella
+    var tableRect = table.getBoundingClientRect();
+    var boxWidth = 553; // larghezza fissa del dropdown
+    var leftOffset = tableRect.left + (tableRect.width / 2) - (boxWidth / 2);
+    // Imposta left in px
+    box.style.left = leftOffset + 'px';
+  }
+  // Posiziona sotto la tabella
+  box.style.top = (table ? table.offsetTop + table.offsetHeight : m.offsetTop + m.offsetHeight) + 'px';
+
+  box.style.visibility = "visible";
+  m.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
+  box.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
+  box.style.width = "553px";
+}   
+function Erase(current) {
+  if (!document.getElementById) return;
+  if (inmenu && lastmenu === current) return;
+  var m = document.getElementById("menu-" + current);
+  var box = document.getElementById(current);
+  // Controllo sicurezza
+  if (!m || !box) return;
+  box.style.visibility = "hidden";
+  m.style.backgroundColor = "Silver";
+}
+function Timeout(current) {
+  inmenu = false;
+  // ✅ Già corretto: uso di funzione, non stringa
+  window.setTimeout(() => Erase(current), 500);
+}
+function Highlight(menu, item) {
+  if (!document.getElementById) return;
+  inmenu = true;
+  lastmenu = menu;
+  var obj = document.getElementById(item); // ✅ Dichiarata con `var`
+  if (obj) obj.style.backgroundColor = "Silver";
+}
+function UnHighlight(menu, item) {
+  if (!document.getElementById) return;
+  Timeout(menu);
+  var obj = document.getElementById(item); // ✅ Dichiarata con `var`
+  if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
+}
+// End drop-down menu   
+
+// === OROLOGIO MODERNO ===
+// ———————————————————————
+// ✅ Funzione evolution
+// ———————————————————————
+function startModernClock() {
+const el = document.getElementById("clock2");
+if (!el) return;
+// Usa TextDecoder per evitare ritardi
+function pad(n) { return n < 10 ? '0' + n : n; }
+function update() {
+const now = new Date();
+const day = pad(now.getDate());
+const month = pad(now.getMonth() + 1);
+const year = now.getFullYear();
+const hours = pad(now.getHours());
+const mins = pad(now.getMinutes());
+const secs = pad(now.getSeconds());
+el.textContent = `${day}/${month}/${year} - ${hours}:${mins}:${secs}`;
+}
+// Aggiorna subito
+update();
+// Usa 1000ms — sufficiente per un orologio
+const intervalId = setInterval(update, 1000);
+// Pulizia opzionale (se usi SPA o dinamica)
+return () => clearInterval(intervalId);
+}
+document.addEventListener("DOMContentLoaded", startModernClock);   
+//End  Clock
+// === Conto alla rovescia al nuovo anno ===
+const countdownEl = document.getElementById('modern-countdown');
+const daysSpan = countdownEl?.querySelector('#countdown-days');
+if (countdownEl && daysSpan) {
+function updateCountdown() {
+const now = new Date();
+const currentYear = now.getFullYear();
+const nextYear = currentYear + 1;
+const newYear = new Date(`January 1, ${nextYear} 00:00:00`);
+const diff = newYear - now;
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+daysSpan.textContent = days;
+}
+// Aggiorna subito
+updateCountdown();
+// Aggiorna ogni ora (non serve ogni secondo)
+setInterval(updateCountdown, 3600000); // 1 ora
+}   
+// Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+var slideIndex = 1;
+// Inizializza le slide all'apertura
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  // Verifica che ci siano delle slide
+  if (slides.length === 0) {
+    return; // Esci se non ci sono slide
+  }
+  // Aggiorna slideIndex con logica circolare
+  if (n > slides.length) {
+    slideIndex = 1;
+  } else if (n < 1) {
+    slideIndex = slides.length;
+  } else {
+    slideIndex = n; // Assegna solo se valido
+  }
+  // Nascondi tutte le slide
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  // Rimuovi la classe 'active' da tutti i dot
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  // Mostra la slide corrente
+  slides[slideIndex - 1].style.display = "block";
+  // Aggiorna il dot attivo e il caption, solo se esistono i dot
+  if (dots.length > 0 && dots[slideIndex - 1]) {
+    dots[slideIndex - 1].className += " active";
+    if (captionText) {
+      captionText.innerHTML = dots[slideIndex - 1].alt || "";
+    }
+  }
+}   
+// End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico.
+
+// --- Performance Helpers ---
+// Throttle: limit how often a function can run
+function throttle(fn, limit) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      fn.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+}   
+// Debounce: run a function only after a pause
+function debounce(fn, delay) {
+  let timer;
+  return function(...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+// End Deounce
+// Lazy loading con cleanup e configurazione flessibile
+function initLazyLoading() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback per vecchi browser: carica tutte le immagini subito
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      img.src = img.dataset.src;
+    });
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src'); // Pulizia
+          obs.unobserve(img);
+        }
+      });
+    },
+    { threshold: 0.05 } // Attiva con solo il 5% visibile (più reattivo)
+  );
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    observer.observe(img);
+  });
+  // ✅ Esponi l'observer se devi fermarlo in futuro (es. navigazione dinamica)
+  return observer;
+}
+// Inizializza al caricamento
+const lazyImageObserver = initLazyLoading();   
+// End Lazy loading con cleanup e configurazione flessibile
+// Carica in ritardo script pesanti (es. analytics, chatbot) non necessari all'avvio. 
+function loadScript(src, callback) {
+  // Evita caricamenti duplicati
+  if (document.querySelector(`script[src="${src}"]`)) {
+    if (callback) callback();
+    return;
+  }
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  script.onload = () => callback?.();
+  script.onerror = () => {
+    console.error(`Errore nel caricamento dello script: ${src}`);
+  };
+  document.head.appendChild(script);
+}   
+ // End Carica in ritardo script pesanti.  
+// ---End Performance Helpers ---
+
+// When the user mouseover on div, open the info popup
+function infoFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+// Light effect around the bulb image
+function turnOnLight() {
+  const img = document.getElementById('myImage');
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
+  img.classList.add('bulb-glow');
+}
+function turnOffLight() {
+  const img = document.getElementById('myImage');
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
+  img.classList.remove('bulb-glow');
+}
+// End effect around the bulb image
+// ———————————————————————
+// ———————————————————————
+// ✅ MENU MODERNO - Solo su pagine con data-modern-menu
+// ———————————————————————
+(function () {
+// Esci subito se non siamo in una pagina con menu moderno
+if (!document.body.hasAttribute('data-modern-menu')) return;
+document.addEventListener('DOMContentLoaded', function () {
+let openDropdown = null;
+// Inizializza tutti i pulsanti del menu
+document.querySelectorAll('.tech-nav-btn').forEach(btn => {
+const dropdown = btn.nextElementSibling;
+// Salta se non c'è dropdown o non è della classe corretta
+if (!dropdown || !dropdown.classList.contains('tech-dropdown')) {
+console.warn('Dropdown non trovato o classe errata per:', btn);
+return;
+}
+// Inizializza ARIA
+btn.setAttribute('aria-haspopup', 'true');
+btn.setAttribute('aria-expanded', 'false');
+// Click sul pulsante
+btn.addEventListener('click', e => {
+e.stopPropagation();
+const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+// Chiudi altro dropdown aperto
+if (openDropdown && openDropdown !== dropdown) {
+openDropdown.classList.remove('show');
+const prevBtn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
+prevBtn?.setAttribute('aria-expanded', 'false');
+}
+// Toggle corrente
+if (isExpanded) {
+dropdown.classList.remove('show');
+btn.setAttribute('aria-expanded', 'false');
+openDropdown = null;
+} else {
+dropdown.classList.add('show');
+btn.setAttribute('aria-expanded', 'true');
+openDropdown = dropdown;
+console.log('Menu aperto, openDropdown =', dropdown.id || 'senza id');
+}
+});
+// Supporto tastiera: Enter o Space
+btn.addEventListener('keydown', e => {
+if (e.key === 'Enter' || e.key === ' ') {
+e.preventDefault();
+const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+btn.click();
+// ✅ Spostare il focus sul primo elemento con role="menuitem"
+if (!isExpanded) {
+setTimeout(() => {
+const firstItem = dropdown.querySelector('[role="menuitem"]');
+if (firstItem) firstItem.focus();  // ✅ Usa firstItem
+}, 100);
+}
+}
+});
+// Navigazione con frecce, Home, End e Escape DENTRO il dropdown
+dropdown.addEventListener('keydown', function (e) {
+  const items = Array.from(dropdown.querySelectorAll('[role="menuitem"]:not([disabled])'));
+  const currentIndex = items.indexOf(document.activeElement);
+// Freccia giù
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    const nextIndex = (currentIndex + 1) % items.length;
+    items[nextIndex]?.focus();
+  }
+// Freccia su
+  else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    const prevIndex = (currentIndex - 1 + items.length) % items.length;
+    items[prevIndex]?.focus();
+  }
+// Home → primo elemento
+  else if (e.key === 'Home') {
+    e.preventDefault();
+    items[0]?.focus();
+  }
+// End → ultimo elemento
+  else if (e.key === 'End') {
+    e.preventDefault();
+    items[items.length - 1]?.focus();
+  }
+// Escape → chiude il menu (doppia sicurezza)
+  else if (e.key === 'Escape') {
+    e.stopPropagation(); // Evita che scatti anche l'altro listener su document
+    dropdown.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+    openDropdown = null;
+  }
+});   
+});
+// Chiudi il dropdown al click fuori
+document.addEventListener('click', (e) => {
+const isClickInside = e.target.closest('.tech-menu-item') || e.target.closest('.tech-dropdown');
+if (!isClickInside && openDropdown) {
+console.log('Click fuori → chiusura menu');
+openDropdown.classList.remove('show');
+const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
+btn?.setAttribute('aria-expanded', 'false');
+btn?.focus();
+openDropdown = null;
+}
+});
+// Chiudi con tasto ESC
+document.addEventListener('keydown', e => {
+console.log('Tasto premuto:', e.key, 'openDropdown attuale:', openDropdown);
+if (e.key === 'Escape' && openDropdown) {
+console.log('Esc premuto: chiusura menu');
+openDropdown.classList.remove('show');
+const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
+btn?.setAttribute('aria-expanded', 'false');
+btn?.focus(); // Riporta il focus sul pulsante per accessibilità
+openDropdown = null;
+} else if (e.key === 'Escape') {
+console.log('Esc premuto, ma openDropdown è', openDropdown);
+}
+});
+});
+})();  
+// End MENU MODERNO 
+// ———————————————————————
+// 🔹 FUNZIONI VECCHIE – PER RETROCOMPATIBILITÀ
+// (Non modificare: usate in documenti clienti)
+// ———————————————————————
+function PopupCentrata() {
+  var w = 760;
+  var h = 370;
+  var l = Math.floor((screen.width - w) / 2);
+  var t = Math.floor((screen.height - h) / 2);
+  window.open("https://gitechnolo.github.io/biotechproject/O.S_support.html", "", "width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+}
+function ChatGPTpopupCenterAI() {
+  var w = 825;
+  var h = 672;
+  var l = Math.floor((screen.width - w) / 2);
+  var t = Math.floor((screen.height - h) / 2);
+  window.open("https://gitechnolo.github.io/biotechproject/Tablet_forum.html", "", "width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+}
+// ———————————————————————
+// 🔹 FUNZIONI UNIFICATE – Popup (Senza Alert Post-Chiusura)
+// ———————————————————————
+/**
+ * Funzione generica per aprire popup centrati, mantiene il focus immediato. 
+ */
+function openPopup(url, title, width, height) {
+  // Calcolo delle posizioni per il centramento
+  const left = Math.floor((screen.width - width) / 2);
+  const top = Math.floor((screen.height - height) / 2);
+
+  // Stringa delle opzioni.
+  const options = `
+    width=${width},
+    height=${height},
+    top=${top},
+    left=${left},
+    resizable=yes,
+    scrollbars=yes,
+    toolbar=no,
+    menubar=no,
+    location=no
+  `;
+  
+  // Apre il popup.
+  const popup = window.open(url, title, options);
+
+  // --- Gestione Errore (Controllo Immediato) ---
+  // Verifica se il browser ha bloccato il popup immediatamente.
+  if (!popup || popup.closed || typeof popup.closed == 'undefined') {
+    alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
+    return;
+  }
+  
+  // Mette a fuoco la finestra immediatamente.
+  popup.focus();
+}
+
+// Funzioni specifiche chiamate dai pulsanti HTML 
+function openSupportPopup() {
+  openPopup(
+    'https://gitechnolo.github.io/biotechproject/O.S_support.html',
+    'O.S. Support Chat GPT',
+    760,
+    440
+  );
+}
+function openContactPopup() {
+  openPopup(
+    'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
+    'Contattaci - Forum ChatGPT',
+    825,
+    672
+  );
+}
+// ———————————————————————
+// ✅ GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
+// ———————————————————————
+document.addEventListener("DOMContentLoaded", function () {
+// === 1. Controllo pagina (opzionale) ===
+if (!document.body.hasAttribute('data-modern-menu')) return;
+// === 2. Riferimenti agli elementi ===
+const toggleBtn = document.getElementById("keyboard-nav-toggle");
+const body = document.body;
+let keyboardNavActive = false;
+// === 3. Funzione per attivare/disattivare la modalità tastiera ===
+function toggleKeyboardNavigation() {
+keyboardNavActive = !keyboardNavActive;
+if (keyboardNavActive) {
+body.classList.add("keyboard-navigation-on");
+toggleBtn?.setAttribute("aria-pressed", "true");
+toggleBtn?.setAttribute("data-active", "true");
+toggleBtn.textContent = "✅ Navigazione Attiva";
+} else {
+body.classList.remove("keyboard-navigation-on");
+toggleBtn?.setAttribute("aria-pressed", "false");
+toggleBtn?.setAttribute("data-active", "false");
+toggleBtn.textContent = "🔧 Navigazione Tastiera";
+ }
+ }
+// === 4. Click sul pulsante ===
+toggleBtn?.addEventListener("click", toggleKeyboardNavigation);
+// === 5. Attivazione automatica con Tab ===
+document.addEventListener("keydown", function (e) {
+if (e.key === "Tab") {
+if (!keyboardNavActive) {
+toggleKeyboardNavigation();
+}
+}
+});
+// === 6. Rimuovi la classe 'hint' dopo l'animazione (dopo ~2.5s) ===
+setTimeout(() => {
+toggleBtn?.classList.remove("hint");
+}, 2500);
+});
+// === GESTIONE TEMA DINAMICO - BiotechProject (versione accessibile) ===
+function initThemeToggle() {
+  const themeBtn = document.getElementById('theme-toggle');
+  if (!themeBtn) return;
+// Temi compatibili con il glassmorphism
+  const themes = [
+    { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
+    { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
+    { name: 'Viola', rgb: '138, 43, 226', h: 270, s: '75%', l: '53%' },
+    { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
+    { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
+  ];
+  let currentThemeIndex = 0;
+// 🔹 Miglioramento 1: tema predefinito in base al contrasto preferito
+  if (window.matchMedia('(prefers-contrast: high)').matches) {
+    currentThemeIndex = themes.findIndex(t => t.name === 'Blu Profondo') || 0;
+  }
+// Ripristina il tema salvato (ha priorità su prefers-contrast)
+  const savedTheme = localStorage.getItem('biotech-theme');
+  if (savedTheme !== null) {
+    const index = parseInt(savedTheme, 10);
+    if (index >= 0 && index < themes.length) {
+      currentThemeIndex = index;
+    }
+  }
+// 🔹 Funzione per aggiornare l'aria-label dinamicamente
+  function updateAriaLabel(themeName) {
+    themeBtn.setAttribute(
+      'aria-label',
+      `Cambia tema colore: attualmente ${themeName}, clicca per passare al successivo`
+    );
+  }
+
+// Applica il tema corrente
+  function applyTheme(index) {
+    const theme = themes[index];
+    document.documentElement.style.setProperty('--color-accent-rgb', theme.rgb);
+    document.documentElement.style.setProperty('--color-accent-h', theme.h);
+    document.documentElement.style.setProperty('--color-accent-s', theme.s);
+    document.documentElement.style.setProperty('--color-accent-l', theme.l);
+    document.documentElement.style.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
+// Aggiorna testo e aria-label
+    themeBtn.textContent = `🎨 Tema: (${theme.name})`;
+    updateAriaLabel(theme.name);
+  }
+// Applica il tema al caricamento
+  applyTheme(currentThemeIndex);
+// Cambia tema al click
+  themeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    applyTheme(currentThemeIndex);
+// Salva la scelta
+    localStorage.setItem('biotech-theme', currentThemeIndex);
+  });
+}
+// Inizializza al caricamento
+window.addEventListener('DOMContentLoaded', initThemeToggle);
+
+// Accessibilità video: supporto tastiera ai poster. Caricamento video solo al click (lazy load avanzato)
+function handleVideoPosterKey(event) {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    loadAndPlayVideo();
+  }
+}
+// End Accessibilità video   
+
+// === Ultima modifica pagina (integrazione diretta) ===
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('lastModified');
+  if (el) {
+    const d = new Date(document.lastModified);
+    const options = { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    el.textContent = `Last edit: ${d.toLocaleDateString('it-IT', options)}`;
+  }
+});
+// === End ultima modifica pagina (integrazione diretta) ===
+
+// === 🔊 PRONUNCIA TERMINI TECNICI - Accessibilità avanzata ===
+// Funzione principale: riproduce la pronuncia di un termine con supporto per termini scientifici personalizzati
+
+function speakTerm(term, language = 'italiano') {
+  // Interrompi qualsiasi sintesi vocale in corso per evitare sovrapposizioni
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+  }
+  // Mappa personalizzata per pronunce scientifiche (lettura estesa o sillabata)
+  const customPronunciations = {
+    'CRISPR': 'Clustered Regularly Interspaced Short Palindromic Repeats',
+    'mitocondri': 'Mi-to-con-dri',
+    'lisosoma': 'Li-so-so-ma',
+    'miochine': 'Mi-o-ki-ne',
+    'sinaptogenesi': 'Si-na-to-jen-e-si',
+    'epigenetici': 'E-pi-je-ne-ti-ci',
+    'ATP': 'Adenosina trifosfato',
+    'DNA': 'Acido desossiribonucleico',
+    'RNA': 'Acido ribonucleico',
+    'tegumento': 'Te-gu-men-to',
+    'Pecquet': 'Pes-ché'     
+  };
+  // Mappa delle lingue supportate
+  const langMap = {
+    'italiano': 'it-IT',
+    'inglese': 'en-US'
+  };
+  // Ottieni la pronuncia personalizzata o usa il termine originale
+  const utteranceText = customPronunciations[term.toLowerCase()] || term;
+
+  // Crea l'istanza di SpeechSynthesisUtterance
+  const utterance = new SpeechSynthesisUtterance(utteranceText);
+
+  // Imposta la lingua, con fallback a italiano
+  utterance.lang = langMap[language] || 'it-IT';
+
+  // Parametri vocali ottimizzati per chiarezza
+  utterance.rate = 0.8;   // Velocità leggermente ridotta
+  utterance.pitch = 1.0;  // Tono neutro e naturale
+  utterance.volume = 1.0; // Volume massimo
+
+  // Feedback accessibile per screen reader
+  const announcement = document.getElementById('sr-announcement');
+  if (announcement) {
+    announcement.textContent = `Lettura avviata: ${term}.`;
+    // Pulisce il messaggio dopo 1 secondo per non disturbare
+    setTimeout(() => {
+      if (announcement.textContent.includes(term)) {
+        announcement.textContent = '';
+      }
+    }, 1000);
+  }
+
+  // Log per debug (opzionale)
+  console.log(`🔊 Pronuncia attivata: "${term}" come "${utteranceText}" (${utterance.lang})`);
+
+  // Avvia la sintesi vocale
+  speechSynthesis.speak(utterance);
+}
+
+// Gestione tastiera per i pulsanti di pronuncia (accessibilità da tastiera)
+function handlePronounceKey(event, term, language = 'italiano') {
+  // Supporta sia Invio che barra spaziatrice
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault(); // Evita comportamenti indesiderati
+    speakTerm(term, language);
+  }
+}
+
+// =====================================================
+// GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
+// Supporta menu con <b>, ritardo sicuro, localStorage
+// =====================================================
+
+let currentLang = 'it';
+
+// Pagine che hanno un JSON specifico
+const translatablePages = [
+  'index',
+  'Progetti',
+  'Staff',
+  'Marketing',
+  'Tech_Maturity',
+  'Dermatologia',
+  'Cuore',
+  'Cellula',
+  'Apparato_digerente',
+  'Apparato_respiratorio',
+  'Apparato_tegumentario',
+  'Sistema_linfatico',
+  'Specials',
+  'Capelli'
+];
+
+// Mappa nome pagina → nome file JSON
+function getPageKey(pageName) {
+  const map = {
+    'index': 'home',
+    'Tech_Maturity': 'tech_maturity',
+    'Apparato_digerente': 'apparato_digerente',
+    'Apparato_respiratorio': 'apparato_respiratorio',
+    'Apparato_tegumentario': 'apparato_tegumentario',
+    'Sistema_linfatico': 'sistema_linfatico'
+  };
+  return map[pageName] || pageName.toLowerCase();
+}
+
+// Estrae il nome della pagina (senza -semplice)
+function getPageName() {
+  const path = window.location.pathname;
+  const fileName = path.split('/').pop().replace('.html', '');
+  return fileName.replace('-semplice', '');
+}
+
+// Carica un file JSON
+async function loadTranslation(path) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`File non trovato: ${path}`);
+    return await res.json();
+  } catch (err) {
+    console.warn(err);
+    return null;
+  }
+}
+// ===========================
+// APPLICA LE TRADUZIONI SENZA DISTRUGGERE IL DOM
+// ===========================
+function applyTranslations(translations, lang) {
+  document.querySelectorAll('[data-lang-key]').forEach(el => {
+    const key = el.getAttribute('data-lang-key');
+    const value = translations[lang]?.[key];
+
+    if (value !== undefined && value !== null) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.setAttribute('placeholder', value);
+      } else if (el.tagName === 'IMG') {
+        el.setAttribute('alt', value);
+      } else if (el.hasAttribute('aria-label')) {
+        el.setAttribute('aria-label', value);
+        const bold = el.querySelector('b');
+        if (bold) {
+          bold.textContent = value;
+        } else {
+          el.innerHTML = value; // Supporta HTML
+        }
+      } else {
+        const bold = el.querySelector('b');
+        if (bold) {
+          bold.textContent = value;
+        } else {
+          el.innerHTML = value; // Supporta HTML
+        }
+      }
+    }
+  });
+  console.log(`✅ Traduzioni applicate in ${lang}`);
+}   
+// ===========================
+// INIZIALIZZA IL SISTEMA DI TRADUZIONE (CON RITARDO SICURO)
+// ===========================
+async function initTranslations() {
+  setTimeout(async () => {
+    const pageName = getPageName();
+    const savedLang = getSavedLanguage();
+
+    // ===========================
+    // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
+    // ===========================
+    if (!translatablePages.includes(pageName)) {
+      const common = await loadTranslation('lang/common.json');
+      const translations = {
+        it: { ...(common?.it || {}) },
+        en: { ...(common?.en || {}) }
+      };
+
+      applyTranslations(translations, savedLang);
+      updateLanguageButton(savedLang);
+      document.documentElement.lang = savedLang;
+
+      const button = document.getElementById('lang-toggle');
+      if (button) {
+        button.addEventListener('click', () => {
+          const newLang = savedLang === 'it' ? 'en' : 'it';
+          localStorage.setItem('preferred-language', newLang);
+          window.location.reload();
+        });
+      }
+
+      return;
+    }
+    // ===========================
+    // CASO 2: Pagina traducibile → carica common + specifico
+    // ===========================
+    const translations = { it: {}, en: {} };
+
+    const common = await loadTranslation('lang/common.json');
+    if (common) {
+      translations.it = { ...common.it };
+      translations.en = { ...common.en };
+    }
+
+    const pageKey = getPageKey(pageName);
+    const pageData = await loadTranslation(`lang/${pageKey}.json`);
+    if (pageData) {
+      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+    }
+    // Applica le traduzioni
+    applyTranslations(translations, savedLang);
+    updateLanguageButton(savedLang);
+    document.documentElement.lang = savedLang;
+    currentLang = savedLang;
+
+  }, 150); // Ritardo per sicurezza: lascia tempo ad altri script di completare
+}
+// ===========================
+// OTTIENI LA LINGUA PREFERITA
+// ===========================
+function getSavedLanguage() {
+  return localStorage.getItem('preferred-language') || 
+         (navigator.language.startsWith('en') ? 'en' : 'it');
+}
+// ===========================
+// AGGIORNA IL PULSANTE LINGUA
+// ===========================
+function updateLanguageButton(lang) {
+  const flag = document.getElementById('lang-flag');
+  const text = document.getElementById('lang-text');
+  const button = document.getElementById('lang-toggle');
+  const label = document.getElementById('lang-label');
+
+  if (!flag || !button) return;
+
+  if (lang === 'it') {
+    flag.textContent = '🇬🇧';
+    if (text) text.textContent = 'English';
+    if (label) label.textContent = 'Switch language';
+    button.setAttribute('aria-label', 'Switch to English');
+  } else {
+    flag.textContent = '🇮🇹';
+    if (text) text.textContent = 'Italiano';
+    if (label) label.textContent = 'Cambia lingua';
+    button.setAttribute('aria-label', 'Cambia lingua in italiano');
+  }
+}
+// ===========================
+// CAMBIA LINGUA AL CLICK
+// ===========================
+function setLanguage(lang) {
+  const pageName = getPageName();
+
+  if (!translatablePages.includes(pageName)) {
+    loadTranslation('lang/common.json').then(common => {
+      if (!common) return;
+      const translations = {
+        it: common.it || {},
+        en: common.en || {}
+      };
+      setTimeout(() => {
+        applyTranslations(translations, lang);
+        updateLanguageButton(lang);
+        document.documentElement.lang = lang;
+        currentLang = lang;
+        localStorage.setItem('preferred-language', lang);
+      }, 100);
+    });
+    return;
+  }
+
+  const pageKey = getPageKey(pageName);
+  const commonPromise = loadTranslation('lang/common.json');
+  const pagePromise = loadTranslation(`lang/${pageKey}.json`);
+
+  Promise.all([commonPromise, pagePromise]).then(([common, pageData]) => {
+    const translations = { it: {}, en: {} };
+
+    if (common) {
+      translations.it = { ...common.it };
+      translations.en = { ...common.en };
+    }
+    if (pageData) {
+      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+    }
+
+    setTimeout(() => {
+      applyTranslations(translations, lang);
+      updateLanguageButton(lang);
+      document.documentElement.lang = lang;
+      currentLang = lang;
+      localStorage.setItem('preferred-language', lang);
+    }, 100);
+  });
+}
+// ===========================
+// TOGGLE LINGUA (chiamato da onclick)
+// ===========================
+function toggleLanguage() {
+  const newLang = currentLang === 'it' ? 'en' : 'it';
+  setLanguage(newLang);
+}
+// ===========================
+// AVVIO AL CARICAMENTO DELLA PAGINA
+// ===========================
+document.addEventListener('DOMContentLoaded', () => {
+  initTranslations().catch(err => {
+    console.error('Errore nel caricamento delle traduzioni:', err);
+  });
+// Rendi disponibile globalmente
+  window.toggleLanguage = toggleLanguage;
+}); 
+// === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
+
+// ===========================
+//  COUNTDOWN AL NUOVO ANNO
+// ===========================
+const element = document.getElementById('countdown-days');
+if (element) {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const newYear = now.getMonth() === 11 && now.getDate() === 31 && now.getHours() === 23 ? 
+        new Date(currentYear + 1, 11, 31) : 
+        new Date(currentYear, 11, 31);
+    const remainingDays = Math.ceil((newYear - now) / 86400000);
+    element.textContent = remainingDays;
+}  
