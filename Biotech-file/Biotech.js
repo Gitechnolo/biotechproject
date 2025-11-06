@@ -1,12 +1,11 @@
 /**
  * Biotech.js - Script principale per BiotechProject
  * Versione ottimizzata: accessibile, performante, modulare
- * Tutte le funzioni legacy sono state rimosse o modernizzate.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     // ======================
-    // 1. QRedshift: Comfort Visivo Automatico
+    // 1. QRedshift: Comfort Visivo
     // ======================
     const applyQRedshift = () => {
         const hour = new Date().getHours();
@@ -36,14 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             if (button.getAttribute('aria-pressed') === 'true') {
                 document.body.style.filter = '';
+                document.body.classList.remove('qredshift-active');
                 button.setAttribute('aria-pressed', 'false');
                 button.setAttribute('aria-label', 'Modalità comfort disattivata');
                 button.innerHTML = '<b>🟢 Disattivato</b>';
+
+                const particles = document.getElementById('particles-canvas');
+                const dna = document.querySelector('.dna-container-8');
+                if (particles) particles.style.display = 'none';
+                if (dna) dna.style.display = 'none';
             } else {
                 document.body.style.filter = filter;
+                document.body.classList.add('qredshift-active');
                 button.setAttribute('aria-pressed', 'true');
                 button.setAttribute('aria-label', isNight ? 'Modalità comfort attiva: Notte' : 'Modalità comfort attiva: Giorno');
                 button.innerHTML = `<b>${isNight ? '🌙' : '☀️'} Comfort</b>`;
+
+                const particles = document.getElementById('particles-canvas');
+                const dna = document.querySelector('.dna-container-8');
+                if (particles) particles.style.display = 'block';
+                if (dna) dna.style.display = 'block';
             }
         });
     };
@@ -233,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('img[data-src], video[data-poster]').forEach(el => observer.observe(el));
     } else {
-        // Fallback per vecchi browser
         document.querySelectorAll('img[data-src]').forEach(img => img.src = img.dataset.src);
         document.querySelectorAll('video[data-poster]').forEach(video => {
             video.querySelectorAll('source').forEach(source => {
