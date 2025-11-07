@@ -2,28 +2,30 @@
 function QRedshift() {
   const menuContainer = document.getElementById('tech-main-menu');
 
-  // Condizione di Uscita Pura (se il menu NON è presente, la funzione non fa nulla)
-  if (!menuContainer) {
-    return;
-  }
-
-  // Se è già attivo, usciamo subito per non creare un altro pulsante
+  // 1. Uscita Pura
+  if (!menuContainer) return;
   if (document.body.classList.contains('qredshift-active')) return;
 
+  // --- Cattura Riferimenti ---
+  // Catturiamo i riferimenti DOM una sola volta all'avvio
+  const particles = document.getElementById('particles-canvas');
+  const dna = document.querySelector('.dna-container-8');
+  
   // --- Logica di Calcolo del Filtro ---
   const hour = new Date().getHours();
   const isNight = (hour < 7 || hour >= 19);
   const filterDay = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
   const filterNight = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
-  let filter = isNight ? filterNight : filterDay;
   
-  // Applica filtro iniziale
+  // Applicazione iniziale
   document.body.classList.add('qredshift-active');
-  document.body.style.filter = filter;
+  document.body.style.filter = isNight ? filterNight : filterDay;
   document.body.style.transition = 'filter 0.5s';
-
-  // --- Creazione e Logica del Pulsante nel Menu ---
-
+  
+  // 🔥 Promozione del Layer GPU (attiva all'avvio)
+  document.body.style.willChange = 'filter';
+  
+  // --- Creazione e Logica del Pulsante nel Menu (omessa per brevità, rimane invariata) ---
   const menuItem = document.createElement('div');
   menuItem.className = 'tech-menu-item';
   menuItem.setAttribute('data-menu', 'qredshift');
@@ -31,11 +33,8 @@ function QRedshift() {
   const button = document.createElement('button');
   button.className = 'tech-nav-btn';
   button.type = 'button';
-  button.setAttribute('aria-haspopup', 'false');
-  button.setAttribute('aria-expanded', 'false');
-
-  // Stato iniziale
-  let isActive = true; // QRedshift è attivo all'avvio
+  // ... (impostazioni aria e innerHTML iniziali come prima) ...
+  let isActive = true; 
   const initialIcon = isNight ? '🌙' : '☀️';
   button.setAttribute('aria-pressed', 'true');
   button.setAttribute('aria-label', `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`);
@@ -44,24 +43,22 @@ function QRedshift() {
   menuItem.appendChild(button);
   menuContainer.appendChild(menuItem);
 
-  // === FUNZIONE TOGGLE CHE GESTISCE I DUE STATI ===
+  // === FUNZIONE TOGGLE ===
   const toggleQRedshift = function () {
-    isActive = !isActive; // Inverte lo stato
-
-    const particles = document.getElementById('particles-canvas');
-    const dna = document.querySelector('.dna-container-8');
+    isActive = !isActive;
 
     if (isActive) {
       // --- STATO ATTIVO (Riattiva tutto) ---
-      
-      // Riattiva QRedshift (con il filtro basato sull'ora)
       document.body.classList.add('qredshift-active');
       document.body.style.filter = isNight ? filterNight : filterDay;
       document.body.style.transition = 'filter 0.5s';
       
       // Riattiva effetti visivi pesanti
-      if (particles) particles.style.display = ''; // Rimuove 'display: none'
+      if (particles) particles.style.display = '';
       if (dna) dna.style.display = '';
+
+      // 🔥 Mantiene l'ottimizzazione GPU
+      document.body.style.willChange = 'filter'; 
 
       // Aggiorna stato UI
       const currentIcon = isNight ? '🌙' : '☀️';
@@ -71,11 +68,12 @@ function QRedshift() {
       
     } else {
       // --- STATO DISATTIVO (Disattiva tutto) ---
-      
-      // Disattiva QRedshift
       document.body.classList.remove('qredshift-active');
       document.body.style.filter = '';
       document.body.style.transition = '';
+
+      // 🔥 Rimuove l'accelerazione GPU in stato OFF
+      document.body.style.willChange = 'auto'; // Oppure semplicemente ''
 
       // Disattiva effetti visivi pesanti
       if (particles) particles.style.display = 'none';
@@ -84,15 +82,13 @@ function QRedshift() {
       // Aggiorna stato UI
       button.setAttribute('aria-pressed', 'false');
       button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
-      button.innerHTML = '<b>☀️ Comfort</b>'; // Usa un'icona generica di "Off"
+      button.innerHTML = '<b>☀️ Comfort</b>'; 
     }
   };
 
-  // Collega la funzione Toggle al pulsante
   button.addEventListener('click', toggleQRedshift);
 }
 
-// Attiva al caricamento della pagina
 window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRedshift: Comfort visivo automatico con integrazione menu 
 
@@ -125,21 +121,45 @@ const clockEl = document.getElementById('clock2');
 //End  Clock
 // === Conto alla rovescia al nuovo anno ===
 const countdownEl = document.getElementById('modern-countdown');
-const daysSpan = countdownEl?.querySelector('#countdown-days');
-if (countdownEl && daysSpan) {
-function updateCountdown() {
-const now = new Date();
-const currentYear = now.getFullYear();
-const nextYear = currentYear + 1;
-const newYear = new Date(`January 1, ${nextYear} 00:00:00`);
-const diff = newYear - now;
-const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-daysSpan.textContent = days;
-}
-// Aggiorna subito
-updateCountdown();
-// Aggiorna ogni ora (non serve ogni secondo)
-setInterval(updateCountdown, 3600000); // 1 ora
+
+// Verifica se l'elemento contenitore principale esiste
+if (countdownEl) {
+    // 1. Ottimizzazione: Cattura il riferimento a daysSpan solo una volta
+    const daysSpan = countdownEl.querySelector('#countdown-days'); 
+
+    // Verifica se lo span specifico esiste prima di procedere
+    if (daysSpan) {
+        
+        // Funzione di aggiornamento pura e snella
+        function updateCountdown() {
+            // Usa 'const' per i valori che non cambiano
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const nextYear = currentYear + 1;
+            
+            // Si può fare la new Date direttamente con il valore calcolato
+            const newYear = new Date(nextYear, 0, 1); // 0 = Gennaio
+            
+            // Differenza in millisecondi
+            const diff = newYear - now;
+            
+            // Calcolo giorni (mantenuto, è perfetto)
+            const MS_PER_DAY = 1000 * 60 * 60 * 24;
+            const days = Math.floor(diff / MS_PER_DAY);
+            
+            // Aggiorna il DOM
+            // L'aggiornamento del textContent è un'operazione leggera,
+            // specialmente su un singolo span.
+            daysSpan.textContent = days;
+        }
+
+        // Aggiorna subito
+        updateCountdown();
+
+        // Avvia l'aggiornamento a intervalli
+        // L'intervallo di 1 ora è l'ottimizzazione principale per il rendering
+        setInterval(updateCountdown, 3600000); // 1 ora (60 * 60 * 1000)
+    }
 }   
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
