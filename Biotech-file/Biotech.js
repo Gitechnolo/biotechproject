@@ -1,9 +1,6 @@
-// =========================================================
-// INIZIO DI biotech.min.js (Unificato e Ottimizzato)
-// =========================================================
-
+// Biotech.js 
 // =======================================
-// 1. LOGICA PARTICELLE (Sostituisce biotech-particles.min.js)
+// 1. LOGICA PARTICELLE 
 // =======================================
 (function () {
 'use strict';
@@ -22,7 +19,7 @@ const canvas = document.getElementById(canvasId);
 if (!canvas) return;
 const ctx = canvas.getContext('2d', { alpha: true });
 let animationId;
-// Ottimizzazione: riduci il frame rate per risparmiare CPU
+// Riduci il frame rate per risparmiare CPU
 const FRAME_DELAY = 100; // ~10 FPS invece di 60
 let lastFrameTime = 0;
 function resizeCanvas() {
