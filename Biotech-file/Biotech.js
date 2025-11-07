@@ -1,8 +1,19 @@
-// QRedshift: Comfort visivo automatico con integrazione menu e fallback accessibile
+// QRedshift: Comfort visivo automatico con integrazione menu
 function QRedshift() {
-  // Evita doppia applicazione
+  // === INTEGRAZIONE MENU (NUOVA LOGICA: Se il menu NON esiste, la funzione ESCE) ===
+  const menuContainer = document.getElementById('tech-main-menu');
+
+  // 1. Condizione di Uscita Pura
+  if (!menuContainer) {
+    // Se il contenitore del menu NON è presente, la funzione non fa nulla.
+    // Questo elimina il codice del "FALLBACK per clienti esterni" che vuoi rimuovere.
+    return;
+  }
+  
+  // 2. Evita doppia applicazione e verifica lo stato corrente (dopo la verifica del menu)
   if (document.body.classList.contains('qredshift-active')) return;
 
+  // --- Logica di Applicazione del Filtro (Mantenuta) ---
   const hour = new Date().getHours();
   let filter;
   if (hour >= 7 && hour < 19) {
@@ -17,125 +28,58 @@ function QRedshift() {
   document.body.style.filter = filter;
   document.body.style.transition = 'filter 0.5s';
 
-  // === INTEGRAZIONE MENU (SOLO PER BIOTECH) ===
-  const menuContainer = document.getElementById('tech-main-menu');
+  // --- Creazione e Logica del Pulsante nel Menu ---
 
-  if (menuContainer) {
-    // Crea pulsante integrato nel menu
-    const menuItem = document.createElement('div');
-    menuItem.className = 'tech-menu-item';
-    menuItem.setAttribute('data-menu', 'qredshift');
+  // Crea pulsante integrato nel menu
+  const menuItem = document.createElement('div');
+  menuItem.className = 'tech-menu-item';
+  menuItem.setAttribute('data-menu', 'qredshift');
 
-    const button = document.createElement('button');
-    button.className = 'tech-nav-btn';
-    button.type = 'button';
-    button.setAttribute('aria-haspopup', 'false');
-    button.setAttribute('aria-expanded', 'false');
-    button.setAttribute('aria-pressed', 'true');
-    button.setAttribute('aria-label', 'Modalità comfort visivo attiva: Notte');
-    button.innerHTML = '<b>🌙 Comfort</b>';
+  const button = document.createElement('button');
+  button.className = 'tech-nav-btn';
+  button.type = 'button';
+  button.setAttribute('aria-haspopup', 'false');
+  button.setAttribute('aria-expanded', 'false');
+  button.setAttribute('aria-pressed', 'true');
+  
+  // Inizializza l'etichetta a seconda dell'ora corrente (Giorno/Notte)
+  const initialLabel = (hour >= 7 && hour < 19) ? 'Modalità comfort visivo attiva: Giorno' : 'Modalità comfort visivo attiva: Notte';
+  const initialIcon = (hour >= 7 && hour < 19) ? '☀️' : '🌙'; // Ho modificato qui per avere l'icona corretta all'avvio
+  
+  button.setAttribute('aria-label', initialLabel);
+  button.innerHTML = `<b>${initialIcon} Comfort</b>`;
 
-    menuItem.appendChild(button);
-    menuContainer.appendChild(menuItem); // Inserisci alla fine del menu
+  menuItem.appendChild(button);
+  menuContainer.appendChild(menuItem); // Inserisci alla fine del menu
 
-    // Disattiva effetti visivi pesanti (solo in Biotech)
-    button.addEventListener('click', function () {
-      document.body.classList.remove('qredshift-active');
-      document.body.style.filter = '';
+  // Disattiva QRedshift e effetti visivi pesanti
+  button.addEventListener('click', function () {
+    // Rimuove QRedshift
+    document.body.classList.remove('qredshift-active');
+    document.body.style.filter = '';
+    document.body.style.transition = ''; // Opzionale: rimuovi la transizione dopo la disattivazione
 
-      const particles = document.getElementById('particles-canvas');
-      if (particles) particles.style.display = 'none';
+    // Disattiva gli effetti visivi pesanti (Particelle e DNA Elice)
+    const particles = document.getElementById('particles-canvas');
+    if (particles) particles.style.display = 'none';
 
-      const dna = document.querySelector('.dna-container-8');
-      if (dna) dna.style.display = 'none';
+    const dna = document.querySelector('.dna-container-8');
+    if (dna) dna.style.display = 'none';
 
-      // Aggiorna stato UI
-      button.setAttribute('aria-pressed', 'false');
-      button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
-      button.innerHTML = '<b>☀️ Comfort</b>';
-    });
-
-  } else {
-    // === FALLBACK: per clienti esterni (nessun menu) ===
-    const icon = document.createElement('div');
-    icon.className = 'qredshift-icon';
-    icon.setAttribute('role', 'button');
-    icon.setAttribute('tabindex', '0');
-    icon.setAttribute('aria-label', 'Disattiva comfort visivo');
-    icon.title = 'Comfort visivo QRedshift attivo - clicca per disattivare';
-
-    // Stile inline con transizione e ombra
-    icon.style.cssText = `
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      width: 36px;
-      height: 36px;
-      background: rgba(0, 100, 130, 0.8);
-      color: #a0e0ff;
-      border: 1px solid rgba(100, 200, 255, 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      cursor: pointer;
-      z-index: 9999;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      box-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
-      font-family: sans-serif;
-      transition: all 0.3s ease;
-    `;
-
-    // 🔥 Ottimizzazione rendering: attiva il layer GPU
-    icon.style.willChange = 'transform, box-shadow';
-
-    icon.innerHTML = '🌙';
-    document.body.appendChild(icon);
-
-    // Comportamento: clic per disattivare
-    const disableEffect = () => {
-      document.body.classList.remove('qredshift-active');
-      document.body.style.filter = '';
-      icon.remove();
-    };
-
-    icon.addEventListener('click', disableEffect);
-
-    // Supporto tastiera (accessibilità)
-    icon.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        disableEffect();
-      }
-    });
-
-    // Effetti hover
-    icon.addEventListener('mouseenter', () => {
-      icon.style.transform = 'scale(1.1)';
-      icon.style.boxShadow = '0 0 14px rgba(120, 220, 255, 0.5)';
-    });
-
-    icon.addEventListener('mouseleave', () => {
-      icon.style.transform = 'scale(1)';
-      icon.style.boxShadow = '0 0 10px rgba(100, 200, 255, 0.3)';
-    });
-
-    // Reset stile al leave (sicurezza)
-    icon.addEventListener('focus', () => {
-      icon.style.outline = '2px solid #66ccff';
-      icon.style.outlineOffset = '2px';
-    });
-
-    icon.addEventListener('blur', () => {
-      icon.style.outline = '';
-    });
-  }
+    // Aggiorna stato UI
+    button.setAttribute('aria-pressed', 'false');
+    button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
+    button.innerHTML = '<b>☀️ Comfort</b>';
+    
+    // Rimuovi l'event listener per evitare attivazioni successive (se necessario renderla permanente)
+    button.removeEventListener('click', arguments.callee); 
+    // Nota: Ho usato arguments.callee come riferimento alla funzione anonima stessa.
+    // In un codice più moderno, potresti definire la funzione di click a parte per una rimozione più pulita.
+  });
 }
 // Attiva al caricamento della pagina
-window.addEventListener('DOMContentLoaded', QRedshift);  
-// End QRedshift: Comfort visivo automatico e menu e fallback accessibile 
+window.addEventListener('DOMContentLoaded', QRedshift);
+// End QRedshift: Comfort visivo automatico con integrazione menu 
 
 //Fade effect (dissolvenza)
 function fadeEffect() {
