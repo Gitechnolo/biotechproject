@@ -282,8 +282,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
-<script>if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {initParticles("particles-canvas", { count: 50, speed: 1 });}</script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script> 
+<script>window.particlesController=null;if(typeof initParticles==="function"&&document.getElementById("particles-canvas")){window.particlesController=initParticles("particles-canvas",{count:50,speed:1});}</script>
 </body>
 </html>
