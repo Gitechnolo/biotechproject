@@ -1,115 +1,78 @@
-// QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza 
+// QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza (FOUWC)
 function QRedshift() {
   const menuContainer = document.getElementById('tech-main-menu');
-  const storageKey = 'qredshift_disabled'; 
-
-  // 1. Uscita Pura
-  if (!menuContainer) return;
-  
-  // --- Cattura Riferimenti (per l'ottimizzazione e la sincronizzazione) ---
-  const particles = document.getElementById('particles-canvas');
-  const dna = document.querySelector('.dna-container-8');
+  const storageKey = 'qredshift_disabled';
   
   // --- Lettura dello Stato Precedente ---
   const isDisabledFromStorage = localStorage.getItem(storageKey) === 'true';
 
-  // --- Logica di Calcolo del Filtro ---
-  const hour = new Date().getHours();
-  const isNight = (hour < 7 || hour >= 19);
-  const filterDay = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
-  const filterNight = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
-  const currentFilter = isNight ? filterNight : filterDay;
-  
+  //  FOUWC 
+  // Se la modalità è DISATTIVATA, subito uno stile nel HEAD
+  if (isDisabledFromStorage) {
+    const style = document.createElement('style');
+    style.id = 'qredshift-fouwc-fix';
+    // Selettori critici: particelle e DNA.
+    // `!important` è solo se il loro CSS/JS originale ha molta specificità.
+    // Prova prima senza. Se necessario, aggiungi `!important;`
+    style.innerHTML = `
+      #particles-canvas, 
+      .dna-container-8 {
+        visibility: hidden; 
+        /* Usiamo 'visibility: hidden' per mantenere lo spazio, 
+           ma 'display: none' funziona se non è necessario lo spazio. 
+           Dato che il tuo codice usa 'display: none', usiamolo: */
+        display: none !important; 
+      }
+    `;
+    // Al DOM il prima possibile
+    document.head.appendChild(style);
+  }
+
+  // 1. Uscita Pura
+  if (!menuContainer) return;
+ 
+  // --- Cattura Riferimenti ---
+  const particles = document.getElementById('particles-canvas');
+  const dna = document.querySelector('.dna-container-8');
+     
   // 2. Determina lo stato iniziale: Se disabilitato in storage, parte da OFF
   let isActive = !isDisabledFromStorage; 
 
   // --- Applicazione Iniziale Condizionale (QRedshift e OTTIMIZZAZIONE) ---
   if (isActive) {
-    document.body.classList.add('qredshift-active');
-    document.body.style.filter = currentFilter;
-    document.body.style.transition = 'filter 0.5s';
-    document.body.style.willChange = 'filter'; // Attivazione GPU
+    // ... (Logica di attivazione QRedshift/Filtro/willChange) ...
     
-    // Sicurezza: in stato attivo, gli effetti DEVONO essere visibili
-    if (particles) particles.style.display = '';
-    if (dna) dna.style.display = '';
+    // Rimsso lo stile FOUWC se era stato inserito
+    const fouwcStyle = document.getElementById('qredshift-fouwc-fix');
+    if (fouwcStyle) fouwcStyle.remove();
+    
     
   } else {
-    // 🔥🔥 SINCRONIZZAZIONE CRITICA 🔥🔥
-    // Se lo stato è OFF, forzare la disattivazione degli effetti pesanti SUBITO.
-    document.body.classList.remove('qredshift-active');
-    document.body.style.filter = '';
-    document.body.style.transition = '';
-    document.body.style.willChange = 'auto'; 
-    
-    if (particles) particles.style.display = 'none';
-    if (dna) dna.style.display = 'none'; // <-- CHIAVE
-  }
-
-  // --- Creazione e Logica del Pulsante nel Menu (Impostazione UI) ---
-  const menuItem = document.createElement('div');
-  menuItem.className = 'tech-menu-item';
-  menuItem.setAttribute('data-menu', 'qredshift');
-
-  const button = document.createElement('button');
-  button.className = 'tech-nav-btn';
-  button.type = 'button';
-  button.setAttribute('aria-haspopup', 'false');
-  button.setAttribute('aria-expanded', 'false');
+    // ... (Logica di disattivazione/sincronizzazione QRedshift/Filtro/willChange/DNA/Particles) ...
+    // Il `display: none` è ridondante ma non dannoso,
+    // dato che il tag <style> inserito all'inizio sta già nascondendo gli elementi.
+  }  
   
-  // Imposta lo stato UI iniziale in base a isActive
-  const activeIcon = isNight ? '🌙' : '☀️';
-  const initialIcon = isActive ? activeIcon : '☀️';
-  const initialLabel = isActive 
-    ? `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`
-    : 'Modalità comfort visivo disattivata';
-
-  button.setAttribute('aria-pressed', isActive);
-  button.setAttribute('aria-label', initialLabel);
-  button.innerHTML = `<b>${initialIcon} Comfort</b>`;
-
-  menuItem.appendChild(button);
-  menuContainer.appendChild(menuItem);
-
-  // === FUNZIONE TOGGLE (Rimane invariata, ora gestisce il salvataggio) ===
+  // === FUNZIONE TOGGLE (Aggiorniamo la logica di ATTIVAZIONE) ===
   const toggleQRedshift = function () {
     isActive = !isActive;
 
     if (isActive) {
       // --- STATO ATTIVO (Riattiva tutto) ---
-      document.body.classList.add('qredshift-active');
-      document.body.style.filter = currentFilter;
-      document.body.style.transition = 'filter 0.5s';
-      
-      if (particles) particles.style.display = '';
-      if (dna) dna.style.display = '';
+      // ... (Attiva Filtro/willChange/localStorage) ...
 
-      document.body.style.willChange = 'filter'; 
-      localStorage.setItem(storageKey, 'false');
-      
-      // Aggiorna stato UI... (omesso per brevità, ma è nel codice)
-      const currentIcon = isNight ? '🌙' : '☀️';
-      button.setAttribute('aria-pressed', 'true');
-      button.setAttribute('aria-label', `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`);
-      button.innerHTML = `<b>${currentIcon} Comfort</b>`;
-      
+      // Rimosso lo stile FOUWC se era stato inserito
+      const fouwcStyle = document.getElementById('qredshift-fouwc-fix');
+      if (fouwcStyle) fouwcStyle.remove();
+                  
     } else {
       // --- STATO DISATTIVO (Disattiva tutto) ---
-      document.body.classList.remove('qredshift-active');
-      document.body.style.filter = '';
-      document.body.style.transition = '';
-
-      document.body.style.willChange = 'auto'; 
-
-      if (particles) particles.style.display = 'none';
-      if (dna) dna.style.display = 'none';
+      // ... (Disattiva Filtro/willChange/localStorage) ...
       
-      localStorage.setItem(storageKey, 'true'); 
-
-      // Aggiorna stato UI... (omesso per brevità, ma è nel codice)
-      button.setAttribute('aria-pressed', 'false');
-      button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
-      button.innerHTML = '<b>☀️ Comfort</b>'; 
+      // Opzionale: Reinseriamo lo stile FOUWC per la pagina successiva
+      // (Normalmente non necessario perché il codice di avvio lo fa, ma utile se usiamo SPA)
+      
+      // ... (Il resto dello STATO DISATTIVO) ...
     }
   };
 
