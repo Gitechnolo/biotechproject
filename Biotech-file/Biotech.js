@@ -1,36 +1,29 @@
-// QRedshift: Comfort visivo automatico con integrazione menu
+// QRedshift: Comfort visivo automatico con integrazione menu e funzione Toggle
 function QRedshift() {
-  // === INTEGRAZIONE MENU (NUOVA LOGICA: Se il menu NON esiste, la funzione ESCE) ===
   const menuContainer = document.getElementById('tech-main-menu');
 
-  // 1. Condizione di Uscita Pura
+  // Condizione di Uscita Pura (se il menu NON è presente, la funzione non fa nulla)
   if (!menuContainer) {
-    // Se il contenitore del menu NON è presente, la funzione non fa nulla.
-    // Questo elimina il codice del "FALLBACK per clienti esterni" che vuoi rimuovere.
     return;
   }
-  
-  // 2. Evita doppia applicazione e verifica lo stato corrente (dopo la verifica del menu)
+
+  // Se è già attivo, usciamo subito per non creare un altro pulsante
   if (document.body.classList.contains('qredshift-active')) return;
 
-  // --- Logica di Applicazione del Filtro (Mantenuta) ---
+  // --- Logica di Calcolo del Filtro ---
   const hour = new Date().getHours();
-  let filter;
-  if (hour >= 7 && hour < 19) {
-    // Giorno
-    filter = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
-  } else {
-    // Notte
-    filter = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
-  }
-  // Applica filtro
+  const isNight = (hour < 7 || hour >= 19);
+  const filterDay = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+  const filterNight = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
+  let filter = isNight ? filterNight : filterDay;
+  
+  // Applica filtro iniziale
   document.body.classList.add('qredshift-active');
   document.body.style.filter = filter;
   document.body.style.transition = 'filter 0.5s';
 
   // --- Creazione e Logica del Pulsante nel Menu ---
 
-  // Crea pulsante integrato nel menu
   const menuItem = document.createElement('div');
   menuItem.className = 'tech-menu-item';
   menuItem.setAttribute('data-menu', 'qredshift');
@@ -40,43 +33,65 @@ function QRedshift() {
   button.type = 'button';
   button.setAttribute('aria-haspopup', 'false');
   button.setAttribute('aria-expanded', 'false');
+
+  // Stato iniziale
+  let isActive = true; // QRedshift è attivo all'avvio
+  const initialIcon = isNight ? '🌙' : '☀️';
   button.setAttribute('aria-pressed', 'true');
-  
-  // Inizializza l'etichetta a seconda dell'ora corrente (Giorno/Notte)
-  const initialLabel = (hour >= 7 && hour < 19) ? 'Modalità comfort visivo attiva: Giorno' : 'Modalità comfort visivo attiva: Notte';
-  const initialIcon = (hour >= 7 && hour < 19) ? '☀️' : '🌙'; // Ho modificato qui per avere l'icona corretta all'avvio
-  
-  button.setAttribute('aria-label', initialLabel);
+  button.setAttribute('aria-label', `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`);
   button.innerHTML = `<b>${initialIcon} Comfort</b>`;
 
   menuItem.appendChild(button);
-  menuContainer.appendChild(menuItem); // Inserisci alla fine del menu
+  menuContainer.appendChild(menuItem);
 
-  // Disattiva QRedshift e effetti visivi pesanti
-  button.addEventListener('click', function () {
-    // Rimuove QRedshift
-    document.body.classList.remove('qredshift-active');
-    document.body.style.filter = '';
-    document.body.style.transition = ''; // Opzionale: rimuovi la transizione dopo la disattivazione
+  // === FUNZIONE TOGGLE CHE GESTISCE I DUE STATI ===
+  const toggleQRedshift = function () {
+    isActive = !isActive; // Inverte lo stato
 
-    // Disattiva gli effetti visivi pesanti (Particelle e DNA Elice)
     const particles = document.getElementById('particles-canvas');
-    if (particles) particles.style.display = 'none';
-
     const dna = document.querySelector('.dna-container-8');
-    if (dna) dna.style.display = 'none';
 
-    // Aggiorna stato UI
-    button.setAttribute('aria-pressed', 'false');
-    button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
-    button.innerHTML = '<b>☀️ Comfort</b>';
-    
-    // Rimuovi l'event listener per evitare attivazioni successive (se necessario renderla permanente)
-    button.removeEventListener('click', arguments.callee); 
-    // Nota: Ho usato arguments.callee come riferimento alla funzione anonima stessa.
-    // In un codice più moderno, potresti definire la funzione di click a parte per una rimozione più pulita.
-  });
+    if (isActive) {
+      // --- STATO ATTIVO (Riattiva tutto) ---
+      
+      // Riattiva QRedshift (con il filtro basato sull'ora)
+      document.body.classList.add('qredshift-active');
+      document.body.style.filter = isNight ? filterNight : filterDay;
+      document.body.style.transition = 'filter 0.5s';
+      
+      // Riattiva effetti visivi pesanti
+      if (particles) particles.style.display = ''; // Rimuove 'display: none'
+      if (dna) dna.style.display = '';
+
+      // Aggiorna stato UI
+      const currentIcon = isNight ? '🌙' : '☀️';
+      button.setAttribute('aria-pressed', 'true');
+      button.setAttribute('aria-label', `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`);
+      button.innerHTML = `<b>${currentIcon} Comfort</b>`;
+      
+    } else {
+      // --- STATO DISATTIVO (Disattiva tutto) ---
+      
+      // Disattiva QRedshift
+      document.body.classList.remove('qredshift-active');
+      document.body.style.filter = '';
+      document.body.style.transition = '';
+
+      // Disattiva effetti visivi pesanti
+      if (particles) particles.style.display = 'none';
+      if (dna) dna.style.display = 'none';
+
+      // Aggiorna stato UI
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
+      button.innerHTML = '<b>☀️ Comfort</b>'; // Usa un'icona generica di "Off"
+    }
+  };
+
+  // Collega la funzione Toggle al pulsante
+  button.addEventListener('click', toggleQRedshift);
 }
+
 // Attiva al caricamento della pagina
 window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRedshift: Comfort visivo automatico con integrazione menu 
