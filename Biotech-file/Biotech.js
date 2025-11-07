@@ -149,69 +149,7 @@ function fadeEffect() {
   }, 2000);
 }
 window.addEventListener("load", fadeEffect);   
-// End fade effect (dissolvenza)
-// Drop-down menu (Mantenuto per retrocompatibilità)
-var inmenu = false;
-var lastmenu = 0;
-function Menu(current) {
-  if (!document.getElementById) return;
-  inmenu = true;
-  var oldmenu = lastmenu;
-  lastmenu = current;
-  if (oldmenu) Erase(oldmenu);
-  var m = document.getElementById("menu-" + current);
-  var box = document.getElementById(current);
-  if (!m || !box) return;
-  // Trova la tabella con classe "menu"
-  var table = document.querySelector('table.menu');
-  if (!table) {
-    // Fallback: usa posizione della cella
-    box.style.left = m.offsetLeft + 'px';
-  } else {
-    // Calcola la posizione X centrata rispetto alla tabella
-    var tableRect = table.getBoundingClientRect();
-    var boxWidth = 553; // larghezza fissa del dropdown
-    var leftOffset = tableRect.left + (tableRect.width / 2) - (boxWidth / 2);
-    // Imposta left in px
-    box.style.left = leftOffset + 'px';
-  }
-  // Posiziona sotto la tabella
-  box.style.top = (table ? table.offsetTop + table.offsetHeight : m.offsetTop + m.offsetHeight) + 'px';
-
-  box.style.visibility = "visible";
-  m.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
-  box.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
-  box.style.width = "553px";
-}   
-function Erase(current) {
-  if (!document.getElementById) return;
-  if (inmenu && lastmenu === current) return;
-  var m = document.getElementById("menu-" + current);
-  var box = document.getElementById(current);
-  // Controllo sicurezza
-  if (!m || !box) return;
-  box.style.visibility = "hidden";
-  m.style.backgroundColor = "Silver";
-}
-function Timeout(current) {
-  inmenu = false;
-  // ✅ Già corretto: uso di funzione, non stringa
-  window.setTimeout(() => Erase(current), 500);
-}
-function Highlight(menu, item) {
-  if (!document.getElementById) return;
-  inmenu = true;
-  lastmenu = menu;
-  var obj = document.getElementById(item); // ✅ Dichiarata con `var`
-  if (obj) obj.style.backgroundColor = "Silver";
-}
-function UnHighlight(menu, item) {
-  if (!document.getElementById) return;
-  Timeout(menu);
-  var obj = document.getElementById(item); // ✅ Dichiarata con `var`
-  if (obj) obj.style.backgroundColor = "rgba(209, 206, 206, 0.57)";
-}
-// End drop-down menu   
+// End fade effect (dissolvenza)  
 
 // === OROLOGIO MODERNO ===
 // ———————————————————————
