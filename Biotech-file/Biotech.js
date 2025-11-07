@@ -1,31 +1,38 @@
-// QRedshift: Comfort visivo automatico con integrazione menu e funzione Toggle
+// QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 function QRedshift() {
   const menuContainer = document.getElementById('tech-main-menu');
+  const storageKey = 'qredshift_disabled'; // Chiave per localStorage
 
   // 1. Uscita Pura
   if (!menuContainer) return;
-  if (document.body.classList.contains('qredshift-active')) return;
+  
+  // --- Lettura dello Stato Precedente ---
+  // Verifica se l'utente aveva disattivato QRedshift nella pagina precedente
+  const isDisabledFromStorage = localStorage.getItem(storageKey) === 'true';
 
   // --- Cattura Riferimenti ---
-  // Catturiamo i riferimenti DOM una sola volta all'avvio
   const particles = document.getElementById('particles-canvas');
   const dna = document.querySelector('.dna-container-8');
   
-  // --- Logica di Calcolo del Filtro ---
+  // --- Logica di Calcolo del Filtro (Base per lo Stato Attivo) ---
   const hour = new Date().getHours();
   const isNight = (hour < 7 || hour >= 19);
   const filterDay = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
   const filterNight = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
+  const currentFilter = isNight ? filterNight : filterDay;
   
-  // Applicazione iniziale
-  document.body.classList.add('qredshift-active');
-  document.body.style.filter = isNight ? filterNight : filterDay;
-  document.body.style.transition = 'filter 0.5s';
-  
-  // 🔥 Promozione del Layer GPU (attiva all'avvio)
-  document.body.style.willChange = 'filter';
-  
-  // --- Creazione e Logica del Pulsante nel Menu (omessa per brevità, rimane invariata) ---
+  // 2. Determina lo stato iniziale: Se disabilitato in storage, parte da OFF
+  let isActive = !isDisabledFromStorage; 
+
+  // --- Applicazione Iniziale Condizionale ---
+  if (isActive) {
+    document.body.classList.add('qredshift-active');
+    document.body.style.filter = currentFilter;
+    document.body.style.transition = 'filter 0.5s';
+    document.body.style.willChange = 'filter'; // Attivazione GPU
+  }
+
+  // --- Creazione e Logica del Pulsante nel Menu ---
   const menuItem = document.createElement('div');
   menuItem.className = 'tech-menu-item';
   menuItem.setAttribute('data-menu', 'qredshift');
@@ -33,32 +40,38 @@ function QRedshift() {
   const button = document.createElement('button');
   button.className = 'tech-nav-btn';
   button.type = 'button';
-  // ... (impostazioni aria e innerHTML iniziali come prima) ...
-  let isActive = true; 
-  const initialIcon = isNight ? '🌙' : '☀️';
-  button.setAttribute('aria-pressed', 'true');
-  button.setAttribute('aria-label', `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`);
+  button.setAttribute('aria-haspopup', 'false');
+  button.setAttribute('aria-expanded', 'false');
+  
+  // Imposta lo stato UI iniziale in base a isActive
+  const activeIcon = isNight ? '🌙' : '☀️';
+  const initialIcon = isActive ? activeIcon : '☀️'; // Mostra sole se disattivato
+  const initialLabel = isActive 
+    ? `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`
+    : 'Modalità comfort visivo disattivata';
+
+  button.setAttribute('aria-pressed', isActive);
+  button.setAttribute('aria-label', initialLabel);
   button.innerHTML = `<b>${initialIcon} Comfort</b>`;
 
   menuItem.appendChild(button);
   menuContainer.appendChild(menuItem);
 
-  // === FUNZIONE TOGGLE ===
+  // === FUNZIONE TOGGLE (CON SALVATAGGIO SU localStorage) ===
   const toggleQRedshift = function () {
     isActive = !isActive;
 
     if (isActive) {
       // --- STATO ATTIVO (Riattiva tutto) ---
       document.body.classList.add('qredshift-active');
-      document.body.style.filter = isNight ? filterNight : filterDay;
+      document.body.style.filter = currentFilter;
       document.body.style.transition = 'filter 0.5s';
       
-      // Riattiva effetti visivi pesanti
       if (particles) particles.style.display = '';
       if (dna) dna.style.display = '';
 
-      // 🔥 Mantiene l'ottimizzazione GPU
       document.body.style.willChange = 'filter'; 
+      localStorage.setItem(storageKey, 'false'); // Memorizza: Attivato
 
       // Aggiorna stato UI
       const currentIcon = isNight ? '🌙' : '☀️';
@@ -72,12 +85,12 @@ function QRedshift() {
       document.body.style.filter = '';
       document.body.style.transition = '';
 
-      // 🔥 Rimuove l'accelerazione GPU in stato OFF
-      document.body.style.willChange = 'auto'; // Oppure semplicemente ''
+      document.body.style.willChange = 'auto'; 
 
-      // Disattiva effetti visivi pesanti
       if (particles) particles.style.display = 'none';
       if (dna) dna.style.display = 'none';
+      
+      localStorage.setItem(storageKey, 'true'); // Memorizza: Disattivato
 
       // Aggiorna stato UI
       button.setAttribute('aria-pressed', 'false');
@@ -90,7 +103,7 @@ function QRedshift() {
 }
 
 window.addEventListener('DOMContentLoaded', QRedshift);
-// End QRedshift: Comfort visivo automatico con integrazione menu 
+// End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 
 //Fade effect (dissolvenza)
 function fadeEffect() {
