@@ -939,62 +939,62 @@ function applyTranslations(translations, lang) {
   console.log(`✅ Traduzioni applicate in ${lang}`);
 }   
 // ===========================
-// INIZIALIZZA IL SISTEMA DI TRADUZIONE (CON RITARDO SICURO)
+// INIZIALIZZA IL SISTEMA DI TRADUZIONE (SENZA RITARDO BLOCCANTE)
 // ===========================
 async function initTranslations() {
-  setTimeout(async () => {
-    const pageName = getPageName();
-    const savedLang = getSavedLanguage();
+  // ESECUZIONE IMMEDIATA: Le richieste fetch beneficeranno ora del preload nel <head>
+  const pageName = getPageName();
+  const savedLang = getSavedLanguage();
 
-    // ===========================
-    // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
-    // ===========================
-    if (!translatablePages.includes(pageName)) {
-      const common = await loadTranslation('lang/common.json');
-      const translations = {
-        it: { ...(common?.it || {}) },
-        en: { ...(common?.en || {}) }
-      };
-
-      applyTranslations(translations, savedLang);
-      updateLanguageButton(savedLang);
-      document.documentElement.lang = savedLang;
-
-      const button = document.getElementById('lang-toggle');
-      if (button) {
-        button.addEventListener('click', () => {
-          const newLang = savedLang === 'it' ? 'en' : 'it';
-          localStorage.setItem('preferred-language', newLang);
-          window.location.reload();
-        });
-      }
-
-      return;
-    }
-    // ===========================
-    // CASO 2: Pagina traducibile → carica common + specifico
-    // ===========================
-    const translations = { it: {}, en: {} };
-
+  // ===========================
+  // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
+  // ===========================
+  if (!translatablePages.includes(pageName)) {
+    // La chiamata a loadTranslation('lang/common.json') sfrutterà il preload
     const common = await loadTranslation('lang/common.json');
-    if (common) {
-      translations.it = { ...common.it };
-      translations.en = { ...common.en };
-    }
+    const translations = {
+      it: { ...(common?.it || {}) },
+      en: { ...(common?.en || {}) }
+    };
 
-    const pageKey = getPageKey(pageName);
-    const pageData = await loadTranslation(`lang/${pageKey}.json`);
-    if (pageData) {
-      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-    }
-    // Applica le traduzioni
     applyTranslations(translations, savedLang);
     updateLanguageButton(savedLang);
     document.documentElement.lang = savedLang;
-    currentLang = savedLang;
 
-  }, 150); // Ritardo per sicurezza: lascia tempo ad altri script di completare
+    const button = document.getElementById('lang-toggle');
+    if (button) {
+      button.addEventListener('click', () => {
+        const newLang = savedLang === 'it' ? 'en' : 'it';
+        localStorage.setItem('preferred-language', newLang);
+        window.location.reload();
+      });
+    }
+
+    return;
+  }
+  // ===========================
+  // CASO 2: Pagina traducibile → carica common + specifico
+  // ===========================
+  const translations = { it: {}, en: {} };
+
+  // Queste chiamate sfrutteranno i preload nel <head>
+  const common = await loadTranslation('lang/common.json');
+  if (common) {
+    translations.it = { ...common.it };
+    translations.en = { ...common.en };
+  }
+
+  const pageKey = getPageKey(pageName);
+  const pageData = await loadTranslation(`lang/${pageKey}.json`);
+  if (pageData) {
+    if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+    if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+  }
+  // Applica le traduzioni
+  applyTranslations(translations, savedLang);
+  updateLanguageButton(savedLang);
+  document.documentElement.lang = savedLang;
+  currentLang = savedLang;
 }
 // ===========================
 // OTTIENI LA LINGUA PREFERITA
