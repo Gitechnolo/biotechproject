@@ -25,8 +25,8 @@
 <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
 <link rel="preconnect" href="https://gitechnolo.github.io" crossorigin> 
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" as="image">
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/lang/common.json" as="fetch" crossorigin>
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/lang/home.json" as="fetch" crossorigin>  
+<link rel="preload" href="Biotech-file/lang/common.json" as="fetch" crossorigin>
+<link rel="preload" href="Biotech-file/lang/home.json" as="fetch" crossorigin>  
 <!-- Schema.org structured data (JSON-LD) -->
 <script type="application/ld+json">
 {
@@ -160,18 +160,6 @@ Jiddu Krishnamurti</cite></p><br>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>     
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/video.min.js" defer></script>
-<script>
-window.particlesController = null;
-// Ritarda l'inizializzazione fino all'evento 'load' (tutti gli asset caricati)
-window.addEventListener('load', function() {
-    // Aggiungi un piccolo ritardo ulteriore di 100ms per sicurezza su mobile
-    setTimeout(() => {
-        if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {
-            // L'animazione viene avviata solo quando il browser non ha più carico critico
-            window.particlesController = initParticles("particles-canvas", { count: 50, speed: 1 });
-        }
-    }, 100);
-});
-</script>
+<script>window.particlesController=null;window.addEventListener('load',function(){setTimeout(()=>{if(typeof initParticles==="function"&&document.getElementById("particles-canvas")){window.particlesController=initParticles("particles-canvas",{count:50,speed:1});}},100);});</script>
 </body>
 </html>
