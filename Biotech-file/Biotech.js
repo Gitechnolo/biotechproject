@@ -1094,6 +1094,74 @@ document.addEventListener('DOMContentLoaded', () => {
 }); 
 // === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
 
+// =======================================
+// SALUTO SETTIMANALE (biotech_week.min.js integrato) 🔥🔥🔥
+// =======================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const weekElement = document.getElementById("week");
+    if (!weekElement) return;
+
+    function createSpans(text, start) {
+        return text.split('').map((char, index) => 
+            `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`
+        ).join('');
+    }
+
+    const messages = {
+        it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'],
+        en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'],
+        es: ['¡buen domingo!', '¡buen lunes!', '¡buen martes!', '¡buen miércoles!', '¡buen jueves!', '¡buen viernes!', '¡buen sábado!'],
+        fr: ['bon dimanche !', 'bon lundi !', 'bon mardi !', 'bon mercredi !', 'bon jeudi !', 'bon vendredi !', 'bon samedi !'],
+        de: ['schönen sonntag!', 'schönen montag!', 'schönen dienstag!', 'schönen mittwoch!', 'schönen donnerstag!', 'schönen freitag!', 'schönen samstag!'],
+        nl: ['fijne zondag!', 'fijne maandag!', 'fijne dinsdag!', 'fijne woensdag!', 'fijne donderdag!', 'fijne vrijdag!', 'fijne zaterdag!'],
+        pt: ['boa domingo!', 'boa segunda!', 'boa terça!', 'boa quarta!', 'boa quinta!', 'boa sexta!', 'bom sábado!']
+    };
+
+    const baseTitle = 'Biotech Project vi augura ';
+    const titles = {
+        en: 'Biotech Project wishes you ',
+        es: 'Biotech Project le desea ',
+        fr: 'Biotech Project vous souhaite ',
+        de: 'Biotech Project wünscht Ihnen ',
+        nl: 'Biotech Project wenst u ',
+        pt: 'Biotech Project deseja a você '
+    };
+
+    const greetings = {
+        it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'],
+        en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'],
+        es: ['Buenas noches', 'Buenos días', 'Buenas tardes', 'Buenas noches'],
+        fr: ['Bonne nuit', 'Bonjour', 'Bon après-midi', 'Bonne soirée'],
+        de: ['Gute Nacht', 'Guten Morgen', 'Guten Tag', 'Guten Abend'],
+        nl: ['Welterusten', 'Goedemorgen', 'Goede middag', 'Goede avond'],
+        pt: ['Boa noite', 'Bom dia', 'Boa tarde', 'Boa noite']
+    };
+
+    const userLang = (navigator.language || 'it').slice(0, 2).toLowerCase();
+    const lang = messages[userLang] ? userLang : 'it';
+
+    const hour = new Date().getHours();
+    let greetingIndex = 1;
+    if (hour < 6) greetingIndex = 0;
+    else if (hour < 14) greetingIndex = 1; // -> 13:59:59 PM
+    else if (hour < 18) greetingIndex = 2;
+    else greetingIndex = 3;
+
+    const today = new Date().getDay();
+    const message = messages[lang][today];
+    const title = titles[lang] || baseTitle;
+
+    const greeting = greetings[lang][greetingIndex];
+    const daySpans = createSpans(message, 26);
+    const titleSpans = createSpans(title, 1);
+
+    weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
+});
+// =======================================
+// FINE SALUTO SETTIMANALE
+// =======================================
+
 // ===========================
 //  COUNTDOWN AL NUOVO ANNO
 // ===========================
