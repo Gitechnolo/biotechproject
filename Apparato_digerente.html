@@ -283,6 +283,6 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js"></script> 
-<script>window.particlesController=null;if(typeof initParticles==="function"&&document.getElementById("particles-canvas")){window.particlesController=initParticles("particles-canvas",{count:50,speed:1});}</script>
+<script>window.particlesController=null;window.addEventListener('load',function(){setTimeout(()=>{if(typeof initParticles==="function"&&document.getElementById("particles-canvas")){window.particlesController=initParticles("particles-canvas",{count:50,speed:1});}},100);});</script>
 </body>
 </html>
