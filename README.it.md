@@ -247,7 +247,6 @@ Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattac
 ## 📅 Data dell’ultima verifica
 **8 Novembre 2025**   
 
-
 ## 🔮 Aggiornamenti recenti
 
 Abbiamo introdotto diverse migliorie tecniche e di accessibilità al progetto. Le principali novità includono:
@@ -260,8 +259,7 @@ Abbiamo introdotto diverse migliorie tecniche e di accessibilità al progetto. L
 - Miglioramenti grafici e UX:
   - Grafici dinamici con Chart.js per l'andamento delle performance.
   - Loading spinner e ottimizzazioni per mobile e basse risorse.
-  - Background dinamici e icone meteo nella sezione Meteo (responsive).
-
+  
 - Performance & risparmio risorse:
   - Particelle ottimizzate: frame rate ridotto per CPU/GPU meno potenti e cleanup con destroy().
   - Lazy-loading avanzato per immagini con IntersectionObserver.
@@ -277,7 +275,6 @@ Abbiamo introdotto diverse migliorie tecniche e di accessibilità al progetto. L
 - Strumenti CI/CD e monitoraggio:
   - Il pipeline genera automaticamente i dati di performance tramite Lighthouse e salva i risultati in `data/performance-latest.json`.
   - È disponibile uno script (generate-performance.js) per popolare `performance-data.json` / `performance-latest.json`.
-
 
 
 ## 🌱 Filosofia del progetto

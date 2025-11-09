@@ -148,6 +148,36 @@ O sistema permite:
 ├── sistema_linfatico.json     → Sistema_linfatico.html e -semplice.html
 
 
+## 🔮 Atualizações recentes
+
+Introduzimos diversas melhorias técnicas e de acessibilidade ao projeto. As principais novidades incluem:
+
+- Dashboard de desempenho expandida:
+  - Integração completa dos dados do Lighthouse em `data/performance-latest.json`.
+  - Visualização agregada das métricas em Tech_Maturity.html (gráfico, lista de páginas, pontuações).
+  - Possibilidade de atualizar manualmente o dashboard e exportar os dados em JSON/CSV pelo botão "Exportar dados".
+
+- Melhorias gráficas e UX:
+  - Gráficos dinâmicos com Chart.js para o acompanhamento de desempenho.
+  - Loading spinner e otimizações para dispositivos móveis e recursos limitados.
+
+- Desempenho e economia de recursos:
+  - Partículas otimizadas: taxa de quadros reduzida para CPUs/GPUs menos potentes e limpeza com destroy().
+  - Lazy-loading avançado para imagens com IntersectionObserver.
+  - Redução da carga inicial de JS e carregamento diferido de scripts pesados.
+
+- Acessibilidade aprimorada:
+  - Navegação completa por teclado, gerenciamento de foco e melhorias ARIA nos menus.
+  - Sistema modular de tradução não bloqueante.
+  - Funcionalidade de pronúncia (Text-to-Speech) para termos técnicos.
+  - Tabelas alternativas/descritivas para gráficos (para usuários não visuais).
+  - Suporte a preferências do usuário (tema, navegação por teclado, QRedshift) persistentes com localStorage.
+
+- Ferramentas CI/CD e monitoramento:
+  - O pipeline gera automaticamente os dados de desempenho por meio do Lighthouse e salva os resultados em `data/performance-latest.json`.
+  - Está disponível um script (generate-performance.js) para preencher `performance-data.json` / `performance-latest.json`.   
+
+
 ## 💡 Deseja contribuir?
 
 Você é bem-vindo!  

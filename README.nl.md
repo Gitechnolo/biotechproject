@@ -164,8 +164,7 @@ Introduzimos diversas melhorias técnicas e de acessibilidade ao projeto. As pri
 - Melhorias gráficas e de UX:
   - Gráficos dinâmicos com Chart.js para o acompanhamento de desempenho.
   - Indicador de carregamento (spinner) e otimizações para dispositivos móveis e com baixos recursos.
-  - Fundos dinâmicos e ícones meteorológicos na seção Clima (responsivo).
-
+  
 - Desempenho e economia de recursos:
   - Partículas otimizadas: taxa de quadros reduzida para CPUs/GPUs menos potentes e limpeza com destroy().
   - Lazy-loading avançado para imagens com IntersectionObserver.

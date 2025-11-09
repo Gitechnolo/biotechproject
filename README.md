@@ -165,8 +165,7 @@ We have introduced several technical and accessibility improvements to the proje
 - Graphic and UX improvements:
   - Dynamic charts with Chart.js for performance trends.
   - Loading spinner and optimizations for mobile and low-resource devices.
-  - Dynamic backgrounds and weather icons in the Weather section (responsive).
-
+  
 - Performance & resource savings:
   - Optimized particles: reduced frame rate for less powerful CPU/GPU and cleanup via destroy().
   - Advanced lazy-loading for images using IntersectionObserver.

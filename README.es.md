@@ -163,8 +163,7 @@ Hemos introducido varias mejoras técnicas y de accesibilidad al proyecto. Las p
 - Mejoras gráficas y de experiencia de usuario:
   - Gráficos dinámicos con Chart.js para el seguimiento del rendimiento.
   - Indicador de carga (spinner) y optimizaciones para móviles y dispositivos con recursos limitados.
-  - Fondos dinámicos e iconos meteorológicos en la sección Meteorología (responsive).
-
+  
 - Rendimiento y ahorro de recursos:
   - Partículas optimizadas: reducción de la tasa de fotogramas para CPU/GPU menos potentes y limpieza mediante destroy().
   - Lazy-loading avanzado para imágenes con IntersectionObserver.

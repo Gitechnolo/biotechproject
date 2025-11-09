@@ -162,8 +162,7 @@ Nous avons apporté plusieurs améliorations techniques et d'accessibilité au p
 - Améliorations graphiques et UX :
   - Graphiques dynamiques avec Chart.js pour l'évolution des performances.
   - Indicateur de chargement (spinner) et optimisations pour mobiles et systèmes à ressources limitées.
-  - Arrière-plans dynamiques et icônes météo dans la section Météo (responsive).
-
+  
 - Performance et économie de ressources :
   - Particules optimisées : fréquence d'images réduite pour les CPU/GPU moins puissants et nettoyage via destroy().
   - Chargement différé (lazy-loading) avancé des images avec IntersectionObserver.

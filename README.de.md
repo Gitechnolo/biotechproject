@@ -163,8 +163,7 @@ Wir haben mehrere technische und barrierefreie Verbesserungen am Projekt eingef�
 - Verbesserungen bei Grafik und Benutzererfahrung:
   - Dynamische Diagramme mit Chart.js zum Leistungsverlauf.
   - Lade-Spinner und Optimierungen für Mobilgeräte und Systeme mit begrenzten Ressourcen.
-  - Dynamische Hintergründe und Wetter-Icons im Wetterbereich (responsiv).
-
+ 
 - Performance- und Ressourcensparmaßnahmen:
   - Optimierte Partikel: reduzierte Bildrate für schwächere CPU/GPU und Bereinigung über destroy().
   - Fortgeschrittenes Lazy-Loading für Bilder mittels IntersectionObserver.
