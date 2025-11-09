@@ -83,6 +83,13 @@ ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; paddi
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
+/* Ridimensionamento tabelle su device capelli.html, accessibility-it/en*/
+@media only screen and (max-width: 768px){table, thead, tbody, th, td, tr{display: block} thead{ display: none;} tr{ margin: 10px 0; border-bottom: 2px solid #ccc;} td{ position: relative; padding-left: 50% !important; border: none} td:before{ content: attr(data-label) ": "; position: absolute; left: 0; width: 45%; font-weight: bold; white-space: nowrap}}   
+/* Formattazione tabelle capelli.html*/
+.Pilosebaceo {padding: 8px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.tab {width: 100%; border-collapse: collapse; margin-top: 10px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
+.biotech-img {margin: 2px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
+/* End tabelle capelli.html*/
 a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
 a:visited {color: rgb(116, 9, 116); /* Solo il colore cambia */}
 a:hover, a:focus {color: #a7ffeb; /* Leggero aumento dell'effetto */text-shadow: 0 0 6px rgba(138, 43, 226, 0.8), 0 0 10px rgba(138, 43, 226, 0.5);}
