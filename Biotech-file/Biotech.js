@@ -1095,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
 
 // =======================================
-// SALUTO SETTIMANALE (biotech_week.min.js integrato) 🔥🔥🔥
+// SALUTO SETTIMANALE (biotech_week.min.js integrato) 🔥🔥🔥 - OTTIMIZZATO
 // =======================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1151,27 +1151,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date().getDay();
     const message = messages[lang][today];
     const title = titles[lang] || baseTitle;
-
     const greeting = greetings[lang][greetingIndex];
-    const daySpans = createSpans(message, 26);
-    const titleSpans = createSpans(title, 1);
+    
+    // 🔥 OTTIMIZZAZIONE: Posticipa l'iniezione pesante del DOM
+    window.requestAnimationFrame(() => {
+        const daySpans = createSpans(message, 26);
+        const titleSpans = createSpans(title, 1);
 
-    weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
+        // Scrittura finale del DOM
+        if (weekElement) {
+            weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
+        }
+    });
 });
 // =======================================
 // FINE SALUTO SETTIMANALE
 // =======================================
 
 // ===========================
-//  COUNTDOWN AL NUOVO ANNO
+//  COUNTDOWN AL NUOVO ANNO - OTTIMIZZATO
 // ===========================
 const element = document.getElementById('countdown-days');
 if (element) {
     const now = new Date();
     const currentYear = now.getFullYear();
-    const newYear = now.getMonth() === 11 && now.getDate() === 31 && now.getHours() === 23 ? 
-        new Date(currentYear + 1, 11, 31) : 
-        new Date(currentYear, 11, 31);
-    const remainingDays = Math.ceil((newYear - now) / 86400000);
-    element.textContent = remainingDays;
+    
+    // Calcola l'inizio del prossimo anno (Gennaio 1, 00:00:00)
+    let nextYearStart = new Date(currentYear + 1, 0, 1); 
+    
+    // Se siamo già a Gennaio, calcola l'anno ancora successivo
+    if (now.getMonth() === 0 && now.getDate() !== 1) { // Mese 0 = Gennaio
+        nextYearStart = new Date(currentYear + 2, 0, 1);
+    }
+    
+    const diff = nextYearStart - now;
+    const MS_PER_DAY = 86400000;
+    
+    // Usiamo Math.floor per non contare il giorno corrente come intero
+    const remainingDays = Math.floor(diff / MS_PER_DAY);
+    
+    // Aggiorna l'elemento in un'unica scrittura
+    element.textContent = remainingDays > 0 ? remainingDays : 0; 
 }  
