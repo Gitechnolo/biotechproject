@@ -88,45 +88,32 @@ table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18
 /* Formattazione tabelle capelli.html*/
 .Pilosebaceo {
   padding: 8px; 
-  /* Mantenuto: fornisce profondità */
   box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); 
-  /* ❌ Rimosso: backdrop-filter: blur(2px); */
-  /* ✅ Alternativa Leggera: Sfondo bianco semitrasparente */
-  background-color: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(2px); 
   border: 1px solid rgba(0, 230, 118, 0.3); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* NUOVA OTTIMIZZAZIONE */
   will-change: transform, box-shadow;
-  /* 👇 NUOVA OTTIMIZZAZIONE per il Painting */
-  contain: paint; 
 }
 .tab {
   width: 100%;
   border-collapse: collapse; 
   margin-top: 10px; 
-  /* Mantenuto */
   box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); 
-  /* ❌ Rimosso: backdrop-filter: blur(2px); */
-  /* ✅ Alternativa Leggera */
-  background-color: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(2px); 
   border: 1px solid rgba(0, 230, 118, 0.3);
-  table-layout: fixed;
-  /* 👇 NUOVA OTTIMIZZAZIONE per il Painting */
-  contain: paint;
-}
+    /* Forza il browser a non calcolare la larghezza basandosi sul contenuto, riducendo il reflow */
+  table-layout: fixed;}
 .biotech-img {
   margin: 2px auto; 
   max-width: 100%; 
   border-radius: 12px; 
-  /* Mantenuto */
   box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); 
-  /* ❌ Rimosso: backdrop-filter: blur(2px); */
-  /* ✅ Alternativa Leggera */
-  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px); 
   border: 1px solid rgba(0, 230, 118, 0.3); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* NUOVA OTTIMIZZAZIONE */
   will-change: transform, box-shadow;
-  /* 👇 NUOVA OTTIMIZZAZIONE per il Painting */
-  contain: paint;
 }
 /* End tabelle capelli.html*/
 a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
