@@ -132,55 +132,40 @@ The system enables:
 - **`data-lang-key`**: HTML attribute to identify translatable elements  
 
 ### 📁 Structure of the `lang/` folder
-   
-lang/
-├── common.json               → menu, footer, language button
-├── home.json                 → index.html
-├── progetti.json             → Progetti.html
-├── staff.json                → Staff.html
-├── marketing.json            → Marketing.html
-├── tech_maturity.json        → Tech_Maturity.html
-├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
-├── cuore.json                → Cuore.html and Cuore-semplice.html
-├── cellula.json              → Cellula.html and Cellula-semplice.html
-├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
-├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
-├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
-├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html
 
+For clarity, the table below maps HTML pages to their translation JSON files. `common.json` contains shared strings (menu, footer, etc.), page files contain per-page text.
+
+| Page (.html) | Translation file (.json) | Notes |
+|---|---:|---|
+| index.html | lang/home.json | Home |
+| Progetti.html | lang/progetti.json | Projects |
+| Staff.html | lang/staff.json | Staff |
+| Marketing.html | lang/marketing.json | Marketing |
+| Tech_Maturity.html | lang/tech_maturity.json | Performance dashboard |
+| Dermatologia.html / -semplice | lang/dermatologia.json | Main + simplified |
+| Cuore.html / -semplice | lang/cuore.json | Main + simplified |
+| Cellula.html / -semplice | lang/cellula.json | Main + simplified |
+| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Main + simplified |
+| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Main + simplified |
+| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Main + simplified |
+| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Main + simplified |
+| Capelli.html / -semplice | lang/capelli.json | New pages added to monitoring |
+| Shared strings | lang/common.json | Menu, footer, shared UI text |
 
 
 ## 📅 Last Verification Date
 **November 8, 2025**
 
-## 🔮 Recent Updates
+## 🔮 Recent updates (summary)
 
-We have introduced several technical and accessibility improvements to the project. The main new features include:
+Key recent improvements (concise):
 
-- Extended performance dashboard:
-  - Full integration of Lighthouse data into `data/performance-latest.json`.
-  - Aggregated metrics visualization on Tech_Maturity.html (chart, page list, scores).
-  - Option to manually update the dashboard and export data in JSON/CSV via the "Export data" button.
-
-- Graphic and UX improvements:
-  - Dynamic charts with Chart.js for performance trends.
-  - Loading spinner and optimizations for mobile and low-resource devices.
-  
-- Performance & resource savings:
-  - Optimized particles: reduced frame rate for less powerful CPU/GPU and cleanup via destroy().
-  - Advanced lazy-loading for images using IntersectionObserver.
-  - Reduced initial JS load and deferred loading of heavy scripts.
-
-- Enhanced accessibility:
-  - Full keyboard navigation, focus management, and ARIA improvements in menus.
-  - Non-blocking modular translation system.
-  - Text-to-Speech functionality for technical terms.
-  - Alternative/descriptive tables for charts (for non-visual users).
-  - Support for persistent user preferences (theme, keyboard navigation, QRedshift) via localStorage.
-
-- CI/CD tools and monitoring:
-  - The pipeline automatically generates performance data via Lighthouse and saves results in `data/performance-latest.json`.
-  - A script (generate-performance.js) is available to populate `performance-data.json` / `performance-latest.json`.   
+- Performance dashboard: Lighthouse data integrated into data/performance-latest.json and visualized on Tech_Maturity.html (chart + page list + export).
+- Data export: JSON/CSV export from dashboard ("Export data").
+- Charts + accessibility: Chart.js charts accompanied by hidden tables/descriptions for assistive tech.
+- Performance optimizations: advanced lazy-loading, deferred heavy scripts, optimized particle canvas and cleanup.
+- UX & preferences: dynamic theme, persisted preferences (localStorage), improved keyboard navigation and ARIA/focus handling.
+- CI/CD & transparency: automated Lighthouse runs (generate-performance.js) and public JSON for audits.
 
 
 

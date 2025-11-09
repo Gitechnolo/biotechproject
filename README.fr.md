@@ -130,54 +130,39 @@ Le système permet de :
 - **LocalStorage** : la langue sélectionnée est mémorisée  
 - **`data-lang-key`** : attribut HTML pour identifier les éléments traduisibles  
 
-### 📁 Structure du dossier `lang/`
-  lang/
-├── common.json               → menu, footer, language button
-├── home.json                 → index.html
-├── progetti.json             → Progetti.html
-├── staff.json                → Staff.html
-├── marketing.json            → Marketing.html
-├── tech_maturity.json        → Tech_Maturity.html
-├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
-├── cuore.json                → Cuore.html and Cuore-semplice.html
-├── cellula.json              → Cellula.html and Cellula-semplice.html
-├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
-├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
-├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
-├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html 
+## 📁 Structure du dossier `lang/`
+
+| Page (.html) | Fichier de traduction (.json) | Remarque |
+|---|---:|---|
+| index.html | lang/home.json | Accueil |
+| Progetti.html | lang/progetti.json | Projets |
+| Staff.html | lang/staff.json | Équipe |
+| Marketing.html | lang/marketing.json | Marketing |
+| Tech_Maturity.html | lang/tech_maturity.json | Tableau de bord performance |
+| Dermatologia.html / -semplice | lang/dermatologia.json | Principal + version simplifiée |
+| Cuore.html / -semplice | lang/cuore.json | Principal + version simplifiée |
+| Cellula.html / -semplice | lang/cellula.json | Principal + version simplifiée |
+| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Principal + simplifiée |
+| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Principal + simplifiée |
+| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Principal + simplifiée |
+| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Principal + simplifiée |
+| Capelli.html / -semplice | lang/capelli.json | Nouvelles pages surveillées |
+| Chaînes partagées | lang/common.json | Menu, pied de page, textes partagés |
 
 
 ## 📅 Date de la dernière vérification
 **8 novembre 2025**
 
-## 🔮 Mises à jour récentes
+## 🔮 Mises à jour récentes (synthèse)
 
-Nous avons apporté plusieurs améliorations techniques et d'accessibilité au projet. Les principales nouveautés incluent :
+Principaux points :
 
-- Tableau de bord des performances étendu :
-  - Intégration complète des données Lighthouse dans `data/performance-latest.json`.
-  - Visualisation agrégée des métriques sur Tech_Maturity.html (graphique, liste des pages, scores).
-  - Possibilité de mettre à jour manuellement le tableau de bord et d'exporter les données en JSON/CSV via le bouton « Exporter les données ».
-
-- Améliorations graphiques et UX :
-  - Graphiques dynamiques avec Chart.js pour l'évolution des performances.
-  - Indicateur de chargement (spinner) et optimisations pour mobiles et systèmes à ressources limitées.
-  
-- Performance et économie de ressources :
-  - Particules optimisées : fréquence d'images réduite pour les CPU/GPU moins puissants et nettoyage via destroy().
-  - Chargement différé (lazy-loading) avancé des images avec IntersectionObserver.
-  - Réduction de la charge initiale en JS et chargement différé des scripts lourds.
-
-- Accessibilité renforcée :
-  - Navigation clavier complète, gestion du focus et améliorations ARIA dans les menus.
-  - Système de traduction modulaire non bloquant.
-  - Fonctionnalité de synthèse vocale (texte vers parole) pour les termes techniques.
-  - Tableaux alternatifs/descriptifs pour les graphiques (destinés aux utilisateurs non visuels).
-  - Prise en charge des préférences utilisateur persistantes (thème, navigation au clavier, QRedshift) via localStorage.
-
-- Outils CI/CD et surveillance :
-  - Le pipeline génère automatiquement les données de performance via Lighthouse et enregistre les résultats dans `data/performance-latest.json`.
-  - Un script (generate-performance.js) est disponible pour alimenter `performance-data.json` / `performance-latest.json`.   
+- Tableau de bord : intégration des données Lighthouse dans data/performance-latest.json et visualisation sur Tech_Maturity.html.
+- Export de données : téléchargement JSON/CSV depuis la dashboard.
+- Graphiques accessibles : Chart.js avec tableaux alternatifs pour technologies d’assistance.
+- Optimisations : lazy-loading, chargement différé des scripts lourds, canvas optimisé et nettoyage.
+- UX & préférences : thèmes dynamiques, préférences persistantes, navigation clavier améliorée et gestion ARIA/focus.
+- CI/CD & transparence : exécutions Lighthouse automatiques et données publiques pour audit.
 
 
 ## 💡 Vous souhaitez contribuer ?

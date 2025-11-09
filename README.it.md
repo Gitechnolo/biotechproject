@@ -263,10 +263,6 @@ Breve riepilogo delle novità più rilevanti implementate recentemente:
 - UX & preferenze: tema dinamico, persistenza preferenze (localStorage), navigazione da tastiera migliorata e gestione focus/ARIA.
 - Trasparenza e CI/CD: pipeline che genera automaticamente i dati di performance (generate-performance.js → performance-latest.json); dati disponibili pubblicamente per audit indipendenti.
 
-Per dettagli tecnici e guide d'uso:
-- Dashboard performance: Tech_Maturity.html  
-- Dati grezzi Lighthouse: data/performance-latest.json  
-- Dichiarazione accessibilità: accessibility-it.html / accessibility-en.html
 
 ---
 

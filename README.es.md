@@ -132,26 +132,38 @@ El sistema permite:
 - **`data-lang-key`**: atributo HTML para identificar elementos traducibles  
 
 ### 📁 Estructura de la carpeta `lang/`
-lang/
-├── common.json               → menu, footer, language button
-├── home.json                 → index.html
-├── progetti.json             → Progetti.html
-├── staff.json                → Staff.html
-├── marketing.json            → Marketing.html
-├── tech_maturity.json        → Tech_Maturity.html
-├── dermatologia.json         → Dermatologia.html and Dermatologia-semplice.html
-├── cuore.json                → Cuore.html and Cuore-semplice.html
-├── cellula.json              → Cellula.html and Cellula-semplice.html
-├── apparato_digerente.json   → Apparato_digerente.html and -semplice.html
-├── apparato_respiratorio.json → Apparato_respiratorio.html and -semplice.html
-├── apparato_tegumentario.json → Apparato_tegumentario.html and -semplice.html 
-├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html
+
+| Página (.html) | Archivo de traducción (.json) | Nota |
+|---|---:|---|
+| index.html | lang/home.json | Inicio |
+| Progetti.html | lang/progetti.json | Proyectos |
+| Staff.html | lang/staff.json | Equipo |
+| Marketing.html | lang/marketing.json | Marketing |
+| Tech_Maturity.html | lang/tech_maturity.json | Panel de rendimiento |
+| Dermatologia.html / -semplice | lang/dermatologia.json | Versión principal + simplificada |
+| Cuore.html / -semplice | lang/cuore.json | Principal + simplificada |
+| Cellula.html / -semplice | lang/cellula.json | Principal + simplificada |
+| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Principal + simplificada |
+| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Principal + simplificada |
+| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Principal + simplificada |
+| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Principal + simplificada |
+| Capelli.html / -semplice | lang/capelli.json | Nuevas páginas incluidas en el monitoreo |
+| Cadenas compartidas | lang/common.json | Menú, pie, textos comunes |
 
 
 ## 📅 Fecha de la última verificación
 **8 de noviembre de 2025**
 
-## 🔮 Actualizaciones recientes
+## 🔮 Actualizaciones recientes (resumen)
+
+Puntos clave:
+
+- Panel de rendimiento: datos Lighthouse integrados y visualizados en Tech_Maturity.html.
+- Exportación: descarga de datos en JSON/CSV desde la dashboard.
+- Gráficos accesibles: Chart.js con tablas alternativas para usuarios no visuales.
+- Optimización: lazy-loading, carga diferida de scripts pesados, Canvas optimizado y limpieza.
+- UX y preferencias: tema dinámico, preferencias persistentes, navegación por teclado y ARIA mejorados.
+- CI/CD y transparencia: ejecuciones automáticas de Lighthouse, datos públicos para auditorías.
 
 Hemos introducido varias mejoras técnicas y de accesibilidad al proyecto. Las principales novedades incluyen:
 

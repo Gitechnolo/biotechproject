@@ -131,21 +131,24 @@ Het systeem zorgt voor:
 - **LocalStorage**: de gekozen taal wordt onthouden
 - **data-lang-key**: HTML-attribuut om vertaalbare elementen te markeren
 
-### 📁 Structuur van de `lang/` map
-   lang/
-├── common.json               → menu, footer, taalknop
-├── home.json                 → index.html
-├── progetti.json             → Progetti.html
-├── staff.json                → Staff.html
-├── marketing.json            → Marketing.html
-├── tech_maturity.json        → Tech_Maturity.html
-├── dermatologia.json         → Dermatologia.html en Dermatologia-semplice.html
-├── cuore.json                → Cuore.html en Cuore-semplice.html
-├── cellula.json              → Cellula.html en Cellula-semplice.html
-├── apparato_digerente.json   → Apparato_digerente.html en -semplice.html
-├── apparato_respiratorio.json → Apparato_respiratorio.html en -semplice.html
-├── apparato_tegumentario.json → Apparato_tegumentario.html en -semplice.html
-├── sistema_linfatico.json     → Sistema_linfatico.html en -semplice.html
+### 📁 Structuur van map `lang/`
+
+| Pagina (.html) | Vertalingsbestand (.json) | Opmerking |
+|---|---:|---|
+| index.html | lang/home.json | Home |
+| Progetti.html | lang/progetti.json | Projecten |
+| Staff.html | lang/staff.json | Team |
+| Marketing.html | lang/marketing.json | Marketing |
+| Tech_Maturity.html | lang/tech_maturity.json | Performance-dashboard |
+| Dermatologia.html / -semplice | lang/dermatologia.json | Hoofd + vereenvoudigde versie |
+| Cuore.html / -semplice | lang/cuore.json | Hoofd + vereenvoudigd |
+| Cellula.html / -semplice | lang/cellula.json | Hoofd + vereenvoudigd |
+| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Hoofd + vereenvoudigd |
+| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Hoofd + vereenvoudigd |
+| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Hoofd + vereenvoudigd |
+| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Hoofd + vereenvoudigd |
+| Capelli.html / -semplice | lang/capelli.json | Nieuwe pagina's in monitoring |
+| Gedeelde strings | lang/common.json | Menu, footer, gedeelde teksten |
 
 ---
 

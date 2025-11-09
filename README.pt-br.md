@@ -132,51 +132,37 @@ O sistema permite:
 - **`data-lang-key`**: atributo HTML para identificar elementos traduzíveis  
 
 ### 📁 Estrutura da pasta `lang/`
-  lang/
-├── common.json               → menu, footer, pulsante lingua
-├── home.json                 → index.html
-├── progetti.json             → Progetti.html
-├── staff.json                → Staff.html
-├── marketing.json            → Marketing.html
-├── tech_maturity.json        → Tech_Maturity.html
-├── dermatologia.json         → Dermatologia.html e Dermatologia-semplice.html
-├── cuore.json                → Cuore.html e Cuore-semplice.html
-├── cellula.json              → Cellula.html e Cellula-semplice.html
-├── apparato_digerente.json   → Apparato_digerente.html e -semplice.html
-├── apparato_respiratorio.json → Apparato_respiratorio.html e -semplice.html
-├── apparato_tegumentario.json → Apparato_tegumentario.html e -semplice.html
-├── sistema_linfatico.json     → Sistema_linfatico.html e -semplice.html
+
+| Página (.html) | Arquivo de tradução (.json) | Observação |
+|---|---:|---|
+| index.html | lang/home.json | Início |
+| Progetti.html | lang/progetti.json | Projetos |
+| Staff.html | lang/staff.json | Equipe |
+| Marketing.html | lang/marketing.json | Marketing |
+| Tech_Maturity.html | lang/tech_maturity.json | Painel de performance |
+| Dermatologia.html / -semplice | lang/dermatologia.json | Principal + versão simplificada |
+| Cuore.html / -semplice | lang/cuore.json | Principal + simplificada |
+| Cellula.html / -semplice | lang/cellula.json | Principal + simplificada |
+| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Principal + simplificada |
+| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Principal + simplificada |
+| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Principal + simplificada |
+| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Principal + simplificada |
+| Capelli.html / -semplice | lang/capelli.json | Novas páginas incluídas no monitoramento |
+| Strings compartilhadas | lang/common.json | Menu, rodapé, textos compartilhados |
 
 
-## 🔮 Atualizações recentes
+## 🔮 Atualizações recentes (resumo)
 
-Introduzimos diversas melhorias técnicas e de acessibilidade ao projeto. As principais novidades incluem:
+Principais melhorias:
 
-- Dashboard de desempenho expandida:
-  - Integração completa dos dados do Lighthouse em `data/performance-latest.json`.
-  - Visualização agregada das métricas em Tech_Maturity.html (gráfico, lista de páginas, pontuações).
-  - Possibilidade de atualizar manualmente o dashboard e exportar os dados em JSON/CSV pelo botão "Exportar dados".
+- Painel de performance: dados Lighthouse integrados e visualizados em Tech_Maturity.html.
+- Exportação de dados: download em JSON/CSV a partir do painel.
+- Gráficos acessíveis: Chart.js com tabelas alternativas para leitores de tela.
+- Otimizações: lazy-loading, carregamento adiado de scripts pesados, canvas otimizado e limpeza.
+- UX & preferências: tema dinâmico, preferências persistentes, navegação por teclado e ARIA aprimorados.
+- CI/CD & transparência: execuções automáticas do Lighthouse e JSON público para auditorias.
 
-- Melhorias gráficas e UX:
-  - Gráficos dinâmicos com Chart.js para o acompanhamento de desempenho.
-  - Loading spinner e otimizações para dispositivos móveis e recursos limitados.
-
-- Desempenho e economia de recursos:
-  - Partículas otimizadas: taxa de quadros reduzida para CPUs/GPUs menos potentes e limpeza com destroy().
-  - Lazy-loading avançado para imagens com IntersectionObserver.
-  - Redução da carga inicial de JS e carregamento diferido de scripts pesados.
-
-- Acessibilidade aprimorada:
-  - Navegação completa por teclado, gerenciamento de foco e melhorias ARIA nos menus.
-  - Sistema modular de tradução não bloqueante.
-  - Funcionalidade de pronúncia (Text-to-Speech) para termos técnicos.
-  - Tabelas alternativas/descritivas para gráficos (para usuários não visuais).
-  - Suporte a preferências do usuário (tema, navegação por teclado, QRedshift) persistentes com localStorage.
-
-- Ferramentas CI/CD e monitoramento:
-  - O pipeline gera automaticamente os dados de desempenho por meio do Lighthouse e salva os resultados em `data/performance-latest.json`.
-  - Está disponível um script (generate-performance.js) para preencher `performance-data.json` / `performance-latest.json`.   
-
+---
 
 ## 💡 Deseja contribuir?
 
@@ -219,4 +205,4 @@ Você é livre para compartilhar, adaptar e usar o projeto comercialmente, desde
 Autor: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Projeto disponível em: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
 
-> "Qualquer um pode contribuir. Basta respeitar a origem e continuar construindo com cuidado." 
+> "Qualquer um pode contribuir. Basta respeitar a origem e continuar construindo com cuidado."
