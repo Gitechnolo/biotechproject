@@ -23,9 +23,9 @@
 **Een open-source project dat wetenschap, gezondheid en webtechnologie verenigt.**  
 Waar biotechnologie en code samenkomen om digitale hulpmiddelen voor onderzoek en innovatie te bouwen.
 
-![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)
-![Workflow Status](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml/badge.svg)
-![Last Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)
+[![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)](https://github.com/Gitechnolo/biotechproject/blob/main/LICENSE-MIT.md)
+[![Workflow Status](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml/badge.svg)](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml)
+[![Last Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)](https://github.com/Gitechnolo/biotechproject/commits)
 
 ---
 
