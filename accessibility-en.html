@@ -19,15 +19,12 @@ footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
 a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
 table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
 /* Ridimensionamento tabelle su device*/
-@media only screen and (max-width: 768px) {table, thead, tbody, th, td, tr {display: block;}
-  thead { display: none; }
-  tr { margin: 10px 0; border-bottom: 2px solid #ccc; }
-  td { position: relative; padding-left: 50% !important; border: none;}
-  td:before { content: attr(data-label) ": ";
-    position: absolute; left: 0; width: 45%; font-weight: bold; white-space: nowrap;} }   
+@media only screen and (max-width: 768px){table, thead, tbody, th, td, tr{display: block} thead{ display: none;} tr{ margin: 10px 0; border-bottom: 2px solid #ccc;} td{ position: relative; padding-left: 50% !important; border: none} td:before{ content: attr(data-label) ": "; position: absolute; left: 0; width: 45%; font-weight: bold; white-space: nowrap}}   
 /* End ridimensionamento tabelle su device*/
 ul { padding-left: 20px; }
-.conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}               
+.conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}  
+/* Applica stile a tutti i <strong> dentro le celle */
+td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}            
 </style>
 <script>
 !function(){
@@ -141,15 +138,15 @@ ul { padding-left: 20px; }
 <table>
 <thead><tr><th>Area</th><th>Implementation</th><th>WCAG Reference</th></tr></thead>
 <tbody>
-<tr><td><strong class="sansation-bold-italic">Advanced Readability</strong></td><td><strong class="sansation-bold-italic">Dedicated simplified pages</strong>with <strong class="sansation-bold-italic">high-readability fonts</strong>specifically optimized for <strong class="sansation-bold-italic">dyslexia</strong>and <strong class="sansation-bold-italic">low vision</strong>. Content is available in both Italian and English with this optimization.</td><td><strong class="sansation-bold-italic">3.1.5</strong>(Reading Level, AAA)</td></tr>
-<tr><td><strong class="sansation-bold-italic">Screen Reader Users</strong></td><td>Semantic HTML structure, correct use of <code>ARIA</code>(<code>role</code>, <code>aria-label</code>, <code>aria-live</code>). Dynamic focus management in modals and menus.</td><td><strong class="sansation-bold-italic">1.3.1</strong>, <strong class="sansation-bold-italic">4.1.2</strong></td></tr>
-<tr><td><strong class="sansation-bold-italic">Navigation & Keyboard</strong></td><td>Full keyboard navigation support. "Skip to Main Content" functionality and advanced focus highlighting.</td><td><strong class="sansation-bold-italic">2.1.1</strong>(Keyboard), <strong class="sansation-bold-italic">2.4.1</strong>(Skip)</td></tr>
-<tr><td><strong class="sansation-bold-italic">Contrast & Visibility</strong></td><td>Text meets minimum 4.5:1 contrast ratio. Native support for user preferences: <strong class="sansation-bold-italic">High Contrast</strong>(<code>prefers-contrast</code>) and <strong class="sansation-bold-italic">Dynamic Color Theme</strong>.</td><td><strong class="sansation-bold-italic">1.4.3</strong>, <strong class="sansation-bold-italic">1.4.12</strong></td></tr>
-<tr><td><strong class="sansation-bold-italic">Language & Comprehension</strong></td><td>The <code>lang</code>attribute is dynamically updated based on the user's language preference (<code>navigator.language</code>) and language toggle.</td><td><strong class="sansation-bold-italic">3.1.1</strong>(Language)</td></tr>
-<tr><td><strong class="sansation-bold-italic">Performance & Risk</strong></td><td>Non-essential animations are automatically disabled via <code>prefers-reduced-motion</code>. Deferred video and script loading minimizes epileptic risks and improves responsiveness.</td><td><strong class="sansation-bold-italic">2.3.3</strong>(Animation), <strong class="sansation-bold-italic">2.2.2</strong>(Pause)</td></tr>
-<tr><td><strong class="sansation-bold-italic">Advanced Content</strong></td><td>Integration of <strong class="sansation-bold-italic">Text-to-Speech</strong>(pronunciation) for technical terms and structured alternative text for graphs and data.</td><td><strong class="sansation-bold-italic">1.1.1</strong>(Non-text Content)</td></tr>
+<tr><td data-label="Area"><strong>Advanced Readability</strong></td><td data-label="Implementation"><strong>Dedicated simplified pages</strong> with <strong>high-readability fonts</strong> specifically optimized for <strong>dyslexia</strong> and <strong>low vision</strong>. Content is available in both Italian and English with this optimization.</td><td data-label="WCAG Reference"><strong>3.1.5</strong> (Reading Level, AAA)</td></tr>
+<tr><td data-label="Area"><strong>Screen Reader Users</strong></td><td data-label="Implementation">Semantic HTML structure, correct use of <code>ARIA</code> (<code>role</code>, <code>aria-label</code>, <code>aria-live</code>). Dynamic focus management in modals and menus.</td><td data-label="WCAG Reference"><strong>1.3.1</strong>, <strong>4.1.2</strong></td></tr>
+<tr><td data-label="Area"><strong>Navigation & Keyboard</strong></td><td data-label="Implementation">Full keyboard navigation support. "Skip to Main Content" functionality and advanced focus highlighting.</td><td data-label="WCAG Reference"><strong>2.1.1</strong> (Keyboard), <strong>2.4.1</strong> (Skip)</td></tr>
+<tr><td data-label="Area"><strong>Contrast & Visibility</strong></td><td data-label="Implementation">Text meets minimum 4.5:1 contrast ratio. Native support for user preferences: <strong>High Contrast</strong> (<code>prefers-contrast</code>) and <strong>Dynamic Color Theme</strong>.</td><td data-label="WCAG Reference"><strong>1.4.3</strong>, <strong>1.4.12</strong></td></tr>
+<tr><td data-label="Area"><strong>Language & Comprehension</strong></td><td data-label="Implementation">The <code>lang</code> attribute is dynamically updated based on the user's language preference (<code>navigator.language</code>) and language toggle.</td><td data-label="WCAG Reference"><strong>3.1.1</strong> (Language)</td></tr>
+<tr><td data-label="Area"><strong>Performance & Risk</strong></td><td data-label="Implementation">Non-essential animations are automatically disabled via <code>prefers-reduced-motion</code>. Deferred video and script loading minimizes epileptic risks and improves responsiveness.</td><td data-label="WCAG Reference"><strong>2.3.3</strong> (Animation), <strong>2.2.2</strong> (Pause)</td></tr>
+<tr><td data-label="Area"><strong>Advanced Content</strong></td><td data-label="Implementation">Integration of <strong>Text-to-Speech</strong> (pronunciation) for technical terms and structured alternative text for graphs and data.</td><td data-label="WCAG Reference"><strong>1.1.1</strong> (Non-text Content)</td></tr>
 </tbody>
-</table>
+</table>      
 <hr>
 <h2>🚀 Our Commitment to Level AAA</h2>
 <p>Biotech Project continues to evolve, aiming to exceed Level AA and reach <strong class="sansation-bold-italic">Level AAA</strong> in non-mandatory areas. Our current focus is on:</p>
