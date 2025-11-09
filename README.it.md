@@ -132,21 +132,26 @@ Il sistema permette di:
 - **LocalStorage**: la lingua selezionata viene ricordata
 - **data-lang-key**: attributo HTML per identificare elementi traducibili
 
-### 📁 Struttura della cartella `lang/`
-   lang/
-├── common.json               → menu, footer, pulsante lingua
-├── home.json                 → index.html
-├── progetti.json             → Progetti.html
-├── staff.json                → Staff.html
-├── marketing.json            → Marketing.html
-├── tech_maturity.json        → Tech_Maturity.html
-├── dermatologia.json         → Dermatologia.html e Dermatologia-semplice.html
-├── cuore.json                → Cuore.html e Cuore-semplice.html
-├── cellula.json              → Cellula.html e Cellula-semplice.html
-├── apparato_digerente.json   → Apparato_digerente.html e -semplice.html
-├── apparato_respiratorio.json → Apparato_respiratorio.html e -semplice.html
-├── apparato_tegumentario.json → Apparato_tegumentario.html e -semplice.html
-├── sistema_linfatico.json     → Sistema_linfatico.html e -semplice.html
+## 📁 Struttura della cartella `lang/`
+
+Per chiarezza, la seguente tabella mappa le pagine HTML ai rispettivi file JSON di traduzione. I file JSON sono modulari: `common.json` contiene stringhe condivise (menu, footer, ecc.), mentre i file specifici contengono i testi della singola pagina.
+
+| Pagina (.html) | File traduzione (.json) | Note |
+|---|---|---|
+| index.html | lang/home.json | Contenuto principale / home |
+| Progetti.html | lang/progetti.json | Elenco progetti |
+| Staff.html | lang/staff.json | Meet the Staff |
+| Marketing.html | lang/marketing.json | Pagina Marketing |
+| Tech_Maturity.html | lang/tech_maturity.json | Dashboard performance & report |
+| Dermatologia.html, Dermatologia-semplice.html | lang/dermatologia.json | Contenuto principale + versione semplificata |
+| Cuore.html, Cuore-semplice.html | lang/cuore.json | Contenuto + versione semplificata |
+| Cellula.html, Cellula-semplice.html | lang/cellula.json | Contenuto + versione semplificata |
+| Apparato_digerente.html, *-semplice.html* | lang/apparato_digerente.json | Contenuto + semplificata |
+| Apparato_respiratorio.html, *-semplice.html* | lang/apparato_respiratorio.json | Contenuto + semplificata |
+| Apparato_tegumentario.html, *-semplice.html* | lang/apparato_tegumentario.json | Contenuto + semplificata |
+| Sistema_linfatico.html, *-semplice.html* | lang/sistema_linfatico.json | Contenuto + semplificata |
+| Capelli.html, Capelli-semplice.html | lang/capelli.json | Nuove pagine incluse nel monitoraggio |
+| common strings | lang/common.json | Menu, footer, pulsanti condivisi |
 
 
 ## 💡 Vuoi contribuire?
@@ -247,41 +252,21 @@ Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattac
 ## 📅 Data dell’ultima verifica
 **8 Novembre 2025**   
 
-## 🔮 Aggiornamenti recenti
+## 🔮 Aggiornamenti recenti (sintesi)
 
-Abbiamo introdotto diverse migliorie tecniche e di accessibilità al progetto. Le principali novità includono:
+Breve riepilogo delle novità più rilevanti implementate recentemente:
 
-- Dashboard di performance estesa:
-  - Integrazione completa dei dati Lighthouse in `data/performance-latest.json`.
-  - Visualizzazione aggregata delle metriche su Tech_Maturity.html (grafico, lista pagine, punteggi).
-  - Possibilità di aggiornare manualmente la dashboard e esportare i dati in JSON/CSV dal pulsante "Esporta dati".
+- Dashboard performance: integrazione dei risultati Lighthouse in data/performance-latest.json e visualizzazione aggregata su Tech_Maturity.html (grafico + lista pagine con punteggi).
+- Esportazione dati: possibilità di scaricare in JSON/CSV dalla dashboard (pulsante "Esporta dati").
+- Visualizzazione & accessibilità dei dati: grafici con Chart.js accompagnati da tabelle alternative per screen reader.
+- Ottimizzazioni di performance: lazy-loading, caricamento differito degli script pesanti, ottimizzazioni del canvas delle particelle (frame-rate ridotto e cleanup).
+- UX & preferenze: tema dinamico, persistenza preferenze (localStorage), navigazione da tastiera migliorata e gestione focus/ARIA.
+- Trasparenza e CI/CD: pipeline che genera automaticamente i dati di performance (generate-performance.js → performance-latest.json); dati disponibili pubblicamente per audit indipendenti.
 
-- Miglioramenti grafici e UX:
-  - Grafici dinamici con Chart.js per l'andamento delle performance.
-  - Loading spinner e ottimizzazioni per mobile e basse risorse.
-  
-- Performance & risparmio risorse:
-  - Particelle ottimizzate: frame rate ridotto per CPU/GPU meno potenti e cleanup con destroy().
-  - Lazy-loading avanzato per immagini con IntersectionObserver.
-  - Riduzione del carico JS iniziale e caricamento differito degli script pesanti.
-
-- Accessibilità potenziata:
-  - Navigazione da tastiera completa, gestione focus e miglioramenti ARIA nei menu.
-  - Sistema di traduzione modulare non bloccante.
-  - Funzionalità di pronuncia (Text-to-Speech) per termini tecnici.
-  - Tabelle alternative / descrittive per i grafici (per utenti non visuali).
-  - Supporto a preferenze utente (tema, navigazione tastiera, QRedshift) persistenti con localStorage.
-
-- Strumenti CI/CD e monitoraggio:
-  - Il pipeline genera automaticamente i dati di performance tramite Lighthouse e salva i risultati in `data/performance-latest.json`.
-  - È disponibile uno script (generate-performance.js) per popolare `performance-data.json` / `performance-latest.json`.
-
-
-## 🌱 Filosofia del progetto
-
-> *“BiotechProject non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e umana.”*
-
-Questo progetto è un esempio pratico di **sviluppo responsabile**, dove tecnologia, etica e usabilità si incontrano. È pensato per ispirare una cultura del web più inclusiva, in cui l’accessibilità non è un’appendice, ma il fondamento.
+Per dettagli tecnici e guide d'uso:
+- Dashboard performance: Tech_Maturity.html  
+- Dati grezzi Lighthouse: data/performance-latest.json  
+- Dichiarazione accessibilità: accessibility-it.html / accessibility-en.html
 
 ---
 
