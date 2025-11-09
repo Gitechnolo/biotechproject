@@ -148,6 +148,41 @@ lang/
 ├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html 
 
 
+## 📅 Letzter Überprüfungsdatum
+**8. November 2025**
+
+## 🔮 Aktuelle Aktualisierungen
+
+Wir haben mehrere technische und barrierefreie Verbesserungen am Projekt eingeführt. Zu den wichtigsten Neuerungen gehören:
+
+- Erweiterte Performance-Dashboard:
+  - Vollständige Integration der Lighthouse-Daten in `data/performance-latest.json`.
+  - Aggregierte Darstellung der Metriken auf Tech_Maturity.html (Diagramm, Seitenliste, Bewertungen).
+  - Möglichkeit, das Dashboard manuell zu aktualisieren und Daten über den Button „Daten exportieren“ in JSON/CSV zu exportieren.
+
+- Verbesserungen bei Grafik und Benutzererfahrung:
+  - Dynamische Diagramme mit Chart.js zum Leistungsverlauf.
+  - Lade-Spinner und Optimierungen für Mobilgeräte und Systeme mit begrenzten Ressourcen.
+  - Dynamische Hintergründe und Wetter-Icons im Wetterbereich (responsiv).
+
+- Performance- und Ressourcensparmaßnahmen:
+  - Optimierte Partikel: reduzierte Bildrate für schwächere CPU/GPU und Bereinigung über destroy().
+  - Fortgeschrittenes Lazy-Loading für Bilder mittels IntersectionObserver.
+  - Reduzierung der initialen JS-Last und verzögertes Laden schwerer Skripte.
+
+- Erweiterte Barrierefreiheit:
+  - Vollständige Tastaturnavigation, Fokusverwaltung und verbesserte ARIA-Attribute in Menüs.
+  - Nicht blockierendes, modulares Übersetzungssystem.
+  - Sprachausgabefunktion (Text-to-Speech) für technische Begriffe.
+  - Alternativen-/Beschreibungstabellen für Diagramme (für nicht-visuelle Nutzer).
+  - Unterstützung dauerhafter Nutzerpräferenzen (Thema, Tastaturnavigation, QRedshift) über localStorage.
+
+- CI/CD-Werkzeuge und Monitoring:
+  - Die Pipeline generiert automatisch Performance-Daten über Lighthouse und speichert die Ergebnisse in `data/performance-latest.json`.
+  - Ein Skript (generate-performance.js) steht zur Verfügung, um `performance-data.json` / `performance-latest.json` zu füllen.   
+
+
+
 ## 💡 Möchten Sie beitragen?
 
 Sie sind herzlich willkommen!  

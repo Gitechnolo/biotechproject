@@ -245,17 +245,40 @@ Il tuo feedback è fondamentale per migliorare l’accessibilità del progetto.
 Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattaci](https://gitechnolo.github.io/biotechproject/accessibility-it.html#feedback) (sezione "Feedback e segnalazioni" della dichiarazione).
 
 ## 📅 Data dell’ultima verifica
-**8 settembre 2025**   
+**8 Novembre 2025**   
 
 
-## 🔮 Aggiornamenti futuri
+## 🔮 Aggiornamenti recenti
 
-La dichiarazione sarà aggiornata regolarmente. I prossimi miglioramenti includeranno:
+Abbiamo introdotto diverse migliorie tecniche e di accessibilità al progetto. Le principali novità includono:
 
-- Migrazione completa a modali interni.
-- Valutazione di pattern ARIA più semplici per i menu, per maggiore compatibilità con screen reader.
-- Ottimizzazione del contrasto in modalità notturna (QRedshift) per garantire un rapporto minimo di 4.5:1 anche con il filtro attivo.
-- Integrazione di trascrizioni complete e sottotitoli per tutti i video futuri.
+- Dashboard di performance estesa:
+  - Integrazione completa dei dati Lighthouse in `data/performance-latest.json`.
+  - Visualizzazione aggregata delle metriche su Tech_Maturity.html (grafico, lista pagine, punteggi).
+  - Possibilità di aggiornare manualmente la dashboard e esportare i dati in JSON/CSV dal pulsante "Esporta dati".
+
+- Miglioramenti grafici e UX:
+  - Grafici dinamici con Chart.js per l'andamento delle performance.
+  - Loading spinner e ottimizzazioni per mobile e basse risorse.
+  - Background dinamici e icone meteo nella sezione Meteo (responsive).
+
+- Performance & risparmio risorse:
+  - Particelle ottimizzate: frame rate ridotto per CPU/GPU meno potenti e cleanup con destroy().
+  - Lazy-loading avanzato per immagini con IntersectionObserver.
+  - Riduzione del carico JS iniziale e caricamento differito degli script pesanti.
+
+- Accessibilità potenziata:
+  - Navigazione da tastiera completa, gestione focus e miglioramenti ARIA nei menu.
+  - Sistema di traduzione modulare non bloccante.
+  - Funzionalità di pronuncia (Text-to-Speech) per termini tecnici.
+  - Tabelle alternative / descrittive per i grafici (per utenti non visuali).
+  - Supporto a preferenze utente (tema, navigazione tastiera, QRedshift) persistenti con localStorage.
+
+- Strumenti CI/CD e monitoraggio:
+  - Il pipeline genera automaticamente i dati di performance tramite Lighthouse e salva i risultati in `data/performance-latest.json`.
+  - È disponibile uno script (generate-performance.js) per popolare `performance-data.json` / `performance-latest.json`.
+
+
 
 ## 🌱 Filosofia del progetto
 

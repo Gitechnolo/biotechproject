@@ -149,6 +149,42 @@ lang/
 ├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html
 
 
+
+## 📅 Last Verification Date
+**November 8, 2025**
+
+## 🔮 Recent Updates
+
+We have introduced several technical and accessibility improvements to the project. The main new features include:
+
+- Extended performance dashboard:
+  - Full integration of Lighthouse data into `data/performance-latest.json`.
+  - Aggregated metrics visualization on Tech_Maturity.html (chart, page list, scores).
+  - Option to manually update the dashboard and export data in JSON/CSV via the "Export data" button.
+
+- Graphic and UX improvements:
+  - Dynamic charts with Chart.js for performance trends.
+  - Loading spinner and optimizations for mobile and low-resource devices.
+  - Dynamic backgrounds and weather icons in the Weather section (responsive).
+
+- Performance & resource savings:
+  - Optimized particles: reduced frame rate for less powerful CPU/GPU and cleanup via destroy().
+  - Advanced lazy-loading for images using IntersectionObserver.
+  - Reduced initial JS load and deferred loading of heavy scripts.
+
+- Enhanced accessibility:
+  - Full keyboard navigation, focus management, and ARIA improvements in menus.
+  - Non-blocking modular translation system.
+  - Text-to-Speech functionality for technical terms.
+  - Alternative/descriptive tables for charts (for non-visual users).
+  - Support for persistent user preferences (theme, keyboard navigation, QRedshift) via localStorage.
+
+- CI/CD tools and monitoring:
+  - The pipeline automatically generates performance data via Lighthouse and saves results in `data/performance-latest.json`.
+  - A script (generate-performance.js) is available to populate `performance-data.json` / `performance-latest.json`.   
+
+
+
 ## 💡 Want to contribute?
 
 You're welcome!  

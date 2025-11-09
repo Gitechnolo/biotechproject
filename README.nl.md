@@ -149,6 +149,74 @@ Het systeem zorgt voor:
 
 ---
 
+## 📅 Data da última verificação
+**8 de novembro de 2025**
+
+## 🔮 Atualizações recentes
+
+Introduzimos diversas melhorias técnicas e de acessibilidade ao projeto. As principais novidades incluem:
+
+- Dashboard de desempenho expandido:
+  - Integração completa dos dados do Lighthouse em `data/performance-latest.json`.
+  - Visualização agregada das métricas em Tech_Maturity.html (gráfico, lista de páginas, pontuações).
+  - Possibilidade de atualizar manualmente o dashboard e exportar os dados em JSON/CSV pelo botão "Exportar dados".
+
+- Melhorias gráficas e de UX:
+  - Gráficos dinâmicos com Chart.js para o acompanhamento de desempenho.
+  - Indicador de carregamento (spinner) e otimizações para dispositivos móveis e com baixos recursos.
+  - Fundos dinâmicos e ícones meteorológicos na seção Clima (responsivo).
+
+- Desempenho e economia de recursos:
+  - Partículas otimizadas: taxa de quadros reduzida para CPUs/GPUs menos potentes e limpeza com destroy().
+  - Lazy-loading avançado para imagens com IntersectionObserver.
+  - Redução da carga inicial de JavaScript e carregamento diferido de scripts pesados.
+
+- Acessibilidade aprimorada:
+  - Navegação completa por teclado, gerenciamento de foco e melhorias ARIA nos menus.
+  - Sistema modular de tradução não bloqueante.
+  - Funcionalidade de síntese de voz (texto para fala) para termos técnicos.
+  - Tabelas alternativas/descritivas para gráficos (para usuários não visuais).
+  - Suporte a preferências do usuário persistentes (tema, navegação por teclado, QRedshift) com localStorage.
+
+- Ferramentas CI/CD e monitoramento:
+  - O pipeline gera automaticamente os dados de desempenho por meio do Lighthouse e salva os resultados em `data/performance-latest.json`.
+  - Disponível um script (generate-performance.js) para preencher `performance-data.json` / `performance-latest.json`.   
+
+
+## 📅 Datum laatste controle
+**8 november 2025**
+
+## 🔮 Recente updates
+
+We hebben diverse technische en toegankelijkheidsverbeteringen aan het project toegevoegd. De belangrijkste vernieuwingen zijn:
+
+- Uitgebreid prestatiedashboard:
+  - Volledige integratie van Lighthouse-gegevens in `data/performance-latest.json`.
+  - Geaggregeerde weergave van metrieken op Tech_Maturity.html (grafiek, paginalijst, scores).
+  - Mogelijkheid om het dashboard handmatig bij te werken en gegevens te exporteren naar JSON/CSV via de knop "Exporteer gegevens".
+
+- Grafische en UX-improvements:
+  - Dynamische grafieken met Chart.js voor prestatieontwikkeling.
+  - Laadscherm (spinner) en optimalisaties voor mobiel en apparaten met beperkte resources.
+  - Dynamische achtergronden en weersymbolen in het Weer-gedeelte (responsief).
+
+- Prestaties & resourcebesparing:
+  - Geoptimaliseerde deeltjes: lagere framerate voor minder krachtige CPU/GPU en opruiming via destroy().
+  - Geavanceerde lazy-loading voor afbeeldingen met IntersectionObserver.
+  - Vermindering van initiële JS-belasting en uitgesteld laden van zware scripts.
+
+- Verbeterde toegankelijkheid:
+  - Volledige toetsenbordnavigatie, focusbeheer en ARIA-improvements in menu's.
+  - Niet-blokkerend modulair vertalingssysteem.
+  - Spreken-functie (Text-to-Speech) voor technische termen.
+  - Alternatieve/beschrijvende tabellen voor grafieken (voor niet-visuele gebruikers).
+  - Ondersteuning voor persistente gebruikersvoorkeuren (thema, toetsenbordnavigatie, QRedshift) via localStorage.
+
+- CI/CD-tools en monitoring:
+  - De pipeline genereert automatisch prestatiegegevens via Lighthouse en slaat resultaten op in `data/performance-latest.json`.
+  - Een script (generate-performance.js) is beschikbaar om `performance-data.json` / `performance-latest.json` te vullen.   
+
+
 ## 💡 Wil je bijdragen?
 
 Welkom!  

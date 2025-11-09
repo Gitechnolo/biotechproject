@@ -148,6 +148,40 @@ lang/
 ├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html
 
 
+## 📅 Fecha de la última verificación
+**8 de noviembre de 2025**
+
+## 🔮 Actualizaciones recientes
+
+Hemos introducido varias mejoras técnicas y de accesibilidad al proyecto. Las principales novedades incluyen:
+
+- Dashboard de rendimiento ampliado:
+  - Integración completa de los datos de Lighthouse en `data/performance-latest.json`.
+  - Visualización agregada de métricas en Tech_Maturity.html (gráfico, lista de páginas, puntuaciones).
+  - Posibilidad de actualizar manualmente el dashboard y exportar los datos en JSON/CSV desde el botón "Exportar datos".
+
+- Mejoras gráficas y de experiencia de usuario:
+  - Gráficos dinámicos con Chart.js para el seguimiento del rendimiento.
+  - Indicador de carga (spinner) y optimizaciones para móviles y dispositivos con recursos limitados.
+  - Fondos dinámicos e iconos meteorológicos en la sección Meteorología (responsive).
+
+- Rendimiento y ahorro de recursos:
+  - Partículas optimizadas: reducción de la tasa de fotogramas para CPU/GPU menos potentes y limpieza mediante destroy().
+  - Lazy-loading avanzado para imágenes con IntersectionObserver.
+  - Reducción de la carga inicial de JavaScript y carga diferida de scripts pesados.
+
+- Accesibilidad mejorada:
+  - Navegación completa por teclado, gestión del foco y mejoras ARIA en los menús.
+  - Sistema modular de traducción no bloqueante.
+  - Funcionalidad de pronunciación (texto a voz) para términos técnicos.
+  - Tablas alternativas/descriptivas para gráficos (para usuarios no visuales).
+  - Soporte para preferencias del usuario persistentes (tema, navegación por teclado, QRedshift) mediante localStorage.
+
+- Herramientas CI/CD y monitoreo:
+  - La canalización genera automáticamente los datos de rendimiento mediante Lighthouse y guarda los resultados en `data/performance-latest.json`.
+  - Disponible un script (generate-performance.js) para rellenar `performance-data.json` / `performance-latest.json`.   
+
+
 ## 💡 Quiere contribuir?
 
 ¡Es bienvenido!  

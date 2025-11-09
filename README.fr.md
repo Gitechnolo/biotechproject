@@ -147,6 +147,40 @@ Le système permet de :
 ├── sistema_linfatico.json     → Sistema_linfatico.html and -semplice.html 
 
 
+## 📅 Date de la dernière vérification
+**8 novembre 2025**
+
+## 🔮 Mises à jour récentes
+
+Nous avons apporté plusieurs améliorations techniques et d'accessibilité au projet. Les principales nouveautés incluent :
+
+- Tableau de bord des performances étendu :
+  - Intégration complète des données Lighthouse dans `data/performance-latest.json`.
+  - Visualisation agrégée des métriques sur Tech_Maturity.html (graphique, liste des pages, scores).
+  - Possibilité de mettre à jour manuellement le tableau de bord et d'exporter les données en JSON/CSV via le bouton « Exporter les données ».
+
+- Améliorations graphiques et UX :
+  - Graphiques dynamiques avec Chart.js pour l'évolution des performances.
+  - Indicateur de chargement (spinner) et optimisations pour mobiles et systèmes à ressources limitées.
+  - Arrière-plans dynamiques et icônes météo dans la section Météo (responsive).
+
+- Performance et économie de ressources :
+  - Particules optimisées : fréquence d'images réduite pour les CPU/GPU moins puissants et nettoyage via destroy().
+  - Chargement différé (lazy-loading) avancé des images avec IntersectionObserver.
+  - Réduction de la charge initiale en JS et chargement différé des scripts lourds.
+
+- Accessibilité renforcée :
+  - Navigation clavier complète, gestion du focus et améliorations ARIA dans les menus.
+  - Système de traduction modulaire non bloquant.
+  - Fonctionnalité de synthèse vocale (texte vers parole) pour les termes techniques.
+  - Tableaux alternatifs/descriptifs pour les graphiques (destinés aux utilisateurs non visuels).
+  - Prise en charge des préférences utilisateur persistantes (thème, navigation au clavier, QRedshift) via localStorage.
+
+- Outils CI/CD et surveillance :
+  - Le pipeline génère automatiquement les données de performance via Lighthouse et enregistre les résultats dans `data/performance-latest.json`.
+  - Un script (generate-performance.js) est disponible pour alimenter `performance-data.json` / `performance-latest.json`.   
+
+
 ## 💡 Vous souhaitez contribuer ?
 
 Vous êtes le bienvenu !  

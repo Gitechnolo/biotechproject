@@ -9,28 +9,18 @@
 <noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css?v=1.3"></noscript>
 <!-- Preload font -->
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  #main-content {opacity: 0; transition: opacity 0.3s ease;}
-  body {background-color: #000f16;
-  font-family: 'Sansation', sans-serif;
-  color: #a7ffeb;
-  max-width: 900px;
-  line-height: 1.6;           
-    }
-    h1, h2 {
-      color: #00e676;
-    }
-    ul { padding-left: 20px; }
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #64ffda;
-    }
-    a:hover img {
-  transform: translateY(-2px) scale(1.05);
-  filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));
-}   
-  </style>
+#main-content {opacity: 0; transition: opacity 0.3s ease;}
+body{background-color: #000f16; font-family: 'Sansation', sans-serif; color: #a7ffeb; max-width: 900px; line-height: 1.6;}
+h1, h2{ color: #00e676;}
+ul { padding-left: 20px; }
+footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
+a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
+table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
+ul { padding-left: 20px; }
+.conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}               
+</style>
 <script>
 !function(){
   const l = document.getElementById('preload-style');
@@ -91,100 +81,46 @@
     <div class="staff-card">
       <div class="staff-container">
         <p><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" lang="en">English version available</a></p>
-
-    <h1>Dichiarazione di Accessibilità</h1>
-
-    <p><strong>BiotechProject</strong> è profondamente impegnato a garantire che il proprio sito web sia accessibile a tutte le persone, inclusi utenti con disabilità visive, uditive, motorie, cognitive o neurodiverse. L’accessibilità non è un semplice requisito tecnico, ma un principio fondante del nostro design, sviluppo e comunicazione scientifica. Crediamo che la scienza debba essere aperta, inclusiva e fruibile da chiunque — indipendentemente dalle sue capacità sensoriali, cognitive o tecnologiche.</p>
-
-    <h2>Conformità agli standard</h2>
-    <p>Le <strong>pagine principali</strong> del sito BiotechProject sono <strong>conformi alle Linee guida per l’accessibilità dei contenuti web (WCAG) 2.1 Livello AA</strong>, conformemente al Decreto Legislativo 10 agosto 2018, n. 106, che recepisce la Direttiva (UE) 2016/2102.</p>
-
-    <p>La conformità è stata verificata attraverso un approccio combinato:</p>
-    <ul>
-      <li>Audit tecnici con strumenti automatici (axe, WAVE, Lighthouse)</li>
-      <li>Test manuali di navigazione da tastiera, screen reader (NVDA, VoiceOver) e dispositivi mobili</li>
-      <li>Verifica del rispetto delle preferenze utente (riduzione del movimento, alto contrasto, zoom fino al 200%)</li>
-      <li>Validazione del codice HTML e CSS presso i validatori del W3C</li>
-    </ul>
-    <p><strong>Ultima verifica effettuata il: <time datetime="2025-09-08">8 settembre 2025</time></strong>.</p>
- 
-    <h2>Caratteristiche di accessibilità implementate</h2>
-    <p>Il sito è stato progettato con un approccio “accessibilità fin dall’origine” (<em>accessibility by design</em>). Tra le principali funzionalità:</p>
-    <ul>
-      <li><strong>Navigazione da tastiera completa</strong>: Tutte le funzionalità sono accessibili tramite tastiera. Un pulsante dedicato attiva un’evidenziazione avanzata per chi usa la navigazione da tastiera.</li>
-      <li><strong>Supporto avanzato ai menu</strong>: I menu a tendina sono navigabili con frecce, <kbd>Home</kbd>, <kbd>End</kbd> e <kbd>Esc</kbd>, con gestione corretta del focus.</li>
-      <li><strong>Compatibilità con screen reader</strong>: Struttura HTML semantica, uso corretto di <code>ARIA</code> e gestione dinamica dello stato.</li>
-      <li><strong>Contrasto sufficiente</strong>: Tutti i testi rispettano il rapporto minimo 4.5:1 (testo normale) e 3:1 per elementi UI, in conformità a WCAG 1.4.3 e 1.4.11.</li>
-      <li><strong>Testo ridimensionabile</strong>: Il contenuto rimane leggibile e funzionale anche con zoom fino al 200%, senza perdita di informazioni, sovrapposizioni o necessità di scorrere lateralmente, in conformità a WCAG 1.4.4 (Resize Text) e 1.4.10 (Reflow).</li>
-      <li><strong>Controllo delle animazioni</strong>: Tutte le animazioni non essenziali (menu, pulsanti, effetti visivi) sono disattivate automaticamente se l’utente ha impostato <code>prefers-reduced-motion: reduce</code>. Abbiamo inoltre implementato un’opzione manuale per disattivarle completamente tramite il pulsante “Comfort”, che disabilita anche elementi decorativi come le particelle di fondo e l’animazione del DNA.</li>
-      <li><strong>Supporto al contrasto elevato</strong>: Il sito rispetta la preferenza utente <code>prefers-contrast: high</code>. In questi casi, viene applicato automaticamente un tema ad alto contrasto (blu profondo) per migliorare la leggibilità, in conformità a WCAG 1.4.12 (Text Spacing, livello AAA).</li>
-      <li><strong>Tema visivo dinamico</strong>: È disponibile un selettore di colori nel menu <strong>Service</strong> che permette di scegliere tra cinque varianti cromatiche (Verde, Ciano, Viola, Arancione, Blu Profondo), progettate per supportare diverse condizioni visive, inclusi vari tipi di daltonismo.</li>
-      <li><strong>Persistenza delle preferenze</strong>: La scelta del tema e lo stato della navigazione da tastiera vengono salvati in <code>localStorage</code> e ripristinati alla successiva visita, garantendo un’esperienza coerente.</li>
-      <li><strong>Popup accessibili</strong>: Le finestre popup sono aperte in modo centrato, con gestione del focus all’apertura e chiusura tramite tasto <kbd>Esc</kbd> o pulsante accessibile da tastiera (tasto <kbd>Enter</kbd>). Il focus è trappolato durante l’uso e ripristinato correttamente alla chiusura, in conformità ai criteri <strong>WCAG 2.1 2.1.1 (Keyboard)</strong> e <strong>2.4.3 (Focus Order)</strong>. Il pulsante di chiusura è posizionato in alto a destra ed è navigabile con <kbd>Tab</kbd>, garantendo un'esperienza accessibile e prevedibile. Il contenitore del popup include <code>role="dialog"</code> e <code>aria-modal="true"</code> per garantire una corretta percezione da parte delle tecnologie assistive.</li>
-      <li><strong>Lazy loading sicuro</strong>: Le immagini vengono caricate in modo differito tramite <code>IntersectionObserver</code>, con fallback per browser vecchi. Il testo alternativo (<code>alt</code>) è sempre presente prima del caricamento.</li>
-      <li><strong>Orologi e contatori accessibili</strong>: L’orologio e il conto alla rovescia sono aggiornati dinamicamente e contrassegnati con <code>aria-live="polite"</code> per annunciare i cambiamenti agli screen reader.</li>
-      <li><strong>Design resiliente</strong>: Nessuna dipendenza da framework esterni. JavaScript vanilla, CSS moderno ma retrocompatibile, e HTML semantico assicurano robustezza, prestazioni e accessibilità a lungo termine.</li>
-      <li><strong>Pagine semplificate</strong>: Per ogni pagina principale, è disponibile una <strong>versione semplificata</strong> del contenuto, scritta con linguaggio chiaro, frasi brevi e supporto visivo. Questa funzionalità supporta utenti con dislessia, difficoltà cognitive o livelli diversi di alfabetizzazione, in conformità con WCAG 3.1.5 (Reading Level, Livello AA) e come passo verso il livello AAA.</li>
-      <li><strong>Accessibilità dei dati visivi</strong>: I grafici e i cerchi di progresso sono accompagnati da tabelle nascoste (<code>visually-hidden</code>) e testi alternativi strutturati, per garantire che i dati siano accessibili a screen reader e strumenti assistivi.</li>
-      <li><strong>Esportazione dati</strong>: È possibile esportare i dati di performance e accessibilità in formato JSON o CSV, promuovendo trasparenza e audit indipendenti.</li>
-      <li><strong>Comfort visivo automatico (QRedshift)</strong>: Il sito applica automaticamente un filtro di temperatura colore più caldo la sera (basato sull’ora locale) per ridurre l’affaticamento oculare e supportare i ritmi circadiani. Questa funzionalità può essere disattivata manualmente in qualsiasi momento. Nei contesti senza menu integrato, un'icona focusabile in alto a destra funge da controllo di fallback, con supporto completo a tastiera e screen reader.</li>
-      <li><strong>Supporto alla pronuncia e comprensione</strong>: Il tag <code>&lt;ruby&gt;</code> è utilizzato per fornire definizioni contestuali di termini scientifici complessi (es. <em>mitocondri</em>, <em>epigenetica</em>), migliorando la comprensione per studenti, persone con difficoltà cognitive e non esperti. Questa implementazione è conforme a WCAG 3.1.3 (Unusual Words) e 3.1.5 (Reading Level).</li>
-      <li><strong>Video accessibile</strong>: I video sono privi di autoplay, attivabili manualmente tramite un’anteprima navigabile da tastiera. Include controlli personalizzati con <code>aria-label</code>, descrizione testuale della scena e supporto a <kbd>Enter</kbd>/<kbd>Spazio</kbd> per l’attivazione.</li>
-    </ul>
-
-    <h2>Tecnologie utilizzate</h2>
-    <p>Il sito è costruito con tecnologie moderne, leggere e accessibili:</p>
-    <ul>
-      <li><strong>HTML5</strong> semantico</li>
-      <li><strong>CSS3</strong> con Custom Properties e media query per preferenze utente</li>
-      <li><strong>JavaScript vanilla</strong> (zero framework, massima accessibilità e prestazioni)</li>
-      <li><strong>ARIA 1.2</strong> per interazioni dinamiche e gestione dello stato</li>
-      <li><strong>Media query</strong>: <code>prefers-reduced-motion</code>, <code>prefers-contrast</code></li>
-      <li><strong>Persistenza</strong>: <code>localStorage</code> per tema e stato della navigazione</li>
-      <li><strong>Ottimizzazioni</strong>: <code>IntersectionObserver</code> (lazy loading), <code>MutationObserver</code> (integrazione dinamica)</li>
-      <li><strong>Immagini</strong>: AVIF e WebP per prestazioni e qualità</li>
-    </ul>   
-
-    <h2>Conformità in corso verso il livello AAA</h2>
-    <p>Stiamo implementando ulteriori caratteristiche per avvicinarci al livello <strong>AAA</strong> delle WCAG 2.1:</p>
-    <ul>
-      <li><strong>Pronuncia di termini tecnici</strong>: Espansione dell’uso del tag <code>&lt;ruby&gt;</code> per includere la guida alla pronuncia (es. con sillabazione o IPA) di parole come "CRISPR", "epigenetica", "plasmide".</li>
-      <li><strong>Spiegazione di acronimi</strong>: Implementazione progressiva di <code>&lt;abbr title="..."&gt;</code> per espandere sigle come "PCR", "ATP", "DNA" al primo utilizzo nel testo.</li>
-      <li><strong>Link con testo descrittivo</strong>: Verifica continua che tutti i link abbiano un testo comprensibile anche fuori contesto (WCAG 2.4.9 – Link Purpose).</li>
-      <li><strong>Migrazione da popup a modali accessibili</strong>: Sostituzione progressiva delle finestre <code>window.open()</code> con modali interni dotati di <code>role="dialog"</code>, trapping del focus, gestione completa da tastiera e supporto a <kbd>Esc</kbd>.</li>
-    </ul>
-
-    <h2>Non conformità parziali o eccezioni</h2>
-    <p>Nonostante il forte impegno verso l’inclusività, alcune parti del sito non soddisfano pienamente tutti i criteri WCAG 2.1, per motivi tecnici, contestuali o di retrocompatibilità. Tali casi sono documentati e in fase di miglioramento:</p>
-    <ul>
-      <li><strong>Uso di <code>role="menu"</code> nei dropdown di navigazione</strong>: Attualmente, i menu a tendina utilizzano <code>role="menu"</code> e <code>role="menuitem"</code> per garantire un comportamento avanzato con tastiera (frecce, <kbd>Home</kbd>/<kbd>End</kbd>, <kbd>Esc</kbd>). Tuttavia, questo pattern è tecnicamente riservato a componenti simili a barre dei menu applicativi. Stiamo valutando una transizione a un modello semantico più semplice — basato su <code>&lt;button&gt;</code> e <code>&lt;a&gt;</code> — per migliorare la compatibilità con screen reader, mantenendo comunque la piena funzionalità da tastiera.</li>
-      <li><strong>Popup basati su <code>window.open()</code></strong>: Alcuni link aprono finestre esterne per garantire retrocompatibilità con sistemi clienti legacy. Stiamo migrando attivamente verso modali interni accessibili per offrire un’esperienza più inclusiva e controllata.</li>
-    </ul>
-
-    <h2>Feedback e segnalazioni</h2>
-    <p>Il tuo feedback è fondamentale per migliorare l’accessibilità del nostro progetto. Se riscontri barriere nell’accesso ai contenuti, difficoltà nell’uso delle funzionalità o hai suggerimenti per renderlo più inclusivo, ti invitiamo a contattarci.</p>
-    <p><button onclick="openContactPopup()" aria-haspopup="dialog" aria-expanded="false" id="contact-btn" type="button">Contattaci</button></p>
-    <script>
-      document.getElementById('contact-btn')?.addEventListener('click', function() {
-        this.setAttribute('aria-expanded', 'true');
-      });
-    </script>
-
-    <h2>Data dell’ultima verifica</h2>
-    <p><time datetime="2025-10-15">15 Ottobre 2025</time></p>
-
-    <h2>Aggiornamenti futuri</h2>
-    <p>Questa dichiarazione sarà aggiornata regolarmente per riflettere i miglioramenti implementati. I prossimi aggiornamenti includeranno:</p>
-    <ul>
-      <li>Migrazione completa a modali interni al posto di <code>window.open()</code>.</li>
-      <li>Valutazione di un pattern ARIA più semplice per i menu, per maggiore conformità con le aspettative degli screen reader.</li>
-      <li>Ottimizzazione del contrasto in modalità notturna (QRedshift) per garantire un rapporto minimo di 4.5:1 anche con il filtro attivo.</li>
-      <li>Integrazione di trascrizioni complete e sottotitoli per tutti i video futuri.</li>
-    </ul>
-
-    <p class="sansation-light-italic" style="text-align: center; margin: 2rem 0; color: #64ffda; font-size: 1.1em;">
-  “BiotechProject non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e umana.”
-</p>
+<main id="main">
+<h1>Dichiarazione di Accessibilità di Biotech Project</h1>
+<p><strong class="sansation-bold-italic">Biotech Project</strong> è sviluppato con la profonda convinzione che la conoscenza scientifica debba essere universale. L'accessibilità non è un'opzione, ma un principio fondante del nostro design.</p>
+<p>Questo sito si impegna a garantire l'accessibilità digitale e rispetta pienamente gli standard internazionali, conformemente al Decreto Legislativo 10 agosto 2018, n. 106.</p>
+<h2>🥇 Stato di Conformità</h2>
+<p class="conformance-status"><strong class="sansation-bold-italic">Pienamente Conforme</strong> alle <strong class="sansation-bold-italic">Linee Guida per l'Accessibilità dei Contenuti Web (WCAG) 2.1 - Livello AA</strong>.</p>
+<ul>
+<li><strong class="sansation-bold-italic">Ultima Verifica Tecnica:</strong> <time datetime="2025-11-08">8 Novembre 2025</time></li>
+<li><strong class="sansation-bold-italic">Metodologia:</strong> Autovalutazione basata su test automatici (Lighthouse, axe) e test manuali con screen reader (NVDA, VoiceOver) e navigazione da tastiera.</li>
+</ul>
+<hr>
+<h2>🔑 Punti Chiave dell'Accessibilità</h2>
+<p>Il nostro sito è progettato per adattarsi alle esigenze degli utenti, fornendo un'esperienza inclusiva in tutte le aree:</p>
+<table>
+<thead><tr><th>Area</th><th>Implementazione</th><th>Riferimento WCAG</th></tr></thead>
+<tbody>
+<tr><td><strong class="sansation-bold-italic">Leggibilità Avanzata</strong></td><td><strong class="sansation-bold-italic">Pagine semplificate dedicate</strong>con <strong class="sansation-bold-italic">font ad alta leggibilità</strong>specificamente ottimizzati per <strong class="sansation-bold-italic">dislessia</strong>e <strong class="sansation-bold-italic">ipovisione</strong>. I contenuti sono disponibili in italiano e inglese, entrambi con questa ottimizzazione.</td><td><strong class="sansation-bold-italic">3.1.5</strong>(Lettura, AAA)</td></tr>
+<tr><td><strong class="sansation-bold-italic">Utenti Screen Reader</strong></td><td>Struttura HTML semantica, corretto uso di <code>ARIA</code>(<code>role</code>, <code>aria-label</code>, <code>aria-live</code>). Gestione dinamica del focus in modali e menu.</td><td><strong class="sansation-bold-italic">1.3.1</strong>, <strong class="sansation-bold-italic">4.1.2</strong></td></tr>
+<tr><td><strong class="sansation-bold-italic">Navigazione & Tastiera</strong></td><td>Navigazione completamente accessibile da tastiera. Funzionalità di "Salto al Contenuto Principale" e evidenziazione del focus avanzata.</td><td><strong class="sansation-bold-italic">2.1.1</strong>(Tastiera), <strong class="sansation-bold-italic">2.4.1</strong>(Salto)</td></tr>
+<tr><td><strong class="sansation-bold-italic">Contrasto & Visibilità</strong></td><td>Testi con rapporto di contrasto minimo 4.5:1. Supporto nativo per le preferenze utente <strong class="sansation-bold-italic">Alto Contrasto</strong>(<code>prefers-contrast</code>) e <strong class="sansation-bold-italic">Tema Colore Dinamico</strong>.</td><td><strong class="sansation-bold-italic">1.4.3</strong>, <strong class="sansation-bold-italic">1.4.12</strong></td></tr>
+<tr><td><strong class="sansation-bold-italic">Comprensione & Lingua</strong></td><td>L'attributo <code>lang</code>viene aggiornato dinamicamente in base alle preferenze linguistiche dell'utente (<code>navigator.language</code>) e al cambio lingua.</td><td><strong class="sansation-bold-italic">3.1.1</strong>(Lingua)</td></tr>
+<tr><td><strong class="sansation-bold-italic">Performance & Rischio</strong></td><td>Animazioni non essenziali disattivate automaticamente con <code>prefers-reduced-motion</code>. Caricamento video e script differito per minimizzare i rischi epilettici e migliorare la reattività.</td><td><strong class="sansation-bold-italic">2.3.3</strong>(Animazione), <strong class="sansation-bold-italic">2.2.2</strong>(Pausa)</td></tr>
+<tr><td><strong class="sansation-bold-italic">Contenuti Avanzati</strong></td><td>Integrazione di <strong class="sansation-bold-italic">Text-to-Speech</strong>(pronuncia) per i termini scientifici e testi alternativi descrittivi per grafici e dati.</td><td><strong class="sansation-bold-italic">1.1.1</strong>(Non-testuale)</td></tr>
+</tbody>
+</table>
+<hr>
+<h2>🚀 Il Nostro Impegno per il Livello AAA</h2>
+<p>Biotech Project continua a evolvere, mirando a superare il Livello AA e raggiungere il <strong class="sansation-bold-italic">Livello AAA</strong> in aree non obbligatorie. Il nostro focus attuale è su:</p>
+<ul>
+<li><strong class="sansation-bold-italic">Guida alla Pronuncia:</strong> Espansione delle funzionalità di Text-to-Speech per includere la pronuncia assistita di tutti gli acronimi e termini complessi.</li>
+<li><strong class="sansation-bold-italic">Trascrizioni Complete:</strong> Integrazione di trascrizioni complete per ogni elemento video o audio.</li>
+<li><strong class="sansation-bold-italic">Miglioramento Continuo:</strong> Monitoraggio costante della leggibilità dei contenuti non semplificati.</li>
+</ul>
+<hr>
+<h2>💬 Segnalazioni e Feedback</h2>
+<p>Il tuo contributo è essenziale per il nostro impegno. Se incontri ostacoli nell'accesso ai contenuti o hai suggerimenti per migliorare l'inclusività, ti preghiamo di contattarci:</p>
+<button onclick="openContactPopup()" aria-haspopup="dialog" aria-expanded="false" id="contact-btn" type="button" style="background:#00eaff; color:#000f16; border:none; padding:6px 12px; border-radius:4px; font-size:12px; font-weight:bold; cursor:pointer;">Contattaci</button>
+<p>Rispondiamo a ogni segnalazione per garantire la massima fruibilità.</p>
+<p class="sansation-light-italic" style="text-align: center; margin: 2rem 0; color: #64ffda; font-size: 1.1em;">“Biotech Project non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e umana.” </p>
+</main>
 
 <!-- Badge di accessibilità -->
 <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito BiotechProject - Conforme agli standard WCAG 2.1 AA" title="Dichiarazione di accessibilità del sito - Conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito BiotechProject" width="220" height="80"></a></div>
