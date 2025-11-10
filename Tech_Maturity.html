@@ -350,6 +350,21 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
 <script>window.particlesController=null;window.addEventListener('load',function(){setTimeout(()=>{if(typeof initParticles==="function"&&document.getElementById("particles-canvas")){window.particlesController=initParticles("particles-canvas",{count:50,speed:1});}},100);});</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio-min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script>
+    // Caricamento ritardato e dinamico di Chart.js
+    function loadChartJS() {
+        if (typeof Chart === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script.onload = () => {
+                // Esegui la funzione che disegna il grafico qui (es: initializeChart());
+            };
+            document.head.appendChild(script);
+        }
+    }
+
+    // Ritarda il caricamento del grafico di 300ms per dare priorità al rendering Above-the-fold
+    setTimeout(loadChartJS, 300);
+</script>
 </body>
   </html>
