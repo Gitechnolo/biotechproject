@@ -122,7 +122,7 @@ window.initParticles = initParticles;
 })();
 
 // =======================================
-// 2. FUNZIONE QRedshift (Modificata per usare destroy/initParticles)
+// 2. FUNZIONE QRedshift (Ottimizzata per TBT)
 // =======================================
 // QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 function QRedshift() {
@@ -132,7 +132,7 @@ function QRedshift() {
   // 1. Uscita Pura
   if (!menuContainer) return;
 
-  // --- Cattura Riferimenti (per l'ottimizzazione e la sincronizzazione) ---
+  // --- Cattura Riferimenti ---
   const particles = document.getElementById('particles-canvas');
   const dna = document.querySelector('.dna-container-8');
 
@@ -154,11 +154,21 @@ function QRedshift() {
     document.body.classList.add('qredshift-active');
     document.body.style.filter = currentFilter;
     document.body.style.transition = 'filter 0.5s';
-    document.body.style.willChange = 'filter'; // Attivazione GPU
+    document.body.style.willChange = 'filter';
 
     // Sicurezza: in stato attivo, gli effetti DEVONO essere visibili
     if (particles) particles.style.display = '';
     if (dna) dna.style.display = '';
+
+    // ⚡ Avvio del Canvas (Solo in stato attivo) ⚡
+    // Usiamo setTimeout(0) per "yield": cediamo il controllo al browser 
+    // dopo che gli stili QRedshift sono stati applicati. 
+    // Questo spezza il Long Task e migliora il TBT.
+    if (typeof window.initParticles === "function" && particles && !window.particlesController) {
+        setTimeout(() => { 
+            window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
+        }, 0);
+    }
 
   } else {
     // SINCRONIZZAZIONE CRITICA (Se lo stato è OFF)
@@ -171,9 +181,7 @@ function QRedshift() {
     if (particles) particles.style.display = 'none';
     if (dna) dna.style.display = 'none';
     
-    // 🔥 NUOVA OTTIMIZZAZIONE 🔥
-    // Se QRedshift parte in stato disattivo e l'animazione era stata avviata
-    // (tramite lo script inline), fermiamo subito il ciclo della CPU.
+    // Ferma subito l'animazione se era stata accidentalmente avviata (cleanup)
     if (window.particlesController && typeof window.particlesController.destroy === 'function') {
         window.particlesController.destroy(); 
         window.particlesController = null;
@@ -213,10 +221,8 @@ function QRedshift() {
     if (isActive) {
       // --- STATO ATTIVO (Riattiva tutto) ---
       
-      // 🔥 NUOVA OTTIMIZZAZIONE 🔥
-      // Se non c'è un controller (animazione spenta) e la funzione esiste, riavviala
+      // ⚡ Ri-Avvio del Canvas (Se era spento) ⚡
       if (!window.particlesController && typeof window.initParticles === "function" && particles) {
-          // Riavvia l'animazione e salva il nuovo controller globalmente
           window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
       }
 
