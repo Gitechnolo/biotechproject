@@ -109,7 +109,10 @@
     }
 
     function destroy() {
-      if (animationId) cancelAnimationFrame(animationId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
       window.removeEventListener('resize', resizeCanvas);
     }
 
