@@ -106,7 +106,18 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .biotechbody {background-color: rgb(0, 15, 22); background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
 /* === STILE MODERNO PER PAGINE AGGIORNATE === */
 /* Logo centrato sotto il menu */
-.modern-logo {display: block; margin: 15px auto 20px; width: 553px; max-width: 90vw; height: auto; border: 0; border-radius: 8px; box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2); opacity: 0.9;}
+.modern-logo {
+  display: block;
+  margin: 15px auto 20px;
+  width: 553px;
+  max-width: 90vw;
+  height: auto;
+  aspect-ratio: 553 / 180; /* spazio riservato su tutti i dispositivi */
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2);
+  opacity: 0.9;
+}   
 /* === ANIMAZIONE LOGO: Pulsazione Holografica === */
 .pulse-logo {will-change: opacity, box-shadow, transform; animation: biotechPulse 3.2s infinite ease-in-out; transition: opacity 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;}
 /* Effetto di pulsazione con bagliore tecnologico */
@@ -419,12 +430,10 @@ canvas#particles-canvas {
 /* Contenitore stabile per il canvas */
 .canvas-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 0;
-  padding-bottom: calc(940 / 1350 * 100%); /* ~69.63% */
-  overflow: hidden;
+  padding-bottom: 69.63%; /* 940 / 1350 * 100 */
   z-index: -1;
 }
 
