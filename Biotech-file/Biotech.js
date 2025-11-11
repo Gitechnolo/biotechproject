@@ -122,7 +122,7 @@ window.initParticles = initParticles;
 })();
 
 // =======================================
-// 2. FUNZIONE QRedshift (Ottimizzata per TBT)
+// 2. FUNZIONE QRedshift (Per TBT)
 // =======================================
 // QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 function QRedshift() {
