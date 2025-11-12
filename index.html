@@ -60,7 +60,28 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.modern-logo{ display: block; margin: 15px auto 20px; width: 553px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 </style>
-<script defer>!function(){const l=document.getElementById("preload-style"),c=document.getElementById("main-content"),s=()=>{c&&c.style.setProperty("opacity","1")};l&&(l.onload=()=>{l.rel="stylesheet",setTimeout(s,50)},l.sheet&&(l.rel="stylesheet")),document.readyState==="loading"?document.addEventListener("DOMContentLoaded",s):s(),setTimeout(s,3e3)}();</script>   
+<script>
+!function(){
+  const l = document.getElementById('preload-style');
+  const show = () => {
+    const c = document.getElementById('main-content');
+    if (c) c.style.setProperty('opacity', '1');
+  };
+
+  if (l) {
+    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
+    if (l.sheet) l.rel = 'stylesheet';
+  }
+
+  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', show);
+  } else {
+    show();
+  }
+  setTimeout(show, 3000); // sicurezza finale
+}();
+</script>   
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico"> 
 </head>
