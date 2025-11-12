@@ -35,7 +35,7 @@ canvas.style.height = '100vh';
 // Scalatura per DPI
 ctx.scale(dpr, dpr);
 }
-resizeCanvas();
+// 🛑 RIGA RIMOSSA: Non chiamare resizeCanvas() immediatamente per evitare Layout Thrashing
 window.addEventListener('resize', resizeCanvas);
 const hour = new Date().getHours();
 const isDay = hour >= 7 && hour < 19;
@@ -113,7 +113,7 @@ animationId = null;
 }
 window.removeEventListener('resize', resizeCanvas);
 }
-return { destroy };
+return { destroy, resizeCanvas }; // ✅ resizeCanvas ESPONIBILE per la chiamata ritardata
 }
 // Esporre solo la funzione principale in window
 if (typeof window !== 'undefined') {
@@ -122,7 +122,7 @@ window.initParticles = initParticles;
 })();
 
 // =======================================
-// 2. FUNZIONE QRedshift (Per TBT)
+// 2. FUNZIONE QRedshift (Ottimizzata per TBT e Layout Thrashing)
 // =======================================
 // QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 function QRedshift() {
@@ -161,13 +161,20 @@ function QRedshift() {
     if (dna) dna.style.display = '';
 
     // ⚡ Avvio del Canvas (Solo in stato attivo) ⚡
-    // Usiamo setTimeout(0) per "yield": cediamo il controllo al browser 
-    // dopo che gli stili QRedshift sono stati applicati. 
-    // Questo spezza il Long Task e migliora il TBT.
     if (typeof window.initParticles === "function" && particles && !window.particlesController) {
+        // Primo Yield: Avvia il codice di initParticles.
         setTimeout(() => { 
             window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
-        }, 0);
+            
+            // 🔥 Secondo Yield: Chiama resizeCanvas DOPO un ulteriore yield. 🔥
+            // Questo spezza l'operazione di lettura/scrittura che causa il thrashing.
+            if (window.particlesController && typeof window.particlesController.resizeCanvas === 'function') {
+                setTimeout(() => {
+                    window.particlesController.resizeCanvas();
+                }, 0); 
+            }
+
+        }, 0); 
     }
 
   } else {
@@ -223,7 +230,14 @@ function QRedshift() {
       
       // ⚡ Ri-Avvio del Canvas (Se era spento) ⚡
       if (!window.particlesController && typeof window.initParticles === "function" && particles) {
-          window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
+          // Avvia il controller
+          const newController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
+          window.particlesController = newController;
+          
+          // Chiama resize subito dopo l'avvio
+          if (typeof newController.resizeCanvas === 'function') {
+              newController.resizeCanvas();
+          }
       }
 
       document.body.classList.add('qredshift-active');
