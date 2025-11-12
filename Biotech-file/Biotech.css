@@ -109,13 +109,12 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
-  width: min(90vw, 553px); /* ✅ NUOVA REGOLA: Allineata al CSS Critico per stabilità */
-  /* max-width: 553px; <--- Precedente. */
+  width: 553px; /* RIPRISTINATO: Larghezza fissa originale */
+  max-width: 90vw;
   height: auto;
   aspect-ratio: 553 / 180; /* Mantiene le proporzioni */
   border: 0;
   border-radius: 8px;
-  /* La box-shadow e l'opacità sono ora le regole di default */
   box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2);
   opacity: 0.9;
 }   
