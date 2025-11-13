@@ -109,74 +109,22 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
-  width: 553px;
+  width: 553px; /* RIPRISTINATO: Larghezza fissa originale */
   max-width: 90vw;
   height: auto;
-  aspect-ratio: 553 / 180;
+  aspect-ratio: 553 / 180; /* Mantiene le proporzioni */
   border: 0;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2);
   opacity: 0.9;
 }   
-
-/* === ANIMAZIONE LOGO: Pulsazione Holografica con pseudo-elemento === */
-.pulse-logo {
-  position: relative;
-  display: block;
-  margin: 15px auto 20px;
-  width: 553px;
-  max-width: 90vw;
-  height: auto;
-  aspect-ratio: 553 / 180;
-  border: 0;
-  border-radius: 8px;
-  opacity: 0.9;
-  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
-  will-change: opacity, transform;
-  /* Permette all'ombra di fuoriuscire senza causare overflow */
-}
-
-.pulse-logo::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  border-radius: 8px;
-  opacity: 0.3;
-  /* Ombra esterna leggermente diffusa */
-  box-shadow: 0 0 16px 4px rgba(0, 230, 118, 0.4), inset 0 0 8px rgba(0, 255, 180, 0.5);
-  animation: pulseShadow 3.2s infinite ease-in-out;
-  will-change: opacity;
-  pointer-events: none;
-}
-
-@keyframes pulseShadow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-.pulse-logo:hover,
-.pulse-logo:focus {
-  opacity: 1;
-  transform: translateY(-1px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.pulse-logo:hover::before,
-.pulse-logo:focus::before {
-  opacity: 1;
-}
-
-/* Disattiva animazione se l'utente preferisce ridurre il movimento */
-@media (prefers-reduced-motion: reduce) {
-  .pulse-logo {
-    animation: none;
-    opacity: 0.9;
-  }
-  .pulse-logo::before {
-    animation: none;
-    opacity: 0.3;
-  }
-}   
+/* === ANIMAZIONE LOGO: Pulsazione Holografica === */
+.pulse-logo {will-change: opacity, box-shadow, transform; animation: biotechPulse 3.2s infinite ease-in-out; transition: opacity 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;}
+/* Effetto di pulsazione con bagliore tecnologico */
+@keyframes biotechPulse {0%, 100% {opacity: 0.85; box-shadow: 0 0 8px rgba(0, 230, 118, 0.2), 0 0 16px rgba(0, 230, 118, 0.1), inset 0 0 6px rgba(0, 255, 180, 0.3);} 50% {opacity: 0.95; box-shadow: 0 0 14px rgba(0, 230, 118, 0.4), 0 0 24px rgba(0, 230, 118, 0.25), inset 0 0 8px rgba(0, 255, 180, 0.5);}}
+/* Effetto hover: lieve aumento di luminosità */
+.pulse-logo:hover {opacity: 1; filter: brightness(1.0) contrast(1.0); animation-play-state: paused; box-shadow: 0 0 16px rgba(0, 230, 118, 0.6), 0 0 32px rgba(0, 230, 118, 0.4), inset 0 0 10px rgba(0, 255, 180, 0.7); transform: translateY(-1px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);}
+@media (prefers-reduced-motion: reduce) {.pulse-logo {animation: none; opacity: 0.9; /* Mantiene coerenza con .modern-logo */}}   
 /* Orologio moderno - centrato */
 .modern-clock {color: #a7ffeb; font-family: 'Sansation', sans-serif; font-size: 14pt; font-weight: bold; text-align: center; margin: 10px auto; max-width: 300px; padding: 8px 12px; background: rgba(0, 230, 118, 0.1); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; box-shadow: 0 0 10px rgba(0, 230, 118, 0.2); backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 /* === Conto alla rovescia moderno === */
