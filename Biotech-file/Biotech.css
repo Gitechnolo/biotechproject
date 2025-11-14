@@ -109,7 +109,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
-  width: 553px; /* RIPRISTINATO: Larghezza fissa originale */
+  /* Rimosso: width: 553px; */
   max-width: 90vw;
   height: auto;
   aspect-ratio: 553 / 180; /* Mantiene le proporzioni */
