@@ -35,7 +35,7 @@ canvas.style.height = '100vh';
 // Scalatura per DPI
 ctx.scale(dpr, dpr);
 }
-// 🛑 RIGA RIMOSSA: Non chiamare resizeCanvas() immediatamente per evitare Layout Thrashing
+// RIGA RIMOSSA: Non chiamare resizeCanvas() immediatamente per evitare Layout Thrashing
 window.addEventListener('resize', resizeCanvas);
 const hour = new Date().getHours();
 const isDay = hour >= 7 && hour < 19;
@@ -113,7 +113,7 @@ animationId = null;
 }
 window.removeEventListener('resize', resizeCanvas);
 }
-return { destroy, resizeCanvas }; // ✅ resizeCanvas ESPONIBILE per la chiamata ritardata
+return { destroy, resizeCanvas }; // resizeCanvas ESPONIBILE per la chiamata ritardata
 }
 // Esporre solo la funzione principale in window
 if (typeof window !== 'undefined') {
@@ -149,7 +149,7 @@ function QRedshift() {
   // 2. Determina lo stato iniziale: Se disabilitato in storage, parte da OFF
   let isActive = !isDisabledFromStorage;
 
-  // 🔥🔥 INIZIALIZZAZIONE CRITICA: Sincronizzazione al caricamento 🔥🔥
+  // INIZIALIZZAZIONE CRITICA: Sincronizzazione al caricamento 
   if (isActive) {
     document.body.classList.add('qredshift-active');
     document.body.style.filter = currentFilter;
@@ -166,7 +166,7 @@ function QRedshift() {
         setTimeout(() => { 
             window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
             
-            // 🔥 Secondo Yield: Chiama resizeCanvas DOPO un ulteriore yield. 🔥
+            // Secondo Yield: Chiama resizeCanvas DOPO un ulteriore yield. 
             // Questo spezza l'operazione di lettura/scrittura che causa il thrashing.
             if (window.particlesController && typeof window.particlesController.resizeCanvas === 'function') {
                 setTimeout(() => {
@@ -258,7 +258,7 @@ function QRedshift() {
     } else {
       // --- STATO DISATTIVO (Disattiva tutto) ---
       
-      // 🛑 CRITICO: Ferma l'animazione CPU-intensive prima di nasconderla
+      // CRITICO: Ferma l'animazione CPU-intensive prima di nasconderla
       if (window.particlesController && typeof window.particlesController.destroy === 'function') {
           window.particlesController.destroy();
           window.particlesController = null; // Rimuovi il riferimento
@@ -455,7 +455,7 @@ function initLazyLoading() {
   document.querySelectorAll('img[data-src]').forEach(img => {
     observer.observe(img);
   });
-  // ✅ Esponi l'observer se devi fermarlo in futuro (es. navigazione dinamica)
+  // Esponi l'observer se devi fermarlo in futuro (es. navigazione dinamica)
   return observer;
 }
 // Inizializza al caricamento
@@ -499,7 +499,7 @@ function turnOffLight() {
 // End effect around the bulb image
 // ———————————————————————
 // ———————————————————————
-// ✅ MENU MODERNO - Solo su pagine con data-modern-menu
+// MENU MODERNO - Solo su pagine con data-modern-menu
 // ———————————————————————
 (function () {
 // Esci subito se non siamo in una pagina con menu moderno
@@ -545,11 +545,11 @@ if (e.key === 'Enter' || e.key === ' ') {
 e.preventDefault();
 const isExpanded = btn.getAttribute('aria-expanded') === 'true';
 btn.click();
-// ✅ Spostare il focus sul primo elemento con role="menuitem"
+// Spostare il focus sul primo elemento con role="menuitem"
 if (!isExpanded) {
 setTimeout(() => {
 const firstItem = dropdown.querySelector('[role="menuitem"]');
-if (firstItem) firstItem.focus();  // ✅ Usa firstItem
+if (firstItem) firstItem.focus();  // Usa firstItem
 }, 100);
 }
 }
@@ -676,7 +676,7 @@ function openContactPopup() {
   );
 }
 // ———————————————————————
-// ✅ GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
+// GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
 // ———————————————————————
 document.addEventListener("DOMContentLoaded", function () {
 // === 1. Controllo pagina (opzionale) ===
