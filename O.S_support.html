@@ -5,135 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Your O.S.</title>
-
   <style type="text/css">
-  /* --- NUOVO STILE per il pulsante di chiusura --- */
-  #closeBtn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    background: none;
-    border: none;
-    color: rgb(212, 211, 211);
-    cursor: pointer;
-    z-index: 10;
-    padding: 0;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-
-  #closeBtn:hover,
-  #closeBtn:focus {
-    color: #0f0;
-    outline: 2px solid #0f0;
-    outline-offset: 2px;
-  }
-  /* ... (Fine pulsante chiusura) ... */
-
-  body {
-    margin: 0;
-    padding: 20px; 
-    background-color: #000;
-    color: rgb(212, 211, 211);
-    font-family: 'Sansation', sans-serif;
-    overflow: hidden; 
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;     
-    justify-content: flex-start; 
-    text-align: left;
-    font-size: 16px;
-    position: relative;
-  }
-
-  /* Canvas per particelle */
-  #particles-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  /* Stile per titolo */
-  .biotechbold {
-    font-size: 28px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px #0f0;
-    margin-bottom: 10px;
-  }
-
-  /* Stile per pulsante */
-  #likeBtn {
-    font-size: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #0f0;
-    margin-bottom: 15px;
-    transition: transform 0.2s;
-  }
-  #likeBtn:hover {
-    color: #f00;
-    transform: scale(1.2);
-  }
-  #likeBtn:disabled {
-    color: #666;
-    cursor: not-allowed;
-  }
-
-  /* Testo informativo */
-  #risolution, #typeInfo {
-    max-width: 90%;
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 8px 0;
-    opacity: 0.9;
-    word-wrap: break-word;
-  }
-
-  /* Animazione DNA in basso a sinistra */
-  .material {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: auto;
-    display: flex;
-    gap: 2px;
-  }
-  .dna {
-    width: 3px;
-    height: 20px;
-    background: #0f0;
-    border-radius: 2px;
-    opacity: 0.6;
-    animation: dnaBlink 1.4s infinite alternate;
-  }
-  @keyframes dnaBlink {
-    from { opacity: 0.3; }
-    to { opacity: 0.8; }
-  }
-
-/* Contenitore in riga */
-  .header-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px; /* spazio tra testo e pulsante */
-  margin-bottom: 15px;
-  flex-wrap: nowrap; /* evita il wrap su schermi piccoli */
-  white-space: nowrap; /* mantiene tutto sulla stessa riga se possibile */
-}
-
-/* Assicura che il pulsante non diventi un blocco */
-.header-row button {
-  white-space: nowrap;
-}
+/* Stili specifici per la finestra Your O.S. */
+#closeBtn{ position: absolute; top: 10px; right: 10px; font-size: 30px; font-weight: bold; background: none; border: none; color: rgb(212, 211, 211); cursor: pointer; z-index: 10; padding: 0; line-height: 1; transition: color 0.2s;}
+#closeBtn:hover, #closeBtn:focus{ color: #0f0; outline: 2px solid #0f0; outline-offset: 2px;}
+body{ margin: 0; padding: 20px; background-color: #000; color: rgb(212, 211, 211); font-family: 'Sansation', sans-serif; overflow: hidden; width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; text-align: left; font-size: 16px; position: relative;}
+.biotechbold{ font-size: 28px; letter-spacing: 2px; text-shadow: 0 0 10px #0f0; margin-bottom: 10px;}
+#likeBtn{ font-size: 20px; background: none; border: none; cursor: pointer; color: #0f0; margin-bottom: 15px; transition: transform 0.2s;}
+#likeBtn:hover{ color: #f00; transform: scale(1.2);}
+#likeBtn:disabled{ color: #666; cursor: not-allowed;}
+#risolution, #typeInfo{ max-width: 90%; font-size: 14px; line-height: 1.5; margin: 8px 0; opacity: 0.9; word-wrap: break-word;}
+.header-row { display: flex; flex-direction: row; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: nowrap; white-space: nowrap;}
+.header-row button{ white-space: nowrap}
 </style>   
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" id="main-css">
   <noscript>
@@ -142,8 +25,6 @@
 <link rel="icon" href="/favicon.ico">
 </head>
 <body class="biotechbody">
-<div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
-
   <button id="closeBtn" onclick="window.close()" aria-label="Chiudi finestra di supporto (tasto Enter)" title="Chiudi (tasto Enter)">
     &times;
   </button>
@@ -153,20 +34,7 @@
 </div>
   <p id="risolution" class="text"></p>
   <p id="typeInfo" class="text"></p>
-
-  <div class="material">
-    <div class="dna"></div><div class="dna"></div><div class="dna"></div>
-    <div class="dna"></div><div class="dna"></div><div class="dna"></div>
-    <div class="dna"></div><div class="dna"></div>
-    <div class="dna"></div><div class="dna"></div><div class="dna"></div>
-    <div class="dna"></div><div class="dna"></div><div class="dna"></div>
-    <div class="dna"></div><div class="dna"></div><div class="dna"></div>
-    <div class="dna"></div><div class="dna"></div>
-  </div>
-
-
-  <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
-
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
   <script>
     // === 1. Applica il CSS principale in background ===
     const link = document.getElementById('main-css');
@@ -216,32 +84,17 @@
           ],
           speed: 50,
           waitUntilVisible: true,
-          startDelay: 300, // leggero ritardo per dare tempo a tutto di stabilizzarsi
+          startDelay: 300,
           afterStep: () => {
             // Assicura che il testo sia visibile
             document.getElementById("typeInfo").style.opacity = "1";
           }
         }).go();
       }
-
-      // --- Carica e inizializza le particelle ---
-      const script = document.createElement("script");
-      script.src = "https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js";
-      script.onload = () => {
-        if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {
-          initParticles("particles-canvas", {
-            count: 50,
-            speed: 1
-          });
-        }
-      };
-      document.body.appendChild(script);
     });
 
     // === 3. Pre-carica il CSS in background senza bloccare nulla ===
-    // Il preload nel <head> lo fa già, forziamo l'applicazione non appena pronto
     // Impostato link.rel = 'stylesheet' dopo onload
   </script>
-
 </body>
-</html>   
+</html>  

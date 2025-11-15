@@ -15,17 +15,8 @@
       color: #d4d3d3;
       font-family: 'Sansation', sans-serif;
       min-height: 100%;
-      overflow: hidden;
+      /* overflow: hidden; Momentaneamente rimosso */
       position: relative;
-    }
-
-    #particles-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
     }
 
     /* === Testo in alto a sinistra (originale) === */
@@ -130,11 +121,7 @@
   </noscript>
 </head>
 <body>
-
-  <!-- === CANVAS PARTICELLE === -->   
-  <div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
-
-  <!-- === INFO IN ALTO A SINISTRA === -->
+<!-- === INFO IN ALTO A SINISTRA === -->
   <div class="info-container">
    <button id="closeBtn" onclick="window.close()" aria-label="Chiudi finestra di supporto (tasto Enter)" title="Chiudi (tasto Enter)">
     &times;
@@ -244,16 +231,6 @@
           document.removeEventListener('mousedown', removeKeyboard);
         };
         document.addEventListener('mousedown', removeKeyboard, { once: true });
-      }
-    });
-  </script>
-
-  <!-- === SCRIPT: Particelle === -->
-  <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-particles.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (typeof initParticles === "function" && document.getElementById("particles-canvas")) {
-        initParticles("particles-canvas", { count: 50, speed: 1 });
       }
     });
   </script>
