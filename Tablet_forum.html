@@ -1,145 +1,47 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Biotech Chat - Contatta il nostro team di supporto, siamo qui per aiutarti!">
-  <title>Biotech Chat</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Biotech Chat - Contatta il nostro team di supporto, siamo qui per aiutarti!">
+<title>Biotech Chat</title>
 <!-- === CRITICAL CSS INLINE === -->
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #000f16;
-      color: #d4d3d3;
-      font-family: 'Sansation', sans-serif;
-      min-height: 100%;
-      /* overflow: hidden; Momentaneamente rimosso */
-      position: relative;
-    }
-
-    /* === Testo in alto a sinistra (originale) === */
-    .info-container {
-      position: fixed;
-      top: 10px;
-      left: 20px;
-      z-index: 10;
-      max-width: 600px;
-      font-size: 14px;
-      line-height: 1.5;
-      padding: 0;
-      margin: 0;
-    }
-
-    .biotechbold {
-      font-weight: bold;
-      color: #00eaff;
-    }
-
-    .text {
-      color: #d4d3d3;
-      margin: 4px 0;
-    }
-
-    .info-container a {
-      color: #00eaff;
-      text-decoration: none;
-    }
-
-    .info-container a:hover {
-      text-decoration: underline;
-    }
-
+html, body{ margin: 0; padding: 0; background: #000f16; color: #d4d3d3; font-family: 'Sansation', sans-serif; min-height: 100%; position: relative;}
+/* === Testo in alto a sinistra (originale) === */
+.info-container{ position: fixed; top: 10px; left: 20px; z-index: 10; max-width: 600px; font-size: 14px; line-height: 1.5; padding: 0; margin: 0;}
+.biotechbold{ font-weight: bold; color: #00eaff;}
+.text{ color: #d4d3d3; margin: 4px 0;}
+.info-container a{ color: #00eaff; text-decoration: none;}
+.info-container a:hover{ text-decoration: underline;}
 /* --- NUOVO STILE per il pulsante di chiusura --- */
-  #closeBtn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    background: none;
-    border: none;
-    color: rgb(212, 211, 211);
-    cursor: pointer;
-    z-index: 10;
-    padding: 0;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-
-  #closeBtn:hover,
-  #closeBtn:focus {
-    color: #0f0;
-    outline: 2px solid #0f0;
-    outline-offset: 2px;
-  }
-  /* ... (Fine pulsante chiusura) ... */
-
-    /* === Form chat === */
-    #formChat {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s;
-    }
-
-    body.loaded #formChat {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* === Pulsante apri chat === */
-    .open-button {
-      display: block;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #00eaff;
-      color: #000f16;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 234, 255, 0.3);
-      z-index: 100;
-      font-family: 'Sansation', sans-serif;
-    }
-
-    .open-button:hover {
-      background-color: #00ffff;
-    }
-  </style>
-
-  <!-- === PRELOAD CSS ESTERNI === -->
-  <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-  <noscript>
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css">
-    <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
-  </noscript>
+#closeBtn{ position: absolute; top: 10px; right: 10px; font-size: 30px; font-weight: bold; background: none; border: none; color: rgb(212, 211, 211); cursor: pointer; z-index: 10; padding: 0; line-height: 1; transition: color 0.2s;}
+#closeBtn:hover, #closeBtn:focus{ color: #0f0; outline: 2px solid #0f0; outline-offset: 2px;}
+/* ... (Fine pulsante chiusura) ... */
+/* === Form chat === */
+#formChat{ opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s;}
+body.loaded #formChat{ opacity: 1; visibility: visible;}
+/* === Pulsante apri chat === */
+.open-button{ display: block; position: fixed; bottom: 20px; right: 20px; background-color: #00eaff; color: #000f16; border: none; padding: 12px 20px; font-size: 16px; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 234, 255, 0.3); z-index: 100; font-family: 'Sansation', sans-serif;}
+.open-button:hover{ background-color: #00ffff;}
+</style>
+<!-- === PRELOAD CSS ESTERNI === -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
+</noscript>
 </head>
 <body>
 <!-- === INFO IN ALTO A SINISTRA === -->
-  <div class="info-container">
-   <button id="closeBtn" onclick="window.close()" aria-label="Chiudi finestra di supporto (tasto Enter)" title="Chiudi (tasto Enter)">
+<div class="info-container">
+<button id="closeBtn" onclick="window.close()" aria-label="Chiudi finestra di supporto (tasto Enter)" title="Chiudi (tasto Enter)">
     &times;
   </button> 
-    <!-- Testo statico -->
-    <p class="text">
-      <span class="biotechbold">Biotech Chat Window</span><br>
-      Clicca sul pulsante 'Chat' per iniziare una conversazione con il nostro team di supporto.<br>
-      Siamo qui per aiutarti con qualsiasi domanda o problema tu possa avere.<br>
-      Siamo online dalle 09:00 alle 18:00, dal lunedì al venerdì.<br>
-      Se ci contatti al di fuori di questi orari, ti risponderemo il giorno lavorativo successivo.<br>
-      Per favore assicurati del tuo indirizzo email corretto, in modo da poter rispondere al tuo messaggio.<br>
-      Non condividere informazioni personali sensibili come password o dati bancari tramite questa chat.<br>
-      Per ulteriori informazioni, visita la pagina del 
-      <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" target="_blank">team di supporto</a>.<br>
-      Grazie per il tuo interesse!<br>
-      Se ti piace questo progetto, apprezziamo il tuo feedback.
-    </p>
+<!-- Testo statico -->
+<p class="text"><span class="biotechbold">Biotech Chat Window</span><br>Clicca sul pulsante 'Chat' per iniziare una conversazione con il nostro team di supporto.<br>Siamo qui per aiutarti con qualsiasi domanda o problema tu possa avere.<br>Siamo online dalle 09:00 alle 18:00, dal lunedì al venerdì.<br>Se ci contatti al di fuori di questi orari, ti risponderemo il giorno lavorativo successivo.<br>Per favore assicurati del tuo indirizzo email corretto, in modo da poter rispondere al tuo messaggio.<br>Non condividere informazioni personali sensibili come password o dati bancari tramite questa chat.<br>Per ulteriori informazioni, visita la pagina del <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" target="_blank">team di supporto</a>.<br>Grazie per il tuo interesse!<br>Se ti piace questo progetto, apprezziamo il tuo feedback. </p>
     <!-- === FORM SODDISFAZIONE === -->
 <div id="satisfactionForm" style="margin:15px 0; padding:12px; background:#0f1b22; border:1px solid #00eaff; border-radius:6px; font-size:14px; color:#d4d3d3; text-align:center; max-width: 70%; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
     backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);">
@@ -155,11 +57,10 @@
   </button>
 </div>
   </div>
+<!-- === MODAL CHAT === -->
+<button class="open-button" onclick="openForm()">💬 Chat</button>
 
-  <!-- === MODAL CHAT === -->
-  <button class="open-button" onclick="openForm()">💬 Chat</button>
-
-  <div class="chat-popup" id="formChat" tabindex="-1" style="background: #000f16; display: none;">
+<div class="chat-popup" id="formChat" tabindex="-1" style="background: #000f16; display: none;">
     <form id="chatForm" class="form-container keyboard-ui" autocomplete="off" action="https://formspree.io/f/mrblazog" method="POST">
       <p class="emphasytile">Contatta Biotech</p>
       <div class="chat-messages" id="chatMessages"></div>
@@ -171,8 +72,7 @@
       <div id="chatStatus" class="chat-status"></div>
     </form>
   </div>
-
-  <!-- === SCRIPT: Form di chat === -->
+<!-- === SCRIPT: Form di chat === -->
   <script>
     function openForm() {
       document.getElementById("formChat").style.display = "block";
@@ -286,6 +186,5 @@ document.getElementById('sendFeedback').addEventListener('click', async () => {
   }
 });
 </script>      
-
 </body>
 </html>   
