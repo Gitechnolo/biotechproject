@@ -1,7 +1,7 @@
-*, /* Reset globale */
-*::before,
-*::after {margin: 0; padding: 0; box-sizing: border-box;}
-body, html {max-width: 100vw !important; overflow-x: hidden !important; width: 100%; margin: 0; padding: 0;}   
+/* 1. RESET UNIVERSALE (Box Model e Azzeramento) */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+/* 2. LAYOUT GLOBALE (Anti-Scroll Orizzontale) */
+body,html{width:100%;max-width:100vw;overflow-x:hidden}  
 /* Element natural */
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; size-adjust: 95%;}
