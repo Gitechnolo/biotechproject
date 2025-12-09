@@ -10,10 +10,17 @@ function loadAndPlayVideo() {
   video.controls = false;
   video.preload = 'metadata';
   video.poster = img.src;
+  
+  // *** MODIFICHE PER IL RIDIMENSIONAMENTO RESPONSIVE (INIZIO) ***
+  // Rimosse video.style.height = 'auto'; e video.style.maxHeight = '600px'; 
+  // Il CSS ora gestisce l'altezza con position: absolute e height: 100% 
+  // rispetto al contenitore Aspect Ratio.
   video.style.width = '100%';
-  video.style.height = 'auto';
+  // video.style.height = 'auto'; // <--- RIMOSSO!
   video.style.display = 'block';
-  video.style.maxHeight = '600px';
+  // video.style.maxHeight = '600px'; // <--- RIMOSSO!
+  // *** MODIFICHE PER IL RIDIMENSIONAMENTO RESPONSIVE (FINE) ***
+  
   video.style.borderRadius = '8px';
   video.setAttribute('playsinline', ''); // Importante per iOS
 
@@ -36,7 +43,7 @@ function loadAndPlayVideo() {
   initializeVideoControls(video, controls);
 }
 
-// Funzione per gestire i controlli personalizzati
+// Funzione per gestire i controlli personalizzati (nessuna modifica necessaria qui)
 function initializeVideoControls(video, controls) {
   if (!controls) return;
 
@@ -48,8 +55,8 @@ function initializeVideoControls(video, controls) {
   const volumeControl = controls.querySelector('#ytVolume');
   const muteBtn = controls.querySelector('#ytMute');
   const muteIcon = controls.querySelector('#ytMuteIcon');
-  const fullscreenBtn = controls.querySelector('#ytFullscreen');  // ✅ Preso l'elemento
-  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen'); // ✅ Aggiunto anche questo
+  const fullscreenBtn = controls.querySelector('#ytFullscreen'); 
+  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen');
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
@@ -130,7 +137,7 @@ function initializeVideoControls(video, controls) {
 
   // Gestione uscita fullscreen
   document.addEventListener('fullscreenchange', () => {
-    if (document.fullscreenElement === video) {
+    if (document.fullscreenElement) {
       fullscreenBtn.style.display = 'none';
       exitFullscreenBtn.style.display = 'flex';
     } else {
