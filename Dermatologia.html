@@ -102,12 +102,6 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 .grid-container, .grid-container50, .grid-container20x80 {display: grid; gap: 1rem; grid-template-columns: 1fr; /* Singola colonna su mobile */}
 @media (min-width: 768px) {.grid-container { grid-template-columns: 37% 31% 31%; } .grid-container50 { grid-template-columns: 1fr 1fr; } .grid-container20x80 { grid-template-columns: 20% 80%; }}   
-.table-responsive-wrapper {
-    /* Permette lo scorrimento orizzontale se la tabella interna è più larga del device */
-    overflow-x: auto; 
-    /* Migliora lo scorrimento su dispositivi touch iOS */
-    -webkit-overflow-scrolling: touch; 
-}
 .imgRightfl, .imgLeftfl {display: flex; margin: 10px;}
 .imgRightfl {margin-left: auto;}
 .imgLeftfl {margin-right: auto;}   
@@ -174,7 +168,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
       <div class="staff-container">
 <h1 class="sansation-bold" data-lang-key="dermatology-title">DERMATOLOGIA</h1>
 <p class="text" data-lang-key="dermatology-description">La dermatologia è la branca della medicina che si occupa dello studio, della diagnosi e del trattamento delle malattie della pelle, dei capelli e delle unghie.<br>Essa comprende una vasta gamma di condizioni, dalle più comuni come acne e dermatiti, a malattie più complesse come psoriasi e melanoma.</p>   
-<div class="table-responsive-wrapper"><table><tr><td><figure style="margin: 0; display: inline-block;"><img id="myImg5" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/organizzazione.png" alt="Organizzazione : cellula, tessuti, organi, sistemi, apparati" width="794" height="1123" style="border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); max-width:300px; height:auto;" tabindex="0"><figcaption class="sansation-light-italic">Figura 1: Organizzazione organismo umano</figcaption></figure></td></tr></table></div>
+<div class="image-container" style="margin: 20px 0;"><figure style="margin: 0; display: inline-block;"><img id="myImg5" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/organizzazione.png" alt="Organizzazione : cellula, tessuti, organi, sistemi, apparati" width="794" height="1123" style="border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); max-width:300px; height:auto;" tabindex="0"><figcaption class="sansation-light-italic">Figura 1: Organizzazione organismo umano</figcaption></figure></div>
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title" class="sr-only">Immagine ingrandita</h2><span class="close" tabindex="0">&times;</span><img class="modal-content" id="img01"><div id="caption"></div></div>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
 <span class="highlight" data-lang-key="tissues_title">I tessuti</span>
