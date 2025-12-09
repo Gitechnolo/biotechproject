@@ -374,21 +374,6 @@ img.hover-shadow {transition: 0.3s;}
 .yt-vol {width:80px;accent-color:#e50914;}
 #ytVideoContainer {max-width:600px; margin-left:0; margin-right:auto;}
 #ytVideo {display:block; width:100%; max-width:600px; margin-left:0; background:transparent; border:none; box-shadow:none;}
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  width: 100%;
-}
-.video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}   
 /* End Video */
 /* Popup info container - can be anything you want */
 .popup {position: relative; display: inline-block; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
