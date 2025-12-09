@@ -4,39 +4,36 @@ function loadAndPlayVideo() {
   const img = document.getElementById('videoPoster');
   if (!img) return;
 
-  // Crea l'elemento video
+  // Crea contenitore responsive
+  const responsiveContainer = document.createElement('div');
+  responsiveContainer.className = 'video-container';
+
+  // Crea video
   const video = document.createElement('video');
   video.id = 'ytVideo';
   video.controls = false;
   video.preload = 'metadata';
   video.poster = img.src;
-  video.style.width = '100%';
-  video.style.height = 'auto';
-  video.style.display = 'block';
-  video.style.maxHeight = '600px';
+  video.setAttribute('playsinline', '');
   video.style.borderRadius = '8px';
-  video.setAttribute('playsinline', ''); // Importante per iOS
 
-  // Sorgente video (Auto del futuro)
+  // Sorgente MP4
   const source = document.createElement('source');
   source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
   source.type = 'video/mp4';
   video.appendChild(source);
 
-  // Sostituisci l'immagine con il video
-  container.replaceChild(video, img);
+  // Aggiunge video al contenitore
+  responsiveContainer.appendChild(video);
+  container.replaceChild(responsiveContainer, img);
 
-  // Mostra i controlli
+  // Mostra controlli
   const controls = document.querySelector('.yt-video-controls');
-  if (controls) {
-    controls.style.display = 'flex';
-  }
+  if (controls) controls.style.display = 'flex';
 
-  // Inizializza i controlli
   initializeVideoControls(video, controls);
 }
 
-// Funzione per gestire i controlli personalizzati
 function initializeVideoControls(video, controls) {
   if (!controls) return;
 
@@ -48,8 +45,8 @@ function initializeVideoControls(video, controls) {
   const volumeControl = controls.querySelector('#ytVolume');
   const muteBtn = controls.querySelector('#ytMute');
   const muteIcon = controls.querySelector('#ytMuteIcon');
-  const fullscreenBtn = controls.querySelector('#ytFullscreen');  // ✅ Preso l'elemento
-  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen'); // ✅ Aggiunto anche questo
+  const fullscreenBtn = controls.querySelector('#ytFullscreen');
+  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen');
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
@@ -57,24 +54,14 @@ function initializeVideoControls(video, controls) {
     return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   }
 
-  // Play/Pause
   playPauseBtn?.addEventListener('click', () => {
-    if (video.paused) {
-      video.play().catch(e => console.error("Errore riproduzione:", e));
-    } else {
-      video.pause();
-    }
+    if (video.paused) video.play().catch(e => console.error("Errore:", e));
+    else video.pause();
   });
 
-  video.addEventListener('play', () => {
-    playPauseIcon.textContent = '⏸️';
-  });
+  video.addEventListener('play', () => playPauseIcon.textContent = '⏸️');
+  video.addEventListener('pause', () => playPauseIcon.textContent = '▶️');
 
-  video.addEventListener('pause', () => {
-    playPauseIcon.textContent = '▶️';
-  });
-
-  // Progresso
   video.addEventListener('timeupdate', () => {
     progressBar.value = video.currentTime;
     currentTime.textContent = formatTime(video.currentTime);
@@ -90,45 +77,25 @@ function initializeVideoControls(video, controls) {
     video.currentTime = progressBar.value;
   });
 
-  // Volume
   volumeControl?.addEventListener('input', () => {
     video.volume = volumeControl.value;
     muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
   });
 
-  video.addEventListener('volumechange', () => {
-    muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
-  });
-
-  // Mute/Unmute
   muteBtn?.addEventListener('click', () => {
     video.muted = !video.muted;
-    muteIcon.textContent = video.muted ? '🔇' : '🔊';
   });
 
-  // Fullscreen
   fullscreenBtn?.addEventListener('click', () => {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    }
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
   });
 
-  // Exit Fullscreen
   exitFullscreenBtn?.addEventListener('click', () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
   });
 
-  // Gestione uscita fullscreen
   document.addEventListener('fullscreenchange', () => {
     if (document.fullscreenElement === video) {
       fullscreenBtn.style.display = 'none';
@@ -139,17 +106,9 @@ function initializeVideoControls(video, controls) {
     }
   });
 
-  // Tasti rapidi
   video.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
-      playPauseBtn?.click();
-      e.preventDefault();
-    } else if (e.code === 'KeyM') {
-      muteBtn?.click();
-      e.preventDefault();
-    } else if (e.code === 'KeyF') {
-      fullscreenBtn?.click();
-      e.preventDefault();
-    }
+    if (e.code === 'Space') { playPauseBtn?.click(); e.preventDefault(); }
+    else if (e.code === 'KeyM') { muteBtn?.click(); e.preventDefault(); }
+    else if (e.code === 'KeyF') { fullscreenBtn?.click(); e.preventDefault(); }
   });
-}   
+}      
