@@ -10,15 +10,10 @@ function loadAndPlayVideo() {
   video.controls = false; // Disabilita i controlli nativi
   video.preload = 'metadata';
   video.poster = img.src;
-  
-  // *** MODIFICHE PER IL RIDIMENSIONAMENTO RESPONSIVE (INIZIO) ***
-  // Manteniamo solo la larghezza al 100% e display: block.
-  // Rimuoviamo video.style.height = 'auto'; e video.style.maxHeight = '600px'; 
-  // perché ora il CSS gestisce l'altezza proporzionale (16:9) e la max-width.
-  video.style.width = '100%'; 
+  video.style.width = '100%';
+  video.style.height = 'auto';
   video.style.display = 'block';
-  // *** MODIFICHE PER IL RIDIMENSIONAMENTO RESPONSIVE (FINE) ***
-  
+  video.style.maxHeight = '600px';
   video.style.borderRadius = '8px';
   video.setAttribute('playsinline', ''); // Importante per iOS
 
@@ -151,15 +146,10 @@ function initializeVideoControls(video, controls) {
 
   // Gestione fullscreen change
   document.addEventListener('fullscreenchange', () => {
-    // Nota: Nello schema con Aspect Ratio fisso, è più comune mettere il fullscreen sul CONTAINER (#ytVideoContainer)
-    // Se il video va in fullscreen, è probabile che tu debba richiedere il fullscreen sul video stesso.
-    // L'implementazione attuale qui (controllando solo document.fullscreenElement === video) è standard.
-    if (document.fullscreenElement) {
-      // In modalità fullscreen
+    if (document.fullscreenElement === video) {
       fullscreenBtn.style.display = 'none';
       exitFullscreenBtn.style.display = 'flex';
     } else {
-      // Uscito dalla modalità fullscreen
       fullscreenBtn.style.display = 'flex';
       exitFullscreenBtn.style.display = 'none';
     }

@@ -367,53 +367,13 @@ img {margin-bottom: -4px;}
 img.hover-shadow {transition: 0.3s;}
 .hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 /* Video Biomassa */
-.yt-video-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #181818;
-    padding: 10px 12px;
-    border-radius: 0 0 10px 10px;
-    
-    /* === NUOVE PROPRIETÀ CHIAVE: Posizionamento sul fondo del contenitore === */
-    position: absolute; 
-    bottom: 0;          /* Ancorati al fondo */
-    left: 0;            /* Ancorati a sinistra */
-    width: 100%;        /* Occupa l'intera larghezza del contenitore */
-    z-index: 10;        /* Assicura che siano sopra il video */
-    box-sizing: border-box; /* Previene overflow dovuto al padding */
-}
+.yt-video-controls {display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;max-width:600px;margin-left:0;position:relative;top:-6px;}
 .yt-range {flex:1 1 180px;accent-color:#e50914;height:4px;background:#222;border-radius:2px;outline:none;margin:0 6px;}
 .yt-Ctime {color:#fff;font-size:0.95em;min-width:38px;text-align:right;}
 .yt-video-duration {color:#fff;font-size:0.95em;min-width:38px;text-align:right;}
 .yt-vol {width:80px;accent-color:#e50914;}
-#ytVideoContainer {
-    max-width: 600px;
-    margin-left: 0;
-    margin-right: auto;
-    
-    /* === NUOVE PROPRIETÀ CHIAVE per Aspect Ratio (16:9) === */
-    position: relative;     /* Necessario per posizionare i contenuti interni */
-    width: 100%;            /* Occupa il 100% dello spazio disponibile (fino a 600px) */
-    height: 0;              /* Altezza annullata, definita dal padding */
-    padding-bottom: 56.25%; /* (9 / 16) * 100 = 56.25% */
-    overflow: hidden;       /* Nasconde eventuali bordi */
-}
-#ytVideo,
-#videoPoster {
-    display: block; 
-    /* Rimuoviamo max-width e margin-left: devono riempire l'elemento padre al 100% */
-    background: transparent; 
-    border: none; 
-    box-shadow: none;
-    
-    /* === NUOVE PROPRIETÀ CHIAVE: Riempimento del contenitore Aspect Ratio === */
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+#ytVideoContainer {max-width:600px; margin-left:0; margin-right:auto;}
+#ytVideo {display:block; width:100%; max-width:600px; margin-left:0; background:transparent; border:none; box-shadow:none;}
 /* End Video */
 /* Popup info container - can be anything you want */
 .popup {position: relative; display: inline-block; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
