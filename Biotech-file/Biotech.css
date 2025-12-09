@@ -367,70 +367,14 @@ img {margin-bottom: -4px;}
 img.hover-shadow {transition: 0.3s;}
 .hover-shadow:hover {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 /* Video Biomassa */
-#ytVideoContainer {
-  max-width: 100%;
-  width: 100%;
-  margin-left: 0;
-  margin-right: auto;
-  overflow: hidden;
-}
-
-#ytVideo {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.yt-video-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #181818;
-  padding: 10px 12px;
-  border-radius: 0 0 10px 10px;
-  width: 100%;
-  max-width: 100%;
-  margin-left: 0;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-}
-
-.yt-range {
-  flex: 1 1 120px;
-  accent-color: #e50914;
-  height: 4px;
-  background: #222;
-  border-radius: 2px;
-  outline: none;
-  margin: 0 6px;
-}
-
-.yt-Ctime, .yt-video-duration {
-  color: #fff;
-  font-size: 0.95em;
-  min-width: 38px;
-  text-align: right;
-}
-
-.yt-vol {
-  flex: 1 1 80px;
-  accent-color: #e50914;
-}
-
-/* Adattamento per schermi piccoli */
-@media (max-width: 600px) {
-  .yt-video-controls {
-    padding: 8px;
-    gap: 6px;
-  }
-  .yt-Ctime, .yt-video-duration {
-    font-size: 0.85em;
-  }
-}
+#ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
+#ytVideo{display:block;width:100%;height:auto;max-width:100%;background:transparent;border:none;box-shadow:none;}
+.yt-video-controls{display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;width:100%;max-width:100%;margin-left:0;box-sizing:border-box;flex-wrap:wrap;}
+.yt-range{flex:1 1 120px;accent-color:#e50914;height:4px;background:#222;border-radius:2px;outline:none;margin:0 6px;}
+.yt-Ctime,.yt-video-duration{color:#fff;font-size:.95em;min-width:38px;text-align:right;}
+.yt-vol{flex:1 1 80px;accent-color:#e50914;}
+/* Adattamento Video per schermi piccoli */
+@media (max-width:600px){.yt-video-controls{padding:8px;gap:6px}.yt-Ctime,.yt-video-duration{font-size:.85em}}
 /* End Video */   
 /* Popup info container - can be anything you want */
 .popup {position: relative; display: inline-block; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
