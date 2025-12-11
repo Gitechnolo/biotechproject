@@ -1133,7 +1133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
 
 // =======================================
-// SALUTO SETTIMANALE (biotech_week.min.js integrato) 🔥🔥🔥 - OTTIMIZZATO
+// SALUTO SETTIMANALE (biotech_week.min.js integrato) - OTTIMIZZATO
 // =======================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1191,7 +1191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = titles[lang] || baseTitle;
     const greeting = greetings[lang][greetingIndex];
     
-    // 🔥 OTTIMIZZAZIONE: Posticipa l'iniezione pesante del DOM
+    // OTTIMIZZAZIONE: Posticipa l'iniezione pesante del DOM
     window.requestAnimationFrame(() => {
         const daySpans = createSpans(message, 26);
         const titleSpans = createSpans(title, 1);
