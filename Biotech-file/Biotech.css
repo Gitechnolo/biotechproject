@@ -334,7 +334,7 @@ html {box-sizing: border-box;}
 .modal-content, #caption {animation-name: zoom; animation-duration: 0.6s;}
 @keyframes zoom {from {transform: scale(0.1)} to {transform: scale(1)}}
 /* The Close Button */
-.close {position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s;}
+.close {position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; z-index: 10002;}
 .close:hover,.close:focus {color: #bbb; text-decoration: none; cursor: pointer;}
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){.modal-content {width: 100%;}}
