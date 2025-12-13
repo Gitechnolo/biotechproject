@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageIds = ["myImg", "myImg2", "myImg3", "myImg4", "myImg5", "myImg6"];
 
   // ✅ 4. Collega gli eventi (SOLO Click) a ogni immagine esistente
-  // NON aggiungiamo il listener 'keyup' qui, dato che l'apertura da tastiera è gestita dal link <a> nel DOM.
+  // L'apertura da tastiera è gestita dal link <a> nel DOM.
   imageIds.forEach(function (imgId) {
     const img = document.getElementById(imgId);
     if (img) {
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openModal(this);
       });
 
-      // 🛑 Rimossa la sezione "keyup" precedente che causava conflitti e chiusura immediata.
+      // 🛑 Listener 'keyup' rimosso per evitare conflitti con l'apertura da tastiera del link <a>.
     }
   });
 
@@ -247,7 +247,8 @@ document.addEventListener("DOMContentLoaded", function () {
   closeBtn.onclick = closeModal;
   
   // 2. Evento: Chiusura da tastiera (Enter o Space) sulla "X"
-  closeBtn.addEventListener("keyup", function (event) {
+  // MODIFICA CRITICA: Uso keydown invece di keyup per prevenire chiusure accidentali subito dopo l'apertura da tastiera.
+  closeBtn.addEventListener("keydown", function (event) { 
       if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           closeModal(); 
