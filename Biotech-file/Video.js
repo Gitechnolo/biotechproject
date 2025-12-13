@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- INIZIALIZZAZIONE ---
 
   // ✅ 3. Lista degli ID delle immagini da gestire
-  const imageIds = ["myImg", "myImg2", "myImg3", "myImg4", "myImg5", "myImg6"];
+  const imageIds = ["myImg", "myImg2", "myImg3", "myImg4"];
 
   // ✅ 4. Collega gli eventi (SOLO Click) a ogni immagine esistente
   // L'apertura da tastiera è gestita dal link <a> nel DOM.
