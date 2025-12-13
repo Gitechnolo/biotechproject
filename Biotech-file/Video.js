@@ -228,22 +228,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // ✅ 3. Lista degli ID delle immagini da gestire
   const imageIds = ["myImg", "myImg2", "myImg3", "myImg4", "myImg5", "myImg6"];
 
-  // ✅ 4. Collega gli eventi (Click e Keyup) a ogni immagine esistente
+  // ✅ 4. Collega gli eventi (SOLO Click) a ogni immagine esistente
+  // NON aggiungiamo il listener 'keyup' qui, dato che l'apertura da tastiera è gestita dal link <a> nel DOM.
   imageIds.forEach(function (imgId) {
     const img = document.getElementById(imgId);
     if (img) {
-      // 1. Evento: Click del mouse (USA LA NUOVA FUNZIONE openModal)
+      // 1. Evento: Click del mouse (Necessario per l'apertura simulata dal link <a>)
       img.addEventListener("click", function () {
         openModal(this);
       });
 
-      // 2. Evento: Apertura da tastiera (Enter o Space)
-      img.addEventListener("keyup", function (event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault(); // Impedisce lo scorrimento
-          openModal(this); 
-        }
-      });
+      // 🛑 Rimossa la sezione "keyup" precedente che causava conflitti e chiusura immediata.
     }
   });
 
