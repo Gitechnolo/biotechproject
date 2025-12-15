@@ -93,7 +93,7 @@ a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-s
 a:visited {color: rgb(116, 9, 116); /* Solo il colore cambia */}
 a:hover, a:focus {color: #a7ffeb; /* Leggero aumento dell'effetto */text-shadow: 0 0 6px rgba(138, 43, 226, 0.8), 0 0 10px rgba(138, 43, 226, 0.5);}
 a:active {color: #fffb00;}
-img {border-radius: 6px;}   
+img {border-radius: 6px; max-width: 100%; height: auto; display: block;}   
 p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); transition: color 1.3s, text-shadow 1.8s; cursor: default;}
 p:hover {color: #ffffff; text-shadow: 0 0 4px rgba(138, 43, 226, 0.5), 0 0 6px rgba(138, 43, 226, 0.2); transition: color 0.3s ease, text-shadow 0.3s ease; cursor: default;}
 @media (prefers-reduced-motion: reduce) {p:hover {transition: none;}} /* Disabilita animazione p:hover per chi le vuole ridotte */
