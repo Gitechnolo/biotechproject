@@ -2,7 +2,7 @@
 *::before,
 *::after {margin: 0; padding: 0; box-sizing: border-box;}
 body, html {max-width: 100vw !important; overflow-x: hidden !important;}
-/* Element natural */
+/* --- Importazione font personalizzati --- */
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Sansation'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2'); font-weight: bold; font-style: normal; font-display: swap; size-adjust: 95%;}
@@ -11,6 +11,35 @@ body, html {max-width: 100vw !important; overflow-x: hidden !important;}
 @font-face {font-family: 'Atkinson Hyperlegible'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/AtkinsonHyperlegible-Bold.woff2') format('woff2'); font-weight: bold; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Atkinson Hyperlegible'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/AtkinsonHyperlegible-Regular.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Atkinson Hyperlegible'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/AtkinsonHyperlegible-Italic.woff2') format('woff2'); font-weight: normal; font-style: italic; font-display: swap; size-adjust: 95%;}      
+/* --- Scrollbar Elegante Universale --- */
+
+/* Supporto Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a7ffeb rgba(0, 21, 22, 0.5);
+}
+
+/* Supporto Chrome, Edge, Safari (Webkit) */
+::-webkit-scrollbar {
+    width: 8px;  /* Per scroll verticale */
+    height: 6px; /* Per lo scroll orizzontale (es. contenitore fegato) */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 21, 22, 0.5); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a7ffeb;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 21, 22, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #80cbc4; /* Un tono leggermente più scuro al passaggio del mouse */
+}
+/* End scrollbar */
 /* Gradient text - Indica che si apre un'immagine - Transizione morbida per lo zoom*/
 @property --color-1 {syntax: "<color>"; inherits: false; initial-value: hsl(98 100% 62%);}
 @property --color-2 {syntax: "<color>"; inherits: false; initial-value: hsl(204 100% 59%);}
@@ -296,30 +325,34 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 0.5s ease-in-out;}
 #fadingText.fade {opacity: 0;}
 /* End element id */
-/* Scrollbar fegato fluida */
+/* Scrollbar fegato fluida - Versione snellita */
 div.scroll-container {
     border: 1px solid rgba(204, 204, 204, 0.2); 
     border-radius: 8px; 
     background-color: transparent; 
-    overflow-x: auto; /* Forza lo scroll orizzontale */
+    overflow-x: auto; 
     overflow-y: hidden; 
     white-space: nowrap; 
     padding: 10px;
-    scrollbar-width: thin; /* Scrollbar elegante per Firefox */
-    scrollbar-color: #a7ffeb transparent;
+    /* Non serve più definire i colori qui, li prende dal globale! */
 }
 
-/* Personalizzazione scrollbar per Chrome/Safari */
-div.scroll-container::-webkit-scrollbar { height: 6px; }
-div.scroll-container::-webkit-scrollbar-thumb { background: #a7ffeb; border-radius: 10px; }
-
 div.scroll-container img {
-    display: inline-block; /* Fondamentale per white-space: nowrap */
+    display: inline-block;
     padding: 5px;
     height: auto; 
-    max-width: 90%; /* Permette di vedere un pezzetto della successiva */
+    /* Su desktop mostra quasi tutta l'immagine, su mobile ne mostra un pezzo della successiva */
+    width: 85%; 
+    max-width: 600px; /* Evita che su schermi enormi l'immagine diventi gigante */
     vertical-align: middle;
     border-radius: 10px;
+}
+
+/* Ottimizzazione per Desktop: mostra più immagini se c'è spazio */
+@media only screen and (min-width: 1024px) {
+    div.scroll-container img {
+        width: 45%; /* Ne mostra circa 2 alla volta */
+    }
 }
 /* End scrollbar fegato */ 
 /* Staff Section */
