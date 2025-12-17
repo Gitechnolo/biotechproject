@@ -47,7 +47,7 @@
   },
   "inLanguage": "it",
   "datePublished": "2025-08-02T10:00:00+02:00",
-  "dateModified": "2025-10-02T21:15:00+02:00"
+  "dateModified": "2025-12-17T18:49:00+02:00"
 }
 </script>       
 <!-- Preload CSS critico -->
@@ -60,94 +60,7 @@
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* Immagini principali nella pagina */
-#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}
-
-/* Sfondo del Popup (Modal) */
-.modal {
-  display:none;
-  position:fixed;
-  z-index:20000;
-  padding-top:50px;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  overflow:auto;
-  background-color:rgba(0,0,0,.9);
-}
-
-/* Immagine dentro il Popup con ottimizzazione nitidezza */
-.modal-content {
-  margin:auto;
-  display:block;
-  width:95%;
-  max-width:1000px;
-  height:auto;
-  max-height:80vh;
-  object-fit:contain;
-  background-color:transparent;
-  /* Mix per massima nitidezza diagrammi e testi */
-  image-rendering:-webkit-optimize-contrast; /* Safari/Chrome */
-  image-rendering:crisp-edges;               /* Firefox */
-  image-rendering:pixelated;                 /* Chrome moderno/Edge */
-  animation:zoom .6s;
-}
-
-/* Forzatura dimensioni per l'immagine attiva */
-#img01.modal-content {
-  width:95%!important;
-  max-width:1000px!important;
-  height:auto!important;
-}
-
-/* Didascalia (Caption) */
-#caption {
-  margin:auto;
-  display:block;
-  width:80%;
-  max-width:700px;
-  text-align:center;
-  color:#ccc;
-  padding:20px 0;
-  animation:zoom .6s;
-}
-
-@keyframes zoom {
-  from{transform:scale(0)}
-  to{transform:scale(1)}
-}
-
-/* Pulsante di chiusura */
-.close {
-  position:absolute;
-  top:15px;
-  right:35px;
-  color:#f1f1f1;
-  font-size:40px;
-  font-weight:bold;
-  transition:.3s;
-  z-index:20001;
-}
-
-.close:hover,.close:focus {
-  color:#a7ffeb;
-  text-decoration:none;
-  cursor:pointer;
-}
-
-/* Media Query per Smartphone e Tablet piccoli */
-@media only screen and (max-width:700px) {
-  .modal-content {
-    width:100%;
-    max-height:75vh; /* Leggermente più basso per lasciare spazio alla chiusura e caption */
-  }
-  .close {
-    top:5px;
-    right:20px;
-    font-size:35px;
-  }
-}
+#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display:none; position:fixed; z-index:20000; padding-top:50px; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,.9)}.modal-content{ margin:auto; display:block; width:95%; max-width:1000px; height:auto; max-height:80vh; object-fit:contain; background-color:transparent; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; image-rendering:pixelated; animation:zoom .6s}#img01.modal-content{ width:95%!important; max-width:1000px!important; height:auto!important}#caption{ margin:auto; display:block; width:80%; max-width:700px; text-align:center; color:#ccc; padding:20px 0; animation:zoom .6s}@keyframes zoom{ from{transform:scale(0)} to{transform:scale(1)}}.close{ position:absolute; top:15px; right:35px; color:#f1f1f1; font-size:40px; font-weight:bold; transition:.3s; z-index:20001}.close:hover,.close:focus{ color:#a7ffeb; text-decoration:none; cursor:pointer}@media only screen and (max-width:700px){ .modal-content{ width:100%; max-height:75vh; } .close{ top:5px; right:20px; font-size:35px;}}
 </style>
 <script>
 !function(){
