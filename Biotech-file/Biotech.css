@@ -95,7 +95,7 @@ ul.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; list-style-type:
 ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; padding: 1; color: #B5EAD7; /* Menta Chiaro */;}
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-table{border: 0; padding: 4; border-spacing: 4; font-weight: bold; font-size: 18px; text-align: center;}
+table{border:0;padding:4px;border-spacing:4px;font-weight:bold;font-size:18px;text-align:center;}
 /* Ridimensionamento tabelle su device capelli.html, accessibility-it/en*/
 @media only screen and (max-width: 768px){table, thead, tbody, th, td, tr{display: block} thead{ display: none;} tr{ margin: 10px 0; border-bottom: 2px solid #ccc;} td{ position: relative; padding-left: 50% !important; border: none} td:before{ content: attr(data-label) ": "; position: absolute; left: 0; width: 45%; font-weight: bold; white-space: nowrap}}   
 /* Formattazione tabelle capelli.html*/
