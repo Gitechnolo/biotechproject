@@ -75,19 +75,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .banner-fade-out {opacity: 0;}
 .bulb-glow {border-radius: 0; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
 .light-controls{ display: flex; justify-content: center; align-items: center; flex-direction: column; height: auto; padding: 10px 0; gap: 20px}      
-table caption {
-    caption-side: bottom !important;
-    text-align: center !important;
-    white-space: normal !important;
-    /* Evita che la parola si spezzi lettera per lettera */
-    word-wrap: normal !important;
-    overflow-wrap: normal !important;
-    /* Forza il caption a usare tutto lo spazio orizzontale disponibile */
-    display: block !important;
-    width: 100%;
-    margin-top: 10px;
-    line-height: 1.4;
-  }      
+.table-description{ text-align: center; font-weight: bold; font-size: 18px; margin-top: 10px; width: 100%; white-space: normal; word-wrap: normal}   
 .specialsGit-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
 .specialsGit-img:hover {transform: scale(1.02); box-shadow: 0 8px 24px rgba(0, 230, 118, 0.35);}
 </style>
@@ -151,7 +139,18 @@ table caption {
     <div class="staff-card">
       <div class="staff-container">
 <h2 class="sansation-bold" data-lang-key="projects-title">Progetti del Biotech Project</h2>
-<table><tr><th><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.avif" alt="Docker cp" style="width:100%;max-width:214px" loading="lazy" tabindex="0"></th><th><img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/docker_nginx.avif" alt="Docker nginx" style="width:100%;max-width:300px" loading="lazy" tabindex="0"></th><th><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.avif" alt="Git Push" style="width:100%;max-width:370px" loading="lazy" tabindex="0"></th><th><img fetchpriority="high" id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.avif" alt="Git Pull" style="width:100%;max-width:370px" loading="lazy" tabindex="0"></th></tr><caption data-lang-key="commands-caption">Comandi Docker e Git utilizzati nel progetto</caption></table>
+<table>
+  <tr>
+    <th><img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/dockercp.avif" alt="Docker cp" style="width:100%;max-width:214px" loading="lazy" tabindex="0"></th>
+    <th><img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/docker_nginx.avif" alt="Docker nginx" style="width:100%;max-width:300px" loading="lazy" tabindex="0"></th>
+    <th><img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPush.avif" alt="Git Push" style="width:100%;max-width:370px" loading="lazy" tabindex="0"></th>
+    <th><img fetchpriority="high" id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/gitPull.avif" alt="Git Pull" style="width:100%;max-width:370px" loading="lazy" tabindex="0"></th>
+  </tr>
+</table>
+
+<p class="biotechcenter text" data-lang-key="commands-caption">
+  Comandi Docker e Git utilizzati nel progetto
+</p>
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title" class="sr-only">Immagine ingrandita</h2><span class="close" tabindex="0">&times;</span><img class="modal-content" id="img01"><div id="caption"></div></div>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/modal-popup.js" defer></script>
 <p class="biotechcenter text" data-lang-key="explore-text">Esplora i nostri progetti innovativi nel campo della biotecnologia e della tecnologia.</p>
