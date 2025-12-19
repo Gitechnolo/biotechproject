@@ -356,72 +356,57 @@ if (countdownEl) {
     }
 }   
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
-// Apre il modal e abilita le interazioni (per mostrare correttamente il cursore)
 function openModal() {
-  var modal = document.getElementById("myModal");
-  modal.style.display = "block";
-  modal.classList.add("modal-visible"); // Abilita pointer-events via classe CSS
+  document.getElementById("myModal").style.display = "block";
 }
-
-// Chiude il modal e disabilita le interazioni
 function closeModal() {
-  var modal = document.getElementById("myModal");
-  modal.style.display = "none";
-  modal.classList.remove("modal-visible"); // Rimuove l'abilitazione
+  document.getElementById("myModal").style.display = "none";
 }
-
-// Indice della slide corrente
 var slideIndex = 1;
-
-// Inizializza il carosello mostrando la prima slide all'apertura
+// Inizializza le slide all'apertura
 showSlides(slideIndex);
 
-// Passa alla slide successiva o precedente (n = -1 o +1)
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
-
-// Passa a una slide specifica (n = numero della slide)
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
-
-// Mostra la slide corrente e aggiorna indicatori e didascalia
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
-
-  // Esci se non ci sono slide
-  if (slides.length === 0) return;
-
-  // Logica circolare: vai all'ultima slide se superi il limite superiore/inferiore
-  if (n > slides.length) slideIndex = 1;
-  else if (n < 1) slideIndex = slides.length;
-  else slideIndex = n;
-
-  // Nasconde tutte le slide
+  // Verifica che ci siano delle slide
+  if (slides.length === 0) {
+    return; // Esci se non ci sono slide
+  }
+  // Aggiorna slideIndex con logica circolare
+  if (n > slides.length) {
+    slideIndex = 1;
+  } else if (n < 1) {
+    slideIndex = slides.length;
+  } else {
+    slideIndex = n; // Assegna solo se valido
+  }
+  // Nascondi tutte le slide
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-
-  // Rimuove la classe 'active' da tutti i punti (miniature)
+  // Rimuovi la classe 'active' da tutti i dot
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-
   // Mostra la slide corrente
   slides[slideIndex - 1].style.display = "block";
-
-  // Aggiorna il punto attivo e la didascalia, se esistono
+  // Aggiorna il dot attivo e il caption, solo se esistono i dot
   if (dots.length > 0 && dots[slideIndex - 1]) {
     dots[slideIndex - 1].className += " active";
     if (captionText) {
       captionText.innerHTML = dots[slideIndex - 1].alt || "";
     }
   }
-}     
+}   
 // End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico.
 
 // --- Performance Helpers ---
