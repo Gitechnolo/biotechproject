@@ -341,34 +341,31 @@ html {box-sizing: border-box;}
 .imgStaff:hover {opacity: 0.5; -webkit-mask-image: none; mask-image: none; transition: opacity 4.0s ease-in-out;}
 /* End Staff Section */
 /* IMG ZOOM */
-/* --- MODAL BASE (Lo sfondo) --- */
+/* --- MODAL BASE --- */
 .modal {
   display: none;
   position: fixed;
   z-index: 10000;
-  padding-top: 50px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto; /* Permette lo scorrimento se l'immagine è alta */
   background-color: rgba(0, 0, 0, 0.9);
-  /* Impedisce alla modale di coprire gli elementi quando è chiusa */
   pointer-events: none; 
 }
 
-/* Riattiva i click quando la modale viene aperta tramite JS */
 .modal[style*="display: block"] {
   pointer-events: auto;
 }
 
-/* --- CONTENUTO MODAL (Il carosello) --- */
+/* --- CONTENUTO MODAL --- */
 .modal-content {
   position: relative;
-  margin: auto;
+  margin: 30px auto; /* Margine sopra e sotto */
   padding: 0;
-  width: 90%;
-  max-width: 1000px;
+  width: 95%;
+  max-width: 1100px; /* Aumentato per leggere meglio il testo */
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -378,70 +375,18 @@ html {box-sizing: border-box;}
   to {transform: scale(1)}
 }
 
-/* --- BOTTONE CHIUDI --- */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  z-index: 10002;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-.close:hover, .close:focus {
-  color: #bbb;
-  text-decoration: none;
-}
-
-/* --- NAVIGAZIONE (Prev & Next) --- */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  border: none;
-  background: none;
-}
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* --- SLIDES E MINIATURE --- */
-.mySlides { display: none; }
-
-/* Ottimizzazione per immagini alte (3:4) */
+/* --- IMMAGINI NEL CAROSELLO --- */
 .mySlides img { 
   border-radius: 5px; 
-  max-height: 65vh; /* Non supera il 65% dell'altezza schermo */
-  width: auto;
-  max-width: 100%;
+  width: 100%;       /* Ripristiniamo la larghezza piena */
+  height: auto;      /* L'altezza si adatta proporzionalmente */
+  max-height: 85vh;  /* Limite meno severo: occupa l'85% dell'altezza */
   display: block;
   margin: 0 auto;
   object-fit: contain;
 }
 
-.cursor { cursor: pointer; }
-
-/* Layout griglia miniature */
+/* --- MINIATURE (Griglia pulita) --- */
 .row::after {
   content: "";
   display: table;
@@ -452,53 +397,40 @@ html {box-sizing: border-box;}
   float: left;
   width: 25%;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .demo {
   opacity: 0.6;
   transition: 0.3s;
-  height: 80px; /* Altezza fissa per uniformità */
-  object-fit: cover; /* Ritaglia l'eccesso senza deformare */
+  height: 100px; /* Altezza fissa per le miniature */
+  object-fit: cover;
   width: 100%;
+  cursor: pointer;
 }
 
 .active, .demo:hover { opacity: 1; }
 
-/* --- DIDASCALIA E TESTI POST-CAROSELLO --- */
+/* --- DIDASCALIA E TESTI --- */
 .caption-container {
   text-align: center;
-  background-color: black;
-  padding: 10px 16px;
+  background-color: #000;
+  padding: 15px;
   color: white;
   clear: both;
 }
 
-#caption {
-  margin: 0;
-  color: #ccc;
-}
-
-/* Fix per titoli o testi che seguono la galleria (es. .emphasytile) */
 .emphasytile, .text {
   clear: both;
   position: relative;
   z-index: 1;
 }
 
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
 /* --- RESPONSIVITÀ --- */
 @media only screen and (max-width: 700px) {
-  .modal-content { width: 100%; }
-  .close { right: 20px; font-size: 30px; }
-  .column { width: 50%; } /* Griglia 2x2 su mobile per risparmiare spazio */
-  .mySlides img { max-height: 50vh; }
+  .modal-content { width: 100%; margin: 10px auto; }
+  .column { width: 50%; } /* 2x2 su mobile */
+  .mySlides img { max-height: none; } /* Su mobile lasciamo scorrere liberamente */
 }
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
