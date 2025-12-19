@@ -427,8 +427,6 @@ html {box-sizing: border-box;}
   box-sizing: border-box;
 }
 
-
-
 .demo {
   opacity: 0.6;
   transition: 0.3s;
@@ -446,13 +444,7 @@ html {box-sizing: border-box;}
   font-size: 1.2rem;
 }
 
-/* --- FIX TESTO E LAYOUT ESTERNO --- */
-.text {
-  clear: both;
-  position: relative;
-  z-index: 1;
-  display: block;
-}
+
 
 .column.transparent {
   position: relative;
