@@ -340,7 +340,7 @@ html {box-sizing: border-box;}
 .imgStaff {max-width: 100%; height: auto; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .imgStaff:hover {opacity: 0.5; -webkit-mask-image: none; mask-image: none; transition: opacity 4.0s ease-in-out;}
 /* End Staff Section */
-/* IMG ZOOM */
+/* === CAROSELLO BIOTECH === */
 /* --- MODAL BASE --- */
 .modal {
   display: none;
@@ -422,7 +422,7 @@ html {box-sizing: border-box;}
 }
 
 .close:hover {
-  background-color: #a7ffeb;
+  background-color: rgba(0, 230, 118, 0.3);
   color: white;
 }
 
@@ -491,6 +491,7 @@ html {box-sizing: border-box;}
     width: 50%; /* Griglia 2x2 per le miniature su mobile */
   }
 }
+/* === END CAROSELLO BIOTECH === */
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
 #ytVideo{display:block;width:100%;height:auto;max-width:100%;background:transparent;border:none;box-shadow:none;}
