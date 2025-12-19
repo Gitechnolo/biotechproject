@@ -340,18 +340,14 @@ html {box-sizing: border-box;}
   left: 0; top: 0;
   width: 100%; height: 100%;
   overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.95); /* Leggermente più scuro per risaltare */
-  pointer-events: none; 
-}
-
-.modal[style*="display: block"] {
-  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  /* Rimuovi pointer-events: none per permettere il cambio del cursore */
 }
 
 /* --- CONTENUTO MODAL --- */
 .modal-content {
   position: relative;
-  margin: 80px auto 40px; /* Margine superiore aumentato per non coprire la X */
+  margin: 80px auto 40px;
   width: 90%; 
   max-width: 1200px; 
   animation: zoom 0.6s;
@@ -370,7 +366,7 @@ html {box-sizing: border-box;}
 
 /* --- FRECCE AI LATI --- */
 .prev, .next {
-  cursor: pointer !important;
+  cursor: pointer;
   position: absolute;
   top: 50%;
   width: auto;
@@ -393,20 +389,20 @@ html {box-sizing: border-box;}
 
 /* --- CHIUSURA (Ottimizzata per Device) --- */
 .close {
-  position: fixed; /* Resta visibile anche durante lo scroll */
+  position: fixed;
   top: 15px; 
   right: 20px;
   color: white;
   font-size: 45px;
   font-weight: bold;
-  z-index: 10020; /* Sopra a tutto il resto */
-  cursor: pointer !important;
+  z-index: 10020;
+  cursor: pointer;
   
   /* Area di tocco migliorata per dita/touch */
   background-color: rgba(0, 0, 0, 0.6);
   width: 60px;
   height: 60px;
-  line-height: 55px; /* Centra la X nel cerchio */
+  line-height: 55px;
   text-align: center;
   border-radius: 50%;
   transition: 0.3s;
@@ -432,6 +428,7 @@ html {box-sizing: border-box;}
   transition: 0.3s;
   width: 100%;
   height: auto;
+  cursor: pointer; /* Assicura il cursore manina */
 }
 
 .active, .demo:hover { opacity: 1; }
@@ -442,13 +439,6 @@ html {box-sizing: border-box;}
   padding: 20px;
   color: white;
   font-size: 1.2rem;
-}
-
-
-
-.column.transparent {
-  position: relative;
-  z-index: 5;
 }
 
 /* --- RESPONSIVITÀ PER SMARTPHONE --- */
@@ -462,14 +452,14 @@ html {box-sizing: border-box;}
     font-size: 40px;
   }
   .modal-content {
-    margin-top: 80px; /* Spazio di sicurezza per la X su mobile */
+    margin-top: 80px;
     width: 95%;
   }
   .column {
-    width: 50%; /* Griglia 2x2 per le miniature su mobile */
+    width: 50%;
   }
 }
-/* === END CAROSELLO BIOTECH === */
+/* === END CAROSELLO BIOTECH === */   
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
 #ytVideo{display:block;width:100%;height:auto;max-width:100%;background:transparent;border:none;box-shadow:none;}
