@@ -345,14 +345,21 @@ html {box-sizing: border-box;}
 .modal {
   display: none;
   position: fixed;
-  z-index: 10000; /* Alzato per sicurezza */
+  z-index: 10000;
   padding-top: 50px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9); /* Sfondo scuro semitrasparente */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Impedisce alla modale di coprire gli elementi quando è chiusa */
+  pointer-events: none; 
+}
+
+/* Riattiva i click quando la modale viene aperta tramite JS */
+.modal[style*="display: block"] {
+  pointer-events: auto;
 }
 
 /* --- CONTENUTO MODAL (Il carosello) --- */
@@ -361,7 +368,7 @@ html {box-sizing: border-box;}
   margin: auto;
   padding: 0;
   width: 90%;
-  max-width: 1000px; /* Bilanciamento tra i 700px e i 1200px precedenti */
+  max-width: 1000px;
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -420,9 +427,26 @@ html {box-sizing: border-box;}
 
 /* --- SLIDES E MINIATURE --- */
 .mySlides { display: none; }
-.mySlides img { border-radius: 5px; }
+
+/* Ottimizzazione per immagini alte (3:4) */
+.mySlides img { 
+  border-radius: 5px; 
+  max-height: 65vh; /* Non supera il 65% dell'altezza schermo */
+  width: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
 
 .cursor { cursor: pointer; }
+
+/* Layout griglia miniature */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 .column {
   float: left;
@@ -433,21 +457,32 @@ html {box-sizing: border-box;}
 .demo {
   opacity: 0.6;
   transition: 0.3s;
+  height: 80px; /* Altezza fissa per uniformità */
+  object-fit: cover; /* Ritaglia l'eccesso senza deformare */
+  width: 100%;
 }
 
 .active, .demo:hover { opacity: 1; }
 
-/* --- DIDASCALIA E TESTO --- */
+/* --- DIDASCALIA E TESTI POST-CAROSELLO --- */
 .caption-container {
   text-align: center;
   background-color: black;
   padding: 10px 16px;
   color: white;
+  clear: both;
 }
 
 #caption {
   margin: 0;
   color: #ccc;
+}
+
+/* Fix per titoli o testi che seguono la galleria (es. .emphasytile) */
+.emphasytile, .text {
+  clear: both;
+  position: relative;
+  z-index: 1;
 }
 
 .numbertext {
@@ -462,6 +497,8 @@ html {box-sizing: border-box;}
 @media only screen and (max-width: 700px) {
   .modal-content { width: 100%; }
   .close { right: 20px; font-size: 30px; }
+  .column { width: 50%; } /* Griglia 2x2 su mobile per risparmiare spazio */
+  .mySlides img { max-height: 50vh; }
 }
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
