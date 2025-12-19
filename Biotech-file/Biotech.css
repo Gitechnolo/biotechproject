@@ -240,7 +240,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 .logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553px; height: 180px; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
-.text {font-size: 16px; font-weight: normal; color: #e6e6e6; text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s; cursor: default;}
+.text {font-size: 16px; font-weight: normal; color: #e6e6e6; text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s;}
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
 .yellowtext {font-size: 16px; font-weight: normal; color: #E0FFFF;} /* Bianco Ciano Pallido */
 .greentext {font-size: 16px; font-weight: 300; color: #ffffff; font-style: italic;}
