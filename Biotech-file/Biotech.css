@@ -349,8 +349,8 @@ html {box-sizing: border-box;}
   left: 0; top: 0;
   width: 100%; height: 100%;
   overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-  pointer-events: none; /* Risolve il problema del mouse che non clicca */
+  background-color: rgba(0, 0, 0, 0.95); /* Leggermente più scuro per risaltare */
+  pointer-events: none; 
 }
 
 .modal[style*="display: block"] {
@@ -360,10 +360,11 @@ html {box-sizing: border-box;}
 /* --- CONTENUTO MODAL --- */
 .modal-content {
   position: relative;
-  margin: 20px auto;
+  margin: 80px auto 40px; /* Margine superiore aumentato per non coprire la X */
   width: 90%; 
   max-width: 1200px; 
   animation: zoom 0.6s;
+  z-index: 10001;
 }
 
 @keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
@@ -399,15 +400,30 @@ html {box-sizing: border-box;}
 .prev { left: 0; border-radius: 0 3px 3px 0; }
 .prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
 
-/* --- CHIUSURA --- */
+/* --- CHIUSURA (Ottimizzata per Device) --- */
 .close {
-  position: fixed; 
-  top: 15px; right: 35px;
+  position: fixed; /* Resta visibile anche durante lo scroll */
+  top: 15px; 
+  right: 20px;
   color: white;
   font-size: 45px;
   font-weight: bold;
-  z-index: 10010;
+  z-index: 10020; /* Sopra a tutto il resto */
   cursor: pointer !important;
+  
+  /* Area di tocco migliorata per dita/touch */
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 60px;
+  height: 60px;
+  line-height: 55px; /* Centra la X nel cerchio */
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.close:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
 }
 
 /* --- MINIATURE E GRIGLIA --- */
@@ -420,7 +436,6 @@ html {box-sizing: border-box;}
   box-sizing: border-box;
 }
 
-/* Forza la manina su tutte le anteprime cliccabili */
 .column img, 
 .demo, 
 .cursor, 
@@ -453,10 +468,28 @@ html {box-sizing: border-box;}
   display: block;
 }
 
-/* Assicura che le colonne siano cliccabili anche se il testo sopra è lungo */
 .column.transparent {
   position: relative;
   z-index: 5;
+}
+
+/* --- RESPONSIVITÀ PER SMARTPHONE --- */
+@media only screen and (max-width: 700px) {
+  .close {
+    top: 10px;
+    right: 10px;
+    width: 55px;
+    height: 55px;
+    line-height: 50px;
+    font-size: 40px;
+  }
+  .modal-content {
+    margin-top: 80px; /* Spazio di sicurezza per la X su mobile */
+    width: 95%;
+  }
+  .column {
+    width: 50%; /* Griglia 2x2 per le miniature su mobile */
+  }
 }
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
