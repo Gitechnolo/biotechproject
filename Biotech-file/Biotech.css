@@ -350,7 +350,7 @@ html {box-sizing: border-box;}
   width: 100%; height: 100%;
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.9);
-  pointer-events: none; /* Risolve il problema del mouse */
+  pointer-events: none; /* Risolve il problema del mouse che non clicca */
 }
 
 .modal[style*="display: block"] {
@@ -362,7 +362,7 @@ html {box-sizing: border-box;}
   position: relative;
   margin: 20px auto;
   width: 90%; 
-  max-width: 1200px; /* Aumentato per rendere i testi leggibili */
+  max-width: 1200px; 
   animation: zoom 0.6s;
 }
 
@@ -370,26 +370,26 @@ html {box-sizing: border-box;}
 
 /* --- IMMAGINE --- */
 .mySlides img {
-  width: 100%; /* Si espande fino al max-width del contenitore */
+  width: 100%; 
   height: auto;
   border-radius: 5px;
   display: block;
 }
 
-/* --- FRECCE (Posizionate correttamente ai lati) --- */
+/* --- FRECCE AI LATI --- */
 .prev, .next {
-  cursor: pointer;
+  cursor: pointer !important;
   position: absolute;
-  top: 50%; /* Al centro dell'immagine */
+  top: 50%;
   width: auto;
   padding: 20px;
   margin-top: -50px;
   color: white;
   font-weight: bold;
-  font-size: 30px; /* Più grandi per accessibilità */
+  font-size: 30px;
   transition: 0.6s ease;
   user-select: none;
-  background-color: rgba(0, 0, 0, 0.3); /* Leggero sfondo per visibilità */
+  background-color: rgba(0, 0, 0, 0.3);
   border: none;
   text-decoration: none;
   z-index: 10005;
@@ -401,16 +401,16 @@ html {box-sizing: border-box;}
 
 /* --- CHIUSURA --- */
 .close {
-  position: fixed; /* Rimane fissa in alto a destra */
+  position: fixed; 
   top: 15px; right: 35px;
   color: white;
   font-size: 45px;
   font-weight: bold;
   z-index: 10010;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
-/* --- MINIATURE E RIGHE --- */
+/* --- MINIATURE E GRIGLIA --- */
 .row::after { content: ""; display: table; clear: both; }
 
 .column {
@@ -420,12 +420,19 @@ html {box-sizing: border-box;}
   box-sizing: border-box;
 }
 
+/* Forza la manina su tutte le anteprime cliccabili */
+.column img, 
+.demo, 
+.cursor, 
+[role="button"] {
+  cursor: pointer !important;
+}
+
 .demo {
   opacity: 0.6;
-  cursor: pointer;
   transition: 0.3s;
   width: 100%;
-  height: auto; /* Mantengono proporzione originale */
+  height: auto;
 }
 
 .active, .demo:hover { opacity: 1; }
@@ -438,11 +445,18 @@ html {box-sizing: border-box;}
   font-size: 1.2rem;
 }
 
-/* --- FIX TESTO ESTERNO --- */
+/* --- FIX TESTO E LAYOUT ESTERNO --- */
 .emphasytile, .text {
   clear: both;
   position: relative;
   z-index: 1;
+  display: block;
+}
+
+/* Assicura che le colonne siano cliccabili anche se il testo sopra è lungo */
+.column.transparent {
+  position: relative;
+  z-index: 5;
 }
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
