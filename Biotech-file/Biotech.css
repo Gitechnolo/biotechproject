@@ -344,9 +344,7 @@ html {box-sizing: border-box;}
   pointer-events: none; 
 }
 
-.modal[style*="display: block"] {
-  pointer-events: auto;
-}
+.modal-visible { pointer-events: auto; }   
 
 /* --- CONTENUTO MODAL --- */
 .modal-content {
