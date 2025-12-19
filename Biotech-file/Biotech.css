@@ -427,12 +427,7 @@ html {box-sizing: border-box;}
   box-sizing: border-box;
 }
 
-.column img, 
-.demo, 
-.cursor, 
-[role="button"] {
-  cursor: pointer !important;
-}
+
 
 .demo {
   opacity: 0.6;
