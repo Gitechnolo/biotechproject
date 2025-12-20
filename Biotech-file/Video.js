@@ -171,104 +171,85 @@ function initializeVideoControls(video, controls) {
 }   
 
 // Works for (Mitocondri.png, Lisosoma.png, Miochine.png, Pelle.png) images with id starting with 'myImg'
+// ✅ Biotech Modal Popup Script con Effetto Espansione (Lente)
 document.addEventListener("DOMContentLoaded", function () {
-  
-  // ✅ 1. Recupera gli elementi principali del modal
   const modal = document.getElementById("myModal");
   const modalImg = document.getElementById("img01");
   const captionText = document.getElementById("caption");
-  // Uso una sintassi più robusta per closeBtn
   const closeBtn = modal ? modal.querySelector(".close") : document.querySelector("#myModal .close");
 
-  // Variabile per tracciare l'elemento che ha aperto il modale (per restituire il focus)
   let lastFocusedElement = null;
 
-  // ✅ 2. Verifica che il modal e i suoi componenti esistano
-  if (!modal || !modalImg || !captionText || !closeBtn) {
-    console.warn("Elementi critici del Modal non trovati. Controllo: #myModal, #img01, #caption, .close.");
-    return;
-  }
-  
-  // --- FUNZIONI DI GESTIONE FOCUS/MODALE ---
-  
+  if (!modal || !modalImg || !closeBtn) return;
+
   /**
-   * Apre il modale, imposta l'immagine e sposta il focus sul pulsante di chiusura.
-   * @param {HTMLElement} imgElement - L'elemento immagine che ha innescato l'apertura.
+   * FUNZIONE GLOBALE: Apre il modal partendo dal punto esatto del click
+   * @param {string} imgId - ID dell'immagine nascosta da visualizzare
+   * @param {Event} event - L'evento click/keydown per calcolare le coordinate
    */
-  function openModal(imgElement) {
-    // 1. Salva l'elemento corrente
-    lastFocusedElement = imgElement; 
+  window.openBiotechModal = function(imgId, event) {
+    const targetImg = document.getElementById(imgId);
+    if (!targetImg) return;
+
+    lastFocusedElement = event.currentTarget; 
+
+    // 1. Calcola il centro dell'elemento cliccato (testo .highlight)
+    const rect = lastFocusedElement.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+
+    // 2. Imposta l'origine dell'animazione sull'immagine
+    modalImg.style.transformOrigin = `${originX}px ${originY}px`;
     
-    // 2. Popola e mostra il modale
-    modal.style.display = "block";
-    modalImg.src = imgElement.src;
-    captionText.textContent = imgElement.alt || ""; 
+    // 3. Prepara il contenuto
+    modalImg.src = targetImg.src;
+    captionText.textContent = targetImg.alt || "";
 
-    // 3. Sposta il focus sul pulsante di chiusura per l'accessibilità da tastiera
-    closeBtn.focus(); 
-  }
-
-  /**
-   * Chiude il modale, pulisce il contenuto e ripristina il focus sull'elemento precedente.
-   */
-  function closeModal() {
-    modal.style.display = "none";
-    modalImg.src = "";
-    captionText.textContent = "";
-
-    // 4. Ripristina il focus sull'elemento che ha aperto il modale
-    if (lastFocusedElement) {
-        lastFocusedElement.focus();
-        lastFocusedElement = null; // Pulisce il riferimento
-    }
-  }
-  
-  // --- INIZIALIZZAZIONE ---
-
-  // ✅ 3. Lista degli ID delle immagini da gestire
-  const imageIds = ["myImg", "myImg2", "myImg3", "myImg4"];
-
-  // ✅ 4. Collega gli eventi (SOLO Click) a ogni immagine esistente
-  // L'apertura da tastiera è gestita dal link <a> nel DOM.
-  imageIds.forEach(function (imgId) {
-    const img = document.getElementById(imgId);
-    if (img) {
-      // 1. Evento: Click del mouse (Necessario per l'apertura simulata dal link <a>)
-      img.addEventListener("click", function () {
-        openModal(this);
-      });
-
-      // 🛑 Listener 'keyup' rimosso per evitare conflitti con l'apertura da tastiera del link <a>.
-    }
-  });
-
-  // ✅ 5. Chiudi il modal con la "X"
-  // 1. Evento: Click del mouse (USA LA NUOVA FUNZIONE closeModal)
-  closeBtn.onclick = closeModal;
-  
-  // 2. Evento: Chiusura da tastiera (Enter o Space) sulla "X"
-  // MODIFICA CRITICA: Uso keydown invece di keyup per prevenire chiusure accidentali subito dopo l'apertura da tastiera.
-  closeBtn.addEventListener("keydown", function (event) { 
-      if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          closeModal(); 
-      }
-  });
-
-
-  // ✅ 6. Chiudi cliccando fuori dall'immagine
-  modal.onclick = function (e) {
-    if (e.target === modal) {
-      closeModal();
-    }
+    // 4. Mostra il modal con micro-delay per attivare la transizione CSS
+    modal.style.display = "flex"; // Usiamo flex per centrare meglio
+    setTimeout(() => {
+      modal.classList.add("show");
+      closeBtn.focus();
+    }, 10);
   };
 
-  // ✅ 7. Chiusura con tasto ESC (standard ARIA)
-  document.addEventListener("keydown", function (event) {
-    // Usiamo keydown per intercettare l'Esc prima che il browser possa agire
-    if (event.key === 'Escape' && modal.style.display === "block") {
-      event.preventDefault();
-      closeModal();
+  /**
+   * Chiude il modale con effetto zoom-out verso l'origine
+   */
+  function closeBiotechModal() {
+    modal.classList.remove("show");
+    
+    // Attende la fine dell'animazione CSS (400ms) prima di nascondere il display
+    setTimeout(() => {
+      modal.style.display = "none";
+      modalImg.src = "";
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
+    }, 400);
+  }
+
+  // --- GESTIONE EVENTI ---
+
+  // Chiusura con tasto X
+  closeBtn.onclick = closeBiotechModal;
+  closeBtn.addEventListener("keydown", function (e) { 
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      closeBiotechModal(); 
+    }
+  });
+
+  // Chiusura cliccando sullo sfondo nero
+  modal.onclick = function (e) {
+    if (e.target === modal) closeBiotechModal();
+  };
+
+  // Chiusura con tasto ESC
+  document.addEventListener("keydown", function (e) {
+    if (e.key === 'Escape' && modal.classList.contains("show")) {
+      closeBiotechModal();
     }
   });
 });
