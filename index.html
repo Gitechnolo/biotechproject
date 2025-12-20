@@ -60,7 +60,62 @@
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display:none; position:fixed; z-index:20000; padding-top:50px; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,.9)}.modal-content{ margin:auto; display:block; width:95%; max-width:1000px; height:auto; max-height:80vh; object-fit:contain; background-color:transparent; image-rendering:-webkit-optimize-contrast; image-rendering:crisp-edges; image-rendering:pixelated; animation:zoom .6s}#img01.modal-content{ width:95%!important; max-width:1000px!important; height:auto!important}#caption{ margin:auto; display:block; width:80%; max-width:700px; text-align:center; color:#ccc; padding:20px 0; animation:zoom .6s}@keyframes zoom{ from{transform:scale(0)} to{transform:scale(1)}}.close{ position:absolute; top:15px; right:35px; color:#f1f1f1; font-size:40px; font-weight:bold; transition:.3s; z-index:20001}.close:hover,.close:focus{ color:#a7ffeb; text-decoration:none; cursor:pointer}@media only screen and (max-width:700px){ .modal-content{ width:100%; max-height:75vh; } .close{ top:5px; right:20px; font-size:35px;}}
+#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 20000; 
+  left: 0; top: 0; 
+  width: 100%; height: 100%; 
+  overflow-y: auto; /* Permette lo scorrimento se l'immagine è grande */
+  background-color: rgba(0,0,0,.9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+/* Classe attivata da JS per mostrare il modal */
+.modal.show {
+  display: block; 
+  opacity: 1;
+}
+.modal-content {
+  margin: 50px auto 10px auto; /* 50px sopra per distanziarlo dalla X */
+  display: block; 
+  width: 95%; 
+  max-width: 1000px; 
+  height: auto; 
+  max-height: 80vh; 
+  object-fit: contain;
+  transform: scale(0); /* Parte da zero per l'effetto espansione */
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
+}
+.modal.show .modal-content {
+  transform: scale(1); /* Si espande al centro */
+}
+#caption {
+  margin: auto; 
+  display: block; 
+  width: 80%; 
+  max-width: 700px; 
+  text-align: center; 
+  color: #ccc; 
+  padding: 10px 0 40px 0; /* Padding sotto per dare respiro */
+  font-family: sans-serif;
+}
+.close {
+  position: fixed; /* Fixed per restare sempre visibile in alto a destra */
+  top: 15px; right: 35px; 
+  color: #f1f1f1; 
+  font-size: 40px; 
+  font-weight: bold; 
+  transition: .3s; 
+  z-index: 20001;
+  cursor: pointer;
+}
+.close:hover { color: #a7ffeb; transform: scale(1.1); }
+@media only screen and (max-width: 700px) {
+  .modal-content { width: 95%; margin-top: 60px; }
+  .close { top: 10px; right: 20px; font-size: 35px; }
+}
 </style>
 <script>
 !function(){

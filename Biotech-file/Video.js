@@ -184,8 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /**
    * FUNZIONE GLOBALE: Apre il modal partendo dal punto esatto del click
-   * @param {string} imgId - ID dell'immagine nascosta da visualizzare
-   * @param {Event} event - L'evento click/keydown per calcolare le coordinate
    */
   window.openBiotechModal = function(imgId, event) {
     const targetImg = document.getElementById(imgId);
@@ -193,9 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastFocusedElement = event.currentTarget; 
 
-    // 1. Calcola il centro dell'elemento cliccato (testo .highlight)
+    // 1. Calcola il centro dell'elemento cliccato per l'origine dell'effetto
     const rect = lastFocusedElement.getBoundingClientRect();
     const originX = rect.left + rect.width / 2;
+    // Calcoliamo l'origine rispetto alla finestra per gestire lo scroll
     const originY = rect.top + rect.height / 2;
 
     // 2. Imposta l'origine dell'animazione sull'immagine
@@ -205,8 +204,10 @@ document.addEventListener("DOMContentLoaded", function () {
     modalImg.src = targetImg.src;
     captionText.textContent = targetImg.alt || "";
 
-    // 4. Mostra il modal con micro-delay per attivare la transizione CSS
-    modal.style.display = "flex"; // Usiamo flex per centrare meglio
+    // 4. Mostra il modal (USIAMO BLOCK per allineamento verticale corretto)
+    modal.style.display = "block"; 
+    
+    // Micro-delay per permettere al browser di registrare display:block prima dell'animazione
     setTimeout(() => {
       modal.classList.add("show");
       closeBtn.focus();
@@ -217,9 +218,11 @@ document.addEventListener("DOMContentLoaded", function () {
    * Chiude il modale con effetto zoom-out verso l'origine
    */
   function closeBiotechModal() {
+    if (!modal.classList.contains("show")) return;
+    
     modal.classList.remove("show");
     
-    // Attende la fine dell'animazione CSS (400ms) prima di nascondere il display
+    // Attende la fine dell'animazione CSS (400ms) prima di resettare
     setTimeout(() => {
       modal.style.display = "none";
       modalImg.src = "";
@@ -232,8 +235,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- GESTIONE EVENTI ---
 
-  // Chiusura con tasto X
   closeBtn.onclick = closeBiotechModal;
+  
   closeBtn.addEventListener("keydown", function (e) { 
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -241,12 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Chiusura cliccando sullo sfondo nero
   modal.onclick = function (e) {
+    // Chiude solo se clicchi sullo sfondo nero (fuori dall'immagine o caption)
     if (e.target === modal) closeBiotechModal();
   };
 
-  // Chiusura con tasto ESC
   document.addEventListener("keydown", function (e) {
     if (e.key === 'Escape' && modal.classList.contains("show")) {
       closeBiotechModal();
