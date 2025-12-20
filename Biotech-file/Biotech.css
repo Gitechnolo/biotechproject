@@ -357,26 +357,6 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 .active, .demo:hover { opacity: 1; }
 /* --- RESPONSIVITÀ - Due icone per riga su mobile --- */
 @media only screen and (max-width:700px){.column{width:50%}.modal-content{width:95%;margin-top:100px}.close{width:50px;height:50px;line-height:45px;font-size:35px}}
-/* Impedisce lo scrolling del body quando il modale è attivo */
-body.modal-open {
-  overflow: hidden;
-  /* Opzionale: previene lo scatto laterale su desktop se hai la barra scorrimento */
-  padding-right: 15px; 
-}
-
-/* Assicurati che il modale non sposti il contenuto */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  /* Usa fixed e non absolute per evitare salti di posizione */
-  overflow-y: auto; 
-  -webkit-overflow-scrolling: touch; /* Fluidità su iPhone */
-}
 /* === END CAROSELLO BIOTECH === */   
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}

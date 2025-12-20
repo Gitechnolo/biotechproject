@@ -358,13 +358,9 @@ if (countdownEl) {
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
   document.getElementById("myModal").style.display = "block";
-  // Aggiunge la classe che blocca lo scroll ed evita il salto
-  document.body.classList.add("modal-open");
 }
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
-  // Rimuove la classe e ripristina lo scroll
-  document.body.classList.remove("modal-open");
 }
 var slideIndex = 1;
 // Inizializza le slide all'apertura
