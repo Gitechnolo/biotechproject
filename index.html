@@ -60,63 +60,87 @@
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+/* Stili per le immagini sorgente */
 #myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}
+
+/* Sfondo del Popup */
 .modal {
   display: none; 
   position: fixed; 
   z-index: 20000; 
   left: 0; top: 0; 
   width: 100%; height: 100%; 
+  overflow-x: hidden;
   overflow-y: auto; 
-  background-color: rgba(0,0,0,.93);
+  background-color: rgba(0,0,0,.96); /* Sfondo leggermente più scuro per far risaltare i 1000px */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 .modal.show {
   display: block; 
   opacity: 1;
 }
+
+/* L'Immagine da 1000px */
 .modal-content {
-  margin: 30px auto 10px auto; /* Ridotto il margine superiore */
-  display: block; 
-  width: 90%; 
-  max-width: 850px; /* Ridotto leggermente per dare spazio al testo */
+  display: block;
+  margin: 40px auto 20px auto; /* Centrata orizzontalmente */
+  width: 95%;          /* Flessibile su schermi piccoli */
+  max-width: 1000px;   /* Larghezza massima reale della tua immagine */
   height: auto; 
-  max-height: 70vh; /* Limitiamo l'altezza dell'immagine per far vedere subito il testo */
-  object-fit: contain;
+  max-height: 65vh;    /* Impedisce all'immagine di "mangiare" tutto lo spazio del testo */
+  object-fit: contain; /* Mantiene le proporzioni senza tagliare */
+  
+  /* Reset di ogni possibile allineamento residuo */
+  float: none;
+  clear: both;
+  
+  /* Animazione Lente */
   transform: scale(0);
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
 }
+
 .modal.show .modal-content {
   transform: scale(1);
 }
+
+/* Il Testo Sotto l'Immagine */
 #caption {
-  margin: 0 auto; /* Centra orizzontalmente */
-  display: block; 
+  display: block;
+  clear: both;         /* Obbligatorio: forza il testo a iniziare DOPO l'immagine */
+  margin: 0 auto; 
   width: 90%; 
-  max-width: 850px; 
+  max-width: 1000px;   /* Allineato alla larghezza dell'immagine */
   text-align: center; 
-  color: #f1f1f1; 
-  padding: 15px 0 50px 0;
+  color: #ddd; 
+  padding: 10px 0 60px 0; /* Spazio generoso in basso per evitare che tocchi il bordo */
   font-family: 'Sansation', Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.4;
-  clear: both; /* Forza il testo ad andare sotto qualsiasi elemento flottante */
+  font-size: 20px;     /* Leggermente più grande per leggibilità */
+  line-height: 1.5;
 }
+
+/* Pulsante di chiusura */
 .close {
   position: fixed; 
   top: 15px; right: 25px; 
   color: #fff; 
-  font-size: 45px; 
+  font-size: 50px; 
   font-weight: bold; 
   z-index: 20001;
   cursor: pointer;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
+/* Ottimizzazione Mobile */
 @media only screen and (max-width: 700px) {
-  .modal-content { width: 95%; margin-top: 70px; max-height: 60vh; }
-  #caption { font-size: 16px; width: 95%; }
-  .close { top: 10px; right: 15px; }
+  .modal-content { 
+    margin-top: 80px; 
+    max-height: 50vh; /* Su mobile l'immagine deve essere più piccola per vedere il testo */
+  }
+  #caption { 
+    font-size: 17px; 
+    width: 95%;
+  }
 }
 </style>
 <script>
