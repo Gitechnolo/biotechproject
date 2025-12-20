@@ -332,6 +332,24 @@ html {box-sizing: border-box;}
 .imgStaff:hover {opacity: 0.5; -webkit-mask-image: none; mask-image: none; transition: opacity 4.0s ease-in-out;}
 /* End Staff Section */
 /* === CAROSELLO BIOTECH === */
+/* --- LAYOUT GRIGLIA --- */
+.row > .column { padding: 0 8px; }
+.row:after { content: ""; display: table; clear: both; }
+.column { 
+  float: left; 
+  width: 25%; 
+  box-sizing: border-box;
+}
+
+/* --- INTERAZIONE CURSORE E HOVER (Ripristinate) --- */
+.cursor { cursor: pointer; }
+
+img.hover-shadow { transition: 0.3s; }
+.hover-shadow:hover { 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.8;
+}
+
 /* --- MODAL BASE --- */
 .modal {
   display: none;
@@ -339,55 +357,22 @@ html {box-sizing: border-box;}
   z-index: 10000;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.95);
-  /* Rimuovi pointer-events: none per permettere il cambio del cursore */
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Sfondo scuro profondo */
 }
 
 /* --- CONTENUTO MODAL --- */
 .modal-content {
   position: relative;
   margin: 80px auto 40px;
-  width: 90%; 
-  max-width: 1200px; 
+  width: 90%;
+  max-width: 1200px;
   animation: zoom 0.6s;
-  z-index: 10001;
 }
 
 @keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
 
-/* --- IMMAGINE --- */
-.mySlides img {
-  width: 100%; 
-  height: auto;
-  border-radius: 5px;
-  display: block;
-}
-
-/* --- FRECCE AI LATI --- */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 20px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
-  transition: 0.6s ease;
-  user-select: none;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: none;
-  text-decoration: none;
-  z-index: 10005;
-}
-
-.next { right: 0; border-radius: 3px 0 0 3px; }
-.prev { left: 0; border-radius: 0 3px 3px 0; }
-.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
-
-/* --- CHIUSURA (Ottimizzata per Device) --- */
+/* --- BOTTONE CHIUSURA (Versione Elegante mantenuta) --- */
 .close {
   position: fixed;
   top: 15px; 
@@ -397,8 +382,6 @@ html {box-sizing: border-box;}
   font-weight: bold;
   z-index: 10020;
   cursor: pointer;
-  
-  /* Area di tocco migliorata per dita/touch */
   background-color: rgba(0, 0, 0, 0.6);
   width: 60px;
   height: 60px;
@@ -409,54 +392,66 @@ html {box-sizing: border-box;}
 }
 
 .close:hover {
-  background-color: rgba(0, 230, 118, 0.3);
+  background-color: rgba(0, 230, 118, 0.5); /* Un tocco di verde biotech al passaggio */
   color: white;
 }
 
-/* --- MINIATURE E GRIGLIA --- */
-.row::after { content: ""; display: table; clear: both; }
+/* --- NAVIGAZIONE (Frecce) --- */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
-.column {
-  float: left;
-  width: 25%;
-  padding: 8px;
-  box-sizing: border-box;
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
+
+/* --- MINIATURE E DIDASCALIE --- */
+.mySlides { display: none; }
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 10px 16px;
+  color: white;
 }
 
 .demo {
   opacity: 0.6;
   transition: 0.3s;
-  width: 100%;
-  height: auto;
-  cursor: pointer; /* Assicura il cursore manina */
+  cursor: pointer;
 }
 
 .active, .demo:hover { opacity: 1; }
 
-.caption-container {
-  text-align: center;
-  background-color: black;
-  padding: 20px;
-  color: white;
-  font-size: 1.2rem;
-}
-
-/* --- RESPONSIVITÀ PER SMARTPHONE --- */
+/* --- RESPONSIVITÀ --- */
 @media only screen and (max-width: 700px) {
+  .column { width: 50%; } /* Due icone per riga su mobile */
+  .modal-content { width: 95%; margin-top: 100px; }
   .close {
-    top: 10px;
-    right: 10px;
-    width: 55px;
-    height: 55px;
-    line-height: 50px;
-    font-size: 40px;
-  }
-  .modal-content {
-    margin-top: 80px;
-    width: 95%;
-  }
-  .column {
-    width: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    font-size: 35px;
   }
 }
 /* === END CAROSELLO BIOTECH === */   
