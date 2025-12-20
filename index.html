@@ -67,54 +67,56 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   z-index: 20000; 
   left: 0; top: 0; 
   width: 100%; height: 100%; 
-  overflow-y: auto; /* Permette lo scorrimento se l'immagine è grande */
-  background-color: rgba(0,0,0,.9);
+  overflow-y: auto; 
+  background-color: rgba(0,0,0,.93);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-/* Classe attivata da JS per mostrare il modal */
 .modal.show {
   display: block; 
   opacity: 1;
 }
 .modal-content {
-  margin: 50px auto 10px auto; /* 50px sopra per distanziarlo dalla X */
+  margin: 30px auto 10px auto; /* Ridotto il margine superiore */
   display: block; 
-  width: 95%; 
-  max-width: 1000px; 
+  width: 90%; 
+  max-width: 850px; /* Ridotto leggermente per dare spazio al testo */
   height: auto; 
-  max-height: 80vh; 
+  max-height: 70vh; /* Limitiamo l'altezza dell'immagine per far vedere subito il testo */
   object-fit: contain;
-  transform: scale(0); /* Parte da zero per l'effetto espansione */
+  transform: scale(0);
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
 }
 .modal.show .modal-content {
-  transform: scale(1); /* Si espande al centro */
+  transform: scale(1);
 }
 #caption {
-  margin: auto; 
+  margin: 0 auto; /* Centra orizzontalmente */
   display: block; 
-  width: 80%; 
-  max-width: 700px; 
+  width: 90%; 
+  max-width: 850px; 
   text-align: center; 
-  color: #ccc; 
-  padding: 10px 0 40px 0; /* Padding sotto per dare respiro */
-  font-family: sans-serif;
+  color: #f1f1f1; 
+  padding: 15px 0 50px 0;
+  font-family: 'Sansation', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  clear: both; /* Forza il testo ad andare sotto qualsiasi elemento flottante */
 }
 .close {
-  position: fixed; /* Fixed per restare sempre visibile in alto a destra */
-  top: 15px; right: 35px; 
-  color: #f1f1f1; 
-  font-size: 40px; 
+  position: fixed; 
+  top: 15px; right: 25px; 
+  color: #fff; 
+  font-size: 45px; 
   font-weight: bold; 
-  transition: .3s; 
   z-index: 20001;
   cursor: pointer;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-.close:hover { color: #a7ffeb; transform: scale(1.1); }
 @media only screen and (max-width: 700px) {
-  .modal-content { width: 95%; margin-top: 60px; }
-  .close { top: 10px; right: 20px; font-size: 35px; }
+  .modal-content { width: 95%; margin-top: 70px; max-height: 60vh; }
+  #caption { font-size: 16px; width: 95%; }
+  .close { top: 10px; right: 15px; }
 }
 </style>
 <script>
