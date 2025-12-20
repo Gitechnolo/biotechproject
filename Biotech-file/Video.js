@@ -191,10 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastFocusedElement = event.currentTarget; 
 
-    // 1. Calcola il centro dell'elemento cliccato per l'origine dell'effetto
+    // 1. Calcola il centro dell'elemento cliccato per l'origine dell'effetto lente
     const rect = lastFocusedElement.getBoundingClientRect();
     const originX = rect.left + rect.width / 2;
-    // Calcoliamo l'origine rispetto alla finestra per gestire lo scroll
     const originY = rect.top + rect.height / 2;
 
     // 2. Imposta l'origine dell'animazione sull'immagine
@@ -204,10 +203,10 @@ document.addEventListener("DOMContentLoaded", function () {
     modalImg.src = targetImg.src;
     captionText.textContent = targetImg.alt || "";
 
-    // 4. Mostra il modal (USIAMO BLOCK per allineamento verticale corretto)
-    modal.style.display = "block"; 
+    // 4. Mostra il modal con FLEX per garantire l'incolonnamento centrato
+    modal.style.display = "flex"; 
     
-    // Micro-delay per permettere al browser di registrare display:block prima dell'animazione
+    // Micro-delay per attivare la transizione CSS scale(0) -> scale(1)
     setTimeout(() => {
       modal.classList.add("show");
       closeBtn.focus();
@@ -222,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     modal.classList.remove("show");
     
-    // Attende la fine dell'animazione CSS (400ms) prima di resettare
+    // Attende la fine dell'animazione CSS (400ms) prima di resettare il display
     setTimeout(() => {
       modal.style.display = "none";
       modalImg.src = "";
@@ -245,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   modal.onclick = function (e) {
-    // Chiude solo se clicchi sullo sfondo nero (fuori dall'immagine o caption)
+    // Chiude solo se clicchi sullo sfondo (fuori da immagine e testo)
     if (e.target === modal) closeBiotechModal();
   };
 
