@@ -60,94 +60,7 @@
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* Stili per le immagini sorgente */
-#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}
-
-/* Sfondo del Popup */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 20000; 
-  left: 0; top: 0; 
-  width: 100%; height: 100%; 
-  background-color: rgba(0,0,0,0.97);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  overflow-x: hidden;
-  overflow-y: auto; /* La barra appare solo se il testo è molto lungo */
-}
-
-/* Forza l'allineamento in colonna singola */
-.modal.show {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  opacity: 1;
-}
-
-/* L'Immagine da 1000px */
-.modal-content {
-  display: block !important;
-  flex-shrink: 0; /* Impedisce schiacciamenti */
-  margin: 60px auto 20px auto !important; 
-  width: 90%;
-  max-width: 1000px;
-  height: auto;
-  max-height: 65vh; 
-  object-fit: contain;
-  /* Reset totale per incolonnamento */
-  float: none !important;
-  clear: both !important;
-  transform: scale(0);
-  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
-}
-
-.modal.show .modal-content {
-  transform: scale(1);
-}
-
-/* Il Testo Sotto l'Immagine */
-#caption {
-  display: block !important;
-  flex-shrink: 0;
-  margin: 0 auto !important; 
-  width: 90%;
-  max-width: 850px;
-  text-align: center;
-  color: #ddd;
-  padding: 10px 20px 80px 20px;
-  font-family: 'Sansation', Arial, sans-serif;
-  font-size: 20px;
-  line-height: 1.5;
-  float: none !important;
-  clear: both !important;
-}
-
-/* Pulsante di chiusura */
-.close {
-  position: fixed; 
-  top: 15px; right: 25px; 
-  color: #fff; 
-  font-size: 50px; 
-  font-weight: bold; 
-  z-index: 20001;
-  cursor: pointer;
-  line-height: 1;
-}
-
-/* Ottimizzazione Mobile */
-@media only screen and (max-width: 700px) {
-  .modal-content { 
-    margin-top: 80px !important; 
-    max-height: 50vh; 
-  }
-  #caption { 
-    font-size: 17px; 
-    padding-bottom: 100px;
-  }
-  .close { top: 10px; right: 20px; }
-}
+#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto; }.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}@media only screen and (max-width: 700px){ .modal-content{ margin-top: 80px !important; max-height: 50vh;} #caption{ font-size: 17px; padding-bottom: 100px;} .close{ top: 10px; right: 20px;}}
 </style>
 <script>
 !function(){
@@ -228,10 +141,25 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
     <div id="caption"></div>
   </div>
 
-  <img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Mitocondri.avif" alt="Diagramma strutturale dei Mitocondri, le centrali energetiche della cellula che producono ATP." style="display:none" width="1000" height="571">
-  <img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Lisosoma.avif" alt="Diagramma di un Lisosoma, il centro di riciclaggio della cellula che contiene enzimi digestivi." style="display:none" width="1000" height="523">
-  <img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Miochine.avif" alt="Illustrazione delle Miochine, molecole rilasciate dai muscoli in esercizio che agiscono come messaggeri tra gli organi." style="display:none" width="1000" height="523">
-  <img id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Pelle.avif" alt="Diagramma a strati della pelle (epidermide, derma, ipoderma) con cheratinociti e melanociti in evidenza." style="display:none" width="1000" height="523">
+  <img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Mitocondri.avif" 
+     data-lang-key="modal-mitocondri-alt" 
+     alt="Diagramma strutturale dei Mitocondri, le centrali energetiche della cellula che producono ATP." 
+     style="display:none" width="1000" height="571">
+
+<img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Lisosoma.avif" 
+     data-lang-key="modal-lisosoma-alt" 
+     alt="Diagramma di un Lisosoma, il centro di riciclaggio della cellula che contiene enzimi digestivi." 
+     style="display:none" width="1000" height="523">
+
+<img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Miochine.avif" 
+     data-lang-key="modal-miochine-alt" 
+     alt="Illustrazione delle Miochine, molecole rilasciate dai muscoli in esercizio che agiscono come messaggeri tra gli organi." 
+     style="display:none" width="1000" height="523">
+
+<img id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Pelle.avif" 
+     data-lang-key="modal-pelle-alt" 
+     alt="Diagramma a strati della pelle (epidermide, derma, ipoderma) con cheratinociti e melanociti in evidenza." 
+     style="display:none" width="1000" height="523">
 
   <ruby class="pronounceable" tabindex="0" aria-label="Termine scientifico: Mitocondri">
     <span style="font-size:0.9em;margin-right:4px;vertical-align:middle">🔬</span>

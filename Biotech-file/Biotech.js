@@ -955,21 +955,33 @@ function applyTranslations(translations, lang) {
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.setAttribute('placeholder', value);
       } else if (el.tagName === 'IMG') {
+        // Aggiorna l'attributo ALT (fondamentale per accessibilità)
         el.setAttribute('alt', value);
+        
+        // AGGIORNAMENTO DINAMICO PER BIOTECH MODAL
+        // Se l'immagine tradotta è una di quelle del popup, aggiorniamo il caption visibile
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        
+        // Se il modal è aperto E l'immagine nel modal corrisponde a quella che stiamo traducendo
+        if (modal && modal.classList.contains("show") && modalImg && modalImg.src === el.src) {
+          captionText.textContent = value;
+        }
       } else if (el.hasAttribute('aria-label')) {
         el.setAttribute('aria-label', value);
         const bold = el.querySelector('b');
         if (bold) {
           bold.textContent = value;
         } else {
-          el.innerHTML = value; // Supporta HTML
+          el.innerHTML = value; 
         }
       } else {
         const bold = el.querySelector('b');
         if (bold) {
           bold.textContent = value;
         } else {
-          el.innerHTML = value; // Supporta HTML
+          el.innerHTML = value; 
         }
       }
     }
