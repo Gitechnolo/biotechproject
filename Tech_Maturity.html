@@ -74,27 +74,24 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 /* 2. Stato Finale: Attivato dopo il caricamento dei dati (dalla classe aggiunta al body) */
 .portfolio-loaded .metric {opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */}
 /* --- Stile Legenda Filtri --- */
-/* --- Stile Legenda Filtri (Versione Allargata con Sfumatura) --- */
 .filter-legend-container {
   background: var(--primary-100);
-  border-top: 1px solid var(--primary-300); 
-  border-left: none; /* Rimuoviamo i bordi laterali per un look più pulito a piena larghezza */
-  border-right: none;
-  max-width: 100%; 
+  border-top: 1px solid var(--primary-300);
   width: 100%;
   margin: 0; 
-  padding: 20px 30px 60px; /* Padding coerente con il resto */
+  /* Riduciamo da 50px a 30px per avvicinare il contenuto */
+  padding: 20px 20px 30px; 
   
-  /* Sfumatura verso il basso migliorata */
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  /* Accorciamo la sfumatura: il nero (visibile) arriva fino al 70% */
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .filter-legend-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .legend-item {
@@ -345,25 +342,25 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <br>
 <!-- Menu di filtro per livello di maturità tecnologica -->
 <div class="tech-section">
-  <p class="sansation-light-italic" data-lang-key="filter-legend-title">Criteri di Valutazione Prestazioni</p>
+  <p class="sansation-light-italic" data-lang-key="leg-tit">Criteri di Valutazione Prestazioni</p>
   
   <div class="filter-legend-container">
     <div class="filter-legend-grid">
       <div class="legend-item">
         <span class="status-badge badge-optimized"></span>
-        <span data-lang-key="desc-optimized">90-100: Ottimizzate</span>
+        <span data-lang-key="leg-opt">90-100: Ottimizzate</span>
       </div>
       <div class="legend-item">
         <span class="status-badge badge-compatible"></span>
-        <span data-lang-key="desc-compatible">75-89: Compatibili</span>
+        <span data-lang-key="leg-comp">75-89: Compatibili</span>
       </div>
       <div class="legend-item">
         <span class="status-badge badge-needs-improvement"></span>
-        <span data-lang-key="desc-needs">50-74: Da migliorare</span>
+        <span data-lang-key="leg-need">50-74: Da migliorare</span>
       </div>
       <div class="legend-item">
         <span class="status-badge badge-deprecated"></span>
-        <span data-lang-key="desc-deprecated">&lt; 50: Obsoleti</span>
+        <span data-lang-key="leg-depr">&lt; 50: Obsoleti</span>
       </div>
     </div>
   </div>
