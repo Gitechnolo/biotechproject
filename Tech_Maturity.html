@@ -74,13 +74,20 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 /* 2. Stato Finale: Attivato dopo il caricamento dei dati (dalla classe aggiunta al body) */
 .portfolio-loaded .metric {opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */}
 /* --- Stile Legenda Filtri --- */
+/* --- Stile Legenda Filtri (Versione Allargata con Sfumatura) --- */
 .filter-legend-container {
   background: var(--primary-100);
-  border: 1px solid var(--primary-300);
-  border-radius: var(--radius-md);
-  padding: 12px;
-  margin: 0 auto 10px;
-  max-width: 850px;
+  border-top: 1px solid var(--primary-300); 
+  border-left: none; /* Rimuoviamo i bordi laterali per un look più pulito a piena larghezza */
+  border-right: none;
+  max-width: 100%; 
+  width: 100%;
+  margin: 0; 
+  padding: 20px 30px 60px; /* Padding coerente con il resto */
+  
+  /* Sfumatura verso il basso migliorata */
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 .filter-legend-grid {

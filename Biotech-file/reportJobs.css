@@ -97,19 +97,18 @@
 
 .tech-section {
   margin-top: -10px;
+  /* I margini negativi annullano il padding laterale del contenitore padre (30px) */
+  margin-left: -30px; 
+  margin-right: -30px;
+  /* Allunghiamo la larghezza per compensare i margini negativi */
+  width: calc(100% + 60px); 
   padding: 30px 20px 20px;
   background: rgba(0, 20, 10, 0.4);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   border-top: 1px solid rgba(0, 230, 118, 0.2);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   text-align: center;
-}
-
-.tech-section .sansation-light-italic {
-  color: var(--primary-text);
-  font-size: 1.1em;
-  margin-bottom: 12px;
-  text-shadow: var(--shadow-green);
+  overflow: hidden; /* Evita che la sfumatura crei scrollbar strane */
 }
 
 .biotechcenter .sansation-light-italic {
