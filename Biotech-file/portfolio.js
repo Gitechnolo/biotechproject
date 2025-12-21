@@ -628,12 +628,27 @@ document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
 
+  const statusSpan = document.getElementById('filter-status');
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      // 1. Esegue la tua funzione esistente (gestisce card e classe .active)
       filterSelection(btn.dataset.filter);
+
+      // 2. AGGIUNTA ACCESSIBILITÀ:
+      // Aggiorna lo stato "premuto" su tutti i bottoni
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.setAttribute('aria-pressed', b.classList.contains('active'));
+      });
+
+      // Aggiorna la Live Region per lo screen reader
+      if (statusSpan) {
+        statusSpan.textContent = btn.textContent;
+      }
     });
   });
-// Collega il pulsante di esportazione
+
+  // Collega il pulsante di esportazione
   const exportBtn = document.getElementById('export-data-btn');
   if (exportBtn) {
     exportBtn.addEventListener('click', exportToPDF);
