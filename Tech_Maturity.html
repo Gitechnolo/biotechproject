@@ -157,66 +157,20 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div> <!-- /tech-section -->
 </div>  
 <!-- Chiusura Audit Tecnico | Biotech Project Cerchi -->   
-
 <!-- === VISUAL REPORT CARD === -->
 <div class="visual-report" aria-labelledby="report-title">
-<h3 id="report-title">
-<span aria-hidden="true">📊</span>
-<span data-lang-key="tech-maturity-report-title">Stato del Progetto</span>
-</h3>   
-
+<h3 id="report-title"><span aria-hidden="true">📊</span><span data-lang-key="tech-maturity-report-title">Stato del Progetto</span></h3>   
 <div class="report-grid">
 <!-- Pagine analizzate -->
-<div class="report-item" role="article" aria-labelledby="pages-analyzed-label">
-  <span class="report-icon" aria-hidden="true">✅</span>
-  <div>
-    <strong id="pages-analyzed-label" data-lang-key="tech-maturity-pages-analyzed">Pagine analizzate</strong>
-    <p>
-      <span id="analyzed-count">--</span> <span data-lang-key="tech-maturity-of">su</span>
-      <span id="total-pages">26</span>
-    </p>
-  </div>
-</div>   
-
+<div class="report-item" role="article" aria-labelledby="pages-analyzed-label"><span class="report-icon" aria-hidden="true">✅</span><div><strong id="pages-analyzed-label" data-lang-key="tech-maturity-pages-analyzed">Pagine analizzate</strong><p><span id="analyzed-count">--</span><span data-lang-key="tech-maturity-of">su</span><span id="total-pages">26</span></p></div></div>   
 <!-- Prestazioni medie -->
-<div class="report-item" role="article" aria-labelledby="avg-performance-label">
-  <span class="report-icon" aria-hidden="true">⚡</span>
-  <div>
-    <strong id="avg-performance-label" data-lang-key="tech-maturity-avg-performance">Prestazioni medie</strong>
-    <p id="avg-performance">--%</p>
-  </div>
-</div>   
-
+<div class="report-item" role="article" aria-labelledby="avg-performance-label"><span class="report-icon" aria-hidden="true">⚡</span><div><strong id="avg-performance-label" data-lang-key="tech-maturity-avg-performance">Prestazioni medie</strong><p id="avg-performance">--%</p></div></div>   
 <!-- Accessibilità -->
-<div class="report-item" role="article" aria-labelledby="accessibility-label">
-  <span class="report-icon" aria-hidden="true">♿</span>
-  <div>
-    <strong id="accessibility-label" data-lang-key="tech-maturity-a11y-heading">Accessibilità</strong>
-    <p data-lang-key="tech-maturity-a11y-desc">
-      Alto contrasto, navigabile da tastiera, compatibile con screen reader
-    </p>
-  </div>
-</div>   
-
+<div class="report-item" role="article" aria-labelledby="accessibility-label"><span class="report-icon" aria-hidden="true">♿</span><div><strong id="accessibility-label" data-lang-key="tech-maturity-a11y-heading">Accessibilità</strong><p data-lang-key="tech-maturity-a11y-desc">Alto contrasto, navigabile da tastiera, compatibile con screen reader </p></div></div>   
 <!-- Ultimo aggiornamento -->
-<div class="report-item" role="article" aria-labelledby="last-update-label">
-  <span class="report-icon" aria-hidden="true">🔍</span>
-  <div>
-    <strong id="last-update-label" data-lang-key="tech-maturity-last-update">Ultimo aggiornamento</strong>
-    <p>
-      <time id="last-updated-report" datetime="">--/--/----</time>
-    </p>
-  </div>
-</div>   
-
-  </div>
-
-<p class="report-note">
-  <span data-lang-key="tech-maturity-report-note">Dati aggiornati automaticamente.</span>
-  <a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-download-json">Scarica JSON</a>
-  <span data-lang-key="tech-maturity-or">o</span>
-  <a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-view-on-github">vedi su GitHub</a>.
-</p>   
+<div class="report-item" role="article" aria-labelledby="last-update-label"><span class="report-icon" aria-hidden="true">🔍</span><div><strong id="last-update-label" data-lang-key="tech-maturity-last-update">Ultimo aggiornamento</strong><p><time id="last-updated-report" datetime="">--/--/----</time></p></div></div>   
+</div>
+<p class="report-note"><span data-lang-key="tech-maturity-report-note">Dati aggiornati automaticamente.</span><a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-download-json">Scarica JSON</a><span data-lang-key="tech-maturity-or">o</span><a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-view-on-github">vedi su GitHub</a>.</p>   
 </div>     
 
 <section class="tech-section">
@@ -235,30 +189,25 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>   
 
 <div class="biotechcenter" role="region" aria-labelledby="score-label">
-  <!-- Etichetta del punteggio -->
-  <p id="score-label" class="sansation-light-italic" data-lang-key="performance-score-label">Performance Score</p>
-
-  <!-- Valore dinamico del punteggio -->
-  <span id="performance-score" aria-live="polite" aria-atomic="true" style="font-size: 2em; font-weight: bold;"> - </span>
-
-  <!-- Indicatore di tendenza (es. ↑ ↓) -->
-  <span id="trend-indicator" aria-live="polite" style="font-size: 1.5em; margin-left: 8px;"></span>
-
-  <!-- Nota sul refresh dati -->
-  <p class="lead" data-lang-key="performance-score-note" style="margin-top: 10px;">*Dati reali aggiornati ogni 24 ore</p>   
+<!-- Etichetta del punteggio -->
+<p id="score-label" class="sansation-light-italic" data-lang-key="performance-score-label">Performance Score</p>
+<!-- Valore dinamico del punteggio -->
+<span id="performance-score" aria-live="polite" aria-atomic="true" style="font-size: 2em; font-weight: bold;"> - </span>
+<!-- Indicatore di tendenza (es. ↑ ↓) -->
+<span id="trend-indicator" aria-live="polite" style="font-size: 1.5em; margin-left: 8px;"></span>
+<!-- Nota sul refresh dati -->
+<p class="lead" data-lang-key="performance-score-note" style="margin-top: 10px;">*Dati reali aggiornati ogni 24 ore</p>   
 </div>     
 
 <table class="visually-hidden">
 <caption>Andamento delle prestazioni nel tempo</caption>
 <thead><tr><th>Data</th><th>Prestazioni (%)</th></tr></thead>
-<tbody id="chart-data-body">
-<!-- Popolato via JavaScript -->
-</tbody>
+<tbody id="chart-data-body"><!-- Popolato via JavaScript --></tbody>
 </table>
 
 <div class="portfolio-main">
 <div class="biotechcenter">
-  <p class="lead" data-lang-key="performance-dashboard-title">Dashboard delle prestazioni aggiornata</p>
+<p class="lead" data-lang-key="performance-dashboard-title">Dashboard delle prestazioni aggiornata</p>
 </div>   
 <br>
 <!-- Menu di filtro per livello di maturità tecnologica -->
