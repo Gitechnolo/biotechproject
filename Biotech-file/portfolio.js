@@ -407,14 +407,14 @@ if (typeof showNotification === 'undefined') {
   }
 }
 function filterSelection(filter) {
-  // 1. Gestione classi pulsanti
+  // 1. Gestione classi pulsanti e accessibilità aria-pressed
   document.querySelectorAll('.filter-btn').forEach(btn => {
     const isActive = btn.dataset.filter === filter;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-pressed', isActive);
   });
 
-  // 2. Filtraggio card
+  // 2. Filtraggio delle card nella dashboard
   const cards = document.querySelectorAll('.portfolio-col');
   let visibleCount = 0;
 
@@ -431,29 +431,36 @@ function filterSelection(filter) {
   const container = document.querySelector('.portfolio-row');
   let msgEl = document.getElementById('filter-message');
 
-  // Se non esiste, lo creiamo una sola volta
+  // Se l'elemento non esiste nel DOM, lo creiamo dinamicamente
   if (!msgEl) {
     msgEl = document.createElement('p');
     msgEl.id = 'filter-message';
-    msgEl.className = 'sansation-light-italic'; // Usa una classe CSS invece di stili inline se possibile
+    msgEl.className = 'sansation-light-italic'; 
     msgEl.style.cssText = 'color: #a0aec0; text-align: center; padding: 20px; width: 100%;';
-    msgEl.setAttribute('role', 'status');
+    msgEl.setAttribute('role', 'status'); // Annuncio per screen reader
     msgEl.setAttribute('data-lang-key', 'filter-empty');
     container.parentNode.insertBefore(msgEl, container.nextSibling);
   }
 
-  // Logica di visualizzazione dinamica
+  // 4. Logica di visualizzazione e traduzione dinamica
   if (visibleCount === 0) {
     msgEl.style.display = 'block';
     
-    // Recuperiamo la traduzione dalla cache globale o usiamo il fallback
+    // Determiniamo la lingua attuale (fallback su 'it')
     const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
+    
+    // Tentiamo di recuperare la traduzione dalla cache globale (window.cachedTranslations)
     const translation = (window.cachedTranslations && window.cachedTranslations[lang]) 
                         ? window.cachedTranslations[lang]['filter-empty'] 
                         : null;
 
-    msgEl.textContent = translation || (lang === 'en' ? 'No pages found.' : 'Nessuna pagina trovata.');
+    // Se la traduzione nel JSON esiste, la usiamo. 
+    // Altrimenti usiamo il fallback testuale identico al JSON.
+    msgEl.textContent = translation || (lang === 'en' 
+      ? 'No pages found with this maturity status.' 
+      : 'Nessuna pagina trovata con questo stato di maturità.');
   } else {
+    // Nascondiamo il messaggio se ci sono risultati
     msgEl.style.display = 'none';
   }
 }
