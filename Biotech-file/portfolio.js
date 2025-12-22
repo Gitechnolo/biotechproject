@@ -407,10 +407,14 @@ if (typeof showNotification === 'undefined') {
   }
 }
 function filterSelection(filter) {
+  // 1. Gestione classi pulsanti
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.filter === filter);
+    const isActive = btn.dataset.filter === filter;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive);
   });
 
+  // 2. Filtraggio card
   const cards = document.querySelectorAll('.portfolio-col');
   let visibleCount = 0;
 
@@ -423,33 +427,32 @@ function filterSelection(filter) {
     }
   });
 
+  // 3. Gestione Messaggio "Nessun risultato"
   const container = document.querySelector('.portfolio-row');
   let msgEl = document.getElementById('filter-message');
 
+  // Se non esiste, lo creiamo una sola volta
   if (!msgEl) {
     msgEl = document.createElement('p');
     msgEl.id = 'filter-message';
-    msgEl.style.color = '#a0aec0';
-    msgEl.style.textAlign = 'center';
-    msgEl.style.fontStyle = 'italic';
-    msgEl.style.padding = '20px';
-    msgEl.setAttribute('role', 'status'); // Accessibilità: annuncio non urgente
+    msgEl.className = 'sansation-light-italic'; // Usa una classe CSS invece di stili inline se possibile
+    msgEl.style.cssText = 'color: #a0aec0; text-align: center; padding: 20px; width: 100%;';
+    msgEl.setAttribute('role', 'status');
     msgEl.setAttribute('data-lang-key', 'filter-empty');
     container.parentNode.insertBefore(msgEl, container.nextSibling);
   }
 
-  // --- LOGICA DI VISIBILITÀ E TRADUZIONE DIRETTA ---
+  // Logica di visualizzazione dinamica
   if (visibleCount === 0) {
     msgEl.style.display = 'block';
-
-    // Recupera la lingua (assicurarsi che 'currentLang' sia definita globalmente nel JS)
+    
+    // Recuperiamo la traduzione dalla cache globale o usiamo il fallback
     const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
+    const translation = (window.cachedTranslations && window.cachedTranslations[lang]) 
+                        ? window.cachedTranslations[lang]['filter-empty'] 
+                        : null;
 
-    if (window.translations && window.translations[lang] && window.translations[lang]['filter-empty']) {
-      msgEl.textContent = window.translations[lang]['filter-empty'];
-    } else {
-      msgEl.textContent = 'Nessuna pagina trovata con questo stato di maturità.';
-    }
+    msgEl.textContent = translation || (lang === 'en' ? 'No pages found.' : 'Nessuna pagina trovata.');
   } else {
     msgEl.style.display = 'none';
   }

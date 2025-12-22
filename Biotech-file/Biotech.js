@@ -1081,47 +1081,41 @@ function updateLanguageButton(lang) {
 // ===========================
 function setLanguage(lang) {
   const pageName = getPageName();
-
-  if (!translatablePages.includes(pageName)) {
-    loadTranslation('lang/common.json').then(common => {
-      if (!common) return;
-      const translations = {
-        it: common.it || {},
-        en: common.en || {}
-      };
-      setTimeout(() => {
-        applyTranslations(translations, lang);
-        updateLanguageButton(lang);
-        document.documentElement.lang = lang;
-        currentLang = lang;
-        localStorage.setItem('preferred-language', lang);
-      }, 100);
-    });
-    return;
+  const isTranslatable = translatablePages.includes(pageName);
+  
+  // Prepariamo le promesse: common è sempre necessaria
+  const promises = [loadTranslation('lang/common.json')];
+  
+  // Se la pagina è specifica, carichiamo anche il suo file
+  if (isTranslatable) {
+    const pageKey = getPageKey(pageName);
+    promises.push(loadTranslation(`lang/${pageKey}.json`));
   }
 
-  const pageKey = getPageKey(pageName);
-  const commonPromise = loadTranslation('lang/common.json');
-  const pagePromise = loadTranslation(`lang/${pageKey}.json`);
+  Promise.all(promises).then(([common, pageData]) => {
+    // Unifichiamo le traduzioni in un unico oggetto
+    const translations = {
+      it: { ...(common?.it || {}), ...(pageData?.it || {}) },
+      en: { ...(common?.en || {}), ...(pageData?.en || {}) }
+    };
 
-  Promise.all([commonPromise, pagePromise]).then(([common, pageData]) => {
-    const translations = { it: {}, en: {} };
+    // RENDIAMO LE TRADUZIONI GLOBALI
+    // Questo permette a filterSelection di leggerle istantaneamente
+    window.cachedTranslations = translations;
 
-    if (common) {
-      translations.it = { ...common.it };
-      translations.en = { ...common.en };
-    }
-    if (pageData) {
-      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-    }
-
+    // Applichiamo le modifiche
     setTimeout(() => {
       applyTranslations(translations, lang);
       updateLanguageButton(lang);
       document.documentElement.lang = lang;
       currentLang = lang;
       localStorage.setItem('preferred-language', lang);
+      
+      // Se esiste un messaggio di filtro attivo, aggiornalo subito
+      const msgEl = document.getElementById('filter-message');
+      if (msgEl && msgEl.style.display === 'block') {
+        msgEl.textContent = translations[lang]['filter-empty'] || "";
+      }
     }, 100);
   });
 }
