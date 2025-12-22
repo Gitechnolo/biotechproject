@@ -424,22 +424,35 @@ function filterSelection(filter) {
   });
 
   const container = document.querySelector('.portfolio-row');
-  const message = document.getElementById('filter-message');
+  let msgEl = document.getElementById('filter-message');
 
-  if (!message) {
-    const msgEl = document.createElement('p');
+  if (!msgEl) {
+    msgEl = document.createElement('p');
     msgEl.id = 'filter-message';
     msgEl.style.color = '#a0aec0';
     msgEl.style.textAlign = 'center';
     msgEl.style.fontStyle = 'italic';
     msgEl.style.padding = '20px';
+    msgEl.setAttribute('role', 'status'); // Accessibilità: annuncio non urgente
+    msgEl.setAttribute('data-lang-key', 'filter-empty');
     container.parentNode.insertBefore(msgEl, container.nextSibling);
   }
 
-  const msgEl = document.getElementById('filter-message');
-  msgEl.textContent = visibleCount === 0 
-    ? 'Nessuna pagina trovata con questo stato di maturità.'
-    : '';
+  // --- LOGICA DI VISIBILITÀ E TRADUZIONE DIRETTA ---
+  if (visibleCount === 0) {
+    msgEl.style.display = 'block';
+
+    // Recupera la lingua (assicurarsi che 'currentLang' sia definita globalmente nel JS)
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
+
+    if (window.translations && window.translations[lang] && window.translations[lang]['filter-empty']) {
+      msgEl.textContent = window.translations[lang]['filter-empty'];
+    } else {
+      msgEl.textContent = 'Nessuna pagina trovata con questo stato di maturità.';
+    }
+  } else {
+    msgEl.style.display = 'none';
+  }
 }
 function getTrendArrow(current, previous) {
   if (previous === undefined || previous === null) return '→';
