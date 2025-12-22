@@ -1095,6 +1095,10 @@ function setLanguage(lang) {
         document.documentElement.lang = lang;
         currentLang = lang;
         localStorage.setItem('preferred-language', lang);
+
+        // Forza l'aggiornamento del messaggio del filtro
+        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter;
+        if (activeFilter) filterSelection(activeFilter);
       }, 100);
     });
     return;
@@ -1122,9 +1126,13 @@ function setLanguage(lang) {
       document.documentElement.lang = lang;
       currentLang = lang;
       localStorage.setItem('preferred-language', lang);
+
+      // Forza l'aggiornamento del messaggio del filtro
+      const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter;
+      if (activeFilter) filterSelection(activeFilter);
     }, 100);
   });
-}
+}   
 // ===========================
 // TOGGLE LINGUA (chiamato da onclick)
 // ===========================
