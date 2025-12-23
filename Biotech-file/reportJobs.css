@@ -105,6 +105,42 @@
   text-align: center;
 }
 
+/* --- FIX LEGENDA (Spostata da HEAD a qui con alta specificità) --- */
+.tech-section .filter-legend-container {
+  background: var(--primary-100);
+  border-top: 1px solid var(--primary-300);
+  width: 100%;
+  margin: 0;
+  padding: 20px 20px 30px;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.tech-section .filter-legend-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tech-section .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #ffffff; /* PageSpeed: contrasto garantito */
+  font-family: var(--font-main);
+}
+
+.tech-section .legend-item .status-badge {
+  margin-left: 0;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 .tech-section .sansation-light-italic {
   color: var(--primary-text);
   font-size: 1.1em;
@@ -181,20 +217,21 @@
 }
 
 .status-badge {
-  font-size: 10px;
+  font-size: 11px !important; /* PageSpeed: alzato da 10px a 11px */
   font-weight: bold;
-  padding: 2px 6px;
+  padding: 2px 8px;
   border-radius: 10px;
   margin-left: 6px;
   text-transform: none;
-  color: white;
   vertical-align: middle;
+  display: inline-block;
 }
 
-.badge-compatible   { background: #2ecc71; } /* Verde */
-.badge-optimized    { background: #1abc9c; } /* Verde acqua */
-.badge-needs-improvement { background: #f39c12; } /* Arancione */
-.badge-deprecated   { background: #e74c3c; } /* Rosso */
+/* Fix Contrasto PageSpeed: Testo scuro su sfondi brillanti */
+.badge-compatible   { background: #2ecc71 !important; color: #0a1a2a !important; } 
+.badge-optimized    { background: #1abc9c !important; color: #0a1a2a !important; } 
+.badge-needs-improvement { background: #f39c12 !important; color: #0a1a2a !important; } 
+.badge-deprecated   { background: #d63031 !important; color: #ffffff !important; }
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
 .fadebox {
@@ -414,23 +451,6 @@
     0 0 4px rgba(0, 230, 118, 0.1);
 }
 
-/* 🔹 Puntino centrale luminoso (effetto high-tech) */
-.progress-circle::before::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 4px;
-  height: 4px;
-  background: #64ffda;
-  border-radius: 50%;
-  box-shadow: 
-    0 0 6px rgba(100, 255, 218, 0.7),
-    0 0 2px rgba(100, 255, 218, 0.5);
-  z-index: 2;
-}   
-
 /* ::after: testo centrale + glow avanzato */
 .progress-circle::after {
   content: attr(data-value) '%';
@@ -447,9 +467,9 @@
 }
 
 
-/* --- GLOW DINAMICO IN BASE AL LIVELLO (CORRETTO) --- */
+/* --- GLOW DINAMICO IN BASE AL LIVELLO --- */
 
-/* 🔹 High: 75–100 */
+/* High: 75–100 */
 .progress-circle.high[data-value^="7"],
 .progress-circle.high[data-value^="8"],
 .progress-circle.high[data-value^="9"],
@@ -457,7 +477,7 @@
   box-shadow: 0 0 22px rgba(0, 230, 118, 0.65);
 }
 
-/* 🔹 Medium: 50–74 */
+/* Medium: 50–74 */
 .progress-circle.medium[data-value^="5"],
 .progress-circle.medium[data-value^="6"],
 .progress-circle.medium[data-value^="70"],
@@ -468,21 +488,12 @@
   box-shadow: 0 0 16px rgba(0, 230, 118, 0.45);
 }
 
-/* 🔹 Low: 0–49 */
+/* Low: 0–49 */
 .progress-circle.low[data-value^="0"],
 .progress-circle.low[data-value^="1"],
 .progress-circle.low[data-value^="2"],
 .progress-circle.low[data-value^="3"],
-.progress-circle.low[data-value^="40"],
-.progress-circle.low[data-value^="41"],
-.progress-circle.low[data-value^="42"],
-.progress-circle.low[data-value^="43"],
-.progress-circle.low[data-value^="44"],
-.progress-circle.low[data-value^="45"],
-.progress-circle.low[data-value^="46"],
-.progress-circle.low[data-value^="47"],
-.progress-circle.low[data-value^="48"],
-.progress-circle.low[data-value^="49"] {
+.progress-circle.low[data-value^="40"] {
   box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
   filter: brightness(0.95);
 }      
@@ -634,7 +645,7 @@
   margin: 4px 0;
 }
 
-/* --- Pulsante Azione (Esporta, Aggiorna, ecc.) --- */
+/* --- Pulsante Azione --- */
 .action-btn {
   margin-top: 12px;
   padding: 8px 18px;
@@ -659,16 +670,7 @@
   border-color: #b39ddb;
 }
 
-.action-btn:active {
-  transform: translateY(0);
-}
-
-.action-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.3);
-}
-
-/* --- Performance Metric (testo con effetto) --- */
+/* --- Performance Metric --- */
 .performance-metric {
   color: rgb(212, 211, 211);
   text-shadow: 2px 2px 5px blueviolet;
@@ -677,20 +679,6 @@
 }
 
 /* --- Notifiche --- */
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #2d3748;
-  color: white;
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  z-index: 10000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  animation: fadeOut 3s forwards;
-}
-
 .notification2 {
   position: fixed;
   top: 20px;
@@ -710,13 +698,7 @@
   pointer-events: none;
 }
 
-@keyframes fadeOut {
-  0% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-10px); }
-}
-
-/* --- Riduzione movimento (accessibilità) --- */
+/* --- Accessibilità ridotta --- */
 @media (prefers-reduced-motion: reduce) {
   *,
   .fadebox,
@@ -726,60 +708,41 @@
   .action-btn,
   .filter-btn {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 } 
 
-/* --- TOOLTIP MOBILE: Nessuna sovrapposizione --- */
+/* --- TOOLTIP MOBILE & FIX LEGENDA MOBILE --- */
 @media (max-width: 480px) {
   .trend-details {
-    /* Rimuovi il posizionamento assoluto che causa sovrapposizioni */
     position: static;
-    top: auto;
-    left: auto;
     transform: none;
-    z-index: auto;
-    display: none; /* Nascondi di default */
-    
-    /* Dimensioni adattate a mobile */
+    display: none;
     width: 100%;
-    max-width: 100%;
     margin: 8px 0 0;
     padding: 12px 14px;
     font-size: 13px;
-    line-height: 1.5;
-    text-align: left;
     white-space: normal;
-    word-wrap: break-word;
-    
-    /* Stile coerente con il design esistente */
     background: rgba(0, 0, 0, 0.9);
-    color: #ffffff;
     border: 1px solid #00e676;
     border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
-  /* Mostra il tooltip quando attivo (via JS o stile inline) */
-  .trend-details[style*="block"],
-  .trend-details.active {
+  .trend-details[style*="block"] {
     display: block !important;
   }
 
-  /* Aumenta lo spazio tra le card per dare respiro al tooltip */
   .portfolio-col {
-    margin-bottom: 4.5rem; /* Fondamentale: spazio per il tooltip espanso */
-  }
-
-  /* Riduci leggermente il contenuto per bilanciare */
-  .portfolio-content {
-    padding: 0.8rem;
-  }
-
-  /* Se hai più colonne, forza una card per riga */
-  .portfolio-col {
+    margin-bottom: 4.5rem;
     flex: 1 1 100%;
     max-width: 100%;
   }
-}   
+
+  /* Responsive Fix Legenda */
+  .tech-section .filter-legend-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    text-align: left !important;
+    gap: 12px !important;
+  }
+}  
