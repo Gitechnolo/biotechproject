@@ -4,24 +4,35 @@
    ========================================================================== */
 
 /* --- Variabili globali --- */
+/* --- Variabili globali (Ottimizzate per PageSpeed senza cambiare il design) --- */
 :root {
   /* Colori */
   --primary: #00e676;
   --primary-100: rgba(0, 230, 118, 0.1);
   --primary-300: rgba(0, 230, 118, 0.3);
   --primary-400: rgba(0, 230, 118, 0.4);
-  --primary-text: #a7ffeb;
+  
+  /* ACCESSIBILITÀ: Ho reso questi colori leggermente più saturi per superare i test di contrasto WCAG */
+  --primary-text: #b2ffeb; /* Leggermente più chiaro per spiccare sullo scuro */
   --primary-light: #64ffda;
-  --text-light: #e0f7fa;
-  --text-gray: #b2dfdb;
-  --text-dark: #ccc;
+  --text-light: #ffffff;    /* Portato a bianco puro: PageSpeed ama il contrasto massimo */
+  --text-gray: #cfd8dc;    /* Grigio più chiaro: il precedente era troppo scuro per essere letto bene */
+  --text-dark: #eceff1;    /* Testo scuro più leggibile */
+  
   --bg-dark: #0a1a2a;
   --bg-darker: #1a1a1a;
   --bg-panel: rgba(20, 30, 48, 0.85);
   --shadow-green: 0 0 10px rgba(0, 230, 118, 0.4);
   --shadow-green-strong: 0 0 20px rgba(0, 230, 118, 0.4);
 
-  /* Dimensioni */
+  /* STATI BADGE: Colori ad alta leggibilità per PageSpeed */
+  --b-opt: #00e5ff;  /* Ciano nitido */
+  --b-comp: #00e676; /* Verde biotech originale */
+  --b-need: #ffea00; /* Giallo puro (massimo contrasto) */
+  --b-depr: #ff5252; /* Rosso corallo */
+  --b-text-dark: #050f1a; /* Colore del testo dentro i badge chiari */
+
+  /* DIMENSIONI: Aumentate leggermente dove necessario per i "Tap Targets" */
   --size-sm: 60px;
   --thickness: 12px;
   --radius-sm: 6px;
@@ -29,13 +40,11 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
 
-  /* Transizioni */
+  /* Transizioni e Font */
   --transition: all 0.3s ease;
   --transition-fast: 0.2s ease;
   --transition-bg: background 1.2s ease;
   --transition-transform: transform 0.3s ease;
-
-  /* Font */
   --font-main: 'Sansation', Tahoma, Verdana, sans-serif;
 }
 
@@ -273,18 +282,18 @@
 
 .filter-btn,
 .refresh-btn {
-  border: none;
+  border: 1px solid var(--primary); /* Pulito: rimosso il doppio comando border */
   outline: none;
-  padding: 10px 16px;
+  padding: 12px 20px; /* Aumentato leggermente per superare il test dei 48px di altezza */
   background: var(--primary-100);
   color: var(--primary-text);
-  border: 1px solid var(--primary);
   border-radius: var(--radius-sm);
   font-family: var(--font-main);
   font-size: 1rem;
   cursor: pointer;
   transition: var(--transition);
-  margin: 0 6px;
+  margin: 8px 6px; /* Aumentato il margine verticale a 8px per distanziarli su mobile quando vanno a capo */
+  display: inline-block; /* Garantisce che i margini siano calcolati correttamente */
 }
 
 .filter-btn:hover,
@@ -300,6 +309,16 @@
   box-shadow: 0 0 14px rgba(0, 230, 118, 0.5);
   font-weight: 500;
   border-color: var(--primary);
+}
+
+/* OTTIMIZZAZIONE SPECIFICA PER MOBILE (PageSpeed focalizza qui i test) */
+@media (max-width: 600px) {
+  .filter-btn, .refresh-btn {
+    padding: 14px 22px; /* Area di tocco ancora più generosa su smartphone */
+    margin: 10px 4px;    /* Maggiore spazio per evitare clic accidentali */
+    width: calc(50% - 12px); /* Opzionale: li mette ordinatamente a due a due */
+    font-size: 0.95rem;
+  }
 }
 
 /* --- Grafico performance --- */
