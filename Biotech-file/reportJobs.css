@@ -311,13 +311,24 @@
   border-color: var(--primary);
 }
 
-/* OTTIMIZZAZIONE SPECIFICA PER MOBILE (PageSpeed focalizza qui i test) */
+/* OTTIMIZZAZIONE SPECIFICA PER MOBILE */
 @media (max-width: 600px) {
+  #myBtnContainer {
+    margin-top: -10px !important; /* Riduce la risalita solo su mobile per non coprire la legenda */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .filter-btn, .refresh-btn {
-    padding: 14px 22px; /* Area di tocco ancora più generosa su smartphone */
-    margin: 10px 4px;    /* Maggiore spazio per evitare clic accidentali */
-    width: calc(50% - 12px); /* Opzionale: li mette ordinatamente a due a due */
-    font-size: 0.95rem;
+    padding: 14px 10px; /* Ridotto leggermente il padding laterale per evitare overflow */
+    margin: 8px 4px;    
+    width: calc(50% - 10px); 
+    font-size: 0.9rem; /* Testo leggermente più piccolo per stare su una riga nel bottone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px; /* ✅ Questo garantisce il passaggio del test PageSpeed "Tap Target" */
   }
 }
 

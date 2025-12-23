@@ -73,7 +73,56 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .metric {opacity: 0; transform: translateY(20px); transition: none; /* Disabilita la transizione nello stato iniziale */}
 /* 2. Stato Finale: Attivato dopo il caricamento dei dati (dalla classe aggiunta al body) */
 .portfolio-loaded .metric {opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */}
-.filter-legend-container{ background: var(--primary-100); border-top: 1px solid var(--primary-300); width: 100%; margin: 0; padding: 20px 20px 30px; -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%)}.filter-legend-grid{ display: flex; flex-wrap: wrap; justify-content: center; gap: 20px}.legend-item{ display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-gray); font-family: var(--font-main)}.legend-item .status-badge{ margin-left: 0; width: 12px; height: 12px; display: inline-block}@media (max-width: 600px){ .filter-legend-grid{ display: grid; grid-template-columns: 1fr 1fr; text-align: left; padding-left: 10px;}}#myBtnContainer{ text-align: center; margin-top: -20px; margin-bottom: 2rem; padding: 0 1rem 1rem 1rem}
+.filter-legend-container { 
+  background: var(--primary-100); 
+  border-top: 1px solid var(--primary-300); 
+  width: 100%; 
+  margin: 0; 
+  padding: 20px 20px 35px; /* Aumentato leggermente il fondo per dare spazio alla sfumatura */
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); 
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.filter-legend-grid { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 20px; 
+}
+
+.legend-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-size: 0.9rem; /* Ottimale per PageSpeed */
+  color: #ffffff;    /* Contrasto massimo */
+  font-family: var(--font-main);
+}
+
+.legend-item .status-badge { 
+  margin-left: 0; 
+  width: 12px; 
+  height: 12px; 
+  display: inline-block; 
+}
+
+@media (max-width: 600px) { 
+  .filter-legend-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    text-align: left; 
+    padding-left: 10px; 
+  }
+}
+
+#myBtnContainer { 
+  text-align: center; 
+  margin-top: -20px; /* ✅ Ripristinato come lo volevi tu */
+  margin-bottom: 2rem; 
+  padding: 0 1rem 1rem 1rem;
+  position: relative; /* ✅ Fondamentale: dice al browser che questo blocco è un livello sopra */
+  z-index: 5;         /* ✅ Garantisce che i bottoni siano cliccabili sopra la sfumatura */
+}
 </style>
 <script>
 !function(){
