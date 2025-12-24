@@ -216,22 +216,32 @@
   color: #226a42;
 }
 
+/* 1. Regola generale per TUTTI i badge (Card e Trend) */
 .status-badge {
-  font-size: 11px !important; /* Alzato da 10px a 11px */
-  padding: 2px 8px !important;/* Migliora l'area cliccabile/visibile */
-  font-weight: 800 !important;
+  font-size: 11px; /* Rimosso !important perché non serve più contro il JS */
+  padding: 2px 8px;
+  font-weight: 800;
   border-radius: 10px;
   margin-left: 6px;
   text-transform: none;
   vertical-align: middle;
   display: inline-block;
 }
+/* 2. Nuova classe specifica per le freccette del Trend (quella nel JS) */
+/* Per rendere le freccette leggermente più compatte */
+.status-badge.badge-trend {
+  font-size: 11px;
+  padding: 1px 6px; /* Leggermente meno imbottito per stare bene sulla riga dello Score */
+  margin-left: 4px;
+  font-weight: 600; /* Un po' meno pesante per non appesantire il testo dello Score */
+}
 
 /* Fix Contrasto: Testo scuro su sfondi brillanti */
-.badge-compatible { background: #2ecc71 !important; color: #000000 !important;} /* Nero su Verde = Contrasto OK */
-.badge-optimized { background: #1abc9c !important; color: #000000 !important;} /* Nero su Acqua = Contrasto OK */
-.badge-needs-improvement { background: #f39c12 !important; color: #0a1a2a !important; } 
-.badge-deprecated   { background: #d63031 !important; color: #ffffff !important; }
+/* 3. Colori (Validi per tutti) */
+.badge-compatible { background: #2ecc71 !important; color: #000000 !important; }
+.badge-optimized { background: #1abc9c !important; color: #000000 !important; }
+.badge-needs-improvement { background: #f39c12 !important; color: #000000 !important; }
+.badge-deprecated { background: #d63031 !important; color: #ffffff !important; }
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
 .fadebox {

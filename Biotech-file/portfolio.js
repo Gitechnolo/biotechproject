@@ -205,13 +205,12 @@ function createPerformanceCard(page) {
       >
         <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 
-        <span class="status-badge ${getTrendColorClass(performance, page.previousPerformanceScore)}" 
-              style="font-size: 9px; padding: 1px 5px; margin-left: 6px;">
-          ${getTrendArrow(performance, page.previousPerformanceScore)}
-          ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
-            ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
-            : ''}
-        </span>
+        <span class="status-badge badge-trend ${getTrendColorClass(performance, page.previousPerformanceScore)}">
+  ${getTrendArrow(performance, page.previousPerformanceScore)}
+  ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
+    ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+    : ''}
+</span>
         • ${loadTime} s
         <div 
           id="${tooltipId}" 
