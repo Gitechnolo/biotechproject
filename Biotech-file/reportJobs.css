@@ -128,7 +128,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.9rem;
-  color: #ffffff; /* PageSpeed: contrasto garantito */
+  color: #ffffff; /* Bianco puro: contrasto garantito */
   font-family: var(--font-main);
 }
 
@@ -217,9 +217,9 @@
 }
 
 .status-badge {
-  font-size: 11px !important; /* PageSpeed: alzato da 10px a 11px */
-  font-weight: bold;
-  padding: 2px 8px;
+  font-size: 11px !important; /* Alzato da 10px a 11px */
+  padding: 2px 8px !important;/* Migliora l'area cliccabile/visibile */
+  font-weight: 800 !important;
   border-radius: 10px;
   margin-left: 6px;
   text-transform: none;
@@ -227,9 +227,9 @@
   display: inline-block;
 }
 
-/* Fix Contrasto PageSpeed: Testo scuro su sfondi brillanti */
-.badge-compatible   { background: #2ecc71 !important; color: #0a1a2a !important; } 
-.badge-optimized    { background: #1abc9c !important; color: #0a1a2a !important; } 
+/* Fix Contrasto: Testo scuro su sfondi brillanti */
+.badge-compatible { background: #2ecc71 !important; color: #000000 !important;} /* Nero su Verde = Contrasto OK */
+.badge-optimized { background: #1abc9c !important; color: #000000 !important;} /* Nero su Acqua = Contrasto OK */
 .badge-needs-improvement { background: #f39c12 !important; color: #0a1a2a !important; } 
 .badge-deprecated   { background: #d63031 !important; color: #ffffff !important; }
 
