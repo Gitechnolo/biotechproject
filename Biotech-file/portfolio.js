@@ -343,18 +343,25 @@ function creaGrafico(history = []) {
         borderColor: '#10b981',
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
         borderWidth: 3,
+        fill: true,
+        tension: 0.3,
+        // --- LOGICA PER DALTONICI E DATI STIMATI ---
+        segment: {
+          // La linea diventa tratteggiata per i dati oltre l'indice reale
+          borderDash: ctx => ctx.p0DataIndex >= realDataEndIndex - 1 && history.length > 0 ? [5, 5] : undefined,
+          // Il colore vira verso l'arancione per i dati stimati
+          borderColor: ctx => ctx.p0DataIndex >= realDataEndIndex - 1 && history.length > 0 ? '#f59e0b' : '#10b981'
+        },
         pointRadius: (context) => context.dataIndex === values.length - 1 ? 8 : 5,
         pointBackgroundColor: (context) =>
           context.dataIndex === values.length - 1 ? '#4ade80' :
           context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b',
-        fill: true,
-        tension: 0.3
       }]
     },
     options: {
       responsive: true,
       plugins: {
-        legend: { labels: { color: '#ffffff' } },
+        legend: { labels: { color: '#ffffff', font: { family: 'Sansation' } } },
         tooltip: {
           backgroundColor: '#1f2937',
           titleColor: '#ffffff',
@@ -372,8 +379,16 @@ function creaGrafico(history = []) {
         }
       },
       scales: {
-        x: { ticks: { color: '#b2dfdb' }, grid: { color: 'rgba(178, 223, 219, 0.1)' } },
-        y: { min: 0, max: 100, ticks: { color: '#b2dfdb' }, grid: { color: 'rgba(178, 223, 219, 0.1)' } }
+        x: { 
+          ticks: { color: '#b2dfdb', font: { family: 'Sansation' } }, 
+          grid: { color: 'rgba(178, 223, 219, 0.1)' } 
+        },
+        y: { 
+          min: 0, 
+          max: 100, 
+          ticks: { color: '#b2dfdb', font: { family: 'Sansation' } }, 
+          grid: { color: 'rgba(178, 223, 219, 0.1)' } 
+        }
       }
     }
   });
