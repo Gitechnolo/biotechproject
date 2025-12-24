@@ -218,22 +218,20 @@
 
 /* 1. Regola generale per TUTTI i badge (Card e Trend) */
 .status-badge {
-  font-size: 11px; /* Rimosso !important perché non serve più contro il JS */
-  padding: 2px 8px;
+  font-size: 11px;
   font-weight: 800;
   border-radius: 10px;
-  margin-left: 6px;
   text-transform: none;
   vertical-align: middle;
   display: inline-block;
+  margin-left: 6px;
+  padding: 2px 8px; /* Default per le card */
 }
 /* 2. Nuova classe specifica per le freccette del Trend (quella nel JS) */
-/* Per rendere le freccette leggermente più compatte */
 .status-badge.badge-trend {
-  font-size: 11px;
-  padding: 1px 6px; /* Leggermente meno imbottito per stare bene sulla riga dello Score */
-  margin-left: 4px;
-  font-weight: 600; /* Un po' meno pesante per non appesantire il testo dello Score */
+  padding: 1px 6px;  /* Sovrascrive il padding della base */
+  margin-left: 4px;  /* Sovrascrive il margine della base */
+  font-weight: 600;  /* Sovrascrive il peso del font */
 }
 
 /* Fix Contrasto: Testo scuro su sfondi brillanti */
