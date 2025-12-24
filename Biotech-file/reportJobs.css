@@ -239,46 +239,41 @@
 
 /* 3. Colori Badge di Stato (WCAG AA compliant) */
 
+/* COMPATIBLE: Scurito leggermente per contrasto con bianco */
 .badge-compatible { 
-    background-color: #27ae60 !important; 
-    color: #000000 !important; 
+    background-color: #1e7e44 !important; /* Verde foresta */
+    color: #ffffff !important;           /* Passiamo al BIANCO */
 }
 
+/* OPTIMIZED: Scurito per contrasto con bianco */
 .badge-optimized { 
-    background-color: #16a085 !important; 
-    color: #ffffff !important; 
+    background-color: #117864 !important; /* Turchese profondo */
+    color: #ffffff !important;            /* BIANCO obbligatorio */
 }
 
+/* NEEDS IMPROVEMENT: Arancione più bruciato */
 .badge-needs-improvement { 
-    background-color: #e67e22 !important; 
-    color: #000000 !important; 
+    background-color: #d35400 !important; /* Arancione scuro */
+    color: #ffffff !important;            /* BIANCO per contrasto */
 }
 
+/* DEPRECATED: Rosso più scuro */
 .badge-deprecated { 
-    background-color: #c0392b !important; 
+    background-color: #a93226 !important; /* Rosso mattone */
     color: #ffffff !important; 
 }
 
 /* 4. Nuove classi per il Trend (Indicatori e Freccette) */
 
 /* Colore solo testo (per l'indicatore principale) */
-.trend-up { color: #27ae60 !important; }
-.trend-down { color: #c0392b !important; }
-.trend-equal { color: #e67e22 !important; }
+.trend-up { color: #1e7e44 !important; }
+.trend-down { color: #a93226 !important; }
+.trend-equal { color: #d35400 !important; }
 
 /* Colore con sfondo (per i badge trend dentro le card) */
-.badge-trend.trend-up { 
-    background-color: #27ae60 !important; 
-    color: #000000 !important; 
-}
-.badge-trend.trend-down { 
-    background-color: #c0392b !important; 
-    color: #ffffff !important; 
-}
-.badge-trend.trend-equal { 
-    background-color: #e67e22 !important; 
-    color: #000000 !important; 
-}
+.badge-trend.trend-up { background-color: #1e7e44 !important; color: #ffffff !important; }
+.badge-trend.trend-down { background-color: #a93226 !important; color: #ffffff !important; }
+.badge-trend.trend-equal { background-color: #d35400 !important; color: #ffffff !important; }
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
 .fadebox {
