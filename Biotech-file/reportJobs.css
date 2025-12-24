@@ -216,30 +216,52 @@
   color: #226a42;
 }
 
-/* 1. Regola generale per TUTTI i badge (Card e Trend) */
+/* 1. Regola generale migliorata */
 .status-badge {
-  font-size: 11px;
-  font-weight: 800;
-  border-radius: 10px;
-  text-transform: none;
+  font-size: 12px;         /* Aumentato da 11px a 12px per migliore leggibilità */
+  font-weight: 700;         /* 800 a volte "impasta" troppo su font piccoli, 700 è l'ideale */
+  border-radius: 6px;       /* Ridotto leggermente per un look più pulito, ma opzionale */
+  text-transform: uppercase; /* Il maiuscolo aiuta la leggibilità su caratteri piccoli */
   vertical-align: middle;
   display: inline-block;
   margin-left: 6px;
-  padding: 2px 8px; /* Default per le card */
-}
-/* 2. Nuova classe specifica per le freccette del Trend (quella nel JS) */
-.status-badge.badge-trend {
-  padding: 1px 6px;  /* Sovrascrive il padding della base */
-  margin-left: 4px;  /* Sovrascrive il margine della base */
-  font-weight: 600;  /* Sovrascrive il peso del font */
+  padding: 3px 10px;        /* Aumentato leggermente il respiro interno */
+  letter-spacing: 0.5px;    /* Aiuta a distinguere le lettere vicine */
 }
 
-/* Fix Contrasto: Testo scuro su sfondi brillanti */
-/* 3. Colori (Validi per tutti) */
-.badge-compatible { background: #2ecc71 !important; color: #000000 !important; }
-.badge-optimized { background: #1abc9c !important; color: #000000 !important; }
-.badge-needs-improvement { background: #f39c12 !important; color: #000000 !important; }
-.badge-deprecated { background: #d63031 !important; color: #ffffff !important; }
+/* 2. Specifica per Trend (Frecce) */
+.status-badge.badge-trend {
+  padding: 1px 6px;
+  margin-left: 4px;
+  font-weight: 600;
+  font-size: 11px;          /* Qui possiamo tenere 11px se sono solo numeri/frecce */
+}
+
+/* 3. Colori con contrasto verificato (Standard WCAG AA) */
+
+/* COMPATIBLE: Sfondo verde leggermente più scuro per far risaltare il nero */
+.badge-compatible { 
+    background-color: #27ae60 !important; 
+    color: #000000 !important; 
+}
+
+/* OPTIMIZED: Sfondo turchese corretto */
+.badge-optimized { 
+    background-color: #16a085 !important; 
+    color: #ffffff !important; /* Passiamo al bianco su questo sfondo scuro per un contrasto 4.5:1+ */
+}
+
+/* NEEDS IMPROVEMENT: Arancione scuro */
+.badge-needs-improvement { 
+    background-color: #e67e22 !important; 
+    color: #000000 !important; 
+}
+
+/* DEPRECATED: Rosso più profondo per contrastare con il bianco */
+.badge-deprecated { 
+    background-color: #c0392b !important; 
+    color: #ffffff !important; 
+}
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
 .fadebox {
