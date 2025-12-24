@@ -105,6 +105,13 @@
   text-align: center;
 }
 
+.update-info {
+    color: #b2dfdb;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 10px;
+}
+
 /* --- FIX LEGENDA (Spostata da HEAD a qui con alta specificità) --- */
 .tech-section .filter-legend-container {
   background: var(--primary-100);

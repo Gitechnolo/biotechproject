@@ -345,11 +345,8 @@ function creaGrafico(history = []) {
         borderWidth: 3,
         fill: true,
         tension: 0.3,
-        // --- LOGICA PER DALTONICI E DATI STIMATI ---
         segment: {
-          // La linea diventa tratteggiata per i dati oltre l'indice reale
           borderDash: ctx => ctx.p0DataIndex >= realDataEndIndex - 1 && history.length > 0 ? [5, 5] : undefined,
-          // Il colore vira verso l'arancione per i dati stimati
           borderColor: ctx => ctx.p0DataIndex >= realDataEndIndex - 1 && history.length > 0 ? '#f59e0b' : '#10b981'
         },
         pointRadius: (context) => context.dataIndex === values.length - 1 ? 8 : 5,
@@ -392,6 +389,27 @@ function creaGrafico(history = []) {
       }
     }
   });
+
+  // --- LOGICA AGGIORNAMENTO DESCRIZIONE ACCESSIBILE (SEO & SCREEN READERS) ---
+  const chartDesc = document.getElementById('chart-desc');
+  if (chartDesc) {
+    const currentScore = values[values.length - 1] || 0;
+    
+    // Supponendo che 'translations' sia l'oggetto globale con le lingue 
+    // e 'currentLang' la lingua attiva (es: 'it' o 'en')
+    let descTemplate = "";
+    try {
+      descTemplate = translations[currentLang]['chart-desc'] || "Maturità tecnologica: {score}%";
+    } catch (e) {
+      // Fallback in caso l'oggetto traduzioni non sia ancora pronto
+      descTemplate = currentLang === 'it' ? 
+        "Andamento maturità tecnologica. Valore attuale: {score}%." : 
+        "Technological maturity trend. Current value: {score}%.";
+    }
+
+    // Sostituzione del segnaposto {score} con il valore reale
+    chartDesc.textContent = descTemplate.replace('{score}', currentScore);
+  }
 
   aggiornaTabellaDati(dataToShow);
 }
