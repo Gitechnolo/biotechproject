@@ -251,10 +251,10 @@
     color: #ffffff !important;            /* BIANCO obbligatorio */
 }
 
-/* NEEDS IMPROVEMENT: Arancione più bruciato */
+/* NEEDS IMPROVEMENT: Arancione scuro calibrato per contrasto 4.5:1 con testo bianco */
 .badge-needs-improvement { 
-    background-color: #d35400 !important; /* Arancione scuro */
-    color: #ffffff !important;            /* BIANCO per contrasto */
+    background-color: #bc4e00 !important; /* Arancione ruggine più profondo */
+    color: #ffffff !important;           /* Bianco puro */
 }
 
 /* DEPRECATED: Rosso più scuro */
@@ -268,12 +268,12 @@
 /* Colore solo testo (per l'indicatore principale) */
 .trend-up { color: #1e7e44 !important; }
 .trend-down { color: #a93226 !important; }
-.trend-equal { color: #d35400 !important; }
+.trend-equal { color: #bc4e00 !important; }
 
 /* Colore con sfondo (per i badge trend dentro le card) */
 .badge-trend.trend-up { background-color: #1e7e44 !important; color: #ffffff !important; }
 .badge-trend.trend-down { background-color: #a93226 !important; color: #ffffff !important; }
-.badge-trend.trend-equal { background-color: #d35400 !important; color: #ffffff !important; }
+.badge-trend.trend-equal { background-color: #bc4e00 !important; color: #ffffff !important; }
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
 .fadebox {
