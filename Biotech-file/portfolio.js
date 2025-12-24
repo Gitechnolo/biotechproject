@@ -122,9 +122,10 @@ async function loadPerformanceData() {
     if (trendEl && homePage) {
       const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
       const icons = { 1: '▲', 0: '●', '-1': '▼' };
-      const color = diff > 0 ? '#66bb6a' : diff < 0 ? '#ef5350' : '#ffa726';
       trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-      trendEl.style.color = color;
+trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
+const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
+trendEl.classList.add(trendClass);
       trendEl.classList.remove('visually-hidden');
     }
 
@@ -284,7 +285,9 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
   if (trendIndicator) {
     const trend = performanceScoreValue - 82;
     trendIndicator.textContent = trend > 0 ? ' ↑' : trend < 0 ? ' ↓' : ' →';
-    trendIndicator.style.color = trend > 0 ? '#10b981' : trend < 0 ? '#ef4444' : '#f59e0b';
+trendIndicator.classList.remove('trend-up', 'trend-down', 'trend-equal');
+const statusClass = trend > 0 ? 'trend-up' : trend < 0 ? 'trend-down' : 'trend-equal';
+trendIndicator.classList.add(statusClass);
     trendIndicator.setAttribute('aria-label', 
       trend > 0 ? 'Trend in aumento' : 
       trend < 0 ? 'Trend in diminuzione' : 'Trend stabile'

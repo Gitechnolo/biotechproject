@@ -218,49 +218,66 @@
 
 /* 1. Regola generale migliorata */
 .status-badge {
-  font-size: 12px;         /* Aumentato da 11px a 12px per migliore leggibilità */
-  font-weight: 700;         /* 800 a volte "impasta" troppo su font piccoli, 700 è l'ideale */
-  border-radius: 6px;       /* Ridotto leggermente per un look più pulito, ma opzionale */
-  text-transform: uppercase; /* Il maiuscolo aiuta la leggibilità su caratteri piccoli */
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  text-transform: uppercase;
   vertical-align: middle;
   display: inline-block;
   margin-left: 6px;
-  padding: 3px 10px;        /* Aumentato leggermente il respiro interno */
-  letter-spacing: 0.5px;    /* Aiuta a distinguere le lettere vicine */
+  padding: 3px 10px;
+  letter-spacing: 0.5px;
 }
 
-/* 2. Specifica per Trend (Frecce) */
+/* 2. Specifica per Trend (Frecce e Numeri nelle card) */
 .status-badge.badge-trend {
   padding: 1px 6px;
   margin-left: 4px;
   font-weight: 600;
-  font-size: 11px;          /* Qui possiamo tenere 11px se sono solo numeri/frecce */
+  font-size: 11px;
 }
 
-/* 3. Colori con contrasto verificato (Standard WCAG AA) */
+/* 3. Colori Badge di Stato (WCAG AA compliant) */
 
-/* COMPATIBLE: Sfondo verde leggermente più scuro per far risaltare il nero */
 .badge-compatible { 
     background-color: #27ae60 !important; 
     color: #000000 !important; 
 }
 
-/* OPTIMIZED: Sfondo turchese corretto */
 .badge-optimized { 
     background-color: #16a085 !important; 
-    color: #ffffff !important; /* Passiamo al bianco su questo sfondo scuro per un contrasto 4.5:1+ */
+    color: #ffffff !important; 
 }
 
-/* NEEDS IMPROVEMENT: Arancione scuro */
 .badge-needs-improvement { 
     background-color: #e67e22 !important; 
     color: #000000 !important; 
 }
 
-/* DEPRECATED: Rosso più profondo per contrastare con il bianco */
 .badge-deprecated { 
     background-color: #c0392b !important; 
     color: #ffffff !important; 
+}
+
+/* 4. Nuove classi per il Trend (Indicatori e Freccette) */
+
+/* Colore solo testo (per l'indicatore principale) */
+.trend-up { color: #27ae60 !important; }
+.trend-down { color: #c0392b !important; }
+.trend-equal { color: #e67e22 !important; }
+
+/* Colore con sfondo (per i badge trend dentro le card) */
+.badge-trend.trend-up { 
+    background-color: #27ae60 !important; 
+    color: #000000 !important; 
+}
+.badge-trend.trend-down { 
+    background-color: #c0392b !important; 
+    color: #ffffff !important; 
+}
+.badge-trend.trend-equal { 
+    background-color: #e67e22 !important; 
+    color: #000000 !important; 
 }
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
