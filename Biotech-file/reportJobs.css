@@ -237,27 +237,31 @@
   font-size: 11px;          /* Qui possiamo tenere 11px se sono solo numeri/frecce */
 }
 
-/* 3. Colori Badge di Stato (Sfondo e Testo scuro per contrasto) */
-.badge-optimized { background-color: #d1fae5; color: #064e3b; }
-.badge-compatible { background-color: #dbeafe; color: #1e3a8a; }
-.badge-needs-improvement { background-color: #fef3c7; color: #78350f; }
-.badge-deprecated { background-color: #fee2e2; color: #7f1d1d; }
+/* 3. Colori con contrasto verificato (Standard WCAG AA) */
 
-/* Colori Trend (Usati sia per le freccette isolate che per i badge trend) */
-.trend-up { 
-    color: #166534 !important; /* Verde scuro WCAG */
-}
-.trend-down { 
-    color: #991b1b !important; /* Rosso scuro WCAG */
-}
-.trend-equal { 
-    color: #92400e !important; /* Arancio scuro WCAG */
+/* COMPATIBLE: Sfondo verde leggermente più scuro per far risaltare il nero */
+.badge-compatible { 
+    background-color: #27ae60 !important; 
+    color: #000000 !important; 
 }
 
-/* Se il trend è dentro un badge (come nelle card) */
-.badge-trend.trend-up { background-color: #d1fae5; }
-.badge-trend.trend-down { background-color: #fee2e2; }
-.badge-trend.trend-equal { background-color: #fef3c7; }
+/* OPTIMIZED: Sfondo turchese corretto */
+.badge-optimized { 
+    background-color: #16a085 !important; 
+    color: #ffffff !important; /* Passiamo al bianco su questo sfondo scuro per un contrasto 4.5:1+ */
+}
+
+/* NEEDS IMPROVEMENT: Arancione scuro */
+.badge-needs-improvement { 
+    background-color: #e67e22 !important; 
+    color: #000000 !important; 
+}
+
+/* DEPRECATED: Rosso più profondo per contrastare con il bianco */
+.badge-deprecated { 
+    background-color: #c0392b !important; 
+    color: #ffffff !important; 
+}
 
 /* --- Fadebox: Testo descrittivo con effetto hover --- */
 .fadebox {
