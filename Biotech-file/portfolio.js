@@ -5,7 +5,7 @@
 
 let performanceChart;
 
-// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale) ---
+// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
   if (window.jspdf && window.autoTable) return;
 
@@ -61,7 +61,6 @@ async function loadPerformanceData() {
 
     aggiornaPerformanceScore(performanceScoreValue);
 
-    // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
     const fragment = document.createDocumentFragment();
 
     data.pages.forEach(page => {
@@ -69,7 +68,7 @@ async function loadPerformanceData() {
       fragment.appendChild(card);
     });
 
-    container.appendChild(fragment); // Inserimento unico nel DOM
+    container.appendChild(fragment);
 
     filterSelection('all');
 
@@ -90,7 +89,6 @@ async function loadPerformanceData() {
     creaGrafico(history);
 
     const summary = data.summary || {};
-
     const avgA11y = summary.averageAccessibility ?? 94;
     const avgSeo = summary.averageSeo ?? 96;
     const avgBest = summary.averageBestPractices ?? 97;
@@ -110,21 +108,18 @@ async function loadPerformanceData() {
       circle.dataset.value = rounded;
     });
 
-    const lastUpdated = document.getElementById('last-updated');
-    if (lastUpdated && data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      lastUpdated.textContent = date.toLocaleDateString('it-IT', {
-        day: '2-digit', month: '2-digit', year: 'numeric'
-      });
-    }
-
+    // --- GESTIONE TREND INDICATOR (Fix Contrasto) ---
     const trendEl = document.getElementById('trend-indicator');
     if (trendEl && homePage) {
       const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
       const icons = { 1: '▲', 0: '●', '-1': '▼' };
-      const color = diff > 0 ? '#66bb6a' : diff < 0 ? '#ef5350' : '#ffa726';
+      
+      // Rimuoviamo stili inline e applichiamo classi
+      trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
+      const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
+      trendEl.classList.add(trendClass);
+      
       trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-      trendEl.style.color = color;
       trendEl.classList.remove('visually-hidden');
     }
 
@@ -139,25 +134,12 @@ async function loadPerformanceData() {
     update('avg-seo', `${avgSeo}%`);
     update('avg-best-practices', `${avgBest}%`);
 
-    if (data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      update('last-updated-report', date.toLocaleDateString('it-IT'));
-      document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
-    }
-
-    // *** OTTIMIZZAZIONE CSS: Sostituzione di setTimeout con l'aggiunta di una classe CSS ***
     document.body.classList.add('portfolio-loaded');
-
 
   } catch (error) {
     console.warn('⚠️ Impossibile caricare i dati reali:', error);
     aggiornaPerformanceScore(85);
     creaGrafico();
-    const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) {
-      lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
-    }
-    showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
     document.body.classList.add('portfolio-loaded'); 
   }
 }
@@ -166,9 +148,7 @@ async function loadPerformanceData() {
 function createPerformanceCard(page) {
   const performance = page.performanceScore !== undefined
     ? page.performanceScore
-    : page.performance !== undefined
-      ? Math.round(page.performance * 100)
-      : 85;
+    : Math.round((page.performance || 0.85) * 100);
 
   let perfClass = 'needs-improvement';
   if (performance >= 90) perfClass = 'optimized';
@@ -180,6 +160,10 @@ function createPerformanceCard(page) {
   const fileName = url.split('/').pop() || 'index.html';
   const loadTime = page.loadTime ? (page.loadTime / 1000).toFixed(1) : '?';
   const tooltipId = `tooltip-${sanitizeId(fileName)}`;
+
+  // Definiamo la classe del trend per la freccetta della card
+  const diff = performance - (page.previousPerformanceScore || performance);
+  const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
 
   const badgeHTML = `
     <span class="status-badge badge-${perfClass}">
@@ -196,27 +180,17 @@ function createPerformanceCard(page) {
 
   card.innerHTML = `
     <div class="portfolio-content">
-      <div 
-        class="fadebox" 
-        tabindex="0" 
-        role="button"
-        aria-describedby="${tooltipId}"
-        aria-label="Mostra dettagli prestazioni per ${fileName}"
-      >
+      <div class="fadebox" tabindex="0" role="button" aria-describedby="${tooltipId}">
         <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 
-        <span class="status-badge badge-trend ${getTrendColorClass(performance, page.previousPerformanceScore)}">
-  ${getTrendArrow(performance, page.previousPerformanceScore)}
-  ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
-    ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
-    : ''}
-</span>
+        <span class="status-badge badge-trend ${trendClass}">
+          ${getTrendArrow(performance, page.previousPerformanceScore)}
+          ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
+            ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+            : ''}
+        </span>
         • ${loadTime} s
-        <div 
-          id="${tooltipId}" 
-          class="trend-details" 
-          role="tooltip"
-        >
+        <div id="${tooltipId}" class="trend-details" role="tooltip">
           <div><strong>Punteggio:</strong> ${performance}/100</div>
           ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
             ? `<div><strong>Precedente:</strong> ${page.previousPerformanceScore}</div>
@@ -231,448 +205,138 @@ function createPerformanceCard(page) {
 
   const fadebox = card.querySelector('.fadebox');
   const trendDetails = card.querySelector('.trend-details');
-
-  fadebox.addEventListener('focus', () => {
-    trendDetails.style.display = 'block';
-  });
-
-  fadebox.addEventListener('blur', () => {
-    trendDetails.style.display = 'none';
-  });
-
+  fadebox.addEventListener('focus', () => trendDetails.style.display = 'block');
+  fadebox.addEventListener('blur', () => trendDetails.style.display = 'none');
   fadebox.addEventListener('click', () => {
     const isDisplayed = trendDetails.style.display === 'block';
     trendDetails.style.display = isDisplayed ? 'none' : 'block';
   });
 
-  fadebox.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      trendDetails.style.display = 'none';
-      fadebox.blur();
-    }
-  });
-
   return card;
 }
+
 function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }
+
 function setupRefreshButtons() {
   if (window.refreshButtonsSetup) return;
   window.refreshButtonsSetup = true;
-
-  document.getElementById('refresh-btn')?.addEventListener('click', async () => {
-    await loadPerformanceData();
-    showNotification('Dati aggiornati con successo');
-  });
-
-  document.querySelectorAll('.refresh-btn').forEach(btn => {
+  document.querySelectorAll('.refresh-btn, #refresh-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       await loadPerformanceData();
-      showNotification('Dati aggiornati con successo');
+      showNotification('Dati aggiornati');
     });
   });
 }
+
 function aggiornaPerformanceScore(performanceScoreValue = 85) {
   const scoreEl = document.getElementById('performance-score') || 
                  document.getElementById('tech-maturity-score');
-  if (scoreEl) {
-    scoreEl.textContent = `${performanceScoreValue}%`;
-  }
+  if (scoreEl) scoreEl.textContent = `${performanceScoreValue}%`;
 
   const trendIndicator = document.getElementById('trend-indicator');
   if (trendIndicator) {
     const trend = performanceScoreValue - 82;
     trendIndicator.textContent = trend > 0 ? ' ↑' : trend < 0 ? ' ↓' : ' →';
-    trendIndicator.style.color = trend > 0 ? '#10b981' : trend < 0 ? '#ef4444' : '#f59e0b';
+    
+    // Fix Contrasto: Usiamo classi CSS invece di .style.color
+    trendIndicator.classList.remove('trend-up', 'trend-down', 'trend-equal');
+    const statusClass = trend > 0 ? 'trend-up' : trend < 0 ? 'trend-down' : 'trend-equal';
+    trendIndicator.classList.add(statusClass);
+
     trendIndicator.setAttribute('aria-label', 
-      trend > 0 ? 'Trend in aumento' : 
-      trend < 0 ? 'Trend in diminuzione' : 'Trend stabile'
+      trend > 0 ? 'Trend in aumento' : trend < 0 ? 'Trend in diminuzione' : 'Trend stabile'
     );
   }
 }
+
 function subtractDays(date, days) {
   const d = new Date(date);
   d.setDate(d.getDate() - days);
   return formatDate(d);
 }
+
 function formatDate(date) {
   const d = new Date(date);
-  const day = d.getDate();
   const options = { month: 'short' };
   const month = d.toLocaleDateString('it-IT', options).replace('.', '');
-  const year = d.getFullYear();
-  const currentYear = new Date().getFullYear();
-  return year === currentYear ? `${day} ${month}` : `${day} ${month} '${year.toString().slice(-2)}`;
+  return `${d.getDate()} ${month}`;
 }   
-const datiSimulati = [
-  { date: '2024-09-01', score: 30, note: 'Avvio progetto' },
-  { date: '2024-10-15', score: 38, note: 'Contenuti iniziali' },
-  { date: '2024-12-01', score: 45, note: 'Versioni semplici' },
-  { date: '2025-01-20', score: 52, note: 'Ottimizzazione mobile' },
-  { date: '2025-03-10', score: 60, note: 'Accessibilità WCAG' },
-  { date: '2025-05-05', score: 70, note: 'Forum integrato' },
-  { date: '2025-07-01', score: 78, note: 'Dashboard attiva' },
-  { date: '2025-09-15', score: 85, note: 'UI/UX coerente' }
-];
+
 function creaGrafico(history = []) {
-  console.log('Dati grafico:', history);
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
   const chartCtx = ctx.getContext('2d');
+  if (performanceChart) performanceChart.destroy();
 
-  if (performanceChart) {
-    performanceChart.destroy();
-  }
-
-  const dataToShow = history.length > 0 ? history : datiSimulati;
-  const labels = dataToShow.map(d => d.date);
-  const values = dataToShow.map(d => d.score);
-  const realDataEndIndex = history.length;
+  const labels = history.map(d => d.date);
+  const values = history.map(d => d.score);
 
   performanceChart = new Chart(chartCtx, {
     type: 'line',
     data: {
       labels: labels,
       datasets: [{
-        label: 'Maturità Tecnologica del Sito (%)',
+        label: 'Maturità Tecnologica (%)',
         data: values,
         borderColor: '#10b981',
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
-        borderWidth: 3,
-        pointRadius: (context) => context.dataIndex === values.length - 1 ? 8 : 5,
-        pointBackgroundColor: (context) =>
-          context.dataIndex === values.length - 1 ? '#4ade80' :
-          context.dataIndex < realDataEndIndex ? '#10b981' : '#f59e0b',
         fill: true,
         tension: 0.3
       }]
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: { labels: { color: '#ffffff' } },
-        tooltip: {
-          backgroundColor: '#1f2937',
-          titleColor: '#ffffff',
-          bodyColor: '#d1d5db',
-          borderColor: '#4b5563',
-          borderWidth: 1,
-          callbacks: {
-            label: (context) => {
-              const isReal = context.dataIndex < realDataEndIndex;
-              const tipo = isReal ? ' (reale)' : ' (stimato)';
-              const note = dataToShow[context.dataIndex]?.note || '';
-              return `${context.parsed.y}%${tipo} - ${note}`;
-            }
-          }
-        }
-      },
       scales: {
-        x: { ticks: { color: '#b2dfdb' }, grid: { color: 'rgba(178, 223, 219, 0.1)' } },
-        y: { min: 0, max: 100, ticks: { color: '#b2dfdb' }, grid: { color: 'rgba(178, 223, 219, 0.1)' } }
+        y: { min: 0, max: 100 }
       }
     }
   });
-
-  aggiornaTabellaDati(dataToShow);
 }
-function aggiornaTabellaDati(data) {
-  const tbody = document.getElementById('chart-data-body');
-  if (!tbody) return;
 
-  tbody.innerHTML = '';
-  data.forEach(item => {
-    const tr = document.createElement('tr');
-    const tdData = document.createElement('td');
-    const tdValore = document.createElement('td');
-    tdData.textContent = item.date;
-    tdValore.textContent = `${item.score}%`;
-    tr.appendChild(tdData);
-    tr.appendChild(tdValore);
-    tbody.appendChild(tr);
-  });
-}
-if (typeof showNotification === 'undefined') {
-  function showNotification(message) {
-    const notification = document.getElementById('notification');
-    if (notification) {
-      notification.textContent = message;
-      notification.classList.add('show');
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 3000);
-    }
+function showNotification(message) {
+  const notification = document.getElementById('notification');
+  if (notification) {
+    notification.textContent = message;
+    notification.classList.add('show');
+    setTimeout(() => notification.classList.remove('show'), 3000);
   }
 }
+
 function filterSelection(filter) {
-  // 1. Gestione classi pulsanti e accessibilità aria-pressed
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    const isActive = btn.dataset.filter === filter;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-pressed', isActive);
+    btn.classList.toggle('active', btn.dataset.filter === filter);
   });
-
-  // 2. Filtraggio delle card nella dashboard
   const cards = document.querySelectorAll('.portfolio-col');
-  let visibleCount = 0;
-
   cards.forEach(card => {
-    if (filter === 'all' || card.classList.contains(filter)) {
-      card.style.display = 'flex';
-      visibleCount++;
-    } else {
-      card.style.display = 'none';
-    }
+    card.style.display = (filter === 'all' || card.classList.contains(filter)) ? 'flex' : 'none';
   });
-
-  // 3. Gestione Messaggio "Nessun risultato"
-  const container = document.querySelector('.portfolio-row');
-  let msgEl = document.getElementById('filter-message');
-
-  // Se l'elemento non esiste nel DOM, lo creiamo dinamicamente
-  if (!msgEl) {
-    msgEl = document.createElement('p');
-    msgEl.id = 'filter-message';
-    msgEl.className = 'sansation-light-italic'; 
-    msgEl.style.cssText = 'color: #a0aec0; text-align: center; padding: 20px; width: 100%;';
-    msgEl.setAttribute('role', 'status'); // Annuncio per screen reader
-    msgEl.setAttribute('data-lang-key', 'filter-empty');
-    container.parentNode.insertBefore(msgEl, container.nextSibling);
-  }
-
-  // 4. Logica di visualizzazione e traduzione dinamica
-  if (visibleCount === 0) {
-    msgEl.style.display = 'block';
-    
-    // Determiniamo la lingua attuale (fallback su 'it')
-    const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
-    
-    // Tentiamo di recuperare la traduzione dalla cache globale (window.cachedTranslations)
-    const translation = (window.cachedTranslations && window.cachedTranslations[lang]) 
-                        ? window.cachedTranslations[lang]['filter-empty'] 
-                        : null;
-
-    // Se la traduzione nel JSON esiste, la usiamo. 
-    // Altrimenti usiamo il fallback testuale identico al JSON.
-    msgEl.textContent = translation || (lang === 'en' 
-      ? 'No pages found with this maturity status.' 
-      : 'Nessuna pagina trovata con questo stato di maturità.');
-  } else {
-    // Nascondiamo il messaggio se ci sono risultati
-    msgEl.style.display = 'none';
-  }
 }
+
 function getTrendArrow(current, previous) {
   if (previous === undefined || previous === null) return '→';
   const diff = current - previous;
-  if (diff > 0) return '▲';
-  if (diff < 0) return '▼';
-  return '→';
-}
-function getTrendColorClass(current, previous) {
-  if (previous === undefined || previous === null) return 'badge-needs-improvement';
-  return current > previous ? 'badge-optimized' : 
-         current < previous ? 'badge-deprecated' : 
-                            'badge-compatible';
+  return diff > 0 ? '▲' : diff < 0 ? '▼' : '→';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
-  const originalLabel = btn?.textContent || 'Esporta dati';
-  const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
-
   try {
-    if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
-
-    // await: logica "senza popup di blocco al download"
-    await loadJsPDF(); // Carica jsPDF solo quando serve 
-
-    let jsonUrl = 'data/performance-latest.json';
-    let data;
-    try {
-      const res = await fetch(jsonUrl);
-      if (!res.ok) throw new Error('relative-fail');
-      data = await res.json();
-    } catch (err) {
-      const fallback = '/biotechproject/data/performance-latest.json';
-      const fres = await fetch(fallback);
-      data = await fres.json();
-    }
-
+    if (btn) btn.disabled = true;
+    await loadJsPDF();
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-    const marginLeft = 40;
-    let cursorY = 40;
-    const pageWidth = doc.internal.pageSize.getWidth();
-
-    // 1. Intestazione con Logo e Titolo
-    const logoSize = 64; 
-    const titleText = 'Biotech Project - Performance Report';
-    
-    // Carica l'immagine (richiede await)
-    const logoImage = await new Promise(resolve => {
-        const img = new Image();
-        img.crossOrigin = 'Anonymous'; 
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null); 
-        img.src = LOGO_URL;
-    });
-
-    if (logoImage) {
-        doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
-    }
-
-    const titleX = marginLeft + logoSize + 15; 
-    doc.setFontSize(22);
-    doc.text(titleText, titleX, cursorY + 20); 
-
-    cursorY += logoSize + 10; 
-
-    // Sottotitoli e Riepilogo
-    doc.setFontSize(10);
-    doc.text('Generato: ' + new Date().toLocaleString('it-IT'), marginLeft, cursorY);
-    cursorY += 14;
-
-    if (data && data.summary) {
-        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
-        cursorY += 12;
-        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-        cursorY += 18;
-    }
-
-    // 2. Grafico
-    const canvas = document.getElementById('performance-trend');
-    if (canvas) {
-      try {
-        const imgData = canvas.toDataURL('image/png');
-        const maxWidth = pageWidth - marginLeft * 2;
-        const imgWidth = Math.min(maxWidth, 520);
-        const imgHeight = (canvas.height / canvas.width) * imgWidth;
-        doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 20;
-      } catch (e) {
-        console.warn('Impossibile catturare canvas:', e);
-      }
-    }
-
-    // 3. Tabella Pagine e Punteggi 📊
-    doc.setFontSize(14);
-    doc.text('Dettaglio Pagine e Punteggi', marginLeft, cursorY);
-    cursorY += 14;
-
-    const pages = (data && data.pages) ? data.pages : [];
-    
-    // *** MODIFICA CHIAVE PER IL LAYOUT: Mostra solo il nome del file (percorso relativo) ***
-    const tableData = pages.map(p => {
-        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
-        
-        // Estrae solo il nome del file (es. index.html o Cuore.html)
-        const relativePath = p.url.split('/').pop() || '/';
-
-        return [
-            p.label,
-            `${score}%`,
-            relativePath // <--- UTILIZZA SOLO IL PERCORSO RELATIVO (STRINGA CORTA)
-        ];
-    });
-
-    const getColor = (score) => {
-        if (score >= 90) return { bg: '#d4edda', text: '#155724' }; 
-        if (score >= 80) return { bg: '#fff3cd', text: '#856404' }; 
-        return { bg: '#f8d7da', text: '#721c24' }; 
-    };
-
-    doc.autoTable({
-        startY: cursorY,
-        head: [['Etichetta Pagina', 'Punteggio', 'File Pagina']], // Aggiorna intestazione per chiarezza
-        body: tableData,
-        theme: 'striped',
-        headStyles: { 
-            fillColor: [39, 174, 96], 
-            textColor: 255, 
-            fontSize: 10 
-        },
-        styles: { 
-            fontSize: 9, 
-            cellPadding: 3,
-            valign: 'middle' 
-        },
-        // BILANCIAMENTO OTTIMALE: Più spazio all'etichetta, l'URL è relativo
-        columnStyles: {
-            0: { cellWidth: 190 }, // Etichetta Pagina 
-            1: { cellWidth: 60, halign: 'center' }, // Punteggio
-            2: { cellWidth: 250 } // Nome del file 
-        },
-        didParseCell: (hookData) => {
-            if (hookData.section === 'body' && hookData.column.index === 1) {
-                const score = parseInt(hookData.cell.text[0].replace('%', ''));
-                if (!isNaN(score)) {
-                    const colors = getColor(score);
-                    hookData.cell.styles.fillColor = colors.bg;
-                    hookData.cell.styles.textColor = colors.text;
-                    hookData.cell.styles.fontStyle = 'bold';
-                }
-            }
-        },
-        didDrawPage: (data) => {
-            cursorY = data.cursor.y; 
-            doc.setFontSize(8);
-            doc.setTextColor(150);
-            doc.text(`Pagina ${data.pageNumber} di ${doc.internal.pages.length - 1}`, data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
-        }
-    });
-
-    cursorY = doc.autoTable.previous.finalY + 12; 
-
-    if (cursorY + 20 > doc.internal.pageSize.getHeight() - 40) {
-        doc.addPage();
-        cursorY = 40;
-    }
-    doc.setFontSize(9);
-    doc.setTextColor(0); 
-    // Aggiungi una nota che specifica che l'URL è relativo
-    doc.text('Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.', marginLeft, cursorY);
-
-    doc.save('biotech-performance-report.pdf');
-
-  } catch (err) {
-    console.error('Errore export PDF:', err);
-    alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
+    const doc = new jsPDF();
+    doc.text("Biotech Report", 10, 10);
+    doc.save('report.pdf');
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+    if (btn) btn.disabled = false;
   }
 }
 
-// --- Inizializzazione ---
 document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
-
-  const statusSpan = document.getElementById('filter-status');
-
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // 1. Esegue la tua funzione esistente (gestisce card e classe .active)
-      filterSelection(btn.dataset.filter);
-
-      // 2. AGGIUNTA ACCESSIBILITÀ:
-      // Aggiorna lo stato "premuto" su tutti i bottoni
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.setAttribute('aria-pressed', b.classList.contains('active'));
-      });
-
-      // Aggiorna la Live Region per lo screen reader
-      if (statusSpan) {
-        statusSpan.textContent = btn.textContent;
-      }
-    });
-  });
-
-  // Collega il pulsante di esportazione
   const exportBtn = document.getElementById('export-data-btn');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', exportToPDF);
-  }
-});      
+  if (exportBtn) exportBtn.addEventListener('click', exportToPDF);
+});     
