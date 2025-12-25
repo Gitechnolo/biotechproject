@@ -256,6 +256,11 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   background: rgba(220, 230, 220, 0.5); /* Sfondo semi-trasparente */
   backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);
 }
+/* Infografica contenitore immagine Human_body.avif */
+.infografica-container{margin:0 auto;max-width:100%;text-align:center;}
+/* Immagine infografica Human_body.avif (dimensioni varie) */
+.infografica-img{aspect-ratio:1408 / 768;width:100%;max-width:100%;height:auto;display:block;margin:0 auto;}
+/* End infografica */
 .biotechidden {position: absolute; visibility: hidden;}
 .biotechcolor{width: 100; background-color: silver;}
 .textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
