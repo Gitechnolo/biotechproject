@@ -358,6 +358,7 @@ if (countdownEl) {
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
 function openModal() {
   document.getElementById("myModal").style.display = "block";
+  window.scrollTo({ top: 0, behavior: 'smooth' });   // Transizione dolce verso l’alto
 }
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
