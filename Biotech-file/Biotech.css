@@ -257,7 +257,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);
 }
 /* Infografica contenitore immagine Human_body.avif */
-.infografica-container{margin:0 auto;max-width: 1292px;text-align:center;}
+.infografica-container{margin:0 auto;max-width: 1408px;text-align:center;}
 /* Immagine infografica Human_body.avif (dimensioni varie) */
 .infografica-img{aspect-ratio:1408 / 768;width:100%;max-width:100%;height:auto;display:block;margin:0 auto;}
 /* End infografica */
