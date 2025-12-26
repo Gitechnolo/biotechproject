@@ -116,6 +116,7 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 ## 🌍 Multilingual Management (i18n)
 
 BiotechProject supports **multiple languages** through a **modular, lightweight, and accessible** translation system, designed to work seamlessly on static pages hosted on GitHub Pages.
+"While text content is fully localized, scientific diagrams currently prioritize Italian/English versions to maintain technical accuracy during the project's rapid evolution."
 
 The system enables:
 - ✅ Real-time content translation  
