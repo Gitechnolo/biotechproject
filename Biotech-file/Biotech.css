@@ -339,11 +339,42 @@ html {box-sizing: border-box;}
 /* --- INTERAZIONE CURSORE E HOVER --- */
 .cursor { cursor: pointer; }
 img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);opacity:.8;}
-/* --- MODAL BASE --- */
-.modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.9)}
-/* --- CONTENUTO MODAL --- */
-.modal-content{position:relative;margin:80px auto 40px;width:90%;max-width:1200px;animation:zoom .6s;}
+/* === MODAL BASE AGGIORNATO CON FLEXBOX === */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Evita scroll della pagina principale quando aperto */
+  background-color: rgba(0,0,0,.9);
+  
+  /* Centraggio Magico */
+  display: none; /* Verrà cambiato in 'flex' via JS */
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+}
+/* === CONTENUTO MODAL AGGIORNATO === */
+.modal-content {
+  position: relative;
+  margin: auto; /* Rimosso il margine fisso di 80px */
+  width: 90%;
+  max-width: 1200px;
+  max-height: 85vh; /* Altezza massima per non uscire dallo schermo */
+  object-fit: contain; 
+  animation: zoom 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Animazione di zoom fluida */
+}
 @keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
+/* Correzione per le miniature sotto l'immagine nel carosello */
+#modalCarousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 /* --- BOTTONE CHIUSURA (Versione Elegante verde trasparente) --- */
 .close{position:fixed;top:15px;right:20px;color:white;font-size:45px;font-weight:bold;z-index:10020;cursor:pointer;background-color:rgba(0,0,0,.6);width:60px;height:60px;line-height:55px;text-align:center;border-radius:50%;transition:.3s;}
 .close:hover{background-color:rgba(0,230,118,.5);color:white;}
