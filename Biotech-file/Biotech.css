@@ -262,8 +262,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .infografica-img{aspect-ratio:1408 / 768;width:100%;max-width:100%;height:auto;display:block;margin:0 auto;}
 /* End infografica */
 .biotechidden {position: absolute; visibility: hidden;}
-.biotechcolor{width: 100; background-color: silver;}
-.textshadow {color: white; text-shadow: 5px 5px 5px #000000;}
 .menu {-webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .video {max-width:100%; width:50%; height:auto; min-width:unset; min-height:unset;}
 .opacity {opacity: 0.5;}
