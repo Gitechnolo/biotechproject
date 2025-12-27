@@ -342,11 +342,16 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 /* --- MODAL BASE --- */
 .modal{display:none;position:fixed;z-index:10000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.9)}
 /* --- CONTENUTO MODAL --- */
-.modal-content {position: relative; margin: 40px auto;
-  width: fit-content; /* Il box si stringe attorno all'immagine reale */
-  max-width: 90%; /* Limita la larghezza massima al 90% della finestra */
-  animation: zoom .6s; /* Animazione di zoom in entrata */
-  background-color: transparent; /* Evita bordi bianchi indesiderati */
+.modal-content {
+  position: relative;
+  margin: 20px auto; /* Centra orizzontalmente e lascia spazio sopra/sotto */
+  width: fit-content;
+  max-width: 90%; 
+  /* Togliamo height fisso per lasciare spazio a didascalia e miniature sotto l'immagine */
+  display: flex;
+  flex-direction: column;
+  animation: zoom .6s;
+  background-color: transparent;
 }
 @keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
 /* --- BOTTONE CHIUSURA (Versione Elegante verde trasparente) --- */
@@ -366,13 +371,14 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 /* --- RESPONSIVITÀ - Due icone per riga su mobile --- */
 @media only screen and (max-width:700px){.column{width:50%}.modal-content{width:95%;margin-top:100px}.close{width:50px;height:50px;line-height:45px;font-size:35px}}
 /* Ottimizzazione per immagini verticali nel modal - NO DISTORSIONE */
-.mySlides img {display: block; margin: 0 auto;
-  /* Queste tre righe insieme impediscono lo schiacciamento */
+.mySlides img {
+  display: block;
+  margin: 0 auto;
   max-width: 100%;    
-  max-height: 90vh; /* Limita l'altezza dell'immagine al 90% dell'altezza della finestra */
-  object-fit: contain; 
-  width: auto;  /* Forza il ricalcolo della larghezza basato sull'altezza */
-  height: auto; /* Forza il ricalcolo dell'altezza basata sulla larghezza */
+  max-height: 92vh; /* Altezza massima dell'immagine */
+  width: auto;      
+  height: auto;     
+  object-fit: contain; /* Mantiene le proporzioni originali (fondamentale per DSA) */
 }
 /* Sposta le frecce leggermente fuori dall'immagine se lo schermo è grande */
 @media only screen and (min-width:1100px){.prev{left:-40px}.next{right:-40px}}
