@@ -359,7 +359,11 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 .next { right: 0; border-radius: 3px 0 0 3px; }
 .prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
 /* --- MINIATURE E DIDASCALIE --- */
-.mySlides { display: none; }
+.mySlides { display: none; animation: fadeIn 0.4s ease-in-out;}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 .numbertext{color:#f2f2f2;font-size:12px;padding:8px 12px;position:absolute;top:0;}
 .caption-container{text-align:center;background-color:black;padding:10px 16px;color:white;}
 .demo{opacity:.6;transition:.3s;cursor:pointer;}
@@ -372,7 +376,7 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
   margin: 0 auto;
   /* Queste tre righe insieme impediscono lo schiacciamento */
   max-width: 100%;    
-  max-height: 85vh;   
+  max-height: 90vh;   
   object-fit: contain; 
   
   width: auto;  /* Forza il ricalcolo della larghezza basato sull'altezza */
@@ -380,8 +384,8 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 }
 /* Opzionale: sposta le frecce leggermente fuori dall'immagine se lo schermo è grande */
 @media only screen and (min-width: 1100px) {
-  .prev { left: -60px; }
-  .next { right: -60px; }
+  .prev { left: -40px; }
+  .next { right: -40px; }
 }
 /* === END CAROSELLO BIOTECH === */   
 /* Video Biomassa */
