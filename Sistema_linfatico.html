@@ -120,6 +120,44 @@
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 553 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+/* === OTTIMIZZAZIONE CAROSELLO (794x675) === */
+
+/* Forza il rapporto d'aspetto su miniature e slide */
+.column img, 
+.mySlides img, 
+.demo {
+    width: 100%;
+    aspect-ratio: 794 / 675; 
+    object-fit: cover; /* Cambia in 'contain' se vedi scritte tagliate */
+    object-position: center;
+    display: block;
+}
+
+/* Regolazione del Modal per il nuovo formato */
+.modal-content {
+    margin: 40px auto; /* Centratura verticale migliorata */
+    max-width: 800px;  /* Evita sgranature poiché l'originale è 794px */
+    border: 1px solid #444; /* Opzionale: definisce meglio il bordo dello schema */
+}
+
+/* Animazione di transizione fluida tra le slide */
+.mySlides {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Adattamento mobile: mantiene le proporzioni corrette */
+@media screen and (max-width: 700px) {
+    .modal-content {
+        margin-top: 20%; 
+        width: 95%;
+    }
+}
 </style>
 <script>
 !function(){
@@ -197,19 +235,19 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini">
 <span class="close cursor" onclick="closeModal()" tabindex="0" role="button" aria-label="Chiudi visualizzatore" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeModal()}" >&times;</span>
 <div class="modal-content" id="modalCarousel">
-<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" loading="lazy" alt="Scambio tra plasma e liquido tissutare"></div>
-<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" loading="lazy" alt="Capillari linfatici e sanguigni nel tessuto"></div>
-<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" loading="lazy" alt="Struttura del ganglio linfatico"></div>
-<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" loading="lazy" alt="Sistema linfatico"></div>
+<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.avif" style="width:100%" loading="lazy" alt="Scambio tra plasma e liquido tissutare"></div>
+<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.avif" style="width:100%" loading="lazy" alt="Capillari linfatici e sanguigni nel tessuto"></div>
+<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.avif" style="width:100%" loading="lazy" alt="Struttura del ganglio linfatico"></div>
+<div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.avif" style="width:100%" loading="lazy" alt="Sistema linfatico"></div>
 <!-- Pulsanti navigazione -->
 <button class="prev" onclick="plusSlides(-1)" aria-label="Slide precedente">&#10094;</button>
 <button class="next" onclick="plusSlides(1)" aria-label="Slide successiva">&#10095;</button>
 <div class="caption-container"><p id="caption" role="status" aria-live="polite"></p></div>
 <!-- Miniature accessibili -->
-<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Anteprima schema 1" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(1)}"></div>
-<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Anteprima schema 2" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(2)}"></div>
-<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Anteprima schema 3" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(3)}"></div>
-<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Anteprima schema 4" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(4)}"></div>
+<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.avif" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Anteprima schema 1" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(1)}"></div>
+<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.avif" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Anteprima schema 2" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(2)}"></div>
+<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.avif" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Anteprima schema 3" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(3)}"></div>
+<div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.avif" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Anteprima schema 4" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(4)}"></div>
 </div>
 </div><br>
 <p class="text"><span data-lang-key="lymph_structure_1">Il sistema linfatico è costituito da una rete di sottili vasi che prendono il nome di capillari linfatici, che, a loro volta, confluiscono in vasi più grandi, alcuni dei quali sono contrattili.</span><br><span data-lang-key="lymph_structure_2">Tutto il sistema linfatico è provvisto di valvole che costringono la linfa a circolare in un solo senso. I vasi linfatici provenienti dalle estremità inferiori e dall'addome confluiscono nella</span><ruby class="pronounceable" tabindex="0" aria-label="Termine anatomico: cisterna del Pecquet"><span class="text">cisterna del Pecquet</span><rp>(</rp><rt><span class="pronunciation-text">pes-ché</span><button type="button" class="pronounce-btn" lang="it" aria-label="Ascolta la pronuncia di Pecquet" onclick="speakTerm('Pecquet', 'italiano')" onkeydown="handlePronounceKey(event, 'Pecquet', 'italiano')">🔊</button></rt><rp>)</rp></ruby><span data-lang-key="lymph_structure_3">e da qui nel dotto toracico che, unendosi ai vasi provenienti dalla parte superiore del corpo, sbocca nella succlavia sinistra contigua alla giugulare.</span><br><span data-lang-key="lymph_drainage_right">I vasi linfatici provenienti dalla parte superiore destra del corpo formano la grande vena linfatica che sbocca nel punto d'unione delle vene succlavie e della giugulare destra.</span><br><br>
