@@ -344,10 +344,11 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 /* --- CONTENUTO MODAL --- */
 .modal-content {
   position: relative;
-  margin: 40px auto; /* Ridotto leggermente per dare spazio alle immagini alte */
-  width: auto;       /* Permette al contenitore di stringersi sull'immagine */
-  max-width: 90%;    /* Impedisce al modal di toccare i bordi dello schermo */
+  margin: 40px auto;
+  width: fit-content; /* Il box si stringe attorno all'immagine reale */
+  max-width: 90%;
   animation: zoom .6s;
+  background-color: transparent; /* Evita bordi bianchi indesiderati */
 }
 @keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
 /* --- BOTTONE CHIUSURA (Versione Elegante verde trasparente) --- */
@@ -365,12 +366,22 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 .active, .demo:hover { opacity: 1; }
 /* --- RESPONSIVITÀ - Due icone per riga su mobile --- */
 @media only screen and (max-width:700px){.column{width:50%}.modal-content{width:95%;margin-top:100px}.close{width:50px;height:50px;line-height:45px;font-size:35px}}
-/* Ottimizzazione per immagini verticali nel modal */
+/* Ottimizzazione per immagini verticali nel modal - NO DISTORSIONE */
 .mySlides img {
   display: block;
   margin: 0 auto;
-  max-height: 85vh; /* L'immagine non supera mai l'85% dell'altezza dello schermo */
-  width: auto;      /* Mantiene le proporzioni corrette senza schiacciare */
+  /* Queste tre righe insieme impediscono lo schiacciamento */
+  max-width: 100%;    
+  max-height: 85vh;   
+  object-fit: contain; 
+  
+  width: auto;  /* Forza il ricalcolo della larghezza basato sull'altezza */
+  height: auto; /* Forza il ricalcolo dell'altezza basata sulla larghezza */
+}
+/* Opzionale: sposta le frecce leggermente fuori dall'immagine se lo schermo è grande */
+@media only screen and (min-width: 1100px) {
+  .prev { left: -60px; }
+  .next { right: -60px; }
 }
 /* === END CAROSELLO BIOTECH === */   
 /* Video Biomassa */
