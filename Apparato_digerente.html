@@ -207,15 +207,40 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
   
   <div class="modal-content" id="modalCarousel">
     
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema generale dell'apparato digerente"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Anatomia degli organi della digestione"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dettagliata dello sfintere pilorico"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella riassuntiva degli enzimi digestivi"></div>
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">1 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" loading="lazy" alt="Schema generale dell'apparato digerente">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">2 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente2.jpg" style="width:100%" loading="lazy" alt="Anatomia degli organi della digestione">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">3 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente3.jpg" style="width:100%" loading="lazy" alt="Sezione dettagliata dello sfintere pilorico">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">4 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente4.jpg" style="width:100%" loading="lazy" alt="Tabella riassuntiva degli enzimi digestivi">
+      </div>
+    </div>
 
     <a class="prev" onclick="plusSlides(-1)" tabindex="0" role="button" aria-label="Slide precedente" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(-1);}">&#10094;</a>
     <a class="next" onclick="plusSlides(1)" tabindex="0" role="button" aria-label="Slide successiva" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(1);}">&#10095;</a>
 
-    <div class="caption-container"><p id="caption" role="status" aria-live="polite"></p></div>
+    <div class="caption-container">
+      <p id="caption" role="status" aria-live="polite"></p>
+    </div>
 
     <div class="row">
       <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Schema generale dell'apparato digerente" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(1)}"></div>

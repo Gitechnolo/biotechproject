@@ -193,12 +193,36 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
   <h2 id="modalHeading" style="position:absolute; width:1px; height:1px; margin:0; padding:0; overflow:hidden;">Galleria Immagini Dettaglio Cellula</h2>
   <span class="close cursor" onclick="closeModal()" tabindex="0" role="button" aria-label="Chiudi modale" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeModal()}">&times;</span>
+  
   <div class="modal-content" id="modalCarousel">
     
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula.jpg" style="width:100%" loading="lazy" alt="Anatomia generale della cellula"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali.jpg" style="width:100%" loading="lazy" alt="Specializzazione delle cellule staminali"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulafunzioni.jpg" style="width:100%" loading="lazy" alt="Organuli e processi biologici"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna.jpg" style="width:100%" loading="lazy" alt="Struttura del DNA e codice genetico"></div>
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">1 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula.jpg" style="width:100%" loading="lazy" alt="Anatomia generale della cellula">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">2 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali.jpg" style="width:100%" loading="lazy" alt="Specializzazione delle cellule staminali">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">3 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulafunzioni.jpg" style="width:100%" loading="lazy" alt="Organuli e processi biologici">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">4 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna.jpg" style="width:100%" loading="lazy" alt="Struttura del DNA e codice genetico">
+      </div>
+    </div>
 
     <a class="prev" onclick="plusSlides(-1)" tabindex="0" role="button" aria-label="Slide precedente" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(-1)}">&#10094;</a>
     <a class="next" onclick="plusSlides(1)" tabindex="0" role="button" aria-label="Slide successiva" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(1)}">&#10095;</a>

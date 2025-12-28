@@ -194,15 +194,40 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   
   <div class="modal-content" id="modalCarousel">
     
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio1.jpg" style="width:100%" alt="Schema generale dell'apparato respiratorio"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio2.jpg" style="width:100%" alt="Dettaglio dello scambio di gas negli alveoli polmonari"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio3.jpg" style="width:100%" alt="Le due lamine della pleura che avvolgono i polmoni"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio4.jpg" style="width:100%" alt="Meccanismo fisico della ventilazione polmonare"></div>
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">1 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio1.jpg" style="width:100%" alt="Schema generale dell'apparato respiratorio">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">2 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio2.jpg" style="width:100%" alt="Dettaglio dello scambio di gas negli alveoli polmonari">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">3 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio3.jpg" style="width:100%" alt="Le due lamine della pleura che avvolgono i polmoni">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">4 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio4.jpg" style="width:100%" alt="Meccanismo fisico della ventilazione polmonare">
+      </div>
+    </div>
 
     <a class="prev" onclick="plusSlides(-1)" tabindex="0" role="button" aria-label="Slide precedente" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(-1);}" title="Slide precedente">&#10094;</a>
     <a class="next" onclick="plusSlides(1)" tabindex="0" role="button" aria-label="Slide successiva" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(1);}" title="Slide successiva">&#10095;</a>
 
-    <div class="caption-container"><p id="caption" role="status" aria-live="polite"></p></div>
+    <div class="caption-container">
+      <p id="caption" role="status" aria-live="polite"></p>
+    </div>
 
     <div class="row">
       <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Schema generale dell'apparato respiratorio" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(1)}"></div>
@@ -210,7 +235,6 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
       <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Le due lamine della pleura che avvolgono i polmoni" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(3)}"></div>
       <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Meccanismo fisico della ventilazione polmonare" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(4)}"></div>
     </div>
-
   </div>
 </div>
 <!-- End carosello -->
