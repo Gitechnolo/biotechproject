@@ -356,59 +356,95 @@ if (countdownEl) {
     }
 }   
 // Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico....
+
 function openModal() {
   document.getElementById("myModal").style.display = "block";
-  window.scrollTo({ top: 0, behavior: 'smooth' });   // Transizione dolce verso l’alto
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // Transizione dolce verso l’alto
 }
+
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
+  // Reset dello zoom alla chiusura
+  resetAllZoom();
 }
+
 var slideIndex = 1;
-// Inizializza le slide all'apertura
 showSlides(slideIndex);
 
 function plusSlides(n) {
+  resetAllZoom(); // Resetta la lente quando cambi slide
   showSlides(slideIndex += n);
 }
+
 function currentSlide(n) {
+  resetAllZoom(); // Resetta la lente quando clicchi una miniatura
   showSlides(slideIndex = n);
 }
+
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
-  // Verifica che ci siano delle slide
-  if (slides.length === 0) {
-    return; // Esci se non ci sono slide
-  }
-  // Aggiorna slideIndex con logica circolare
-  if (n > slides.length) {
-    slideIndex = 1;
-  } else if (n < 1) {
-    slideIndex = slides.length;
-  } else {
-    slideIndex = n; // Assegna solo se valido
-  }
-  // Nascondi tutte le slide
+
+  if (slides.length === 0) return;
+
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
+
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  // Rimuovi la classe 'active' da tutti i dot
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  // Mostra la slide corrente
+
   slides[slideIndex - 1].style.display = "block";
-  // Aggiorna il dot attivo e il caption, solo se esistono i dot
+
   if (dots.length > 0 && dots[slideIndex - 1]) {
     dots[slideIndex - 1].className += " active";
     if (captionText) {
       captionText.innerHTML = dots[slideIndex - 1].alt || "";
     }
   }
-}   
-// End Lightbox Cellula - Cuore - Apparato respiratorio - Sistema linfatico.
+}
+
+// --- LOGICA LENTE D'INGRANDIMENTO ---
+
+function resetAllZoom() {
+  document.querySelectorAll('.zoom-container').forEach(container => {
+    container.classList.remove('zoomed');
+    const img = container.querySelector('img');
+    if (img) img.style.transformOrigin = `center center`;
+  });
+}
+
+document.querySelectorAll('.zoom-container').forEach(container => {
+  const img = container.querySelector('img');
+
+  container.addEventListener('click', function() {
+    this.classList.toggle('zoomed');
+    if (!this.classList.contains('zoomed')) {
+      img.style.transformOrigin = `center center`;
+    }
+  });
+
+  container.addEventListener('mousemove', function(e) {
+    if (this.classList.contains('zoomed')) {
+      const rect = container.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      img.style.transformOrigin = `${x}% ${y}%`;
+    }
+  });
+
+  container.addEventListener('mouseleave', function() {
+    this.classList.remove('zoomed');
+    img.style.transformOrigin = `center center`;
+  });
+});
+
+// End Lightbox
 
 // --- Performance Helpers ---
 // Throttle: limit how often a function can run

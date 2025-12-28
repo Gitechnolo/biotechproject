@@ -186,7 +186,6 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <p class="text" data-lang-key="lymph_intro_1">I capillari sanguigni e le vene costituiscono un sistema di drenaggio per i liquidi tissulari.</p>
 <p class="text" data-lang-key="lymph_intro_2">La quantità di proteine nel liquido interstiziale è molto piccola, ma in certe condizioni aumenta considerevolmente e sembra improbabile che rientri nel sistema capillare.</p>
 <p class="text" data-lang-key="lymph_intro_3">Vi è poi un secondo sistema di drenaggio, quello linfatico, la cui funzione principale è quella di assorbire dagli spazi tissulari le proteine in eccesso.</p><br>
-<!-- Contenitore principale del carosello -->
 <div class="row" role="region" aria-roledescription="carosello" aria-label="Immagini del sistema linfatico">
   <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box1.jpg" style="width:100%" class="hover-shadow cursor" loading="lazy" alt="Sistema linfatico schema 1" tabindex="0" role="button" aria-label="Apri schema 1: Scambio tra plasma e liquido tissutale" onclick="openModal();currentSlide(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(1)}" ></div>
   <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico_box2.jpg" style="width:100%" class="hover-shadow cursor" loading="lazy" alt="Sistema linfatico schema 2" tabindex="0" role="button" aria-label="Apri schema 2: Capillari linfatici e sanguigni nel tessuto" onclick="openModal();currentSlide(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(2)}" ></div>
@@ -198,10 +197,33 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
   <span class="close cursor" onclick="closeModal()" tabindex="0" role="button" aria-label="Chiudi visualizzatore" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeModal()}" >&times;</span>
   <div class="modal-content" id="modalCarousel">
     
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" loading="lazy" alt="Scambio di nutrienti tra plasma e liquido interstiziale"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" loading="lazy" alt="Anatomia dei capillari linfatici nei tessuti"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" loading="lazy" alt="Struttura interna di un linfonodo (Ganglio)"></div>
-    <div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" loading="lazy" alt="Panoramica del sistema linfatico umano"></div>
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">1 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico1.jpg" style="width:100%" loading="lazy" alt="Scambio di nutrienti tra plasma e liquido interstiziale">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">2 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico2.jpg" style="width:100%" loading="lazy" alt="Anatomia dei capillari linfatici nei tessuti">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">3 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico3.jpg" style="width:100%" loading="lazy" alt="Struttura interna di un linfonodo (Ganglio)">
+      </div>
+    </div>
+
+    <div class="mySlides" role="group" aria-roledescription="slide">
+      <div class="numbertext">4 / 4</div>
+      <div class="zoom-container">
+        <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico4.jpg" style="width:100%" loading="lazy" alt="Panoramica del sistema linfatico umano">
+      </div>
+    </div>
 
     <button class="prev" onclick="plusSlides(-1)" aria-label="Slide precedente">&#10094;</button>
     <button class="next" onclick="plusSlides(1)" aria-label="Slide successiva">&#10095;</button>

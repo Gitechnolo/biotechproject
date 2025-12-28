@@ -376,6 +376,39 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 }
 /* Sposta le frecce leggermente fuori dall'immagine se lo schermo è grande */
 @media only screen and (min-width:1100px){.prev{left:-40px}.next{right:-40px}}
+/* --- LENTE D'INGRANDIMENTO (ZOOM) --- */
+
+.zoom-container {
+  position: relative;
+  overflow: hidden; 
+  /* Quando il mouse è sopra l'immagine normale, mostra la lente con il più */
+  cursor: zoom-in; 
+}
+
+.zoom-container img {
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Quando l'immagine è ingrandita (classe aggiunta via JS) */
+.zoom-container.zoomed {
+  /* Mostra la lente con il meno per indicare che si può rimpicciolire */
+  cursor: zoom-out;
+}
+
+.zoom-container.zoomed img {
+  transform: scale(2.5); /* Livello di ingrandimento */
+}
+
+/* Ottimizzazione per touch-screen: rimuove il cursore lente dove non serve */
+@media (pointer: coarse) {
+  .zoom-container {
+    cursor: auto;
+  }
+}
 /* === END CAROSELLO BIOTECH === */   
 /* Video Biomassa */
 #ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
