@@ -363,10 +363,25 @@ function openModal() {
 }
 
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-  // Reset dello zoom alla chiusura
-  resetAllZoom();
+  // Verifichiamo che l'elemento esista per evitare errori in console
+  const modal = document.getElementById("myModal");
+  if (modal) {
+    modal.style.display = "none";
+    // Reset dello zoom alla chiusura
+    resetAllZoom();
+  }
 }
+
+// --- NUOVA FUNZIONE: CHIUSURA CON TASTO ESC ---
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape") {
+    const modal = document.getElementById("myModal");
+    // Chiude il modal solo se è attualmente visibile
+    if (modal && modal.style.display === "block") {
+      closeModal();
+    }
+  }
+});
 
 var slideIndex = 1;
 showSlides(slideIndex);
