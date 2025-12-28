@@ -392,67 +392,26 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
   height: auto;
 }
 
-/* Quando l'immagine è ingrandita (Desktop) */
+/* Stato ingrandito */
 .zoom-container.zoomed {
   cursor: zoom-out;
 }
 
-/* Ingrandimento attivo solo per dispositivi con mouse (desktop) */
+/* Ingrandimento attivo SOLO su Desktop (dispositivi con mouse) */
 @media (pointer: fine) {
   .zoom-container.zoomed img {
     transform: scale(2.5);
   }
 }
 
-/* --- OTTIMIZZAZIONE MOBILE & CONTROLLI FISSI --- */
-
+/* Configurazione per Touch-screen (Smartphone/Tablet) */
 @media (pointer: coarse) {
-  .zoom-container { cursor: default; }
-  /* Su mobile usiamo il pinch-to-zoom nativo, quindi evitiamo il scale automatico */
-  .zoom-container.zoomed img { transform: scale(1); }
-}
-
-@media only screen and (max-width: 700px) {
-  /* Fix per il bottone di chiusura: deve restare visibile allo zoom */
-  .close {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 10030;
+  .zoom-container {
+    cursor: default;
   }
-
-  /* Fix per le frecce: restano incollate ai bordi dello schermo */
-  .prev, .next {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10025;
-    background-color: rgba(0, 0, 0, 0.6); /* Più contrasto su mobile */
-    padding: 15px 10px;
-    border-radius: 5px;
-  }
-  
-  .prev { left: 5px; }
-  .next { right: 5px; }
-
-  /* Numero slide fisso (es: 1/4) */
-  .numbertext {
-    position: fixed;
-    top: 25px;
-    left: 20px;
-    z-index: 10025;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
-
-  /* Didascalia fissa in basso per non perderla durante lo zoom */
-  .caption-container {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 10020;
-    background-color: rgba(0, 0, 0, 0.8);
+  /* Disabilitiamo lo zoom via script per non creare conflitti con le dita */
+  .zoom-container.zoomed img {
+    transform: scale(1); 
   }
 }
 /* === END CAROSELLO BIOTECH === */   
