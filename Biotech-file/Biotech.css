@@ -654,7 +654,7 @@ textarea:focus,
 }
 .biotech-simple-link-container {
   text-align: center;
-  margin: -20px 16px 30px; /* Riduce lo spazio sopra */
+  margin: -40px 16px 30px; /* Riduce lo spazio sopra */
   padding: 0;
 }
 .biotech-simple-link {
