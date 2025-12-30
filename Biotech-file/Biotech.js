@@ -359,24 +359,21 @@ if (countdownEl) {
 
 function openModal() {
   document.getElementById("myModal").style.display = "block";
-  window.scrollTo({ top: 0, behavior: 'smooth' }); // Transizione dolce verso l’alto
+  window.scrollTo({ top: 0, behavior: 'smooth' }); 
 }
 
 function closeModal() {
-  // Verifichiamo che l'elemento esista per evitare errori in console
   const modal = document.getElementById("myModal");
   if (modal) {
     modal.style.display = "none";
-    // Reset dello zoom alla chiusura
     resetAllZoom();
   }
 }
 
-// --- NUOVA FUNZIONE: CHIUSURA CON TASTO ESC ---
+// CHIUSURA CON TASTO ESC
 document.addEventListener('keydown', function(event) {
   if (event.key === "Escape") {
     const modal = document.getElementById("myModal");
-    // Chiude il modal solo se è attualmente visibile
     if (modal && modal.style.display === "block") {
       closeModal();
     }
@@ -387,12 +384,12 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
-  resetAllZoom(); // Resetta la lente quando cambi slide
+  resetAllZoom(); 
   showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
-  resetAllZoom(); // Resetta la lente quando clicchi una miniatura
+  resetAllZoom(); 
   showSlides(slideIndex = n);
 }
 
@@ -403,7 +400,6 @@ function showSlides(n) {
   var captionText = document.getElementById("caption");
 
   if (slides.length === 0) return;
-
   if (n > slides.length) { slideIndex = 1; }
   if (n < 1) { slideIndex = slides.length; }
 
@@ -424,8 +420,7 @@ function showSlides(n) {
   }
 }
 
-// --- LOGICA LENTE D'INGRANDIMENTO ---
-
+// LOGICA LENTE D'INGRANDIMENTO
 function resetAllZoom() {
   document.querySelectorAll('.zoom-container').forEach(container => {
     container.classList.remove('zoomed');
@@ -459,6 +454,59 @@ document.querySelectorAll('.zoom-container').forEach(container => {
   });
 });
 
+// GESTIONE AUTOMATICA EVENTI (Alleggerimento HTML)
+document.addEventListener('DOMContentLoaded', function() {
+  
+  const handleInteraction = (element, callback) => {
+    if(!element) return;
+    element.addEventListener('click', callback);
+    element.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        callback();
+      }
+    });
+  };
+
+  // 1. Click immagini principali (aggiungere id="main-gallery" al div row)
+  document.querySelectorAll('#main-gallery .gallery-item').forEach(img => {
+    handleInteraction(img, () => {
+      openModal();
+      currentSlide(parseInt(img.getAttribute('data-slide')));
+    });
+  });
+
+  // 2. Click miniature nel modal (aggiungere id="thumb-gallery" al div row delle miniature)
+  document.querySelectorAll('#thumb-gallery .demo').forEach(thumb => {
+    handleInteraction(thumb, () => {
+      currentSlide(parseInt(thumb.getAttribute('data-slide')));
+    });
+  });
+
+  // 3. Pulsanti di controllo
+  handleInteraction(document.getElementById('closeBtn'), closeModal);
+  
+  const prevBtn = document.getElementById('prevSlide');
+  if(prevBtn) prevBtn.onclick = () => plusSlides(-1);
+
+  const nextBtn = document.getElementById('nextSlide');
+  if(nextBtn) nextBtn.onclick = () => plusSlides(1);
+
+  // 4. Supporto frecce tastiera (Solo con modal aperto)
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById("myModal");
+    if (modal && modal.style.display === "block") {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault(); // Blocca lo scorrimento della pagina
+        plusSlides(-1);
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault(); // Blocca lo scorrimento della pagina
+        plusSlides(1);
+      }
+    }
+  });
+});
 // End Lightbox
 
 // --- Performance Helpers ---
