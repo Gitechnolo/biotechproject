@@ -1045,35 +1045,39 @@ async function loadTranslation(path) {
   }
 }
 // ===========================
-// APPLICA LE TRADUZIONI (Preserva DOM, Immagini e Accessibilità)
-// Gestisce testi visibili, attributi ALT, Aria-Label e didascalie dinamiche
+// APPLICA LE TRADUZIONI SENZA DISTRUGGERE IL DOM
 // ===========================
 function applyTranslations(translations, lang) {
-  // 1. GESTIONE CHIAVI STANDARD (Testo, Immagini, Input)
   document.querySelectorAll('[data-lang-key]').forEach(el => {
     const key = el.getAttribute('data-lang-key');
     const value = translations[lang]?.[key];
 
     if (value !== undefined && value !== null) {
-      // Caso A: Input e Textarea (Placeholder)
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.setAttribute('placeholder', value);
-      } 
-      // Caso B: Immagini (Alt e Didascalie dinamiche)
-      else if (el.tagName === 'IMG') {
+      } else if (el.tagName === 'IMG') {
+        // Aggiorna l'attributo ALT (fondamentale per accessibilità)
         el.setAttribute('alt', value);
         
-        // Sincronizzazione per Biotech Modal (se l'immagine è aperta nel popup)
+        // AGGIORNAMENTO DINAMICO PER BIOTECH MODAL
+        // Se l'immagine tradotta è una di quelle del popup, aggiorniamo il caption visibile
         const modal = document.getElementById("myModal");
         const modalImg = document.getElementById("img01");
         const captionText = document.getElementById("caption");
         
+        // Se il modal è aperto E l'immagine nel modal corrisponde a quella che stiamo traducendo
         if (modal && modal.classList.contains("show") && modalImg && modalImg.src === el.src) {
           captionText.textContent = value;
         }
-      } 
-      // Caso C: Testi visibili (Menu, Paragrafi, Link con tag <b>)
-      else {
+      } else if (el.hasAttribute('aria-label')) {
+        el.setAttribute('aria-label', value);
+        const bold = el.querySelector('b');
+        if (bold) {
+          bold.textContent = value;
+        } else {
+          el.innerHTML = value; 
+        }
+      } else {
         const bold = el.querySelector('b');
         if (bold) {
           bold.textContent = value;
@@ -1083,19 +1087,8 @@ function applyTranslations(translations, lang) {
       }
     }
   });
-
-  // 2. GESTIONE EXTRA PER ACCESSIBILITÀ (Aria-Label)
-  // Questo blocco interviene solo se nell'HTML aggiungi il gancio data-lang-key-aria
-  document.querySelectorAll('[data-lang-key-aria]').forEach(el => {
-    const ariaKey = el.getAttribute('data-lang-key-aria');
-    const ariaValue = translations[lang]?.[ariaKey];
-    if (ariaValue) {
-      el.setAttribute('aria-label', ariaValue);
-    }
-  });
-
-  console.log(`✅ Traduzioni applicate in ${lang} (Compatibilità totale garantita)`);
-}  
+  console.log(`✅ Traduzioni applicate in ${lang}`);
+}   
 // ===========================
 // INIZIALIZZA IL SISTEMA DI TRADUZIONE (SENZA RITARDO BLOCCANTE)
 // ===========================
