@@ -191,16 +191,37 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <h1 class="sansation-bold" data-lang-key="cellula_title">CELLULA</h1>
 <p class="text"><span class="yellowtext" data-lang-key="cellula_subtitle">Unità strutturale funzionale di ciascun organismo vivente.</span><br><span data-lang-key="cellula_description_part1">Per svolgere la loro funzione, le cellule risultano essere raggruppate in tessuti, per poi andare a formare strutture sempre più complesse come;</span><br><span class="biotechbold" data-lang-key="cellula_organs_title">ORGANI, APPARATI, SISTEMI</span><br><span data-lang-key="cellula_description_part2">Il corpo umano contiene centinaia di tipi cellulari diversi di primaria importanza per la nostra salute quotidiana. Cellule responsabili di mantenere i nostri corpi funzionanti, e quindi; Fare in modo che il nostro cuore batta, che il cervello pensi, che i reni depurino il sangue, che la nostra pelle si rigeneri, e così via...</span><br><span data-lang-key="cellula_mitosi_part1">Tutte queste cellule derivano da altre cellule preesistenti che si duplicano in un processo di divisione cellulare, chiamato</span><span class="orangetext" data-lang-key="cellula_mitosi_title">MITOSI</span><span data-lang-key="cellula_mitosi_part2">, grazie al quale a partire da una cellula se ne formano due altrettanto identiche.</span></p>
 <!-- Contenitore principale del carosello -->
-<div class="row" role="region" aria-roledescription="carosello" aria-label="Immagini anatomia cellulare">
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula_box.avif" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" loading="lazy" alt="Anatomia cellulare" tabindex="0" role="button" aria-label="Apri schema 1: Struttura della cellula" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(1)}"></div>
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali_box.avif" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" loading="lazy" alt="Cellule staminali" tabindex="0" role="button" aria-label="Apri schema 2: Tipologie di cellule staminali" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(2)}"></div>
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/CellulafunzioniLbox.avif" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" loading="lazy" alt="Funzioni cellulari" tabindex="0" role="button" aria-label="Apri schema 3: Funzioni e organuli cellulari" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(3)}"></div>
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna_box.avif" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" loading="lazy" alt="DNA cellulare" tabindex="0" role="button" aria-label="Apri schema 4: Struttura del DNA nel nucleo" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(4)}"></div>
+<div class="row" id="main-gallery" role="region" aria-roledescription="carosello" aria-label="Immagini anatomia cellulare">
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula_box.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="1" loading="lazy" 
+         alt="Anatomia cellulare" tabindex="0" role="button" 
+         aria-label="Apri schema 1: Struttura della cellula">
+  </div>
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali_box.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="2" loading="lazy" 
+         alt="Cellule staminali" tabindex="0" role="button" 
+         aria-label="Apri schema 2: Tipologie di cellule staminali">
+  </div>
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/CellulafunzioniLbox.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="3" loading="lazy" 
+         alt="Funzioni cellulari" tabindex="0" role="button" 
+         aria-label="Apri schema 3: Funzioni e organuli cellulari">
+  </div>
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna_box.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="4" loading="lazy" 
+         alt="DNA cellulare" tabindex="0" role="button" 
+         aria-label="Apri schema 4: Struttura del DNA nel nucleo">
+  </div>
 </div>
 
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
   <h2 id="modalHeading" style="position:absolute; width:1px; height:1px; margin:0; padding:0; overflow:hidden;">Galleria Immagini Dettaglio Cellula</h2>
-  <span class="close cursor" onclick="closeModal()" tabindex="0" role="button" aria-label="Chiudi visualizzatore" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeModal()}">&times;</span>
+  
+  <span class="close cursor" id="closeBtn" tabindex="0" role="button" aria-label="Chiudi visualizzatore">&times;</span>
   
   <div class="modal-content" id="modalCarousel">
     
@@ -232,16 +253,18 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
       </div>
     </div>
 
-    <a class="prev" onclick="plusSlides(-1)" tabindex="0" role="button" aria-label="Slide precedente" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(-1)}">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)" tabindex="0" role="button" aria-label="Slide successiva" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(1)}">&#10095;</a>
+    <button class="prev" id="prevSlide" aria-label="Slide precedente">&#10094;</button>
+    <button class="next" id="nextSlide" aria-label="Slide successiva">&#10095;</button>
 
-    <div class="caption-container"><p id="caption" role="status" aria-live="polite"></p></div>
+    <div class="caption-container">
+      <p id="caption" role="status" aria-live="polite"></p>
+    </div>
 
-    <div class="row">
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula.avif" style="width:100%" onclick="currentSlide(1)" alt="Anatomia generale della cellula umana" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(1)}"></div>
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali.avif" style="width:100%" onclick="currentSlide(2)" alt="Specializzazione delle cellule staminali" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(2)}"></div>
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulafunzioni.avif" style="width:100%" onclick="currentSlide(3)" alt="Processi biologici e funzioni degli organuli" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(3)}"></div>
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna.avif" style="width:100%" onclick="currentSlide(4)" alt="Struttura a doppia elica del DNA e codice genetico" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(4)}"></div>
+    <div class="row" id="thumb-gallery">
+      <div class="column"><img class="demo cursor" data-slide="1" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellula.avif" style="width:100%" alt="Anatomia generale della cellula umana" tabindex="0"></div>
+      <div class="column"><img class="demo cursor" data-slide="2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulestaminali.avif" style="width:100%" alt="Specializzazione delle cellule staminali" tabindex="0"></div>
+      <div class="column"><img class="demo cursor" data-slide="3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cellulafunzioni.avif" style="width:100%" alt="Processi biologici e funzioni degli organuli" tabindex="0"></div>
+      <div class="column"><img class="demo cursor" data-slide="4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Celluladna.avif" style="width:100%" alt="Struttura a doppia elica del DNA e codice genetico" tabindex="0"></div>
     </div>
 
   </div>

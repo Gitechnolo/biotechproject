@@ -166,58 +166,78 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <h2 class="atkinson-bold" style="font-size: 42px; margin: 20px 0;" data-lang-key="circulatory_system_heading">Apparato circolatorio</h2>
 <span class="atkinson-regular" data-lang-key="circulatory_system_intro_1">L’apparato circolatorio porta ossigeno e sostanze utili a tutte le cellule del corpo.</span><span class="atkinson-regular" data-lang-key="circulatory_system_intro_2">Grazie a lui, le cellule ricevono ciò di cui hanno bisogno e eliminano le sostanze di scarto.</span><span class="atkinson-regular" data-lang-key="circulatory_system_intro_3">Questo processo è molto importante per mantenere viva e sana ogni parte del corpo.</span>
 <!-- Contenitore principale del carosello -->
-<div class="row" role="region" aria-roledescription="carosello" aria-label="Immagini dell'apparato circolatorio">
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box1.avif" style="width:100%" class="hover-shadow cursor" loading="lazy" alt="Apparato circolatorio schema 1" tabindex="0" role="button" aria-label="Apri schema 1: Apparato circolatorio" onclick="openModal();currentSlide(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(1)}"></div>
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box2.avif" style="width:100%" class="hover-shadow cursor" loading="lazy" alt="Apparato circolatorio schema 2" tabindex="0" role="button" aria-label="Apri schema 2: Organi e organismo" onclick="openModal();currentSlide(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(2)}"></div>
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box3.avif" style="width:100%" class="hover-shadow cursor" loading="lazy" alt="Apparato circolatorio schema 3" tabindex="0" role="button" aria-label="Apri schema 3: Vie della circolazione" onclick="openModal();currentSlide(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(3)}"></div>
-  <div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box4.avif" style="width:100%" class="hover-shadow cursor" loading="lazy" alt="Apparato circolatorio schema 4" tabindex="0" role="button" aria-label="Apri schema 4: Il cuore" onclick="openModal();currentSlide(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal();currentSlide(4)}"></div>
+<div class="row" id="main-gallery" role="region" aria-roledescription="carosello" aria-label="Immagini dell'apparato circolatorio">
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box1.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="1" loading="lazy" 
+         alt="Apparato circolatorio schema 1" tabindex="0" role="button" 
+         aria-label="Apri schema 1: Apparato circolatorio">
+  </div>
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box2.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="2" loading="lazy" 
+         alt="Apparato circolatorio schema 2" tabindex="0" role="button" 
+         aria-label="Apri schema 2: Organi e organismo">
+  </div>
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box3.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="3" loading="lazy" 
+         alt="Apparato circolatorio schema 3" tabindex="0" role="button" 
+         aria-label="Apri schema 3: Vie della circolazione">
+  </div>
+  <div class="column transparent">
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio_box4.avif" 
+         class="hover-shadow cursor gallery-item" data-slide="4" loading="lazy" 
+         alt="Apparato circolatorio schema 4" tabindex="0" role="button" 
+         aria-label="Apri schema 4: Il cuore">
+  </div>
 </div>
 
-<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini apparato circolatorio">
-  <span class="close cursor" onclick="closeModal()" role="button" aria-label="Chiudi modal" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();closeModal();}">&times;</span>
+<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini apparato circolatorio">
+  <span class="close cursor" id="closeBtn" tabindex="0" role="button" aria-label="Chiudi modal">&times;</span>
   
   <div class="modal-content" id="modalCarousel">
     
-    <div class="mySlides">
+    <div class="mySlides" role="group" aria-roledescription="slide">
       <div class="numbertext">1 / 4</div>
       <div class="zoom-container">
         <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio1.avif" style="width:100%" loading="lazy" alt="Apparato circolatorio">
       </div>
     </div>
 
-    <div class="mySlides">
+    <div class="mySlides" role="group" aria-roledescription="slide">
       <div class="numbertext">2 / 4</div>
       <div class="zoom-container">
         <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio2.avif" style="width:100%" loading="lazy" alt="Organi e organismo">
       </div>
     </div>
 
-    <div class="mySlides">
+    <div class="mySlides" role="group" aria-roledescription="slide">
       <div class="numbertext">3 / 4</div>
       <div class="zoom-container">
         <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio3.avif" style="width:100%" loading="lazy" alt="Vie della circolazione">
       </div>
     </div>
 
-    <div class="mySlides">
+    <div class="mySlides" role="group" aria-roledescription="slide">
       <div class="numbertext">4 / 4</div>
       <div class="zoom-container">
         <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio4.avif" style="width:100%" loading="lazy" alt="Il cuore">
       </div>
     </div>
 
-    <a class="prev" onclick="plusSlides(-1)" role="button" aria-label="Slide precedente" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(-1);}">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)" role="button" aria-label="Slide successiva" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();plusSlides(1);}">&#10095;</a>
+    <button class="prev" id="prevSlide" aria-label="Slide precedente">&#10094;</button>
+    <button class="next" id="nextSlide" aria-label="Slide successiva">&#10095;</button>
 
     <div class="caption-container">
       <p id="caption" role="status" aria-live="polite"></p>
     </div>
 
-    <div class="row">
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio1.avif" style="width:100%" onclick="currentSlide(1)" loading="lazy" alt="Apparato circolatorio" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(1)}"></div>
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio2.avif" style="width:100%" onclick="currentSlide(2)" loading="lazy" alt="Organi e organismo" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(2)}"></div>
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio3.avif" style="width:100%" onclick="currentSlide(3)" loading="lazy" alt="Vie della circolazione" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(3)}"></div>
-      <div class="column"><img class="demo cursor" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio4.avif" style="width:100%" onclick="currentSlide(4)" loading="lazy" alt="Il cuore" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();currentSlide(4)}"></div>
+    <div class="row" id="thumb-gallery">
+      <div class="column"><img class="demo cursor" data-slide="1" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio1.avif" style="width:100%" loading="lazy" alt="Apparato circolatorio" tabindex="0"></div>
+      <div class="column"><img class="demo cursor" data-slide="2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio2.avif" style="width:100%" loading="lazy" alt="Organi e organismo" tabindex="0"></div>
+      <div class="column"><img class="demo cursor" data-slide="3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio3.avif" style="width:100%" loading="lazy" alt="Vie della circolazione" tabindex="0"></div>
+      <div class="column"><img class="demo cursor" data-slide="4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatocircolatorio4.avif" style="width:100%" loading="lazy" alt="Il cuore" tabindex="0"></div>
     </div>
   </div>
 </div>   
