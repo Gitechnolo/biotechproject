@@ -735,6 +735,13 @@ textarea:focus,
     display: none;
   }
 }
+.speaking-active {
+    background-color: #a7ffeb !important; /* Il colore della tua infografica */
+    color: #004d40 !important;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 8px rgba(167, 255, 235, 0.8);
+}
 /* === End STILE PER LA PRONUNCIA E ACCESSIBILITÀ === */
 /* Gradient text - Transizione morbida per lo zoom */
 @property --color-1{syntax:"<color>";inherits:false;initial-value:hsl(98 100% 62%)}

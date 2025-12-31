@@ -922,71 +922,112 @@ function handleVideoPosterKey(event) {
 // === 🔊 PRONUNCIA TERMINI TECNICI - Accessibilità avanzata ===
 // Funzione principale: riproduce la pronuncia di un termine con supporto per termini scientifici personalizzati
 
-function speakTerm(term, language = 'italiano') {
-  // Interrompi qualsiasi sintesi vocale in corso per evitare sovrapposizioni
-  if (speechSynthesis.speaking) {
-    speechSynthesis.cancel();
-  }
-  // Mappa personalizzata per pronunce scientifiche (lettura estesa o sillabata)
-  const customPronunciations = {
-    'CRISPR': 'Clustered Regularly Interspaced Short Palindromic Repeats',
-    'mitocondri': 'Mi-to-con-dri',
-    'lisosoma': 'Li-so-so-ma',
-    'miochine': 'Mi-o-ki-ne',
-    'sinaptogenesi': 'Si-na-to-jen-e-si',
-    'epigenetici': 'E-pi-je-ne-ti-ci',
-    'ATP': 'Adenosina trifosfato',
-    'DNA': 'Acido desossiribonucleico',
-    'RNA': 'Acido ribonucleico',
-    'tegumento': 'Te-gu-men-to',
-    'Pecquet': 'Pes-ché'     
-  };
-  // Mappa delle lingue supportate
-  const langMap = {
-    'italiano': 'it-IT',
-    'inglese': 'en-US'
-  };
-  // Ottieni la pronuncia personalizzata o usa il termine originale
-  const utteranceText = customPronunciations[term.toLowerCase()] || term;
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. ELEMENTI UI ---
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    const captionText = document.getElementById("caption");
+    const closeBtn = document.querySelector(".close");
 
-  // Crea l'istanza di SpeechSynthesisUtterance
-  const utterance = new SpeechSynthesisUtterance(utteranceText);
+    // Mappa per le pronunce scientifiche
+    const customPronunciations = {
+        'crispr': 'Clustered Regularly Interspaced Short Palindromic Repeats',
+        'mitocondri': 'Mi-to-con-dri',
+        'lisosoma': 'Li-so-so-ma',
+        'miochine': 'Mi-o-ki-ne',
+        'sinaptogenesi': 'Si-na-to-jen-e-si',
+        'epigenetici': 'E-pi-je-ne-ti-ci',
+        'atp': 'Adenosina trifosfato',
+        'dna': 'Acido desossiribonucleico',
+        'rna': 'Acido ribonucleico',
+        'tegumento': 'Te-gu-men-to',
+        'pecquet': 'Pes-ché'
+    };
 
-  // Imposta la lingua, con fallback a italiano
-  utterance.lang = langMap[language] || 'it-IT';
+    // --- 2. FUNZIONE CORE: PRONUNCIA + EVIDENZIAZIONE ---
+    window.speakTerm = function(term, language = 'italiano', triggerElement) {
+        if (!window.speechSynthesis) return;
 
-  // Parametri vocali ottimizzati per chiarezza
-  utterance.rate = 0.8;   // Velocità leggermente ridotta
-  utterance.pitch = 1.0;  // Tono neutro e naturale
-  utterance.volume = 1.0; // Volume massimo
+        // Interrompi letture precedenti e pulisci evidenziazioni rimaste
+        window.speechSynthesis.cancel();
+        document.querySelectorAll('.speaking-active').forEach(el => el.classList.remove('speaking-active'));
 
-  // Feedback accessibile per screen reader
-  const announcement = document.getElementById('sr-announcement');
-  if (announcement) {
-    announcement.textContent = `Lettura avviata: ${term}.`;
-    // Pulisce il messaggio dopo 1 secondo per non disturbare
-    setTimeout(() => {
-      if (announcement.textContent.includes(term)) {
-        announcement.textContent = '';
-      }
-    }, 1000);
-  }
+        const utteranceText = customPronunciations[term.toLowerCase()] || term;
+        const utterance = new SpeechSynthesisUtterance(utteranceText);
+        
+        const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
+        utterance.lang = langMap[language] || 'it-IT';
+        utterance.rate = 0.8;
 
-  // Log per debug (opzionale)
-  console.log(`🔊 Pronuncia attivata: "${term}" come "${utteranceText}" (${utterance.lang})`);
+        // Individua il contenitore .pronounceable per l'effetto visivo
+        const highlightTarget = triggerElement ? triggerElement.closest('.pronounceable') : null;
 
-  // Avvia la sintesi vocale
-  speechSynthesis.speak(utterance);
-}
+        utterance.onstart = () => {
+            if (highlightTarget) highlightTarget.classList.add('speaking-active');
+        };
 
-// Gestione tastiera per i pulsanti di pronuncia (accessibilità da tastiera)
-function handlePronounceKey(event, term, language = 'italiano') {
-  // Supporta sia Invio che barra spaziatrice
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault(); // Evita comportamenti indesiderati
-    speakTerm(term, language);
-  }
-}
+        utterance.onend = () => {
+            if (highlightTarget) highlightTarget.classList.remove('speaking-active');
+        };
+
+        utterance.onerror = () => {
+            if (highlightTarget) highlightTarget.classList.remove('speaking-active');
+        };
+
+        window.speechSynthesis.speak(utterance);
+    };
+
+    // --- 3. GESTIONE EVENTI (LISTENERS) ---
+
+    // Chiusura Globale (Tasto ESC)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") {
+            // Ferma audio
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+            // Rimuovi evidenziazioni
+            document.querySelectorAll('.speaking-active').forEach(el => el.classList.remove('speaking-active'));
+            // Chiudi modal
+            if (modal) modal.style.display = "none";
+        }
+    });
+
+    // Apertura Modal Immagini
+    document.querySelectorAll('.modal-trigger').forEach(trigger => {
+        const handleModal = (e) => {
+            e.preventDefault();
+            const targetImgId = trigger.getAttribute('data-img-target');
+            const targetImg = document.getElementById(targetImgId);
+            if (targetImg && modal) {
+                modal.style.display = "block";
+                modalImg.src = targetImg.src;
+                captionText.innerHTML = targetImg.alt;
+            }
+        };
+        trigger.addEventListener('click', handleModal);
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') handleModal(e);
+        });
+    });
+
+    // Chiusura Modal (Click su X o fuori)
+    if (closeBtn) closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+    // Gestione Pulsanti Audio 🔊
+    document.querySelectorAll('.pronounce-btn').forEach(btn => {
+        const handleAudio = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const term = btn.getAttribute('data-term');
+            const lang = btn.getAttribute('data-lang') || 'italiano';
+            speakTerm(term, lang, btn);
+        };
+        btn.addEventListener('click', handleAudio);
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') handleAudio(e);
+        });
+    });
+});
 
 // =====================================================
 // GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
