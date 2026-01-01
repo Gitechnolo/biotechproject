@@ -1480,3 +1480,53 @@ if (element) {
     // Aggiorna l'elemento in un'unica scrittura
     element.textContent = remainingDays > 0 ? remainingDays : 0; 
 } 
+
+
+/* --- Effetto Lente e Movimento Tastiera --- */
+function initBiotechLens() {
+    const cards = document.querySelectorAll('.gallery-card');
+    if (cards.length === 0) return; // Esci se non sei nella pagina della galleria
+
+    cards.forEach(card => {
+        const img = card.querySelector('img');
+        const container = card.querySelector('.img-container');
+        if (!img || !container) return;
+
+        let posX = 50, posY = 50;
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            img.style.transformOrigin = 'center center';
+        });
+
+        card.addEventListener('keydown', (e) => {
+            const step = 10;
+            if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+                e.preventDefault();
+                if (e.key === "ArrowUp") posY = Math.max(0, posY - step);
+                if (e.key === "ArrowDown") posY = Math.min(100, posY + step);
+                if (e.key === "ArrowLeft") posX = Math.max(0, posX - step);
+                if (e.key === "ArrowRight") posX = Math.min(100, posX + step);
+                img.style.transformOrigin = `${posX}% ${posY}%`;
+            }
+        });
+
+        card.addEventListener('blur', () => {
+            posX = 50; posY = 50;
+            img.style.transformOrigin = 'center center';
+        });
+    });
+}
+
+// Inizializzazione sicura
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBiotechLens);
+} else {
+    initBiotechLens();
+}
