@@ -1378,3 +1378,105 @@ if (element) {
     // Aggiorna l'elemento in un'unica scrittura
     element.textContent = remainingDays > 0 ? remainingDays : 0; 
 }  
+
+// Works for (Mitocondri.png, Lisosoma.png, Miochine.png, Pelle.png) images with id starting with 'myImg'
+// ✅ Biotech Modal Popup Script con Effetto Espansione (Lente)
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("img01");
+  const captionText = document.getElementById("caption");
+  const closeBtn = modal ? modal.querySelector(".close") : document.querySelector("#myModal .close");
+
+  let lastFocusedElement = null;
+
+  if (!modal || !modalImg || !closeBtn) return;
+
+  /**
+   * FUNZIONE GLOBALE: Apre il modal partendo dal punto esatto del click
+   */
+  window.openBiotechModal = function(imgId, event) {
+    const targetImg = document.getElementById(imgId);
+    if (!targetImg) return;
+
+    lastFocusedElement = event.currentTarget; 
+
+    const rect = lastFocusedElement.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+
+    modalImg.style.transformOrigin = `${originX}px ${originY}px`;
+    modalImg.src = targetImg.src;
+    captionText.textContent = targetImg.alt || "";
+
+    modal.style.display = "flex"; 
+    
+    setTimeout(() => {
+      modal.classList.add("show");
+      closeBtn.focus(); // Porta il focus sulla X di chiusura
+    }, 10);
+  };
+
+  /**
+   * Chiude il modale con effetto zoom-out
+   */
+  function closeBiotechModal() {
+    if (!modal.classList.contains("show")) return;
+    
+    modal.classList.remove("show");
+    
+    setTimeout(() => {
+      modal.style.display = "none";
+      modalImg.src = "";
+      if (lastFocusedElement) {
+        lastFocusedElement.focus(); // Ripristina il focus sull'elemento originale
+        lastFocusedElement = null;
+      }
+    }, 400);
+  }
+
+  // --- GESTIONE EVENTI ---
+
+  closeBtn.onclick = closeBiotechModal;
+  
+  // Gestione tastiera dedicata al modal
+  document.addEventListener("keydown", function (e) {
+    if (!modal.classList.contains("show")) return;
+
+    // 1. Chiusura con ESC
+    if (e.key === 'Escape') {
+      closeBiotechModal();
+    }
+
+    // 2. LOGICA FOCUS TRAP (Gestione TAB)
+    if (e.key === 'Tab') {
+      // Individua tutti gli elementi che possono ricevere focus nel modal
+      // In questo caso il closeBtn, ma includiamo eventuali altri per sicurezza
+      const focusableElements = modal.querySelectorAll('button, [tabindex="0"], .close');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) { // Se preme Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else { // Se preme Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+    
+    // Supporto invio/spazio sul tasto chiudi (se non è un <button> nativo)
+    if (e.target === closeBtn && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      closeBiotechModal();
+    }
+  });
+
+  modal.onclick = function (e) {
+    if (e.target === modal) closeBiotechModal();
+  };
+});
+// End Biotech modal popup script
