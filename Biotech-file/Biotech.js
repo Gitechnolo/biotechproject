@@ -358,9 +358,22 @@ if (countdownEl) {
 // End Conto alla rovescia al nuovo anno
 
 // ===== LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO =====
+let lastFocusedElement; // Variabile globale per ricordare dove eravamo
+
 function openModal() {
-  document.getElementById("myModal").style.display = "block";
-  window.scrollTo({ top: 0, behavior: 'smooth' }); 
+  lastFocusedElement = document.activeElement; // Memorizza l'elemento cliccato
+  const modal = document.getElementById("myModal");
+  if (modal) {
+    modal.style.display = "block";
+    
+    // Porta il focus sul pulsante di chiusura appena si apre per accessibilità
+    setTimeout(() => {
+      const closeBtn = document.getElementById("closeBtn");
+      if (closeBtn) closeBtn.focus();
+    }, 100);
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+  }
 }
 
 function closeModal() {
@@ -368,10 +381,15 @@ function closeModal() {
   if (modal) {
     modal.style.display = "none";
     resetAllZoom();
+    
+    // Torna all'elemento che ha aperto la modale
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+    }
   }
 }
 
-// CHIUSURA CON TASTO ESC
+// CHIUSURA CON TASTO ESC (Globale)
 document.addEventListener('keydown', function(event) {
   if (event.key === "Escape") {
     const modal = document.getElementById("myModal");
@@ -432,6 +450,7 @@ function resetAllZoom() {
 
 document.querySelectorAll('.zoom-container').forEach(container => {
   const img = container.querySelector('img');
+  if (!img) return;
 
   container.addEventListener('click', function() {
     this.classList.toggle('zoomed');
@@ -469,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   };
 
-  // 1. Click immagini principali (aggiungere id="main-gallery" al div row)
+  // 1. Click immagini principali della griglia
   document.querySelectorAll('#main-gallery .gallery-item').forEach(img => {
     handleInteraction(img, () => {
       openModal();
@@ -477,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 2. Click miniature nel modal (aggiungere id="thumb-gallery" al div row delle miniature)
+  // 2. Click miniature nel modal
   document.querySelectorAll('#thumb-gallery .demo').forEach(thumb => {
     handleInteraction(thumb, () => {
       currentSlide(parseInt(thumb.getAttribute('data-slide')));
@@ -488,27 +507,48 @@ document.addEventListener('DOMContentLoaded', function() {
   handleInteraction(document.getElementById('closeBtn'), closeModal);
   
   const prevBtn = document.getElementById('prevSlide');
-  if(prevBtn) prevBtn.onclick = () => plusSlides(-1);
+  if(prevBtn) handleInteraction(prevBtn, () => plusSlides(-1));
 
   const nextBtn = document.getElementById('nextSlide');
-  if(nextBtn) nextBtn.onclick = () => plusSlides(1);
+  if(nextBtn) handleInteraction(nextBtn, () => plusSlides(1));
 
-  // 4. Supporto frecce tastiera (Solo con modal aperto)
+  // 4. Gestione avanzata Tastiera (Frecce + Focus Trap)
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById("myModal");
-    if (modal && modal.style.display === "block") {
-      if (e.key === "ArrowLeft") {
-        e.preventDefault(); // Blocca lo scorrimento della pagina
-        plusSlides(-1);
+    if (!modal || modal.style.display !== "block") return;
+
+    // --- LOGICA FOCUS TRAP ---
+    if (e.key === 'Tab') {
+      // Trova tutti gli elementi cliccabili dentro la modale
+      const focusableElements = modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) { // Shift + Tab (indietro)
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else { // Solo Tab (avanti)
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
       }
-      if (e.key === "ArrowRight") {
-        e.preventDefault(); // Blocca lo scorrimento della pagina
-        plusSlides(1);
-      }
+    }
+
+    // --- LOGICA FRECCE ---
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      plusSlides(-1);
+    }
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      plusSlides(1);
     }
   });
 });
-// END LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO
+// END LIGHTBOX SCRIPT
 
 // --- Performance Helpers ---
 // Throttle: limit how often a function can run
