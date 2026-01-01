@@ -191,42 +191,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lastFocusedElement = event.currentTarget; 
 
-    // 1. Calcola il centro dell'elemento cliccato per l'origine dell'effetto lente
     const rect = lastFocusedElement.getBoundingClientRect();
     const originX = rect.left + rect.width / 2;
     const originY = rect.top + rect.height / 2;
 
-    // 2. Imposta l'origine dell'animazione sull'immagine
     modalImg.style.transformOrigin = `${originX}px ${originY}px`;
-    
-    // 3. Prepara il contenuto
     modalImg.src = targetImg.src;
     captionText.textContent = targetImg.alt || "";
 
-    // 4. Mostra il modal con FLEX per garantire l'incolonnamento centrato
     modal.style.display = "flex"; 
     
-    // Micro-delay per attivare la transizione CSS scale(0) -> scale(1)
     setTimeout(() => {
       modal.classList.add("show");
-      closeBtn.focus();
+      closeBtn.focus(); // Porta il focus sulla X di chiusura
     }, 10);
   };
 
   /**
-   * Chiude il modale con effetto zoom-out verso l'origine
+   * Chiude il modale con effetto zoom-out
    */
   function closeBiotechModal() {
     if (!modal.classList.contains("show")) return;
     
     modal.classList.remove("show");
     
-    // Attende la fine dell'animazione CSS (400ms) prima di resettare il display
     setTimeout(() => {
       modal.style.display = "none";
       modalImg.src = "";
       if (lastFocusedElement) {
-        lastFocusedElement.focus();
+        lastFocusedElement.focus(); // Ripristina il focus sull'elemento originale
         lastFocusedElement = null;
       }
     }, 400);
@@ -236,22 +229,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
   closeBtn.onclick = closeBiotechModal;
   
-  closeBtn.addEventListener("keydown", function (e) { 
-    if (e.key === 'Enter' || e.key === ' ') {
+  // Gestione tastiera dedicata al modal
+  document.addEventListener("keydown", function (e) {
+    if (!modal.classList.contains("show")) return;
+
+    // 1. Chiusura con ESC
+    if (e.key === 'Escape') {
+      closeBiotechModal();
+    }
+
+    // 2. LOGICA FOCUS TRAP (Gestione TAB)
+    if (e.key === 'Tab') {
+      // Individua tutti gli elementi che possono ricevere focus nel modal
+      // In questo caso il closeBtn, ma includiamo eventuali altri per sicurezza
+      const focusableElements = modal.querySelectorAll('button, [tabindex="0"], .close');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) { // Se preme Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else { // Se preme Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+    
+    // Supporto invio/spazio sul tasto chiudi (se non è un <button> nativo)
+    if (e.target === closeBtn && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      closeBiotechModal(); 
+      closeBiotechModal();
     }
   });
 
   modal.onclick = function (e) {
-    // Chiude solo se clicchi sullo sfondo (fuori da immagine e testo)
     if (e.target === modal) closeBiotechModal();
   };
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === 'Escape' && modal.classList.contains("show")) {
-      closeBiotechModal();
-    }
-  });
 });
 // End Biotech modal popup script
