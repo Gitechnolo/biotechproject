@@ -169,4 +169,3 @@ function initializeVideoControls(video, controls) {
     }
   });
 }   
-
