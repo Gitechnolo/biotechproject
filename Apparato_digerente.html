@@ -130,6 +130,58 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 @media only screen and (max-width: 700px) {.responsive {width: 49.99999%; margin: 6px 0;}}
 @media only screen and (max-width: 500px) {.responsive {width: 100%;}}
 .clearfix:after {content: ""; display: table; clear: both;}
+
+/* --- AGGIUNTE SPECIFICHE PER ZOOM E ACCESSIBILITÀ --- */
+
+/* Contenitore per lo zoom - integrato nella gallery */
+.zoom-container {
+    display: block;
+    position: relative;
+    overflow: hidden; /* Fondamentale per non far uscire l'immagine dai bordi */
+    cursor: zoom-in;
+    outline: none; 
+    border-radius: 4px;
+}
+
+.zoom-container img {
+    transition: transform 0.2s ease-out;
+    transform-origin: center center;
+    display: block;
+}
+
+/* Classe aggiunta via JS per attivare l'ingrandimento */
+.zoom-active {
+    transform: scale(2.2) !important;
+}
+
+/* Focus stile BiotechProject per navigazione tastiera */
+.keyboard-navigation-on .zoom-container:focus {
+    outline: 2px solid #00e676;
+    outline-offset: 3px;
+    box-shadow: 
+        0 0 10px rgba(0, 230, 118, 0.4),
+        0 0 20px rgba(0, 230, 118, 0.25);
+}
+
+/* Messaggio di istruzioni posizionato sotto la descrizione */
+.kbd-instructions {
+    text-align: center;
+    background: rgba(0, 230, 118, 0.15);
+    color: #00e676;
+    padding: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(0, 230, 118, 0.4);
+    margin: 0 10px 10px 10px;
+}
+
+/* Mostra le istruzioni quando il contenitore precedente ha il focus */
+.zoom-container:focus ~ .kbd-instructions {
+    opacity: 1;
+}
 </style>
 <script>
 !function(){
@@ -197,29 +249,81 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <p class="secHeader" data-lang-key="mastigazione_deglutizione">MASTICAZIONE DEGLUTIZIONE</p>
 <p class="text"><span class="yellowtext" data-lang-key="masticazione_enfasi">La masticazione</span><span data-lang-key="primo_atto_digestione_p1">è il </span><span class="biotechbold" data-lang-key="primo_atto_digestione_enfasi_atto">primo atto della digestione</span><span data-lang-key="primo_atto_digestione_p2">. Essa consiste in una </span><span class="greentext" data-lang-key="primo_atto_digestione_enfasi_mecc">suddivisione meccanica</span><span data-lang-key="primo_atto_digestione_p3">degli alimenti prodotta dai denti, che incidono, dilacerano e triturano gli stessi, mentre i movimenti della lingua e delle guance concorrono a rimescolare, nel cavo orale, il cibo già preparato dall'azione della saliva.</span><br><span data-lang-key="controllo_masticazione_p1">L'atto masticatorio, che si compie facendo combaciare le due arcate dentarie, è dominato dai </span><span class="orangetext" data-lang-key="controllo_masticazione_enfasi_centri">centri che si trovano nella corteccia temporale e nel bulbo</span><span data-lang-key="controllo_masticazione_p2">e che mettono in azione i muscoli (masseteri, temporali, pterigoideo, interno ed esterno, e muscoli abbassatori), i quali consentono i movimenti di elevazione e di abbassamento, oltre che la demolizione di un alimento nelle sue parti costitutive.</span><br><span data-lang-key="digestione_enzimi_p1">La digestione comincia nel cavo orale ad opera degli </span><span class="biotechbold" data-lang-key="digestione_enzimi_enfasi">enzimi</span> <span data-lang-key="digestione_enzimi_p2">che, mediante azioni chimiche specifiche, fanno sì che dai cibi assunti si liberino i principi assimilabili a scopi nutritivi.</span><br><br><span data-lang-key="enzimi_catalizzatori_p1">Ciò significa che gli enzimi sono dei </span><span class="orangetext" data-lang-key="enzimi_catalizzatori_enfasi">catalizzatori</span><span data-lang-key="enzimi_catalizzatori_p2">, che favoriscono una reazione chimica e si ritrovano immutati al termine della reazione.</span><br><span data-lang-key="azione_enzimi_p1">Un enzima si inserisce in una specifica molecola, la </span><span class="greentext" data-lang-key="azione_enzimi_enfasi">spezza</span><span data-lang-key="azione_enzimi_p2">e quindi se ne distacca mantenendo la proprietà di ripetere, possiamo dire indefinitamente, l'operazione.</span><br><span data-lang-key="distruzione_enzimi">Gli enzimi si distruggono soltanto con l'uso o per avvelenamento.</span><br><span data-lang-key="specificita_enzimi_p1">Come si è detto, ogni enzima ha un campo d'azione </span><span class="biotechbold" data-lang-key="specificita_enzimi_enfasi">limitato e specifico</span><span data-lang-key="specificita_enzimi_p2">: per es., la pepsina del succo gastrico scinde le proteine, lasciando inalterati i grassi e i carboidrati; il caglio opera esclusivamente la coagulazione della caseina del latte; la maltasi scinde il maltosio, ma non il saccarosio, ecc.</span><br><span data-lang-key="spallanzani_enzimi_p1">Fino dal XVIII secolo, </span><span class="yellowtext" data-lang-key="spallanzani_enzimi_enfasi_pers">Lazzaro Spallanzani</span><span data-lang-key="spallanzani_enzimi_p2">aveva intuito l'importanza di queste sostanze, quando stabiliva, con i suoi esperimenti, che le trasformazioni chimiche che si verificano negli alimenti durante la digestione avvengono per opera dei </span><span class="biotechbold" data-lang-key="spallanzani_enzimi_enfasi_succhi">succhi gastrici</span><span data-lang-key="spallanzani_enzimi_p3">contenenti, come si scoprì in seguito, gli enzimi.</span><br><br><span data-lang-key="ghiandole_salivari_p1">Al cavo orale sono annesse numerose </span><span class="yellowtext" data-lang-key="ghiandole_salivari_enfasi">ghiandole</span><span data-lang-key="ghiandole_salivari_p2">(→1), rappresentate perlopiù dalle </span><span class="yellowtext" data-lang-key="ghiandole_salivari_enfasi_spec">parotidi, dalle sottolinguali e dalle sottomascellari</span><span data-lang-key="ghiandole_salivari_p3">.</span><br><span data-lang-key="saliva_p1">Esse secernono la </span><span class="yellowtext" data-lang-key="saliva_enfasi">saliva</span><span data-lang-key="saliva_p2">, costituita essenzialmente di acqua (98,7%), da sostanze inorganiche (0,8%) e da sostanze organiche (0,5%).</span><br><span data-lang-key="cloruri_amilasi_p1">Tra le sostanze inorganiche, i </span><span class="orangetext" data-lang-key="cloruri_amilasi_enfasi_clor">cloruri</span><span data-lang-key="cloruri_amilasi_p2">sono gli </span><span class="biotechbold" data-lang-key="cloruri_amilasi_enfasi_att">attivatori dell'amilasi</span><span data-lang-key="cloruri_amilasi_p3">;</span><br><span data-lang-key="bicarbonati_fosfati_p1">i </span><span class="yellowtext" data-lang-key="bicarbonati_fosfati_enfasi_tamp">bicarbonati e i fosfati</span><span data-lang-key="bicarbonati_fosfati_p2">costituiscono un </span><span class="biotechbold" data-lang-key="bicarbonati_fosfati_enfasi_sist">sistema tampone</span> <span data-lang-key="bicarbonati_fosfati_p3">che mantiene il pH salivare vicino alla neutralità.</span><br><span data-lang-key="mucina_ptialina_p1">Tra i costituenti organici, ci sono la </span><span class="yellowtext" data-lang-key="mucina_ptialina_enfasi_muc">mucina</span><span data-lang-key="mucina_ptialina_p2">e numerosi enzimi, il più importante dei quali è la </span><span class="biotechbold" data-lang-key="mucina_ptialina_enfasi_ptia">ptialina</span><span data-lang-key="mucina_ptialina_p3">, che </span><span class="greentext" data-lang-key="mucina_ptialina_enfasi_att">attacca l'amido</span><span data-lang-key="mucina_ptialina_p4">, scindendolo idroliticamente fino a destrine e maltosio, e che continua la sua azione finché non viene inattivata, nello stomaco, dall'</span><span class="orangetext" data-lang-key="mucina_ptialina_enfasi_acido">acido cloridrico</span><span data-lang-key="mucina_ptialina_p5">.</span><br><span data-lang-key="azione_ptialina_p1">L'azione enzimatica della ptialina si realizza infatti a un </span><span class="orangetext" data-lang-key="azione_ptialina_enfasi">pH approssimativamente neutro</span><span data-lang-key="azione_ptialina_p2">.</span><br><span data-lang-key="efficacia_ptialina_p1">L'azione si esplica meglio sull'</span><span class="greentext" data-lang-key="efficacia_ptialina_enfasi">amido cotto</span><span data-lang-key="efficacia_ptialina_p2">, quando i granuli non sono più protetti dall'involucro di cellulosa.</span><br><br><span data-lang-key="funzione_saliva_p1">Oltre alla </span><span class="greentext" data-lang-key="funzione_saliva_enfasi">funzione digestiva</span><span data-lang-key="funzione_saliva_p2">, la saliva favorisce la masticazione, la </span><span class="greentext" data-lang-key="funzione_saliva_enfasi_bolo">formazione del bolo alimentare</span><span data-lang-key="funzione_saliva_p3">, la deglutizione e, per mezzo della mucina, la </span><span class="greentext" data-lang-key="funzione_saliva_enfasi_lubr">lubrificazione dell'esofago</span><span data-lang-key="funzione_saliva_p4">.</span><br><span data-lang-key="azione_protettiva_p1">Sembra anche che favorisca la </span><span class="greentext" data-lang-key="azione_protettiva_enfasi">funzione gustativa</span><span data-lang-key="azione_protettiva_p2">e che svolga un'</span><span class="greentext" data-lang-key="azione_protettiva_enfasi_prot">azione protettiva sui denti</span><span data-lang-key="azione_protettiva_p3">.</span><br><span data-lang-key="regolazione_idrica_p1">Attraverso la </span><span class="orangetext" data-lang-key="regolazione_idrica_enfasi_sete">sensazione di sete</span><span data-lang-key="regolazione_idrica_p2">, la saliva entra anche nel </span><span class="biotechbold" data-lang-key="regolazione_idrica_enfasi_mecc">meccanismo di regolazione del ricambio idrico</span><span data-lang-key="regolazione_idrica_p3">.</span><br><span data-lang-key="produzione_saliva">La saliva viene prodotta in maniera continua, ma la quantità varia sia in rapporto alla presenza del cibo nella bocca sia alla natura stessa del cibo.</span><br><span data-lang-key="masticazione_salivazione">Si è notato che richiedono una più lunga masticazione le sostanze che hanno più scarso contenuto d'acqua, o sapori poco gradevoli, provocando una più abbondante salivazione.</span><br><span data-lang-key="regolazione_nervosa_p1">In condizioni normali la secrezione della saliva è regolata da un </span><span class="biotechbold" data-lang-key="regolazione_nervosa_enfasi">meccanismo nervoso riflesso</span><span data-lang-key="regolazione_nervosa_p2">, che trova la sua origine negli stimoli meccanici della cavità orale e negli stimoli chimici delle papille gustative.</span><br><span data-lang-key="centri_salivazione_p1">Gli impulsi nervosi, che hanno la loro origine nei recettori, arrivano al bulbo, dove si trovano i </span><span class="orangetext" data-lang-key="centri_salivazione_enfasi_centri">centri della salivazione</span><span data-lang-key="centri_salivazione_p2">: questi, se eccitati, inviano a loro volta impulsi alle ghiandole attraverso il </span><span class="biotechbold" data-lang-key="centri_salivazione_enfasi_sist">sistema nervoso parasimpatico</span><span data-lang-key="centri_salivazione_p3">(→ 2).</span><br><span data-lang-key="innervazione_ghiandole_p1">Le ghiandole salivari sono innervate da fibre del </span><span class="orangetext" data-lang-key="innervazione_ghiandole_enfasi">parasimpatico e del simpatico</span><span data-lang-key="innervazione_ghiandole_p2">che stimolano la secrezione (il primo più intensamente).</span><br><span data-lang-key="stimoli_salivazione_p1">Va infine ricordato che lo stimolo alla salivazione, oltre che dalla presenza di alimenti o di sostanze presenti nella bocca, può essere costituito anche da </span><span class="orangetext" data-lang-key="stimoli_salivazione_enfasi_vis">impressioni visive o olfattive</span><span data-lang-key="stimoli_salivazione_p2">, da ricordi mnemonici connessi con l'alimentazione.</span><br><br><span data-lang-key="aspetto_ghiandole">Le ghiandole salivari hanno l'aspetto di acini d'uva.</span><br><span data-lang-key="secreto_parotidi_p1">Il secreto delle </span><span class="yellowtext" data-lang-key="secreto_parotidi_enfasi_par">parotidi</span><span data-lang-key="secreto_parotidi_p2">è costituito da </span><span class="greentext" data-lang-key="secreto_parotidi_enfasi_fluida">saliva molto fluida</span><span data-lang-key="secreto_parotidi_p3">, contenente ptialina;</span><br><span data-lang-key="secreto_sottolinguali_p1">quello delle </span><span class="yellowtext" data-lang-key="secreto_sottolinguali_enfasi_sottol">sottolinguali</span><span data-lang-key="secreto_sottolinguali_p2">da </span><span class="greentext" data-lang-key="secreto_sottolinguali_enfasi_vis">saliva molto vischiosa</span><span data-lang-key="secreto_sottolinguali_p3">, per la presenza di abbondante mucina, mentre manca di ptialina;</span><br><span data-lang-key="secreto_sottomascellari_p1">quello delle </span><span class="yellowtext" data-lang-key="secreto_sottomascellari_enfasi_sottm">sottomascellari</span><span data-lang-key="secreto_sottomascellari_p2">da </span><span class="greentext" data-lang-key="secreto_sottomascellari_enfasi_misto">saliva di tipo misto</span><span data-lang-key="secreto_sottomascellari_p3">, in quanto contiene sia ptialina sia mucina.</span><br><span data-lang-key="dotto_stenone_p1">Le parotidi versano il loro secreto in prossimità del secondo molare superiore, mediante il </span><span class="biotechbold" data-lang-key="dotto_stenone_enfasi">dotto di Stenone</span><span data-lang-key="dotto_stenone_p2">;</span><br><span data-lang-key="dotto_sottolinguali">le sottolinguali non presentano dotto escretore unico, poiché ciascuna ghiandola è formata da un gruppo di 15-30 ghiandolette, ognuna delle quali presenta un suo proprio dotto;</span><br><span data-lang-key="dotto_wharton_p1">le sottomascellari si aprono ai lati del frenulo linguale mediante il </span><span class="biotechbold" data-lang-key="dotto_wharton_enfasi">dotto sottomascellare di Wharton</span><span data-lang-key="dotto_wharton_p2">.</span><br><br><span data-lang-key="formazione_bolo_p1">Gli alimenti masticati e insalivati assumono l'aspetto di un impasto pressoché uniforme che prende il nome di </span><span class="biotechbold" data-lang-key="formazione_bolo_enfasi">bolo alimentare</span><span data-lang-key="formazione_bolo_p2">.</span><br><span data-lang-key="deglutizione_inizio_p1">A questo stadio, mediante l'atto della </span><span class="yellowtext" data-lang-key="deglutizione_inizio_enfasi">deglutizione</span><span data-lang-key="deglutizione_inizio_p2">il bolo alimentare passa nella faringe.</span><br><span data-lang-key="controllo_riflesso_p1">Da questo momento il suo cammino attraverso l'apparato digerente non è più governato dalla volontà ma da una serie di </span><span class="biotechbold" data-lang-key="controllo_riflesso_enfasi">atti riflessi</span> <span data-lang-key="controllo_riflesso_p2">regolati dal </span><span class="orangetext" data-lang-key="controllo_riflesso_enfasi_centro">centro del bulbo</span><span data-lang-key="controllo_riflesso_p3">.</span><br><span data-lang-key="chiusura_faringea_p1">La presenza del bolo alimentare nella faringe determina infatti la contrazione dei muscoli di questa e il </span><span class="greentext" data-lang-key="chiusura_faringea_enfasi_velo">sollevamento del velo palatino</span><span data-lang-key="chiusura_faringea_p2">che impedisce la comunicazione con le coane, mentre l'</span><span class="greentext" data-lang-key="chiusura_faringea_enfasi_epi">abbassamento dell'epiglottide</span><span data-lang-key="chiusura_faringea_p3">, dovuto all'innalzamento nel momento opportuno dell'osso ioide, evita che le particelle solide o liquide possano penetrare nella laringe.</span><br><span data-lang-key="apnea_deglutizione_p1">Nello stesso tempo si interrompe l'atto respiratorio (</span><span class="biotechbold" data-lang-key="apnea_deglutizione_enfasi">apnea da deglutizione</span><span data-lang-key="apnea_deglutizione_p2">) e il bolo penetra nell'esofago.</span><br><span data-lang-key="peristalsi_esofago_p1">Qui viene spinto avanti dalla </span><span class="greentext" data-lang-key="peristalsi_esofago_enfasi_cont">contrazione muscolare dell'esofago</span><span data-lang-key="peristalsi_esofago_p2">stesso. Le contrazioni si manifestano in onde lente: perciò, mentre il tratto anteriore è contratto, il seguente viene rilasciato; successivamente è questo a contrarsi, e così via.</span><br><span data-lang-key="definizione_peristalsi_p1">Al complesso di contrazioni e rilassamenti si dà il nome di </span><span class="biotechbold" data-lang-key="definizione_peristalsi_enfasi">peristalsi</span><span data-lang-key="definizione_peristalsi_p2">. Essa, dopo che è iniziata, continua per tutto il tubo digerente.</span><br><span data-lang-key="passaggio_stomaco_p1">Il bolo, una volta compiuto il tratto esofageo, passa attraverso il </span><span class="yellowtext" data-lang-key="passaggio_stomaco_enfasi_cardias">cardias</span><span data-lang-key="passaggio_stomaco_p2">e giunge allo stomaco. L'onda peristaltica rallenta infatti in basso, fino al rilasciamento dello sfintere del cardias.</span></p>  
 <div class="responsive">
-<div class="gallery">
-<a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.avif"><img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.avif" alt="Masticazione e deglutizione" width="794" height="1123" loading="lazy"></a>
-<div class="desc" data-lang-key="masticazione_deglutizione">Masticazione deglutizione</div>
+  <div class="gallery">
+    <div class="zoom-container" 
+         tabindex="0" 
+         role="region" 
+         aria-label="Masticazione e deglutizione" 
+         data-lang-key="masticazione_deglutizione">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.avif" 
+           alt="Masticazione e deglutizione" 
+           data-lang-key="masticazione_deglutizione" 
+           width="794" height="1123" 
+           loading="lazy" 
+           decoding="async">
+    </div>
+    <div class="desc" data-lang-key="masticazione_deglutizione">Masticazione deglutizione</div>
+    <span class="kbd-instructions" data-lang-key="kbd_esplora">Frecce tastiera per esplorare</span>
+  </div>
 </div>
-</div>
+
 <div class="responsive">
-<div class="gallery">
-<a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.avif"><img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.avif" alt="Digestione gastrica" width="794" height="1123" loading="lazy"></a>
-<div class="desc" data-lang-key="digestione_gastrica">Digestione gastrica</div>
+  <div class="gallery">
+    <div class="zoom-container" 
+         tabindex="0" 
+         role="region" 
+         aria-label="Digestione gastrica" 
+         data-lang-key="digestione_gastrica">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.avif" 
+           alt="Digestione gastrica" 
+           data-lang-key="digestione_gastrica" 
+           width="794" height="1123" 
+           loading="lazy" 
+           decoding="async">
+    </div>
+    <div class="desc" data-lang-key="digestione_gastrica">Digestione gastrica</div>
+    <span class="kbd-instructions" data-lang-key="kbd_esplora">Frecce tastiera per esplorare</span>
+  </div>
 </div>
-</div>
+
 <div class="responsive">
-<div class="gallery">
-<a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.avif"><img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.avif" alt="Digestione intestinale" width="794" height="1123" loading="lazy"></a>
-<div class="desc" data-lang-key="digestione_intestinale">Digestione intestinale</div>
+  <div class="gallery">
+    <div class="zoom-container" 
+         tabindex="0" 
+         role="region" 
+         aria-label="Digestione intestinale" 
+         data-lang-key="digestione_intestinale">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.avif" 
+           alt="Digestione intestinale" 
+           data-lang-key="digestione_intestinale" 
+           width="794" height="1123" 
+           loading="lazy" 
+           decoding="async">
+    </div>
+    <div class="desc" data-lang-key="digestione_intestinale">Digestione intestinale</div>
+    <span class="kbd-instructions" data-lang-key="kbd_esplora">Frecce tastiera per esplorare</span>
+  </div>
 </div>
-</div>
+
 <div class="responsive">
-<div class="gallery">
-<a target="_blank" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.avif"><img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.avif" alt="Assorbimento metabolismo" width="794" height="1123" loading="lazy"></a>
-<div class="desc" data-lang-key="assorbimento_metabolismo">Assorbimento metabolismo</div>
+  <div class="gallery">
+    <div class="zoom-container" 
+         tabindex="0" 
+         role="region" 
+         aria-label="Assorbimento metabolismo" 
+         data-lang-key="assorbimento_metabolismo">
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.avif" 
+           alt="Assorbimento metabolismo" 
+           data-lang-key="assorbimento_metabolismo" 
+           width="794" height="1123" 
+           loading="lazy" 
+           decoding="async">
+    </div>
+    <div class="desc" data-lang-key="assorbimento_metabolismo">Assorbimento metabolismo</div>
+    <span class="kbd-instructions" data-lang-key="kbd_esplora">Frecce tastiera per esplorare</span>
+  </div>
 </div>
-</div>
+
 <div class="clearfix"></div>
 <br>
 <p class="secHeader" data-lang-key="digestione_gastrica_B">DIGESTIONE GASTRICA</p>
@@ -253,5 +357,61 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script>
+/**
+ * GESTIONE ZOOM ACCESSIBILE PER BIOTECH PROJECT
+ * Supporta Mouse (hover) e Tastiera (Tab + Frecce)
+ */
+document.querySelectorAll('.zoom-container').forEach(container => {
+    const img = container.querySelector('img');
+    let x = 50; // Posizione X iniziale (centro %)
+    let y = 50; // Posizione Y iniziale (centro %)
+
+    // --- FUNZIONE DI AGGIORNAMENTO VISIVO ---
+    const updateZoom = () => {
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.classList.add('zoom-active');
+    };
+
+    // --- GESTIONE MOUSE ---
+    container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        // Calcola la percentuale esatta del mouse all'interno del div
+        x = ((e.clientX - rect.left) / rect.width) * 100;
+        y = ((e.clientY - rect.top) / rect.height) * 100;
+        updateZoom();
+    });
+
+    container.addEventListener('mouseleave', () => {
+        img.classList.remove('zoom-active');
+        img.style.transformOrigin = 'center center';
+        x = 50; y = 50; // Reset coordinate
+    });
+
+    // --- GESTIONE TASTIERA (Accessibilità) ---
+    container.addEventListener('keydown', (e) => {
+        const step = 5; // Sensibilità dello spostamento delle frecce
+        
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            // Impedisce lo scroll della pagina mentre si esplora l'immagine
+            e.preventDefault(); 
+            
+            if (e.key === 'ArrowUp')    y = Math.max(0, y - step);
+            if (e.key === 'ArrowDown')  y = Math.min(100, y + step);
+            if (e.key === 'ArrowLeft')  x = Math.max(0, x - step);
+            if (e.key === 'ArrowRight') x = Math.min(100, x + step);
+
+            updateZoom();
+        }
+    });
+
+    // Reset totale quando l'utente passa al prossimo elemento (Tab out)
+    container.addEventListener('blur', () => {
+        img.classList.remove('zoom-active');
+        img.style.transformOrigin = 'center center';
+        x = 50; y = 50;
+    });
+});
+</script>
 </body>
 </html>
