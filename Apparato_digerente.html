@@ -133,11 +133,10 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 
 /* --- AGGIUNTE SPECIFICHE PER ZOOM E ACCESSIBILITÀ --- */
 
-/* Contenitore per lo zoom - integrato nella gallery */
 .zoom-container {
     display: block;
     position: relative;
-    overflow: hidden; /* Fondamentale per non far uscire l'immagine dai bordi */
+    overflow: hidden; 
     cursor: zoom-in;
     outline: none; 
     border-radius: 4px;
@@ -147,14 +146,15 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
     transition: transform 0.2s ease-out;
     transform-origin: center center;
     display: block;
+    /* FORZA VISIBILITÀ: evita che script esterni nascondano l'immagine */
+    opacity: 1 !important; 
+    visibility: visible !important;
 }
 
-/* Classe aggiunta via JS per attivare l'ingrandimento */
 .zoom-active {
     transform: scale(2.2) !important;
 }
 
-/* Focus stile BiotechProject per navigazione tastiera */
 .keyboard-navigation-on .zoom-container:focus {
     outline: 2px solid #00e676;
     outline-offset: 3px;
@@ -163,12 +163,11 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
         0 0 20px rgba(0, 230, 118, 0.25);
 }
 
-/* Messaggio di istruzioni posizionato sotto la descrizione */
 .kbd-instructions {
     text-align: center;
     background: rgba(0, 230, 118, 0.15);
     color: #00e676;
-    padding: 6px;
+    padding: 8px; /* Ridotto da 26px a 8px per equilibrio visivo */
     font-size: 13px;
     font-weight: bold;
     border-radius: 4px;
@@ -179,6 +178,7 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 }
 
 /* Mostra le istruzioni quando il contenitore precedente ha il focus */
+/* Nota: il selettore ~ funziona se .kbd-instructions è dopo .desc nell'HTML */
 .zoom-container:focus ~ .kbd-instructions {
     opacity: 1;
 }
@@ -255,11 +255,12 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
          role="region" 
          aria-label="Masticazione e deglutizione" 
          data-lang-key="masticazione_deglutizione">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.avif" 
+      <img class="transparent" 
+           style="opacity: 1 !important; visibility: visible !important;"
+           src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_masticazionedeglutizione1.avif" 
            alt="Masticazione e deglutizione" 
            data-lang-key="masticazione_deglutizione" 
            width="794" height="1123" 
-           loading="lazy" 
            decoding="async">
     </div>
     <div class="desc" data-lang-key="masticazione_deglutizione">Masticazione deglutizione</div>
@@ -274,7 +275,9 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
          role="region" 
          aria-label="Digestione gastrica" 
          data-lang-key="digestione_gastrica">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.avif" 
+      <img class="transparent" 
+           style="opacity: 1 !important; visibility: visible !important;"
+           src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestionegastrica2.avif" 
            alt="Digestione gastrica" 
            data-lang-key="digestione_gastrica" 
            width="794" height="1123" 
@@ -293,7 +296,9 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
          role="region" 
          aria-label="Digestione intestinale" 
          data-lang-key="digestione_intestinale">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.avif" 
+      <img class="transparent" 
+           style="opacity: 1 !important; visibility: visible !important;"
+           src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_digestioneintestinale3.avif" 
            alt="Digestione intestinale" 
            data-lang-key="digestione_intestinale" 
            width="794" height="1123" 
@@ -312,7 +317,9 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
          role="region" 
          aria-label="Assorbimento metabolismo" 
          data-lang-key="assorbimento_metabolismo">
-      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.avif" 
+      <img class="transparent" 
+           style="opacity: 1 !important; visibility: visible !important;"
+           src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatodigerente_assorbimentometabolismo4.avif" 
            alt="Assorbimento metabolismo" 
            data-lang-key="assorbimento_metabolismo" 
            width="794" height="1123" 
@@ -360,23 +367,23 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 <script>
 /**
  * GESTIONE ZOOM ACCESSIBILE PER BIOTECH PROJECT
- * Supporta Mouse (hover) e Tastiera (Tab + Frecce)
  */
 document.querySelectorAll('.zoom-container').forEach(container => {
     const img = container.querySelector('img');
-    let x = 50; // Posizione X iniziale (centro %)
-    let y = 50; // Posizione Y iniziale (centro %)
+    let x = 50; 
+    let y = 50; 
 
-    // --- FUNZIONE DI AGGIORNAMENTO VISIVO ---
+    // Forza la visibilità immediata in caso di conflitti con altri script
+    img.style.opacity = '1'; 
+    img.style.visibility = 'visible';
+
     const updateZoom = () => {
         img.style.transformOrigin = `${x}% ${y}%`;
         img.classList.add('zoom-active');
     };
 
-    // --- GESTIONE MOUSE ---
     container.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
-        // Calcola la percentuale esatta del mouse all'interno del div
         x = ((e.clientX - rect.left) / rect.width) * 100;
         y = ((e.clientY - rect.top) / rect.height) * 100;
         updateZoom();
@@ -385,33 +392,34 @@ document.querySelectorAll('.zoom-container').forEach(container => {
     container.addEventListener('mouseleave', () => {
         img.classList.remove('zoom-active');
         img.style.transformOrigin = 'center center';
-        x = 50; y = 50; // Reset coordinate
+        x = 50; y = 50; 
     });
 
-    // --- GESTIONE TASTIERA (Accessibilità) ---
     container.addEventListener('keydown', (e) => {
-        const step = 5; // Sensibilità dello spostamento delle frecce
-        
+        const step = 5; 
         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-            // Impedisce lo scroll della pagina mentre si esplora l'immagine
             e.preventDefault(); 
-            
             if (e.key === 'ArrowUp')    y = Math.max(0, y - step);
             if (e.key === 'ArrowDown')  y = Math.min(100, y + step);
             if (e.key === 'ArrowLeft')  x = Math.max(0, x - step);
             if (e.key === 'ArrowRight') x = Math.min(100, x + step);
-
             updateZoom();
         }
     });
 
-    // Reset totale quando l'utente passa al prossimo elemento (Tab out)
     container.addEventListener('blur', () => {
         img.classList.remove('zoom-active');
         img.style.transformOrigin = 'center center';
         x = 50; y = 50;
     });
 });
+
+// AGGIUNTA FONDAMENTALE: 
+// Forza la visibilità del contenuto principale se lo script nel HEAD fallisse
+setTimeout(() => {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) mainContent.style.opacity = '1';
+}, 500);
 </script>
 </body>
 </html>
