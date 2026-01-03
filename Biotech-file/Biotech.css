@@ -135,12 +135,70 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Assicura che i figli occupino tutta la larghezza disponibile */
 .container_welcome>div{flex:0 0 auto;width:100%;}
 /* Orologio moderno - centrato */
-.modern-clock {color: #a7ffeb; font-family: 'Sansation', sans-serif; font-size: 14pt; font-weight: bold; text-align: center; margin: 10px auto; max-width: 300px; padding: 8px 12px; background: rgba(0, 230, 118, 0.1); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; box-shadow: 0 0 10px rgba(0, 230, 118, 0.2); backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.modern-clock {
+    color: #a7ffeb;
+    font-family: 'Sansation', sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px auto;
+    max-width: 300px;
+    padding: 8px 12px;
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+    backdrop-filter: blur(5px);
+    
+    /* Applicazione sfumatura identica al countdown */
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+}
 /* === Conto alla rovescia moderno === */
-.modern-countdown {position: relative; top: -20px; color: #a7ffeb; font-family: 'Sansation', sans-serif; font-size: 1.2em; font-weight: bold; text-align: center; margin: 8px auto; max-width: 380px; padding: 10px 16px; background: rgba(255, 215, 0, 0.1);/* Oro tenue */ border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 6px; box-shadow: 0 0 12px rgba(255, 215, 0, 0.2); backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); opacity: 0.95; letter-spacing: 0.5px; line-height: 1.4;}
+.modern-countdown {
+    position: relative;
+    top: -30px;
+    color: #a7ffeb;
+    font-family: 'Sansation', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    margin: 8px auto;
+    max-width: 380px; /* Tornato a 380px per compattezza */
+    padding: 8px 16px;
+    /* Ritorno all'Oro Tenue originale */
+    background: rgba(255, 215, 0, 0.1); 
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(5px);
+    /* La tua maschera per sfumare il bordo inferiore */
+    -webkit-mask-image: linear-gradient(black 25%, transparent 100%);
+    mask-image: linear-gradient(black 25%, transparent 100%);
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    overflow: hidden;
+}
+
+/* Scanline molto più sottile e discreto */
+.modern-countdown::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 1px;
+    background: rgba(255, 215, 0, 0.3);
+    animation: scanVertical 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanVertical {
+    0% { top: 0%; opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+}
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}
-.modern-greeting { position: relative; top: -50px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
+.modern-greeting { position: relative; top: -60px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
 /* Contenitore per orologio, conto alla rovescia e augurio - Per smartphone */
 @media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
 /* Contenitore per orologio, conto alla rovescia e augurio - Per tablet */

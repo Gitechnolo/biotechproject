@@ -1455,28 +1455,60 @@ document.addEventListener('DOMContentLoaded', () => {
 // FINE SALUTO SETTIMANALE
 // =======================================
 
-// ===========================
-//  COUNTDOWN AL NUOVO ANNO - OTTIMIZZATO
-// ===========================
-const element = document.getElementById('countdown-days');
-if (element) {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    
-    // Calcola l'inizio del prossimo anno (Gennaio 1, 00:00:00)
-    let nextYearStart = new Date(currentYear + 1, 0, 1); 
-    
-    // Se siamo già a Gennaio, calcola l'anno ancora successivo
-    if (now.getMonth() === 0 && now.getDate() !== 1) { // Mese 0 = Gennaio
-        nextYearStart = new Date(currentYear + 2, 0, 1);
+// ==========================================
+//  ANNUAL CYCLE & SEASON MONITOR - BIOTECH (MULTILANGUAGE)
+// ==========================================
+(function() {
+    const countdownEl = document.getElementById('modern-countdown');
+    if (countdownEl) {
+        let dataDisplay = document.getElementById('bio-data-display');
+        if (!dataDisplay) {
+            dataDisplay = document.createElement('div');
+            dataDisplay.id = 'bio-data-display';
+            countdownEl.innerHTML = '';
+            countdownEl.appendChild(dataDisplay);
+        }
+
+        // Rilevamento lingua del browser (it-IT, en-US, ecc.)
+        const userLang = navigator.language || navigator.userLanguage;
+        const isIt = userLang.startsWith('it');
+
+        // Mappa delle traduzioni
+        const lang = {
+            seasons: isIt 
+                ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" }
+                : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
+            phase: isIt ? "FASE CICLO" : "CYCLE PHASE",
+            days: isIt ? "GIORNI" : "DAYS"
+        };
+
+        function updateBioCycle() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const dateVal = (now.getMonth() + 1) * 100 + now.getDate();
+
+            let seasonKey = "";
+            if (dateVal >= 321 && dateVal < 621) seasonKey = "spring";
+            else if (dateVal >= 621 && dateVal < 923) seasonKey = "summer";
+            else if (dateVal >= 923 && dateVal < 1221) seasonKey = "autumn";
+            else seasonKey = "winter";
+
+            const start = new Date(year, 0, 1);
+            const end = new Date(year + 1, 0, 1);
+            const progress = ((now - start) / (end - start)) * 100;
+            const daysLeft = Math.floor((end - now) / 86400000);
+
+            // Formattazione con testi dinamici in base alla lingua
+            dataDisplay.innerHTML = `
+                <div style="font-size: 0.75em; color: #b8990098;">
+                    ${lang.seasons[seasonKey]} ${lang.phase}
+                </div>
+                <div style="font-size: 1.05em;">
+                    ${progress.toFixed(2)}% <span style="font-size: 0.8em; opacity: 0.6; font-weight: normal;">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
+                </div>
+            `;
+        }
+        updateBioCycle();
+        setInterval(updateBioCycle, 3600000);
     }
-    
-    const diff = nextYearStart - now;
-    const MS_PER_DAY = 86400000;
-    
-    // Usiamo Math.floor per non contare il giorno corrente come intero
-    const remainingDays = Math.floor(diff / MS_PER_DAY);
-    
-    // Aggiorna l'elemento in un'unica scrittura
-    element.textContent = remainingDays > 0 ? remainingDays : 0; 
-} 
+})();
