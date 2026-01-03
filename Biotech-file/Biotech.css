@@ -196,6 +196,28 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     50% { opacity: 0.5; }
     100% { top: 100%; opacity: 0; }
 }
+
+/* Sottotitolo: Stagione e Fase Ciclo */
+.bio-season-label {
+    font-size: 0.75em;
+    color: #b8990098;
+    opacity: 0.8;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+/* Riga principale: Percentuale e T-Minus */
+.bio-progress-data {
+    font-size: 1.05em;
+    color: #a7ffeb;
+}
+
+/* Dettaglio T-Minus (il testo piccolo dopo la barra |) */
+.bio-t-minus {
+    font-size: 0.8em;
+    opacity: 0.6;
+    font-weight: normal;
+}
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}
 .modern-greeting { position: relative; top: -60px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   

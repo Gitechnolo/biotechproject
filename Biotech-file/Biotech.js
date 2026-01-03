@@ -1498,13 +1498,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const progress = ((now - start) / (end - start)) * 100;
             const daysLeft = Math.floor((end - now) / 86400000);
 
-            // Formattazione con testi dinamici in base alla lingua
+            // Costruiamo l'HTML usando le classi CSS invece degli stili inline
             dataDisplay.innerHTML = `
-                <div style="font-size: 0.75em; color: #b8990098;">
+                <div class="bio-season-label">
                     ${lang.seasons[seasonKey]} ${lang.phase}
                 </div>
-                <div style="font-size: 1.05em;">
-                    ${progress.toFixed(2)}% <span style="font-size: 0.8em; opacity: 0.6; font-weight: normal;">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
+                <div class="bio-progress-data">
+                    ${progress.toFixed(2)}% 
+                    <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
                 </div>
             `;
         }
