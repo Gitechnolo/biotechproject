@@ -210,14 +210,17 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .bio-progress-data {
     font-size: 1.05em;
     color: #a7ffeb;
+    transition: all 0.5s ease-in-out; /* Rende i cambiamenti di testo meno bruschi */
 }
 
 /* Dettaglio T-Minus (il testo piccolo dopo la barra |) */
 .bio-t-minus {
-    font-size: 0.8em;
-    opacity: 0.6;
-    font-weight: normal;
+    font-size: 0.8em;        /* Dimensione leggermente più piccola per gerarchia */
+    opacity: 0.6;            /* Effetto trasparenza (rende il colore più discreto) */
+    font-weight: normal;     /* Rimuove il grassetto per contrasto con la percentuale */
+    color: #a7ffeb;        /* Attualmente eredita questo colore, ma è possibile cambiarlo */
 }
+
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}
 .modern-greeting { position: relative; top: -60px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
