@@ -302,16 +302,48 @@ window.addEventListener("load", fadeEffect);
 
 // === OROLOGIO MODERNO ===
 // ———————————————————————
-const clockEl = document.getElementById('clock2');
-    if (clockEl) {
-        const pad = n => n < 10 ? '0' + n : n;
-        const updateClock = () => {
-            const d = new Date();
-            clockEl.textContent = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} - ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-        };
-        updateClock();
-        setInterval(updateClock, 1000);
-    }   
+(function() {
+    const clockEl = document.getElementById('clock2');
+    if (!clockEl) return;
+
+    const pad = n => n < 10 ? '0' + n : n;
+    const isIt = (navigator.language || navigator.userLanguage).startsWith('it');
+
+    const circadianMap = {
+        6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO"], en: ["CORTISOL SPIKE", "AWAKENING PHASE"] },
+        9:  { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK"] },
+        12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS"] },
+        15: { it: ["PICCO FISICO", "EFFICIENZA MAX"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX"] },
+        18: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE"], en: ["RECOVERY MODE", "DOWNTIME INITIALIZED"] },
+        21: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE"], en: ["MELATONIN ONSET", "REGEN START"] },
+        0:  { it: ["RIGENERAZIONE PROFONDA", "RIPARAZIONE CELLULARE"], en: ["DEEP REGEN", "CELLULAR REPAIR"] }
+    };
+
+    const getPhase = (hour) => {
+        const keys = [0, 6, 9, 12, 15, 18, 21].reverse();
+        const currentKey = keys.find(k => hour >= k) || 0;
+        const data = circadianMap[currentKey];
+        return isIt ? { status: data.it[0], bio: data.it[1] } : { status: data.en[0], bio: data.en[1] };
+    };
+
+    const updateClock = () => {
+        const d = new Date();
+        const hour = d.getHours();
+        const phase = getPhase(hour);
+
+        const timeStr = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} | ${pad(hour)}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+
+        // Generiamo solo tag con classi, niente stili inline
+        clockEl.innerHTML = `
+            <span class="bio-status-label">${phase.status}</span>
+            <span class="bio-clock-time">${timeStr}</span>
+            <span class="bio-system-state">SYS STATE: ${phase.bio}</span>
+        `;
+    };
+
+    updateClock();
+    setInterval(updateClock, 1000);
+})();   
 //End  Clock
 
 // ===== LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO =====

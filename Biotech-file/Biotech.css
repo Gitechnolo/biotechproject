@@ -135,25 +135,52 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Assicura che i figli occupino tutta la larghezza disponibile */
 .container_welcome>div{flex:0 0 auto;width:100%;}
 /* Orologio moderno - centrato */
+/* === OROLOGIO BIO-CIRCADIANO AGGIORNATO === */
 .modern-clock {
     color: #a7ffeb;
     font-family: 'Sansation', sans-serif;
-    font-size: 14pt;
+    /* font-size rimosso qui per lasciarlo gestire alle classi interne */
     font-weight: bold;
     text-align: center;
     margin: 10px auto;
-    max-width: 300px;
-    padding: 8px 12px;
-    background: rgba(0, 230, 118, 0.1);
+    max-width: 350px;
+    padding: 12px;
+    background: rgba(0, 230, 118, 0.05);
     border: 1px solid rgba(0, 230, 118, 0.3);
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
-    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px; /* Leggermente ridotto per compattezza */
     
-    /* Applicazione sfumatura identica al countdown */
+    /* Manteniamo le tue maschere di sfumatura originali */
     -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
     mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
 }
+
+/* --- Nuove classi per il contenuto iniettato da JS --- */
+.bio-status-label {
+    font-size: 0.7em; /* Circa 9-10pt */
+    opacity: 0.6;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.bio-clock-time {
+    font-size: 1.2em; /* L'orario resta prominente */
+    display: block;
+}
+
+.bio-system-state {
+    font-size: 0.65em;
+    color: #00e676;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
 /* === Conto alla rovescia moderno === */
 .modern-countdown {
     position: relative;
