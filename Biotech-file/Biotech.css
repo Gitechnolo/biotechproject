@@ -131,60 +131,70 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .pulse-logo:hover {opacity: 1; filter: brightness(1.0) contrast(1.0); animation-play-state: paused; box-shadow: 0 0 16px rgba(0, 230, 118, 0.6), 0 0 32px rgba(0, 230, 118, 0.4), inset 0 0 10px rgba(0, 255, 180, 0.7); transform: translateY(-1px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);}
 @media (prefers-reduced-motion: reduce) {.pulse-logo {animation: none; opacity: 0.9; /* Mantiene coerenza con .modern-logo */}}   
 /* Contenitore per orologio, conto alla rovescia e augurio */
-.container_welcome{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-45px;}
+.container_welcome{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-39px;}
 /* Assicura che i figli occupino tutta la larghezza disponibile */
 .container_welcome>div{flex:0 0 auto;width:100%;}
 /* Orologio moderno - centrato */
-/* === OROLOGIO BIO-CIRCADIANO AGGIORNATO === */
+/* === OROLOGIO BIO-CIRCADIANO (VERSIONE COMPATTA & ALLINEATA) === */
 .modern-clock {
     color: #a7ffeb;
     font-family: 'Sansation', sans-serif;
-    /* font-size rimosso qui per lasciarlo gestire alle classi interne */
     font-weight: bold;
     text-align: center;
-    margin: 10px auto;
-    max-width: 350px;
-    padding: 12px;
+    
+    /* Allineamento dimensionale col Logo Biotech (553px) */
+    width: 90vw;
+    max-width: 553px;
+    margin: 5px auto;
+    
+    /* Altezza compressa al massimo */
+    padding: 4px 12px;      /* Ridotto per minimizzare l'ingombro verticale */
+    line-height: 1;         /* Forza le righe a stare vicine */
+    
     background: rgba(0, 230, 118, 0.05);
     border: 1px solid rgba(0, 230, 118, 0.3);
-    border-radius: 8px;
+    border-radius: 6px;
     backdrop-filter: blur(10px);
-    line-height: 1.2;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px; /* Leggermente ridotto per compattezza */
-    
-    /* Manteniamo le tue maschere di sfumatura originali */
-    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
-    mask-image: linear-gradient(to bottom, black 40%, transparent 95%);
+    gap: 0px;               /* Eliminato lo spazio automatico tra le righe */
+
+    /* Maschera di sfumatura aggiornata per non tagliare il testo compresso */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
-/* --- Nuove classi per il contenuto iniettato da JS --- */
+/* Classi interne con margini negativi per avvicinare i testi */
 .bio-status-label {
-    font-size: 0.7em; /* Circa 9-10pt */
-    opacity: 0.6;
-    letter-spacing: 1.5px;
+    font-size: 0.65em;
+    opacity: 0.5;
+    letter-spacing: 2px;
+    margin-bottom: -1px;    /* Avvicina l'etichetta superiore all'orologio */
     text-transform: uppercase;
 }
 
 .bio-clock-time {
-    font-size: 1.2em; /* L'orario resta prominente */
+    font-size: 1em;      /* Leggermente aumentato per bilanciare la compattezza */
+    letter-spacing: 1px;
     display: block;
+    margin: 0;              /* Reset totale dei margini */
 }
 
 .bio-system-state {
-    font-size: 0.65em;
+    font-size: 0.6em;
     color: #00e676;
-    opacity: 0.8;
+    opacity: 0.7;
+    margin-top: -1px;       /* Avvicina lo stato inferiore all'orologio */
     text-transform: uppercase;
 }
 
 /* === Conto alla rovescia moderno === */
 .modern-countdown {
     position: relative;
-    top: -30px;
+    top: -29px;
     color: #a7ffeb;
     font-family: 'Sansation', sans-serif;
     font-size: 1.1em;
