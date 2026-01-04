@@ -238,8 +238,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Sottotitolo: Stagione e Fase Ciclo */
 .bio-season-label {
     font-size: 0.75em;
-    color: #b8990098;
-    opacity: 0.8;
+    color: #b89900; /* Oro Tenue */
+    opacity: 0.4;
     margin-bottom: 0px;
     text-transform: uppercase;
 }
