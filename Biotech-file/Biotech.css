@@ -108,7 +108,29 @@ h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
 /* End element natural */
 /* Elements with class */
-.biotechbody {background-color: rgb(0, 15, 22); background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif"); background-position: 50% 50%;}
+.biotechbody {
+    /* Colore di fallback identico al bordo dell'immagine */
+    background-color: #000a0f; 
+    
+    /* Caricamento immagine */
+    background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif");
+    
+    /* Posizionamento e comportamento */
+    background-position: center center;
+    background-repeat: repeat; /* Ottimizzato i bordi per il tiling */
+    background-size: auto;     /* 'auto' mantiene la qualità originale 1:1 dei pixel */
+    background-attachment: fixed;
+
+    /* Ottimizzazione nitidezza per display Retina/HiDPI */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+@media (max-width: 768px) {
+    .biotechbody {
+        background-position: 80% center; /* Sposta l'inquadratura più a destra sull'elica */
+    }
+}
+
 /* === STILE MODERNO PER PAGINE AGGIORNATE === */
 /* Logo centrato sotto il menu */
 .modern-logo {
