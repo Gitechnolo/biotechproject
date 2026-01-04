@@ -225,18 +225,24 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     color: rgba(0, 230, 118, 0.7); 
     text-transform: uppercase;
     text-shadow: 0 0 5px rgba(0, 230, 118, 0.3);
-    animation: pulse 1.5s infinite ease-in-out;
+    will-change: opacity, transform;    
 }
 
 /* Leggero effetto pulsante per l'attesa */
 #bio-data-display:empty::before {
     content: "INITIALIZING BIO-SYSTEM...";
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
 @keyframes pulse {
     0%, 100% { opacity: 0.9; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.98); }
+}
+
+#bio-data-display:hover {
+    color: rgba(0, 230, 118, 1); /* Diventa più vivido quando ci passi sopra */
+    text-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
+    transition: all 0.3s ease;
 }
 
 /* Augurio moderno */
