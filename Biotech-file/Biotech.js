@@ -300,7 +300,7 @@ function fadeEffect() {
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)  
 
-// === OROLOGIO MODERNO ===
+// === OROLOGIO BIO-CIRCADIANO (VERSIONE COMPATTA & ALLINEATA) ===
 // ———————————————————————
 (function() {
     const clockEl = document.getElementById('clock2');
@@ -344,7 +344,7 @@ window.addEventListener("load", fadeEffect);
     updateClock();
     setInterval(updateClock, 1000);
 })();   
-//End  Clock
+// End OROLOGIO BIO-CIRCADIANO (VERSIONE COMPATTA & ALLINEATA)
 
 // ===== LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO =====
 let lastFocusedElement; // Variabile globale per ricordare dove eravamo
