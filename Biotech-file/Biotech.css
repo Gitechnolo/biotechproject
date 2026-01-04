@@ -222,9 +222,10 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 #bio-data-display {
-    font-family: 'Courier New', Courier, monospace; /* Tipico stile terminale */
-    color: #00ff00; /* Tema verde biotech */
+    color: rgba(0, 230, 118, 0.7); 
     text-transform: uppercase;
+    text-shadow: 0 0 5px rgba(0, 230, 118, 0.3);
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
 /* Leggero effetto pulsante per l'attesa */
@@ -234,9 +235,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.98); }
 }
 
 /* Augurio moderno */
