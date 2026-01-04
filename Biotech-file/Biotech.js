@@ -313,49 +313,6 @@ const clockEl = document.getElementById('clock2');
         setInterval(updateClock, 1000);
     }   
 //End  Clock
-// === Conto alla rovescia al nuovo anno ===
-const countdownEl = document.getElementById('modern-countdown');
-
-// Verifica se l'elemento contenitore principale esiste
-if (countdownEl) {
-    // 1. Ottimizzazione: Cattura il riferimento a daysSpan solo una volta
-    const daysSpan = countdownEl.querySelector('#countdown-days'); 
-
-    // Verifica se lo span specifico esiste prima di procedere
-    if (daysSpan) {
-        
-        // Funzione di aggiornamento pura e snella
-        function updateCountdown() {
-            // Usa 'const' per i valori che non cambiano
-            const now = new Date();
-            const currentYear = now.getFullYear();
-            const nextYear = currentYear + 1;
-            
-            // Si può fare la new Date direttamente con il valore calcolato
-            const newYear = new Date(nextYear, 0, 1); // 0 = Gennaio
-            
-            // Differenza in millisecondi
-            const diff = newYear - now;
-            
-            // Calcolo giorni (mantenuto, è perfetto)
-            const MS_PER_DAY = 1000 * 60 * 60 * 24;
-            const days = Math.floor(diff / MS_PER_DAY);
-            
-            // Aggiorna il DOM
-            // L'aggiornamento del textContent è un'operazione leggera,
-            // specialmente su un singolo span.
-            daysSpan.textContent = days;
-        }
-
-        // Aggiorna subito
-        updateCountdown();
-
-        // Avvia l'aggiornamento a intervalli
-        // L'intervallo di 1 ora è l'ottimizzazione principale per il rendering
-        setInterval(updateCountdown, 3600000); // 1 ora (60 * 60 * 1000)
-    }
-}   
-// End Conto alla rovescia al nuovo anno
 
 // ===== LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO =====
 let lastFocusedElement; // Variabile globale per ricordare dove eravamo
