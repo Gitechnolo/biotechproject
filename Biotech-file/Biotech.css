@@ -240,7 +240,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     font-size: 0.75em;
     color: #b8990098;
     opacity: 0.8;
-    margin-bottom: 2px;
+    margin-bottom: 0px;
     text-transform: uppercase;
 }
 
@@ -260,9 +260,9 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 #bio-data-display {
-    color: rgba(0, 230, 118, 0.7); 
+    color: rgba(3, 168, 88, 0.3); 
     text-transform: uppercase;
-    text-shadow: 0 0 5px rgba(0, 230, 118, 0.3);
+    text-shadow: 0 0 1px rgba(0, 230, 118, 0.7);
     will-change: opacity, transform;    
 }
 
@@ -279,7 +279,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 
 #bio-data-display:hover {
     color: rgba(0, 230, 118, 1); /* Diventa più vivido quando ci passi sopra */
-    text-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
+    text-shadow: 0 0 4px rgba(0, 230, 118, 0.6);
     transition: all 0.3s ease;
 }
 
