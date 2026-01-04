@@ -221,6 +221,24 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     color: #a7ffeb;        /* Attualmente eredita questo colore, ma è possibile cambiarlo */
 }
 
+#bio-data-display {
+    font-family: 'Courier New', Courier, monospace; /* Tipico stile terminale */
+    color: #00ff00; /* Tema verde biotech */
+    text-transform: uppercase;
+}
+
+/* Leggero effetto pulsante per l'attesa */
+#bio-data-display:empty::before {
+    content: "INITIALIZING BIO-SYSTEM...";
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}
 .modern-greeting { position: relative; top: -60px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
