@@ -1,5 +1,4 @@
-// Biotech modal popup script for Progetti.html/Dermatologia.html/Apparato_tegumentario.html...
-// Biotech modal popup script - Versione FIX 2024
+// Biotech modal popup script - Versione FIX 2026 - Progetti.html/Dermatologia.html/Apparato_tegumentario.html...
 document.addEventListener("DOMContentLoaded", function () {
   
   const modal = document.getElementById("myModal");
