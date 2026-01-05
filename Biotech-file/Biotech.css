@@ -526,8 +526,31 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 }
 @keyframes zoom { from {transform: scale(0.1)} to {transform: scale(1)} }
 /* --- BOTTONE CHIUSURA (Versione Elegante verde trasparente) --- */
-.close{position:fixed;top:15px;right:20px;color:white;font-size:45px;font-weight:bold;z-index:10020;cursor:pointer;background-color:rgba(0,0,0,.6);width:60px;height:60px;line-height:55px;text-align:center;border-radius:50%;transition:.3s;}
-.close:hover{background-color:rgba(0,230,118,.5);color:white;}
+.close {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+  z-index: 20001; /* <--- Alzato per sicurezza sopra ogni tabella */
+  cursor: pointer;
+  background-color: rgba(0,0,0,.6);
+  width: 60px;
+  height: 60px;
+  line-height: 55px;
+  text-align: center;
+  border-radius: 50%;
+  transition: .3s;
+  /* Nuove regole di sicurezza */
+  pointer-events: auto;
+  user-select: none;
+}
+
+.close:hover {
+  background-color: rgba(0,230,118,.5);
+  color: white;
+}
 /* --- NAVIGAZIONE (Frecce) --- */
 .prev,.next{cursor:pointer;position:absolute;top:50%;width:auto;padding:16px;margin-top:-50px;color:white;font-weight:bold;font-size:30px;transition:.6s ease;border-radius:0 3px 3px 0;user-select:none;text-decoration:none;background-color:rgba(0,0,0,.3);}
 .next { right: 0; border-radius: 3px 0 0 3px; }
