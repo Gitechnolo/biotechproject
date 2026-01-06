@@ -309,32 +309,39 @@ window.addEventListener("load", fadeEffect);
     const pad = n => n < 10 ? '0' + n : n;
     const isIt = (navigator.language || navigator.userLanguage).startsWith('it');
 
+    // Mappa aggiornata con Molecola e Consiglio
     const circadianMap = {
-        6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO"], en: ["CORTISOL SPIKE", "AWAKENING PHASE"] },
-        9:  { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK"] },
-        12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS"] },
-        15: { it: ["PICCO FISICO", "EFFICIENZA MAX"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX"] },
-        18: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE"], en: ["RECOVERY MODE", "DOWNTIME INITIALIZED"] },
-        21: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE"], en: ["MELATONIN ONSET", "REGEN START"] },
-        0:  { it: ["RIGENERAZIONE PROFONDA", "RIPARAZIONE CELLULARE"], en: ["DEEP REGEN", "CELLULAR REPAIR"] }
+        6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
+        9:  { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
+        12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO", "INSULINA", "PAUSA NUTRIZIONE"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS", "INSULIN", "NUTRITION BREAK"] },
+        15: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
+        18: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE", "ADENOSINA", "RELAX ATTIVO"], en: ["RECOVERY MODE", "DOWNTIME", "ADENOSINE", "ACTIVE RELAX"] },
+        21: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "REGEN START", "MELATONIN", "NO BLUE LIGHT"] },
+        0:  { it: ["RIGENERAZIONE PROFONDA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "RIGENERAZIONE"], en: ["DEEP REGEN", "CELLULAR REPAIR", "GH HORMONE", "REGENERATION"] }
     };
 
     const getPhase = (hour) => {
         const keys = [0, 6, 9, 12, 15, 18, 21].reverse();
         const currentKey = keys.find(k => hour >= k) || 0;
         const data = circadianMap[currentKey];
-        return isIt ? { status: data.it[0], bio: data.it[1] } : { status: data.en[0], bio: data.en[1] };
+        return isIt ? 
+            { status: data.it[0], bio: data.it[1], mol: data.it[2], advice: data.it[3] } : 
+            { status: data.en[0], bio: data.en[1], mol: data.en[2], advice: data.en[3] };
     };
 
     const updateClock = () => {
         const d = new Date();
         const hour = d.getHours();
         const phase = getPhase(hour);
-
         const timeStr = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} | ${pad(hour)}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
 
-        // Generiamo solo tag con classi, niente stili inline
+        // Formattazione: MOLECOLA e CONSIGLIO appaiono in alto come un mini HUD interno
         clockEl.innerHTML = `
+            <div class="hud-inline-row">
+                <span>MOLECOLA: <b class="bio-data-value">${phase.mol}</b></span>
+                <span class="separator">|</span>
+                <span>CONSIGLIO: <b class="bio-data-value">${phase.advice}</b></span>
+            </div>
             <span class="bio-status-label">${phase.status}</span>
             <span class="bio-clock-time">${timeStr}</span>
             <span class="bio-system-state">SYS STATE: ${phase.bio}</span>

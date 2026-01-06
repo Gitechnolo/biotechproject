@@ -156,7 +156,34 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .container_welcome{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-39px;}
 /* Assicura che i figli occupino tutta la larghezza disponibile */
 .container_welcome>div{flex:0 0 auto;width:100%;}
-/* === OROLOGIO BIO-CIRCADIANO (VERSIONE COMPATTA & ALLINEATA) === */
+/* === OROLOGIO BIO-CIRCADIANO === */
+.hud-inline-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 0.65em;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 230, 118, 0.15);
+    width: 100%;
+    color: rgba(167, 255, 235, 0.8); /* Colore tenue per le etichette 'MOLECOLA:' */
+    text-transform: uppercase;
+}
+.hud-inline-row .separator {
+    opacity: 0.3;
+}
+.bio-data-value {
+    color: #00e676; /* Verde neon acceso solo per il dato */
+    font-family: 'Sansation', sans-serif;
+    font-size: 1.1em; 
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(0, 230, 118, 0.4);
+    transition: color 0.3s ease;
+    font-weight: bold; /* Per farlo risaltare ancora di più */
+}
+/* End .hud-inline-row */
+
 .modern-clock {
     color: #a7ffeb;
     opacity: 0.7;
@@ -306,8 +333,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 /* Augurio moderno */
-.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}
-.modern-greeting { position: relative; top: -60px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
+.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;margin-bottom: -13px; /* Riduce lo spazio sotto 'Buongiorno' */ line-height: 1.9; /* Comprime l'altezza della riga */}
+.modern-greeting { position: relative; top: -65px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
 /* Contenitore per orologio, conto alla rovescia e augurio - Per smartphone */
 @media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
 /* Contenitore per orologio, conto alla rovescia e augurio - Per tablet */
@@ -414,7 +441,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 0.3s;
 }
-.logomenu{image-rendering: optimizeSpeed; align-items: center; width: 553px; height: 180px; border: 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: #e6e6e6; text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s;}
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
