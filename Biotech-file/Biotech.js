@@ -300,59 +300,6 @@ function fadeEffect() {
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)  
 
-// === OROLOGIO BIO-CIRCADIANO (VERSIONE COMPATTA & ALLINEATA) ===
-// ———————————————————————
-(function() {
-    const clockEl = document.getElementById('clock2');
-    if (!clockEl) return;
-
-    const pad = n => n < 10 ? '0' + n : n;
-    const isIt = (navigator.language || navigator.userLanguage).startsWith('it');
-
-    // Mappa aggiornata con Molecola e Consiglio
-    const circadianMap = {
-        6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
-        9:  { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
-        12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO", "INSULINA", "PAUSA NUTRIZIONE"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS", "INSULIN", "NUTRITION BREAK"] },
-        15: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
-        18: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE", "ADENOSINA", "RELAX ATTIVO"], en: ["RECOVERY MODE", "DOWNTIME", "ADENOSINE", "ACTIVE RELAX"] },
-        21: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "REGEN START", "MELATONIN", "NO BLUE LIGHT"] },
-        0:  { it: ["RIGENERAZIONE PROFONDA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "RIGENERAZIONE"], en: ["DEEP REGEN", "CELLULAR REPAIR", "GH HORMONE", "REGENERATION"] }
-    };
-
-    const getPhase = (hour) => {
-        const keys = [0, 6, 9, 12, 15, 18, 21].reverse();
-        const currentKey = keys.find(k => hour >= k) || 0;
-        const data = circadianMap[currentKey];
-        return isIt ? 
-            { status: data.it[0], bio: data.it[1], mol: data.it[2], advice: data.it[3] } : 
-            { status: data.en[0], bio: data.en[1], mol: data.en[2], advice: data.en[3] };
-    };
-
-    const updateClock = () => {
-        const d = new Date();
-        const hour = d.getHours();
-        const phase = getPhase(hour);
-        const timeStr = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} | ${pad(hour)}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-
-        // Formattazione: MOLECOLA e CONSIGLIO appaiono in alto come un mini HUD interno
-        clockEl.innerHTML = `
-            <div class="hud-inline-row">
-                <span>MOLECOLA: <b class="bio-data-value">${phase.mol}</b></span>
-                <span class="separator">|</span>
-                <span>CONSIGLIO: <b class="bio-data-value">${phase.advice}</b></span>
-            </div>
-            <span class="bio-status-label">${phase.status}</span>
-            <span class="bio-clock-time">${timeStr}</span>
-            <span class="bio-system-state">SYS STATE: ${phase.bio}</span>
-        `;
-    };
-
-    updateClock();
-    setInterval(updateClock, 1000);
-})();   
-// End OROLOGIO BIO-CIRCADIANO (VERSIONE COMPATTA & ALLINEATA)
-
 // ===== LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO =====
 let lastFocusedElement; // Variabile globale per ricordare dove eravamo
 
@@ -1377,135 +1324,185 @@ document.addEventListener('DOMContentLoaded', () => {
 }); 
 // === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
 
-// =======================================
-// SALUTO SETTIMANALE (biotech_week.min.js integrato) - OTTIMIZZATO
-// =======================================
-
+// ==========================================
+// BIOTECH CORE ENGINE - UNIFIED CONTROL UNIT
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    const weekElement = document.getElementById("week");
-    if (!weekElement) return;
 
-    function createSpans(text, start) {
-        return text.split('').map((char, index) => 
-            `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`
-        ).join('');
-    }
+    // --- UTILS COMUNI ---
+    const userLangFull = navigator.language || navigator.userLanguage;
+    const userLangShort = userLangFull.slice(0, 2).toLowerCase();
+    const isIt = userLangShort === 'it';
+    const pad = n => n < 10 ? '0' + n : n;
 
-    const messages = {
-        it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'],
-        en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'],
-        es: ['¡buen domingo!', '¡buen lunes!', '¡buen martes!', '¡buen miércoles!', '¡buen jueves!', '¡buen viernes!', '¡buen sábado!'],
-        fr: ['bon dimanche !', 'bon lundi !', 'bon mardi !', 'bon mercredi !', 'bon jeudi !', 'bon vendredi !', 'bon samedi !'],
-        de: ['schönen sonntag!', 'schönen montag!', 'schönen dienstag!', 'schönen mittwoch!', 'schönen donnerstag!', 'schönen freitag!', 'schönen samstag!'],
-        nl: ['fijne zondag!', 'fijne maandag!', 'fijne dinsdag!', 'fijne woensdag!', 'fijne donderdag!', 'fijne vrijdag!', 'fijne zaterdag!'],
-        pt: ['boa domingo!', 'boa segunda!', 'boa terça!', 'boa quarta!', 'boa quinta!', 'boa sexta!', 'bom sábado!']
+    // Helper per determinare la stagione (usato da più moduli)
+    const getCurrentSeason = () => {
+        const now = new Date();
+        const dateVal = (now.getMonth() + 1) * 100 + now.getDate();
+        if (dateVal >= 321 && dateVal < 621) return "spring";
+        if (dateVal >= 621 && dateVal < 923) return "summer";
+        if (dateVal >= 923 && dateVal < 1221) return "autumn";
+        return "winter";
     };
 
-    const baseTitle = 'Biotech Project vi augura ';
-    const titles = {
-        en: 'Biotech Project wishes you ',
-        es: 'Biotech Project le desea ',
-        fr: 'Biotech Project vous souhaite ',
-        de: 'Biotech Project wünscht Ihnen ',
-        nl: 'Biotech Project wenst u ',
-        pt: 'Biotech Project deseja a você '
-    };
+    // --- 1. ANNUAL CYCLE & SEASON MONITOR ---
+    function initSeasonMonitor() {
+        const countdownEl = document.getElementById('modern-countdown');
+        if (!countdownEl) return;
 
-    const greetings = {
-        it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'],
-        en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'],
-        es: ['Buenas noches', 'Buenos días', 'Buenas tardes', 'Buenas noches'],
-        fr: ['Bonne nuit', 'Bonjour', 'Bon après-midi', 'Bonne soirée'],
-        de: ['Gute Nacht', 'Guten Morgen', 'Guten Tag', 'Guten Abend'],
-        nl: ['Welterusten', 'Goedemorgen', 'Goede middag', 'Goede avond'],
-        pt: ['Boa noite', 'Bom dia', 'Boa tarde', 'Boa noite']
-    };
-
-    const userLang = (navigator.language || 'it').slice(0, 2).toLowerCase();
-    const lang = messages[userLang] ? userLang : 'it';
-
-    const hour = new Date().getHours();
-    let greetingIndex = 1;
-    if (hour < 6) greetingIndex = 0;
-    else if (hour < 14) greetingIndex = 1; // -> 13:59:59 PM
-    else if (hour < 18) greetingIndex = 2;
-    else greetingIndex = 3;
-
-    const today = new Date().getDay();
-    const message = messages[lang][today];
-    const title = titles[lang] || baseTitle;
-    const greeting = greetings[lang][greetingIndex];
-    
-    // OTTIMIZZAZIONE: Posticipa l'iniezione pesante del DOM
-    window.requestAnimationFrame(() => {
-        const daySpans = createSpans(message, 26);
-        const titleSpans = createSpans(title, 1);
-
-        // Scrittura finale del DOM
-        if (weekElement) {
-            weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
-        }
-    });
-});
-// =======================================
-// FINE SALUTO SETTIMANALE
-// =======================================
-
-// ==========================================
-//  ANNUAL CYCLE & SEASON MONITOR - BIOTECH (MULTILANGUAGE)
-// ==========================================
-(function() {
-    const countdownEl = document.getElementById('modern-countdown');
-    if (countdownEl) {
-        let dataDisplay = document.getElementById('bio-data-display');
-        if (!dataDisplay) {
-            dataDisplay = document.createElement('div');
+        let dataDisplay = document.getElementById('bio-data-display') || document.createElement('div');
+        if (!dataDisplay.id) {
             dataDisplay.id = 'bio-data-display';
             countdownEl.innerHTML = '';
             countdownEl.appendChild(dataDisplay);
         }
 
-        // Rilevamento lingua del browser (it-IT, en-US, ecc.)
-        const userLang = navigator.language || navigator.userLanguage;
-        const isIt = userLang.startsWith('it');
-
-        // Mappa delle traduzioni
         const lang = {
             seasons: isIt 
                 ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" }
                 : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
-            phase: isIt ? "FASE CICLO" : "CYCLE PHASE",
-            days: isIt ? "GIORNI" : "DAYS"
+            phase: isIt ? "FASE CICLO" : "CYCLE PHASE"
         };
 
-        function updateBioCycle() {
+        const updateBioCycle = () => {
             const now = new Date();
             const year = now.getFullYear();
-            const dateVal = (now.getMonth() + 1) * 100 + now.getDate();
-
-            let seasonKey = "";
-            if (dateVal >= 321 && dateVal < 621) seasonKey = "spring";
-            else if (dateVal >= 621 && dateVal < 923) seasonKey = "summer";
-            else if (dateVal >= 923 && dateVal < 1221) seasonKey = "autumn";
-            else seasonKey = "winter";
-
+            const seasonKey = getCurrentSeason();
             const start = new Date(year, 0, 1);
             const end = new Date(year + 1, 0, 1);
             const progress = ((now - start) / (end - start)) * 100;
             const daysLeft = Math.floor((end - now) / 86400000);
 
-            // Costruiamo l'HTML usando le classi CSS invece degli stili inline
             dataDisplay.innerHTML = `
-                <div class="bio-season-label">
-                    ${lang.seasons[seasonKey]} ${lang.phase}
-                </div>
+                <div class="bio-season-label">${lang.seasons[seasonKey]} ${lang.phase}</div>
                 <div class="bio-progress-data">
                     ${progress.toFixed(2)}% 
                     <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
                 </div>
             `;
-        }
+        };
         updateBioCycle();
         setInterval(updateBioCycle, 3600000);
     }
-})();
+
+    // --- 2. OROLOGIO BIO-CIRCADIANO ---
+    function initBioClock() {
+        const clockEl = document.getElementById('clock2');
+        if (!clockEl) return;
+
+        const circadianMap = {
+            0:  { it: ["RIGENERAZIONE GLINFATICA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "CELLULAR REPAIR", "GH HORMONE", "TOTAL DARKNESS"] },
+            6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
+            8:  { it: ["ATTIVAZIONE METABOLICA", "FUELING", "GRELINA", "COLAZIONE PROT."], en: ["METABOLIC ONSET", "FUELING", "GHRELIN", "PROTEIN BREAKFAST"] },
+            10: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
+            12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO", "INSULINA", "PAUSA NUTRIZIONE"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS", "INSULIN", "NUTRITION BREAK"] },
+            14: { it: ["POST-PRANDIAL DIP", "BASSA VIGILANZA", "OREXINA", "MICRO-RECOVERY"], en: ["POST-PRANDIAL DIP", "LOW VIGILANCE", "OREXIN", "MICRO-RECOVERY"] },
+            16: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
+            18: { it: ["FINESTRA ANABOLICA", "RECUPERO MUSCOLARE", "MIOCHINE", "NUTRIZIONE POST-WORKOUT"], en: ["ANABOLIC WINDOW", "MUSCLE RECOVERY", "MYOKINES", "POST-WORKOUT NUTRITION"] },
+            20: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE", "ADENOSINA", "RELAX ATTIVO"], en: ["RECOVERY MODE", "DOWNTIME", "ADENOSINE", "ACTIVE RELAX"] },
+            22: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "REGEN START", "MELATONIN", "NO BLUE LIGHT"] },
+            23: { it: ["FASE REM", "CONSOLIDAMENTO MEMORIA", "BDNF", "SOGNO PROFONDO"], en: ["REM PHASE", "MEMORY CONSOLIDATION", "BDNF", "DEEP DREAMING"] }
+        };
+
+        const getDynamicAdvice = (hour, baseAdvice) => {
+            const season = getCurrentSeason();
+            if (hour >= 6 && hour < 9) {
+                if (season === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+                if (season === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+            }
+            if (hour >= 10 && hour < 13 && (season === "winter" || season === "autumn")) 
+                return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+            if (hour >= 13 && hour < 17 && season === "summer") 
+                return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+            if (hour >= 20 && season === "winter") 
+                return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+            return baseAdvice;
+        };
+
+        const updateClock = () => {
+            const now = new Date();
+            const hour = now.getHours();
+            const keys = Object.keys(circadianMap).map(Number).reverse();
+            const currentKey = keys.find(k => hour >= k) || 0;
+            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+            
+            const advice = getDynamicAdvice(hour, data[3]);
+            const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+
+            clockEl.innerHTML = `
+                <div class="hud-inline-row">
+                    <span>MOLECOLA: <b class="bio-data-value">${data[2]}</b></span>
+                    <span class="separator">|</span>
+                    <span>CONSIGLIO: <b class="bio-data-value">${advice}</b></span>
+                </div>
+                <span class="bio-status-label">${data[0]}</span>
+                <span class="bio-clock-time">${timeStr}</span>
+                <span class="bio-system-state">SYS STATE: ${data[1]}</span>
+            `;
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    // --- 3. SALUTO SETTIMANALE ---
+    function initWeeklyGreeting() {
+        const weekElement = document.getElementById("week");
+        if (!weekElement) return;
+
+        const createSpans = (text, start) => text.split('').map((char, index) => 
+            `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`
+        ).join('');
+
+        const messages = {
+            it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'],
+            en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'],
+            es: ['¡buen domingo!', '¡buen lunes!', '¡buen martes!', '¡buen miércoles!', '¡buen jueves!', '¡buen viernes!', '¡buen sabato!'],
+            fr: ['bon dimanche !', 'bon lundi !', 'bon mardi !', 'bon mercredi !', 'bon jeudi !', 'bon vendredi !', 'bon samedi !'],
+            de: ['schönen sonntag!', 'schönen montag!', 'schönen dienstag!', 'schönen mittwoch!', 'schönen donnerstag!', 'schönen freitag!', 'schönen samstag!'],
+            nl: ['fijne zondag!', 'fijne maandag!', 'fijne dinsdag!', 'fijne woensdag!', 'fijne donderdag!', 'fijne vrijdag!', 'fijne zaterdag!'],
+            pt: ['boa domingo!', 'boa segunda!', 'boa terça!', 'boa quarta!', 'boa quinta!', 'boa sexta!', 'bom sabato!']
+        };
+
+        const titles = {
+            it: 'Biotech Project vi augura ',
+            en: 'Biotech Project wishes you ',
+            es: 'Biotech Project le desea ',
+            fr: 'Biotech Project vous souhaite ',
+            de: 'Biotech Project wünscht Ihnen ',
+            nl: 'Biotech Project wenst u ',
+            pt: 'Biotech Project deseja a você '
+        };
+
+        const greetings = {
+            it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'],
+            en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'],
+            es: ['Buenas noches', 'Buenos días', 'Buenas tardes', 'Buenas noches'],
+            fr: ['Bonne nuit', 'Bonjour', 'Bon après-midi', 'Bonne soirée'],
+            de: ['Gute Nacht', 'Guten Morgen', 'Guten Tag', 'Guten Abend'],
+            nl: ['Welterusten', 'Goedemorgen', 'Goede middag', 'Goede avond'],
+            pt: ['Boa noite', 'Bom dia', 'Boa tarde', 'Boa noite']
+        };
+
+        const langKey = messages[userLangShort] ? userLangShort : 'it';
+        const now = new Date();
+        const hour = now.getHours();
+        const today = now.getDay();
+
+        let gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
+        
+        const message = messages[langKey][today];
+        const title = titles[langKey] || titles.it;
+        const greeting = greetings[langKey][gIdx];
+
+        window.requestAnimationFrame(() => {
+            const daySpans = createSpans(message, 26);
+            const titleSpans = createSpans(title, 1);
+            weekElement.innerHTML = `<div class="greeting-time">${greeting}</div>${titleSpans + daySpans}`;
+        });
+    }    
+
+    // --- ESECUZIONE SINCRONIZZATA ---
+    initSeasonMonitor();
+    initBioClock();
+    initWeeklyGreeting();
+});

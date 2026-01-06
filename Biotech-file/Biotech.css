@@ -157,6 +157,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Assicura che i figli occupino tutta la larghezza disponibile */
 .container_welcome>div{flex:0 0 auto;width:100%;}
 /* === OROLOGIO BIO-CIRCADIANO === */
+/* Riga inline per MOLECOLA e CONSIGLIO - Colore tenue per le etichette 'MOLECOLA:' */
 .hud-inline-row {
     display: flex;
     justify-content: center;
@@ -182,7 +183,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     transition: color 0.3s ease;
     font-weight: bold; /* Per farlo risaltare ancora di più */
 }
-/* End .hud-inline-row */
+/* End Riga inline per MOLECOLA e CONSIGLIO */
 
 .modern-clock {
     color: #a7ffeb;
@@ -251,16 +252,14 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     font-weight: bold;
     text-align: center;
     margin: 8px auto;
-    max-width: 380px; /* Tornato a 380px per compattezza */
+    max-width: 380px; 
     padding: 8px 16px;
-    /* Ritorno all'Oro Tenue originale */
-    background: rgba(255, 215, 0, 0.1); 
+    background: rgba(255, 215, 0, 0.1); /* Ritorno all'Oro Tenue originale */
     border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 6px;
     box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
     backdrop-filter: blur(5px);
-    /* La maschera per sfumare il bordo inferiore */
-    -webkit-mask-image: linear-gradient(black 25%, transparent 100%);
+    -webkit-mask-image: linear-gradient(black 25%, transparent 100%); /* La maschera per sfumare il bordo inferiore */
     mask-image: linear-gradient(black 25%, transparent 100%);
     opacity: 0.99;
     letter-spacing: 0.5px;
