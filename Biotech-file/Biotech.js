@@ -1416,44 +1416,49 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- 1. ANNUAL CYCLE & SEASON MONITOR ---
-    function initSeasonMonitor() {
-        const countdownEl = document.getElementById('modern-countdown');
-        if (!countdownEl) return;
+function initSeasonMonitor() {
+    const countdownEl = document.getElementById('modern-countdown');
+    if (!countdownEl) return;
 
-        let dataDisplay = document.getElementById('bio-data-display') || document.createElement('div');
-        if (!dataDisplay.id) {
-            dataDisplay.id = 'bio-data-display';
-            countdownEl.innerHTML = '';
-            countdownEl.appendChild(dataDisplay);
-        }
+    // RILEVAZIONE LINGUA SINCRONIZZATA
+    const currentLang = localStorage.getItem('preferred-language') || 
+                       (navigator.language.startsWith('en') ? 'en' : 'it');
+    const isIt = currentLang === 'it';
 
-        const lang = {
-            seasons: isIt 
-                ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" }
-                : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
-            phase: isIt ? "FASE CICLO" : "CYCLE PHASE"
-        };
-
-        const updateBioCycle = () => {
-            const now = new Date();
-            const year = now.getFullYear();
-            const seasonKey = getCurrentSeason();
-            const start = new Date(year, 0, 1);
-            const end = new Date(year + 1, 0, 1);
-            const progress = ((now - start) / (end - start)) * 100;
-            const daysLeft = Math.floor((end - now) / 86400000);
-
-            dataDisplay.innerHTML = `
-                <div class="bio-season-label" data-bio-tip="${isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.'}">${lang.seasons[seasonKey]} ${lang.phase}</div>
-                <div class="bio-progress-data">
-                    ${progress.toFixed(2)}% 
-                    <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
-                </div>
-            `;
-        };
-        updateBioCycle();
-        setInterval(updateBioCycle, 3600000);
+    let dataDisplay = document.getElementById('bio-data-display') || document.createElement('div');
+    if (!dataDisplay.id) {
+        dataDisplay.id = 'bio-data-display';
+        countdownEl.innerHTML = '';
+        countdownEl.appendChild(dataDisplay);
     }
+
+    const lang = {
+        seasons: isIt 
+            ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" }
+            : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
+        phase: isIt ? "FASE CICLO" : "CYCLE PHASE"
+    };
+
+    const updateBioCycle = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const seasonKey = getCurrentSeason();
+        const start = new Date(year, 0, 1);
+        const end = new Date(year + 1, 0, 1);
+        const progress = ((now - start) / (end - start)) * 100;
+        const daysLeft = Math.floor((end - now) / 86400000);
+
+        dataDisplay.innerHTML = `
+            <div class="bio-season-label" data-bio-tip="${isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.'}">${lang.seasons[seasonKey]} ${lang.phase}</div>
+            <div class="bio-progress-data">
+                ${progress.toFixed(2)}% 
+                <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
+            </div>
+        `;
+    };
+    updateBioCycle();
+    setInterval(updateBioCycle, 3600000);
+}
 
     // --- 2. OROLOGIO BIO-CIRCADIANO ---
     function initBioClock() {
