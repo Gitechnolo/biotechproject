@@ -445,20 +445,19 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* ✅ MANTIENI HOVER SU DESKTOP (solo con mouse) */
 .tech-menu-item:hover .tech-dropdown {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}
 .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}    
-/* === RESPONSIVE: MENU E AREA BIO-DATA (Accorpato) === */
+/* === RESPONSIVE: MENU E AREA BIO-DATA (Accorpato e Calibrato) === */
 
-/* TABLET (max 768px) */
+/* TABLET (da 481px a 768px) */
 @media (max-width: 768px) {
     .tech-nav-container { flex-direction: column; align-items: center; padding: 12px; gap: 4px; }
     .tech-nav-btn { width: 100%; max-width: 280px; justify-content: center; }
     .tech-dropdown { min-width: 300px; max-width: 90vw; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96); }
     .tech-dropdown a { font-size: 1rem; padding: 12px 20px; }
     
-    /* Spaziatura per il contenitore bio-circadiano */
     .container_welcome { gap: 12px; }
 }
 
-/* SMARTPHONE (max 480px) */
+/* SMARTPHONE (fino a 480px) */
 @media (max-width: 480px) {
     /* --- Menu --- */
     .tech-nav-container { padding: 8px; }
@@ -466,37 +465,50 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     .tech-dropdown { min-width: 260px; }
     .tech-dropdown a { font-size: 0.95rem; padding: 10px 16px; }
 
-    /* --- Area Bio-Data (Fix Sovrapposizioni) --- */
+    /* --- Area Bio-Data (Ritorno alla compattezza dell'immagine originale) --- */
     .logo-wrapper-cls { 
         min-height: auto; 
-        margin-bottom: 5px; 
+        margin-bottom: 0px; 
     }
 
     .container_welcome { 
-        margin-top: 0; 
-        gap: 8px; 
+        margin-top: -35px; /* Recupera lo spazio perso rispetto al logo */
+        gap: 0px;          /* Comprime al massimo lo spazio interno */
     }
 
-    /* Riportiamo Orologio, Countdown e Saluto nel flusso naturale */
-    .modern-clock, 
-    .modern-countdown, 
+    .modern-clock {
+        position: relative;
+        top: 0;
+        margin: 5px auto;
+        padding: 4px 8px;
+    }
+
+    .modern-countdown {
+        position: relative;
+        top: -15px; /* Riporta il countdown vicino all'orologio */
+        margin: 0 auto;
+        padding: 5px 10px;
+    }
+
     .modern-greeting {
-        position: static; 
-        top: 0;           /* Annulla i valori negativi del desktop */
-        margin: 8px auto; 
-        width: 95vw;
-        font-size: 0.95em;
+        position: relative;
+        top: -35px; /* Riporta l'augurio vicino al countdown */
+        margin: 0 auto;
+        font-size: 0.9em;
     }
 
-    /* Dettagli HUD su mobile */
-    .hud-inline-row { font-size: 0.7em; gap: 10px; }
-    .bio-clock-time { font-size: 1em; }
-    .modern-greeting { padding-bottom: 20px; }
+    /* Riduzione font per non coprire il testo "Benvenuti" sottostante */
+    .hud-inline-row { font-size: 0.6em; margin-bottom: 2px; }
+    .bio-clock-time { font-size: 0.9em; }
+    .bio-progress-data { font-size: 0.9em; }
 }
 
-/* Accessibilità */
+/* Accessibilità e Animazioni */
 @media (prefers-reduced-motion: reduce) {
-    .tech-dropdown, .tech-nav-btn, .pulse-logo { transition: none; animation: none; }
+    .tech-dropdown, .tech-nav-btn, .pulse-logo { 
+        transition: none; 
+        animation: none; 
+    }
 }
 
 /* --- Singola voce del menu (wrapper per pulsante + dropdown) --- */
