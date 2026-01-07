@@ -1352,6 +1352,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DIZIONARI SCIENTIFICI POTENZIATI (IT/EN) ---
     const bioExplanations = {
         it: {
+            "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito. Fondamentale per la stabilità dei cicli sonno-veglia.",
+            "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo. Segnala al cervello lo stato delle riserve energetiche, inibendo la fame.",
+            "PULIZIA CEREBRALE": "Attività del sistema glinfatico: il fluido cerebrospinale rimuove tossine metaboliche come la proteina beta-amiloide.",
+            "PICCO SOMATOTROPINA": "Massima secrezione di GH (ormone della crescita), essenziale per la rigenerazione cellulare e proteica.",
+            "SINTESI PROTEICA": "Processo biochimico di riparazione tissutale, massimizzato durante la finestra anabolica serale.",
+            "RESET CIRCADIANO": "Sincronizzazione del nucleo soprachiasmatico tramite l'esposizione alla luce naturale mattutina.",
+            "ATTIVAZIONE ORESSINA": "Fase di incremento della vigilanza e della motivazione legata alla ricerca di nutrienti.",
+            "RISPOSTA LEPTINICA": "Segnale ormonale di sazietà che sposta il metabolismo verso l'immagazzinamento e il recupero.",
+            "STABILITÀ SINAPTICA": "Mantenimento dell'efficienza dei collegamenti neuronali durante la fase post-prandiale.",
+            "CALMA NEURONALE": "Transizione verso il sistema parasimpatico, facilitata dal rilascio di GABA.",
+            "INIZIO PULIZIA": "Fase preliminare di attivazione del sistema glinfatico e calo della temperatura centrale.",
             "DOPAMINA": "Catecolamina della ricompensa. Innesca la motivazione e ottimizza le funzioni esecutive della corteccia prefrontale.",
             "ACETILCOLINA": "Modulatore della plasticità sinaptica. Fondamentale per la memoria a lungo termine e l'attenzione sostenuta.",
             "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale, stabilizzando il sistema nervoso contro lo stress.",
@@ -1383,6 +1394,17 @@ document.addEventListener('DOMContentLoaded', () => {
             "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core."            
         },
         en: {
+            "OREXIN": "Hypothalamic neuropeptide stabilizing wakefulness and regulating appetite. Essential for sleep-wake cycle stability.",
+            "LEPTIN": "Satiety hormone produced by adipose tissue. It signals energy reserves to the brain, inhibiting hunger.",
+            "BRAIN CLEARANCE": "Glymphatic system activity: cerebrospinal fluid flows between neurons to remove metabolic toxins like beta-amyloid.",
+            "GH PEAK": "Maximum growth hormone (GH) secretion, essential for cellular and protein regeneration.",
+            "PROTEIN SYNTHESIS": "Biochemical process of tissue repair, maximized during the evening anabolic window.",
+            "CIRCADIAN RESET": "Synchronization of the suprachiasmatic nucleus through exposure to morning natural light.",
+            "OREXIN ACTIVATION": "Phase of increased alertness and motivation linked to nutrient seeking.",
+            "LEPTIN RESPONSE": "Hormonal satiety signal shifting metabolism towards storage and recovery.",
+            "SYNAPTIC STABILITY": "Maintenance of neuronal connection efficiency during the post-prandial phase.",
+            "NEURONAL CALM": "Transition to the parasympathetic system, facilitated by GABA release.",
+            "CLEARANCE START": "Preliminary phase of glymphatic system activation and core temperature drop.",
             "DOPAMINE": "Reward catecholamine. It triggers goal-oriented motivation and optimizes executive functions in the prefrontal cortex.",
             "ACETYLCHOLINE": "Synaptic plasticity modulator. Essential for long-term memory encoding and sustained attention.",
             "GABA": "Inhibitory neurotransmitter. It reduces neuronal excitability, stabilizing the nervous system against stress.",
@@ -1466,17 +1488,17 @@ function initSeasonMonitor() {
         if (!clockEl) return;
 
         const circadianMap = {
-            0:  { it: ["RIGENERAZIONE GLINFATICA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "CELLULAR REPAIR", "SOMATOTROPIN", "TOTAL DARKNESS"] },
-            6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
-            8:  { it: ["ATTIVAZIONE METABOLICA", "FUELING", "GRELINA", "COLAZIONE PROT."], en: ["METABOLIC ONSET", "FUELING", "GHRELIN", "PROTEIN BREAKFAST"] },
-            10: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
-            12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO", "INSULINA", "PAUSA NUTRIZIONE"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS", "INSULIN", "NUTRITION BREAK"] },
-            14: { it: ["POST-PRANDIAL DIP", "MANTENIMENTO COGNITIVO", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["POST-PRANDIAL DIP", "COGNITIVE MAINT.", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-            16: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
-            18: { it: ["FINESTRA ANABOLICA", "CALMA OPERATIVA", "GABA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "OPERATIONAL CALM", "GABA", "DOWNTIME"] },
-            20: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE", "ADENOSINA", "RELAX ATTIVO"], en: ["RECOVERY MODE", "DOWNTIME", "ADENOSINE", "ACTIVE RELAX"] },
-            22: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "REGEN START", "MELATONIN", "NO BLUE LIGHT"] },
-            23: { it: ["FASE REM", "CONSOLIDAMENTO MEMORIA", "BDNF", "SOGNO PROFONDO"], en: ["REM PHASE", "MEMORY CONSOLIDATION", "BDNF", "DEEP DREAMING"] }
+            0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
+            3:  { it: ["PICCO SOMATOTROPINA", "RIPARAZIONE TESSUTI", "SOMATOTROPINA", "SOGNO PROFONDO"], en: ["GH PEAK", "TISSUE REPAIR", "SOMATOTROPIN", "DEEP DREAMING"] },
+            6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
+            9:  { it: ["ATTIVAZIONE ORESSINA", "VIGILANZA ELEVATA", "ORESSINA", "COLAZIONE PROT."], en: ["OREXIN ACTIVATION", "HIGH VIGILANCE", "OREXIN", "PROTEIN BREAKFAST"] },
+            11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
+            13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
+            15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+            17: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
+            19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
+            21: { it: ["CALMA NEURONALE", "MODALITÀ RECUPERO", "GABA", "RELAX ATTIVO"], en: ["NEURONAL CALM", "RECOVERY MODE", "GABA", "ACTIVE RELAX"] },
+            23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
         };
 
         const getDynamicAdvice = (h, base) => {
@@ -1508,7 +1530,7 @@ function initSeasonMonitor() {
             const adviceKey = advice.toUpperCase().trim();
 
             const molecolaDesc = dict[molecolaKey] || dict["default"];
-            const adviceDesc = dict[adviceKey] || dict["default_advice"];
+            const adviceDesc = dict[adviceKey] || dict["default"];
 
             // Gestione Specifica Stato/Glinfatico
             let statusDesc;
