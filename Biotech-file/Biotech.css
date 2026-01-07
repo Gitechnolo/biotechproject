@@ -236,9 +236,9 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .bio-system-state {
     font-size: 0.6em;
     letter-spacing: 1px;
-    color: #00e676;
-    opacity: 0.7;
-    margin-top: -1px;       /* Avvicina lo stato inferiore all'orologio */
+    color: #00e676; /* Verde neon acceso, come per i dati */
+    opacity: 0.9;
+    margin-top: 0px;       /* -1px Avvicina lo stato inferiore all'orologio */
     text-transform: uppercase;
 }
 
