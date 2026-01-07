@@ -338,6 +338,34 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 @media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
 /* Contenitore per orologio, conto alla rovescia e augurio - Per tablet */
 @media (min-width:768px) and (max-width:1024px){.container_welcome{gap:12px}}
+/* TOOLTIP TECNOLOGICO BIO-TECH */
+.biotech-tooltip {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding: 8px 12px;
+    background-color: rgba(0, 10, 10, 0.95);
+    color: #00ffcc; 
+    border: 1px solid #00ffcc;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+    font-family: 'Sansation', sans-serif;
+    letter-spacing: 0.5px; 
+    backdrop-filter: blur(4px); 
+    text-transform: uppercase; 
+    /* Centratura orizzontale rispetto al punto di ancoraggio */
+    transform: translateX(-50%);
+    text-align: center;
+    left: 0; /* Lascia che il JS controlli la posizione */
+    transform: translateX(-50%); /* Centra il box rispetto alla punta del mouse */
+    text-align: center;
+    pointer-events: none;
+    white-space: normal; /* Permette al testo lungo di andare a capo */
+    max-width: 250px;
+}
+
 /* End Contenitore per orologio, conto alla rovescia e augurio */   
 /* --- Contenitore del menu moderno --- */
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
