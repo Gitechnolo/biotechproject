@@ -1344,6 +1344,52 @@ document.addEventListener('DOMContentLoaded', () => {
         return "winter";
     };
 
+    // --- DIZIONARI SCIENTIFICI POTENZIATI (IT/EN) ---
+    const bioExplanations = {
+        it: {
+            "DOPAMINA": "Catecolamina della ricompensa. Innesca la motivazione e ottimizza le funzioni esecutive della corteccia prefrontale.",
+            "ACETILCOLINA": "Modulatore della plasticità synaptica. Fondamentale per la memoria a lungo termine e l'attenzione sostenuta.",
+            "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale, stabilizzando il sistema nervoso contro lo stress.",
+            "MELATONINA": "Indoloammina pineale. Regola il ritmo circadiano e agisce come potente antiossidante mitocondriale notturno.",
+            "CORTISOLO": "Glucocorticoide del risveglio: eleva la glicemia e prepara il corpo allo stress metabolico diurno.",
+            "GRELINA": "Ormone peptidico dello stomaco. Stimola l'appetito e promuove la secrezione dell'ormone della crescita.",
+            "INSULINA": "Ormone anabolico pancreatico. Regola l'omeostasi del glucosio e l'uptake cellulare di aminoacidi.",
+            "ADRENALINA": "Epinefrina: attiva il sistema simpatico. Aumenta la gittata cardiaca per una risposta fisica immediata.",
+            "SOMATOTROPINA": "Ormone della crescita (GH). Cruciale per la riparazione dei tessuti e il metabolismo lipidico notturno.",
+            "BDNF": "Fattore neurotrofico. Supporta la neurogenesi, la sopravvivenza neuronale e la crescita di nuove sinapsi.",
+            "ADENOSINA": "Sottoprodotto del metabolismo energetico (ATP). Il suo accumulo crea la pressione omeostatica del sonno.",
+            "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici tramite il liquido cerebrospinale.",
+            "LUCE ART. 10K LUX": "Fotobiomodulazione invernale: simula lo spettro solare per resettare l'orologio circadiano (nucleo soprachiasmatico).",
+            "SOLE DIRETTO 10M": "L'esposizione ai fotoni solari mattutini sincronizza i geni clock per ottimizzare il rilascio di melatonina serale.",
+            "INTEGRA VITAMINA D": "Secosteroide essenziale per l'espressione genica, il supporto immunitario e la sintesi di neurotrasmettitori.",
+            "IDRATAZIONE + SALI": "Ripristino degli elettroliti fondamentali per il potenziale d'azione neuronale e la prevenzione del calo cognitivo.",
+            "THERMO-RELAX (CALDO)": "La termoregolazione passiva facilita il calo della temperatura corporea centrale necessario all'induzione del sonno.",
+            "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core.",
+            "default_advice": "Algoritmo di ottimizzazione bio-ambientale attivo."
+        },
+        en: {
+            "DOPAMINE": "Reward catecholamine. It triggers goal-oriented motivation and optimizes executive functions in the prefrontal cortex.",
+            "ACETYLCHOLINE": "Synaptic plasticity modulator. Essential for long-term memory encoding and sustained attention.",
+            "GABA": "Inhibitory neurotransmitter. It reduces neuronal excitability, stabilizing the nervous system against stress.",
+            "MELATONIN": "Pineal indoleamine. It regulates circadian rhythms and acts as a potent nocturnal mitochondrial antioxidant.",
+            "CORTISOL": "Awakening glucocorticoid: it elevates blood glucose and prepares the body for diurnal metabolic stress.",
+            "GHRELIN": "Peptide hormone produced in the stomach. Stimulates appetite and promotes growth hormone secretion.",
+            "INSULIN": "Anabolic pancreatic hormone. Regulates glucose homeostasis and cellular amino acid uptake.",
+            "ADRENALINE": "Epinephrine: activates the sympathetic nervous system. Increases cardiac output for immediate physical response.",
+            "SOMATOTROPIN": "Growth Hormone (GH). Crucial for tissue repair and nocturnal lipid metabolism.",
+            "BDNF": "Neurotrophic factor. Supports neurogenesis, neuronal survival, and the growth of new synapses.",
+            "ADENOSINE": "ATP energy metabolism byproduct. Its accumulation creates homeostatic sleep pressure.",
+            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate the flushing of metabolic waste via cerebrospinal fluid.",
+            "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates the solar spectrum to reset the circadian clock (suprachiasmatic nucleus).",
+            "DIRECT SUN 10M": "Morning photon exposure synchronizes clock genes to optimize melatonin release 14 hours later.",
+            "VITAMIN D INTAKE": "Essential secosteroid for gene expression, immune support, and neurotransmitter synthesis.",
+            "HYDRATION + SALTS": "Restoration of electrolytes critical for neuronal action potential and prevention of cognitive decline.",
+            "WARM THERMO-RELAX": "Passive thermoregulation facilitates the core body temperature drop necessary for sleep induction.",
+            "default": "Bio-synchronized data via Biotech Core.",
+            "default_advice": "Bio-environmental optimization algorithm active."
+        }
+    };
+
     // --- 1. ANNUAL CYCLE & SEASON MONITOR ---
     function initSeasonMonitor() {
         const countdownEl = document.getElementById('modern-countdown');
@@ -1373,7 +1419,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const daysLeft = Math.floor((end - now) / 86400000);
 
             dataDisplay.innerHTML = `
-                <div class="bio-season-label" data-bio-tip="Monitoraggio dell'inclinazione assiale terrestre e impatto metabolico.">${lang.seasons[seasonKey]} ${lang.phase}</div>
+                <div class="bio-season-label" data-bio-tip="${isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.'}">${lang.seasons[seasonKey]} ${lang.phase}</div>
                 <div class="bio-progress-data">
                     ${progress.toFixed(2)}% 
                     <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
@@ -1390,7 +1436,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!clockEl) return;
 
         const circadianMap = {
-            0:  { it: ["RIGENERAZIONE GLINFATICA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "CELLULAR REPAIR", "GH HORMONE", "TOTAL DARKNESS"] },
+            0:  { it: ["RIGENERAZIONE GLINFATICA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "CELLULAR REPAIR", "SOMATOTROPIN", "TOTAL DARKNESS"] },
             6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
             8:  { it: ["ATTIVAZIONE METABOLICA", "FUELING", "GRELINA", "COLAZIONE PROT."], en: ["METABOLIC ONSET", "FUELING", "GHRELIN", "PROTEIN BREAKFAST"] },
             10: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
@@ -1403,41 +1449,16 @@ document.addEventListener('DOMContentLoaded', () => {
             23: { it: ["FASE REM", "CONSOLIDAMENTO MEMORIA", "BDNF", "SOGNO PROFONDO"], en: ["REM PHASE", "MEMORY CONSOLIDATION", "BDNF", "DEEP DREAMING"] }
         };
 
-        const bioExplanations = {
-            "DOPAMINA": "Neurotrasmettitore della motivazione. Al mattino spinge all'azione e al focus.",
-            "ACETILCOLINA": "Essenziale per memoria e apprendimento. Supporta la plasticità neuronale pomeridiana.",
-            "GABA": "L'inibitore principale del sistema nervoso. Riduce lo stress e prepara al relax.",
-            "MELATONINA": "L'ormone del sonno. Regola il ritmo circadiano e la riparazione cellulare.",
-            "CORTISOLO": "Ormone dello stress benefico: mobilita le energie e attiva il corpo per il risveglio.",
-            "GRELINA": "L'ormone della fame. Segnala al cervello che è il momento di rifornire il corpo di nutrienti.",
-            "INSULINA": "Gestisce l'assorbimento del glucosio. Fondamentale per il trasporto energetico cellulare.",
-            "ADRENALINA": "Prepara il corpo all'attività fisica, aumentando battito e capacità respiratoria.",
-            "SOMATOTROPINA": "Ormone della crescita. Picco notturno per la riparazione dei tessuti.",
-            "BDNF": "Fattore neurotrofico. Favorisce la sopravvivenza dei neuroni e la plasticità sinaptica.",
-            "ADENOSINA": "Molecola che accumula la 'pressione del sonno' durante il giorno.",
-            "RIGENERAZIONE GLINFATICA": "Sistema di pulizia cerebrale che rimuove le tossine metaboliche durante il sonno profondo.",
-            "LUCE ART. 10K LUX": "Simula la luce solare per sopprimere la melatonina e attivare il cortisolo in inverno.",
-            "SOLE DIRETTO 10M": "L'esposizione ai fotoni solari mattutini sincronizza il ritmo circadiano per 24 ore.",
-            "INTEGRA VITAMINA D": "Essenziale nei mesi freddi per supportare il sistema immunitario e la produzione di dopamina.",
-            "IDRATAZIONE + SALI": "In estate, il calore aumenta la dispersione di elettroliti necessari alla conduzione neuronale.",
-            "THERMO-RELAX (CALDO)": "Il calore serale favorisce la vasodilatazione, aiutando il corpo a raffreddarsi per il sonno.",
-            "default": "Dato bio-sincronizzato in tempo reale.",
-            "default_advice": "Consiglio bio-ottimizzato basato sulle variabili ambientali e circadiane attuali."
-        };
-
-        const getDynamicAdvice = (hour, baseAdvice) => {
-            const season = getCurrentSeason();
-            if (hour >= 6 && hour < 9) {
-                if (season === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-                if (season === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+        const getDynamicAdvice = (h, base) => {
+            const s = getCurrentSeason();
+            if (h >= 6 && h < 9) {
+                if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+                if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
             }
-            if (hour >= 10 && hour < 13 && (season === "winter" || season === "autumn")) 
-                return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-            if (hour >= 13 && hour < 17 && season === "summer") 
-                return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-            if (hour >= 20 && season === "winter") 
-                return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-            return baseAdvice;
+            if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+            if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+            if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+            return base;
         };
 
         const updateClock = () => {
@@ -1450,19 +1471,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const advice = getDynamicAdvice(hour, data[3]);
             const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-            const molecolaDesc = bioExplanations[data[2]] || bioExplanations["default"];
-            const adviceDesc = bioExplanations[advice] || bioExplanations["default_advice"];
-            const statusDesc = (hour < 6 || hour >= 23) ? bioExplanations["RIGENERAZIONE GLINFATICA"] : "Stato attuale dei processi biologici principali.";
+            const dict = isIt ? bioExplanations.it : bioExplanations.en;
+            const molecolaDesc = dict[data[2]] || dict["default"];
+            const adviceDesc = dict[advice] || dict["default_advice"];
+            const statusDesc = (hour < 6 || hour >= 23) ? dict["RIGENERAZIONE GLINFATICA"] : (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
 
             clockEl.innerHTML = `
                 <div class="hud-inline-row">
-                    <span data-bio-tip="${molecolaDesc}">MOLECOLA: <b class="bio-data-value">${data[2]}</b></span>
+                    <span data-bio-tip="${molecolaDesc}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${data[2]}</b></span>
                     <span class="separator">|</span>
-                    <span data-bio-tip="${adviceDesc}">CONSIGLIO: <b class="bio-data-value">${advice}</b></span>
+                    <span data-bio-tip="${adviceDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
                 </div>
                 <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
                 <span class="bio-clock-time">${timeStr}</span>
-                <span class="bio-system-state" data-bio-tip="Stato operativo del modulo Biotech Core Engine.">SYS STATE: ${data[1]}</span>
+                <span class="bio-system-state" data-bio-tip="${isIt ? 'Stato operativo Biotech Core.' : 'Biotech Core operational state.'}">SYS STATE: ${data[1]}</span>
             `;
         };
         updateClock();
@@ -1482,12 +1504,7 @@ document.addEventListener('DOMContentLoaded', () => {
             it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'],
             en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!']
         };
-
-        const titles = {
-            it: 'Biotech Project vi augura ',
-            en: 'Biotech Project wishes you '
-        };
-
+        const titles = { it: 'Biotech Project vi augura ', en: 'Biotech Project wishes you ' };
         const greetings = {
             it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'],
             en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening']
@@ -1500,7 +1517,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
         const message = messages[langKey][today];
-        const title = titles[langKey] || titles.it;
+        const title = titles[langKey];
         const greeting = greetings[langKey][gIdx];
 
         window.requestAnimationFrame(() => {
@@ -1510,7 +1527,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }    
 
-    // --- 4. TOOLTIP BIO-INFO (UNIFICATO E OTTIMIZZATO) ---
+    // --- 4. TOOLTIP BIO-INFO (UNIFICATO) ---
     function initBiotechTooltips() {
         let tooltipEl = document.querySelector('.biotech-tooltip');
         if (!tooltipEl) {
@@ -1529,8 +1546,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('mousemove', (e) => {
             if (tooltipEl.style.display === 'block') {
-                // Utilizza clientX per la posizione orizzontale (centrata via CSS)
-                // e clientY per la posizione verticale (25px sotto il cursore)
                 tooltipEl.style.left = e.clientX + 'px';
                 tooltipEl.style.top = (e.clientY + 25) + 'px';
             }
@@ -1543,7 +1558,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- ESECUZIONE SINCRONIZZATA ---
+    // --- ESECUZIONE ---
     initSeasonMonitor();
     initBioClock();
     initWeeklyGreeting();
