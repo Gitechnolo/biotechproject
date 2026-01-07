@@ -1325,14 +1325,19 @@ document.addEventListener('DOMContentLoaded', () => {
 // === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
 
 // ==========================================
-// BIOTECH CORE ENGINE - UNIFIED CONTROL UNIT
+// BIOTECH CORE ENGINE - SYNCHRONIZED EDITION
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- UTILS COMUNI ---
-    const userLangFull = navigator.language || navigator.userLanguage;
-    const userLangShort = userLangFull.slice(0, 2).toLowerCase();
-    const isIt = userLangShort === 'it';
+    // --- SINCRONIZZAZIONE LINGUA CON IL SISTEMA MODULARE ---
+    // Legge dal localStorage come lo script principale
+    const getActiveLang = () => {
+        return localStorage.getItem('preferred-language') || 
+               (navigator.language.startsWith('en') ? 'en' : 'it');
+    };
+    
+    let currentLang = getActiveLang();
+    const isIt = currentLang === 'it';
     const pad = n => n < 10 ? '0' + n : n;
 
     const getCurrentSeason = () => {
@@ -1348,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bioExplanations = {
         it: {
             "DOPAMINA": "Catecolamina della ricompensa. Innesca la motivazione e ottimizza le funzioni esecutive della corteccia prefrontale.",
-            "ACETILCOLINA": "Modulatore della plasticità synaptica. Fondamentale per la memoria a lungo termine e l'attenzione sostenuta.",
+            "ACETILCOLINA": "Modulatore della plasticità sinaptica. Fondamentale per la memoria a lungo termine e l'attenzione sostenuta.",
             "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale, stabilizzando il sistema nervoso contro lo stress.",
             "MELATONINA": "Indoloammina pineale. Regola il ritmo circadiano e agisce come potente antiossidante mitocondriale notturno.",
             "CORTISOLO": "Glucocorticoide del risveglio: eleva la glicemia e prepara il corpo allo stress metabolico diurno.",
@@ -1364,8 +1369,18 @@ document.addEventListener('DOMContentLoaded', () => {
             "INTEGRA VITAMINA D": "Secosteroide essenziale per l'espressione genica, il supporto immunitario e la sintesi di neurotrasmettitori.",
             "IDRATAZIONE + SALI": "Ripristino degli elettroliti fondamentali per il potenziale d'azione neuronale e la prevenzione del calo cognitivo.",
             "THERMO-RELAX (CALDO)": "La termoregolazione passiva facilita il calo della temperatura corporea centrale necessario all'induzione del sonno.",
-            "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core.",
-            "default_advice": "Algoritmo di ottimizzazione bio-ambientale attivo."
+            "BUIO TOTALE": "Assenza di fotoni per stimolare la ghiandola pineale e massimizzare la secrezione di melatonina.",
+            "LUCE NATURALE": "Esposizione precoce ai fotoni solari per sopprimere l'inerzia del sonno e resettare i ritmi circadiani.",
+            "COLAZIONE PROT.": "L'apporto proteico mattutino fornisce precursori aminoacidici per la sintesi dei neurotrasmettitori.",
+            "FOCUS ATTIVO": "Finestra di massima vigilanza cognitiva e coordinazione neuromuscolare.",
+            "PAUSA NUTRIZIONE": "Sincronizzazione degli orologi periferici (fegato/pancreas) tramite l'assunzione controllata di nutrienti.",
+            "FOCUS ANALITICO": "Fase ottimale per compiti di precisione e logica, supportata dalla stabilità dell'acetilcolina.",
+            "MOVIMENTO": "Attività fisica per sfruttare il picco di temperatura corporea e forza muscolare pomeridiana.",
+            "DECOMPRESSIONE": "Riduzione degli stimoli simpatici per favorire la transizione verso il sistema parasimpatico.",
+            "RELAX ATTIVO": "Attività a basso impatto per facilitare lo smaltimento del cortisolo residuo.",
+            "NO LUCE BLU": "Blocco delle frequenze luminose 450-480nm per prevenire l'inibizione della melatonina.",
+            "SOGNO PROFONDO": "Fase critica per il consolidamento della memoria e la pulizia metabolica cerebrale.",
+            "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core."            
         },
         en: {
             "DOPAMINE": "Reward catecholamine. It triggers goal-oriented motivation and optimizes executive functions in the prefrontal cortex.",
@@ -1385,8 +1400,18 @@ document.addEventListener('DOMContentLoaded', () => {
             "VITAMIN D INTAKE": "Essential secosteroid for gene expression, immune support, and neurotransmitter synthesis.",
             "HYDRATION + SALTS": "Restoration of electrolytes critical for neuronal action potential and prevention of cognitive decline.",
             "WARM THERMO-RELAX": "Passive thermoregulation facilitates the core body temperature drop necessary for sleep induction.",
-            "default": "Bio-synchronized data via Biotech Core.",
-            "default_advice": "Bio-environmental optimization algorithm active."
+            "TOTAL DARKNESS": "Absence of photons to stimulate the pineal gland and maximize melatonin secretion.",
+            "NATURAL LIGHT": "Early exposure to solar photons to suppress sleep inertia and reset circadian rhythms.",
+            "PROTEIN BREAKFAST": "Morning protein intake provides amino acid precursors for neurotransmitter synthesis.",
+            "ACTIVE FOCUS": "Window of maximum cognitive alertness and neuromuscular coordination.",
+            "NUTRITION BREAK": "Synchronization of peripheral clocks (liver/pancreas) through controlled nutrient intake.",
+            "ANALYTICAL FOCUS": "Optimal phase for precision and logic tasks, supported by acetylcholine stability.",
+            "WORKOUT": "Physical activity to leverage the afternoon peak in body temperature and muscle strength.",
+            "DOWNTIME": "Reduction of sympathetic stimuli to favor the transition toward the parasympathetic system.",
+            "ACTIVE RELAX": "Low-impact activities to facilitate the clearance of residual cortisol.",
+            "NO BLUE LIGHT": "Blocking 450-480nm light frequencies to prevent melatonin inhibition.",
+            "DEEP DREAMING": "Critical phase for memory consolidation and brain metabolic clearance.",
+            "default": "Bio-synchronized data via Biotech Core."            
         }
     };
 
@@ -1472,9 +1497,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
             const dict = isIt ? bioExplanations.it : bioExplanations.en;
-            const molecolaDesc = dict[data[2]] || dict["default"];
-            const adviceDesc = dict[advice] || dict["default_advice"];
-            const statusDesc = (hour < 6 || hour >= 23) ? dict["RIGENERAZIONE GLINFATICA"] : (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
+
+            // NORMALIZZAZIONE: Rimuove spazi e rende maiuscolo per trovare sempre la chiave
+            const molecolaKey = data[2].toUpperCase().trim();
+            const adviceKey = advice.toUpperCase().trim();
+
+            const molecolaDesc = dict[molecolaKey] || dict["default"];
+            const adviceDesc = dict[adviceKey] || dict["default_advice"];
+
+            // Gestione Specifica Stato/Glinfatico
+            let statusDesc;
+            if (hour < 6 || hour >= 23) {
+                statusDesc = isIt ? dict["RIGENERAZIONE GLINFATICA"] : dict["GLYMPHATIC REGEN"];
+            } else {
+                const statusKey = data[0].toUpperCase().trim();
+                statusDesc = dict[statusKey] || (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
+            }
 
             clockEl.innerHTML = `
                 <div class="hud-inline-row">
@@ -1510,7 +1548,7 @@ document.addEventListener('DOMContentLoaded', () => {
             en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening']
         };
 
-        const langKey = messages[userLangShort] ? userLangShort : 'it';
+        const langKey = isIt ? 'it' : 'en';
         const now = new Date();
         const hour = now.getHours();
         const today = now.getDay();
