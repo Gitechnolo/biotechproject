@@ -1385,186 +1385,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. OROLOGIO BIO-CIRCADIANO ---
-function initBioClock() {
-    const clockEl = document.getElementById('clock2');
-    if (!clockEl) return;
+    function initBioClock() {
+        const clockEl = document.getElementById('clock2');
+        if (!clockEl) return;
 
-    const circadianMap = {
-        0:  { it: ["RIGENERAZIONE GLINFATICA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "CELLULAR REPAIR", "GH HORMONE", "TOTAL DARKNESS"] },
-        6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
-        8:  { it: ["ATTIVAZIONE METABOLICA", "FUELING", "GRELINA", "COLAZIONE PROT."], en: ["METABOLIC ONSET", "FUELING", "GHRELIN", "PROTEIN BREAKFAST"] },
-        10: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
-        12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO", "INSULINA", "PAUSA NUTRIZIONE"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS", "INSULIN", "NUTRITION BREAK"] },
-        14: { it: ["POST-PRANDIAL DIP", "MANTENIMENTO COGNITIVO", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["POST-PRANDIAL DIP", "COGNITIVE MAINT.", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-        16: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
-        18: { it: ["FINESTRA ANABOLICA", "CALMA OPERATIVA", "GABA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "OPERATIONAL CALM", "GABA", "DOWNTIME"] },
-        20: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE", "ADENOSINA", "RELAX ATTIVO"], en: ["RECOVERY MODE", "DOWNTIME", "ADENOSINE", "ACTIVE RELAX"] },
-        22: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "REGEN START", "MELATONIN", "NO BLUE LIGHT"] },
-        23: { it: ["FASE REM", "CONSOLIDAMENTO MEMORIA", "BDNF", "SOGNO PROFONDO"], en: ["REM PHASE", "MEMORY CONSOLIDATION", "BDNF", "DEEP DREAMING"] }
-    };
+        const circadianMap = {
+            0:  { it: ["RIGENERAZIONE GLINFATICA", "RIPARAZIONE CELLULARE", "SOMATOTROPINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "CELLULAR REPAIR", "GH HORMONE", "TOTAL DARKNESS"] },
+            6:  { it: ["PICCO DI CORTISOLO", "FASE RISVEGLIO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "AWAKENING", "CORTISOL", "NATURAL LIGHT"] },
+            8:  { it: ["ATTIVAZIONE METABOLICA", "FUELING", "GRELINA", "COLAZIONE PROT."], en: ["METABOLIC ONSET", "FUELING", "GHRELIN", "PROTEIN BREAKFAST"] },
+            10: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
+            12: { it: ["SHIFT METABOLICO", "FOCUS DIGESTIVO", "INSULINA", "PAUSA NUTRIZIONE"], en: ["METABOLIC SHIFT", "DIGESTIVE FOCUS", "INSULIN", "NUTRITION BREAK"] },
+            14: { it: ["POST-PRANDIAL DIP", "MANTENIMENTO COGNITIVO", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["POST-PRANDIAL DIP", "COGNITIVE MAINT.", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+            16: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
+            18: { it: ["FINESTRA ANABOLICA", "CALMA OPERATIVA", "GABA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "OPERATIONAL CALM", "GABA", "DOWNTIME"] },
+            20: { it: ["MODALITÀ RECUPERO", "DECOMPRESSIONE", "ADENOSINA", "RELAX ATTIVO"], en: ["RECOVERY MODE", "DOWNTIME", "ADENOSINE", "ACTIVE RELAX"] },
+            22: { it: ["RILASCIO MELATONINA", "INIZIO RIGENERAZIONE", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "REGEN START", "MELATONIN", "NO BLUE LIGHT"] },
+            23: { it: ["FASE REM", "CONSOLIDAMENTO MEMORIA", "BDNF", "SOGNO PROFONDO"], en: ["REM PHASE", "MEMORY CONSOLIDATION", "BDNF", "DEEP DREAMING"] }
+        };
 
-    const bioExplanations = {
-        "DOPAMINA": "Neurotrasmettitore della motivazione. Al mattino spinge all'azione e al focus.",
-        "ACETILCOLINA": "Essenziale per memoria e apprendimento. Supporta la plasticità neuronale pomeridiana.",
-        "GABA": "L'inibitore principale del sistema nervoso. Riduce lo stress e prepara al relax.",
-        "MELATONINA": "L'ormone del sonno. Regola il ritmo circadiano e la riparazione cellulare.",
-        "CORTISOLO": "Ormone dello stress benefico: mobilita le energie e attiva il corpo per il risveglio.",
-        "GRELINA": "L'ormone della fame. Segnala al cervello che è il momento di rifornire il corpo di nutrienti.",
-        "INSULINA": "Gestisce l'assorbimento del glucosio. Fondamentale per il trasporto energetico cellulare.",
-        "ADRENALINA": "Prepara il corpo all'attività fisica, aumentando battito e capacità respiratoria.",
-        "SOMATOTROPINA": "Ormone della crescita. Picco notturno per la riparazione dei tessuti.",
-        "BDNF": "Fattore neurotrofico. Favorisce la sopravvivenza dei neuroni e la plasticità sinaptica.",
-        "ADENOSINA": "Molecola che accumula la 'pressione del sonno' durante il giorno.",
-        "RIGENERAZIONE GLINFATICA": "Sistema di pulizia cerebrale che rimuove le tossine metaboliche durante il sonno profondo.",
-        "LUCE ART. 10K LUX": "Simula la luce solare per sopprimere la melatonina e attivare il cortisolo in inverno.",
-        "SOLE DIRETTO 10M": "L'esposizione ai fotoni solari mattutini sincronizza il ritmo circadiano per 24 ore.",
-        "INTEGRA VITAMINA D": "Essenziale nei mesi freddi per supportare il sistema immunitario e la produzione di dopamina.",
-        "IDRATAZIONE + SALI": "In estate, il calore aumenta la dispersione di elettroliti necessari alla conduzione neuronale.",
-        "THERMO-RELAX (CALDO)": "Il calore serale favorisce la vasodilatazione, aiutando il corpo a raffreddarsi per il sonno.",
-        "default": "Dato bio-sincronizzato in tempo reale.",
-        "default_advice": "Consiglio bio-ottimizzato basato sulle variabili ambientali e circadiane attuali."
-    };
+        const bioExplanations = {
+            "DOPAMINA": "Neurotrasmettitore della motivazione. Al mattino spinge all'azione e al focus.",
+            "ACETILCOLINA": "Essenziale per memoria e apprendimento. Supporta la plasticità neuronale pomeridiana.",
+            "GABA": "L'inibitore principale del sistema nervoso. Riduce lo stress e prepara al relax.",
+            "MELATONINA": "L'ormone del sonno. Regola il ritmo circadiano e la riparazione cellulare.",
+            "CORTISOLO": "Ormone dello stress benefico: mobilita le energie e attiva il corpo per il risveglio.",
+            "GRELINA": "L'ormone della fame. Segnala al cervello che è il momento di rifornire il corpo di nutrienti.",
+            "INSULINA": "Gestisce l'assorbimento del glucosio. Fondamentale per il trasporto energetico cellulare.",
+            "ADRENALINA": "Prepara il corpo all'attività fisica, aumentando battito e capacità respiratoria.",
+            "SOMATOTROPINA": "Ormone della crescita. Picco notturno per la riparazione dei tessuti.",
+            "BDNF": "Fattore neurotrofico. Favorisce la sopravvivenza dei neuroni e la plasticità sinaptica.",
+            "ADENOSINA": "Molecola che accumula la 'pressione del sonno' durante il giorno.",
+            "RIGENERAZIONE GLINFATICA": "Sistema di pulizia cerebrale che rimuove le tossine metaboliche durante il sonno profondo.",
+            "LUCE ART. 10K LUX": "Simula la luce solare per sopprimere la melatonina e attivare il cortisolo in inverno.",
+            "SOLE DIRETTO 10M": "L'esposizione ai fotoni solari mattutini sincronizza il ritmo circadiano per 24 ore.",
+            "INTEGRA VITAMINA D": "Essenziale nei mesi freddi per supportare il sistema immunitario e la produzione di dopamina.",
+            "IDRATAZIONE + SALI": "In estate, il calore aumenta la dispersione di elettroliti necessari alla conduzione neuronale.",
+            "THERMO-RELAX (CALDO)": "Il calore serale favorisce la vasodilatazione, aiutando il corpo a raffreddarsi per il sonno.",
+            "default": "Dato bio-sincronizzato in tempo reale.",
+            "default_advice": "Consiglio bio-ottimizzato basato sulle variabili ambientali e circadiane attuali."
+        };
 
-    const getDynamicAdvice = (hour, baseAdvice) => {
-        const season = getCurrentSeason();
-        if (hour >= 6 && hour < 9) {
-            if (season === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-            if (season === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-        }
-        if (hour >= 10 && hour < 13 && (season === "winter" || season === "autumn")) 
-            return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-        if (hour >= 13 && hour < 17 && season === "summer") 
-            return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-        if (hour >= 20 && season === "winter") 
-            return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-        return baseAdvice;
-    };
+        const getDynamicAdvice = (hour, baseAdvice) => {
+            const season = getCurrentSeason();
+            if (hour >= 6 && hour < 9) {
+                if (season === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+                if (season === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+            }
+            if (hour >= 10 && hour < 13 && (season === "winter" || season === "autumn")) 
+                return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+            if (hour >= 13 && hour < 17 && season === "summer") 
+                return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+            if (hour >= 20 && season === "winter") 
+                return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+            return baseAdvice;
+        };
 
-    const updateClock = () => {
-        const now = new Date();
-        const hour = now.getHours();
-        const keys = Object.keys(circadianMap).map(Number).reverse();
-        const currentKey = keys.find(k => hour >= k) || 0;
-        const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-        
-        const advice = getDynamicAdvice(hour, data[3]);
-        const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+        const updateClock = () => {
+            const now = new Date();
+            const hour = now.getHours();
+            const keys = Object.keys(circadianMap).map(Number).reverse();
+            const currentKey = keys.find(k => hour >= k) || 0;
+            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+            
+            const advice = getDynamicAdvice(hour, data[3]);
+            const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-        const molecolaDesc = bioExplanations[data[2]] || bioExplanations["default"];
-        const adviceDesc = bioExplanations[advice] || bioExplanations["default_advice"];
-        const statusDesc = (hour < 6 || hour >= 23) ? bioExplanations["RIGENERAZIONE GLINFATICA"] : "Stato attuale dei processi biologici principali.";
+            const molecolaDesc = bioExplanations[data[2]] || bioExplanations["default"];
+            const adviceDesc = bioExplanations[advice] || bioExplanations["default_advice"];
+            const statusDesc = (hour < 6 || hour >= 23) ? bioExplanations["RIGENERAZIONE GLINFATICA"] : "Stato attuale dei processi biologici principali.";
 
-        clockEl.innerHTML = `
-            <div class="hud-inline-row">
-                <span data-bio-tip="${molecolaDesc}">MOLECOLA: <b class="bio-data-value">${data[2]}</b></span>
-                <span class="separator">|</span>
-                <span data-bio-tip="${adviceDesc}">CONSIGLIO: <b class="bio-data-value">${advice}</b></span>
-            </div>
-            <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
-            <span class="bio-clock-time">${timeStr}</span>
-            <span class="bio-system-state" data-bio-tip="Stato operativo del modulo Biotech Core Engine.">SYS STATE: ${data[1]}</span>
-        `;
-    };
-    updateClock();
-    setInterval(updateClock, 1000);
-}
-
-// --- 4. TOOLTIP BIO-INFO (LOGICA DI CENTRATURA) ---
-function initBiotechTooltips() {
-    let tooltipEl = document.querySelector('.biotech-tooltip');
-    if (!tooltipEl) {
-        tooltipEl = document.createElement('div');
-        tooltipEl.className = 'biotech-tooltip'; 
-        document.body.appendChild(tooltipEl);
+            clockEl.innerHTML = `
+                <div class="hud-inline-row">
+                    <span data-bio-tip="${molecolaDesc}">MOLECOLA: <b class="bio-data-value">${data[2]}</b></span>
+                    <span class="separator">|</span>
+                    <span data-bio-tip="${adviceDesc}">CONSIGLIO: <b class="bio-data-value">${advice}</b></span>
+                </div>
+                <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
+                <span class="bio-clock-time">${timeStr}</span>
+                <span class="bio-system-state" data-bio-tip="Stato operativo del modulo Biotech Core Engine.">SYS STATE: ${data[1]}</span>
+            `;
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
     }
-
-    document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('[data-bio-tip]');
-        if (target) {
-            tooltipEl.textContent = target.getAttribute('data-bio-tip');
-            tooltipEl.style.display = 'block';
-        }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (tooltipEl.style.display === 'block') {
-            // e.clientX fornisce l'ancora, il CSS (transform: translateX(-50%)) centra il box
-            tooltipEl.style.left = e.clientX + 'px';
-            tooltipEl.style.top = (e.clientY + 25) + 'px'; 
-        }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('[data-bio-tip]')) {
-            tooltipEl.style.display = 'none';
-        }
-    });
-}
-
-// --- 4. TOOLTIP BIO-INFO (POSIZIONAMENTO CENTRATO) ---
-function initBiotechTooltips() {
-    let tooltipEl = document.querySelector('.biotech-tooltip');
-    if (!tooltipEl) {
-        tooltipEl = document.createElement('div');
-        tooltipEl.className = 'biotech-tooltip'; 
-        document.body.appendChild(tooltipEl);
-    }
-
-    document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('[data-bio-tip]');
-        if (target) {
-            tooltipEl.textContent = target.getAttribute('data-bio-tip');
-            tooltipEl.style.display = 'block';
-        }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (tooltipEl.style.display === 'block') {
-            // Posizionamento: clientX è il centro orizzontale.
-            // Il CSS (transform: translateX(-50%)) bilancerà il tooltip.
-            tooltipEl.style.left = e.clientX + 'px';
-            tooltipEl.style.top = (e.clientY + 25) + 'px'; // 25px sotto la punta del mouse
-        }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('[data-bio-tip]')) {
-            tooltipEl.style.display = 'none';
-        }
-    });
-}
-
-// --- 4. TOOLTIP BIO-INFO (POSIZIONAMENTO OTTIMIZZATO) ---
-function initBiotechTooltips() {
-    let tooltipEl = document.querySelector('.biotech-tooltip');
-    if (!tooltipEl) {
-        tooltipEl = document.createElement('div');
-        tooltipEl.className = 'biotech-tooltip'; 
-        document.body.appendChild(tooltipEl);
-    }
-
-    document.addEventListener('mouseover', (e) => {
-        const target = e.target.closest('[data-bio-tip]');
-        if (target) {
-            tooltipEl.textContent = target.getAttribute('data-bio-tip');
-            tooltipEl.style.display = 'block';
-        }
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (tooltipEl.style.display === 'block') {
-            // Segue il mouse: clientX per la centratura (via CSS) e clientY per l'altezza
-            tooltipEl.style.left = e.clientX + 'px';
-            tooltipEl.style.top = (e.clientY + 20) + 'px'; // 20px sotto il cursore
-        }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-        if (e.target.closest('[data-bio-tip]')) {
-            tooltipEl.style.display = 'none';
-        }
-    });
-}
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
@@ -1607,7 +1510,7 @@ function initBiotechTooltips() {
         });
     }    
 
-    // --- 4. TOOLTIP BIO-INFO (OTTIMIZZATO) ---
+    // --- 4. TOOLTIP BIO-INFO (UNIFICATO E OTTIMIZZATO) ---
     function initBiotechTooltips() {
         let tooltipEl = document.querySelector('.biotech-tooltip');
         if (!tooltipEl) {
@@ -1616,7 +1519,6 @@ function initBiotechTooltips() {
             document.body.appendChild(tooltipEl);
         }
 
-        // Delegation per gestire elementi creati dinamicamente (setInterval)
         document.addEventListener('mouseover', (e) => {
             const target = e.target.closest('[data-bio-tip]');
             if (target) {
@@ -1627,9 +1529,10 @@ function initBiotechTooltips() {
 
         document.addEventListener('mousemove', (e) => {
             if (tooltipEl.style.display === 'block') {
-                // Offset di 15px per non coprire il cursore
-                tooltipEl.style.left = (e.clientX + 15) + 'px';
-                tooltipEl.style.top = (e.clientY + 15) + 'px';
+                // Utilizza clientX per la posizione orizzontale (centrata via CSS)
+                // e clientY per la posizione verticale (25px sotto il cursore)
+                tooltipEl.style.left = e.clientX + 'px';
+                tooltipEl.style.top = (e.clientY + 25) + 'px';
             }
         });
 
