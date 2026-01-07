@@ -332,8 +332,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 /* Augurio moderno */
-.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;margin-bottom: -13px; /* Riduce lo spazio sotto 'Buongiorno' */ line-height: 1.9; /* Comprime l'altezza della riga */}
-.modern-greeting { position: relative; top: -65px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1.1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
+.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;margin-bottom: -13px; /* Riduce lo spazio sotto 'Buongiorno' */ line-height: 1.9; /* Comprime l'altezza della riga */}
+.modern-greeting { position: relative; top: -65px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; margin: 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
 /* Contenitore per orologio, conto alla rovescia e augurio - Per smartphone */
 @media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
 /* Contenitore per orologio, conto alla rovescia e augurio - Per tablet */
@@ -365,7 +365,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     white-space: normal; /* Permette al testo lungo di andare a capo */
     max-width: 250px;
 }
-
 /* End Contenitore per orologio, conto alla rovescia e augurio */   
 /* --- Contenitore del menu moderno --- */
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}
@@ -446,10 +445,60 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* ✅ MANTIENI HOVER SU DESKTOP (solo con mouse) */
 .tech-menu-item:hover .tech-dropdown {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}
 .tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}    
-/* --- Responsive: adatta il menu su mobile --- */
-@media (max-width: 768px) {.tech-nav-container {flex-direction: column; align-items: center; padding: 12px; gap: 4px;} .tech-nav-btn {width: 100%; max-width: 280px; justify-content: center;} .tech-dropdown {min-width: 300px; max-width: 90vw; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96);} .tech-dropdown a {font-size: 1rem; padding: 12px 20px;}}
-@media (max-width: 480px) {.tech-nav-container {padding: 8px;}.tech-nav-btn {font-size: 0.95rem; padding: 9px 14px;} .tech-dropdown {min-width: 260px;} .tech-dropdown a {font-size: 0.95rem; padding: 10px 16px;}}
-@media (prefers-reduced-motion: reduce) {.tech-dropdown, .tech-nav-btn {transition: none;}}
+/* === RESPONSIVE: MENU E AREA BIO-DATA (Accorpato) === */
+
+/* TABLET (max 768px) */
+@media (max-width: 768px) {
+    .tech-nav-container { flex-direction: column; align-items: center; padding: 12px; gap: 4px; }
+    .tech-nav-btn { width: 100%; max-width: 280px; justify-content: center; }
+    .tech-dropdown { min-width: 300px; max-width: 90vw; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96); }
+    .tech-dropdown a { font-size: 1rem; padding: 12px 20px; }
+    
+    /* Spaziatura per il contenitore bio-circadiano */
+    .container_welcome { gap: 12px; }
+}
+
+/* SMARTPHONE (max 480px) */
+@media (max-width: 480px) {
+    /* --- Menu --- */
+    .tech-nav-container { padding: 8px; }
+    .tech-nav-btn { font-size: 0.95rem; padding: 9px 14px; }
+    .tech-dropdown { min-width: 260px; }
+    .tech-dropdown a { font-size: 0.95rem; padding: 10px 16px; }
+
+    /* --- Area Bio-Data (Fix Sovrapposizioni) --- */
+    .logo-wrapper-cls { 
+        min-height: auto; 
+        margin-bottom: 5px; 
+    }
+
+    .container_welcome { 
+        margin-top: 0; 
+        gap: 8px; 
+    }
+
+    /* Riportiamo Orologio, Countdown e Saluto nel flusso naturale */
+    .modern-clock, 
+    .modern-countdown, 
+    .modern-greeting {
+        position: static; 
+        top: 0;           /* Annulla i valori negativi del desktop */
+        margin: 8px auto; 
+        width: 95vw;
+        font-size: 0.95em;
+    }
+
+    /* Dettagli HUD su mobile */
+    .hud-inline-row { font-size: 0.7em; gap: 10px; }
+    .bio-clock-time { font-size: 1em; }
+    .modern-greeting { padding-bottom: 20px; }
+}
+
+/* Accessibilità */
+@media (prefers-reduced-motion: reduce) {
+    .tech-dropdown, .tech-nav-btn, .pulse-logo { transition: none; animation: none; }
+}
+
 /* --- Singola voce del menu (wrapper per pulsante + dropdown) --- */
 .tech-menu-item {position: relative; display: flex; flex-direction: column; align-items: center;}
 :root {color-scheme: dark;
