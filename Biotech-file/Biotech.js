@@ -1352,35 +1352,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DIZIONARI SCIENTIFICI POTENZIATI (IT/EN) ---
     const bioExplanations = {
         it: {
+            // --- ETICHETTE DI STATO (data[0]) ---
+            "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici tramite il liquido cerebrospinale.",
+            "PICCO DI CORTISOLO": "Fase di massima attivazione surrenale per elevare la glicemia e preparare l'organismo alle richieste energetiche diurne.",
+            "VIGILANZA ELEVATA": "Stato di allerta cognitiva ottimale guidato dalla stabilità dell'oressina e dal basso carico di adenosina.",
+            "MASSIMA ALLERTA": "Finestra di massima velocità di elaborazione neurale e coordinazione. Picco della temperatura corporea e della dopamina.",
+            "RISPOSTA LEPTINICA": "Segnale ormonale di sazietà che sposta il metabolismo verso l'immagazzinamento e il recupero post-prandiale.",
+            "MANTENIMENTO COGNITIVO": "Fase di stabilizzazione dell'attenzione sostenuta dall'acetilcolina prima del calo metabolico pomeridiano.",
+            "PICCO FISICO": "Massima efficienza cardiovascolare e forza muscolare. I polmoni e il cuore operano alla massima capacità.",
+            "FINESTRA ANABOLICA": "Periodo ottimale per la riparazione cellulare e la sintesi proteica grazie alla gestione dell'insulina.",
+            "CALMA NEURONALE": "Transizione verso il sistema parasimpatico. Riduzione dei battiti e preparazione al rilascio di melatonina.",
+            "RILASCIO MELATONINA": "Inizio della secrezione pineale che segnala al corpo l'inizio della notte biologica.",
+            "RIPARAZIONE TESSUTI": "Processo rigenerativo profondo mediato dall'ormone della crescita (GH) durante le prime fasi del sonno.",
+            // --- MOLECOLE (data[2]) ---
             "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito. Fondamentale per la stabilità dei cicli sonno-veglia.",
-            "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo. Segnala al cervello lo stato delle riserve energetiche, inibendo la fame.",
-            "PULIZIA CEREBRALE": "Attività del sistema glinfatico: il fluido cerebrospinale rimuove tossine metaboliche come la proteina beta-amiloide.",
-            "PICCO SOMATOTROPINA": "Massima secrezione di GH (ormone della crescita), essenziale per la rigenerazione cellulare e proteica.",
-            "SINTESI PROTEICA": "Processo biochimico di riparazione tissutale, massimizzato durante la finestra anabolica serale.",
-            "RESET CIRCADIANO": "Sincronizzazione del nucleo soprachiasmatico tramite l'esposizione alla luce naturale mattutina.",
-            "ATTIVAZIONE ORESSINA": "Fase di incremento della vigilanza e della motivazione legata alla ricerca di nutrienti.",
-            "RISPOSTA LEPTINICA": "Segnale ormonale di sazietà che sposta il metabolismo verso l'immagazzinamento e il recupero.",
-            "STABILITÀ SINAPTICA": "Mantenimento dell'efficienza dei collegamenti neuronali durante la fase post-prandiale.",
-            "CALMA NEURONALE": "Transizione verso il sistema parasimpatico, facilitata dal rilascio di GABA.",
-            "INIZIO PULIZIA": "Fase preliminare di attivazione del sistema glinfatico e calo della temperatura centrale.",
-            "DOPAMINA": "Catecolamina della ricompensa. Innesca la motivazione e ottimizza le funzioni esecutive della corteccia prefrontale.",
+            "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo. Segnala al cervello lo stato delle riserve energetiche.",
+            "DOPAMINA": "Neurotrasmettitore della ricompensa e della motivazione. Ottimizza le funzioni esecutive della corteccia prefrontale.",
             "ACETILCOLINA": "Modulatore della plasticità sinaptica. Fondamentale per la memoria a lungo termine e l'attenzione sostenuta.",
             "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale, stabilizzando il sistema nervoso contro lo stress.",
-            "MELATONINA": "Indoloammina pineale. Regola il ritmo circadiano e agisce come potente antiossidante mitocondriale notturno.",
+            "MELATONINA": "Indoloammina pineale. Regola il ritmo circadiano e agisce come potente antiossidante mitocondriale.",
             "CORTISOLO": "Glucocorticoide del risveglio: eleva la glicemia e prepara il corpo allo stress metabolico diurno.",
-            "GRELINA": "Ormone peptidico dello stomaco. Stimola l'appetito e promuove la secrezione dell'ormone della crescita.",
-            "INSULINA": "Ormone anabolico pancreatico. Regola l'omeostasi del glucosio e l'uptake cellulare di aminoacidi.",
             "ADRENALINA": "Epinefrina: attiva il sistema simpatico. Aumenta la gittata cardiaca per una risposta fisica immediata.",
+            "INSULINA": "Ormone anabolico pancreatico. Regola l'omeostasi del glucosio e l'uptake cellulare di aminoacidi.",
             "SOMATOTROPINA": "Ormone della crescita (GH). Cruciale per la riparazione dei tessuti e il metabolismo lipidico notturno.",
-            "BDNF": "Fattore neurotrofico. Supporta la neurogenesi, la sopravvivenza neuronale e la crescita di nuove sinapsi.",
             "ADENOSINA": "Sottoprodotto del metabolismo energetico (ATP). Il suo accumulo crea la pressione omeostatica del sonno.",
-            "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici tramite il liquido cerebrospinale.",
-            "LUCE ART. 10K LUX": "Fotobiomodulazione invernale: simula lo spettro solare per resettare l'orologio circadiano (nucleo soprachiasmatico).",
-            "SOLE DIRETTO 10M": "L'esposizione ai fotoni solari mattutini sincronizza i geni clock per ottimizzare il rilascio di melatonina serale.",
-            "INTEGRA VITAMINA D": "Secosteroide essenziale per l'espressione genica, il supporto immunitario e la sintesi di neurotrasmettitori.",
-            "IDRATAZIONE + SALI": "Ripristino degli elettroliti fondamentali per il potenziale d'azione neuronale e la prevenzione del calo cognitivo.",
-            "THERMO-RELAX (CALDO)": "La termoregolazione passiva facilita il calo della temperatura corporea centrale necessario all'induzione del sonno.",
-            "BUIO TOTALE": "Assenza di fotoni per stimolare la ghiandola pineale e massimizzare la secrezione di melatonina.",
+            // --- CONSIGLI (data[3] & Dynamic) ---
             "LUCE NATURALE": "Esposizione precoce ai fotoni solari per sopprimere l'inerzia del sonno e resettare i ritmi circadiani.",
             "COLAZIONE PROT.": "L'apporto proteico mattutino fornisce precursori aminoacidici per la sintesi dei neurotrasmettitori.",
             "FOCUS ATTIVO": "Finestra di massima vigilanza cognitiva e coordinazione neuromuscolare.",
@@ -1390,39 +1386,40 @@ document.addEventListener('DOMContentLoaded', () => {
             "DECOMPRESSIONE": "Riduzione degli stimoli simpatici per favorire la transizione verso il sistema parasimpatico.",
             "RELAX ATTIVO": "Attività a basso impatto per facilitare lo smaltimento del cortisolo residuo.",
             "NO LUCE BLU": "Blocco delle frequenze luminose 450-480nm per prevenire l'inibizione della melatonina.",
-            "SOGNO PROFONDO": "Fase critica per il consolidamento della memoria e la pulizia metabolica cerebrale.",
-            "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core."            
+            "BUIO TOTALE": "Assenza di fotoni per stimolare la ghiandola pineale e massimizzare la secrezione di melatonina.",
+            "LUCE ART. 10K LUX": "Fotobiomodulazione invernale: simula lo spettro solare per resettare l'orologio circadiano.",
+            "SOLE DIRETTO 10M": "L'esposizione ai fotoni solari mattutini ottimizza il rilascio di melatonina circa 14 ore dopo.",
+            "INTEGRA VITAMINA D": "Supporto fondamentale per l'espressione genica circadiana e il sistema immunitario.",
+            "IDRATAZIONE + SALI": "Ripristino degli elettroliti per mantenere il potenziale d'azione neuronale durante il calore estivo.",
+            "THERMO-RELAX (CALDO)": "Il calore superficiale favorisce la vasodilatazione periferica, abbassando la temperatura centrale per il sonno.",
+            "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core."
         },
         en: {
-            "OREXIN": "Hypothalamic neuropeptide stabilizing wakefulness and regulating appetite. Essential for sleep-wake cycle stability.",
-            "LEPTIN": "Satiety hormone produced by adipose tissue. It signals energy reserves to the brain, inhibiting hunger.",
-            "BRAIN CLEARANCE": "Glymphatic system activity: cerebrospinal fluid flows between neurons to remove metabolic toxins like beta-amyloid.",
-            "GH PEAK": "Maximum growth hormone (GH) secretion, essential for cellular and protein regeneration.",
-            "PROTEIN SYNTHESIS": "Biochemical process of tissue repair, maximized during the evening anabolic window.",
-            "CIRCADIAN RESET": "Synchronization of the suprachiasmatic nucleus through exposure to morning natural light.",
-            "OREXIN ACTIVATION": "Phase of increased alertness and motivation linked to nutrient seeking.",
-            "LEPTIN RESPONSE": "Hormonal satiety signal shifting metabolism towards storage and recovery.",
-            "SYNAPTIC STABILITY": "Maintenance of neuronal connection efficiency during the post-prandial phase.",
-            "NEURONAL CALM": "Transition to the parasympathetic system, facilitated by GABA release.",
-            "CLEARANCE START": "Preliminary phase of glymphatic system activation and core temperature drop.",
-            "DOPAMINE": "Reward catecholamine. It triggers goal-oriented motivation and optimizes executive functions in the prefrontal cortex.",
-            "ACETYLCHOLINE": "Synaptic plasticity modulator. Essential for long-term memory encoding and sustained attention.",
-            "GABA": "Inhibitory neurotransmitter. It reduces neuronal excitability, stabilizing the nervous system against stress.",
-            "MELATONIN": "Pineal indoleamine. It regulates circadian rhythms and acts as a potent nocturnal mitochondrial antioxidant.",
-            "CORTISOL": "Awakening glucocorticoid: it elevates blood glucose and prepares the body for diurnal metabolic stress.",
-            "GHRELIN": "Peptide hormone produced in the stomach. Stimulates appetite and promotes growth hormone secretion.",
+            // --- STATE LABELS (data[0]) ---
+            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate metabolic waste flushing via cerebrospinal fluid.",
+            "CORTISOL SPIKE": "Peak adrenal activation phase to elevate blood glucose and prepare the body for daytime energy demands.",
+            "HIGH VIGILANCE": "Optimal cognitive alertness state driven by orexin stability and low adenosine load.",
+            "MAX ALERTNESS": "Window of maximum neural processing speed and coordination. Peak body temperature and dopamine levels.",
+            "LEPTIN RESPONSE": "Hormonal satiety signal shifting metabolism toward storage and post-prandial recovery.",
+            "COGNITIVE MAINT.": "Attention stabilization phase supported by acetylcholine before the afternoon metabolic dip.",
+            "PHYSICAL PEAK": "Maximum cardiovascular efficiency and muscle strength. Heart and lungs operate at peak capacity.",
+            "ANABOLIC WINDOW": "Optimal period for cellular repair and protein synthesis driven by insulin management.",
+            "NEURONAL CALM": "Transition to the parasympathetic system. Heart rate reduction and preparation for melatonin release.",
+            "MELATONIN ONSET": "Onset of pineal secretion signaling the beginning of the biological night to the body.",
+            "TISSUE REPAIR": "Deep regenerative process mediated by growth hormone (GH) during early sleep stages.",
+            // --- MOLECULES (data[2]) ---
+            "OREXIN": "Hypothalamic neuropeptide that stabilizes wakefulness and regulates appetite. Key for sleep-wake cycle stability.",
+            "LEPTIN": "Satiety hormone produced by adipose tissue. It signals the state of energy reserves to the brain.",
+            "DOPAMINE": "Reward and motivation neurotransmitter. Optimizes executive functions in the prefrontal cortex.",
+            "ACETYLCHOLINE": "Synaptic plasticity modulator. Essential for long-term memory and sustained attention.",
+            "GABA": "Inhibitory neurotransmitter. Reduces neuronal excitability, stabilizing the nervous system against stress.",
+            "MELATONIN": "Pineal indoleamine. Regulates circadian rhythms and acts as a powerful mitochondrial antioxidant.",
+            "CORTISOL": "Awakening glucocorticoid: elevates blood glucose and prepares the body for diurnal metabolic stress.",
+            "ADRENALINE": "Epinephrine: activates the sympathetic system. Increases cardiac output for immediate physical response.",
             "INSULIN": "Anabolic pancreatic hormone. Regulates glucose homeostasis and cellular amino acid uptake.",
-            "ADRENALINE": "Epinephrine: activates the sympathetic nervous system. Increases cardiac output for immediate physical response.",
             "SOMATOTROPIN": "Growth Hormone (GH). Crucial for tissue repair and nocturnal lipid metabolism.",
-            "BDNF": "Neurotrophic factor. Supports neurogenesis, neuronal survival, and the growth of new synapses.",
             "ADENOSINE": "ATP energy metabolism byproduct. Its accumulation creates homeostatic sleep pressure.",
-            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate the flushing of metabolic waste via cerebrospinal fluid.",
-            "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates the solar spectrum to reset the circadian clock (suprachiasmatic nucleus).",
-            "DIRECT SUN 10M": "Morning photon exposure synchronizes clock genes to optimize melatonin release 14 hours later.",
-            "VITAMIN D INTAKE": "Essential secosteroid for gene expression, immune support, and neurotransmitter synthesis.",
-            "HYDRATION + SALTS": "Restoration of electrolytes critical for neuronal action potential and prevention of cognitive decline.",
-            "WARM THERMO-RELAX": "Passive thermoregulation facilitates the core body temperature drop necessary for sleep induction.",
-            "TOTAL DARKNESS": "Absence of photons to stimulate the pineal gland and maximize melatonin secretion.",
+            // --- ADVICE (data[3] & Dynamic) ---
             "NATURAL LIGHT": "Early exposure to solar photons to suppress sleep inertia and reset circadian rhythms.",
             "PROTEIN BREAKFAST": "Morning protein intake provides amino acid precursors for neurotransmitter synthesis.",
             "ACTIVE FOCUS": "Window of maximum cognitive alertness and neuromuscular coordination.",
@@ -1430,10 +1427,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "ANALYTICAL FOCUS": "Optimal phase for precision and logic tasks, supported by acetylcholine stability.",
             "WORKOUT": "Physical activity to leverage the afternoon peak in body temperature and muscle strength.",
             "DOWNTIME": "Reduction of sympathetic stimuli to favor the transition toward the parasympathetic system.",
-            "ACTIVE RELAX": "Low-impact activities to facilitate the clearance of residual cortisol.",
+            "ACTIVE RELAX": "Low-impact activity to facilitate the clearance of residual cortisol.",
             "NO BLUE LIGHT": "Blocking 450-480nm light frequencies to prevent melatonin inhibition.",
-            "DEEP DREAMING": "Critical phase for memory consolidation and brain metabolic clearance.",
-            "default": "Bio-synchronized data via Biotech Core."            
+            "TOTAL DARKNESS": "Absence of photons to stimulate the pineal gland and maximize melatonin secretion.",
+            // --- DYNAMIC ADVICE KEYS (Matches getDynamicAdvice) ---
+            "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates the solar spectrum to reset the circadian clock.",
+            "DIRECT SUN 10M": "Morning photon exposure optimizes melatonin release approximately 14 hours later.",
+            "VITAMIN D INTAKE": "Critical support for circadian gene expression and the immune system.",
+            "HYDRATION + SALTS": "Electrolyte restoration to maintain neuronal action potential during summer heat.",
+            "WARM THERMO-RELAX": "Surface heat promotes peripheral vasodilation, lowering core temperature for sleep induction.",
+            "default": "Bio-synchronized data via Biotech Core module."
         }
     };
 
@@ -1502,56 +1505,71 @@ function initSeasonMonitor() {
         };
 
         const getDynamicAdvice = (h, base) => {
-            const s = getCurrentSeason();
-            if (h >= 6 && h < 9) {
-                if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-                if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-            }
-            if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-            if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-            if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-            return base;
-        };
+    const s = getCurrentSeason();
+    if (h >= 6 && h < 9) {
+        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+    }
+    // NOTA: Qui usiamo le chiavi esatte del dizionario EN
+    if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) 
+        return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+    
+    if (h >= 13 && h < 17 && s === "summer") 
+        return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+    
+    if (h >= 20 && s === "winter") 
+        return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+        
+    return base;
+};
 
         const updateClock = () => {
-            const now = new Date();
-            const hour = now.getHours();
-            const keys = Object.keys(circadianMap).map(Number).reverse();
-            const currentKey = keys.find(k => hour >= k) || 0;
-            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-            
-            const advice = getDynamicAdvice(hour, data[3]);
-            const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    const now = new Date();
+    const hour = now.getHours();
+    const keys = Object.keys(circadianMap).map(Number).reverse();
+    const currentKey = keys.find(k => hour >= k) || 0;
+    
+    // 1. Recupera i dati (IT o EN) in base alla lingua attiva
+    const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+    
+    // 2. Recupera il consiglio dinamico e genera la stringa oraria
+    const advice = getDynamicAdvice(hour, data[3]);
+    const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-            const dict = isIt ? bioExplanations.it : bioExplanations.en;
+    // 3. Seleziona il dizionario corretto
+    const dict = isIt ? bioExplanations.it : bioExplanations.en;
 
-            // NORMALIZZAZIONE: Rimuove spazi e rende maiuscolo per trovare sempre la chiave
-            const molecolaKey = data[2].toUpperCase().trim();
-            const adviceKey = advice.toUpperCase().trim();
+    // 4. RICERCA TOOLTIP: Usa il testo visualizzato (data[2] e advice) come chiave
+    const molecolaKey = data[2].toUpperCase().trim();
+    const adviceKey = advice.toUpperCase().trim();
 
-            const molecolaDesc = dict[molecolaKey] || dict["default"];
-            const adviceDesc = dict[adviceKey] || dict["default"];
+    const molecolaDesc = dict[molecolaKey] || dict["default"];
+    const adviceDesc = dict[adviceKey] || dict["default"];
 
-            // Gestione Specifica Stato/Glinfatico
-            let statusDesc;
-            if (hour < 6 || hour >= 23) {
-                statusDesc = isIt ? dict["RIGENERAZIONE GLINFATICA"] : dict["GLYMPHATIC REGEN"];
-            } else {
-                const statusKey = data[0].toUpperCase().trim();
-                statusDesc = dict[statusKey] || (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
-            }
+    // 5. GESTIONE STATO / GLINFATICO
+    let statusDesc;
+    if (hour < 6 || hour >= 23) {
+        // Se è notte, cerca la chiave specifica per il Sistema Glinfatico nella lingua attiva
+        const glinfaticKey = isIt ? "RIGENERAZIONE GLINFATICA" : "GLYMPHATIC REGEN";
+        statusDesc = dict[glinfaticKey] || dict["default"];
+    } else {
+        // Durante il giorno, usa il nome dello stato visualizzato (data[0]) come chiave
+        const statusKey = data[0].toUpperCase().trim();
+        statusDesc = dict[statusKey] || (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
+    }
 
-            clockEl.innerHTML = `
-                <div class="hud-inline-row">
-                    <span data-bio-tip="${molecolaDesc}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${data[2]}</b></span>
-                    <span class="separator">|</span>
-                    <span data-bio-tip="${adviceDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
-                </div>
-                <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
-                <span class="bio-clock-time">${timeStr}</span>
-                <span class="bio-system-state" data-bio-tip="${isIt ? 'Stato operativo Biotech Core.' : 'Biotech Core operational state.'}">SYS STATE: ${data[1]}</span>
-            `;
-        };
+    // 6. RENDERING HTML
+    clockEl.innerHTML = `
+        <div class="hud-inline-row">
+            <span data-bio-tip="${molecolaDesc}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${data[2]}</b></span>
+            <span class="separator">|</span>
+            <span data-bio-tip="${adviceDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+        </div>
+        <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
+        <span class="bio-clock-time">${timeStr}</span>
+        <span class="bio-system-state" data-bio-tip="${isIt ? 'Stato operativo Biotech Core.' : 'Biotech Core operational state.'}">SYS STATE: ${data[1]}</span>
+    `;
+};
         updateClock();
         setInterval(updateClock, 1000);
     }
