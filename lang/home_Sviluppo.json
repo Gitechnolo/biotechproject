@@ -34,7 +34,7 @@
     "simple_cellular_understanding_intro": "Comprendere il nostro corpo a livello cellulare è il primo passo verso un benessere consapevole. Ecco alcuni concetti fondamentali:",
     "section-preventive": "MEDICINA PREVENTIVA",
     "preventive-medicine-intro": "I fattori che minano la nostra salute e compromettono la serenità sono spesso legati a scelte quotidiane. L'eccesso di peso e l'obesità, l'abuso di fumo e alcol, un'alimentazione scorretta a base di cibi processati, la mancanza di attività fisica e l'isolamento sociale sono tutti elementi che si riflettono direttamente sulla nostra biologia.",
-    "preventive-medicine-conclusion": "Anche la nostra gestione dello stress è fondamentale: un'eccessiva pressione può influive negativamente sul nostro stato psicofisico, manifestandosi con segni visibili di disagio. Attraverso la medicina preventiva, possiamo imparare a riconoscere e a gestire questi fattori, trasformando le abitudini dannose in un percorso verso il benessere.",
+    "preventive-medicine-conclusion": "Anche la nostra gestione dello stress è fondamentale: un'eccessiva pressione può influire negativamente sul nostro stato psicofisico, manifestandosi con segni visibili di disagio. Attraverso la medicina preventiva, possiamo imparare a riconoscere e a gestire questi fattori, trasformando le abitudini dannose in un percorso verso il benessere.",
     "preventive-1": "Sovrappeso e Obesità",
     "preventive-2": "Abuso di fumo ed alcol",
     "preventive-3": "Stress e fretta",
@@ -57,69 +57,7 @@
     "modal-lisosoma-alt": "Diagramma di un Lisosoma, il centro di riciclaggio della cellula che contiene enzimi digestivi.",
     "modal-miochine-alt": "Illustrazione delle Miochine, molecole rilasciate dai muscoli in esercizio che agiscono come messaggeri tra gli organi.",
     "modal-pelle-alt": "Diagramma a strati della pelle (epidermide, derma, ipoderma) con cheratinociti e melanociti in evidenza.",
-    "quote": "Non è segno di buona salute mentale essere ben adattati ad una società malata",
-    "biotech_core": {
-      "ui": {
-        "molecule": "MOLECOLA",
-        "advice": "CONSIGLIO",
-        "sys_state": "SYS STATE",
-        "phase": "FASE CICLO",
-        "t_minus": "G",
-        "greeting_morning": "Buon mattino",
-        "greeting_afternoon": "Buon pomeriggio",
-        "greeting_evening": "Buonasera",
-        "greeting_night": "Buonanotte",
-        "welcome_msg": "Biotech Project vi augura un buon"
-      },
-      "seasons": {
-        "spring": "PRIMAVERA",
-        "summer": "ESTATE",
-        "autumn": "AUTUNNO",
-        "winter": "INVERNO"
-      },
-      "molecules": {
-        "ADENOSINA": "Accumulo di pressione omeostatica del sonno.",
-        "SOMATOTROPINA": "Cruciale per la riparazione dei tessuti e il metabolismo.",
-        "CORTISOLO": "Ormone del risveglio: eleva la glicemia e prepara allo stress.",
-        "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito.",
-        "DOPAMINA": "Neurotrasmettitore della ricompensa e della motivazione.",
-        "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo.",
-        "ACETILCOLINA": "Modulatore della plasticità sinaptica. Fondamentale per la memoria.",
-        "ADRENALINA": "Attiva il sistema simpatico per una risposta fisica immediata.",
-        "INSULINA": "Regola l'omeostasi del glucosio e l'uptake cellulare.",
-        "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale.",
-        "MELATONINA": "Regola il ritmo circadiano e agisce come antiossidante.",
-        "default": "Dato bio-sincronizzato tramite Biotech Core."
-      },
-      "advice": {
-        "BUIO TOTALE": "Massimizza la secrezione di melatonina pineale.",
-        "RIPARAZIONE PROFONDA": "Fase di rigenerazione cellulare profonda.",
-        "LUCE NATURALE": "Esposizione precoce ai fotoni solari per resettare i ritmi.",
-        "COLAZIONE PROT.": "Apporto proteico per la sintesi dei neurotrasmettitori.",
-        "FOCUS ATTIVO": "Finestra di massima vigilanza cognitiva.",
-        "PAUSA NUTRIZIONE": "Sincronizzazione degli orologi periferici tramite nutrienti.",
-        "FOCUS ANALITICO": "Fase ottimale per compiti di precisione e logica.",
-        "MOVIMENTO": "Sfrutta il picco di temperatura e forza muscolare.",
-        "DECOMPRESSIONE": "Favorisce la transizione verso il sistema parasimpatico.",
-        "RELAX ATTIVO": "Attività a basso impatto per smaltire il cortisolo.",
-        "NO LUCE BLU": "Previene l'inibizione della melatonina serale.",
-        "default": "Analisi bio-sincronizzata Biotech."
-      },
-      "status_labels": {
-        "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici.",
-        "RIPARAZIONE TESSUTI": "RIPARAZIONE TESSUTI: Rigenerazione profonda mediata dall'ormone GH.",
-        "PICCO DI CORTISOLO": "PICCO DI CORTISOLO: Massima attivazione surrenale per preparare l'organismo.",
-        "VIGILANZA ELEVATA": "VIGILANZA ELEVATA: Stato di allerta ottimale guidato dalla stabilità dell'oressina.",
-        "MASSIMA ALLERTA": "MASSIMA ALLERTA: Massima velocità di elaborazione neurale e coordinazione.",
-        "RISPOSTA LEPTINICA": "RISPOSTA LEPTINICA: Segnale di sazietà che sposta il metabolismo verso il recupero.",
-        "MANTENIMENTO COGNITIVO": "MANTENIMENTO COGNITIVO: Stabilizzazione dell'attenzione supportata dall'acetilcolina.",
-        "PICCO FISICO": "PICCO FISICO: Massima efficienza cardiovascolare e forza muscolare.",
-        "FINESTRA ANABOLICA": "FINESTRA ANABOLICA: Riparazione cellulare e sintesi proteica tramite insulina.",
-        "CALMA NEURONALE": "CALMA NEURONALE: Riduzione dei battiti e preparazione alla melatonina.",
-        "RILASCIO MELATONINA": "RILASCIO MELATONINA: Inizio della secrezione pineale (notte biologica).",
-        "default": "Stato operativo Biotech Core attivo."
-      }
-    }
+    "quote": "Non è segno di buona salute mentale essere ben adattati ad una società malata"        
   },
   "en": {
     "main-heading": "Welcome to Biotech Project!",
@@ -128,11 +66,11 @@
     "manifesto_pillars_title": "Our pillars:",
     "manifesto_pillar_1": "Cognitive Accessibility: Designed for a diverse audience, it offers detailed scientific versions and simplified, highly readable versions, specifically optimized for dyslexia and Specific Learning Disabilities (SLD), in line with WCAG 2.1 standards.",
     "manifesto_pillar_2": "Technology and Performance: We combine solid web development fundamentals with advanced search engine optimization (SEO) via JSON-LD and continuous performance monitoring with GSC, to ensure content reaches anyone who needs it, wherever they are.",
-    "manifesto_goal": "Our ultimate goal is ambitious: to democratize science, by offering an intuitive and reliable tool that inspires curiosity and knowledge in every person.",
+    "manifesto_goal": "Our ultimate goal is ambitious: to democratize science, by offering an intuitive and reliable tool that inspires curiosity and knowledge in every person.",    
     "main-description": "Health is our most precious asset; serenity is the key to our health.",
     "btn-explore": "Explore the Project",
     "video-alt": "Video preview: Singapore’s vertical forest",
-    "video-desc": "The video shows Singapore's vertical forest, a building covered in plants that integrates nature and architecture urban.",
+    "video-desc": "The video shows Singapore's vertical forest, a building covered in plants that integrates nature and urban architecture.",
     "section-science": "Everything you absolutely need to know!",
     "mitocondri-term": "Mitochondria",
     "mitocondri-analogy": "They are the cell's \"powerhouses.\"",
@@ -141,7 +79,7 @@
     "lisosoma-term": "Lysosome",
     "lisosoma-analogy": "Imagine lysosomes as the cell's \"waste disposal\" and \"recycling center.\"",
     "lisosoma-function": "Their job is to destroy old or damaged parts and germs, and then recycle the useful materials to build new structures.",
-    "lisosoma-summary": "In this way, they help the cell stay clean and healthy.",
+    "lisosoma-summary": "This way, they help the cell stay clean and healthy.",
     "miochine-term": "Myokines",
     "miochine-intro": "Myokines are special molecules released by your muscles when you move. They act as messengers that travel through the body to communicate with other organs.",
     "miochine-functions": "They have several important roles: they fight inflammation and may help prevent cancer, but they also serve to improve brain functions, such as memory and attention.",
@@ -178,69 +116,7 @@
     "modal-mitocondri-alt": "Structural diagram of Mitochondria, the cell's powerhouses that produce ATP.",
     "modal-lisosoma-alt": "Diagram of a Lysosome, the cell's recycling center containing digestive enzymes.",
     "modal-miochine-alt": "Illustration of Myokines, molecules released by exercising muscles that act as messengers between organs.",
-    "modal-pelle-alt": "Layered diagram of the skin (epidermide, derma, ipoderma) highlighting keratinocytes and melanocytes.",
-    "quote": "It is no measure of health to be well adjusted to a profoundly sick society",
-    "biotech_core": {
-      "ui": {
-        "molecule": "MOLECULE",
-        "advice": "ADVICE",
-        "sys_state": "SYS STATE",
-        "phase": "CYCLE PHASE",
-        "t_minus": "D",
-        "greeting_morning": "Good morning",
-        "greeting_afternoon": "Good afternoon",
-        "greeting_evening": "Good evening",
-        "greeting_night": "Good night",
-        "welcome_msg": "Biotech Project wishes you a great"
-      },
-      "seasons": {
-        "spring": "SPRING",
-        "summer": "SUMMER",
-        "autumn": "AUTUMN",
-        "winter": "WINTER"
-      },
-      "molecules": {
-        "ADENOSINA": "Creates homeostatic sleep pressure accumulation.",
-        "SOMATOTROPINA": "Crucial for tissue repair and lipid metabolism.",
-        "CORTISOLO": "Awakening hormone: prepares body for metabolic stress.",
-        "ORESSINA": "Hypothalamic neuropeptide that stabilizes wakefulness.",
-        "DOPAMINA": "Reward and motivation neurotransmitter.",
-        "LEPTINA": "Satiety hormone signaling energy reserves.",
-        "ACETILCOLINA": "Synaptic plasticity modulator for memory.",
-        "ADRENALINA": "Activates the sympathetic system for immediate response.",
-        "INSULINA": "Regulates glucose homeostasis and cell uptake.",
-        "GABA": "Inhibitory neurotransmitter. Stabilizes against stress.",
-        "MELATONINA": "Regulates circadian rhythms as a powerful antioxidant.",
-        "default": "Bio-synchronized data via Biotech Core."
-      },
-      "advice": {
-        "BUIO TOTALE": "Absence of photons to stimulate the pineal gland.",
-        "RIPARAZIONE PROFONDA": "Deep cellular regeneration phase.",
-        "LUCE NATURALE": "Early solar photon exposure to reset rhythms.",
-        "COLAZIONE PROT.": "Amino acid precursors for neurotransmitter synthesis.",
-        "FOCUS ATTIVO": "Window of maximum cognitive alertness.",
-        "PAUSA NUTRIZIONE": "Synchronization of peripheral clocks via nutrients.",
-        "FOCUS ANALITICO": "Optimal phase for precision and logic tasks.",
-        "MOVIMENTO": "Leverage peak in body temperature and muscle strength.",
-        "DECOMPRESSIONE": "Favor transition to the parasympathetic system.",
-        "RELAX ATTIVO": "Low-impact activity to clear residual cortisol.",
-        "NO LUCE BLU": "Prevents the inhibition of evening melatonin.",
-        "default": "Biotech bio-synchronized analysis."
-      },
-      "status_labels": {
-        "RIGENERAZIONE GLINFATICA": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate metabolic waste flushing.",
-        "RIPARAZIONE TESSUTI": "TISSUE REPAIR: Deep regeneration mediated by GH hormone.",
-        "PICCO DI CORTISOLO": "CORTISOL SPIKE: Peak adrenal activation to prepare the body.",
-        "VIGILANZA ELEVATA": "HIGH VIGILANCE: Optimal alertness state driven by orexin.",
-        "MASSIMA ALLERTA": "MAX ALERTNESS: Maximum neural processing speed and coordination.",
-        "RISPOSTA LEPTINICA": "LEPTIN RESPONSE: Satiety signal shifting metabolism toward recovery.",
-        "MANTENIMENTO COGNITIVO": "COGNITIVE MAINTENANCE: Attention stabilization supported by acetylcholine.",
-        "PICCO FISICO": "PHYSICAL PEAK: Maximum cardiovascular efficiency and strength.",
-        "FINESTRA ANABOLICA": "ANABOLIC WINDOW: Cellular repair and protein synthesis via insulin.",
-        "CALMA NEURONALE": "NEURONAL CALM: Heart rate reduction and melatonin preparation.",
-        "RILASCIO MELATONINA": "MELATONIN ONSET: Onset of pineal secretion (biological night).",
-        "default": "Biotech Core operational state active."
-      }
-    }
+    "modal-pelle-alt": "Layered diagram of the skin (epidermis, dermis, hypodermis) highlighting keratinocytes and melanocytes.",
+    "quote": "It is no measure of health to be well adjusted to a profoundly sick society"    
   }
 }
