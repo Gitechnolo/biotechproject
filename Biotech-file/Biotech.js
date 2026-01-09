@@ -1336,31 +1336,23 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateBioCycle, 3600000);
     }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO (DAL JSON) ---
-    function initBioClock() {
+    // --- 2. OROLOGIO BIO-CIRCADIANO (PULITO E SINCRONIZZATO) ---
+function initBioClock() {
     const clockEl = document.getElementById('clock2');
     if (!clockEl) return;
 
-    // Mappa delle chiavi (Sincronizzata con JSON)
     const circadianMap = {
-        0:  { status: "GLYMPHATIC",     mol: "ADENOSINA",      adv: "BUIO_TOTALE",      sys: "PULIZIA CEREBRALE" },
-        3:  { status: "TISSUE_REPAIR",  mol: "SOMATOTROPINA",  adv: "RIPARAZIONE_PROF",  sys: "GH PEAK" },
-        6:  { status: "CORTISOL_SPIKE", mol: "CORTISOLO",      adv: "LUCE_NATURALE",    sys: "RESET CIRCADIANO" },
-        9:  { status: "HIGH_VIGILANCE", mol: "ORESSINA",       adv: "COLAZIONE_PROT",    sys: "ATTIVAZIONE" },
-        11: { status: "MAX_ALERT",      mol: "DOPAMINA",       adv: "FOCUS_ATTIVO",     sys: "PICCO COGNITIVO" },
-        13: { status: "LEPTIN_RESPONSE",mol: "LEPTINA",        adv: "PAUSA_NUTRIZIONE",  sys: "SAZIETÀ" },
-        15: { status: "COGNITIVE_MAINT",mol: "ACETILCOLINA",   adv: "FOCUS_ANALITICO",   sys: "STABILITÀ" },
-        17: { status: "PHYSICAL_PEAK",  mol: "ADRENALINA",     adv: "MOVIMENTO",        sys: "EFFICIENZA MAX" },
-        19: { status: "ANABOLIC_WINDOW",mol: "INSULINA",       adv: "DECOMPRESSIONE",    sys: "SINTESI" },
-        21: { status: "NEURONAL_CALM",  mol: "GABA",           adv: "RELAX_ATTIVO",     sys: "RECUPERO" },
-        23: { status: "MELATONIN_ONSET",mol: "MELATONINA",      adv: "NO_LUCE_BLU",      sys: "INIZIO NOTTE" }
-    };
-
-    const getGreeting = (hour, lang) => {
-        if (hour >= 5 && hour < 12) return lang === 'it' ? "BUONGIORNO" : "GOOD MORNING";
-        if (hour >= 12 && hour < 18) return lang === 'it' ? "BUON POMERIGGIO" : "GOOD AFTERNOON";
-        if (hour >= 18 && hour < 22) return lang === 'it' ? "BUONASERA" : "GOOD EVENING";
-        return lang === 'it' ? "BUONANOTTE" : "GOOD NIGHT";
+        0:  { status: "RIGENERAZIONE GLINFATICA", mol: "ADENOSINA", adv: "BUIO TOTALE", sys: "PULIZIA CEREBRALE" },
+        3:  { status: "RIPARAZIONE TESSUTI", mol: "SOMATOTROPINA", adv: "RIPARAZIONE PROFONDA", sys: "GH PEAK" },
+        6:  { status: "PICCO DI CORTISOLO", mol: "CORTISOLO", adv: "LUCE NATURALE", sys: "RESET CIRCADIANO" },
+        9:  { status: "VIGILANZA ELEVATA", mol: "ORESSINA", adv: "COLAZIONE PROT.", sys: "ATTIVAZIONE" },
+        11: { status: "MASSIMA ALLERTA", mol: "DOPAMINA", adv: "FOCUS ATTIVO", sys: "PICCO COGNITIVO" },
+        13: { status: "RISPOSTA LEPTINICA", mol: "LEPTINA", adv: "PAUSA NUTRIZIONE", sys: "SAZIETÀ" },
+        15: { status: "MANTENIMENTO COGNITIVO", mol: "ACETILCOLINA", adv: "FOCUS ANALITICO", sys: "STABILITÀ" },
+        17: { status: "PICCO FISICO", mol: "ADRENALINA", adv: "MOVIMENTO", sys: "EFFICIENZA MAX" },
+        19: { status: "FINESTRA ANABOLICA", mol: "INSULINA", adv: "DECOMPRESSIONE", sys: "SINTESI" },
+        21: { status: "CALMA NEURONALE", mol: "GABA", adv: "RELAX ATTIVO", sys: "RECUPERO" },
+        23: { status: "RILASCIO MELATONINA", mol: "MELATONINA", adv: "NO LUCE BLU", sys: "INIZIO NOTTE" }
     };
 
     const updateClock = () => {
@@ -1374,32 +1366,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentKey = keys.find(k => hour >= k) || 0;
         const data = circadianMap[currentKey];
 
-        // 1. Estrazione testi tradotti dal JSON
-        // Per lo Status e l'Advice prendiamo il valore descrittivo completo dal JSON
-        const translatedStatus = core.status_labels[data.status] || data.status;
-        const translatedAdv = core.advice[data.adv] || data.adv;
-        const translatedMol = data.mol; // Il nome della molecola resta tecnico/universale
+        // Gestione Saluto Dinamico
+        const daysIT = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
+        const daysEN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const dayName = lang === 'it' ? daysIT[now.getDay()] : daysEN[now.getDay()];
+        
+        let greetKey = "greeting_night";
+        if (hour >= 5 && hour < 12) greetKey = "greeting_morning";
+        else if (hour >= 12 && hour < 18) greetKey = "greeting_afternoon";
+        else if (hour >= 18 && hour < 22) greetKey = "greeting_evening";
 
-        // 2. Estrazione descrizioni per i Tooltip
-        const molTooltip = core.molecules[data.mol] || core.molecules.default;
-        const advTooltip = core.advice[data.adv] || core.advice.default;
+        const welcomePart = core.ui.welcome_msg;
+        const greetPart = core.ui[greetKey];
+
+        // Traduzioni testi e tooltip
+        const displayAdv = core.advice[data.adv] || data.adv;
+        const displayStatus = core.status_labels[data.status] || data.status;
+        const molTip = core.molecules[data.mol] || core.molecules.default;
+        const advTip = core.advice[data.adv] || core.advice.default;
 
         const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-        const greeting = getGreeting(hour, lang);
 
         clockEl.innerHTML = `
-            <div class="bio-greeting" style="font-size: 0.9rem; color: #00ffcc; margin-bottom: 5px; letter-spacing: 1px;">${greeting}</div>
             <div class="hud-inline-row">
-                <span data-bio-tip="${molTooltip}">${core.ui.molecule}: <b class="bio-data-value">${translatedMol}</b></span>
+                <span data-bio-tip="${molTip}">${core.ui.molecule}: <b class="bio-data-value">${data.mol}</b></span>
                 <span class="separator">|</span>
-                <span data-bio-tip="${advTooltip}">${core.ui.advice}: <b class="bio-data-value">${translatedAdv}</b></span>
+                <span data-bio-tip="${advTip}">${core.ui.advice}: <b class="bio-data-value">${displayAdv}</b></span>
             </div>
-            <span class="bio-status-label" data-bio-tip="${translatedStatus}">${data.status.replace(/_/g, ' ')}</span>
-            <span class="bio-clock-time">${timeStr}</span>
-            <span class="bio-system-state" data-bio-tip="${lang === 'it' ? 'Stato operativo.' : 'Operational state.'}">${core.ui.sys_state}: ${data.sys}</span>
+            
+            <div class="bio-status-container">
+                <div class="bio-status-label" data-bio-tip="${displayStatus}">${data.status}</div>
+                <div class="bio-clock-time">${timeStr}</div>
+                <div class="bio-system-state">${core.ui.sys_state}: ${data.sys}</div>
+            </div>
+
+            <div class="bio-final-greeting">
+                ${greetPart}<br>
+                <span class="bio-day-welcome">${welcomePart} ${dayName}!</span>
+            </div>
         `;
     };
-
     updateClock();
     setInterval(updateClock, 1000);
 }
