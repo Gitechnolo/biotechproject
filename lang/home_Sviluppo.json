@@ -59,66 +59,62 @@
     "modal-pelle-alt": "Diagramma a strati della pelle (epidermide, derma, ipoderma) con cheratinociti e melanociti in evidenza.",
     "quote": "Non è segno di buona salute mentale essere ben adattati ad una società malata",
     "biotech_core": {
-      "ui": {
-        "molecule": "MOLECOLA",
-        "advice": "CONSIGLIO",
-        "sys_state": "SYS STATE",
-        "phase": "FASE CICLO",
-        "t_minus": "G"
-      },
-      "seasons": {
-        "spring": "PRIMAVERA",
-        "summer": "ESTATE",
-        "autumn": "AUTUNNO",
-        "winter": "INVERNO"
-      },
-      "molecules": {
-        "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito.",
-        "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo.",
-        "DOPAMINA": "Neurotrasmettitore della ricompensa e della motivazione.",
-        "ACETILCOLINA": "Modulatore della plasticità sinaptica. Fondamentale per la memoria.",
-        "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale.",
-        "MELATONINA": "Regola il ritmo circadiano e agisce come antiossidante.",
-        "CORTISOLO": "Ormone del risveglio: eleva la glicemia e prepara allo stress.",
-        "ADRENALINA": "Attiva il sistema simpatico per una risposta fisica immediata.",
-        "INSULINA": "Regola l'omeostasi del glucosio e l'uptake cellulare.",
-        "SOMATOTROPINA": "Cruciale per la riparazione dei tessuti e il metabolismo.",
-        "ADENOSINA": "Accumulo di pressione omeostatica del sonno.",
-        "default": "Dato bio-sincronizzato tramite Biotech Core."
-      },
-      "advice": {
-        "LUCE NATURALE": "Esposizione precoce ai fotoni solari per resettare i ritmi.",
-        "COLAZIONE PROT.": "Apporto proteico per la sintesi dei neurotrasmettitori.",
-        "FOCUS ATTIVO": "Finestra di massima vigilanza cognitiva.",
-        "PAUSA NUTRIZIONE": "Sincronizzazione degli orologi periferici tramite nutrienti.",
-        "FOCUS ANALITICO": "Fase ottimale per compiti di precisione e logica.",
-        "MOVIMENTO": "Sfrutta il picco di temperatura e forza muscolare.",
-        "DECOMPRESSIONE": "Favorisce la transizione verso il sistema parasimpatico.",
-        "RELAX ATTIVO": "Attività a basso impatto per smaltire il cortisolo.",
-        "NO LUCE BLU": "Previene l'inibizione della melatonina serale.",
-        "BUIO TOTALE": "Massimizza la secrezione di melatonina pineale.",
-        "LUCE ART. 10K LUX": "Fotobiomodulazione invernale per resettare il ritmo.",
-        "SOLE DIRETTO 10M": "Ottimizza il rilascio di melatonina posticipato.",
-        "INTEGRA VITAMINA D": "Supporto per l'espressione genica circadiana.",
-        "IDRATAZIONE + SALI": "Ripristino elettroliti per il potenziale d'azione.",
-        "THERMO-RELAX (CALDO)": "Vasodilatazione per abbassare la temperatura centrale.",
-        "default": "Analisi bio-sincronizzata Biotech."
-      },
-      "status_labels": {
-        "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici.",
-        "PICCO DI CORTISOLO": "Massima attivazione surrenale per preparare l'organismo.",
-        "VIGILANZA ELEVATA": "Stato di allerta ottimale guidato dalla stabilità dell'oressina.",
-        "MASSIMA ALLERTA": "Massima velocità di elaborazione neurale e coordinazione.",
-        "RISPOSTA LEPTINICA": "Segnale di sazietà che sposta il metabolismo verso il recupero.",
-        "MANTENIMENTO COGNITIVO": "Stabilizzazione dell'attenzione supportata dall'acetilcolina.",
-        "PICCO FISICO": "Massima efficienza cardiovascolare e forza muscolare.",
-        "FINESTRA ANABOLICA": "Riparazione cellulare e sintesi proteica tramite insulina.",
-        "CALMA NEURONALE": "Riduzione dei battiti e preparazione alla melatonina.",
-        "RILASCIO MELATONINA": "Inizio della secrezione pineale (notte biologica).",
-        "RIPARAZIONE TESSUTI": "Rigenerazione profonda mediata dall'ormone GH.",
-        "default": "Stato operativo Biotech Core attivo."
-      }
-    }
+  "ui": {
+    "molecule": "MOLECOLA",
+    "advice": "CONSIGLIO",
+    "sys_state": "SYS STATE",
+    "phase": "FASE CICLO",
+    "t_minus": "G"
+  },
+  "seasons": {
+    "spring": "PRIMAVERA",
+    "summer": "ESTATE",
+    "autumn": "AUTUNNO",
+    "winter": "INVERNO"
+  },
+  "molecules": {
+    "ADENOSINA": "Accumulo di pressione omeostatica del sonno.",
+    "SOMATOTROPINA": "Cruciale per la riparazione dei tessuti e il metabolismo.",
+    "CORTISOLO": "Ormone del risveglio: eleva la glicemia e prepara allo stress.",
+    "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito.",
+    "DOPAMINA": "Neurotrasmettitore della ricompensa e della motivazione.",
+    "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo.",
+    "ACETILCOLINA": "Modulatore della plasticità sinaptica. Fondamentale per la memoria.",
+    "ADRENALINA": "Attiva il sistema simpatico per una risposta fisica immediata.",
+    "INSULINA": "Regola l'omeostasi del glucosio e l'uptake cellulare.",
+    "GABA": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale.",
+    "MELATONINA": "Regola il ritmo circadiano e agisce come antiossidante.",
+    "default": "Dato bio-sincronizzato tramite Biotech Core."
+  },
+  "advice": {
+    "BUIO_TOTALE": "Massimizza la secrezione di melatonina pineale.",
+    "RIPARAZIONE_PROF": "Fase di rigenerazione cellulare profonda.",
+    "LUCE_NATURALE": "Esposizione precoce ai fotoni solari per resettare i ritmi.",
+    "COLAZIONE_PROT": "Apporto proteico per la sintesi dei neurotrasmettitori.",
+    "FOCUS_ATTIVO": "Finestra di massima vigilanza cognitiva.",
+    "PAUSA_NUTRIZIONE": "Sincronizzazione degli orologi periferici tramite nutrienti.",
+    "FOCUS_ANALITICO": "Fase ottimale per compiti di precisione e logica.",
+    "MOVIMENTO": "Sfrutta il picco di temperatura e forza muscolare.",
+    "DECOMPRESSIONE": "Favorisce la transizione verso il sistema parasimpatico.",
+    "RELAX_ATTIVO": "Attività a basso impatto per smaltire il cortisolo.",
+    "NO_LUCE_BLU": "Previene l'inibizione della melatonina serale.",
+    "default": "Analisi bio-sincronizzata Biotech."
+  },
+  "status_labels": {
+    "GLYMPHATIC": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici.",
+    "TISSUE_REPAIR": "RIPARAZIONE TESSUTI: Rigenerazione profonda mediata dall'ormone GH.",
+    "CORTISOL_SPIKE": "PICCO DI CORTISOLO: Massima attivazione surrenale per preparare l'organismo.",
+    "HIGH_VIGILANCE": "VIGILANZA ELEVATA: Stato di allerta ottimale guidato dalla stabilità dell'oressina.",
+    "MAX_ALERT": "MASSIMA ALLERTA: Massima velocità di elaborazione neurale e coordinazione.",
+    "LEPTIN_RESPONSE": "RISPOSTA LEPTINICA: Segnale di sazietà che sposta il metabolismo verso il recupero.",
+    "COGNITIVE_MAINT": "MANTENIMENTO COGNITIVO: Stabilizzazione dell'attenzione supportata dall'acetilcolina.",
+    "PHYSICAL_PEAK": "PICCO FISICO: Massima efficienza cardiovascolare e forza muscolare.",
+    "ANABOLIC_WINDOW": "FINESTRA ANABOLICA: Riparazione cellulare e sintesi proteica tramite insulina.",
+    "NEURONAL_CALM": "CALMA NEURONALE: Riduzione dei battiti e preparazione alla melatonina.",
+    "MELATONIN_ONSET": "RILASCIO MELATONINA: Inizio della secrezione pineale (notte biologica).",
+    "default": "Stato operativo Biotech Core attivo."
+  }
+}
   },
   "en": {
     "main-heading": "Welcome to Biotech Project!",
@@ -180,65 +176,61 @@
     "modal-pelle-alt": "Layered diagram of the skin (epidermis, dermis, hypodermis) highlighting keratinocytes and melanocytes.",
     "quote": "It is no measure of health to be well adjusted to a profoundly sick society",
     "biotech_core": {
-      "ui": {
-        "molecule": "MOLECULE",
-        "advice": "ADVICE",
-        "sys_state": "SYS STATE",
-        "phase": "CYCLE PHASE",
-        "t_minus": "D"
-      },
-      "seasons": {
-        "spring": "SPRING",
-        "summer": "SUMMER",
-        "autumn": "AUTUMN",
-        "winter": "WINTER"
-      },
-      "molecules": {
-        "OREXIN": "Hypothalamic neuropeptide that stabilizes wakefulness.",
-        "LEPTIN": "Satiety hormone signaling energy reserves.",
-        "DOPAMINE": "Reward and motivation neurotransmitter.",
-        "ACETYLCHOLINE": "Synaptic plasticity modulator for memory.",
-        "GABA": "Inhibitory neurotransmitter. Stabilizes against stress.",
-        "MELATONIN": "Regulates circadian rhythms as a powerful antioxidant.",
-        "CORTISOL": "Awakening hormone: prepares body for metabolic stress.",
-        "ADRENALINE": "Activates the sympathetic system for immediate response.",
-        "INSULIN": "Regulates glucose homeostasis and cell uptake.",
-        "SOMATOTROPIN": "Crucial for tissue repair and lipid metabolism.",
-        "ADENOSINA": "Creates homeostatic sleep pressure accumulation.",
-        "default": "Bio-synchronized data via Biotech Core."
-      },
-      "advice": {
-        "NATURAL LIGHT": "Early solar photon exposure to reset rhythms.",
-        "PROTEIN BREAKFAST": "Amino acid precursors for neurotransmitter synthesis.",
-        "ACTIVE FOCUS": "Window of maximum cognitive alertness.",
-        "NUTRITION BREAK": "Synchronization of peripheral clocks via nutrients.",
-        "ANALYTICAL FOCUS": "Optimal phase for precision and logic tasks.",
-        "WORKOUT": "Leverage afternoon peak in body temperature.",
-        "DOWNTIME": "Favor transition to the parasympathetic system.",
-        "ACTIVE RELAX": "Low-impact activity to clear residual cortisol.",
-        "NO BLUE LIGHT": "Blocking frequencies to prevent melatonin inhibition.",
-        "TOTAL DARKNESS": "Absence of photons to stimulate the pineal gland.",
-        "10K LUX ART. LIGHT": "Winter photobiomodulation to reset the clock.",
-        "DIRECT SUN 10M": "Morning exposure for late melatonin release.",
-        "VITAMIN D INTAKE": "Support for circadian gene expression.",
-        "HYDRATION + SALTS": "Electrolyte restoration for action potential.",
-        "WARM THERMO-RELAX": "Surface heat promotes peripheral vasodilation, lowering core temperature for sleep induction.",
-        "default": "Biotech bio-synchronized analysis."
-      },
-      "status_labels": {
-        "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate metabolic waste flushing.",
-        "CORTISOL SPIKE": "Peak adrenal activation to prepare the body.",
-        "HIGH VIGILANCE": "Optimal alertness state driven by orexin.",
-        "MAX ALERTNESS": "Maximum neural processing speed and coordination.",
-        "LEPTIN RESPONSE": "Satiety signal shifting metabolism toward recovery.",
-        "COGNITIVE MAINT.": "Attention stabilization supported by acetylcholine.",
-        "PHYSICAL PEAK": "Maximum cardiovascular efficiency and strength.",
-        "ANABOLIC WINDOW": "Cellular repair and protein synthesis via insulin.",
-        "NEURONAL CALM": "Heart rate reduction and melatonin preparation.",
-        "MELATONIN ONSET": "Onset of pineal secretion (biological night).",
-        "TISSUE REPAIR": "Deep regeneration mediated by GH hormone.",
-        "default": "Biotech Core operational state active."
-      }
-    }
+  "ui": {
+    "molecule": "MOLECULE",
+    "advice": "ADVICE",
+    "sys_state": "SYS STATE",
+    "phase": "CYCLE PHASE",
+    "t_minus": "D"
+  },
+  "seasons": {
+    "spring": "SPRING",
+    "summer": "SUMMER",
+    "autumn": "AUTUMN",
+    "winter": "WINTER"
+  },
+  "molecules": {
+    "ADENOSINA": "Creates homeostatic sleep pressure accumulation.",
+    "SOMATOTROPINA": "Crucial for tissue repair and lipid metabolism.",
+    "CORTISOLO": "Awakening hormone: prepares body for metabolic stress.",
+    "ORESSINA": "Hypothalamic neuropeptide that stabilizes wakefulness.",
+    "DOPAMINA": "Reward and motivation neurotransmitter.",
+    "LEPTINA": "Satiety hormone signaling energy reserves.",
+    "ACETILCOLINA": "Synaptic plasticity modulator for memory.",
+    "ADRENALINA": "Activates the sympathetic system for immediate response.",
+    "INSULINA": "Regulates glucose homeostasis and cell uptake.",
+    "GABA": "Inhibitory neurotransmitter. Stabilizes against stress.",
+    "MELATONINA": "Regulates circadian rhythms as a powerful antioxidant.",
+    "default": "Bio-synchronized data via Biotech Core."
+  },
+  "advice": {
+    "BUIO_TOTALE": "Absence of photons to stimulate the pineal gland.",
+    "RIPARAZIONE_PROF": "Deep cellular regeneration phase.",
+    "LUCE_NATURALE": "Early solar photon exposure to reset rhythms.",
+    "COLAZIONE_PROT": "Amino acid precursors for neurotransmitter synthesis.",
+    "FOCUS_ATTIVO": "Window of maximum cognitive alertness.",
+    "PAUSA_NUTRIZIONE": "Synchronization of peripheral clocks via nutrients.",
+    "FOCUS_ANALITICO": "Optimal phase for precision and logic tasks.",
+    "MOVIMENTO": "Leverage peak in body temperature and muscle strength.",
+    "DECOMPRESSIONE": "Favor transition to the parasympathetic system.",
+    "RELAX_ATTIVO": "Low-impact activity to clear residual cortisol.",
+    "NO_LUCE_BLU": "Prevents the inhibition of evening melatonin.",
+    "default": "Biotech bio-synchronized analysis."
+  },
+  "status_labels": {
+    "GLYMPHATIC": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate metabolic waste flushing.",
+    "TISSUE_REPAIR": "TISSUE REPAIR: Deep regeneration mediated by GH hormone.",
+    "CORTISOL_SPIKE": "CORTISOL SPIKE: Peak adrenal activation to prepare the body.",
+    "HIGH_VIGILANCE": "HIGH VIGILANCE: Optimal alertness state driven by orexin.",
+    "MAX_ALERT": "MAX ALERTNESS: Maximum neural processing speed and coordination.",
+    "LEPTIN_RESPONSE": "LEPTIN RESPONSE: Satiety signal shifting metabolism toward recovery.",
+    "COGNITIVE_MAINT": "COGNITIVE MAINTENANCE: Attention stabilization supported by acetylcholine.",
+    "PHYSICAL_PEAK": "PHYSICAL PEAK: Maximum cardiovascular efficiency and strength.",
+    "ANABOLIC_WINDOW": "ANABOLIC WINDOW: Cellular repair and protein synthesis via insulin.",
+    "NEURONAL_CALM": "NEURONAL CALM: Heart rate reduction and melatonin preparation.",
+    "MELATONIN_ONSET": "MELATONIN ONSET: Onset of pineal secretion (biological night).",
+    "default": "Biotech Core operational state active."
+  }
+}
   }
 }

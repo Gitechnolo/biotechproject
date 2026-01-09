@@ -1341,20 +1341,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const clockEl = document.getElementById('clock2');
         if (!clockEl) return;
 
-        // Mappa delle chiavi (uguali per tutte le lingue)
-        const circadianMap = {
-            0:  { status: "RIGENERAZIONE GLINFATICA", mol: "ADENOSINA", adv: "BUIO TOTALE", sys: "PULIZIA CEREBRALE" },
-            3:  { status: "RIPARAZIONE TESSUTI", mol: "SOMATOTROPINA", adv: "RIPARAZIONE PROFONDA", sys: "GH PEAK" },
-            6:  { status: "PICCO DI CORTISOLO", mol: "CORTISOLO", adv: "LUCE NATURALE", sys: "RESET CIRCADIANO" },
-            9:  { status: "VIGILANZA ELEVATA", mol: "ORESSINA", adv: "COLAZIONE PROT.", sys: "ATTIVAZIONE" },
-            11: { status: "MASSIMA ALLERTA", mol: "DOPAMINA", adv: "FOCUS ATTIVO", sys: "PICCO COGNITIVO" },
-            13: { status: "RISPOSTA LEPTINICA", mol: "LEPTINA", adv: "PAUSA NUTRIZIONE", sys: "SAZIETÀ" },
-            15: { status: "MANTENIMENTO COGNITIVO", mol: "ACETILCOLINA", adv: "FOCUS ANALITICO", sys: "STABILITÀ" },
-            17: { status: "PICCO FISICO", mol: "ADRENALINA", adv: "MOVIMENTO", sys: "EFFICIENZA MAX" },
-            19: { status: "FINESTRA ANABOLICA", mol: "INSULINA", adv: "DECOMPRESSIONE", sys: "SINTESI" },
-            21: { status: "CALMA NEURONALE", mol: "GABA", adv: "RELAX ATTIVO", sys: "RECUPERO" },
-            23: { status: "RILASCIO MELATONINA", mol: "MELATONINA", adv: "NO LUCE BLU", sys: "INIZIO NOTTE" }
-        };
+        // ==========================================
+// MAPPA DELLE CHIAVI UNIFICATE (Sincronizzata con JSON)
+// ==========================================
+const circadianMap = {
+    0:  { status: "GLYMPHATIC",     mol: "ADENOSINA",      adv: "BUIO_TOTALE",      sys: "PULIZIA CEREBRALE" },
+    3:  { status: "TISSUE_REPAIR",  mol: "SOMATOTROPINA",  adv: "RIPARAZIONE_PROF",  sys: "GH PEAK" },
+    6:  { status: "CORTISOL_SPIKE", mol: "CORTISOLO",      adv: "LUCE_NATURALE",    sys: "RESET CIRCADIANO" },
+    9:  { status: "HIGH_VIGILANCE", mol: "ORESSINA",       adv: "COLAZIONE_PROT",    sys: "ATTIVAZIONE" },
+    11: { status: "MAX_ALERT",      mol: "DOPAMINA",       adv: "FOCUS_ATTIVO",     sys: "PICCO COGNITIVO" },
+    13: { status: "LEPTIN_RESPONSE",mol: "LEPTINA",        adv: "PAUSA_NUTRIZIONE",  sys: "SAZIETÀ" },
+    15: { status: "COGNITIVE_MAINT",mol: "ACETILCOLINA",   adv: "FOCUS_ANALITICO",   sys: "STABILITÀ" },
+    17: { status: "PHYSICAL_PEAK",  mol: "ADRENALINA",     adv: "MOVIMENTO",        sys: "EFFICIENZA MAX" },
+    19: { status: "ANABOLIC_WINDOW",mol: "INSULINA",       adv: "DECOMPRESSIONE",    sys: "SINTESI" },
+    21: { status: "NEURONAL_CALM",  mol: "GABA",           adv: "RELAX_ATTIVO",     sys: "RECUPERO" },
+    23: { status: "MELATONIN_ONSET",mol: "MELATONINA",      adv: "NO_LUCE_BLU",      sys: "INIZIO NOTTE" }
+};
 
         const updateClock = () => {
             const lang = getActiveLang();

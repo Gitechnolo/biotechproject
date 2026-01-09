@@ -341,23 +341,30 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 @media (min-width:768px) and (max-width:1024px){.container_welcome{gap:12px}}
 /* TOOLTIP TECNOLOGICO BIO-TECH */
 .biotech-tooltip {
+    display: none;
     position: fixed;
-    background: rgba(0, 0, 0, 0.9);
-    color: #00ffcc; /* Il verde Biotech */
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 0.9rem;
     z-index: 9999;
-    pointer-events: none;
-    display: none; /* Nascosto di base */
-    max-width: 300px;
+    padding: 8px 12px;
+    background-color: rgba(0, 10, 10, 0.95);
+    color: #00ffcc; 
     border: 1px solid #00ffcc;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
-    line-height: 1.4;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'Sansation', sans-serif;
+    letter-spacing: 0.5px; 
+    backdrop-filter: blur(4px); 
+    text-transform: uppercase; 
+    text-align: center;
+    pointer-events: none;
+    white-space: normal;
+    max-width: 250px;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+    /* Centratura perfetta rispetto alla punta del mouse */
+    transform: translate(-50%, -120%); 
 }
 
 .biotech-tooltip.active {
-    display: block; /* Diventa visibile quando passi il mouse */
+    display: block;
 }
 /* End Contenitore per orologio, conto alla rovescia e augurio */   
 /* --- Contenitore del menu moderno --- */
