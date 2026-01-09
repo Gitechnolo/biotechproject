@@ -1174,48 +1174,35 @@ function applyTranslations(translations, lang) {
   });
   console.log(`✅ Traduzioni applicate in ${lang}`);
 }   
-// ===========================
-// INIZIALIZZA IL SISTEMA DI TRADUZIONE (SENZA RITARDO BLOCCANTE)
-// ===========================
 async function initTranslations() {
-  // ESECUZIONE IMMEDIATA: Le richieste fetch beneficeranno ora del preload nel <head>
   const pageName = getPageName();
   const savedLang = getSavedLanguage();
   currentLang = savedLang; 
-  document.documentElement.lang = savedLang;
+  document.documentElement.lang = savedLang; 
 
   // ===========================
-  // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
+  // CASO 1: Pagina NON traducibile
   // ===========================
   if (!translatablePages.includes(pageName)) {
-    // La chiamata a loadTranslation('lang/common.json') sfrutterà il preload
     const common = await loadTranslation('lang/common.json');
     const translations = {
       it: { ...(common?.it || {}) },
       en: { ...(common?.en || {}) }
     };
 
+    window.cachedTranslations = translations; // <--- AGGIUNTO QUI (Punto 1)
+
     applyTranslations(translations, savedLang);
     updateLanguageButton(savedLang);
-    document.documentElement.lang = savedLang;
-
-    const button = document.getElementById('lang-toggle');
-    if (button) {
-      button.addEventListener('click', () => {
-        const newLang = savedLang === 'it' ? 'en' : 'it';
-        localStorage.setItem('preferred-language', newLang);
-        window.location.reload();
-      });
-    }
-
+    // ... resto del caso 1 ...
     return;
   }
+
   // ===========================
-  // CASO 2: Pagina traducibile → carica common + specifico
+  // CASO 2: Pagina traducibile
   // ===========================
   const translations = { it: {}, en: {} };
 
-  // Queste chiamate sfrutteranno i preload nel <head>
   const common = await loadTranslation('lang/common.json');
   if (common) {
     translations.it = { ...common.it };
@@ -1228,7 +1215,9 @@ async function initTranslations() {
     if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
     if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
   }
-  // Applica le traduzioni
+
+  window.cachedTranslations = translations; // <--- AGGIUNTO QUI (Punto 2)
+
   applyTranslations(translations, savedLang);
   updateLanguageButton(savedLang);
   document.documentElement.lang = savedLang;
