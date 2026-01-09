@@ -1181,6 +1181,8 @@ async function initTranslations() {
   // ESECUZIONE IMMEDIATA: Le richieste fetch beneficeranno ora del preload nel <head>
   const pageName = getPageName();
   const savedLang = getSavedLanguage();
+  currentLang = savedLang; 
+  document.documentElement.lang = savedLang;
 
   // ===========================
   // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
@@ -1263,48 +1265,17 @@ function updateLanguageButton(lang) {
   }
 }
 // ===========================
-// CAMBIA LINGUA AL CLICK
+// CAMBIA LINGUA AL CLICK (Semplificato)
 // ===========================
 function setLanguage(lang) {
-  const pageName = getPageName();
-  const isTranslatable = translatablePages.includes(pageName);
+  // Salva la preferenza nel browser
+  localStorage.setItem('preferred-language', lang);
   
-  // Prepariamo le promesse: common è sempre necessaria
-  const promises = [loadTranslation('lang/common.json')];
-  
-  // Se la pagina è specifica, carichiamo anche il suo file
-  if (isTranslatable) {
-    const pageKey = getPageKey(pageName);
-    promises.push(loadTranslation(`lang/${pageKey}.json`));
-  }
-
-  Promise.all(promises).then(([common, pageData]) => {
-    // Unifichiamo le traduzioni in un unico oggetto
-    const translations = {
-      it: { ...(common?.it || {}), ...(pageData?.it || {}) },
-      en: { ...(common?.en || {}), ...(pageData?.en || {}) }
-    };
-
-    // RENDIAMO LE TRADUZIONI GLOBALI
-    // Questo permette a filterSelection di leggerle istantaneamente
-    window.cachedTranslations = translations;
-
-    // Applichiamo le modifiche
-    setTimeout(() => {
-      applyTranslations(translations, lang);
-      updateLanguageButton(lang);
-      document.documentElement.lang = lang;
-      currentLang = lang;
-      localStorage.setItem('preferred-language', lang);
-      
-      // Se esiste un messaggio di filtro attivo, aggiornalo subito
-      const msgEl = document.getElementById('filter-message');
-      if (msgEl && msgEl.style.display === 'block') {
-        msgEl.textContent = translations[lang]['filter-empty'] || "";
-      }
-    }, 100);
-  });
+  // Ricarica la pagina: questo attiverà initTranslations() all'avvio
+  // che leggerà i nuovi testi (sia del sito che dei tre motori) dal JSON
+  window.location.reload();
 }
+
 // ===========================
 // TOGGLE LINGUA (chiamato da onclick)
 // ===========================
