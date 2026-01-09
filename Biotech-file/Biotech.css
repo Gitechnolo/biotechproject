@@ -359,8 +359,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     white-space: normal;
     max-width: 250px;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
-    /* Centratura perfetta rispetto alla punta del mouse */
-    transform: translate(-50%, -120%); 
+    /* Centratura perfetta e sotto il cursore */
+    transform: translate(-50%, 20%); 
 }
 
 .biotech-tooltip.active {
