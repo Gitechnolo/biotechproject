@@ -1336,7 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateBioCycle, 3600000);
     }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO (PULITO E SINCRONIZZATO) ---
+    // --- 2. OROLOGIO BIO-CIRCADIANO (RIPRISTINO STRUTTURA CSS ESTERNO) ---
 function initBioClock() {
     const clockEl = document.getElementById('clock2');
     if (!clockEl) return;
@@ -1366,7 +1366,7 @@ function initBioClock() {
         const currentKey = keys.find(k => hour >= k) || 0;
         const data = circadianMap[currentKey];
 
-        // Gestione Saluto Dinamico
+        // Gestione Giorno e Saluto
         const daysIT = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
         const daysEN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const dayName = lang === 'it' ? daysIT[now.getDay()] : daysEN[now.getDay()];
@@ -1379,7 +1379,7 @@ function initBioClock() {
         const welcomePart = core.ui.welcome_msg;
         const greetPart = core.ui[greetKey];
 
-        // Traduzioni testi e tooltip
+        // Traduzioni
         const displayAdv = core.advice[data.adv] || data.adv;
         const displayStatus = core.status_labels[data.status] || data.status;
         const molTip = core.molecules[data.mol] || core.molecules.default;
@@ -1387,22 +1387,23 @@ function initBioClock() {
 
         const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
+        // COSTRUZIONE HTML: Usiamo 'modern-clock' per l'orologio e 'modern-greeting' per il saluto finale
         clockEl.innerHTML = `
-            <div class="hud-inline-row">
-                <span data-bio-tip="${molTip}">${core.ui.molecule}: <b class="bio-data-value">${data.mol}</b></span>
-                <span class="separator">|</span>
-                <span data-bio-tip="${advTip}">${core.ui.advice}: <b class="bio-data-value">${displayAdv}</b></span>
-            </div>
-            
-            <div class="bio-status-container">
+            <div class="modern-clock">
+                <div class="hud-inline-row">
+                    <span data-bio-tip="${molTip}">${core.ui.molecule}: <b class="bio-data-value">${data.mol}</b></span>
+                    <span class="separator">|</span>
+                    <span data-bio-tip="${advTip}">${core.ui.advice}: <b class="bio-data-value">${displayAdv}</b></span>
+                </div>
+                
                 <div class="bio-status-label" data-bio-tip="${displayStatus}">${data.status}</div>
                 <div class="bio-clock-time">${timeStr}</div>
                 <div class="bio-system-state">${core.ui.sys_state}: ${data.sys}</div>
             </div>
 
-            <div class="bio-final-greeting">
-                ${greetPart}<br>
-                <span class="bio-day-welcome">${welcomePart} ${dayName}!</span>
+            <div class="modern-greeting">
+                <div class="greeting-time">${greetPart}</div>
+                <div class="bio-day-welcome">${welcomePart} ${dayName}!</div>
             </div>
         `;
     };
