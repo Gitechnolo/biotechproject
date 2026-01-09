@@ -1336,7 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateBioCycle, 3600000);
     }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO (RIPRISTINO STRUTTURA CSS ESTERNO) ---
+    // --- 2. OROLOGIO BIO-CIRCADIANO (VERSIONE DEFINITIVA RIPRISTINO ESTETICA) ---
 function initBioClock() {
     const clockEl = document.getElementById('clock2');
     if (!clockEl) return;
@@ -1344,7 +1344,7 @@ function initBioClock() {
     const circadianMap = {
         0:  { status: "RIGENERAZIONE GLINFATICA", mol: "ADENOSINA", adv: "BUIO TOTALE", sys: "PULIZIA CEREBRALE" },
         3:  { status: "RIPARAZIONE TESSUTI", mol: "SOMATOTROPINA", adv: "RIPARAZIONE PROFONDA", sys: "GH PEAK" },
-        6:  { status: "PICCO DI CORTISOLO", mol: "CORTISOLO", adv: "LUCE NATURALE", sys: "RESET CIRCADIANO" },
+        6:  { status: "PICCO di CORTISOLO", mol: "CORTISOLO", adv: "LUCE NATURALE", sys: "RESET CIRCADIANO" },
         9:  { status: "VIGILANZA ELEVATA", mol: "ORESSINA", adv: "COLAZIONE PROT.", sys: "ATTIVAZIONE" },
         11: { status: "MASSIMA ALLERTA", mol: "DOPAMINA", adv: "FOCUS ATTIVO", sys: "PICCO COGNITIVO" },
         13: { status: "RISPOSTA LEPTINICA", mol: "LEPTINA", adv: "PAUSA NUTRIZIONE", sys: "SAZIETÀ" },
@@ -1366,7 +1366,6 @@ function initBioClock() {
         const currentKey = keys.find(k => hour >= k) || 0;
         const data = circadianMap[currentKey];
 
-        // Gestione Giorno e Saluto
         const daysIT = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
         const daysEN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const dayName = lang === 'it' ? daysIT[now.getDay()] : daysEN[now.getDay()];
@@ -1379,7 +1378,6 @@ function initBioClock() {
         const welcomePart = core.ui.welcome_msg;
         const greetPart = core.ui[greetKey];
 
-        // Traduzioni
         const displayAdv = core.advice[data.adv] || data.adv;
         const displayStatus = core.status_labels[data.status] || data.status;
         const molTip = core.molecules[data.mol] || core.molecules.default;
@@ -1387,7 +1385,8 @@ function initBioClock() {
 
         const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-        // COSTRUZIONE HTML: Usiamo 'modern-clock' per l'orologio e 'modern-greeting' per il saluto finale
+        // Struttura HTML flat per permettere al CSS (modern-greeting { top: -45px }) 
+        // di posizionare il saluto correttamente sotto la barra gialla.
         clockEl.innerHTML = `
             <div class="modern-clock">
                 <div class="hud-inline-row">
@@ -1395,7 +1394,6 @@ function initBioClock() {
                     <span class="separator">|</span>
                     <span data-bio-tip="${advTip}">${core.ui.advice}: <b class="bio-data-value">${displayAdv}</b></span>
                 </div>
-                
                 <div class="bio-status-label" data-bio-tip="${displayStatus}">${data.status}</div>
                 <div class="bio-clock-time">${timeStr}</div>
                 <div class="bio-system-state">${core.ui.sys_state}: ${data.sys}</div>
