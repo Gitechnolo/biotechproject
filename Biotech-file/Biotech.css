@@ -348,18 +348,22 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     color: #00ffcc; 
     border: 1px solid #00ffcc;
     border-radius: 6px;
-    font-size: 11px; /* Leggermente più piccolo per stile tech */
+    font-size: 12px;
     pointer-events: none;
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
     font-family: 'Sansation', sans-serif;
     letter-spacing: 0.5px; 
     backdrop-filter: blur(4px); 
     text-transform: uppercase; 
-    transform: translateX(-50%); /* Centra rispetto al cursore */
+    /* Centratura orizzontale rispetto al punto di ancoraggio */
+    transform: translateX(-50%);
     text-align: center;
-    white-space: normal;
-    max-width: 280px;
-    line-height: 1.4;
+    left: 0; /* Lascia che il JS controlli la posizione */
+    transform: translateX(-50%); /* Centra il box rispetto alla punta del mouse */
+    text-align: center;
+    pointer-events: none;
+    white-space: normal; /* Permette al testo lungo di andare a capo */
+    max-width: 250px;
 }
 /* End Contenitore per orologio, conto alla rovescia e augurio */   
 /* --- Contenitore del menu moderno --- */

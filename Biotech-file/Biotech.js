@@ -1292,10 +1292,6 @@ function setLanguage(lang) {
     // Applichiamo le modifiche
     setTimeout(() => {
       applyTranslations(translations, lang);
-    // Aggiorna istantaneamente il motore Biotech se presente nella pagina
-    if (typeof window.updateBiotechEngine === 'function') {
-    window.updateBiotechEngine();
-}
       updateLanguageButton(lang);
       document.documentElement.lang = lang;
       currentLang = lang;
@@ -1489,93 +1485,94 @@ function initSeasonMonitor() {
     setInterval(updateBioCycle, 3600000);
 }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO (GLOBAL EDITION) ---
-    
-    // Mappa dei dati circadiani (Spostata all'esterno per essere accessibile)
-    const circadianMap = {
-        0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
-        3:  { it: ["PICCO SOMATOTROPINA", "RIPARAZIONE TESSUTI", "SOMATOTROPINA", "SOGNO PROFONDO"], en: ["GH PEAK", "TISSUE REPAIR", "SOMATOTROPIN", "DEEP DREAMING"] },
-        6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
-        9:  { it: ["ATTIVAZIONE ORESSINA", "VIGILANZA ELEVATA", "ORESSINA", "COLAZIONE PROT."], en: ["OREXIN ACTIVATION", "HIGH VIGILANCE", "OREXIN", "PROTEIN BREAKFAST"] },
-        11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
-        13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
-        15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-        17: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
-        19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
-        21: { it: ["CALMA NEURONALE", "MODALITÀ RECUPERO", "GABA", "RELAX ATTIVO"], en: ["NEURONAL CALM", "RECOVERY MODE", "GABA", "ACTIVE RELAX"] },
-        23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
-    };
-
-    // Helper per consigli dinamici basati sulla lingua corrente
-    const getDynamicAdvice = (h, base) => {
-        const s = getCurrentSeason();
-        const currentLang = localStorage.getItem('preferred-language') || 'it';
-        const isIt = currentLang === 'it';
-
-        if (h >= 6 && h < 9) {
-            if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-            if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-        }
-        if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) 
-            return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-        if (h >= 13 && h < 17 && s === "summer") 
-            return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-        if (h >= 20 && s === "winter") 
-            return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-        return base;
-    };
-
-    // FUNZIONE DI AGGIORNAMENTO (ESPOSTA A WINDOW)
-    window.updateBiotechEngine = () => {
+    // --- 2. OROLOGIO BIO-CIRCADIANO ---
+    function initBioClock() {
         const clockEl = document.getElementById('clock2');
         if (!clockEl) return;
 
-        const now = new Date();
-        const hour = now.getHours();
+        const circadianMap = {
+            0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
+            3:  { it: ["PICCO SOMATOTROPINA", "RIPARAZIONE TESSUTI", "SOMATOTROPINA", "SOGNO PROFONDO"], en: ["GH PEAK", "TISSUE REPAIR", "SOMATOTROPIN", "DEEP DREAMING"] },
+            6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
+            9:  { it: ["ATTIVAZIONE ORESSINA", "VIGILANZA ELEVATA", "ORESSINA", "COLAZIONE PROT."], en: ["OREXIN ACTIVATION", "HIGH VIGILANCE", "OREXIN", "PROTEIN BREAKFAST"] },
+            11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
+            13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
+            15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+            17: { it: ["PICCO FISICO", "EFFICIENZA MAX", "ADRENALINA", "MOVIMENTO"], en: ["PHYSICAL PEAK", "EFFICIENCY MAX", "ADRENALINE", "WORKOUT"] },
+            19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
+            21: { it: ["CALMA NEURONALE", "MODALITÀ RECUPERO", "GABA", "RELAX ATTIVO"], en: ["NEURONAL CALM", "RECOVERY MODE", "GABA", "ACTIVE RELAX"] },
+            23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
+        };
+
+        const getDynamicAdvice = (h, base) => {
+    const s = getCurrentSeason();
+    if (h >= 6 && h < 9) {
+        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+    }
+    // NOTA: Qui usiamo le chiavi esatte del dizionario EN
+    if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) 
+        return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+    
+    if (h >= 13 && h < 17 && s === "summer") 
+        return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+    
+    if (h >= 20 && s === "winter") 
+        return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
         
-        // Rilevazione lingua istantanea
-        const currentLang = localStorage.getItem('preferred-language') || 'it';
-        const isIt = currentLang === 'it';
-        const dict = isIt ? bioExplanations.it : bioExplanations.en;
+    return base;
+};
 
-        const keys = Object.keys(circadianMap).map(Number).reverse();
-        const currentKey = keys.find(k => hour >= k) || 0;
-        
-        const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-        const advice = getDynamicAdvice(hour, data[3]);
-        const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+        const updateClock = () => {
+    const now = new Date();
+    const hour = now.getHours();
+    const keys = Object.keys(circadianMap).map(Number).reverse();
+    const currentKey = keys.find(k => hour >= k) || 0;
+    
+    // 1. Recupera i dati (IT o EN) in base alla lingua attiva
+    const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+    
+    // 2. Recupera il consiglio dinamico e genera la stringa oraria
+    const advice = getDynamicAdvice(hour, data[3]);
+    const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
-        const molecolaKey = data[2].toUpperCase().trim();
-        const adviceKey = advice.toUpperCase().trim();
-        const molecolaDesc = dict[molecolaKey] || dict["default"];
-        const adviceDesc = dict[adviceKey] || dict["default"];
+    // 3. Seleziona il dizionario corretto
+    const dict = isIt ? bioExplanations.it : bioExplanations.en;
 
-        // Gestione Glinfatico / Stato
-        let statusDesc;
-        if (hour < 6 || hour >= 23) {
-            const glinfaticKey = isIt ? "RIGENERAZIONE GLINFATICA" : "GLYMPHATIC REGEN";
-            statusDesc = dict[glinfaticKey] || dict["default"];
-        } else {
-            const statusKey = data[0].toUpperCase().trim();
-            statusDesc = dict[statusKey] || (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
-        }
+    // 4. RICERCA TOOLTIP: Usa il testo visualizzato (data[2] e advice) come chiave
+    const molecolaKey = data[2].toUpperCase().trim();
+    const adviceKey = advice.toUpperCase().trim();
 
-        clockEl.innerHTML = `
-            <div class="hud-inline-row">
-                <span data-bio-tip="${molecolaDesc}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${data[2]}</b></span>
-                <span class="separator">|</span>
-                <span data-bio-tip="${adviceDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
-            </div>
-            <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
-            <span class="bio-clock-time">${timeStr}</span>
-            <span class="bio-system-state" data-bio-tip="${isIt ? 'Stato operativo Biotech Core.' : 'Biotech Core operational state.'}">SYS STATE: ${data[1]}</span>
-        `;
-    };
+    const molecolaDesc = dict[molecolaKey] || dict["default"];
+    const adviceDesc = dict[adviceKey] || dict["default"];
 
-    // Avvio del loop
-    window.updateBiotechEngine();
-    setInterval(window.updateBiotechEngine, 1000);
+    // 5. GESTIONE STATO / GLINFATICO
+    let statusDesc;
+    if (hour < 6 || hour >= 23) {
+        // Se è notte, cerca la chiave specifica per il Sistema Glinfatico nella lingua attiva
+        const glinfaticKey = isIt ? "RIGENERAZIONE GLINFATICA" : "GLYMPHATIC REGEN";
+        statusDesc = dict[glinfaticKey] || dict["default"];
+    } else {
+        // Durante il giorno, usa il nome dello stato visualizzato (data[0]) come chiave
+        const statusKey = data[0].toUpperCase().trim();
+        statusDesc = dict[statusKey] || (isIt ? "Stato attuale dei processi biologici." : "Current state of biological processes.");
+    }
 
+    // 6. RENDERING HTML
+    clockEl.innerHTML = `
+        <div class="hud-inline-row">
+            <span data-bio-tip="${molecolaDesc}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${data[2]}</b></span>
+            <span class="separator">|</span>
+            <span data-bio-tip="${adviceDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+        </div>
+        <span class="bio-status-label" data-bio-tip="${statusDesc}">${data[0]}</span>
+        <span class="bio-clock-time">${timeStr}</span>
+        <span class="bio-system-state" data-bio-tip="${isIt ? 'Stato operativo Biotech Core.' : 'Biotech Core operational state.'}">SYS STATE: ${data[1]}</span>
+    `;
+};
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
@@ -1645,9 +1642,8 @@ function initSeasonMonitor() {
     }
 
     // --- ESECUZIONE ---
-    // NOTA: initBioClock rimossa, ora updateClock è globale e auto-avviante
     initSeasonMonitor();
+    initBioClock();
     initWeeklyGreeting();
     initBiotechTooltips();
-
-}); // Fine del DOMContentLoaded
+});
