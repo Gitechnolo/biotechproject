@@ -200,7 +200,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     
     /* Altezza compressa al massimo */
     padding: 4px 12px;      /* Ridotto per minimizzare l'ingombro verticale */
-    line-height: 1;         /* Forza le righe a stare vicine */
+    line-height: 1.1;         /* Forza le righe a stare vicine */
     
     background: rgba(0, 230, 118, 0.05);
     border: 1px solid rgba(0, 230, 118, 0.3);
@@ -214,8 +214,9 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     gap: 0px;               /* Eliminato lo spazio automatico tra le righe */
 
     /* Maschera di sfumatura aggiornata per non tagliare il testo compresso */
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+     mask-image: linear-gradient(to bottom, black 70%, transparent 100%); 
+     overflow: hidden;  
 }
 
 /* Classi interne con margini negativi per avvicinare i testi */
