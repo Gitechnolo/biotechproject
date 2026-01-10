@@ -57,7 +57,54 @@
     "modal-lisosoma-alt": "Diagramma di un Lisosoma, il centro di riciclaggio della cellula che contiene enzimi digestivi.",
     "modal-miochine-alt": "Illustrazione delle Miochine, molecole rilasciate dai muscoli in esercizio che agiscono come messaggeri tra gli organi.",
     "modal-pelle-alt": "Diagramma a strati della pelle (epidermide, derma, ipoderma) con cheratinociti e melanociti in evidenza.",
-    "quote": "Non è segno di buona salute mentale essere ben adattati ad una società malata"        
+    "quote": "Non è segno di buona salute mentale essere ben adattati ad una società malata",
+    
+    "bio-engine": {
+      "labels": {
+        "glymphatic-regen": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici tramite il liquido cerebrospinale.",
+        "cortisol-spike": "Fase di massima attivazione surrenale per elevare la glicemia e preparare l'organismo alle richieste energetiche diurne.",
+        "high-vigilance": "Stato di allerta cognitiva ottimale guidato dalla stabilità dell'oressina e dal basso carico di adenosina.",
+        "max-alertness": "Finestra di massima velocità di elaborazione neurale e coordinazione. Picco della temperatura corporea e della dopamina.",
+        "leptin-response": "Segnale ormonale di sazietà che sposta il metabolismo verso l'immagazzinamento e il recupero post-prandiale.",
+        "cognitive-maint": "Fase di stabilizzazione dell'attenzione sostenuta dall'acetilcolina prima del calo metabolico pomeridiano.",
+        "physical-peak": "Massima efficienza cardiovascolare e forza muscolare. I polmoni e il cuore operano alla massima capacità.",
+        "anabolic-window": "Periodo ottimale per la riparazione cellulare e la sintesi proteica grazie alla gestione dell'insulina.",
+        "neuronal-calm": "Transizione verso il sistema parasimpatico. Riduzione dei battiti e preparazione al rilascio di melatonina.",
+        "melatonin-onset": "Inizio della secrezione pineale che segnala al corpo l'inizio della notte biologica.",
+        "tissue-repair": "Processo rigenerativo profondo mediato dall'ormone della crescita (GH) durante le prime fasi del sonno.",
+        "default": "Dato bio-sincronizzato in tempo reale tramite modulo Biotech Core."
+      },
+      "molecules": {
+        "orexin": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito. Fondamentale per la stabilità dei cicli sonno-veglia.",
+        "leptin": "Ormone della sazietà prodotto dal tessuto adiposo. Segnala al cervello lo stato delle riserve energetiche.",
+        "dopamine": "Neurotrasmettitore della ricompensa e della motivazione. Ottimizza le funzioni esecutive della corteccia prefrontale.",
+        "acetylcholine": "Modulatore della plasticità sinaptica. Fondamentale per la memoria a lungo termine e l'attenzione sostenuta.",
+        "gaba": "Neurotrasmettitore inibitorio. Riduce l'eccitabilità neuronale, stabilizzando il sistema nervoso contro lo stress.",
+        "melatonin": "Indoloammina pineale. Regola il ritmo circadiano e agisce come potente antiossidante mitocondriale.",
+        "cortisol": "Glucocorticoide del risveglio: eleva la glicemia e prepara il corpo allo stress metabolico diurno.",
+        "adrenaline": "Epinefrina: attiva il sistema simpatico. Aumenta la gittata cardiaca per una risposta fisica immediata.",
+        "insulin": "Ormone anabolico pancreatico. Regola l'omeostasi del glucosio e l'uptake cellulare di aminoacidi.",
+        "somatotropin": "Ormone della crescita (GH). Cruciale per la riparazione dei tessuti e il metabolismo lipidico notturno.",
+        "adenosine": "Sottoprodotto del metabolismo energetico (ATP). Il suo accumulo crea la pressione omeostatica del sonno."
+      },
+      "advice": {
+        "natural-light": "Esposizione precoce ai fotoni solari per sopprimere l'inerzia del sonno e resettare i ritmi circadiani.",
+        "protein-breakfast": "L'apporto proteico mattutino fornisce precursori aminoacidici per la sintesi dei neurotrasmettitori.",
+        "active-focus": "Finestra di massima vigilanza cognitiva e coordinazione neuromuscolare.",
+        "nutrition-break": "Sincronizzazione degli orologi periferici (fegato/pancreas) tramite l'assunzione controllata di nutrienti.",
+        "analytical-focus": "Fase ottimale per compiti di precisione e logica, supportata dalla stabilità dell'acetilcolina.",
+        "workout": "Attività fisica per sfruttare il picco di temperatura corporea e forza muscolare pomeridiana.",
+        "downtime": "Riduzione degli stimoli simpatici per favorire la transizione verso il sistema parasimpatico.",
+        "active-relax": "Attività a basso impatto per facilitare lo smaltimento del cortisolo residuo.",
+        "no-blue-light": "Blocco delle frequenze luminose 450-480nm per prevenire l'inibizione della melatonina.",
+        "total-darkness": "Assenza di fotoni per stimolare la ghiandola pineale e massimizzare la secrezione di melatonina.",
+        "art-light-10k": "Fotobiomodulazione invernale: simula lo spettro solare per resettare l'orologio circadiano.",
+        "direct-sun-10m": "L'esposizione ai fotoni solari mattutini ottimizza il rilascio di melatonina circa 14 ore dopo.",
+        "vit-d-intake": "Supporto fondamentale per l'espressione genica circadiana e il sistema immunitario.",
+        "hydration-salts": "Ripristino degli elettroliti per mantenere il potenziale d'azione neuronale durante il calore estivo.",
+        "thermo-relax": "Il calore superficiale favorisce la vasodilatazione periferica, abbassando la temperatura centrale per il sonno."
+      }
+    }
   },
   "en": {
     "main-heading": "Welcome to Biotech Project!",
@@ -117,6 +164,53 @@
     "modal-lisosoma-alt": "Diagram of a Lysosome, the cell's recycling center containing digestive enzymes.",
     "modal-miochine-alt": "Illustration of Myokines, molecules released by exercising muscles that act as messengers between organs.",
     "modal-pelle-alt": "Layered diagram of the skin (epidermis, dermis, hypodermis) highlighting keratinocytes and melanocytes.",
-    "quote": "It is no measure of health to be well adjusted to a profoundly sick society"    
+    "quote": "It is no measure of health to be well adjusted to a profoundly sick society",
+
+    "bio-engine": {
+      "labels": {
+        "glymphatic-regen": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate metabolic waste flushing via cerebrospinal fluid.",
+        "cortisol-spike": "Peak adrenal activation phase to elevate blood glucose and prepare the body for daytime energy demands.",
+        "high-vigilance": "Optimal cognitive alertness state driven by orexin stability and low adenosine load.",
+        "max-alertness": "Window of maximum neural processing speed and coordination. Peak body temperature and dopamine levels.",
+        "leptin-response": "Hormonal satiety signal shifting metabolism toward storage and post-prandial recovery.",
+        "cognitive-maint": "Attention stabilization phase supported by acetylcholine before the afternoon metabolic dip.",
+        "physical-peak": "Maximum cardiovascular efficiency and muscle strength. Heart and lungs operate at peak capacity.",
+        "anabolic-window": "Optimal period for cellular repair and protein synthesis driven by insulin management.",
+        "neuronal-calm": "Transition to the parasympathetic system. Heart rate reduction and preparation for melatonin release.",
+        "melatonin-onset": "Onset of pineal secretion signaling the beginning of the biological night to the body.",
+        "tissue-repair": "Deep regenerative process mediated by growth hormone (GH) during early sleep stages.",
+        "default": "Bio-synchronized data via Biotech Core module."
+      },
+      "molecules": {
+        "orexin": "Hypothalamic neuropeptide that stabilizes wakefulness and regulates appetite. Key for sleep-wake cycle stability.",
+        "leptin": "Satiety hormone produced by adipose tissue. It signals the state of energy reserves to the brain.",
+        "dopamine": "Reward and motivation neurotransmitter. Optimizes executive functions in the prefrontal cortex.",
+        "acetylcholine": "Synaptic plasticity modulator. Essential for long-term memory and sustained attention.",
+        "gaba": "Inhibitory neurotransmitter. Reduces neuronal excitability, stabilizing the nervous system against stress.",
+        "melatonin": "Pineal indoleamine. Regulates circadian rhythms and acts as a powerful mitochondrial antioxidant.",
+        "cortisol": "Awakening glucocorticoid: elevates blood glucose and prepares the body for diurnal metabolic stress.",
+        "adrenaline": "Epinephrine: activates the sympathetic system. Increases cardiac output for immediate physical response.",
+        "insulin": "Anabolic pancreatic hormone. Regulates glucose homeostasis and cellular amino acid uptake.",
+        "somatotropin": "Growth Hormone (GH). Crucial for tissue repair and nocturnal lipid metabolism.",
+        "adenosine": "ATP energy metabolism byproduct. Its accumulation creates homeostatic sleep pressure."
+      },
+      "advice": {
+        "natural-light": "Early exposure to solar photons to suppress sleep inertia and reset circadian rhythms.",
+        "protein-breakfast": "Morning protein intake provides amino acid precursors for neurotransmitter synthesis.",
+        "active-focus": "Window of maximum cognitive alertness and neuromuscular coordination.",
+        "nutrition-break": "Synchronization of peripheral clocks (liver/pancreas) through controlled nutrient intake.",
+        "analytical-focus": "Optimal phase for precision and logic tasks, supported by acetylcholine stability.",
+        "workout": "Physical activity to leverage the afternoon peak in body temperature and muscle strength.",
+        "downtime": "Reduction of sympathetic stimuli to favor the transition toward the parasympathetic system.",
+        "active-relax": "Low-impact activity to facilitate the clearance of residual cortisol.",
+        "no-blue-light": "Blocking 450-480nm light frequencies to prevent melatonin inhibition.",
+        "total-darkness": "Absence of photons to stimulate the pineal gland and maximize melatonin secretion.",
+        "art-light-10k": "Winter photobiomodulation: simulates the solar spectrum to reset the circadian clock.",
+        "direct-sun-10m": "Morning photon exposure optimizes melatonin release approximately 14 hours later.",
+        "vit-d-intake": "Critical support for circadian gene expression and the immune system.",
+        "hydration-salts": "Electrolyte restoration to maintain neuronal action potential during summer heat.",
+        "thermo-relax": "Surface heat promotes peripheral vasodilation, lowering core temperature for sleep induction."
+      }
+    }
   }
 }
