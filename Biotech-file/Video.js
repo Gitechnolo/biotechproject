@@ -239,18 +239,21 @@ document.addEventListener('DOMContentLoaded', () => {
             "INTEGRA VITAMINA D": "Supporto per l'espressione genica circadiana e il sistema immunitario.",
             "IDRATAZIONE + SALI": "Ripristino elettroliti per il potenziale d'azione neuronale.",
             "THERMO-RELAX (CALDO)": "Favorisce la vasodilatazione per abbassare la temperatura centrale.",
-            // --- NUOVE MOLECOLE (IT) ---
-"SEROTONINA": "Neurotrasmettitore stabilizzatore dell'umore. Precursore della melatonina, fondamentale per il benessere emotivo e la sazietà diurna.",
-"OSSITOCINA": "Ormone della connessione sociale e della fiducia. Riduce i livelli di cortisolo e promuove il rilassamento parasimpatico.",
-"ENDORFINE": "Peptidi oppioidi endogeni. Agiscono come analgesici naturali e inducono una sensazione di benessere post-attività fisica.",
-"GRELINA": "Ormone gastrico che stimola il senso di fame. Segnala al cervello la necessità di introdurre nutrienti per il mantenimento energetico.",
-"LIVELLO_ALTO": "Livello stimato: Alto (Fase di picco)",
-"LIVELLO_MEDIO": "Livello stimato: Medio (Omeostasi)",
-"LIVELLO_BASSO": "Livello stimato: In calo (Fase metabolica)",
+            "SEROTONINA": "Neurotrasmettitore stabilizzatore dell'umore. Precursore della melatonina, fondamentale per il benessere emotivo.",
+            "OSSITOCINA": "Ormone della connessione sociale e della fiducia. Riduce i livelli di cortisolo.",
+            "ENDORFINE": "Peptidi oppioidi endogeni. Agiscono come analgesici naturali e inducono benessere post-attività.",
+            "GRELINA": "Ormone gastrico che stimola il senso di fame. Segnala al cervello la necessità di nutrienti.",
+            "GLUTAMMATO": "Il principale neurotrasmettitore eccitatorio. Fondamentale per la plasticità sinaptica e l'apprendimento.",
+            "NORADRENALINA": "Neurotrasmettitore dello stress e dell'attenzione. Mobilita corpo e cervello per l'azione.",
+            "PROLATTINA": "Modula la risposta immunitaria, il metabolismo e il recupero nel ciclo sonno-veglia.",
+            "BDNF": "Fattore neurotrofico cerebrale. Sostiene la sopravvivenza dei neuroni e favorisce la neurogenesi.",
+            "LIVELLO_ALTO": "Livello stimato: Alto (Fase di picco)",
+            "LIVELLO_MEDIO": "Livello stimato: Medio (Omeostasi)",
+            "LIVELLO_BASSO": "Livello stimato: In calo (Fase metabolica)",
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
         en: {
-            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. Astrocytes facilitate metabolic waste flushing.",
+            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate waste flushing.",
             "CORTISOL SPIKE": "Peak adrenal activation to elevate glucose for daytime demands.",
             "HIGH VIGILANCE": "Optimal alertness driven by orexin and low adenosine load.",
             "MAX ALERTNESS": "Window of maximum neural processing speed and coordination.",
@@ -296,14 +299,17 @@ document.addEventListener('DOMContentLoaded', () => {
             "VITAMIN D INTAKE": "Support for circadian genes and immune system.",
             "HYDRATION + SALTS": "Electrolyte restoration for neural potential.",
             "WARM THERMO-RELAX": "Promotes vasodilation to lower core temperature.",
-            // --- NEW MOLECULES (EN) ---
-"SEROTONIN": "Mood-stabilizing neurotransmitter. Precursor to melatonin, essential for emotional well-being and daytime satiety.",
-"OXYTOCIN": "Hormone of social connection and trust. Reduces cortisol levels and promotes parasympathetic relaxation.",
-"ENDORPHINS": "Endogenous opioid peptides. Act as natural painkillers and induce post-exercise euphoria.",
-"GHRELIN": "Gastric hormone that stimulates appetite. Signals the brain for energy intake and maintenance.",
-"LIVELLO_ALTO": "Estimated level: High (Peak phase)",
-"LIVELLO_MEDIO": "Estimated level: Medium (Homeostasis)",
-"LIVELLO_BASSO": "Estimated level: Declining (Metabolic phase)",
+            "SEROTONIN": "Mood-stabilizing neurotransmitter. Precursor to melatonin.",
+            "OXYTOCIN": "Hormone of social connection and trust. Reduces cortisol levels.",
+            "ENDORPHINS": "Endogenous opioid peptides. Natural painkillers.",
+            "GHRELIN": "Gastric hormone that stimulates appetite.",
+            "GLUTAMATE": "The primary excitatory neurotransmitter. Crucial for learning.",
+            "NOREPINEPHRINE": "Stress and attention neurotransmitter. Mobilizes brain for action.",
+            "PROLACTIN": "Modulates immune response and recovery in sleep-wake cycle.",
+            "BDNF": "Brain-derived neurotrophic factor. Supports neuron survival.",
+            "LIVELLO_ALTO": "Estimated level: High (Peak phase)",
+            "LIVELLO_MEDIO": "Estimated level: Medium (Homeostasis)",
+            "LIVELLO_BASSO": "Estimated level: Declining (Metabolic phase)",
             "default": "Bio-synchronized data via Biotech Core module."
         }
     };
@@ -340,16 +346,16 @@ function initBioClock() {
 
     const circadianMap = {
         0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
-        3:  { it: ["RIPARAZIONE TESSUTI", "PICCO SOMATOTROPINA", "SOMATOTROPINA", "SOGNO PROFONDO"], en: ["TISSUE REPAIR", "GH PEAK", "SOMATOTROPIN", "DEEP DREAMING"] },
+        3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "PROLATTINA", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "PROLACTIN", "SOMATOTROPIN"] },
         6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
-        8:  { it: ["STABILITÀ EMOTIVA", "SINTESI SEROTONINA", "SEROTONINA", "ESPOSIZIONE SOLARE"], en: ["EMOTIONAL STABILITY", "SEROTONIN SYNTHESIS", "SEROTONIN", "SUN EXPOSURE"] },
-        11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
-        12: { it: ["STIMOLO ORESSIGENICO", "PICCO GRELINA", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "GHRELIN PEAK", "GHRELIN", "NUTRITION BREAK"] },
+        8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "SEROTONINA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "SEROTONIN", "PROTEIN BREAKFAST"] },
+        11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
+        12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
         13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
         15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
         17: { it: ["PICCO FISICO", "RILASCIO ENDORFINE", "ENDORFINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHIN RELEASE", "ENDORPHINS", "WORKOUT"] },
         19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
-        21: { it: ["RELAZIONE SOCIALE", "RILASCIO OSSITOCINA", "OSSITOCINA", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN RELEASE", "OXYTOCIN", "ACTIVE RELAX"] },
+        21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "GABA", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "GABA", "ACTIVE RELAX"] },
         23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
     };
 
@@ -369,35 +375,23 @@ function initBioClock() {
         const now = new Date();
         const hour = now.getHours();
         const mins = now.getMinutes();
-        
         const keys = Object.keys(circadianMap).map(Number);
-        
-        // Trova la chiave attuale
         const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
-        
-        // Trova la prossima chiave per calcolare la durata della fascia
         const currentIndex = keys.indexOf(currentKey);
         const nextKey = keys[currentIndex + 1] || 24; 
-        
         const blockDuration = nextKey - currentKey;
-        // Calcolo preciso con frazione di ora (es. 10:30 = 10.5)
         const elapsed = (hour - currentKey) + (mins / 60);
 
-        // --- LOGICA LIVELLO DINAMICO ---
         let levelKey = "LIVELLO_ALTO";
-        if (elapsed >= blockDuration * 0.7) {
-            levelKey = "LIVELLO_BASSO";
-        } else if (elapsed >= blockDuration * 0.4) {
-            levelKey = "LIVELLO_MEDIO";
-        }
+        if (elapsed >= blockDuration * 0.7) levelKey = "LIVELLO_BASSO";
+        else if (elapsed >= blockDuration * 0.4) levelKey = "LIVELLO_MEDIO";
 
         const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
         const advice = getDynamicAdvice(hour, data[3]);
         const dict = isIt ? bioExplanations.it : bioExplanations.en;
 
-        // Recupero descrizioni + Livello Molecolare
-        const molName = isIt ? data[2] : (data[2] === "GRELINA" ? "GHRELIN" : (data[2] === "SEROTONINA" ? "SEROTONIN" : (data[2] === "OSSITOCINA" ? "OXYTOCIN" : (data[2] === "ENDORFINE" ? "ENDORPHINS" : data[2]))));
-        const moleculeDesc = dict[data[2].toUpperCase()] || dict["default"];
+        const molName = data[2];
+        const moleculeDesc = dict[molName.toUpperCase()] || dict["default"];
         const levelText = dict[levelKey];
         const fullMoleculeTooltip = `${moleculeDesc} | ${levelText}`;
 
@@ -443,7 +437,7 @@ function initBioClock() {
         let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
         if (!tooltipEl.className) { tooltipEl.className = 'biotech-tooltip'; document.body.appendChild(tooltipEl); }
         document.addEventListener('mouseover', (e) => { const target = e.target.closest('[data-bio-tip]'); if (target) { tooltipEl.textContent = target.getAttribute('data-bio-tip'); tooltipEl.style.display = 'block'; } });
-        document.addEventListener('mousemove', (e) => { if (tooltipEl.style.display === 'block') { tooltipEl.style.left = e.clientX + 'px'; tooltipEl.style.top = (e.clientY + 25) + 'px'; } });
+        document.addEventListener('mousemove', (e) => { if (tooltipEl.style.display === 'block') { tooltipEl.style.left = (e.clientX + 15) + 'px'; tooltipEl.style.top = (e.clientY + 20) + 'px'; } });
         document.addEventListener('mouseout', (e) => { if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; });
     }
 
