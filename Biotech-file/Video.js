@@ -244,6 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
 "OSSITOCINA": "Ormone della connessione sociale e della fiducia. Riduce i livelli di cortisolo e promuove il rilassamento parasimpatico.",
 "ENDORFINE": "Peptidi oppioidi endogeni. Agiscono come analgesici naturali e inducono una sensazione di benessere post-attività fisica.",
 "GRELINA": "Ormone gastrico che stimola il senso di fame. Segnala al cervello la necessità di introdurre nutrienti per il mantenimento energetico.",
+"LIVELLO_ALTO": "Livello stimato: Alto (Fase di picco)",
+"LIVELLO_MEDIO": "Livello stimato: Medio (Omeostasi)",
+"LIVELLO_BASSO": "Livello stimato: In calo (Fase metabolica)",
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
         en: {
@@ -282,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "PROTEIN BREAKFAST": "Provides amino acid precursors for neurotransmitters.",
             "ACTIVE FOCUS": "Window of maximum alertness and coordination.",
             "NUTRITION BREAK": "Synchronization of peripheral clocks via nutrients.",
-            "ANALYTICAL FOCUS": "Optimal phase for precision tasks.",
+            "ANALYTICAL FOCUS": "Optimal phase for precision tasks, supported by acetylcholine.",
             "WORKOUT": "Physical activity during peak body temperature.",
             "DOWNTIME": "Reduction of sympathetic stimuli.",
             "ACTIVE RELAX": "Low-impact activity to clear residual cortisol.",
@@ -298,6 +301,9 @@ document.addEventListener('DOMContentLoaded', () => {
 "OXYTOCIN": "Hormone of social connection and trust. Reduces cortisol levels and promotes parasympathetic relaxation.",
 "ENDORPHINS": "Endogenous opioid peptides. Act as natural painkillers and induce post-exercise euphoria.",
 "GHRELIN": "Gastric hormone that stimulates appetite. Signals the brain for energy intake and maintenance.",
+"LIVELLO_ALTO": "Estimated level: High (Peak phase)",
+"LIVELLO_MEDIO": "Estimated level: Medium (Homeostasis)",
+"LIVELLO_BASSO": "Estimated level: Declining (Metabolic phase)",
             "default": "Bio-synchronized data via Biotech Core module."
         }
     };
@@ -327,65 +333,93 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBioCycle(); setInterval(updateBioCycle, 3600000);
     }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO ---
-    function initBioClock() {
-        const clockEl = document.getElementById('clock2');
-        if (!clockEl) return;
+    // --- 2. OROLOGIO BIO-CIRCADIANO (VERSIONE HIGH-PRECISION 2026) ---
+function initBioClock() {
+    const clockEl = document.getElementById('clock2');
+    if (!clockEl) return;
 
-        const circadianMap = {
-    0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
-    3:  { it: ["RIPARAZIONE TESSUTI", "PICCO SOMATOTROPINA", "SOMATOTROPINA", "SOGNO PROFONDO"], en: ["TISSUE REPAIR", "GH PEAK", "SOMATOTROPIN", "DEEP DREAMING"] },
-    6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
-    8:  { it: ["STABILITÀ EMOTIVA", "SINTESI SEROTONINA", "SEROTONINA", "ESPOSIZIONE SOLARE"], en: ["EMOTIONAL STABILITY", "SEROTONIN SYNTHESIS", "SEROTONIN", "SUN EXPOSURE"] },
-    11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
-    12: { it: ["STIMOLO ORESSIGENICO", "PICCO GRELINA", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "GHRELIN PEAK", "GHRELIN", "NUTRITION BREAK"] },
-    13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
-    15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-    17: { it: ["PICCO FISICO", "RILASCIO ENDORFINE", "ENDORFINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHIN RELEASE", "ENDORPHINS", "WORKOUT"] },
-    19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
-    21: { it: ["RELAZIONE SOCIALE", "RILASCIO OSSITOCINA", "OSSITOCINA", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN RELEASE", "OXYTOCIN", "ACTIVE RELAX"] },
-    23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
-};
+    const circadianMap = {
+        0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
+        3:  { it: ["RIPARAZIONE TESSUTI", "PICCO SOMATOTROPINA", "SOMATOTROPINA", "SOGNO PROFONDO"], en: ["TISSUE REPAIR", "GH PEAK", "SOMATOTROPIN", "DEEP DREAMING"] },
+        6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
+        8:  { it: ["STABILITÀ EMOTIVA", "SINTESI SEROTONINA", "SEROTONINA", "ESPOSIZIONE SOLARE"], en: ["EMOTIONAL STABILITY", "SEROTONIN SYNTHESIS", "SEROTONIN", "SUN EXPOSURE"] },
+        11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "DOPAMINA", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "DOPAMINE", "ACTIVE FOCUS"] },
+        12: { it: ["STIMOLO ORESSIGENICO", "PICCO GRELINA", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "GHRELIN PEAK", "GHRELIN", "NUTRITION BREAK"] },
+        13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
+        15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+        17: { it: ["PICCO FISICO", "RILASCIO ENDORFINE", "ENDORFINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHIN RELEASE", "ENDORPHINS", "WORKOUT"] },
+        19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
+        21: { it: ["RELAZIONE SOCIALE", "RILASCIO OSSITOCINA", "OSSITOCINA", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN RELEASE", "OXYTOCIN", "ACTIVE RELAX"] },
+        23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
+    };
 
-        const getDynamicAdvice = (h, base) => {
-            const s = getCurrentSeason();
-            if (h >= 6 && h < 9) {
-                if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-                if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-            }
-            if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-            if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-            if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-            return base;
-        };
+    const getDynamicAdvice = (h, base) => {
+        const s = getCurrentSeason();
+        if (h >= 6 && h < 9) {
+            if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+            if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+        }
+        if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+        if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+        if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+        return base;
+    };
 
-        const updateClock = () => {
-            const now = new Date(), hour = now.getHours();
-            const keys = Object.keys(circadianMap).map(Number).reverse();
-            const currentKey = keys.find(k => hour >= k) || 0;
-            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-            const advice = getDynamicAdvice(hour, data[3]);
-            const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-            const dict = isIt ? bioExplanations.it : bioExplanations.en;
+    const updateClock = () => {
+        const now = new Date();
+        const hour = now.getHours();
+        const mins = now.getMinutes();
+        
+        const keys = Object.keys(circadianMap).map(Number);
+        
+        // Trova la chiave attuale
+        const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
+        
+        // Trova la prossima chiave per calcolare la durata della fascia
+        const currentIndex = keys.indexOf(currentKey);
+        const nextKey = keys[currentIndex + 1] || 24; 
+        
+        const blockDuration = nextKey - currentKey;
+        // Calcolo preciso con frazione di ora (es. 10:30 = 10.5)
+        const elapsed = (hour - currentKey) + (mins / 60);
 
-            const mDesc = dict[data[2].toUpperCase()] || dict["default"];
-            const aDesc = dict[advice.toUpperCase()] || dict["default"];
-            const sDesc = dict[data[0].toUpperCase()] || dict["default"];
-            const sysDesc = dict[data[1].toUpperCase()] || (isIt ? "Stato operativo Biotech Core." : "Biotech Core operational state.");
+        // --- LOGICA LIVELLO DINAMICO ---
+        let levelKey = "LIVELLO_ALTO";
+        if (elapsed >= blockDuration * 0.7) {
+            levelKey = "LIVELLO_BASSO";
+        } else if (elapsed >= blockDuration * 0.4) {
+            levelKey = "LIVELLO_MEDIO";
+        }
 
-            clockEl.innerHTML = `
-                <div class="hud-inline-row">
-                    <span data-bio-tip="${mDesc}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${data[2]}</b></span>
-                    <span class="separator">|</span>
-                    <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
-                </div>
-                <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
-                <span class="bio-clock-time">${timeStr}</span>
-                <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
-            `;
-        };
-        updateClock(); setInterval(updateClock, 1000);
-    }
+        const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+        const advice = getDynamicAdvice(hour, data[3]);
+        const dict = isIt ? bioExplanations.it : bioExplanations.en;
+
+        // Recupero descrizioni + Livello Molecolare
+        const molName = isIt ? data[2] : (data[2] === "GRELINA" ? "GHRELIN" : (data[2] === "SEROTONINA" ? "SEROTONIN" : (data[2] === "OSSITOCINA" ? "OXYTOCIN" : (data[2] === "ENDORFINE" ? "ENDORPHINS" : data[2]))));
+        const moleculeDesc = dict[data[2].toUpperCase()] || dict["default"];
+        const levelText = dict[levelKey];
+        const fullMoleculeTooltip = `${moleculeDesc} | ${levelText}`;
+
+        const aDesc = dict[advice.toUpperCase()] || dict["default"];
+        const sDesc = dict[data[0].toUpperCase()] || dict["default"];
+        const sysDesc = dict[data[1].toUpperCase()] || (isIt ? "Stato operativo Biotech Core." : "Biotech Core operational state.");
+
+        const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+
+        clockEl.innerHTML = `
+            <div class="hud-inline-row">
+                <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
+                <span class="separator">|</span>
+                <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+            </div>
+            <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
+            <span class="bio-clock-time">${timeStr}</span>
+            <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
+        `;
+    };
+    updateClock(); setInterval(updateClock, 1000);
+}
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
