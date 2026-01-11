@@ -311,22 +311,29 @@ function initSeasonMonitor() {
     };
 
     const updateBioCycle = () => {
-        const now = new Date();
-        const year = now.getFullYear();
-        const seasonKey = getCurrentSeason();
-        const start = new Date(year, 0, 1);
-        const end = new Date(year + 1, 0, 1);
-        const progress = ((now - start) / (end - start)) * 100;
-        const daysLeft = Math.floor((end - now) / 86400000);
+    const now = new Date();
+    const year = now.getFullYear();
+    const seasonKey = getCurrentSeason();
+    const start = new Date(year, 0, 1);
+    const end = new Date(year + 1, 0, 1);
+    const progress = ((now - start) / (end - start)) * 100;
+    const daysLeft = Math.floor((end - now) / 86400000);
 
-        dataDisplay.innerHTML = `
-            <div class="bio-season-label" data-bio-tip="${isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.'}">${lang.seasons[seasonKey]} ${lang.phase}</div>
-            <div class="bio-progress-data">
-                ${progress.toFixed(2)}% 
-                <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
-            </div>
-        `;
-    };
+    // Definiamo il messaggio una volta sola per pulizia
+    const tooltipMsg = isIt 
+        ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' 
+        : 'Earth axial tilt monitoring and metabolic impact.';
+
+    dataDisplay.innerHTML = `
+        <div class="bio-season-label" data-bio-tip="${tooltipMsg}">
+            ${lang.seasons[seasonKey]} ${lang.phase}
+        </div>
+        <div class="bio-progress-data" data-bio-tip="${tooltipMsg}">
+            ${progress.toFixed(2)}% 
+            <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span>
+        </div>
+    `;
+};
     updateBioCycle();
     setInterval(updateBioCycle, 3600000);
 }
