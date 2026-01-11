@@ -250,6 +250,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "LIVELLO_ALTO": "Livello stimato: Alto (Fase di picco)",
             "LIVELLO_MEDIO": "Livello stimato: Medio (Omeostasi)",
             "LIVELLO_BASSO": "Livello stimato: In calo (Fase metabolica)",
+            "RILASCIO ENDORFINE": "Fase di secrezione di oppioidi endogeni che riducono lo stress fisico e migliorano l'umore.",
+"SINTESI SEROTONINA": "Produzione di 5-HT dai precursori triptofanici grazie all'interazione con la luce solare.",
+"PICCO SOMATOTROPINA": "Massima secrezione di ormone GH per la rigenerazione cellulare profonda.",
+"SOGNO PROFONDO": "Fase REM e NREM 3/4: consolidamento della memoria e restauro cognitivo.",
+"PICCO GRELINA": "Segnale oressigenico gastrico che prepara il sistema digestivo all'assunzione di nutrienti.",
+"STIMOLO ORESSIGENICO": "Attivazione dei neuroni dell'ipotalamo laterale per la ricerca di energia.",
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
         en: {
@@ -310,6 +316,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "LIVELLO_ALTO": "Estimated level: High (Peak phase)",
             "LIVELLO_MEDIO": "Estimated level: Medium (Homeostasis)",
             "LIVELLO_BASSO": "Estimated level: Declining (Metabolic phase)",
+            "ENDORPHIN RELEASE": "Endogenous opioid secretion phase that reduces physical stress and boosts mood.",
+"SEROTONIN SYNTHESIS": "5-HT production from tryptophan precursors driven by solar interaction.",
+"GH PEAK": "Maximum secretion of Growth Hormone for deep cellular regeneration.",
+"DEEP DREAMING": "REM and NREM 3/4 phases: memory consolidation and cognitive restoration.",
+"GHRELIN PEAK": "Gastric orexigenic signal preparing the digestive system for nutrient intake.",
+"OREXIGENIC STIMULUS": "Activation of lateral hypothalamus neurons for energy seeking.",
             "default": "Bio-synchronized data via Biotech Core module."
         }
     };
