@@ -357,8 +357,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     letter-spacing: 0.5px; 
     backdrop-filter: blur(4px); 
     text-transform: uppercase; 
-    /* Centratura orizzontale rispetto al punto di ancoraggio */
-    transform: translateX(-50%);
     text-align: center;
     left: 0; /* Lascia che il JS controlli la posizione */
     transform: translateX(-50%); /* Centra il box rispetto alla punta del mouse */
