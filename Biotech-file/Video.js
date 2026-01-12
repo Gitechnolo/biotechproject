@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "SAZIETÀ METABOLICA": "Gestione ormonale post-prandiale: bilanciamento tra insulina e leptina.",
             "STABILITÀ SINAPTICA": "Mantenimento dei potenziali d'azione e della plasticità neuronale a breve termine.",
             "EFFICIENZA MAX": "Sincronia tra gittata cardiaca, ossigenazione polmonare e reclutamento motorio.",
-            "SINTESI PROTEICA": "Attivazione dei pathway mTor per la riparazione cellulare e strutturale.",
+            "SINTESI PROTEICA": "Attivazione della via di segnalazione mTOR per la riparazione cellulare e strutturale.",
             "MODALITÀ RECUPERO": "Predominanza del sistema nervoso parasimpatico. Abbassamento della frequenza cardiaca.",
             "INIZIO PULIZIA": "Transizione biochimica: calo della temperatura centrale e avvio della pulizia glinfatica.",
             "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito.",
@@ -241,7 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "THERMO-RELAX (CALDO)": "Favorisce la vasodilatazione per abbassare la temperatura centrale.",
             "SEROTONINA": "Neurotrasmettitore stabilizzatore dell'umore. Precursore della melatonina, fondamentale per il benessere emotivo.",
             "OSSITOCINA": "Ormone della connessione sociale e della fiducia. Riduce i livelli di cortisolo.",
-            "ENDORFINE": "Peptidi oppioidi endogeni. Agiscono come analgesici naturali e inducono benessere post-attività.",
+            "ENDORFINE/MIOCHINE": "Sinergia tra oppioidi endogeni (benessere) e messaggeri muscolari (metabolismo). Si attiva con la contrazione muscolare.",
+"ENDORFINE + MIOCHINE": "Fase di secrezione sinergica: le miochine riparano i tessuti mentre le endorfine modulano il sistema del piacere e del dolore.",
+"ALLENAMENTO RESISTENZA": "Stimolo meccanico ottimale per massimizzare il rilascio di miochine e migliorare la sensibilità insulinica.",
+            "MIOCHINE": "Citochine muscolari (es. Irisina) rilasciate durante l'esercizio. Migliorano il metabolismo e stimolano la neuroplasticità.",
             "GRELINA": "Ormone gastrico che stimola il senso di fame. Segnala al cervello la necessità di nutrienti.",
             "GLUTAMMATO": "Il principale neurotrasmettitore eccitatorio. Fondamentale per la plasticità sinaptica e l'apprendimento.",
             "NORADRENALINA": "Neurotrasmettitore dello stress e dell'attenzione. Mobilita corpo e cervello per l'azione.",
@@ -259,8 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
 "DHEA": "Deidroepiandrosterone: l'antagonista del cortisolo. Supporta la riparazione tissutale e la resilienza allo stress.",
 "ADIPONECTINA": "Ormone proteico che regola i livelli di glucosio e la scomposizione degli acidi grassi.",
 "CITOCHINE": "Segnali proteici del sistema immunitario; la loro pulizia notturna previene l'infiammazione cronica.",
-"FOTOBIOMODULAZIONE": "Utilizzo di frequenze luminose (Rosso/NIR) per stimolare i mitocondri e il recupero cellulare.",
-"VARIAZIONE TERMICA": "Esposizione al freddo/caldo per attivare il grasso bruno e migliorare la risposta immunitaria.",
+"VARIAZIONE TERMICA (FREDDO)": "Esposizione al freddo/caldo per attivare il grasso bruno e migliorare la risposta immunitaria.",
+"FOTOBIOMODULAZIONE (ROSSO)": "Utilizzo di frequenze luminose (Rosso/NIR) per stimolare i mitocondri e il recupero cellulare.",
+"RELAZIONE SOCIALE": "Fase di interazione pro-sociale che stimola l'ossitocina e riduce il carico di cortisolo serale.",
 "ANANDAMIDE": "Endocannabinoide del benessere. Modula il dolore, l'appetito e la memoria.",
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
@@ -302,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "NUTRITION BREAK": "Synchronization of peripheral clocks via nutrients.",
             "ANALYTICAL FOCUS": "Optimal phase for precision tasks, supported by acetylcholine.",
             "WORKOUT": "Physical activity during peak body temperature.",
-            "DOWNTIME": "Reduction of sympathetic stimuli.",
+            "DOWNTIME": "Reduction of sympathetic stimuli in favor of the parasympathetic system.",
             "ACTIVE RELAX": "Low-impact activity to clear residual cortisol.",
             "NO BLUE LIGHT": "Blocking 450-480nm light to prevent melatonin inhibition.",
             "TOTAL DARKNESS": "Absence of photons to stimulate the pineal gland.",
@@ -313,7 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "WARM THERMO-RELAX": "Promotes vasodilation to lower core temperature.",
             "SEROTONIN": "Mood-stabilizing neurotransmitter. Precursor to melatonin.",
             "OXYTOCIN": "Hormone of social connection and trust. Reduces cortisol levels.",
-            "ENDORPHINS": "Endogenous opioid peptides. Natural painkillers.",
+            "ENDORPHINS/MYOKINES": "Synergy between endogenous opioids (well-being) and muscle messengers (metabolism). Triggered by muscle contraction.",
+"ENDORPHINS + MYOKINES": "Synergistic secretion phase: myokines repair tissues while endorphins modulate pleasure and pain systems.",
+"RESISTANCE TRAINING": "Optimal mechanical stimulus to maximize myokine release and improve insulin sensitivity.",
+            "MYOKINES": "Muscle-derived cytokines (e.g., Irisin) released during exercise. They enhance metabolism and stimulate neuroplasticity.",
             "GHRELIN": "Gastric hormone that stimulates appetite.",
             "GLUTAMATE": "The primary excitatory neurotransmitter. Crucial for learning.",
             "NOREPINEPHRINE": "Stress and attention neurotransmitter. Mobilizes brain for action.",
@@ -331,8 +338,9 @@ document.addEventListener('DOMContentLoaded', () => {
 "DHEA": "Dehydroepiandrosterone: cortisol antagonist. Supports tissue repair and stress resilience.",
 "ADIPONECTIN": "Protein hormone regulating glucose levels and fatty acid breakdown.",
 "CYTOKINES": "Immune signaling proteins; nocturnal clearance prevents chronic inflammation.",
-"PHOTOBIOMODULATION": "Use of light frequencies (Red/NIR) to stimulate mitochondria and cellular recovery.",
-"THERMAL VARIATION": "Cold/heat exposure to activate brown fat and improve immune response.",
+"THERMAL VARIATION (COLD)": "Cold/heat exposure to activate brown fat and improve immune response.",
+"PHOTOBIOMODULATION (RED)": "Use of light frequencies (Red/NIR) to stimulate mitochondria and cellular recovery.",
+"SOCIAL CONNECTION": "Pro-social interaction phase that stimulates oxytocin and reduces evening cortisol load.",
 "ANANDAMIDE": "Endocannabinoid of bliss. Modulates pain, appetite, and memory.",
             "default": "Bio-synchronized data via Biotech Core module."
         }
@@ -377,7 +385,7 @@ function initBioClock() {
     12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
     13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "ADIPONECTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "ADIPONECTIN", "NUTRITION BREAK"] }, // Aggiunta Adiponectina
     15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-    17: { it: ["PICCO FISICO", "RILASCIO ENDORFINE", "ENDORFINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHIN RELEASE", "ENDORPHINS", "WORKOUT"] },
+    17: { it: ["PICCO FISICO", "ENDORFINE + MIOCHINE", "ENDORFINE/MIOCHINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHINS + MYOKINES", "ENDORPHINS/MYOKINES", "WORKOUT"] }, // Modificata Endorfine + Miokine
     19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
     21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "ANANDAMIDE", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "ANANDAMIDE", "ACTIVE RELAX"] }, // Inserita Anandamide
     23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
@@ -395,6 +403,7 @@ function initBioClock() {
     
     if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
     if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+    if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
     
     // Sera: Fotobiomodulazione (Luce rossa) per contrastare la luce blu residua
     if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
