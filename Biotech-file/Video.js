@@ -256,6 +256,12 @@ document.addEventListener('DOMContentLoaded', () => {
 "SOGNO PROFONDO": "Fase REM e NREM 3/4: consolidamento della memoria e restauro cognitivo.",
 "PICCO GRELINA": "Segnale oressigenico gastrico che prepara il sistema digestivo all'assunzione di nutrienti.",
 "STIMOLO ORESSIGENICO": "Attivazione dei neuroni dell'ipotalamo laterale per la ricerca di energia.",
+"DHEA": "Deidroepiandrosterone: l'antagonista del cortisolo. Supporta la riparazione tissutale e la resilienza allo stress.",
+"ADIPONECTINA": "Ormone proteico che regola i livelli di glucosio e la scomposizione degli acidi grassi.",
+"CITOCHINE": "Segnali proteici del sistema immunitario; la loro pulizia notturna previene l'infiammazione cronica.",
+"FOTOBIOMODULAZIONE": "Utilizzo di frequenze luminose (Rosso/NIR) per stimolare i mitocondri e il recupero cellulare.",
+"VARIAZIONE TERMICA": "Esposizione al freddo/caldo per attivare il grasso bruno e migliorare la risposta immunitaria.",
+"ANANDAMIDE": "Endocannabinoide del benessere. Modula il dolore, l'appetito e la memoria.",
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
         en: {
@@ -322,6 +328,12 @@ document.addEventListener('DOMContentLoaded', () => {
 "DEEP DREAMING": "REM and NREM 3/4 phases: memory consolidation and cognitive restoration.",
 "GHRELIN PEAK": "Gastric orexigenic signal preparing the digestive system for nutrient intake.",
 "OREXIGENIC STIMULUS": "Activation of lateral hypothalamus neurons for energy seeking.",
+"DHEA": "Dehydroepiandrosterone: cortisol antagonist. Supports tissue repair and stress resilience.",
+"ADIPONECTIN": "Protein hormone regulating glucose levels and fatty acid breakdown.",
+"CYTOKINES": "Immune signaling proteins; nocturnal clearance prevents chronic inflammation.",
+"PHOTOBIOMODULATION": "Use of light frequencies (Red/NIR) to stimulate mitochondria and cellular recovery.",
+"THERMAL VARIATION": "Cold/heat exposure to activate brown fat and improve immune response.",
+"ANANDAMIDE": "Endocannabinoid of bliss. Modulates pain, appetite, and memory.",
             "default": "Bio-synchronized data via Biotech Core module."
         }
     };
@@ -357,31 +369,40 @@ function initBioClock() {
     if (!clockEl) return;
 
     const circadianMap = {
-        0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
-        3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "PROLATTINA", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "PROLACTIN", "SOMATOTROPIN"] },
-        6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
-        8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "SEROTONINA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "SEROTONIN", "PROTEIN BREAKFAST"] },
-        11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
-        12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
-        13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "LEPTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "LEPTIN", "NUTRITION BREAK"] },
-        15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-        17: { it: ["PICCO FISICO", "RILASCIO ENDORFINE", "ENDORFINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHIN RELEASE", "ENDORPHINS", "WORKOUT"] },
-        19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
-        21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "GABA", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "GABA", "ACTIVE RELAX"] },
-        23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
-    };
+    0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
+    3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "CITOCHINE", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "CYTOKINES", "SOMATOTROPIN"] }, // Inserite Citochine
+    6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
+    8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "DHEA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "DHEA", "PROTEIN BREAKFAST"] }, // Bilanciamento Cortisolo/DHEA
+    11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
+    12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
+    13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "ADIPONECTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "ADIPONECTIN", "NUTRITION BREAK"] }, // Aggiunta Adiponectina
+    15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+    17: { it: ["PICCO FISICO", "RILASCIO ENDORFINE", "ENDORFINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHIN RELEASE", "ENDORPHINS", "WORKOUT"] },
+    19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
+    21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "ANANDAMIDE", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "ANANDAMIDE", "ACTIVE RELAX"] }, // Inserita Anandamide
+    23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
+};
 
     const getDynamicAdvice = (h, base) => {
-        const s = getCurrentSeason();
-        if (h >= 6 && h < 9) {
-            if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-            if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-        }
-        if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-        if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-        if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-        return base;
-    };
+    const s = getCurrentSeason();
+    // Mattina presto: stimolo termico per il metabolismo
+    if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
+    
+    if (h >= 6 && h < 9) {
+        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+    }
+    
+    if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+    if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+    
+    // Sera: Fotobiomodulazione (Luce rossa) per contrastare la luce blu residua
+    if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
+    
+    if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+    
+    return base;
+};
 
     const updateClock = () => {
         const now = new Date();
