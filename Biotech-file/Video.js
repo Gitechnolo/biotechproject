@@ -170,9 +170,9 @@ function initializeVideoControls(video, controls) {
   });
 }   
 
-// ==========================================
-// BIOTECH CORE ENGINE - ULTIMATE EDITION 2026
-// ==========================================
+// ============================================================
+// BIOTECH CORE ENGINE - ULTIMATE EDITION 2026 (FINAL REVISION)
+// ============================================================
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURAZIONE LINGUA ---
@@ -194,25 +194,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const bioExplanations = {
         it: {
             "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici tramite il liquido cerebrospinale.",
-            "PICCO DI CORTISOLO": "Fase di massima attivazione surrenale per elevare la glicemia e preparare l'organismo alle richieste energetiche diurne.",
-            "VIGILANZA ELEVATA": "Stato di allerta cognitiva ottimale guidato dalla stabilità dell'oressina e dal basso carico di adenosina.",
-            "MASSIMA ALLERTA": "Finestra di massima velocità di elaborazione neurale e coordinazione. Picco della temperatura corporea e della dopamina.",
-            "RISPOSTA LEPTINICA": "Segnale ormonale di sazietà che sposta il metabolismo verso l'immagazzinamento e il recupero post-prandiale.",
-            "MANTENIMENTO COGNITIVO": "Fase di stabilizzazione dell'attenzione sostenuta dall'acetilcolina prima del calo metabolico pomeridiano.",
-            "PICCO FISICO": "Massima efficienza cardiovascolare e forza muscolare. I polmoni e il cuore operano alla massima capacità.",
-            "FINESTRA ANABOLICA": "Periodo ottimale per la riparazione cellulare e la sintesi proteica grazie alla gestione dell'insulina.",
-            "CALMA NEURONALE": "Transizione verso il sistema parasimpatico. Riduzione dei battiti e preparazione al rilascio di melatonina.",
-            "RILASCIO MELATONINA": "Inizio della secrezione pineale che segnala al corpo l'inizio della notte biologica.",
-            "RIPARAZIONE TESSUTI": "Processo rigenerativo profondo mediato dall'ormone della crescita (GH) durante le prime fasi del sonno.",
             "PULIZIA CEREBRALE": "Attivazione dei flussi glinfatici per la rimozione di beta-amiloide e detriti metabolici neurali.",
+            "INIZIO PULIZIA": "Transizione biochimica: calo della temperatura centrale e avvio della pulizia glinfatica.",
+            "PICCO DI CORTISOLO": "Fase di massima attivazione surrenale per preparare l'organismo alle richieste energetiche diurne.",
+            "VIGILANZA ELEVATA": "Stato di allerta cognitiva ottimale guidato dalla stabilità dell'oressina e dal basso carico di adenosina.",
+            "MASSIMA ALLERTA": "Finestra di massima velocità di elaborazione neurale e coordinazione. Picco di temperatura e dopamina.",
+            "RISPOSTA LEPTINICA": "Segnale ormonale di sazietà che sposta il metabolismo verso l'immagazzinamento e il recupero.",
+            "MANTENIMENTO COGNITIVO": "Fase di stabilizzazione dell'attenzione sostenuta dall'acetilcolina prima del calo pomeridiano.",
+            "PICCO FISICO": "Massima efficienza cardiovascolare e forza muscolare. I polmoni e il cuore operano al massimo.",
+            "FINESTRA ANABOLICA": "Periodo ottimale per la riparazione cellulare e la sintesi proteica tramite gestione insulinica.",
+            "CALMA NEURONALE": "Transizione verso il sistema parasimpatico. Preparazione al rilascio di melatonina.",
+            "RILASCIO MELATONINA": "Inizio della secrezione pineale che segnala l'inizio della notte biologica.",
+            "RIPARAZIONE TESSUTI": "Processo rigenerativo profondo mediato dall'ormone della crescita (GH).",
+            "RELAZIONE SOCIALE": "Fase di interazione pro-sociale che stimola l'ossitocina e riduce il cortisolo.",
             "RESET CIRCADIANO": "Sincronizzazione dei nuclei soprachiasmatici tramite segnali luminosi e termici.",
             "PICCO COGNITIVO": "Fase di massima efficienza della corteccia prefrontale. Ottimizzazione del problem solving.",
             "SAZIETÀ METABOLICA": "Gestione ormonale post-prandiale: bilanciamento tra insulina e leptina.",
-            "STABILITÀ SINAPTICA": "Mantenimento dei potenziali d'azione e della plasticità neuronale a breve termine.",
-            "EFFICIENZA MAX": "Sincronia tra gittata cardiaca, ossigenazione polmonare e reclutamento motorio.",
-            "SINTESI PROTEICA": "Attivazione della via di segnalazione mTOR per la riparazione cellulare e strutturale.",
-            "MODALITÀ RECUPERO": "Predominanza del sistema nervoso parasimpatico. Abbassamento della frequenza cardiaca.",
-            "INIZIO PULIZIA": "Transizione biochimica: calo della temperatura centrale e avvio della pulizia glinfatica.",
+            "STABILITÀ SINAPTICA": "Mantenimento dei potenziali d'azione e della plasticità neuronale.",
+            "EFFICIENZA MAX": "Sincronia tra gittata cardiaca, ossigenazione e reclutamento motorio.",
+            "SINTESI PROTEICA": "Attivazione della via mTOR per la riparazione cellulare e strutturale.",
+            "MODALITÀ RECUPERO": "Predominanza del sistema parasimpatico. Abbassamento della frequenza cardiaca.",
             "ORESSINA": "Neuropeptide ipotalamico che stabilizza la veglia e regola l'appetito.",
             "LEPTINA": "Ormone della sazietà prodotto dal tessuto adiposo. Segnala le riserve energetiche.",
             "DOPAMINA": "Neurotrasmettitore della ricompensa. Ottimizza le funzioni esecutive.",
@@ -224,127 +225,133 @@ document.addEventListener('DOMContentLoaded', () => {
             "INSULINA": "Ormone anabolico pancreatico. Regola l'omeostasi del glucosio.",
             "SOMATOTROPINA": "Ormone della crescita (GH). Cruciale per la riparazione dei tessuti.",
             "ADENOSINA": "Sottoprodotto energetico (ATP). Crea la pressione omeostatica del sonno.",
+            "SEROTONINA": "Neurotrasmettitore stabilizzatore dell'umore. Precursore della melatonina.",
+            "OSSITOCINA": "Ormone della connessione sociale e della fiducia. Riduce il cortisolo.",
+            "ENDORFINE/MIOCHINE": "Sinergia tra oppioidi endogeni (benessere) e messaggeri muscolari (metabolismo).",
+            "ENDORFINE + MIOCHINE": "Fase di secrezione sinergica: riparazione tessuti e modulazione del piacere.",
+            "MIOCHINE": "Citochine muscolari (es. Irisina). Migliorano metabolismo e neuroplasticità.",
+            "GRELINA": "Ormone gastrico che stimola il senso di fame. Segnala la necessità di nutrienti.",
+            "GLUTAMMATO": "Il principale neurotrasmettitore eccitatorio. Fondamentale per l'apprendimento.",
+            "NORADRENALINA": "Neurotrasmettitore dello stress e dell'attenzione. Mobilita corpo e cervello.",
+            "PROLATTINA": "Modula la risposta immunitaria e il recupero nel ciclo sonno-veglia.",
+            "BDNF": "Fattore neurotrofico cerebrale. Sostiene la sopravvivenza dei neuroni.",
+            "DHEA": "Deidroepiandrosterone: l'antagonista del cortisolo. Supporta la resilienza.",
+            "ADIPONECTINA": "Ormone proteico che regola glucosio e acidi grassi.",
+            "ANANDAMIDE": "Endocannabinoide del benessere. Modula dolore, appetito e memoria.",
+            "CITOCHINE": "Segnali proteici immunitari; la pulizia notturna previene l'infiammazione.",
             "LUCE NATURALE": "Esposizione solare precoce per resettare i ritmi circadiani.",
-            "COLAZIONE PROT.": "Apporto proteico per fornire aminoacidi precursori dei neurotrasmettitori.",
+            "COLAZIONE PROT.": "Apporto proteico per aminoacidi precursori dei neurotrasmettitori.",
             "FOCUS ATTIVO": "Finestra di massima vigilanza cognitiva e coordinazione.",
-            "PAUSA NUTRIZIONE": "Sincronizzazione degli orologi periferici tramite nutrienti controllati.",
-            "FOCUS ANALITICO": "Fase ottimale per compiti di precisione, supportata dall'acetilcolina.",
-            "MOVIMENTO": "Attività fisica per sfruttare il picco di forza muscolare pomeridiana.",
+            "PAUSA NUTRIZIONE": "Sincronizzazione degli orologi periferici tramite nutrienti.",
+            "FOCUS ANALITICO": "Fase ottimale per compiti di precisione (Acetilcolina).",
+            "MOVIMENTO": "Attività fisica per sfruttare il picco di forza pomeridiana.",
             "DECOMPRESSIONE": "Riduzione degli stimoli simpatici verso il sistema parasimpatico.",
             "RELAX ATTIVO": "Attività a basso impatto per smaltire il cortisolo residuo.",
-            "NO LUCE BLU": "Blocco frequenze 450-480nm per prevenire l'inibizione della melatonina.",
+            "NO LUCE BLU": "Blocco frequenze 450-480nm per proteggere la melatonina.",
             "BUIO TOTALE": "Assenza di fotoni per massimizzare la secrezione di melatonina.",
             "LUCE ART. 10K LUX": "Fotobiomodulazione invernale: simula lo spettro solare.",
             "SOLE DIRETTO 10M": "Ottimizza il rilascio di melatonina circa 14 ore dopo.",
-            "INTEGRA VITAMINA D": "Supporto per l'espressione genica circadiana e il sistema immunitario.",
-            "IDRATAZIONE + SALI": "Ripristino elettroliti per il potenziale d'azione neuronale.",
-            "THERMO-RELAX (CALDO)": "Favorisce la vasodilatazione per abbassare la temperatura centrale.",
-            "SEROTONINA": "Neurotrasmettitore stabilizzatore dell'umore. Precursore della melatonina, fondamentale per il benessere emotivo.",
-            "OSSITOCINA": "Ormone della connessione sociale e della fiducia. Riduce i livelli di cortisolo.",
-            "ENDORFINE/MIOCHINE": "Sinergia tra oppioidi endogeni (benessere) e messaggeri muscolari (metabolismo). Si attiva con la contrazione muscolare.",
-"ENDORFINE + MIOCHINE": "Fase di secrezione sinergica: le miochine riparano i tessuti mentre le endorfine modulano il sistema del piacere e del dolore.",
-"ALLENAMENTO RESISTENZA": "Stimolo meccanico ottimale per massimizzare il rilascio di miochine e migliorare la sensibilità insulinica.",
-            "MIOCHINE": "Citochine muscolari (es. Irisina) rilasciate durante l'esercizio. Migliorano il metabolismo e stimolano la neuroplasticità.",
-            "GRELINA": "Ormone gastrico che stimola il senso di fame. Segnala al cervello la necessità di nutrienti.",
-            "GLUTAMMATO": "Il principale neurotrasmettitore eccitatorio. Fondamentale per la plasticità sinaptica e l'apprendimento.",
-            "NORADRENALINA": "Neurotrasmettitore dello stress e dell'attenzione. Mobilita corpo e cervello per l'azione.",
-            "PROLATTINA": "Modula la risposta immunitaria, il metabolismo e il recupero nel ciclo sonno-veglia.",
-            "BDNF": "Fattore neurotrofico cerebrale. Sostiene la sopravvivenza dei neuroni e favorisce la neurogenesi.",
-            "LIVELLO_ALTO": "Livello stimato: Alto (Fase di picco)",
-            "LIVELLO_MEDIO": "Livello stimato: Medio (Omeostasi)",
-            "LIVELLO_BASSO": "Livello stimato: In calo (Fase metabolica)",
-            "RILASCIO ENDORFINE": "Fase di secrezione di oppioidi endogeni che riducono lo stress fisico e migliorano l'umore.",
-"SINTESI SEROTONINA": "Produzione di 5-HT dai precursori triptofanici grazie all'interazione con la luce solare.",
-"PICCO SOMATOTROPINA": "Massima secrezione di ormone GH per la rigenerazione cellulare profonda.",
-"SOGNO PROFONDO": "Fase REM e NREM 3/4: consolidamento della memoria e restauro cognitivo.",
-"PICCO GRELINA": "Segnale oressigenico gastrico che prepara il sistema digestivo all'assunzione di nutrienti.",
-"STIMOLO ORESSIGENICO": "Attivazione dei neuroni dell'ipotalamo laterale per la ricerca di energia.",
-"DHEA": "Deidroepiandrosterone: l'antagonista del cortisolo. Supporta la riparazione tissutale e la resilienza allo stress.",
-"ADIPONECTINA": "Ormone proteico che regola i livelli di glucosio e la scomposizione degli acidi grassi.",
-"CITOCHINE": "Segnali proteici del sistema immunitario; la loro pulizia notturna previene l'infiammazione cronica.",
-"VARIAZIONE TERMICA (FREDDO)": "Esposizione al freddo/caldo per attivare il grasso bruno e migliorare la risposta immunitaria.",
-"FOTOBIOMODULAZIONE (ROSSO)": "Utilizzo di frequenze luminose (Rosso/NIR) per stimolare i mitocondri e il recupero cellulare.",
-"RELAZIONE SOCIALE": "Fase di interazione pro-sociale che stimola l'ossitocina e riduce il carico di cortisolo serale.",
-"ANANDAMIDE": "Endocannabinoide del benessere. Modula il dolore, l'appetito e la memoria.",
+            "INTEGRA VITAMINA D": "Supporto per l'espressione genica circadiana.",
+            "IDRATAZIONE + SALI": "Ripristino elettroliti per il potenziale d'azione.",
+            "THERMO-RELAX (CALDO)": "Favorisce la vasodilatazione per abbassare la temperatura.",
+            "ALLENAMENTO RESISTENZA": "Stimolo meccanico per massimizzare il rilascio di miochine.",
+            "VARIAZIONE TERMICA (FREDDO)": "Esposizione al freddo per attivare il grasso bruno.",
+            "FOTOBIOMODULAZIONE (ROSSO)": "Utilizzo di luce Rossa/NIR per stimolare i mitocondri.",
+            "LIVELLO_ALTO": "STATO: ALTO (FASE DI PICCO)",
+            "LIVELLO_MEDIO": "STATO: MEDIO (OMEOSTASI)",
+            "LIVELLO_BASSO": "STATO: IN CALO (FASE METABOLICA)",
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
         en: {
-            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate waste flushing.",
-            "CORTISOL SPIKE": "Peak adrenal activation to elevate glucose for daytime demands.",
-            "HIGH VIGILANCE": "Optimal alertness driven by orexin and low adenosine load.",
-            "MAX ALERTNESS": "Window of maximum neural processing speed and coordination.",
-            "LEPTIN RESPONSE": "Hormonal satiety signal shifting metabolism toward storage.",
-            "COGNITIVE MAINT.": "Attention stabilization phase before the afternoon dip.",
-            "PHYSICAL PEAK": "Maximum cardiovascular efficiency and muscle strength.",
-            "ANABOLIC WINDOW": "Optimal period for cellular repair and protein synthesis.",
-            "NEURONAL CALM": "Transition to the parasympathetic system. Melatonin prep.",
-            "MELATONIN ONSET": "Onset of pineal secretion signaling biological night.",
-            "TISSUE REPAIR": "Deep regenerative process mediated by GH during sleep.",
-            "BRAIN CLEARANCE": "Glymphatic activation for beta-amyloid and metabolic debris removal.",
-            "CIRCADIAN RESET": "Suprachiasmatic nuclei synchronization via light and heat.",
-            "COGNITIVE PEAK": "Maximum prefrontal cortex efficiency and problem solving.",
-            "METABOLIC SATIETY": "Post-prandial management: insulin and leptin balancing.",
-            "SYNAPTIC STABILITY": "Maintenance of action potentials and neural plasticity.",
-            "EFFICIENCY MAX": "Symmetry between heart rate and motor recruitment.",
-            "PROTEIN SYNTHESIS": "mTor pathway activation for structural tissue repair.",
-            "RECOVERY MODE": "Parasympathetic dominance. Lowering of heart rate.",
-            "CLEARANCE START": "Biochemical transition: core temperature drop.",
-            "OREXIN": "Hypothalamic neuropeptide that stabilizes wakefulness.",
-            "LEPTIN": "Satiety hormone produced by adipose tissue.",
-            "DOPAMINE": "Reward neurotransmitter. Optimizes executive functions.",
-            "ACETYLCHOLINE": "Synaptic plasticity modulator. Essential for memory.",
-            "GABA": "Inhibitory neurotransmitter. Stabilizes the nervous system.",
-            "MELATONIN": "Pineal indoleamine. Regulates circadian rhythms.",
-            "CORTISOL": "Awakening glucocorticoid: prepares for metabolic stress.",
-            "ADRENALINE": "Epinephrine: activates the sympathetic system.",
-            "INSULIN": "Anabolic pancreatic hormone. Regulates glucose.",
-            "SOMATOTROPIN": "Growth Hormone (GH). Crucial for tissue repair.",
-            "ADENOSINE": "ATP byproduct creating homeostatic sleep pressure.",
-            "NATURAL LIGHT": "Early solar exposure to reset circadian rhythms.",
-            "PROTEIN BREAKFAST": "Provides amino acid precursors for neurotransmitters.",
-            "ACTIVE FOCUS": "Window of maximum alertness and coordination.",
-            "NUTRITION BREAK": "Synchronization of peripheral clocks via nutrients.",
-            "ANALYTICAL FOCUS": "Optimal phase for precision tasks, supported by acetylcholine.",
-            "WORKOUT": "Physical activity during peak body temperature.",
-            "DOWNTIME": "Reduction of sympathetic stimuli in favor of the parasympathetic system.",
-            "ACTIVE RELAX": "Low-impact activity to clear residual cortisol.",
-            "NO BLUE LIGHT": "Blocking 450-480nm light to prevent melatonin inhibition.",
-            "TOTAL DARKNESS": "Absence of photons to stimulate the pineal gland.",
-            "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates solar spectrum.",
-            "DIRECT SUN 10M": "Optimizes melatonin release 14 hours later.",
-            "VITAMIN D INTAKE": "Support for circadian genes and immune system.",
-            "HYDRATION + SALTS": "Electrolyte restoration for neural potential.",
-            "WARM THERMO-RELAX": "Promotes vasodilation to lower core temperature.",
-            "SEROTONIN": "Mood-stabilizing neurotransmitter. Precursor to melatonin.",
+            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate waste flushing via cerebrospinal fluid.",
+            "BRAIN CLEARANCE": "Activation of glymphatic flows for the removal of beta-amyloid and neural metabolic debris.",
+            "CLEARANCE START": "Biochemical transition: core temperature drop and start of glymphatic clearance.",
+            "CORTISOL SPIKE": "Peak adrenal activation phase to prepare the organism for daytime energy demands.",
+            "HIGH VIGILANCE": "Optimal cognitive alertness state driven by orexin stability and low adenosine load.",
+            "MAX ALERTNESS": "Window of maximum neural processing speed and coordination. Peak temperature and dopamine.",
+            "LEPTIN RESPONSE": "Hormonal satiety signal shifting metabolism toward storage and recovery.",
+            "COGNITIVE MAINT.": "Attention stabilization phase supported by acetylcholine before the afternoon slump.",
+            "PHYSICAL PEAK": "Maximum cardiovascular efficiency and muscle strength. Lungs and heart at peak capacity.",
+            "ANABOLIC WINDOW": "Optimal period for cellular repair and protein synthesis via insulin management.",
+            "NEURONAL CALM": "Transition toward the parasympathetic system. Preparation for melatonin release.",
+            "MELATONIN ONSET": "Onset of pineal secretion signaling the start of the biological night.",
+            "TISSUE REPAIR": "Deep regenerative process mediated by growth hormone (GH) during sleep.",
+            "SOCIAL CONNECTION": "Pro-social interaction phase that stimulates oxytocin and reduces cortisol load.",
+            "CIRCADIAN RESET": "Suprachiasmatic nuclei synchronization via light and thermal signals.",
+            "COGNITIVE PEAK": "Phase of maximum prefrontal cortex efficiency. Problem-solving optimization.",
+            "METABOLIC SATIETY": "Post-prandial hormonal management: balance between insulin and leptin.",
+            "SYNAPTIC STABILITY": "Maintenance of action potentials and short-term neuronal plasticity.",
+            "EFFICIENCY MAX": "Synchrony between cardiac output, oxygenation, and motor recruitment.",
+            "PROTEIN SYNTHESIS": "mTOR pathway activation for cellular and structural structural repair.",
+            "RECOVERY MODE": "Parasympathetic dominance. Significant lowering of heart rate.",
+            "OREXIN": "Hypothalamic neuropeptide that stabilizes wakefulness and regulates appetite.",
+            "LEPTIN": "Satiety hormone produced by adipose tissue. Signals energy reserves.",
+            "DOPAMINE": "Reward neurotransmitter. Optimizes motivation and executive functions.",
+            "ACETYLCHOLINE": "Synaptic plasticity modulator. Fundamental for memory and attention.",
+            "GABA": "Inhibitory neurotransmitter. Reduces excitability and stabilizes the system.",
+            "MELATONINA": "Pineal indoleamine. Regulates circadian rhythm and acts as an antioxidant.",
+            "CORTISOL": "Awakening glucocorticoid: prepares the body for daytime metabolic stress.",
+            "ADRENALINE": "Epinephrine: activates the sympathetic system for immediate physical response.",
+            "INSULIN": "Anabolic pancreatic hormone. Regulates glucose homeostasis.",
+            "SOMATOTROPIN": "Growth Hormone (GH). Crucial for deep tissue repair.",
+            "ADENOSINA": "Energy byproduct (ATP). Creates homeostatic sleep pressure.",
+            "SEROTONINA": "Mood-stabilizing neurotransmitter and precursor to melatonin.",
             "OXYTOCIN": "Hormone of social connection and trust. Reduces cortisol levels.",
-            "ENDORPHINS/MYOKINES": "Synergy between endogenous opioids (well-being) and muscle messengers (metabolism). Triggered by muscle contraction.",
-"ENDORPHINS + MYOKINES": "Synergistic secretion phase: myokines repair tissues while endorphins modulate pleasure and pain systems.",
-"RESISTANCE TRAINING": "Optimal mechanical stimulus to maximize myokine release and improve insulin sensitivity.",
-            "MYOKINES": "Muscle-derived cytokines (e.g., Irisin) released during exercise. They enhance metabolism and stimulate neuroplasticity.",
-            "GHRELIN": "Gastric hormone that stimulates appetite.",
+            "ENDORPHINS/MYOKINES": "Synergy between endogenous opioids and metabolic muscle messengers.",
+            "ENDORPHINS + MYOKINES": "Synergetic secretion phase: tissue repair and pleasure modulation.",
+            "MYOKINES": "Muscle cytokines (e.g., Irisin). Improve metabolism and neuroplasticity.",
+            "GHRELIN": "Gastric hormone that stimulates hunger. Signals the need for nutrients.",
             "GLUTAMATE": "The primary excitatory neurotransmitter. Crucial for learning.",
             "NOREPINEPHRINE": "Stress and attention neurotransmitter. Mobilizes brain for action.",
-            "PROLACTIN": "Modulates immune response and recovery in sleep-wake cycle.",
+            "PROLACTIN": "Modulates immune response and recovery in the sleep-wake cycle.",
             "BDNF": "Brain-derived neurotrophic factor. Supports neuron survival.",
-            "LIVELLO_ALTO": "Estimated level: High (Peak phase)",
-            "LIVELLO_MEDIO": "Estimated level: Medium (Homeostasis)",
-            "LIVELLO_BASSO": "Estimated level: Declining (Metabolic phase)",
-            "ENDORPHIN RELEASE": "Endogenous opioid secretion phase that reduces physical stress and boosts mood.",
-"SEROTONIN SYNTHESIS": "5-HT production from tryptophan precursors driven by solar interaction.",
-"GH PEAK": "Maximum secretion of Growth Hormone for deep cellular regeneration.",
-"DEEP DREAMING": "REM and NREM 3/4 phases: memory consolidation and cognitive restoration.",
-"GHRELIN PEAK": "Gastric orexigenic signal preparing the digestive system for nutrient intake.",
-"OREXIGENIC STIMULUS": "Activation of lateral hypothalamus neurons for energy seeking.",
-"DHEA": "Dehydroepiandrosterone: cortisol antagonist. Supports tissue repair and stress resilience.",
-"ADIPONECTIN": "Protein hormone regulating glucose levels and fatty acid breakdown.",
-"CYTOKINES": "Immune signaling proteins; nocturnal clearance prevents chronic inflammation.",
-"THERMAL VARIATION (COLD)": "Cold/heat exposure to activate brown fat and improve immune response.",
-"PHOTOBIOMODULATION (RED)": "Use of light frequencies (Red/NIR) to stimulate mitochondria and cellular recovery.",
-"SOCIAL CONNECTION": "Pro-social interaction phase that stimulates oxytocin and reduces evening cortisol load.",
-"ANANDAMIDE": "Endocannabinoid of bliss. Modulates pain, appetite, and memory.",
-            "default": "Bio-synchronized data via Biotech Core module."
+            "DHEA": "Dehydroepiandrosterone: the cortisol antagonist. Supports resilience.",
+            "ADIPONECTIN": "Protein hormone that regulates glucose and fatty acid breakdown.",
+            "ANANDAMIDE": "The 'bliss' endocannabinoid. Modulates pain, appetite, and memory.",
+            "CYTOKINES": "Immune protein signals; nocturnal clearance prevents inflammation.",
+            "NATURAL LIGHT": "Early sun exposure to reset circadian rhythms via photoreceptors.",
+            "PROTEIN BREAKFAST": "Protein intake to provide amino acid precursors for neurotransmitters.",
+            "ACTIVE FOCUS": "Window of maximum cognitive vigilance and coordination.",
+            "NUTRITION BREAK": "Synchronization of peripheral clocks through controlled nutrients.",
+            "ANALYTICAL FOCUS": "Optimal phase for precision tasks, supported by acetylcholine.",
+            "WORKOUT": "Physical activity to exploit the afternoon muscle strength peak.",
+            "DOWNTIME": "Reduction of sympathetic stimuli toward the parasympathetic system.",
+            "ACTIVE RELAX": "Low-impact activity to clear residual daytime cortisol.",
+            "NO BLUE LIGHT": "Blocking 450-480nm frequencies to protect melatonin secretion.",
+            "TOTAL DARKNESS": "Absence of photons to maximize pineal melatonin production.",
+            "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates the full solar spectrum.",
+            "DIRECT SUN 10M": "Optimizes melatonin release approximately 14 hours later.",
+            "VITAMIN D INTAKE": "Support for circadian gene expression and immune health.",
+            "HYDRATION + SALTS": "Electrolyte restoration for optimal neural action potential.",
+            "WARM THERMO-RELAX": "Promotes vasodilation to help lower core body temperature.",
+            "RESISTANCE TRAINING": "Mechanical stimulus to maximize myokine release.",
+            "THERMAL VARIATION (COLD)": "Cold exposure to activate brown fat and immune response.",
+            "PHOTOBIOMODULATION (RED)": "Use of Red/NIR light to stimulate mitochondria and recovery.",
+            "LEVEL_HIGH": "STATUS: HIGH (PEAK PHASE)",
+            "LEVEL_MEDIUM": "STATUS: MEDIUM (HOMEOSTASIS)",
+            "LEVEL_LOW": "STATUS: DECLINING (METABOLIC PHASE)",
+            "default": "Bio-synchronized data via Biotech Core engine."
         }
     };
+
+    // --- HELPER FORMATTAZIONE TOOLTIP (STABILE) ---
+const formatTip = (title, body, extra = "", barPerc = null) => {
+    // Costruiamo il contenuto testuale
+    let html = `<b>${title.toUpperCase()}</b><br>${body}${extra ? `<br><i>${extra}</i>` : ""}`;
+    
+    // Aggiungiamo la barra di intensità se presente, senza classi dinamiche
+    if (barPerc !== null) {
+        html += `
+            <div class='intensity-container'>
+                <div class='intensity-label'>INTENSITY</div>
+                <div class='intensity-bar-bg'>
+                    <div class='intensity-bar-fill' style='width:${barPerc}%'></div>
+                </div>
+                <div class='intensity-value'>${barPerc}%</div>
+            </div>`;
+    }
+    return html;
+};
 
     // --- 1. MONITOR STAGIONALE ---
     function initSeasonMonitor() {
@@ -371,91 +378,93 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBioCycle(); setInterval(updateBioCycle, 3600000);
     }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO (VERSIONE HIGH-PRECISION 2026) ---
-function initBioClock() {
-    const clockEl = document.getElementById('clock2');
-    if (!clockEl) return;
+    // --- 2. OROLOGIO BIO-CIRCADIANO ---
+    function initBioClock() {
+        const clockEl = document.getElementById('clock2');
+        if (!clockEl) return;
 
-    const circadianMap = {
-    0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINE", "TOTAL DARKNESS"] },
-    3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "CITOCHINE", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "CYTOKINES", "SOMATOTROPIN"] }, // Inserite Citochine
-    6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
-    8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "DHEA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "DHEA", "PROTEIN BREAKFAST"] }, // Bilanciamento Cortisolo/DHEA
-    11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
-    12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
-    13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "ADIPONECTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "ADIPONECTIN", "NUTRITION BREAK"] }, // Aggiunta Adiponectina
-    15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-    17: { it: ["PICCO FISICO", "ENDORFINE + MIOCHINE", "ENDORFINE/MIOCHINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHINS + MYOKINES", "ENDORPHINS/MYOKINES", "WORKOUT"] }, // Modificata Endorfine + Miokine
-    19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
-    21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "ANANDAMIDE", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "ANANDAMIDE", "ACTIVE RELAX"] }, // Inserita Anandamide
-    23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
-};
+        const circadianMap = {
+            0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINA", "TOTAL DARKNESS"] },
+            3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "CITOCHINE", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "CYTOKINES", "SOMATOTROPIN"] },
+            6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
+            8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "DHEA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "DHEA", "PROTEIN BREAKFAST"] },
+            11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
+            12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
+            13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "ADIPONECTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "ADIPONECTIN", "NUTRITION BREAK"] },
+            15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+            17: { it: ["PICCO FISICO", "ENDORFINE + MIOCHINE", "ENDORFINE/MIOCHINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHINS + MYOKINES", "ENDORPHINS/MYOKINES", "WORKOUT"] },
+            19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
+            21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "ANANDAMIDE", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "ANANDAMIDE", "ACTIVE RELAX"] },
+            23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
+        };
 
-    const getDynamicAdvice = (h, base) => {
-    const s = getCurrentSeason();
-    // Mattina presto: stimolo termico per il metabolismo
-    if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
-    
-    if (h >= 6 && h < 9) {
-        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+        const getDynamicAdvice = (h, base) => {
+            const s = getCurrentSeason();
+            if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
+            if (h >= 6 && h < 9) {
+                if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+                if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+            }
+            if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+            if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+            if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
+            if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
+            if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+            return base;
+        };
+
+        const updateClock = () => {
+            const now = new Date();
+            const hour = now.getHours();
+            const mins = now.getMinutes();
+            const keys = Object.keys(circadianMap).map(Number);
+            const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
+            const currentIndex = keys.indexOf(currentKey);
+            const nextKey = keys[currentIndex + 1] || 24; 
+            const blockDuration = nextKey - currentKey;
+            const elapsed = (hour - currentKey) + (mins / 60);
+
+            const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
+
+            let levelKey = isIt ? "LIVELLO_ALTO" : "LEVEL_HIGH";
+            if (elapsed >= blockDuration * 0.7) levelKey = isIt ? "LIVELLO_BASSO" : "LEVEL_LOW";
+            else if (elapsed >= blockDuration * 0.4) levelKey = isIt ? "LIVELLO_MEDIO" : "LEVEL_MEDIUM";
+
+            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+            const advice = getDynamicAdvice(hour, data[3]);
+            const dict = isIt ? bioExplanations.it : bioExplanations.en;
+
+            const molName = data[2];
+            const molDesc = dict[molName.toUpperCase()] || dict["default"];
+            const advDesc = dict[advice.toUpperCase()] || dict["default"];
+            const statDesc = dict[data[0].toUpperCase()] || dict["default"];
+            const sysStateDesc = dict[data[1].toUpperCase()] || (isIt ? "Stato operativo Biotech Core." : "Biotech Core operational state.");
+            const levelInfo = dict[levelKey];
+
+            const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
+            const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
+            const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
+
+            const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
+            const aDesc = formatTip(labelAdvice, advDesc);
+            const sDesc = formatTip(labelStatus, statDesc);
+            const sysDesc = formatTip(labelAnalysis, sysStateDesc);
+
+            const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+
+            clockEl.innerHTML = `
+                <div class="hud-inline-row">
+                    <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
+                    <span class="separator">|</span>
+                    <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+                </div>
+                <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
+                <span class="bio-clock-time">${timeStr}</span>
+                <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
+            `;
+        };
+        updateClock(); setInterval(updateClock, 1000);
     }
-    
-    if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-    if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-    if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
-    
-    // Sera: Fotobiomodulazione (Luce rossa) per contrastare la luce blu residua
-    if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
-    
-    if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-    
-    return base;
-};
-
-    const updateClock = () => {
-        const now = new Date();
-        const hour = now.getHours();
-        const mins = now.getMinutes();
-        const keys = Object.keys(circadianMap).map(Number);
-        const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
-        const currentIndex = keys.indexOf(currentKey);
-        const nextKey = keys[currentIndex + 1] || 24; 
-        const blockDuration = nextKey - currentKey;
-        const elapsed = (hour - currentKey) + (mins / 60);
-
-        let levelKey = "LIVELLO_ALTO";
-        if (elapsed >= blockDuration * 0.7) levelKey = "LIVELLO_BASSO";
-        else if (elapsed >= blockDuration * 0.4) levelKey = "LIVELLO_MEDIO";
-
-        const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-        const advice = getDynamicAdvice(hour, data[3]);
-        const dict = isIt ? bioExplanations.it : bioExplanations.en;
-
-        const molName = data[2];
-        const moleculeDesc = dict[molName.toUpperCase()] || dict["default"];
-        const levelText = dict[levelKey];
-        const fullMoleculeTooltip = `${moleculeDesc} | ${levelText}`;
-
-        const aDesc = dict[advice.toUpperCase()] || dict["default"];
-        const sDesc = dict[data[0].toUpperCase()] || dict["default"];
-        const sysDesc = dict[data[1].toUpperCase()] || (isIt ? "Stato operativo Biotech Core." : "Biotech Core operational state.");
-
-        const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
-
-        clockEl.innerHTML = `
-            <div class="hud-inline-row">
-                <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
-                <span class="separator">|</span>
-                <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
-            </div>
-            <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
-            <span class="bio-clock-time">${timeStr}</span>
-            <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
-        `;
-    };
-    updateClock(); setInterval(updateClock, 1000);
-}
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
@@ -474,15 +483,37 @@ function initBioClock() {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE ---
+    // --- 4. TOOLTIP GESTORE (UPDATED FOR HTML RENDERING) ---
     function initBiotechTooltips() {
         let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
         if (!tooltipEl.className) { tooltipEl.className = 'biotech-tooltip'; document.body.appendChild(tooltipEl); }
-        document.addEventListener('mouseover', (e) => { const target = e.target.closest('[data-bio-tip]'); if (target) { tooltipEl.textContent = target.getAttribute('data-bio-tip'); tooltipEl.style.display = 'block'; } });
-        document.addEventListener('mousemove', (e) => { if (tooltipEl.style.display === 'block') { tooltipEl.style.left = (e.clientX + 15) + 'px'; tooltipEl.style.top = (e.clientY + 20) + 'px'; } });
-        document.addEventListener('mouseout', (e) => { if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; });
+        document.addEventListener('mouseover', (e) => { 
+            const target = e.target.closest('[data-bio-tip]'); 
+            if (target) { 
+                tooltipEl.innerHTML = target.getAttribute('data-bio-tip'); // Usiamo innerHTML per la barra
+                tooltipEl.style.display = 'block'; 
+            } 
+        });
+        document.addEventListener('mousemove', (e) => { 
+    if (tooltipEl.style.display === 'block') { 
+        // X: e.clientX è il centro esatto (grazie al translateX(-50%) nel CSS)
+        // Y: e.clientY - tipHeight - margine. Usiamo un valore fisso di circa 15-20px
+        // per distanziarlo dalla punta della freccia.
+        
+        tooltipEl.style.left = e.clientX + 'px'; 
+        tooltipEl.style.top = (e.clientY - 15) + 'px'; // Appare SOPRA il mouse
+
+        // Protezione per il bordo superiore: se il mouse è troppo in alto, 
+        // spostiamo il tooltip sotto per non farlo uscire dallo schermo.
+        if (e.clientY < 100) {
+            tooltipEl.style.top = (e.clientY + 25) + 'px';
+        }
+    } 
+});
+        document.addEventListener('mouseout', (e) => { 
+            if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
+        });
     }
 
     initSeasonMonitor(); initBioClock(); initWeeklyGreeting(); initBiotechTooltips();
 });
-// Fine Biotech Core Engine
