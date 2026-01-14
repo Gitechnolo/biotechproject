@@ -132,6 +132,52 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 /* === STILE MODERNO PER PAGINE AGGIORNATE === */
+/* Posizionamento millimetrico sull'elica tenuta dalla mano */
+.dna-scanner-icon {
+    position: absolute;
+    top: 44%; 
+    left: 47.5%; 
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    cursor: crosshair;
+    z-index: 5; /* Valore bilanciato: sopra il logo, ma trasparente ai popup */
+    pointer-events: auto; /* IMPORTANTE: deve catturare il mouse per il tooltip */
+}
+
+/* Cerchio pulsante esterno */
+.scanner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0, 230, 118, 0.9); 
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+    animation: dnaScanPulse 2.2s infinite ease-out;
+    pointer-events: none; /* Il mouse ignora l'anello e legge solo il centro */
+}
+
+/* Punto centrale fisso */
+.scanner-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    background: #00ff9d;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00e676, 0 0 20px #00e676, 0 0 30px rgba(0, 230, 118, 0.6);
+    pointer-events: none; /* Anche il punto non deve bloccare il tooltip sottostante */
+}
+
+@keyframes dnaScanPulse {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+/* Contenitore Logo e Icona: Assicura l'ancoraggio millimetrico tramite js*/
+.logo-wrapper-cls{position:relative;width:fit-content;margin:auto;}
+
 /* Logo centrato sotto il menu */
 .modern-logo {
   display: block;
@@ -397,6 +443,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     border-radius: 2px;
     font-weight: bold;
 }
+
 /* End Contenitore per orologio, conto alla rovescia e augurio */   
 /* --- Contenitore del menu moderno --- */
 .tech-nav-container {display: flex; justify-content: center; gap: 2px; margin: 20px auto; padding: 8px 12px; max-width: 1100px; background: rgba(20, 30, 48, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 230, 118, 0.2); overflow: visible; position: relative; z-index: 10;}

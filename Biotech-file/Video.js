@@ -251,7 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "BUIO TOTALE": "Assenza di fotoni per massimizzare la secrezione di melatonina.",
             "LUCE ART. 10K LUX": "Fotobiomodulazione invernale: simula lo spettro solare.",
             "SOLE DIRETTO 10M": "Ottimizza il rilascio di melatonina circa 14 ore dopo.",
-            "INTEGRA VITAMINA D": "Supporto per l'espressione genica circadiana.",
+            "INTEGRA VITAMINA D": "Sintesi ridotta per inclinazione assiale. Integrare Vitamina D3 per supportare l'omeostasi minerale e l'espressione genica circadiana.",
+            "STIMOLO ORESSIGENICO": "Fase di attivazione dei segnali della fame mediata da grelina e neuropeptide Y.",
             "IDRATAZIONE + SALI": "Ripristino elettroliti per il potenziale d'azione.",
             "THERMO-RELAX (CALDO)": "Favorisce la vasodilatazione per abbassare la temperatura.",
             "ALLENAMENTO RESISTENZA": "Stimolo meccanico per massimizzare il rilascio di miochine.",
@@ -321,7 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "TOTAL DARKNESS": "Absence of photons to maximize pineal melatonin production.",
             "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates the full solar spectrum.",
             "DIRECT SUN 10M": "Optimizes melatonin release approximately 14 hours later.",
-            "VITAMIN D INTAKE": "Support for circadian gene expression and immune health.",
+            "VITAMIN D INTAKE": "Reduced synthesis due to axial tilt. Supplement Vitamin D3 to support mineral homeostasis and circadian gene expression.",
+            "OREXIGENIC STIMULUS": "Hunger signal activation mediated by ghrelin and neuropeptide Y.",
             "HYDRATION + SALTS": "Electrolyte restoration for optimal neural action potential.",
             "WARM THERMO-RELAX": "Promotes vasodilation to help lower core body temperature.",
             "RESISTANCE TRAINING": "Mechanical stimulus to maximize myokine release.",
@@ -399,70 +401,104 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         };
 
         const getDynamicAdvice = (h, base) => {
-            const s = getCurrentSeason();
-            if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
-            if (h >= 6 && h < 9) {
-                if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-                if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-            }
-            if (h >= 10 && h < 13 && (s === "winter" || s === "autumn")) return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-            if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-            if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
-            if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
-            if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
-            return base;
-        };
+    const s = getCurrentSeason();
+    const isColdSeason = (s === "winter" || s === "autumn");
+
+    // 1. PRIORITÀ MATTINA (6:00 - 8:59)
+    if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
+    
+    if (h >= 6 && h < 9) {
+        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+    }
+
+    // 2. PRIORITÀ VITAMINA D (10:00 - 12:59) - Fondamentale in Autunno/Inverno
+    if (h >= 10 && h <= 12 && isColdSeason) {
+        return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+    }
+
+    // 3. PRIORITÀ POMERIGGIO/SERA
+    if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+    if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
+    if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
+    if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+
+    // Se nessuna condizione dinamica è attiva, usa il base della circadianMap
+    return base;
+};
 
         const updateClock = () => {
-            const now = new Date();
-            const hour = now.getHours();
-            const mins = now.getMinutes();
-            const keys = Object.keys(circadianMap).map(Number);
-            const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
-            const currentIndex = keys.indexOf(currentKey);
-            const nextKey = keys[currentIndex + 1] || 24; 
-            const blockDuration = nextKey - currentKey;
-            const elapsed = (hour - currentKey) + (mins / 60);
+    const now = new Date();
+    const hour = now.getHours(); // const hour = 11; // Test: forza l'orario alle 11:00 per il test Vitamina D
+    const mins = now.getMinutes();
+    
+    const keys = Object.keys(circadianMap).map(Number);
+    const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
+    const currentIndex = keys.indexOf(currentKey);
+    const nextKey = keys[currentIndex + 1] || 24; 
+    const blockDuration = nextKey - currentKey;
+    const elapsed = (hour - currentKey) + (mins / 60);
 
-            const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
+    const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
 
-            let levelKey = isIt ? "LIVELLO_ALTO" : "LEVEL_HIGH";
-            if (elapsed >= blockDuration * 0.7) levelKey = isIt ? "LIVELLO_BASSO" : "LEVEL_LOW";
-            else if (elapsed >= blockDuration * 0.4) levelKey = isIt ? "LIVELLO_MEDIO" : "LEVEL_MEDIUM";
+    // 1. Definizione bilingue della levelKey
+    let levelKey;
+    if (elapsed >= blockDuration * 0.7) {
+        levelKey = isIt ? "LIVELLO_BASSO" : "LEVEL_LOW";
+    } else if (elapsed >= blockDuration * 0.4) {
+        levelKey = isIt ? "LIVELLO_MEDIO" : "LEVEL_MEDIUM";
+    } else {
+        levelKey = isIt ? "LIVELLO_ALTO" : "LEVEL_HIGH";
+    }
 
-            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-            const advice = getDynamicAdvice(hour, data[3]);
-            const dict = isIt ? bioExplanations.it : bioExplanations.en;
+    // 2. Recupero dati e dizionario
+    const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+    const advice = getDynamicAdvice(hour, data[3]); 
+    const dict = isIt ? bioExplanations.it : bioExplanations.en;
 
-            const molName = data[2];
-            const molDesc = dict[molName.toUpperCase()] || dict["default"];
-            const advDesc = dict[advice.toUpperCase()] || dict["default"];
-            const statDesc = dict[data[0].toUpperCase()] || dict["default"];
-            const sysStateDesc = dict[data[1].toUpperCase()] || (isIt ? "Stato operativo Biotech Core." : "Biotech Core operational state.");
-            const levelInfo = dict[levelKey];
+    // 3. Funzione di ricerca Ultra-Resiliente
+    const getDesc = (key) => {
+        if (!key) return dict["default"];
+        const k = key.toString().toUpperCase().trim();
+        // 1. Cerca nel dizionario lingua attiva
+        // 2. Cerca nell'altra lingua se manca
+        // 3. Ritorna il fallback finale
+        return dict[k] || (isIt ? bioExplanations.en[k] : bioExplanations.it[k]) || dict["default"];
+    };
 
-            const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
-            const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
-            const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
+    // 4. Estrazione descrizioni pulite
+    const molName = data[2];
+    const molDesc = getDesc(molName);
+    const advDesc = getDesc(advice);    // Qui prenderà la nuova descrizione della Vitamina D
+    const statDesc = getDesc(data[0]);
+    const sysStateDesc = getDesc(data[1]);
+    const levelInfo = getDesc(levelKey);
 
-            const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
-            const aDesc = formatTip(labelAdvice, advDesc);
-            const sDesc = formatTip(labelStatus, statDesc);
-            const sysDesc = formatTip(labelAnalysis, sysStateDesc);
+    // 5. Etichette HUD
+    const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
+    const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
+    const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
 
-            const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+    // 6. Generazione Tooltip
+    const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
+    const aDesc = formatTip(labelAdvice, advDesc);
+    const sDesc = formatTip(labelStatus, statDesc);
+    const sysDesc = formatTip(labelAnalysis, sysStateDesc);
 
-            clockEl.innerHTML = `
-                <div class="hud-inline-row">
-                    <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
-                    <span class="separator">|</span>
-                    <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
-                </div>
-                <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
-                <span class="bio-clock-time">${timeStr}</span>
-                <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
-            `;
-        };
+    const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+
+    // 7. Rendering HTML
+    clockEl.innerHTML = `
+        <div class="hud-inline-row">
+            <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
+            <span class="separator">|</span>
+            <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+        </div>
+        <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
+        <span class="bio-clock-time">${timeStr}</span>
+        <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
+    `;
+};
         updateClock(); setInterval(updateClock, 1000);
     }
 
@@ -515,5 +551,85 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    initSeasonMonitor(); initBioClock(); initWeeklyGreeting(); initBiotechTooltips();
+    // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
+function initDnaScanner() {
+    const dnaScanner = document.getElementById('dna-scanner');
+    if (!dnaScanner) return;
+
+    // --- SETUP ACCESSIBILITÀ ---
+    dnaScanner.setAttribute('role', 'button');
+    dnaScanner.setAttribute('tabindex', '0');
+    dnaScanner.setAttribute('aria-label', isIt ? 'Scarica Report Audit Bio-Sincronizzato' : 'Download Bio-Synchronized Audit Report');
+
+    // --- GESTORE CLICK (TRIGGER DOWNLOAD) ---
+    dnaScanner.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Acquisizione dati istantanea per il PDF
+        const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
+        
+        // FEEDBACK HUD: Sostituisce il popup alert del browser per non spaventare l'utente
+        const loadingTip = formatTip(
+            isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
+            isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
+            isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
+            100 // Forza la barra al 100% durante il caricamento
+        );
+        dnaScanner.setAttribute('data-bio-tip', loadingTip);
+
+        // ESECUZIONE DOWNLOAD (delay di 800ms per feedback visivo professionale)
+        setTimeout(() => {
+            executeSecureDownload(currentMol);
+            syncScannerData(); // Ripristina immediatamente il tooltip informativo
+        }, 800);
+    });
+
+    // --- GESTORE TASTIERA (INVIO/SPAZIO) ---
+    dnaScanner.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dnaScanner.click();
+        }
+    });
+
+    // --- FUNZIONE DOWNLOAD ANTI-BLOCK ---
+    const executeSecureDownload = (molecule) => {
+        const fileName = isIt ? `Audit_Biotech_${molecule}.pdf` : `Biotech_Audit_${molecule}.pdf`;
+        
+        // In questa fase usiamo un placeholder. 
+        // Quando integreremo jsPDF, qui passeremo il Blob reale.
+        const dummyUrl = "#"; 
+        
+        const link = document.createElement('a');
+        link.href = dummyUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
+    const syncScannerData = () => {
+        const molName = document.querySelector('.bio-data-value')?.innerText || "---";
+        
+        // RECUPERO INTENSITÀ: Legge il valore numerico dalla barra HUD se presente
+        const intensityElement = document.querySelector('.intensity-value');
+        const intensity = intensityElement ? parseInt(intensityElement.innerText) : 80;
+
+        const tipContent = formatTip(
+            isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
+            isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
+            isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
+            intensity
+        );
+        
+        dnaScanner.setAttribute('data-bio-tip', tipContent);
+    };
+
+    // Avvio immediato e aggiornamento costante ogni secondo
+    syncScannerData();
+    setInterval(syncScannerData, 1000);
+}
+
+    initSeasonMonitor(); initBioClock(); initWeeklyGreeting(); initBiotechTooltips(); initDnaScanner();
 });
