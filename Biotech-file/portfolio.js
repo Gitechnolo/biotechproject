@@ -516,199 +516,124 @@ function getTrendColorClass(current, previous) {
 // --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
-  const originalLabel = btn?.textContent || 'Esporta dati';
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
 
   try {
-    if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
+    if (btn) { btn.disabled = true; btn.textContent = isIt ? 'Sincronizzazione...' : 'Syncing...'; }
 
-    // await: logica "senza popup di blocco al download"
-    await loadJsPDF(); // Carica jsPDF solo quando serve 
-
-    let jsonUrl = 'data/performance-latest.json';
-    let data;
-    try {
-      const res = await fetch(jsonUrl);
-      if (!res.ok) throw new Error('relative-fail');
-      data = await res.json();
-    } catch (err) {
-      const fallback = '/biotechproject/data/performance-latest.json';
-      const fres = await fetch(fallback);
-      data = await fres.json();
-    }
-
+    await loadJsPDF();
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-    const marginLeft = 40;
-    let cursorY = 40;
-    const pageWidth = doc.internal.pageSize.getWidth();
-
-    // 1. Intestazione con Logo e Titolo
-    const logoSize = 64; 
-    const titleText = 'Biotech Project - Performance Report';
+    const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+    const now = new Date();
     
-    // Carica l'immagine (richiede await)
-    const logoImage = await new Promise(resolve => {
-        const img = new Image();
-        img.crossOrigin = 'Anonymous'; 
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null); 
-        img.src = LOGO_URL;
-    });
+    // --- CONFIGURAZIONE TEMA BIOTECH ---
+    const NEON_GREEN = [0, 230, 118];
+    const DARK_ACCENT = [20, 30, 48];
+    const CYAN_MINT = [167, 255, 235];
+    const TECH_GOLD = [255, 204, 0];
 
-    if (logoImage) {
-        doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
-    }
+    // 1. HEADER HUD (Stesso stile dell'Audit Molecolare)
+    doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+    doc.rect(0, 0, 210, 40, 'F');
+    
+    try {
+        doc.addImage(LOGO_URL, 'PNG', 12, 8, 24, 24);
+    } catch(e) {}
 
-    const titleX = marginLeft + logoSize + 15; 
-    doc.setFontSize(22);
-    doc.text(titleText, titleX, cursorY + 20); 
+    doc.setTextColor(CYAN_MINT[0], CYAN_MINT[1], CYAN_MINT[2]);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text(isIt ? "PERFORMANCE AUDIT REPORT" : "PERFORMANCE AUDIT REPORT", 42, 20);
+    
+    doc.setFontSize(8);
+    doc.setFont("courier", "normal");
+    doc.text(`CORE ENGINE v.2026 | STATUS: ENCRYPTED_SYNC | LANG: ${isIt ? 'IT' : 'EN'}`, 42, 28);
+    
+    doc.setDrawColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
+    doc.line(0, 40, 210, 40);
 
-    cursorY += logoSize + 10; 
+    // 2. RIEPILOGO STATISTICHE
+    let yPos = 55;
+    doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.text(isIt ? "STATISTICHE DI SISTEMA" : "SYSTEM STATISTICS", 15, yPos);
 
-    // Sottotitoli e Riepilogo
+    // Box Riepilogo HUD
+    yPos += 6;
+    doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
+    doc.roundedRect(15, yPos, 180, 25, 2, 2, 'F');
+    
     doc.setFontSize(10);
-    doc.text('Generato: ' + new Date().toLocaleString('it-IT'), marginLeft, cursorY);
-    cursorY += 14;
+    doc.setTextColor(60);
+    const genText = isIt ? `Generato: ${now.toLocaleString('it-IT')}` : `Generated: ${now.toLocaleString('en-US')}`;
+    doc.text(genText, 20, yPos + 10);
+    
+    // Recupero dati dal JSON (assumendo 'data' sia disponibile dallo script precedente)
+    const analyzedCount = data?.summary?.analyzed || document.querySelectorAll('.card').length;
+    doc.text(isIt ? `Pagine Scansionate: ${analyzedCount}` : `Scanned Pages: ${analyzedCount}`, 20, yPos + 18);
 
-    if (data && data.summary) {
-        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
-        cursorY += 12;
-        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-        cursorY += 18;
-    }
-
-    // 2. Grafico
+    // 3. GRAFICO TREND (Se presente nel DOM)
+    yPos += 35;
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
-      try {
         const imgData = canvas.toDataURL('image/png');
-        const maxWidth = pageWidth - marginLeft * 2;
-        const imgWidth = Math.min(maxWidth, 520);
-        const imgHeight = (canvas.height / canvas.width) * imgWidth;
-        doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 20;
-      } catch (e) {
-        console.warn('Impossibile catturare canvas:', e);
-      }
+        doc.addImage(imgData, 'PNG', 15, yPos, 180, 60);
+        yPos += 70;
     }
 
-    // 3. Tabella Pagine e Punteggi 📊
-    doc.setFontSize(14);
-    doc.text('Dettaglio Pagine e Punteggi', marginLeft, cursorY);
-    cursorY += 14;
+    // 4. TABELLA PERFORMANCE (Localizzata)
+    doc.setFontSize(12);
+    doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+    doc.text(isIt ? "DETTAGLIO PUNTEGGI" : "SCORE DETAILS", 15, yPos);
 
-    const pages = (data && data.pages) ? data.pages : [];
-    
-    // *** MODIFICA CHIAVE PER IL LAYOUT: Mostra solo il nome del file (percorso relativo) ***
-    const tableData = pages.map(p => {
-        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
-        
-        // Estrae solo il nome del file (es. index.html o Cuore.html)
-        const relativePath = p.url.split('/').pop() || '/';
+    const headers = [
+        isIt ? "ETICHETTA PAGINA" : "PAGE LABEL",
+        isIt ? "RATING" : "RATING",
+        isIt ? "ID FILE" : "FILE ID"
+    ];
 
-        return [
-            p.label,
-            `${score}%`,
-            relativePath // <--- UTILIZZA SOLO IL PERCORSO RELATIVO (STRINGA CORTA)
-        ];
-    });
-
-    const getColor = (score) => {
-        if (score >= 90) return { bg: '#d4edda', text: '#155724' }; 
-        if (score >= 80) return { bg: '#fff3cd', text: '#856404' }; 
-        return { bg: '#f8d7da', text: '#721c24' }; 
-    };
+    const tableRows = data.pages.map(p => [
+        p.label,
+        `${p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100)}%`,
+        p.url.split('/').pop() || '/'
+    ]);
 
     doc.autoTable({
-        startY: cursorY,
-        head: [['Etichetta Pagina', 'Punteggio', 'File Pagina']], // Aggiorna intestazione per chiarezza
-        body: tableData,
+        startY: yPos + 5,
+        head: [headers],
+        body: tableRows,
         theme: 'striped',
-        headStyles: { 
-            fillColor: [39, 174, 96], 
-            textColor: 255, 
-            fontSize: 10 
-        },
-        styles: { 
-            fontSize: 9, 
-            cellPadding: 3,
-            valign: 'middle' 
-        },
-        // BILANCIAMENTO OTTIMALE: Più spazio all'etichetta, l'URL è relativo
+        headStyles: { fillColor: DARK_ACCENT, textColor: CYAN_MINT, fontSize: 9 },
+        styles: { fontSize: 8, cellPadding: 2.5 },
         columnStyles: {
-            0: { cellWidth: 190 }, // Etichetta Pagina 
-            1: { cellWidth: 60, halign: 'center' }, // Punteggio
-            2: { cellWidth: 250 } // Nome del file 
+            1: { halign: 'center', fontStyle: 'bold' }
         },
-        didParseCell: (hookData) => {
-            if (hookData.section === 'body' && hookData.column.index === 1) {
-                const score = parseInt(hookData.cell.text[0].replace('%', ''));
-                if (!isNaN(score)) {
-                    const colors = getColor(score);
-                    hookData.cell.styles.fillColor = colors.bg;
-                    hookData.cell.styles.textColor = colors.text;
-                    hookData.cell.styles.fontStyle = 'bold';
-                }
+        didParseCell: (data) => {
+            if (data.section === 'body' && data.column.index === 1) {
+                const score = parseInt(data.cell.text[0]);
+                // Colore dinamico Biotech: Neon Green per >90%, Gold per >80%, Red per altri
+                if (score >= 90) data.cell.styles.textColor = [0, 180, 90];
+                else if (score >= 80) data.cell.styles.textColor = [218, 165, 32];
+                else data.cell.styles.textColor = [200, 0, 0];
             }
-        },
-        didDrawPage: (data) => {
-            cursorY = data.cursor.y; 
-            doc.setFontSize(8);
-            doc.setTextColor(150);
-            doc.text(`Pagina ${data.pageNumber} di ${doc.internal.pages.length - 1}`, data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
         }
     });
 
-    cursorY = doc.autoTable.previous.finalY + 12; 
+    // 5. FOOTER TECNICO
+    const finalY = doc.autoTable.previous.finalY + 10;
+    doc.setFontSize(7);
+    doc.setTextColor(150);
+    doc.text(
+        isIt ? "RAPPORTO GENERATO DAL MOTORE DI OTTIMIZZAZIONE BIOTECH 2026" : "REPORT GENERATED BY BIOTECH OPTIMIZATION ENGINE 2026",
+        105, 285, { align: 'center' }
+    );
 
-    if (cursorY + 20 > doc.internal.pageSize.getHeight() - 40) {
-        doc.addPage();
-        cursorY = 40;
-    }
-    doc.setFontSize(9);
-    doc.setTextColor(0); 
-    // Aggiungi una nota che specifica che l'URL è relativo
-    doc.text('Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.', marginLeft, cursorY);
-
-    doc.save('biotech-performance-report.pdf');
+    doc.save(`Biotech_Performance_Report_${now.getTime()}.pdf`);
 
   } catch (err) {
-    console.error('Errore export PDF:', err);
-    alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
+    console.error('Export Error:', err);
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+    if (btn) { btn.disabled = false; btn.textContent = isIt ? 'Esporta dati' : 'Export Data'; }
   }
-}
-
-// --- Inizializzazione ---
-document.addEventListener('DOMContentLoaded', () => {
-  setupRefreshButtons();
-  loadPerformanceData();
-
-  const statusSpan = document.getElementById('filter-status');
-
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // 1. Esegue la tua funzione esistente (gestisce card e classe .active)
-      filterSelection(btn.dataset.filter);
-
-      // 2. AGGIUNTA ACCESSIBILITÀ:
-      // Aggiorna lo stato "premuto" su tutti i bottoni
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.setAttribute('aria-pressed', b.classList.contains('active'));
-      });
-
-      // Aggiorna la Live Region per lo screen reader
-      if (statusSpan) {
-        statusSpan.textContent = btn.textContent;
-      }
-    });
-  });
-
-  // Collega il pulsante di esportazione
-  const exportBtn = document.getElementById('export-data-btn');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', exportToPDF);
-  }
-});      
+}      
