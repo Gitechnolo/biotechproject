@@ -105,6 +105,13 @@ Tuttavia, alcuni criteri AAA non sono applicabili o non sono richiesti nel conte
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)  
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
+
+### 🔍 Funzionalità avanzate di accessibilità
+
+- **Scanner DNA & Audit**: Modulo interattivo con generazione di report PDF strutturato, `aria-label` bilingue e gestione sicura del focus  
+- **HUD & Tooltips dinamici**: Spiegazioni scientifiche istantanee con descrizioni testuali e valori di intensità percentuale per tutti i punti dati  
+- **Sincronizzazione circadiana**: I contenuti si adattano a ora e stagione (inclinazione dell'asse), riducendo il carico cognitivo grazie a consigli biologici contestuali   
+
 ---
 
 ## Accessibilità & Case Study
@@ -250,7 +257,7 @@ Il tuo feedback è fondamentale per migliorare l’accessibilità del progetto.
 Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattaci](https://gitechnolo.github.io/biotechproject/accessibility-it.html#feedback) (sezione "Feedback e segnalazioni" della dichiarazione).
 
 ## 📅 Data dell’ultima verifica
-**8 Novembre 2025**   
+**15 Gennaio 2026**   
 
 ## 🔮 Aggiornamenti recenti (sintesi)
 

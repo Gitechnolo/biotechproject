@@ -104,6 +104,13 @@ Echter, sommige AAA-criteria zijn niet van toepassing of niet vereist in de huid
 👉 [Lees de Toegankelijkheidsverklaring (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
+
+### 🔍 Geavanceerde toegankelijkheidsfuncties
+
+- **DNA-scanner & Audit**: Interactieve module met gestructureerde PDF-rapportgeneratie, tweetalige `aria-labels` en veilig focusbeheer  
+- **HUD & Dynamische tooltips**: Directe wetenschappelijke uitleg met tekstbeschrijvingen en procentuele intensiteitwaarden voor alle datapunten  
+- **Circadiane synchronisatie**: Inhoud past zich aan tijd en seizoen (asverkanting) aan en vermindert de cognitieve belasting via biologisch contextafhankelijke adviezen   
+
 ---
 
 ## Toegankelijkheid & Casus
@@ -259,7 +266,7 @@ Jouw feedback is essentieel om de toegankelijkheid van het project te verbeteren
 Als je belemmeringen ervaart of suggesties hebt, [neem dan contact met ons op](https://gitechnolo.github.io/biotechproject/accessibility-it.html#feedback) (sectie "Feedback en meldingen" van de verklaring).
 
 ## 📅 Datum van laatste controle
-**8 september 2025**
+**15 januari 2026**
 
 ## 🔮 Toekomstige updates
 

@@ -105,6 +105,13 @@ No entanto, alguns critérios AAA não são aplicáveis ou exigidos no contexto 
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)   
 
 
+### 🔍 Recursos avançados de acessibilidade
+
+- **Scanner de DNA & Auditoria**: Módulo interativo com geração de relatório PDF estruturado, `aria-label` bilíngue e gerenciamento seguro do foco  
+- **HUD & Dicas dinâmicas**: Explicações científicas instantâneas com descrições textuais e valores de intensidade percentual para todos os pontos de dados  
+- **Sincronização circadiana**: O conteúdo se adapta ao horário e à estação (inclinação do eixo), reduzindo a carga cognitiva por meio de orientações biológicas contextuais   
+
+
 ## Acessibilidade & Estudo de Caso
 
 Comprometemo-nos a construir uma plataforma inclusiva. Descubra como implementamos a conformidade com as WCAG 2.1 AA e o suporte multilíngue:
@@ -149,6 +156,10 @@ O sistema permite:
 | Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Principal + simplificada |
 | Capelli.html / -semplice | lang/capelli.json | Novas páginas incluídas no monitoramento |
 | Strings compartilhadas | lang/common.json | Menu, rodapé, textos compartilhados |
+
+
+## 📅 Data da última verificação
+**15 de janeiro de 2026**
 
 
 ## 🔮 Atualizações recentes (resumo)

@@ -104,6 +104,13 @@ However, some AAA criteria are not applicable or required in the current context
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
+
+### 🔍 Advanced Accessibility Features
+
+- **DNA Scanner & Audit**: Interactive module with structured PDF Report generation, bilingual `aria-label`, and secure focus management  
+- **HUD & Dynamic Tooltips**: Instant scientific explanations with text descriptions and percentage intensity values for all data points  
+- **Circadian Synchrony**: Content adapts to time and season (axial tilt), reducing cognitive load via biological context-aware advice
+
 ---
 
 ## Accessibility & Case Study
@@ -155,7 +162,7 @@ For clarity, the table below maps HTML pages to their translation JSON files. `c
 
 
 ## 📅 Last Verification Date
-**November 8, 2025**
+**January 15, 2026**
 
 ## 🔮 Recent updates (summary)
 

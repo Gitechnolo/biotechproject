@@ -105,6 +105,13 @@ Einige AAA-Kriterien sind jedoch im aktuellen Kontext nicht anwendbar oder nicht
 👉 [Dichiarazione di Accessibilità lesen (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
 
+### 🔍 Erweiterte Barrierefreiheitsfunktionen
+
+- **DNA-Scanner & Audit**: Interaktives Modul mit strukturierter PDF-Berichterstellung, zweisprachigen `aria-labels` und sicherem Fokus-Management  
+- **HUD & Dynamische Tooltips**: Sofortige wissenschaftliche Erklärungen mit Textbeschreibungen und prozentualen Intensitätswerten für alle Datenpunkte  
+- **Zirkadiane Synchronisation**: Inhalte passen sich an Zeit und Jahreszeit (Achsenneigung) an und reduzieren die kognitive Belastung durch biologisch kontextbezogene Empfehlungen   
+
+
 ## Barrierefreiheit & Fallstudie
 
 Wir engagieren uns für eine inklusive Plattform. Erfahren Sie, wie wir die Konformität mit WCAG 2.1 AA und Mehrsprachigkeit umgesetzt haben:
@@ -152,7 +159,7 @@ Das System ermöglicht:
 
 
 ## 📅 Letzter Überprüfungsdatum
-**8. November 2025**
+**15. Januar 2026**
 
 ## 🔮 Aktuelle Verbesserungen (Kurzfassung)
 
