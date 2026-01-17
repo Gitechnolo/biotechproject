@@ -63,22 +63,20 @@ Foi criado para mostrar como a tecnologia pode servir à ciência e à saúde, g
 
 ---
 
-## 📊 Monitorização da Qualidade Técnica
+## 📊 Monitoramento de Qualidade Técnica e Arquitetura
 
-O projeto inclui um sistema automatizado para monitorizar a qualidade técnica das páginas, com atualizações diárias através do GitHub Actions.  
-Desde setembro de 2025, foi implementado um **sistema avançado de rastreamento da maturidade tecnológica**, que combina dados reais e previsões para visualizar a evolução global do projeto.
+> 📑 **Engineering Assets (Atualizado em 17 de janeiro de 2026):**
+> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-### Funcionalidades do painel
-- ✅ **Pontuação de desempenho** (0–100) por página
-- ✅ **Tempo de carregamento** e estado de otimização
-- ✅ **Nível de maturidade**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- 📈 **Gráfico de evolução** (dados históricos + previsão até 100%)
-- 💾 **Exportação de dados** em JSON/CSV para análise externa
-- 🕒 Atualização a cada 24 horas (ou manualmente via "Atualizar")
-  
-📊 O sistema mostra tanto o **estado atual do projeto** como uma **projeção realista para a conclusão do ciclo de desenvolvimento** (previsto para fevereiro de 2026), baseada em melhorias reais (ex: acessibilidade, experiência de utilizador, desempenho).
+O projeto implementa um **sistema avançado de rastreamento de maturidade tecnológica** via GitHub Actions. Em **17 de janeiro de 2026**, o ecossistema mantém uma **pontuação de desempenho agregada de 97%**, com os módulos clínicos principais atingindo **100% em Acessibilidade e Performance**.
 
-👉 Aceda ao painel em tempo real: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
+### Recursos do Dashboard
+- ✅ **Monitoramento de Desempenho em Tempo Real**: Pontuação (0–100) e tempos de carregamento atualizados a cada 24 horas.
+- ✅ **Maturity Intelligence**: Rastreamento automatizado do status dos módulos (`optimized`, `compatible`, `deprecated`).
+- 📈 **Previsões**: Gráfico de tendências de maturidade com uma projeção realista para a conclusão total (fevereiro de 2026).
+- 💾 **Open Data**: Exportação de análises em formato JSON/CSV para auditorias de terceiros.
+
+👉 **Veja o dashboard ao vivo:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 

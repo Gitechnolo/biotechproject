@@ -63,22 +63,20 @@ Es un espacio colaborativo para desarrolladores, investigadores y entusiastas qu
 
 ---
 
-## 📊 Monitorización de la Calidad Técnica
+## 📊 Monitoreo de Calidad Técnica y Arquitectura
 
-El proyecto incluye un sistema automatizado para monitorear la calidad técnica de sus páginas, con actualizaciones diarias mediante GitHub Actions.  
-Desde septiembre de 2025, se ha implementado un **sistema avanzado de seguimiento de la madurez tecnológica**, que combina datos reales y proyecciones para visualizar la evolución general del proyecto.
+> 📑 **Engineering Assets (Actualizado el 17 de enero de 2026):**
+> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-### Funcionalidades del panel
-- ✅ **Puntuación de rendimiento** (0–100) por página
-- ✅ **Tiempo de carga** y estado de optimización
-- ✅ **Nivel de madurez**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- 📈 **Gráfico de evolución** (datos históricos + proyección hasta el 100%)
-- 💾 **Exportación de datos** en JSON/CSV para análisis externos
-- 🕒 Datos actualizados cada 24 horas (o manualmente con "Actualizar ahora")
+El proyecto implementa un **sistema avanzado de seguimiento de madurez tecnológica** a través de GitHub Actions. A fecha de **17 de enero de 2026**, el ecosistema mantiene una **puntuación de rendimiento agregado del 97%**, con los módulos clínicos principales alcanzando el **100% en Accesibilidad y Rendimiento**.
 
-📊 El sistema muestra tanto el **estado actual del proyecto** como una **proyección realista hacia la finalización del ciclo de desarrollo** (prevista para febrero de 2026), basada en mejoras reales (por ejemplo: accesibilidad, UX, rendimiento).
+### Características del Dashboard
+- ✅ **Monitoreo de Rendimiento en Tiempo Real**: Puntuación (0–100) y tiempos de carga actualizados cada 24 horas.
+- ✅ **Maturity Intelligence**: Seguimiento automatizado del estado de los módulos (`optimized`, `compatible`, `deprecated`).
+- 📈 **Proyecciones**: Gráfico de tendencias de madurez con una proyección realista hacia la finalización total (febrero de 2026).
+- 💾 **Open Data**: Exportación de análisis en formato JSON/CSV para auditorías de terceros.
 
-👉 Accede al panel en tiempo real: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
+👉 **Ver el dashboard en vivo:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 

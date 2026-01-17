@@ -63,22 +63,20 @@ Het is een samenwerkingsruimte voor ontwikkelaars, onderzoekers en enthousiastel
 
 ---
 
-## 📊 Technische Kwaliteitsmonitoring
+## 📊 Monitoring van Technische Kwaliteit & Architectuur
 
-Het project bevat een automatisch systeem om de technische kwaliteit van de pagina's te monitoren, met dagelijkse updates via GitHub Actions.  
-Vanaf september 2025 is een **geavanceerd systeem voor het monitoren van de technologische rijpheid van het project** geïntroduceerd, dat echte gegevens en voorspellingen combineert om de algehele evolutie van de site te volgen.
+> 📑 **Engineering Assets (Bijgewerkt op 17 januari 2026):**
+> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-### Functies van het dashboard
-- ✅ **Prestatiescore** (0–100) per pagina
-- ✅ **Laadtijd** en optimalisatiestatus
-- ✅ **Rijpheidscategorie**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- 📈 **Rijpheidgrafiek** (historische gegevens + voorspelling tot 100%)
-- 💾 **Gegevensexport** in JSON/CSV voor externe analyse
-- 🕒 Gegevens dagelijks bijgewerkt (of handmatig via "Nu bijwerken")
+Het project implementeert een **geavanceerd systeem voor het volgen van technologische volwassenheid** via GitHub Actions. Vanaf **17 januari 2026** behoudt het ecosysteem een **geaggregeerde prestatiescore van 97%**, waarbij de klinische kernmodules **100% scoren op Toegankelijkheid en Prestaties**.
 
-📊 Het systeem toont zowel het **huidige niveau** als een **realistische projectie tot voltooiing van de ontwikkelcyclus** (verwacht februari 2026), gebaseerd op daadwerkelijke verbeteringen (bijv. toegankelijkheid, UX, optimalisatie).
+### Dashboard Kenmerken
+- ✅ **Real-time Prestatiebewaking**: Score (0–100) en laadtijden elke 24 uur bijgewerkt.
+- ✅ **Maturity Intelligence**: Geautomatiseerde tracking van de modulestatus (`optimized`, `compatible`, `deprecated`).
+- 📈 **Prognoses**: Trendgrafiek van volwassenheid met een realistische projectie naar volledige voltooiing (februari 2026).
+- 💾 **Open Data**: Export van analyses in JSON/CSV-formaat voor audits door derden.
 
-👉 Bekijk het dashboard in real time: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
+👉 **Bekijk het live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 

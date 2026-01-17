@@ -63,22 +63,20 @@ Ein kollaborativer Raum für Entwickler, Forscher und Enthusiasten, die erforsch
 
 ---
 
-## 📊 Technische Qualitätsüberwachung
+## 📊 Überwachung der technischen Qualität & Architektur
 
-Das Projekt verfügt über ein automatisiertes System zur Überwachung der technischen Qualität der Seiten, das täglich über GitHub Actions aktualisiert wird.  
-Seit September 2025 wurde ein **erweitertes System zur Verfolgung der technologischen Reife** eingeführt, das reale Daten und Prognosen kombiniert, um die gesamte Projekttwicklung darzustellen.
+> 📑 **Engineering Assets (Aktualisiert am 17. Januar 2026):**
+> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-### Funktionen des Dashboards
-- ✅ **Leistungswert** (0–100) pro Seite
-- ✅ **Ladezeit** und Optimierungsstatus
-- ✅ **Reifestufe**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- 📈 **Entwicklungsverlauf** (historische Daten + Prognose bis 100 %)
-- 💾 **Datenexport** in JSON/CSV für externe Analysen
-- 🕒 Aktualisierung alle 24 Stunden (oder manuell über „Aktualisieren“)
+Das Projekt implementiert ein **fortschrittliches System zur Verfolgung der technologischen Reife** via GitHub Actions. Stand **17. Januar 2026** weist das Ökosystem einen **aggregierten Performance-Score von 97%** auf, wobei die klinischen Kernmodule **100% in den Bereichen Barrierefreiheit und Leistung** erreichen.
 
-📊 Das System zeigt sowohl den **aktuellen Projektstatus** als auch eine **realistische Projektion zum Abschluss des Entwicklungszyklus** (voraussichtlich Februar 2026), basierend auf tatsächlichen Verbesserungen (z. B. Barrierefreiheit, Benutzerfreundlichkeit, Performance).
+### Dashboard-Funktionen
+- ✅ **Echtzeit-Performance-Monitoring**: Score (0–100) und Ladezeiten, alle 24 Stunden aktualisiert.
+- ✅ **Maturity Intelligence**: Automatisiertes Tracking des Modulstatus (`optimized`, `compatible`, `deprecated`).
+- 📈 **Prognosen**: Reifegrad-Trendgrafik mit realistischer Projektion bis zum vollständigen Abschluss (Februar 2026).
+- 💾 **Open Data**: Export von Analysen im JSON/CSV-Format für Audits durch Dritte.
 
-👉 Zum Live-Dashboard: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)   
+👉 **Zum Live-Dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
