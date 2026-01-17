@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="BiotechProjectBanner.png" alt="BiotechProject Banner" width="100%" />
+  <img src="biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
 </div>
 
 # BiotechProject 🧬 🇬🇧
@@ -63,22 +63,20 @@ It's a collaborative space for developers, researchers, and enthusiasts who want
 
 ---
 
-## 📊 Technical Quality Monitoring
+## 📊 Technical Quality Monitoring & Architecture
 
-The project includes an automated system to monitor the technical quality of its pages, with daily updates via GitHub Actions.  
-Starting from September 2025, an **advanced technological maturity tracking system** has been introduced, combining real data and forecasts to visualize the project’s overall evolution.
+> 📑 **Engineering Assets (Updated Jan 17, 2026):**
+> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+
+The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **January 17, 2026**, the ecosystem maintains a **97% aggregate performance score**, with core clinical modules reaching **100% in Accessibility and Performance**.
 
 ### Dashboard Features
-- ✅ **Performance score** (0–100) per page
-- ✅ **Page load time** and optimization status
-- ✅ **Maturity level**: `optimized`, `compatible`, `needs-improvement`, `deprecated`
-- 📈 **Maturity trend graph** (historical data + forecast up to 100%)
-- 💾 **Data export** in JSON/CSV for external analysis
-- 🕒 Data updated every 24 hours (or manually via "Refresh now")
+- ✅ **Real-time Performance Monitoring**: Score (0–100) and load times updated every 24h.
+- ✅ **Maturity Intelligence**: Automated tracking (`optimized`, `compatible`, `deprecated`).
+- 📈 **Forecasting**: Maturity trend graph with a realistic projection to full completion (Feb 2026).
+- 💾 **Open Data**: Export analytics in JSON/CSV for third-party audits.
 
-📊 The system displays both the **current project status** and a **realistic projection to full development completion** (estimated February 2026), based on actual improvements (e.g., accessibility, UX, performance).
-
-👉 View the live dashboard: [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)    
+👉 **View the live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
