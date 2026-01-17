@@ -429,7 +429,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
 
         const updateClock = () => {
     const now = new Date();
-    const hour = now.getHours(); // const hour = 11; // Test: forza l'orario alle 11:00 per il test Vitamina D
+    const hour = now.getHours(); // const hour = 11; - PER TESTING (VITAMINA D)
     const mins = now.getMinutes();
     
     const keys = Object.keys(circadianMap).map(Number);
