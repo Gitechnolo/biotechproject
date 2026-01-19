@@ -1004,73 +1004,94 @@ function handleVideoPosterKey(event) {
 })(); 
 // === End ultima modifica pagina ===
 
-// === 🔊 PRONUNCIA TERMINI TECNICI - Accessibilità avanzata ===
-// Funzione principale: riproduce la pronuncia di un termine con supporto per termini scientifici personalizzati
+// === 🔊 BIOTECH PROJECT - GESTIONE PRONUNCIA E EVENTI (Versione Pulita) ===
+/**
+ * Inizializzatore: attiva le funzioni quando la pagina è caricata.
+ * Rimuove la necessità di onclick e onkeydown nell'HTML.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // 1. Gestione click sui pulsanti di pronuncia (🔊)
+  const audioButtons = document.querySelectorAll('.pronounce-btn');
+  audioButtons.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      // Impedisce che il click attivi il modal se il bottone è dentro un link
+      event.stopPropagation(); 
+      
+      const term = btn.getAttribute('data-term');
+      const langAttr = btn.getAttribute('lang'); 
+      const language = (langAttr === 'en') ? 'inglese' : 'italiano';
+      
+      speakTerm(term, language);
+    });
+  });
 
-function speakTerm(term, language = 'italiano') {
-  // Interrompi qualsiasi sintesi vocale in corso per evitare sovrapposizioni
+  // 2. Gestione click e tastiera sui link che aprono i Modal
+  const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
+  modalLinks.forEach(link => {
+    
+    const triggerModal = (event) => {
+      event.preventDefault();
+      const imgId = link.getAttribute('data-target-img');
+      
+      // Chiama la funzione openBiotechModal se esistente nel progetto
+      if (typeof openBiotechModal === 'function') {
+        openBiotechModal(imgId, event);
+      }
+    };
+
+    link.addEventListener('click', triggerModal);
+
+    // Gestione accessibilità (Tasto Invio o Spazio)
+    link.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        triggerModal(event);
+      }
+    });
+  });
+});
+
+ // Funzione principale: riproduce la pronuncia di un termine.
+ function speakTerm(term, language = 'italiano') {
+  if (!term) return;
+
   if (speechSynthesis.speaking) {
     speechSynthesis.cancel();
   }
-  // Mappa personalizzata per pronunce scientifiche (lettura estesa o sillabata)
+
   const customPronunciations = {
-    'CRISPR': 'Clustered Regularly Interspaced Short Palindromic Repeats',
+    'crispr': 'Clustered Regularly Interspaced Short Palindromic Repeats',
     'mitocondri': 'Mi-to-con-dri',
     'lisosoma': 'Li-so-so-ma',
     'miochine': 'Mi-o-ki-ne',
     'sinaptogenesi': 'Si-na-to-jen-e-si',
     'epigenetici': 'E-pi-je-ne-ti-ci',
-    'ATP': 'Adenosina trifosfato',
-    'DNA': 'Acido desossiribonucleico',
-    'RNA': 'Acido ribonucleico',
+    'atp': 'Adenosina trifosfato',
+    'dna': 'Acido desossiribonucleico',
+    'rna': 'Acido ribonucleico',
     'tegumento': 'Te-gu-men-to',
-    'Pecquet': 'Pes-ché'     
+    'pecquet': 'Pes-ché'     
   };
-  // Mappa delle lingue supportate
-  const langMap = {
-    'italiano': 'it-IT',
-    'inglese': 'en-US'
-  };
-  // Ottieni la pronuncia personalizzata o usa il termine originale
-  const utteranceText = customPronunciations[term.toLowerCase()] || term;
 
-  // Crea l'istanza di SpeechSynthesisUtterance
+  const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
+  const utteranceText = customPronunciations[term.toLowerCase()] || term;
   const utterance = new SpeechSynthesisUtterance(utteranceText);
 
-  // Imposta la lingua, con fallback a italiano
   utterance.lang = langMap[language] || 'it-IT';
+  utterance.rate = 0.8;   
+  utterance.pitch = 1.0;  
+  utterance.volume = 1.0; 
 
-  // Parametri vocali ottimizzati per chiarezza
-  utterance.rate = 0.8;   // Velocità leggermente ridotta
-  utterance.pitch = 1.0;  // Tono neutro e naturale
-  utterance.volume = 1.0; // Volume massimo
-
-  // Feedback accessibile per screen reader
   const announcement = document.getElementById('sr-announcement');
   if (announcement) {
     announcement.textContent = `Lettura avviata: ${term}.`;
-    // Pulisce il messaggio dopo 1 secondo per non disturbare
     setTimeout(() => {
-      if (announcement.textContent.includes(term)) {
-        announcement.textContent = '';
-      }
+      if (announcement.textContent.includes(term)) announcement.textContent = '';
     }, 1000);
   }
 
-  // Log per debug (opzionale)
-  console.log(`🔊 Pronuncia attivata: "${term}" come "${utteranceText}" (${utterance.lang})`);
-
-  // Avvia la sintesi vocale
+  console.log(`🔊 Pronuncia: "${term}" (${utterance.lang})`);
   speechSynthesis.speak(utterance);
-}
-
-// Gestione tastiera per i pulsanti di pronuncia (accessibilità da tastiera)
-function handlePronounceKey(event, term, language = 'italiano') {
-  // Supporta sia Invio che barra spaziatrice
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault(); // Evita comportamenti indesiderati
-    speakTerm(term, language);
-  }
 }
 
 // =====================================================
