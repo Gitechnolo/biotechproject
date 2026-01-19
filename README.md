@@ -13,6 +13,13 @@
 [Dutch 🇳🇱](README.nl.md) |
 [Português (BR) 🇧🇷](README.pt-br.md)
 
+> 💡 **Executive Briefing (Jan 17, 2026):**
+>
+> This project has evolved from a performance-driven experiment into a **Strategic Blueprint for Resilient Health Architecture**.  
+> We have formalized our "Stateless Edge" methodology in a new report that addresses global health inequities caused by latency and cognitive barriers.  
+>
+> 👉 **Read the Strategic Report:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
+
 > 🌍 *"We don't all speak the same languages, but we speak the same language: collaboration."*  
 > English is not a barrier — it's a bridge.  
 > 🔹 To contribute or review project guidelines, visit the main English files:  
@@ -66,11 +73,9 @@ It's a collaborative space for developers, researchers, and enthusiasts who want
 ## 📊 Technical Quality Monitoring & Architecture
 
 > 📑 **Engineering Assets (Updated Jan 17, 2026):**
-> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
->   *Strategic analysis on how "SRE for Humans" and Minimalist Engineering solve global health latency and cognitive barriers.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **January 17, 2026**, the ecosystem maintains a **97% aggregate performance score**, with core physiological modules reaching **100% in Accessibility and Performance**.
+The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **January 17, 2026**, the ecosystem maintains a **97% aggregate performance score**, with core clinical modules reaching **100% in Accessibility and Performance**.
 
 ### Dashboard Features
 - ✅ **Real-time Performance Monitoring**: Score (0–100) and load times updated every 24h.
