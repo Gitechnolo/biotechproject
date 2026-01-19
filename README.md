@@ -66,6 +66,8 @@ It's a collaborative space for developers, researchers, and enthusiasts who want
 ## 📊 Technical Quality Monitoring & Architecture
 
 > 📑 **Engineering Assets (Updated Jan 17, 2026):**
+> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
+>   *Strategic analysis on how "SRE for Humans" and Minimalist Engineering solve global health latency and cognitive barriers.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **January 17, 2026**, the ecosystem maintains a **97% aggregate performance score**, with core clinical modules reaching **100% in Accessibility and Performance**.
