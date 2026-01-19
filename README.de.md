@@ -66,9 +66,11 @@ Ein kollaborativer Raum für Entwickler, Forscher und Enthusiasten, die erforsch
 ## 📊 Überwachung der technischen Qualität & Architektur
 
 > 📑 **Engineering Assets (Aktualisiert am 17. Januar 2026):**
+> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
+>   *Strategische Analyse: Wie "SRE for Humans" und minimalistisches Engineering globale Latenzprobleme und kognitive Barrieren im Gesundheitswesen lösen.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-Das Projekt implementiert ein **fortschrittliches System zur Verfolgung der technologischen Reife** via GitHub Actions. Stand **17. Januar 2026** weist das Ökosystem einen **aggregierten Performance-Score von 97%** auf, wobei die klinischen Kernmodule **100% in den Bereichen Barrierefreiheit und Leistung** erreichen.
+Das Projekt implementiert ein **fortschrittliches System zur Verfolgung der technologischen Reife** via GitHub Actions. Stand **17. Januar 2026** weist das Ökosystem einen **aggregierten Performance-Score von 97%** auf, wobei die **physiologischen Kernmodule** **100% in den Bereichen Barrierefreiheit und Leistung** erreichen.
 
 ### Dashboard-Funktionen
 - ✅ **Echtzeit-Performance-Monitoring**: Score (0–100) und Ladezeiten, alle 24 Stunden aktualisiert.

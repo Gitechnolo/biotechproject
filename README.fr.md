@@ -65,10 +65,12 @@ C'est un espace collaboratif pour les développeurs, chercheurs et passionnés q
 
 ## 📊 Surveillance de la Qualité Technique & Architecture
 
-> 📑 **Engineering Assets (Mis à jour le 17 Janvier 2026):**
+> 📑 **Engineering Assets (Mis à jour le 17 Janvier 2026) :**
+> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
+>   *Analyse stratégique sur la manière dont le "SRE for Humans" et l'ingénierie minimaliste résolvent la latence et les barrières cognitives dans la santé mondiale.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-Le projet implémente un **système avancé de suivi de la maturité technologique** via GitHub Actions. Au **17 Janvier 2026**, l'écosystème maintient un **score de performance agrégé de 97%**, les modules cliniques de base atteignant **100% en Accessibilité et Performance**.
+Le projet implémente un **système avancé de suivi de la maturité technologique** via GitHub Actions. Au **17 Janvier 2026**, l'écosystème maintient un **score de performance agrégé de 97%**, les modules physiologiques de base atteignant **100% en Accessibilité et Performance**.
 
 ### Fonctionnalités du Tableau de Bord
 - ✅ **Suivi des Performances en Temps Réel** : Score (0–100) et temps de chargement mis à jour toutes les 24h.

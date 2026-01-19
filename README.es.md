@@ -66,9 +66,11 @@ Es un espacio colaborativo para desarrolladores, investigadores y entusiastas qu
 ## 📊 Monitoreo de Calidad Técnica y Arquitectura
 
 > 📑 **Engineering Assets (Actualizado el 17 de enero de 2026):**
+> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
+>   *Análisis estratégico sobre cómo "SRE para Humanos" y la ingeniería minimalista resuelven la latencia y las barreras cognitivas en la salud global.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-El proyecto implementa un **sistema avanzado de seguimiento de madurez tecnológica** a través de GitHub Actions. A fecha de **17 de enero de 2026**, el ecosistema mantiene una **puntuación de rendimiento agregado del 97%**, con los módulos clínicos principales alcanzando el **100% en Accesibilidad y Rendimiento**.
+El proyecto implementa un **sistema avanzado de seguimiento de madurez tecnológica** a través de GitHub Actions. A fecha de **17 de enero de 2026**, el ecosistema mantiene una **puntuación de rendimiento agregado del 97%**, con los módulos fisiológicos principales alcanzando el **100% en Accesibilidad y Rendimiento**.
 
 ### Características del Dashboard
 - ✅ **Monitoreo de Rendimiento en Tiempo Real**: Puntuación (0–100) y tiempos de carga actualizados cada 24 horas.

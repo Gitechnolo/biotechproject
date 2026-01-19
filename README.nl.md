@@ -66,9 +66,11 @@ Het is een samenwerkingsruimte voor ontwikkelaars, onderzoekers en enthousiastel
 ## 📊 Monitoring van Technische Kwaliteit & Architectuur
 
 > 📑 **Engineering Assets (Bijgewerkt op 17 januari 2026):**
+> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
+>   *Strategische analyse over hoe "SRE for Humans" en minimalistische engineering wereldwijde latentieproblemen en cognitieve barrières in de gezondheidszorg oplossen.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-Het project implementeert een **geavanceerd systeem voor het volgen van technologische volwassenheid** via GitHub Actions. Vanaf **17 januari 2026** behoudt het ecosysteem een **geaggregeerde prestatiescore van 97%**, waarbij de klinische kernmodules **100% scoren op Toegankelijkheid en Prestaties**.
+Het project implementeert een **geavanceerd systeem voor het volgen van technologische volwassenheid** via GitHub Actions. Vanaf **17 januari 2026** behoudt het ecosysteem een **geaggregeerde prestatiescore van 97%**, waarbij de **fysiologische kernmodules** **100% scoren op Toegankelijkheid en Prestaties**.
 
 ### Dashboard Kenmerken
 - ✅ **Real-time Prestatiebewaking**: Score (0–100) en laadtijden elke 24 uur bijgewerkt.

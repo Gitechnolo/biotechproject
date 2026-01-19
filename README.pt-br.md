@@ -66,9 +66,11 @@ Foi criado para mostrar como a tecnologia pode servir à ciência e à saúde, g
 ## 📊 Monitoramento de Qualidade Técnica e Arquitetura
 
 > 📑 **Engineering Assets (Atualizado em 17 de janeiro de 2026):**
+> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
+>   *Análise estratégica sobre como "SRE para Humanos" e a engenharia minimalista resolvem a latência e as barreiras cognitivas na saúde global.*
 > * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
-O projeto implementa um **sistema avançado de rastreamento de maturidade tecnológica** via GitHub Actions. Em **17 de janeiro de 2026**, o ecossistema mantém uma **pontuação de desempenho agregada de 97%**, com os módulos clínicos principais atingindo **100% em Acessibilidade e Performance**.
+O projeto implementa um **sistema avançado de rastreamento de maturidade tecnológica** via GitHub Actions. Em **17 de janeiro de 2026**, o ecossistema mantém uma **pontuação de desempenho agregada de 97%**, com os módulos fisiológicos principais atingindo **100% em Acessibilidade e Performance**.
 
 ### Recursos do Dashboard
 - ✅ **Monitoramento de Desempenho em Tempo Real**: Pontuação (0–100) e tempos de carregamento atualizados a cada 24 horas.
