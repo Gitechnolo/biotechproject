@@ -971,38 +971,33 @@ function handleVideoPosterKey(event) {
 // End Accessibilità video   
 
 // === Ultima modifica pagina ===
-(function() {
-  // Esecuzione immediata (IIFE) per evitare di inquinare lo scope globale
-  // e per eseguire il codice il prima possibile.
+/**
+ * Aggiorna il div lastModified sincronizzandolo con la lingua attiva.
+ * Non richiede voci nel JSON.
+ */
+function updateLastModified(lang) {
   const el = document.getElementById('lastModified');
-  
-  // Controlla immediatamente se l'elemento esiste
-  if (el) {
-    // document.lastModified è una stringa standardizzata, 
-    // l'oggetto Date la interpreta direttamente.
-    const lastModifiedDate = new Date(document.lastModified);
+  if (!el) return;
 
-    // Se document.lastModified non è valido (es. '01/01/1970'),
-    // la data sarà "Invalid Date". Questo controllo la evita.
-    if (isNaN(lastModifiedDate)) {
-        // Fallback o uscita se la data non è valida
-        console.warn("Impossibile recuperare la data di ultima modifica valida.");
-        return; 
-    }
-    // toLocaleString per data, ora/minuti.
-    const options = { 
-      day: '2-digit', 
-      month: '2-digit', 
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      // Opzionale: per forzare l'uso di 24 ore (non necessario in it-IT, ma buona pratica)
-      // hour12: false 
-    };
-    // Uso diretto di toLocaleString e template literal
-    el.textContent = `Ultima modifica: ${lastModifiedDate.toLocaleString('it-IT', options)}`;
-  }
-})(); 
+  const lastModifiedDate = new Date(document.lastModified);
+  if (isNaN(lastModifiedDate)) return;
+
+  // Definisce le etichette direttamente qui per risparmiare chiamate al JSON
+  const isEn = (lang === 'en');
+  const label = isEn ? 'Last modified' : 'Ultima modifica';
+  const locale = isEn ? 'en-US' : 'it-IT';
+
+  const options = { 
+    day: '2-digit', 
+    month: '2-digit', 
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  };
+
+  // Stringa finale
+  el.textContent = `${label}: ${lastModifiedDate.toLocaleString(locale, options)}`;
+} 
 // === End ultima modifica pagina ===
 
 // === 🔊 BIOTECH PROJECT - GESTIONE PRONUNCIA E EVENTI (Versione Pulita) ===
@@ -1194,6 +1189,8 @@ function applyTranslations(translations, lang) {
       }
     }
   });
+       updateLastModified(lang); // Last edit: it - en
+
   console.log(`✅ Traduzioni applicate in ${lang}`);
 }   
 // ===========================
