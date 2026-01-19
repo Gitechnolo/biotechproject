@@ -520,6 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     modalImg.style.transformOrigin = `${originX}px ${originY}px`;
     modalImg.src = targetImg.src;
+    modalImg.alt = targetImg.alt || ""; 
     captionText.textContent = targetImg.alt || "";
 
     modal.style.display = "flex"; 
