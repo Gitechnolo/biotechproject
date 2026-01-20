@@ -3,20 +3,6 @@
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
 // ———————————————————————
 
-// 1. Registrazione del Service Worker (Il Guardiano)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // Funziona sia in locale (test) che su GitHub Pages
-        const swPath = window.location.pathname.startsWith('/biotechproject/') 
-               ? '/biotechproject/sw.js' 
-               : './sw.js';
-
-        navigator.serviceWorker.register(swPath)
-            .then(reg => console.log('🛡️ Biotech Guardiano attivo: ' + reg.scope))
-            .catch(err => console.warn('⚠️ Errore registrazione SW:', err));
-    });
-}
-
 let performanceChart;
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale) ---
@@ -40,158 +26,141 @@ async function loadJsPDF() {
   }
 }
 
-// --- Funzione principale: Carica dati (Online/Offline) con soglia 24h ---
+// --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
-  console.log('🔧 loadPerformanceData() in esecuzione (Resilient Mode)');
-  
-  const CACHE_KEY = 'biotech_perf_backup';
-  const SCADENZA_MS = 24 * 60 * 60 * 1000; // 24 ore
-  let data = null;
-
+  console.log('🔧 loadPerformanceData() in esecuzione');
   try {
-    // 1. Tenta il recupero dalla rete (intercettato dal Service Worker se offline)
     const response = await fetch('data/performance-latest.json');
-    if (!response.ok) throw new Error('Rete non disponibile');
+    if (!response.ok) throw new Error('Dati non disponibili');
 
-    data = await response.json();
-    
-    // SINCRONIZZAZIONE: Aggiungiamo timestamp e salviamo nel LocalStorage
-    data.syncTimestamp = Date.now();
-    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-    console.log('📡 Dati sincronizzati con successo dal server.');
+    const data = await response.json();
+    const container = document.querySelector('.portfolio-row');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const homePage = data.pages.find(p =>
+      p.url.includes('/index.html') ||
+      p.url === 'https://gitechnolo.github.io/biotechproject/' ||
+      p.url === window.location.origin + '/biotechproject/'
+    );
+
+    const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : new Date();
+
+    const lastUpdate = document.getElementById('last-update');
+    if (lastUpdate) {
+      const dateStr = reportTime.toLocaleDateString('it-IT');
+      const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+      lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
+    }
+
+    const avgPerf = Math.round(
+      data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
+    );
+    const performanceScoreValue = avgPerf;
+
+    aggiornaPerformanceScore(performanceScoreValue);
+
+    // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
+    const fragment = document.createDocumentFragment();
+
+    data.pages.forEach(page => {
+      const card = createPerformanceCard(page);
+      fragment.appendChild(card);
+    });
+
+    container.appendChild(fragment); // Inserimento unico nel DOM
+
+    filterSelection('all');
+
+    const history = [];
+    if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
+      history.push({
+        date: subtractDays(reportTime, 5),
+        score: homePage.previousPerformanceScore,
+        note: 'Misurazione precedente'
+      });
+    }
+    history.push({
+      date: formatDate(reportTime),
+      score: performanceScoreValue,
+      note: 'Misurazione attuale'
+    });
+
+    creaGrafico(history);
+
+    const summary = data.summary || {};
+
+    const avgA11y = summary.averageAccessibility ?? 94;
+    const avgSeo = summary.averageSeo ?? 96;
+    const avgBest = summary.averageBestPractices ?? 97;
+
+    document.querySelectorAll('.progress-circle').forEach(circle => {
+      const metric = circle.dataset.metric;
+      const value = { 
+        performance: avgPerf, 
+        'performance-desktop': Math.min(avgPerf + 2, 100), 
+        accessibility: avgA11y, 
+        seo: avgSeo, 
+        'best-practices': avgBest 
+      }[metric] || 75;
+      const rounded = Math.round(value);
+      circle.style.setProperty('--value', `${rounded}%`);
+      circle.setAttribute('aria-valuenow', rounded);
+      circle.dataset.value = rounded;
+    });
+
+    const lastUpdated = document.getElementById('last-updated');
+    if (lastUpdated && data.lastUpdated) {
+      const date = new Date(data.lastUpdated);
+      lastUpdated.textContent = date.toLocaleDateString('it-IT', {
+        day: '2-digit', month: '2-digit', year: 'numeric'
+      });
+    }
+
+    const trendEl = document.getElementById('trend-indicator');
+    if (trendEl && homePage) {
+      const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
+      const icons = { 1: '▲', 0: '●', '-1': '▼' };
+      trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
+trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
+const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
+trendEl.classList.add(trendClass);
+      trendEl.classList.remove('visually-hidden');
+    }
+
+    const update = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    update('analyzed-count', summary.analyzed || data.pages.length);
+    update('avg-performance', `${avgPerf}%`);
+    update('avg-accessibility', `${avgA11y}%`);
+    update('avg-seo', `${avgSeo}%`);
+    update('avg-best-practices', `${avgBest}%`);
+
+    if (data.lastUpdated) {
+      const date = new Date(data.lastUpdated);
+      update('last-updated-report', date.toLocaleDateString('it-IT'));
+      document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
+    }
+
+    // *** OTTIMIZZAZIONE CSS: Sostituzione di setTimeout con l'aggiunta di una classe CSS ***
+    document.body.classList.add('portfolio-loaded');
+
 
   } catch (error) {
-    console.warn('⚠️ Errore rete o Offline. Controllo ponte locale...');
-    
-    // 2. FALLBACK: Recupero dal LocalStorage
-    const savedData = localStorage.getItem(CACHE_KEY);
-    if (savedData) {
-      data = JSON.parse(savedData);
-      
-      // Controllo freschezza dati
-      const tempoTrascorso = Date.now() - (data.syncTimestamp || 0);
-      if (tempoTrascorso > SCADENZA_MS) {
-        showNotification('⚠️ Dati visualizzati datati (più di 24h).');
-        document.getElementById('last-update')?.classList.add('data-stale');
-      } else {
-        showNotification('Modo Offline: Caricamento da cache locale.');
-      }
-    }
-  }
-
-  // Se non abbiamo dati (né rete né cache), fallback estremo ai valori statici
-  if (!data) {
+    console.warn('⚠️ Impossibile caricare i dati reali:', error);
     aggiornaPerformanceScore(85);
     creaGrafico();
     const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) lastUpdate.textContent = 'Dati non disponibili';
-    document.body.classList.add('portfolio-loaded');
-    return;
+    if (lastUpdate) {
+      lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
+    }
+    showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
+    document.body.classList.add('portfolio-loaded'); 
   }
-
-  // --- RENDERING DEI DATI (Logica Originale Ottimizzata) ---
-  const container = document.querySelector('.portfolio-row');
-  if (!container) return;
-  container.innerHTML = '';
-
-  const homePage = data.pages.find(p =>
-    p.url.includes('/index.html') ||
-    p.url === 'https://gitechnolo.github.io/biotechproject/' ||
-    p.url === window.location.origin + '/biotechproject/'
-  );
-
-  // Calcolo tempo del report
-  const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : new Date(data.syncTimestamp || Date.now());
-
-  const lastUpdate = document.getElementById('last-update');
-  if (lastUpdate) {
-    const dateStr = reportTime.toLocaleDateString('it-IT');
-    const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
-    lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
-  }
-
-  const avgPerf = Math.round(data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length);
-  aggiornaPerformanceScore(avgPerf);
-
-  // Inserimento DOM tramite DocumentFragment
-  const fragment = document.createDocumentFragment();
-  data.pages.forEach(page => {
-    const card = createPerformanceCard(page);
-    fragment.appendChild(card);
-  });
-  container.appendChild(fragment);
-
-  filterSelection('all');
-
-  // Gestione Storico e Grafico
-  const history = [];
-  if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
-    history.push({
-      date: subtractDays(reportTime, 5),
-      score: homePage.previousPerformanceScore,
-      note: 'Misurazione precedente'
-    });
-  }
-  history.push({
-    date: formatDate(reportTime),
-    score: avgPerf,
-    note: 'Misurazione attuale'
-  });
-  creaGrafico(history);
-
-  // Aggiornamento Cerchi di Progresso
-  const summary = data.summary || {};
-  const avgA11y = summary.averageAccessibility ?? 94;
-  const avgSeo = summary.averageSeo ?? 96;
-  const avgBest = summary.averageBestPractices ?? 97;
-
-  document.querySelectorAll('.progress-circle').forEach(circle => {
-    const metric = circle.dataset.metric;
-    const value = { 
-      performance: avgPerf, 
-      'performance-desktop': Math.min(avgPerf + 2, 100), 
-      accessibility: avgA11y, 
-      seo: avgSeo, 
-      'best-practices': avgBest 
-    }[metric] || 75;
-    const rounded = Math.round(value);
-    circle.style.setProperty('--value', `${rounded}%`);
-    circle.setAttribute('aria-valuenow', rounded);
-    circle.dataset.value = rounded;
-  });
-
-  // Aggiornamento etichette riepilogo
-  const update = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  };
-
-  update('analyzed-count', summary.analyzed || data.pages.length);
-  update('avg-performance', `${avgPerf}%`);
-  update('avg-accessibility', `${avgA11y}%`);
-  update('avg-seo', `${avgSeo}%`);
-  update('avg-best-practices', `${avgBest}%`);
-
-  // Gestione Trend
-  const trendEl = document.getElementById('trend-indicator');
-  if (trendEl && homePage) {
-    const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
-    const icons = { 1: '▲', 0: '●', '-1': '▼' };
-    trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-    trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
-    const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
-    trendEl.classList.add(trendClass);
-    trendEl.classList.remove('visually-hidden');
-  }
-
-  if (data.lastUpdated) {
-    const date = new Date(data.lastUpdated);
-    update('last-updated-report', date.toLocaleDateString('it-IT'));
-    document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
-  }
-
-  // Attivazione animazioni CSS
-  document.body.classList.add('portfolio-loaded');
 }
 
 // --- Crea la card per ogni pagina ---
@@ -544,45 +513,41 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF (Versione Resiliente Online/Offline) ---
+// --- Funzione: Esporta JSON + Grafico in PDF ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
-  const CACHE_KEY = 'biotech_perf_backup';
 
   try {
-    if (btn) { btn.disabled = true; btn.textContent = 'Generazione Audit...'; }
+    if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
 
-    await loadJsPDF(); 
-    const savedData = localStorage.getItem(CACHE_KEY);
-    let data = savedData ? JSON.parse(savedData) : null;
+    // await: logica "senza popup di blocco al download"
+    await loadJsPDF(); // Carica jsPDF solo quando serve 
 
-    if (!data) {
-      try {
-        const res = await fetch('data/performance-latest.json');
-        data = await res.json();
-      } catch (e) {
-        showNotification('⚠️ Sincronizza i dati online prima di esportare.'); return;
-      }
+    let jsonUrl = 'data/performance-latest.json';
+    let data;
+    try {
+      const res = await fetch(jsonUrl);
+      if (!res.ok) throw new Error('relative-fail');
+      data = await res.json();
+    } catch (err) {
+      const fallback = '/biotechproject/data/performance-latest.json';
+      const fres = await fetch(fallback);
+      data = await fres.json();
     }
 
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-    const pageWidth = doc.internal.pageSize.getWidth();
-    
-    // --- CONFIGURAZIONE COLORI ---
-    const CORE_AUDIT_COLOR = [26, 32, 44]; // Blu Notte Antracite
-    const CRYSTAL_GREEN = [180, 255, 210]; // Verde Chiaro "Molecolare"
-
-    // 1. Testata (Fascia scura)
-    doc.setFillColor(CORE_AUDIT_COLOR[0], CORE_AUDIT_COLOR[1], CORE_AUDIT_COLOR[2]); 
-    doc.rect(0, 0, pageWidth, 90, 'F'); 
-
     const marginLeft = 40;
+    let cursorY = 40;
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    // 1. Intestazione con Logo e Titolo
+    const logoSize = 64; 
+    const titleText = 'Biotech Project - Performance Report';
     
-    // 2. Logo
-    const logoSize = 42; 
+    // Carica l'immagine (richiede await)
     const logoImage = await new Promise(resolve => {
         const img = new Image();
         img.crossOrigin = 'Anonymous'; 
@@ -592,97 +557,125 @@ async function exportToPDF() {
     });
 
     if (logoImage) {
-        doc.addImage(logoImage, 'PNG', marginLeft, 22, logoSize, logoSize);
+        doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
     }
 
-    // 3. Titolo in Verde Cristallino
-    doc.setFontSize(19);
-    doc.setTextColor(CRYSTAL_GREEN[0], CRYSTAL_GREEN[1], CRYSTAL_GREEN[2]); 
-    doc.setFont("helvetica", "bold");
-    doc.text('BIOTECH PERFORMANCE AUDIT', marginLeft + logoSize + 15, 42); 
+    const titleX = marginLeft + logoSize + 15; 
+    doc.setFontSize(22);
+    doc.text(titleText, titleX, cursorY + 20); 
 
-    // 4. Metadati (SPOSTATI SOTTO IL TITOLO E COLORATI)
-    const now = new Date();
-    const dateStr = now.toLocaleDateString('it-IT');
-    const timeStr = now.toLocaleTimeString('it-IT');
-    
-    doc.setFontSize(8);
-    doc.setFont("helvetica", "normal");
-    // Usiamo lo stesso verde ma con un font più piccolo per gerarchia visiva
-    doc.text(`DATE: ${dateStr} | TIME: ${timeStr} | STATUS: ANALISI PRESTAZIONI`, marginLeft + logoSize + 15, 60);
-    
-    // 5. Posizionamento Grafico (Più in alto)
-    let cursorY = 110;
+    cursorY += logoSize + 10; 
 
+    // Sottotitoli e Riepilogo
+    doc.setFontSize(10);
+    doc.text('Generato: ' + new Date().toLocaleString('it-IT'), marginLeft, cursorY);
+    cursorY += 14;
+
+    if (data && data.summary) {
+        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
+        cursorY += 12;
+        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
+        cursorY += 18;
+    }
+
+    // 2. Grafico
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
       try {
         const imgData = canvas.toDataURL('image/png');
-        const imgWidth = pageWidth - (marginLeft * 2);
-        const imgHeight = ((canvas.height / canvas.width) * imgWidth) * 0.65;
-        
-        // Bordo grafico sottile
-        doc.setDrawColor(16, 185, 129);
-        doc.setLineWidth(0.5);
-        doc.rect(marginLeft - 2, cursorY - 2, imgWidth + 4, imgHeight + 4, 'S');
-        
+        const maxWidth = pageWidth - marginLeft * 2;
+        const imgWidth = Math.min(maxWidth, 520);
+        const imgHeight = (canvas.height / canvas.width) * imgWidth;
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 25;
-      } catch (e) { console.warn('Grafico non disponibile'); }
+        cursorY += imgHeight + 20;
+      } catch (e) {
+        console.warn('Impossibile catturare canvas:', e);
+      }
     }
 
-    // 6. Tabella
-    const tableData = data.pages.map(p => {
-        const score = p.performanceScore ?? 85;
-        const fileName = p.url.split('/').pop() || 'index.html';
-        return [p.label || fileName, `${score}%`, fileName];
+    // 3. Tabella Pagine e Punteggi 📊
+    doc.setFontSize(14);
+    doc.text('Dettaglio Pagine e Punteggi', marginLeft, cursorY);
+    cursorY += 14;
+
+    const pages = (data && data.pages) ? data.pages : [];
+    
+    // *** MODIFICA CHIAVE PER IL LAYOUT: Mostra solo il nome del file (percorso relativo) ***
+    const tableData = pages.map(p => {
+        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
+        
+        // Estrae solo il nome del file (es. index.html o Cuore.html)
+        const relativePath = p.url.split('/').pop() || '/';
+
+        return [
+            p.label,
+            `${score}%`,
+            relativePath // <--- UTILIZZA SOLO IL PERCORSO RELATIVO (STRINGA CORTA)
+        ];
     });
+
+    const getColor = (score) => {
+        if (score >= 90) return { bg: '#d4edda', text: '#155724' }; 
+        if (score >= 80) return { bg: '#fff3cd', text: '#856404' }; 
+        return { bg: '#f8d7da', text: '#721c24' }; 
+    };
 
     doc.autoTable({
         startY: cursorY,
-        head: [['PAGINA ANALIZZATA', 'SCORE', 'FILE SORGENTE']],
+        head: [['Etichetta Pagina', 'Punteggio', 'File Pagina']], // Aggiorna intestazione per chiarezza
         body: tableData,
         theme: 'striped',
         headStyles: { 
-            fillColor: CORE_AUDIT_COLOR, 
+            fillColor: [39, 174, 96], 
             textColor: 255, 
-            halign: 'center', 
-            fontSize: 9,
-            fontStyle: 'bold'
+            fontSize: 10 
         },
         styles: { 
-            fontSize: 8.5, 
+            fontSize: 9, 
             cellPadding: 3,
-            textColor: [0, 0, 0] 
+            valign: 'middle' 
         },
-        columnStyles: { 1: { halign: 'center', fontStyle: 'bold' } },
+        // BILANCIAMENTO OTTIMALE: Più spazio all'etichetta, l'URL è relativo
+        columnStyles: {
+            0: { cellWidth: 190 }, // Etichetta Pagina 
+            1: { cellWidth: 60, halign: 'center' }, // Punteggio
+            2: { cellWidth: 250 } // Nome del file 
+        },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
-                const score = parseInt(hookData.cell.text[0]);
-                if (score >= 90) hookData.cell.styles.textColor = [16, 185, 129];      
-                else if (score >= 75) hookData.cell.styles.textColor = [126, 140, 95]; 
-                else if (score >= 50) hookData.cell.styles.textColor = [184, 115, 115]; 
-                else hookData.cell.styles.textColor = [140, 80, 95];                   
+                const score = parseInt(hookData.cell.text[0].replace('%', ''));
+                if (!isNaN(score)) {
+                    const colors = getColor(score);
+                    hookData.cell.styles.fillColor = colors.bg;
+                    hookData.cell.styles.textColor = colors.text;
+                    hookData.cell.styles.fontStyle = 'bold';
+                }
             }
         },
-        addPageContent: () => {
-            doc.setFontSize(7.5);
-            doc.setFont("helvetica", "italic");
+        didDrawPage: (data) => {
+            cursorY = data.cursor.y; 
+            doc.setFontSize(8);
             doc.setTextColor(150);
-            doc.text(
-                "Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.", 
-                marginLeft, 
-                doc.internal.pageSize.getHeight() - 15
-            );
+            doc.text(`Pagina ${data.pageNumber} di ${doc.internal.pages.length - 1}`, data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
         }
     });
 
-    doc.save(`Biotech_Performance_Audit_${dateStr.replace(/\//g, '-')}.pdf`);
-    showNotification('✅ Audit generato con successo');
+    cursorY = doc.autoTable.previous.finalY + 12; 
+
+    if (cursorY + 20 > doc.internal.pageSize.getHeight() - 40) {
+        doc.addPage();
+        cursorY = 40;
+    }
+    doc.setFontSize(9);
+    doc.setTextColor(0); 
+    // Aggiungi una nota che specifica che l'URL è relativo
+    doc.text('Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.', marginLeft, cursorY);
+
+    doc.save('biotech-performance-report.pdf');
 
   } catch (err) {
-    console.error('Errore PDF:', err);
-    showNotification('⚠️ Errore durante la generazione del documento.');
+    console.error('Errore export PDF:', err);
+    alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
   }
