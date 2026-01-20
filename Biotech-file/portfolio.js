@@ -3,6 +3,20 @@
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
 // ———————————————————————
 
+// 1. Registrazione del Service Worker (Il Guardiano)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Funziona sia in locale (test) che su GitHub Pages
+        const swPath = window.location.pathname.startsWith('/biotechproject/') 
+               ? '/biotechproject/sw.js' 
+               : './sw.js';
+
+        navigator.serviceWorker.register(swPath)
+            .then(reg => console.log('🛡️ Biotech Guardiano attivo: ' + reg.scope))
+            .catch(err => console.warn('⚠️ Errore registrazione SW:', err));
+    });
+}
+
 let performanceChart;
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale) ---
@@ -26,141 +40,158 @@ async function loadJsPDF() {
   }
 }
 
-// --- Funzione principale: carica dati reali dal JSON ---
+// --- Funzione principale: Carica dati (Online/Offline) con soglia 24h ---
 async function loadPerformanceData() {
-  console.log('🔧 loadPerformanceData() in esecuzione');
+  console.log('🔧 loadPerformanceData() in esecuzione (Resilient Mode)');
+  
+  const CACHE_KEY = 'biotech_perf_backup';
+  const SCADENZA_MS = 24 * 60 * 60 * 1000; // 24 ore
+  let data = null;
+
   try {
+    // 1. Tenta il recupero dalla rete (intercettato dal Service Worker se offline)
     const response = await fetch('data/performance-latest.json');
-    if (!response.ok) throw new Error('Dati non disponibili');
+    if (!response.ok) throw new Error('Rete non disponibile');
 
-    const data = await response.json();
-    const container = document.querySelector('.portfolio-row');
-    if (!container) return;
-
-    container.innerHTML = '';
-
-    const homePage = data.pages.find(p =>
-      p.url.includes('/index.html') ||
-      p.url === 'https://gitechnolo.github.io/biotechproject/' ||
-      p.url === window.location.origin + '/biotechproject/'
-    );
-
-    const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : new Date();
-
-    const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) {
-      const dateStr = reportTime.toLocaleDateString('it-IT');
-      const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
-      lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
-    }
-
-    const avgPerf = Math.round(
-      data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
-    );
-    const performanceScoreValue = avgPerf;
-
-    aggiornaPerformanceScore(performanceScoreValue);
-
-    // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
-    const fragment = document.createDocumentFragment();
-
-    data.pages.forEach(page => {
-      const card = createPerformanceCard(page);
-      fragment.appendChild(card);
-    });
-
-    container.appendChild(fragment); // Inserimento unico nel DOM
-
-    filterSelection('all');
-
-    const history = [];
-    if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
-      history.push({
-        date: subtractDays(reportTime, 5),
-        score: homePage.previousPerformanceScore,
-        note: 'Misurazione precedente'
-      });
-    }
-    history.push({
-      date: formatDate(reportTime),
-      score: performanceScoreValue,
-      note: 'Misurazione attuale'
-    });
-
-    creaGrafico(history);
-
-    const summary = data.summary || {};
-
-    const avgA11y = summary.averageAccessibility ?? 94;
-    const avgSeo = summary.averageSeo ?? 96;
-    const avgBest = summary.averageBestPractices ?? 97;
-
-    document.querySelectorAll('.progress-circle').forEach(circle => {
-      const metric = circle.dataset.metric;
-      const value = { 
-        performance: avgPerf, 
-        'performance-desktop': Math.min(avgPerf + 2, 100), 
-        accessibility: avgA11y, 
-        seo: avgSeo, 
-        'best-practices': avgBest 
-      }[metric] || 75;
-      const rounded = Math.round(value);
-      circle.style.setProperty('--value', `${rounded}%`);
-      circle.setAttribute('aria-valuenow', rounded);
-      circle.dataset.value = rounded;
-    });
-
-    const lastUpdated = document.getElementById('last-updated');
-    if (lastUpdated && data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      lastUpdated.textContent = date.toLocaleDateString('it-IT', {
-        day: '2-digit', month: '2-digit', year: 'numeric'
-      });
-    }
-
-    const trendEl = document.getElementById('trend-indicator');
-    if (trendEl && homePage) {
-      const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
-      const icons = { 1: '▲', 0: '●', '-1': '▼' };
-      trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
-const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
-trendEl.classList.add(trendClass);
-      trendEl.classList.remove('visually-hidden');
-    }
-
-    const update = (id, value) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = value;
-    };
-
-    update('analyzed-count', summary.analyzed || data.pages.length);
-    update('avg-performance', `${avgPerf}%`);
-    update('avg-accessibility', `${avgA11y}%`);
-    update('avg-seo', `${avgSeo}%`);
-    update('avg-best-practices', `${avgBest}%`);
-
-    if (data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      update('last-updated-report', date.toLocaleDateString('it-IT'));
-      document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
-    }
-
-    // *** OTTIMIZZAZIONE CSS: Sostituzione di setTimeout con l'aggiunta di una classe CSS ***
-    document.body.classList.add('portfolio-loaded');
-
+    data = await response.json();
+    
+    // SINCRONIZZAZIONE: Aggiungiamo timestamp e salviamo nel LocalStorage
+    data.syncTimestamp = Date.now();
+    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    console.log('📡 Dati sincronizzati con successo dal server.');
 
   } catch (error) {
-    console.warn('⚠️ Impossibile caricare i dati reali:', error);
+    console.warn('⚠️ Errore rete o Offline. Controllo ponte locale...');
+    
+    // 2. FALLBACK: Recupero dal LocalStorage
+    const savedData = localStorage.getItem(CACHE_KEY);
+    if (savedData) {
+      data = JSON.parse(savedData);
+      
+      // Controllo freschezza dati
+      const tempoTrascorso = Date.now() - (data.syncTimestamp || 0);
+      if (tempoTrascorso > SCADENZA_MS) {
+        showNotification('⚠️ Dati visualizzati datati (più di 24h).');
+        document.getElementById('last-update')?.classList.add('data-stale');
+      } else {
+        showNotification('Modo Offline: Caricamento da cache locale.');
+      }
+    }
+  }
+
+  // Se non abbiamo dati (né rete né cache), fallback estremo ai valori statici
+  if (!data) {
     aggiornaPerformanceScore(85);
     creaGrafico();
     const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) {
-      lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
-    }
-    showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
-    document.body.classList.add('portfolio-loaded'); 
+    if (lastUpdate) lastUpdate.textContent = 'Dati non disponibili';
+    document.body.classList.add('portfolio-loaded');
+    return;
   }
+
+  // --- RENDERING DEI DATI (Logica Originale Ottimizzata) ---
+  const container = document.querySelector('.portfolio-row');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const homePage = data.pages.find(p =>
+    p.url.includes('/index.html') ||
+    p.url === 'https://gitechnolo.github.io/biotechproject/' ||
+    p.url === window.location.origin + '/biotechproject/'
+  );
+
+  // Calcolo tempo del report
+  const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : new Date(data.syncTimestamp || Date.now());
+
+  const lastUpdate = document.getElementById('last-update');
+  if (lastUpdate) {
+    const dateStr = reportTime.toLocaleDateString('it-IT');
+    const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+    lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
+  }
+
+  const avgPerf = Math.round(data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length);
+  aggiornaPerformanceScore(avgPerf);
+
+  // Inserimento DOM tramite DocumentFragment
+  const fragment = document.createDocumentFragment();
+  data.pages.forEach(page => {
+    const card = createPerformanceCard(page);
+    fragment.appendChild(card);
+  });
+  container.appendChild(fragment);
+
+  filterSelection('all');
+
+  // Gestione Storico e Grafico
+  const history = [];
+  if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
+    history.push({
+      date: subtractDays(reportTime, 5),
+      score: homePage.previousPerformanceScore,
+      note: 'Misurazione precedente'
+    });
+  }
+  history.push({
+    date: formatDate(reportTime),
+    score: avgPerf,
+    note: 'Misurazione attuale'
+  });
+  creaGrafico(history);
+
+  // Aggiornamento Cerchi di Progresso
+  const summary = data.summary || {};
+  const avgA11y = summary.averageAccessibility ?? 94;
+  const avgSeo = summary.averageSeo ?? 96;
+  const avgBest = summary.averageBestPractices ?? 97;
+
+  document.querySelectorAll('.progress-circle').forEach(circle => {
+    const metric = circle.dataset.metric;
+    const value = { 
+      performance: avgPerf, 
+      'performance-desktop': Math.min(avgPerf + 2, 100), 
+      accessibility: avgA11y, 
+      seo: avgSeo, 
+      'best-practices': avgBest 
+    }[metric] || 75;
+    const rounded = Math.round(value);
+    circle.style.setProperty('--value', `${rounded}%`);
+    circle.setAttribute('aria-valuenow', rounded);
+    circle.dataset.value = rounded;
+  });
+
+  // Aggiornamento etichette riepilogo
+  const update = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  update('analyzed-count', summary.analyzed || data.pages.length);
+  update('avg-performance', `${avgPerf}%`);
+  update('avg-accessibility', `${avgA11y}%`);
+  update('avg-seo', `${avgSeo}%`);
+  update('avg-best-practices', `${avgBest}%`);
+
+  // Gestione Trend
+  const trendEl = document.getElementById('trend-indicator');
+  if (trendEl && homePage) {
+    const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
+    const icons = { 1: '▲', 0: '●', '-1': '▼' };
+    trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
+    trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
+    const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
+    trendEl.classList.add(trendClass);
+    trendEl.classList.remove('visually-hidden');
+  }
+
+  if (data.lastUpdated) {
+    const date = new Date(data.lastUpdated);
+    update('last-updated-report', date.toLocaleDateString('it-IT'));
+    document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
+  }
+
+  // Attivazione animazioni CSS
+  document.body.classList.add('portfolio-loaded');
 }
 
 // --- Crea la card per ogni pagina ---
@@ -513,28 +544,34 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF ---
+// --- Funzione: Esporta JSON + Grafico in PDF (Versione Resiliente Online/Offline) ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
+  const CACHE_KEY = 'biotech_perf_backup';
 
   try {
-    if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
+    if (btn) { 
+      btn.disabled = true; 
+      btn.textContent = 'Preparazione PDF...'; 
+    }
 
-    // await: logica "senza popup di blocco al download"
-    await loadJsPDF(); // Carica jsPDF solo quando serve 
+    // 1. Carica le librerie (Gestito dal Service Worker se offline)
+    await loadJsPDF(); 
 
-    let jsonUrl = 'data/performance-latest.json';
-    let data;
-    try {
-      const res = await fetch(jsonUrl);
-      if (!res.ok) throw new Error('relative-fail');
-      data = await res.json();
-    } catch (err) {
-      const fallback = '/biotechproject/data/performance-latest.json';
-      const fres = await fetch(fallback);
-      data = await fres.json();
+    // 2. Recupera i dati dal LocalStorage (Ponte)
+    const savedData = localStorage.getItem(CACHE_KEY);
+    let data = savedData ? JSON.parse(savedData) : null;
+
+    // Fallback di emergenza se la cache è vuota
+    if (!data) {
+      try {
+        const res = await fetch('data/performance-latest.json');
+        data = await res.json();
+      } catch (e) {
+        showNotification('⚠️ Sincronizza i dati online prima di esportare.'); return;
+      }
     }
 
     const { jsPDF } = window.jspdf;
@@ -543,11 +580,8 @@ async function exportToPDF() {
     let cursorY = 40;
     const pageWidth = doc.internal.pageSize.getWidth();
 
-    // 1. Intestazione con Logo e Titolo
-    const logoSize = 64; 
-    const titleText = 'Biotech Project - Performance Report';
-    
-    // Carica l'immagine (richiede await)
+    // 3. Intestazione con Logo e Titolo
+    const logoSize = 50; 
     const logoImage = await new Promise(resolve => {
         const img = new Image();
         img.crossOrigin = 'Anonymous'; 
@@ -560,124 +594,80 @@ async function exportToPDF() {
         doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
     }
 
-    const titleX = marginLeft + logoSize + 15; 
     doc.setFontSize(22);
-    doc.text(titleText, titleX, cursorY + 20); 
+    doc.setTextColor(16, 185, 129); // Verde Biotech
+    doc.text('Biotech Project - Performance Report', marginLeft + logoSize + 15, cursorY + 30); 
+    cursorY += logoSize + 30; 
 
-    cursorY += logoSize + 10; 
-
-    // Sottotitoli e Riepilogo
+    // 4. Info Sincronizzazione e Stato Dati
     doc.setFontSize(10);
-    doc.text('Generato: ' + new Date().toLocaleString('it-IT'), marginLeft, cursorY);
-    cursorY += 14;
+    doc.setTextColor(100);
+    const now = new Date().toLocaleString('it-IT');
+    doc.text(`Report generato il: ${now}`, marginLeft, cursorY);
+    cursorY += 15;
 
-    if (data && data.summary) {
-        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
-        cursorY += 12;
-        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-        cursorY += 18;
+    if (data.syncTimestamp) {
+        const syncDate = new Date(data.syncTimestamp).toLocaleString('it-IT');
+        const isStale = (Date.now() - data.syncTimestamp) > (24 * 60 * 60 * 1000);
+        doc.text(`Ultima sincronizzazione dati: ${syncDate} ${isStale ? '(Dati non aggiornati)' : ''}`, marginLeft, cursorY);
+        cursorY += 20;
     }
 
-    // 2. Grafico
+    // 5. Inserimento Grafico dal Canvas
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
       try {
         const imgData = canvas.toDataURL('image/png');
-        const maxWidth = pageWidth - marginLeft * 2;
-        const imgWidth = Math.min(maxWidth, 520);
+        const imgWidth = pageWidth - (marginLeft * 2);
         const imgHeight = (canvas.height / canvas.width) * imgWidth;
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 20;
+        cursorY += imgHeight + 30;
       } catch (e) {
-        console.warn('Impossibile catturare canvas:', e);
+        console.warn('Grafico non disponibile per il PDF');
       }
     }
 
-    // 3. Tabella Pagine e Punteggi 📊
+    // 6. Tabella Dettaglio Pagine
     doc.setFontSize(14);
-    doc.text('Dettaglio Pagine e Punteggi', marginLeft, cursorY);
-    cursorY += 14;
+    doc.setTextColor(0);
+    doc.text('Dettaglio Analisi Pagine', marginLeft, cursorY);
+    cursorY += 15;
 
-    const pages = (data && data.pages) ? data.pages : [];
-    
-    // *** MODIFICA CHIAVE PER IL LAYOUT: Mostra solo il nome del file (percorso relativo) ***
-    const tableData = pages.map(p => {
-        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
-        
-        // Estrae solo il nome del file (es. index.html o Cuore.html)
-        const relativePath = p.url.split('/').pop() || '/';
-
-        return [
-            p.label,
-            `${score}%`,
-            relativePath // <--- UTILIZZA SOLO IL PERCORSO RELATIVO (STRINGA CORTA)
-        ];
+    const tableData = data.pages.map(p => {
+        const score = p.performanceScore ?? 85;
+        const fileName = p.url.split('/').pop() || 'index.html';
+        return [p.label || fileName, `${score}%`, fileName];
     });
-
-    const getColor = (score) => {
-        if (score >= 90) return { bg: '#d4edda', text: '#155724' }; 
-        if (score >= 80) return { bg: '#fff3cd', text: '#856404' }; 
-        return { bg: '#f8d7da', text: '#721c24' }; 
-    };
 
     doc.autoTable({
         startY: cursorY,
-        head: [['Etichetta Pagina', 'Punteggio', 'File Pagina']], // Aggiorna intestazione per chiarezza
+        head: [['Pagina', 'Punteggio', 'File sorgente']],
         body: tableData,
         theme: 'striped',
-        headStyles: { 
-            fillColor: [39, 174, 96], 
-            textColor: 255, 
-            fontSize: 10 
-        },
-        styles: { 
-            fontSize: 9, 
-            cellPadding: 3,
-            valign: 'middle' 
-        },
-        // BILANCIAMENTO OTTIMALE: Più spazio all'etichetta, l'URL è relativo
-        columnStyles: {
-            0: { cellWidth: 190 }, // Etichetta Pagina 
-            1: { cellWidth: 60, halign: 'center' }, // Punteggio
-            2: { cellWidth: 250 } // Nome del file 
-        },
+        headStyles: { fillColor: [16, 185, 129], textColor: 255 },
+        styles: { fontSize: 9 },
+        columnStyles: { 1: { halign: 'center' } },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
-                const score = parseInt(hookData.cell.text[0].replace('%', ''));
-                if (!isNaN(score)) {
-                    const colors = getColor(score);
-                    hookData.cell.styles.fillColor = colors.bg;
-                    hookData.cell.styles.textColor = colors.text;
-                    hookData.cell.styles.fontStyle = 'bold';
-                }
+                const score = parseInt(hookData.cell.text[0]);
+                if (score >= 90) hookData.cell.styles.textColor = [39, 174, 96];
+                else if (score < 70) hookData.cell.styles.textColor = [192, 57, 43];
             }
-        },
-        didDrawPage: (data) => {
-            cursorY = data.cursor.y; 
-            doc.setFontSize(8);
-            doc.setTextColor(150);
-            doc.text(`Pagina ${data.pageNumber} di ${doc.internal.pages.length - 1}`, data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
         }
     });
 
-    cursorY = doc.autoTable.previous.finalY + 12; 
-
-    if (cursorY + 20 > doc.internal.pageSize.getHeight() - 40) {
-        doc.addPage();
-        cursorY = 40;
-    }
-    doc.setFontSize(9);
-    doc.setTextColor(0); 
-    // Aggiungi una nota che specifica che l'URL è relativo
-    doc.text('Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.', marginLeft, cursorY);
-
-    doc.save('biotech-performance-report.pdf');
+    // 7. Salvataggio
+    doc.save(`biotech-report-${new Date().toISOString().slice(0,10)}.pdf`);
+    showNotification('✅ PDF generato correttamente');
 
   } catch (err) {
     console.error('Errore export PDF:', err);
-    alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+    showNotification('⚠️ Errore durante la generazione del PDF.');
+} finally {
+    if (btn) { 
+      btn.disabled = false; 
+      btn.textContent = originalLabel; 
+    }
   }
 }
 

@@ -795,3 +795,6 @@
     gap: 12px !important;
   }
 }  
+
+
+.data-stale { color: #ffb74d !important; font-weight: bold; }
