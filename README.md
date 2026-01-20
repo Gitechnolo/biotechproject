@@ -20,8 +20,9 @@
 >
 > 👉 **Read the Strategic Report:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
 
+
 > 🌍 *"We don't all speak the same languages, but we speak the same language: collaboration."*  
-> English is not a barrier — it's a bridge.  
+> English is not a barrier - it's a bridge.  
 > 🔹 To contribute or review project guidelines, visit the main English files:  
 > - [Contributing Guidelines](CONTRIBUTING.md)  
 > - [Code of Conduct](CODE_OF_CONDUCT.md)  
