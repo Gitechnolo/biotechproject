@@ -574,14 +574,21 @@ async function exportToPDF() {
       }
     }
 
+    // Preparazione dati tabella
+    const tableData = data.pages.map(p => {
+        const score = p.performanceScore ?? 85;
+        const fileName = p.url.split('/').pop() || 'index.html';
+        return [p.label || fileName, `${score}%`, fileName];
+    });
+
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const marginLeft = 40;
     let cursorY = 40;
     const pageWidth = doc.internal.pageSize.getWidth();
 
-    // 3. Intestazione con Logo e Titolo
-    const logoSize = 50; 
+    // 3. Intestazione con Logo e Titolo (Ridimensionati)
+    const logoSize = 45; 
     const logoImage = await new Promise(resolve => {
         const img = new Image();
         img.crossOrigin = 'Anonymous'; 
@@ -594,64 +601,62 @@ async function exportToPDF() {
         doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
     }
 
-    doc.setFontSize(22);
+    doc.setFontSize(18); // Titolo più piccolo
     doc.setTextColor(16, 185, 129); // Verde Biotech
-    doc.text('Biotech Project - Performance Report', marginLeft + logoSize + 15, cursorY + 30); 
-    cursorY += logoSize + 30; 
+    doc.text('Biotech Project - Performance Report', marginLeft + logoSize + 15, cursorY + 28); 
+    cursorY += logoSize + 15; 
 
-    // 4. Info Sincronizzazione e Stato Dati
-    doc.setFontSize(10);
+    // 4. Info Sincronizzazione e Stato Dati (Compatte)
+    doc.setFontSize(9);
     doc.setTextColor(100);
     const now = new Date().toLocaleString('it-IT');
     doc.text(`Report generato il: ${now}`, marginLeft, cursorY);
-    cursorY += 15;
+    cursorY += 12;
 
     if (data.syncTimestamp) {
         const syncDate = new Date(data.syncTimestamp).toLocaleString('it-IT');
-        const isStale = (Date.now() - data.syncTimestamp) > (24 * 60 * 60 * 1000);
-        doc.text(`Ultima sincronizzazione dati: ${syncDate} ${isStale ? '(Dati non aggiornati)' : ''}`, marginLeft, cursorY);
+        doc.text(`Ultima sincronizzazione dati: ${syncDate}`, marginLeft, cursorY);
         cursorY += 20;
     }
 
-    // 5. Inserimento Grafico dal Canvas
+    // 5. Inserimento Grafico (RIDOTTO AL 70% per risparmiare spazio)
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
       try {
         const imgData = canvas.toDataURL('image/png');
         const imgWidth = pageWidth - (marginLeft * 2);
-        const imgHeight = (canvas.height / canvas.width) * imgWidth;
+        // Rapporto d'aspetto originale ridotto del 30%
+        const imgHeight = ((canvas.height / canvas.width) * imgWidth) * 0.7; 
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 30;
+        cursorY += imgHeight + 25;
       } catch (e) {
         console.warn('Grafico non disponibile per il PDF');
       }
     }
 
-    // 6. Tabella Dettaglio Pagine
-    doc.setFontSize(14);
+    // 6. Tabella Dettaglio Pagine (Ottimizzata per una singola pagina)
+    doc.setFontSize(12);
     doc.setTextColor(0);
     doc.text('Dettaglio Analisi Pagine', marginLeft, cursorY);
-    cursorY += 15;
-
-    const tableData = data.pages.map(p => {
-        const score = p.performanceScore ?? 85;
-        const fileName = p.url.split('/').pop() || 'index.html';
-        return [p.label || fileName, `${score}%`, fileName];
-    });
+    cursorY += 10;
 
     doc.autoTable({
         startY: cursorY,
         head: [['Pagina', 'Punteggio', 'File sorgente']],
         body: tableData,
         theme: 'striped',
-        headStyles: { fillColor: [16, 185, 129], textColor: 255 },
-        styles: { fontSize: 9 },
-        columnStyles: { 1: { halign: 'center' } },
+        headStyles: { fillColor: [16, 185, 129], textColor: 255, cellPadding: 2 },
+        styles: { 
+            fontSize: 8, // Font ridotto a 8pt per far stare tutte le righe
+            cellPadding: 2 
+        },
+        margin: { bottom: 20 },
+        columnStyles: { 1: { halign: 'center', cellWidth: 50 } },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
                 const score = parseInt(hookData.cell.text[0]);
                 if (score >= 90) hookData.cell.styles.textColor = [39, 174, 96];
-                else if (score < 70) hookData.cell.styles.textColor = [192, 57, 43];
+                else if (score < 75) hookData.cell.styles.textColor = [192, 57, 43];
             }
         }
     });
@@ -663,7 +668,7 @@ async function exportToPDF() {
   } catch (err) {
     console.error('Errore export PDF:', err);
     showNotification('⚠️ Errore durante la generazione del PDF.');
-} finally {
+  } finally {
     if (btn) { 
       btn.disabled = false; 
       btn.textContent = originalLabel; 
