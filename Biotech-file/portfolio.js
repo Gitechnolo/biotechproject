@@ -545,7 +545,6 @@ function getTrendColorClass(current, previous) {
 }
 
 // --- Funzione: Esporta JSON + Grafico in PDF (Versione Resiliente Online/Offline) ---
-// --- Funzione: Esporta Performance Audit (Stile BIOTECH CORE) ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
@@ -571,16 +570,19 @@ async function exportToPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const pageWidth = doc.internal.pageSize.getWidth();
-    let cursorY = 0;
+    
+    // --- CONFIGURAZIONE COLORI ---
+    const CORE_AUDIT_COLOR = [26, 32, 44]; // Blu Notte Antracite
+    const CRYSTAL_GREEN = [180, 255, 210]; // Verde Chiaro "Molecolare"
 
-    // --- TESTATA STILE CORE AUDIT ---
-    doc.setFillColor(16, 185, 129); // Verde Biotech
-    doc.rect(0, 0, pageWidth, 80, 'F'); // Fascia superiore piena
+    // 1. Testata (Fascia scura)
+    doc.setFillColor(CORE_AUDIT_COLOR[0], CORE_AUDIT_COLOR[1], CORE_AUDIT_COLOR[2]); 
+    doc.rect(0, 0, pageWidth, 90, 'F'); 
 
     const marginLeft = 40;
     
-    // Caricamento Logo nel rettangolo verde
-    const logoSize = 45; 
+    // 2. Logo
+    const logoSize = 42; 
     const logoImage = await new Promise(resolve => {
         const img = new Image();
         img.crossOrigin = 'Anonymous'; 
@@ -590,40 +592,46 @@ async function exportToPDF() {
     });
 
     if (logoImage) {
-        doc.addImage(logoImage, 'PNG', marginLeft, 18, logoSize, logoSize);
+        doc.addImage(logoImage, 'PNG', marginLeft, 22, logoSize, logoSize);
     }
 
-    // Titolo Bianco su Verde
-    doc.setFontSize(18);
-    doc.setTextColor(255, 255, 255); 
+    // 3. Titolo in Verde Cristallino
+    doc.setFontSize(19);
+    doc.setTextColor(CRYSTAL_GREEN[0], CRYSTAL_GREEN[1], CRYSTAL_GREEN[2]); 
     doc.setFont("helvetica", "bold");
-    doc.text('BIOTECH PERFORMANCE AUDIT', marginLeft + logoSize + 15, 48); 
-    
-    cursorY = 105; 
+    doc.text('BIOTECH PERFORMANCE AUDIT', marginLeft + logoSize + 15, 42); 
 
-    // Metadati (Data/Ora/Fase) [cite: 11]
-    doc.setFontSize(9);
-    doc.setTextColor(80);
-    doc.setFont("helvetica", "normal");
+    // 4. Metadati (SPOSTATI SOTTO IL TITOLO E COLORATI)
     const now = new Date();
     const dateStr = now.toLocaleDateString('it-IT');
     const timeStr = now.toLocaleTimeString('it-IT');
-    doc.text(`DATE: ${dateStr} | TIME: ${timeStr} | STATUS: ANALISI ISTANTANEA PRESTAZIONI`, marginLeft, cursorY);
-    cursorY += 25;
+    
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
+    // Usiamo lo stesso verde ma con un font più piccolo per gerarchia visiva
+    doc.text(`DATE: ${dateStr} | TIME: ${timeStr} | STATUS: ANALISI PRESTAZIONI`, marginLeft + logoSize + 15, 60);
+    
+    // 5. Posizionamento Grafico (Più in alto)
+    let cursorY = 110;
 
-    // Grafico Compatto (70% scala)
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
       try {
         const imgData = canvas.toDataURL('image/png');
         const imgWidth = pageWidth - (marginLeft * 2);
-        const imgHeight = ((canvas.height / canvas.width) * imgWidth) * 0.7; 
+        const imgHeight = ((canvas.height / canvas.width) * imgWidth) * 0.65;
+        
+        // Bordo grafico sottile
+        doc.setDrawColor(16, 185, 129);
+        doc.setLineWidth(0.5);
+        doc.rect(marginLeft - 2, cursorY - 2, imgWidth + 4, imgHeight + 4, 'S');
+        
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 30;
+        cursorY += imgHeight + 25;
       } catch (e) { console.warn('Grafico non disponibile'); }
     }
 
-    // Tabella con Criteri di Valutazione Sincronizzati
+    // 6. Tabella
     const tableData = data.pages.map(p => {
         const score = p.performanceScore ?? 85;
         const fileName = p.url.split('/').pop() || 'index.html';
@@ -634,28 +642,47 @@ async function exportToPDF() {
         startY: cursorY,
         head: [['PAGINA ANALIZZATA', 'SCORE', 'FILE SORGENTE']],
         body: tableData,
-        theme: 'grid',
-        headStyles: { fillColor: [16, 185, 129], textColor: 255, halign: 'center' },
-        styles: { fontSize: 8, cellPadding: 3 },
+        theme: 'striped',
+        headStyles: { 
+            fillColor: CORE_AUDIT_COLOR, 
+            textColor: 255, 
+            halign: 'center', 
+            fontSize: 9,
+            fontStyle: 'bold'
+        },
+        styles: { 
+            fontSize: 8.5, 
+            cellPadding: 3,
+            textColor: [0, 0, 0] 
+        },
         columnStyles: { 1: { halign: 'center', fontStyle: 'bold' } },
         didParseCell: (hookData) => {
             if (hookData.section === 'body' && hookData.column.index === 1) {
                 const score = parseInt(hookData.cell.text[0]);
-                // Sincronizzazione colori con CriteriValutazione.png
-                if (score >= 90) hookData.cell.styles.textColor = [16, 185, 129];      // Ottimizzate
-                else if (score >= 75) hookData.cell.styles.textColor = [126, 140, 95]; // Compatibili
-                else if (score >= 50) hookData.cell.styles.textColor = [184, 115, 115]; // Da migliorare
-                else hookData.cell.styles.textColor = [140, 80, 95];                   // Obsoleti
+                if (score >= 90) hookData.cell.styles.textColor = [16, 185, 129];      
+                else if (score >= 75) hookData.cell.styles.textColor = [126, 140, 95]; 
+                else if (score >= 50) hookData.cell.styles.textColor = [184, 115, 115]; 
+                else hookData.cell.styles.textColor = [140, 80, 95];                   
             }
+        },
+        addPageContent: () => {
+            doc.setFontSize(7.5);
+            doc.setFont("helvetica", "italic");
+            doc.setTextColor(150);
+            doc.text(
+                "Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.", 
+                marginLeft, 
+                doc.internal.pageSize.getHeight() - 15
+            );
         }
     });
 
     doc.save(`Biotech_Performance_Audit_${dateStr.replace(/\//g, '-')}.pdf`);
-    showNotification('✅ Audit generato correttamente');
+    showNotification('✅ Audit generato con successo');
 
   } catch (err) {
     console.error('Errore PDF:', err);
-    showNotification('⚠️ Errore nella generazione del documento.');
+    showNotification('⚠️ Errore durante la generazione del documento.');
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
   }
