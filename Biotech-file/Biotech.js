@@ -684,184 +684,162 @@ function turnOffLight() {
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
+ 
 // ———————————————————————
-// ———————————————————————
-// MENU MODERNO - Solo su pagine con data-modern-menu
+// MENU MODERNO - BIOTECH PROJECT - CORE NAV SYSTEM (Versione Unificata - con data-modern-menu)
+// Gestione centralizzata Event Delegation, Accessibilità e Popup.
 // ———————————————————————
 (function () {
-// Esci subito se non siamo in una pagina con menu moderno
-if (!document.body.hasAttribute('data-modern-menu')) return;
-document.addEventListener('DOMContentLoaded', function () {
-let openDropdown = null;
-// Inizializza tutti i pulsanti del menu
-document.querySelectorAll('.tech-nav-btn').forEach(btn => {
-const dropdown = btn.nextElementSibling;
-// Salta se non c'è dropdown o non è della classe corretta
-if (!dropdown || !dropdown.classList.contains('tech-dropdown')) {
-console.warn('Dropdown non trovato o classe errata per:', btn);
-return;
-}
-// Inizializza ARIA
-btn.setAttribute('aria-haspopup', 'true');
-btn.setAttribute('aria-expanded', 'false');
-// Click sul pulsante
-btn.addEventListener('click', e => {
-e.stopPropagation();
-const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-// Chiudi altro dropdown aperto
-if (openDropdown && openDropdown !== dropdown) {
-openDropdown.classList.remove('show');
-const prevBtn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
-prevBtn?.setAttribute('aria-expanded', 'false');
-}
-// Toggle corrente
-if (isExpanded) {
-dropdown.classList.remove('show');
-btn.setAttribute('aria-expanded', 'false');
-openDropdown = null;
-} else {
-dropdown.classList.add('show');
-btn.setAttribute('aria-expanded', 'true');
-openDropdown = dropdown;
-console.log('Menu aperto, openDropdown =', dropdown.id || 'senza id');
-}
-});
-// Supporto tastiera: Enter o Space
-btn.addEventListener('keydown', e => {
-if (e.key === 'Enter' || e.key === ' ') {
-e.preventDefault();
-const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-btn.click();
-// Spostare il focus sul primo elemento con role="menuitem"
-if (!isExpanded) {
-setTimeout(() => {
-const firstItem = dropdown.querySelector('[role="menuitem"]');
-if (firstItem) firstItem.focus();  // Usa firstItem
-}, 100);
-}
-}
-});
-// Navigazione con frecce, Home, End e Escape DENTRO il dropdown
-dropdown.addEventListener('keydown', function (e) {
-  const items = Array.from(dropdown.querySelectorAll('[role="menuitem"]:not([disabled])'));
-  const currentIndex = items.indexOf(document.activeElement);
-// Freccia giù
-  if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    const nextIndex = (currentIndex + 1) % items.length;
-    items[nextIndex]?.focus();
-  }
-// Freccia su
-  else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    const prevIndex = (currentIndex - 1 + items.length) % items.length;
-    items[prevIndex]?.focus();
-  }
-// Home → primo elemento
-  else if (e.key === 'Home') {
-    e.preventDefault();
-    items[0]?.focus();
-  }
-// End → ultimo elemento
-  else if (e.key === 'End') {
-    e.preventDefault();
-    items[items.length - 1]?.focus();
-  }
-// Escape → chiude il menu (doppia sicurezza)
-  else if (e.key === 'Escape') {
-    e.stopPropagation(); // Evita che scatti anche l'altro listener su document
-    dropdown.classList.remove('show');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.focus();
-    openDropdown = null;
-  }
-});   
-});
-// Chiudi il dropdown al click fuori
-document.addEventListener('click', (e) => {
-const isClickInside = e.target.closest('.tech-menu-item') || e.target.closest('.tech-dropdown');
-if (!isClickInside && openDropdown) {
-console.log('Click fuori → chiusura menu');
-openDropdown.classList.remove('show');
-const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
-btn?.setAttribute('aria-expanded', 'false');
-btn?.focus();
-openDropdown = null;
-}
-});
-// Chiudi con tasto ESC
-document.addEventListener('keydown', e => {
-console.log('Tasto premuto:', e.key, 'openDropdown attuale:', openDropdown);
-if (e.key === 'Escape' && openDropdown) {
-console.log('Esc premuto: chiusura menu');
-openDropdown.classList.remove('show');
-const btn = openDropdown.previousElementSibling?.querySelector('.tech-nav-btn');
-btn?.setAttribute('aria-expanded', 'false');
-btn?.focus(); // Riporta il focus sul pulsante per accessibilità
-openDropdown = null;
-} else if (e.key === 'Escape') {
-console.log('Esc premuto, ma openDropdown è', openDropdown);
-}
-});
-});
-})();  
-// End MENU MODERNO 
+  // Verifica se la pagina richiede il menu moderno
+  if (!document.body.hasAttribute('data-modern-menu')) return;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const navContainer = document.getElementById('tech-main-menu');
+    let openDropdown = null;
+
+    if (!navContainer) return;
+
+    // --- A. GESTORE CLICK UNIFICATO (Event Delegation) ---
+    navContainer.addEventListener('click', (e) => {
+      const target = e.target.closest('button, a');
+      if (!target) return;
+
+      // 1. Gestione bottoni principali del menu
+      if (target.classList.contains('tech-nav-btn')) {
+        e.stopPropagation();
+        handleDropdownToggle(target);
+      } 
+      // 2. Gestione azioni specifiche (ex onclick)
+      else if (target.id) {
+        handleMenuCommands(target.id);
+      }
+    });
+
+    // --- B. DISPATCHER COMANDI (Sostituisce gli onclick nell'HTML) ---
+    function handleMenuCommands(id) {
+      switch (id) {
+        case 'btn-support-os':
+          openSupportPopup();
+          break;
+        case 'btn-contact-forum':
+          openContactPopup();
+          break;
+        case 'lang-toggle':
+          if (typeof toggleLanguage === 'function') toggleLanguage();
+          break;
+        // Nota: theme-toggle è gestito dal suo script initThemeToggle()
+      }
+    }
+
+    // --- C. LOGICA APERTURA/CHIUSURA MENU ---
+    function handleDropdownToggle(btn) {
+      const dropdown = btn.nextElementSibling;
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      // Chiude altri menu aperti
+      if (openDropdown && openDropdown !== dropdown) {
+        closeDropdown(openDropdown);
+      }
+
+      if (isExpanded) {
+        closeDropdown(dropdown);
+      } else {
+        dropdown.classList.add('show');
+        btn.setAttribute('aria-expanded', 'true');
+        openDropdown = dropdown;
+      }
+    }
+
+    function closeDropdown(dropdown) {
+      if (!dropdown) return;
+      dropdown.classList.remove('show');
+      const btn = dropdown.previousElementSibling;
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      openDropdown = null;
+    }
+
+    // --- D. ACCESSIBILITÀ TASTIERA (Frecce, Home, End, Esc) ---
+    navContainer.addEventListener('keydown', (e) => {
+      const target = e.target;
+      
+      // ESC: Chiude il menu e riporta il focus sul trigger
+      if (e.key === 'Escape' && openDropdown) {
+        const triggerBtn = openDropdown.previousElementSibling;
+        closeDropdown(openDropdown);
+        triggerBtn.focus();
+        return;
+      }
+
+      // Navigazione interna al dropdown aperto
+      if (openDropdown && openDropdown.contains(target)) {
+        const items = Array.from(openDropdown.querySelectorAll('[role="menuitem"]:not([disabled])'));
+        const currentIndex = items.indexOf(target);
+
+        switch (e.key) {
+          case 'ArrowDown':
+            e.preventDefault();
+            items[(currentIndex + 1) % items.length].focus();
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            items[(currentIndex - 1 + items.length) % items.length].focus();
+            break;
+          case 'Home':
+            e.preventDefault();
+            items[0].focus();
+            break;
+          case 'End':
+            e.preventDefault();
+            items[items.length - 1].focus();
+            break;
+        }
+      } 
+      // Apertura con tastiera: sposta focus su primo item
+      else if (target.classList.contains('tech-nav-btn') && (e.key === 'Enter' || e.key === ' ')) {
+        setTimeout(() => {
+          const firstItem = target.nextElementSibling?.querySelector('[role="menuitem"]');
+          if (firstItem) firstItem.focus();
+        }, 120);
+      }
+    });
+
+    // Chiudi menu se si clicca fuori dall'area nav
+    document.addEventListener('click', (e) => {
+      if (!navContainer.contains(e.target) && openDropdown) {
+        closeDropdown(openDropdown);
+      }
+    });
+  });
+})();
 
 // ———————————————————————
-// 🔹 FUNZIONI UNIFICATE – Popup (Senza Alert Post-Chiusura)
+// 🔹 LOGICA POPUP (Spostata qui per manutenzione centralizzata)
 // ———————————————————————
-/**
- * Funzione generica per aprire popup centrati, mantiene il focus immediato. 
- */
 function openPopup(url, title, width, height) {
-  // Calcolo delle posizioni per il centramento
   const left = Math.floor((screen.width - width) / 2);
   const top = Math.floor((screen.height - height) / 2);
-
-  // Stringa delle opzioni.
-  const options = `
-    width=${width},
-    height=${height},
-    top=${top},
-    left=${left},
-    resizable=yes,
-    scrollbars=yes,
-    toolbar=no,
-    menubar=no,
-    location=no
-  `;
+  const options = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,toolbar=no,location=no`;
   
-  // Apre il popup.
   const popup = window.open(url, title, options);
 
-  // --- Gestione Errore (Controllo Immediato) ---
-  // Verifica se il browser ha bloccato il popup immediatamente.
   if (!popup || popup.closed || typeof popup.closed == 'undefined') {
     alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
     return;
   }
-  
-  // Mette a fuoco la finestra immediatamente.
   popup.focus();
 }
 
-// Funzioni specifiche chiamate dai pulsanti HTML 
 function openSupportPopup() {
-  openPopup(
-    'https://gitechnolo.github.io/biotechproject/O.S_support.html',
-    'O.S. Support Chat GPT',
-    760,
-    440
-  );
+  openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support Chat GPT', 760, 440);
 }
+
 function openContactPopup() {
-  openPopup(
-    'https://gitechnolo.github.io/biotechproject/Tablet_forum.html',
-    'Contattaci - Forum ChatGPT',
-    825,
-    672
-  );
+  openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci - Forum ChatGPT', 825, 672);
 }
+
+// End MENU MODERNO 
+
+
 // ———————————————————————
 // GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
 // ———————————————————————
@@ -1215,15 +1193,6 @@ async function initTranslations() {
     applyTranslations(translations, savedLang);
     updateLanguageButton(savedLang);
     document.documentElement.lang = savedLang;
-
-    const button = document.getElementById('lang-toggle');
-    if (button) {
-      button.addEventListener('click', () => {
-        const newLang = savedLang === 'it' ? 'en' : 'it';
-        localStorage.setItem('preferred-language', newLang);
-        window.location.reload();
-      });
-    }
 
     return;
   }
