@@ -78,35 +78,35 @@ async function runPerformanceAnalysis() {
     chrome = await launchChrome();
     console.log(`✅ Chrome avviato sulla porta ${chrome.port}`);
 
-    // Configurazione comune per Lighthouse
+    // Configurazione SRE-grade per Lighthouse (Mobile 3G/Slow 4G Simulation)
     const lighthouseConfig = {
       port: chrome.port,
       output: 'json',
       logLevel: 'silent',
-      disableStorageReset: false, // Permette a Lighthouse di pulire cache/sessione
-      formFactor: 'desktop',
-      screenEmulation: {
-        mobile: false,
-        width: 1350,
-        height: 940,
-        deviceScaleFactor: 1,
-        disabled: true // Disabilita emulazione (usiamo desktop reale)
-      },
-      throttling: {
-        rttMs: 150,
-        throughputKbps: 1500,
-        cpuSlowdownMultiplier: 4,
-        requestLatencyMs: 0,
-        downloadThroughputKbps: 0,
-        uploadThroughputKbps: 0
-      },
-      throttlingMethod: 'devtools',
-      onlyCategories: ['performance'],
-      skipAudits: [
-        'metrics',           // Non calcolare metriche aggiuntive (LCP, FCP, ecc.) se non necessarie
-        'diagnostics',       // Rimuove audit diagnostici (riduce rumore)
-        'audit-refs'         // Ottimizza output
-      ]
+      disableStorageReset: false,
+      // Passiamo a 'mobile' per testare la resilienza reale dell'architettura
+      formFactor: 'mobile', 
+      settings: {
+        emulatedFormFactor: 'mobile',
+        throttlingMethod: 'simulate',
+        throttling: {
+          rttMs: 150,
+          throughputKbps: 1638.4,
+          requestLatencyMs: 150,
+          downloadThroughputKbps: 1638.4,
+          uploadThroughputKbps: 750,
+          cpuSlowdownMultiplier: 4 // Simula hardware di fascia media
+        },
+        screenEmulation: {
+          mobile: true,
+          width: 360,
+          height: 640,
+          deviceScaleFactor: 2,
+          disabled: false
+        },
+        // Accessibilità con il "Global Health Equity"
+        onlyCategories: ['performance', 'accessibility']
+      }
     };
 
     // 🔍 Analisi di ogni pagina
