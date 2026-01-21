@@ -39,7 +39,17 @@
 "refresh-btn-bottom-title": "Aggiorna i dati del report in tempo reale",
 "dati_laboratorio": "Dati di laboratorio (ambiente controllato), utili per debug e ottimizzazioni specifiche.",
 "update_dati": "Ultimo aggiornamento:",
-"chart-desc": "Grafico della maturità tecnologica. Il valore aggiornato è {score}%."
+"chart-desc": "Grafico della maturità tecnologica. Il valore aggiornato è {score}%.",
+"sre-description": "I test di performance simulano contesti d'uso reali in aree con infrastrutture digitali limitate.",
+  "sre-net-label": "PROFILO RETE",
+  "sre-net-value": "3G Veloce / 4G Lento",
+  "sre-net-detail": "RTT: 150ms | Banda: 1.6Mbps",
+  "sre-hw-label": "PROFILO HARDWARE",
+  "sre-hw-value": "Emulazione Mobile Legacy",
+  "sre-hw-detail": "Rallentamento CPU: Moltiplicatore 4x",
+  "sre-method-label": "METODOLOGIA",
+  "sre-method-value": "Throttling Simulato",
+  "sre-method-detail": "Lighthouse SRE Engine 2026"
   },
   "en": {
 "tech-maturity-title": "System Audit | Biotech Project",
@@ -81,6 +91,16 @@
 "refresh-btn-bottom-title": "Refresh report data in real time",
 "dati_laboratorio": "Lab data (controlled environment), useful for debugging and specific optimizations.",
 "update_dati": "Last update:",
-"chart-desc": "Technological maturity chart. The updated value is {score}%."
+"chart-desc": "Technological maturity chart. The updated value is {score}%.",
+"sre-description": "Performance tests simulate real-world usage in areas with limited digital infrastructure.",
+  "sre-net-label": "NETWORK PROFILE",
+  "sre-net-value": "Fast 3G / Slow 4G",
+  "sre-net-detail": "RTT: 150ms | Bandwidth: 1.6Mbps",
+  "sre-hw-label": "HARDWARE PROFILE",
+  "sre-hw-value": "Legacy Mobile Emulation",
+  "sre-hw-detail": "CPU Slowdown: 4x Multiplier",
+  "sre-method-label": "METHODOLOGY",
+  "sre-method-value": "Simulated Throttling",
+  "sre-method-detail": "Lighthouse SRE Engine 2026"
   }
 }
