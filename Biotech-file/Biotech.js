@@ -597,60 +597,107 @@ document.addEventListener("DOMContentLoaded", function () {
 // End Biotech modal popup script
 
 // --- Performance Helpers ---
-// Throttle: limit how often a function can run
-function throttle(fn, limit) {
-  let inThrottle;
-  return function (...args) {
-    if (!inThrottle) {
-      fn.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
+// —————————————————————————————————————————————————————————————————————————————
+//  BIOTECH PROJECT - ULTIMATE PERFORMANCE HELPERS (2026 EDITION)
+// —————————————————————————————————————————————————————————————————————————————
+
+/**
+ * THROTTLE: Fluidità a 60/120fps per scroll e resize.
+ */
+const throttle = (fn) => {
+  let ticking = false;
+  return (...args) => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        fn.apply(this, args);
+        ticking = false;
+      });
+      ticking = true;
     }
   };
-}   
-// Debounce: run a function only after a pause
-function debounce(fn, delay) {
+};
+
+/**
+ * DEBOUNCE: Ideale per input e pre-fetching.
+ */
+const debounce = (fn, delay) => {
   let timer;
-  return function(...args) {
+  return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
+};
+
+/**
+ * SMART PRE-FETCHING: Carica le pagine in background prima del click.
+ * Si attiva solo se l'utente sosta sul link per almeno 200ms.
+ */
+function initSmartPrefetch() {
+  const menuLinks = document.querySelectorAll('#tech-main-menu a[href]');
+  const prefetchedLinks = new Set();
+
+  menuLinks.forEach(link => {
+    const url = link.href;
+
+    // Ignora link esterni, anchor interne o file già scaricati
+    if (!url.startsWith(window.location.origin) || url.includes('#') || prefetchedLinks.has(url)) {
+      return;
+    }
+
+    // Quando l'utente passa il mouse sul link...
+    link.addEventListener('mouseenter', () => {
+      link._prefetchTimer = setTimeout(() => {
+        if (!prefetchedLinks.has(url)) {
+          const prefetchLink = document.createElement('link');
+          prefetchLink.rel = 'prefetch';
+          prefetchLink.href = url;
+          document.head.appendChild(prefetchLink);
+          
+          prefetchedLinks.add(url);
+          console.log(`📡 Pre-fetching: ${url}`);
+        }
+      }, 200); // Ritardo di 200ms per evitare pre-fetch accidentali
+    });
+
+    // Se il mouse esce prima dei 200ms, annulla il pre-fetch
+    link.addEventListener('mouseleave', () => {
+      clearTimeout(link._prefetchTimer);
+    });
+  });
 }
-// End Deounce
-// Lazy loading con cleanup e configurazione flessibile
+
+/**
+ * LAZY LOADING: Caricamento anticipato delle immagini.
+ */
 function initLazyLoading() {
   if (!('IntersectionObserver' in window)) {
-    // Fallback per vecchi browser: carica tutte le immagini subito
-    document.querySelectorAll('img[data-src]').forEach(img => {
-      img.src = img.dataset.src;
-    });
+    document.querySelectorAll('img[data-src]').forEach(img => img.src = img.dataset.src);
     return;
   }
+
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src'); // Pulizia
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
           obs.unobserve(img);
         }
       });
     },
-    { threshold: 0.05 } // Attiva con solo il 5% visibile (più reattivo)
+    { rootMargin: '0px 0px 300px 0px', threshold: 0.01 }
   );
-  document.querySelectorAll('img[data-src]').forEach(img => {
-    observer.observe(img);
-  });
-  // Esponi l'observer se devi fermarlo in futuro (es. navigazione dinamica)
-  return observer;
+
+  document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
 }
-// Inizializza al caricamento
-const lazyImageObserver = initLazyLoading();   
-// End Lazy loading con cleanup e configurazione flessibile
-// Carica in ritardo script pesanti (es. analytics, chatbot) non necessari all'avvio. 
-function loadScript(src, callback) {
-  // Evita caricamenti duplicati
+
+/**
+ * LOAD SCRIPT: Caricamento asincrono con priorità gestita.
+ */
+function loadScript(src, callback, priority = 'low') {
   if (document.querySelector(`script[src="${src}"]`)) {
     if (callback) callback();
     return;
@@ -658,13 +705,26 @@ function loadScript(src, callback) {
   const script = document.createElement('script');
   script.src = src;
   script.async = true;
-  script.onload = () => callback?.();
-  script.onerror = () => {
-    console.error(`Errore nel caricamento dello script: ${src}`);
-  };
+  if ('fetchPriority' in HTMLScriptElement.prototype) script.fetchPriority = priority;
+  script.onload = callback;
   document.head.appendChild(script);
-}   
- // End Carica in ritardo script pesanti.  
+}
+
+// —————————————————————————————————————————————————————————————————————————————
+// 💡 INIZIALIZZAZIONE CENTRALIZZATA (Idle Mode)
+// —————————————————————————————————————————————————————————————————————————————
+
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(() => {
+    initLazyLoading();
+    initSmartPrefetch();
+  });
+} else {
+  window.addEventListener('load', () => {
+    initLazyLoading();
+    initSmartPrefetch();
+  });
+}  
 // ---End Performance Helpers ---
 
 // When the user mouseover on div, open the info popup
@@ -838,7 +898,6 @@ function openContactPopup() {
 }
 
 // End MENU MODERNO 
-
 
 // ———————————————————————
 // GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
