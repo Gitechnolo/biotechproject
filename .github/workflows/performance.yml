@@ -1,4 +1,11 @@
-name: Generate Performance Report
+# SRE RELIABILITY GATE: Stateless Edge Architecture
+# -------------------------------------------------------------------------
+# GOAL: Monitor SLIs (TTI < 1.1s) to ensure Global Health Equity.
+# PROTOCOL: Treat Performance < 95 as a System Outage (Error Budgeting).
+# TARGET: 100% Availability on Legacy Hardware & Degraded Networks (3G/Edge).
+# -------------------------------------------------------------------------
+
+name: Performance & SRE Audit
 
 on:
   push:

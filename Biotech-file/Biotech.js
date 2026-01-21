@@ -596,14 +596,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // End Biotech modal popup script
 
-// --- Performance Helpers ---
 // —————————————————————————————————————————————————————————————————————————————
 //  BIOTECH PROJECT - ULTIMATE PERFORMANCE HELPERS (2026 EDITION)
 // —————————————————————————————————————————————————————————————————————————————
 
-/**
- * THROTTLE: Fluidità a 60/120fps per scroll e resize.
- */
+// THROTTLE: Fluidità a 60/120fps per scroll e resize.
 const throttle = (fn) => {
   let ticking = false;
   return (...args) => {
@@ -617,9 +614,7 @@ const throttle = (fn) => {
   };
 };
 
-/**
- * DEBOUNCE: Ideale per input e pre-fetching.
- */
+// DEBOUNCE: Ideale per input e pre-fetching.
 const debounce = (fn, delay) => {
   let timer;
   return (...args) => {
@@ -628,10 +623,8 @@ const debounce = (fn, delay) => {
   };
 };
 
-/**
- * SMART PRE-FETCHING: Carica le pagine in background prima del click.
- * Si attiva solo se l'utente sosta sul link per almeno 200ms.
- */
+// SMART PRE-FETCHING: Carica le pagine in background prima del click.
+// Si attiva solo se l'utente sosta sul link per almeno 200ms.
 function initSmartPrefetch() {
   const menuLinks = document.querySelectorAll('#tech-main-menu a[href]');
   const prefetchedLinks = new Set();
@@ -666,9 +659,7 @@ function initSmartPrefetch() {
   });
 }
 
-/**
- * LAZY LOADING: Caricamento anticipato delle immagini.
- */
+// LAZY LOADING: Caricamento anticipato delle immagini.
 function initLazyLoading() {
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('img[data-src]').forEach(img => img.src = img.dataset.src);
@@ -694,9 +685,7 @@ function initLazyLoading() {
   document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
 }
 
-/**
- * LOAD SCRIPT: Caricamento asincrono con priorità gestita.
- */
+// LOAD SCRIPT: Caricamento asincrono con priorità gestita.
 function loadScript(src, callback, priority = 'low') {
   if (document.querySelector(`script[src="${src}"]`)) {
     if (callback) callback();
@@ -725,7 +714,7 @@ if ('requestIdleCallback' in window) {
     initSmartPrefetch();
   });
 }  
-// ---End Performance Helpers ---
+// ---End PERFORMANCE HELPERS ---
 
 // When the user mouseover on div, open the info popup
 function infoFunction() {
