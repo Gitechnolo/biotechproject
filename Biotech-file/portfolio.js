@@ -218,7 +218,7 @@ function createPerformanceCard(page) {
           class="trend-details" 
           role="tooltip"
         >
-          <div><strong>Punteggio:</strong> ${performance}/100</div>
+          <div><strong>Punteggi:</strong> ${performance}/100</div>
           ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
             ? `<div><strong>Precedente:</strong> ${page.previousPerformanceScore}</div>
                <div><strong>Trend:</strong> ${getTrendArrow(performance, page.previousPerformanceScore)}${performance - page.previousPerformanceScore}</div>`
@@ -521,7 +521,7 @@ async function exportToPDF() {
 
   const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
   
-  // Dizionario interno (il nostro "paracadute" per l'offline)
+  // Dizionario interno (il "paracadute" per l'offline)
   const i18n = {
     it: {
       exporting: 'Esportazione in corso...',
@@ -531,7 +531,7 @@ async function exportToPDF() {
       net: 'PROFILO RETE: 3G/4G Lento (RTT: 150ms | 1.6Mbps)',
       hw: 'PROFILO HARDWARE: Mobile Legacy (CPU: 4x)',
       method: 'METODOLOGIA: Throttling Simulato (Lighthouse 2026)',
-      tableHeader: ['Etichetta Pagina', 'Punteggio', 'File Pagina']
+      tableHeader: ['Etichetta Pagina', 'Punteggi', 'File Pagina']
     },
     en: {
       exporting: 'Exporting...',
