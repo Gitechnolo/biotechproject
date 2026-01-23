@@ -177,15 +177,16 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <!-- Dati esportati -->
 <div class="biotechcenter"><button id="export-data-btn" class="action-btn" data-lang-key="export-data-btn-label" title="Esporta dati storici in JSON o CSV" data-lang-title="export-data-btn-title" aria-label="Esporta dati storici"><span aria-hidden="true">💾</span><span data-lang-key="export-data-btn-label">Esporta dati</span></button></div>   
 <!-- Punteggio perfromance -->
-<div class="biotechcenter" role="region" aria-labelledby="score-label">
+<div class="biotechcenter score-wrapper" role="region" aria-labelledby="score-label">
 <!-- Etichetta del punteggio -->
 <p id="score-label" class="sansation-light-italic" data-lang-key="performance-score-label">Performance Score</p>
 <!-- Valore dinamico del punteggio -->
-<span id="performance-score" aria-live="polite" aria-atomic="true" style="font-size: 2em; font-weight: bold;"> - </span>
+<div class="score-display"><span id="performance-score" aria-live="polite" aria-atomic="true"> - </span>
 <!-- Indicatore di tendenza (es. ↑ ↓) -->
-<span id="trend-indicator" aria-live="polite" style="font-size: 1.5em; margin-left: 8px;"></span>
+<span id="score-trend-indicator" aria-live="polite">↑</span>
+</div>
 <!-- Nota sul refresh dati -->
-<p class="lead" data-lang-key="performance-score-note" style="margin-top: 10px;">*Dati reali aggiornati ogni 24 ore</p>   
+<p class="report-note" data-lang-key="performance-score-note">*Dati reali aggiornati ogni 24 ore</p><br>
 </div>     
 <!-- Tabella dati per il grafico (nascosta) -->
 <table class="visually-hidden">

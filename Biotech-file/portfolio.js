@@ -275,23 +275,29 @@ function setupRefreshButtons() {
   });
 }
 function aggiornaPerformanceScore(performanceScoreValue = 85) {
-  const scoreEl = document.getElementById('performance-score') || 
-                 document.getElementById('tech-maturity-score');
+  const scoreEl = document.getElementById('performance-score');
+  // Puntiamo al nuovo ID unico
+  const trendIndicator = document.getElementById('score-trend-indicator');
+  
   if (scoreEl) {
     scoreEl.textContent = `${performanceScoreValue}%`;
+    scoreEl.style.display = 'inline-block'; 
   }
 
-  const trendIndicator = document.getElementById('trend-indicator');
   if (trendIndicator) {
     const trend = performanceScoreValue - 82;
-    trendIndicator.textContent = trend > 0 ? ' ↑' : trend < 0 ? ' ↓' : ' →';
-trendIndicator.classList.remove('trend-up', 'trend-down', 'trend-equal');
-const statusClass = trend > 0 ? 'trend-up' : trend < 0 ? 'trend-down' : 'trend-equal';
-trendIndicator.classList.add(statusClass);
-    trendIndicator.setAttribute('aria-label', 
-      trend > 0 ? 'Trend in aumento' : 
-      trend < 0 ? 'Trend in diminuzione' : 'Trend stabile'
-    );
+    
+    // Inseriamo la freccia testuale
+    trendIndicator.textContent = trend > 0 ? '↑' : trend < 0 ? '↓' : '→';
+    
+    // Gestione colori: usiamo le tue classi esistenti
+    trendIndicator.className = ''; 
+    const statusClass = trend > 0 ? 'trend-up' : trend < 0 ? 'trend-down' : 'trend-equal';
+    trendIndicator.classList.add(statusClass);
+    
+    // Forza la visibilità locale senza cambiare il CSS esterno
+    trendIndicator.style.display = 'inline-block';
+    trendIndicator.style.verticalAlign = 'middle';
   }
 }
 function subtractDays(date, days) {

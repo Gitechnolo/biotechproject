@@ -273,8 +273,8 @@
 /* 4. Nuove classi per il Trend (Indicatori e Freccette) */
 
 /* Colore solo testo (per l'indicatore principale) */
-.trend-up { color: #1e7e44 !important; }
-.trend-down { color: #a93226 !important; }
+.trend-up { color: #1e7e44 !important; animation: bounce-subtle 2s infinite ease-in-out; /* Rimbalzo continuo e delicato */ }
+.trend-down { color: #a93226 !important; animation: bounce-subtle 2s infinite ease-in-out reverse; /* Rimbalzo inverso per la discesa */}
 .trend-equal { color: #bc4e00 !important; }
 
 /* Colore con sfondo (per i badge trend dentro le card) */
@@ -407,7 +407,7 @@
 }
 
 #performance-score {
-  font-size: 25px;
+  font-size: 32px;
   color: var(--primary-text);
   text-shadow: 
     1px 1px 2px rgba(0, 0, 0, 0.4),
@@ -416,8 +416,41 @@
   display: block;
   margin: 8px 0 12px;
   font-family: var(--font-main);
-  font-weight: 300;
+  font-weight: 800;
   letter-spacing: 0.5px;
+}
+
+/* Centra tutto il blocco */
+.score-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenitore relativo per il numero */
+.score-display {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* La freccia non sposta il numero */
+#score-trend-indicator {
+  position: absolute;
+  left: 100%;       /* Inizia esattamente dove finisce il numero */
+  margin-left: 8px; /* Distanza fissa dal numero */
+  font-size: 1.5em;
+  transition: all 0.5s ease; /* Transizione fluida se la freccia cambia direzione */
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- Griglia metriche --- */
