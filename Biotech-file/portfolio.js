@@ -616,7 +616,11 @@ async function exportToPDF() {
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
         styles: { fontSize: 9, cellPadding: 3.5 },
-        columnStyles: { 0: { cellWidth: 180 }, 1: { cellWidth: 50, halign: 'center' }, 2: { cellWidth: 270 } },
+        columnStyles: {
+    0: { cellWidth: 230 }, // Aumentato da 180-190 a 230 per evitare gli "a capo"
+    1: { cellWidth: 51, halign: 'center' }, // Punteggio rimane compatto
+    2: { cellWidth: 230 } // Ridotto leggermente per bilanciare la pagina
+},
         didParseCell: (hook) => {
             if (hook.section === 'body' && hook.column.index === 1) {
                 const s = parseInt(hook.cell.text[0]);
