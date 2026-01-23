@@ -518,30 +518,26 @@ async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
-
   const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
   
-  // Dizionario interno (il "paracadute" per l'offline)
   const i18n = {
     it: {
       exporting: 'Esportazione in corso...',
       reportTitle: 'Biotech Project - Performance Report',
       fileName: 'biotech-performance-report-it.pdf',
-      methodTitle: "Simulazione in aree con infrastrutture digitali limitate.",
-      net: 'PROFILO RETE: 3G/4G Lento (RTT: 150ms | 1.6Mbps)',
-      hw: 'PROFILO HARDWARE: Mobile Legacy (CPU: 4x)',
-      method: 'METODOLOGIA: Throttling Simulato (Lighthouse 2026)',
-      tableHeader: ['Etichetta Pagina', 'Punteggi', 'File Pagina']
+      generated: 'Generato',
+      summary: 'Riepilogo',
+      pagesAnalyzed: 'pagine analizzate',
+      lastUpdate: 'Ultimo aggiornamento'
     },
     en: {
       exporting: 'Exporting...',
       reportTitle: 'Biotech Project - Performance Report',
       fileName: 'biotech-performance-report.pdf',
-      methodTitle: 'Performance tests simulate real-world usage in areas with limited digital infrastructure.',
-      net: 'NETWORK PROFILE: Fast 3G/Slow 4G (RTT: 150ms | 1.6Mbps)',
-      hw: 'HARDWARE PROFILE: Legacy Mobile Emulation (CPU: 4x)',
-      method: 'METHODOLOGY: Simulated Throttling (Lighthouse 2026)',
-      tableHeader: ['Page Label', 'Score', 'Page File']
+      generated: 'Generated',
+      summary: 'Summary',
+      pagesAnalyzed: 'pages analyzed',
+      lastUpdate: 'Last update'
     }
   };
 
@@ -550,10 +546,10 @@ async function exportToPDF() {
   try {
     if (btn) { btn.disabled = true; btn.textContent = text.exporting; }
 
-    // 1. Caricamento librerie (come originale, sfrutta la cache se già caricate)
+    // Caricamento libreria jsPDF
     await loadJsPDF(); 
 
-    // 2. Caricamento Dati (con fallback come originale)
+    // Caricamento Dati con Fallback
     let data;
     try {
       const res = await fetch('data/performance-latest.json');
@@ -564,12 +560,15 @@ async function exportToPDF() {
       data = await fres.json();
     }
 
+    // Rileva se le traduzioni sono annidate (es: data.it o data.en)
+    const jsonLang = data[lang] ? data[lang] : data;
+
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const marginLeft = 40;
-    let cursorY = 25; // Header alzato per spazio
+    let cursorY = 25;
 
-    // --- DISEGNO LOGO E TITOLO ---
+    // --- LOGO E TITOLO ---
     const logoImage = await new Promise(resolve => {
         const img = new Image(); img.crossOrigin = 'Anonymous';
         img.onload = () => resolve(img); img.onerror = () => resolve(null);
@@ -579,17 +578,53 @@ async function exportToPDF() {
     doc.setFontSize(18).setTextColor(0).setFont(undefined, 'bold');
     doc.text(text.reportTitle, marginLeft + 45, cursorY + 12);
     
-    // --- METODOLOGIA VERDE (Incolonnata per evitare sforamenti) ---
+    // --- INFO GENERAZIONE & RIEPILOGO (Grigio scuro) ---
     cursorY += 45;
+    doc.setFontSize(8).setTextColor(80).setFont(undefined, 'normal');
+    const now = new Date().toLocaleString(lang === 'it' ? 'it-IT' : 'en-US');
+    doc.text(`${text.generated}: ${now}`, marginLeft, cursorY);
+    
+    cursorY += 11;
+    const totalPages = data.summary?.analyzed || (data.pages ? data.pages.length : '26');
+    doc.text(`${text.summary}: ${totalPages} ${text.pagesAnalyzed}`, marginLeft, cursorY);
+    
+    if (data.lastUpdated) {
+        cursorY += 11;
+        const upDate = new Date(data.lastUpdated).toLocaleString(lang === 'it' ? 'it-IT' : 'en-US');
+        doc.text(`${text.lastUpdate}: ${upDate}`, marginLeft, cursorY);
+    }
+
+    // --- METODOLOGIA (Tutta in Verde RGB 39, 174, 96) ---
+    cursorY += 18;
+    const desc = jsonLang["sre-description"] || "";
     doc.setFontSize(9).setTextColor(39, 174, 96).setFont(undefined, 'bold');
-    doc.text(text.methodTitle, marginLeft, cursorY);
-    cursorY += 12;
+    if (desc) {
+        doc.text(desc, marginLeft, cursorY);
+        cursorY += 12;
+    }
+    
+    // Settaggio font per i dettagli (mantenendo il colore verde)
     doc.setFontSize(8).setFont(undefined, 'normal');
-    doc.text(text.net, marginLeft, cursorY);
+    
+    // Profilo Rete
+    const netLab = jsonLang["sre-net-label"] || (lang === 'it' ? 'PROFILO RETE' : 'NETWORK PROFILE');
+    const netVal = jsonLang["sre-net-value"] || '3G/4G';
+    const netDet = jsonLang["sre-net-detail"] || 'RTT: 150ms | 1.6Mbps';
+    doc.text(`${netLab}: ${netVal} (${netDet})`, marginLeft, cursorY);
+    
+    // Profilo Hardware
     cursorY += 10;
-    doc.text(text.hw, marginLeft, cursorY);
+    const hwLab = jsonLang["sre-hw-label"] || (lang === 'it' ? 'PROFILO HARDWARE' : 'HARDWARE PROFILE');
+    const hwVal = jsonLang["sre-hw-value"] || 'Mobile Legacy';
+    const hwDet = jsonLang["sre-hw-detail"] || 'CPU: 4x';
+    doc.text(`${hwLab}: ${hwVal} (${hwDet})`, marginLeft, cursorY);
+    
+    // Metodologia
     cursorY += 10;
-    doc.text(text.method, marginLeft, cursorY);
+    const methLab = jsonLang["sre-method-label"] || (lang === 'it' ? 'METODOLOGIA' : 'METHODOLOGY');
+    const methVal = jsonLang["sre-method-value"] || 'Simulated Throttling';
+    const methDet = jsonLang["sre-method-detail"] || 'Lighthouse 2026';
+    doc.text(`${methLab}: ${methVal} (${methDet})`, marginLeft, cursorY);
 
     // --- GRAFICO ---
     cursorY += 15;
@@ -597,12 +632,12 @@ async function exportToPDF() {
     if (canvas) {
         const imgData = canvas.toDataURL('image/png');
         const imgWidth = 515;
-        const imgHeight = (canvas.height / canvas.width) * imgWidth * 0.85; 
+        const imgHeight = (canvas.height / canvas.width) * imgWidth * 0.82; 
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 25;
+        cursorY += imgHeight + 20;
     }
 
-    // --- TABELLA (Con i nostri stili di respiro e colori) ---
+    // --- TABELLA ---
     const tableData = data.pages.map(p => [
         p.label, 
         `${p.performanceScore ?? 85}%`, 
@@ -611,16 +646,20 @@ async function exportToPDF() {
 
     doc.autoTable({
         startY: cursorY,
-        head: [text.tableHeader],
+        head: [[
+            jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
+            jsonLang["pdf-table-score"] || (lang === 'it' ? 'Punteggi' : 'Score'), 
+            jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
+        ]], 
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
         styles: { fontSize: 9, cellPadding: 3.5 },
         columnStyles: {
-    0: { cellWidth: 230 }, // Aumentato da 180-190 a 230 per evitare gli "a capo"
-    1: { cellWidth: 51, halign: 'center' }, // Punteggio rimane compatto
-    2: { cellWidth: 230 } // Ridotto leggermente per bilanciare la pagina
-},
+            0: { cellWidth: 230 }, 
+            1: { cellWidth: 51, halign: 'center' }, 
+            2: { cellWidth: 230 } 
+        },
         didParseCell: (hook) => {
             if (hook.section === 'body' && hook.column.index === 1) {
                 const s = parseInt(hook.cell.text[0]);
