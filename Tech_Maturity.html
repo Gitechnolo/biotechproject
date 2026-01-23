@@ -172,23 +172,11 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </div>
 <p class="report-note"><span data-lang-key="tech-maturity-report-note">Dati aggiornati automaticamente.</span><a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-download-json">Scarica JSON</a><span data-lang-key="tech-maturity-or">o</span><a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-view-on-github">vedi su GitHub</a>.</p>   
 </div>     
-
-<section class="tech-section">
-<p id="chart-title" class="sansation-light-italic" data-lang-key="chart-performance-trend">Andamento delle Prestazioni!</p>
-<div id="chart-desc" class="visually-hidden" data-lang-key="chart-desc"></div>
-<canvas id="performance-trend" width="800" height="200" role="img" aria-labelledby="chart-title" aria-describedby="chart-desc"></canvas>   
-<p id="last-update" class="update-info" data-lang-key="last-update-label" aria-live="polite">Aggiornato il: caricamento... </p>   
-<button class="refresh-btn" data-lang-key="refresh-btn-label" title="Aggiorna i dati del grafico">Aggiorna ora </button>   
-</section>
-
-<div class="biotechcenter">
-  <button id="export-data-btn" class="action-btn" data-lang-key="export-data-btn-label"
-    title="Esporta dati storici in JSON o CSV" data-lang-title="export-data-btn-title" aria-label="Esporta dati storici">
-    <span aria-hidden="true">💾</span>
-    <span data-lang-key="export-data-btn-label">Esporta dati</span>
-  </button>
-</div>   
-
+<!-- Grafico andamento prestazioni + refresh -->
+<section class="tech-section"><p id="chart-title" class="sansation-light-italic" data-lang-key="chart-performance-trend">Andamento delle Prestazioni!</p><div id="chart-desc" class="visually-hidden" data-lang-key="chart-desc"></div><canvas id="performance-trend" width="800" height="200" role="img" aria-labelledby="chart-title" aria-describedby="chart-desc"></canvas><p id="last-update" class="update-info" data-lang-key="last-update-label" aria-live="polite">Aggiornato il: caricamento... </p><button class="refresh-btn" data-lang-key="refresh-btn-label" title="Aggiorna i dati del grafico">Aggiorna ora </button></section>
+<!-- Dati esportati -->
+<div class="biotechcenter"><button id="export-data-btn" class="action-btn" data-lang-key="export-data-btn-label" title="Esporta dati storici in JSON o CSV" data-lang-title="export-data-btn-title" aria-label="Esporta dati storici"><span aria-hidden="true">💾</span><span data-lang-key="export-data-btn-label">Esporta dati</span></button></div>   
+<!-- Punteggio perfromance -->
 <div class="biotechcenter" role="region" aria-labelledby="score-label">
 <!-- Etichetta del punteggio -->
 <p id="score-label" class="sansation-light-italic" data-lang-key="performance-score-label">Performance Score</p>
@@ -199,7 +187,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <!-- Nota sul refresh dati -->
 <p class="lead" data-lang-key="performance-score-note" style="margin-top: 10px;">*Dati reali aggiornati ogni 24 ore</p>   
 </div>     
-
+<!-- Tabella dati per il grafico (nascosta) -->
 <table class="visually-hidden">
 <caption>Andamento delle prestazioni nel tempo</caption>
 <thead><tr><th>Data</th><th>Prestazioni (%)</th></tr></thead>
@@ -207,22 +195,15 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 </table>
 
 <div class="portfolio-main">
-<div class="biotechcenter">
-<p class="lead" data-lang-key="performance-dashboard-title">Dashboard delle prestazioni aggiornata</p>
-</div>   
-<br>
+<div class="biotechcenter"><p class="lead" data-lang-key="performance-dashboard-title">Dashboard delle prestazioni aggiornata</p></div><br>
 <!-- Menu di filtro per livello di maturità tecnologica -->
 <div class="tech-section"><p class="sansation-light-italic" data-lang-key="leg-tit" id="filter-title">Criteri di Valutazione Prestazioni</p>
 <div class="filter-legend-container"><div class="filter-legend-grid"><div class="legend-item"><span class="status-badge badge-optimized"></span><span data-lang-key="leg-opt">90-100: Ottimizzate</span></div><div class="legend-item"><span class="status-badge badge-compatible"></span><span data-lang-key="leg-comp">75-89: Compatibili</span></div><div class="legend-item"><span class="status-badge badge-needs-improvement"></span><span data-lang-key="leg-need">50-74: Da migliorare</span></div><div class="legend-item"><span class="status-badge badge-deprecated"></span><span data-lang-key="leg-depr">&lt; 50: Obsoleti</span></div></div></div>
 <div id="myBtnContainer" role="group" aria-labelledby="filter-title"><button class="filter-btn active" data-filter="all" data-lang-key="filter-all" aria-pressed="true">Mostra tutti</button><button class="filter-btn" data-filter="optimized" data-lang-key="filter-optimized" aria-pressed="false">Ottimizzate</button><button class="filter-btn" data-filter="compatible" data-lang-key="filter-compatible" aria-pressed="false">Compatibili</button><button class="filter-btn" data-filter="needs-improvement" data-lang-key="filter-needs-improvement" aria-pressed="false">Da migliorare</button><button class="filter-btn" data-filter="deprecated" data-lang-key="filter-deprecated" aria-pressed="false">Obsoleti</button></div>
 <div aria-live="polite" aria-atomic="true" class="sr-only"><span data-lang-key="filter-applied-text">Filtri applicati:</span><span id="filter-status">Mostra tutti</span></div>
 </div>      
-
 <!-- Griglia delle pagine -->
-<div class="portfolio-row">
-  <!-- Card generate dinamicamente da JavaScript -->
-</div>   
-
+<div class="portfolio-row"><!-- Card generate dinamicamente da JavaScript --></div>   
 </div>
 <!-- END MAIN -->
 </div>
