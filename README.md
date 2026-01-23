@@ -113,7 +113,8 @@ The project implements an **advanced technological maturity tracking system** vi
 While environmental noise during simulated throttling can cause minor performance fluctuations in individual pages, this SRE-grade audit ensures that core clinical modules remain accessible and performant during peak-hour network instability.
 
 📂 **Latest Audit Records:**
-* 📄 **[SRE Performance Stress-Test Report - Jan 23, 2026 (PDF)](docs/biotech-performance-report.pdf)** ⬅️ *New* * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - Jan 23, 2026 (PDF)](docs/biotech-performance-report.pdf)** ⬅️ *New* 
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Features
 * ✅ **Real-time Performance Monitoring**: Score (0–100) and load times updated every 24h.
