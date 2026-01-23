@@ -49,7 +49,10 @@
   "sre-hw-detail": "Rallentamento CPU: Moltiplicatore 4x",
   "sre-method-label": "METODOLOGIA",
   "sre-method-value": "Throttling Simulato",
-  "sre-method-detail": "Lighthouse SRE Engine 2026"
+  "sre-method-detail": "Lighthouse SRE Engine 2026",
+  "pdf-table-label": "Etichetta Pagina",
+  "pdf-table-score": "Punteggio",
+  "pdf-table-file": "File Pagina"
   },
   "en": {
 "tech-maturity-title": "System Audit | Biotech Project",
@@ -101,6 +104,9 @@
   "sre-hw-detail": "CPU Slowdown: 4x Multiplier",
   "sre-method-label": "METHODOLOGY",
   "sre-method-value": "Simulated Throttling",
-  "sre-method-detail": "Lighthouse SRE Engine 2026"
+  "sre-method-detail": "Lighthouse SRE Engine 2026",
+  "pdf-table-label": "Page Label",
+  "pdf-table-score": "Score",
+  "pdf-table-file": "Page File"
   }
 }

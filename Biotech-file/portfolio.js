@@ -519,17 +519,44 @@ async function exportToPDF() {
   const originalLabel = btn?.textContent || 'Esporta dati';
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
 
+  const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
+  
+  // Dizionario interno (il nostro "paracadute" per l'offline)
+  const i18n = {
+    it: {
+      exporting: 'Esportazione in corso...',
+      reportTitle: 'Biotech Project - Performance Report',
+      fileName: 'biotech-performance-report-it.pdf',
+      methodTitle: "Simulazione in aree con infrastrutture digitali limitate.",
+      net: 'PROFILO RETE: 3G/4G Lento (RTT: 150ms | 1.6Mbps)',
+      hw: 'PROFILO HARDWARE: Mobile Legacy (CPU: 4x)',
+      method: 'METODOLOGIA: Throttling Simulato (Lighthouse 2026)',
+      tableHeader: ['Etichetta Pagina', 'Punteggio', 'File Pagina']
+    },
+    en: {
+      exporting: 'Exporting...',
+      reportTitle: 'Biotech Project - Performance Report',
+      fileName: 'biotech-performance-report.pdf',
+      methodTitle: 'Performance tests simulate real-world usage in areas with limited digital infrastructure.',
+      net: 'NETWORK PROFILE: Fast 3G/Slow 4G (RTT: 150ms | 1.6Mbps)',
+      hw: 'HARDWARE PROFILE: Legacy Mobile Emulation (CPU: 4x)',
+      method: 'METHODOLOGY: Simulated Throttling (Lighthouse 2026)',
+      tableHeader: ['Page Label', 'Score', 'Page File']
+    }
+  };
+
+  const text = i18n[lang] || i18n.it;
+
   try {
-    if (btn) { btn.disabled = true; btn.textContent = 'Esportazione in corso...'; }
+    if (btn) { btn.disabled = true; btn.textContent = text.exporting; }
 
-    // await: logica "senza popup di blocco al download"
-    await loadJsPDF(); // Carica jsPDF solo quando serve 
+    // 1. Caricamento librerie (come originale, sfrutta la cache se già caricate)
+    await loadJsPDF(); 
 
-    let jsonUrl = 'data/performance-latest.json';
+    // 2. Caricamento Dati (con fallback come originale)
     let data;
     try {
-      const res = await fetch(jsonUrl);
-      if (!res.ok) throw new Error('relative-fail');
+      const res = await fetch('data/performance-latest.json');
       data = await res.json();
     } catch (err) {
       const fallback = '/biotechproject/data/performance-latest.json';
@@ -540,142 +567,70 @@ async function exportToPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const marginLeft = 40;
-    let cursorY = 40;
-    const pageWidth = doc.internal.pageSize.getWidth();
+    let cursorY = 25; // Header alzato per spazio
 
-    // 1. Intestazione con Logo e Titolo
-    const logoSize = 64; 
-    const titleText = 'Biotech Project - Performance Report';
-    
-    // Carica l'immagine (richiede await)
+    // --- DISEGNO LOGO E TITOLO ---
     const logoImage = await new Promise(resolve => {
-        const img = new Image();
-        img.crossOrigin = 'Anonymous'; 
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null); 
+        const img = new Image(); img.crossOrigin = 'Anonymous';
+        img.onload = () => resolve(img); img.onerror = () => resolve(null);
         img.src = LOGO_URL;
     });
+    if (logoImage) doc.addImage(logoImage, 'PNG', marginLeft, cursorY, 35, 35);
+    doc.setFontSize(18).setTextColor(0).setFont(undefined, 'bold');
+    doc.text(text.reportTitle, marginLeft + 45, cursorY + 12);
+    
+    // --- METODOLOGIA VERDE (Incolonnata per evitare sforamenti) ---
+    cursorY += 45;
+    doc.setFontSize(9).setTextColor(39, 174, 96).setFont(undefined, 'bold');
+    doc.text(text.methodTitle, marginLeft, cursorY);
+    cursorY += 12;
+    doc.setFontSize(8).setFont(undefined, 'normal');
+    doc.text(text.net, marginLeft, cursorY);
+    cursorY += 10;
+    doc.text(text.hw, marginLeft, cursorY);
+    cursorY += 10;
+    doc.text(text.method, marginLeft, cursorY);
 
-    if (logoImage) {
-        doc.addImage(logoImage, 'PNG', marginLeft, cursorY, logoSize, logoSize);
-    }
-
-    const titleX = marginLeft + logoSize + 15; 
-    doc.setFontSize(22);
-    doc.text(titleText, titleX, cursorY + 20); 
-
-    cursorY += logoSize + 10; 
-
-    // Sottotitoli e Riepilogo
-    doc.setFontSize(10);
-    doc.text('Generato: ' + new Date().toLocaleString('it-IT'), marginLeft, cursorY);
-    cursorY += 14;
-
-    if (data && data.summary) {
-        doc.text(`Riepilogo: ${data.summary.analyzed || '-'} pagine analizzate`, marginLeft, cursorY);
-        cursorY += 12;
-        doc.text(`Ultimo aggiornamento: ${data.lastUpdated || '-'}`, marginLeft, cursorY);
-        cursorY += 18;
-    }
-
-    // 2. Grafico
+    // --- GRAFICO ---
+    cursorY += 15;
     const canvas = document.getElementById('performance-trend');
     if (canvas) {
-      try {
         const imgData = canvas.toDataURL('image/png');
-        const maxWidth = pageWidth - marginLeft * 2;
-        const imgWidth = Math.min(maxWidth, 520);
-        const imgHeight = (canvas.height / canvas.width) * imgWidth;
+        const imgWidth = 515;
+        const imgHeight = (canvas.height / canvas.width) * imgWidth * 0.85; 
         doc.addImage(imgData, 'PNG', marginLeft, cursorY, imgWidth, imgHeight);
-        cursorY += imgHeight + 20;
-      } catch (e) {
-        console.warn('Impossibile catturare canvas:', e);
-      }
+        cursorY += imgHeight + 25;
     }
 
-    // 3. Tabella Pagine e Punteggi 📊
-    doc.setFontSize(14);
-    doc.text('Dettaglio Pagine e Punteggi', marginLeft, cursorY);
-    cursorY += 14;
-
-    const pages = (data && data.pages) ? data.pages : [];
-    
-    // *** MODIFICA CHIAVE PER IL LAYOUT: Mostra solo il nome del file (percorso relativo) ***
-    const tableData = pages.map(p => {
-        const score = p.performanceScore ?? Math.round((p.performance ?? 0.85) * 100);
-        
-        // Estrae solo il nome del file (es. index.html o Cuore.html)
-        const relativePath = p.url.split('/').pop() || '/';
-
-        return [
-            p.label,
-            `${score}%`,
-            relativePath // <--- UTILIZZA SOLO IL PERCORSO RELATIVO (STRINGA CORTA)
-        ];
-    });
-
-    const getColor = (score) => {
-        if (score >= 90) return { bg: '#d4edda', text: '#155724' }; 
-        if (score >= 80) return { bg: '#fff3cd', text: '#856404' }; 
-        return { bg: '#f8d7da', text: '#721c24' }; 
-    };
+    // --- TABELLA (Con i nostri stili di respiro e colori) ---
+    const tableData = data.pages.map(p => [
+        p.label, 
+        `${p.performanceScore ?? 85}%`, 
+        p.url.split('/').pop() || '/'
+    ]);
 
     doc.autoTable({
         startY: cursorY,
-        head: [['Etichetta Pagina', 'Punteggio', 'File Pagina']], // Aggiorna intestazione per chiarezza
+        head: [text.tableHeader],
         body: tableData,
         theme: 'striped',
-        headStyles: { 
-            fillColor: [39, 174, 96], 
-            textColor: 255, 
-            fontSize: 10 
-        },
-        styles: { 
-            fontSize: 9, 
-            cellPadding: 3,
-            valign: 'middle' 
-        },
-        // BILANCIAMENTO OTTIMALE: Più spazio all'etichetta, l'URL è relativo
-        columnStyles: {
-            0: { cellWidth: 190 }, // Etichetta Pagina 
-            1: { cellWidth: 60, halign: 'center' }, // Punteggio
-            2: { cellWidth: 250 } // Nome del file 
-        },
-        didParseCell: (hookData) => {
-            if (hookData.section === 'body' && hookData.column.index === 1) {
-                const score = parseInt(hookData.cell.text[0].replace('%', ''));
-                if (!isNaN(score)) {
-                    const colors = getColor(score);
-                    hookData.cell.styles.fillColor = colors.bg;
-                    hookData.cell.styles.textColor = colors.text;
-                    hookData.cell.styles.fontStyle = 'bold';
-                }
+        headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
+        styles: { fontSize: 9, cellPadding: 3.5 },
+        columnStyles: { 0: { cellWidth: 180 }, 1: { cellWidth: 50, halign: 'center' }, 2: { cellWidth: 270 } },
+        didParseCell: (hook) => {
+            if (hook.section === 'body' && hook.column.index === 1) {
+                const s = parseInt(hook.cell.text[0]);
+                if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
+                else if (s >= 80) { hook.cell.styles.fillColor = '#fff3cd'; hook.cell.styles.textColor = '#856404'; }
+                else { hook.cell.styles.fillColor = '#f8d7da'; hook.cell.styles.textColor = '#721c24'; }
             }
-        },
-        didDrawPage: (data) => {
-            cursorY = data.cursor.y; 
-            doc.setFontSize(8);
-            doc.setTextColor(150);
-            doc.text(`Pagina ${data.pageNumber} di ${doc.internal.pages.length - 1}`, data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
         }
     });
 
-    cursorY = doc.autoTable.previous.finalY + 12; 
-
-    if (cursorY + 20 > doc.internal.pageSize.getHeight() - 40) {
-        doc.addPage();
-        cursorY = 40;
-    }
-    doc.setFontSize(9);
-    doc.setTextColor(0); 
-    // Aggiungi una nota che specifica che l'URL è relativo
-    doc.text('Dati estratti da performance-latest.json. I file pagina sono percorsi relativi.', marginLeft, cursorY);
-
-    doc.save('biotech-performance-report.pdf');
+    doc.save(text.fileName);
 
   } catch (err) {
-    console.error('Errore export PDF:', err);
-    alert('Errore durante l\'esportazione PDF. Controlla la console per dettagli.');
+    console.error('Export error:', err);
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
   }
@@ -685,6 +640,11 @@ async function exportToPDF() {
 document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
+  // --- AGGIUNTA PER SUPPORTO OFFLINE ---
+  // Carica le librerie PDF subito, così saranno in cache per il test offline
+  loadJsPDF().then(() => {
+    console.log("Librerie PDF caricate e pronte per l'uso offline.");
+  });
 
   const statusSpan = document.getElementById('filter-status');
 
