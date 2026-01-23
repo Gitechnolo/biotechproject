@@ -108,18 +108,17 @@ This project follows a rigorous decision-making process to ensure enterprise-gra
 
 ## 📊 Technical Quality Monitoring & Architecture
 
-The project implements an **advanced technological maturity tracking system** via GitHub Actions. [cite_start]As of **January 23, 2026**, the ecosystem maintains a **95% aggregate performance score** even under extreme network stress tests (150ms RTT / 4x CPU slowdown)[cite: 18, 22, 23]. 
+The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **January 23, 2026**, the ecosystem maintains a **95% aggregate performance score** even under extreme network stress tests (150ms RTT / 4x CPU slowdown).
 
-[cite_start]While environmental noise during simulated throttling can cause minor performance fluctuations in individual pages, this SRE-grade audit ensures that core clinical modules remain accessible and performant during peak-hour network instability[cite: 21, 24].
+While environmental noise during simulated throttling can cause minor performance fluctuations in individual pages, this SRE-grade audit ensures that core clinical modules remain accessible and performant during peak-hour network instability.
 
 📂 **Latest Audit Records:**
-* [cite_start]📄 **[SRE Performance Stress-Test Report - Jan 23, 2026 (PDF)](docs/biotech-performance-report.pdf)** ⬅️ *New* 
-* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - Jan 23, 2026 (PDF)](docs/biotech-performance-report.pdf)** ⬅️ *New* * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Features
-- [cite_start]✅ **Real-time Performance Monitoring**: Score (0–100) and load times updated every 24h[cite: 19, 31].
-- ✅ **Resilience Intelligence**: Automated tracking of `optimized`, `compatible`, and `deprecated` states under stress.
-- 💾 **Open Data**: Export analytics in JSON/CSV/PDF for third-party audits directly from the UI.
+* ✅ **Real-time Performance Monitoring**: Score (0–100) and load times updated every 24h.
+* ✅ **Resilience Intelligence**: Automated tracking of `optimized`, `compatible`, and `deprecated` states under stress.
+* 💾 **Open Data**: Export analytics in JSON/CSV/PDF for third-party audits directly from the UI.
 
 👉 **View the live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
