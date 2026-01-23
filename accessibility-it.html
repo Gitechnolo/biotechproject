@@ -86,31 +86,22 @@ td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: 
       <div class="staff-container">
         <p><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" lang="en">English version available</a></p>
 <h1>Dichiarazione di Accessibilità di Biotech Project</h1> <p><strong class="sansation-bold-italic">Biotech Project</strong> è sviluppato con la profonda convinzione che la conoscenza scientifica debba essere universale. L'accessibilità non è un'opzione, ma un principio fondante del nostro design.</p> <p>Questo sito si impegna a garantire l'accessibilità digitale e rispetta pienamente gli standard internazionali, conformemente al Decreto Legislativo 10 agosto 2018, n. 106.</p>
-
 <h2>🥇 Stato di Conformità</h2>
 <p class="conformance-status"><strong class="sansation-bold-italic">Pienamente Conforme</strong> alle <strong class="sansation-bold-italic">Linee Guida per l'Accessibilità dei Contenuti Web (WCAG) 2.1 - Livello AA</strong>.</p>
 <ul><li><strong class="sansation-bold-italic">Ultima Verifica Tecnica:</strong><time datetime="2026-01-15">15 Gennaio 2026</time></li><li><strong class="sansation-bold-italic">Metodologia:</strong>Autovalutazione basata su test automatici (Lighthouse, axe) e test manuali con screen reader (NVDA, VoiceOver) e navigazione da tastiera. Revisione specifica dei moduli dinamici della Dashboard.</li></ul>
-
 <hr>
-
 <h2>🔑 Punti Chiave dell'Accessibilità</h2>
 <p>Il nostro sito è progettato per adattarsi alle esigenze degli utenti, fornendo un'esperienza inclusiva in tutte le aree. Nella <strong>Dashboard (index.html)</strong> sono attive le funzionalità di monitoraggio bio-sincronizzato:</p>
-
 <table><thead><tr><th>Area</th><th>Implementazione</th><th>Riferimento WCAG</th></tr></thead><tbody><tr><td data-label="Area"><strong>DNA Scanner & Audit</strong></td><td data-label="Implementazione">Modulo per la generazione di <strong>Report PDF strutturati</strong>(Audit). Gestione del focus e attributi <code>aria-label</code>bilingue per il download.</td><td data-label="Riferimento WCAG"><strong>2.4.4</strong>, <strong>4.1.2</strong></td></tr><tr><td data-label="Area"><strong>HUD & Tooltip Dinamici</strong></td><td data-label="Implementazione">Sistema Heads-Up Display con <strong>spiegazioni scientifiche istantanee</strong>. Ogni dato tecnico fornisce descrizioni testuali e valori di intensità percentuale.</td><td data-label="Riferimento WCAG"><strong>1.3.1</strong>, <strong>4.1.2</strong></td></tr><tr><td data-label="Area"><strong>Leggibilità Avanzata</strong></td><td data-label="Implementazione"><strong>Pagine semplificate dedicate</strong>con font ad alta leggibilità ottimizzati per dislessia e ipovisione (IT/EN).</td><td data-label="Riferimento WCAG"><strong>3.1.5</strong>(AAA)</td></tr><tr><td data-label="Area"><strong>Navigazione & Tastiera</strong></td><td data-label="Implementazione">Navigazione accessibile da tastiera. Funzionalità "Salto al Contenuto Principale" e evidenziazione del focus avanzata.</td><td data-label="Riferimento WCAG"><strong>2.1.1</strong>, <strong>2.4.1</strong></td></tr><tr><td data-label="Area"><strong>Contrasto & Visibilità</strong></td><td data-label="Implementazione">Rapporto minimo 4.5:1. Supporto per <code>prefers-contrast</code>e <strong>Tema Colore Dinamico</strong>legato al ritmo circadiano.</td><td data-label="Riferimento WCAG"><strong>1.4.3</strong>, <strong>1.4.12</strong></td></tr><tr><td data-label="Area"><strong>Comprensione & Lingua</strong></td><td data-label="Implementazione">L'attributo <code>lang</code>si aggiorna dinamicamente in base alle preferenze dell'utente (navigator.language) e al selettore lingua.</td><td data-label="Riferimento WCAG"><strong>3.1.1</strong></td></tr><tr><td data-label="Area"><strong>Performance & Rischio</strong></td><td data-label="Implementazione">Animazioni non essenziali disattivate con <code>prefers-reduced-motion</code>. Caricamento differito per minimizzare rischi epilettici.</td><td data-label="Riferimento WCAG"><strong>2.3.3</strong>, <strong>2.2.2</strong></td></tr><tr><td data-label="Area"><strong>Contenuti Avanzati</strong></td><td data-label="Implementazione">Integrazione di <strong>Text-to-Speech</strong>per termini scientifici e testi alternativi descrittivi per grafici e dati.</td><td data-label="Riferimento WCAG"><strong>1.1.1</strong></td></tr></tbody></table>      
-
 <hr>
-
 <h2>🚀 Il Nostro Impegno per il Livello AAA</h2>
 <p>Biotech Project continua a evolvere per superare il Livello AA. Il nostro focus attuale è su:</p>
 <ul><li><strong class="sansation-bold-italic">Guida alla Pronuncia:</strong>Espansione del Text-to-Speech per includere la pronuncia assistita di acronimi e termini complessi.</li><li><strong class="sansation-bold-italic">Trascrizioni & Reportistica:</strong>Integrazione di trascrizioni complete per ogni elemento video/audio e potenziamento dell'Audit PDF.</li><li><strong class="sansation-bold-italic">Monitoraggio Continuo:</strong>Verifica costante della leggibilità dei contenuti per garantire l'inclusività totale.</li></ul>
-
 <hr>
-
 <h2>💬 Segnalazioni e Feedback</h2>
 <p>Il tuo contributo è essenziale. Se incontri ostacoli nell'accesso ai contenuti o nel nuovo sistema di monitoraggio, contattaci:</p>
 <button onclick="openContactPopup()" aria-haspopup="dialog" aria-expanded="false" id="contact-btn" type="button" style="background:#00eaff; color:#000f16; border:none; padding:8px 16px; border-radius:4px; font-size:12px; font-weight:bold; cursor:pointer;">Contattaci</button>
 <p>Rispondiamo a ogni segnalazione per garantire la massima fruibilità.</p>
-
 <p class="sansation-light-italic" style="text-align: center; margin: 2rem 0; color: #64ffda; font-size: 1.1em;">
     “Biotech Project non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e umana.” 
 </p>
