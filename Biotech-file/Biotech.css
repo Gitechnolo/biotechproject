@@ -135,14 +135,15 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Posizionamento millimetrico sull'elica tenuta dalla mano */
 .dna-scanner-icon {
     position: absolute;
-    top: 44%; 
-    left: 47.5%; 
+    /* Spostiamo verso l'alto e leggermente a destra */
+    top: 44.5%;    /* Era 48%, lo alziamo sul cuore dell'elica */
+    left: 50.6%;   /* Correzione orizzontale per centrarlo sulla luce */
     transform: translate(-50%, -50%);
     width: 32px;
     height: 32px;
     cursor: crosshair;
-    z-index: 5; /* Valore bilanciato: sopra il logo, ma trasparente ai popup */
-    pointer-events: auto; /* IMPORTANTE: deve catturare il mouse per il tooltip */
+    z-index: 5;
+    pointer-events: auto;
 }
 
 /* Cerchio pulsante esterno */
@@ -176,7 +177,13 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     100% { transform: scale(1.6); opacity: 0; }
 }
 /* Contenitore Logo e Icona: Assicura l'ancoraggio millimetrico tramite js*/
-.logo-wrapper-cls{position:relative;width:fit-content;margin:auto;}
+.logo-wrapper-cls {
+    position: relative;
+    width: 720px; /* Larghezza fissa pari al logo per precisione assoluta */
+    max-width: 90vw; /* Responsività per schermi piccoli */
+    margin: auto;
+    min-height: 180px; /* Evita salti di layout al caricamento */
+}
 
 /* Logo centrato sotto il menu */
 .modern-logo {
@@ -185,7 +192,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   /* Rimosso: width: 553px; */
   max-width: 90vw;
   height: auto;
-  aspect-ratio: 553 / 180; /* Mantiene le proporzioni */
+  aspect-ratio: 720 / 180; /* Mantiene le proporzioni */
   border: 0;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2);
