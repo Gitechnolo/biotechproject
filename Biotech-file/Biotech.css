@@ -185,26 +185,47 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     min-height: 215px; /* Evita salti di layout al caricamento */
 }
 
-/* Logo centrato sotto il menu */
+/* Logo: Estetica Minimale e Performance Estrema */
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
   max-width: 90vw;
   height: auto;
-  aspect-ratio: 720 / 180; /* Mantiene le proporzioni */
-  border: 0;
+  aspect-ratio: 720 / 180;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2);
   opacity: 0.9;
-  will-change: transform; /* Ottimizzazione per trasformazioni future */
+  /* Ombra discreta: definisce il bordo senza pesare */
+  box-shadow: 0 2px 8px rgba(0, 230, 118, 0.15);
+  will-change: opacity;
+}
+
+/* Animazione: Pulsazione organica dell'opacità */
+.pulse-logo {
+  animation: biotechPulse 3.2s infinite ease-in-out;
+  /* Transizioni fluide solo per luce e trasparenza */
+  transition: opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+@keyframes biotechPulse {
+  0%, 100% { opacity: 0.82; }
+  50% { opacity: 0.92; }
+}
+
+/* Hover: Raffinatezza luminosa senza movimento */
+.pulse-logo:hover {
+  opacity: 1;
+  animation-play-state: paused;
+  transform: none; 
+  /* Bagliore di hover più contenuto e professionale */
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
+  filter: brightness(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-logo {
+    animation: none;
+  }
 }   
-/* === ANIMAZIONE LOGO: Pulsazione Holografica === */
-.pulse-logo {will-change: opacity, box-shadow, transform; animation: biotechPulse 3.2s infinite ease-in-out; transition: opacity 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;}
-/* Effetto di pulsazione con bagliore tecnologico */
-@keyframes biotechPulse {0%, 100% {opacity: 0.85; box-shadow: 0 0 8px rgba(0, 230, 118, 0.2), 0 0 16px rgba(0, 230, 118, 0.1), inset 0 0 6px rgba(0, 255, 180, 0.3);} 50% {opacity: 0.95; box-shadow: 0 0 14px rgba(0, 230, 118, 0.4), 0 0 24px rgba(0, 230, 118, 0.25), inset 0 0 8px rgba(0, 255, 180, 0.5);}}
-/* Effetto hover: lieve aumento di luminosità */
-.pulse-logo:hover {opacity: 1; filter: brightness(1.0) contrast(1.0); animation-play-state: paused; box-shadow: 0 0 16px rgba(0, 230, 118, 0.6), 0 0 32px rgba(0, 230, 118, 0.4), inset 0 0 10px rgba(0, 255, 180, 0.7); transform: translateY(-1px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);}
-@media (prefers-reduced-motion: reduce) {.pulse-logo {animation: none; opacity: 0.9; /* Mantiene coerenza con .modern-logo */}}   
 /* Contenitore per orologio, conto alla rovescia e augurio */
 .container_welcome{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-39px;}
 /* Assicura che i figli occupino tutta la larghezza disponibile */
