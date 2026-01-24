@@ -182,14 +182,13 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     width: 720px; /* Larghezza fissa pari al logo per precisione assoluta */
     max-width: 90vw; /* Responsività per schermi piccoli */
     margin: auto;
-    min-height: 180px; /* Evita salti di layout al caricamento */
+    min-height: 215px; /* Evita salti di layout al caricamento */
 }
 
 /* Logo centrato sotto il menu */
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
-  /* Rimosso: width: 553px; */
   max-width: 90vw;
   height: auto;
   aspect-ratio: 720 / 180; /* Mantiene le proporzioni */
@@ -197,6 +196,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 230, 118, 0.2);
   opacity: 0.9;
+  will-change: transform; /* Ottimizzazione per trasformazioni future */
 }   
 /* === ANIMAZIONE LOGO: Pulsazione Holografica === */
 .pulse-logo {will-change: opacity, box-shadow, transform; animation: biotechPulse 3.2s infinite ease-in-out; transition: opacity 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;}
