@@ -485,7 +485,10 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     const sDesc = formatTip(labelStatus, statDesc);
     const sysDesc = formatTip(labelAnalysis, sysStateDesc);
 
-    const timeStr = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} | ${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+    // --- Formatta la data e l'ora ---
+    const datePart = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+    const timePart = `${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+    // -------------------------------------
 
     // 7. Rendering HTML
     clockEl.innerHTML = `
@@ -495,7 +498,9 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
             <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
         </div>
         <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
-        <span class="bio-clock-time">${timeStr}</span>
+        <span class="bio-clock-time">
+            ${datePart} <span class="digits-stable">${timePart}</span>
+        </span>
         <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
     `;
 };

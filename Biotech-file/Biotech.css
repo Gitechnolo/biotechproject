@@ -135,9 +135,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Posizionamento millimetrico sull'elica tenuta dalla mano */
 .dna-scanner-icon {
     position: absolute;
-    /* Spostiamo verso l'alto e leggermente a destra */
-    top: 44.5%;    /* Era 48%, lo alziamo sul cuore dell'elica */
-    left: 50.6%;   /* Correzione orizzontale per centrarlo sulla luce */
+    top: 44.5%;    /* Altezza sul cuore dell'elica */
+    left: 50.6%;   /* Correzione orizzontale per centrarlo */
     transform: translate(-50%, -50%);
     width: 32px;
     height: 32px;
@@ -230,6 +229,19 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .container_welcome{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-39px;}
 /* Assicura che i figli occupino tutta la larghezza disponibile */
 .container_welcome>div{flex:0 0 auto;width:100%;}
+.digits-stable {
+    font-family: Arial, Helvetica, sans-serif;
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+    min-width: 82px; /* Aumentato leggermente per dare respiro ai numeri */
+    text-align: center;
+    font-weight: 600;      /* Meno pesante del bold */
+    font-size: 0.95rem;    /* Leggermente più piccolo */
+    letter-spacing: 0.5px; /* Più spazio tra i numeri per stile tech */
+    color: rgba(167, 255, 235, 0.9); /* Un tocco di trasparenza */
+    text-shadow: 0 0 5px rgba(0, 230, 118, 0.3);
+    transition: all 0.3s ease;
+}
 /* === OROLOGIO BIO-CIRCADIANO === */
 /* Riga inline per MOLECOLA e CONSIGLIO - Colore tenue per le etichette 'MOLECOLA:' */
 .hud-inline-row {
