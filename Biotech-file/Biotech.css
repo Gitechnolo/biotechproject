@@ -188,7 +188,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
-  max-width: 90vw;
+  width: 720px; /* Larghezza esplicita per desktop */
+  max-width: 90vw; /* Flessibilità per mobile */
   height: auto;
   aspect-ratio: 720 / 180;
   border-radius: 8px;
