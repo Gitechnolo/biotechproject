@@ -194,46 +194,48 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   max-width: 90vw;
   height: auto;
   aspect-ratio: 720 / 180;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 230, 118, 0.15);
+  
+  /* Rimosse ombre superflue per pulizia rendering */
   will-change: opacity;
 
-  /* Sfumatura trasparente dal basso verso l'alto */
+  /* Sfumatura professionale: il logo emerge dallo sfondo */
   -webkit-mask-image: linear-gradient(to top, transparent 0%, black 70%);
   mask-image: linear-gradient(to top, transparent 0%, black 70%);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: cover;
   mask-size: cover;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }   
 
 /* Animazione: Pulsazione organica dell'opacità */
 .pulse-logo {
-  animation: biotechPulse 3.2s infinite ease-in-out;
-  /* Transizioni fluide solo per luce e trasparenza */
-  transition: opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+  /* Leggermente più luminoso per migliorare la leggibilità */
+  animation: biotechPulse 3.5s infinite ease-in-out;
+  transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 @keyframes biotechPulse {
-  0%, 100% { opacity: 0.82; }
-  50% { opacity: 0.92; }
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.95; }
 }
 
-/* Hover: Raffinatezza luminosa senza movimento */
+/* Hover: Raffinatezza luminosa senza ombre esterne */
 .pulse-logo:hover {
   opacity: 1;
   animation-play-state: paused;
-  transform: none; 
-  /* Bagliore di hover più contenuto e professionale */
-  box-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
-  filter: brightness(1.05);
+  /* Il brightness agisce sui pixel interni, non viene tagliato dalla maschera */
+  filter: brightness(1.1);
 }
 
+/* Accessibilità: Rispetto delle preferenze utente */
 @media (prefers-reduced-motion: reduce) {
   .pulse-logo {
     animation: none;
+    opacity: 1;
   }
-}   
+}
 /* Contenitore per orologio, conto alla rovescia e augurio */
 .container_welcome{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:-39px;}
 /* Assicura che i figli occupino tutta la larghezza disponibile */
