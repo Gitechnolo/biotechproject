@@ -122,7 +122,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   margin: 0;
   color: white;
 }
-
 /* === OTTIMIZZAZIONE UNIFICATA MOBILE (Max 768px) === */
 @media (max-width: 768px) {
   
@@ -134,20 +133,22 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
       linear-gradient(to bottom, rgba(1, 8, 8, 0.94), rgba(1, 8, 8, 0.75)),
       url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif");
   }
-
   /* 2. Layout: Padding laterale per il testo (integra il HEAD) */
   .staff-layout-container {
     padding-left: 18px;
     padding-right: 18px;
     box-sizing: border-box;
   }
-
-  /* 3. Tipografia: Leggibilità aumentata */
+  /* 3. Tipografia: Leggibilità aumentata e Velo Protettivo */
   .biotechbody p {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     text-align: justify;
     font-size: 0.95rem;
+  /* Velo scuro per staccare il testo dallo sfondo */
+    background: rgba(0, 8, 8, 0.4); 
+    padding: 12px;
+    border-radius: 6px;
   }
 }
 /* === STILE MODERNO PER PAGINE AGGIORNATE === */
