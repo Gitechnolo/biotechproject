@@ -1,10 +1,12 @@
 // VideoStaff.js - Caricamento dinamico del video per Staff.html (senza sottotitoli)
+// ========================================================
+
 function loadAndPlayVideo() {
   const container = document.getElementById('ytVideoContainer');
   const img = document.getElementById('videoPoster');
   if (!img) return;
 
-  // Crea l'elemento video
+  // 1. Crea l'elemento video
   const video = document.createElement('video');
   video.id = 'ytVideo';
   video.controls = false;
@@ -17,23 +19,24 @@ function loadAndPlayVideo() {
   video.style.borderRadius = '8px';
   video.setAttribute('playsinline', ''); // Importante per iOS
 
-  // Sorgente video (Auto del futuro)
+  // 2. Sorgente video (Auto del futuro)
   const source = document.createElement('source');
   source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.mp4';
   source.type = 'video/mp4';
   video.appendChild(source);
 
-  // Sostituisci l'immagine con il video
+  // 3. Sostituisci l'immagine con il video
   container.replaceChild(video, img);
 
-  // Mostra i controlli
+  // 4. Mostra i controlli
   const controls = document.querySelector('.yt-video-controls');
   if (controls) {
     controls.style.display = 'flex';
   }
 
-  // Inizializza i controlli
+  // 5. Inizializza i controlli e avvia
   initializeVideoControls(video, controls);
+  video.play().catch(e => console.log("Riproduzione manuale richiesta:", e));
 }
 
 // Funzione per gestire i controlli personalizzati
@@ -48,8 +51,8 @@ function initializeVideoControls(video, controls) {
   const volumeControl = controls.querySelector('#ytVolume');
   const muteBtn = controls.querySelector('#ytMute');
   const muteIcon = controls.querySelector('#ytMuteIcon');
-  const fullscreenBtn = controls.querySelector('#ytFullscreen');  // ✅ Preso l'elemento
-  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen'); // ✅ Aggiunto anche questo
+  const fullscreenBtn = controls.querySelector('#ytFullscreen');
+  const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen');
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
@@ -66,13 +69,8 @@ function initializeVideoControls(video, controls) {
     }
   });
 
-  video.addEventListener('play', () => {
-    playPauseIcon.textContent = '⏸️';
-  });
-
-  video.addEventListener('pause', () => {
-    playPauseIcon.textContent = '▶️';
-  });
+  video.addEventListener('play', () => { playPauseIcon.textContent = '⏸️'; });
+  video.addEventListener('pause', () => { playPauseIcon.textContent = '▶️'; });
 
   // Progresso
   video.addEventListener('timeupdate', () => {
@@ -108,27 +106,19 @@ function initializeVideoControls(video, controls) {
 
   // Fullscreen
   fullscreenBtn?.addEventListener('click', () => {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    }
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+    else if (video.msRequestFullscreen) video.msRequestFullscreen();
   });
 
   // Exit Fullscreen
   exitFullscreenBtn?.addEventListener('click', () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.msExitFullscreen) document.msExitFullscreen();
   });
 
-  // Gestione uscita fullscreen
+  // Gestione UI fullscreen
   document.addEventListener('fullscreenchange', () => {
     if (document.fullscreenElement === video) {
       fullscreenBtn.style.display = 'none';
@@ -141,15 +131,28 @@ function initializeVideoControls(video, controls) {
 
   // Tasti rapidi
   video.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
-      playPauseBtn?.click();
-      e.preventDefault();
-    } else if (e.code === 'KeyM') {
-      muteBtn?.click();
-      e.preventDefault();
-    } else if (e.code === 'KeyF') {
-      fullscreenBtn?.click();
-      e.preventDefault();
-    }
+    if (e.code === 'Space') { e.preventDefault(); playPauseBtn?.click(); }
+    else if (e.code === 'KeyM') { e.preventDefault(); muteBtn?.click(); }
+    else if (e.code === 'KeyF') { e.preventDefault(); fullscreenBtn?.click(); }
   });
-}   
+}
+
+// ========================================================
+// INIZIALIZZAZIONE AUTOMATICA (Specifico per Staff.html)
+// ========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const videoPoster = document.getElementById('videoPoster');
+  
+  if (videoPoster) {
+    // Gestione Click
+    videoPoster.addEventListener('click', loadAndPlayVideo);
+
+    // Gestione Tastiera (Invio e Spazio)
+    videoPoster.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); 
+        loadAndPlayVideo();
+      }
+    });
+  }
+});   
