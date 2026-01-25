@@ -106,28 +106,33 @@ p:hover {color: #ffffff; text-shadow: 0 0 4px rgba(138, 43, 226, 0.5), 0 0 6px r
 h1 {font-family: 'Sansation', sans-serif; font-weight: 600; font-size: 34px; color: #9fe8d0; /* o #8de0c8 */text-shadow: 0 0 3px rgba(138, 43, 226, 0.5), 0 0 6px rgba(138, 43, 226, 0.2); cursor: default; opacity: 0.95;}   
 h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); font-weight: normal; cursor: default;}
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
-/* End element natural */
 /* Elements with class */
 .biotechbody {
-    /* Colore di fallback identico al bordo dell'immagine */
-    background-color: #000a0f; 
+    background-color: #010808; 
+    background-image: 
+        linear-gradient(to bottom, rgba(1, 8, 8, 0.9) 0%, rgba(1, 8, 8, 0.5) 100%),
+        url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif");
     
-    /* Caricamento immagine */
-    background-image: url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif");
-    
-    /* Posizionamento e comportamento */
-    background-position: center center;
-    background-repeat: repeat; /* Ottimizzato i bordi per il tiling */
-    background-size: auto;     /* 'auto' mantiene la qualità originale 1:1 dei pixel */
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom; /* Più sicuro di 110% per iniziare */
 
-    /* Ottimizzazione nitidezza per display Retina/HiDPI */
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+    min-height: 100vh;
+    min-height: 100svh; /* Altezza dinamica per mobile */
+    margin: 0;
 }
+
 @media (max-width: 768px) {
     .biotechbody {
-        background-position: 80% center; /* Sposta l'inquadratura più a destra sull'elica */
+        /* Centriamo bene la sfera senza rischiare di nasconderla troppo */
+        background-position: center 105%; 
+        background-attachment: scroll; 
+        
+        /* Su mobile "cover" a volte ingrandisce troppo. 
+           Se vedi la sfera troppo sgranata, prova "contain" o una dimensione fissa */
+        background-size: cover; 
     }
 }
 
