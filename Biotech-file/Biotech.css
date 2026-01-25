@@ -889,7 +889,7 @@ textarea:focus,
     position: absolute; 
     top: 12px; 
     left: 12px; 
-    z-index: 10000; 
+    z-index: 100001; /* +1 rispetto al menu più alto */
     padding: 8px 14px; 
     font-family: 'Sansation', sans-serif; 
     font-weight: bold; 
@@ -937,7 +937,7 @@ textarea:focus,
     position: absolute; 
     top: -50px; /* Nascosto */
     left: 12px; 
-    z-index: 9999; 
+    z-index: 100000; /* Sopra il menu */ 
     padding: 8px 14px; 
     font-family: 'Sansation', sans-serif; 
     font-weight: bold; 
@@ -956,7 +956,7 @@ textarea:focus,
 }
 .skip-link:hover, 
 .skip-link:focus {
-    top: 48px; /* Posizione visibile standard (sotto il pulsante) */
+    top: 55px; /* Leggermente più in basso non copre il pulsante toggle */
     color: #00ffcc; 
     background: rgba(0, 30, 40, 0.95); 
     border-color: rgba(0, 255, 180, 0.6); 
