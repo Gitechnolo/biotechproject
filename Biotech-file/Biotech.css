@@ -107,7 +107,7 @@ h1 {font-family: 'Sansation', sans-serif; font-weight: 600; font-size: 34px; col
 h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); font-weight: normal; cursor: default;}
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
 /* End element natural */
-/* Background */
+/* Elements with class */
 .biotechbody {
   background-color: #010808;
   background-image: 
@@ -124,12 +124,12 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   color: white;
 }
 
-/* Per mobile: fix per iOS e Android */
+/* Solo per mobile: evita fixed, non ridichiarare background-image */
 @media (max-width: 768px) {
   .biotechbody {
-    background-attachment: scroll; /* Fondamentale per mobile */
+    background-attachment: scroll;
     background-position: center center;
-    background-size: cover; /* Evita ingrandimenti eccessivi */
+    background-size: cover;
   }
 }   
 
@@ -190,16 +190,22 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-logo {
   display: block;
   margin: 15px auto 20px;
-  width: 720px; /* Larghezza esplicita per desktop */
-  max-width: 90vw; /* Flessibilità per mobile */
+  width: 720px;
+  max-width: 90vw;
   height: auto;
   aspect-ratio: 720 / 180;
   border-radius: 8px;
-  opacity: 0.9;
-  /* Ombra discreta: definisce il bordo senza pesare */
   box-shadow: 0 2px 8px rgba(0, 230, 118, 0.15);
   will-change: opacity;
-}
+
+  /* Sfumatura trasparente dal basso verso l'alto */
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 70%);
+  mask-image: linear-gradient(to top, transparent 0%, black 70%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}   
 
 /* Animazione: Pulsazione organica dell'opacità */
 .pulse-logo {
@@ -680,8 +686,6 @@ html {box-sizing: border-box;}
 .staff-title {color: grey;}
 .staff-button {font-family: 'Sansation', Tahoma, Verdana, sans-serif; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); border-radius: 5px; border: none; outline: none; display: inline-block; padding: 7px 20px; color: white; background-color: rgba(249, 250, 249, 0.288); text-align: center; cursor: pointer; width: 100%; transition: all 0.3s ease; box-shadow: 0 0 0 rgba(0, 255, 200, 0.219);}
 .staff-button:hover {background-color: rgba(249, 250, 249, 0.521);}
-.imgStaff {max-width: 100%; height: auto; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-.imgStaff:hover {opacity: 0.5; -webkit-mask-image: none; mask-image: none; transition: opacity 4.0s ease-in-out;}
 /* End Staff Section */
 /* === CAROSELLO BIOTECH === */
 /* --- LAYOUT GRIGLIA --- */
