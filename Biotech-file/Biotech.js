@@ -716,24 +716,6 @@ if ('requestIdleCallback' in window) {
 }  
 // ---End PERFORMANCE HELPERS ---
 
-// When the user mouseover on div, open the info popup
-function infoFunction() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
-// Light effect around the bulb image
-function turnOnLight() {
-  const img = document.getElementById('myImage');
-  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
-  img.classList.add('bulb-glow');
-}
-function turnOffLight() {
-  const img = document.getElementById('myImage');
-  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
-  img.classList.remove('bulb-glow');
-}
-// End effect around the bulb image
- 
 // ———————————————————————
 // MENU MODERNO - BIOTECH PROJECT - CORE NAV SYSTEM (Versione Unificata - con data-modern-menu)
 // Gestione centralizzata Event Delegation, Accessibilità e Popup.

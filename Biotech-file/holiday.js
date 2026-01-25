@@ -56,3 +56,16 @@ const holiday = getNextHoliday();
 msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
 }
 });
+
+// Light effect around the bulb image
+function turnOnLight() {
+  const img = document.getElementById('myImage');
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
+  img.classList.add('bulb-glow');
+}
+function turnOffLight() {
+  const img = document.getElementById('myImage');
+  img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
+  img.classList.remove('bulb-glow');
+}
+// End effect around the bulb image
