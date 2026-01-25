@@ -107,8 +107,7 @@ h1 {font-family: 'Sansation', sans-serif; font-weight: 600; font-size: 34px; col
 h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); font-weight: normal; cursor: default;}
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
 /* End element natural */
-/* === BACKGROUND Biotech === */
-/* 1. Definizione base per Desktop */
+/* === BACKGROUND BIOTECH (Desktop & Base) === */
 .biotechbody {
   background-color: #010808;
   background-image: 
@@ -119,24 +118,36 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   background-size: cover;
   background-position: center bottom;
   min-height: 100vh;
-  min-height: 100svh; /* Ottimo per Safari/Chrome mobile */
+  min-height: 100svh;
   margin: 0;
   color: white;
 }
-/* 2. Unica Media Query per Mobile */
+
+/* === OTTIMIZZAZIONE UNIFICATA MOBILE (Max 768px) === */
 @media (max-width: 768px) {
+  
+  /* 1. Sfondo: Performance e Inquadratura */
   .biotechbody {
     background-attachment: scroll;
     background-position: center 20%;
-    /* Gradient leggermente più scuro per leggibilità */
     background-image: 
-      linear-gradient(to bottom, rgba(1, 8, 8, 0.92), rgba(1, 8, 8, 0.7)),
+      linear-gradient(to bottom, rgba(1, 8, 8, 0.94), rgba(1, 8, 8, 0.75)),
       url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif");
   }
+
+  /* 2. Layout: Padding laterale per il testo (integra il HEAD) */
+  .staff-layout-container {
+    padding-left: 18px;
+    padding-right: 18px;
+    box-sizing: border-box;
+  }
+
+  /* 3. Tipografia: Leggibilità aumentata */
   .biotechbody p {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     text-align: justify;
+    font-size: 0.95rem;
   }
 }
 /* === STILE MODERNO PER PAGINE AGGIORNATE === */
