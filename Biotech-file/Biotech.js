@@ -300,89 +300,11 @@ function fadeEffect() {
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)  
 
-// ===== LIGHTBOX CELLLA - CUORE - APPARATO RESPIRATORIO - SISTEMA LINFATICO =====
-let lastFocusedElement; // Variabile globale per ricordare dove eravamo
+// ===== BIOTECH PROJECT: UNIFIED MODAL SYSTEM (FOCUS TRAP + ANIMATION FIXED) =====
+let lastFocusedElement = null;
+let slideIndex = 1;
 
-function openModal() {
-  lastFocusedElement = document.activeElement; // Memorizza l'elemento cliccato
-  const modal = document.getElementById("myModal");
-  if (modal) {
-    modal.style.display = "block";
-    
-    // Porta il focus sul pulsante di chiusura appena si apre per accessibilità
-    setTimeout(() => {
-      const closeBtn = document.getElementById("closeBtn");
-      if (closeBtn) closeBtn.focus();
-    }, 100);
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' }); 
-  }
-}
-
-function closeModal() {
-  const modal = document.getElementById("myModal");
-  if (modal) {
-    modal.style.display = "none";
-    resetAllZoom();
-    
-    // Torna all'elemento che ha aperto la modale
-    if (lastFocusedElement) {
-      lastFocusedElement.focus();
-    }
-  }
-}
-
-// CHIUSURA CON TASTO ESC (Globale)
-document.addEventListener('keydown', function(event) {
-  if (event.key === "Escape") {
-    const modal = document.getElementById("myModal");
-    if (modal && modal.style.display === "block") {
-      closeModal();
-    }
-  }
-});
-
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  resetAllZoom(); 
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  resetAllZoom(); 
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-
-  if (slides.length === 0) return;
-  if (n > slides.length) { slideIndex = 1; }
-  if (n < 1) { slideIndex = slides.length; }
-
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-
-  slides[slideIndex - 1].style.display = "block";
-
-  if (dots.length > 0 && dots[slideIndex - 1]) {
-    dots[slideIndex - 1].className += " active";
-    if (captionText) {
-      captionText.innerHTML = dots[slideIndex - 1].alt || "";
-    }
-  }
-}
-
-// LOGICA LENTE D'INGRANDIMENTO
+// 1. FUNZIONI DI SUPPORTO
 function resetAllZoom() {
   document.querySelectorAll('.zoom-container').forEach(container => {
     container.classList.remove('zoomed');
@@ -391,210 +313,178 @@ function resetAllZoom() {
   });
 }
 
-document.querySelectorAll('.zoom-container').forEach(container => {
-  const img = container.querySelector('img');
-  if (!img) return;
+function plusSlides(n) {
+  resetAllZoom();
+  showSlides(slideIndex += n);
+}
 
-  container.addEventListener('click', function() {
-    this.classList.toggle('zoomed');
-    if (!this.classList.contains('zoomed')) {
-      img.style.transformOrigin = `center center`;
+function currentSlide(n) {
+  resetAllZoom();
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("demo");
+  const captionText = document.getElementById("caption");
+
+  if (slides.length === 0) return;
+  if (n > slides.length) slideIndex = 1;
+  if (n < 1) slideIndex = slides.length;
+
+  Array.from(slides).forEach(s => s.style.display = "none");
+  Array.from(dots).forEach(d => d.className = d.className.replace(" active", ""));
+
+  if (slides[slideIndex - 1]) {
+    slides[slideIndex - 1].style.display = "block";
+    if (dots[slideIndex - 1]) {
+      dots[slideIndex - 1].className += " active";
+      if (captionText) captionText.innerHTML = dots[slideIndex - 1].alt || "";
     }
-  });
+  }
+}
 
-  container.addEventListener('mousemove', function(e) {
-    if (this.classList.contains('zoomed')) {
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      img.style.transformOrigin = `${x}% ${y}%`;
+// MODIFICATA: Aggiunto ritardo per animazione solo su popup immagini
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  if (!modal) return;
+
+  const modalImg = document.getElementById("img01");
+  const isBiotechMode = modalImg && modalImg.style.display !== "none";
+
+  modal.classList.remove("show");
+
+  // Se è un popup (isBiotechMode), aspettiamo 400ms per lo zoom-out
+  // Se è il carosello, chiudiamo subito (10ms)
+  const delay = isBiotechMode ? 400 : 10;
+
+  setTimeout(() => {
+    modal.style.display = "none";
+    if (modalImg) { modalImg.src = ""; modalImg.style.display = "none"; }
+    resetAllZoom();
+
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      // Rimosso l'azzeramento immediato per sicurezza sulla posizione
     }
-  });
+  }, delay);
+}
 
-  container.addEventListener('mouseleave', function() {
-    this.classList.remove('zoomed');
-    img.style.transformOrigin = `center center`;
-  });
-});
-
-// GESTIONE AUTOMATICA EVENTI (Alleggerimento HTML)
+// 2. INIZIALIZZAZIONE UNICA
 document.addEventListener('DOMContentLoaded', function() {
-  
-  const handleInteraction = (element, callback) => {
-    if(!element) return;
-    element.addEventListener('click', callback);
-    element.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        callback();
-      }
+  const modal = document.getElementById("myModal");
+  if (!modal) return;
+
+  const modalImg = document.getElementById("img01");
+  const modalCarouselContent = document.getElementById("modalCarousel");
+  const closeBtn = document.getElementById('closeBtn') || modal.querySelector(".close");
+
+  const bindAction = (el, callback) => {
+    if (!el) return;
+    el.addEventListener('click', (e) => { e.preventDefault(); callback(); });
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); callback(); }
     });
   };
 
-  // 1. Click immagini principali della griglia
-  document.querySelectorAll('#main-gallery .gallery-item').forEach(img => {
-    handleInteraction(img, () => {
-      openModal();
-      currentSlide(parseInt(img.getAttribute('data-slide')));
-    });
-  });
-
-  // 2. Click miniature nel modal
-  document.querySelectorAll('#thumb-gallery .demo').forEach(thumb => {
-    handleInteraction(thumb, () => {
-      currentSlide(parseInt(thumb.getAttribute('data-slide')));
-    });
-  });
-
-  // 3. Pulsanti di controllo
-  handleInteraction(document.getElementById('closeBtn'), closeModal);
-  
-  const prevBtn = document.getElementById('prevSlide');
-  if(prevBtn) handleInteraction(prevBtn, () => plusSlides(-1));
-
-  const nextBtn = document.getElementById('nextSlide');
-  if(nextBtn) handleInteraction(nextBtn, () => plusSlides(1));
-
-  // 4. Gestione avanzata Tastiera (Frecce + Focus Trap)
-  document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById("myModal");
-    if (!modal || modal.style.display !== "block") return;
-
-    // --- LOGICA FOCUS TRAP ---
-    if (e.key === 'Tab') {
-      // Trova tutti gli elementi cliccabili dentro la modale
-      const focusableElements = modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next');
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (e.shiftKey) { // Shift + Tab (indietro)
-        if (document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement.focus();
-        }
-      } else { // Solo Tab (avanti)
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
-      }
-    }
-
-    // --- LOGICA FRECCE ---
-    if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      plusSlides(-1);
-    }
-    if (e.key === "ArrowRight") {
-      e.preventDefault();
-      plusSlides(1);
-    }
-  });
-});
-// END LIGHTBOX SCRIPT
-
-// Works for (Mitocondri.png, Lisosoma.png, Miochine.png, Pelle.png) images with id starting with 'myImg'
-// ✅ Biotech Modal Popup Script con Effetto Espansione (Lente)
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("myModal");
-  const modalImg = document.getElementById("img01");
-  const captionText = document.getElementById("caption");
-  const closeBtn = modal ? modal.querySelector(".close") : document.querySelector("#myModal .close");
-
-  let lastFocusedElement = null;
-
-  if (!modal || !modalImg || !closeBtn) return;
-
-  /**
-   * FUNZIONE GLOBALE: Apre il modal partendo dal punto esatto del click
-   */
+  // --- A. APERTURA IMMAGINE SINGOLA (MODIFICATA: Aggiunto calcolo origine) ---
   window.openBiotechModal = function(imgId, event) {
     const targetImg = document.getElementById(imgId);
-    if (!targetImg) return;
-
-    lastFocusedElement = event.currentTarget; 
-
-    const rect = lastFocusedElement.getBoundingClientRect();
-    const originX = rect.left + rect.width / 2;
-    const originY = rect.top + rect.height / 2;
-
-    modalImg.style.transformOrigin = `${originX}px ${originY}px`;
-    modalImg.src = targetImg.src;
-    modalImg.alt = targetImg.alt || ""; 
-    captionText.textContent = targetImg.alt || "";
-
-    modal.style.display = "flex"; 
+    if (!targetImg || !modalImg) return;
     
-    setTimeout(() => {
-      modal.classList.add("show");
-      closeBtn.focus(); // Porta il focus sulla X di chiusura
-    }, 10);
+    lastFocusedElement = event ? event.currentTarget : null;
+
+    // Calcolo posizione per l'effetto rimpicciolimento
+    if (lastFocusedElement) {
+      const rect = lastFocusedElement.getBoundingClientRect();
+      modalImg.style.transformOrigin = `${rect.left + rect.width / 2}px ${rect.top + rect.height / 2}px`;
+    }
+
+    if (modalCarouselContent) modalCarouselContent.style.display = "none";
+    modalImg.src = targetImg.src;
+    modalImg.alt = targetImg.alt || "";
+    modalImg.style.display = "block";
+    modalImg.style.margin = "auto";
+    const caption = document.getElementById("caption");
+    if (caption) caption.textContent = targetImg.alt;
+    
+    modal.style.display = "flex";
+    setTimeout(() => { modal.classList.add("show"); closeBtn?.focus(); }, 10);
   };
 
-  /**
-   * Chiude il modale con effetto zoom-out
-   */
-  function closeBiotechModal() {
-    if (!modal.classList.contains("show")) return;
-    
-    modal.classList.remove("show");
-    
-    setTimeout(() => {
-      modal.style.display = "none";
-      modalImg.src = "";
-      if (lastFocusedElement) {
-        lastFocusedElement.focus(); // Ripristina il focus sull'elemento originale
-        lastFocusedElement = null;
+  // --- B. APERTURA CAROSELLO ---
+  const openCarousel = (n) => {
+    lastFocusedElement = document.activeElement;
+    if (modalImg) modalImg.style.display = "none";
+    if (modalCarouselContent) modalCarouselContent.style.display = "block";
+    currentSlide(n);
+    modal.style.display = "block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => { modal.classList.add("show"); closeBtn?.focus(); }, 50);
+  };
+
+  // Binding Eventi (Identici alla tua versione)
+  document.querySelectorAll('.gallery-item').forEach(img => {
+    bindAction(img, () => openCarousel(parseInt(img.getAttribute('data-slide'))));
+  });
+
+  document.querySelectorAll('.biotech-modal-trigger').forEach(trigger => {
+    const targetId = trigger.getAttribute('data-target-img');
+    bindAction(trigger, () => window.openBiotechModal(targetId, { currentTarget: trigger }));
+  });
+
+  document.querySelectorAll('.demo').forEach(thumb => {
+    bindAction(thumb, () => currentSlide(parseInt(thumb.getAttribute('data-slide'))));
+  });
+
+  bindAction(closeBtn, closeModal);
+  bindAction(document.getElementById('prevSlide'), () => plusSlides(-1));
+  bindAction(document.getElementById('nextSlide'), () => plusSlides(1));
+
+  // --- C. LOGICA ZOOM ---
+  document.querySelectorAll('.zoom-container').forEach(container => {
+    const img = container.querySelector('img');
+    container.addEventListener('click', () => container.classList.toggle('zoomed'));
+    container.addEventListener('mousemove', (e) => {
+      if (container.classList.contains('zoomed')) {
+        const rect = container.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
       }
-    }, 400);
-  }
+    });
+  });
 
-  // --- GESTIONE EVENTI ---
+  // --- D. GESTIONE TASTIERA E FOCUS TRAP ---
+  document.addEventListener('keydown', (e) => {
+    const isVisible = (modal.style.display !== "none" && modal.style.display !== "");
+    if (!isVisible) return;
 
-  closeBtn.onclick = closeBiotechModal;
-  
-  // Gestione tastiera dedicata al modal
-  document.addEventListener("keydown", function (e) {
-    if (!modal.classList.contains("show")) return;
-
-    // 1. Chiusura con ESC
-    if (e.key === 'Escape') {
-      closeBiotechModal();
+    if (e.key === "Escape") closeModal();
+    if (modalCarouselContent && modalCarouselContent.style.display !== "none") {
+        if (e.key === "ArrowLeft") plusSlides(-1);
+        if (e.key === "ArrowRight") plusSlides(1);
     }
 
-    // 2. LOGICA FOCUS TRAP (Gestione TAB)
     if (e.key === 'Tab') {
-      // Individua tutti gli elementi che possono ricevere focus nel modal
-      // In questo caso il closeBtn, ma includiamo eventuali altri per sicurezza
-      const focusableElements = modal.querySelectorAll('button, [tabindex="0"], .close');
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
+      const focusableElements = Array.from(modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next, .demo'))
+                                     .filter(el => el.offsetParent !== null);
+      
+      if (focusableElements.length > 0) {
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
 
-      if (e.shiftKey) { // Se preme Shift + Tab
-        if (document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement.focus();
-        }
-      } else { // Se preme Tab
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) { e.preventDefault(); lastElement.focus(); }
+        } else {
+          if (document.activeElement === lastElement) { e.preventDefault(); firstElement.focus(); }
         }
       }
-    }
-    
-    // Supporto invio/spazio sul tasto chiudi (se non è un <button> nativo)
-    if (e.target === closeBtn && (e.key === 'Enter' || e.key === ' ')) {
-      e.preventDefault();
-      closeBiotechModal();
     }
   });
 
-  modal.onclick = function (e) {
-    if (e.target === modal) closeBiotechModal();
-  };
+  modal.onclick = (e) => { if (e.target === modal) closeModal(); };
 });
-// End Biotech modal popup script
 
 // —————————————————————————————————————————————————————————————————————————————
 //  BIOTECH PROJECT - ULTIMATE PERFORMANCE HELPERS (2026 EDITION)
