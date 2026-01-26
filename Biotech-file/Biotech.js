@@ -716,62 +716,92 @@ if ('requestIdleCallback' in window) {
 }  
 // ---End PERFORMANCE HELPERS ---
 
-// ———————————————————————
-// MENU MODERNO - BIOTECH PROJECT - CORE NAV SYSTEM (Versione Unificata - con data-modern-menu)
-// Gestione centralizzata Event Delegation, Accessibilità e Popup.
-// ———————————————————————
+// ——————————————————————————————————————————————————————————————————————————
+// BIOTECH PROJECT - CORE UI SYSTEM (Versione Consolidata)
+// Menu, Navigazione Tastiera, Popup e Tema Dinamico
+// ——————————————————————————————————————————————————————————————————————————
+
 (function () {
-  // Verifica se la pagina richiede il menu moderno
+  // 1. EXIT EARLY: Se la pagina non richiede il menu moderno, interrompiamo tutto il parsing.
   if (!document.body.hasAttribute('data-modern-menu')) return;
 
+  // Unico listener per velocizzare il parsing del DOM
   document.addEventListener('DOMContentLoaded', function () {
+    
+    // --- [A] CORE NAV SYSTEM (Menu & Dropdowns) ---
     const navContainer = document.getElementById('tech-main-menu');
     let openDropdown = null;
 
-    if (!navContainer) return;
+    if (navContainer) {
+      // Event Delegation per Click
+      navContainer.addEventListener('click', (e) => {
+        const target = e.target.closest('button, a');
+        if (!target) return;
 
-    // --- A. GESTORE CLICK UNIFICATO (Event Delegation) ---
-    navContainer.addEventListener('click', (e) => {
-      const target = e.target.closest('button, a');
-      if (!target) return;
+        if (target.classList.contains('tech-nav-btn')) {
+          e.stopPropagation();
+          handleDropdownToggle(target);
+        } else if (target.id) {
+          handleMenuCommands(target.id);
+        }
+      });
 
-      // 1. Gestione bottoni principali del menu
-      if (target.classList.contains('tech-nav-btn')) {
-        e.stopPropagation();
-        handleDropdownToggle(target);
-      } 
-      // 2. Gestione azioni specifiche (ex onclick)
-      else if (target.id) {
-        handleMenuCommands(target.id);
-      }
-    });
+      // Gestione Tastiera Menu (Frecce, Esc, etc.)
+      navContainer.addEventListener('keydown', handleNavKeyDown);
+      
+      // Chiudi menu cliccando fuori
+      document.addEventListener('click', (e) => {
+        if (!navContainer.contains(e.target) && openDropdown) closeDropdown(openDropdown);
+      });
+    }
 
-    // --- B. DISPATCHER COMANDI (Sostituisce gli onclick nell'HTML) ---
-    function handleMenuCommands(id) {
-      switch (id) {
-        case 'btn-support-os':
-          openSupportPopup();
-          break;
-        case 'btn-contact-forum':
-          openContactPopup();
-          break;
-        case 'lang-toggle':
-          if (typeof toggleLanguage === 'function') toggleLanguage();
-          break;
-        // Nota: theme-toggle è gestito dal suo script initThemeToggle()
+    // --- [B] NAVIGAZIONE DA TASTIERA (Toggle Globale) ---
+    const toggleBtn = document.getElementById("keyboard-nav-toggle");
+    const body = document.body;
+    let keyboardNavActive = false;
+
+    function toggleKeyboardNavigation() {
+      keyboardNavActive = !keyboardNavActive;
+      body.classList.toggle("keyboard-navigation-on", keyboardNavActive);
+      if (toggleBtn) {
+        toggleBtn.setAttribute("aria-pressed", keyboardNavActive);
+        toggleBtn.setAttribute("data-active", keyboardNavActive);
+        toggleBtn.textContent = keyboardNavActive ? "✅ Navigazione Attiva" : "🔧 Navigazione Tastiera";
       }
     }
 
-    // --- C. LOGICA APERTURA/CHIUSURA MENU ---
+    toggleBtn?.addEventListener("click", toggleKeyboardNavigation);
+
+    // Attivazione automatica premendo TAB
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Tab" && !keyboardNavActive) {
+        toggleKeyboardNavigation();
+      }
+    });
+
+    // Rimuove hint animazione dopo 2.5s
+    setTimeout(() => toggleBtn?.classList.remove("hint"), 2500);
+
+    // --- [C] TEMA DINAMICO (Inizializzazione) ---
+    initThemeToggle();
+
+    // ———————————————————————————————————————————————————————
+    // 🔹 FUNZIONI INTERNE (Helper)
+    // ———————————————————————————————————————————————————————
+
+    function handleMenuCommands(id) {
+      switch (id) {
+        case 'btn-support-os': openSupportPopup(); break;
+        case 'btn-contact-forum': openContactPopup(); break;
+        case 'lang-toggle': if (typeof toggleLanguage === 'function') toggleLanguage(); break;
+      }
+    }
+
     function handleDropdownToggle(btn) {
       const dropdown = btn.nextElementSibling;
       const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
-      // Chiude altri menu aperti
-      if (openDropdown && openDropdown !== dropdown) {
-        closeDropdown(openDropdown);
-      }
-
+      if (openDropdown && openDropdown !== dropdown) closeDropdown(openDropdown);
+      
       if (isExpanded) {
         closeDropdown(dropdown);
       } else {
@@ -784,190 +814,97 @@ if ('requestIdleCallback' in window) {
     function closeDropdown(dropdown) {
       if (!dropdown) return;
       dropdown.classList.remove('show');
-      const btn = dropdown.previousElementSibling;
-      if (btn) btn.setAttribute('aria-expanded', 'false');
+      dropdown.previousElementSibling?.setAttribute('aria-expanded', 'false');
       openDropdown = null;
     }
 
-    // --- D. ACCESSIBILITÀ TASTIERA (Frecce, Home, End, Esc) ---
-    navContainer.addEventListener('keydown', (e) => {
+    function handleNavKeyDown(e) {
       const target = e.target;
-      
-      // ESC: Chiude il menu e riporta il focus sul trigger
       if (e.key === 'Escape' && openDropdown) {
         const triggerBtn = openDropdown.previousElementSibling;
         closeDropdown(openDropdown);
         triggerBtn.focus();
         return;
       }
-
-      // Navigazione interna al dropdown aperto
       if (openDropdown && openDropdown.contains(target)) {
         const items = Array.from(openDropdown.querySelectorAll('[role="menuitem"]:not([disabled])'));
         const currentIndex = items.indexOf(target);
-
-        switch (e.key) {
-          case 'ArrowDown':
-            e.preventDefault();
-            items[(currentIndex + 1) % items.length].focus();
-            break;
-          case 'ArrowUp':
-            e.preventDefault();
-            items[(currentIndex - 1 + items.length) % items.length].focus();
-            break;
-          case 'Home':
-            e.preventDefault();
-            items[0].focus();
-            break;
-          case 'End':
-            e.preventDefault();
-            items[items.length - 1].focus();
-            break;
-        }
-      } 
-      // Apertura con tastiera: sposta focus su primo item
-      else if (target.classList.contains('tech-nav-btn') && (e.key === 'Enter' || e.key === ' ')) {
-        setTimeout(() => {
-          const firstItem = target.nextElementSibling?.querySelector('[role="menuitem"]');
-          if (firstItem) firstItem.focus();
-        }, 120);
+        if (e.key === 'ArrowDown') { e.preventDefault(); items[(currentIndex + 1) % items.length].focus(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); items[(currentIndex - 1 + items.length) % items.length].focus(); }
+        else if (e.key === 'Home') { e.preventDefault(); items[0].focus(); }
+        else if (e.key === 'End') { e.preventDefault(); items[items.length - 1].focus(); }
+      } else if (target.classList.contains('tech-nav-btn') && (e.key === 'Enter' || e.key === ' ')) {
+        setTimeout(() => target.nextElementSibling?.querySelector('[role="menuitem"]')?.focus(), 120);
       }
-    });
-
-    // Chiudi menu se si clicca fuori dall'area nav
-    document.addEventListener('click', (e) => {
-      if (!navContainer.contains(e.target) && openDropdown) {
-        closeDropdown(openDropdown);
-      }
-    });
-  });
-})();
-
-// ———————————————————————
-// 🔹 LOGICA POPUP (Spostata qui per manutenzione centralizzata)
-// ———————————————————————
-function openPopup(url, title, width, height) {
-  const left = Math.floor((screen.width - width) / 2);
-  const top = Math.floor((screen.height - height) / 2);
-  const options = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,toolbar=no,location=no`;
-  
-  const popup = window.open(url, title, options);
-
-  if (!popup || popup.closed || typeof popup.closed == 'undefined') {
-    alert("Il popup è stato bloccato. Per favore, abilita i popup per questo sito.");
-    return;
-  }
-  popup.focus();
-}
-
-function openSupportPopup() {
-  openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support Chat GPT', 760, 440);
-}
-
-function openContactPopup() {
-  openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci - Forum ChatGPT', 825, 672);
-}
-
-// End MENU MODERNO 
-
-// ———————————————————————
-// GESTIONE NAVIGAZIONE DA TASTIERA (Pulsante)
-// ———————————————————————
-document.addEventListener("DOMContentLoaded", function () {
-// === 1. Controllo pagina (opzionale) ===
-if (!document.body.hasAttribute('data-modern-menu')) return;
-// === 2. Riferimenti agli elementi ===
-const toggleBtn = document.getElementById("keyboard-nav-toggle");
-const body = document.body;
-let keyboardNavActive = false;
-// === 3. Funzione per attivare/disattivare la modalità tastiera ===
-function toggleKeyboardNavigation() {
-keyboardNavActive = !keyboardNavActive;
-if (keyboardNavActive) {
-body.classList.add("keyboard-navigation-on");
-toggleBtn?.setAttribute("aria-pressed", "true");
-toggleBtn?.setAttribute("data-active", "true");
-toggleBtn.textContent = "✅ Navigazione Attiva";
-} else {
-body.classList.remove("keyboard-navigation-on");
-toggleBtn?.setAttribute("aria-pressed", "false");
-toggleBtn?.setAttribute("data-active", "false");
-toggleBtn.textContent = "🔧 Navigazione Tastiera";
- }
- }
-// === 4. Click sul pulsante ===
-toggleBtn?.addEventListener("click", toggleKeyboardNavigation);
-// === 5. Attivazione automatica con Tab ===
-document.addEventListener("keydown", function (e) {
-if (e.key === "Tab") {
-if (!keyboardNavActive) {
-toggleKeyboardNavigation();
-}
-}
-});
-// === 6. Rimuovi la classe 'hint' dopo l'animazione (dopo ~2.5s) ===
-setTimeout(() => {
-toggleBtn?.classList.remove("hint");
-}, 2500);
-});
-// === GESTIONE TEMA DINAMICO - BiotechProject (versione accessibile) ===
-function initThemeToggle() {
-  const themeBtn = document.getElementById('theme-toggle');
-  if (!themeBtn) return;
-// Temi compatibili con il glassmorphism
-  const themes = [
-    { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
-    { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
-    { name: 'Viola', rgb: '138, 43, 226', h: 270, s: '75%', l: '53%' },
-    { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
-    { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
-  ];
-  let currentThemeIndex = 0;
-// 🔹 Miglioramento 1: tema predefinito in base al contrasto preferito
-  if (window.matchMedia('(prefers-contrast: high)').matches) {
-    currentThemeIndex = themes.findIndex(t => t.name === 'Blu Profondo') || 0;
-  }
-// Ripristina il tema salvato (ha priorità su prefers-contrast)
-  const savedTheme = localStorage.getItem('biotech-theme');
-  if (savedTheme !== null) {
-    const index = parseInt(savedTheme, 10);
-    if (index >= 0 && index < themes.length) {
-      currentThemeIndex = index;
     }
-  }
-// 🔹 Funzione per aggiornare l'aria-label dinamicamente
-  function updateAriaLabel(themeName) {
-    themeBtn.setAttribute(
-      'aria-label',
-      `Cambia tema colore: attualmente ${themeName}, clicca per passare al successivo`
-    );
+  });
+
+  // ———————————————————————————————————————————————————————
+  // 🔹 LOGICA POPUP & TEMA (Spostate fuori dal DOMContentLoaded per pulizia)
+  // ———————————————————————————————————————————————————————
+  
+  function openPopup(url, title, width, height) {
+    const left = Math.floor((screen.width - width) / 2);
+    const top = Math.floor((screen.height - height) / 2);
+    const options = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,toolbar=no,location=no`;
+    const popup = window.open(url, title, options);
+    if (!popup || popup.closed) {
+      alert("Il popup è stato bloccato. Per favore, abilitalo nelle impostazioni.");
+      return;
+    }
+    popup.focus();
   }
 
-// Applica il tema corrente
-  function applyTheme(index) {
-    const theme = themes[index];
-    document.documentElement.style.setProperty('--color-accent-rgb', theme.rgb);
-    document.documentElement.style.setProperty('--color-accent-h', theme.h);
-    document.documentElement.style.setProperty('--color-accent-s', theme.s);
-    document.documentElement.style.setProperty('--color-accent-l', theme.l);
-    document.documentElement.style.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
-// Aggiorna testo e aria-label
-    themeBtn.textContent = `🎨 Tema: (${theme.name})`;
-    updateAriaLabel(theme.name);
+  function openSupportPopup() {
+    openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support Chat GPT', 760, 440);
   }
-// Applica il tema al caricamento
-  applyTheme(currentThemeIndex);
-// Cambia tema al click
-  themeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+
+  function openContactPopup() {
+    openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci - Forum ChatGPT', 825, 672);
+  }
+
+  function initThemeToggle() {
+    const themeBtn = document.getElementById('theme-toggle');
+    if (!themeBtn) return;
+
+    const themes = [
+      { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
+      { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
+      { name: 'Viola', rgb: '138, 43, 226', h: 270, s: '75%', l: '53%' },
+      { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
+      { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
+    ];
+
+    let currentThemeIndex = 0;
+    if (window.matchMedia('(prefers-contrast: high)').matches) {
+      currentThemeIndex = themes.findIndex(t => t.name === 'Blu Profondo') || 0;
+    }
+
+    const savedTheme = localStorage.getItem('biotech-theme');
+    if (savedTheme !== null) currentThemeIndex = parseInt(savedTheme, 10);
+
+    function applyTheme(index) {
+      const theme = themes[index];
+      const root = document.documentElement.style;
+      root.setProperty('--color-accent-rgb', theme.rgb);
+      root.setProperty('--color-accent-h', theme.h);
+      root.setProperty('--color-accent-s', theme.s);
+      root.setProperty('--color-accent-l', theme.l);
+      root.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
+      themeBtn.textContent = `🎨 Tema: (${theme.name})`;
+      themeBtn.setAttribute('aria-label', `Cambia tema: attualmente ${theme.name}`);
+    }
+
     applyTheme(currentThemeIndex);
-// Salva la scelta
-    localStorage.setItem('biotech-theme', currentThemeIndex);
-  });
-}
-// Inizializza al caricamento
-window.addEventListener('DOMContentLoaded', initThemeToggle);
+
+    themeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      applyTheme(currentThemeIndex);
+      localStorage.setItem('biotech-theme', currentThemeIndex);
+    });
+  }
+})();
 
 // Accessibilità video: supporto tastiera ai poster. Caricamento video solo al click (lazy load avanzato)
 function handleVideoPosterKey(event) {
