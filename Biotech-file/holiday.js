@@ -69,3 +69,43 @@ function turnOffLight() {
   img.classList.remove('bulb-glow');
 }
 // End effect around the bulb image
+
+// === EFFECT WITH FADE-IN SEQUENCE ===
+(function() {
+    const initFadeInSequence = () => {
+        const lines = document.querySelectorAll(".type-line");
+        let currentLineIndex = 0;
+
+        const showNextLine = () => {
+            if (currentLineIndex >= lines.length) return;
+
+            const line = lines[currentLineIndex];
+            // Aspetta che il testo sia stato iniettato dal tuo script lingua
+            const text = line.textContent.trim();
+
+            if (text.length === 0) {
+                // Se il testo non è ancora arrivato, riprova tra poco
+                setTimeout(showNextLine, 50);
+                return;
+            }
+
+            line.classList.add("is-visible"); // Fa apparire la riga
+            currentLineIndex++;
+            setTimeout(showNextLine, 500); // Ritardo tra una frase e l'altra (ms)
+        };
+
+        // Usa l'Intersection Observer per far partire l'animazione solo quando visibile
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                showNextLine();
+                observer.disconnect(); // Una volta avviata, non serve più osservare
+            }
+        }, { threshold: 0.2 }); // Inizia quando il 20% dell'elemento è visibile
+
+        const terminalWindow = document.querySelector(".terminal-window");
+        if (terminalWindow) observer.observe(terminalWindow);
+    };
+
+    // Assicurati che parta solo dopo che tutti i contenuti (e il tuo JSON) sono caricati
+    window.addEventListener("load", initFadeInSequence);
+})();
