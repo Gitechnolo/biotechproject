@@ -854,17 +854,7 @@ if ('requestIdleCallback' in window) {
     });
   }
 })();
-
-
-
-// Accessibilità video: supporto tastiera ai poster. Caricamento video solo al click (lazy load avanzato)
-function handleVideoPosterKey(event) {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    loadAndPlayVideo();
-  }
-}
-// End Accessibilità video   
+  
 
 // === Ultima modifica pagina ===
 /**
