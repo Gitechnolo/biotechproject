@@ -607,15 +607,17 @@ if ('requestIdleCallback' in window) {
 // ---End PERFORMANCE HELPERS ---
 
 // ——————————————————————————————————————————————————————————————————————————
-// BIOTECH PROJECT - CORE UI SYSTEM (Versione Consolidata)
-// Menu, Navigazione Tastiera, Popup e Tema Dinamico
+// BIOTECH PROJECT - CORE UI SYSTEM (Versione Integrale)
+// Gestione: Menu, Navigazione, Tema, Pronuncia e Modal
 // ——————————————————————————————————————————————————————————————————————————
 
 (function () {
-  // 1. EXIT EARLY: Se la pagina non richiede il menu moderno, interrompiamo tutto il parsing.
+  // 1. EXIT EARLY: Se la pagina non richiede il menu moderno, interrompiamo tutto.
   if (!document.body.hasAttribute('data-modern-menu')) return;
 
-  // Unico listener per velocizzare il parsing del DOM
+  /**
+   * Punto di ingresso unico per tutti i moduli interattivi.
+   */
   document.addEventListener('DOMContentLoaded', function () {
     
     // --- [A] CORE NAV SYSTEM (Menu & Dropdowns) ---
@@ -623,7 +625,6 @@ if ('requestIdleCallback' in window) {
     let openDropdown = null;
 
     if (navContainer) {
-      // Event Delegation per Click
       navContainer.addEventListener('click', (e) => {
         const target = e.target.closest('button, a');
         if (!target) return;
@@ -636,16 +637,14 @@ if ('requestIdleCallback' in window) {
         }
       });
 
-      // Gestione Tastiera Menu (Frecce, Esc, etc.)
       navContainer.addEventListener('keydown', handleNavKeyDown);
       
-      // Chiudi menu cliccando fuori
       document.addEventListener('click', (e) => {
         if (!navContainer.contains(e.target) && openDropdown) closeDropdown(openDropdown);
       });
     }
 
-    // --- [B] NAVIGAZIONE DA TASTIERA (Toggle Globale) ---
+    // --- [B] NAVIGAZIONE DA TASTIERA ---
     const toggleBtn = document.getElementById("keyboard-nav-toggle");
     const body = document.body;
     let keyboardNavActive = false;
@@ -662,22 +661,51 @@ if ('requestIdleCallback' in window) {
 
     toggleBtn?.addEventListener("click", toggleKeyboardNavigation);
 
-    // Attivazione automatica premendo TAB
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Tab" && !keyboardNavActive) {
-        toggleKeyboardNavigation();
-      }
+      if (e.key === "Tab" && !keyboardNavActive) toggleKeyboardNavigation();
     });
 
-    // Rimuove hint animazione dopo 2.5s
     setTimeout(() => toggleBtn?.classList.remove("hint"), 2500);
 
-    // --- [C] TEMA DINAMICO (Inizializzazione) ---
+    // --- [C] TEMA DINAMICO ---
     initThemeToggle();
 
+    // --- [D] GESTIONE PRONUNCIA E MODAL (Integrale) ---
+    initSpeechAndModals();
+
     // ———————————————————————————————————————————————————————
-    // 🔹 FUNZIONI INTERNE (Helper)
+    // 🔹 FUNZIONI INTERNE DI INIZIALIZZAZIONE (Helper)
     // ———————————————————————————————————————————————————————
+
+    function initSpeechAndModals() {
+      // 1. Gestione click sui pulsanti di pronuncia (🔊)
+      const audioButtons = document.querySelectorAll('.pronounce-btn');
+      audioButtons.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+          event.stopPropagation(); 
+          const term = btn.getAttribute('data-term');
+          const langAttr = btn.getAttribute('lang'); 
+          const language = (langAttr === 'en') ? 'inglese' : 'italiano';
+          speakTerm(term, language);
+        });
+      });
+
+      // 2. Gestione link Modal
+      const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
+      modalLinks.forEach(link => {
+        const triggerModal = (event) => {
+          event.preventDefault();
+          const imgId = link.getAttribute('data-target-img');
+          if (typeof openBiotechModal === 'function') {
+            openBiotechModal(imgId, event);
+          }
+        };
+        link.addEventListener('click', triggerModal);
+        link.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') triggerModal(e);
+        });
+      });
+    }
 
     function handleMenuCommands(id) {
       switch (id) {
@@ -691,7 +719,6 @@ if ('requestIdleCallback' in window) {
       const dropdown = btn.nextElementSibling;
       const isExpanded = btn.getAttribute('aria-expanded') === 'true';
       if (openDropdown && openDropdown !== dropdown) closeDropdown(openDropdown);
-      
       if (isExpanded) {
         closeDropdown(dropdown);
       } else {
@@ -730,13 +757,56 @@ if ('requestIdleCallback' in window) {
   });
 
   // ———————————————————————————————————————————————————————
-  // 🔹 LOGICA POPUP & TEMA (Spostate fuori dal DOMContentLoaded per pulizia)
+  // 🔹 LOGICA DI SUPPORTO (Utility esterne)
   // ———————————————————————————————————————————————————————
   
+  function speakTerm(term, language = 'italiano') {
+    if (!term) return;
+
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+
+    const customPronunciations = {
+      'crispr': 'Clustered Regularly Interspaced Short Palindromic Repeats',
+      'mitocondri': 'Mi-to-con-dri',
+      'lisosoma': 'Li-so-so-ma',
+      'miochine': 'Mi-o-ki-ne',
+      'sinaptogenesi': 'Si-na-to-jen-e-si',
+      'epigenetici': 'E-pi-je-ne-ti-ci',
+      'atp': 'Adenosina trifosfato',
+      'dna': 'Acido desossiribonucleico',
+      'rna': 'Acido ribonucleico',
+      'tegumento': 'Te-gu-men-to',
+      'pecquet': 'Pes-ché'     
+    };
+
+    const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
+    const utteranceText = customPronunciations[term.toLowerCase()] || term;
+    const utterance = new SpeechSynthesisUtterance(utteranceText);
+
+    utterance.lang = langMap[language] || 'it-IT';
+    utterance.rate = 0.8;   
+    utterance.pitch = 1.0;  
+    utterance.volume = 1.0; 
+
+    // Gestione annuncio Screen Reader
+    const announcement = document.getElementById('sr-announcement');
+    if (announcement) {
+      announcement.textContent = `Lettura avviata: ${term}.`;
+      setTimeout(() => {
+        if (announcement.textContent.includes(term)) announcement.textContent = '';
+      }, 1000);
+    }
+
+    console.log(`🔊 Pronuncia: "${term}" (${utterance.lang})`);
+    speechSynthesis.speak(utterance);
+  }
+
   function openPopup(url, title, width, height) {
     const left = Math.floor((screen.width - width) / 2);
     const top = Math.floor((screen.height - height) / 2);
-    const options = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,toolbar=no,location=no`;
+    const options = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`;
     const popup = window.open(url, title, options);
     if (!popup || popup.closed) {
       alert("Il popup è stato bloccato. Per favore, abilitalo nelle impostazioni.");
@@ -745,13 +815,8 @@ if ('requestIdleCallback' in window) {
     popup.focus();
   }
 
-  function openSupportPopup() {
-    openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support Chat GPT', 760, 440);
-  }
-
-  function openContactPopup() {
-    openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci - Forum ChatGPT', 825, 672);
-  }
+  function openSupportPopup() { openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support', 760, 440); }
+  function openContactPopup() { openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci', 825, 672); }
 
   function initThemeToggle() {
     const themeBtn = document.getElementById('theme-toggle');
@@ -765,21 +830,15 @@ if ('requestIdleCallback' in window) {
       { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
     ];
 
-    let currentThemeIndex = 0;
-    if (window.matchMedia('(prefers-contrast: high)').matches) {
-      currentThemeIndex = themes.findIndex(t => t.name === 'Blu Profondo') || 0;
-    }
-
-    const savedTheme = localStorage.getItem('biotech-theme');
-    if (savedTheme !== null) currentThemeIndex = parseInt(savedTheme, 10);
-
+    let currentThemeIndex = parseInt(localStorage.getItem('biotech-theme'), 10) || 0;
+    
     function applyTheme(index) {
       const theme = themes[index];
       const root = document.documentElement.style;
       root.setProperty('--color-accent-rgb', theme.rgb);
       root.setProperty('--color-accent-h', theme.h);
-      root.setProperty('--color-accent-s', theme.s);
-      root.setProperty('--color-accent-l', theme.l);
+      root.setProperty('--color-accent-s', theme.s || '100%');
+      root.setProperty('--color-accent-l', theme.l || '50%');
       root.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
       themeBtn.textContent = `🎨 Tema: (${theme.name})`;
       themeBtn.setAttribute('aria-label', `Cambia tema: attualmente ${theme.name}`);
@@ -834,96 +893,6 @@ function updateLastModified(lang) {
   el.textContent = `${label}: ${lastModifiedDate.toLocaleString(locale, options)}`;
 } 
 // === End ultima modifica pagina ===
-
-// === 🔊 BIOTECH PROJECT - GESTIONE PRONUNCIA E EVENTI (Versione Pulita) ===
-/**
- * Inizializzatore: attiva le funzioni quando la pagina è caricata.
- * Rimuove la necessità di onclick e onkeydown nell'HTML.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // 1. Gestione click sui pulsanti di pronuncia (🔊)
-  const audioButtons = document.querySelectorAll('.pronounce-btn');
-  audioButtons.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-      // Impedisce che il click attivi il modal se il bottone è dentro un link
-      event.stopPropagation(); 
-      
-      const term = btn.getAttribute('data-term');
-      const langAttr = btn.getAttribute('lang'); 
-      const language = (langAttr === 'en') ? 'inglese' : 'italiano';
-      
-      speakTerm(term, language);
-    });
-  });
-
-  // 2. Gestione click e tastiera sui link che aprono i Modal
-  const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
-  modalLinks.forEach(link => {
-    
-    const triggerModal = (event) => {
-      event.preventDefault();
-      const imgId = link.getAttribute('data-target-img');
-      
-      // Chiama la funzione openBiotechModal se esistente nel progetto
-      if (typeof openBiotechModal === 'function') {
-        openBiotechModal(imgId, event);
-      }
-    };
-
-    link.addEventListener('click', triggerModal);
-
-    // Gestione accessibilità (Tasto Invio o Spazio)
-    link.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        triggerModal(event);
-      }
-    });
-  });
-});
-
- // Funzione principale: riproduce la pronuncia di un termine.
- function speakTerm(term, language = 'italiano') {
-  if (!term) return;
-
-  if (speechSynthesis.speaking) {
-    speechSynthesis.cancel();
-  }
-
-  const customPronunciations = {
-    'crispr': 'Clustered Regularly Interspaced Short Palindromic Repeats',
-    'mitocondri': 'Mi-to-con-dri',
-    'lisosoma': 'Li-so-so-ma',
-    'miochine': 'Mi-o-ki-ne',
-    'sinaptogenesi': 'Si-na-to-jen-e-si',
-    'epigenetici': 'E-pi-je-ne-ti-ci',
-    'atp': 'Adenosina trifosfato',
-    'dna': 'Acido desossiribonucleico',
-    'rna': 'Acido ribonucleico',
-    'tegumento': 'Te-gu-men-to',
-    'pecquet': 'Pes-ché'     
-  };
-
-  const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
-  const utteranceText = customPronunciations[term.toLowerCase()] || term;
-  const utterance = new SpeechSynthesisUtterance(utteranceText);
-
-  utterance.lang = langMap[language] || 'it-IT';
-  utterance.rate = 0.8;   
-  utterance.pitch = 1.0;  
-  utterance.volume = 1.0; 
-
-  const announcement = document.getElementById('sr-announcement');
-  if (announcement) {
-    announcement.textContent = `Lettura avviata: ${term}.`;
-    setTimeout(() => {
-      if (announcement.textContent.includes(term)) announcement.textContent = '';
-    }, 1000);
-  }
-
-  console.log(`🔊 Pronuncia: "${term}" (${utterance.lang})`);
-  speechSynthesis.speak(utterance);
-}
 
 // =====================================================
 // GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
