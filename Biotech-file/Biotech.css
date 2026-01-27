@@ -839,23 +839,77 @@ canvas#particles-canvas {
 }   
 /* End Background particles */
 /* Contenitore stabile per il canvas */
-.canvas-wrapper {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-  /* Riserva lo spazio con aspect ratio fisso */
-  aspect-ratio: 1350 / 940; /* Basato sui width/height originali */
+.canvas-wrapper {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  z-index: -1;
   overflow: hidden;
+  /* Rimosso aspect-ratio: per uno sfondo full-screen è meglio lasciare che copra il 100% */
+  background: transparent;
+  /* Ottimizzazione rendering */
+  transform: translateZ(0); 
+  backface-visibility: hidden;
 }
-#particles-canvas {width: 100%; height: 100%;
-  object-fit: cover; /* Copre bene senza distorsioni */
+#particles-canvas {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
   display: block;
-}   
+  pointer-events: none;
+  opacity: 0.8; /* Leggermente ridotto per non coprire troppo la tua grafica di sfondo */
+  will-change: transform;
+}  
+/* Quando QRedshift è attivo, miglioriamo il contrasto per la grafica */
+body.qredshift-active {
+  /* Questo aiuta a mantenere i testi leggibili nonostante il tono sepia */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+} 
 /* End Contenitore stabile per il canvas */
 /* QRedshift Icon Style */
-.qredshift-icon {position: fixed; top: 18px; right: 18px; bottom: unset; z-index: 9999; background: #222e; color: rgba(255, 255, 238, 0.651); border-radius: 50%; box-shadow: 0 2px 8px #0006; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.7em; border: 1px solid #ffb3009a; cursor: pointer; user-select: none; transition: background 0.3s;}
-.qredshift-icon:hover {background: #ffb300cc; color: #222;}
+.qredshift-icon {
+  position: fixed; 
+  top: 18px; 
+  right: 18px; 
+  z-index: 9999; 
+  background: rgba(34, 46, 54, 0.85); /* Leggermente più opaco per leggibilità */
+  color: rgba(255, 255, 238, 0.8); 
+  border-radius: 50%; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5); 
+  width: 42px; 
+  height: 42px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.5em; 
+  border: 1px solid rgba(255, 179, 0, 0.5); 
+  cursor: pointer; 
+  user-select: none; 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.qredshift-icon:hover {
+  background: rgba(255, 179, 0, 0.9); 
+  color: #111;
+  transform: scale(1.1);
+}
 /* Migliora visibilità su mobile */
-@media (max-width: 600px) {.qredshift-icon {top: 10px; right: 10px; width: 36px; height: 36px; font-size: 1.3em;}}
-/* Nascondi QRedshift Icon su Tablet_forum.html */
-body[data-page="Tablet_forum"] .qredshift-icon {display: none !important;}
+@media (max-width: 600px) {
+  .qredshift-icon {
+    top: 10px; 
+    right: 10px; 
+    width: 38px; 
+    height: 38px; 
+    font-size: 1.2em;
+  }
+}
+
+/* Nascondi QRedshift Icon su pagine specifiche */
+body[data-page="Tablet_forum"] .qredshift-icon {
+  display: none !important;
+}
 /* End QRedshift Icon Style */
 /* Badge di accessibilità */
 .hover-effect img{height:42px;border:none;transition:transform .3s ease,filter .3s ease;display:block;margin:0 auto;}
