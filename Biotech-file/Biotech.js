@@ -615,15 +615,23 @@ if ('requestIdleCallback' in window) {
   // 1. EXIT EARLY: Se la pagina non richiede il menu moderno, interrompiamo tutto.
   if (!document.body.hasAttribute('data-modern-menu')) return;
 
+  // --- STATO GLOBALE E COSTANTI (Protette nella IIFE) ---
+  let currentLang = 'it';
+  let openDropdown = null;
+  const translatablePages = [
+    'index', 'Progetti', 'Staff', 'Marketing', 'Tech_Maturity', 
+    'Dermatologia', 'Cuore', 'Cellula', 'Apparato_digerente', 
+    'Apparato_respiratorio', 'Apparato_tegumentario', 'Sistema_linfatico', 
+    'Specials', 'Capelli'
+  ];
+
   /**
-   * Punto di ingresso unico per tutti i moduli interattivi.
+   * PUNTO DI INGRESSO UNICO
    */
   document.addEventListener('DOMContentLoaded', function () {
     
     // --- [A] CORE NAV SYSTEM (Menu & Dropdowns) ---
     const navContainer = document.getElementById('tech-main-menu');
-    let openDropdown = null;
-
     if (navContainer) {
       navContainer.addEventListener('click', (e) => {
         const target = e.target.closest('button, a');
@@ -660,59 +668,54 @@ if ('requestIdleCallback' in window) {
     }
 
     toggleBtn?.addEventListener("click", toggleKeyboardNavigation);
-
     document.addEventListener("keydown", (e) => {
       if (e.key === "Tab" && !keyboardNavActive) toggleKeyboardNavigation();
     });
-
     setTimeout(() => toggleBtn?.classList.remove("hint"), 2500);
 
     // --- [C] TEMA DINAMICO ---
     initThemeToggle();
 
-    // --- [D] GESTIONE PRONUNCIA E MODAL (Integrale) ---
+    // --- [D] GESTIONE PRONUNCIA E MODAL ---
     initSpeechAndModals();
+
+    // --- [E] SISTEMA TRADUZIONE ---
+    initTranslations().catch(err => console.error('Errore traduzioni:', err));
+    window.toggleLanguage = toggleLanguage; // Rende la funzione accessibile allo switch
 
     // ———————————————————————————————————————————————————————
     // 🔹 FUNZIONI INTERNE DI INIZIALIZZAZIONE (Helper)
     // ———————————————————————————————————————————————————————
 
-    function initSpeechAndModals() {
-      // 1. Gestione click sui pulsanti di pronuncia (🔊)
-      const audioButtons = document.querySelectorAll('.pronounce-btn');
-      audioButtons.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-          event.stopPropagation(); 
-          const term = btn.getAttribute('data-term');
-          const langAttr = btn.getAttribute('lang'); 
-          const language = (langAttr === 'en') ? 'inglese' : 'italiano';
-          speakTerm(term, language);
-        });
-      });
-
-      // 2. Gestione link Modal
-      const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
-      modalLinks.forEach(link => {
-        const triggerModal = (event) => {
-          event.preventDefault();
-          const imgId = link.getAttribute('data-target-img');
-          if (typeof openBiotechModal === 'function') {
-            openBiotechModal(imgId, event);
-          }
-        };
-        link.addEventListener('click', triggerModal);
-        link.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') triggerModal(e);
-        });
-      });
-    }
-
     function handleMenuCommands(id) {
       switch (id) {
         case 'btn-support-os': openSupportPopup(); break;
         case 'btn-contact-forum': openContactPopup(); break;
-        case 'lang-toggle': if (typeof toggleLanguage === 'function') toggleLanguage(); break;
+        case 'lang-toggle': toggleLanguage(); break;
       }
+    }
+
+    function initSpeechAndModals() {
+      const audioButtons = document.querySelectorAll('.pronounce-btn');
+      audioButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation(); 
+          const term = btn.getAttribute('data-term');
+          const language = (btn.getAttribute('lang') === 'en') ? 'inglese' : 'italiano';
+          speakTerm(term, language);
+        });
+      });
+
+      const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
+      modalLinks.forEach(link => {
+        const triggerModal = (e) => {
+          e.preventDefault();
+          const imgId = link.getAttribute('data-target-img');
+          if (typeof openBiotechModal === 'function') openBiotechModal(imgId, e);
+        };
+        link.addEventListener('click', triggerModal);
+        link.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') triggerModal(e); });
+      });
     }
 
     function handleDropdownToggle(btn) {
@@ -748,112 +751,125 @@ if ('requestIdleCallback' in window) {
         const currentIndex = items.indexOf(target);
         if (e.key === 'ArrowDown') { e.preventDefault(); items[(currentIndex + 1) % items.length].focus(); }
         else if (e.key === 'ArrowUp') { e.preventDefault(); items[(currentIndex - 1 + items.length) % items.length].focus(); }
-        else if (e.key === 'Home') { e.preventDefault(); items[0].focus(); }
-        else if (e.key === 'End') { e.preventDefault(); items[items.length - 1].focus(); }
-      } else if (target.classList.contains('tech-nav-btn') && (e.key === 'Enter' || e.key === ' ')) {
-        setTimeout(() => target.nextElementSibling?.querySelector('[role="menuitem"]')?.focus(), 120);
       }
     }
   });
 
   // ———————————————————————————————————————————————————————
-  // 🔹 LOGICA DI SUPPORTO (Utility esterne)
+  // 🔹 LOGICA TRADUZIONI (Utility)
   // ———————————————————————————————————————————————————————
-  
-  function speakTerm(term, language = 'italiano') {
+
+  async function initTranslations() {
+    const pageName = getPageName();
+    const savedLang = localStorage.getItem('preferred-language') || (navigator.language.startsWith('en') ? 'en' : 'it');
+    const translations = { it: {}, en: {} };
+
+    const common = await loadTranslation('lang/common.json');
+    if (common) { translations.it = { ...common.it }; translations.en = { ...common.en }; }
+
+    if (translatablePages.includes(pageName)) {
+      const pageKey = getPageKey(pageName);
+      const pageData = await loadTranslation(`lang/${pageKey}.json`);
+      if (pageData) {
+        if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+        if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+      }
+    }
+
+    window.cachedTranslations = translations;
+    applyTranslations(translations, savedLang);
+    updateLanguageButton(savedLang);
+    document.documentElement.lang = savedLang;
+    currentLang = savedLang;
+  }
+
+  function applyTranslations(translations, lang) {
+    document.querySelectorAll('[data-lang-key]').forEach(el => {
+      const key = el.getAttribute('data-lang-key');
+      const value = translations[lang]?.[key];
+      if (value !== undefined && value !== null) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.setAttribute('placeholder', value);
+        } else {
+          const bold = el.querySelector('b');
+          if (bold) bold.textContent = value; else el.innerHTML = value;
+        }
+      }
+    });
+    if (typeof updateLastModified === 'function') updateLastModified(lang);
+  }
+
+  function toggleLanguage() {
+    const newLang = currentLang === 'it' ? 'en' : 'it';
+    localStorage.setItem('preferred-language', newLang);
+    initTranslations(); // Ricarica e applica
+  }
+
+  function getPageName() {
+    return window.location.pathname.split('/').pop().replace('.html', '').replace('-semplice', '') || 'index';
+  }
+
+  function getPageKey(pageName) {
+    const map = { 'index': 'home', 'Tech_Maturity': 'tech_maturity', 'Apparato_digerente': 'apparato_digerente' };
+    return map[pageName] || pageName.toLowerCase();
+  }
+
+  async function loadTranslation(path) {
+    try {
+      const res = await fetch(path);
+      return res.ok ? await res.json() : null;
+    } catch (err) { return null; }
+  }
+
+  function updateLanguageButton(lang) {
+    const flag = document.getElementById('lang-flag');
+    const text = document.getElementById('lang-text');
+    if (flag) flag.textContent = (lang === 'it') ? '🇬🇧' : '🇮🇹';
+    if (text) text.textContent = (lang === 'it') ? 'English' : 'Italiano';
+  }
+
+  // ———————————————————————————————————————————————————————
+  // 🔹 UTILITY VARIE (Audio, Popup, Tema)
+  // ———————————————————————————————————————————————————————
+
+  function speakTerm(term, language) {
     if (!term) return;
-
-    if (speechSynthesis.speaking) {
-      speechSynthesis.cancel();
-    }
-
-    const customPronunciations = {
-      'crispr': 'Clustered Regularly Interspaced Short Palindromic Repeats',
-      'mitocondri': 'Mi-to-con-dri',
-      'lisosoma': 'Li-so-so-ma',
-      'miochine': 'Mi-o-ki-ne',
-      'sinaptogenesi': 'Si-na-to-jen-e-si',
-      'epigenetici': 'E-pi-je-ne-ti-ci',
-      'atp': 'Adenosina trifosfato',
-      'dna': 'Acido desossiribonucleico',
-      'rna': 'Acido ribonucleico',
-      'tegumento': 'Te-gu-men-to',
-      'pecquet': 'Pes-ché'     
-    };
-
-    const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
-    const utteranceText = customPronunciations[term.toLowerCase()] || term;
-    const utterance = new SpeechSynthesisUtterance(utteranceText);
-
-    utterance.lang = langMap[language] || 'it-IT';
-    utterance.rate = 0.8;   
-    utterance.pitch = 1.0;  
-    utterance.volume = 1.0; 
-
-    // Gestione annuncio Screen Reader
-    const announcement = document.getElementById('sr-announcement');
-    if (announcement) {
-      announcement.textContent = `Lettura avviata: ${term}.`;
-      setTimeout(() => {
-        if (announcement.textContent.includes(term)) announcement.textContent = '';
-      }, 1000);
-    }
-
-    console.log(`🔊 Pronuncia: "${term}" (${utterance.lang})`);
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(term);
+    utterance.lang = (language === 'inglese') ? 'en-US' : 'it-IT';
+    utterance.rate = 0.8;
     speechSynthesis.speak(utterance);
   }
 
   function openPopup(url, title, width, height) {
-    const left = Math.floor((screen.width - width) / 2);
-    const top = Math.floor((screen.height - height) / 2);
-    const options = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`;
-    const popup = window.open(url, title, options);
-    if (!popup || popup.closed) {
-      alert("Il popup è stato bloccato. Per favore, abilitalo nelle impostazioni.");
-      return;
-    }
-    popup.focus();
+    const left = (screen.width - width) / 2;
+    const top = (screen.height - height) / 2;
+    window.open(url, title, `width=${width},height=${height},top=${top},left=${left}`);
   }
 
-  function openSupportPopup() { openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'O.S. Support', 760, 440); }
-  function openContactPopup() { openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contattaci', 825, 672); }
+  function openSupportPopup() { openPopup('https://gitechnolo.github.io/biotechproject/O.S_support.html', 'Support', 760, 440); }
+  function openContactPopup() { openPopup('https://gitechnolo.github.io/biotechproject/Tablet_forum.html', 'Contact', 825, 672); }
 
   function initThemeToggle() {
     const themeBtn = document.getElementById('theme-toggle');
     if (!themeBtn) return;
-
-    const themes = [
-      { name: 'Verde', rgb: '0, 230, 118', h: 143, s: '100%', l: '45%' },
-      { name: 'Ciano', rgb: '0, 200, 255', h: 190, s: '100%', l: '50%' },
-      { name: 'Viola', rgb: '138, 43, 226', h: 270, s: '75%', l: '53%' },
-      { name: 'Arancione', rgb: '255, 140, 0', h: 39, s: '100%', l: '50%' },
-      { name: 'Blu Profondo', rgb: '0, 120, 255', h: 210, s: '100%', l: '50%' }
-    ];
-
-    let currentThemeIndex = parseInt(localStorage.getItem('biotech-theme'), 10) || 0;
-    
-    function applyTheme(index) {
-      const theme = themes[index];
-      const root = document.documentElement.style;
-      root.setProperty('--color-accent-rgb', theme.rgb);
-      root.setProperty('--color-accent-h', theme.h);
-      root.setProperty('--color-accent-s', theme.s || '100%');
-      root.setProperty('--color-accent-l', theme.l || '50%');
-      root.setProperty('--color-glow', `hsl(${theme.h}, 100%, 70%)`);
-      themeBtn.textContent = `🎨 Tema: (${theme.name})`;
-      themeBtn.setAttribute('aria-label', `Cambia tema: attualmente ${theme.name}`);
-    }
-
-    applyTheme(currentThemeIndex);
-
-    themeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      applyTheme(currentThemeIndex);
-      localStorage.setItem('biotech-theme', currentThemeIndex);
+    const themes = [{ name: 'Verde', rgb: '0, 230, 118', h: 143 }, { name: 'Ciano', rgb: '0, 200, 255', h: 190 }];
+    let idx = parseInt(localStorage.getItem('biotech-theme')) || 0;
+    const apply = (i) => {
+      const t = themes[i];
+      document.documentElement.style.setProperty('--color-accent-rgb', t.rgb);
+      themeBtn.textContent = `🎨 Tema: (${t.name})`;
+    };
+    apply(idx);
+    themeBtn.addEventListener('click', () => {
+      idx = (idx + 1) % themes.length;
+      apply(idx);
+      localStorage.setItem('biotech-theme', idx);
     });
   }
 })();
+
+
 
 // Accessibilità video: supporto tastiera ai poster. Caricamento video solo al click (lazy load avanzato)
 function handleVideoPosterKey(event) {
@@ -894,246 +910,3 @@ function updateLastModified(lang) {
 } 
 // === End ultima modifica pagina ===
 
-// =====================================================
-// GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
-// Supporta menu con <b>, ritardo sicuro, localStorage
-// =====================================================
-
-let currentLang = 'it';
-
-// Pagine che hanno un JSON specifico
-const translatablePages = [
-  'index',
-  'Progetti',
-  'Staff',
-  'Marketing',
-  'Tech_Maturity',
-  'Dermatologia',
-  'Cuore',
-  'Cellula',
-  'Apparato_digerente',
-  'Apparato_respiratorio',
-  'Apparato_tegumentario',
-  'Sistema_linfatico',
-  'Specials',
-  'Capelli'
-];
-
-// Mappa nome pagina → nome file JSON
-function getPageKey(pageName) {
-  const map = {
-    'index': 'home',
-    'Tech_Maturity': 'tech_maturity',
-    'Apparato_digerente': 'apparato_digerente',
-    'Apparato_respiratorio': 'apparato_respiratorio',
-    'Apparato_tegumentario': 'apparato_tegumentario',
-    'Sistema_linfatico': 'sistema_linfatico'
-  };
-  return map[pageName] || pageName.toLowerCase();
-}
-
-// Estrae il nome della pagina (senza -semplice)
-function getPageName() {
-  const path = window.location.pathname;
-  const fileName = path.split('/').pop().replace('.html', '');
-  return fileName.replace('-semplice', '');
-}
-
-// Carica un file JSON
-async function loadTranslation(path) {
-  try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`File non trovato: ${path}`);
-    return await res.json();
-  } catch (err) {
-    console.warn(err);
-    return null;
-  }
-}
-// ===========================
-// APPLICA LE TRADUZIONI SENZA DISTRUGGERE IL DOM
-// ===========================
-function applyTranslations(translations, lang) {
-  document.querySelectorAll('[data-lang-key]').forEach(el => {
-    const key = el.getAttribute('data-lang-key');
-    const value = translations[lang]?.[key];
-
-    if (value !== undefined && value !== null) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.setAttribute('placeholder', value);
-      } else if (el.tagName === 'IMG') {
-        // Aggiorna l'attributo ALT (fondamentale per accessibilità)
-        el.setAttribute('alt', value);
-        
-        // AGGIORNAMENTO DINAMICO PER BIOTECH MODAL
-        // Se l'immagine tradotta è una di quelle del popup, aggiorniamo il caption visibile
-        const modal = document.getElementById("myModal");
-        const modalImg = document.getElementById("img01");
-        const captionText = document.getElementById("caption");
-        
-        // Se il modal è aperto E l'immagine nel modal corrisponde a quella che stiamo traducendo
-        if (modal && modal.classList.contains("show") && modalImg && modalImg.src === el.src) {
-          captionText.textContent = value;
-        }
-      } else if (el.hasAttribute('aria-label')) {
-        el.setAttribute('aria-label', value);
-        const bold = el.querySelector('b');
-        if (bold) {
-          bold.textContent = value;
-        } else {
-          el.innerHTML = value; 
-        }
-      } else {
-        const bold = el.querySelector('b');
-        if (bold) {
-          bold.textContent = value;
-        } else {
-          el.innerHTML = value; 
-        }
-      }
-    }
-  });
-       updateLastModified(lang); // Last edit: it - en
-
-  console.log(`✅ Traduzioni applicate in ${lang}`);
-}   
-// ===========================
-// INIZIALIZZA IL SISTEMA DI TRADUZIONE (SENZA RITARDO BLOCCANTE)
-// ===========================
-async function initTranslations() {
-  // ESECUZIONE IMMEDIATA: Le richieste fetch beneficeranno ora del preload nel <head>
-  const pageName = getPageName();
-  const savedLang = getSavedLanguage();
-
-  // ===========================
-  // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
-  // ===========================
-  if (!translatablePages.includes(pageName)) {
-    // La chiamata a loadTranslation('lang/common.json') sfrutterà il preload
-    const common = await loadTranslation('lang/common.json');
-    const translations = {
-      it: { ...(common?.it || {}) },
-      en: { ...(common?.en || {}) }
-    };
-
-    applyTranslations(translations, savedLang);
-    updateLanguageButton(savedLang);
-    document.documentElement.lang = savedLang;
-
-    return;
-  }
-  // ===========================
-  // CASO 2: Pagina traducibile → carica common + specifico
-  // ===========================
-  const translations = { it: {}, en: {} };
-
-  // Queste chiamate sfrutteranno i preload nel <head>
-  const common = await loadTranslation('lang/common.json');
-  if (common) {
-    translations.it = { ...common.it };
-    translations.en = { ...common.en };
-  }
-
-  const pageKey = getPageKey(pageName);
-  const pageData = await loadTranslation(`lang/${pageKey}.json`);
-  if (pageData) {
-    if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-    if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-  }
-  // Applica le traduzioni
-  applyTranslations(translations, savedLang);
-  updateLanguageButton(savedLang);
-  document.documentElement.lang = savedLang;
-  currentLang = savedLang;
-}
-// ===========================
-// OTTIENI LA LINGUA PREFERITA
-// ===========================
-function getSavedLanguage() {
-  return localStorage.getItem('preferred-language') || 
-         (navigator.language.startsWith('en') ? 'en' : 'it');
-}
-// ===========================
-// AGGIORNA IL PULSANTE LINGUA
-// ===========================
-function updateLanguageButton(lang) {
-  const flag = document.getElementById('lang-flag');
-  const text = document.getElementById('lang-text');
-  const button = document.getElementById('lang-toggle');
-  const label = document.getElementById('lang-label');
-
-  if (!flag || !button) return;
-
-  if (lang === 'it') {
-    flag.textContent = '🇬🇧';
-    if (text) text.textContent = 'English';
-    if (label) label.textContent = 'Switch language';
-    button.setAttribute('aria-label', 'Switch to English');
-  } else {
-    flag.textContent = '🇮🇹';
-    if (text) text.textContent = 'Italiano';
-    if (label) label.textContent = 'Cambia lingua';
-    button.setAttribute('aria-label', 'Cambia lingua in italiano');
-  }
-}
-// ===========================
-// CAMBIA LINGUA AL CLICK
-// ===========================
-function setLanguage(lang) {
-  const pageName = getPageName();
-  const isTranslatable = translatablePages.includes(pageName);
-  
-  // Prepariamo le promesse: common è sempre necessaria
-  const promises = [loadTranslation('lang/common.json')];
-  
-  // Se la pagina è specifica, carichiamo anche il suo file
-  if (isTranslatable) {
-    const pageKey = getPageKey(pageName);
-    promises.push(loadTranslation(`lang/${pageKey}.json`));
-  }
-
-  Promise.all(promises).then(([common, pageData]) => {
-    // Unifichiamo le traduzioni in un unico oggetto
-    const translations = {
-      it: { ...(common?.it || {}), ...(pageData?.it || {}) },
-      en: { ...(common?.en || {}), ...(pageData?.en || {}) }
-    };
-
-    // RENDIAMO LE TRADUZIONI GLOBALI
-    // Questo permette a filterSelection di leggerle istantaneamente
-    window.cachedTranslations = translations;
-
-    // Applichiamo le modifiche
-    setTimeout(() => {
-      applyTranslations(translations, lang);
-      updateLanguageButton(lang);
-      document.documentElement.lang = lang;
-      currentLang = lang;
-      localStorage.setItem('preferred-language', lang);
-      
-      // Se esiste un messaggio di filtro attivo, aggiornalo subito
-      const msgEl = document.getElementById('filter-message');
-      if (msgEl && msgEl.style.display === 'block') {
-        msgEl.textContent = translations[lang]['filter-empty'] || "";
-      }
-    }, 100);
-  });
-}
-// ===========================
-// TOGGLE LINGUA (chiamato da onclick)
-// ===========================
-function toggleLanguage() {
-  const newLang = currentLang === 'it' ? 'en' : 'it';
-  setLanguage(newLang);
-}
-// ===========================
-// AVVIO AL CARICAMENTO DELLA PAGINA
-// ===========================
-document.addEventListener('DOMContentLoaded', () => {
-  initTranslations().catch(err => {
-    console.error('Errore nel caricamento delle traduzioni:', err);
-  });
-// Rendi disponibile globalmente
-  window.toggleLanguage = toggleLanguage;
-}); 
-// === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
