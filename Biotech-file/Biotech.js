@@ -945,7 +945,7 @@ function initializeVideoControls(video, controls) {
 
 // --- 4. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("🚀 Avvio sistema unificato...");
+  console.log("Avvio sistema unificato...");
 
   // A. Inizializza Lingua
   try {
