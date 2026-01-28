@@ -95,7 +95,7 @@ ctx.beginPath();
 ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
 ctx.fillStyle = c.color;
 ctx.shadowColor = c.color;
-ctx.shadowBlur = 12; // Ridotto da 18 a 12 per risparmiare GPU
+ctx.shadowBlur = 5; // Ridotto da 18 a 5 per risparmiare GPU
 ctx.fill();
 ctx.shadowBlur = 0; // Reset subito per evitare accumulo
 });
