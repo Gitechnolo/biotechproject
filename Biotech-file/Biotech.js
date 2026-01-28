@@ -147,26 +147,31 @@ function QRedshift() {
   let currentMode = ""; // "day" o "night"
 
   // 1. Funzione per applicare lo stile visivo corretto
+  // 1. Funzione per applicare lo stile visivo corretto (Sincronizzata)
   function updateVisuals() {
-    if (!isActive) return;
+    // CRITICO: Se l'utente ha spento il Comfort, non mostrare nulla
+    if (!isActive) {
+      if (particles) particles.style.display = 'none';
+      if (dna) dna.style.display = 'none';
+      return;
+    }
 
     const hour = new Date().getHours();
     const isNight = (hour >= 19 || hour < 7);
     const newMode = isNight ? "night" : "day";
 
-    // Applichiamo il filtro solo se necessario o se l'ora è cambiata
+    // Applichiamo i filtri
     document.body.classList.add('qredshift-active');
-    document.body.style.transition = 'filter 1.5s ease'; // Transizione dolce
     document.body.style.filter = isNight 
       ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
       : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
 
-    if (particles) particles.style.display = '';
-    if (dna) dna.style.display = '';
+    // MOSTRA gli elementi solo se isActive è true
+    if (particles) particles.style.display = 'block';
+    if (dna) dna.style.display = 'block';
 
-    // Sincronizzazione con il controller delle particelle
     if (window.particlesController && newMode !== currentMode) {
-      window.particlesController.resizeCanvas(); // Triggera il reset interno delle particelle
+      window.particlesController.resizeCanvas(); 
     }
     currentMode = newMode;
   }
