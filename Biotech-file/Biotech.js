@@ -3,131 +3,122 @@
 // 1. LOGICA PARTICELLE 
 // =======================================
 (function () {
-  'use strict';
-
-  function initParticles(canvasId, options = {}) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
-    let animationId;
-    let checkInterval;
-    let width, height;
-    let particles = [];
-    let currentMode = ""; // "day" o "night"
-
-    // 1. FUNZIONE DI CONFIGURAZIONE (Determina lo stile in base all'ora)
-    function getConfig() {
-      const hour = new Date().getHours();
-      const isNight = hour >= 19 || hour < 7;
-      
-      if (isNight) {
-        return {
-          mode: "night",
-          count: Math.min(options.count || 30, 40),
-          speed: 0.5,
-          radiusMin: 1.5,
-          radiusMax: 4,
-          colors: ["rgba(180, 220, 255, 0.25)", "rgba(220, 255, 180, 0.22)", "rgba(255, 220, 180, 0.19)"]
-        };
-      }
-      return {
-        mode: "day",
-        count: Math.min(options.count || 50, 60),
-        speed: 0.8,
-        radius: 2,
-        color: 'rgba(231, 231, 231, 0.45)' // color: 'rgba(180, 255, 200, 0.4)' (per un tocco di verde Biotech)
-      };
-    }
-
-    // 2. FUNZIONE DI CREAZIONE/RESET PARTICELLE
-    function setupParticles() {
-      const cfg = getConfig();
-      currentMode = cfg.mode;
-      particles = Array.from({ length: cfg.count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * cfg.speed,
-        vy: (Math.random() - 0.5) * cfg.speed,
-        r: cfg.mode === "night" ? (cfg.radiusMin + Math.random() * (cfg.radiusMax - cfg.radiusMin)) : cfg.radius,
-        color: cfg.mode === "night" ? cfg.colors[Math.floor(Math.random() * cfg.colors.length)] : cfg.color
-      }));
-    }
-
-    function updateDimensions() {
-      const dpr = window.devicePixelRatio || 1;
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.scale(dpr, dpr);
-      setupParticles(); // Rigenera se ridimensioni
-    }
-
-    // 3. LOGICA DI ANIMAZIONE OTTIMIZZATA
-    let lastFrameTime = 0;
-    function animate(timestamp) {
-      if (timestamp - lastFrameTime < 33.3) { // Target ~30fps
-        animationId = requestAnimationFrame(animate);
-        return;
-      }
-      lastFrameTime = timestamp;
-      ctx.clearRect(0, 0, width, height);
-
-      if (currentMode === "day") {
-        ctx.beginPath();
-        ctx.fillStyle = particles[0]?.color;
-        for (let p of particles) {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0 || p.x > width) p.vx *= -1;
-          if (p.y < 0 || p.y > height) p.vy *= -1;
-          ctx.moveTo(p.x + p.r, p.y);
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        }
-        ctx.fill();
-      } else {
-        for (let p of particles) {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0 || p.x > width) p.vx *= -1;
-          if (p.y < 0 || p.y > height) p.vy *= -1;
-          ctx.beginPath();
-          ctx.fillStyle = p.color;
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-      animationId = requestAnimationFrame(animate);
-    }
-
-    // 4. IL "CERVELLO" DELLO SWITCH (Controlla ogni 60 secondi)
-    function startAutoSwitch() {
-      checkInterval = setInterval(() => {
-        const hour = new Date().getHours();
-        const neededMode = (hour >= 19 || hour < 7) ? "night" : "day";
-        if (neededMode !== currentMode) {
-          setupParticles(); // Cambia stile se l'ora è passata alla soglia
-        }
-      }, 60000); 
-    }
-
-    // Avvio
-    updateDimensions();
-    animate(performance.now());
-    startAutoSwitch();
-
-    window.addEventListener('resize', updateDimensions);
-
-    return {
-      destroy: () => {
-        if (animationId) cancelAnimationFrame(animationId);
-        if (checkInterval) clearInterval(checkInterval);
-        window.removeEventListener('resize', updateDimensions);
-      },
-      resizeCanvas: updateDimensions
-    };
-  }
-
-  window.initParticles = initParticles;
+'use strict';
+function randomStemCellColor() {
+const colors = [
+"rgba(180, 220, 255, 0.26)",
+"rgba(220, 255, 180, 0.22)",
+"rgba(255, 220, 180, 0.19)",
+"rgba(200, 255, 220, 0.21)",
+"rgba(255, 200, 220, 0.21)",
+];
+return colors[Math.floor(Math.random() * colors.length)];
+}
+function initParticles(canvasId, options = {}) {
+const canvas = document.getElementById(canvasId);
+if (!canvas) return;
+const ctx = canvas.getContext('2d', { alpha: true });
+let animationId;
+// Riduci il frame rate per risparmiare CPU
+const FRAME_DELAY = 100; // ~10 FPS invece di 60
+let lastFrameTime = 0;
+function resizeCanvas() {
+const dpr = window.devicePixelRatio || 1;
+const w = window.innerWidth;
+const h = window.innerHeight;
+// Dimensioni di rendering (risoluzione)
+canvas.width = w * dpr;
+canvas.height = h * dpr;
+// Dimensioni di visualizzazione (layout)
+canvas.style.width = '100vw';
+canvas.style.height = '100vh';
+// Scalatura per DPI
+ctx.scale(dpr, dpr);
+}
+// RIGA RIMOSSA: Non chiamare resizeCanvas() immediatamente per evitare Layout Thrashing
+window.addEventListener('resize', resizeCanvas);
+const hour = new Date().getHours();
+const isDay = hour >= 7 && hour < 19;
+if (isDay) {
+// Particelle di giorno
+const count = Math.min(options.count || 50, 60); // Cap per dispositivi deboli
+const color = options.color || 'rgba(231, 231, 231, 0.47)';
+const radius = options.radius || 2;
+const speed = options.speed || 1;
+const particles = Array.from({ length: count }, () => ({
+x: Math.random() * window.innerWidth,
+y: Math.random() * window.innerHeight,
+vx: (Math.random() - 0.5) * speed,
+vy: (Math.random() - 0.5) * speed,
+}));
+function animate(timestamp) {
+if (!lastFrameTime || timestamp - lastFrameTime >= FRAME_DELAY) {
+ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+particles.forEach(p => {
+p.x += p.vx;
+p.y += p.vy;
+if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
+if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
+ctx.beginPath();
+ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+ctx.fillStyle = color;
+ctx.fill();
+});
+lastFrameTime = timestamp;
+}
+animationId = requestAnimationFrame(animate);
+}
+animate(0);
+} else {
+// Cellule staminali di notte (più morbide, meno intense)
+const count = Math.min(options.count || 30, 40);
+const minRadius = 1.5;
+const maxRadius = 4;
+const speed = options.speed || 0.6;
+const cells = Array.from({ length: count }, () => ({
+x: Math.random() * window.innerWidth,
+y: Math.random() * window.innerHeight,
+vx: (Math.random() - 0.5) * speed,
+vy: (Math.random() - 0.5) * speed,
+r: minRadius + Math.random() * (maxRadius - minRadius),
+color: randomStemCellColor(),
+}));
+function animateStemCells(timestamp) {
+if (!lastFrameTime || timestamp - lastFrameTime >= FRAME_DELAY) {
+ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+cells.forEach(c => {
+c.x += c.vx;
+c.y += c.vy;
+if (c.x < 0 || c.x > window.innerWidth) c.vx *= -1;
+if (c.y < 0 || c.y > window.innerHeight) c.vy *= -1;
+ctx.beginPath();
+ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+ctx.fillStyle = c.color;
+ctx.shadowColor = c.color;
+ctx.shadowBlur = 12; // Ridotto da 18 a 12 per risparmiare GPU
+ctx.fill();
+ctx.shadowBlur = 0; // Reset subito per evitare accumulo
+});
+lastFrameTime = timestamp;
+}
+animationId = requestAnimationFrame(animateStemCells);
+}
+animateStemCells();
+}
+// Cleanup function esposta
+function destroy() {
+if (animationId) {
+cancelAnimationFrame(animationId);
+animationId = null;
+}
+window.removeEventListener('resize', resizeCanvas);
+}
+return { destroy, resizeCanvas }; // resizeCanvas ESPONIBILE per la chiamata ritardata
+}
+// Esporre solo la funzione principale in window
+if (typeof window !== 'undefined') {
+window.initParticles = initParticles;
+}
 })();
 
 // =======================================
@@ -137,108 +128,161 @@
 function QRedshift() {
   const menuContainer = document.getElementById('tech-main-menu');
   const storageKey = 'qredshift_disabled';
+
+  // 1. Uscita Pura
   if (!menuContainer) return;
 
+  // --- Cattura Riferimenti ---
   const particles = document.getElementById('particles-canvas');
   const dna = document.querySelector('.dna-container-8');
-  const storageDisabled = localStorage.getItem(storageKey) === 'true';
 
-  let isActive = !storageDisabled;
-  let currentMode = ""; // "day" o "night"
+  // --- Lettura dello Stato Precedente ---
+  const isDisabledFromStorage = localStorage.getItem(storageKey) === 'true';
 
-  // 1. Funzione per applicare lo stile visivo corretto
-  // 1. Funzione per applicare lo stile visivo corretto (Sincronizzata)
-  function updateVisuals() {
-    // CRITICO: Se l'utente ha spento il Comfort, non mostrare nulla
-    if (!isActive) {
-      if (particles) particles.style.display = 'none';
-      if (dna) dna.style.display = 'none';
-      return;
-    }
+  // --- Logica di Calcolo del Filtro ---
+  const hour = new Date().getHours();
+  const isNight = (hour < 7 || hour >= 19);
+  const filterDay = 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+  const filterNight = 'sepia(0.6) hue-rotate(-30deg) brightness(1)';
+  const currentFilter = isNight ? filterNight : filterDay;
 
-    const hour = new Date().getHours();
-    const isNight = (hour >= 19 || hour < 7);
-    const newMode = isNight ? "night" : "day";
+  // 2. Determina lo stato iniziale: Se disabilitato in storage, parte da OFF
+  let isActive = !isDisabledFromStorage;
 
-    // Applichiamo i filtri
+  // INIZIALIZZAZIONE CRITICA: Sincronizzazione al caricamento 
+  if (isActive) {
     document.body.classList.add('qredshift-active');
-    document.body.style.filter = isNight 
-      ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
-      : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+    document.body.style.filter = currentFilter;
+    document.body.style.transition = 'filter 0.5s';
+    document.body.style.willChange = 'filter';
 
-    // MOSTRA gli elementi solo se isActive è true
-    if (particles) particles.style.display = 'block';
-    if (dna) dna.style.display = 'block';
+    // Sicurezza: in stato attivo, gli effetti DEVONO essere visibili
+    if (particles) particles.style.display = '';
+    if (dna) dna.style.display = '';
 
-    if (window.particlesController && newMode !== currentMode) {
-      window.particlesController.resizeCanvas(); 
+    // ⚡ Avvio del Canvas (Solo in stato attivo) ⚡
+    if (typeof window.initParticles === "function" && particles && !window.particlesController) {
+        // Primo Yield: Avvia il codice di initParticles.
+        setTimeout(() => { 
+            window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
+            
+            // Secondo Yield: Chiama resizeCanvas DOPO un ulteriore yield. 
+            // Questo spezza l'operazione di lettura/scrittura che causa il thrashing.
+            if (window.particlesController && typeof window.particlesController.resizeCanvas === 'function') {
+                setTimeout(() => {
+                    window.particlesController.resizeCanvas();
+                }, 0); 
+            }
+
+        }, 0); 
     }
-    currentMode = newMode;
+
+  } else {
+    // SINCRONIZZAZIONE CRITICA (Se lo stato è OFF)
+    document.body.classList.remove('qredshift-active');
+    document.body.style.filter = '';
+    document.body.style.transition = '';
+    document.body.style.willChange = 'auto';
+
+    // Se l'utente ha disattivato QRedshift, disattiviamo anche gli effetti pesanti
+    if (particles) particles.style.display = 'none';
+    if (dna) dna.style.display = 'none';
+    
+    // Ferma subito l'animazione se era stata accidentalmente avviata (cleanup)
+    if (window.particlesController && typeof window.particlesController.destroy === 'function') {
+        window.particlesController.destroy(); 
+        window.particlesController = null;
+    }
   }
 
-  // 2. Timer "Intelligente" per il cambio automatico
-  // Controlla ogni minuto se l'ora è cambiata
-  const autoSyncTimer = setInterval(() => {
-    if (isActive) updateVisuals();
-  }, 60000);
-
-  // 3. Logica del Toggle (Acceso/Spento)
-  const toggleQRedshift = function () {
-    isActive = !isActive;
-    localStorage.setItem(storageKey, (!isActive).toString());
-
-    if (isActive) {
-      updateVisuals();
-      // Riattiva particelle se distrutte
-      if (!window.particlesController && typeof window.initParticles === "function") {
-        window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
-      }
-    } else {
-      // Disattivazione totale
-      document.body.classList.remove('qredshift-active');
-      document.body.style.filter = '';
-      if (particles) particles.style.display = 'none';
-      if (dna) dna.style.display = 'none';
-      
-      if (window.particlesController) {
-        window.particlesController.destroy();
-        window.particlesController = null;
-      }
-    }
-    updateButtonUI();
-  };
-
-  // --- UI del Bottone (Creazione standard) ---
+  // --- Creazione e Logica del Pulsante nel Menu (Impostazione UI) ---
+  // ... (Tutto il codice per creare e impostare il pulsante del menu) ...
   const menuItem = document.createElement('div');
   menuItem.className = 'tech-menu-item';
+  menuItem.setAttribute('data-menu', 'qredshift');
+
   const button = document.createElement('button');
   button.className = 'tech-nav-btn';
+  button.type = 'button';
+  button.setAttribute('aria-haspopup', 'false');
+  button.setAttribute('aria-expanded', 'false');
+
+  const activeIcon = isNight ? '🌙' : '☀️';
+  const initialIcon = isActive ? activeIcon : '☀️';
+  const initialLabel = isActive
+    ? `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`
+    : 'Modalità comfort visivo disattivata';
+
+  button.setAttribute('aria-pressed', isActive);
+  button.setAttribute('aria-label', initialLabel);
+  button.innerHTML = `<b>${initialIcon} Comfort</b>`;
+
   menuItem.appendChild(button);
   menuContainer.appendChild(menuItem);
 
-  function updateButtonUI() {
-    const hour = new Date().getHours();
-    const isNight = (hour >= 19 || hour < 7);
-    const icon = isActive ? (isNight ? '🌙' : '☀️') : '⚠️';
-    button.innerHTML = `<b>${icon} Comfort</b>`;
-    button.setAttribute('aria-pressed', isActive);
-  }
+
+  // === FUNZIONE TOGGLE (Aggiornata per la gestione del controller) ===
+  const toggleQRedshift = function () {
+    isActive = !isActive;
+
+    if (isActive) {
+      // --- STATO ATTIVO (Riattiva tutto) ---
+      
+      // ⚡ Ri-Avvio del Canvas (Se era spento) ⚡
+      if (!window.particlesController && typeof window.initParticles === "function" && particles) {
+          // Avvia il controller
+          const newController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
+          window.particlesController = newController;
+          
+          // Chiama resize subito dopo l'avvio
+          if (typeof newController.resizeCanvas === 'function') {
+              newController.resizeCanvas();
+          }
+      }
+
+      document.body.classList.add('qredshift-active');
+      document.body.style.filter = currentFilter;
+      document.body.style.transition = 'filter 0.5s';
+
+      if (particles) particles.style.display = '';
+      if (dna) dna.style.display = '';
+
+      document.body.style.willChange = 'filter';
+      localStorage.setItem(storageKey, 'false');
+
+      const currentIcon = isNight ? '🌙' : '☀️';
+      button.setAttribute('aria-pressed', 'true');
+      button.setAttribute('aria-label', `Modalità comfort visivo attiva: ${isNight ? 'Notte' : 'Giorno'}`);
+      button.innerHTML = `<b>${currentIcon} Comfort</b>`;
+
+    } else {
+      // --- STATO DISATTIVO (Disattiva tutto) ---
+      
+      // CRITICO: Ferma l'animazione CPU-intensive prima di nasconderla
+      if (window.particlesController && typeof window.particlesController.destroy === 'function') {
+          window.particlesController.destroy();
+          window.particlesController = null; // Rimuovi il riferimento
+      }
+
+      document.body.classList.remove('qredshift-active');
+      document.body.style.filter = '';
+      document.body.style.transition = '';
+      document.body.style.willChange = 'auto';
+
+      if (particles) particles.style.display = 'none';
+      if (dna) dna.style.display = 'none';
+
+      localStorage.setItem(storageKey, 'true');
+
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', 'Modalità comfort visivo disattivata');
+      button.innerHTML = '<b>☀️ Comfort</b>';
+    }
+  };
 
   button.addEventListener('click', toggleQRedshift);
-  
-  // Inizializzazione al caricamento
-  if (isActive) {
-    updateVisuals();
-    setTimeout(() => {
-      if (!window.particlesController) {
-        window.particlesController = window.initParticles("particles-canvas", { count: 50, speed: 1 });
-      }
-    }, 100);
-  }
-  updateButtonUI();
 }
 
-// Avvio al DOM pronto
 window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 
