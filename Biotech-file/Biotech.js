@@ -286,20 +286,6 @@ function QRedshift() {
 window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 
-//Fade effect (dissolvenza)
-function fadeEffect() {
-  let text = document.getElementById("fadingText");
-  if (!text) return;
-
-  let visible = true;
-  setInterval(() => {
-    visible = !visible;
-    text.classList.toggle("fade", !visible);
-  }, 2000);
-}
-window.addEventListener("load", fadeEffect);   
-// End fade effect (dissolvenza)  
-
 // ===== BIOTECH PROJECT: UNIFIED MODAL SYSTEM (FOCUS TRAP + ANIMATION FIXED) =====
 let lastFocusedElement = null;
 let slideIndex = 1;

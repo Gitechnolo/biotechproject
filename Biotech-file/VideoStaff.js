@@ -164,3 +164,17 @@ function handleVideoPosterKey(event) {
   }
 }
 // End Accessibilità video 
+
+//Fade effect (dissolvenza)
+function fadeEffect() {
+  let text = document.getElementById("fadingText");
+  if (!text) return;
+
+  let visible = true;
+  setInterval(() => {
+    visible = !visible;
+    text.classList.toggle("fade", !visible);
+  }, 2000);
+}
+window.addEventListener("load", fadeEffect);   
+// End fade effect (dissolvenza)
