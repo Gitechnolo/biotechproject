@@ -286,191 +286,6 @@ function QRedshift() {
 window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 
-// ===== BIOTECH PROJECT: UNIFIED MODAL SYSTEM (FOCUS TRAP + ANIMATION FIXED) =====
-let lastFocusedElement = null;
-let slideIndex = 1;
-
-// 1. FUNZIONI DI SUPPORTO
-function resetAllZoom() {
-  document.querySelectorAll('.zoom-container').forEach(container => {
-    container.classList.remove('zoomed');
-    const img = container.querySelector('img');
-    if (img) img.style.transformOrigin = `center center`;
-  });
-}
-
-function plusSlides(n) {
-  resetAllZoom();
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  resetAllZoom();
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("demo");
-  const captionText = document.getElementById("caption");
-
-  if (slides.length === 0) return;
-  if (n > slides.length) slideIndex = 1;
-  if (n < 1) slideIndex = slides.length;
-
-  Array.from(slides).forEach(s => s.style.display = "none");
-  Array.from(dots).forEach(d => d.className = d.className.replace(" active", ""));
-
-  if (slides[slideIndex - 1]) {
-    slides[slideIndex - 1].style.display = "block";
-    if (dots[slideIndex - 1]) {
-      dots[slideIndex - 1].className += " active";
-      if (captionText) captionText.innerHTML = dots[slideIndex - 1].alt || "";
-    }
-  }
-}
-
-// MODIFICATA: Aggiunto ritardo per animazione solo su popup immagini
-function closeModal() {
-  const modal = document.getElementById("myModal");
-  if (!modal) return;
-
-  const modalImg = document.getElementById("img01");
-  const isBiotechMode = modalImg && modalImg.style.display !== "none";
-
-  modal.classList.remove("show");
-
-  // Se è un popup (isBiotechMode), aspettiamo 400ms per lo zoom-out
-  // Se è il carosello, chiudiamo subito (10ms)
-  const delay = isBiotechMode ? 400 : 10;
-
-  setTimeout(() => {
-    modal.style.display = "none";
-    if (modalImg) { modalImg.src = ""; modalImg.style.display = "none"; }
-    resetAllZoom();
-
-    if (lastFocusedElement) {
-      lastFocusedElement.focus();
-      // Rimosso l'azzeramento immediato per sicurezza sulla posizione
-    }
-  }, delay);
-}
-
-// 2. INIZIALIZZAZIONE UNICA
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById("myModal");
-  if (!modal) return;
-
-  const modalImg = document.getElementById("img01");
-  const modalCarouselContent = document.getElementById("modalCarousel");
-  const closeBtn = document.getElementById('closeBtn') || modal.querySelector(".close");
-
-  const bindAction = (el, callback) => {
-    if (!el) return;
-    el.addEventListener('click', (e) => { e.preventDefault(); callback(); });
-    el.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); callback(); }
-    });
-  };
-
-  // --- A. APERTURA IMMAGINE SINGOLA (MODIFICATA: Aggiunto calcolo origine) ---
-  window.openBiotechModal = function(imgId, event) {
-    const targetImg = document.getElementById(imgId);
-    if (!targetImg || !modalImg) return;
-    
-    lastFocusedElement = event ? event.currentTarget : null;
-
-    // Calcolo posizione per l'effetto rimpicciolimento
-    if (lastFocusedElement) {
-      const rect = lastFocusedElement.getBoundingClientRect();
-      modalImg.style.transformOrigin = `${rect.left + rect.width / 2}px ${rect.top + rect.height / 2}px`;
-    }
-
-    if (modalCarouselContent) modalCarouselContent.style.display = "none";
-    modalImg.src = targetImg.src;
-    modalImg.alt = targetImg.alt || "";
-    modalImg.style.display = "block";
-    modalImg.style.margin = "auto";
-    const caption = document.getElementById("caption");
-    if (caption) caption.textContent = targetImg.alt;
-    
-    modal.style.display = "flex";
-    setTimeout(() => { modal.classList.add("show"); closeBtn?.focus(); }, 10);
-  };
-
-  // --- B. APERTURA CAROSELLO ---
-  const openCarousel = (n) => {
-    lastFocusedElement = document.activeElement;
-    if (modalImg) modalImg.style.display = "none";
-    if (modalCarouselContent) modalCarouselContent.style.display = "block";
-    currentSlide(n);
-    modal.style.display = "block";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => { modal.classList.add("show"); closeBtn?.focus(); }, 50);
-  };
-
-  // Binding Eventi (Identici alla tua versione)
-  document.querySelectorAll('.gallery-item').forEach(img => {
-    bindAction(img, () => openCarousel(parseInt(img.getAttribute('data-slide'))));
-  });
-
-  document.querySelectorAll('.biotech-modal-trigger').forEach(trigger => {
-    const targetId = trigger.getAttribute('data-target-img');
-    bindAction(trigger, () => window.openBiotechModal(targetId, { currentTarget: trigger }));
-  });
-
-  document.querySelectorAll('.demo').forEach(thumb => {
-    bindAction(thumb, () => currentSlide(parseInt(thumb.getAttribute('data-slide'))));
-  });
-
-  bindAction(closeBtn, closeModal);
-  bindAction(document.getElementById('prevSlide'), () => plusSlides(-1));
-  bindAction(document.getElementById('nextSlide'), () => plusSlides(1));
-
-  // --- C. LOGICA ZOOM ---
-  document.querySelectorAll('.zoom-container').forEach(container => {
-    const img = container.querySelector('img');
-    container.addEventListener('click', () => container.classList.toggle('zoomed'));
-    container.addEventListener('mousemove', (e) => {
-      if (container.classList.contains('zoomed')) {
-        const rect = container.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        img.style.transformOrigin = `${x}% ${y}%`;
-      }
-    });
-  });
-
-  // --- D. GESTIONE TASTIERA E FOCUS TRAP ---
-  document.addEventListener('keydown', (e) => {
-    const isVisible = (modal.style.display !== "none" && modal.style.display !== "");
-    if (!isVisible) return;
-
-    if (e.key === "Escape") closeModal();
-    if (modalCarouselContent && modalCarouselContent.style.display !== "none") {
-        if (e.key === "ArrowLeft") plusSlides(-1);
-        if (e.key === "ArrowRight") plusSlides(1);
-    }
-
-    if (e.key === 'Tab') {
-      const focusableElements = Array.from(modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next, .demo'))
-                                     .filter(el => el.offsetParent !== null);
-      
-      if (focusableElements.length > 0) {
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) { e.preventDefault(); lastElement.focus(); }
-        } else {
-          if (document.activeElement === lastElement) { e.preventDefault(); firstElement.focus(); }
-        }
-      }
-    }
-  });
-
-  modal.onclick = (e) => { if (e.target === modal) closeModal(); };
-});
 
 // —————————————————————————————————————————————————————————————————————————————
 //  BIOTECH PROJECT - ULTIMATE PERFORMANCE HELPERS (2026 EDITION)
@@ -872,52 +687,37 @@ function updateLastModified(lang) {
 } 
 // === End ultima modifica pagina ===
 
-// =====================================================
-// GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA
-// Supporta menu con <b>, ritardo sicuro, localStorage
-// =====================================================
+// =============================================================================
+// BLOCCO UNIFICATO: GESTIONE LINGUA + POPUP & CAROSELLO
+// =============================================================================
 
+// --- VARIABILI GLOBALI CONDIVISE ---
 let currentLang = 'it';
+let lastFocusedElement = null;
+let slideIndex = 1;
 
-// Pagine che hanno un JSON specifico
 const translatablePages = [
-  'index',
-  'Progetti',
-  'Staff',
-  'Marketing',
-  'Tech_Maturity',
-  'Dermatologia',
-  'Cuore',
-  'Cellula',
-  'Apparato_digerente',
-  'Apparato_respiratorio',
-  'Apparato_tegumentario',
-  'Sistema_linfatico',
-  'Specials',
-  'Capelli'
+  'index', 'Progetti', 'Staff', 'Marketing', 'Tech_Maturity', 'Dermatologia', 
+  'Cuore', 'Cellula', 'Apparato_digerente', 'Apparato_respiratorio', 
+  'Apparato_tegumentario', 'Sistema_linfatico', 'Specials', 'Capelli'
 ];
 
-// Mappa nome pagina → nome file JSON
+// --- 1. FUNZIONI DI SUPPORTO TRADUZIONE ---
 function getPageKey(pageName) {
   const map = {
-    'index': 'home',
-    'Tech_Maturity': 'tech_maturity',
-    'Apparato_digerente': 'apparato_digerente',
-    'Apparato_respiratorio': 'apparato_respiratorio',
-    'Apparato_tegumentario': 'apparato_tegumentario',
+    'index': 'home', 'Tech_Maturity': 'tech_maturity', 'Apparato_digerente': 'apparato_digerente',
+    'Apparato_respiratorio': 'apparato_respiratorio', 'Apparato_tegumentario': 'apparato_tegumentario',
     'Sistema_linfatico': 'sistema_linfatico'
   };
   return map[pageName] || pageName.toLowerCase();
 }
 
-// Estrae il nome della pagina (senza -semplice)
 function getPageName() {
   const path = window.location.pathname;
   const fileName = path.split('/').pop().replace('.html', '');
   return fileName.replace('-semplice', '');
 }
 
-// Carica un file JSON
 async function loadTranslation(path) {
   try {
     const res = await fetch(path);
@@ -928,190 +728,246 @@ async function loadTranslation(path) {
     return null;
   }
 }
-// ===========================
-// APPLICA LE TRADUZIONI SENZA DISTRUGGERE IL DOM
-// ===========================
-function applyTranslations(translations, lang) {
-  document.querySelectorAll('[data-lang-key]').forEach(el => {
-    const key = el.getAttribute('data-lang-key');
-    const value = translations[lang]?.[key];
 
-    if (value !== undefined && value !== null) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.setAttribute('placeholder', value);
-      } else if (el.tagName === 'IMG') {
-        // Aggiorna l'attributo ALT (fondamentale per accessibilità)
-        el.setAttribute('alt', value);
-        
-        // AGGIORNAMENTO DINAMICO PER BIOTECH MODAL
-        // Se l'immagine tradotta è una di quelle del popup, aggiorniamo il caption visibile
-        const modal = document.getElementById("myModal");
-        const modalImg = document.getElementById("img01");
-        const captionText = document.getElementById("caption");
-        
-        // Se il modal è aperto E l'immagine nel modal corrisponde a quella che stiamo traducendo
-        if (modal && modal.classList.contains("show") && modalImg && modalImg.src === el.src) {
-          captionText.textContent = value;
-        }
-      } else if (el.hasAttribute('aria-label')) {
-        el.setAttribute('aria-label', value);
-        const bold = el.querySelector('b');
-        if (bold) {
-          bold.textContent = value;
-        } else {
-          el.innerHTML = value; 
-        }
-      } else {
-        const bold = el.querySelector('b');
-        if (bold) {
-          bold.textContent = value;
-        } else {
-          el.innerHTML = value; 
-        }
-      }
-    }
-  });
-       updateLastModified(lang); // Last edit: it - en
-
-  console.log(`✅ Traduzioni applicate in ${lang}`);
-}   
-// ===========================
-// INIZIALIZZA IL SISTEMA DI TRADUZIONE (SENZA RITARDO BLOCCANTE)
-// ===========================
-async function initTranslations() {
-  // ESECUZIONE IMMEDIATA: Le richieste fetch beneficeranno ora del preload nel <head>
-  const pageName = getPageName();
-  const savedLang = getSavedLanguage();
-
-  // ===========================
-  // CASO 1: Pagina NON traducibile (es. Tablet_forum.html)
-  // ===========================
-  if (!translatablePages.includes(pageName)) {
-    // La chiamata a loadTranslation('lang/common.json') sfrutterà il preload
-    const common = await loadTranslation('lang/common.json');
-    const translations = {
-      it: { ...(common?.it || {}) },
-      en: { ...(common?.en || {}) }
-    };
-
-    applyTranslations(translations, savedLang);
-    updateLanguageButton(savedLang);
-    document.documentElement.lang = savedLang;
-
-    return;
-  }
-  // ===========================
-  // CASO 2: Pagina traducibile → carica common + specifico
-  // ===========================
-  const translations = { it: {}, en: {} };
-
-  // Queste chiamate sfrutteranno i preload nel <head>
-  const common = await loadTranslation('lang/common.json');
-  if (common) {
-    translations.it = { ...common.it };
-    translations.en = { ...common.en };
-  }
-
-  const pageKey = getPageKey(pageName);
-  const pageData = await loadTranslation(`lang/${pageKey}.json`);
-  if (pageData) {
-    if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
-    if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
-  }
-  // Applica le traduzioni
-  applyTranslations(translations, savedLang);
-  updateLanguageButton(savedLang);
-  document.documentElement.lang = savedLang;
-  currentLang = savedLang;
-}
-// ===========================
-// OTTIENI LA LINGUA PREFERITA
-// ===========================
 function getSavedLanguage() {
-  return localStorage.getItem('preferred-language') || 
-         (navigator.language.startsWith('en') ? 'en' : 'it');
+  return localStorage.getItem('preferred-language') || (navigator.language.startsWith('en') ? 'en' : 'it');
 }
-// ===========================
-// AGGIORNA IL PULSANTE LINGUA
-// ===========================
+
 function updateLanguageButton(lang) {
   const flag = document.getElementById('lang-flag');
   const text = document.getElementById('lang-text');
   const button = document.getElementById('lang-toggle');
   const label = document.getElementById('lang-label');
-
   if (!flag || !button) return;
-
   if (lang === 'it') {
-    flag.textContent = '🇬🇧';
-    if (text) text.textContent = 'English';
+    flag.textContent = '🇬🇧'; if (text) text.textContent = 'English';
     if (label) label.textContent = 'Switch language';
     button.setAttribute('aria-label', 'Switch to English');
   } else {
-    flag.textContent = '🇮🇹';
-    if (text) text.textContent = 'Italiano';
+    flag.textContent = '🇮🇹'; if (text) text.textContent = 'Italiano';
     if (label) label.textContent = 'Cambia lingua';
     button.setAttribute('aria-label', 'Cambia lingua in italiano');
   }
 }
-// ===========================
-// CAMBIA LINGUA AL CLICK
-// ===========================
+
+function applyTranslations(translations, lang) {
+  document.querySelectorAll('[data-lang-key]').forEach(el => {
+    const key = el.getAttribute('data-lang-key');
+    const value = translations[lang]?.[key];
+    if (value !== undefined && value !== null) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.setAttribute('placeholder', value);
+      } else if (el.tagName === 'IMG') {
+        el.setAttribute('alt', value);
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        if (modal && modal.classList.contains("show") && modalImg && modalImg.src === el.src) {
+          captionText.textContent = value;
+        }
+      } else {
+        const bold = el.querySelector('b');
+        if (bold) { bold.textContent = value; } else { el.innerHTML = value; }
+      }
+    }
+  });
+  if (typeof updateLastModified === 'function') updateLastModified(lang);
+  console.log(`✅ Traduzioni applicate in ${lang}`);
+}
+
+async function initTranslations() {
+  const pageName = getPageName();
+  const savedLang = getSavedLanguage();
+  const translations = { it: {}, en: {} };
+  
+  const common = await loadTranslation('lang/common.json');
+  if (common) { translations.it = { ...common.it }; translations.en = { ...common.en }; }
+
+  if (translatablePages.includes(pageName)) {
+    const pageKey = getPageKey(pageName);
+    const pageData = await loadTranslation(`lang/${pageKey}.json`);
+    if (pageData) {
+      if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
+      if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
+    }
+  }
+  
+  applyTranslations(translations, savedLang);
+  updateLanguageButton(savedLang);
+  document.documentElement.lang = savedLang;
+  currentLang = savedLang;
+}
+
 function setLanguage(lang) {
   const pageName = getPageName();
-  const isTranslatable = translatablePages.includes(pageName);
-  
-  // Prepariamo le promesse: common è sempre necessaria
   const promises = [loadTranslation('lang/common.json')];
-  
-  // Se la pagina è specifica, carichiamo anche il suo file
-  if (isTranslatable) {
-    const pageKey = getPageKey(pageName);
-    promises.push(loadTranslation(`lang/${pageKey}.json`));
-  }
+  if (translatablePages.includes(pageName)) promises.push(loadTranslation(`lang/${getPageKey(pageName)}.json`));
 
   Promise.all(promises).then(([common, pageData]) => {
-    // Unifichiamo le traduzioni in un unico oggetto
     const translations = {
       it: { ...(common?.it || {}), ...(pageData?.it || {}) },
       en: { ...(common?.en || {}), ...(pageData?.en || {}) }
     };
-
-    // RENDIAMO LE TRADUZIONI GLOBALI
-    // Questo permette a filterSelection di leggerle istantaneamente
     window.cachedTranslations = translations;
-
-    // Applichiamo le modifiche
     setTimeout(() => {
       applyTranslations(translations, lang);
       updateLanguageButton(lang);
       document.documentElement.lang = lang;
       currentLang = lang;
       localStorage.setItem('preferred-language', lang);
-      
-      // Se esiste un messaggio di filtro attivo, aggiornalo subito
-      const msgEl = document.getElementById('filter-message');
-      if (msgEl && msgEl.style.display === 'block') {
-        msgEl.textContent = translations[lang]['filter-empty'] || "";
-      }
     }, 100);
   });
 }
-// ===========================
-// TOGGLE LINGUA (chiamato da onclick)
-// ===========================
+
 function toggleLanguage() {
   const newLang = currentLang === 'it' ? 'en' : 'it';
   setLanguage(newLang);
 }
-// ===========================
-// AVVIO AL CARICAMENTO DELLA PAGINA
-// ===========================
-document.addEventListener('DOMContentLoaded', () => {
-  initTranslations().catch(err => {
-    console.error('Errore nel caricamento delle traduzioni:', err);
+
+// --- 2. FUNZIONI DI SUPPORTO MODAL & CAROSELLO ---
+function resetAllZoom() {
+  document.querySelectorAll('.zoom-container').forEach(container => {
+    container.classList.remove('zoomed');
+    const img = container.querySelector('img');
+    if (img) img.style.transformOrigin = `center center`;
   });
-// Rendi disponibile globalmente
-  window.toggleLanguage = toggleLanguage;
-}); 
-// === End GESTIONE LINGUA MODULARE (IT/EN) - VERSIONE COMPLETA ===
+}
+
+function showSlides(n) {
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("demo");
+  const captionText = document.getElementById("caption");
+  if (slides.length === 0) return;
+  if (n > slides.length) slideIndex = 1;
+  if (n < 1) slideIndex = slides.length;
+  Array.from(slides).forEach(s => s.style.display = "none");
+  Array.from(dots).forEach(d => d.className = d.className.replace(" active", ""));
+  if (slides[slideIndex - 1]) {
+    slides[slideIndex - 1].style.display = "block";
+    if (dots[slideIndex - 1]) {
+      dots[slideIndex - 1].className += " active";
+      if (captionText) captionText.innerHTML = dots[slideIndex - 1].alt || "";
+    }
+  }
+}
+
+function plusSlides(n) { resetAllZoom(); showSlides(slideIndex += n); }
+function currentSlide(n) { resetAllZoom(); showSlides(slideIndex = n); }
+
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  if (!modal) return;
+  const modalImg = document.getElementById("img01");
+  const isBiotechMode = modalImg && modalImg.style.display !== "none";
+  modal.classList.remove("show");
+  const delay = isBiotechMode ? 400 : 10;
+  setTimeout(() => {
+    modal.style.display = "none";
+    if (modalImg) { modalImg.src = ""; modalImg.style.display = "none"; }
+    resetAllZoom();
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }, delay);
+}
+
+// --- 3. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
+document.addEventListener('DOMContentLoaded', async () => {
+  console.log("🚀 Avvio sistema unificato...");
+
+  // A. Inizializza Lingua (AWAIT fondamentale per tradurre gli ALT prima dei popup)
+  try {
+    await initTranslations();
+    window.toggleLanguage = toggleLanguage;
+  } catch (err) {
+    console.error('Errore inizializzazione lingua:', err);
+  }
+
+  // B. Inizializza Modal e Carosello
+  const modal = document.getElementById("myModal");
+  if (modal) {
+    const modalImg = document.getElementById("img01");
+    const modalCarouselContent = document.getElementById("modalCarousel");
+    const closeBtn = document.getElementById('closeBtn') || modal.querySelector(".close");
+
+    const bindAction = (el, callback) => {
+      if (!el) return;
+      el.addEventListener('click', (e) => { e.preventDefault(); callback(); });
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); callback(); } });
+    };
+
+    window.openBiotechModal = function(imgId, event) {
+      const targetImg = document.getElementById(imgId);
+      if (!targetImg || !modalImg) return;
+      lastFocusedElement = event ? event.currentTarget : null;
+      if (lastFocusedElement) {
+        const rect = lastFocusedElement.getBoundingClientRect();
+        modalImg.style.transformOrigin = `${rect.left + rect.width / 2}px ${rect.top + rect.height / 2}px`;
+      }
+      if (modalCarouselContent) modalCarouselContent.style.display = "none";
+      modalImg.src = targetImg.src;
+      modalImg.alt = targetImg.alt || ""; // Legge l'alt già tradotto
+      modalImg.style.display = "block";
+      const caption = document.getElementById("caption");
+      if (caption) caption.textContent = targetImg.alt;
+      modal.style.display = "flex";
+      setTimeout(() => { modal.classList.add("show"); closeBtn?.focus(); }, 10);
+    };
+
+    const openCarousel = (n) => {
+      lastFocusedElement = document.activeElement;
+      if (modalImg) modalImg.style.display = "none";
+      if (modalCarouselContent) modalCarouselContent.style.display = "block";
+      currentSlide(n);
+      modal.style.display = "block";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => { modal.classList.add("show"); closeBtn?.focus(); }, 50);
+    };
+
+    document.querySelectorAll('.gallery-item').forEach(img => {
+      bindAction(img, () => openCarousel(parseInt(img.getAttribute('data-slide'))));
+    });
+    document.querySelectorAll('.biotech-modal-trigger').forEach(trigger => {
+      const targetId = trigger.getAttribute('data-target-img');
+      bindAction(trigger, () => window.openBiotechModal(targetId, { currentTarget: trigger }));
+    });
+    document.querySelectorAll('.demo').forEach(thumb => {
+      bindAction(thumb, () => currentSlide(parseInt(thumb.getAttribute('data-slide'))));
+    });
+
+    bindAction(closeBtn, closeModal);
+    bindAction(document.getElementById('prevSlide'), () => plusSlides(-1));
+    bindAction(document.getElementById('nextSlide'), () => plusSlides(1));
+
+    // C. Logica Zoom
+    document.querySelectorAll('.zoom-container').forEach(container => {
+      const img = container.querySelector('img');
+      container.addEventListener('click', () => container.classList.toggle('zoomed'));
+      container.addEventListener('mousemove', (e) => {
+        if (container.classList.contains('zoomed')) {
+          const rect = container.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          img.style.transformOrigin = `${x}% ${y}%`;
+        }
+      });
+    });
+
+    // D. Focus Trap & Keydown
+    document.addEventListener('keydown', (e) => {
+      if (modal.style.display === "none" || modal.style.display === "") return;
+      if (e.key === "Escape") closeModal();
+      if (modalCarouselContent?.style.display !== "none") {
+        if (e.key === "ArrowLeft") plusSlides(-1);
+        if (e.key === "ArrowRight") plusSlides(1);
+      }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next, .demo')).filter(el => el.offsetParent !== null);
+        if (focusable.length > 0) {
+          const first = focusable[0], last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    });
+    modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+  }
+});
