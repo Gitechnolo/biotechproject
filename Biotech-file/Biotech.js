@@ -688,7 +688,7 @@ function updateLastModified(lang) {
 // === End ultima modifica pagina ===
 
 // =============================================================================
-// BLOCCO UNIFICATO: GESTIONE LINGUA + POPUP & CAROSELLO
+// BLOCCO UNIFICATO: GESTIONE LINGUA + POPUP & CAROSELLO + VIDEO PLAYER (2026)
 // =============================================================================
 
 // --- VARIABILI GLOBALI CONDIVISE ---
@@ -869,17 +869,89 @@ function closeModal() {
   }, delay);
 }
 
-// --- 3. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
+// --- 3. FUNZIONI DI SUPPORTO VIDEO (On-Demand) ---
+function loadAndPlayVideo() {
+  const container = document.getElementById('ytVideoContainer');
+  const img = document.getElementById('videoPoster');
+  if (!img || !container) return;
+
+  const video = document.createElement('video');
+  video.id = 'ytVideo';
+  video.controls = false; 
+  video.preload = 'metadata';
+  video.poster = img.src;
+  video.style.cssText = 'width:100%; height:auto; display:block; max-height:600px; border-radius:8px;';
+  video.setAttribute('playsinline', ''); 
+
+  const source = document.createElement('source');
+  source.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.mp4';
+  source.type = 'video/mp4';
+  video.appendChild(source);
+
+  const tracks = [
+    { lang: 'en', label: 'English', default: true },
+    { lang: 'it', label: 'Italian', default: false }
+  ];
+  tracks.forEach(t => {
+    const track = document.createElement('track');
+    track.kind = 'subtitles';
+    track.src = `https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/fgsubtitles_${t.lang}.vtt`;
+    track.srclang = t.lang;
+    track.label = t.label;
+    if (t.default) track.default = true;
+    video.appendChild(track);
+  });
+
+  container.replaceChild(video, img);
+  const controls = document.querySelector('.yt-video-controls');
+  if (controls) controls.style.display = 'flex';
+
+  initializeVideoControls(video, controls);
+  video.play().catch(e => console.log("Richiesta interazione per Play:", e));
+}
+
+function initializeVideoControls(video, controls) {
+  if (!controls) return;
+  const q = (id) => controls.querySelector(id);
+  const playBtn = q('#ytPlayPause'), icon = q('#ytPlayPauseIcon'), progress = q('#ytProgress');
+  const curTime = q('#ytCurrentTime'), durTime = q('#ytDuration'), vol = q('#ytVolume');
+  const muteBtn = q('#ytMute'), muteIcon = q('#ytMuteIcon'), fsBtn = q('#ytFullscreen'), exitFsBtn = q('#ytExitFullscreen');
+
+  const format = (s) => { const m = Math.floor(s/60), sec = Math.floor(s%60); return `${m}:${sec<10?'0':''}${sec}`; };
+
+  playBtn?.addEventListener('click', () => video.paused ? video.play() : video.pause());
+  video.addEventListener('play', () => { if(icon) icon.textContent = '⏸️'; });
+  video.addEventListener('pause', () => { if(icon) icon.textContent = '▶️'; });
+  video.addEventListener('timeupdate', () => { if(progress) progress.value = video.currentTime; if(curTime) curTime.textContent = format(video.currentTime); });
+  video.addEventListener('loadedmetadata', () => { if(progress) progress.max = video.duration; if(durTime) durTime.textContent = format(video.duration); });
+  progress?.addEventListener('input', () => video.currentTime = progress.value);
+  vol?.addEventListener('input', () => { video.volume = vol.value; if(muteIcon) muteIcon.textContent = (video.muted || vol.value == 0) ? '🔇' : '🔊'; });
+  muteBtn?.addEventListener('click', () => { video.muted = !video.muted; if(muteIcon) muteIcon.textContent = video.muted ? '🔇' : '🔊'; });
+  fsBtn?.addEventListener('click', () => video.requestFullscreen?.() || video.webkitRequestFullscreen?.());
+  exitFsBtn?.addEventListener('click', () => document.exitFullscreen?.());
+
+  document.addEventListener('fullscreenchange', () => {
+    const isFs = document.fullscreenElement === video;
+    if(fsBtn) fsBtn.style.display = isFs ? 'none' : 'flex';
+    if(exitFsBtn) exitFsBtn.style.display = isFs ? 'flex' : 'none';
+  });
+
+  video.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') { e.preventDefault(); playBtn?.click(); }
+    if (e.code === 'KeyM') { e.preventDefault(); muteBtn?.click(); }
+    if (e.code === 'KeyF') { e.preventDefault(); fsBtn?.click(); }
+  });
+}
+
+// --- 4. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
 document.addEventListener('DOMContentLoaded', async () => {
   console.log("🚀 Avvio sistema unificato...");
 
-  // A. Inizializza Lingua (AWAIT fondamentale per tradurre gli ALT prima dei popup)
+  // A. Inizializza Lingua
   try {
     await initTranslations();
     window.toggleLanguage = toggleLanguage;
-  } catch (err) {
-    console.error('Errore inizializzazione lingua:', err);
-  }
+  } catch (err) { console.error('Errore lingua:', err); }
 
   // B. Inizializza Modal e Carosello
   const modal = document.getElementById("myModal");
@@ -904,7 +976,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       if (modalCarouselContent) modalCarouselContent.style.display = "none";
       modalImg.src = targetImg.src;
-      modalImg.alt = targetImg.alt || ""; // Legge l'alt già tradotto
+      modalImg.alt = targetImg.alt || "";
       modalImg.style.display = "block";
       const caption = document.getElementById("caption");
       if (caption) caption.textContent = targetImg.alt;
@@ -946,12 +1018,12 @@ document.addEventListener('DOMContentLoaded', async () => {
           const rect = container.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
           const y = ((e.clientY - rect.top) / rect.height) * 100;
-          img.style.transformOrigin = `${x}% ${y}%`;
+          if(img) img.style.transformOrigin = `${x}% ${y}%`;
         }
       });
     });
 
-    // D. Focus Trap & Keydown
+    // D. Focus Trap & Keydown (Frecce incluse)
     document.addEventListener('keydown', (e) => {
       if (modal.style.display === "none" || modal.style.display === "") return;
       if (e.key === "Escape") closeModal();
@@ -969,5 +1041,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+  }
+
+  // E. Inizializza Video (Solo se il poster esiste)
+  const videoPoster = document.getElementById('videoPoster');
+  if (videoPoster) {
+    const triggerVideo = (e) => {
+      if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      loadAndPlayVideo();
+    };
+    videoPoster.addEventListener('click', triggerVideo);
+    videoPoster.addEventListener('keydown', triggerVideo);
+    console.log("🎥 Video module ready.");
   }
 });
