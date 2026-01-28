@@ -356,29 +356,29 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     function initBiotechTooltips() {
         let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
         if (!tooltipEl.className) { tooltipEl.className = 'biotech-tooltip'; document.body.appendChild(tooltipEl); }
+        
         document.addEventListener('mouseover', (e) => { 
             const target = e.target.closest('[data-bio-tip]'); 
             if (target) { 
-                tooltipEl.innerHTML = target.getAttribute('data-bio-tip'); // Usiamo innerHTML per la barra
+                tooltipEl.innerHTML = target.getAttribute('data-bio-tip'); 
                 tooltipEl.style.display = 'block'; 
             } 
         });
-        document.addEventListener('mousemove', (e) => { 
-    if (tooltipEl.style.display === 'block') { 
-        // X: e.clientX è il centro esatto (grazie al translateX(-50%) nel CSS)
-        // Y: e.clientY - tipHeight - margine. Usiamo un valore fisso di circa 15-20px
-        // per distanziarlo dalla punta della freccia.
-        
-        tooltipEl.style.left = e.clientX + 'px'; 
-        tooltipEl.style.top = (e.clientY - 15) + 'px'; // Appare SOPRA il mouse
 
-        // Protezione per il bordo superiore: se il mouse è troppo in alto, 
-        // spostiamo il tooltip sotto per non farlo uscire dallo schermo.
-        if (e.clientY < 100) {
-            tooltipEl.style.top = (e.clientY + 25) + 'px';
-        }
-    } 
-});
+        document.addEventListener('mousemove', (e) => { 
+            if (tooltipEl.style.display === 'block') { 
+                // Usiamo questo metodo per rendere il movimento fluido senza gravare sulla CPU
+                window.requestAnimationFrame(() => {
+                    tooltipEl.style.left = e.clientX + 'px'; 
+                    tooltipEl.style.top = (e.clientY - 15) + 'px';
+
+                    if (e.clientY < 100) {
+                        tooltipEl.style.top = (e.clientY + 25) + 'px';
+                    }
+                });
+            } 
+        });
+
         document.addEventListener('mouseout', (e) => { 
             if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
         });
