@@ -879,8 +879,7 @@ canvas#particles-canvas.is-hidden {
   visibility: hidden;
 }  
 /* End Contenitore stabile per il canvas */
-/* QRedshift Icon Style */
-/* QRedshift Icon Style - Biotech Optimized */
+/* Mobile QRedshift Icon Style - Biotech Optimized */
 .qredshift-icon {
   position: fixed; 
   top: 18px; 
@@ -901,6 +900,7 @@ canvas#particles-canvas.is-hidden {
   user-select: none; 
   /* Transizione estesa anche alla trasformazione per effetti hover più fluidi */
   transition: background 0.3s, transform 0.2s, opacity 0.5s;
+  -webkit-touch-callout: none; /* Disabilita il menu contestuale su iOS */
 }
 
 .qredshift-icon:hover {
@@ -914,7 +914,7 @@ body.qredshift-disabled .qredshift-icon {
   opacity: 0.5;
   filter: grayscale(1);
 }
-/* End QRedshift Icon Style */
+/* End Mobile QRedshift Icon Style */
 /* Badge di accessibilità */
 .hover-effect img{height:42px;border:none;transition:transform .3s ease,filter .3s ease;display:block;margin:0 auto;}
 .hover-effect:hover img {transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));}
