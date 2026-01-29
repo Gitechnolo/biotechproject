@@ -5,9 +5,40 @@
  * RELIABILITY: Multi-Entry DOMContentLoaded (Isolate Execution Contexts)
  * PERFORMANCE: Frame-throttled animations (10 FPS) & Lazy-Idle Hydration
  * COMPLIANCE: WCAG 2.1 AAA (Screen Reader Announcements & ARIA Controls)
- * NOTE: Molecular data computation handled by external specialized modules.
+ * NOTE: MODULE 06 & SERVICE - Molecular data computation handled by external specialized modules.
  * -------------------------------------------------------------------------
- */
+BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
+=============================================
+
+[ROOT] index.html / script.js
+ ║
+ ╠══ CORE AREA: UX & RENDERING PIPELINE
+ ║   ║
+ ║   ╠── MODULE 01: Biocircadian Visual Synthesizer
+ ║   ║              (Canvas Engine / Stem Cell Simulation)
+ ║   ║
+ ║   ╠── MODULE 02: QRedshift Adaptive Filter
+ ║   ║              (Blue-light Mitigation / UI Chromatic Logic)
+ ║   ║
+ ║   ╚── MODULE 03: Performance & Event Orchestrator
+ ║                  (Throttle-Debounce / Predictive Pre-fetching)
+ ║
+ ╠══ INTERFACE AREA: ACCESSIBILITY & DELIVERY
+ ║   ║
+ ║   ╠── MODULE 04: Core UI & A11y Controller
+ ║   ║              (WCAG 2.1 AAA / Speech Synthesis / Focus Trap)
+ ║   ║
+ ║   ╚── MODULE 05: i18n & Media Orchestrator
+ ║                  (JSON Dynamic Translation / On-Demand Video Hydration)
+ ║
+ ╚══ SCIENTIFIC AREA: D.A.T.A. COMPUTATION ENGINE
+     ║
+     ╠── MODULE 06: Biocircadian Logic & Seasonal Monitor
+     ║              (Earth Axial Tilt Tracking / Metabolic Sync)
+     ║
+     ╚── SERVICE: PDF Audit Generation System
+                  (Real-time Data Virtualization / Secure Download) 
+*/
 
 // ==========================================================================
 // MODULE 01: BIOCIRCADIAN VISUAL SYNTHESIZER
