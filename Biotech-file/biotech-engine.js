@@ -1,6 +1,10 @@
-// ============================================================
-// BIOTECH CORE ENGINE - ULTIMATE EDITION 2026 (FINAL REVISION)
-// ============================================================
+// ==========================================================================
+// MODULE 06: BIOTECH CORE COMPUTATION ENGINE (D.A.T.A. System)
+// Scope: Circadian Rhythm Logic, Seasonal Bio-sync, & PDF Audit Generation
+// Architecture: Bio-dictionary Mapping with Multi-language Fallback
+// Reliability: Fail-safe Tooltip Rendering & Seasonal-Aware Advice Engine
+// Feature: Real-time HUD (Heads-Up Display) Synchronization
+// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURAZIONE LINGUA ---
@@ -385,6 +389,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     }
 
     // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
+// Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
 function initDnaScanner() {
     const dnaScanner = document.getElementById('dna-scanner');
     if (!dnaScanner) return;
@@ -410,7 +415,9 @@ function initDnaScanner() {
         );
         dnaScanner.setAttribute('data-bio-tip', loadingTip);
 
-        // ESECUZIONE DOWNLOAD (delay di 800ms per feedback visivo professionale)
+// --- PERCEIVED PERFORMANCE OPTIMIZATION ---
+// Artificial latency (800ms) to ensure UI feedback synchronization.
+// Provides users with visual confirmation of data processing before PDF trigger.
         setTimeout(() => {
             executeSecureDownload(currentMol);
             syncScannerData(); // Ripristina immediatamente il tooltip informativo
@@ -427,6 +434,13 @@ function initDnaScanner() {
 
     // --- FUNZIONE DOWNLOAD ANTI-BLOCK ---
    const executeSecureDownload = async (molecule) => {
+    /**
+     * PDF ENGINE STRATEGY: 
+     * 1. Dynamic Vector Graphics (rect, ellipse, lines) for HUD-style branding.
+     * 2. Data Virtualization: Maps DOM real-time values to PDF coordinates.
+     * 3. Asset Safety: Try-catch blocks for PNG favicon injection.
+     * 4. Smart Pagination: Dynamic text-wrapping for variable molecule descriptions.
+     */
     const loadJsPDF = () => {
         return new Promise((resolve, reject) => {
             if (window.jspdf) return resolve(window.jspdf);

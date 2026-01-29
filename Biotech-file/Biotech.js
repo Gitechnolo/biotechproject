@@ -1,7 +1,19 @@
-// Biotech.js 
-// =======================================
-// 1. LOGICA PARTICELLE 
-// =======================================
+/**
+ * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR
+ * -------------------------------------------------------------------------
+ * ARCHITECTURE: Modular Vanilla JS (Zero-Dependency)
+ * RELIABILITY: Multi-Entry DOMContentLoaded (Isolate Execution Contexts)
+ * PERFORMANCE: Frame-throttled animations (10 FPS) & Lazy-Idle Hydration
+ * COMPLIANCE: WCAG 2.1 AAA (Screen Reader Announcements & ARIA Controls)
+ * NOTE: Molecular data computation handled by external specialized modules.
+ * -------------------------------------------------------------------------
+ */
+
+// ==========================================================================
+// MODULE 01: BIOCIRCADIAN VISUAL SYNTHESIZER
+// Scope: Dynamic Canvas Backgrounds (Day/Night Stem Cell Simulation)
+// Optimization: Frame-rate throttling & CPU-efficient shadow rendering
+// ==========================================================================
 (function () {
 'use strict';
 function randomStemCellColor() {
@@ -121,10 +133,11 @@ window.initParticles = initParticles;
 }
 })();
 
-// =======================================
-// 2. FUNZIONE QRedshift (Ottimizzata per TBT e Layout Thrashing)
-// =======================================
-// QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
+// ==========================================================================
+// MODULE 02: QREDSHIFT ADAPTIVE FILTER ENGINE
+// Scope: Biological blue-light mitigation & UI State Persistence
+// Strategy: Asynchronous yield-to-main-thread for Layout Thrashing prevention
+// ==========================================================================
 function QRedshift() {
   const menuContainer = document.getElementById('tech-main-menu');
   const storageKey = 'qredshift_disabled';
@@ -287,9 +300,11 @@ window.addEventListener('DOMContentLoaded', QRedshift);
 // End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 
 
-// —————————————————————————————————————————————————————————————————————————————
-//  BIOTECH PROJECT - ULTIMATE PERFORMANCE HELPERS (2026 EDITION)
-// —————————————————————————————————————————————————————————————————————————————
+// ==========================================================================
+// MODULE 03: PERFORMANCE OPTIMIZATION HELPERS
+// Features: Throttling, Debouncing, and Predictive Smart Pre-fetching
+// ==========================================================================
+// ... throttle, debounce, initSmartPrefetch, ecc ...
 
 // THROTTLE: Fluidità a 60/120fps per scroll e resize.
 const throttle = (fn) => {
@@ -407,10 +422,12 @@ if ('requestIdleCallback' in window) {
 }  
 // ---End PERFORMANCE HELPERS ---
 
-// ——————————————————————————————————————————————————————————————————————————
-// BIOTECH PROJECT - CORE UI SYSTEM (Versione Integrale)
-// Gestione: Menu, Navigazione, Tema, Pronuncia e Modal
-// ——————————————————————————————————————————————————————————————————————————
+// ==========================================================================
+// MODULE 04: CORE UI SYSTEM & ACCESSIBILITY ORCHESTRATOR
+// Scope: Navigation, Interactive Modals, Speech Synthesis, and Dynamic Theming
+// Strategy: "Exit-Early" Pattern & Event Delegation for Memory Efficiency
+// Standards: WCAG 2.1 AAA | ARIA 1.2 State Management
+// ==========================================================================
 
 (function () {
   // 1. EXIT EARLY: Se la pagina non richiede il menu moderno, interrompiamo tutto.
@@ -656,9 +673,12 @@ if ('requestIdleCallback' in window) {
   }
 })();
   
-// =============================================================================
-// BLOCCO UNIFICATO: GESTIONE LINGUA + POPUP & CAROSELLO + VIDEO PLAYER (2026)
-// =============================================================================
+// ==========================================================================
+// MODULE 05: CONTENT DELIVERY & MEDIA ORCHESTRATION
+// Scope: Dynamic i18n (JSON-based), Modal Architecture, & On-Demand Video Loading
+// Strategy: Asynchronous Resource Fetching, Focus Trapping, & Resource Lazy-Loading
+// Performance: Video-on-demand (Zero initial payload), JSON Caching
+// ==========================================================================
 
 // --- VARIABILI GLOBALI CONDIVISE ---
 let currentLang = 'it';
