@@ -837,35 +837,83 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 .dna-helix-8:nth-child(7) { animation-delay: -2.625s; }
 .dna-helix-8:nth-child(8) { animation-delay: -3.0s; }
 /* End DNA animazione - 8 eliche ottimizzate */     
-/* Background particles - new version */
-canvas#particles-canvas {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-  opacity: 0.9;
-  /* Rimuossi: position, top, left, z-index, width/height in vw/vh */
-}   
-/* End Background particles */
-/* Contenitore stabile per il canvas */
-.canvas-wrapper {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-  /* Riserva lo spazio con aspect ratio fisso */
-  aspect-ratio: 1350 / 940; /* Basato sui width/height originali */
+/**
+ * BIOTECH PROJECT | VISUAL SYNTHESIZER CSS
+ * Management: Fixed Background + Fluid State Transitions
+ */
+
+/* 1. Contenitore stabile: blocca il canvas dietro l'interfaccia */
+.canvas-wrapper {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  z-index: -1;
+  aspect-ratio: 1350 / 940; 
   overflow: hidden;
 }
-#particles-canvas {width: 100%; height: 100%;
-  object-fit: cover; /* Copre bene senza distorsioni */
+
+/* 2. Il Canvas: Definizione stile e transizioni */
+canvas#particles-canvas {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
   display: block;
-}   
+  pointer-events: none; /* Impedisce al canvas di bloccare i click sul menu */
+  
+  /* Opacità Biotech: 0.9 garantisce che lo sfondo scuro emerga leggermente */
+  opacity: 0.9;
+  visibility: visible;
+
+  /* Transizione fluida: 0.8s sincronizzati con il Deep Sleep del JS */
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  
+  /* Ottimizzazione GPU: forza l'accelerazione hardware */
+  will-change: opacity;
+}
+
+/* 3. Stato Ibernato: applicato via JS per disattivare le animazioni */
+canvas#particles-canvas.is-hidden {
+  opacity: 0 !important; /* !important garantisce la sovrascrittura dello 0.9 */
+  visibility: hidden;
+}  
 /* End Contenitore stabile per il canvas */
 /* QRedshift Icon Style */
-.qredshift-icon {position: fixed; top: 18px; right: 18px; bottom: unset; z-index: 9999; background: #222e; color: rgba(255, 255, 238, 0.651); border-radius: 50%; box-shadow: 0 2px 8px #0006; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.7em; border: 1px solid #ffb3009a; cursor: pointer; user-select: none; transition: background 0.3s;}
-.qredshift-icon:hover {background: #ffb300cc; color: #222;}
-/* Migliora visibilità su mobile */
-@media (max-width: 600px) {.qredshift-icon {top: 10px; right: 10px; width: 36px; height: 36px; font-size: 1.3em;}}
-/* Nascondi QRedshift Icon su Tablet_forum.html */
-body[data-page="Tablet_forum"] .qredshift-icon {display: none !important;}
+/* QRedshift Icon Style - Biotech Optimized */
+.qredshift-icon {
+  position: fixed; 
+  top: 18px; 
+  right: 18px; 
+  z-index: 9999; 
+  background: #222e; 
+  color: rgba(255, 255, 238, 0.651); 
+  border-radius: 50%; 
+  box-shadow: 0 2px 8px #0006; 
+  width: 40px; 
+  height: 40px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.7em; 
+  border: 1px solid #ffb3009a; 
+  cursor: pointer; 
+  user-select: none; 
+  /* Transizione estesa anche alla trasformazione per effetti hover più fluidi */
+  transition: background 0.3s, transform 0.2s, opacity 0.5s;
+}
+
+.qredshift-icon:hover {
+  background: #ffb300cc; 
+  color: #222;
+  transform: scale(1.1); /* Piccolo feedback visivo al passaggio del mouse */
+}
+
+/* Nascondi se il sistema è in ibernazione (opzionale) */
+body.qredshift-disabled .qredshift-icon {
+  opacity: 0.5;
+  filter: grayscale(1);
+}
 /* End QRedshift Icon Style */
 /* Badge di accessibilità */
 .hover-effect img{height:42px;border:none;transition:transform .3s ease,filter .3s ease;display:block;margin:0 auto;}

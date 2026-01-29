@@ -41,24 +41,21 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
 */
 
 /**
- * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - OPTIMIZED 2026
- * Combined Module 01 & 02 | Performance-First Architecture
- * Features: Circadian Sync, Deep Sleep Mode, Persistent State, Fluid Fade-out.
+ * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
+ * Features: Circadian Sync, Deep Sleep, Fluid Fade-out, Menu + Floating Icon Sync.
  */
 
 const BiotechSystem = (function() {
     'use strict';
 
-    // --- CONFIGURAZIONE E STATO ---
     const STORAGE_KEY = 'qredshift_disabled';
     const state = {
-        isActive: localStorage.getItem(STORAGE_KEY) !== 'true', // Persistenza memoria
+        isActive: localStorage.getItem(STORAGE_KEY) !== 'true',
         isNight: false,
         particlesController: null,
         elements: {}
     };
 
-    // --- HELPER: LOGICA CIRCADIANA ---
     function updateCircadianState() {
         const hour = new Date().getHours();
         state.isNight = (hour < 7 || hour >= 19);
@@ -77,10 +74,9 @@ const BiotechSystem = (function() {
         init(canvasId) {
             const canvas = document.getElementById(canvasId);
             if (!canvas) return null;
-
             const ctx = canvas.getContext('2d', { alpha: true });
             let animationId;
-            const FRAME_DELAY = 100; // 10 FPS per efficienza energetica
+            const FRAME_DELAY = 100; 
             let lastFrameTime = 0;
 
             const resize = () => {
@@ -107,7 +103,6 @@ const BiotechSystem = (function() {
                         p.x += p.vx; p.y += p.vy;
                         if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
                         if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
-
                         ctx.beginPath();
                         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                         ctx.fillStyle = p.color;
@@ -124,11 +119,9 @@ const BiotechSystem = (function() {
             };
 
             animationId = requestAnimationFrame(loop);
-
             return {
                 destroy: () => { 
                     cancelAnimationFrame(animationId); 
-                    // Pulizia differita per permettere il fade-out visivo
                     setTimeout(() => ctx.clearRect(0, 0, canvas.width, canvas.height), 800); 
                 },
                 resize
@@ -137,17 +130,17 @@ const BiotechSystem = (function() {
     };
 
     // ==========================================================================
-    // MODULE 02: QREDSHIFT & ORCHESTRATION
+    // MODULE 02: QREDSHIFT & DUAL-UI ORCHESTRATION
     // ==========================================================================
     function updateVisuals() {
-        const { particles, dna, toggleBtn } = state.elements;
+        const { particles, dna, toggleBtn, floatingIcon } = state.elements;
         const filterStr = state.isNight 
             ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
             : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
 
         if (state.isActive) {
-            // --- STATO ATTIVO ---
             document.body.classList.add('qredshift-active');
+            document.body.classList.remove('qredshift-disabled');
             document.body.style.filter = filterStr;
             if (particles) {
                 particles.classList.remove('is-hidden');
@@ -162,8 +155,8 @@ const BiotechSystem = (function() {
                 });
             }
         } else {
-            // --- STATO DISATTIVO (Fade-out logic) ---
             document.body.classList.remove('qredshift-active');
+            document.body.classList.add('qredshift-disabled');
             document.body.style.filter = 'none';
             if (particles) particles.classList.add('is-hidden');
             if (dna) dna.style.display = 'none';
@@ -174,14 +167,23 @@ const BiotechSystem = (function() {
             }
         }
 
-        // --- UI REFRESH (BIOTECH ICONS) ---
+        // --- SINCRONIZZAZIONE ICONE E LABEL ---
+        const activeIcon = state.isNight ? '🌙' : '☀️';
+        const offIcon = '🌑';
+        const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
+
+        // 1. Aggiorna Pulsante Menu
         if (toggleBtn) {
-            // Icone a tema: Helix per attivo, Luna silente per inattivo
-            const icon = state.isActive ? (state.isNight ? '🌙' : '☀️') : '🌑';
-            const label = state.isActive ? 'Sistema Attivo' : 'Sistema Ibernato';
             toggleBtn.setAttribute('aria-pressed', state.isActive);
-            toggleBtn.innerHTML = `<b>${icon} ${state.isActive ? 'Comfort' : 'Off'}</b>`;
-            toggleBtn.setAttribute('aria-label', `Comfort visivo: ${label}`);
+            toggleBtn.innerHTML = `<b>${state.isActive ? activeIcon : offIcon} Comfort</b>`;
+            toggleBtn.setAttribute('aria-label', statusLabel);
+        }
+
+        // 2. Aggiorna Icona Flottante
+        if (floatingIcon) {
+            floatingIcon.innerHTML = state.isActive ? activeIcon : offIcon;
+            floatingIcon.setAttribute('title', statusLabel);
+            floatingIcon.style.opacity = state.isActive ? '1' : '0.6';
         }
     }
 
@@ -191,38 +193,41 @@ const BiotechSystem = (function() {
         updateVisuals();
     }
 
-    // --- LOGICA DEEP SLEEP (Visibility API) ---
     function handleVisibilityChange() {
         if (document.hidden) {
-            // Tab non visibile: Kill immediato del loop per risparmio CPU
             if (state.particlesController) {
                 state.particlesController.destroy();
                 state.particlesController = null;
             }
-        } else {
-            // Ritorno al tab: Se il sistema era attivo, riavvia i motori
-            if (state.isActive) updateVisuals();
+        } else if (state.isActive) {
+            updateVisuals();
         }
     }
 
     function setupUI() {
+        // Riferimenti DOM
         state.elements.menu = document.getElementById('tech-main-menu');
         state.elements.particles = document.getElementById('particles-canvas');
         state.elements.dna = document.querySelector('.dna-container-8');
-        
-        if (!state.elements.menu) return;
+        state.elements.floatingIcon = document.querySelector('.qredshift-icon');
 
-        const menuItem = document.createElement('div');
-        menuItem.className = 'tech-menu-item';
-        
-        const btn = document.createElement('button');
-        btn.className = 'tech-nav-btn';
-        btn.type = 'button';
-        btn.addEventListener('click', toggleSystem);
-        
-        menuItem.appendChild(btn);
-        state.elements.menu.appendChild(menuItem);
-        state.elements.toggleBtn = btn;
+        // Setup Pulsante Menu (se esiste il menu)
+        if (state.elements.menu) {
+            const menuItem = document.createElement('div');
+            menuItem.className = 'tech-menu-item';
+            const btn = document.createElement('button');
+            btn.className = 'tech-nav-btn';
+            btn.type = 'button';
+            btn.addEventListener('click', toggleSystem);
+            menuItem.appendChild(btn);
+            state.elements.menu.appendChild(menuItem);
+            state.elements.toggleBtn = btn;
+        }
+
+        // Setup Icona Flottante (se esiste nel DOM)
+        if (state.elements.floatingIcon) {
+            state.elements.floatingIcon.addEventListener('click', toggleSystem);
+        }
 
         updateVisuals(); 
     }
@@ -230,11 +235,7 @@ const BiotechSystem = (function() {
     function init() {
         updateCircadianState();
         setupUI();
-
-        // DEEP SLEEP: Monitora se l'utente cambia tab
         document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        // PERFORMANCE: Resize gestito tramite Observer
         const resizeObserver = new ResizeObserver(() => {
             if (state.particlesController) state.particlesController.resize();
         });
@@ -244,7 +245,6 @@ const BiotechSystem = (function() {
     return { init };
 })();
 
-// UNICO ENTRY POINT
 document.addEventListener('DOMContentLoaded', BiotechSystem.init);
 // End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
 
