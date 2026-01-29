@@ -63,6 +63,7 @@ const BiotechSystem = (function() {
 
     // ==========================================================================
     // MODULE 01: VISUAL SYNTHESIZER (CANVAS ENGINE)
+    // Biocircadian Visual Synthesizer (Canvas Engine / Stem Cell Simulation)
     // ==========================================================================
     const ParticlesEngine = {
         colors: [
@@ -130,7 +131,8 @@ const BiotechSystem = (function() {
     };
 
     // ==========================================================================
-    // MODULE 02: QREDSHIFT & DUAL-UI ORCHESTRATION
+    // MODULE 02: QREDSHIFT ADAPTIVE FILTER
+    // QRedshift Adaptive Filter (Blue-light Mitigation / UI Chromatic Logic)
     // ==========================================================================
     function updateVisuals() {
         const { particles, dna, toggleBtn, floatingIcon } = state.elements;
@@ -246,8 +248,6 @@ const BiotechSystem = (function() {
 })();
 
 document.addEventListener('DOMContentLoaded', BiotechSystem.init);
-// End QRedshift: Comfort visivo automatico con integrazione menu, Toggle e Persistenza
-
 
 // ==========================================================================
 // MODULE 03: PERFORMANCE OPTIMIZATION HELPERS

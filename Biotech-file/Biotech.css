@@ -899,7 +899,7 @@ canvas#particles-canvas.is-hidden {
   cursor: pointer; 
   user-select: none; 
   /* Transizione estesa anche alla trasformazione per effetti hover più fluidi */
-  transition: background 0.3s, transform 0.2s, opacity 0.5s;
+  transition: background 0.3s, transform 0.2s, opacity 0.5s, filter 0.5s;
   -webkit-touch-callout: none; /* Disabilita il menu contestuale su iOS */
 }
 
