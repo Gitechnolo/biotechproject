@@ -656,37 +656,6 @@ if ('requestIdleCallback' in window) {
   }
 })();
   
-
-// === Ultima modifica pagina ===
-/**
- * Aggiorna il div lastModified sincronizzandolo con la lingua attiva.
- * Non richiede voci nel JSON.
- */
-function updateLastModified(lang) {
-  const el = document.getElementById('lastModified');
-  if (!el) return;
-
-  const lastModifiedDate = new Date(document.lastModified);
-  if (isNaN(lastModifiedDate)) return;
-
-  // Definisce le etichette direttamente qui per risparmiare chiamate al JSON
-  const isEn = (lang === 'en');
-  const label = isEn ? 'Last modified' : 'Ultima modifica';
-  const locale = isEn ? 'en-US' : 'it-IT';
-
-  const options = { 
-    day: '2-digit', 
-    month: '2-digit', 
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  };
-
-  // Stringa finale
-  el.textContent = `${label}: ${lastModifiedDate.toLocaleString(locale, options)}`;
-} 
-// === End ultima modifica pagina ===
-
 // =============================================================================
 // BLOCCO UNIFICATO: GESTIONE LINGUA + POPUP & CAROSELLO + VIDEO PLAYER (2026)
 // =============================================================================
@@ -1056,3 +1025,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log("🎥 Video module ready.");
   }
 });
+
+
+// === Ultima modifica pagina ===
+/**
+ * Aggiorna il div lastModified sincronizzandolo con la lingua attiva.
+ * Non richiede voci nel JSON.
+ */
+function updateLastModified(lang) {
+  const el = document.getElementById('lastModified');
+  if (!el) return;
+
+  const lastModifiedDate = new Date(document.lastModified);
+  if (isNaN(lastModifiedDate)) return;
+
+  // Definisce le etichette direttamente qui per risparmiare chiamate al JSON
+  const isEn = (lang === 'en');
+  const label = isEn ? 'Last modified' : 'Ultima modifica';
+  const locale = isEn ? 'en-US' : 'it-IT';
+
+  const options = { 
+    day: '2-digit', 
+    month: '2-digit', 
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  };
+
+  // Stringa finale
+  el.textContent = `${label}: ${lastModifiedDate.toLocaleString(locale, options)}`;
+} 
+// === End ultima modifica pagina ===
