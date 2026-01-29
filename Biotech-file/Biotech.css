@@ -1,3 +1,13 @@
+/**
+ * BIOTECH PROJECT - MAIN STYLESHEET
+ * Version: 2026.1.29
+ * Structure:
+ * 1. Global Reset & Variables
+ * 2. Typography & Custom Fonts
+ * 3. Bio-Circadian UI (Clock & HUD)
+ * 4. DNA Engine & Animations
+ * 5. Accessibility & Keyboard Nav
+ */
 *, /* Reset globale */
 *::before,
 *::after {margin: 0; padding: 0; box-sizing: border-box;}
