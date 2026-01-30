@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Valutazione Tecnica del Sito | Prestazioni, Accessibilità e Best Practice - Biotech Project</title>
-<!-- Preload di entrambi i CSS in modo non bloccante -->
-<link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <meta name="description" content="Scopri come abbiamo ottimizzato il sito di Biotech Project: prestazioni, accessibilità e conformità agli standard web.">   
 <meta name="google-site-verification" content="Gpt5PTNSnDEI_NT2_bynuXH9pOAdVbiZZ36LyKGsyTc" />
 <meta property="og:title" content="Valutazione Tecnica del Sito | Biotech Project">
@@ -57,7 +54,17 @@
     ]
   }
 }
-</script>    
+</script>     
+<!-- Preload di entrambi i CSS in modo non bloccante -->
+<link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">   
+<!-- Fallback per utenti senza JavaScript -->
+<noscript>
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css">
+</noscript>
+<!-- Preload background image & font -->
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif" as="image" type="image/avif">
 <style>
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
@@ -71,7 +78,26 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-loaded .metric {opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */}
 </style>
 <script>
-!function(){const t=t=>document.getElementById(t),e=()=>t("main-content")?.style.setProperty("opacity","1"),n=t("style1"),o=t("style2");let c=0;const s=()=>{++c>=2&&e()};[n,o].forEach(t=>{t&&(t.sheet?s():t.onload=s)}),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",e):setTimeout(e,2500)}();
+!function(){
+  const l = document.getElementById('preload-style');
+  const show = () => {
+    const c = document.getElementById('main-content');
+    if (c) c.style.setProperty('opacity', '1');
+  };
+
+  if (l) {
+    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
+    if (l.sheet) l.rel = 'stylesheet';
+  }
+
+  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', show);
+  } else {
+    show();
+  }
+  setTimeout(show, 3000); // sicurezza finale
+}();
 </script>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico">
@@ -192,10 +218,5 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
 <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio-min.js" defer></script>
-<!-- Fallback per utenti senza JavaScript -->
-<noscript>
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css">
-</noscript>
 </body>
 </html>
