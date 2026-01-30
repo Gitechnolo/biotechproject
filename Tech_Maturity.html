@@ -1,101 +1,77 @@
-<!DOCTYPE html>
-<html lang="it" dir="ltr" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Valutazione Tecnica del Sito | Prestazioni, Accessibilità e Best Practice - Biotech Project</title>
-<meta name="description" content="Scopri come abbiamo ottimizzato il sito di Biotech Project: prestazioni, accessibilità e conformità agli standard web.">   
-<meta name="google-site-verification" content="Gpt5PTNSnDEI_NT2_bynuXH9pOAdVbiZZ36LyKGsyTc" />
-<meta property="og:title" content="Valutazione Tecnica del Sito | Biotech Project">
-<meta property="og:description" content="Scopri come abbiamo ottimizzato il sito di Biotech Project: prestazioni, accessibilità e conformità agli standard web.">
-<meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
-<meta property="og:image:alt" content="Anteprima del report di valutazione tecnica del sito Biotech Project">
+
+<title>Valutazione Tecnica del Sito | Prestazioni & Accessibilità - Biotech Project</title>
+<meta name="description" content="Analisi della maturità tecnologica di Biotech Project: scopri i punteggi di velocità, accessibilità e le best practice web implementate.">
+<link rel="canonical" href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+
+<meta property="og:type" content="article">
 <meta property="og:url" content="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+<meta property="og:title" content="Valutazione Tecnica del Sito | Biotech Project">
+<meta property="og:description" content="Report tecnico su performance e conformità agli standard web moderni.">
+<meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
+<meta property="og:image:alt" content="Dashboard delle prestazioni Biotech Project">
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Valutazione Tecnica del Sito | Biotech Project">
-<meta name="twitter:description" content="Analisi della maturità tecnologica: velocità, accessibilità e best practice implementate nel progetto.">
 <meta name="twitter:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
-<meta name="author" content="Biotech Project Team">
-<meta name="article:author" content="https://www.linkedin.com/in/biotechproject">
-<meta name="article:published_time" content="2025-08-02T10:00:00+02:00">
-<meta name="article:modified_time" content="2025-12-22T12:07:00+02:00">
+
 <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
 <link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
+
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" as="image" fetchpriority="high">
-<!-- Schema.org structured data (JSON-LD - Tech) -->
+
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css" media="print" onload="this.media='all'">
+
+<style>
+  /* Critical CSS per evitare Layout Shift */
+  :root { --bg-dark: #000f16; --text-main: #d4d3d3; }
+  html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-main); font-family: 'Sansation', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+  #main-content { opacity: 0; transition: opacity 0.4s ease-in-out; }
+  .canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+  .logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
+  .modern-logo { max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border: 0; }
+  
+  /* Placeholder per metriche dinamiche */
+  .portfolio-row { display: flex; flex-wrap: wrap; gap: 1.5rem; min-height: 300px; }
+  .metric { opacity: 0; transform: translateY(15px); }
+  .portfolio-loaded .metric { 
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+  }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Valutazione Tecnica del Sito | Prestazioni, Accessibilità e Best Practice - Biotech Project",
-  "description": "Scopri come abbiamo ottimizzato il sito di Biotech Project: prestazioni, accessibilità e conformità agli standard web.",
-  "url": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html",
-  "mainEntityOfPage": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html",
-  "image": "https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png",
-  "datePublished": "2025-08-02T10:00:00+02:00",
-  "dateModified": "2025-12-22T12:07:00+02:00",
-  "inLanguage": "it",
-  "isAccessibleForFree": true,
-  "author": {
-    "@type": "Organization",
-    "name": "Biotech Project Team"
-  },
+  "@type": "TechArticle",
+  "headline": "Valutazione Tecnica del Sito Biotech Project",
+  "description": "Analisi approfondita delle prestazioni web, accessibilità e best practice del progetto Biotech.",
+  "author": { "@type": "Organization", "name": "Biotech Project Team" },
   "publisher": {
     "@type": "Organization",
     "name": "Biotech Project",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/biotechproject",
-      "https://github.com/gitechnolo/biotechproject"
-    ]
-  }
+    "logo": { "@type": "ImageObject", "url": "https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png" }
+  },
+  "datePublished": "2025-08-02T10:00:00+02:00",
+  "dateModified": "2025-12-22T12:07:00+02:00"
 }
-</script>     
-<!-- Preload di entrambi i CSS in modo non bloccante -->
-<link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">   
-<!-- Fallback per utenti senza JavaScript -->
-<noscript>
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
-<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css">
-</noscript>
-<style>
-html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
-#main-content {opacity: 0; transition: opacity 0.3s ease;}
-.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-.portfolio-row {min-height: 200px; /* Evita il collassamento */
-  display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1rem; justify-content: flex-start;}
-.portfolio-row:empty::before {content: "Caricamento..."; color: #999; font-style: italic; align-self: center; justify-self: center;}
-/* 1. Stato Iniziale: Rende le metriche pronte per l'animazione */
-.metric {opacity: 0; transform: translateY(20px); transition: none; /* Disabilita la transizione nello stato iniziale */}
-/* 2. Stato Finale: Attivato dopo il caricamento dei dati (dalla classe aggiunta al body) */
-.portfolio-loaded .metric {opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */}
-</style>
+</script>
+
 <script>
-!function(){
-  const l = document.getElementById('preload-style');
-  const show = () => {
-    const c = document.getElementById('main-content');
-    if (c) c.style.setProperty('opacity', '1');
-  };
-
-  if (l) {
-    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
-    if (l.sheet) l.rel = 'stylesheet';
-  }
-
-  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', show);
-  } else {
-    show();
-  }
-  setTimeout(show, 3000); // sicurezza finale
-}();
+  // Script di sblocco visibilità migliorato
+  (function() {
+    const reveal = () => {
+      const content = document.getElementById('main-content');
+      if (content) content.style.opacity = '1';
+    };
+    window.addEventListener('load', reveal);
+    setTimeout(reveal, 2500); // Fail-safe
+  })();
 </script>
 </head>
 <body class="biotechbody" data-modern-menu>
