@@ -2,49 +2,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
 <title>Valutazione Tecnica del Sito | Prestazioni & Accessibilità - Biotech Project</title>
 <meta name="description" content="Analisi della maturità tecnologica di Biotech Project: scopri i punteggi di velocità, accessibilità e le best practice web implementate.">
 <link rel="canonical" href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
-
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
 <meta property="og:title" content="Valutazione Tecnica del Sito | Biotech Project">
 <meta property="og:description" content="Report tecnico su performance e conformità agli standard web moderni.">
 <meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
 <meta property="og:image:alt" content="Dashboard delle prestazioni Biotech Project">
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Valutazione Tecnica del Sito | Biotech Project">
 <meta name="twitter:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
-
 <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
 <link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
-
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" as="image" fetchpriority="high">
 
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css" media="print" onload="this.media='all'">
-
 <style>
-  /* Critical CSS per evitare Layout Shift */
-  :root { --bg-dark: #000f16; --text-main: #d4d3d3; }
-  html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-main); font-family: 'Sansation', system-ui, -apple-system, sans-serif; line-height: 1.6; }
-  #main-content { opacity: 0; transition: opacity 0.3s ease-in-out; }
-  .canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
-  .logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
-  .modern-logo { max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border: 0; }
-  
-  /* Placeholder per metriche dinamiche */
-  .portfolio-row { display: flex; flex-wrap: wrap; gap: 1.5rem; min-height: 300px; }
-  .metric { opacity: 0; transform: translateY(15px); }
-  .portfolio-loaded .metric { 
-    opacity: 1; 
-    transform: translateY(0); 
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
-  }
+/* Critical CSS per evitare Layout Shift */
+:root { --bg-dark: #000f16; --text-main: #d4d3d3; }
+html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-main); font-family: 'Sansation', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+#main-content { opacity: 0; transition: opacity 0.3s ease-in-out; }
+.canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+.logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
+.modern-logo { max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border: 0; }
+/* Placeholder per metriche dinamiche */
+.portfolio-row { display: flex; flex-wrap: wrap; gap: 1.5rem; min-height: 300px; }
+.metric { opacity: 0; transform: translateY(15px); }
+.portfolio-loaded .metric{ opacity: 1; transform: translateY(0); transition: opacity 0.6s ease-out, transform 0.6s ease-out;}
 </style>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,7 +49,6 @@
   "dateModified": "2025-12-22T12:07:00+02:00"
 }
 </script>
-
 <script>
   // Script di sblocco visibilità migliorato
   (function() {
