@@ -23,25 +23,49 @@
 <meta name="author" content="Biotech Project Team">
 <link rel="canonical" href="https://gitechnolo.github.io/biotechproject/">
 <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
+
 <link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" as="image" fetchpriority="high">
 <link rel="preload" href="lang/common.json" as="fetch" crossorigin="anonymous">
-<link rel="preload" href="lang/home.json" as="fetch" crossorigin="anonymous">   
-<!-- Schema.org structured data (JSON-LD) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Biotech Project","alternateName":"Progetto Biotech","url":"https://gitechnolo.github.io/biotechproject/","description":"Portale educativo open source su biotecnologia e biologia umana. Inclusività scientifica e standard WCAG 2.1 per l'accessibilità cognitiva.","publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"],"inLanguage":["it","en"],"isAccessibleForFree":"True","educationalUse":["Science Education","Software Development Case Study"],"keywords":"Inclusive Design, WCAG 2.1, Biotech, Open Source, High Performance Web, DSA Accessibility, Multilingual"}</script>       
-<!-- Preload CSS critico & noscript-->
-<link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="lang/home.json" as="fetch" crossorigin="anonymous">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Biotech Project","alternateName":"Progetto Biotech","url":"https://gitechnolo.github.io/biotechproject/","description":"Portale educativo open source su biotecnologia e biologia umana. Inclusività scientifica e standard WCAG 2.1 per l'accessibilità cognitiva.","publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"],"inLanguage":["it","en"],"isAccessibleForFree":"True","educationalUse":["Science Education","Software Development Case Study"],"keywords":"Inclusive Design, WCAG 2.1, Biotech, Open Source, High Performance Web, DSA Accessibility, Multilingual"}</script>
+
+<link id="main-stylesheet" rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" media="print" onload="this.media='all';this.classList.add('loaded')">
 <noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css"></noscript>
+
 <style>
+/* CSS Critico Inline per Instant-Paint */
 html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
 #main-content {opacity: 0; transition: opacity 0.3s ease;}
+/* Forza visibilità se il CSS è caricato o tramite JS */
+.loaded ~ #main-content, #main-content.visible {opacity: 1 !important;}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 #myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto; }.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}@media only screen and (max-width: 700px){ .modal-content{ margin-top: 80px !important; max-height: 50vh;} #caption{ font-size: 17px; padding-bottom: 100px;} .close{ top: 10px; right: 20px;}}
 </style>
+
 <script>
-!function(){const l=document.getElementById('preload-style'),s=()=>{const c=document.getElementById('main-content');c&&(c.style.opacity='1')};l&&(l.onload=()=>{l.rel='stylesheet',setTimeout(s,50)},l.sheet&&(l.rel='stylesheet'));"loading"===document.readyState?document.addEventListener("DOMContentLoaded",s):s(),setTimeout(s,3000)}();
-</script>   
+/** * Script di attivazione rapida
+ * Gestisce l'opacità in modo sicuro su CPU Throttling 4x
+ */
+!function(){
+  const show = () => {
+    const c = document.getElementById('main-content');
+    if(c) c.classList.add('visible');
+  };
+
+  // Controlla se il CSS è già pronto (cache) o attiva al DOM Ready
+  if (document.readyState !== 'loading') {
+    show();
+  } else {
+    document.addEventListener('DOMContentLoaded', show);
+  }
+
+  // Fallback estremo per reti con latenza > 2000ms
+  setTimeout(show, 2500);
+}();
+</script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <div id="sr-announcement" aria-live="polite" class="visually-hidden"></div>
