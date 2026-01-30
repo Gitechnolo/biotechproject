@@ -24,7 +24,7 @@
 /* Critical CSS per evitare Layout Shift */
 :root { --bg-dark: #000f16; --text-main: #d4d3d3; }
 html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-main); font-family: 'Sansation', system-ui, -apple-system, sans-serif; line-height: 1.6; }
-#main-content { opacity: 0; transition: opacity 0.3s ease-in-out; }
+#main-content {opacity: 0;}
 .canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
 .logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
 .modern-logo { max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border: 0; }
@@ -49,17 +49,7 @@ html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var
   "dateModified": "2025-12-22T12:07:00+02:00"
 }
 </script>
-<script>
-  // Script di sblocco visibilità migliorato
-  (function() {
-    const reveal = () => {
-      const content = document.getElementById('main-content');
-      if (content) content.style.opacity = '1';
-    };
-    window.addEventListener('load', reveal);
-    setTimeout(reveal, 2500); // Fail-safe
-  })();
-</script>
+<script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,1200)}();</script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->
