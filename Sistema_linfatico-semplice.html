@@ -105,26 +105,13 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 </style>
 <script>
-!function(){
-  const l = document.getElementById('preload-style');
-  const show = () => {
+  document.documentElement.className = document.documentElement.className.replace('no-js','js');
+  window.addEventListener('DOMContentLoaded', () => {
     const c = document.getElementById('main-content');
-    if (c) c.style.setProperty('opacity', '1');
-  };
-
-  if (l) {
-    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
-    if (l.sheet) l.rel = 'stylesheet';
-  }
-
-  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', show);
-  } else {
-    show();
-  }
-  setTimeout(show, 3000); // sicurezza finale
-}();
+    if(c) { c.style.opacity = '1'; }
+  });
+  // Fallback per CPU lenta
+  setTimeout(() => { if(document.getElementById('main-content')) document.getElementById('main-content').style.opacity='1'; }, 2500);
 </script>
 </head>
 <body class="biotechbody" data-modern-menu>

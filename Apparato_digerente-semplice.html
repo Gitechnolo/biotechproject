@@ -126,26 +126,13 @@ div.desc {font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; 
 .simple_definition {font-size: 14px; color: #a7ffeb; text-align: center; margin-top: 5px;}
 </style>
 <script>
-!function(){
-  const l = document.getElementById('preload-style');
-  const show = () => {
+  document.documentElement.className = document.documentElement.className.replace('no-js','js');
+  window.addEventListener('DOMContentLoaded', () => {
     const c = document.getElementById('main-content');
-    if (c) c.style.setProperty('opacity', '1');
-  };
-
-  if (l) {
-    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
-    if (l.sheet) l.rel = 'stylesheet';
-  }
-
-  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', show);
-  } else {
-    show();
-  }
-  setTimeout(show, 3000); // sicurezza finale
-}();
+    if(c) { c.style.opacity = '1'; }
+  });
+  // Fallback per CPU lenta
+  setTimeout(() => { if(document.getElementById('main-content')) document.getElementById('main-content').style.opacity='1'; }, 2500);
 </script>
 </head>
 <body class="biotechbody" data-modern-menu>
