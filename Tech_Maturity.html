@@ -71,26 +71,7 @@ html, body {margin: 0; padding: 0; background-color: #000f16; color: #d4d3d3; fo
 .portfolio-loaded .metric {opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; /* Gestione animazione */}
 </style>
 <script>
-!function(){
-  const l = document.getElementById('preload-style');
-  const show = () => {
-    const c = document.getElementById('main-content');
-    if (c) c.style.setProperty('opacity', '1');
-  };
-
-  if (l) {
-    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
-    if (l.sheet) l.rel = 'stylesheet';
-  }
-
-  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', show);
-  } else {
-    show();
-  }
-  setTimeout(show, 3000); // sicurezza finale
-}();
+!function(){const l=document.getElementById("preload-style"),s=()=>document.getElementById("main-content")?.style.setProperty("opacity","1");l&&(l.sheet?l.rel="stylesheet":l.onload=()=>{l.rel="stylesheet",s()});"loading"===document.readyState?document.addEventListener("DOMContentLoaded",s):s(),setTimeout(s,2500)}();
 </script>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico">
