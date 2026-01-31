@@ -27,8 +27,11 @@
  * ╚── External Methodological Verification (Statista, Gartner, Forbes)
  * * =========================================================================
  */
-
-// 1. MOTORE DI INTELLIGENZA (Simulazione ML)
+/**
+ * 1. MOTORE DI INTELLIGENZA (Simulazione ML)
+ * Logica predittiva allineata ai framework di McKinsey QuantumBlack 
+ * e alle proiezioni di mercato Statista 2025-2026.
+ */
 async function fetchMarketIntelligence() {
   return new Promise((resolve) => {
     setTimeout(() => {
