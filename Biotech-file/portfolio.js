@@ -1,4 +1,40 @@
-// Biotech-file/portfolio.js
+/**
+ * BIOTECH PROJECT | PERFORMANCE & TECHNOLOGICAL MATURITY SYSTEM
+ * -------------------------------------------------------------------------
+ * ARCHITECTURE: Event-Driven UI Orchestrator
+ * STRATEGY: Dynamic Hydration & Resource Throttling
+ * COMPLIANCE: WCAG 2.1 Level AAA (Aria-Live Regions, Focus Management)
+ * SRE METRICS: Simulated 3G/4G Network Throttling (Lighthouse 2026 Standards)
+ * -------------------------------------------------------------------------
+ * SUMMARY:
+ * This module manages the real-time visualization of the project's technical 
+ * evolution. It fetches telemetry from 'performance-latest.json', computes 
+ * health scores, and renders interactive data via Chart.js and jsPDF.
+ * -------------------------------------------------------------------------
+ 
+BIOTECH PORTFOLIO | MODULE TREE 2026
+====================================
+
+[ROOT] portfolio.js
+ ║
+ ╠══ DATA ACQUISITION LAYER
+ ║   ╠── loadPerformanceData() ─────► Fetch & Parse (Telemetry JSON)
+ ║   ╚── loadJsPDF() ──────────────► On-Demand Script Injection (Lazy)
+ ║
+ ╠══ UI RENDERING PIPELINE (DOM)
+ ║   ╠── createPerformanceCard() ──► Fragment-based DOM Construction
+ ║   ╠── filterSelection() ────────► State-driven UI Filtering
+ ║   ╚── aggiornaPerformanceScore() ► Real-time Metric Feedback
+ ║
+ ╠══ ANALYTICS & VISUALIZATION
+ ║   ╠── creaGrafico() ────────────► Chart.js Engine (Trend Projection)
+ ║   ╚── getTrendArrow() ──────────► Differential Delta Logic
+ ║
+ ╚══ EXPORT & COMPLIANCE
+     ╠── exportToPDF() ────────────► I18n PDF Synthesis (AutoTable)
+     ╚── A11y Controller ──────────► Live Region & ARIA Management
+
+*/
 // ———————————————————————
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
 // ———————————————————————
