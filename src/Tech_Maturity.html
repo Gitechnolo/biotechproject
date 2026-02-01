@@ -1,0 +1,171 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Valutazione Tecnica del Sito | Prestazioni & Accessibilità - Biotech Project</title>
+<meta name="description" content="Analisi della maturità tecnologica di Biotech Project: scopri i punteggi di velocità, accessibilità e le best practice web implementate.">
+<link rel="canonical" href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+<meta property="og:title" content="Valutazione Tecnica del Sito | Biotech Project">
+<meta property="og:description" content="Report tecnico su performance e conformità agli standard web moderni.">
+<meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
+<meta property="og:image:alt" content="Dashboard delle prestazioni Biotech Project">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Valutazione Tecnica del Sito | Biotech Project">
+<meta name="twitter:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
+<link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
+<link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" as="image" fetchpriority="high">
+
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/reportJobs.min.css" media="print" onload="this.media='all'">
+<style>
+/* Critical CSS per evitare Layout Shift */
+:root { --bg-dark: #000f16; --text-main: #d4d3d3; }
+html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-main); font-family: 'Sansation', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+#main-content {opacity: 0;}
+.canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+.logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
+.modern-logo { max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border: 0; }
+/* Placeholder per metriche dinamiche */
+.portfolio-row { display: flex; flex-wrap: wrap; gap: 1.5rem; min-height: 300px; }
+.metric { opacity: 0; transform: translateY(15px); }
+.portfolio-loaded .metric{ opacity: 1; transform: translateY(0); transition: opacity 0.6s ease-out, transform 0.6s ease-out;}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Valutazione Tecnica del Sito Biotech Project",
+  "description": "Analisi approfondita delle prestazioni web, accessibilità e best practice del progetto Biotech.",
+  "author": { "@type": "Organization", "name": "Biotech Project Team" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Biotech Project",
+    "logo": { "@type": "ImageObject", "url": "https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png" }
+  },
+  "datePublished": "2025-08-02T10:00:00+02:00",
+  "dateModified": "2025-12-22T12:07:00+02:00"
+}
+</script>
+<script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,1200)}();</script>
+</head>
+<body class="biotechbody" data-modern-menu>
+<!-- Link "Skip to main" salto per tastiera (accessibilità) -->
+<a href="#main" class="skip-link">Vai al contenuto principale</a>  
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text" data-lang-key="keyboard-toggle">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>  
+<div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
+<!-- DNA animation -->
+<div class="dna-container-8"><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div></div>
+<!-- Nav Menu Moderno -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu"><div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="products" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button><div id="products" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" role="menuitem" aria-label="Home"><b>Home</b></a></div></div></div><div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it" data-lang-key="nav-physiology"><b>Fisiologia</b></button><div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula" data-lang-key="nav-cell">Cellula</a><a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio" data-lang-key="nav-circulatory">Apparato circolatorio</a><a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio" data-lang-key="nav-respiratory">Apparato respiratorio</a><a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente" data-lang-key="nav-digestive">Apparato digerente</a><a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario" data-lang-key="nav-integumentary">Apparato tegumentario</a><a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario" data-lang-key="nav-lymphatic">Sistema linfatico / immunitario</a><a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia" data-lang-key="nav-dermatology">Dermatologia</a><a href="https://gitechnolo.github.io/biotechproject/Capelli.html" hreflang="it" role="menuitem" aria-label="Capelli" data-lang-key="nav-hair">Capelli</a></div></div></div><div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button><div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><button role="menuitem" id="btn-support-os" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button><button role="menuitem" id="btn-contact-forum" aria-label="Contattaci tramite il forum ChatGPT" lang="it" data-lang-key="nav-contact">Contattaci</button><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto" data-lang-key="nav-accessibility">Accessibilità</a><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project" data-lang-key="nav-accessibility-en">Accessibility</a><a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore" hreflang="it" data-lang-key="nav-theme">🎨 Tema pulsanti</a><button role="menuitem" id="lang-toggle" aria-label="Cambia lingua" lang="it"><span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span><span id="lang-label">Cambia lingua</span></button></div></div></div><div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="staff" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button><div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a><a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a><a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti" data-lang-key="nav-progetti">Progetti</a></div></div></div><div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jobs" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button><div id="jobs" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" role="menuitem" aria-label="Mercato cibernetica">Cybernetics Market</a><a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" role="menuitem" aria-label="Speciali">Specials</a></div></div></div></div>
+<div class="logo-wrapper-cls"><img fetchpriority="high" decoding="async" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="720" height="180"></div> 
+<!-- End Nav Menu Moderno -->
+<!-- Contenuto principale (per Skip to main e accessibilità) --> 
+<main id="main">
+<!-- Container: prevenzione CLS -->
+<div class="staff-layout-container" id="main-content">
+<div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
+ <!-- MAIN  -->
+<!-- Audit Tecnico | Biotech Project Cerchi -->
+<div class="tech-audit-container">
+<h2 id="page-title"><span aria-hidden="true">📈</span><span data-lang-key="tech-maturity-title">Audit di Sistema | Biotech Project</span></h2>   
+<p class="lead" data-lang-key="tech-maturity-description">Report aggregato: performance, SEO, accessibilità e best practices basati sull’analisi completa del sito.</p>
+<div class="tech-section">
+<div class="metrics-grid">
+<!-- MOBILE PERFORMANCE -->
+<div class="metric"><div class="progress-circle high" data-metric="performance" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92" aria-label="Prestazioni mobile: 92 su 100, livello eccellente" data-value="92"></div><p><strong>📱 Mobile</strong><br><span data-lang-key="tech-maturity-performance">Prestazioni</span></p><button class="tooltip-btn" data-tooltip="performance-mobile" aria-label="Info prestazioni mobile">ⓘ</button><div class="trend-details" id="tooltip-performance-mobile" hidden><strong>Prestazioni Mobile</strong><br>Velocità di caricamento, First Paint e interattività. Punteggio da 0 a 100. </div></div>
+<!-- SEO -->
+<div class="metric"><div class="progress-circle high" data-metric="seo" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88" aria-label="Ottimizzazione SEO: 88 su 100, livello elevato" data-value="88"></div><p>SEO</p><button class="tooltip-btn" data-tooltip="seo" aria-label="Info SEO">ⓘ</button><div class="trend-details" id="tooltip-seo" hidden><strong>SEO</strong><br>Titoli, meta description, link strutturati e contenuti ottimizzati per i motori di ricerca. </div></div>
+<!-- ACCESSIBILITÀ -->
+<div class="metric"><div class="progress-circle high" data-metric="accessibility" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="96" aria-label="Livello di accessibilità: 96 su 100, conforme WCAG 2.1 AA" data-value="96"></div><p data-lang-key="tech-maturity-accessibility">Accessibilità</p><button class="tooltip-btn" data-tooltip="accessibility" aria-label="Info accessibilità">ⓘ</button><div class="trend-details" id="tooltip-accessibility" hidden><strong>Accessibilità</strong><br>Fruibilità con screen reader, tastiera, contrasto e navigazione logica. </div></div>
+<!-- BEST PRACTICES -->
+<div class="metric"><div class="progress-circle medium" data-metric="best-practices" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74" aria-label="Best practice di sviluppo: 74 su 100, buon livello ma migliorabile" data-value="74"></div><p>Best Practices</p><button class="tooltip-btn" data-tooltip="best-practices" aria-label="Info best practices">ⓘ</button><div class="trend-details" id="tooltip-best-practices" hidden><strong>Best Practices</strong><br>Verifica l'uso di HTTPS, codice moderno, sicurezza, e pratiche di sviluppo consigliate da Google e W3C. </div></div>
+<!-- DESKTOP PERFORMANCE -->
+<div class="metric"><div class="progress-circle high" data-metric="performance-desktop" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="98" aria-label="Prestazioni desktop: 98 su 100, livello eccellente" data-value="98"></div><p><strong>💻 Desktop</strong><br><span data-lang-key="tech-maturity-performance">Prestazioni</span></p><button class="tooltip-btn" data-tooltip="performance-desktop" aria-label="Info prestazioni desktop">ⓘ</button><div class="trend-details" id="tooltip-performance-desktop" hidden><strong>Prestazioni Desktop</strong><br>Velocità di caricamento e interattività su connessione veloce (4G o Wi-Fi). Misurata con Lighthouse. </div></div>
+</div> <!-- /metrics-grid --> 
+<!-- 🔺 Indicatore di tendenza globale (opzionale) -->
+<div style="margin-top: 16px; font-size: 0.9em; color: #a7ffeb; text-align: center;"><span class="sansation-light-italic" data-lang-key="dati_laboratorio">Dati di laboratorio (ambiente controllato), utili per debug e ottimizzazioni specifiche.</span><br><span data-lang-key="update_dati">Ultimo aggiornamento:</span><span id="last-updated">--/--/----</span><span id="trend-indicator" aria-live="polite" class="visually-hidden">Tendenza stabile</span></div>
+</div> <!-- /tech-section -->
+</div>  
+<!-- Chiusura Audit Tecnico | Biotech Project Cerchi -->   
+<!-- === VISUAL REPORT CARD === -->
+<div class="visual-report" aria-labelledby="report-title">
+<h3 id="report-title"><span aria-hidden="true">📊</span><span data-lang-key="tech-maturity-report-title">Stato del Progetto</span></h3>   
+<div class="report-grid">
+<!-- Pagine analizzate -->
+<div class="report-item" role="article" aria-labelledby="pages-analyzed-label"><span class="report-icon" aria-hidden="true">✅</span><div><strong id="pages-analyzed-label" data-lang-key="tech-maturity-pages-analyzed">Pagine analizzate</strong><p><span id="analyzed-count">--</span><span data-lang-key="tech-maturity-of">su</span><span id="total-pages">26</span></p></div></div>   
+<!-- Prestazioni medie -->
+<div class="report-item" role="article" aria-labelledby="avg-performance-label"><span class="report-icon" aria-hidden="true">⚡</span><div><strong id="avg-performance-label" data-lang-key="tech-maturity-avg-performance">Prestazioni medie</strong><p id="avg-performance">--%</p></div></div>   
+<!-- Accessibilità -->
+<div class="report-item" role="article" aria-labelledby="accessibility-label"><span class="report-icon" aria-hidden="true">♿</span><div><strong id="accessibility-label" data-lang-key="tech-maturity-a11y-heading">Accessibilità</strong><p data-lang-key="tech-maturity-a11y-desc">Alto contrasto, navigabile da tastiera, compatibile con screen reader </p></div></div>   
+<!-- Ultimo aggiornamento -->
+<div class="report-item" role="article" aria-labelledby="last-update-label"><span class="report-icon" aria-hidden="true">🔍</span><div><strong id="last-update-label" data-lang-key="tech-maturity-last-update">Ultimo aggiornamento</strong><p><time id="last-updated-report" datetime="">--/--/----</time></p></div></div>   
+</div>
+<p class="report-note"><span data-lang-key="tech-maturity-report-note">Dati aggiornati automaticamente.</span><a href="/biotechproject/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-download-json">Scarica JSON</a><span data-lang-key="tech-maturity-or">o</span><a href="https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json" target="_blank" class="report-link" data-lang-key="tech-maturity-view-on-github">vedi su GitHub</a>.</p>   
+</div>     
+<!-- Grafico andamento prestazioni + refresh -->
+<section class="tech-section"><p id="chart-title" class="sansation-light-italic" data-lang-key="chart-performance-trend">Andamento delle Prestazioni!</p><div id="chart-desc" class="visually-hidden" data-lang-key="chart-desc"></div><canvas id="performance-trend" width="800" height="200" role="img" aria-labelledby="chart-title" aria-describedby="chart-desc"></canvas><p id="last-update" class="update-info" data-lang-key="last-update-label" aria-live="polite">Aggiornato il: caricamento... </p><button class="refresh-btn" data-lang-key="refresh-btn-label" title="Aggiorna i dati del grafico">Aggiorna ora </button></section>
+<!-- Dati esportati -->
+<div class="biotechcenter"><button id="export-data-btn" class="action-btn" data-lang-key="export-data-btn-label" title="Esporta dati storici in JSON o CSV" data-lang-title="export-data-btn-title" aria-label="Esporta dati storici"><span aria-hidden="true">💾</span><span data-lang-key="export-data-btn-label">Esporta dati</span></button></div>   
+<!-- Punteggio perfromance -->
+<div class="biotechcenter score-wrapper" role="region" aria-labelledby="score-label">
+<!-- Etichetta del punteggio -->
+<p id="score-label" class="sansation-light-italic" data-lang-key="performance-score-label">Performance Score</p>
+<!-- Valore dinamico del punteggio -->
+<div class="score-display"><span id="performance-score" aria-live="polite" aria-atomic="true"> - </span>
+<!-- Indicatore di tendenza (es. ↑ ↓) -->
+<span id="score-trend-indicator" aria-live="polite">↑</span>
+</div>
+<!-- Nota sul refresh dati -->
+<p class="report-note" data-lang-key="performance-score-note">*Dati reali aggiornati ogni 24 ore</p><br>
+</div>     
+<!-- Tabella dati per il grafico (nascosta) -->
+<table class="visually-hidden">
+<caption>Andamento delle prestazioni nel tempo</caption>
+<thead><tr><th>Data</th><th>Prestazioni (%)</th></tr></thead>
+<tbody id="chart-data-body"><!-- Popolato via JavaScript --></tbody>
+</table>
+<!-- Menu di filtro per livello di maturità tecnologica -->
+<div class="portfolio-main">
+<div class="tech-section"><p class="sansation-light-italic" data-lang-key="leg-tit" id="filter-title">Criteri di Valutazione Prestazioni</p>
+<div class="filter-legend-container"><div class="filter-legend-grid"><div class="legend-item"><span class="status-badge badge-optimized"></span><span data-lang-key="leg-opt">90-100: Ottimizzate</span></div><div class="legend-item"><span class="status-badge badge-compatible"></span><span data-lang-key="leg-comp">75-89: Compatibili</span></div><div class="legend-item"><span class="status-badge badge-needs-improvement"></span><span data-lang-key="leg-need">50-74: Da migliorare</span></div><div class="legend-item"><span class="status-badge badge-deprecated"></span><span data-lang-key="leg-depr">&lt; 50: Obsoleti</span></div></div></div>
+<div id="myBtnContainer" role="group" aria-labelledby="filter-title"><button class="filter-btn active" data-filter="all" data-lang-key="filter-all" aria-pressed="true">Mostra tutti</button><button class="filter-btn" data-filter="optimized" data-lang-key="filter-optimized" aria-pressed="false">Ottimizzate</button><button class="filter-btn" data-filter="compatible" data-lang-key="filter-compatible" aria-pressed="false">Compatibili</button><button class="filter-btn" data-filter="needs-improvement" data-lang-key="filter-needs-improvement" aria-pressed="false">Da migliorare</button><button class="filter-btn" data-filter="deprecated" data-lang-key="filter-deprecated" aria-pressed="false">Obsoleti</button></div>
+<div aria-live="polite" aria-atomic="true" class="sr-only"><span data-lang-key="filter-applied-text">Filtri applicati:</span><span id="filter-status">Mostra tutti</span></div>
+</div>      
+<!-- Griglia delle pagine -->
+<div class="portfolio-row"><!-- Card generate dinamicamente da JavaScript --></div>   
+</div>
+<!-- END MAIN -->
+</div>
+<div class="biotechcenter"><button class="refresh-btn" data-lang-key="refresh-btn-bottom-label" aria-label="Aggiorna dati del report" title="Aggiorna i dati del report in tempo reale"><span aria-hidden="true">🔄</span><span data-lang-key="refresh-btn-bottom-label">Aggiorna dati</span></button></div><br>
+<div class="report-note"><p data-lang-key="sre-description">I test di performance simulano contesti d'uso reali in aree con infrastrutture digitali limitate.</p><span data-lang-key="sre-net-label">PROFILO RETE</span>: <strong data-lang-key="sre-net-value">3G Veloce / 4G Lento</strong> (<small data-lang-key="sre-net-detail">RTT: 150ms | Banda: 1.6Mbps</small>)<br><span data-lang-key="sre-hw-label">PROFILO HARDWARE</span>: <strong data-lang-key="sre-hw-value">Emulazione Mobile Legacy</strong> (<small data-lang-key="sre-hw-detail">Rallentamento CPU: Moltiplicatore 4x</small>)<br><span data-lang-key="sre-method-label">METODOLOGIA</span>: <strong data-lang-key="sre-method-value">Throttling Simulato</strong> (<small data-lang-key="sre-method-detail">Lighthouse SRE Engine 2026</small>)</div>   
+   
+<br><br>
+<!-- Badge di accessibilità -->
+<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" class="hover-effect" aria-label="Dichiarazione di accessibilità del sito BiotechProject - Conforme agli standard WCAG 2.1 AA" title="Dichiarazione di accessibilità del sito - Conforme agli standard WCAG 2.1 AA"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Dichiarazione di accessibilità del sito BiotechProject" width="220" height="80"></a></div>
+<div id="lastModified"></div>
+<p class="biotechcenter biotech-copyright sansation-light-italic" data-lang-key="footer-project">BiotechProject. Un progetto per un web più inclusivo.</p>
+<p class="biotechcenter"><a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=biotechproject" target="_blank" rel="noopener" class="hover-effect" aria-label="Segui il progetto Biotech su LinkedIn (apre in una nuova finestra)" data-lang-key="linkedin-link">🔗 Segui Biotech Project su LinkedIn</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>  
+<!-- End container: prevenzione CLS -->
+</main>
+<!-- End contenuto principale (per Skip to main e accessibilità) -->
+<!-- Avviso per utenti senza JavaScript --> 
+<div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/portfolio-min.js" defer></script>
+</body>
+</html>
