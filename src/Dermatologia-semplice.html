@@ -42,26 +42,12 @@
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_terminal.min.css">
 </noscript>
 <style type="text/css">
-/* Biotech Dermatologia-Semplice - Versione Ultra-Performance */
-:root { --accent-green: rgba(0, 230, 118, 0.3); }
-html, body{ margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%; overflow-x: hidden}
-#main-content { opacity: 0; transition: opacity 0.4s ease-in; }
-/* 1. SRE-Core: Isolamento aggressivo per le sezioni di testo e immagini */
-/* Applichiamo il containment a blocchi logici più grandi per ridurre il lavoro della CPU */
-.staff-card, .atkinson-regular, figure, .image-container{ content-visibility: auto; contain-intrinsic-size: 1px 300px; /* Previene i salti di layout */contain: layout style;}
-/* 2. Ottimizzazione Immagini (Prevenzione CLS) */
-/* Specifichiamo dimensioni di riserva per le immagini AVIF */
-img.specials-img, figure img{ display: block; max-width: 100%; height: auto; aspect-ratio: auto; content-visibility: visible; }
-/* 3. Base Layout */
-.canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
-.staff-layout-container { padding-top: 20px; width: 100%; }
-.logo-wrapper-cls { min-height: 215px; contain: size layout; } /* Isola il logo */
-.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180;}
-/* 4. Modal (CSS super leggero) */
-.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); align-items: center; justify-content: center}
-.modal.show { display: flex; opacity: 1; }
-/* 5. Miglioramento per il mobile */
-@media (max-width: 768px){ .staff-container{ padding: 10px;} h2.atkinson-bold{ font-size: 32px !important;}}
+ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
+#main-content {opacity: 0;} 
+.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+.grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
+.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
+.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
 </style>
 <script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,600)}();</script>
 </head>
