@@ -42,45 +42,23 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .js #main-content { opacity: 0; transition: opacity 0.3s ease; }
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 /* Stile per il contenitore Flexbox */
-.image-text-wrapper {
-    display: flex;
-    flex-direction: row; /* Affiancamento orizzontale su desktop */
-    gap: 20px; /* Spazio tra immagine e testo */
-    margin-bottom: 30px; /* Spazio sotto il blocco affiancato */
-    align-items: flex-start; /* Allinea il contenuto in alto */
-    flex-wrap: wrap; /* A capo su schermi stretti */
-}
+.image-text-wrapper{ display: flex; flex-direction: row; gap: 20px; margin-bottom: 30px; align-items: flex-start; flex-wrap: wrap; }
 /* Stile per il blocco che contiene l'immagine */
-.image-side {
-    /* Larghezza fissa (o flessibile) per l'immagine su desktop. Scegliere valore che si adatti bene. */
-    flex: 0 0 480px; 
-    max-width: 100%; /* Assicura che non superi la larghezza del contenitore su mobile */
-}
+.image-side{ flex: 0 0 480px; max-width: 100%; }
 /* Stile per il blocco che contiene il testo */
 .text-side {
     flex: 1; /* Il testo occupa lo spazio rimanente */
     min-width: 300px; /* Larghezza minima per evitare che il testo sia troppo stretto */
 }
 /* Media Query per Mobile (Schermi fino a 768px) */
-@media (max-width: 768px) {
-    .image-text-wrapper {
-        flex-direction: column; /* Impila verticalmente immagine e testo su mobile */
-    }
-    
-    .image-text-wrapper .image-side {
+@media (max-width: 768px){ .image-text-wrapper{ flex-direction: column; }
+.image-text-wrapper .image-side {
         flex: 1 1 auto; /* L'immagine prende tutta la larghezza */
         margin: 0 auto; /* Centra l'immagine/figure su mobile */
-    }
+ }
 }
 /* Stile per invertire l'ordine: Immagine a Sinistra */
-.image-text-wrapper-reversed {
-    display: flex;
-    flex-direction: row-reverse; /* Inverte l'ordine degli elementi */
-    gap: 20px;
-    margin-bottom: 30px;
-    align-items: flex-start;
-    flex-wrap: wrap; 
-}
+.image-text-wrapper-reversed{ display: flex; flex-direction: row-reverse; gap: 20px; margin-bottom: 30px; align-items: flex-start; flex-wrap: wrap;}
 /* Media Query Aggiuntivo per Mobile (assicura che l'inversione sparisca su schermi stretti) */
 @media (max-width: 768px) {
     /* Su mobile, entrambi i wrapper devono tornare a 'column' senza inversione, così l'immagine resta sempre in cima */
