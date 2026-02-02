@@ -42,12 +42,27 @@
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_terminal.min.css">
 </noscript>
 <style type="text/css">
- html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
-#main-content {opacity: 0;} 
-.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-.grid-container {display: grid; grid-template-columns: 37% 31% 31%;}
-.grid-container50 {display: grid; grid-template-columns: 50% 50%;}
-.grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
+/* Biotech Dermatologia-Semplice - SRE High-Speed Optimization */
+:root { --accent-green: rgba(0, 230, 118, 0.3); }
+html, body{ margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%}
+#main-content { opacity: 0; transition: opacity 0.4s ease-in; }
+/* 1. Isola le sezioni pesanti per un caricamento fluido */
+h2, h3, .atkinson-regular, .image-container, figure{ content-visibility: auto; contain-intrinsic-size: 1px 150px}
+/* 2. Ottimizzazione immagini per prevenire il Layout Shift (CLS) */
+.specials-img, figure img{ display: block; max-width: 100%; height: auto; border-radius: 12px; background: rgba(255,255,255,0.03); }
+/* 3. Struttura Layout */
+.canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; }
+.staff-layout-container { padding-top: 30px; width: 100%; min-height: 1px; }
+.tech-nav-container { min-height: 56px; }
+.logo-wrapper-cls { min-height: 215px; }
+.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180;}
+/* 4. Fix Griglie Responsive */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+.grid-container50 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+@media (max-width: 600px){ .grid-container50{ grid-template-columns: 1fr;}}
+/* 5. Modal Fix (Centratura semplice) */
+.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); align-items: center; justify-content: center}
+.modal.show { display: flex; opacity: 1; }
 </style>
 <script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,600)}();</script>
 </head>
