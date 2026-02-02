@@ -49,7 +49,7 @@
 .grid-container50 {display: grid; grid-template-columns: 50% 50%;}
 .grid-container20x80 {display: grid; grid-template-columns: 20% 80%;}
 </style>
-<script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,600)}();</script>
+<script>!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r();if(!n){const i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))}));i.observe(o.documentElement,{childList:!0,subtree:!0});const c=setTimeout((()=>{i.disconnect(),r()}),t)}}( "main-content", 300);</script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->

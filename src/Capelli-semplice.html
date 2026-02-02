@@ -88,7 +88,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     }
 }
 </style>
-<script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,600)}();</script>
+<script>!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r();if(!n){const i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))}));i.observe(o.documentElement,{childList:!0,subtree:!0});const c=setTimeout((()=>{i.disconnect(),r()}),t)}}( "main-content", 300);</script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <div id="sr-announcement" aria-live="polite" class="visually-hidden"></div>

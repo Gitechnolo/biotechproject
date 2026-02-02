@@ -71,7 +71,7 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
 @media only screen and (max-width:700px){.responsive{width:49.99999%;margin:6px 0}}
 @media only screen and (max-width:500px){.responsive{width:100%}}
 </style>
-<script>!function(){const e=()=>{const t=document.getElementById("main-content");return!!t&&(t.style.opacity="1",!0)},n=()=>{e()||window.requestAnimationFrame(n)};n(),setTimeout(e,600)}();</script>
+<script>!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r();if(!n){const i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))}));i.observe(o.documentElement,{childList:!0,subtree:!0});const c=setTimeout((()=>{i.disconnect(),r()}),t)}}( "main-content", 300);</script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->
