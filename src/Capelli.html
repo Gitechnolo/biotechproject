@@ -50,8 +50,7 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 /* Mantenimento Layout esistente */
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 .image-text-wrapper, .image-text-wrapper-reversed{ display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; flex-wrap: wrap; }.image-text-wrapper{ flex-direction: row;}.image-text-wrapper-reversed{ flex-direction: row-reverse;}.image-side{ flex: 0 0 480px; max-width: 100%;}.text-side{ flex: 1; min-width: 300px;}@media (max-width: 768px){ .image-text-wrapper, .image-text-wrapper-reversed{ flex-direction: column; } .image-text-wrapper .image-side{ flex: 1 1 auto; margin: 0 auto;}}
-</style>
-<script>!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r();if(!n){const i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))}));i.observe(o.documentElement,{childList:!0,subtree:!0});const c=setTimeout((()=>{i.disconnect(),r()}),t)}}( "main-content", 300);</script>  
+</style> 
 </head>
 <body class="biotechbody" data-modern-menu>
 <div id="sr-announcement" aria-live="polite" class="visually-hidden"></div>
@@ -210,5 +209,6 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>     
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script>;!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r()||(i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))})).observe(o.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{r()}),t))}( "main-content", 300);</script>
 </body>
 </html>
