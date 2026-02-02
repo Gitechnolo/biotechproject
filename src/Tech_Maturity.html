@@ -25,7 +25,7 @@
 /* Critical CSS per evitare Layout Shift */
 :root { --bg-dark: #000f16; --text-main: #d4d3d3; }
 html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var(--text-main); font-family: 'Sansation', system-ui, -apple-system, sans-serif; line-height: 1.6; }
-/* Il contenuto parte visibile, ma se JS è presente lo nascondiamo per gestirlo */
+/* Il contenuto parte visibile, ma se JS è presente viene nascosto per gestirlo */
 .js #main-content { opacity: 0; transition: opacity 0.3s ease; }
 .canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
 .logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
