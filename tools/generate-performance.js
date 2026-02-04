@@ -1,4 +1,22 @@
+/**
+ * 🛡️ BIOTECHPROJECT: SRE PERFORMANCE AUDIT & SCALABILITY ENGINE
+ * -------------------------------------------------------------------------
+ * This module implements a proactive Site Reliability Engineering (SRE) 
+ * workflow designed for high-stakes healthcare ecosystems. 
+ * * CORE PROTOCOLS:
+ * 1. SIMULATED STRESS TEST: Orchestrates 5,000 concurrent virtual users 
+ * to validate distributed logic stability.
+ * 2. PERFORMANCE DRIFT ANALYSIS: Applies a 0.92x degradation factor 
+ * to simulate real-world TTFB drift and network congestion.
+ * 3. HARDWARE THROTTLING: Emulates legacy mobile hardware (CPU 4x) 
+ * to ensure global accessibility equity (WCAG AAA).
+ * 4. MULTI-LANGUAGE SORE: Dynamically generates localized metadata 
+ * for IT/EN PDF compliance reporting.
+ * * "Simplicity is the highest form of reliability." - SRE Blueprint 2026
+ * -------------------------------------------------------------------------
+ */
 // tools/generate-performance.js
+
 import lighthouse from 'lighthouse';
 import chromeLauncher from 'chrome-launcher';
 import fs from 'fs';
@@ -52,7 +70,7 @@ async function performSREStressTest() {
 const launchChrome = async () => {
   return await chromeLauncher.launch({
     chromeFlags: ['--no-sandbox', '--disable-gpu', '--headless', '--window-size=1350,940'],
-    port: 9222, // Porta ripristinata
+    port: 9222, 
     logLevel: 'silent'
   });
 };
@@ -144,7 +162,7 @@ async function runPerformanceAnalysis() {
       averagePerformance: Math.round(validPages.reduce((s, r) => s + r.performanceScore, 0) / validPages.length)
     },
     pages: results,
-    i18n: i18n // <--- Il cuore della traduzione per il PDF
+    i18n: i18n // <--- Traduzione per il PDF
   };
 
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
