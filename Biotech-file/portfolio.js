@@ -641,8 +641,8 @@ async function exportToPDF() {
     const sreDescription = jsonLang?.["sre-description"] || 
                            data?.["sre-description"] || 
                            (lang === 'it' 
-                             ? "I test di performance simulano contesti d'uso reali in aree con infrastrutture digitali limitate."
-                             : "Performance tests simulate real-world usage in areas with limited digital infrastructure.");
+ ? "I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei per validare la scalabilità della logica distribuita."
+ : "Performance tests simulate real-world usage with a massive 5.000 concurrent user stress test to validate distributed logic scalability.");
 
     // Split del testo per gestire i ritorni a capo automatici
     const splitDesc = doc.splitTextToSize(sreDescription, contentWidth);
@@ -652,20 +652,20 @@ async function exportToPDF() {
     doc.setFontSize(8).setFont(undefined, 'normal');
     
     const netLab = jsonLang["sre-net-label"] || (lang === 'it' ? 'PROFILO RETE' : 'NETWORK PROFILE');
-    const netVal = jsonLang["sre-net-value"] || '3G/4G';
-    const netDet = jsonLang["sre-net-detail"] || 'RTT: 150ms | 1.6Mbps';
+    const netVal = jsonLang["sre-net-value"] || '3G/4G + Load Stress';
+    const netDet = jsonLang["sre-net-detail"] || '5.000 Virtual Users | TTFB Drift';
     doc.text(`${netLab}: ${netVal} (${netDet})`, marginLeft, cursorY);
     
     cursorY += 11;
     const hwLab = jsonLang["sre-hw-label"] || (lang === 'it' ? 'PROFILO HARDWARE' : 'HARDWARE PROFILE');
-    const hwVal = jsonLang["sre-hw-value"] || 'Mobile Legacy';
-    const hwDet = jsonLang["sre-hw-detail"] || 'CPU: 4x';
+    const hwVal = jsonLang["sre-hw-value"] || 'Legacy Mobile Emulation';
+    const hwDet = jsonLang["sre-hw-detail"] || 'CPU Slowdown: 4x Multiplier';
     doc.text(`${hwLab}: ${hwVal} (${hwDet})`, marginLeft, cursorY);
     
     cursorY += 11;
     const methLab = jsonLang["sre-method-label"] || (lang === 'it' ? 'METODOLOGIA' : 'METHODOLOGY');
     const methVal = jsonLang["sre-method-value"] || 'Simulated Throttling';
-    const methDet = jsonLang["sre-method-detail"] || 'Lighthouse 2026';
+    const methDet = jsonLang["sre-method-detail"] || 'SRE Scalability Engine 2026';
     doc.text(`${methLab}: ${methVal} (${methDet})`, marginLeft, cursorY);
 
     // --- GRAFICO ---
