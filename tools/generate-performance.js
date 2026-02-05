@@ -112,7 +112,7 @@ results.push({
   ...pageData,
   performanceScore,
   previousPerformanceScore: previousScore,
-  trend: trendSymbol,  // Ora contiene la freccia
+  trend: trendSymbol,  // Contiene la freccia
   delta: trendValue,   // Opzionale: salva il valore numerico a parte
   loadTime: Math.round(lhr.audits['largest-contentful-paint']?.numericValue || 0),
   accessibilityScore: Math.round(lhr.categories.accessibility.score * 100),
