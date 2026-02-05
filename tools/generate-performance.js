@@ -9,8 +9,8 @@
  * * @resilience_profile
  * - Target: High-Intensity Load Handling
  * - Threshold: Early Warning System (Non-blocking)
- * - Goal: Validazione della stabilità sotto stress critico.
- * * @logic_trend Confronto differenziale in tempo reale basato sul push precedente.
+ * - Goal: Validation of stability under critical stress..
+ * * @logic_trend Real-time differential comparison based on previous push.
  */
 // tools/generate-performance.js
 
@@ -95,15 +95,17 @@ async function runPerformanceAnalysis() {
         // Calcolo punteggio pesato
         const performanceScore = Math.round((lhr.categories.performance.score * 100) * driftFactor);
         
-        // --- LOGICA TREND ---
-        const prevPage = previousData?.pages?.find(p => p.slug === pageData.slug);
-        const previousScore = prevPage ? prevPage.performanceScore : null;
-        
-        // Calcoliamo la differenza numerica (es. +5 o -3)
-        let trendValue = 0;
-        if (previousScore !== null) {
-          trendValue = performanceScore - previousScore;
-        }
+        // --- LOGICA TREND RAFFINATA ---
+const prevPage = previousData?.pages?.find(p => p.slug === pageData.slug);
+
+// Consideriamo un punteggio valido solo se > 0
+const previousScore = (prevPage && prevPage.performanceScore > 0) ? prevPage.performanceScore : null;
+
+let trendValue = 0;
+if (previousScore !== null) {
+  // Calcola la differenza solo se abbiamo un termine di paragone reale
+  trendValue = performanceScore - previousScore;
+}
 
         results.push({
           ...pageData,
