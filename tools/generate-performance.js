@@ -1,18 +1,19 @@
 /**
  * @file generate-performance.js
- * @description SRE Scalability Engine - Progetto Biotech 2026
- * @version 2.1.0 (Trend & I18n Analytics)
+ * @project Biotech 2026 - Scientific Encyclopedia SRE Suite
+ * @version 2.2.0 (Navigation Logic & Stress Validation)
  * * @sre_methodology
- * - Network: 3G/4G + Load Stress (5,000 Concurrent VUs)
- * - Hardware: Legacy Mobile Emulation (CPU Slowdown 4x)
- * - Logic: SRE Scalability Drift Factor (0.92)
+ * - Network: Adaptive Throttling (3G/4G) | Stress: 5,000 Concurrent VUs
+ * - Hardware: Legacy Mobile Emulation (ARMv7 context, 4x CPU Throttling)
+ * - Metrics: Scalability Drift Factor (0.92) | DOM Complexity Handling
  * * @resilience_profile
- * - Target: High-Intensity Load Handling
- * - Threshold: Early Warning System (Non-blocking)
- * - Goal: Validation of stability under critical stress..
- * * @logic_trend Real-time differential comparison based on previous push.
+ * - Target: High-Density Content Rendering (Current Page Mass: ~130kb minified)
+ * - Threshold: Early Warning System (Non-blocking latency alerts)
+ * - Navigation: Validation of Sequential UI Elements (Arrow Logic Integrity)
+ * * @logic_update
+ * - Real-time differential performance tracking against repository baseline.
+ * - Integrity check for navigational flow and UI responsiveness under load.
  */
-// tools/generate-performance.js
 
 import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
