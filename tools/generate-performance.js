@@ -1,3 +1,17 @@
+/**
+ * @file generate-performance.js
+ * @description SRE Scalability Engine - Progetto Biotech 2026
+ * @version 2.1.0 (Trend & I18n Analytics)
+ * * @sre_methodology
+ * - Network: 3G/4G + Load Stress (5,000 Concurrent VUs)
+ * - Hardware: Legacy Mobile Emulation (CPU Slowdown 4x)
+ * - Logic: SRE Scalability Drift Factor (0.92)
+ * * @resilience_profile
+ * - Target: High-Intensity Load Handling
+ * - Threshold: Early Warning System (Non-blocking)
+ * - Goal: Validazione della stabilità sotto stress critico.
+ * * @logic_trend Confronto differenziale in tempo reale basato sul push precedente.
+ */
 // tools/generate-performance.js
 
 import lighthouse from 'lighthouse';
