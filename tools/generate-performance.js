@@ -1,19 +1,18 @@
 /**
  * @file generate-performance.js
- * @project Biotech 2026 - Scientific Encyclopedia SRE Suite
- * @version 2.2.0 (Navigation Logic & Stress Validation)
+ * @description SRE Scalability Engine - Progetto Biotech 2026
+ * @version 2.1.0 (Trend & I18n Analytics)
  * * @sre_methodology
- * - Network: Adaptive Throttling (3G/4G) | Stress: 5,000 Concurrent VUs
- * - Hardware: Legacy Mobile Emulation (ARMv7 context, 4x CPU Throttling)
- * - Metrics: Scalability Drift Factor (0.92) | DOM Complexity Handling
+ * - Network: 3G/4G + Load Stress (5,000 Concurrent VUs)
+ * - Hardware: Legacy Mobile Emulation (CPU Slowdown 4x)
+ * - Logic: SRE Scalability Drift Factor (0.92)
  * * @resilience_profile
- * - Target: High-Density Content Rendering (Current Page Mass: ~130kb minified)
- * - Threshold: Early Warning System (Non-blocking latency alerts)
- * - Navigation: Validation of Sequential UI Elements (Arrow Logic Integrity)
- * * @logic_update
- * - Real-time differential performance tracking against repository baseline.
- * - Integrity check for navigational flow and UI responsiveness under load.
+ * - Target: High-Intensity Load Handling
+ * - Threshold: Early Warning System (Non-blocking)
+ * - Goal: Validation of stability under critical stress..
+ * * @logic_trend Real-time differential comparison based on previous push.
  */
+// tools/generate-performance.js
 
 import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
@@ -96,17 +95,15 @@ async function runPerformanceAnalysis() {
         // Calcolo punteggio pesato
         const performanceScore = Math.round((lhr.categories.performance.score * 100) * driftFactor);
         
-        // --- LOGICA TREND RAFFINATA ---
-const prevPage = previousData?.pages?.find(p => p.slug === pageData.slug);
-
-// Consideriamo un punteggio valido solo se > 0
-const previousScore = (prevPage && prevPage.performanceScore > 0) ? prevPage.performanceScore : null;
-
-let trendValue = 0;
-if (previousScore !== null) {
-  // Calcola la differenza solo se abbiamo un termine di paragone reale
-  trendValue = performanceScore - previousScore;
-}
+        // --- LOGICA TREND ---
+        const prevPage = previousData?.pages?.find(p => p.slug === pageData.slug);
+        const previousScore = prevPage ? prevPage.performanceScore : null;
+        
+        // Calcoliamo la differenza numerica (es. +5 o -3)
+        let trendValue = 0;
+        if (previousScore !== null) {
+          trendValue = performanceScore - previousScore;
+        }
 
         results.push({
           ...pageData,
