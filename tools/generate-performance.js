@@ -175,7 +175,7 @@ results.push({
       averageTrend: previousData ? (currentAvg - previousData.summary.averagePerformance) : 0
     },
     pages: results,
-    i18n: i18n // Includiamo le traduzioni nel JSON
+    i18n: i18n // Include le traduzioni nel JSON
   };
 
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
