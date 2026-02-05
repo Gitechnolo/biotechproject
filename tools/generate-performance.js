@@ -1,31 +1,14 @@
-/**
- * @file generate-performance.js
- * @project Biotech 2026 - Scientific Encyclopedia SRE Suite
- * @version 2.2.0 (Navigation Logic & Stress Validation)
- * * @sre_methodology
- * - Network: Adaptive Throttling (3G/4G) | Stress: 5,000 Concurrent VUs
- * - Hardware: Legacy Mobile Emulation (ARMv7 context, 4x CPU Throttling)
- * - Metrics: Scalability Drift Factor (0.92) | DOM Complexity Handling
- * * @resilience_profile
- * - Target: High-Density Content Rendering (Current Page Mass: ~130kb minified)
- * - Threshold: Early Warning System (Non-blocking latency alerts)
- * - Navigation: Validation of Sequential UI Elements (Arrow Logic Integrity)
- * * @logic_update
- * - Real-time differential performance tracking against repository baseline.
- * - Integrity check for navigational flow and UI responsiveness under load.
- */
+// tools/generate-performance.js
 
 import lighthouse from 'lighthouse';
-import * as chromeLauncher from 'chrome-launcher';
+import chromeLauncher from 'chrome-launcher';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+// URL base del sito
 const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
 
+// Lista delle pagine da analizzare
 const pages = [
   { url: `${BASE_URL}/index.html`, label: 'Homepage', slug: 'index', category: 'biotecnologie' },
   { url: `${BASE_URL}/Cuore.html`, label: 'Cuore', slug: 'cuore', category: 'fisiologia' },
@@ -55,131 +38,201 @@ const pages = [
   { url: `${BASE_URL}/accessibility-en.html`, label: 'Accessibility (information)', slug: 'accessibility-en', category: 'accessibilità' },     
 ];
 
+// Configurazione di Chrome per Lighthouse
+const launchChrome = async () => {
+  return await chromeLauncher.launch({
+    chromeFlags: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--headless',
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-renderer-backgrounding',
+      '--disable-ipc-flooding-protection',
+      '--disable-breakpad',
+      '--disable-component-extensions-with-background-pages',
+      '--disable-default-apps',
+      '--disable-features=TranslateUI',
+      '--disable-features=AudioServiceOutOfProcess',
+      '--allow-running-insecure-content',
+      '--disable-web-security',
+      '--window-size=1350,940'
+    ],
+    port: 9222, // Porta fissa per debug (opzionale)
+    logLevel: 'silent'
+  });
+};
+
+/**
+ * Funzione principale: analizza tutte le pagine
+ */
 async function runPerformanceAnalysis() {
   const results = [];
   let chrome;
-  
-  // File unico per lo storico (leggiamo e scriviamo qui per mantenere il trend)
-  const outputPath = path.join(__dirname, 'performance-data.json');
-  
-  let previousData = null;
-  if (fs.existsSync(outputPath)) {
-    try {
-      previousData = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
-    } catch (e) { console.warn("⚠️ Storico non leggibile"); }
-  }
 
   try {
-    chrome = await chromeLauncher.launch({
-      chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu']
-    });
+    // 🚀 Avvia Chrome con chrome-launcher
+    console.log('🚀 Avvio Chrome per Lighthouse...');
+    chrome = await launchChrome();
+    console.log(`✅ Chrome avviato sulla porta ${chrome.port}`);
 
+    // Configurazione SRE-grade per Lighthouse (Mobile 3G/Slow 4G Simulation)
     const lighthouseConfig = {
       port: chrome.port,
       output: 'json',
-      formFactor: 'mobile',
+      logLevel: 'silent',
+      disableStorageReset: false,
+      // Passiamo a 'mobile' per testare la resilienza reale dell'architettura
+      formFactor: 'mobile', 
       settings: {
         emulatedFormFactor: 'mobile',
-        throttling: { rttMs: 150, throughputKbps: 1638.4, cpuSlowdownMultiplier: 4 },
+        throttlingMethod: 'simulate',
+        throttling: {
+          rttMs: 150,
+          throughputKbps: 1638.4,
+          requestLatencyMs: 150,
+          downloadThroughputKbps: 1638.4,
+          uploadThroughputKbps: 750,
+          cpuSlowdownMultiplier: 4 // Simula hardware di fascia media
+        },
+        screenEmulation: {
+          mobile: true,
+          width: 360,
+          height: 640,
+          deviceScaleFactor: 2,
+          disabled: false
+        },
+        // Accessibilità con il "Global Health Equity"
         onlyCategories: ['performance', 'accessibility']
       }
     };
 
-    const driftFactor = 0.92; // Logica SRE
-
+    // 🔍 Analisi di ogni pagina
     for (const pageData of pages) {
       try {
-        console.log(`🔍 Analisi SRE: ${pageData.label}`);
+        console.log(`🔍 Analizzo: ${pageData.label} (${pageData.url})`);
+
+        // ✅ Lighthouse gestisce TUTTA la navigazione
         const runnerResult = await lighthouse(pageData.url, lighthouseConfig);
+
+        // Estrai risultati
         const lhr = runnerResult.lhr;
-        
-        // Calcolo punteggio pesato
-        const performanceScore = Math.round((lhr.categories.performance.score * 100) * driftFactor);
-        
-        // --- LOGICA TREND ---
-        const prevPage = previousData?.pages?.find(p => p.slug === pageData.slug);
-        const previousScore = prevPage ? prevPage.performanceScore : null;
-        
-        // Calcoliamo la differenza numerica (es. +5 o -3)
-        let trendValue = 0;
-        if (previousScore !== null) {
-          trendValue = performanceScore - previousScore;
-        }
+        const performanceScore = Math.round(lhr.categories.performance.score * 100);
+        const lcp = lhr.audits['largest-contentful-paint']?.numericValue || 0;
+        const fcp = lhr.audits['first-contentful-paint']?.numericValue || 0;
 
-        const trendSymbol = trendValue > 0 ? '▲' : trendValue < 0 ? '▼' : '↔';
+        results.push({
+          ...pageData,
+          performanceScore,
+          loadTime: Math.round(lcp),
+          firstPaint: Math.round(fcp),
+          lastAnalyzed: new Date().toISOString()
+        });
 
-results.push({
-  ...pageData,
-  performanceScore,
-  previousPerformanceScore: previousScore,
-  trend: trendSymbol,  // Contiene la freccia
-  delta: trendValue,   // Opzionale: salva il valore numerico a parte
-  loadTime: Math.round(lhr.audits['largest-contentful-paint']?.numericValue || 0),
-  accessibilityScore: Math.round(lhr.categories.accessibility.score * 100),
-  lastAnalyzed: new Date().toISOString()
-});   
-      } catch (err) {
-        console.error(`❌ Errore su ${pageData.label}:`, err.message);
+        console.log(`✅ ${pageData.label}: Punteggio ${performanceScore}, LCP: ${Math.round(lcp)}ms`);
+
+      } catch (auditError) {
+        console.warn(`❌ Fallito: ${pageData.label}`);
+        console.warn(`   Errore: ${auditError.message.substring(0, 100)}...`);
+
+        results.push({
+          ...pageData,
+          performanceScore: 0,
+          loadTime: 0,
+          firstPaint: 0,
+          lastAnalyzed: new Date().toISOString(),
+          error: `Analisi fallita - ${auditError.message.substring(0, 100)}...`
+        });
       }
-      await new Promise(r => setTimeout(r, 2000));
+
+      // ⏸️ Pausa tra una pagina e l'altra (gentile verso il server)
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
+
+  } catch (overallError) {
+    console.error('🚨 Errore critico durante l’analisi:', overallError.message);
+    process.exit(1);
   } finally {
-    if (chrome) await chrome.kill();
+    // 🔚 Chiudi Chrome in modo sicuro
+    if (chrome) {
+      try {
+        await chrome.kill();
+        console.log('⏹️ Chrome chiuso correttamente');
+      } catch (closeError) {
+        console.warn('⚠️ Impossibile chiudere Chrome:', closeError.message);
+      }
+    }
   }
 
-  // --- INTEGRAZIONE MULTILINGUA AGGIORNATA ---
-  const i18n = {
-    it: {
-      "sre-description": "I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei per validare la scalabilità della logica distribuita.",
-      "sre-net-label": "PROFILO RETE",
-      "sre-net-value": "3G/4G + Load Stress",
-      "sre-net-detail": "5.000 Virtual Users | TTFB Drift",
-      "sre-hw-label": "PROFILO HARDWARE",
-      "sre-hw-value": "Legacy Mobile Emulation",
-      "sre-hw-detail": "CPU Slowdown: 4x Multiplier",
-      "sre-method-label": "METODOLOGIA",
-      "sre-method-value": "Simulated Throttling",
-      "sre-method-detail": "SRE Scalability Engine 2026",
-      "sre-stability-note": "Nota: I risultati riflettono uno scenario di picco critico. In condizioni di navigazione standard, le prestazioni medie sono stimate superiori al 90%.",
-      "pdf-table-label": "Etichetta Pagina",
-      "pdf-table-score": "Punteggio",
-      "pdf-table-file": "File Pagina"
-    },
-    en: {
-      "sre-description": "Performance tests simulate real-world usage with a massive 5,000 concurrent user stress test to validate distributed logic scalability.",
-      "sre-net-label": "NETWORK PROFILE",
-      "sre-net-value": "3G/4G + Load Stress",
-      "sre-net-detail": "5.000 Virtual Users | TTFB Drift",
-      "sre-hw-label": "HARDWARE PROFILE",
-      "sre-hw-value": "Legacy Mobile Emulation",
-      "sre-hw-detail": "CPU Slowdown: 4x Multiplier",
-      "sre-method-label": "METHODOLOGY",
-      "sre-method-value": "Simulated Throttling",
-      "sre-method-detail": "SRE Scalability Engine 2026",
-      "sre-stability-note": "Note: Results reflect a critical peak scenario. Under standard browsing conditions, average performance is estimated to exceed 90%.",
-      "pdf-table-label": "Page Label",
-      "pdf-table-score": "Score",
-      "pdf-table-file": "Page File"
+  // 📁 Percorso di output: tools/performance-data.json
+  const outputDir = path.resolve(new URL(import.meta.url).pathname, '..');
+  const outputPath = path.join(outputDir, 'performance-data.json');
+
+  // 📊 Dati finali
+const validPages = results.filter(r => !r.error && r.performanceScore > 0);
+const averagePerformance = validPages.length > 0
+  ? Math.round(validPages.reduce((sum, r) => sum + r.performanceScore, 0) / validPages.length)
+  : null;
+
+const output = {
+  lastUpdated: new Date().toISOString(),
+  summary: {
+    totalPages: pages.length,
+    analyzed: validPages.length,
+    failed: results.filter(r => r.error).length,
+    averagePerformance: averagePerformance
+  },
+  pages: results
+};   
+
+  // 🔁 Leggi il vecchio JSON per estrarre i valori precedenti
+  let previousData = null;
+  const previousPath = path.join(outputDir, 'performance-latest.json');
+
+  if (fs.existsSync(previousPath)) {
+    try {
+      const rawData = fs.readFileSync(previousPath, 'utf-8');
+      previousData = JSON.parse(rawData);
+    } catch (err) {
+      console.warn('⚠️  Impossibile leggere il file precedente:', err.message);
     }
-  };
+  }
 
-  const validPages = results.filter(r => r.performanceScore > 0);
-  const currentAvg = Math.round(validPages.reduce((s, r) => s + r.performanceScore, 0) / validPages.length);
+  // 🔄 Associa il valore precedente a ogni pagina
+  output.pages.forEach(page => {
+    const prevPage = previousData?.pages.find(p => p.slug === page.slug);
+    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : null;   
+  });
 
-  const output = {
-    lastUpdated: new Date().toISOString(),
-    summary: {
-      totalPages: pages.length,
-      analyzed: validPages.length,
-      averagePerformance: currentAvg,
-      averageTrend: previousData ? (currentAvg - previousData.summary.averagePerformance) : 0
-    },
-    pages: results,
-    i18n: i18n // Include le traduzioni nel JSON
-  };
+  // Assicura che la cartella esista
+  try {
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+      console.log(`📁 Cartella creata: ${outputDir}`);
+    }
+  } catch (mkdirError) { 
+    console.warn(`⚠️  Impossibile creare la cartella: ${mkdirError.message}`);
+  }
 
-  fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
-  console.log(`✅ Report SRE salvato con Trend e I18n.`);
-}
+  // 📥 Scrive il file JSON (sovrascrive il vecchio)
+  try {
+    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
+    console.log(`✅ Report salvato in: ${outputPath}`);
+    console.log(`📊 Analisi completata: ${results.length} pagine processate.`);
+    if (output.summary.failed > 0) {
+      console.warn(`⚠️  ${output.summary.failed} pagine non analizzate.`);
+    }
+  } catch (writeError) {
+    console.error('❌ Errore nella scrittura del file:', writeError.message);
+    process.exit(1);
+  }
+}   
 
-runPerformanceAnalysis();
+
+// ✅ Esegui l'analisi
+runPerformanceAnalysis().catch(err => {
+  console.error('🚨 Errore non gestito:', err);
+  process.exit(1);
+});   
