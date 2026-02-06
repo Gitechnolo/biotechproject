@@ -2,14 +2,13 @@
  * BIOTECH PROJECT | PERFORMANCE & TECHNOLOGICAL MATURITY SYSTEM
  * -------------------------------------------------------------------------
  * ARCHITECTURE: Event-Driven UI Orchestrator
- * STRATEGY: Dynamic Hydration & Resource Throttling
- * COMPLIANCE: WCAG 2.1 Level AAA (Aria-Live Regions, Focus Management)
- * SRE METRICS: Simulated 3G/4G Network Throttling (Lighthouse 2026 Standards)
+ * STRATEGY: Progressive Hydration & Main-Thread Yielding (SRE-Grade)
+ * COMPLIANCE: WCAG 2.1 Level AAA | Lighthouse 2026 Standards
  * -------------------------------------------------------------------------
  * SUMMARY:
- * This module manages the real-time visualization of the project's technical 
- * evolution. It fetches telemetry from 'performance-latest.json', computes 
- * health scores, and renders interactive data via Chart.js and jsPDF.
+ * Manages real-time telemetry visualization from 'performance-latest.json'.
+ * Uses a non-blocking asynchronous rendering pipeline to ensure UI 
+ * responsiveness even during heavy DOM construction (Chunk Size: 8).
  * -------------------------------------------------------------------------
  
 BIOTECH PORTFOLIO | MODULE TREE 2026
@@ -18,21 +17,22 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
 [ROOT] portfolio.js
  ║
  ╠══ DATA ACQUISITION LAYER
- ║   ╠── loadPerformanceData() ─────► Fetch & Parse (Telemetry JSON)
- ║   ╚── loadJsPDF() ──────────────► On-Demand Script Injection (Lazy)
+ ║   ╠── loadPerformanceData() ─────► Orchestrator (Fetch -> Process -> Render)
+ ║   ╚── loadJsPDF() ──────────────► Lazy-Loading Library Injector
  ║
- ╠══ UI RENDERING PIPELINE (DOM)
- ║   ╠── createPerformanceCard() ──► Fragment-based DOM Construction
- ║   ╠── filterSelection() ────────► State-driven UI Filtering
- ║   ╚── aggiornaPerformanceScore() ► Real-time Metric Feedback
+ ╠══ ASYNC RENDERING ENGINE (Non-Blocking)
+ ║   ╠── renderCardsAsynchronously()► Chunked Loop (requestAnimationFrame)
+ ║   ╚── createPerformanceCard() ──► Fragment-based DOM Factory
  ║
  ╠══ ANALYTICS & VISUALIZATION
- ║   ╠── creaGrafico() ────────────► Chart.js Engine (Trend Projection)
+ ║   ╠── creaGrafico() ────────────► Chart.js Engine (Trend & Projections)
+ ║   ╠── aggiornaPerformanceScore() ► Global Metric Feedback Loop
  ║   ╚── getTrendArrow() ──────────► Differential Delta Logic
  ║
- ╚══ EXPORT & COMPLIANCE
+ ╚══ UI CONTROL & EXPORT
+     ╠── filterSelection() ────────► State-driven Filtering & A11y Announcements
      ╠── exportToPDF() ────────────► I18n PDF Synthesis (AutoTable)
-     ╚── A11y Controller ──────────► Live Region & ARIA Management
+     ╚── A11y Controller ──────────► ARIA Live Regions & Focus Mgmt
 
 */
 // ———————————————————————
