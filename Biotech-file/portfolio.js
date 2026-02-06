@@ -98,16 +98,23 @@ async function loadPerformanceData() {
     aggiornaPerformanceScore(performanceScoreValue);
 
     // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
-    const fragment = document.createDocumentFragment();
+    // *** VECCHIA LOGICA ***
+/*
+const fragment = document.createDocumentFragment();
+data.pages.forEach(page => {
+  const card = createPerformanceCard(page);
+  fragment.appendChild(card);
+});
+container.appendChild(fragment);
+filterSelection('all');
+*/
 
-    data.pages.forEach(page => {
-      const card = createPerformanceCard(page);
-      fragment.appendChild(card);
-    });
+// *** NUOVA LOGICA ASINCRONA SRE-GRADE ***
+// Invece di caricare tutto subito, usiamo il rendering a blocchi
+await renderCardsAsynchronously(data.pages, container);
 
-    container.appendChild(fragment); // Inserimento unico nel DOM
-
-    filterSelection('all');
+// Solo dopo il primo blocco o alla fine, attiviamo i filtri
+filterSelection('all');
 
     const history = [];
     if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
@@ -197,6 +204,37 @@ trendEl.classList.add(trendClass);
     showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
     document.body.classList.add('portfolio-loaded'); 
   }
+}
+
+/**
+ * Rende il caricamento delle card non bloccante.
+ * Gestisce record senza freezare la UI.
+ */
+async function renderCardsAsynchronously(pages, container) {
+  const CHUNK_SIZE = 8; // Numero di card per ogni frame (ottimale per mobile 4x)
+  let index = 0;
+
+  async function processChunk() {
+    const fragment = document.createDocumentFragment();
+    const chunk = pages.slice(index, index + CHUNK_SIZE);
+
+    chunk.forEach(page => {
+      const card = createPerformanceCard(page);
+      fragment.appendChild(card);
+    });
+
+    container.appendChild(fragment);
+    index += CHUNK_SIZE;
+
+    if (index < pages.length) {
+      // Rilascia il thread principale per permettere al browser di respirare
+      // e processare input dell'utente o animazioni
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      await processChunk(); // Processa il prossimo blocco
+    }
+  }
+
+  await processChunk();
 }
 
 // --- Crea la card per ogni pagina ---
