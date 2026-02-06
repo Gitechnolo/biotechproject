@@ -98,18 +98,7 @@ async function loadPerformanceData() {
     aggiornaPerformanceScore(performanceScoreValue);
 
     // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
-    // *** VECCHIA LOGICA ***
-/*
-const fragment = document.createDocumentFragment();
-data.pages.forEach(page => {
-  const card = createPerformanceCard(page);
-  fragment.appendChild(card);
-});
-container.appendChild(fragment);
-filterSelection('all');
-*/
-
-// *** NUOVA LOGICA ASINCRONA SRE-GRADE ***
+  // *** LOGICA ASINCRONA SRE-GRADE ***
 // Invece di caricare tutto subito, usiamo il rendering a blocchi
 await renderCardsAsynchronously(data.pages, container);
 
@@ -205,7 +194,6 @@ trendEl.classList.add(trendClass);
     document.body.classList.add('portfolio-loaded'); 
   }
 }
-
 /**
  * Rende il caricamento delle card non bloccante.
  * Gestisce record senza freezare la UI.
