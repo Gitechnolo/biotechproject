@@ -97,7 +97,7 @@ async function loadPerformanceData() {
 
     aggiornaPerformanceScore(performanceScoreValue);
 
-    // *** OTTIMIZZAZIONE DOM: Uso di DocumentFragment ***
+    // *** OTTIMIZZAZIONE DOM ***
   // *** LOGICA ASINCRONA SRE-GRADE ***
 // Invece di caricare tutto subito, usiamo il rendering a blocchi
 await renderCardsAsynchronously(data.pages, container);
