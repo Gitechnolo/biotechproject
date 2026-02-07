@@ -33,7 +33,6 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
      ╠── filterSelection() ────────► State-driven Filtering & A11y Announcements
      ╠── exportToPDF() ────────────► I18n PDF Synthesis (AutoTable)
      ╚── A11y Controller ──────────► ARIA Live Regions & Focus Mgmt
-
 */
 // ———————————————————————
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
@@ -81,24 +80,35 @@ async function loadPerformanceData() {
 
     const data = await response.json();
     const container = document.querySelector('.portfolio-row');
-    if (!container) return; // Il finally gestirà lo sblocco
+    if (!container) return; 
 
     container.innerHTML = ''; // Pulizia DOM prima del rendering asincrono
 
+    // Individuazione della Home Page per estrarre i metadati temporali
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
       p.url === 'https://gitechnolo.github.io/biotechproject/' ||
       p.url === window.location.origin + '/biotechproject/'
     );
 
-    const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : new Date();
+    // Determinazione della data del report (Priorità: Home > Globale > Now)
+    const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : 
+                       data.lastUpdated ? new Date(data.lastUpdated) : new Date();
 
-    const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) {
-      const dateStr = reportTime.toLocaleDateString('it-IT');
-      const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
-      lastUpdate.textContent = `Aggiornato il: ${dateStr} alle ${timeStr}`;
-    }
+    // *** AGGIORNAMENTO DINAMICO DELLA DATA (MULTIPLE TARGETS) ***
+    const dateStr = reportTime.toLocaleDateString('it-IT');
+    const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+
+    // Scansione di tutti i possibili ID per la data dell'ultimo aggiornamento
+    const dateTargets = ['last-update', 'last-updated', 'last-updated-report'];
+    dateTargets.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        // Se è l'elemento compatto sotto i cerchi, mette solo la data, altrimenti stringa completa
+        el.textContent = (id === 'last-updated') ? dateStr : `Aggiornato il: ${dateStr} alle ${timeStr}`;
+        if (el.hasAttribute('datetime')) el.setAttribute('datetime', reportTime.toISOString());
+      }
+    });
 
     const avgPerf = Math.round(
       data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
@@ -108,7 +118,6 @@ async function loadPerformanceData() {
     aggiornaPerformanceScore(performanceScoreValue);
 
     // *** LOGICA ASINCRONA SRE-GRADE ***
-    // Rendering a blocchi per mantenere la UI reattiva
     await renderCardsAsynchronously(data.pages, container);
 
     // Attivazione filtri post-rendering
@@ -155,12 +164,13 @@ async function loadPerformanceData() {
       const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
       const icons = { 1: '▲', 0: '●', '-1': '▼' };
       trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-      trendEl.className = 'trend-indicator'; // Reset classi
+      trendEl.className = 'trend-indicator';
       const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
       trendEl.classList.add(trendClass);
       trendEl.classList.remove('visually-hidden');
     }
 
+    // Aggiornamento statistiche testuali nel summary
     const update = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
@@ -172,29 +182,22 @@ async function loadPerformanceData() {
     update('avg-seo', `${avgSeo}%`);
     update('avg-best-practices', `${avgBest}%`);
 
-    if (data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      update('last-updated-report', date.toLocaleDateString('it-IT'));
-      document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
-    }
-
     document.body.classList.add('portfolio-loaded');
 
   } catch (error) {
-    console.warn('⚠️ Impossibile caricare i dati reali, avvio fallback:', error);
+    console.warn('⚠️ Errore durante il caricamento reale, avvio fallback:', error);
     
-    // Gestione Fallback per continuità di servizio (SRE strategy)
     aggiornaPerformanceScore(85);
-    creaGrafico(); // Utilizza i dati simulati definiti globalmente
+    creaGrafico(); 
     
-    const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
+    // Fallback UI per la data in caso di errore
+    const errorDate = document.getElementById('last-update') || document.getElementById('last-updated');
+    if (errorDate) errorDate.textContent = 'Dati non disponibili';
     
-    showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
+    showNotification('Dati temporaneamente non disponibili.');
     document.body.classList.add('portfolio-loaded'); 
 
   } finally {
-    // 3. Rilascio della barriera: il sistema è pronto per un nuovo refresh
     isRendering = false; 
     console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
   }
