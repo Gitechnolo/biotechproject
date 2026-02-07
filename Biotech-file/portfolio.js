@@ -2,7 +2,7 @@
  * BIOTECH PROJECT | PERFORMANCE & TECHNOLOGICAL MATURITY SYSTEM
  * -------------------------------------------------------------------------
  * ARCHITECTURE: Event-Driven UI Orchestrator
- * STRATEGY: Progressive Hydration & Main-Thread Yielding (SRE-Grade)
+ * STRATEGY: Progressive Hydration, Main-Thread Yielding & Atomic Render Locking
  * COMPLIANCE: WCAG 2.1 Level AAA | Lighthouse 2026 Standards
  * -------------------------------------------------------------------------
  * SUMMARY:
@@ -39,7 +39,8 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
 // ———————————————————————
 
-let performanceChart;
+let performanceChart; 
+let isRendering = false; // Flag di stato per il controllo anti-compulsivo
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale) ---
 async function loadJsPDF() {
@@ -64,16 +65,25 @@ async function loadJsPDF() {
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
+  // 1. Controllo anti-compulsivo: blocca esecuzioni concorrenti
+  if (isRendering) {
+    console.warn('⚠️ Rendering già in corso. Richiesta ignorata.');
+    return;
+  }
+
   console.log('🔧 loadPerformanceData() in esecuzione');
+  
   try {
+    isRendering = true; // Alziamo la barriera
+
     const response = await fetch('data/performance-latest.json');
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();
     const container = document.querySelector('.portfolio-row');
-    if (!container) return;
+    if (!container) return; // Il finally gestirà lo sblocco
 
-    container.innerHTML = '';
+    container.innerHTML = ''; // Pulizia DOM prima del rendering asincrono
 
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
@@ -97,13 +107,12 @@ async function loadPerformanceData() {
 
     aggiornaPerformanceScore(performanceScoreValue);
 
-    // *** OTTIMIZZAZIONE DOM ***
-  // *** LOGICA ASINCRONA SRE-GRADE ***
-// Invece di caricare tutto subito, usiamo il rendering a blocchi
-await renderCardsAsynchronously(data.pages, container);
+    // *** LOGICA ASINCRONA SRE-GRADE ***
+    // Rendering a blocchi per mantenere la UI reattiva
+    await renderCardsAsynchronously(data.pages, container);
 
-// Solo dopo il primo blocco o alla fine, attiviamo i filtri
-filterSelection('all');
+    // Attivazione filtri post-rendering
+    filterSelection('all');
 
     const history = [];
     if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
@@ -122,7 +131,6 @@ filterSelection('all');
     creaGrafico(history);
 
     const summary = data.summary || {};
-
     const avgA11y = summary.averageAccessibility ?? 94;
     const avgSeo = summary.averageSeo ?? 96;
     const avgBest = summary.averageBestPractices ?? 97;
@@ -142,22 +150,14 @@ filterSelection('all');
       circle.dataset.value = rounded;
     });
 
-    const lastUpdated = document.getElementById('last-updated');
-    if (lastUpdated && data.lastUpdated) {
-      const date = new Date(data.lastUpdated);
-      lastUpdated.textContent = date.toLocaleDateString('it-IT', {
-        day: '2-digit', month: '2-digit', year: 'numeric'
-      });
-    }
-
     const trendEl = document.getElementById('trend-indicator');
     if (trendEl && homePage) {
       const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
       const icons = { 1: '▲', 0: '●', '-1': '▼' };
       trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-trendEl.classList.remove('trend-up', 'trend-down', 'trend-equal');
-const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
-trendEl.classList.add(trendClass);
+      trendEl.className = 'trend-indicator'; // Reset classi
+      const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
+      trendEl.classList.add(trendClass);
       trendEl.classList.remove('visually-hidden');
     }
 
@@ -178,20 +178,25 @@ trendEl.classList.add(trendClass);
       document.getElementById('last-updated-report')?.setAttribute('datetime', date.toISOString());
     }
 
-    // *** OTTIMIZZAZIONE CSS: Sostituzione di setTimeout con l'aggiunta di una classe CSS ***
     document.body.classList.add('portfolio-loaded');
 
-
   } catch (error) {
-    console.warn('⚠️ Impossibile caricare i dati reali:', error);
+    console.warn('⚠️ Impossibile caricare i dati reali, avvio fallback:', error);
+    
+    // Gestione Fallback per continuità di servizio (SRE strategy)
     aggiornaPerformanceScore(85);
-    creaGrafico();
+    creaGrafico(); // Utilizza i dati simulati definiti globalmente
+    
     const lastUpdate = document.getElementById('last-update');
-    if (lastUpdate) {
-      lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
-    }
+    if (lastUpdate) lastUpdate.textContent = 'Aggiornato il: dati non disponibili';
+    
     showNotification('Dati temporaneamente non disponibili. Mostrati valori di esempio.');
     document.body.classList.add('portfolio-loaded'); 
+
+  } finally {
+    // 3. Rilascio della barriera: il sistema è pronto per un nuovo refresh
+    isRendering = false; 
+    console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
   }
 }
 /**
