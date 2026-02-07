@@ -247,6 +247,9 @@ function createPerformanceCard(page) {
   else if (performance >= 60) perfClass = 'needs-improvement';
   else perfClass = 'deprecated';
 
+  // Estrai il punteggio di resilienza
+  const stressScore = page.stressResilienceScore !== undefined ? page.stressResilienceScore : 'N/D';
+
   const url = page.url || 'Pagina sconosciuta';
   const fileName = url.split('/').pop() || 'index.html';
   const loadTime = page.loadTime ? (page.loadTime / 1000).toFixed(1) : '?';
@@ -277,18 +280,19 @@ function createPerformanceCard(page) {
         <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 
         <span class="status-badge badge-trend ${getTrendColorClass(performance, page.previousPerformanceScore)}">
-  ${getTrendArrow(performance, page.previousPerformanceScore)}
-  ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
-    ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
-    : ''}
-</span>
-        • ${loadTime} s
+          ${getTrendArrow(performance, page.previousPerformanceScore)}
+          ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
+            ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+            : ''}
+        </span>
+        • ${loadTime} s • Stress Resilience: ${stressScore}/100
         <div 
           id="${tooltipId}" 
           class="trend-details" 
           role="tooltip"
         >
           <div><strong>Punteggi:</strong> ${performance}/100</div>
+          <div><strong>Stress Resilience:</strong> ${stressScore}/100</div>
           ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
             ? `<div><strong>Precedente:</strong> ${page.previousPerformanceScore}</div>
                <div><strong>Trend:</strong> ${getTrendArrow(performance, page.previousPerformanceScore)}${performance - page.previousPerformanceScore}</div>`
@@ -324,7 +328,7 @@ function createPerformanceCard(page) {
   });
 
   return card;
-}
+}   
 function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }

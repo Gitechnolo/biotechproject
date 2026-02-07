@@ -5,7 +5,7 @@ history.push({date:formatDate(reportTime),score:performanceScoreValue,note:'Misu
 const update=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};update('analyzed-count',summary.analyzed||data.pages.length);update('avg-performance',`${avgPerf}%`);update('avg-accessibility',`${avgA11y}%`);update('avg-seo',`${avgSeo}%`);update('avg-best-practices',`${avgBest}%`);document.body.classList.add('portfolio-loaded')}catch(error){console.warn('⚠️ Errore durante il caricamento reale, avvio fallback:',error);aggiornaPerformanceScore(85);creaGrafico();const errorDate=document.getElementById('last-update')||document.getElementById('last-updated');if(errorDate)errorDate.textContent='Dati non disponibili';showNotification('Dati temporaneamente non disponibili.');document.body.classList.add('portfolio-loaded')}finally{isRendering=!1;console.log('✅ loadPerformanceData() completato. Lock rilasciato.')}}
 async function renderCardsAsynchronously(pages,container){const CHUNK_SIZE=8;let index=0;async function processChunk(){const fragment=document.createDocumentFragment();const chunk=pages.slice(index,index+CHUNK_SIZE);chunk.forEach(page=>{const card=createPerformanceCard(page);fragment.appendChild(card)});container.appendChild(fragment);index+=CHUNK_SIZE;if(index<pages.length){await new Promise(resolve=>requestAnimationFrame(resolve));await processChunk()}}
 await processChunk()}
-function createPerformanceCard(page){const performance=page.performanceScore!==undefined?page.performanceScore:page.performance!==undefined?Math.round(page.performance*100):85;let perfClass='needs-improvement';if(performance>=90)perfClass='optimized';else if(performance>=80)perfClass='compatible';else if(performance>=60)perfClass='needs-improvement';else perfClass='deprecated';const url=page.url||'Pagina sconosciuta';const fileName=url.split('/').pop()||'index.html';const loadTime=page.loadTime?(page.loadTime/1000).toFixed(1):'?';const tooltipId=`tooltip-${sanitizeId(fileName)}`;const badgeHTML=`
+function createPerformanceCard(page){const performance=page.performanceScore!==undefined?page.performanceScore:page.performance!==undefined?Math.round(page.performance*100):85;let perfClass='needs-improvement';if(performance>=90)perfClass='optimized';else if(performance>=80)perfClass='compatible';else if(performance>=60)perfClass='needs-improvement';else perfClass='deprecated';const stressScore=page.stressResilienceScore!==undefined?page.stressResilienceScore:'N/D';const url=page.url||'Pagina sconosciuta';const fileName=url.split('/').pop()||'index.html';const loadTime=page.loadTime?(page.loadTime/1000).toFixed(1):'?';const tooltipId=`tooltip-${sanitizeId(fileName)}`;const badgeHTML=`
     <span class="status-badge badge-${perfClass}">
       ${perfClass.replace('needs-improvement', 'Needs Improvement')
                  .replace('deprecated', 'Deprecated')
@@ -24,18 +24,19 @@ function createPerformanceCard(page){const performance=page.performanceScore!==u
         <strong>${fileName}${badgeHTML}</strong><br>
         Score: ${performance}/100 
         <span class="status-badge badge-trend ${getTrendColorClass(performance, page.previousPerformanceScore)}">
-  ${getTrendArrow(performance, page.previousPerformanceScore)}
-  ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
-    ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
-    : ''}
-</span>
-        • ${loadTime} s
+          ${getTrendArrow(performance, page.previousPerformanceScore)}
+          ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
+            ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
+            : ''}
+        </span>
+        • ${loadTime} s • Stress Resilience: ${stressScore}/100
         <div 
           id="${tooltipId}" 
           class="trend-details" 
           role="tooltip"
         >
           <div><strong>Punteggi:</strong> ${performance}/100</div>
+          <div><strong>Stress Resilience:</strong> ${stressScore}/100</div>
           ${page.previousPerformanceScore !== null && page.previousPerformanceScore !== undefined 
             ? `<div><strong>Precedente:</strong>${page.previousPerformanceScore}</div><div><strong>Trend:</strong>${getTrendArrow(performance,page.previousPerformanceScore)}${performance-page.previousPerformanceScore}</div>`
             : `<div><strong>Trend:</strong>Nessun dato precedente</div>`}
