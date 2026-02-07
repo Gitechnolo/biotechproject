@@ -41,7 +41,7 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
 let performanceChart; 
 let isRendering = false; // Flag di stato per il controllo anti-compulsivo
 
-// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente (Logica originale) ---
+// --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
   if (window.jspdf && window.autoTable) return;
 
