@@ -29,7 +29,7 @@ function createPerformanceCard(page){const performance=page.performanceScore!==u
             ? (performance > page.previousPerformanceScore ? '+' : '') + (performance - page.previousPerformanceScore) 
             : ''}
         </span>
-        • ${loadTime} s • Stress Resilience: ${stressScore}/100
+        • ${loadTime} s<br>Stress Resilience: ${stressScore}/100   
         <div 
           id="${tooltipId}" 
           class="trend-details" 
