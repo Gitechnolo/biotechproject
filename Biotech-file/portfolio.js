@@ -674,7 +674,7 @@ async function exportToPDF() {
       if (!res.ok) throw new Error();
       data = await res.json();
     } catch (err) {
-      if (err.name === 'AbortError') return; // Esci silenziosamente se abortito
+      if (err.name === 'AbortError') return; // Esci silenziosamente se l'operazione è stata annullata
       // Fallback in caso di errore rete
       const fallback = '/biotechproject/data/performance-latest.json';
       const fres = await fetch(fallback, fetchOptions);
@@ -757,7 +757,7 @@ async function exportToPDF() {
 
     doc.autoTable({
         startY: cursorY + 10,
-        margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
+        margin: { left: 40, right: 40 }, 
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
             jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
@@ -766,21 +766,20 @@ async function exportToPDF() {
         ]], 
         body: tableData,
         theme: 'striped',
-        headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
+        headStyles: { fillColor: [39, 174, 96], fontSize: 9 }, // Font testata leggermente ridotto
         styles: { 
-            fontSize: 8, 
-            cellPadding: 3, 
-            overflow: 'linebreak', // Gestisce il testo a capo in modo pulito
-            valign: 'middle'       // Centra il testo verticalmente se va a capo
+            fontSize: 7.5, // Riduzione minima per guadagnare spazio orizzontale
+            cellPadding: 2, 
+            overflow: 'linebreak',
+            valign: 'middle'
         },
         columnStyles: { 
-            0: { cellWidth: 160 }, // Spazio generoso per i nomi lunghi (es. "versione semplificata")
-            1: { cellWidth: 40, halign: 'center' },  // Punteggio Performance stretto
-            2: { cellWidth: 55, halign: 'center' },  // Resilienza stretto
-            3: { cellWidth: 'auto' } // Il file si adatta allo spazio rimanente
+            0: { cellWidth: 185 }, // Aumentato per evitare il "testo a capo" dei nomi lunghi
+            1: { cellWidth: 35, halign: 'center' },  // Stretto al minimo per "100%"
+            2: { cellWidth: 50, halign: 'center' },  // Stretto al minimo per "Resilience"
+            3: { cellWidth: 'auto' } // Il nome del file occupa lo spazio rimanente
         },
-        didParseCell: (hook) => {
-            // Colorazione condizionale per i punteggi: verde >=90, giallo >=80, rosso <80
+        didParseCell: (hook) => { // Logica di colorazione condizionale per le colonne dei punteggi
             if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
                 const s = parseInt(hook.cell.text[0].toString().replace('%',''));
                 if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
@@ -790,7 +789,7 @@ async function exportToPDF() {
         }
     });
 
-    // 3. CONTROLLO DI ABORTO FINALE: Non scaricare se l'utente ha resettato tutto
+    // 3. CONTROLLO FINALE: Non scaricare se l'utente ha resettato tutto
     if (abortController?.signal.aborted) {
       console.log('⏹️ Esportazione PDF interrotta: subentrata nuova logica globale.');
       return; 
