@@ -757,6 +757,7 @@ async function exportToPDF() {
 
     doc.autoTable({
         startY: cursorY + 10,
+        margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
             jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
@@ -766,9 +767,20 @@ async function exportToPDF() {
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
-        styles: { fontSize: 8, cellPadding: 3 },
-        columnStyles: { 0: { cellWidth: 170 }, 1: { cellWidth: 45, halign: 'center' }, 2: { cellWidth: 65, halign: 'center' }, 3: { cellWidth: 185 } },
+        styles: { 
+            fontSize: 8, 
+            cellPadding: 3, 
+            overflow: 'linebreak', // Gestisce il testo a capo in modo pulito
+            valign: 'middle'       // Centra il testo verticalmente se va a capo
+        },
+        columnStyles: { 
+            0: { cellWidth: 160 }, // Spazio generoso per i nomi lunghi (es. "versione semplificata")
+            1: { cellWidth: 40, halign: 'center' },  // Punteggio Performance stretto
+            2: { cellWidth: 55, halign: 'center' },  // Resilienza stretto
+            3: { cellWidth: 'auto' } // Il file si adatta allo spazio rimanente
+        },
         didParseCell: (hook) => {
+            // Colorazione condizionale per i punteggi: verde >=90, giallo >=80, rosso <80
             if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
                 const s = parseInt(hook.cell.text[0].toString().replace('%',''));
                 if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
