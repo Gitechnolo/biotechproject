@@ -682,12 +682,31 @@ async function exportToPDF() {
  ? "I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei per validare la scalabilità della logica distribuita."
  : "Performance tests simulate real-world usage with a massive 5.000 concurrent user stress test to validate distributed logic scalability.");
 
-    // Split del testo per gestire i ritorni a capo automatici
     const splitDesc = doc.splitTextToSize(sreDescription, contentWidth);
     doc.text(splitDesc, marginLeft, cursorY);
     cursorY += (splitDesc.length * 12);
     
-    doc.setFontSize(8).setFont(undefined, 'normal');
+    // --- NUOVA SEZIONE: GLOBAL RESILIENCE SCORE ---
+    if (data.summary && data.summary.stressTest) {
+        const stress = data.summary.stressTest;
+        
+        // Etichette dinamiche
+        const resLabel = lang === 'it' ? 'RESILIENZA GLOBALE:' : 'GLOBAL RESILIENCE:';
+        const statusLabel = lang === 'it' ? 'STATO SISTEMA:' : 'SYSTEM STATUS:';
+
+        doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(0); // Nero per risaltare
+        doc.text(`${resLabel} ${stress.globalResilienceScore}/100`, marginLeft, cursorY);
+        
+        // Badge di stato (Testo colorato in base allo status)
+        const statusColor = stress.status.includes('STABLE') ? [39, 174, 96] : [231, 76, 60]; 
+        doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
+        doc.text(`${statusLabel} ${stress.status}`, marginLeft + 180, cursorY);
+        
+        cursorY += 15;
+    }
+
+    // --- DETTAGLI TECNICI (Grigio) ---
+    doc.setFontSize(8).setFont(undefined, 'normal').setTextColor(80);
     
     const netLab = jsonLang["sre-net-label"] || (lang === 'it' ? 'PROFILO RETE' : 'NETWORK PROFILE');
     const netVal = jsonLang["sre-net-value"] || '3G/4G + Load Stress';
@@ -720,27 +739,42 @@ async function exportToPDF() {
     const tableData = data.pages.map(p => [
         p.label, 
         `${p.performanceScore ?? 85}%`, 
+        `${p.stressResilienceScore ?? 'N/D'}%`, // Aggiunta del dato di resilienza
         p.url.split('/').pop() || '/'
     ]);
 
     doc.autoTable({
-        startY: cursorY,
+        startY: cursorY + 10, // Un po' di margine dopo il riepilogo
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
-            jsonLang["pdf-table-score"] || (lang === 'it' ? 'Punteggio' : 'Score'), 
+            jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
+            lang === 'it' ? 'Resilienza' : 'Resilience', // Intestazione nuova colonna
             jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
         ]], 
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
-        styles: { fontSize: 9, cellPadding: 3.5 },
-        columnStyles: { 0: { cellWidth: 230 }, 1: { cellWidth: 55, halign: 'center' }, 2: { cellWidth: 230 } },
+        styles: { fontSize: 8.5, cellPadding: 3.5 }, // Ridotto leggermente il font per far spazio
+        columnStyles: { 
+            0: { cellWidth: 170 }, // Nome pagina
+            1: { cellWidth: 45, halign: 'center' }, // Perf %
+            2: { cellWidth: 55, halign: 'center' }, // Resilience %
+            3: { cellWidth: 185 } // Nome file (ridotto per bilanciare)
+        },
         didParseCell: (hook) => {
-            if (hook.section === 'body' && hook.column.index === 1) {
+            // Colorazione condizionale per le colonne dei punteggi (indice 1 e 2)
+            if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
                 const s = parseInt(hook.cell.text[0].toString().replace('%',''));
-                if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
-                else if (s >= 80) { hook.cell.styles.fillColor = '#fff3cd'; hook.cell.styles.textColor = '#856404'; }
-                else { hook.cell.styles.fillColor = '#f8d7da'; hook.cell.styles.textColor = '#721c24'; }
+                if (s >= 90) { 
+                    hook.cell.styles.fillColor = '#d4edda'; 
+                    hook.cell.styles.textColor = '#155724'; 
+                } else if (s >= 80) { 
+                    hook.cell.styles.fillColor = '#fff3cd'; 
+                    hook.cell.styles.textColor = '#856404'; 
+                } else if (!isNaN(s)) { // Per punteggi bassi
+                    hook.cell.styles.fillColor = '#f8d7da'; 
+                    hook.cell.styles.textColor = '#721c24'; 
+                }
             }
         }
     });
