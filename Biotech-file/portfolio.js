@@ -694,7 +694,7 @@ async function exportToPDF() {
         const resLabel = lang === 'it' ? 'RESILIENZA GLOBALE:' : 'GLOBAL RESILIENCE:';
         const statusLabel = lang === 'it' ? 'STATO SISTEMA:' : 'SYSTEM STATUS:';
 
-        doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(0); // Nero per risaltare
+        doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(100); // Grigio scuro
         doc.text(`${resLabel} ${stress.globalResilienceScore}/100`, marginLeft, cursorY);
         
         // Badge di stato (Testo colorato in base allo status)
@@ -702,7 +702,7 @@ async function exportToPDF() {
         doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
         doc.text(`${statusLabel} ${stress.status}`, marginLeft + 180, cursorY);
         
-        cursorY += 15;
+        cursorY += 12;
     }
 
     // --- DETTAGLI TECNICI (Grigio) ---
@@ -754,11 +754,11 @@ async function exportToPDF() {
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
-        styles: { fontSize: 8.5, cellPadding: 3.5 }, // Ridotto leggermente il font per far spazio
+        styles: { fontSize: 8, cellPadding: 2 }, // Ridotto leggermente il font per far spazio
         columnStyles: { 
             0: { cellWidth: 170 }, // Nome pagina
             1: { cellWidth: 45, halign: 'center' }, // Perf %
-            2: { cellWidth: 55, halign: 'center' }, // Resilience %
+            2: { cellWidth: 65, halign: 'center' }, // Resilience %
             3: { cellWidth: 185 } // Nome file (ridotto per bilanciare)
         },
         didParseCell: (hook) => {
