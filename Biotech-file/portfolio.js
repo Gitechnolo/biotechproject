@@ -766,20 +766,27 @@ async function exportToPDF() {
         ]], 
         body: tableData,
         theme: 'striped',
-        headStyles: { fillColor: [39, 174, 96], fontSize: 9 }, // Font testata leggermente ridotto
+        headStyles: { 
+            fillColor: [39, 174, 96], 
+            fontSize: 10, 
+            minCellHeight: 25, // Testata più alta
+            valign: 'middle' 
+        },
         styles: { 
-            fontSize: 8, // Font più piccolo per adattarsi meglio
-            cellPadding: 2, 
+            fontSize: 8.5, 
+            cellPadding: 6,      // Più spazio interno per non far toccare i bordi al testo
+            minCellHeight: 20,   // SPAZIO VERTICALE DI OGNI RIGA
             overflow: 'linebreak',
-            valign: 'middle'
+            valign: 'middle' 
         },
         columnStyles: { 
-            0: { cellWidth: 185 }, // Aumentato per evitare il "testo a capo" dei nomi lunghi
-            1: { cellWidth: 35, halign: 'center' },  // Stretto al minimo per "100%"
-            2: { cellWidth: 60, halign: 'center' },  // Stretto al minimo per "Resilience"
-            3: { cellWidth: 'auto' } // Il nome del file occupa lo spazio rimanente
+            0: { cellWidth: 180 }, // Spazio generoso per etichette
+            1: { cellWidth: 40, halign: 'center' },  
+            2: { cellWidth: 55, halign: 'center' },  
+            3: { cellWidth: 'auto' } 
         },
-        didParseCell: (hook) => { // Logica di colorazione condizionale per le colonne dei punteggi
+        didParseCell: (hook) => {
+            // Logica colori per colonna performance e resilienza
             if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
                 const s = parseInt(hook.cell.text[0].toString().replace('%',''));
                 if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
