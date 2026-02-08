@@ -725,27 +725,45 @@ async function exportToPDF() {
     cursorY += (splitDesc.length * 12);
     
     // --- GLOBAL RESILIENCE SCORE ---
-    if (data.summary?.stressTest) {
-        const stress = data.summary.stressTest;
-        const resLabel = lang === 'it' ? 'RESILIENZA GLOBALE:' : 'GLOBAL RESILIENCE:';
-        const statusLabel = lang === 'it' ? 'STATO SISTEMA:' : 'SYSTEM STATUS:';
-        doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(100);
-        doc.text(`${resLabel} ${stress.globalResilienceScore}/100`, marginLeft, cursorY);
-        const statusColor = stress.status.includes('STABLE') ? [39, 174, 96] : [231, 76, 60]; 
-        doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
-        doc.text(`${statusLabel} ${stress.status}`, marginLeft + 180, cursorY);
-        cursorY += 12;
-    }
+if (data.summary?.stressTest) {
+    const stress = data.summary.stressTest;
+    const resLabel = lang === 'it' ? 'RESILIENZA GLOBALE:' : 'GLOBAL RESILIENCE:';
+    const statusLabel = lang === 'it' ? 'STATO SISTEMA:' : 'SYSTEM STATUS:';
+    doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(100);
+    doc.text(`${resLabel} ${stress.globalResilienceScore}/100`, marginLeft, cursorY);
+    
+    const statusColor = stress.status.includes('STABLE') ? [39, 174, 96] : [231, 76, 60]; 
+    doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
+    doc.text(`${statusLabel} ${stress.status}`, marginLeft + 180, cursorY);
+    cursorY += 12;
+}
 
-    // --- GRAFICO ---
-    cursorY += 20;
-    const canvas = document.getElementById('performance-trend');
-    if (canvas) {
-        const imgData = canvas.toDataURL('image/png');
-        const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.82; 
-        doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
-        cursorY += imgHeight + 25;
-    }
+// --- INIZIO BLOCCO PROFILI TECNICI ---
+// Riduciamo leggermente gli incrementi per salvare spazio verticale
+cursorY += 8; 
+doc.setFontSize(7).setTextColor(100).setFont(undefined, 'normal');
+
+const technicalInfo = [
+    `NETWORK PROFILE: 3G/4G + Load Stress (5.000 Virtual Users | TTFB Drift)`,
+    `HARDWARE PROFILE: Legacy Mobile Emulation (CPU Slowdown: 4x Multiplier)`,
+    `METHODOLOGY: Simulated Throttling (SRE Scalability Engine 2026)`
+];
+
+technicalInfo.forEach(line => {
+    doc.text(line, marginLeft, cursorY);
+    cursorY += 8; // Spaziatura compatta tra le righe
+});
+
+// --- GRAFICO ---
+cursorY += 5; // Piccolo stacco prima del grafico
+const canvas = document.getElementById('performance-trend');
+if (canvas) {
+    const imgData = canvas.toDataURL('image/png');
+    // Moltiplichiamo per 0.8 per rendere il grafico leggermente più basso e salvare spazio per la tabella
+    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.6; 
+    doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
+    cursorY += imgHeight + 15; // Spazio prima della tabella
+}
 
     // --- TABELLA DATI ---
     const tableData = data.pages.map(p => [
