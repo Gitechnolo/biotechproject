@@ -181,6 +181,7 @@ async function loadPerformanceData() {
     update('avg-accessibility', `${avgA11y}%`);
     update('avg-seo', `${avgSeo}%`);
     update('avg-best-practices', `${avgBest}%`);
+    update('global-resilience-score', data.summary?.stressTest?.globalResilienceScore ?? '--');
 
     document.body.classList.add('portfolio-loaded');
 
