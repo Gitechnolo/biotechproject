@@ -70,7 +70,7 @@ async function loadPerformanceData() {
     abortController.abort();
   }
   abortController = new AbortController();
-  const { signal } = abortController;
+  const signal = abortController.signal;   // Segnale per fetch e rendering
 
   if (isRendering) {
     console.warn('⚠️ Rendering già in corso. Richiesta ignorata.');
@@ -81,8 +81,8 @@ async function loadPerformanceData() {
 
   try {
     isRendering = true;
-
-    const response = await fetch('data/performance-latest.json', { signal: abortController.signal });
+    // Tentativo fetch con percorso relativo
+    const response = await fetch('data/performance-latest.json', { signal: abortController.signal }); 
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();
