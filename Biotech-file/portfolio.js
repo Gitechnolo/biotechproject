@@ -754,7 +754,7 @@ async function exportToPDF() {
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
-        styles: { fontSize: 8, cellPadding: 2 }, // Ridotto leggermente il font per far spazio
+        styles: { fontSize: 8, cellPadding: 3 }, // Ridotto leggermente il font per far spazio
         columnStyles: { 
             0: { cellWidth: 170 }, // Nome pagina
             1: { cellWidth: 45, halign: 'center' }, // Perf %
