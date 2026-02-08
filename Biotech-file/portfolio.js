@@ -66,12 +66,12 @@ async function loadJsPDF() {
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
-  // 1. GESTIONE ATOMICA DELLE RICHIESTE CONCORRENTI
+  // 1. GESTIONE DELLE RICHIESTE CONCORRENTI
   if (abortController) {
     abortController.abort(); // Interrompe fetch e cicli di rendering precedenti
   }
 
-  // Se c'era un rendering attivo, lo resettiamo forzatamente perché l'abbiamo appena abortito
+  // Se c'era un rendering attivo, lo resettiamo forzatamente per evitare blocchi prolungati
   if (isRendering) {
     isRendering = false; 
   }
@@ -92,7 +92,7 @@ async function loadPerformanceData() {
     const container = document.querySelector('.portfolio-row');
     if (!container) return;
 
-    // Se siamo stati abortiti durante il download del JSON, fermiamoci qui
+    // Se siamo stati interrotti durante il fetch, usciamo silenziosamente senza modificare lo stato
     if (signal.aborted) return;
 
     container.innerHTML = '';
@@ -212,7 +212,7 @@ async function loadPerformanceData() {
     }
   } finally {
     // 4. RILASCIO DEL LOCK CONDIZIONALE
-    // Rilasciamo il lock solo se QUESTA specifica esecuzione è arrivata alla fine senza essere abortita
+    // Rilasciamo il lock solo se QUESTA specifica esecuzione è arrivata alla fine senza essere interrotta da una nuova chiamata (abort)
     if (!signal.aborted) {
       isRendering = false;
       console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
@@ -629,7 +629,7 @@ async function exportToPDF() {
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
   const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
   
-  // 1. ATOMIC LOCK: Evita esecuzioni multiple contemporanee
+  // 1. LOCK: Evita esecuzioni multiple contemporanee
   if (isExporting) {
     console.warn('⚠️ Esportazione già in corso...');
     return;
@@ -774,7 +774,7 @@ async function exportToPDF() {
             valign: 'middle'       // Centra il testo verticalmente se va a capo
         },
         columnStyles: { 
-            0: { cellWidth: 170 }, // Spazio generoso per i nomi lunghi (es. "versione semplificata")
+            0: { cellWidth: 180 }, // Spazio generoso per i nomi lunghi (es. "versione semplificata")
             1: { cellWidth: 40, halign: 'center' },  // Punteggio Performance stretto
             2: { cellWidth: 55, halign: 'center' },  // Resilienza stretto
             3: { cellWidth: 'auto' } // Il file si adatta allo spazio rimanente
