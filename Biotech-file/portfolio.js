@@ -65,32 +65,38 @@ async function loadJsPDF() {
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
-  // Annulla operazioni precedenti
+  // 1. GESTIONE ATOMICA DELLE RICHIESTE CONCORRENTI
   if (abortController) {
-    abortController.abort();
+    abortController.abort(); // Interrompe fetch e cicli di rendering precedenti
   }
-  abortController = new AbortController();
-  const signal = abortController.signal;   // Segnale per fetch e rendering
 
+  // Se c'era un rendering attivo, lo resettiamo forzatamente perché l'abbiamo appena abortito
   if (isRendering) {
-    console.warn('⚠️ Rendering già in corso. Richiesta ignorata.');
-    return;
+    isRendering = false; 
   }
+
+  abortController = new AbortController();
+  const { signal } = abortController; // Estraiamo il segnale per passarlo ovunque
 
   console.log('🔧 loadPerformanceData() in esecuzione');
 
   try {
     isRendering = true;
-    // Tentativo fetch con percorso relativo
-    const response = await fetch('data/performance-latest.json', { signal: abortController.signal }); 
+
+    // 2. FETCH CON SIGNAL (Piena compatibilità con modalità offline/cache)
+    const response = await fetch('data/performance-latest.json', { signal }); 
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();
     const container = document.querySelector('.portfolio-row');
     if (!container) return;
 
+    // Se siamo stati abortiti durante il download del JSON, fermiamoci qui
+    if (signal.aborted) return;
+
     container.innerHTML = '';
 
+    // --- Inizio Elaborazione Dati (Invariata) ---
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
       p.url === 'https://gitechnolo.github.io/biotechproject/' ||
@@ -115,14 +121,19 @@ async function loadPerformanceData() {
     const avgPerf = Math.round(
       data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
     );
-    const performanceScoreValue = avgPerf;
+    
+    aggiornaPerformanceScore(avgPerf);
 
-    aggiornaPerformanceScore(performanceScoreValue);
+    // 3. RENDERING ASINCRONO CON PROPAGAZIONE SIGNAL
+    // Passiamo 'signal' per interrompere i chunk se l'utente aggiorna di nuovo
+    await renderCardsAsynchronously(data.pages, container, signal);
 
-    await renderCardsAsynchronously(data.pages, container);
+    // Se l'operazione è stata annullata durante il rendering delle card, usciamo
+    if (signal.aborted) return;
 
     filterSelection('all');
 
+    // --- Grafico e Metriche ---
     const history = [];
     if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
       history.push({
@@ -133,7 +144,7 @@ async function loadPerformanceData() {
     }
     history.push({
       date: formatDate(reportTime),
-      score: performanceScoreValue,
+      score: avgPerf,
       note: 'Misurazione attuale'
     });
 
@@ -186,7 +197,8 @@ async function loadPerformanceData() {
 
   } catch (error) {
     if (error.name === 'AbortError') {
-      console.log('❌ Richiesta annullata');
+      console.log('❌ Richiesta annullata: subentrata nuova chiamata.');
+      // Importante: non resettiamo isRendering qui perché la nuova chiamata lo ha già impostato a true
     } else {
       console.warn('⚠️ Errore durante il caricamento reale:', error);
       aggiornaPerformanceScore(85);
@@ -195,24 +207,33 @@ async function loadPerformanceData() {
       if (errorDate) errorDate.textContent = 'Dati non disponibili';
       showNotification('Dati temporaneamente non disponibili.');
       document.body.classList.add('portfolio-loaded');
+      isRendering = false; // Solo in caso di errore vero resettiamo il lock
     }
   } finally {
-    isRendering = false;
-    console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
+    // 4. RILASCIO DEL LOCK CONDIZIONALE
+    // Rilasciamo il lock solo se QUESTA specifica esecuzione è arrivata alla fine senza essere abortita
+    if (!signal.aborted) {
+      isRendering = false;
+      console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
+    }
   }
 }
 /**
  * Rende il caricamento delle card non bloccante.
  * Gestisce record senza freezare la UI.
+ * @param {Array} pages - I dati delle pagine da renderizzare.
+ * @param {HTMLElement} container - Il contenitore DOM.
+ * @param {AbortSignal} signal - Il segnale di aborto specifico per questa esecuzione.
  */
-async function renderCardsAsynchronously(pages, container) {
+async function renderCardsAsynchronously(pages, container, signal) {
   const CHUNK_SIZE = 8; // Numero di card da renderizzare per batch
   let index = 0;
 
   async function processChunk() {
-    // Verifica se l'operazione è stata annullata
-    if (abortController.signal.aborted) {
-      console.log('⏹️ Rendering annullato');
+    // 1. Controllo immediato: se il segnale è abortito, fermiamo tutto.
+    // Usiamo il 'signal' passato come argomento per coerenza atomica.
+    if (signal && signal.aborted) {
+      console.log('⏹️ Rendering interrotto: subentrata nuova richiesta o annullamento.');
       return;
     }
 
@@ -227,10 +248,13 @@ async function renderCardsAsynchronously(pages, container) {
     container.appendChild(fragment);
     index += CHUNK_SIZE;
 
+    // 2. Se ci sono ancora pagine, cediamo il controllo al browser
     if (index < pages.length) {
-      // Cede il controllo al main thread
+      // Usiamo requestAnimationFrame per garantire che il browser faccia il paint delle card precedenti
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await processChunk(); // Ricorsione controllata
+      
+      // 3. Ricorsione controllata: passiamo al prossimo chunk
+      await processChunk(); 
     }
   }
 
