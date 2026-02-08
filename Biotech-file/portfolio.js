@@ -757,7 +757,7 @@ async function exportToPDF() {
 
     doc.autoTable({
     startY: cursorY + 10,
-    margin: { left: 40, right: 40 }, 
+    margin: { left: 30, right: 30 }, // Margini ridotti per guadagnare spazio orizzontale
     head: [[
         jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
         jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
@@ -768,22 +768,22 @@ async function exportToPDF() {
     theme: 'striped',
     headStyles: { 
         fillColor: [39, 174, 96], 
-        fontSize: 10, 
+        fontSize: 9, 
         minCellHeight: 25, 
         valign: 'middle' 
     },
     styles: { 
-        fontSize: 8,         // Testo nomi pagine a 8 per migliore leggibilità 
-        cellPadding: 4,     
+        fontSize: 8,         // Font 8 per massimizzare spazio, ma ancora leggibile
+        cellPadding: 3,      // Leggermente ridotto per risparmiare larghezza
         minCellHeight: 22,   
-        overflow: 'visible', 
+        overflow: 'visible', // Evita ritorni a capo forzati se non necessari
         valign: 'middle' 
     },
     columnStyles: { 
-        0: { cellWidth: 225 }, // AUMENTATO ulteriormente per proteggere il font 8
+        0: { cellWidth: 240 }, // MASSIMO SPAZIO: 
         1: { cellWidth: 35, halign: 'center' },  
         2: { cellWidth: 50, halign: 'center' },  
-        3: { cellWidth: 105 }  // RISTRETTO al minimo indispensabile per i nomi file
+        3: { cellWidth: 100 }  // STRETTO: Il nome del file ha meno spazio ma è sufficiente
     },
     didParseCell: (hook) => {
         if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
