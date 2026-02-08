@@ -38,9 +38,10 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
 // ———————————————————————
 
-let performanceChart; 
+let performanceChart; // Riferimento globale al grafico per aggiornamenti dinamici
 let isRendering = false; // Flag di stato per il controllo anti-compulsivo
 let abortController = null; // Controller per abortire fetch in caso di richieste concorrenti
+let isExporting = false; // Lock specifico per l'esportazione
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
@@ -621,13 +622,19 @@ function getTrendColorClass(current, previous) {
                             'badge-compatible';
 }
 
-// --- Funzione: Esporta JSON + Grafico in PDF ---
+// --- Funzione: Esporta JSON + Grafico in PDF (Versione Blindata) ---
 async function exportToPDF() {
   const btn = document.getElementById('export-data-btn');
   const originalLabel = btn?.textContent || 'Esporta dati';
   const LOGO_URL = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png';
   const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
   
+  // 1. ATOMIC LOCK: Evita esecuzioni multiple contemporanee
+  if (isExporting) {
+    console.warn('⚠️ Esportazione già in corso...');
+    return;
+  }
+
   const i18n = {
     it: {
       exporting: 'Esportazione in corso...',
@@ -652,22 +659,29 @@ async function exportToPDF() {
   const text = i18n[lang] || i18n.it;
 
   try {
+    isExporting = true; // Attiva il lock
     if (btn) { btn.disabled = true; btn.textContent = text.exporting; }
 
+    // Caricamento librerie asincrono (già protetto internamente)
     await loadJsPDF(); 
 
+    // 2. FETCH DATI CON SIGNAL: Rispetta l'eventuale abort globale
     let data;
+    const fetchOptions = abortController ? { signal: abortController.signal } : {};
+    
     try {
-      const res = await fetch('data/performance-latest.json');
+      const res = await fetch('data/performance-latest.json', fetchOptions);
+      if (!res.ok) throw new Error();
       data = await res.json();
     } catch (err) {
+      if (err.name === 'AbortError') return; // Esci silenziosamente se abortito
+      // Fallback in caso di errore rete
       const fallback = '/biotechproject/data/performance-latest.json';
-      const fres = await fetch(fallback);
+      const fres = await fetch(fallback, fetchOptions);
       data = await fres.json();
     }
 
     const jsonLang = data[lang] ? data[lang] : data;
-
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'pt', format: 'a4' });
     const marginLeft = 40;
@@ -684,7 +698,7 @@ async function exportToPDF() {
     doc.setFontSize(18).setTextColor(0).setFont(undefined, 'bold');
     doc.text(text.reportTitle, marginLeft + 45, cursorY + 12);
     
-    // --- INFO GENERAZIONE & RIEPILOGO (Grigio) ---
+    // --- INFO GENERAZIONE & RIEPILOGO ---
     cursorY += 45;
     doc.setFontSize(8).setTextColor(80).setFont(undefined, 'normal');
     const now = new Date().toLocaleString(lang === 'it' ? 'it-IT' : 'en-US');
@@ -700,58 +714,28 @@ async function exportToPDF() {
         doc.text(`${text.lastUpdate}: ${upDate}`, marginLeft, cursorY);
     }
 
-    // --- METODOLOGIA (Verde Biotech) ---
+    // --- METODOLOGIA (SRE Engine 2026) ---
     cursorY += 20;
     doc.setFontSize(9).setTextColor(39, 174, 96).setFont(undefined, 'bold');
-
-    const sreDescription = jsonLang?.["sre-description"] || 
-                           data?.["sre-description"] || 
-                           (lang === 'it' 
- ? "I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei per validare la scalabilità della logica distribuita."
- : "Performance tests simulate real-world usage with a massive 5.000 concurrent user stress test to validate distributed logic scalability.");
-
+    const sreDescription = jsonLang?.["sre-description"] || data?.["sre-description"] || (lang === 'it' 
+        ? "I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei."
+        : "Performance tests simulate real-world usage with 5.000 concurrent user stress test.");
     const splitDesc = doc.splitTextToSize(sreDescription, contentWidth);
     doc.text(splitDesc, marginLeft, cursorY);
     cursorY += (splitDesc.length * 12);
     
-    // --- NUOVA SEZIONE: GLOBAL RESILIENCE SCORE ---
-    if (data.summary && data.summary.stressTest) {
+    // --- GLOBAL RESILIENCE SCORE ---
+    if (data.summary?.stressTest) {
         const stress = data.summary.stressTest;
-        
-        // Etichette dinamiche
         const resLabel = lang === 'it' ? 'RESILIENZA GLOBALE:' : 'GLOBAL RESILIENCE:';
         const statusLabel = lang === 'it' ? 'STATO SISTEMA:' : 'SYSTEM STATUS:';
-
-        doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(100); // Grigio scuro
+        doc.setFontSize(9).setFont(undefined, 'bold').setTextColor(100);
         doc.text(`${resLabel} ${stress.globalResilienceScore}/100`, marginLeft, cursorY);
-        
-        // Badge di stato (Testo colorato in base allo status)
         const statusColor = stress.status.includes('STABLE') ? [39, 174, 96] : [231, 76, 60]; 
         doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
         doc.text(`${statusLabel} ${stress.status}`, marginLeft + 180, cursorY);
-        
         cursorY += 12;
     }
-
-    // --- DETTAGLI TECNICI (Grigio) ---
-    doc.setFontSize(8).setFont(undefined, 'normal').setTextColor(80);
-    
-    const netLab = jsonLang["sre-net-label"] || (lang === 'it' ? 'PROFILO RETE' : 'NETWORK PROFILE');
-    const netVal = jsonLang["sre-net-value"] || '3G/4G + Load Stress';
-    const netDet = jsonLang["sre-net-detail"] || '5.000 Virtual Users | TTFB Drift';
-    doc.text(`${netLab}: ${netVal} (${netDet})`, marginLeft, cursorY);
-    
-    cursorY += 11;
-    const hwLab = jsonLang["sre-hw-label"] || (lang === 'it' ? 'PROFILO HARDWARE' : 'HARDWARE PROFILE');
-    const hwVal = jsonLang["sre-hw-value"] || 'Legacy Mobile Emulation';
-    const hwDet = jsonLang["sre-hw-detail"] || 'CPU Slowdown: 4x Multiplier';
-    doc.text(`${hwLab}: ${hwVal} (${hwDet})`, marginLeft, cursorY);
-    
-    cursorY += 11;
-    const methLab = jsonLang["sre-method-label"] || (lang === 'it' ? 'METODOLOGIA' : 'METHODOLOGY');
-    const methVal = jsonLang["sre-method-value"] || 'Simulated Throttling';
-    const methDet = jsonLang["sre-method-detail"] || 'SRE Scalability Engine 2026';
-    doc.text(`${methLab}: ${methVal} (${methDet})`, marginLeft, cursorY);
 
     // --- GRAFICO ---
     cursorY += 20;
@@ -763,56 +747,58 @@ async function exportToPDF() {
         cursorY += imgHeight + 25;
     }
 
-    // --- TABELLA ---
+    // --- TABELLA DATI ---
     const tableData = data.pages.map(p => [
         p.label, 
         `${p.performanceScore ?? 85}%`, 
-        `${p.stressResilienceScore ?? 'N/D'}%`, // Aggiunta del dato di resilienza
+        `${p.stressResilienceScore ?? 'N/D'}%`, 
         p.url.split('/').pop() || '/'
     ]);
 
     doc.autoTable({
-        startY: cursorY + 10, // Un po' di margine dopo il riepilogo
+        startY: cursorY + 10,
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
             jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
-            lang === 'it' ? 'Resilienza' : 'Resilience', // Intestazione nuova colonna
+            lang === 'it' ? 'Resilienza' : 'Resilience',
             jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
         ]], 
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
-        styles: { fontSize: 8, cellPadding: 3 }, // Ridotto leggermente il font per far spazio
-        columnStyles: { 
-            0: { cellWidth: 170 }, // Nome pagina
-            1: { cellWidth: 45, halign: 'center' }, // Perf %
-            2: { cellWidth: 65, halign: 'center' }, // Resilience %
-            3: { cellWidth: 185 } // Nome file (ridotto per bilanciare)
-        },
+        styles: { fontSize: 8, cellPadding: 3 },
+        columnStyles: { 0: { cellWidth: 170 }, 1: { cellWidth: 45, halign: 'center' }, 2: { cellWidth: 65, halign: 'center' }, 3: { cellWidth: 185 } },
         didParseCell: (hook) => {
-            // Colorazione condizionale per le colonne dei punteggi (indice 1 e 2)
             if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
                 const s = parseInt(hook.cell.text[0].toString().replace('%',''));
-                if (s >= 90) { 
-                    hook.cell.styles.fillColor = '#d4edda'; 
-                    hook.cell.styles.textColor = '#155724'; 
-                } else if (s >= 80) { 
-                    hook.cell.styles.fillColor = '#fff3cd'; 
-                    hook.cell.styles.textColor = '#856404'; 
-                } else if (!isNaN(s)) { // Per punteggi bassi
-                    hook.cell.styles.fillColor = '#f8d7da'; 
-                    hook.cell.styles.textColor = '#721c24'; 
-                }
+                if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
+                else if (s >= 80) { hook.cell.styles.fillColor = '#fff3cd'; hook.cell.styles.textColor = '#856404'; }
+                else if (!isNaN(s)) { hook.cell.styles.fillColor = '#f8d7da'; hook.cell.styles.textColor = '#721c24'; }
             }
         }
     });
 
+    // 3. CONTROLLO DI ABORTO FINALE: Non scaricare se l'utente ha resettato tutto
+    if (abortController?.signal.aborted) {
+      console.log('⏹️ Esportazione PDF interrotta: subentrata nuova logica globale.');
+      return; 
+    }
+
     doc.save(text.fileName);
+    showNotification(lang === 'it' ? 'PDF generato correttamente' : 'PDF generated successfully');
 
   } catch (err) {
-    console.error('Export error:', err);
+    if (err.name !== 'AbortError') {
+      console.error('Export error:', err);
+      showNotification('Errore durante la generazione del PDF.');
+    }
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+    // 4. RILASCIO LOCK: Il pulsante torna disponibile
+    isExporting = false;
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }
   }
 }
 
