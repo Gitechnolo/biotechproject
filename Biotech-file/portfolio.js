@@ -40,6 +40,7 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
 
 let performanceChart; 
 let isRendering = false; // Flag di stato per il controllo anti-compulsivo
+let abortController = null; // Controller per abortire fetch in caso di richieste concorrenti
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
@@ -64,47 +65,48 @@ async function loadJsPDF() {
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
-  // 1. Controllo anti-compulsivo: blocca esecuzioni concorrenti
+  // Annulla operazioni precedenti
+  if (abortController) {
+    abortController.abort();
+  }
+  abortController = new AbortController();
+  const { signal } = abortController;
+
   if (isRendering) {
     console.warn('⚠️ Rendering già in corso. Richiesta ignorata.');
     return;
   }
 
   console.log('🔧 loadPerformanceData() in esecuzione');
-  
-  try {
-    isRendering = true; // Alziamo la barriera
 
-    const response = await fetch('data/performance-latest.json');
+  try {
+    isRendering = true;
+
+    const response = await fetch('data/performance-latest.json', { signal });
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();
     const container = document.querySelector('.portfolio-row');
-    if (!container) return; 
+    if (!container) return;
 
-    container.innerHTML = ''; // Pulizia DOM prima del rendering asincrono
+    container.innerHTML = '';
 
-    // Individuazione della Home Page per estrarre i metadati temporali
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
       p.url === 'https://gitechnolo.github.io/biotechproject/' ||
       p.url === window.location.origin + '/biotechproject/'
     );
 
-    // Determinazione della data del report (Priorità: Home > Globale > Now)
     const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : 
                        data.lastUpdated ? new Date(data.lastUpdated) : new Date();
 
-    // *** AGGIORNAMENTO DINAMICO DELLA DATA (MULTIPLE TARGETS) ***
     const dateStr = reportTime.toLocaleDateString('it-IT');
     const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
 
-    // Scansione di tutti i possibili ID per la data dell'ultimo aggiornamento
     const dateTargets = ['last-update', 'last-updated', 'last-updated-report'];
     dateTargets.forEach(id => {
       const el = document.getElementById(id);
       if (el) {
-        // Se è l'elemento compatto sotto i cerchi, mette solo la data, altrimenti stringa completa
         el.textContent = (id === 'last-updated') ? dateStr : `Aggiornato il: ${dateStr} alle ${timeStr}`;
         if (el.hasAttribute('datetime')) el.setAttribute('datetime', reportTime.toISOString());
       }
@@ -117,10 +119,8 @@ async function loadPerformanceData() {
 
     aggiornaPerformanceScore(performanceScoreValue);
 
-    // *** LOGICA ASINCRONA SRE-GRADE ***
     await renderCardsAsynchronously(data.pages, container);
 
-    // Attivazione filtri post-rendering
     filterSelection('all');
 
     const history = [];
@@ -170,7 +170,6 @@ async function loadPerformanceData() {
       trendEl.classList.remove('visually-hidden');
     }
 
-    // Aggiornamento statistiche testuali nel summary
     const update = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
@@ -186,20 +185,19 @@ async function loadPerformanceData() {
     document.body.classList.add('portfolio-loaded');
 
   } catch (error) {
-    console.warn('⚠️ Errore durante il caricamento reale, avvio fallback:', error);
-    
-    aggiornaPerformanceScore(85);
-    creaGrafico(); 
-    
-    // Fallback UI per la data in caso di errore
-    const errorDate = document.getElementById('last-update') || document.getElementById('last-updated');
-    if (errorDate) errorDate.textContent = 'Dati non disponibili';
-    
-    showNotification('Dati temporaneamente non disponibili.');
-    document.body.classList.add('portfolio-loaded'); 
-
+    if (error.name === 'AbortError') {
+      console.log('❌ Richiesta annullata');
+    } else {
+      console.warn('⚠️ Errore durante il caricamento reale:', error);
+      aggiornaPerformanceScore(85);
+      creaGrafico();
+      const errorDate = document.getElementById('last-update') || document.getElementById('last-updated');
+      if (errorDate) errorDate.textContent = 'Dati non disponibili';
+      showNotification('Dati temporaneamente non disponibili.');
+      document.body.classList.add('portfolio-loaded');
+    }
   } finally {
-    isRendering = false; 
+    isRendering = false;
     console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
   }
 }
@@ -208,10 +206,16 @@ async function loadPerformanceData() {
  * Gestisce record senza freezare la UI.
  */
 async function renderCardsAsynchronously(pages, container) {
-  const CHUNK_SIZE = 8; // Numero di card per ogni frame (ottimale per mobile 4x)
+  const CHUNK_SIZE = 8; // Numero di card da renderizzare per batch
   let index = 0;
 
   async function processChunk() {
+    // Verifica se l'operazione è stata annullata
+    if (abortController.signal.aborted) {
+      console.log('⏹️ Rendering annullato');
+      return;
+    }
+
     const fragment = document.createDocumentFragment();
     const chunk = pages.slice(index, index + CHUNK_SIZE);
 
@@ -224,15 +228,14 @@ async function renderCardsAsynchronously(pages, container) {
     index += CHUNK_SIZE;
 
     if (index < pages.length) {
-      // Rilascia il thread principale per permettere al browser di respirare
-      // e processare input dell'utente o animazioni
+      // Cede il controllo al main thread
       await new Promise(resolve => requestAnimationFrame(resolve));
-      await processChunk(); // Processa il prossimo blocco
+      await processChunk(); // Ricorsione controllata
     }
   }
 
   await processChunk();
-}
+}   
 
 // --- Crea la card per ogni pagina ---
 function createPerformanceCard(page) {
