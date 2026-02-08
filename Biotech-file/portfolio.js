@@ -755,33 +755,29 @@ technicalInfo.forEach(line => {
 });
 
 // --- GRAFICO ---
-cursorY += 5; // Piccolo stacco prima del grafico
+cursorY += 10; // Spazio tra i profili tecnici e il grafico
 const canvas = document.getElementById('performance-trend');
 if (canvas) {
     const imgData = canvas.toDataURL('image/png');
-    // Moltiplichiamo per 0.8 per rendere il grafico leggermente più basso e salvare spazio per la tabella
-    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.6; 
+    // Ingrandiamo il grafico portando il moltiplicatore a 0.85 per una migliore visibilità
+    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.85; 
     doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
-    cursorY += imgHeight + 15; // Spazio prima della tabella
+    
+    // Aumentiamo lo stacco: portiamo a +35 o +40 per far scendere la tabella
+    cursorY += imgHeight + 40; 
 }
 
     // --- TABELLA DATI ---
-    const tableData = data.pages.map(p => [
-        p.label, 
-        `${p.performanceScore ?? 85}%`, 
-        `${p.stressResilienceScore ?? 'N/D'}%`, 
-        p.url.split('/').pop() || '/'
-    ]);
-
     doc.autoTable({
-        startY: cursorY + 10,
-        margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
-        head: [[
-            jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
-            jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
-            lang === 'it' ? 'Resilienza' : 'Resilience',
-            jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
-        ]], 
+    // Aumenta il numero (es. + 40 o + 50) per farla scendere di più
+    startY: cursorY + 45, 
+    margin: { left: 40, right: 40 },
+    head: [[
+        jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
+        jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
+        lang === 'it' ? 'Resilienza' : 'Resilience',
+        jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
+    ]], 
         body: tableData,
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
