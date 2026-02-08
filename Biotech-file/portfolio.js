@@ -756,39 +756,44 @@ async function exportToPDF() {
     ]);
 
     doc.autoTable({
-        startY: cursorY + 10,
-        margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
-        head: [[
-            jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
-            jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
-            lang === 'it' ? 'Resilienza' : 'Resilience',
-            jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
-        ]], 
-        body: tableData,
-        theme: 'striped',
-        headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
-        styles: { 
-            fontSize: 8, 
-            cellPadding: 3, 
-            overflow: 'linebreak', // Gestisce il testo a capo in modo pulito
-            valign: 'middle'       // Centra il testo verticalmente se va a capo
-        },
-        columnStyles: { 
-            0: { cellWidth: 160 }, // Spazio generoso per i nomi lunghi (es. "versione semplificata")
-            1: { cellWidth: 40, halign: 'center' },  // Punteggio Performance stretto
-            2: { cellWidth: 55, halign: 'center' },  // Resilienza stretto
-            3: { cellWidth: 'auto' } // Il file si adatta allo spazio rimanente
-        },
-        didParseCell: (hook) => {
-            // Colorazione condizionale per i punteggi: verde >=90, giallo >=80, rosso <80
-            if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
-                const s = parseInt(hook.cell.text[0].toString().replace('%',''));
-                if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
-                else if (s >= 80) { hook.cell.styles.fillColor = '#fff3cd'; hook.cell.styles.textColor = '#856404'; }
-                else if (!isNaN(s)) { hook.cell.styles.fillColor = '#f8d7da'; hook.cell.styles.textColor = '#721c24'; }
-            }
+    startY: cursorY + 10,
+    margin: { left: 40, right: 40 }, 
+    head: [[
+        jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
+        jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
+        lang === 'it' ? 'Resilienza' : 'Resilience',
+        jsonLang["pdf-table-file"] || (lang === 'it' ? 'File Pagina' : 'Page File')
+    ]], 
+    body: tableData,
+    theme: 'striped',
+    headStyles: { 
+        fillColor: [39, 174, 96], 
+        fontSize: 10, 
+        minCellHeight: 25, 
+        valign: 'middle' 
+    },
+    styles: { 
+        fontSize: 8,         // Testo nomi pagine a 8 per migliore leggibilità 
+        cellPadding: 4,     
+        minCellHeight: 22,   
+        overflow: 'visible', 
+        valign: 'middle' 
+    },
+    columnStyles: { 
+        0: { cellWidth: 225 }, // AUMENTATO ulteriormente per proteggere il font 8
+        1: { cellWidth: 35, halign: 'center' },  
+        2: { cellWidth: 50, halign: 'center' },  
+        3: { cellWidth: 105 }  // RISTRETTO al minimo indispensabile per i nomi file
+    },
+    didParseCell: (hook) => {
+        if (hook.section === 'body' && (hook.column.index === 1 || hook.column.index === 2)) {
+            const s = parseInt(hook.cell.text[0].toString().replace('%',''));
+            if (s >= 90) { hook.cell.styles.fillColor = '#d4edda'; hook.cell.styles.textColor = '#155724'; }
+            else if (s >= 80) { hook.cell.styles.fillColor = '#fff3cd'; hook.cell.styles.textColor = '#856404'; }
+            else if (!isNaN(s)) { hook.cell.styles.fillColor = '#f8d7da'; hook.cell.styles.textColor = '#721c24'; }
         }
-    });
+    }
+});
 
     // 3. CONTROLLO FINALE: Non scaricare se l'utente ha resettato tutto
     if (abortController?.signal.aborted) {
