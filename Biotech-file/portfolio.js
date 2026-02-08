@@ -82,7 +82,7 @@ async function loadPerformanceData() {
   try {
     isRendering = true;
 
-    const response = await fetch('data/performance-latest.json', { signal });
+    const response = await fetch('data/performance-latest.json', { signal: abortController.signal });
     if (!response.ok) throw new Error('Dati non disponibili');
 
     const data = await response.json();
