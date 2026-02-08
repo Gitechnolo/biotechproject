@@ -66,7 +66,7 @@ async function loadJsPDF() {
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
-  // 1. GESTIONE ATOMICA DELLE RICHIESTE CONCORRENTI
+  // 1. GESTIONE DELLE RICHIESTE CONCORRENTI
   if (abortController) {
     abortController.abort(); // Interrompe fetch e cicli di rendering precedenti
   }
@@ -92,12 +92,12 @@ async function loadPerformanceData() {
     const container = document.querySelector('.portfolio-row');
     if (!container) return;
 
-    // Se siamo stati abortiti durante il download del JSON, fermiamoci qui
+    // Se siamo stati interrotti durante il fetch, usciamo silenziosamente senza modificare lo stato  
     if (signal.aborted) return;
 
     container.innerHTML = '';
 
-    // --- Inizio Elaborazione Dati (Invariata) ---
+    // --- Inizio Elaborazione Dati ---
     const homePage = data.pages.find(p =>
       p.url.includes('/index.html') ||
       p.url === 'https://gitechnolo.github.io/biotechproject/' ||
@@ -393,7 +393,7 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
     // Inseriamo la freccia testuale
     trendIndicator.textContent = trend > 0 ? '↑' : trend < 0 ? '↓' : '→';
     
-    // Gestione colori: usiamo le tue classi esistenti
+    // Gestione colori: usiamo le classi esistenti
     trendIndicator.className = ''; 
     const statusClass = trend > 0 ? 'trend-up' : trend < 0 ? 'trend-down' : 'trend-equal';
     trendIndicator.classList.add(statusClass);
@@ -768,7 +768,7 @@ async function exportToPDF() {
         theme: 'striped',
         headStyles: { fillColor: [39, 174, 96], fontSize: 9 }, // Font testata leggermente ridotto
         styles: { 
-            fontSize: 7.5, // Riduzione minima per guadagnare spazio orizzontale
+            fontSize: 8, // Font più piccolo per adattarsi meglio
             cellPadding: 2, 
             overflow: 'linebreak',
             valign: 'middle'
@@ -776,7 +776,7 @@ async function exportToPDF() {
         columnStyles: { 
             0: { cellWidth: 185 }, // Aumentato per evitare il "testo a capo" dei nomi lunghi
             1: { cellWidth: 35, halign: 'center' },  // Stretto al minimo per "100%"
-            2: { cellWidth: 50, halign: 'center' },  // Stretto al minimo per "Resilience"
+            2: { cellWidth: 60, halign: 'center' },  // Stretto al minimo per "Resilience"
             3: { cellWidth: 'auto' } // Il nome del file occupa lo spazio rimanente
         },
         didParseCell: (hook) => { // Logica di colorazione condizionale per le colonne dei punteggi
