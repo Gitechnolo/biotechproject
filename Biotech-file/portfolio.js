@@ -760,7 +760,7 @@ const canvas = document.getElementById('performance-trend');
 if (canvas) {
     const imgData = canvas.toDataURL('image/png');
     // Moltiplichiamo per 0.8 per rendere il grafico leggermente più basso e salvare spazio per la tabella
-    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.6; 
+    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.8; 
     doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
     cursorY += imgHeight + 15; // Spazio prima della tabella
 }
@@ -774,7 +774,7 @@ if (canvas) {
     ]);
 
     doc.autoTable({
-        startY: cursorY + 10,
+        startY: cursorY + 30,
         margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
