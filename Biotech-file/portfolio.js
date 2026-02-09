@@ -46,7 +46,7 @@ let abortController = null; // Controller per abortire fetch in caso di richiest
 let isExporting = false; // Lock specifico per l'esportazione
 // --- CONFIGURAZIONE TELEMETRIA SRE (Visual Debugging) ---
 const SRE_LOG = {
-  base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
+  base: 'font-family: "Sansation", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
   start: 'background: #2196F3; color: #ffffff;',   // Blu: Orchestrator Start
   stop: 'background: #FF9800; color: #1a1a1a;',    // Arancio: Atomic Interruption
   error: 'background: #F44336; color: #ffffff;',   // Rosso: Abort/Error
