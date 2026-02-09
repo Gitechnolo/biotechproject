@@ -755,15 +755,14 @@ technicalInfo.forEach(line => {
 });
 
 // --- GRAFICO ---
-cursorY += 5; // Piccolo stacco prima del grafico
+cursorY += 5;
 const canvas = document.getElementById('performance-trend');
 if (canvas) {
-    const imgData = canvas.toDataURL('image/png');
-    // 0.8 per rendere il grafico più basso e salvare spazio per la tabella
-    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.6; 
-    doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
-    cursorY += imgHeight + 15; // Spazio prima della tabella
-}
+    // Usa un fattore più alto per imgHeight, senza ridimensionare il canvas
+    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.82;
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
+    cursorY += imgHeight + 15;
+}   
 
     // --- TABELLA DATI ---
     const tableData = data.pages.map(p => [
@@ -774,7 +773,7 @@ if (canvas) {
     ]);
 
     doc.autoTable({
-        startY: cursorY + 15, // Inizio tabella dopo un piccolo spazio
+        startY: cursorY + 30, // Inizio tabella dopo un piccolo spazio
         margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
