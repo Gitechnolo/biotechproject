@@ -787,7 +787,7 @@ if (canvas) {
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
         styles: { 
             fontSize: 8, 
-            cellPadding: 5, // Spaziatura compatta per adattare più dati
+            cellPadding: 4, // Spaziatura compatta per adattare più dati
             overflow: 'linebreak', // Gestisce il testo a capo in modo pulito
             valign: 'middle'       // Centra il testo verticalmente se va a capo
         },
