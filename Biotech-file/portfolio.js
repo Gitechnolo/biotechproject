@@ -371,7 +371,8 @@ function createPerformanceCard(page) {
 function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }
-function setupRefreshButtons() {
+// SRE: Gestisce il refresh dei dati e del Global Resilience Score con protezione anti-compulsiva.
+function setupRefreshButtons() {  
   if (window.refreshButtonsSetup) return; window.refreshButtonsSetup = true;
 
 const handleRefresh = async () => { 
