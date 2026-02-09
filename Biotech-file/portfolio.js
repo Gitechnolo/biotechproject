@@ -44,6 +44,14 @@ let performanceChart; // Riferimento globale al grafico per aggiornamenti dinami
 let isRendering = false; // Flag di stato per il controllo anti-compulsivo
 let abortController = null; // Controller per abortire fetch in caso di richieste concorrenti
 let isExporting = false; // Lock specifico per l'esportazione
+// --- CONFIGURAZIONE TELEMETRIA SRE (Visual Debugging) ---
+const SRE_LOG = {
+  base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
+  start: 'background: #2196F3; color: #ffffff;',   // Blu: Orchestrator Start
+  stop: 'background: #FF9800; color: #1a1a1a;',    // Arancio: Atomic Interruption
+  error: 'background: #F44336; color: #ffffff;',   // Rosso: Abort/Error
+  success: 'background: #4CAF50; color: #ffffff;'  // Verde: Lock Released
+};
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
@@ -81,7 +89,7 @@ async function loadPerformanceData() {
   abortController = new AbortController();
   const { signal } = abortController; // Estraiamo il segnale per passarlo ovunque
 
-  console.log('🔧 loadPerformanceData() in esecuzione');
+  console.log('%c 🧠 ORCHESTRATOR %c loadPerformanceData() in esecuzione', SRE_LOG.base + SRE_LOG.start, 'color: #2196F3;');
 
   try {
     isRendering = true;
@@ -200,7 +208,7 @@ async function loadPerformanceData() {
 
   } catch (error) {
     if (error.name === 'AbortError') {
-      console.log('❌ Richiesta annullata: subentrata nuova chiamata.');
+      console.log('%c ❌ ABORT %c Richiesta annullata: subentrata nuova chiamata.', SRE_LOG.base + SRE_LOG.error, 'color: #f44336;');
       // Importante: non resettiamo isRendering qui perché la nuova chiamata lo ha già impostato a true
     } else {
       console.warn('⚠️ Errore durante il caricamento reale:', error);
@@ -217,7 +225,7 @@ async function loadPerformanceData() {
     // Rilasciamo il lock solo se QUESTA specifica esecuzione è arrivata alla fine senza essere interrotta da una nuova chiamata (abort)
     if (!signal.aborted) {
       isRendering = false;
-      console.log('✅ loadPerformanceData() completato. Lock rilasciato.');
+console.log('%c ✅ SYSTEM %c loadPerformanceData() completato. Lock rilasciato.', SRE_LOG.base + SRE_LOG.success, 'color: #4caf50;');
     }
   }
 }
@@ -236,7 +244,7 @@ async function renderCardsAsynchronously(pages, container, signal) {
     // 1. Controllo immediato: se il segnale è abortito, fermiamo tutto.
     // Usiamo il 'signal' passato come argomento per coerenza atomica.
     if (signal && signal.aborted) {
-      console.log('⏹️ Rendering interrotto: subentrata nuova richiesta o annullamento.');
+    console.log('%c ⏹️ ATOMIC LOCK %c Rendering interrotto: nuova richiesta.', SRE_LOG.base + SRE_LOG.stop, 'color: #ff9800;');
       return;
     }
 
