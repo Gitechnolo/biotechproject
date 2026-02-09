@@ -6,6 +6,7 @@
  * COMPLIANCE: WCAG 2.1 Level AAA | Lighthouse 2026 Standards
  * -------------------------------------------------------------------------
  * SUMMARY:
+ * Resilience: Built-in SRE Scalability Engine simulating 5,000 concurrent users with simulated throttling.
  * Manages real-time telemetry visualization from 'performance-latest.json'.
  * Uses a non-blocking asynchronous rendering pipeline to ensure UI 
  * responsiveness even during heavy DOM construction (Chunk Size: 8).
@@ -18,21 +19,22 @@ BIOTECH PORTFOLIO | MODULE TREE 2026
  ║
  ╠══ DATA ACQUISITION LAYER
  ║   ╠── loadPerformanceData() ─────► Orchestrator (Fetch -> Process -> Render)
- ║   ╚── loadJsPDF() ──────────────► Lazy-Loading Library Injector
+ ║   ╠── loadJsPDF() ──────────────► Lazy-Loading & Offline Asset Caching
+ ║   ╚── AbortController Mgmt ─────► Concurrent Request Collision Control
  ║
  ╠══ ASYNC RENDERING ENGINE (Non-Blocking)
  ║   ╠── renderCardsAsynchronously()► Chunked Loop (requestAnimationFrame)
- ║   ╚── createPerformanceCard() ──► Fragment-based DOM Factory
+ ║   ╚── createPerformanceCard() ──► Fragment-based DOM Factory (Atomic)
  ║
  ╠══ ANALYTICS & VISUALIZATION
  ║   ╠── creaGrafico() ────────────► Chart.js Engine (Trend & Projections)
- ║   ╠── aggiornaPerformanceScore() ► Global Metric Feedback Loop
+ ║   ╠── aggiornaPerformanceScore() ► Global Metric & SRE Resilience Feedback
  ║   ╚── getTrendArrow() ──────────► Differential Delta Logic
  ║
  ╚══ UI CONTROL & EXPORT
      ╠── filterSelection() ────────► State-driven Filtering & A11y Announcements
-     ╠── exportToPDF() ────────────► I18n PDF Synthesis (AutoTable)
-     ╚── A11y Controller ──────────► ARIA Live Regions & Focus Mgmt
+     ╠── exportToPDF() ────────────► I18n PDF Synthesis & Render Locking
+     ╚── A11y Controller ──────────► ARIA-Pressed & Live Region Sync
 */
 // ———————————————————————
 // GESTIONE PERFORMANCE E GRAFICO DI MATURITÀ TECNOLOGICA 
@@ -66,7 +68,7 @@ async function loadJsPDF() {
 
 // --- Funzione principale: carica dati reali dal JSON ---
 async function loadPerformanceData() {
-  // 1. GESTIONE DELLE RICHIESTE CONCORRENTI
+  // 1. GESTIONE ATOMICA DELLE RICHIESTE CONCORRENTI
   if (abortController) {
     abortController.abort(); // Interrompe fetch e cicli di rendering precedenti
   }
