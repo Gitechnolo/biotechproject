@@ -757,9 +757,10 @@ technicalInfo.forEach(line => {
 // --- GRAFICO ---
 cursorY += 5; // Piccolo stacco prima del grafico
 const canvas = document.getElementById('performance-trend');
+canvas.height = 200; // Altezza fissa in pixel (200, 300 per grafico più grande)
 if (canvas) {
     const imgData = canvas.toDataURL('image/png');
-    // Moltiplichiamo per 0.8 per rendere il grafico leggermente più basso e salvare spazio per la tabella
+    // 0.8 grafico leggermente più basso e spazio per la tabella
     const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.8; 
     doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
     cursorY += imgHeight + 15; // Spazio prima della tabella
@@ -774,8 +775,8 @@ if (canvas) {
     ]);
 
     doc.autoTable({
-        startY: cursorY + 30,
-        margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
+        startY: cursorY + 30, // Inizio tabella più in basso per evitare sovrapposizioni
+        margin: { left: 40, right: 40 }, // Margini laterali
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
             jsonLang["pdf-table-score"] || (lang === 'it' ? 'Perf.' : 'Perf.'), 
