@@ -372,20 +372,14 @@ function sanitizeId(str) {
   return str.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 }
 function setupRefreshButtons() {
-  if (window.refreshButtonsSetup) return;
-  window.refreshButtonsSetup = true;
+  if (window.refreshButtonsSetup) return; window.refreshButtonsSetup = true;
 
-  document.getElementById('refresh-btn')?.addEventListener('click', async () => {
-    await loadPerformanceData();
-    showNotification('Dati aggiornati con successo');
-  });
+const handleRefresh = async () => { 
+  if (abortController) { abortController.abort(); } 
+  await loadPerformanceData(); };
 
-  document.querySelectorAll('.refresh-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      await loadPerformanceData();
-      showNotification('Dati aggiornati con successo');
-    });
-  });
+document.getElementById('refresh-btn')?.addEventListener('click', handleRefresh); 
+document.querySelectorAll('.refresh-btn').forEach(btn => { btn.addEventListener('click', handleRefresh); });
 }
 function aggiornaPerformanceScore(performanceScoreValue = 85) {
   const scoreEl = document.getElementById('performance-score');
