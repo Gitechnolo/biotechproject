@@ -755,14 +755,15 @@ technicalInfo.forEach(line => {
 });
 
 // --- GRAFICO ---
-cursorY += 5;
+cursorY += 5; // Piccolo stacco prima del grafico
 const canvas = document.getElementById('performance-trend');
 if (canvas) {
-    // Usa un fattore più alto per imgHeight, senza ridimensionare il canvas
-    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.82;
-    doc.addImage(canvas.toDataURL('image/png'), 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
-    cursorY += imgHeight + 15;
-}   
+    const imgData = canvas.toDataURL('image/png');
+    // Moltiplichiamo per 0.8 per rendere il grafico leggermente più basso e salvare spazio per la tabella
+    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.6; 
+    doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
+    cursorY += imgHeight + 15; // Spazio prima della tabella
+}
 
     // --- TABELLA DATI ---
     const tableData = data.pages.map(p => [
@@ -773,7 +774,7 @@ if (canvas) {
     ]);
 
     doc.autoTable({
-        startY: cursorY + 30, // Inizio tabella dopo un piccolo spazio
+        startY: cursorY + 10,
         margin: { left: 40, right: 40 }, // Fissiamo i margini laterali
         head: [[
             jsonLang["pdf-table-label"] || (lang === 'it' ? 'Etichetta Pagina' : 'Page Label'), 
@@ -786,7 +787,7 @@ if (canvas) {
         headStyles: { fillColor: [39, 174, 96], fontSize: 10 },
         styles: { 
             fontSize: 8, 
-            cellPadding: 3, 
+            cellPadding: 5, // Spaziatura compatta per adattare più dati
             overflow: 'linebreak', // Gestisce il testo a capo in modo pulito
             valign: 'middle'       // Centra il testo verticalmente se va a capo
         },
