@@ -755,15 +755,14 @@ technicalInfo.forEach(line => {
 });
 
 // --- GRAFICO ---
-cursorY += 5; // Piccolo stacco prima del grafico
+cursorY += 5;
 const canvas = document.getElementById('performance-trend');
 if (canvas) {
-    const imgData = canvas.toDataURL('image/png');
-    // Moltiplichiamo per 0.8 per rendere il grafico leggermente più basso e salvare spazio per la tabella
-    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.6; 
-    doc.addImage(imgData, 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
-    cursorY += imgHeight + 15; // Spazio prima della tabella
-}
+    // Usa un fattore più alto per imgHeight, senza ridimensionare il canvas
+    const imgHeight = (canvas.height / canvas.width) * contentWidth * 0.82;
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', marginLeft, cursorY, contentWidth, imgHeight);
+    cursorY += imgHeight + 15;
+}   
 
     // --- TABELLA DATI ---
     const tableData = data.pages.map(p => [
@@ -794,7 +793,7 @@ if (canvas) {
         columnStyles: { 
             0: { cellWidth: 180 }, // Spazio generoso per i nomi lunghi (es. "versione semplificata")
             1: { cellWidth: 40, halign: 'center' },  // Punteggio Performance stretto
-            2: { cellWidth: 55, halign: 'center' },  // Resilienza stretto
+            2: { cellWidth: 65, halign: 'center' },  // Resilienza stretto
             3: { cellWidth: 'auto' } // Il file si adatta allo spazio rimanente
         },
         didParseCell: (hook) => {
