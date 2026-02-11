@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE COMPLIANT - ZERO HTML INTERPRETATION) ---
+    // --- 4. TOOLTIP GESTORE (SRE-SECURE: RECONSTRUCTS DOM WITHOUT INNERHTML) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -475,28 +475,58 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                // Svuotamento sicuro
+                // Svuotamento sicuro 100%
                 tooltipEl.textContent = ''; 
 
-                // TRUCCO SRE: Gestiamo i <br> e i <b> splittando la stringa o 
-                // semplicemente inserendo il testo. Se formatTip() invia HTML,
-                // qui lo "puliamo" forzatamente.
-                const lines = rawContent.split('<br>');
-                
-                lines.forEach((line, index) => {
-                    const span = document.createElement('span');
-                    // Rimuoviamo eventuali tag residui per massima sicurezza
-                    const cleanText = line.replace(/<\/?[^>]+(>|$)/g, ""); 
-                    span.textContent = cleanText;
+                // 1. ESTRAZIONE DATI: Troviamo la percentuale dell'intensità (es. 72)
+                const intensityMatch = rawContent.match(/style='width:(\d+)%'/);
+                const barPerc = intensityMatch ? intensityMatch[1] : null;
+
+                // 2. RENDERING TESTO: Puliamo i tag HTML e creiamo nodi di testo
+                // Trasformiamo i <br> in nuovi paragrafi/span
+                const textLines = rawContent.replace(/<div[^>]*>([\s\S]*?)<\/div>/g, "") // Rimuove i div della barra
+                                            .split(/<br\/?>/gi); // Divide per i tag break
+
+                textLines.forEach((line, index) => {
+                    const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
+                    if (!cleanText) return;
+
+                    const lineEl = document.createElement('div');
+                    lineEl.textContent = cleanText;
                     
-                    // Se era la prima riga (il titolo), lo facciamo grassetto via CSS
-                    if (index === 0) span.style.fontWeight = 'bold';
-                    
-                    tooltipEl.appendChild(span);
-                    if (index < lines.length - 1) {
-                        tooltipEl.appendChild(document.createElement('br'));
+                    // Applichiamo lo stile "Bold" alla prima riga (Titolo)
+                    if (index === 0) {
+                        lineEl.style.fontWeight = 'bold';
+                        lineEl.style.marginBottom = '4px';
+                        lineEl.style.textTransform = 'uppercase';
                     }
+                    tooltipEl.appendChild(lineEl);
                 });
+
+                // 3. RICOSTRUZIONE BARRA (Se presente nei dati)
+                if (barPerc !== null) {
+                    const container = document.createElement('div');
+                    container.className = 'intensity-container';
+                    container.style.marginTop = '10px';
+
+                    const label = document.createElement('div');
+                    label.className = 'intensity-label';
+                    label.textContent = `INTENSITY ${barPerc}%`;
+                    label.style.fontSize = '10px';
+
+                    const bgBar = document.createElement('div');
+                    bgBar.className = 'intensity-bar-bg';
+                    
+                    const fillBar = document.createElement('div');
+                    fillBar.className = 'intensity-bar-fill';
+                    fillBar.style.width = `${barPerc}%`;
+                    fillBar.style.backgroundColor = '#ffcc00'; // Giallo Biotech
+
+                    bgBar.appendChild(fillBar);
+                    container.appendChild(label);
+                    container.appendChild(bgBar);
+                    tooltipEl.appendChild(container);
+                }
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -505,15 +535,18 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
-                tooltipEl.style.left = `${e.clientX}px`; 
-                tooltipEl.style.top = `${e.clientY - 15}px`;
-                if (e.clientY < 100) tooltipEl.style.top = `${e.clientY + 25}px`;
+                tooltipEl.style.left = e.clientX + 'px'; 
+                tooltipEl.style.top = (e.clientY - 15) + 'px';
+
+                if (e.clientY < 100) {
+                    tooltipEl.style.top = (e.clientY + 25) + 'px';
+                }
             });
         } 
     });
 
     document.addEventListener('mouseout', (e) => { 
-        if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none';
+        if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
     });
 }
 
