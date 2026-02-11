@@ -633,34 +633,23 @@ function initDnaScanner() {
         doc.setDrawColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
         doc.line(0, 40, 210, 40);
 
-        // --- 2. ANALISI MOLECOLARE SINCRONIZZATA ---
-let yPos = 55;
-doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-doc.setFont("helvetica", "bold");
-doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
+        // --- 2. ANALISI MOLECOLARE (VERSIONE ROBUSTA) ---
+// Invece di cercarlo nel tooltip, lo cerchiamo direttamente dall'elemento HUD
+const intensityLabel = document.querySelector('.intensity-value');
+let intValNum = 80; // Default
 
-yPos += 8;
-doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
-doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
+if (intensityLabel) {
+    // Estraiamo solo i numeri dal testo (es. "64%" diventa 64)
+    intValNum = parseInt(intensityLabel.innerText.replace(/[^0-9]/g, '')) || 80;
+}
 
-doc.setFontSize(10);
-doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
-doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-doc.setFontSize(16);
-doc.text(molecule.toUpperCase(), 20, yPos + 18);
-
-// CORREZIONE SRE: Recupero dinamico della percentuale dal Tooltip (che è già sincronizzato)
-const dnaScanner = document.querySelector('.dna-scanner-section'); // O il selettore del tuo scanner
-const rawTip = dnaScanner ? dnaScanner.getAttribute('data-bio-tip') : "";
-const matchVal = rawTip.match(/(\d+)%/);
-const intValNum = matchVal ? parseInt(matchVal[1]) : 80; // Default a 80 se non trova nulla, non 100
-
-// Disegno Barra Gialla nel PDF
-doc.setFillColor(230, 230, 230); // Sfondo grigio barra
+// Disegno Barra nel PDF
+doc.setFillColor(230, 230, 230);
 doc.rect(140, yPos + 10, 45, 4, 'F');
-doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]); // Riempimento Oro
+doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
 doc.rect(140, yPos + 10, (45 * intValNum) / 100, 4, 'F');
 
+// Testo Intensità
 doc.setTextColor(50);
 doc.setFontSize(8);
 doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intValNum}%`, 140, yPos + 18);
