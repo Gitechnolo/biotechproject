@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (RE-STYLING VISIVO SENZA VULNERABILITÀ) ---
+    // --- 4. TOOLTIP GESTORE (SRE-FINAL: MOLECULE DATA ONLY) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -475,67 +475,42 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                tooltipEl.textContent = ''; // Svuota in sicurezza
+                tooltipEl.textContent = ''; // Reset sicuro per CodeQL
 
-                // 1. ESTRAZIONE DATI DINAMICI
-                const intensityMatch = rawContent.match(/(\d+)%/);
-                const perc = intensityMatch ? intensityMatch[1] : null;
-                
-                // Dividiamo le righe cercando di mantenere i titoli separati dalle descrizioni
+                // Dividiamo per righe basandoci sui tag <br>
                 const lines = rawContent.split(/<br\/?>/gi);
 
                 lines.forEach((line, index) => {
+                    // Pulizia testo: rimuoviamo tag HTML e filtriamo la parola "INTENSITY"
                     const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
-                    if (!cleanText || cleanText.includes("INTENSITY")) return;
+                    
+                    // ELIMINAZIONE BARRA: Ignoriamo qualsiasi riga che contenga intensità o div di barre
+                    if (!cleanText || cleanText.toUpperCase().includes("INTENSITY")) return;
 
-                    const p = document.createElement('div');
-                    p.textContent = cleanText;
-                    p.style.marginBottom = '2px';
+                    const lineDiv = document.createElement('div');
+                    lineDiv.textContent = cleanText;
 
-                    // Ripristino Formattazione Titolo (Verde Neon come in Tooltip1.jpg)
+                    // RIPRISTINO FORMATTAZIONE (Basato su Tooltip1.jpg)
                     if (index === 0) {
-                        p.style.color = '#00e676'; 
-                        p.style.fontWeight = 'bold';
-                        p.style.fontSize = '13px';
-                        p.style.textTransform = 'uppercase';
-                        p.style.borderBottom = '1px solid rgba(0, 230, 118, 0.3)';
-                        p.style.paddingBottom = '4px';
-                        p.style.marginBottom = '6px';
+                        // Titolo Molecola: Verde Neon e Bold
+                        lineDiv.style.color = '#00e676'; 
+                        lineDiv.style.fontWeight = 'bold';
+                        lineDiv.style.fontSize = '12px';
+                        lineDiv.style.textTransform = 'uppercase';
+                        lineDiv.style.borderBottom = '1px solid rgba(0, 230, 118, 0.3)';
+                        lineDiv.style.paddingBottom = '4px';
+                        lineDiv.style.marginBottom = '6px';
+                        lineDiv.style.textAlign = 'center';
                     } else {
-                        p.style.color = '#a7ffeb';
-                        p.style.fontSize = '11px';
+                        // Descrizione: Colore Ciano Biotech
+                        lineDiv.style.color = '#a7ffeb';
+                        lineDiv.style.fontSize = '11px';
+                        lineDiv.style.lineHeight = '1.4';
+                        lineDiv.style.textAlign = 'center';
+                        lineDiv.style.marginBottom = '2px';
                     }
-                    tooltipEl.appendChild(p);
+                    tooltipEl.appendChild(lineDiv);
                 });
-
-                // 2. RICOSTRUZIONE BARRA GIALLA (Solo se c'è intensità)
-                if (perc) {
-                    const barContainer = document.createElement('div');
-                    barContainer.style.marginTop = '8px';
-
-                    const label = document.createElement('div');
-                    label.textContent = `INTENSITY ${perc}%`;
-                    label.style.color = '#ffcc00'; // Tech Gold
-                    label.style.fontSize = '10px';
-                    label.style.fontWeight = 'bold';
-                    label.style.marginBottom = '3px';
-
-                    const track = document.createElement('div');
-                    track.style.height = '4px';
-                    track.style.background = 'rgba(255,255,255,0.1)';
-                    track.style.width = '100%';
-
-                    const fill = document.createElement('div');
-                    fill.style.height = '100%';
-                    fill.style.width = `${perc}%`;
-                    fill.style.background = '#ffcc00';
-                    fill.style.boxShadow = '0 0 8px rgba(255, 204, 0, 0.6)';
-
-                    track.appendChild(fill);
-                    barContainer.appendChild(label);
-                    barContainer.appendChild(track);
-                    tooltipEl.appendChild(barContainer);
-                }
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -544,14 +519,22 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
+                // Offset per non coprire il cursore
                 tooltipEl.style.left = (e.clientX + 15) + 'px'; 
                 tooltipEl.style.top = (e.clientY - 15) + 'px';
+                
+                // Prevenzione uscita dal bordo superiore
+                if (e.clientY < 100) {
+                    tooltipEl.style.top = (e.clientY + 20) + 'px';
+                }
             });
         } 
     });
 
     document.addEventListener('mouseout', (e) => { 
-        if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
+        if (e.target.closest('[data-bio-tip]')) {
+            tooltipEl.style.display = 'none';
+        }
     });
 }
 
