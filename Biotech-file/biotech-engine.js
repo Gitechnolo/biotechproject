@@ -462,8 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE-SECURE: RECONSTRUCTS DOM WITHOUT INNERHTML) ---
-function initBiotechTooltips() {
+    function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
         tooltipEl.className = 'biotech-tooltip'; 
@@ -475,56 +474,51 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                // Svuotamento sicuro 100%
                 tooltipEl.textContent = ''; 
 
-                // 1. ESTRAZIONE DATI: Troviamo la percentuale dell'intensità (es. 72)
-                const intensityMatch = rawContent.match(/style='width:(\d+)%'/);
-                const barPerc = intensityMatch ? intensityMatch[1] : null;
+                // 1. Estraiamo la percentuale reale (es. 55, 64, 72)
+                // Cerchiamo qualsiasi numero seguito da % nella stringa
+                const match = rawContent.match(/(\d+)%/);
+                const val = match ? match[1] : null;
 
-                // 2. RENDERING TESTO: Puliamo i tag HTML e creiamo nodi di testo
-                // Trasformiamo i <br> in nuovi paragrafi/span
-                const textLines = rawContent.replace(/<div[^>]*>([\s\S]*?)<\/div>/g, "") // Rimuove i div della barra
-                                            .split(/<br\/?>/gi); // Divide per i tag break
-
-                textLines.forEach((line, index) => {
+                const lines = rawContent.split(/<br\/?>/gi);
+                lines.forEach((line, index) => {
                     const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
-                    if (!cleanText) return;
+                    if (!cleanText || cleanText.includes("INTENSITY")) return;
 
-                    const lineEl = document.createElement('div');
-                    lineEl.textContent = cleanText;
-                    
-                    // Applichiamo lo stile "Bold" alla prima riga (Titolo)
+                    const d = document.createElement('div');
+                    d.textContent = cleanText;
                     if (index === 0) {
-                        lineEl.style.fontWeight = 'bold';
-                        lineEl.style.marginBottom = '4px';
-                        lineEl.style.textTransform = 'uppercase';
+                        d.style.color = '#00e676'; // Verde Neon
+                        d.style.fontWeight = 'bold';
+                        d.style.borderBottom = '1px solid rgba(0, 230, 118, 0.3)';
+                        d.style.paddingBottom = '4px';
+                        d.style.marginBottom = '8px';
+                    } else {
+                        d.style.color = '#a7ffeb';
+                        d.style.fontSize = '11px';
                     }
-                    tooltipEl.appendChild(lineEl);
+                    tooltipEl.appendChild(d);
                 });
 
-                // 3. RICOSTRUZIONE BARRA (Se presente nei dati)
-                if (barPerc !== null) {
+                // 2. Disegniamo la barra SOLO se abbiamo un valore e NON è il 100% fisso del download
+                // Se siamo in fase di download (80% fisso), possiamo scegliere di non mostrarla
+                if (val && val !== "80") {
                     const container = document.createElement('div');
-                    container.className = 'intensity-container';
                     container.style.marginTop = '10px';
-
                     const label = document.createElement('div');
-                    label.className = 'intensity-label';
-                    label.textContent = `INTENSITY ${barPerc}%`;
+                    label.textContent = `INTENSITY ${val}%`;
+                    label.style.color = '#ffcc00';
                     label.style.fontSize = '10px';
-
-                    const bgBar = document.createElement('div');
-                    bgBar.className = 'intensity-bar-bg';
                     
-                    const fillBar = document.createElement('div');
-                    fillBar.className = 'intensity-bar-fill';
-                    fillBar.style.width = `${barPerc}%`;
-                    fillBar.style.backgroundColor = '#ffcc00'; // Giallo Biotech
-
-                    bgBar.appendChild(fillBar);
+                    const track = document.createElement('div');
+                    track.style.cssText = "height:4px; background:rgba(255,255,255,0.1); margin-top:4px;";
+                    const fill = document.createElement('div');
+                    fill.style.cssText = `height:100%; width:${val}%; background:#ffcc00; box-shadow: 0 0 8px #ffcc00; transition: width 0.4s ease;`;
+                    
+                    track.appendChild(fill);
                     container.appendChild(label);
-                    container.appendChild(bgBar);
+                    container.appendChild(track);
                     tooltipEl.appendChild(container);
                 }
             }
@@ -535,12 +529,8 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
-                tooltipEl.style.left = e.clientX + 'px'; 
+                tooltipEl.style.left = (e.clientX + 15) + 'px'; 
                 tooltipEl.style.top = (e.clientY - 15) + 'px';
-
-                if (e.clientY < 100) {
-                    tooltipEl.style.top = (e.clientY + 25) + 'px';
-                }
             });
         } 
     });
