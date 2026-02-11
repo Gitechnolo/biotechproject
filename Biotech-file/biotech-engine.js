@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE-SYNC: SINCRONIZZAZIONE BARRA E SICUREZZA) ---
+    // --- 4. TOOLTIP GESTORE (SRE CLEAN VERSION - NO DRIFT) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -475,67 +475,34 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                tooltipEl.textContent = ''; // Reset sicuro
+                tooltipEl.textContent = ''; // Reset atomico
 
-                // 1. SINCRONIZZAZIONE: Recuperiamo la percentuale reale dall'HUD o dalla stringa
-                // Cerchiamo il numero seguito da % (es. 64% o 80%)
-                const match = rawContent.match(/(\d+)%/);
-                const currentIntensity = match ? match[1] : "100";
-
-                // 2. RENDERING TESTO (Senza tag HTML)
-                // Puliamo la stringa per estrarre solo i messaggi informativi
+                // Pulizia e rendering solo testo
                 const cleanLines = rawContent
-                    .replace(/<div.*?<\/div>/g, '') // Rimuove vecchi div della barra
+                    .replace(/<div.*?<\/div>/g, '') // Rimuove residui della barra
                     .split(/<br\/?>/gi);
 
                 cleanLines.forEach((line, index) => {
                     const text = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
-                    if (!text || text.includes("INTENSITY")) return;
+                    if (!text) return;
 
                     const lineDiv = document.createElement('div');
                     lineDiv.textContent = text;
+                    
+                    // Styling coerente con BiotechProject
                     if (index === 0) {
                         lineDiv.style.fontWeight = 'bold';
-                        lineDiv.style.color = '#00e676'; // NEON_GREEN per il titolo
+                        lineDiv.style.color = '#00e676'; // Neon Green
                         lineDiv.style.marginBottom = '5px';
+                        lineDiv.style.borderBottom = '1px solid rgba(0, 230, 118, 0.2)';
+                        lineDiv.style.paddingBottom = '3px';
+                    } else {
+                        lineDiv.style.fontSize = '11px';
+                        lineDiv.style.lineHeight = '1.4';
+                        lineDiv.style.color = '#a7ffeb';
                     }
                     tooltipEl.appendChild(lineDiv);
                 });
-
-                // 3. RICOSTRUZIONE BARRA GIALLA SINCRONIZZATA
-                const barContainer = document.createElement('div');
-                barContainer.className = 'intensity-container';
-                barContainer.style.marginTop = '10px';
-                barContainer.style.borderTop = '1px solid rgba(255,255,255,0.1)';
-                barContainer.style.paddingTop = '8px';
-
-                const label = document.createElement('div');
-                label.className = 'intensity-label';
-                label.textContent = `INTENSITY ${currentIntensity}%`;
-                label.style.color = '#ffcc00'; // TECH_GOLD
-                label.style.fontSize = '10px';
-                label.style.fontWeight = 'bold';
-                label.style.marginBottom = '4px';
-
-                const barBg = document.createElement('div');
-                barBg.className = 'intensity-bar-bg';
-                barBg.style.background = 'rgba(255, 255, 255, 0.1)';
-                barBg.style.height = '4px';
-                barBg.style.borderRadius = '2px';
-
-                const barFill = document.createElement('div');
-                barFill.className = 'intensity-bar-fill';
-                barFill.style.width = `${currentIntensity}%`;
-                barFill.style.height = '100%';
-                barFill.style.background = '#ffcc00';
-                barFill.style.boxShadow = '0 0 5px rgba(255, 204, 0, 0.5)';
-                barFill.style.borderRadius = '2px';
-                barFill.style.transition = 'width 0.3s ease'; // Rende il cambio fluido
-
-                barBg.appendChild(barFill);
-                barContainer.appendChild(label);
-                barContainer.appendChild(barBg);
-                tooltipEl.appendChild(barContainer);
             }
             tooltipEl.style.display = 'block'; 
         } 
