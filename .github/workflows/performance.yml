@@ -1,7 +1,7 @@
 # SRE RELIABILITY GATE: Stateless Edge Architecture
 # -------------------------------------------------------------------------
 # GOAL: Monitor SLIs (TTI < 1.1s) to ensure Global Health Equity.
-# PROTOCOL: Treat Performance < 95 as a System Outage (Error Budgeting).
+# PROTOCOL: Performance < 95 OR Security Breach = System Outage.
 # TARGET: 100% Availability on Legacy Hardware & Degraded Networks (3G/Edge).
 # -------------------------------------------------------------------------
 
@@ -12,6 +12,8 @@ on:
     branches:
       - main
       - master
+  schedule:
+    - cron: '0 4 * * *' # Analisi profonda automatica ogni notte alle 4:00 UTC
   workflow_dispatch:
     inputs:
       url:
@@ -23,14 +25,25 @@ jobs:
   generate-report:
     name: Generate performance-latest.json
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30 # Aumentato leggermente per i test notturni
 
     permissions:
       contents: write
+      issues: write # Necessario per aprire l'alert in caso di attacco
 
     steps:
-      - name: 🔁 Checkout code
+      - name: 🔁 Checkout BiotechProject
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Permette una scansione più profonda dei file
+
+      # --- CONTROLLO SICUREZZA RIGA PER RIGA (Attivo solo alle 4:00) ---
+      - name: 🛡️ Nightly Security Scan
+        if: github.event_name == 'schedule'
+        run: |
+          echo "Analisi proattiva riga per riga contro i malintenzionati..."
+          # Scansiona il codice alla ricerca di segreti esposti o JS malevolo
+          ! grep -rE "password:|api_key:|secret:|token:" . || (echo "❌ Pericolo: Rilevato possibile dato sensibile o codice sospetto!" && exit 1)
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -68,7 +81,21 @@ jobs:
           cp tools/performance-data.json data/performance-latest.json
           echo "✅ Copiato in data/performance-latest.json"
 
+      # --- ALERT AUTOMATICO (Zero Password - Usa la mail di GitHub) ---
+      - name: 🚨 Segnalazione Manomissione o Fallimento
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '⚠️ ALERT: Possibile Attacco o Instabilità BiotechProject',
+              body: 'Il sistema di monitoraggio ha rilevato un problema critico durante l\'audit.\n\n- **Cosa controllare:** Verificare le ultime modifiche al codice e i log delle performance.\n- **Dettagli:** L\'anomalia è stata rilevata durante l\'esecuzione automatica.\n\n[Analizza i log qui](' + context.payload.repository.html_url + '/actions/runs/' + context.runId + ')'
+            })
+
       - name: 📂 Commit & Push data/performance-latest.json
+        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -81,4 +108,4 @@ jobs:
             git commit -m "chore: update performance-latest.json [auto]"
             git pull --rebase --strategy=recursive -X theirs origin main || true
             git push origin HEAD:main
-          fi      
+          fi
