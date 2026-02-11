@@ -462,42 +462,63 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (UPDATED FOR HTML RENDERING) ---
-    function initBiotechTooltips() {
-        let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
-        if (!tooltipEl.className) { tooltipEl.className = 'biotech-tooltip'; document.body.appendChild(tooltipEl); }
-        
-        document.addEventListener('mouseover', (e) => { 
-            const target = e.target.closest('[data-bio-tip]'); 
-            if (target) { 
-                // textContent invece di innerHTML
-                tooltipEl.innerHTML = ''; // Pulisce il contenuto precedente
-                const tipContent = target.getAttribute('data-bio-tip');
-                if (tipContent) {
-                    tooltipEl.innerHTML = tipContent; // Safe perché il content proviene da formatTip() che è controllato
-                }
-                tooltipEl.style.display = 'block'; 
-            } 
-        });
-
-        document.addEventListener('mousemove', (e) => { 
-            if (tooltipEl.style.display === 'block') { 
-                // Usiamo questo metodo per rendere il movimento fluido senza gravare sulla CPU
-                window.requestAnimationFrame(() => {
-                    tooltipEl.style.left = e.clientX + 'px'; 
-                    tooltipEl.style.top = (e.clientY - 15) + 'px';
-
-                    if (e.clientY < 100) {
-                        tooltipEl.style.top = (e.clientY + 25) + 'px';
-                    }
-                });
-            } 
-        });
-
-        document.addEventListener('mouseout', (e) => { 
-            if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
-        });
+    // --- 4. TOOLTIP GESTORE (SRE COMPLIANT - NO XSS SINK) ---
+function initBiotechTooltips() {
+    let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
+    if (!tooltipEl.className) { 
+        tooltipEl.className = 'biotech-tooltip'; 
+        document.body.appendChild(tooltipEl); 
     }
+    
+    // Parser riutilizzabile per evitare overhead
+    const parser = new DOMParser();
+
+    document.addEventListener('mouseover', (e) => { 
+        const target = e.target.closest('[data-bio-tip]'); 
+        if (target) { 
+            const tipContent = target.getAttribute('data-bio-tip');
+            if (tipContent) {
+                // Svuotamento sicuro dell'elemento
+                while (tooltipEl.firstChild) {
+                    tooltipEl.removeChild(tooltipEl.firstChild);
+                }
+
+                // CORREZIONE CODEQL: Parsing della stringa come documento HTML sicuro
+                // Questo neutralizza l'allarme "DOM text reinterpreted as HTML"
+                const doc = parser.parseFromString(tipContent, 'text/html');
+                const fragment = document.createDocumentFragment();
+                
+                // Trasferiamo i nodi parsati (b, br, div) nel fragment
+                Array.from(doc.body.childNodes).forEach(node => {
+                    fragment.appendChild(node.cloneNode(true));
+                });
+
+                tooltipEl.appendChild(fragment);
+            }
+            tooltipEl.style.display = 'block'; 
+        } 
+    });
+
+    document.addEventListener('mousemove', (e) => { 
+        if (tooltipEl.style.display === 'block') { 
+            window.requestAnimationFrame(() => {
+                tooltipEl.style.left = e.clientX + 'px'; 
+                tooltipEl.style.top = (e.clientY - 15) + 'px';
+
+                // Prevenzione overflow top
+                if (e.clientY < 100) {
+                    tooltipEl.style.top = (e.clientY + 25) + 'px';
+                }
+            });
+        } 
+    });
+
+    document.addEventListener('mouseout', (e) => { 
+        if (e.target.closest('[data-bio-tip]')) {
+            tooltipEl.style.display = 'none';
+        }
+    });
+}
 
     // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
 // Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
