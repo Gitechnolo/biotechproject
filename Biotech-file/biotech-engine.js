@@ -479,20 +479,19 @@ function initBiotechTooltips() {
 
                 // Dividiamo per righe basandoci sui tag <br>
                 const lines = rawContent.split(/<br\/?>/gi);
+                let hasMoleculeData = false;
 
                 lines.forEach((line, index) => {
-                    // Pulizia testo: rimuoviamo tag HTML e filtriamo la parola "INTENSITY"
+                    // Pulizia testo: rimuoviamo tag HTML e filtriamo "INTENSITY"
                     const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
                     
-                    // ELIMINAZIONE BARRA: Ignoriamo qualsiasi riga che contenga intensità o div di barre
                     if (!cleanText || cleanText.toUpperCase().includes("INTENSITY")) return;
 
                     const lineDiv = document.createElement('div');
                     lineDiv.textContent = cleanText;
 
-                    // RIPRISTINO FORMATTAZIONE (Basato su Tooltip1.jpg)
+                    // Formattazione titolo molecola (prima riga)
                     if (index === 0) {
-                        // Titolo Molecola: Verde Neon e Bold
                         lineDiv.style.color = '#00e676'; 
                         lineDiv.style.fontWeight = 'bold';
                         lineDiv.style.fontSize = '12px';
@@ -501,8 +500,9 @@ function initBiotechTooltips() {
                         lineDiv.style.paddingBottom = '4px';
                         lineDiv.style.marginBottom = '6px';
                         lineDiv.style.textAlign = 'center';
+                        hasMoleculeData = true;
                     } else {
-                        // Descrizione: Colore Ciano Biotech
+                        // Descrizione
                         lineDiv.style.color = '#a7ffeb';
                         lineDiv.style.fontSize = '11px';
                         lineDiv.style.lineHeight = '1.4';
@@ -511,6 +511,30 @@ function initBiotechTooltips() {
                     }
                     tooltipEl.appendChild(lineDiv);
                 });
+
+                // --- AGGIUNTA BARRA DI PROGRESSO DINAMICA ---
+                if (hasMoleculeData) {
+                    const percent = target.getAttribute('data-molecule-percent') || 80;
+
+                    const barContainer = document.createElement('div');
+                    barContainer.style.margin = '8px 10px 6px';
+                    barContainer.style.height = '6px';
+                    barContainer.style.backgroundColor = '#333';
+                    barContainer.style.borderRadius = '3px';
+                    barContainer.style.overflow = 'hidden';
+                    barContainer.style.boxShadow = '0 0 3px rgba(0, 0, 0, 0.5)';
+
+                    const barFill = document.createElement('div');
+                    barFill.style.width = percent + '%';
+                    barFill.style.height = '100%';
+                    barFill.style.backgroundColor = '#00e676';
+                    barFill.style.transition = 'width 0.3s ease';
+
+                    barContainer.appendChild(barFill);
+                    tooltipEl.appendChild(barContainer);
+                }
+                // --- FINE AGGIUNTA BARRA ---
+
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -519,11 +543,8 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
-                // Offset per non coprire il cursore
                 tooltipEl.style.left = (e.clientX + 15) + 'px'; 
                 tooltipEl.style.top = (e.clientY - 15) + 'px';
-                
-                // Prevenzione uscita dal bordo superiore
                 if (e.clientY < 100) {
                     tooltipEl.style.top = (e.clientY + 20) + 'px';
                 }
@@ -536,7 +557,7 @@ function initBiotechTooltips() {
             tooltipEl.style.display = 'none';
         }
     });
-}
+}   
 
     // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
 // Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
