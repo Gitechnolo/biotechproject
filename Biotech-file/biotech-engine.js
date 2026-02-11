@@ -187,20 +187,12 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     return html;
 };
 
-    // === CORREZIONE 1: SVUOTAMENTO ELEMENTO SICURO ===
+    // --- 1. MONITOR STAGIONALE ---
     function initSeasonMonitor() {
         const countdownEl = document.getElementById('modern-countdown');
         if (!countdownEl) return;
         let dataDisplay = document.getElementById('bio-data-display') || document.createElement('div');
-        
-        if (!dataDisplay.id) { 
-            dataDisplay.id = 'bio-data-display'; 
-            // CORREZIONE #1: Svuotamento sicuro senza innerHTML
-            while (countdownEl.firstChild) {
-                countdownEl.removeChild(countdownEl.firstChild);
-            }
-            countdownEl.appendChild(dataDisplay); 
-        }
+        if (!dataDisplay.id) { dataDisplay.id = 'bio-data-display'; countdownEl.innerHTML = ''; countdownEl.appendChild(dataDisplay); }
 
         const lang = {
             seasons: isIt ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" } : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
@@ -212,28 +204,12 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
             const start = new Date(year, 0, 1), end = new Date(year + 1, 0, 1);
             const progress = ((now - start) / (end - start)) * 100, daysLeft = Math.floor((end - now) / 86400000);
             const tooltipMsg = isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.';
-            
-            // CORREZIONE #2: Creare elementi DOM sicuramente invece di usare innerHTML
-            while (dataDisplay.firstChild) {
-                dataDisplay.removeChild(dataDisplay.firstChild);
-            }
-            
-            // Creare elemento season-label
-            const seasonLabel = document.createElement('div');
-            seasonLabel.className = 'bio-season-label';
-            seasonLabel.setAttribute('data-bio-tip', tooltipMsg);
-            seasonLabel.textContent = `${lang.seasons[seasonKey]} ${lang.phase}`;
-            dataDisplay.appendChild(seasonLabel);
-            
-            // Creare elemento progress-data
-            const progressDiv = document.createElement('div');
-            progressDiv.className = 'bio-progress-data';
-            progressDiv.setAttribute('data-bio-tip', tooltipMsg);
-            progressDiv.textContent = `${progress.toFixed(2)}% | T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}`;
-            dataDisplay.appendChild(progressDiv);
+            dataDisplay.innerHTML = `
+                <div class="bio-season-label" data-bio-tip="${tooltipMsg}">${lang.seasons[seasonKey]} ${lang.phase}</div>
+                <div class="bio-progress-data" data-bio-tip="${tooltipMsg}">${progress.toFixed(2)}% <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span></div>
+            `;
         };
-        updateBioCycle(); 
-        setInterval(updateBioCycle, 3600000);
+        updateBioCycle(); setInterval(updateBioCycle, 3600000);
     }
 
     // --- 2. OROLOGIO BIO-CIRCADIANO ---
@@ -346,169 +322,71 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     const timePart = `${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
     // -------------------------------------
 
-    // CORREZIONE #3: Creare elementi DOM sicuramente invece di usare innerHTML
-    while (clockEl.firstChild) {
-        clockEl.removeChild(clockEl.firstChild);
-    }
-    
-    // Creare riga inline HUD
-    const hudRow = document.createElement('div');
-    hudRow.className = 'hud-inline-row';
-    
-    const molSpan = document.createElement('span');
-    molSpan.setAttribute('data-bio-tip', fullMoleculeTooltip);
-    molSpan.innerHTML = `${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${escapeHtml(molName)}</b>`;
-    hudRow.appendChild(molSpan);
-    
-    const separator = document.createElement('span');
-    separator.className = 'separator';
-    separator.textContent = '|';
-    hudRow.appendChild(separator);
-    
-    const advSpan = document.createElement('span');
-    advSpan.setAttribute('data-bio-tip', aDesc);
-    advSpan.innerHTML = `${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${escapeHtml(advice)}</b>`;
-    hudRow.appendChild(advSpan);
-    
-    clockEl.appendChild(hudRow);
-    
-    // Creare status label
-    const statusLabel = document.createElement('span');
-    statusLabel.className = 'bio-status-label';
-    statusLabel.setAttribute('data-bio-tip', sDesc);
-    statusLabel.textContent = data[0];
-    clockEl.appendChild(statusLabel);
-    
-    // Creare time div
-    const timeDiv = document.createElement('span');
-    timeDiv.className = 'bio-clock-time';
-    const digitalTime = document.createElement('span');
-    digitalTime.className = 'digits-stable';
-    digitalTime.textContent = timePart;
-    timeDiv.textContent = datePart + ' ';
-    timeDiv.appendChild(digitalTime);
-    clockEl.appendChild(timeDiv);
-    
-    // Creare system state label
-    const sysStateLabel = document.createElement('span');
-    sysStateLabel.className = 'bio-system-state';
-    sysStateLabel.setAttribute('data-bio-tip', sysDesc);
-    sysStateLabel.textContent = `SYS STATE: ${data[1]}`;
-    clockEl.appendChild(sysStateLabel);
+    // 7. Rendering HTML
+    clockEl.innerHTML = `
+        <div class="hud-inline-row">
+            <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
+            <span class="separator">|</span>
+            <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+        </div>
+        <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
+        <span class="bio-clock-time">
+            ${datePart} <span class="digits-stable">${timePart}</span>
+        </span>
+        <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
+    `;
 };
-        updateClock(); 
-        setInterval(updateClock, 1000);
+        updateClock(); setInterval(updateClock, 1000);
     }
-
-    // === CORREZIONE 3 HELPER: Funzione sicura per escape HTML ===
-    const escapeHtml = (text) => {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
-        return String(text).replace(/[&<>"']/g, m => map[m]);
-    };
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
         const weekElement = document.getElementById("week");
         if (!weekElement) return;
-        
-        const createSpans = (text, start) => {
-            // CORREZIONE #4: Creare elementi span sicuramente
-            const fragment = document.createDocumentFragment();
-            text.split('').forEach((char, index) => {
-                const span = document.createElement('span');
-                span.style.setProperty('--i', start + index);
-                span.textContent = char === ' ' ? '\u00A0' : char; // Non-breaking space
-                fragment.appendChild(span);
-            });
-            return fragment;
-        };
-        
+        const createSpans = (text, start) => text.split('').map((char, index) => `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`).join('');
         const messages = { it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'], en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'] };
         const titles = { it: 'Biotech Project vi augura ', en: 'Biotech Project wishes you ' };
         const greetings = { it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'], en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'] };
-        
         const now = new Date(), hour = now.getHours(), today = now.getDay();
         let gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
-        
         window.requestAnimationFrame(() => {
-            // Svuotare elemento
-            while (weekElement.firstChild) {
-                weekElement.removeChild(weekElement.firstChild);
-            }
-            
-            // Creare greeting-time div
-            const greetingDiv = document.createElement('div');
-            greetingDiv.className = 'greeting-time';
-            greetingDiv.textContent = greetings[isIt ? 'it' : 'en'][gIdx];
-            weekElement.appendChild(greetingDiv);
-            
-            // Creare title spans
-            const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
-            weekElement.appendChild(titleSpans);
-            
-            // Creare day message spans
             const daySpans = createSpans(messages[isIt ? 'it' : 'en'][today], 26);
-            weekElement.appendChild(daySpans);
+            const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
+            weekElement.innerHTML = `<div class="greeting-time">${greetings[isIt ? 'it' : 'en'][gIdx]}</div>${titleSpans + daySpans}`;
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (CODEQL COMPLIANT) ---
-function initBiotechTooltips() {
-    let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
-    if (!tooltipEl.className) { 
-        tooltipEl.className = 'biotech-tooltip'; 
-        document.body.appendChild(tooltipEl); 
+    // --- 4. TOOLTIP GESTORE (UPDATED FOR HTML RENDERING) ---
+    function initBiotechTooltips() {
+        let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
+        if (!tooltipEl.className) { tooltipEl.className = 'biotech-tooltip'; document.body.appendChild(tooltipEl); }
+        
+        document.addEventListener('mouseover', (e) => { 
+            const target = e.target.closest('[data-bio-tip]'); 
+            if (target) { 
+                tooltipEl.innerHTML = target.getAttribute('data-bio-tip'); 
+                tooltipEl.style.display = 'block'; 
+            } 
+        });
+
+        document.addEventListener('mousemove', (e) => { 
+            if (tooltipEl.style.display === 'block') { 
+                // Usiamo questo metodo per rendere il movimento fluido senza gravare sulla CPU
+                window.requestAnimationFrame(() => {
+                    tooltipEl.style.left = e.clientX + 'px'; 
+                    tooltipEl.style.top = (e.clientY - 15) + 'px';
+
+                    if (e.clientY < 100) {
+                        tooltipEl.style.top = (e.clientY + 25) + 'px';
+                    }
+                });
+            } 
+        });
+
+        document.addEventListener('mouseout', (e) => { 
+            if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
+        });
     }
-    
-    // Funzione interna per ripulire minimamente il contenuto
-    const sanitizeHTML = (str) => {
-        const temp = document.createElement('div');
-        temp.textContent = str;
-        return temp.innerHTML; // Converte i caratteri speciali in entità sicure
-    };
-
-    document.addEventListener('mouseover', (e) => { 
-        const target = e.target.closest('[data-bio-tip]'); 
-        if (target) { 
-            const tipContent = target.getAttribute('data-bio-tip');
-            if (tipContent) {
-                // Puliamo il contenuto precedente in modo sicuro
-                while (tooltipEl.firstChild) {
-                    tooltipEl.removeChild(tooltipEl.firstChild);
-                }
-
-                // Usiamo un metodo che CodeQL riconosce come "volontà di rendere sicuro il dato"
-                // Ma manteniamo il supporto ai tag base che ti servono (<b>, <br>, <div>)
-                const template = document.createElement('template');
-                template.innerHTML = tipContent.trim(); 
-                tooltipEl.appendChild(template.content.cloneNode(true));
-            }
-            tooltipEl.style.display = 'block'; 
-        } 
-    });
-
-    document.addEventListener('mousemove', (e) => { 
-        if (tooltipEl.style.display === 'block') { 
-            window.requestAnimationFrame(() => {
-                tooltipEl.style.left = (e.clientX + 15) + 'px'; 
-                tooltipEl.style.top = (e.clientY - 15) + 'px';
-                if (e.clientY < 100) tooltipEl.style.top = (e.clientY + 25) + 'px';
-            });
-        } 
-    });
-
-    document.addEventListener('mouseout', (e) => { 
-        if (e.target.closest('[data-bio-tip]')) {
-            tooltipEl.style.display = 'none';
-        }
-    });
-}
 
     // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
 // Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
