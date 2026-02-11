@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE-FINAL: MOLECULE DATA ONLY) ---
+    // --- 4. TOOLTIP GESTORE (SRE-SECURE: RECONSTRUCTS DOM WITHOUT INNERHTML) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -475,66 +475,58 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                tooltipEl.textContent = ''; // Reset sicuro per CodeQL
+                // Svuotamento sicuro 100%
+                tooltipEl.textContent = ''; 
 
-                // Dividiamo per righe basandoci sui tag <br>
-                const lines = rawContent.split(/<br\/?>/gi);
-                let hasMoleculeData = false;
+                // 1. ESTRAZIONE DATI: Troviamo la percentuale dell'intensità (es. 72)
+                const intensityMatch = rawContent.match(/style='width:(\d+)%'/);
+                const barPerc = intensityMatch ? intensityMatch[1] : null;
 
-                lines.forEach((line, index) => {
-                    // Pulizia testo: rimuoviamo tag HTML e filtriamo "INTENSITY"
+                // 2. RENDERING TESTO: Puliamo i tag HTML e creiamo nodi di testo
+                // Trasformiamo i <br> in nuovi paragrafi/span
+                const textLines = rawContent.replace(/<div[^>]*>([\s\S]*?)<\/div>/g, "") // Rimuove i div della barra
+                                            .split(/<br\/?>/gi); // Divide per i tag break
+
+                textLines.forEach((line, index) => {
                     const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
+                    if (!cleanText) return;
+
+                    const lineEl = document.createElement('div');
+                    lineEl.textContent = cleanText;
                     
-                    if (!cleanText || cleanText.toUpperCase().includes("INTENSITY")) return;
-
-                    const lineDiv = document.createElement('div');
-                    lineDiv.textContent = cleanText;
-
-                    // Formattazione titolo molecola (prima riga)
+                    // Applichiamo lo stile "Bold" alla prima riga (Titolo)
                     if (index === 0) {
-                        lineDiv.style.color = '#00e676'; 
-                        lineDiv.style.fontWeight = 'bold';
-                        lineDiv.style.fontSize = '12px';
-                        lineDiv.style.textTransform = 'uppercase';
-                        lineDiv.style.borderBottom = '1px solid rgba(0, 230, 118, 0.3)';
-                        lineDiv.style.paddingBottom = '4px';
-                        lineDiv.style.marginBottom = '6px';
-                        lineDiv.style.textAlign = 'center';
-                        hasMoleculeData = true;
-                    } else {
-                        // Descrizione
-                        lineDiv.style.color = '#a7ffeb';
-                        lineDiv.style.fontSize = '11px';
-                        lineDiv.style.lineHeight = '1.4';
-                        lineDiv.style.textAlign = 'center';
-                        lineDiv.style.marginBottom = '2px';
+                        lineEl.style.fontWeight = 'bold';
+                        lineEl.style.marginBottom = '4px';
+                        lineEl.style.textTransform = 'uppercase';
                     }
-                    tooltipEl.appendChild(lineDiv);
+                    tooltipEl.appendChild(lineEl);
                 });
 
-                // --- AGGIUNTA BARRA DI PROGRESSO DINAMICA ---
-                if (hasMoleculeData) {
-                    const percent = target.getAttribute('data-molecule-percent') || 80;
+                // 3. RICOSTRUZIONE BARRA (Se presente nei dati)
+                if (barPerc !== null) {
+                    const container = document.createElement('div');
+                    container.className = 'intensity-container';
+                    container.style.marginTop = '10px';
 
-                    const barContainer = document.createElement('div');
-                    barContainer.style.margin = '8px 10px 6px';
-                    barContainer.style.height = '6px';
-                    barContainer.style.backgroundColor = '#333';
-                    barContainer.style.borderRadius = '3px';
-                    barContainer.style.overflow = 'hidden';
-                    barContainer.style.boxShadow = '0 0 3px rgba(0, 0, 0, 0.5)';
+                    const label = document.createElement('div');
+                    label.className = 'intensity-label';
+                    label.textContent = `INTENSITY ${barPerc}%`;
+                    label.style.fontSize = '10px';
 
-                    const barFill = document.createElement('div');
-                    barFill.style.width = percent + '%';
-                    barFill.style.height = '100%';
-                    barFill.style.backgroundColor = '#00e676';
-                    barFill.style.transition = 'width 0.3s ease';
+                    const bgBar = document.createElement('div');
+                    bgBar.className = 'intensity-bar-bg';
+                    
+                    const fillBar = document.createElement('div');
+                    fillBar.className = 'intensity-bar-fill';
+                    fillBar.style.width = `${barPerc}%`;
+                    fillBar.style.backgroundColor = '#ffcc00'; // Giallo Biotech
 
-                    barContainer.appendChild(barFill);
-                    tooltipEl.appendChild(barContainer);
+                    bgBar.appendChild(fillBar);
+                    container.appendChild(label);
+                    container.appendChild(bgBar);
+                    tooltipEl.appendChild(container);
                 }
-                // --- FINE AGGIUNTA BARRA ---
-
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -543,21 +535,20 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
-                tooltipEl.style.left = (e.clientX + 15) + 'px'; 
+                tooltipEl.style.left = e.clientX + 'px'; 
                 tooltipEl.style.top = (e.clientY - 15) + 'px';
+
                 if (e.clientY < 100) {
-                    tooltipEl.style.top = (e.clientY + 20) + 'px';
+                    tooltipEl.style.top = (e.clientY + 25) + 'px';
                 }
             });
         } 
     });
 
     document.addEventListener('mouseout', (e) => { 
-        if (e.target.closest('[data-bio-tip]')) {
-            tooltipEl.style.display = 'none';
-        }
+        if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none'; 
     });
-}   
+}
 
     // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
 // Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
