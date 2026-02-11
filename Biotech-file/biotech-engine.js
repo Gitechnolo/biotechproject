@@ -5,7 +5,6 @@
 // Reliability: Fail-safe Tooltip Rendering & Seasonal-Aware Advice Engine
 // Feature: Real-time HUD (Heads-Up Display) Synchronization
 // ==========================================================================
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURAZIONE LINGUA ---
@@ -22,126 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dateVal >= 923 && dateVal < 1221) return "autumn";
         return "winter";
     };
-
-    // === SECURITY UTILS OBJECT (CORREZIONE #4: Consolidamento) ===
-    const SecurityUtils = {
-        // CORREZIONE #1: HTML Escape per entità
-        sanitizeHTML: (text) => {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return String(text).replace(/[&<>"']/g, m => map[m]);
-        },
-
-        // Pulizia filename
-        sanitizeFilename: (str) => {
-            return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
-        },
-
-        // CORREZIONE #3: Testo puro senza entità (per PDF)
-        sanitizeTextPlain: (text) => {
-            // Remove control characters but keep readable text
-            return String(text)
-                .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
-                .trim();
-        },
-
-        // CORREZIONE #2: Pulizia style attribute
-        cleanStyleAttribute: (styleStr) => {
-            if (!styleStr) return '';
-            // Rimuovi occorrenze di 'javascript' (case-insensitive)
-            return styleStr
-                .replace(/javascript:/gi, '')
-                .replace(/expression\s*\(/gi, '')
-                .replace(/behavior\s*:/gi, '');
-        },
-
-        // CORREZIONE #1: setSafeHTML con DOMParser e white-list
-        setSafeHTML: (element, htmlContent) => {
-            if (!element || typeof htmlContent !== 'string') return;
-            
-            // Parser HTML in contesto inerte (non esegue script)
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlContent, 'text/html');
-            
-            // White-list di elementi sicuri
-            const SAFE_TAGS = new Set(['B', 'I', 'BR', 'DIV', 'SPAN']);
-            const SAFE_ATTRS = new Set(['class', 'style']);
-            
-            // Funzione ricorsiva di ricostruzione sicura
-            const reconstructNode = (sourceNode) => {
-                // TEXT_NODE (nodeType === 3)
-                if (sourceNode.nodeType === 3) {
-                    return document.createTextNode(sourceNode.textContent);
-                }
-                
-                // ELEMENT_NODE (nodeType === 1)
-                if (sourceNode.nodeType === 1) {
-                    const tagName = sourceNode.tagName.toUpperCase();
-                    
-                    // Controlla white-list
-                    if (!SAFE_TAGS.has(tagName)) {
-                        // Se non è nel whitelist, serializza il textContent
-                        return document.createTextNode(sourceNode.textContent);
-                    }
-                    
-                    // Crea elemento sicuro
-                    const newEl = document.createElement(tagName);
-                    
-                    // Copia solo attributi sicuri con pulizia
-                    Array.from(sourceNode.attributes || []).forEach(attr => {
-                        const attrName = attr.name.toLowerCase();
-                        if (SAFE_ATTRS.has(attrName)) {
-                            if (attrName === 'style') {
-                                // Pulizia style: rimuovi javascript
-                                const cleanStyle = SecurityUtils.cleanStyleAttribute(attr.value);
-                                newEl.setAttribute('style', cleanStyle);
-                            } else if (attrName === 'class') {
-                                // class è generalmente sicuro
-                                newEl.setAttribute('class', attr.value);
-                            }
-                        }
-                    });
-                    
-                    // Ricorsione su child nodes
-                    Array.from(sourceNode.childNodes).forEach(child => {
-                        const safeChild = reconstructNode(child);
-                        if (safeChild) {
-                            newEl.appendChild(safeChild);
-                        }
-                    });
-                    
-                    return newEl;
-                }
-                
-                // Ignora altri tipi di nodi (COMMENT_NODE, etc.)
-                return null;
-            };
-            
-            // Svuota elemento destinazione
-            while (element.firstChild) {
-                element.removeChild(element.firstChild);
-            }
-            
-            // Ricostruisci solo body content (esclude html/head)
-            const bodyContent = doc.body;
-            Array.from(bodyContent.childNodes).forEach(child => {
-                const safeNode = reconstructNode(child);
-                if (safeNode) {
-                    element.appendChild(safeNode);
-                }
-            });
-        }
-    };
-
-    // Alias per retrocompatibilità
-    const sanitizeHTML = SecurityUtils.sanitizeHTML;
-    const sanitizeFilename = SecurityUtils.sanitizeFilename;
-    const setSafeHTML = SecurityUtils.setSafeHTML;
 
     // --- DIZIONARI SCIENTIFICI INTEGRALI ---
     const bioExplanations = {
@@ -243,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
             "DOPAMINE": "Reward neurotransmitter. Optimizes motivation and executive functions.",
             "ACETYLCHOLINE": "Synaptic plasticity modulator. Fundamental for memory and attention.",
             "GABA": "Inhibitory neurotransmitter. Reduces excitability and stabilizes the system.",
-            "MELATONIN": "Pineal indoleamine. Regulates circadian rhythm and acts as an antioxidant.",
+            "MELATONINA": "Pineal indoleamine. Regulates circadian rhythm and acts as an antioxidant.",
             "CORTISOL": "Awakening glucocorticoid: prepares the body for daytime metabolic stress.",
             "ADRENALINE": "Epinephrine: activates the sympathetic system for immediate physical response.",
             "INSULIN": "Anabolic pancreatic hormone. Regulates glucose homeostasis.",
             "SOMATOTROPIN": "Growth Hormone (GH). Crucial for deep tissue repair.",
             "ADENOSINA": "Energy byproduct (ATP). Creates homeostatic sleep pressure.",
-            "SEROTONIN": "Mood-stabilizing neurotransmitter and precursor to melatonin.",
+            "SEROTONINA": "Mood-stabilizing neurotransmitter and precursor to melatonin.",
             "OXYTOCIN": "Hormone of social connection and trust. Reduces cortisol levels.",
             "ENDORPHINS/MYOKINES": "Synergy between endogenous opioids and metabolic muscle messengers.",
             "ENDORPHINS + MYOKINES": "Synergetic secretion phase: tissue repair and pleasure modulation.",
@@ -290,41 +169,30 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- HELPER FORMATTAZIONE TOOLTIP (STABILE) ---
-    const formatTip = (title, body, extra = "", barPerc = null) => {
-        // Sanitizzazione di input critici
-        const safeTitle = sanitizeHTML(title);
-        const safeBody = sanitizeHTML(body);
-        const safeExtra = sanitizeHTML(extra);
-        
-        let html = `<b>${safeTitle}</b><br>${safeBody}${safeExtra ? `<br><i>${safeExtra}</i>` : ""}`;
-        
-        if (barPerc !== null) {
-            const safePerc = Math.max(0, Math.min(100, parseInt(barPerc) || 0));
-            html += `
-                <div class='intensity-container'>
-                    <div class='intensity-label'>INTENSITY</div>
-                    <div class='intensity-bar-bg'>
-                        <div class='intensity-bar-fill' style='width:${safePerc}%'></div>
-                    </div>
-                    <div class='intensity-value'>${safePerc}%</div>
-                </div>`;
-        }
-        return html;
-    };
+const formatTip = (title, body, extra = "", barPerc = null) => {
+    // Costruiamo il contenuto testuale
+    let html = `<b>${title.toUpperCase()}</b><br>${body}${extra ? `<br><i>${extra}</i>` : ""}`;
+    
+    // Aggiungiamo la barra di intensità se presente, senza classi dinamiche
+    if (barPerc !== null) {
+        html += `
+            <div class='intensity-container'>
+                <div class='intensity-label'>INTENSITY</div>
+                <div class='intensity-bar-bg'>
+                    <div class='intensity-bar-fill' style='width:${barPerc}%'></div>
+                </div>
+                <div class='intensity-value'>${barPerc}%</div>
+            </div>`;
+    }
+    return html;
+};
 
-    // === CORREZIONE 1: SVUOTAMENTO ELEMENTO SICURO ===
+    // --- 1. MONITOR STAGIONALE ---
     function initSeasonMonitor() {
         const countdownEl = document.getElementById('modern-countdown');
         if (!countdownEl) return;
         let dataDisplay = document.getElementById('bio-data-display') || document.createElement('div');
-        
-        if (!dataDisplay.id) { 
-            dataDisplay.id = 'bio-data-display'; 
-            while (countdownEl.firstChild) {
-                countdownEl.removeChild(countdownEl.firstChild);
-            }
-            countdownEl.appendChild(dataDisplay); 
-        }
+        if (!dataDisplay.id) { dataDisplay.id = 'bio-data-display'; countdownEl.innerHTML = ''; countdownEl.appendChild(dataDisplay); }
 
         const lang = {
             seasons: isIt ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" } : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
@@ -336,25 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const start = new Date(year, 0, 1), end = new Date(year + 1, 0, 1);
             const progress = ((now - start) / (end - start)) * 100, daysLeft = Math.floor((end - now) / 86400000);
             const tooltipMsg = isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.';
-            
-            while (dataDisplay.firstChild) {
-                dataDisplay.removeChild(dataDisplay.firstChild);
-            }
-            
-            const seasonLabel = document.createElement('div');
-            seasonLabel.className = 'bio-season-label';
-            seasonLabel.setAttribute('data-bio-tip', sanitizeHTML(tooltipMsg));
-            seasonLabel.textContent = `${lang.seasons[seasonKey]} ${lang.phase}`;
-            dataDisplay.appendChild(seasonLabel);
-            
-            const progressDiv = document.createElement('div');
-            progressDiv.className = 'bio-progress-data';
-            progressDiv.setAttribute('data-bio-tip', sanitizeHTML(tooltipMsg));
-            progressDiv.textContent = `${progress.toFixed(2)}% | T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}`;
-            dataDisplay.appendChild(progressDiv);
+            dataDisplay.innerHTML = `
+                <div class="bio-season-label" data-bio-tip="${tooltipMsg}">${lang.seasons[seasonKey]} ${lang.phase}</div>
+                <div class="bio-progress-data" data-bio-tip="${tooltipMsg}">${progress.toFixed(2)}% <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span></div>
+            `;
         };
-        updateBioCycle(); 
-        setInterval(updateBioCycle, 3600000);
+        updateBioCycle(); setInterval(updateBioCycle, 3600000);
     }
 
     // --- 2. OROLOGIO BIO-CIRCADIANO ---
@@ -378,186 +233,130 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const getDynamicAdvice = (h, base) => {
-            const s = getCurrentSeason();
-            const isColdSeason = (s === "winter" || s === "autumn");
+    const s = getCurrentSeason();
+    const isColdSeason = (s === "winter" || s === "autumn");
 
-            if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
-            
-            if (h >= 6 && h < 9) {
-                if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-                if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-            }
+    // 1. PRIORITÀ MATTINA (6:00 - 8:59)
+    if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
+    
+    if (h >= 6 && h < 9) {
+        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+    }
 
-            if (h >= 10 && h <= 12 && isColdSeason) {
-                return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-            }
+    // 2. PRIORITÀ VITAMINA D (10:00 - 12:59) - Fondamentale in Autunno/Inverno
+    if (h >= 10 && h <= 12 && isColdSeason) {
+        return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+    }
 
-            if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-            if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
-            if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
-            if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+    // 3. PRIORITÀ POMERIGGIO/SERA
+    if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+    if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
+    if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
+    if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
 
-            return base;
-        };
+    // Se nessuna condizione dinamica è attiva, usa il base della circadianMap
+    return base;
+};
 
         const updateClock = () => {
-            const now = new Date();
-            const hour = now.getHours();
-            const mins = now.getMinutes();
-            
-            const keys = Object.keys(circadianMap).map(Number);
-            const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
-            const currentIndex = keys.indexOf(currentKey);
-            const nextKey = keys[currentIndex + 1] || 24; 
-            const blockDuration = nextKey - currentKey;
-            const elapsed = (hour - currentKey) + (mins / 60);
+    const now = new Date();
+    const hour = now.getHours(); // const hour = 11; - PER TESTING (VITAMINA D)
+    const mins = now.getMinutes();
+    
+    const keys = Object.keys(circadianMap).map(Number);
+    const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
+    const currentIndex = keys.indexOf(currentKey);
+    const nextKey = keys[currentIndex + 1] || 24; 
+    const blockDuration = nextKey - currentKey;
+    const elapsed = (hour - currentKey) + (mins / 60);
 
-            const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
+    const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
 
-            let levelKey;
-            if (elapsed >= blockDuration * 0.7) {
-                levelKey = isIt ? "LIVELLO_BASSO" : "LEVEL_LOW";
-            } else if (elapsed >= blockDuration * 0.4) {
-                levelKey = isIt ? "LIVELLO_MEDIO" : "LEVEL_MEDIUM";
-            } else {
-                levelKey = isIt ? "LIVELLO_ALTO" : "LEVEL_HIGH";
-            }
+    // 1. Definizione bilingue della levelKey
+    let levelKey;
+    if (elapsed >= blockDuration * 0.7) {
+        levelKey = isIt ? "LIVELLO_BASSO" : "LEVEL_LOW";
+    } else if (elapsed >= blockDuration * 0.4) {
+        levelKey = isIt ? "LIVELLO_MEDIO" : "LEVEL_MEDIUM";
+    } else {
+        levelKey = isIt ? "LIVELLO_ALTO" : "LEVEL_HIGH";
+    }
 
-            const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-            const advice = getDynamicAdvice(hour, data[3]); 
-            const dict = isIt ? bioExplanations.it : bioExplanations.en;
+    // 2. Recupero dati e dizionario
+    const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+    const advice = getDynamicAdvice(hour, data[3]); 
+    const dict = isIt ? bioExplanations.it : bioExplanations.en;
 
-            const getDesc = (key) => {
-                if (!key) return dict["default"];
-                const k = key.toString().toUpperCase().trim();
-                return dict[k] || (isIt ? bioExplanations.en[k] : bioExplanations.it[k]) || dict["default"];
-            };
+    // 3. Funzione di ricerca Ultra-Resiliente
+    const getDesc = (key) => {
+        if (!key) return dict["default"];
+        const k = key.toString().toUpperCase().trim();
+        // 1. Cerca nel dizionario lingua attiva
+        // 2. Cerca nell'altra lingua se manca
+        // 3. Ritorna il fallback finale
+        return dict[k] || (isIt ? bioExplanations.en[k] : bioExplanations.it[k]) || dict["default"];
+    };
 
-            const molName = data[2];
-            const molDesc = getDesc(molName);
-            const advDesc = getDesc(advice);
-            const statDesc = getDesc(data[0]);
-            const sysStateDesc = getDesc(data[1]);
-            const levelInfo = getDesc(levelKey);
+    // 4. Estrazione descrizioni pulite
+    const molName = data[2];
+    const molDesc = getDesc(molName);
+    const advDesc = getDesc(advice);    // Qui prenderà la nuova descrizione della Vitamina D
+    const statDesc = getDesc(data[0]);
+    const sysStateDesc = getDesc(data[1]);
+    const levelInfo = getDesc(levelKey);
 
-            const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
-            const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
-            const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
+    // 5. Etichette HUD
+    const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
+    const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
+    const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
 
-            const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
-            const aDesc = formatTip(labelAdvice, advDesc);
-            const sDesc = formatTip(labelStatus, statDesc);
-            const sysDesc = formatTip(labelAnalysis, sysStateDesc);
+    // 6. Generazione Tooltip
+    const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
+    const aDesc = formatTip(labelAdvice, advDesc);
+    const sDesc = formatTip(labelStatus, statDesc);
+    const sysDesc = formatTip(labelAnalysis, sysStateDesc);
 
-            const datePart = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
-            const timePart = `${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+    // --- Formatta la data e l'ora ---
+    const datePart = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+    const timePart = `${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
+    // -------------------------------------
 
-            while (clockEl.firstChild) {
-                clockEl.removeChild(clockEl.firstChild);
-            }
-            
-            // === CORREZIONE STRUTTURALE #2: HUD securo senza innerHTML per variabili ===
-            const hudRow = document.createElement('div');
-            hudRow.className = 'hud-inline-row';
-            
-            // Elemento molecola - SENZA innerHTML per molName
-            const molSpan = document.createElement('span');
-            molSpan.setAttribute('data-bio-tip', fullMoleculeTooltip);
-            const molLabel = document.createElement('span');
-            molLabel.textContent = `${isIt ? 'MOLECOLA' : 'MOLECULE'}: `;
-            molSpan.appendChild(molLabel);
-            const molValue = document.createElement('b');
-            molValue.className = 'bio-data-value';
-            molValue.textContent = sanitizeHTML(molName);
-            molSpan.appendChild(molValue);
-            hudRow.appendChild(molSpan);
-            
-            const separator = document.createElement('span');
-            separator.className = 'separator';
-            separator.textContent = '|';
-            hudRow.appendChild(separator);
-            
-            // Elemento advice - SENZA innerHTML per advice
-            const advSpan = document.createElement('span');
-            advSpan.setAttribute('data-bio-tip', aDesc);
-            const advLabel = document.createElement('span');
-            advLabel.textContent = `${isIt ? 'CONSIGLIO' : 'ADVICE'}: `;
-            advSpan.appendChild(advLabel);
-            const advValue = document.createElement('b');
-            advValue.className = 'bio-data-value';
-            advValue.textContent = sanitizeHTML(advice);
-            advSpan.appendChild(advValue);
-            hudRow.appendChild(advSpan);
-            
-            clockEl.appendChild(hudRow);
-            
-            const statusLabel = document.createElement('span');
-            statusLabel.className = 'bio-status-label';
-            statusLabel.setAttribute('data-bio-tip', sDesc);
-            statusLabel.textContent = data[0];
-            clockEl.appendChild(statusLabel);
-            
-            const timeDiv = document.createElement('span');
-            timeDiv.className = 'bio-clock-time';
-            const digitalTime = document.createElement('span');
-            digitalTime.className = 'digits-stable';
-            digitalTime.textContent = timePart;
-            timeDiv.textContent = datePart + ' ';
-            timeDiv.appendChild(digitalTime);
-            clockEl.appendChild(timeDiv);
-            
-            const sysStateLabel = document.createElement('span');
-            sysStateLabel.className = 'bio-system-state';
-            sysStateLabel.setAttribute('data-bio-tip', sysDesc);
-            sysStateLabel.textContent = `SYS STATE: ${data[1]}`;
-            clockEl.appendChild(sysStateLabel);
-        };
-        updateClock(); 
-        setInterval(updateClock, 1000);
+    // 7. Rendering HTML
+    clockEl.innerHTML = `
+        <div class="hud-inline-row">
+            <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
+            <span class="separator">|</span>
+            <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+        </div>
+        <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
+        <span class="bio-clock-time">
+            ${datePart} <span class="digits-stable">${timePart}</span>
+        </span>
+        <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
+    `;
+};
+        updateClock(); setInterval(updateClock, 1000);
     }
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
         const weekElement = document.getElementById("week");
         if (!weekElement) return;
-        
-        const createSpans = (text, start) => {
-            const fragment = document.createDocumentFragment();
-            text.split('').forEach((char, index) => {
-                const span = document.createElement('span');
-                span.style.setProperty('--i', start + index);
-                span.textContent = char === ' ' ? '\u00A0' : char;
-                fragment.appendChild(span);
-            });
-            return fragment;
-        };
-        
+        const createSpans = (text, start) => text.split('').map((char, index) => `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`).join('');
         const messages = { it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'], en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'] };
         const titles = { it: 'Biotech Project vi augura ', en: 'Biotech Project wishes you ' };
         const greetings = { it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'], en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'] };
-        
         const now = new Date(), hour = now.getHours(), today = now.getDay();
         let gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
-        
         window.requestAnimationFrame(() => {
-            while (weekElement.firstChild) {
-                weekElement.removeChild(weekElement.firstChild);
-            }
-            
-            const greetingDiv = document.createElement('div');
-            greetingDiv.className = 'greeting-time';
-            greetingDiv.textContent = greetings[isIt ? 'it' : 'en'][gIdx];
-            weekElement.appendChild(greetingDiv);
-            
-            const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
-            weekElement.appendChild(titleSpans);
-            
             const daySpans = createSpans(messages[isIt ? 'it' : 'en'][today], 26);
-            weekElement.appendChild(daySpans);
+            const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
+            weekElement.innerHTML = `<div class="greeting-time">${greetings[isIt ? 'it' : 'en'][gIdx]}</div>${titleSpans + daySpans}`;
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (CORREZIONE #1: DOMParser-based setSafeHTML) ---
+    // --- 4. TOOLTIP GESTORE (UPDATED FOR HTML RENDERING) ---
     function initBiotechTooltips() {
         let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
         if (!tooltipEl.className) { tooltipEl.className = 'biotech-tooltip'; document.body.appendChild(tooltipEl); }
@@ -565,17 +364,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseover', (e) => { 
             const target = e.target.closest('[data-bio-tip]'); 
             if (target) { 
-                const tipContent = target.getAttribute('data-bio-tip');
-                if (tipContent) {
-                    // CORREZIONE #1: Usa DOMParser-based setSafeHTML (sicura da XSS)
-                    setSafeHTML(tooltipEl, tipContent);
-                }
+                tooltipEl.innerHTML = target.getAttribute('data-bio-tip'); 
                 tooltipEl.style.display = 'block'; 
             } 
         });
 
         document.addEventListener('mousemove', (e) => { 
             if (tooltipEl.style.display === 'block') { 
+                // Usiamo questo metodo per rendere il movimento fluido senza gravare sulla CPU
                 window.requestAnimationFrame(() => {
                     tooltipEl.style.left = e.clientX + 'px'; 
                     tooltipEl.style.top = (e.clientY - 15) + 'px';
@@ -593,214 +389,214 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
-    function initDnaScanner() {
-        const dnaScanner = document.getElementById('dna-scanner');
-        if (!dnaScanner) return;
+// Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
+function initDnaScanner() {
+    const dnaScanner = document.getElementById('dna-scanner');
+    if (!dnaScanner) return;
 
-        dnaScanner.setAttribute('role', 'button');
-        dnaScanner.setAttribute('tabindex', '0');
-        dnaScanner.setAttribute('aria-label', isIt ? 'Scarica Report Audit Bio-Sincronizzato' : 'Download Bio-Synchronized Audit Report');
+    // --- SETUP ACCESSIBILITÀ ---
+    dnaScanner.setAttribute('role', 'button');
+    dnaScanner.setAttribute('tabindex', '0');
+    dnaScanner.setAttribute('aria-label', isIt ? 'Scarica Report Audit Bio-Sincronizzato' : 'Download Bio-Synchronized Audit Report');
 
-        dnaScanner.addEventListener('click', (e) => {
+    // --- GESTORE CLICK (TRIGGER DOWNLOAD) ---
+    dnaScanner.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Acquisizione dati istantanea per il PDF
+        const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
+        
+        // FEEDBACK HUD: Sostituisce il popup alert del browser per non spaventare l'utente
+        const loadingTip = formatTip(
+            isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
+            isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
+            isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
+            100 // Forza la barra al 100% durante il caricamento
+        );
+        dnaScanner.setAttribute('data-bio-tip', loadingTip);
+
+// --- PERCEIVED PERFORMANCE OPTIMIZATION ---
+// Artificial latency (800ms) to ensure UI feedback synchronization.
+// Provides users with visual confirmation of data processing before PDF trigger.
+        setTimeout(() => {
+            executeSecureDownload(currentMol);
+            syncScannerData(); // Ripristina immediatamente il tooltip informativo
+        }, 800);
+    });
+
+    // --- GESTORE TASTIERA (INVIO/SPAZIO) ---
+    dnaScanner.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
+            dnaScanner.click();
+        }
+    });
 
-            const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
-            
-            const loadingTip = formatTip(
-                isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
-                isIt ? `Analisi molecolare: <b>${sanitizeHTML(currentMol)}</b>` : `Molecular analysis: <b>${sanitizeHTML(currentMol)}</b>`,
-                isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
-                100
-            );
-            dnaScanner.setAttribute('data-bio-tip', loadingTip);
+    // --- FUNZIONE DOWNLOAD ANTI-BLOCK ---
+   const executeSecureDownload = async (molecule) => {
+    /**
+     * PDF ENGINE STRATEGY: 
+     * 1. Dynamic Vector Graphics (rect, ellipse, lines) for HUD-style branding.
+     * 2. Data Virtualization: Maps DOM real-time values to PDF coordinates.
+     * 3. Asset Safety: Try-catch blocks for PNG favicon injection.
+     * 4. Smart Pagination: Dynamic text-wrapping for variable molecule descriptions.
+     */
+    const loadJsPDF = () => {
+        return new Promise((resolve, reject) => {
+            if (window.jspdf) return resolve(window.jspdf);
+            const script = document.createElement('script');
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+            script.onload = () => resolve(window.jspdf);
+            script.onerror = () => reject(new Error("Errore caricamento libreria PDF"));
+            document.head.appendChild(script);
+        });
+    };
 
-            setTimeout(() => {
-                executeSecureDownload(currentMol);
-                syncScannerData();
-            }, 800);
+    try {
+        const { jsPDF } = await loadJsPDF();
+        const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+        const now = new Date();
+        const lang = isIt ? 'it' : 'en';
+        const dict = bioExplanations[lang];
+        
+        // --- COLORI BIOTECH ---
+        const NEON_GREEN = [0, 230, 118];
+        const TECH_GOLD = [255, 204, 0];
+        const DARK_ACCENT = [20, 30, 48];
+
+        // --- 1. HEADER E STAGIONE ---
+        doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+        doc.rect(0, 0, 210, 40, 'F');
+        try { doc.addImage("https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png", 'PNG', 10, 8, 24, 24); } catch(e) {}
+        
+        doc.setTextColor(167, 255, 235);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(20);
+        doc.text("BIOTECH CORE AUDIT", 40, 18);
+        
+        doc.setFontSize(8);
+        doc.setFont("courier", "normal");
+        const season = document.querySelector('.bio-season-label')?.innerText || "STATIONARY";
+        doc.text(`DATE: ${now.toLocaleDateString(lang)} | TIME: ${now.toLocaleTimeString(lang)} | ${season}`, 40, 25);
+        doc.setDrawColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
+        doc.line(0, 40, 210, 40);
+
+        // --- 2. ANALISI MOLECOLARE ---
+        let yPos = 55;
+        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+        doc.setFont("helvetica", "bold");
+        doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
+
+        yPos += 8;
+        doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
+        doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
+        
+        doc.setFontSize(10);
+        doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
+        doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
+        doc.setFontSize(16);
+        doc.text(molecule.toUpperCase(), 20, yPos + 18);
+
+        // Intensità con Percentuale Visibile
+        const intVal = document.querySelector('.intensity-value')?.innerText || "100%";
+        doc.setFillColor(230, 230, 230);
+        doc.rect(140, yPos + 10, 45, 4, 'F');
+        doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
+        doc.rect(140, yPos + 10, (45 * parseInt(intVal)) / 100, 4, 'F');
+        doc.setTextColor(50);
+        doc.setFontSize(8);
+        doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}`, 140, yPos + 18);
+
+        doc.setTextColor(80);
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        const desc = dict[molecule] || dict["default"];
+        doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);
+
+        // --- 3. TABELLA 24H TRADOTTA ---
+        yPos += 50;
+        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+        doc.setFont("helvetica", "bold");
+        doc.text(isIt ? "RIEPILOGO CICLO 24H" : "24H CYCLE SUMMARY", 15, yPos);
+
+        const tableY = yPos + 5;
+        doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+        doc.rect(15, tableY, 180, 8, 'F');
+        doc.setTextColor(255);
+        doc.text(isIt ? "ORA" : "TIME", 18, tableY + 5.5);
+        doc.text(isIt ? "MOLECOLA" : "MOLECULE", 45, tableY + 5.5);
+        doc.text(isIt ? "STATO DI SISTEMA" : "SYSTEM STATE", 95, tableY + 5.5);
+
+        let rowY = tableY + 8;
+        const cData = [
+            ["00:00", "ADENOSINA", isIt ? "RIGENERAZIONE" : "REGEN"],
+            ["06:00", "CORTISOLO", isIt ? "RESET CIRCADIANO" : "CIRCADIAN RESET"],
+            ["11:00", "GLUTAMMATO", isIt ? "PICCO COGNITIVO" : "COGNITIVE PEAK"],
+            ["17:00", "MIOCHINE", isIt ? "PICCO FISICO" : "PHYSICAL PEAK"],
+            ["23:00", "MELATONINA", isIt ? "INIZIO CLEARANCE" : "CLEARANCE START"]
+        ];
+
+        cData.forEach((row, i) => {
+            doc.setFillColor(i % 2 === 0 ? 248 : 240);
+            doc.rect(15, rowY, 180, 7, 'F');
+            doc.setTextColor(50);
+            doc.text(row[0], 18, rowY + 5);
+            doc.text(row[1], 45, rowY + 5);
+            doc.text(row[2], 95, rowY + 5);
+            rowY += 7;
         });
 
-        dnaScanner.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                dnaScanner.click();
-            }
+        // --- 4. MACRO & CONSIGLIO ---
+        yPos = 220;
+        doc.setDrawColor(200);
+        doc.line(15, yPos, 195, yPos);
+
+        // HUD Circles
+        const cx = 35, cy = 250;
+        [[0, 150, 255], [255, 87, 34], [TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]]].forEach((c, i) => {
+            doc.setDrawColor(c[0], c[1], c[2]);
+            doc.setLineWidth(1);
+            doc.ellipse(cx, cy, 15-(i*4), 15-(i*4));
         });
 
-        // === CORREZIONE STRUTTURALE #2 & #3: executeSecureDownload con PDF text plain ===
-        const executeSecureDownload = async (molecule) => {
-            const loadJsPDF = () => {
-                return new Promise((resolve, reject) => {
-                    if (window.jspdf) return resolve(window.jspdf);
-                    const script = document.createElement('script');
-                    script.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
-                    script.onload = () => resolve(window.jspdf);
-                    script.onerror = () => reject(new Error("Errore caricamento libreria PDF"));
-                    document.head.appendChild(script);
-                });
-            };
+        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+        doc.text(isIt ? "BILANCIAMENTO MACRO" : "MACRO BALANCE", 60, 240);
+        doc.setFontSize(9);
+        doc.text(isIt ? "PROT: 40% | CARB: 30% | GRASSI: 30%" : "PROT: 40% | CARBS: 30% | FATS: 30%", 60, 247);
 
-            try {
-                const { jsPDF } = await loadJsPDF();
-                const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
-                const now = new Date();
-                const lang = isIt ? 'it' : 'en';
-                const dict = bioExplanations[lang];
-                
-                const NEON_GREEN = [0, 230, 118];
-                const TECH_GOLD = [255, 204, 0];
-                const DARK_ACCENT = [20, 30, 48];
+        // Fix Consiglio Bio-Logico
+        const adviceTxt = document.querySelector('.bio-data-value:last-child')?.innerText || "---";
+        doc.setFontSize(12);
+        doc.text(isIt ? "CONSIGLIO BIO-LOGICO:" : "BIO-LOGICAL ADVICE:", 60, 260);
+        doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
+        doc.text(adviceTxt, 60, 268);
 
-                // Header
-                doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-                doc.rect(0, 0, 210, 40, 'F');
-                try { 
-                    doc.addImage("https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png", 'PNG', 10, 8, 24, 24); 
-                } catch(e) {}
-                
-                doc.setTextColor(167, 255, 235);
-                doc.setFont("helvetica", "bold");
-                doc.setFontSize(20);
-                doc.text("BIOTECH CORE AUDIT", 40, 18);
-                
-                doc.setFontSize(8);
-                doc.setFont("courier", "normal");
-                const season = document.querySelector('.bio-season-label')?.innerText || "STATIONARY";
-                // CORREZIONE #3: Usa sanitizeTextPlain per PDF (senza entità HTML)
-                doc.text(`DATE: ${now.toLocaleDateString(lang)} | TIME: ${now.toLocaleTimeString(lang)} | ${SecurityUtils.sanitizeTextPlain(season)}`, 40, 25);
-                doc.setDrawColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-                doc.line(0, 40, 210, 40);
+        doc.save(`Biotech_Audit_2026_${molecule}.pdf`);
+    } catch (e) { console.error(e); }
+}; 
 
-                // === TABELLA 24H CON SANITIZZAZIONE ===
-                let yPos = 55;
-                doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-                doc.setFont("helvetica", "bold");
-                doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
+    // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
+    const syncScannerData = () => {
+        const molName = document.querySelector('.bio-data-value')?.innerText || "---";
+        
+        // RECUPERO INTENSITÀ: Legge il valore numerico dalla barra HUD se presente
+        const intensityElement = document.querySelector('.intensity-value');
+        const intensity = intensityElement ? parseInt(intensityElement.innerText) : 80;
 
-                yPos += 8;
-                doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
-                doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
-                
-                // CORREZIONE #3: Usa sanitizeTextPlain per il nome molecola nel PDF
-                const safeMolecule = SecurityUtils.sanitizeTextPlain(molecule).toUpperCase();
-                
-                doc.setFontSize(10);
-                doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
-                doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-                doc.setFontSize(16);
-                doc.text(safeMolecule, 20, yPos + 18);
+        const tipContent = formatTip(
+            isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
+            isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
+            isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
+            intensity
+        );
+        
+        dnaScanner.setAttribute('data-bio-tip', tipContent);
+    };
 
-                const intVal = document.querySelector('.intensity-value')?.innerText || "100%";
-                const safeIntensity = parseInt(intVal) || 100;
-                
-                doc.setFillColor(230, 230, 230);
-                doc.rect(140, yPos + 10, 45, 4, 'F');
-                doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
-                doc.rect(140, yPos + 10, (45 * safeIntensity) / 100, 4, 'F');
-                doc.setTextColor(50);
-                doc.setFontSize(8);
-                doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${safeIntensity}%`, 140, yPos + 18);
+    // Avvio immediato e aggiornamento costante ogni secondo
+    syncScannerData();
+    setInterval(syncScannerData, 1000);
+}
 
-                doc.setTextColor(80);
-                doc.setFont("helvetica", "italic");
-                doc.setFontSize(10);
-                const desc = dict[molecule] || dict["default"];
-                // CORREZIONE #3: Usa sanitizeTextPlain (senza entità HTML)
-                doc.text(doc.splitTextToSize(SecurityUtils.sanitizeTextPlain(desc), 170), 20, yPos + 28);
-
-                // === TABELLA 24H STATIC ===
-                yPos += 50;
-                doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-                doc.setFont("helvetica", "bold");
-                doc.text(isIt ? "RIEPILOGO CICLO 24H" : "24H CYCLE SUMMARY", 15, yPos);
-
-                const tableY = yPos + 5;
-                doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-                doc.rect(15, tableY, 180, 8, 'F');
-                doc.setTextColor(255);
-                doc.text(isIt ? "ORA" : "TIME", 18, tableY + 5.5);
-                doc.text(isIt ? "MOLECOLA" : "MOLECULE", 45, tableY + 5.5);
-                doc.text(isIt ? "STATO DI SISTEMA" : "SYSTEM STATE", 95, tableY + 5.5);
-
-                let rowY = tableY + 8;
-                const cData = [
-                    ["00:00", "ADENOSINA", isIt ? "RIGENERAZIONE" : "REGEN"],
-                    ["06:00", "CORTISOLO", isIt ? "RESET CIRCADIANO" : "CIRCADIAN RESET"],
-                    ["11:00", "GLUTAMMATO", isIt ? "PICCO COGNITIVO" : "COGNITIVE PEAK"],
-                    ["17:00", "MIOCHINE", isIt ? "PICCO FISICO" : "PHYSICAL PEAK"],
-                    ["23:00", "MELATONINA", isIt ? "INIZIO CLEARANCE" : "CLEARANCE START"]
-                ];
-
-                cData.forEach((row, i) => {
-                    doc.setFillColor(i % 2 === 0 ? 248 : 240);
-                    doc.rect(15, rowY, 180, 7, 'F');
-                    doc.setTextColor(50);
-                    doc.text(row[0], 18, rowY + 5);
-                    doc.text(row[1], 45, rowY + 5);
-                    doc.text(row[2], 95, rowY + 5);
-                    rowY += 7;
-                });
-
-                // Macro & Consiglio
-                yPos = 220;
-                doc.setDrawColor(200);
-                doc.line(15, yPos, 195, yPos);
-
-                const cx = 35, cy = 250;
-                [[0, 150, 255], [255, 87, 34], [TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]]].forEach((c, i) => {
-                    doc.setDrawColor(c[0], c[1], c[2]);
-                    doc.setLineWidth(1);
-                    doc.ellipse(cx, cy, 15-(i*4), 15-(i*4));
-                });
-
-                doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-                doc.text(isIt ? "BILANCIAMENTO MACRO" : "MACRO BALANCE", 60, 240);
-                doc.setFontSize(9);
-                doc.text(isIt ? "PROT: 40% | CARB: 30% | GRASSI: 30%" : "PROT: 40% | CARBS: 30% | FATS: 30%", 60, 247);
-
-                // CORREZIONE #3: Usa sanitizeTextPlain per adviceTxt
-                const adviceTxt = document.querySelector('.bio-data-value:last-child')?.innerText || "---";
-                const safeAdviceTxt = SecurityUtils.sanitizeTextPlain(adviceTxt);
-                
-                doc.setFontSize(12);
-                doc.text(isIt ? "CONSIGLIO BIO-LOGICO:" : "BIO-LOGICAL ADVICE:", 60, 260);
-                doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-                doc.text(safeAdviceTxt, 60, 268);
-
-                // CORREZIONE #1: Filename sanitizzato
-                const safeFilename = sanitizeFilename(molecule);
-                doc.save(`Biotech_Audit_2026_${safeFilename}.pdf`);
-            } catch (e) { 
-                console.error(e); 
-            }
-        };
-
-        // === CORREZIONE STRUTTURALE #3: syncScannerData con sanitizzazione ===
-        const syncScannerData = () => {
-            const molName = document.querySelector('.bio-data-value')?.innerText || "---";
-            const safeMolName = sanitizeHTML(molName);
-            
-            const intensityElement = document.querySelector('.intensity-value');
-            const intensity = intensityElement ? parseInt(intensityElement.innerText) : 80;
-
-            const tipContent = formatTip(
-                isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
-                isIt ? `Sincronia Molecolare: <b>${safeMolName}</b>` : `Molecular Sync: <b>${safeMolName}</b>`,
-                isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
-                intensity
-            );
-            
-            dnaScanner.setAttribute('data-bio-tip', tipContent);
-        };
-
-        syncScannerData();
-        setInterval(syncScannerData, 1000);
-    }
-
-    // --- INIT MODULI ---
-    initSeasonMonitor(); 
-    initBioClock(); 
-    initWeeklyGreeting(); 
-    initBiotechTooltips(); 
-    initDnaScanner();
+    initSeasonMonitor(); initBioClock(); initWeeklyGreeting(); initBiotechTooltips(); initDnaScanner();
 });
