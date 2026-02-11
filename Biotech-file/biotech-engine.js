@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE COMPLIANT - ZERO TRUST ARCHITECTURE) ---
+    // --- 4. TOOLTIP GESTORE (SRE COMPLIANT - ZERO HTML INTERPRETATION) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -473,17 +473,30 @@ function initBiotechTooltips() {
     document.addEventListener('mouseover', (e) => { 
         const target = e.target.closest('[data-bio-tip]'); 
         if (target) { 
-            const tipContent = target.getAttribute('data-bio-tip');
-            if (tipContent) {
-                // 1. Svuotamento rapido e sicuro
+            const rawContent = target.getAttribute('data-bio-tip');
+            if (rawContent) {
+                // Svuotamento sicuro
                 tooltipEl.textContent = ''; 
 
-                // 2. Inserimento tramite Contextual Fragment
-                const range = document.createRange();
-                range.selectNode(tooltipEl);
-                const safeFragment = range.createContextualFragment(tipContent);
+                // TRUCCO SRE: Gestiamo i <br> e i <b> splittando la stringa o 
+                // semplicemente inserendo il testo. Se formatTip() invia HTML,
+                // qui lo "puliamo" forzatamente.
+                const lines = rawContent.split('<br>');
                 
-                tooltipEl.appendChild(safeFragment);
+                lines.forEach((line, index) => {
+                    const span = document.createElement('span');
+                    // Rimuoviamo eventuali tag residui per massima sicurezza
+                    const cleanText = line.replace(/<\/?[^>]+(>|$)/g, ""); 
+                    span.textContent = cleanText;
+                    
+                    // Se era la prima riga (il titolo), lo facciamo grassetto via CSS
+                    if (index === 0) span.style.fontWeight = 'bold';
+                    
+                    tooltipEl.appendChild(span);
+                    if (index < lines.length - 1) {
+                        tooltipEl.appendChild(document.createElement('br'));
+                    }
+                });
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -494,18 +507,13 @@ function initBiotechTooltips() {
             window.requestAnimationFrame(() => {
                 tooltipEl.style.left = `${e.clientX}px`; 
                 tooltipEl.style.top = `${e.clientY - 15}px`;
-
-                if (e.clientY < 100) {
-                    tooltipEl.style.top = `${e.clientY + 25}px`;
-                }
+                if (e.clientY < 100) tooltipEl.style.top = `${e.clientY + 25}px`;
             });
         } 
     });
 
     document.addEventListener('mouseout', (e) => { 
-        if (e.target.closest('[data-bio-tip]')) {
-            tooltipEl.style.display = 'none';
-        }
+        if (e.target.closest('[data-bio-tip]')) tooltipEl.style.display = 'none';
     });
 }
 
