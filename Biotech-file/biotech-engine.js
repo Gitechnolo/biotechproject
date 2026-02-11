@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE-SECURE: RECONSTRUCTS DOM WITHOUT INNERHTML) ---
+    // --- 4. TOOLTIP GESTORE (SRE-SYNC: SINCRONIZZAZIONE BARRA E SICUREZZA) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -475,58 +475,67 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                // Svuotamento sicuro 100%
-                tooltipEl.textContent = ''; 
+                tooltipEl.textContent = ''; // Reset sicuro
 
-                // 1. ESTRAZIONE DATI: Troviamo la percentuale dell'intensità (es. 72)
-                const intensityMatch = rawContent.match(/style='width:(\d+)%'/);
-                const barPerc = intensityMatch ? intensityMatch[1] : null;
+                // 1. SINCRONIZZAZIONE: Recuperiamo la percentuale reale dall'HUD o dalla stringa
+                // Cerchiamo il numero seguito da % (es. 64% o 80%)
+                const match = rawContent.match(/(\d+)%/);
+                const currentIntensity = match ? match[1] : "100";
 
-                // 2. RENDERING TESTO: Puliamo i tag HTML e creiamo nodi di testo
-                // Trasformiamo i <br> in nuovi paragrafi/span
-                const textLines = rawContent.replace(/<div[^>]*>([\s\S]*?)<\/div>/g, "") // Rimuove i div della barra
-                                            .split(/<br\/?>/gi); // Divide per i tag break
+                // 2. RENDERING TESTO (Senza tag HTML)
+                // Puliamo la stringa per estrarre solo i messaggi informativi
+                const cleanLines = rawContent
+                    .replace(/<div.*?<\/div>/g, '') // Rimuove vecchi div della barra
+                    .split(/<br\/?>/gi);
 
-                textLines.forEach((line, index) => {
-                    const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
-                    if (!cleanText) return;
+                cleanLines.forEach((line, index) => {
+                    const text = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
+                    if (!text || text.includes("INTENSITY")) return;
 
-                    const lineEl = document.createElement('div');
-                    lineEl.textContent = cleanText;
-                    
-                    // Applichiamo lo stile "Bold" alla prima riga (Titolo)
+                    const lineDiv = document.createElement('div');
+                    lineDiv.textContent = text;
                     if (index === 0) {
-                        lineEl.style.fontWeight = 'bold';
-                        lineEl.style.marginBottom = '4px';
-                        lineEl.style.textTransform = 'uppercase';
+                        lineDiv.style.fontWeight = 'bold';
+                        lineDiv.style.color = '#00e676'; // NEON_GREEN per il titolo
+                        lineDiv.style.marginBottom = '5px';
                     }
-                    tooltipEl.appendChild(lineEl);
+                    tooltipEl.appendChild(lineDiv);
                 });
 
-                // 3. RICOSTRUZIONE BARRA (Se presente nei dati)
-                if (barPerc !== null) {
-                    const container = document.createElement('div');
-                    container.className = 'intensity-container';
-                    container.style.marginTop = '10px';
+                // 3. RICOSTRUZIONE BARRA GIALLA SINCRONIZZATA
+                const barContainer = document.createElement('div');
+                barContainer.className = 'intensity-container';
+                barContainer.style.marginTop = '10px';
+                barContainer.style.borderTop = '1px solid rgba(255,255,255,0.1)';
+                barContainer.style.paddingTop = '8px';
 
-                    const label = document.createElement('div');
-                    label.className = 'intensity-label';
-                    label.textContent = `INTENSITY ${barPerc}%`;
-                    label.style.fontSize = '10px';
+                const label = document.createElement('div');
+                label.className = 'intensity-label';
+                label.textContent = `INTENSITY ${currentIntensity}%`;
+                label.style.color = '#ffcc00'; // TECH_GOLD
+                label.style.fontSize = '10px';
+                label.style.fontWeight = 'bold';
+                label.style.marginBottom = '4px';
 
-                    const bgBar = document.createElement('div');
-                    bgBar.className = 'intensity-bar-bg';
-                    
-                    const fillBar = document.createElement('div');
-                    fillBar.className = 'intensity-bar-fill';
-                    fillBar.style.width = `${barPerc}%`;
-                    fillBar.style.backgroundColor = '#ffcc00'; // Giallo Biotech
+                const barBg = document.createElement('div');
+                barBg.className = 'intensity-bar-bg';
+                barBg.style.background = 'rgba(255, 255, 255, 0.1)';
+                barBg.style.height = '4px';
+                barBg.style.borderRadius = '2px';
 
-                    bgBar.appendChild(fillBar);
-                    container.appendChild(label);
-                    container.appendChild(bgBar);
-                    tooltipEl.appendChild(container);
-                }
+                const barFill = document.createElement('div');
+                barFill.className = 'intensity-bar-fill';
+                barFill.style.width = `${currentIntensity}%`;
+                barFill.style.height = '100%';
+                barFill.style.background = '#ffcc00';
+                barFill.style.boxShadow = '0 0 5px rgba(255, 204, 0, 0.5)';
+                barFill.style.borderRadius = '2px';
+                barFill.style.transition = 'width 0.3s ease'; // Rende il cambio fluido
+
+                barBg.appendChild(barFill);
+                barContainer.appendChild(label);
+                barContainer.appendChild(barBg);
+                tooltipEl.appendChild(barContainer);
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -535,12 +544,9 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
-                tooltipEl.style.left = e.clientX + 'px'; 
-                tooltipEl.style.top = (e.clientY - 15) + 'px';
-
-                if (e.clientY < 100) {
-                    tooltipEl.style.top = (e.clientY + 25) + 'px';
-                }
+                tooltipEl.style.left = `${e.clientX + 15}px`; 
+                tooltipEl.style.top = `${e.clientY - 15}px`;
+                if (e.clientY < 100) tooltipEl.style.top = `${e.clientY + 25}px`;
             });
         } 
     });
