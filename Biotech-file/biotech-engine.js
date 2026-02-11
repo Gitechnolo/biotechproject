@@ -462,7 +462,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 4. TOOLTIP GESTORE (SRE CLEAN VERSION - NO DRIFT) ---
+    // --- 4. TOOLTIP GESTORE (RE-STYLING VISIVO SENZA VULNERABILITÀ) ---
 function initBiotechTooltips() {
     let tooltipEl = document.querySelector('.biotech-tooltip') || document.createElement('div');
     if (!tooltipEl.className) { 
@@ -475,34 +475,67 @@ function initBiotechTooltips() {
         if (target) { 
             const rawContent = target.getAttribute('data-bio-tip');
             if (rawContent) {
-                tooltipEl.textContent = ''; // Reset atomico
+                tooltipEl.textContent = ''; // Svuota in sicurezza
 
-                // Pulizia e rendering solo testo
-                const cleanLines = rawContent
-                    .replace(/<div.*?<\/div>/g, '') // Rimuove residui della barra
-                    .split(/<br\/?>/gi);
+                // 1. ESTRAZIONE DATI DINAMICI
+                const intensityMatch = rawContent.match(/(\d+)%/);
+                const perc = intensityMatch ? intensityMatch[1] : null;
+                
+                // Dividiamo le righe cercando di mantenere i titoli separati dalle descrizioni
+                const lines = rawContent.split(/<br\/?>/gi);
 
-                cleanLines.forEach((line, index) => {
-                    const text = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
-                    if (!text) return;
+                lines.forEach((line, index) => {
+                    const cleanText = line.replace(/<\/?[^>]+(>|$)/g, "").trim();
+                    if (!cleanText || cleanText.includes("INTENSITY")) return;
 
-                    const lineDiv = document.createElement('div');
-                    lineDiv.textContent = text;
-                    
-                    // Styling coerente con BiotechProject
+                    const p = document.createElement('div');
+                    p.textContent = cleanText;
+                    p.style.marginBottom = '2px';
+
+                    // Ripristino Formattazione Titolo (Verde Neon come in Tooltip1.jpg)
                     if (index === 0) {
-                        lineDiv.style.fontWeight = 'bold';
-                        lineDiv.style.color = '#00e676'; // Neon Green
-                        lineDiv.style.marginBottom = '5px';
-                        lineDiv.style.borderBottom = '1px solid rgba(0, 230, 118, 0.2)';
-                        lineDiv.style.paddingBottom = '3px';
+                        p.style.color = '#00e676'; 
+                        p.style.fontWeight = 'bold';
+                        p.style.fontSize = '13px';
+                        p.style.textTransform = 'uppercase';
+                        p.style.borderBottom = '1px solid rgba(0, 230, 118, 0.3)';
+                        p.style.paddingBottom = '4px';
+                        p.style.marginBottom = '6px';
                     } else {
-                        lineDiv.style.fontSize = '11px';
-                        lineDiv.style.lineHeight = '1.4';
-                        lineDiv.style.color = '#a7ffeb';
+                        p.style.color = '#a7ffeb';
+                        p.style.fontSize = '11px';
                     }
-                    tooltipEl.appendChild(lineDiv);
+                    tooltipEl.appendChild(p);
                 });
+
+                // 2. RICOSTRUZIONE BARRA GIALLA (Solo se c'è intensità)
+                if (perc) {
+                    const barContainer = document.createElement('div');
+                    barContainer.style.marginTop = '8px';
+
+                    const label = document.createElement('div');
+                    label.textContent = `INTENSITY ${perc}%`;
+                    label.style.color = '#ffcc00'; // Tech Gold
+                    label.style.fontSize = '10px';
+                    label.style.fontWeight = 'bold';
+                    label.style.marginBottom = '3px';
+
+                    const track = document.createElement('div');
+                    track.style.height = '4px';
+                    track.style.background = 'rgba(255,255,255,0.1)';
+                    track.style.width = '100%';
+
+                    const fill = document.createElement('div');
+                    fill.style.height = '100%';
+                    fill.style.width = `${perc}%`;
+                    fill.style.background = '#ffcc00';
+                    fill.style.boxShadow = '0 0 8px rgba(255, 204, 0, 0.6)';
+
+                    track.appendChild(fill);
+                    barContainer.appendChild(label);
+                    barContainer.appendChild(track);
+                    tooltipEl.appendChild(barContainer);
+                }
             }
             tooltipEl.style.display = 'block'; 
         } 
@@ -511,9 +544,8 @@ function initBiotechTooltips() {
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
             window.requestAnimationFrame(() => {
-                tooltipEl.style.left = `${e.clientX + 15}px`; 
-                tooltipEl.style.top = `${e.clientY - 15}px`;
-                if (e.clientY < 100) tooltipEl.style.top = `${e.clientY + 25}px`;
+                tooltipEl.style.left = (e.clientX + 15) + 'px'; 
+                tooltipEl.style.top = (e.clientY - 15) + 'px';
             });
         } 
     });
