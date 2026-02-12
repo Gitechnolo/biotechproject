@@ -60,6 +60,14 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     height: auto;
     background: rgba(255,255,255,0.03); /* Crea un'area grigia di attesa */
 }
+.biotech-tooltip { position: fixed; z-index: 10000; pointer-events: none; padding: 12px; background: rgba(10, 25, 35, 0.95); border: 1px solid #00e676; color: #a7ffeb; font-family: 'Orbitron', sans-serif; font-size: 11px; min-width: 200px; box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); display: none; }
+.biotech-tooltip b { display: block; color: #ffffff; text-transform: uppercase; margin-bottom: 5px; border-bottom: 1px solid rgba(0, 230, 118, 0.3); padding-bottom: 3px; font-size: 12px; }
+.biotech-tooltip i { display: block; margin-top: 8px; color: #ffd600; font-style: italic; }
+.intensity-container { margin-top: 10px; }
+.intensity-label { font-size: 9px; color: #00e676; text-transform: uppercase; margin-bottom: 4px; }
+.intensity-bar-bg { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.1); }
+.intensity-bar-fill { height: 100%; background: #00e676; box-shadow: 0 0 10px #00e676; transition: width 0.5s ease-out; }
+.intensity-value { font-size: 10px; text-align: right; margin-top: 3px; color: #00ffcc; }
 </style>
 <script>;!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r()||(i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))})).observe(o.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{r()}),t))}( "main-content", 150);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Biotech Project","alternateName":"Progetto Biotech","url":"https://gitechnolo.github.io/biotechproject/","description":"Portale educativo open source su biotecnologia e biologia umana. Inclusività scientifica e standard WCAG 2.1 per l'accessibilità cognitiva.","publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"],"inLanguage":["it","en"],"isAccessibleForFree":"True","educationalUse":["Science Education","Software Development Case Study"],"keywords":"Inclusive Design, WCAG 2.1, Biotech, Open Source, High Performance Web, DSA Accessibility, Multilingual"}</script>
