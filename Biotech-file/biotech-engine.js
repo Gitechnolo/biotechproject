@@ -355,14 +355,20 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     }
     
     document.addEventListener('mouseover', (e) => { 
-        const target = e.target.closest('[data-bio-tip]'); 
-        if (target) { 
-            const raw = target.getAttribute('data-bio-tip');
-            tooltipEl.textContent = '';
-            tooltipEl.appendChild(document.createRange().createContextualFragment(raw));
-            tooltipEl.style.display = 'block'; 
-        } 
-    });
+    const target = e.target.closest('[data-bio-tip]'); 
+    if (target) { 
+        const raw = target.getAttribute('data-bio-tip');
+        
+        // Creiamo un elemento contenitore temporaneo
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = raw; 
+
+        // replaceChildren svuota tooltipEl e inserisce i nuovi nodi in un colpo solo
+        tooltipEl.replaceChildren(...tempDiv.childNodes);
+        
+        tooltipEl.style.display = 'block'; 
+    } 
+});
 
     document.addEventListener('mousemove', (e) => { 
         if (tooltipEl.style.display === 'block') { 
