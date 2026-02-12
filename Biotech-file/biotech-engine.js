@@ -359,12 +359,15 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     if (target) { 
         const raw = target.getAttribute('data-bio-tip');
         
-        // Creiamo un elemento contenitore temporaneo
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = raw; 
+        // Usiamo DOMParser per trasformare la stringa in nodi reali in modo sicuro
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(raw, 'text/html');
+        
+        // Prendiamo i nodi generati dal body del documento virtuale
+        const nodes = Array.from(doc.body.childNodes);
 
-        // replaceChildren svuota tooltipEl e inserisce i nuovi nodi in un colpo solo
-        tooltipEl.replaceChildren(...tempDiv.childNodes);
+        // Puliamo il tooltip e inseriamo i nuovi nodi
+        tooltipEl.replaceChildren(...nodes);
         
         tooltipEl.style.display = 'block'; 
     } 
