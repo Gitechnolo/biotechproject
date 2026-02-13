@@ -580,7 +580,7 @@ function initDnaScanner() {
         
         // RECUPERO INTENSITÀ: Legge il valore numerico dalla barra HUD se presente
         const intensityElement = document.querySelector('.intensity-value');
-        const intensity = intensityElement ? parseInt(intensityElement.innerText) : 80;
+        const intensity = intensityElement ? parseInt(intensityElement.innerText) : null;
 
         const tipContent = formatTip(
             isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
