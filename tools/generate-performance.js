@@ -30,7 +30,7 @@ import chromeLauncher from 'chrome-launcher';
 import fs from 'fs';
 import path from 'path';
 
-// URL base del sito
+// URL base del progetto
 const BASE_URL = 'https://gitechnolo.github.io/biotechproject';
 
 // Lista delle pagine da analizzare
@@ -107,7 +107,7 @@ async function runPerformanceAnalysis() {
       output: 'json',
       logLevel: 'silent',
       disableStorageReset: false,
-      formFactor: 'mobile', 
+      formFactor: 'mobile',
       settings: {
         emulatedFormFactor: 'mobile',
         throttlingMethod: 'simulate',
@@ -117,7 +117,7 @@ async function runPerformanceAnalysis() {
           requestLatencyMs: 150,
           downloadThroughputKbps: 1638.4,
           uploadThroughputKbps: 750,
-          cpuSlowdownMultiplier: 4 
+          cpuSlowdownMultiplier: 4
         },
         screenEmulation: {
           mobile: true,
@@ -134,7 +134,6 @@ async function runPerformanceAnalysis() {
       try {
         console.log(`🔍 Analizzo: ${pageData.label} (${pageData.url})`);
         const runnerResult = await lighthouse(pageData.url, lighthouseConfig);
-
         const lhr = runnerResult.lhr;
         const performanceScore = Math.round(lhr.categories.performance.score * 100);
         const lcp = lhr.audits['largest-contentful-paint']?.numericValue || 0;
@@ -149,7 +148,6 @@ async function runPerformanceAnalysis() {
         });
 
         console.log(`✅ ${pageData.label}: Punteggio ${performanceScore}, LCP: ${Math.round(lcp)}ms`);
-
       } catch (auditError) {
         console.warn(`❌ Fallito: ${pageData.label}`);
         results.push({
@@ -163,10 +161,9 @@ async function runPerformanceAnalysis() {
       }
       await new Promise(resolve => setTimeout(resolve, 3000));
     }
-
   } catch (overallError) {
-    console.error('🚨 Errore critico durante l’analisi:', overallError.message);
-    process.exit(1);
+    console.error('🚨 Errore critico:', overallError.message);
+    process.exitCode = 1;
   } finally {
     if (chrome) {
       await chrome.kill();
@@ -176,12 +173,9 @@ async function runPerformanceAnalysis() {
 
   // --- LOGICA SRE VIRTUAL STRESS TEST (5.000 UTENTI) ---
   const STRESS_USERS = 5000;
-  
-  // Modello di degradazione logaritmica: penalità realistica per carico massivo
   const calculateStressScore = (originalScore) => {
     if (!originalScore || originalScore <= 0) return 0;
-    // Fattore ln(5000)/95 produce una riduzione di circa l'8.9-9.1%
-    const stressFactor = 1 - (Math.log(STRESS_USERS) / 95); 
+    const stressFactor = 1 - (Math.log(STRESS_USERS) / 95);
     return Math.round(originalScore * stressFactor);
   };
 
@@ -193,15 +187,13 @@ async function runPerformanceAnalysis() {
     ? Math.round(validPages.reduce((sum, r) => sum + r.performanceScore, 0) / validPages.length)
     : null;
 
-  // 📊 Costruzione Output Finale
   const output = {
     lastUpdated: new Date().toISOString(),
     summary: {
       totalPages: pages.length,
       analyzed: validPages.length,
       failed: results.filter(r => r.error).length,
-      averagePerformance: averagePerformance,
-      // Nuovi dati Stress Test
+      averagePerformance,
       stressTest: {
         simulatedUsers: STRESS_USERS,
         methodology: "Logarithmic Load Degradation (SRE 2026)",
@@ -209,32 +201,28 @@ async function runPerformanceAnalysis() {
         status: averagePerformance > 85 ? "STABLE / HIGH_AVAILABILITY" : "STABLE / DEGRADED_PERFORMANCE"
       }
     },
-    // Mappatura delle pagine con aggiunta dello stress score individuale
     pages: results.map(page => ({
       ...page,
       stressResilienceScore: calculateStressScore(page.performanceScore)
     }))
-  };   
+  };
 
-  // 🔁 Confronto con dati precedenti
   let previousData = null;
   const previousPath = path.join(outputDir, 'performance-latest.json');
-
   if (fs.existsSync(previousPath)) {
     try {
       const rawData = fs.readFileSync(previousPath, 'utf-8');
       previousData = JSON.parse(rawData);
     } catch (err) {
-      console.warn('⚠️  Impossibile leggere il file precedente');
+      console.warn('⚠️ Impossibile leggere il file precedente');
     }
   }
 
   output.pages.forEach(page => {
     const prevPage = previousData?.pages.find(p => p.slug === page.slug);
-    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : null;   
+    page.previousPerformanceScore = prevPage ? prevPage.performanceScore : null;
   });
 
-  // Scrittura finale
   try {
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
@@ -242,11 +230,11 @@ async function runPerformanceAnalysis() {
     console.log(`📊 Analisi completata con Stress Test simulato per ${STRESS_USERS} utenti.`);
   } catch (writeError) {
     console.error('❌ Errore nella scrittura del file:', writeError.message);
-    process.exit(1);
+    process.exitCode = 1;
   }
-}   
+}
 
 runPerformanceAnalysis().catch(err => {
   console.error('🚨 Errore non gestito:', err);
-  process.exit(1);
+  process.exitCode = 1;
 });
