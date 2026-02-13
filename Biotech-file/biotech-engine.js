@@ -577,21 +577,17 @@ function initDnaScanner() {
 
     // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
     const syncScannerData = () => {
-        const molName = document.querySelector('.bio-data-value')?.innerText || "---";
-        
-        // RECUPERO INTENSITÀ: Legge il valore numerico dalla barra HUD se presente
-        const intensityElement = document.querySelector('.intensity-value');
-        const intensity = intensityElement ? parseInt(intensityElement.innerText) : 80;
-
-        const tipContent = formatTip(
-            isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
-            isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
-            isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
-            intensity
-        );
-        
-        dnaScanner.setAttribute('data-bio-tip', tipContent);
-    };
+  const molName = document.querySelector('.bio-data-value')?.innerText || "---";
+  
+  const tipContent = formatTip(
+    isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
+    isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
+    isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report"
+    // Intensità rimossa
+  );
+  
+  dnaScanner.setAttribute('data-bio-tip', tipContent);
+};   
 
     // Avvio immediato e aggiornamento costante ogni secondo
     syncScannerData();
