@@ -408,12 +408,12 @@ function initDnaScanner() {
     const intensityElement = document.querySelector('.intensity-value');
     const currentIntensity = intensityElement ? parseInt(intensityElement.innerText) : 80; // Usa valore reale
 
-    // Mostra tooltip con intensità reale, non forzata a 100
+    // Mostra tooltip con intensità reale
     const loadingTip = formatTip(
         isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
         isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
         isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
-        currentIntensity // ✅ Usa il valore reale, non 100
+        currentIntensity // 📄 Usa il valore reale, non 100
     );
     dnaScanner.setAttribute('data-bio-tip', loadingTip);
 
@@ -578,7 +578,7 @@ function initDnaScanner() {
     const syncScannerData = () => {
         const molName = document.querySelector('.bio-data-value')?.innerText || "---";
         
-        // RECUPERO INTENSITÀ: Legge il valore numerico dalla barra HUD se presente
+        // RECUPERO INTENSITÀ: Prendiamo il valore reale dal DOM
         const intensityElement = document.querySelector('.intensity-value');
         const intensity = intensityElement ? parseInt(intensityElement.innerText) : null;
 
