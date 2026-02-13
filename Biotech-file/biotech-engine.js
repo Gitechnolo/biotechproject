@@ -482,38 +482,46 @@ function initDnaScanner() {
         doc.line(0, 40, 210, 40);
 
         // --- 2. ANALISI MOLECOLARE ---
-        let yPos = 55;
-        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.setFont("helvetica", "bold");
-        doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
+let yPos = 55;
+doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+doc.setFont("helvetica", "bold");
+doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
 
-        yPos += 8;
-        doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
-        doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
-        
-        doc.setFontSize(10);
-        doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
-        doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-        doc.setFontSize(16);
-        doc.text(molecule.toUpperCase(), 20, yPos + 18);
+yPos += 8;
+doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
+doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
 
-        // Intensità con Percentuale Visibile
-        // Recupero il valore REALE dall'interfaccia (es. quello sotto "INVERNO FASE CICLO")
-// Usiamo un selettore più preciso per evitare il fallback al 100%
-const realPercentElement = document.querySelector('.phase-percentage') || document.querySelector('.intensity-value');
-const intVal = realPercentElement ? realPercentElement.innerText.replace('%', '') : "0";
+doc.setFontSize(10);
+doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
+doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
+doc.setFontSize(16);
+doc.text(molecule.toUpperCase(), 20, yPos + 18);
 
+// --- LOGICA DI RECUPERO PERCENTUALE REALE ---
+// Cerchiamo nel documento l'elemento che contiene il simbolo % (es. 11.93%)
+const pageElements = Array.from(document.querySelectorAll('div, span, b, p'));
+const percentNode = pageElements.find(el => el.innerText.includes('%') && el.innerText.length < 15);
+const rawPercent = percentNode ? percentNode.innerText.match(/[\d.]+/)[0] : "0";
+const intVal = parseFloat(rawPercent); 
+
+// Disegno della barra nel PDF
 doc.setFillColor(230, 230, 230);
 doc.rect(140, yPos + 10, 45, 4, 'F');
 doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
 
-// Disegna la barra nel PDF basandosi sul valore reale estratto
-const barWidth = (45 * parseInt(intVal)) / 100;
+// Calcolo larghezza basato sul valore reale (es. 11.93)
+const barWidth = (45 * intVal) / 100;
 doc.rect(140, yPos + 10, barWidth, 4, 'F');
 
 doc.setTextColor(50);
 doc.setFontSize(8);
 doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}%`, 140, yPos + 18);
+
+        doc.setTextColor(80);
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        const desc = dict[molecule] || dict["default"];
+        doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);
 
         // --- 3. TABELLA 24H TRADOTTA ---
         yPos += 50;
