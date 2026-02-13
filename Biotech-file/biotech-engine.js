@@ -401,28 +401,27 @@ function initDnaScanner() {
 
     // --- GESTORE CLICK (TRIGGER DOWNLOAD) ---
     dnaScanner.addEventListener('click', (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        // Acquisizione dati istantanea per il PDF
-        const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
-        
-        // FEEDBACK HUD: Sostituisce il popup alert del browser per non spaventare l'utente
-        const loadingTip = formatTip(
-            isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
-            isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
-            isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
-            100 // Forza la barra al 100% durante il caricamento
-        );
-        dnaScanner.setAttribute('data-bio-tip', loadingTip);
+    // Recupera il valore reale delle molecole
+    const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
+    const intensityElement = document.querySelector('.intensity-value');
+    const currentIntensity = intensityElement ? parseInt(intensityElement.innerText) : 80; // Usa valore reale
 
-// --- PERCEIVED PERFORMANCE OPTIMIZATION ---
-// Artificial latency (800ms) to ensure UI feedback synchronization.
-// Provides users with visual confirmation of data processing before PDF trigger.
-        setTimeout(() => {
-            executeSecureDownload(currentMol);
-            syncScannerData(); // Ripristina immediatamente il tooltip informativo
-        }, 800);
-    });
+    // Mostra tooltip con intensità reale, non forzata a 100
+    const loadingTip = formatTip(
+        isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
+        isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
+        isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
+        currentIntensity // ✅ Usa il valore reale, non 100
+    );
+    dnaScanner.setAttribute('data-bio-tip', loadingTip);
+
+    setTimeout(() => {
+        executeSecureDownload(currentMol);
+        syncScannerData();
+    }, 800);
+});   
 
     // --- GESTORE TASTIERA (INVIO/SPAZIO) ---
     dnaScanner.addEventListener('keydown', (e) => {
