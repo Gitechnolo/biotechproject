@@ -5,6 +5,18 @@
 // Reliability: Fail-safe Tooltip Rendering & Seasonal-Aware Advice Engine
 // Feature: Real-time HUD (Heads-Up Display) Synchronization
 // ==========================================================================
+
+// Helper function per creare elementi con proprietà e figli in modo più pulito
+const el = (tag, props = {}, ...children) => {
+    const element = document.createElement(tag);
+    Object.assign(element, props);
+    children.forEach(child => {
+        if (typeof child === 'string') element.appendChild(document.createTextNode(child));
+        else if (child) element.appendChild(child);
+    });
+    return element;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURAZIONE LINGUA ---
@@ -188,29 +200,54 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
 };
 
     // --- 1. MONITOR STAGIONALE ---
-    function initSeasonMonitor() {
-        const countdownEl = document.getElementById('modern-countdown');
-        if (!countdownEl) return;
-        let dataDisplay = document.getElementById('bio-data-display') || document.createElement('div');
-        if (!dataDisplay.id) { dataDisplay.id = 'bio-data-display'; countdownEl.innerHTML = ''; countdownEl.appendChild(dataDisplay); }
+function initSeasonMonitor() {
+    const countdownEl = document.getElementById('modern-countdown');
+    if (!countdownEl) return;
 
-        const lang = {
-            seasons: isIt ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" } : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
-            phase: isIt ? "FASE CICLO" : "CYCLE PHASE"
-        };
-
-        const updateBioCycle = () => {
-            const now = new Date(), year = now.getFullYear(), seasonKey = getCurrentSeason();
-            const start = new Date(year, 0, 1), end = new Date(year + 1, 0, 1);
-            const progress = ((now - start) / (end - start)) * 100, daysLeft = Math.floor((end - now) / 86400000);
-            const tooltipMsg = isIt ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.' : 'Earth axial tilt monitoring and metabolic impact.';
-            dataDisplay.innerHTML = `
-                <div class="bio-season-label" data-bio-tip="${tooltipMsg}">${lang.seasons[seasonKey]} ${lang.phase}</div>
-                <div class="bio-progress-data" data-bio-tip="${tooltipMsg}">${progress.toFixed(2)}% <span class="bio-t-minus">| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}</span></div>
-            `;
-        };
-        updateBioCycle(); setInterval(updateBioCycle, 3600000);
+    let dataDisplay = document.getElementById('bio-data-display');
+    if (!dataDisplay) {
+        dataDisplay = createBioEl('div', { id: 'bio-data-display' });
+        countdownEl.replaceChildren();
+        countdownEl.appendChild(dataDisplay);
     }
+
+    const lang = {
+        seasons: isIt 
+            ? { spring: "PRIMAVERA", summer: "ESTATE", autumn: "AUTUNNO", winter: "INVERNO" } 
+            : { spring: "SPRING", summer: "SUMMER", autumn: "AUTUMN", winter: "WINTER" },
+        phase: isIt ? "FASE CICLO" : "CYCLE PHASE"
+    };
+
+    const updateBioCycle = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const seasonKey = getCurrentSeason();
+        const start = new Date(year, 0, 1);
+        const end = new Date(year + 1, 0, 1);
+        const progress = ((now - start) / (end - start)) * 100;
+        const daysLeft = Math.floor((end - now) / 86400000);
+        const tooltipMsg = isIt 
+            ? 'Monitoraggio dell\'inclinazione assiale terrestre e impatto metabolico.'
+            : 'Earth axial tilt monitoring and metabolic impact.';
+
+        dataDisplay.replaceChildren(
+            createBioEl('div', { 
+                className: 'bio-season-label', 
+                'data-bio-tip': tooltipMsg 
+            }, `${lang.seasons[seasonKey]} ${lang.phase}`),
+            createBioEl('div', { 
+                className: 'bio-progress-data', 
+                'data-bio-tip': tooltipMsg 
+            },
+                `${progress.toFixed(2)}% `,
+                createBioEl('span', { className: 'bio-t-minus' }, `| T-MINUS: ${daysLeft}${isIt ? 'G' : 'D'}`)
+            )
+        );
+    };
+
+    updateBioCycle();
+    setInterval(updateBioCycle, 3600000);
+}   
 
     // --- 2. OROLOGIO BIO-CIRCADIANO ---
     function initBioClock() {
@@ -340,21 +377,49 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
     }
 
     // --- 3. SALUTO SETTIMANALE ---
-    function initWeeklyGreeting() {
-        const weekElement = document.getElementById("week");
-        if (!weekElement) return;
-        const createSpans = (text, start) => text.split('').map((char, index) => `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-        const messages = { it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'], en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'] };
-        const titles = { it: 'Biotech Project vi augura ', en: 'Biotech Project wishes you ' };
-        const greetings = { it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'], en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'] };
-        const now = new Date(), hour = now.getHours(), today = now.getDay();
-        let gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
-        window.requestAnimationFrame(() => {
-            const daySpans = createSpans(messages[isIt ? 'it' : 'en'][today], 26);
-            const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
-            weekElement.innerHTML = `<div class="greeting-time">${greetings[isIt ? 'it' : 'en'][gIdx]}</div>${titleSpans + daySpans}`;
+function initWeeklyGreeting() {
+    const weekElement = document.getElementById("week");
+    if (!weekElement) return;
+
+    const createSpans = (text, start) => {
+        return text.split('').map((char, index) => {
+            const span = createBioEl('span', { style: `--i:${start + index}` });
+            span.appendChild(document.createTextNode(char === ' ' ? '\u00A0' : char));
+            return span;
         });
-    }
+    };
+
+    const messages = { 
+        it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'], 
+        en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'] 
+    };
+    const titles = { 
+        it: 'Biotech Project vi augura ', 
+        en: 'Biotech Project wishes you ' 
+    };
+    const greetings = { 
+        it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'], 
+        en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'] 
+    };
+
+    const now = new Date();
+    const hour = now.getHours();
+    const today = now.getDay();
+    const gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
+
+    window.requestAnimationFrame(() => {
+        const daySpans = createSpans(messages[isIt ? 'it' : 'en'][today], 26);
+        const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
+
+        const greetingTime = createBioEl('div', { className: 'greeting-time' }, greetings[isIt ? 'it' : 'en'][gIdx]);
+
+        weekElement.replaceChildren(
+            greetingTime,
+            ...titleSpans,
+            ...daySpans
+        );
+    });
+}   
 
     // --- 4. TOOLTIP GESTORE (UPDATED FOR HTML RENDERING) ---
     function initBiotechTooltips() {
