@@ -496,22 +496,19 @@ function initDnaScanner() {
         doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
         doc.setFontSize(16);
         doc.text(molecule.toUpperCase(), 20, yPos + 18);
-        // Intensità con Percentuale Visibile
-// Cerchiamo l'elemento che contiene il valore reale (es. 11.93%) 
-// Cerchiamo un div che contiene il simbolo '%'
-const allDivs = Array.from(document.querySelectorAll('div, span, p'));
-const realPercentElement = allDivs.find(el => el.innerText.includes('%') && el.innerText.length < 10);
 
-// Estraiamo solo i numeri (gestisce sia "11.93%" che "11.93 | T-MINUS")
-const rawText = realPercentElement ? realPercentElement.innerText : "0";
-const intVal = rawText.match(/(\d+(\.\d+)?)/) ? rawText.match(/(\d+(\.\d+)?)/)[0] : "0";
+        // Intensità con Percentuale Visibile
+        // Recupero il valore REALE dall'interfaccia (es. quello sotto "INVERNO FASE CICLO")
+// Usiamo un selettore più preciso per evitare il fallback al 100%
+const realPercentElement = document.querySelector('.phase-percentage') || document.querySelector('.intensity-value');
+const intVal = realPercentElement ? realPercentElement.innerText.replace('%', '') : "0";
 
 doc.setFillColor(230, 230, 230);
 doc.rect(140, yPos + 10, 45, 4, 'F');
 doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
 
-// Disegna la barra nel PDF basandosi sul valore reale estratto (es. 11.93)
-const barWidth = (45 * parseFloat(intVal)) / 100;
+// Disegna la barra nel PDF basandosi sul valore reale estratto
+const barWidth = (45 * parseInt(intVal)) / 100;
 doc.rect(140, yPos + 10, barWidth, 4, 'F');
 
 doc.setTextColor(50);
