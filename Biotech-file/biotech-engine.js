@@ -576,22 +576,21 @@ function initDnaScanner() {
 }; 
 
     // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
-    const syncScannerData = () => {
-        const molName = document.querySelector('.bio-data-value')?.innerText || "---";
-        
-        // RECUPERO INTENSITÀ: Legge il valore numerico dalla barra HUD se presente
-        const intensityElement = document.querySelector('.intensity-value');
-        const intensity = intensityElement ? parseInt(intensityElement.innerText) : 80;
+const syncScannerData = () => {
+    // Recuperiamo solo il nome della molecola (necessario per il testo del tooltip)
+    const molName = document.querySelector('.bio-data-value')?.innerText || "---";
 
-        const tipContent = formatTip(
-            isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
-            isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
-            isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
-            intensity
-        );
-        
-        dnaScanner.setAttribute('data-bio-tip', tipContent);
-    };
+    // Generiamo il contenuto del tooltip senza calcolare l'intensità (che creava rumore)
+    const tipContent = formatTip(
+        isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
+        isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
+        isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
+        null // Rimuove definitivamente la barra gialla dal tooltip visivo
+    );
+    
+    // Applichiamo il messaggio allo scanner
+    dnaScanner.setAttribute('data-bio-tip', tipContent);
+};
 
     // Avvio immediato e aggiornamento costante ogni secondo
     syncScannerData();
