@@ -482,40 +482,22 @@ function initDnaScanner() {
         doc.line(0, 40, 210, 40);
 
         // --- 2. ANALISI MOLECOLARE ---
-let yPos = 55;
-doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-doc.setFont("helvetica", "bold");
-doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
-
-yPos += 8;
-doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
-doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
-
-doc.setFontSize(10);
-doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
-doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-doc.setFontSize(16);
-doc.text(molecule.toUpperCase(), 20, yPos + 18);
-
-// --- LOGICA DI RECUPERO PERCENTUALE REALE ---
-// Cerchiamo nel documento l'elemento che contiene il simbolo % (es. 11.93%)
-const pageElements = Array.from(document.querySelectorAll('div, span, b, p'));
+        const pageElements = Array.from(document.querySelectorAll('div, span, b, p'));
 const percentNode = pageElements.find(el => el.innerText.includes('%') && el.innerText.length < 15);
-const rawPercent = percentNode ? percentNode.innerText.match(/[\d.]+/)[0] : "0";
-const intVal = parseFloat(rawPercent); 
+const rawPercent = percentNode ? percentNode.innerText.match(/[\d.]+/) : null;
+const intVal = rawPercent ? parseFloat(rawPercent[0]) : 0; // Gestisce fallback a 0
 
 // Disegno della barra nel PDF
 doc.setFillColor(230, 230, 230);
 doc.rect(140, yPos + 10, 45, 4, 'F');
 doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
 
-// Calcolo larghezza basato sul valore reale (es. 11.93)
 const barWidth = (45 * intVal) / 100;
 doc.rect(140, yPos + 10, barWidth, 4, 'F');
 
 doc.setTextColor(50);
 doc.setFontSize(8);
-doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}%`, 140, yPos + 18);
+doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal.toFixed(2)}%`, 140, yPos + 18);
 
         doc.setTextColor(80);
         doc.setFont("helvetica", "italic");
@@ -586,21 +568,19 @@ doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}%`, 140, yPos + 18);
 }; 
 
     // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
-const syncScannerData = () => {
-    // Recuperiamo solo il nome della molecola (necessario per il testo del tooltip)
-    const molName = document.querySelector('.bio-data-value')?.innerText || "---";
+   const syncScannerData = () => {
+  const molName = document.querySelector('.bio-data-value')?.innerText || "---";
+  const percentNode = document.querySelector('div, span, b, p');
+  const rawPercent = percentNode?.innerText.match(/[\d.]+/) ? parseFloat(percentNode.innerText.match(/[\d.]+/)[0]) : 80;
 
-    // Generiamo il contenuto del tooltip senza calcolare l'intensità (che creava rumore)
-    const tipContent = formatTip(
-        isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
-        isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
-        isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
-        null // Rimuove definitivamente la barra gialla dal tooltip visivo
-    );
-    
-    // Applichiamo il messaggio allo scanner
-    dnaScanner.setAttribute('data-bio-tip', tipContent);
-};
+  const tipContent = formatTip(
+    isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
+    isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
+    isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
+    Math.round(rawPercent)
+  );
+  dnaScanner.setAttribute('data-bio-tip', tipContent);
+};   
 
     // Avvio immediato e aggiornamento costante ogni secondo
     syncScannerData();
