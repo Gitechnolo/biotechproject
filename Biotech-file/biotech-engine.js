@@ -401,28 +401,25 @@ function initDnaScanner() {
 
     // --- GESTORE CLICK (TRIGGER DOWNLOAD) ---
     dnaScanner.addEventListener('click', (e) => {
-        e.preventDefault();
+  e.preventDefault();
 
-        // Acquisizione dati istantanea per il PDF
-        const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
-        
-        // FEEDBACK HUD: Sostituisce il popup alert del browser per non spaventare l'utente
-        const loadingTip = formatTip(
-            isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
-            isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
-            isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
-            100 // Forza la barra al 100% durante il caricamento
-        );
-        dnaScanner.setAttribute('data-bio-tip', loadingTip);
+  const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
+  const currentIntensity = document.querySelector('.intensity-value')?.innerText || "100%";
 
-// --- PERCEIVED PERFORMANCE OPTIMIZATION ---
-// Artificial latency (800ms) to ensure UI feedback synchronization.
-// Provides users with visual confirmation of data processing before PDF trigger.
-        setTimeout(() => {
-            executeSecureDownload(currentMol);
-            syncScannerData(); // Ripristina immediatamente il tooltip informativo
-        }, 800);
-    });
+  // Tooltip: senza barra
+  const loadingTip = formatTip(
+    isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
+    isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
+    isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report..."
+    // Nessuna intensità → nessuna barra
+  );
+  dnaScanner.setAttribute('data-bio-tip', loadingTip);
+
+  setTimeout(() => {
+    executeSecureDownload(currentMol, currentIntensity); // Passa la percentuale reale
+    syncScannerData();
+  }, 800);
+});   
 
     // --- GESTORE TASTIERA (INVIO/SPAZIO) ---
     dnaScanner.addEventListener('keydown', (e) => {
