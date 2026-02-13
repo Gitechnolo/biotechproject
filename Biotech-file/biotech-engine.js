@@ -482,36 +482,39 @@ function initDnaScanner() {
         doc.line(0, 40, 210, 40);
 
         // --- 2. ANALISI MOLECOLARE ---
-        let yPos = 55;
-        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.setFont("helvetica", "bold");
-        doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
+let yPos = 55;
+doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
+doc.setFont("helvetica", "bold");
+doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
 
-        yPos += 8;
-        doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
-        doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
-        
-        doc.setFontSize(10);
-        doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
-        doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-        doc.setFontSize(16);
-        doc.text(molecule.toUpperCase(), 20, yPos + 18);
+yPos += 8;
+doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
+doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
 
-        // Intensità con Percentuale Visibile
-        const intVal = document.querySelector('.intensity-value')?.innerText || "100%";
-        doc.setFillColor(230, 230, 230);
-        doc.rect(140, yPos + 10, 45, 4, 'F');
-        doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
-        doc.rect(140, yPos + 10, (45 * parseInt(intVal)) / 100, 4, 'F');
-        doc.setTextColor(50);
-        doc.setFontSize(8);
-        doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}`, 140, yPos + 18);
+doc.setFontSize(10);
+doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
+doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
+doc.setFontSize(16);
+doc.text(molecule.toUpperCase(), 20, yPos + 18);
 
-        doc.setTextColor(80);
-        doc.setFont("helvetica", "italic");
-        doc.setFontSize(10);
-        const desc = dict[molecule] || dict["default"];
-        doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);
+// Leggi il valore reale al momento del click
+const intVal = document.querySelector('.intensity-value')?.innerText || "100%";
+const percentage = parseInt(intVal);
+
+doc.setFillColor(230, 230, 230);
+doc.rect(140, yPos + 10, 45, 4, 'F');
+doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
+doc.rect(140, yPos + 10, (45 * percentage) / 100, 4, 'F');
+
+doc.setTextColor(50);
+doc.setFontSize(8);
+doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}`, 140, yPos + 18);
+
+doc.setTextColor(80);
+doc.setFont("helvetica", "italic");
+doc.setFontSize(10);
+const desc = dict[molecule] || dict["default"];
+doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);   
 
         // --- 3. TABELLA 24H TRADOTTA ---
         yPos += 50;
@@ -575,19 +578,19 @@ function initDnaScanner() {
     } catch (e) { console.error(e); }
 }; 
 
-    // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
-    const syncScannerData = () => {
+   // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
+const syncScannerData = () => {
   const molName = document.querySelector('.bio-data-value')?.innerText || "---";
   
   const tipContent = formatTip(
     isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
     isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
     isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report"
-    // Intensità rimossa
+    // Intensità rimossa → nessuna barra nel tooltip
   );
   
   dnaScanner.setAttribute('data-bio-tip', tipContent);
-};   
+};      
 
     // Avvio immediato e aggiornamento costante ogni secondo
     syncScannerData();
