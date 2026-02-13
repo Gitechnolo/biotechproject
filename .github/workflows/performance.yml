@@ -40,15 +40,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      # --- CONTROLLO SICUREZZA ---
+     # --- CONTROLLO SICUREZZA ---
       - name: 🛡️ Nightly Security Scan
-  if: github.event_name == 'schedule'
-  run: |
-    echo "Analisi proattiva riga per riga..."
-    ! grep -rE "password:|api_key:|secret:|token:" . \
-      --exclude=performance.yml \
-      --exclude-dir=.git \
-      || (echo "❌ Rilevato dato sensibile!" && exit 1)   
+        if: github.event_name == 'schedule'
+        run: |
+          echo "Analisi proattiva riga per riga..."
+          ! grep -rE "password:|api_key:|secret:|token:" . \
+            --exclude=performance.yml \
+            --exclude-dir=.git \
+            || (echo "❌ Rilevato dato sensibile!" && exit 1)      
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
