@@ -496,22 +496,27 @@ function initDnaScanner() {
         doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
         doc.setFontSize(16);
         doc.text(molecule.toUpperCase(), 20, yPos + 18);
-
         // Intensità con Percentuale Visibile
-        const intVal = document.querySelector('.intensity-value')?.innerText || "100%";
-        doc.setFillColor(230, 230, 230);
-        doc.rect(140, yPos + 10, 45, 4, 'F');
-        doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
-        doc.rect(140, yPos + 10, (45 * parseInt(intVal)) / 100, 4, 'F');
-        doc.setTextColor(50);
-        doc.setFontSize(8);
-        doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}`, 140, yPos + 18);
+// Cerchiamo l'elemento che contiene il valore reale (es. 11.93%) 
+// Cerchiamo un div che contiene il simbolo '%'
+const allDivs = Array.from(document.querySelectorAll('div, span, p'));
+const realPercentElement = allDivs.find(el => el.innerText.includes('%') && el.innerText.length < 10);
 
-        doc.setTextColor(80);
-        doc.setFont("helvetica", "italic");
-        doc.setFontSize(10);
-        const desc = dict[molecule] || dict["default"];
-        doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);
+// Estraiamo solo i numeri (gestisce sia "11.93%" che "11.93 | T-MINUS")
+const rawText = realPercentElement ? realPercentElement.innerText : "0";
+const intVal = rawText.match(/(\d+(\.\d+)?)/) ? rawText.match(/(\d+(\.\d+)?)/)[0] : "0";
+
+doc.setFillColor(230, 230, 230);
+doc.rect(140, yPos + 10, 45, 4, 'F');
+doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
+
+// Disegna la barra nel PDF basandosi sul valore reale estratto (es. 11.93)
+const barWidth = (45 * parseFloat(intVal)) / 100;
+doc.rect(140, yPos + 10, barWidth, 4, 'F');
+
+doc.setTextColor(50);
+doc.setFontSize(8);
+doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}%`, 140, yPos + 18);
 
         // --- 3. TABELLA 24H TRADOTTA ---
         yPos += 50;
