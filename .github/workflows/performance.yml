@@ -13,7 +13,7 @@ on:
       - main
       - master
   schedule:
-    - cron: '0 4 * * *' # Analisi profonda notturna alle 04:00
+    - cron: '0 4 * * *' # Analisi profonda 
   workflow_dispatch:
     inputs:
       url:
