@@ -13,7 +13,7 @@ on:
       - main
       - master
   schedule:
-    - cron: '0 4 * * *' # Analisi profonda notturna
+    - cron: '0 4 * * *' # Analisi profonda notturna alle 04:00
   workflow_dispatch:
     inputs:
       url:
@@ -40,8 +40,9 @@ jobs:
         with:
           fetch-depth: 0
 
-     # --- CONTROLLO SICUREZZA ---
+      # --- CONTROLLO SICUREZZA ---
       - name: 🛡️ Nightly Security Scan
+        id: security-scan
         if: github.event_name == 'schedule'
         run: |
           echo "Analisi proattiva riga per riga..."
@@ -71,14 +72,14 @@ jobs:
           npm install
 
       - name: 🚀 Run Performance Analysis
-        continue-on-error: true  # Non blocca il job su degrado
+        id: performance
+        continue-on-error: true  # Non blocca il job su degrado, ma l'ID serve per gli step successivi
         run: |
           cd tools
           node generate-performance.js
-          # Il file è sempre generato, anche in caso di degrado
           if [ ! -f performance-data.json ]; then
             echo "❌ Errore: performance-data.json non generato (crash)"
-            exit 1  # Solo se il file non esiste → errore reale
+            exit 1
           fi
           echo "✅ performance-data.json creato"
 
@@ -89,21 +90,34 @@ jobs:
           cp tools/performance-data.json data/performance-latest.json
           echo "✅ Copiato in data/performance-latest.json"
 
+      # --- PERSISTENZA DATI ---
+      - name: 💾 Commit and Push changes
+        if: success() || steps.performance.outcome == 'success'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/performance-latest.json
+          # Commit solo se ci sono cambiamenti effettivi per evitare loop o errori
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📈 SRE Audit: Update performance metrics ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            git push origin ${{ github.ref_name }}
+          fi
+
       # --- ALERT SOLO PER ERRORI REALI ---
       - name: 🚨 Crea alert solo per crash o security breach
-        if: >-
-          failure() &&
-          contains(steps.security-scan.conclusion, 'failure')
+        if: failure() && steps.security-scan.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
             const runUrl = `${context.payload.repository.html_url}/actions/runs/${context.runId}`;
             const title = '⚠️ ALERT: Possibile Attacco o Breach di Sicurezza';
-            const body = `Rilevato un problema critico di sicurezza durante l'audit.\n[Analizza i log qui](${runUrl})`;
+            const body = `Rilevato un problema critico di sicurezza durante l'audit.\n\n[Analizza i log qui](${runUrl})`;
             github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: title,
               body: body,
               labels: ['critical-alert', 'security-breach']
-            })   
+            })
