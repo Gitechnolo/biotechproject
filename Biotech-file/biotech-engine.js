@@ -388,8 +388,7 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         });
     }
 
-    // --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE OTTIMIZZATA & REALE) ---
-// Strategy: Secure asynchronous PDF generation via cdn-hosted jsPDF with UI-HUD feedback.
+// --- 5. LOGICA MODERNA DNA SCANNER (VERSIONE FULL & DETERMINISTICA) ---
 function initDnaScanner() {
     const dnaScanner = document.getElementById('dna-scanner');
     if (!dnaScanner) return;
@@ -399,31 +398,173 @@ function initDnaScanner() {
     dnaScanner.setAttribute('tabindex', '0');
     dnaScanner.setAttribute('aria-label', isIt ? 'Scarica Report Audit Bio-Sincronizzato' : 'Download Bio-Synchronized Audit Report');
 
-    // --- GESTORE CLICK (TRIGGER DOWNLOAD) ---
-    dnaScanner.addEventListener('click', (e) => {
-    e.preventDefault();
+    // --- FUNZIONE INTERNA: GENERAZIONE PDF (PARAMETRICA) ---
+    const executeSecureDownload = async (molecule, intensityValue, adviceText) => {
+        const loadJsPDF = () => {
+            return new Promise((resolve, reject) => {
+                if (window.jspdf) return resolve(window.jspdf);
+                const script = document.createElement('script');
+                script.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+                script.onload = () => resolve(window.jspdf);
+                script.onerror = () => reject(new Error("Errore caricamento jsPDF"));
+                document.head.appendChild(script);
+            });
+        };
 
-    // Recupera il valore reale delle molecole
-    const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
-    const intensityElement = document.querySelector('.intensity-value');
-    const currentIntensity = intensityElement ? parseInt(intensityElement.innerText) : 80; // Usa valore reale
+        try {
+            const { jsPDF } = await loadJsPDF();
+            const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+            const now = new Date();
+            const lang = isIt ? 'it' : 'en';
+            const dict = bioExplanations[lang];
+            
+            const NEON_GREEN = [0, 230, 118];
+            const TECH_GOLD = [255, 204, 0];
+            const DARK_ACCENT = [20, 30, 48];
 
-    // Mostra tooltip con intensità reale
-    const loadingTip = formatTip(
-        isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
-        isIt ? `Analisi molecolare: <b>${currentMol}</b>` : `Molecular analysis: <b>${currentMol}</b>`,
-        isIt ? "Compilazione file PDF in corso..." : "Compiling PDF report...",
-        currentIntensity // 📄 Usa il valore reale, non 100
-    );
-    dnaScanner.setAttribute('data-bio-tip', loadingTip);
+            // 1. HEADER E CONTESTO TEMPORALE
+            doc.setFillColor(...DARK_ACCENT);
+            doc.rect(0, 0, 210, 40, 'F');
+            try { 
+                doc.addImage("https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png", 'PNG', 10, 8, 24, 24); 
+            } catch(e) { console.warn("Favicon non disponibile"); }
+            
+            doc.setTextColor(167, 255, 235);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(20);
+            doc.text("BIOTECH CORE AUDIT", 40, 18);
+            
+            doc.setFontSize(8);
+            doc.setFont("courier", "normal");
+            const seasonText = document.querySelector('[class*="fase-ciclo"]')?.innerText.split('|')[0].trim() || "STATIONARY";
+            doc.text(`DATE: ${now.toLocaleDateString(lang)} | TIME: ${now.toLocaleTimeString(lang)} | ${seasonText}`, 40, 25);
+            doc.setDrawColor(...NEON_GREEN);
+            doc.line(0, 40, 210, 40);
 
-    setTimeout(() => {
-        executeSecureDownload(currentMol);
-        syncScannerData();
-    }, 800);
-});   
+            // 2. ANALISI MOLECOLARE ISTANTANEA
+            let yPos = 55;
+            doc.setTextColor(...DARK_ACCENT);
+            doc.setFont("helvetica", "bold");
+            doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
 
-    // --- GESTORE TASTIERA (INVIO/SPAZIO) ---
+            yPos += 8;
+            doc.setFillColor(...NEON_GREEN, 0.05);
+            doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
+            
+            doc.setFontSize(10);
+            doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
+            doc.setTextColor(...NEON_GREEN);
+            doc.setFontSize(16);
+            doc.text(molecule.toUpperCase(), 20, yPos + 18);
+
+            // BARRA INTENSITÀ (Usa il valore numerico passato, non legge il DOM)
+            const intValText = `${intensityValue}%`;
+            doc.setFillColor(230, 230, 230);
+            doc.rect(140, yPos + 10, 45, 4, 'F');
+            doc.setFillColor(...TECH_GOLD);
+            doc.rect(140, yPos + 10, (45 * intensityValue) / 100, 4, 'F');
+            doc.setTextColor(50);
+            doc.setFontSize(8);
+            doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intValText}`, 140, yPos + 18);
+
+            doc.setTextColor(80);
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(10);
+            const desc = dict[molecule] || dict["default"];
+            doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);
+
+            // 3. TABELLA 24H (DATI FISSI DI SISTEMA)
+            yPos += 50;
+            doc.setTextColor(...DARK_ACCENT);
+            doc.setFont("helvetica", "bold");
+            doc.text(isIt ? "RIEPILOGO CICLO 24H" : "24H CYCLE SUMMARY", 15, yPos);
+
+            const tableY = yPos + 5;
+            doc.setFillColor(...DARK_ACCENT);
+            doc.rect(15, tableY, 180, 8, 'F');
+            doc.setTextColor(255);
+            doc.text(isIt ? "ORA" : "TIME", 18, tableY + 5.5);
+            doc.text(isIt ? "MOLECOLA" : "MOLECULE", 45, tableY + 5.5);
+            doc.text(isIt ? "STATO DI SISTEMA" : "SYSTEM STATE", 95, tableY + 5.5);
+
+            let rowY = tableY + 8;
+            const cData = [
+                ["00:00", "ADENOSINA", isIt ? "RIGENERAZIONE" : "REGEN"],
+                ["06:00", "CORTISOLO", isIt ? "RESET CIRCADIANO" : "CIRCADIAN RESET"],
+                ["11:00", "GLUTAMMATO", isIt ? "PICCO COGNITIVO" : "COGNITIVE PEAK"],
+                ["17:00", "MIOCHINE", isIt ? "PICCO FISICO" : "PHYSICAL PEAK"],
+                ["23:00", "MELATONINA", isIt ? "INIZIO CLEARANCE" : "CLEARANCE START"]
+            ];
+
+            cData.forEach((row, i) => {
+                doc.setFillColor(i % 2 === 0 ? 248 : 240);
+                doc.rect(15, rowY, 180, 7, 'F');
+                doc.setTextColor(50);
+                doc.text(row[0], 18, rowY + 5);
+                doc.text(row[1], 45, rowY + 5);
+                doc.text(row[2], 95, rowY + 5);
+                rowY += 7;
+            });
+
+            // 4. MACRO & CONSIGLIO PERSONALIZZATO
+            yPos = 220;
+            doc.setDrawColor(200);
+            doc.line(15, yPos, 195, yPos);
+
+            const cx = 35, cy = 250;
+            [[0, 150, 255], [255, 87, 34], [TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]]].forEach((c, i) => {
+                doc.setDrawColor(...c);
+                doc.setLineWidth(1);
+                doc.ellipse(cx, cy, 15-(i*4), 15-(i*4));
+            });
+
+            doc.setTextColor(...DARK_ACCENT);
+            doc.text(isIt ? "BILANCIAMENTO MACRO" : "MACRO BALANCE", 60, 240);
+            doc.setFontSize(9);
+            doc.text(isIt ? "PROT: 40% | CARB: 30% | GRASSI: 30%" : "PROT: 40% | CARBS: 30% | FATS: 30%", 60, 247);
+
+            doc.setFontSize(12);
+            doc.text(isIt ? "CONSIGLIO BIO-LOGICO:" : "BIO-LOGICAL ADVICE:", 60, 260);
+            doc.setTextColor(...NEON_GREEN);
+            doc.text(doc.splitTextToSize(adviceText, 130), 60, 268);
+
+            doc.save(`Biotech_Audit_2026_${molecule}.pdf`);
+        } catch (e) { console.error("PDF Generation Failed:", e); }
+    };
+
+    // --- GESTORE CLICK (CATTURA DATI E TRIGGER) ---
+    dnaScanner.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // Recupero istantaneo dei dati prima del delay (Così non importa cosa fa il mouse dopo)
+        const currentMol = document.querySelector('.bio-data-value')?.innerText || "DHEA";
+        
+        // Estrazione percentuale dal modulo fase-ciclo
+        const cicloEl = document.querySelector('[class*="fase-ciclo"]');
+        const matchPercent = cicloEl?.innerText.match(/(\d+(?:\.\d+)?)%/);
+        const intensity = matchPercent ? parseFloat(matchPercent[1]) : 0;
+
+        // Recupero consiglio dinamico (ultimo bio-data-value o fallback)
+        const advice = document.querySelector('.advice-text')?.innerText || 
+                       document.querySelector('.bio-data-value:last-child')?.innerText || "---";
+
+        // UI Feedback immediato
+        const loadingTip = formatTip(
+            isIt ? "GENERAZIONE AUDIT" : "GENERATING AUDIT",
+            isIt ? `Sincronizzazione: <b>${currentMol}</b>` : `Syncing: <b>${currentMol}</b>`,
+            isIt ? "Compilazione in corso..." : "Compiling...",
+            Math.round(intensity)
+        );
+        dnaScanner.setAttribute('data-bio-tip', loadingTip);
+
+        // Timeout estetico per simulare lo scanner
+        setTimeout(async () => {
+            await executeSecureDownload(currentMol, intensity, advice);
+            syncScannerData();
+        }, 800);
+    });
+
+    // --- GESTORE TASTIERA ---
     dnaScanner.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -431,168 +572,22 @@ function initDnaScanner() {
         }
     });
 
-    // --- FUNZIONE DOWNLOAD ANTI-BLOCK ---
-   const executeSecureDownload = async (molecule) => {
-    /**
-     * PDF ENGINE STRATEGY: 
-     * 1. Dynamic Vector Graphics (rect, ellipse, lines) for HUD-style branding.
-     * 2. Data Virtualization: Maps DOM real-time values to PDF coordinates.
-     * 3. Asset Safety: Try-catch blocks for PNG favicon injection.
-     * 4. Smart Pagination: Dynamic text-wrapping for variable molecule descriptions.
-     */
-    const loadJsPDF = () => {
-        return new Promise((resolve, reject) => {
-            if (window.jspdf) return resolve(window.jspdf);
-            const script = document.createElement('script');
-            script.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
-            script.onload = () => resolve(window.jspdf);
-            script.onerror = () => reject(new Error("Errore caricamento libreria PDF"));
-            document.head.appendChild(script);
-        });
-    };
-
-    try {
-        const { jsPDF } = await loadJsPDF();
-        const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
-        const now = new Date();
-        const lang = isIt ? 'it' : 'en';
-        const dict = bioExplanations[lang];
-        
-        // --- COLORI BIOTECH ---
-        const NEON_GREEN = [0, 230, 118];
-        const TECH_GOLD = [255, 204, 0];
-        const DARK_ACCENT = [20, 30, 48];
-
-        // --- 1. HEADER E STAGIONE ---
-        doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.rect(0, 0, 210, 40, 'F');
-        try { doc.addImage("https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png", 'PNG', 10, 8, 24, 24); } catch(e) {}
-        
-        doc.setTextColor(167, 255, 235);
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(20);
-        doc.text("BIOTECH CORE AUDIT", 40, 18);
-        
-        doc.setFontSize(8);
-        doc.setFont("courier", "normal");
-        const season = document.querySelector('.bio-season-label')?.innerText || "STATIONARY";
-        doc.text(`DATE: ${now.toLocaleDateString(lang)} | TIME: ${now.toLocaleTimeString(lang)} | ${season}`, 40, 25);
-        doc.setDrawColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-        doc.line(0, 40, 210, 40);
-
-        // --- 2. ANALISI MOLECOLARE ---
-        let yPos = 55;
-        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.setFont("helvetica", "bold");
-        doc.text(isIt ? "ANALISI ISTANTANEA" : "INSTANT ANALYSIS", 15, yPos);
-
-        yPos += 8;
-        doc.setFillColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2], 0.05);
-        doc.roundedRect(15, yPos, 180, 35, 2, 2, 'F');
-        
-        doc.setFontSize(10);
-        doc.text(`${isIt ? 'MOLECOLA' : 'MOLECULE'}:`, 20, yPos + 10);
-        doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-        doc.setFontSize(16);
-        doc.text(molecule.toUpperCase(), 20, yPos + 18);
-
-        // Intensità con Percentuale Visibile
-        const intVal = document.querySelector('.intensity-value')?.innerText || "100%";
-        doc.setFillColor(230, 230, 230);
-        doc.rect(140, yPos + 10, 45, 4, 'F');
-        doc.setFillColor(TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]);
-        doc.rect(140, yPos + 10, (45 * parseInt(intVal)) / 100, 4, 'F');
-        doc.setTextColor(50);
-        doc.setFontSize(8);
-        doc.text(`${isIt ? 'INTENSITÀ' : 'INTENSITY'}: ${intVal}`, 140, yPos + 18);
-
-        doc.setTextColor(80);
-        doc.setFont("helvetica", "italic");
-        doc.setFontSize(10);
-        const desc = dict[molecule] || dict["default"];
-        doc.text(doc.splitTextToSize(desc, 170), 20, yPos + 28);
-
-        // --- 3. TABELLA 24H TRADOTTA ---
-        yPos += 50;
-        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.setFont("helvetica", "bold");
-        doc.text(isIt ? "RIEPILOGO CICLO 24H" : "24H CYCLE SUMMARY", 15, yPos);
-
-        const tableY = yPos + 5;
-        doc.setFillColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.rect(15, tableY, 180, 8, 'F');
-        doc.setTextColor(255);
-        doc.text(isIt ? "ORA" : "TIME", 18, tableY + 5.5);
-        doc.text(isIt ? "MOLECOLA" : "MOLECULE", 45, tableY + 5.5);
-        doc.text(isIt ? "STATO DI SISTEMA" : "SYSTEM STATE", 95, tableY + 5.5);
-
-        let rowY = tableY + 8;
-        const cData = [
-            ["00:00", "ADENOSINA", isIt ? "RIGENERAZIONE" : "REGEN"],
-            ["06:00", "CORTISOLO", isIt ? "RESET CIRCADIANO" : "CIRCADIAN RESET"],
-            ["11:00", "GLUTAMMATO", isIt ? "PICCO COGNITIVO" : "COGNITIVE PEAK"],
-            ["17:00", "MIOCHINE", isIt ? "PICCO FISICO" : "PHYSICAL PEAK"],
-            ["23:00", "MELATONINA", isIt ? "INIZIO CLEARANCE" : "CLEARANCE START"]
-        ];
-
-        cData.forEach((row, i) => {
-            doc.setFillColor(i % 2 === 0 ? 248 : 240);
-            doc.rect(15, rowY, 180, 7, 'F');
-            doc.setTextColor(50);
-            doc.text(row[0], 18, rowY + 5);
-            doc.text(row[1], 45, rowY + 5);
-            doc.text(row[2], 95, rowY + 5);
-            rowY += 7;
-        });
-
-        // --- 4. MACRO & CONSIGLIO ---
-        yPos = 220;
-        doc.setDrawColor(200);
-        doc.line(15, yPos, 195, yPos);
-
-        // HUD Circles
-        const cx = 35, cy = 250;
-        [[0, 150, 255], [255, 87, 34], [TECH_GOLD[0], TECH_GOLD[1], TECH_GOLD[2]]].forEach((c, i) => {
-            doc.setDrawColor(c[0], c[1], c[2]);
-            doc.setLineWidth(1);
-            doc.ellipse(cx, cy, 15-(i*4), 15-(i*4));
-        });
-
-        doc.setTextColor(DARK_ACCENT[0], DARK_ACCENT[1], DARK_ACCENT[2]);
-        doc.text(isIt ? "BILANCIAMENTO MACRO" : "MACRO BALANCE", 60, 240);
-        doc.setFontSize(9);
-        doc.text(isIt ? "PROT: 40% | CARB: 30% | GRASSI: 30%" : "PROT: 40% | CARBS: 30% | FATS: 30%", 60, 247);
-
-        // Fix Consiglio Bio-Logico
-        const adviceTxt = document.querySelector('.bio-data-value:last-child')?.innerText || "---";
-        doc.setFontSize(12);
-        doc.text(isIt ? "CONSIGLIO BIO-LOGICO:" : "BIO-LOGICAL ADVICE:", 60, 260);
-        doc.setTextColor(NEON_GREEN[0], NEON_GREEN[1], NEON_GREEN[2]);
-        doc.text(adviceTxt, 60, 268);
-
-        doc.save(`Biotech_Audit_2026_${molecule}.pdf`);
-    } catch (e) { console.error(e); }
-}; 
-
-    // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP ---
+    // --- SINCRONIZZAZIONE REAL-TIME TOOLTIP (SCANNER HUD) ---
     const syncScannerData = () => {
         const molName = document.querySelector('.bio-data-value')?.innerText || "---";
-        
-        // RECUPERO INTENSITÀ: Prendiamo il valore reale dal DOM
-        const intensityElement = document.querySelector('.intensity-value');
-        const intensity = intensityElement ? parseInt(intensityElement.innerText) : null;
+        const cicloEl = document.querySelector('[class*="fase-ciclo"]');
+        const intensity = cicloEl?.innerText.match(/(\d+(?:\.\d+)?)%/)?.[1] || 0;
 
         const tipContent = formatTip(
             isIt ? "DNA SCANNER ACTIVE" : "DNA SCANNER ACTIVE",
-            isIt ? `Sincronia Molecolare: <b>${molName}</b>` : `Molecular Sync: <b>${molName}</b>`,
-            isIt ? "Click per scaricare il Report PDF" : "Click to download PDF Report",
-            intensity
+            isIt ? `Modulo: <b>${molName}</b>` : `Module: <b>${molName}</b>`,
+            isIt ? "Click per Audit PDF" : "Click for PDF Audit",
+            Math.round(intensity)
         );
-        
         dnaScanner.setAttribute('data-bio-tip', tipContent);
     };
 
-    // Avvio immediato e aggiornamento costante ogni secondo
+    // Inizializzazione heartbeat dello scanner
     syncScannerData();
     setInterval(syncScannerData, 1000);
 }
