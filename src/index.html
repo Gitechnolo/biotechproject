@@ -35,31 +35,16 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .js #main-content { opacity: 0; transition: opacity 0.3s ease; }
 @media(max-width:768px){.biotechbody{background-attachment:scroll;background-position:center 20%;background-image:linear-gradient(to bottom,rgba(1,8,8,.94),rgba(1,8,8,.75)),url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif")}.staff-layout-container{padding-left:18px;padding-right:18px;box-sizing:border-box}.biotechbody p{line-height:1.6;margin-bottom:1.5rem;text-align:justify;font-size:.95rem;background:rgba(0,8,8,.4);padding:12px;border-radius:6px}}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
-.logo-wrapper-cls {
-    min-height: 215px; /* Ottimizzato */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
-    contain: layout size; /* Dice al browser che questo box non cambierà dimensione */
-}
-
-.modern-logo {
-    display: block;
-    max-width: 90vw;
-    height: auto; /* Permette al browser di usare l'aspect-ratio dalle prop width/height */
-    aspect-ratio: 720 / 180;
-}.pulse-logo{ opacity: 0.9}
+.logo-wrapper-cls { min-height: 215px; /* Ottimizzato */
+    display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; width: 100%;
+    contain: layout size; /* Dice al browser che questo box non cambierà dimensione */}
+.modern-logo { display: block;
+    max-width: 90vw; height: auto; /* Permette al browser di usare l'aspect-ratio dalle prop width/height */
+    aspect-ratio: 720 / 180; }.pulse-logo{ opacity: 0.9}
 #myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto; }.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}@media only screen and (max-width: 700px){ .modal-content{ margin-top: 80px !important; max-height: 50vh;} #caption{ font-size: 17px; padding-bottom: 100px;} .close{ top: 10px; right: 20px;}}
 /* Blocca lo spazio per l'anteprima video */
-#videoPoster {
-    aspect-ratio: 633 / 281; /* Fondamentale! */
-    width: 100%;
-    height: auto;
-    background: rgba(255,255,255,0.03); /* Crea un'area grigia di attesa */
-}
+#videoPoster { aspect-ratio: 633 / 281; /* Fondamentale! */
+    width: 100%; height: auto; background: rgba(255,255,255,0.03); /* Crea un'area grigia di attesa */}
 </style>
 <script>;!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r()||(i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))})).observe(o.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{r()}),t))}( "main-content", 150);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Biotech Project","alternateName":"Progetto Biotech","url":"https://gitechnolo.github.io/biotechproject/","description":"Portale educativo open source su biotecnologia e biologia umana. Inclusività scientifica e standard WCAG 2.1 per l'accessibilità cognitiva.","publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"],"inLanguage":["it","en"],"isAccessibleForFree":"True","educationalUse":["Science Education","Software Development Case Study"],"keywords":"Inclusive Design, WCAG 2.1, Biotech, Open Source, High Performance Web, DSA Accessibility, Multilingual"}</script>
