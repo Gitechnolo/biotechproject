@@ -36,9 +36,7 @@ jobs:
 
     steps:
       - name: 🔁 Checkout BiotechProject
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       # --- CONTROLLO SICUREZZA ---
       - name: 🛡️ Nightly Security Scan
@@ -52,7 +50,7 @@ jobs:
             || (echo "❌ Rilevato dato sensibile!" && exit 1)      
 
       - name: ⚙️ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@39225d3d07c95a7f96c320a59a95688929c41c51 # v4.1.0
         with:
           node-version: '20'
 
@@ -73,7 +71,7 @@ jobs:
 
       - name: 🚀 Run Performance Analysis
         id: performance
-        continue-on-error: true  # Non blocca il job su degrado, ma l'ID serve per gli step successivi
+        continue-on-error: true
         run: |
           cd tools
           node generate-performance.js
@@ -97,7 +95,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/performance-latest.json
-          # Commit solo se ci sono cambiamenti effettivi per evitare loop o errori
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
@@ -108,7 +105,7 @@ jobs:
       # --- ALERT SOLO PER ERRORI REALI ---
       - name: 🚨 Crea alert solo per crash o security breach
         if: failure() && steps.security-scan.outcome == 'failure'
-        uses: actions/github-script@v7
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
             const runUrl = `${context.payload.repository.html_url}/actions/runs/${context.runId}`;
@@ -126,7 +123,7 @@ jobs:
 # FINAL PIPELINE AUDIT & LEADERSHIP SIGN-OFF | BiotechProject
 ################################################################################
 # Orchestration: GitHub Actions SRE Engine
-# Strategy: Integrity over Compliance (Anti-Fragile Execution)
+# Strategy: Integrity over Compliance (Full-SHA Hardening)
 # Goal: 100% Transparency in Performance Degradation
 ################################################################################
 #
@@ -142,9 +139,9 @@ jobs:
 #
 # ------------------------------------------------------------------------------
 # AUDIT SUMMARY:
-# - Security Scan: PROACTIVE_DEFENSE_ACTIVE
+# - Security Scan: PROACTIVE_DEFENSE_ACTIVE (SHA-Locked)
 # - Performance Persistence: DATA_COMMIT_STABLE
 # - SRE Philosophy: HUMAN-CENTRIC ERROR BUDGETING
 # ------------------------------------------------------------------------------
 # STATUS: WORKFLOW_IDLE // HEARTBEAT_SYNC_ACTIVE
-################################################################################            
+################################################################################
