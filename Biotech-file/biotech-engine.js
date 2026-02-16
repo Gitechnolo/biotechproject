@@ -612,7 +612,7 @@ function initDnaScanner() {
   Where you gonna go? Where you gonna go? 
   Where you gonna sleep tonight?
   
-  -- Amy Macdonald, "This Is The Life" --
+  -- Amy Macdonald, "This Is The Life" (Acoustic) --
   ------------------------------------------------------------------
  * End of Bio-sync Logic Protocol. Ready for integration.
  */
