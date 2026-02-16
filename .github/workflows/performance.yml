@@ -36,9 +36,8 @@ jobs:
 
     steps:
       - name: 🔁 Checkout BiotechProject
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        # Sostituito actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       # --- CONTROLLO SICUREZZA ---
       - name: 🛡️ Nightly Security Scan
@@ -52,7 +51,8 @@ jobs:
             || (echo "❌ Rilevato dato sensibile!" && exit 1)      
 
       - name: ⚙️ Setup Node.js
-        uses: actions/setup-node@v4
+        # Sostituito actions/setup-node@v4
+        uses: actions/setup-node@1d82da994025808b4959830d691244e554907a06 # v4.3.0
         with:
           node-version: '20'
 
@@ -108,7 +108,8 @@ jobs:
       # --- ALERT SOLO PER ERRORI REALI ---
       - name: 🚨 Crea alert solo per crash o security breach
         if: failure() && steps.security-scan.outcome == 'failure'
-        uses: actions/github-script@v7
+        # Sostituito actions/github-script@v7
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
             const runUrl = `${context.payload.repository.html_url}/actions/runs/${context.runId}`;
