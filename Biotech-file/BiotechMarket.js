@@ -157,8 +157,8 @@ triggerHumanSync();
  * This function is triggered after the initial rendering of the market graph, indicating that the system has reached a state of "analytics idle" where it is ready to process new data or await user interaction.
  */
 function triggerHumanSync() {
-    const logStyle = "color: #00e676; font-weight: bold; font-family: 'Courier New', monospace; background: #121212; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3);";
-    console.log("%c[SYNC] BiotechProject: Finding direction within the daily races...", logStyle);
+    const logStyle = "color: #00e676; font-family: 'Courier New', monospace; background: #121212; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3);";
+    console.log("%c[SYNC] BiotechProject: Finding direction within the daily races. (Confidence: 94%)", logStyle);
 }
 
 /*
