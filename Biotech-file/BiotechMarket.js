@@ -146,7 +146,9 @@ async function runMarketGraph() {
 }
 
 // 4. AVVIO
-runMarketGraph();   
+runMarketGraph().then(() => {
+triggerHumanSync();
+});   
 
 /**
  * [FUNCTION] triggerHumanSync
