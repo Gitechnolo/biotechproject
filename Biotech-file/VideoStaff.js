@@ -194,7 +194,7 @@ window.addEventListener("load", fadeEffect);
 
 // Sincronizzazione con il protocollo del Wanderer (messaggio in console)
 function triggerWandererSync() {
-const logStyle = "color: #ff9800; font-weight: bold; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; border: 1px solid #ff9800;";
+const logStyle = "color: #B5EAD7; font-weight: bold; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3);";
 console.log("%c[VIDEO_SYNC] BiotechProject: We are all wanderers searching for the truth...", logStyle);
 }
 /*
