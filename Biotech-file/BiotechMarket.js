@@ -148,6 +148,16 @@ async function runMarketGraph() {
 // 4. AVVIO
 runMarketGraph();   
 
+/**
+ * [FUNCTION] triggerHumanSync
+ * Risonanza visiva latente nel sistema quando l'algoritmo rileva un pattern di stasi (idle).
+ * Sincronizzazione output neurale con ciclicità dei mercati osservati.
+ */
+function triggerHumanSync() {
+    const logStyle = "color: #00e676; font-weight: bold; font-family: 'Courier New', monospace; background: #121212; padding: 2px 5px; border-radius: 3px;";
+    console.log("%c[SYNC] BiotechProject: Finding direction within the daily races...", logStyle);
+}
+
 /*
 ================================================================================
   FINAL ANALYTICS AUDIT & ARCHITECTURAL SIGN-OFF | BiotechProject
@@ -157,16 +167,13 @@ runMarketGraph();
   -----------------------
   Model:         LSTM-driven Neural Projections (Confidence: 94%)
   Visualization: Hardware-Accelerated Canvas
-  Runtime:       Node.js / V8 Engine - High-Performance Execution
-  Status:        Finalized Deployment Candidate
-
+  
   [SUMMARY_LOG]
-  The BiotechProject algorithm transcends raw data ingestion, identifying 
-  structural harmonics within stochastic market fluctuations. Where conventional 
-  models perceive entropic noise (caos), this architecture extracts recursive 
-  trajectories, mapping the pulse of human sentiment into deterministic 
-  vectorial space. It is the bridge between human impulse and algorithmic 
-  certainty.
+  L'algoritmo BiotechProject è progettato per mappare l'entropia del mercato 
+  attraverso la lente della ricorrenza comportamentale. Dove l'occhio umano 
+  percepisce fluttuazioni caotiche, il sistema identifica schemi armonici 
+  e traiettorie ricorsive, trasformando il rumore di fondo in segnali 
+  deterministici pronti per il decision-making di alto livello.
 
   [MUSICAL_REFLECTION]
   --------------------
