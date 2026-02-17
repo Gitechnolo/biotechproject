@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
  * and the system is in a state of creative stasis.
  */
 function triggerHumanSync() {
-    // Colore verde neon con un'ombra che suggerisce profondità
-    const logStyle = "color: #00e676; font-weight: bold; font-family: 'Courier New', monospace; background: #121212; padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(0, 230, 118, 0.5); text-shadow: 1px 1px 2px black;";
+    // Colore verde neon con un'ombra per profondità
+    const logStyle = "color: #B5EAD7; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3); text-shadow: 1px 1px 2px rgba(137, 43, 226, 0.568);";
     
     console.log("%c[SYNC] BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", logStyle);
 }
