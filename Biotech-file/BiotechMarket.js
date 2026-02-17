@@ -152,11 +152,12 @@ triggerHumanSync();
 
 /**
  * [FUNCTION] triggerHumanSync
- * Risonanza visiva latente nel sistema quando l'algoritmo rileva un pattern di stasi (idle).
- * Sincronizzazione output neurale con ciclicità dei mercati osservati.
+ * Latent visual resonance in the system when the algorithm detects a stasis (idle) pattern.
+ * Synchronization of neural output with the cyclical patterns of observed markets.
+ * This function is triggered after the initial rendering of the market graph, indicating that the system has reached a state of "analytics idle" where it is ready to process new data or await user interaction.
  */
 function triggerHumanSync() {
-    const logStyle = "color: #00e676; font-weight: bold; font-family: 'Courier New', monospace; background: #121212; padding: 2px 5px; border-radius: 3px;";
+    const logStyle = "color: #00e676; font-weight: bold; font-family: 'Courier New', monospace; background: #121212; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3);";
     console.log("%c[SYNC] BiotechProject: Finding direction within the daily races...", logStyle);
 }
 
@@ -171,11 +172,9 @@ function triggerHumanSync() {
   Visualization: Hardware-Accelerated Canvas
   
   [SUMMARY_LOG]
-  L'algoritmo BiotechProject è progettato per mappare l'entropia del mercato 
-  attraverso la lente della ricorrenza comportamentale. Dove l'occhio umano 
-  percepisce fluttuazioni caotiche, il sistema identifica schemi armonici 
-  e traiettorie ricorsive, trasformando il rumore di fondo in segnali 
-  deterministici pronti per il decision-making di alto livello.
+  The BiotechProject algorithm is designed to map market entropy through the lens of behavioral recurrence.
+  Where the human eye perceives chaotic fluctuations, the system identifies harmonic patterns and recursive trajectories, 
+  transforming background noise into deterministic signals ready for high-level decision-making.
 
   [MUSICAL_REFLECTION]
   --------------------
