@@ -49,6 +49,7 @@ function loadAndPlayVideo() {
   // 5. Inizializza i controlli e avvia
   initializeVideoControls(video, controls);
   video.play().catch(e => console.log("Riproduzione manuale richiesta:", e));
+  triggerWandererSync(); // Sincronizzazione con il protocollo del Wanderer
 }
 
 // Funzione per gestire i controlli personalizzati
@@ -191,6 +192,11 @@ function fadeEffect() {
 window.addEventListener("load", fadeEffect);   
 // End fade effect (dissolvenza)
 
+// Sincronizzazione con il protocollo del Wanderer (messaggio in console)
+function triggerWandererSync() {
+const logStyle = "color: #ff9800; font-weight: bold; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; border: 1px solid #ff9800;";
+console.log("%c[VIDEO_SYNC] BiotechProject: We are all wanderers searching for the truth...", logStyle);
+}
 /*
 ================================================================================
 FINAL ARCHITECTURAL SIGN-OFF | BiotechProject Video Engine
