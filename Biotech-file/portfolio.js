@@ -844,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carica le librerie PDF subito, saranno in cache per il test offline
   loadJsPDF().then(() => {
   console.log(
-    "%c ✅ PDF libraries loaded and ready for offline use, SRE Stress Metrics: ACTIVE.",
+    "%c✅ PDF libraries loaded and ready for offline use.",
     "color: #00ff00; font-family: 'Courier New', monospace;"
   );
 });
