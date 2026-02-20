@@ -50,7 +50,8 @@ const SRE_LOG = {
   start: 'background: #2196F3; color: #ffffff;',   // Blu: Orchestrator Start
   stop: 'background: #FF9800; color: #1a1a1a;',    // Arancio: Atomic Interruption
   error: 'background: #F44336; color: #ffffff;',   // Rosso: Abort/Error
-  success: 'background: #4CAF50; color: #ffffff;'  // Verde: Lock Released
+  success: 'background: #4CAF50; color: #ffffff;',  // Verde: Lock Released
+  graphic: 'background: #80cbc4; color: #ffffff;'  // Ciano: Grafico & Metriche
 };
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
@@ -433,7 +434,7 @@ const datiSimulati = [
   { date: '2025-09-15', score: 85, note: 'UI/UX coerente' }
 ];
 function creaGrafico(history = []) {
-  console.log('Dati grafico:', history);
+  console.log('%c 📊 METRICS %c Graphic data:', SRE_LOG.base + SRE_LOG.graphic, 'color: #80cbc4;', history);
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
   const chartCtx = ctx.getContext('2d');
@@ -841,10 +842,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
   // --- AGGIUNTA PER SUPPORTO OFFLINE ---
-  // Carica le librerie PDF subito, così saranno in cache per il test offline
+  // Carica le librerie PDF subito, saranno in cache per il test offline
   loadJsPDF().then(() => {
-    console.log("Librerie PDF caricate e pronte per l'uso offline.");
-  });
+  console.log("%c 📚 ASSETS %c PDF libraries loaded and ready for offline use. ", SRE_LOG.base + SRE_LOG.graphic, "color: #80cbc4; font-style: italic;");
+});
 
   const statusSpan = document.getElementById('filter-status');
 
@@ -871,7 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (exportBtn) {
     exportBtn.addEventListener('click', exportToPDF);
   }
-});      
+});
 /*
 ================================================================================
 FINAL SYSTEM AUDIT & ARCHITECTURAL SIGN-OFF | BiotechProject
@@ -905,4 +906,4 @@ AUDIT SUMMARY:
 ================================================================================
 STATUS: SYSTEM_IDLE // HEARTBEAT_SYNC_ACTIVE
 ================================================================================
-*/
+*/      
