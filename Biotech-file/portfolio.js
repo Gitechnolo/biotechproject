@@ -841,17 +841,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
   // --- AGGIUNTA PER SUPPORTO OFFLINE ---
-  // Carica le librerie PDF subito, saranno in cache per il test offline
+  // Carica le librerie PDF subito, così saranno in cache per il test offline
   loadJsPDF().then(() => {
-    // Verifichiamo che i componenti critici siano pronti
-    const isLibraryReady = (typeof window.jspdf !== 'undefined' && typeof window.autoTable !== 'undefined');
-    
-    if (isLibraryReady) {
-      console.log(
-        "%c>> [SYSTEM] Performance Matrix validated. Lighthouse + SRE Stress Metrics: ACTIVE.",
-        "color: #00ff00; font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold; background: #0b1a0e; padding: 4px 10px; border-left: 4px solid #00ff00; border-radius: 0 4px 4px 0;"
-      );
-    }
+    console.log("Librerie PDF caricate e pronte per l'uso offline.");
   });
 
   const statusSpan = document.getElementById('filter-status');
