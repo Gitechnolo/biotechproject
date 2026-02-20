@@ -841,22 +841,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
   // --- AGGIUNTA PER SUPPORTO OFFLINE ---
-  // Carica le librerie PDF subito, così saranno in cache per il test offline
-  // --- LOG DI SISTEMA UNIVOCO (All'interno di DOMContentLoaded) ---
-let systemValidated = false; // Flag di controllo
-
-loadJsPDF().then(() => {
-    const isLibraryReady = (typeof window.jspdf !== 'undefined' && typeof window.autoTable !== 'undefined');
-    
-    // Il log solo se le librerie sono pronte E se non è già stato mostrato
-    if (isLibraryReady && !systemValidated) {
-      console.log(
-        "%c>> [SYSTEM] Performance Matrix validated. Lighthouse + SRE Stress Metrics: ACTIVE.",
-        "color: #00ff00; font-family: 'Courier New', monospace; background: #0b1a0e; border-radius: 0 4px 4px 0;"
-      );
-      systemValidated = true; // Impedisce la ripetizione al prossimo refresh
-      console.log("Librerie PDF caricate e pronte per l'uso offline.");
-    }
+  // Carica le librerie PDF subito, saranno in cache per il test offline
+  loadJsPDF().then(() => {
+  console.log(
+    "%c>> [SYSTEM] PDF libraries loaded and ready for offline use, SRE Stress Metrics: ACTIVE.",
+    "color: #00ff00; font-family: 'Courier New', monospace; background: #0b1a0e; border-radius: 0 4px 4px 0;"
+  );
 });
 
   const statusSpan = document.getElementById('filter-status');
