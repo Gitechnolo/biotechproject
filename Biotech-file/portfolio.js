@@ -226,11 +226,6 @@ async function loadPerformanceData() {
     if (!signal.aborted) {
       isRendering = false;
 console.log('%c ✅ SYSTEM %c loadPerformanceData() completato. Lock rilasciato.', SRE_LOG.base + SRE_LOG.success, 'color: #4caf50;');
-// --- LOGGING DI PERFORMANCE MATRIX (SRE Engine) ---
-    console.log(
-      "%c>> [SYSTEM] Performance Matrix validated. Lighthouse + SRE Stress Metrics: ACTIVE.",
-      "color: #00ff00; font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold; background: #0b1a0e; padding: 4px 10px; border-left: 4px solid #00ff00;"
-    );
     }
   }
 }
