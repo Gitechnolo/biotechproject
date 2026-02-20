@@ -840,10 +840,10 @@ if (canvas) {
 document.addEventListener('DOMContentLoaded', () => {
   setupRefreshButtons();
   loadPerformanceData();
-  // --- AGGIUNTA PER SUPPORTO OFFLINE & VALIDAZIONE TELEMETRIA ---
-  // Carica le librerie PDF subito per garantire la disponibilità offline
+  // --- AGGIUNTA PER SUPPORTO OFFLINE ---
+  // Carica le librerie PDF subito, saranno in cache per il test offline
   loadJsPDF().then(() => {
-    // Verifica che l'ambiente di esportazione sia integro
+    // Verifichiamo che i componenti critici siano pronti
     const isLibraryReady = (typeof window.jspdf !== 'undefined' && typeof window.autoTable !== 'undefined');
     
     if (isLibraryReady) {
@@ -852,8 +852,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "color: #00ff00; font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold; background: #0b1a0e; padding: 4px 10px; border-left: 4px solid #00ff00; border-radius: 0 4px 4px 0;"
       );
     }
-  }).catch(err => {
-    console.warn("%c>> [SYSTEM] Performance Matrix Warning: Telemetry data partially cached.", "color: #ff9800; font-weight: bold;");
   });
 
   const statusSpan = document.getElementById('filter-status');
