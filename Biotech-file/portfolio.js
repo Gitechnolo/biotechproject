@@ -844,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- AGGIUNTA PER SUPPORTO OFFLINE ---
   // Carica le librerie PDF subito, saranno in cache per il test offline
   loadJsPDF().then(() => {
-  console.log("%c ✅ PDF libraries loaded and ready for offline use. ", SRE_LOG.base + SRE_LOG.success);
+  console.log("%c 📚 ASSETS %c PDF libraries loaded and ready for offline use. ", SRE_LOG.base + SRE_LOG.graphic, "color: #80cbc4; font-style: italic;");
 });
 
   const statusSpan = document.getElementById('filter-status');
