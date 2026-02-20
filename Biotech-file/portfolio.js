@@ -844,10 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- AGGIUNTA PER SUPPORTO OFFLINE ---
   // Carica le librerie PDF subito, saranno in cache per il test offline
   loadJsPDF().then(() => {
-  console.log(
-    "%c✅ PDF libraries loaded and ready for offline use.",
-    "color: #00ff00; font-family: 'Courier New', monospace;"
-  );
+  console.log("%c ✅ PDF libraries loaded and ready for offline use. ", SRE_LOG.base + SRE_LOG.success);
 });
 
   const statusSpan = document.getElementById('filter-status');
