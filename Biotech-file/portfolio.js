@@ -56,31 +56,23 @@ const SRE_LOG = {
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
 async function loadJsPDF() {
-if (window.jspdf) {
-return;
-}
+  if (window.jspdf && window.autoTable) return;
 
-console.log("%c SRE %c Avvio caricamento asset critici offline...", SRE_LOG.base + SRE_LOG.start, "");
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = () => reject(new Error(`Errore nel caricamento di ${src}`));
+    document.head.appendChild(script);
+  });
 
-const loadScript = (src) => new Promise((resolve, reject) => {
-const script = document.createElement('script');
-script.src = src;
-script.async = false;
-script.onload = () => {
-console.log("%c OK %c Asset caricato: " + src, SRE_LOG.base + SRE_LOG.success, "");
-resolve();
-};
-script.onerror = () => reject(new Error("Errore SRE: Impossibile caricare " + src));
-document.head.appendChild(script);
-});
-
-try {
-await loadScript('./js/libs/jspdf.umd.min.js');
-await loadScript('./js/libs/jspdf.plugin.autotable.min.js');
-console.log("%c SRE %c Sistema di reportistica PDF pronto (OFFLINE MODE)", SRE_LOG.base + SRE_LOG.success, "");
-} catch (error) {
-console.error("%c SRE_FAIL %c " + error.message, SRE_LOG.base + SRE_LOG.error, "");
-}
+  try {
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js');
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
 }
 
 // --- Funzione principale: carica dati reali dal JSON ---
