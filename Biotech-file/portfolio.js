@@ -434,7 +434,19 @@ const datiSimulati = [
   { date: '2025-09-15', score: 85, note: 'UI/UX coerente' }
 ];
 function creaGrafico(history = []) {
-  console.log('%c 📊 METRICS %c Graphic data:', SRE_LOG.base + SRE_LOG.graphic, 'color: #80cbc4;', history);
+  // Aggiungi un flag globale all'inizio del file (se non presente)
+let isMetricsLogged = false;
+
+// Dentro creaGrafico(history):
+if (!isMetricsLogged) {
+    console.log(
+        '%c 📊 METRICS %c Graphic data:', 
+        SRE_LOG.base + SRE_LOG.graphic, 
+        'color: #80cbc4; font-weight: bold;', 
+        history
+    );
+    isMetricsLogged = true; // Impedisce la ripetizione nei clic successivi
+}
   const ctx = document.getElementById('performance-trend');
   if (!ctx) return;
   const chartCtx = ctx.getContext('2d');
