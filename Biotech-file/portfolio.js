@@ -473,7 +473,7 @@ function creaGrafico(history = []) {
     options: {
       responsive: true,
       plugins: {
-        legend: { labels: { color: '#b2dfdb', font: { family: 'Sansation' } } },
+        legend: { labels: { color: '#666', font: { family: 'Sansation' } } },
         tooltip: {
           backgroundColor: '#1f2937',
           titleColor: '#ffffff',
