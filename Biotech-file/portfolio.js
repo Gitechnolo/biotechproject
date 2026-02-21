@@ -453,7 +453,7 @@ function creaGrafico(history = []) {
     data: {
       labels: labels,
       datasets: [{
-        label: 'Maturità Tecnologica del Sito (%)',
+        label: 'BiotechProject Technology Maturity (%)',
         data: values,
         borderColor: '#10b981',
         backgroundColor: 'rgba(16, 185, 129, 0.1)',
@@ -473,7 +473,7 @@ function creaGrafico(history = []) {
     options: {
       responsive: true,
       plugins: {
-        legend: { labels: { color: '#ffffff', font: { family: 'Sansation' } } },
+        legend: { labels: { color: '#b2dfdb', font: { family: 'Sansation' } } },
         tooltip: {
           backgroundColor: '#1f2937',
           titleColor: '#ffffff',
