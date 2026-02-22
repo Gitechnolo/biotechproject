@@ -184,24 +184,27 @@ The system enables:
 
 ### 📁 Structure of the `lang/` folder
 
-For clarity, the table below maps HTML pages to their translation JSON files. `common.json` contains shared strings (menu, footer, etc.), page files contain per-page text.
+`common.json` contains shared strings (menu, footer, etc.), page files contain per-page text.
 
-| Page (.html) | Translation file (.json) | Notes |
-|---|---:|---|
-| index.html | lang/home.json | Home |
-| Progetti.html | lang/progetti.json | Projects |
-| Staff.html | lang/staff.json | Staff |
-| Marketing.html | lang/marketing.json | Marketing |
-| Tech_Maturity.html | lang/tech_maturity.json | Performance dashboard |
-| Dermatologia.html / -semplice | lang/dermatologia.json | Main + simplified |
-| Cuore.html / -semplice | lang/cuore.json | Main + simplified |
-| Cellula.html / -semplice | lang/cellula.json | Main + simplified |
-| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Main + simplified |
-| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Main + simplified |
-| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Main + simplified |
-| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Main + simplified |
-| Capelli.html / -semplice | lang/capelli.json | New pages added to monitoring |
-| Shared strings | lang/common.json | Menu, footer, shared UI text |
+```text
+lang/
+├── common.json                  # Shared strings (menu, footer, UI)
+│
+├── home.json                    # index.html
+├── progetti.json                # Progetti.html
+├── staff.json                   # Staff.html
+├── marketing.json               # Marketing.html
+├── tech_maturity.json           # Tech_Maturity.html
+│
+├── dermatologia.json            # Dermatologia.html + Dermatologia-semplice.html
+├── cuore.json                   # Cuore.html + Cuore-semplice.html
+├── cellula.json                 # Cellula.html + Cellula-semplice.html
+├── apparato_digerente.json      # Apparato_digerente.html + -semplice.html
+├── apparato_respiratorio.json   # Apparato_respiratorio.html + -semplice.html
+├── apparato_tegumentario.json   # Apparato_tegumentario.html + -semplice.html
+├── sistema_linfatico.json       # Sistema_linfatico.html + -semplice.html
+└── capelli.json                 # Capelli.html + Capelli-semplice.html
+```
 
 
 ## 📅 Last Verification Date
