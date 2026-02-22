@@ -43,7 +43,7 @@ const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
   pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
   vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
-  engita: 'background: #14afa0; color: #ffffff;',  // Ciano: Traduzioni & i18n
+  engita: 'background: #738576; color: #ffffff;',  // Grigio-Verde: i18n & Traduzioni
   dom: 'background: #9C27B0; color: #ffffff;'    // Viola: DOM & Inizializzazione
 };
 
