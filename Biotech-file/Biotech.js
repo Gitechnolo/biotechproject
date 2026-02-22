@@ -40,7 +40,7 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
                   (Real-time Data Virtualization / Secure Download) 
 */
 const SRE_LOG = {
-  base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
+  syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
   pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
   vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
   engita: 'background: #14afa0; color: #ffffff;',  // Ciano: Traduzioni & i18n
@@ -309,7 +309,7 @@ function initSmartPrefetch() {
           document.head.appendChild(prefetchLink);
           
           prefetchedLinks.add(url);
-          console.log(`%c📡 Pre-fetching: ${url}`, SRE_LOG.base + SRE_LOG.pre);   
+          console.log(`%c📡 Pre-fetching: ${url}`, SRE_LOG.syntax + SRE_LOG.pre);   
         }
       }, 200); // Ritardo di 200ms per evitare pre-fetch accidentali
     });
@@ -717,7 +717,7 @@ function applyTranslations(translations, lang) {
     }
   });
   if (typeof updateLastModified === 'function') updateLastModified(lang);
-  console.log(`%c🌐 Translations applied in ${lang}`, SRE_LOG.base + SRE_LOG.engita);   
+  console.log(`%c🌐 Translations applied in ${lang}`, SRE_LOG.syntax + SRE_LOG.engita);   
 }
 
 async function initTranslations() {
@@ -890,7 +890,7 @@ function initializeVideoControls(video, controls) {
 
 // --- 4. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log(`%c🎻 Unified system startup...`, SRE_LOG.base + SRE_LOG.dom);   
+  console.log(`%c🎻 Unified system startup...`, SRE_LOG.syntax + SRE_LOG.dom);   
 
   // A. Inizializza Lingua
   try {
@@ -998,7 +998,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     videoPoster.addEventListener('click', triggerVideo);
     videoPoster.addEventListener('keydown', triggerVideo);
-    console.log(`%c🎥 Video module ready.`, SRE_LOG.base + SRE_LOG.vid);   
+    console.log(`%c🎥 Video module ready.`, SRE_LOG.syntax + SRE_LOG.vid);   
   }
 });
 
