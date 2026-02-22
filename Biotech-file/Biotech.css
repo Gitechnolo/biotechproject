@@ -700,30 +700,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 #fadingText {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: hsla(60, 22%, 96%, 0.5); font-style: oblique; text-align: center; font-size: 16px; opacity: 1; transition: opacity 0.5s ease-in-out;}
 #fadingText.fade {opacity: 0;}
 /* End element id */
-/* Scrollbar fegato fluida */
-div.scroll-container {
-border: 1px solid rgba(204, 204, 204, .2);
-border-radius: 8px;
-background-color: transparent;
-overflow-x: auto;
-overflow-y: hidden;
-white-space: nowrap;
-padding: 10px;
-min-height: 450px; /* Riserva lo spazio verticale minimo /
-display: flex; / Passare a Flexbox è più moderno e performante */
-align-items: center;
-}
-div.scroll-container img {
-flex: 0 0 auto; /* Impedisce alle immagini di restringersi */
-padding: 5px;
-height: auto;
-width: 85%;
-max-width: 600px;
-border-radius: 10px;
-}
-/* Ottimizzazione per Desktop: mostra più immagini se c'è spazio */
-@media only screen and (min-width: 1024px) {div.scroll-container img {width: 45%; /* Ne mostra circa 2 alla volta */ }}
-/* End scrollbar fegato */ 
 /* Staff Section */
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
