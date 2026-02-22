@@ -39,7 +39,7 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
      ╚── SERVICE: PDF Audit Generation System
                   (Real-time Data Virtualization / Secure Download) 
 */
-const SRE_LOG = {
+const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
   pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
   vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
@@ -309,7 +309,7 @@ function initSmartPrefetch() {
           document.head.appendChild(prefetchLink);
           
           prefetchedLinks.add(url);
-          console.log(`%c📡 Pre-fetching: ${url}`, SRE_LOG.syntax + SRE_LOG.pre);   
+          console.log(`%c📡 Pre-fetching: ${url}`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.pre);   
         }
       }, 200); // Ritardo di 200ms per evitare pre-fetch accidentali
     });
@@ -717,7 +717,7 @@ function applyTranslations(translations, lang) {
     }
   });
   if (typeof updateLastModified === 'function') updateLastModified(lang);
-  console.log(`%c🌐 Translations applied in ${lang}`, SRE_LOG.syntax + SRE_LOG.engita);   
+  console.log(`%c🌐 Translations applied in ${lang}`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.engita);   
 }
 
 async function initTranslations() {
@@ -890,7 +890,7 @@ function initializeVideoControls(video, controls) {
 
 // --- 4. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log(`%c🎻 Unified system startup...`, SRE_LOG.syntax + SRE_LOG.dom);   
+  console.log(`%c🎻 Unified system startup...`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.dom);   
 
   // A. Inizializza Lingua
   try {
@@ -998,7 +998,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     videoPoster.addEventListener('click', triggerVideo);
     videoPoster.addEventListener('keydown', triggerVideo);
-    console.log(`%c🎥 Video module ready.`, SRE_LOG.syntax + SRE_LOG.vid);   
+    console.log(`%c🎥 Video module ready.`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.vid);   
   }
 });
 
