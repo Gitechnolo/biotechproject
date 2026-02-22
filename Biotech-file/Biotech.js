@@ -39,6 +39,13 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
      ╚── SERVICE: PDF Audit Generation System
                   (Real-time Data Virtualization / Secure Download) 
 */
+const SRE_LOG = {
+  base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
+  pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
+  vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
+  engita: 'background: #14afa0; color: #ffffff;',  // Ciano: Traduzioni & i18n
+  dom: 'background: #9C27B0; color: #ffffff;'    // Viola: DOM & Inizializzazione
+};
 
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
@@ -302,7 +309,7 @@ function initSmartPrefetch() {
           document.head.appendChild(prefetchLink);
           
           prefetchedLinks.add(url);
-          console.log(`📡 Pre-fetching: ${url}`);
+          console.log(`%c📡 Pre-fetching: ${url}`, SRE_LOG.base + SRE_LOG.pre);   
         }
       }, 200); // Ritardo di 200ms per evitare pre-fetch accidentali
     });
@@ -710,7 +717,7 @@ function applyTranslations(translations, lang) {
     }
   });
   if (typeof updateLastModified === 'function') updateLastModified(lang);
-  console.log(`✅ Traduzioni applicate in ${lang}`);
+  console.log(`%c🌐 Translations applied in ${lang}`, SRE_LOG.base + SRE_LOG.engita);   
 }
 
 async function initTranslations() {
@@ -883,7 +890,7 @@ function initializeVideoControls(video, controls) {
 
 // --- 4. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log("Avvio sistema unificato...");
+  console.log(`%c🎻 Unified system startup...`, SRE_LOG.base + SRE_LOG.dom);   
 
   // A. Inizializza Lingua
   try {
@@ -991,7 +998,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     videoPoster.addEventListener('click', triggerVideo);
     videoPoster.addEventListener('keydown', triggerVideo);
-    console.log("🎥 Video module ready.");
+    console.log(`%c🎥 Video module ready.`, SRE_LOG.base + SRE_LOG.vid);   
   }
 });
 
