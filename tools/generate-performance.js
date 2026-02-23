@@ -173,20 +173,10 @@ async function runPerformanceAnalysis() {
 
   // --- LOGICA SRE VIRTUAL STRESS TEST (5.000 UTENTI) ---
   const STRESS_USERS = 5000;
-
-  // Nuova funzione: calcola lo stress resilience score con 3 parametri
-  const calculateStressResilienceScore = (performanceScore, loadTime, firstPaint) => {
-    if (!performanceScore || performanceScore <= 0) return 0;
-    const loadTimePenalty = loadTime > 2000 ? 20 : 0;
-    const loadTimeScore = 100 - loadTimePenalty;
-    const firstPaintPenalty = firstPaint > 1000 ? 15 : 0;
-    const firstPaintScore = 100 - firstPaintPenalty;
-    const stressScore = Math.round(
-      (performanceScore * 0.4) +
-      (loadTimeScore * 0.3) +
-      (firstPaintScore * 0.3)
-    );
-    return Math.max(0, Math.min(100, stressScore));
+  const calculateStressScore = (originalScore) => {
+    if (!originalScore || originalScore <= 0) return 0;
+    const stressFactor = 1 - (Math.log(STRESS_USERS) / 95);
+    return Math.round(originalScore * stressFactor);
   };
 
   const outputDir = path.resolve(new URL(import.meta.url).pathname, '..');
@@ -207,22 +197,13 @@ async function runPerformanceAnalysis() {
       stressTest: {
         simulatedUsers: STRESS_USERS,
         methodology: "Logarithmic Load Degradation (SRE 2026)",
-        globalResilienceScore: Math.round(averagePerformance * (1 - (Math.log(STRESS_USERS) / 95))),
+        globalResilienceScore: calculateStressScore(averagePerformance),
         status: averagePerformance > 85 ? "STABLE / HIGH_AVAILABILITY" : "STABLE / DEGRADED_PERFORMANCE"
       }
     },
     pages: results.map(page => ({
       ...page,
-      stressResilienceScore: calculateStressResilienceScore(
-        page.performanceScore,
-        page.loadTime,
-        page.firstPaint
-      ),
-      rawValues: {
-        performanceScore: page.performanceScore,
-        loadTime: page.loadTime,
-        firstPaint: page.firstPaint
-      }
+      stressResilienceScore: calculateStressScore(page.performanceScore)
     }))
   };
 
