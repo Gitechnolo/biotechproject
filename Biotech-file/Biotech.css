@@ -646,6 +646,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .text-block {
   content-visibility: auto;
   contain: layout style paint;
+  contain-intrinsic-size: auto; /* Permette al browser di riservare spazio senza dover calcolare il layout completo */
   font-family: 'Sansation', Tahoma, Verdana, sans-serif;
   font-size: 16px;
   font-weight: normal;
