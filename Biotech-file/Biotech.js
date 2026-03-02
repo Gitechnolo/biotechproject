@@ -190,13 +190,13 @@ const BiotechSystem = (function() {
     const activeIcon = state.isNight ? '🌙' : '☀️';
     const offIcon = '🌑';
     const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
-
+    // 1. Aggiorna Pulsante Menu
     if (toggleBtn) {
         toggleBtn.setAttribute('aria-pressed', state.isActive);
         toggleBtn.innerHTML = `<b>${state.isActive ? activeIcon : offIcon} Comfort</b>`;
         toggleBtn.setAttribute('aria-label', statusLabel);
     }
-
+    // 2. Aggiorna Icona Flottante
     if (floatingIcon) {
         floatingIcon.innerHTML = state.isActive ? activeIcon : offIcon;
         floatingIcon.setAttribute('title', statusLabel);
