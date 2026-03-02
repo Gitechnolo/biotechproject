@@ -71,6 +71,7 @@ const BiotechSystem = (function() {
 
     // Se lo stato è cambiato, aggiorna l'interfaccia (background, particelle, icone)
     if (wasNight !== state.isNight) {
+console.log(`%cBIOTECH Modalità: ${state.isNight ? '🌙 Notte' : '☀️ Giorno'}`, SRE_LOG_MAIN.circadian + '; ' + SRE_LOG_MAIN.syntax);      
         updateVisuals();
     }
 }
@@ -156,9 +157,7 @@ const BiotechSystem = (function() {
 
     // --- AGGIORNA SFONDO (SOLO L'IMMAGINE) ---
     document.body.classList.toggle('night-mode', state.isNight);
-    // --- LOG SRE: Modalità Circadiana ---
-console.log(`%c[BIOTECH] Modalità: ${state.isNight ? '🌙 Notte' : '☀️ Giorno'}`, SRE_LOG_MAIN.circadian + '; ' + SRE_LOG_MAIN.syntax);
-
+    
     // --- AGGIORNA FILTRO E ELEMENTI ---
     if (state.isActive) {
         document.body.classList.add('qredshift-active');
