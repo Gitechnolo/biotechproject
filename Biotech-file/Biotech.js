@@ -44,8 +44,7 @@ const SRE_LOG_MAIN = {
   pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
   vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
   engita: 'background: #738576; color: #ffffff;',  // Grigio-Verde: i18n & Traduzioni
-  dom: 'background: #9C27B0; color: #ffffff;',    // Viola: DOM & Inizializzazione
-  circadian: 'background: #003366; color: #ffffff;'  // Blu Notturno: Modalità Circadiana
+  dom: 'background: #9C27B0; color: #ffffff;'    // Viola: DOM & Inizializzazione
 };
 
 /**
@@ -71,7 +70,6 @@ const BiotechSystem = (function() {
 
     // Se lo stato è cambiato, aggiorna l'interfaccia (background, particelle, icone)
     if (wasNight !== state.isNight) {
-console.log(`%cBIOTECH Modalità: ${state.isNight ? '🌙 Notte' : '☀️ Giorno'}`, SRE_LOG_MAIN.circadian + '; ' + SRE_LOG_MAIN.syntax);      
         updateVisuals();
     }
 }
@@ -157,7 +155,7 @@ console.log(`%cBIOTECH Modalità: ${state.isNight ? '🌙 Notte' : '☀️ Giorn
 
     // --- AGGIORNA SFONDO (SOLO L'IMMAGINE) ---
     document.body.classList.toggle('night-mode', state.isNight);
-    
+
     // --- AGGIORNA FILTRO E ELEMENTI ---
     if (state.isActive) {
         document.body.classList.add('qredshift-active');
