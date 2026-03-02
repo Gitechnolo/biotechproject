@@ -66,7 +66,7 @@ const BiotechSystem = (function() {
     function updateCircadianState() {
     const hour = new Date().getHours();
     const wasNight = state.isNight;
-    state.isNight = (hour < 7 || hour >= 19);
+    state.isNight = (hour < 7 || hour >= 14);
 
     // Se lo stato è cambiato, aggiorna l'interfaccia
     if (wasNight !== state.isNight) {
