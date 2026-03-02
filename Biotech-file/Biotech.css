@@ -161,7 +161,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     border-radius: 6px;
   }
 }
-/* === BACKGROUND NOTTURNO (SOLO IMMAGINE CAMBIA) === */
+/* === BACKGROUND NOTTURNO (CAMBIO IMMAGINE) === */
 .biotechbody.night-mode {
   background-image: 
     linear-gradient(to bottom, rgba(1, 8, 8, 0.9), rgba(1, 8, 8, 0.5)),

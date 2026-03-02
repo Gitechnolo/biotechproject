@@ -44,7 +44,8 @@ const SRE_LOG_MAIN = {
   pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
   vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
   engita: 'background: #738576; color: #ffffff;',  // Grigio-Verde: i18n & Traduzioni
-  dom: 'background: #9C27B0; color: #ffffff;'    // Viola: DOM & Inizializzazione
+  dom: 'background: #9C27B0; color: #ffffff;',    // Viola: DOM & Inizializzazione
+  circadian: 'background: #003366; color: #ffffff;'  // Blu Notturno: Modalità Circadiana
 };
 
 /**
@@ -155,6 +156,8 @@ const BiotechSystem = (function() {
 
     // --- AGGIORNA SFONDO (SOLO L'IMMAGINE) ---
     document.body.classList.toggle('night-mode', state.isNight);
+    // --- LOG SRE: Modalità Circadiana ---
+console.log(`%c[BIOTECH] Modalità: ${state.isNight ? '🌙 Notte' : '☀️ Giorno'}`, SRE_LOG_MAIN.circadian + '; ' + SRE_LOG_MAIN.syntax);
 
     // --- AGGIORNA FILTRO E ELEMENTI ---
     if (state.isActive) {
