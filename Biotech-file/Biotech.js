@@ -64,9 +64,15 @@ const BiotechSystem = (function() {
     };
 
     function updateCircadianState() {
-        const hour = new Date().getHours();
-        state.isNight = (hour < 7 || hour >= 19);
+    const hour = new Date().getHours();
+    const wasNight = state.isNight;
+    state.isNight = (hour < 7 || hour >= 19);
+
+    // Se lo stato è cambiato, aggiorna l'interfaccia (background, particelle, icone)
+    if (wasNight !== state.isNight) {
+        updateVisuals();
     }
+}
 
     // ==========================================================================
     // MODULE 01: VISUAL SYNTHESIZER (CANVAS ENGINE)
@@ -142,59 +148,61 @@ const BiotechSystem = (function() {
     // QRedshift Adaptive Filter (Blue-light Mitigation / UI Chromatic Logic)
     // ==========================================================================
     function updateVisuals() {
-        const { particles, dna, toggleBtn, floatingIcon } = state.elements;
-        const filterStr = state.isNight 
-            ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
-            : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+    const { particles, dna, toggleBtn, floatingIcon } = state.elements;
+    const filterStr = state.isNight 
+        ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
+        : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
 
-        if (state.isActive) {
-            document.body.classList.add('qredshift-active');
-            document.body.classList.remove('qredshift-disabled');
-            document.body.style.filter = filterStr;
-            if (particles) {
-                particles.classList.remove('is-hidden');
-                particles.style.display = '';
-            }
-            if (dna) dna.style.display = '';
+    // --- AGGIORNA SFONDO (SOLO L'IMMAGINE) ---
+    document.body.classList.toggle('night-mode', state.isNight);
 
-            if (!state.particlesController && particles) {
-                requestAnimationFrame(() => {
-                    state.particlesController = ParticlesEngine.init('particles-canvas');
-                    if (state.particlesController) state.particlesController.resize();
-                });
-            }
-        } else {
-            document.body.classList.remove('qredshift-active');
-            document.body.classList.add('qredshift-disabled');
-            document.body.style.filter = 'none';
-            if (particles) particles.classList.add('is-hidden');
-            if (dna) dna.style.display = 'none';
-
-            if (state.particlesController) {
-                state.particlesController.destroy();
-                state.particlesController = null;
-            }
+    // --- AGGIORNA FILTRO E ELEMENTI ---
+    if (state.isActive) {
+        document.body.classList.add('qredshift-active');
+        document.body.classList.remove('qredshift-disabled');
+        document.body.style.filter = filterStr;
+        if (particles) {
+            particles.classList.remove('is-hidden');
+            particles.style.display = '';
         }
+        if (dna) dna.style.display = '';
 
-        // --- SINCRONIZZAZIONE ICONE E LABEL ---
-        const activeIcon = state.isNight ? '🌙' : '☀️';
-        const offIcon = '🌑';
-        const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
-
-        // 1. Aggiorna Pulsante Menu
-        if (toggleBtn) {
-            toggleBtn.setAttribute('aria-pressed', state.isActive);
-            toggleBtn.innerHTML = `<b>${state.isActive ? activeIcon : offIcon} Comfort</b>`;
-            toggleBtn.setAttribute('aria-label', statusLabel);
+        if (!state.particlesController && particles) {
+            requestAnimationFrame(() => {
+                state.particlesController = ParticlesEngine.init('particles-canvas');
+                if (state.particlesController) state.particlesController.resize();
+            });
         }
+    } else {
+        document.body.classList.remove('qredshift-active');
+        document.body.classList.add('qredshift-disabled');
+        document.body.style.filter = 'none';
+        if (particles) particles.classList.add('is-hidden');
+        if (dna) dna.style.display = 'none';
 
-        // 2. Aggiorna Icona Flottante
-        if (floatingIcon) {
-            floatingIcon.innerHTML = state.isActive ? activeIcon : offIcon;
-            floatingIcon.setAttribute('title', statusLabel);
-            floatingIcon.style.opacity = state.isActive ? '1' : '0.6';
+        if (state.particlesController) {
+            state.particlesController.destroy();
+            state.particlesController = null;
         }
     }
+
+    // --- SINCRONIZZAZIONE ICONE E LABEL ---
+    const activeIcon = state.isNight ? '🌙' : '☀️';
+    const offIcon = '🌑';
+    const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
+    // 1. Aggiorna Pulsante Menu
+    if (toggleBtn) {
+        toggleBtn.setAttribute('aria-pressed', state.isActive);
+        toggleBtn.innerHTML = `<b>${state.isActive ? activeIcon : offIcon} Comfort</b>`;
+        toggleBtn.setAttribute('aria-label', statusLabel);
+    }
+    // 2. Aggiorna Icona Flottante
+    if (floatingIcon) {
+        floatingIcon.innerHTML = state.isActive ? activeIcon : offIcon;
+        floatingIcon.setAttribute('title', statusLabel);
+        floatingIcon.style.opacity = state.isActive ? '1' : '0.6';
+    }
+}
 
     function toggleSystem() {
         state.isActive = !state.isActive;
@@ -242,14 +250,19 @@ const BiotechSystem = (function() {
     }
 
     function init() {
+    updateCircadianState();
+    setupUI();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    const resizeObserver = new ResizeObserver(() => {
+        if (state.particlesController) state.particlesController.resize();
+    });
+    resizeObserver.observe(document.body);
+
+    // Aggiorna lo stato circadiano ogni ora
+    setInterval(() => {
         updateCircadianState();
-        setupUI();
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        const resizeObserver = new ResizeObserver(() => {
-            if (state.particlesController) state.particlesController.resize();
-        });
-        resizeObserver.observe(document.body);
-    }
+    }, 3600000);
+}
 
     return { init };
 })();
