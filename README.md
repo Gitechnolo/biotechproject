@@ -162,7 +162,7 @@ However, some AAA criteria are not applicable or required in the current context
 
 We're committed to building an inclusive platform. Explore how we implemented WCAG 2.1 AA compliance and multilingual support:
 
-[![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](biotechproject-case-study.md)
+[![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
 ## 🌍 Multilingual Management (i18n)
