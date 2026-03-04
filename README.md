@@ -48,7 +48,7 @@ BiotechProject is an **open digital lab** that combines **biotechnology, health,
 - 🌐 **Accessible to everyone**, including users with disabilities
 - 🤝 **Open to global collaboration**
 
-It was created to show how technology can serve science and healthcare, while ensuring equitable access for all — regardless of sensory, cognitive, or motor abilities.
+It was created to show how technology can serve science and healthcare, while ensuring equitable access for all -- regardless of sensory, cognitive, or motor abilities.
 
 It's a collaborative space for developers, researchers, and enthusiasts who want to explore **how the web can become a tool for inclusion and scientific innovation**.
 
@@ -80,7 +80,7 @@ It's a collaborative space for developers, researchers, and enthusiasts who want
 
 The BiotechProject is engineered for stakeholders who prioritize resilience as a clinical requirement:
 
-* **Health Systems & Google Health Initiatives**: Designed to scale metabolic digital twins with zero server-side compute costs, leveraging high-performance Vanilla JS for complex client-side logic.
+* **Health Systems & Health Initiatives**: Designed to scale metabolic digital twins with zero server-side compute costs, leveraging high-performance Vanilla JS for complex client-side logic.
 * **Global Health Equity**: Engineered specifically for users in low-connectivity regions, ensuring sub-second (0.3s) load times even on legacy devices through SRE-grade optimization.
 * **Neurodivergent Patients**: Native WCAG AAA compliance and 'Comfort Mode' provide a cognitively safe environment for healthcare interaction, reducing sensory overload.
 * **SRE & Systems Engineers**: A blueprint for "SRE-for-Humans," where performance metrics (95% aggregate score) are treated as a commitment to user inclusion and reliability.
