@@ -258,7 +258,7 @@ const BiotechSystem = (function() {
     });
     resizeObserver.observe(document.body);
 
-    // Aggiorna lo stato circadiano ogni ora
+    // Aggiorna ogni ora per mantenere la sincronizzazione del sistema (background) con l'orologio biologico.
     setInterval(() => {
         updateCircadianState();
     }, 3600000);

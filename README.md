@@ -95,16 +95,19 @@ This project follows a rigorous decision-making process to ensure enterprise-gra
 * **Decision**: Bypass modern frameworks (React/Angular/Vue) in favor of pure Vanilla JS (ES6+).
 * **Rationale**: Eliminates the "framework tax" on the Main Thread. In health-critical contexts, sub-second interactivity is a clinical requirement, not just a metric. 
 * **Outcome**: Initial bundle size **< 20KB** and TTI (Time to Interactive) of **0.3s**.
+* **Validation**: [Detailed Engineering Log & Performance Metrics (Issue #12)](https://github.com/Gitechnolo/biotechproject/issues/12)
 
 ### [ADR-002] Stateless Edge & Client-Side Intelligence
 * **Decision**: Migrate complex metabolic and biological synchronization logic entirely to the client side.
 * **Rationale**: Guarantees **100% service availability** during network surges or backend outages. This ensures users have access to bio-data even in offline or degraded connectivity (3G/Edge) scenarios.
 * **Outcome**: 85% reduction in backend infrastructure costs and native GDPR/HIPAA data sovereignty.
+* **Validation**: [Strategic Equity Analysis & Resilience Report (Issue #13)](https://github.com/Gitechnolo/biotechproject/issues/13)
 
 ### [ADR-003] AI-Assisted SRE Auditing
 * **Decision**: Implementation of a cross-validation orchestration between Gemini 1.5 Pro and GitHub Copilot for code review and security audits.
 * **Rationale**: Overcomes individual LLM hallucinations by enforcing a multi-model "consensus" on type safety and architectural integrity.
 * **Outcome**: 87% technical maturity score and automated 24h reliability checks.
+* **Validation**: [Multi-Model Audit Protocol & Case Study (Issue #14)](https://github.com/Gitechnolo/biotechproject/issues/14)
 
 ---
 
@@ -210,7 +213,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**March 03, 2026**
+**March 05, 2026**
 
 ## 🔮 Recent updates (summary)
 
