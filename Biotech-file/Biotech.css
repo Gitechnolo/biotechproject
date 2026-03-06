@@ -131,6 +131,9 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   min-height: 100svh;
   margin: 0;
   color: white;
+  transition: background-image 0.8s ease-in-out, 
+              background-color 0.8s ease-in-out,
+              filter 0.8s ease-in-out; /* ← Anche il filtro transiziona */
 }
 
 /* === 2. BACKGROUND NOTTURNO (Desktop Night Mode) === */
@@ -151,6 +154,9 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     background-image: 
       linear-gradient(to bottom, rgba(1, 8, 8, 0.94), rgba(1, 8, 8, 0.75)),
       url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif");
+      transition: background-image 0.8s ease-in-out, 
+                background-color 0.8s ease-in-out,
+                filter 0.8s ease-in-out; /* Mantiene la transizione anche su mobile */
   }
 
   /* Sfondo Night Mode Mobile (Compensazione filtri JS) */
