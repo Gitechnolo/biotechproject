@@ -71,11 +71,11 @@ const BiotechSystem = (function() {
 
     // Se lo stato è cambiato, aggiorna l'interfaccia (background, particelle, icone)
     if (wasNight !== state.isNight) {
-console.log(
-  `%c[BiotechSystem]%c ${new Date().toISOString()} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hour}:00`,
-  SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.circadian,  // ← syntax + colore
-  SRE_LOG_MAIN.syntax + 'color: #666;'          // ← syntax + colore testo
-);      
+ console.log(
+            `%c 🌙 BiotechSystem %c ${new Date().toISOString()} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hourUTC}:00`,
+            SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.circadian,
+            SRE_LOG_MAIN.syntax + 'color: #666;'
+        );      
         updateVisuals();
     }
 }
