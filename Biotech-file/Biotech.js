@@ -65,19 +65,36 @@ const BiotechSystem = (function() {
     };
 
     function updateCircadianState() {
-    const hour = new Date().getHours();
-    const wasNight = state.isNight;
-    state.isNight = (hour < 7 || hour >= 19); // Night: 19:00 - 07:00
+  const now = new Date();
+  const hour = now.getHours();
+  const wasNight = state.isNight;
+  state.isNight = (hour < 7 || hour >= 19);
 
-    // Se lo stato è cambiato, aggiorna l'interfaccia (background, particelle, icone)
-    if (wasNight !== state.isNight) {
-      console.log(
-  `%c 🌙 BiotechSystem %c ${new Date().toLocaleString('it-IT')} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hour}:00`,
-  SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.circadian,
-  SRE_LOG_MAIN.syntax + 'color: #666;'
-);
-        updateVisuals();
+  if (wasNight !== state.isNight) {
+    let circadianColor, emoji;
+
+    if (hour >= 19 || hour < 6) {
+      // Notte
+      circadianColor = '#6A1B9A';
+      emoji = '🌙';
+    } else if (hour >= 18 || hour < 7) {
+      // Crepuscolo (tramonto o alba)
+      circadianColor = '#FF9800';
+      emoji = hour >= 18 ? '🌇' : '🌅'; // tramonto o alba
+    } else {
+      // Giorno
+      circadianColor = '#FF6F00';
+      emoji = '☀️';
     }
+
+    console.log(
+      `%c ${emoji} BiotechSystem %c ${now.toLocaleString('it-IT')} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hour}:00`,
+      SRE_LOG_MAIN.syntax + `background: ${circadianColor}; color: #ffffff;`,
+      SRE_LOG_MAIN.syntax + 'color: #666;'
+    );
+
+    updateVisuals();
+  }
 }
 
     // ==========================================================================
