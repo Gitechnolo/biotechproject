@@ -41,10 +41,11 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
 */
 const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-  pre: 'background: #4CAF50; color: #ffffff;',   // Verde: Performance & Pre-fetching
-  vid: 'background: #2196F3; color: #ffffff;',  // Blu: Video & Media
-  engita: 'background: #738576; color: #ffffff;',  // Grigio-Verde: i18n & Traduzioni
-  dom: 'background: #9C27B0; color: #ffffff;'    // Viola: DOM & Inizializzazione
+  pre: 'background: #4CAF50; color: #ffffff;',      // Verde: Performance & Pre-fetching
+  vid: 'background: #2196F3; color: #ffffff;',      // Blu: Video & Media
+  engita: 'background: #738576; color: #ffffff;',   // Grigio-Verde: i18n & Traduzioni
+  dom: 'background: #9C27B0; color: #ffffff;',      // Viola: DOM & Inizializzazione
+  circadian: 'background: #FF6F00; color: #ffffff;' // Arancione: Biocircadian & Sincronizzazione Oraria
 };
 
 /**
@@ -70,6 +71,11 @@ const BiotechSystem = (function() {
 
     // Se lo stato è cambiato, aggiorna l'interfaccia (background, particelle, icone)
     if (wasNight !== state.isNight) {
+      console.log(
+  `%c 🌙 BiotechSystem %c ${new Date().toLocaleString('it-IT')} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hour}:00`,
+  SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.circadian,
+  SRE_LOG_MAIN.syntax + 'color: #666;'
+);
         updateVisuals();
     }
 }
