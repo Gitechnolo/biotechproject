@@ -64,35 +64,30 @@ const BiotechSystem = (function() {
         elements: {}
     };
 
-    function updateCircadianState() {
+    function updateCircadianState() { // Sincronizzazione con l'orologio biologico (modalità notte attiva dalle 19:00 alle 6:59)
   const now = new Date();
   const hour = now.getHours();
   const wasNight = state.isNight;
-  state.isNight = (hour < 7 || hour >= 19);
+  state.isNight = (hour < 7 || hour >= 19); // Modalità notte 19:00 / 6:59 
 
-  if (wasNight !== state.isNight) {
-    let circadianColor, emoji;
+  if (wasNight !== state.isNight) { // Log, esegue updateVisuals() solo al cambio di stato per evitare chiamate ridondanti
+    let circadianColor, emoji; 
 
-    if (hour >= 19 || hour < 6) {
-      // Notte
+    if (hour >= 19 || hour < 6) { // Notte
       circadianColor = '#6A1B9A';
       emoji = '🌙';
-    } else if (hour >= 18 || hour < 7) {
-      // Crepuscolo (tramonto o alba)
+    } else if (hour >= 18 || hour < 7) { // Crepuscolo (tramonto o alba)
       circadianColor = '#FF9800';
       emoji = hour >= 18 ? '🌇' : '🌅'; // tramonto o alba
-    } else {
-      // Giorno
+    } else { // Giorno
       circadianColor = '#FF6F00';
       emoji = '☀️';
     }
-
     console.log(
       `%c ${emoji} BiotechSystem %c ${now.toLocaleString('it-IT')} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hour}:00`,
       SRE_LOG_MAIN.syntax + `background: ${circadianColor}; color: #ffffff;`,
       SRE_LOG_MAIN.syntax + 'color: #666;'
     );
-
     updateVisuals();
   }
 }
