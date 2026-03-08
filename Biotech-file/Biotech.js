@@ -64,40 +64,37 @@ const BiotechSystem = (function() {
         elements: {}
     };
 
-    function updateCircadianState(isFirstRun = false) {
+    // state.currentPhase inizializzato a null
+function updateCircadianState(isFirstRun = false) {
   const now = new Date();
   const hour = now.getHours();
-  const wasNight = state.isNight;
   
-  // Definizione stato Notte: 19:00 - 06:59
-  state.isNight = (hour < 7 || hour >= 19);
+  // 1. Calcolo rapido della fase (molto leggero)
+  let phase;
+  if (hour >= 19 || hour < 6) phase = 'NIGHT';
+  else if (hour === 18 || hour === 6) phase = 'TWILIGHT';
+  else phase = 'DAYLIGHT';
 
-  // Logga se lo stato è cambiato OPPURE se è il primo avvio dell'app
-  if (wasNight !== state.isNight || isFirstRun) {
-    let circadianColor, emoji, label; 
+  // 2. TRIGGER: Esci subito se la fase non è cambiata (ZERO spreco di risorse)
+  if (phase === state.currentPhase && !isFirstRun) return;
 
-    if (hour >= 19 || hour < 6) {
-      circadianColor = '#6A1B9A'; // Viola Notte
-      emoji = '🌙';
-      label = 'Night';
-    } else if (hour === 18 || hour === 6) { 
-      circadianColor = '#FF9800'; // Arancio Crepuscolo
-      emoji = hour === 18 ? '🌇' : '🌅';
-      label = 'Twilight';
-    } else {
-      circadianColor = '#FF6F00'; // Arancione Giorno
-      emoji = '☀️';
-      label = 'Daylight';
-    }
+  // 3. Eseguiamo il codice pesante (Log e Update) SOLO al cambio di fase
+  state.currentPhase = phase;
+  state.isNight = (phase === 'NIGHT');
 
-    console.log(
-      `%c ${emoji} BiotechSystem %c ${label} | ${now.toLocaleTimeString('it-IT')} | Night Mode: ${state.isNight}`,
-      SRE_LOG_MAIN.syntax + `background: ${circadianColor}; color: #ffffff; font-weight: bold;`,
-      SRE_LOG_MAIN.syntax + 'color: #888;'
-    );
-    
-    updateVisuals();
-  }
+  const config = {
+    NIGHT:    { color: '#6A1B9A', emoji: '🌙', label: 'Night' },
+    TWILIGHT: { color: '#FF9800', emoji: hour === 18 ? '🌇' : '🌅', label: 'Twilight' },
+    DAYLIGHT: { color: '#FF6F00', emoji: '☀️', label: 'Daylight' }
+  }[phase];
+
+  console.log(
+    `%c ${config.emoji} BiotechSystem %c ${config.label} | ${now.toLocaleTimeString('it-IT')}`,
+    SRE_LOG_MAIN.syntax + `background: ${config.color}; color: #fff; font-weight: bold;`,
+    SRE_LOG_MAIN.syntax + 'color: #888;'
+  );
+  
+  updateVisuals();
 }
 
     // ==========================================================================
