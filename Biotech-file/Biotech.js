@@ -64,12 +64,12 @@ const BiotechSystem = (function() {
         elements: {}
     };
 
-    // state.currentPhase inizializzato a null
+    // Sincronizzazione rapida con l'orologio biologico (1 check all'avvio + 1 check ogni ora)
 function updateCircadianState(isFirstRun = false) {
   const now = new Date();
   const hour = now.getHours();
   
-  // 1. Calcolo rapido della fase (molto leggero)
+  // 1. Determina la fase del ciclo circadiano (NIGHT, TWILIGHT, DAYLIGHT)
   let phase;
   if (hour >= 19 || hour < 6) phase = 'NIGHT';
   else if (hour === 18 || hour === 6) phase = 'TWILIGHT';
@@ -78,10 +78,11 @@ function updateCircadianState(isFirstRun = false) {
   // 2. TRIGGER: Esci subito se la fase non è cambiata (ZERO spreco di risorse)
   if (phase === state.currentPhase && !isFirstRun) return;
 
-  // 3. Eseguiamo il codice pesante (Log e Update) SOLO al cambio di fase
+  // 3. Aggiorna lo stato corrente della fase
   state.currentPhase = phase;
   state.isNight = (phase === 'NIGHT');
 
+  // 4. Configura il log e l'interfaccia per la nuova fase
   const config = {
     NIGHT:    { color: '#6A1B9A', emoji: '🌙', label: 'Night' },
     TWILIGHT: { color: '#FF9800', emoji: hour === 18 ? '🌇' : '🌅', label: 'Twilight' },
@@ -93,7 +94,6 @@ function updateCircadianState(isFirstRun = false) {
     SRE_LOG_MAIN.syntax + `background: ${config.color}; color: #fff; font-weight: bold;`,
     SRE_LOG_MAIN.syntax + 'color: #888;'
   );
-  
   updateVisuals();
 }
 
