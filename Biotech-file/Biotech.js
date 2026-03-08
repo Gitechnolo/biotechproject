@@ -64,30 +64,38 @@ const BiotechSystem = (function() {
         elements: {}
     };
 
-    function updateCircadianState() { // Sincronizzazione con l'orologio biologico (modalità notte attiva dalle 19:00 alle 6:59)
+    function updateCircadianState(isFirstRun = false) {
   const now = new Date();
   const hour = now.getHours();
   const wasNight = state.isNight;
-  state.isNight = (hour < 7 || hour >= 19); // Modalità notte 19:00 / 6:59 
+  
+  // Definizione stato Notte: 19:00 - 06:59
+  state.isNight = (hour < 7 || hour >= 19);
 
-  if (wasNight !== state.isNight) { // Log, esegue updateVisuals() solo al cambio di stato per evitare chiamate ridondanti
-    let circadianColor, emoji; 
+  // Logga se lo stato è cambiato OPPURE se è il primo avvio dell'app
+  if (wasNight !== state.isNight || isFirstRun) {
+    let circadianColor, emoji, label; 
 
-    if (hour >= 19 || hour < 6) { // Notte
-      circadianColor = '#6A1B9A';
+    if (hour >= 19 || hour < 6) {
+      circadianColor = '#6A1B9A'; // Viola Notte
       emoji = '🌙';
-    } else if (hour >= 18 || hour < 7) { // Crepuscolo (tramonto o alba)
-      circadianColor = '#FF9800';
-      emoji = hour >= 18 ? '🌇' : '🌅'; // tramonto o alba
-    } else { // Giorno
-      circadianColor = '#FF6F00';
+      label = 'Night';
+    } else if (hour === 18 || hour === 6) { 
+      circadianColor = '#FF9800'; // Arancio Crepuscolo
+      emoji = hour === 18 ? '🌇' : '🌅';
+      label = 'Twilight';
+    } else {
+      circadianColor = '#FF6F00'; // Arancione Giorno
       emoji = '☀️';
+      label = 'Daylight';
     }
+
     console.log(
-      `%c ${emoji} BiotechSystem %c ${now.toLocaleString('it-IT')} | Circadian state updated → Night mode: ${state.isNight} | Hour: ${hour}:00`,
-      SRE_LOG_MAIN.syntax + `background: ${circadianColor}; color: #ffffff;`,
-      SRE_LOG_MAIN.syntax + 'color: #666;'
+      `%c ${emoji} BiotechSystem %c ${label} | ${now.toLocaleTimeString('it-IT')} | Night Mode: ${state.isNight}`,
+      SRE_LOG_MAIN.syntax + `background: ${circadianColor}; color: #ffffff; font-weight: bold;`,
+      SRE_LOG_MAIN.syntax + 'color: #888;'
     );
+    
     updateVisuals();
   }
 }
