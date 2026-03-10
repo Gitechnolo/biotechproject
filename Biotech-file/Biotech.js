@@ -610,7 +610,7 @@ if ('requestIdleCallback' in window) {
       }, 1000);
     }
 
-console.log(`%c🔊 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.speech, '', 'font-weight: bold; color: #2196F3;', '' );
+console.log(`%c🎤 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.speech, '', 'font-weight: bold; color: #2196F3;', '' );
     speechSynthesis.speak(utterance);
   }
 
