@@ -151,13 +151,13 @@ async function loadPerformanceData() {
       history.push({
         date: subtractDays(reportTime, 5),
         score: homePage.previousPerformanceScore,
-        note: 'Misurazione precedente'
+        note: 'Previous measurement'
       });
     }
     history.push({
       date: formatDate(reportTime),
       score: avgPerf,
-      note: 'Misurazione attuale'
+      note: 'Current measurement'
     });
 
     creaGrafico(history);
