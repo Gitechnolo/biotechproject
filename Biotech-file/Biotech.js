@@ -41,11 +41,11 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
 */
 const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-  pre: 'background: #4CAF50; color: #ffffff;',        // Verde: Performance & Pre-fetching
-  vid: 'background: #2196F3; color: #ffffff;',        // Blu: Video & Media
-  engita: 'background: #738576; color: #ffffff;',     // Grigio-Verde: i18n & Traduzioni
-  dom: 'background: #9C27B0; color: #ffffff;',        // Viola: DOM & Inizializzazione
-  circadian: 'background: #FF6F00; color: #ffffff;',  // Arancione: Biocircadian & Sincronizzazione Oraria
+  pre: 'background: #4CAF50; color: #ffffff; border: 1px solid #00c853;',                  // Verde: Performance & Pre-fetching
+  vid: 'background: #2196F3; color: #ffffff; border: 1px solid #00c853;',                  // Blu: Video & Media
+  engita: 'background: #738576; color: #ffffff; border: 1px solid #00c853;',               // Grigio-Verde: i18n & Traduzioni
+  dom: 'background: #9C27B0; color: #ffffff; border: 1px solid #00c853;',                  // Viola: DOM & Inizializzazione
+  circadian: 'background: #FF6F00; color: #ffffff; border: 1px solid #00c853;',            // Arancione: Biocircadian & Sincronizzazione Oraria
   speech: 'background: rgba(0, 230, 118, 0.5); color: #000000; border: 1px solid #00c853;' // Verde Chiaro: Speech Synthesis & A11y
 };
 
