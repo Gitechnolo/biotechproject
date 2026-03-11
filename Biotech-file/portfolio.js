@@ -47,11 +47,11 @@ let isExporting = false; // Lock specifico per l'esportazione
 // --- CONFIGURAZIONE TELEMETRIA SRE (Visual Debugging) ---
 const SRE_LOG = {
   base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-  start: 'background: #2196F3; color: #ffffff;',   // Blu: Orchestrator Start
-  stop: 'background: #FF9800; color: #1a1a1a;',    // Arancio: Atomic Interruption
-  error: 'background: #F44336; color: #ffffff;',   // Rosso: Abort/Error
-  success: 'background: #4CAF50; color: #ffffff;',  // Verde: Lock Released
-  graphic: 'background: #80cbc4; color: #ffffff;'  // Ciano: Grafico & Metriche
+  start: 'background: #2196F3; color: #ffffff; border: 1px solid #00c853;',   // Blu: Orchestrator Start
+  stop: 'background: #FF9800; color: #1a1a1a; border: 1px solid #00c853;',    // Arancio: Atomic Interruption
+  error: 'background: #F44336; color: #ffffff; border: 1px solid #00c853;',   // Rosso: Abort/Error
+  success: 'background: #4CAF50; color: #ffffff; border: 1px solid #00c853;', // Verde: Lock Released
+  graphic: 'background: #80cbc4; color: #ffffff; border: 1px solid #00c853;'  // Ciano: Grafico & Metriche
 };
 
 // --- Funzione per caricare jsPDF e jsPDF-Autotable dinamicamente ---
