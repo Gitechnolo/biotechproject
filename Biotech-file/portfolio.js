@@ -90,7 +90,7 @@ async function loadPerformanceData() {
   abortController = new AbortController();
   const { signal } = abortController; // Estraiamo il segnale per passarlo ovunque
 
-  console.log('%c 🧠 ORCHESTRATOR %c loadPerformanceData() in esecuzione', SRE_LOG.base + SRE_LOG.start, 'color: #2196F3;');
+  console.log('%c 🧠 ORCHESTRATOR %c loadPerformanceData() in progress.', SRE_LOG.base + SRE_LOG.start, 'color: #2196F3;');
 
   try {
     isRendering = true;
