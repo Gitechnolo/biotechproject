@@ -209,7 +209,7 @@ async function loadPerformanceData() {
 
   } catch (error) {
     if (error.name === 'AbortError') {
-      console.log('%c ❌ ABORT %c Richiesta annullata: subentrata nuova chiamata.', SRE_LOG.base + SRE_LOG.error, 'color: #f44336;');
+      console.log('%c ❌ ABORT %c Request cancelled: superseded by a new call.', SRE_LOG.base + SRE_LOG.error, 'color: #f44336;');
       // Importante: non resettiamo isRendering qui perché la nuova chiamata lo ha già impostato a true
     } else {
       console.warn('⚠️ Errore durante il caricamento reale:', error);
@@ -226,7 +226,7 @@ async function loadPerformanceData() {
     // Rilasciamo il lock solo se QUESTA specifica esecuzione è arrivata alla fine senza essere interrotta da una nuova chiamata (abort)
     if (!signal.aborted) {
       isRendering = false;
-console.log('%c ✅ SYSTEM %c loadPerformanceData() completato. Lock rilasciato.', SRE_LOG.base + SRE_LOG.success, 'color: #4caf50;');
+console.log('%c ✅ SYSTEM %c loadPerformanceData() completed. Lock released.', SRE_LOG.base + SRE_LOG.success, 'color: #4caf50;');
     }
   }
 }
@@ -245,7 +245,7 @@ async function renderCardsAsynchronously(pages, container, signal) {
     // 1. Controllo immediato: se il segnale è abortito, fermiamo tutto.
     // Usiamo il 'signal' passato come argomento per coerenza atomica.
     if (signal && signal.aborted) {
-    console.log('%c ⏹️ ATOMIC LOCK %c Rendering interrotto: nuova richiesta.', SRE_LOG.base + SRE_LOG.stop, 'color: #ff9800;');
+    console.log('%c ⏹️ ATOMIC LOCK %c Rendering stopped: new request.', SRE_LOG.base + SRE_LOG.stop, 'color: #ff9800;');
       return;
     }
 
