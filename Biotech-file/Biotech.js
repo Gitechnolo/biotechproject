@@ -45,7 +45,7 @@ const SRE_LOG_MAIN = {
   vid: 'background: #2196F3; color: #ffffff; border: 1px solid #00c853;',                  // Blu: Video & Media
   engita: 'background: #738576; color: #ffffff; border: 1px solid #00c853;',               // Grigio-Verde: i18n & Traduzioni
   dom: 'background: #9C27B0; color: #ffffff; border: 1px solid #00c853;',                  // Viola: DOM & Inizializzazione
-  circadian: 'background: #FF6F00; color: #ffffff; border: 1px solid #00c853;',            // Arancione: Biocircadian & Sincronizzazione Oraria
+  circadian: 'background: #FF6F00; color: #ffffff;',                                         // Arancione: Biocircadian & Sincronizzazione Oraria
   speech: 'background: rgba(0, 230, 118, 0.5); color: #000000; border: 1px solid #00c853;' // Verde Chiaro: Speech Synthesis & A11y
 };
 
