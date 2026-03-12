@@ -84,30 +84,18 @@ function triggerHumanSync() {
 function getNextHoliday() {
     const now = new Date();
     const year = now.getFullYear();
-
-    const holidayDefs = [
-        { name: "St. Patrick's Day", month: 3,  day: 17, style: "st-patrick" },
-        { name: "4th of July",        month: 7,  day: 4,  style: "july4"      },
-        { name: "Halloween",          month: 10, day: 31, style: "halloween"  },
-        { name: "Christmas",          month: 12, day: 25, style: "natale"     },
+    const holidays = [
+        { name: "St. Patrick's Day", date: new Date(`${year}-03-17`), style: "st-patrick" },
+        { name: "4th of July", date: new Date(`${year}-07-04`), style: "july4" },
+        { name: "Halloween", date: new Date(`${year}-10-31`), style: "halloween" },
+        { name: "Christmas", date: new Date(`${year}-12-25`), style: "natale" }
     ];
-
-    // Genera le date per l'anno corrente e, se già passate, per il prossimo
-    const holidays = holidayDefs.map(({ name, month, day, style }) => {
-        let date = new Date(year, month - 1, day);
-        if (date <= now) date = new Date(year + 1, month - 1, day);
-        return { name, style, date };
-    });
-
-    // Ordina e prendi la più vicina
-    holidays.sort((a, b) => a.date - b.date);
-    const next = holidays;
-
-    const daysLeft = Math.ceil((next.date - now) / (1000 * 60 * 60 * 24));
-
+    if (now > holidays[3].date) holidays[0].date = new Date(`${year + 1}-03-17`);
+    const nextHoliday = holidays.find(h => h.date > now) || holidays[0];
+    const daysLeft = Math.ceil((nextHoliday.date - now) / (1000 * 60 * 60 * 24));
     return {
-        msg: `Only ${daysLeft} days until <span class="holiday-name ${next.style}">${next.name}</span>!`,
-        style: next.style,
+        msg: `Only ${daysLeft} days until <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
+        style: nextHoliday.style
     };
 }
 
