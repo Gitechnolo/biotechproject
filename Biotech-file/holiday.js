@@ -83,36 +83,35 @@ function triggerHumanSync() {
 
 function getNextHoliday() {
     const now = new Date();
-    // Reset dell'ora per un calcolo preciso dei giorni
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const year = now.getFullYear();
+    const year = today.getFullYear();
 
     let holidays = [
-        { name: "St. Patrick's Day", month: 2, day: 17, style: "st-patrick" }, // Mesi 0-indexed (2 = Marzo)
-        { name: "4th of July", month: 6, day: 4, style: "july4" },
-        { name: "Halloween", month: 9, day: 31, style: "halloween" },
-        { name: "Christmas", month: 11, day: 25, style: "natale" }
+        { name: "St. Patrick's Day", month: 2, day: 17, style: "st-patrick", wish: "Happy St. Paddy's!" },
+        { name: "4th of July", month: 6, day: 4, style: "july4", wish: "Happy Independence Day!" },
+        { name: "Halloween", month: 9, day: 31, style: "halloween", wish: "Spooky Halloween!" },
+        { name: "Christmas", month: 11, day: 25, style: "natale", wish: "Merry Christmas!" }
     ];
 
-    // Mappiamo le date e gestiamo il salto d'anno in modo dinamico
+    // Mappiamo le date: se oggi è festa, la data DEVE rimanere quella di oggi
     const upcomingHolidays = holidays.map(h => {
         let date = new Date(year, h.month, h.day);
-    // Se la festività è già passata quest'anno, la proiettiamo al prossimo
         if (date < today) {
             date = new Date(year + 1, h.month, h.day);
         }
         return { ...h, date };
-    });
+    }).sort((a, b) => a.date - b.date);
 
-    // Ordiniamo per sicurezza e troviamo la prima data futura
-    upcomingHolidays.sort((a, b) => a.date - b.date);
-    const nextHoliday = upcomingHolidays[0];
+    const nextHoliday = upcomingHolidays[0]; // Fondamentale l'indice [0]
+    const daysLeft = Math.ceil((nextHoliday.date - today) / (1000 * 60 * 60 * 24));
 
-    const diffTime = nextHoliday.date - today;
-    const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    // Controllo: se la differenza è 0, è oggi!
+    const isToday = daysLeft === 0;
 
     return {
-        msg: `Only ${daysLeft} days until <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
+        msg: isToday 
+            ? `<span class="holiday-name ${nextHoliday.style}">${nextHoliday.wish}</span>`
+            : `Only ${daysLeft} days until <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
         style: nextHoliday.style
     };
 }
