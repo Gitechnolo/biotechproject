@@ -83,16 +83,33 @@ function triggerHumanSync() {
 
 function getNextHoliday() {
     const now = new Date();
+    // Reset dell'ora per un calcolo preciso dei giorni
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const year = now.getFullYear();
-    const holidays = [
-        { name: "St. Patrick's Day", date: new Date(`${year}-03-17`), style: "st-patrick" },
-        { name: "4th of July", date: new Date(`${year}-07-04`), style: "july4" },
-        { name: "Halloween", date: new Date(`${year}-10-31`), style: "halloween" },
-        { name: "Christmas", date: new Date(`${year}-12-25`), style: "natale" }
+
+    let holidays = [
+        { name: "St. Patrick's Day", month: 2, day: 17, style: "st-patrick" }, // Mesi 0-indexed (2 = Marzo)
+        { name: "4th of July", month: 6, day: 4, style: "july4" },
+        { name: "Halloween", month: 9, day: 31, style: "halloween" },
+        { name: "Christmas", month: 11, day: 25, style: "natale" }
     ];
-    if (now > holidays[3].date) holidays[0].date = new Date(`${year + 1}-03-17`);
-    const nextHoliday = holidays.find(h => h.date > now) || holidays[0];
-    const daysLeft = Math.ceil((nextHoliday.date - now) / (1000 * 60 * 60 * 24));
+
+    // Mappiamo le date e gestiamo il salto d'anno in modo dinamico
+    const upcomingHolidays = holidays.map(h => {
+        let date = new Date(year, h.month, h.day);
+        if (date < today) {
+            date = new Date(year + 1, h.month, h.day);
+        }
+        return { ...h, date };
+    });
+
+    // Ordiniamo per sicurezza e troviamo la prima data futura
+    upcomingHolidays.sort((a, b) => a.date - b.date);
+    const nextHoliday = upcomingHolidays[0];
+
+    const diffTime = nextHoliday.date - today;
+    const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
     return {
         msg: `Only ${daysLeft} days until <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
         style: nextHoliday.style
