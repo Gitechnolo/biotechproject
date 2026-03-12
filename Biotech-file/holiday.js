@@ -97,6 +97,7 @@ function getNextHoliday() {
     // Mappiamo le date e gestiamo il salto d'anno in modo dinamico
     const upcomingHolidays = holidays.map(h => {
         let date = new Date(year, h.month, h.day);
+    // Se la festività è già passata quest'anno, la proiettiamo al prossimo
         if (date < today) {
             date = new Date(year + 1, h.month, h.day);
         }
