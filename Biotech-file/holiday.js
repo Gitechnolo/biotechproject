@@ -15,7 +15,7 @@ const SRE_H_LOGS = {
   astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border-left: 1px solid #00c853;',
   display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border-left: 1px solid #00c853;',
 // Holiday-specific styles
-  stPatrick: 'background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; border-left: 3px solid #00c853;',
+  stPatrick: 'background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; border-left: 2px solid #00c853;',
   mayday: 'background: #c62828; color: #ffffff; border: 1px solid #b71c1c; border-left: 3px solid #00c853;', // Red for Labor Day
   easter: 'background: #ffb74d; color: #000000; border: 1px solid #ff9800; border-left: 2px solid #00c853;',
   eastermonday: 'background: #77dd77; color: #000000; border: 1px solid #55aa55; border-left: 2px solid #00c853;',
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Inizializzazione come una catena asincrona
     const systemInit = new Promise((resolve) => {
         
-        // 1. BANNER CYCLING & PRELOAD
+        // BANNER CYCLING & PRELOAD
         const bannerImg = document.getElementById("Banner");
         if (bannerImg) {
             const banners = [
@@ -57,14 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 500);
             }, 3500);
         }
-
-        // 2. HOLIDAY COUNTER
-        const msgContainer = document.getElementById("holidayMsg");
-        if (msgContainer) {
-            const holiday = getNextHoliday();
-            msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
-        }
-
+        
         resolve("DOM and Assets initialized.");
     });
 
@@ -76,7 +69,21 @@ document.addEventListener("DOMContentLoaded", function () {
             return new Promise(resolve => window.addEventListener("load", resolve));
         })
         .then(() => {
-            // Esecuzione del trigger 
+            // --- ORA IL SISTEMA È PRONTO ---
+            
+            // A. Calcoliamo la festività
+            const holiday = getNextHoliday();
+
+            // B. Scrittura statica (opzionale)
+            const msgContainer = document.getElementById("holidayMsg");
+            if (msgContainer) {
+                msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
+            }
+
+            // C. TRIGGER DEL POPUP (Il tocco finale)
+            showHolidayPopup(holiday);
+
+            // D. Log di sistema finale
             triggerHumanSync();
         });
 });
@@ -93,6 +100,31 @@ function triggerHumanSync() {
     console.log("%c 🐂 SYNC BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", logStyle);
 }
 
+
+/**
+ * Genera e mostra una notifica a comparsa basata sui dati festività.
+ */
+function showHolidayPopup(holiday) {
+    // 1. Crea l'elemento
+    const popup = document.createElement('div');
+    popup.className = `holiday-popup ${holiday.style}`;
+    popup.innerHTML = holiday.msg;
+
+    // 2. Aggiungilo al corpo del documento
+    document.body.appendChild(popup);
+
+    // 3. Trigger dell'animazione di entrata (piccolo delay per il rendering)
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 100);
+
+    // 4. Rimozione automatica dopo 6 secondi (opzionale)
+    setTimeout(() => {
+        popup.classList.remove('show');
+        // Rimuove l'elemento dal DOM dopo che l'animazione di uscita è finita
+        setTimeout(() => popup.remove(), 600);
+    }, 6000);
+}
 
 // --- FUNZIONE HELPER PER TIMESTAMP DINAMICO ---
 function getTimestampWithPhase() {
