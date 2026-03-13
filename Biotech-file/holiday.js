@@ -15,14 +15,14 @@ const SRE_H_LOGS = {
   astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border-left: 1px solid #00c853;',
   display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border-left: 1px solid #00c853;',
 // Holiday-specific styles
-  stPatrick: 'background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; border-left: 5px solid #00c853;',
-  mayday: 'background: #c62828; color: #ffffff; border: 1px solid #b71c1c; border-left: 5px solid #00c853;', // Red for Labor Day
-  easter: 'background: #ffb74d; color: #000000; border: 1px solid #ff9800; border-left: 1px solid #00c853;',
-  eastermonday: 'background: #77dd77; color: #000000; border: 1px solid #55aa55; border-left: 1px solid #00c853;',
-  july4: 'background: #1565c0; color: #ffffff; border: 1px solid #0d47a1; border-left: 5px solid #f44336;',
-  halloween: 'background: #ef6c00; color: #ffffff; border: 1px solid #e65100; border-left: 5px solid #000000;',
-  thanksgiving: 'background: #8d6e63; color: #ffffff; border: 1px solid #5d4037; border-left: 5px solid #ffa000;',
-  natale: 'background: #d32f2f; color: #ffffff; border: 1px solid #b71c1c; border-left: 5px solid #ffffff;'
+  stPatrick: 'background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; border-left: 3px solid #00c853;',
+  mayday: 'background: #c62828; color: #ffffff; border: 1px solid #b71c1c; border-left: 3px solid #00c853;', // Red for Labor Day
+  easter: 'background: #ffb74d; color: #000000; border: 1px solid #ff9800; border-left: 2px solid #00c853;',
+  eastermonday: 'background: #77dd77; color: #000000; border: 1px solid #55aa55; border-left: 2px solid #00c853;',
+  july4: 'background: #1565c0; color: #ffffff; border: 1px solid #0d47a1; border-left: 3px solid #f44336;',
+  halloween: 'background: #ef6c00; color: #ffffff; border: 1px solid #e65100; border-left: 3px solid #000000;',
+  thanksgiving: 'background: #8d6e63; color: #ffffff; border: 1px solid #5d4037; border-left: 3px solid #ffa000;',
+  natale: 'background: #d32f2f; color: #ffffff; border: 1px solid #b71c1c; border-left: 3px solid #ffffff;'
 };
 
 document.addEventListener("DOMContentLoaded", function () {
