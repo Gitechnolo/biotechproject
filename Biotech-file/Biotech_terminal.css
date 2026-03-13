@@ -85,36 +85,45 @@
   }
 }
 
-/* Container della notifica popup */
+/* Container holiday popup: scende sotto il menu */
 .holiday-popup {
     position: fixed;
-    top: 20px;
+    top: 80px; /* Valore in base all'altezza del menu biotech */
     left: 50%;
-    transform: translateX(-50%) translateY(-100px); /* Parte dall'alto, fuori schermo */
-    background-color: #fcf5e8; /* Colore crema come da immagine */
+    transform: translateX(-50%) translateY(-150px);
+    background-color: #fcf5e8;
     color: #4a3f44;
-    padding: 15px 40px;
-    border-radius: 50px; /* Effetto pillola */
+    padding: 12px 50px 12px 40px; /* Più spazio a destra per la X */
+    border-radius: 50px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     z-index: 9999;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.1rem;
+    font-family: 'Segoe UI', sans-serif;
     transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.4s;
     opacity: 0;
-    pointer-events: none;
-    text-align: center;
-    min-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Stato attivo: la notifica scende */
 .holiday-popup.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
-    pointer-events: auto;
 }
 
-/* Stile per il testo interno */
-.holiday-popup span.holiday-name {
+/* Pulsante di chiusura (X) */
+.popup-close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
     font-weight: bold;
-    color: #2e7d32; /* Verde per St. Patrick, personalizzabile */
+    color: #aaa;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.popup-close:hover {
+    color: #4a3f44;
 }

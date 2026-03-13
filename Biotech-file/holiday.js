@@ -102,28 +102,36 @@ function triggerHumanSync() {
 
 
 /**
- * Genera e mostra una notifica a comparsa basata sui dati festività.
+ * Genera e mostra notifica a comparsa basata sui dati festività.
  */
 function showHolidayPopup(holiday) {
-    // 1. Crea l'elemento
     const popup = document.createElement('div');
     popup.className = `holiday-popup ${holiday.style}`;
-    popup.innerHTML = holiday.msg;
-
-    // 2. Aggiungilo al corpo del documento
+    
+    // Contenuto con il messaggio e X chiudi
+    popup.innerHTML = `
+        <span>${holiday.msg}</span>
+        <span class="popup-close" title="Chiudi">&times;</span>
+    `;
     document.body.appendChild(popup);
 
-    // 3. Trigger dell'animazione di entrata (piccolo delay per il rendering)
-    setTimeout(() => {
-        popup.classList.add('show');
-    }, 100);
-
-    // 4. Rimozione automatica dopo 6 secondi (opzionale)
-    setTimeout(() => {
-        popup.classList.remove('show');
-        // Rimuove l'elemento dal DOM dopo che l'animazione di uscita è finita
-        setTimeout(() => popup.remove(), 600);
+    // Timer per rimozione automatica (per poterlo cancellare se l'utente clicca X)
+    let autoCloseTimeout = setTimeout(() => {
+        closePopup();
     }, 6000);
+
+    // Funzione interna per chiudere con grazia
+    function closePopup() {
+        popup.classList.remove('show');
+        setTimeout(() => popup.remove(), 600);
+    }
+    // Evento click sulla X
+    popup.querySelector('.popup-close').addEventListener('click', () => {
+        clearTimeout(autoCloseTimeout); // Ferma il timer automatico
+        closePopup();
+    });
+    // Entrata
+    setTimeout(() => popup.classList.add('show'), 100);
 }
 
 // --- FUNZIONE HELPER PER TIMESTAMP DINAMICO ---
