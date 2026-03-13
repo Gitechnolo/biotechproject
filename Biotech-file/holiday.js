@@ -84,9 +84,9 @@ function triggerHumanSync() {
     console.log("%c 🐂 SYNC BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", logStyle);
 }
 
-// --- HOLIDAY CALCULATION FUNCTIONS ---
+// --- HOLIDAY CALCULATION STRATEGIES ---
 /**
- * Butcher-Meeus per il calcolo della Pasqua (Sincronizzazione Perpetua)
+ * Butcher-Meeus per la Pasqua
  */
 function getEaster(year) {
     const a = year % 19, b = Math.floor(year / 100), c = year % 100;
@@ -99,44 +99,51 @@ function getEaster(year) {
     return { month: month - 1, day: day };
 }
 
+/**
+ * Calcolo Thanksgiving (Quarto Giovedì di Novembre)
+ */
+function getThanksgiving(year) {
+    const firstOfNov = new Date(year, 10, 1);
+    const dayOfWeek = firstOfNov.getDay(); 
+    const daysUntilFirstThursday = (4 - dayOfWeek + 7) % 7;
+    const day = 1 + daysUntilFirstThursday + 21;
+    return { month: 10, day: day };
+}
+
+// --- MAIN ENGINE ---
+
 function getNextHoliday() {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const currentYear = today.getFullYear();
 
-    // Log tecnico per il ricalcolo dei cicli lunari
+    // Log ASTRO: visualizzato ogni volta che lo script ricalcola i cicli
     console.log(`%c 🌕 ASTRO %c Syncing dynamic cycles for ${currentYear}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
 
-    // Array delle festività: l'uso di isDynamic evita le "Magic Strings"
     const holidaySchema = [
         { name: "St. Patrick's Day", month: 2, day: 17, style: "st-patrick", wish: "Happy St. Paddy's!", icon: "☘️", isDynamic: false },
-        { name: "Easter", style: "easter", wish: "Happy Easter!", icon: "🐣", isDynamic: true },
+        { name: "Easter", style: "easter", wish: "Happy Easter!", icon: "🐣", isDynamic: true, calc: getEaster },
         { name: "4th of July", month: 6, day: 4, style: "july4", wish: "Happy Independence Day!", icon: "🎆", isDynamic: false },
         { name: "Halloween", month: 9, day: 31, style: "halloween", wish: "Spooky Halloween!", icon: "🎃", isDynamic: false },
+        { name: "Thanksgiving", style: "thanksgiving", wish: "Happy Thanksgiving!", icon: "🦃", isDynamic: true, calc: getThanksgiving },
         { name: "Christmas", month: 11, day: 25, style: "natale", wish: "Merry Christmas!", icon: "🎄", isDynamic: false }
     ];
 
     const upcomingHolidays = holidaySchema.map(h => {
         let date;
-        
         if (h.isDynamic) {
-            // Calcolo dinamico (es. Pasqua) per l'anno in corso
-            const dData = getEaster(currentYear);
+            const dData = h.calc(currentYear);
             date = new Date(currentYear, dData.month, dData.day);
-            
-            // Se la data dinamica è già passata, calcola quella dell'anno prossimo
             if (date < today) {
-                const nextYearData = getEaster(currentYear + 1);
+                const nextYearData = h.calc(currentYear + 1);
                 date = new Date(currentYear + 1, nextYearData.month, nextYearData.day);
             }
         } else {
-            // Gestione date fisse
             date = new Date(currentYear, h.month, h.day);
             if (date < today) {
                 date = new Date(currentYear + 1, h.month, h.day);
             }
         }
-        
         return { ...h, date };
     }).sort((a, b) => a.date - b.date);
 
@@ -144,7 +151,7 @@ function getNextHoliday() {
     const daysLeft = Math.ceil((nextHoliday.date - today) / 86400000);
     const isToday = daysLeft === 0;
 
-    // Log di stato nel terminale
+    // Log DISPLAY: Icona e stato della prossima festività
     console.log(
         `%c${nextHoliday.icon} BiotechHoliday%c ${nextHoliday.name}: ${isToday ? 'ACTIVE' : daysLeft + 'd left'}`, 
         SRE_H_LOGS.display + SRE_H_LOGS.base, 
