@@ -9,6 +9,12 @@
  * and smooth transition state handling (UI/UX Latency Budget). 
  * =============================================================================
  */
+// Namespace UNICO per il modulo Holiday - Colori differenziati
+const SRE_H_LOGS = {
+  base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
+  astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B;',
+  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d;'
+};
 
 document.addEventListener("DOMContentLoaded", function () {
     
@@ -79,34 +85,57 @@ function triggerHumanSync() {
     console.log("%c[SYNC] BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", logStyle);
 }
 
-// --- SUPPORT FUNCTIONS ---
+// --- HOLIDAY CALCULATION FUNCTIONS ---
+/**
+ * Butcher-Meeus (Sincronizzazione Perpetua Pasqua)
+ */
+function getEaster(year) {
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    return { month: month - 1, day: day };
+}
 
 function getNextHoliday() {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const year = today.getFullYear();
 
+    console.log(`%c[ASTRO]%c Syncing dynamic lunar cycles for ${year}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
+
+    const easterData = getEaster(year);
+    
     let holidays = [
-        { name: "St. Patrick's Day", month: 2, day: 17, style: "st-patrick", wish: "Happy St. Paddy's!" },
-        { name: "4th of July", month: 6, day: 4, style: "july4", wish: "Happy Independence Day!" },
-        { name: "Halloween", month: 9, day: 31, style: "halloween", wish: "Spooky Halloween!" },
-        { name: "Christmas", month: 11, day: 25, style: "natale", wish: "Merry Christmas!" }
+        { name: "St. Patrick's Day", month: 2, day: 17, style: "st-patrick", wish: "Happy St. Paddy's!", icon: "☘️" },
+        { name: "Easter", ...easterData, style: "easter", wish: "Happy Easter!", icon: "🐣" },
+        { name: "4th of July", month: 6, day: 4, style: "july4", wish: "Happy Independence Day!", icon: "🎆" },
+        { name: "Halloween", month: 9, day: 31, style: "halloween", wish: "Spooky Halloween!", icon: "🎃" },
+        { name: "Christmas", month: 11, day: 25, style: "natale", wish: "Merry Christmas!", icon: "🎄" }
     ];
 
-    // Mappiamo le date: se oggi è festa, la data DEVE rimanere quella di oggi
     const upcomingHolidays = holidays.map(h => {
         let date = new Date(year, h.month, h.day);
         if (date < today) {
-            date = new Date(year + 1, h.month, h.day);
+            const nextYearDate = (h.name === "Easter") ? getEaster(year + 1) : h;
+            date = new Date(year + 1, nextYearDate.month, nextYearDate.day);
         }
         return { ...h, date };
     }).sort((a, b) => a.date - b.date);
 
-    const nextHoliday = upcomingHolidays[0]; // Fondamentale l'indice [0]
-    const daysLeft = Math.ceil((nextHoliday.date - today) / (1000 * 60 * 60 * 24));
-
-    // Controllo: se la differenza è 0, è oggi!
+    const nextHoliday = upcomingHolidays[0];
+    const daysLeft = Math.ceil((nextHoliday.date - today) / 86400000);
     const isToday = daysLeft === 0;
+
+    // Log di output con ICONA dinamica
+    console.log(
+        `%c${nextHoliday.icon} BiotechHoliday%c ${nextHoliday.name}: ${isToday ? 'ACTIVE' : daysLeft + 'd left'}`, 
+        SRE_H_LOGS.display + SRE_H_LOGS.base, 
+        "color: #bcbcbc; margin-left: 5px;"
+    );
 
     return {
         msg: isToday 
