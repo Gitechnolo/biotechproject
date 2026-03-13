@@ -94,33 +94,50 @@ function triggerHumanSync() {
 }
 
 
+// --- FUNZIONE HELPER PER TIMESTAMP DINAMICO ---
+function getTimestampWithPhase() {
+    var now = new Date();
+    var hours = now.getHours();
+    var timestamp = now.toTimeString().split(' ')[0]; // Estrae HH:MM:SS
+    
+    var isDay = hours >= 6 && hours < 18;
+    var icon = isDay ? "☀️" : "🌙";
+    var phase = isDay ? "Daylight" : "Nightly";
+    
+    return {
+        icon: icon,
+        phase: phase,
+        timestamp: timestamp,
+        // Parti separate per colorazione differenziata nel console.log
+        part1: icon + " " + phase,
+        part2: " | " + timestamp
+    };
+}
+
 // --- CALCOLATORI ATOMICI ---
 const HolidayCalcs = {
-    // Butcher-Meeus (Easter)
-    easter: (y) => {
-        const a = y % 19, b = Math.floor(y / 100), c = y % 100;
-        const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
-        const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
-        const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
-        const m = Math.floor((a + 11 * h + 22 * l) / 451);
-        const month = Math.floor((h + l - 7 * m + 114) / 31);
-        const day = ((h + l - 7 * m + 114) % 31) + 1;
-        return { month: month - 1, day };
+    easter: function(y) {
+        var a = y % 19, b = Math.floor(y / 100), c = y % 100;
+        var d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+        var g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+        var i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+        var m = Math.floor((a + 11 * h + 22 * l) / 451);
+        var month = Math.floor((h + l - 7 * m + 114) / 31);
+        var day = ((h + l - 7 * m + 114) % 31) + 1;
+        return { month: month - 1, day: day };
     },
-    // Quarto Giovedì di Novembre
-    thanksgiving: (y) => {
-        const first = new Date(y, 10, 1).getDay();
-        const day = 22 + (4 - first + 7) % 7;
-        return { month: 10, day };
+    thanksgiving: function(y) {
+        var first = new Date(y, 10, 1).getDay();
+        var day = 22 + (4 - first + 7) % 7;
+        return { month: 10, day: day };
     },
-    // Helper per date fisse
-    fixed: (m, d) => () => ({ month: m, day: d }),
-    
-    // FIX ROBUSTO: Calcola la data relativa gestendo il cambio mese/anno
-    relative: (calcFn, offsetDays) => (y) => {
-        const base = calcFn(y);
-        const date = new Date(y, base.month, base.day + offsetDays);
-        return { month: date.getMonth(), day: date.getDate() };
+    fixed: function(m, d) { return function() { return { month: m, day: d }; }; },
+    relative: function(calcFn, offsetDays) {
+        return function(y) {
+            var base = calcFn(y);
+            var date = new Date(y, base.month, base.day + offsetDays);
+            return { month: date.getMonth(), day: date.getDate() };
+        };
     }
 };
 
@@ -138,40 +155,48 @@ const HOLIDAY_SCHEMA = [
 
 // --- MAIN ENGINE ---
 function getNextHoliday() {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const currentYear = today.getFullYear();
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var currentYear = today.getFullYear();
+    var tData = getTimestampWithPhase();
 
-    console.log(`%c 🌕 ASTRO %c Syncing dynamic cycles for ${currentYear}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
+    // Log ASTRO con stile oro per la fase e grigio per l'orario
+    console.log(
+        "%c " + tData.part1 + " %c" + tData.part2 + " %c Syncing dynamic cycles for " + currentYear,
+        SRE_H_LOGS.astro + SRE_H_LOGS.base,
+        "color: #888; margin-left: 5px; font-family: monospace;",
+        "color: #555; margin-left: 10px; font-style: italic;"
+    );
 
-    const upcoming = HOLIDAY_SCHEMA.map(h => {
-        let { month, day } = h.calc(currentYear);
-        let date = new Date(currentYear, month, day);
+    var upcoming = HOLIDAY_SCHEMA.map(function(h) {
+        var res = h.calc(currentYear);
+        var date = new Date(currentYear, res.month, res.day);
 
         if (date < today) {
-            ({ month, day } = h.calc(currentYear + 1));
-            date = new Date(currentYear + 1, month, day);
+            res = h.calc(currentYear + 1);
+            date = new Date(currentYear + 1, res.month, res.day);
         }
 
-        const diff = Math.ceil((date - today) / 86400000);
-        return { ...h, date, diff };
-    }).sort((a, b) => a.diff - b.diff);
+        var diff = Math.ceil((date - today) / 86400000);
+        return Object.assign({}, h, { date: date, diff: diff });
+    }).sort(function(a, b) { return a.diff - b.diff; });
 
-    const next = upcoming[0];
-    const isToday = next.diff === 0;
+    // Seleziona la festività più vicina
+    var next = upcoming[0]; 
+    var isToday = next.diff === 0;
+    var logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
 
-    const logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
-
+    // Log BiotechHoliday
     console.log(
-        `%c${next.icon} BiotechHoliday%c ${next.name}: ${isToday ? 'ACTIVE' : next.diff + 'd left'}`,
+        "%c " + next.icon + " BiotechHoliday %c " + next.name + ": " + (isToday ? 'ACTIVE' : next.diff + 'd left'),
         logStyle + SRE_H_LOGS.base,
         "color: #bcbcbc; margin-left: 5px;"
     );
 
     return {
         msg: isToday
-            ? `${next.icon} <span class="holiday-name ${next.style}">${next.wish}</span>`
-            : `Only ${next.diff} days until ${next.icon} <span class="holiday-name ${next.style}">${next.name}</span>!`,
+            ? next.icon + ' <span class="holiday-name ' + next.style + '">' + next.wish + '</span>'
+            : 'Only ' + next.diff + ' days until ' + next.icon + ' <span class="holiday-name ' + next.style + '">' + next.name + '</span>!',
         style: next.style
     };
 }
