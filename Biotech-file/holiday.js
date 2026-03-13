@@ -12,9 +12,17 @@
 // Namespace UNICO per il modulo Holiday - Colori differenziati
 const SRE_H_LOGS = {
   base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-  astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border: 1px solid #00c853;',
-  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border: 1px solid #00c853;',
-  eastermonday: 'background: #77dd77; color: #000000; border: 1px solid #55aa55; border: 1px solid #00c853;'
+  astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border-left: 1px solid #00c853;',
+  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border-left: 1px solid #00c853;',
+// Holiday-specific styles
+  stPatrick: 'background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; border-left: 5px solid #00c853;',
+  mayday: 'background: #c62828; color: #ffffff; border: 1px solid #b71c1c; border-left: 5px solid #00c853;', // Red for Labor Day
+  easter: 'background: #ffb74d; color: #000000; border: 1px solid #ff9800; border-left: 1px solid #00c853;',
+  eastermonday: 'background: #77dd77; color: #000000; border: 1px solid #55aa55; border-left: 1px solid #00c853;',
+  july4: 'background: #1565c0; color: #ffffff; border: 1px solid #0d47a1; border-left: 5px solid #f44336;',
+  halloween: 'background: #ef6c00; color: #ffffff; border: 1px solid #e65100; border-left: 5px solid #000000;',
+  thanksgiving: 'background: #8d6e63; color: #ffffff; border: 1px solid #5d4037; border-left: 5px solid #ffa000;',
+  natale: 'background: #d32f2f; color: #ffffff; border: 1px solid #b71c1c; border-left: 5px solid #ffffff;'
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -118,7 +126,8 @@ const HolidayCalcs = {
 
 // --- REGISTRO DELLE FESTIVITÀ ---
 const HOLIDAY_SCHEMA = [
-    { name: "St. Patrick's Day", style: "st-patrick",   wish: "Happy St. Paddy's!",       icon: "☘️", calc: HolidayCalcs.fixed(2, 17) },
+    { name: "St. Patrick's Day", style: "stPatrick",    wish: "Happy St. Paddy's!",       icon: "☘️", calc: HolidayCalcs.fixed(2, 17) },
+    { name: "Labor Day",         style: "mayday",       wish: "Happy Labor Day!",         icon: "🛠️", calc: HolidayCalcs.fixed(4, 1)  },
     { name: "Easter",            style: "easter",       wish: "Happy Easter!",            icon: "🐣", calc: HolidayCalcs.easter       },
     { name: "Easter Monday",     style: "eastermonday", wish: "Happy Easter Monday!",     icon: "🧺", calc: HolidayCalcs.relative(HolidayCalcs.easter, 1) },
     { name: "4th of July",       style: "july4",        wish: "Happy Independence Day!",  icon: "🎆", calc: HolidayCalcs.fixed(6, 4)  },
