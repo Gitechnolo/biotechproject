@@ -108,10 +108,11 @@ const HolidayCalcs = {
     // Helper per date fisse
     fixed: (m, d) => () => ({ month: m, day: d }),
     
-    // Helper per date relative (es: Pasqua + 1 giorno)
+    // FIX ROBUSTO: Calcola la data relativa gestendo il cambio mese/anno
     relative: (calcFn, offsetDays) => (y) => {
-        const d = calcFn(y);
-        return { ...d, day: d.day + offsetDays };
+        const base = calcFn(y);
+        const date = new Date(y, base.month, base.day + offsetDays);
+        return { month: date.getMonth(), day: date.getDate() };
     }
 };
 
@@ -132,10 +133,8 @@ function getNextHoliday() {
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const currentYear = today.getFullYear();
 
-    // Log Astro: Sincronizzazione cicli dinamici
     console.log(`%c 🌕 ASTRO %c Syncing dynamic cycles for ${currentYear}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
 
-    // Calcolo e ordinamento festività
     const upcoming = HOLIDAY_SCHEMA.map(h => {
         let { month, day } = h.calc(currentYear);
         let date = new Date(currentYear, month, day);
@@ -152,7 +151,6 @@ function getNextHoliday() {
     const next = upcoming[0];
     const isToday = next.diff === 0;
 
-    // Log Display: Selettore stile dinamico (usa la proprietà style per recuperare il log corretto)
     const logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
 
     console.log(
