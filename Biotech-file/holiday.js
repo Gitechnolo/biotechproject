@@ -13,7 +13,8 @@
 const SRE_H_LOGS = {
   base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
   astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border: 1px solid #00c853;',
-  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border: 1px solid #00c853;'
+  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border: 1px solid #00c853;',
+  eastermonday: 'background: #77dd77; color: #000000; border: 1px solid #55aa55; border: 1px solid #00c853;'
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -87,7 +88,7 @@ function triggerHumanSync() {
 
 // --- CALCOLATORI ATOMICI ---
 const HolidayCalcs = {
-    // Butcher-Meeus (Pasqua)
+    // Butcher-Meeus (Easter)
     easter: (y) => {
         const a = y % 19, b = Math.floor(y / 100), c = y % 100;
         const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
@@ -104,18 +105,25 @@ const HolidayCalcs = {
         const day = 22 + (4 - first + 7) % 7;
         return { month: 10, day };
     },
-    // Helper per date fisse (trasforma una data statica in una funzione calcolabile)
-    fixed: (m, d) => () => ({ month: m, day: d })
+    // Helper per date fisse
+    fixed: (m, d) => () => ({ month: m, day: d }),
+    
+    // Helper per date relative (es: Pasqua + 1 giorno)
+    relative: (calcFn, offsetDays) => (y) => {
+        const d = calcFn(y);
+        return { ...d, day: d.day + offsetDays };
+    }
 };
 
 // --- REGISTRO DELLE FESTIVITÀ ---
 const HOLIDAY_SCHEMA = [
-    { name: "St. Patrick's Day", style: "st-patrick",  wish: "Happy St. Paddy's!",       icon: "☘️", calc: HolidayCalcs.fixed(2, 17) },
-    { name: "Easter",            style: "easter",      wish: "Happy Easter!",            icon: "🐣", calc: HolidayCalcs.easter       },
-    { name: "4th of July",       style: "july4",       wish: "Happy Independence Day!",  icon: "🎆", calc: HolidayCalcs.fixed(6, 4)  },
-    { name: "Halloween",         style: "halloween",   wish: "Spooky Halloween!",        icon: "🎃", calc: HolidayCalcs.fixed(9, 31) },
-    { name: "Thanksgiving",      style: "thanksgiving",wish: "Happy Thanksgiving!",      icon: "🦃", calc: HolidayCalcs.thanksgiving },
-    { name: "Christmas",         style: "natale",      wish: "Merry Christmas!",         icon: "🎄", calc: HolidayCalcs.fixed(11, 25)}
+    { name: "St. Patrick's Day", style: "st-patrick",   wish: "Happy St. Paddy's!",       icon: "☘️", calc: HolidayCalcs.fixed(2, 17) },
+    { name: "Easter",            style: "easter",       wish: "Happy Easter!",            icon: "🐣", calc: HolidayCalcs.easter       },
+    { name: "Easter Monday",     style: "eastermonday", wish: "Happy Easter Monday!",     icon: "🧺", calc: HolidayCalcs.relative(HolidayCalcs.easter, 1) },
+    { name: "4th of July",       style: "july4",        wish: "Happy Independence Day!",  icon: "🎆", calc: HolidayCalcs.fixed(6, 4)  },
+    { name: "Halloween",         style: "halloween",    wish: "Spooky Halloween!",        icon: "🎃", calc: HolidayCalcs.fixed(9, 31) },
+    { name: "Thanksgiving",      style: "thanksgiving", wish: "Happy Thanksgiving!",      icon: "🦃", calc: HolidayCalcs.thanksgiving },
+    { name: "Christmas",         style: "natale",       wish: "Merry Christmas!",         icon: "🎄", calc: HolidayCalcs.fixed(11, 25)}
 ];
 
 // --- MAIN ENGINE ---
@@ -124,10 +132,10 @@ function getNextHoliday() {
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const currentYear = today.getFullYear();
 
-    // Log Astro: Sincronizzazione cicli
+    // Log Astro: Sincronizzazione cicli dinamici
     console.log(`%c 🌕 ASTRO %c Syncing dynamic cycles for ${currentYear}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
 
-    // Calcolo e ordinamento
+    // Calcolo e ordinamento festività
     const upcoming = HOLIDAY_SCHEMA.map(h => {
         let { month, day } = h.calc(currentYear);
         let date = new Date(currentYear, month, day);
@@ -144,10 +152,12 @@ function getNextHoliday() {
     const next = upcoming[0];
     const isToday = next.diff === 0;
 
-    // Log Display: Risultato finale
+    // Log Display: Selettore stile dinamico (usa la proprietà style per recuperare il log corretto)
+    const logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
+
     console.log(
         `%c${next.icon} BiotechHoliday%c ${next.name}: ${isToday ? 'ACTIVE' : next.diff + 'd left'}`,
-        SRE_H_LOGS.display + SRE_H_LOGS.base,
+        logStyle + SRE_H_LOGS.base,
         "color: #bcbcbc; margin-left: 5px;"
     );
 
