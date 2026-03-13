@@ -12,8 +12,8 @@
 // Namespace UNICO per il modulo Holiday - Colori differenziati
 const SRE_H_LOGS = {
   base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-  astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B;',
-  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d;'
+  astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border: 1px solid #00c853;',
+  display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border: 1px solid #00c853;'
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -81,8 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function triggerHumanSync() {
     // Colore verde neon con un'ombra per profondità
     const logStyle = "color: #B5EAD7; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3); text-shadow: 1px 1px 2px rgba(137, 43, 226, 0.568);";
-    
-    console.log("%c[SYNC] BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", logStyle);
+    console.log("%c 🐂 SYNC BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", logStyle);
 }
 
 // --- HOLIDAY CALCULATION FUNCTIONS ---
@@ -105,7 +104,7 @@ function getNextHoliday() {
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const year = today.getFullYear();
 
-    console.log(`%c[ASTRO]%c Syncing dynamic lunar cycles for ${year}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
+    console.log(`%c 🌕 ASTRO %c Syncing dynamic lunar cycles for ${year}`, SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px;");
 
     const easterData = getEaster(year);
     
@@ -139,8 +138,8 @@ function getNextHoliday() {
 
     return {
         msg: isToday 
-            ? `<span class="holiday-name ${nextHoliday.style}">${nextHoliday.wish}</span>`
-            : `Only ${daysLeft} days until <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
+            ? `${nextHoliday.icon} <span class="holiday-name ${nextHoliday.style}">${nextHoliday.wish}</span>`
+            : `Only ${daysLeft} days until ${nextHoliday.icon} <span class="holiday-name ${nextHoliday.style}">${nextHoliday.name}</span>!`,
         style: nextHoliday.style
     };
 }
