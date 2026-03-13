@@ -69,21 +69,15 @@ document.addEventListener("DOMContentLoaded", function () {
             return new Promise(resolve => window.addEventListener("load", resolve));
         })
         .then(() => {
-            // --- ORA IL SISTEMA È PRONTO ---
+            // --- SISTEMA SINCRONIZZATO E PRONTO ---
             
-            // A. Calcoliamo la festività
+            // A. Calcoliamo la festività 
             const holiday = getNextHoliday();
 
-            // B. Scrittura statica (opzionale)
-            const msgContainer = document.getElementById("holidayMsg");
-            if (msgContainer) {
-                msgContainer.innerHTML = `<p class="holiday-countdown ${holiday.style}">${holiday.msg}</p>`;
-            }
-
-            // C. TRIGGER DEL POPUP (Il tocco finale)
+            // B. TRIGGER DEL POPUP 
             showHolidayPopup(holiday);
 
-            // D. Log di sistema finale
+            // C. Log di sistema finale
             triggerHumanSync();
         });
 });
