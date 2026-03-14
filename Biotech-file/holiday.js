@@ -99,40 +99,47 @@ function triggerHumanSync() {
 
 /**
  * Genera e mostra notifica a comparsa basata sui dati festività.
+ * Include il metodo di export SRE integrato.
  */
 function showHolidayPopup(holiday) {
     const popup = document.createElement('div');
     popup.className = `holiday-popup ${holiday.style}`;
     
-    // Contenuto: Messaggio + Icona Export + X chiudi
+    // Struttura aggiornata: testo + icona export + chiusura
     popup.innerHTML = `
-        <span>${holiday.msg}</span>
-        <span class="popup-export" title="Export Holiday Data (CSV)">💾</span>
+        <span class="popup-text">${holiday.msg}</span>
+        <span class="popup-export" title="Export CSV Data">💾</span>
         <span class="popup-close" title="Chiudi">&times;</span>
     `;
     document.body.appendChild(popup);
 
-    // --- LOGICA EVENTI ---
-
-    // Evento per l'Export (CSV di default per facilità di lettura)
-    popup.querySelector('.popup-export').addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita interferenze con altri eventi
-        if (typeof exportHolidayData === 'function') {
-            exportHolidayData('csv'); 
-        } else {
-            console.error("Metodo exportHolidayData non trovato.");
-        }
-    });
-
-    // Evento per la chiusura
+    // Funzione interna per chiudere con grazia (transizione CSS)
     const closePopup = () => {
         popup.classList.remove('show');
-        setTimeout(() => popup.remove(), 600);
+        setTimeout(() => popup.remove(), 600); // Rimuove dal DOM dopo l'animazione
     };
 
-    popup.querySelector('.popup-close').addEventListener('click', closePopup);
+    // --- LOGICA TIMER ---
+    // Il popup scompare automaticamente dopo 6 secondi
+    let autoCloseTimeout = setTimeout(closePopup, 6000);
 
-    // Auto-rimozione (opzionale, forse meglio lasciarlo se l'utente vuole esportare)
+    // --- GESTIONE EVENTI ---
+
+    // 1. Click su Export: scarica il file e ferma il timer per dare tempo all'utente
+    popup.querySelector('.popup-export').addEventListener('click', (e) => {
+        e.stopPropagation();
+        exportHolidayData('csv'); 
+        clearTimeout(autoCloseTimeout); // Blocca la sparizione automatica se l'utente interagisce
+        console.log("%c 🟢 SRE Action: Export triggered from UI. Auto-close suspended.", "color: #00c853; font-weight: bold;");
+    });
+
+    // 2. Click sulla X: chiusura manuale immediata
+    popup.querySelector('.popup-close').addEventListener('click', () => {
+        clearTimeout(autoCloseTimeout);
+        closePopup();
+    });
+
+    // Entrata (trigger animazione CSS)
     setTimeout(() => popup.classList.add('show'), 100);
 }
 

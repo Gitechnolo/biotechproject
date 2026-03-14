@@ -100,6 +100,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 12px 75px 12px 40px; /* 75px lascia spazio per 💾 e X */
 }
 .holiday-popup.show {
     transform: translateX(-50%) translateY(0);
@@ -124,18 +125,16 @@
 /* Pulsante Export nel Popup */
 .popup-export {
     position: absolute;
-    right: 40px; /* Posizionato a sinistra della X */
+    right: 42px; /* Posizione fissa a sinistra della X */
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 16px;
-    filter: grayscale(1);
-    transition: transform 0.2s, filter 0.2s;
     opacity: 0.7;
+    transition: transform 0.2s;
 }
 .popup-export:hover {
     transform: translateY(-50%) scale(1.2);
-    filter: grayscale(0);
     opacity: 1;
 }
 
