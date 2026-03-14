@@ -146,21 +146,18 @@ function showHolidayPopup(holiday) {
 
 // --- FUNZIONE HELPER PER TIMESTAMP DINAMICO ---
 function getTimestampWithPhase() {
-    var now = new Date();
-    var hours = now.getHours();
-    var timestamp = now.toTimeString().split(' ')[0]; // Estrae HH:MM:SS
+    const now = new Date(); // const invece di var
+    const hours = now.getHours();
+    const timestamp = now.toTimeString().split(' ')[0];
     
-    var isDay = hours >= 6 && hours < 18;
-    var icon = isDay ? "☀️" : "🌙";
-    var phase = isDay ? "Daylight" : "Nightly";
+    const isDay = hours >= 6 && hours < 18;
+    const icon = isDay ? "☀️" : "🌙";
+    const phase = isDay ? "Daylight" : "Nightly";
     
     return {
-        icon: icon,
-        phase: phase,
-        timestamp: timestamp,
-        // Parti separate per colorazione differenziata nel console.log
-        part1: icon + " " + phase,
-        part2: " | " + timestamp
+        icon, phase, timestamp,
+        part1: `${icon} ${phase}`,
+        part2: ` | ${timestamp}`
     };
 }
 
