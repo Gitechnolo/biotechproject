@@ -125,31 +125,12 @@ function showHolidayPopup(holiday) {
 
     // --- GESTIONE EVENTI ---
 
-    // 1. Click su Export con Feedback Prioritario
+    // 1. Click su Export: scarica il file e ferma il timer per dare tempo all'utente
     popup.querySelector('.popup-export').addEventListener('click', (e) => {
         e.stopPropagation();
-        clearTimeout(autoCloseTimeout); 
-
-        // A. Applichiamo IMMEDIATAMENTE il feedback visivo
-        popup.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
-        popup.style.backgroundColor = "#e8f5e9"; 
-        popup.style.borderLeftColor = "#4caf50";
-        popup.style.transform = "translateX(-50%) scale(1.02)"; // Un piccolo "pulsare"
-
-        // B. Ritardiamo il download di un battito di ciglia (150ms)
-        // Questo permette ai pixel di cambiare colore prima che il sistema operativo intervenga
-        setTimeout(() => {
-            exportHolidayData('csv');
-            
-            // C. Dopo 1.5 secondi riportiamo tutto alla normalità
-            setTimeout(() => {
-                popup.style.backgroundColor = ""; 
-                popup.style.borderLeftColor = "";
-                popup.style.transform = "translateX(-50%) scale(1)";
-            }, 1500);
-        }, 150);
-
-        console.log("%c 🟢 SRE Visual: Feedback rendered before OS interrupt.", "color: #00c853;");
+        exportHolidayData('csv'); 
+        clearTimeout(autoCloseTimeout); // Blocca la sparizione automatica se l'utente interagisce
+        console.log("%c 🟢 SRE Action: Export triggered from UI. Auto-close suspended.", "color: #00c853;");
     });
 
     // 2. Click sulla X: chiusura manuale immediata
