@@ -198,9 +198,6 @@ function getNextHoliday() {
     var currentYear = today.getFullYear();
     var tData = getTimestampWithPhase();
 
-    // ⏱️ PERFORMANCE MONITORING - START
-    console.time('getNextHoliday');
-
     // Log ASTRO con stile oro per la fase e grigio per l'orario
     console.log(
         "%c " + tData.part1 + " %c" + tData.part2 + " %c Syncing dynamic cycles for " + currentYear,
@@ -222,31 +219,27 @@ function getNextHoliday() {
         return Object.assign({}, h, { date: date, diff: diff });
     }).sort(function(a, b) { return a.diff - b.diff; });
 
-    // 📋 LOG TABELLA FESTIVITÀ - SRE STYLE
-    console.log('%c📅 Upcoming Holidays Table', SRE_H_LOGS.display + SRE_H_LOGS.base);
+    // 📋 LOG TABELLA FESTIVITÀ - DETTAGLIATO E LEGGIBILE
+    console.groupCollapsed('%c📅 Upcoming Holidays Table', SRE_H_LOGS.display + SRE_H_LOGS.base);
     console.table(upcoming.map(h => ({
-        Icon: h.icon,
-        Holiday: h.name,
-        Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
-        DaysLeft: h.diff === 0 ? '🎉 TODAY' : h.diff + 'd'
-    })));
+    Icon: h.icon,
+    Holiday: h.name,
+    Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
+    DaysLeft: h.diff === 0 ? '🎉 TODAY' : h.diff + 'd'
+})));
+console.groupEnd();
 
     // Seleziona la festività più vicina
-    var next = upcoming; 
+    var next = upcoming[0]; 
     var isToday = next.diff === 0;
     var logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
 
-    // Log BiotechHoliday con data formattata
+    // Log BiotechHoliday
     console.log(
-        "%c " + next.icon + " BiotechHoliday %c " + next.name + 
-        ": " + (isToday ? 'ACTIVE' : next.diff + 'd left') +
-        " — " + next.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
+        "%c " + next.icon + " BiotechHoliday %c " + next.name + ": " + (isToday ? 'ACTIVE' : next.diff + 'd left'),
         logStyle + SRE_H_LOGS.base,
         "color: #bcbcbc; margin-left: 5px;"
     );
-
-    // ⏱️ PERFORMANCE MONITORING - END
-    console.timeEnd('getNextHoliday');
 
     return {
         msg: isToday
