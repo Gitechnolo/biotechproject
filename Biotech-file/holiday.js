@@ -125,24 +125,31 @@ function showHolidayPopup(holiday) {
 
     // --- GESTIONE EVENTI ---
 
-    // 1. Click su Export: scarica il file e attiva il feedback visivo
+    // 1. Click su Export con Feedback Prioritario
     popup.querySelector('.popup-export').addEventListener('click', (e) => {
         e.stopPropagation();
-        exportHolidayData('csv'); 
-        clearTimeout(autoCloseTimeout); // Ferma il timer di chiusura
+        clearTimeout(autoCloseTimeout); 
 
-        // Feedback Visivo: Il banner cambia colore temporaneamente
-        popup.style.transition = "all 0.3s ease";
-        popup.style.backgroundColor = "#e8f5e9"; // Verde tenue di successo
-        popup.style.borderLeftColor = "#4caf50"; // Verde Biotech brillante
-        
-        // Dopo 1 secondo ripristina i colori originali del tema
+        // A. Applichiamo IMMEDIATAMENTE il feedback visivo
+        popup.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+        popup.style.backgroundColor = "#e8f5e9"; 
+        popup.style.borderLeftColor = "#4caf50";
+        popup.style.transform = "translateX(-50%) scale(1.02)"; // Un piccolo "pulsare"
+
+        // B. Ritardiamo il download di un battito di ciglia (150ms)
+        // Questo permette ai pixel di cambiare colore prima che il sistema operativo intervenga
         setTimeout(() => {
-            popup.style.backgroundColor = ""; 
-            popup.style.borderLeftColor = "";
-        }, 1000);
+            exportHolidayData('csv');
+            
+            // C. Dopo 1.5 secondi riportiamo tutto alla normalità
+            setTimeout(() => {
+                popup.style.backgroundColor = ""; 
+                popup.style.borderLeftColor = "";
+                popup.style.transform = "translateX(-50%) scale(1)";
+            }, 1500);
+        }, 150);
 
-        console.log("%c 🟢 SRE Action: Export triggered from UI. Feedback deployed.", "color: #00c853; font-weight: bold;");
+        console.log("%c 🟢 SRE Visual: Feedback rendered before OS interrupt.", "color: #00c853;");
     });
 
     // 2. Click sulla X: chiusura manuale immediata
