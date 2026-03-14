@@ -125,12 +125,24 @@ function showHolidayPopup(holiday) {
 
     // --- GESTIONE EVENTI ---
 
-    // 1. Click su Export: scarica il file e ferma il timer per dare tempo all'utente
+    // 1. Click su Export: scarica il file e attiva il feedback visivo
     popup.querySelector('.popup-export').addEventListener('click', (e) => {
         e.stopPropagation();
         exportHolidayData('csv'); 
-        clearTimeout(autoCloseTimeout); // Blocca la sparizione automatica se l'utente interagisce
-        console.log("%c 🟢 SRE Action: Export triggered from UI. Auto-close suspended.", "color: #00c853; font-weight: bold;");
+        clearTimeout(autoCloseTimeout); // Ferma il timer di chiusura
+
+        // Feedback Visivo: Il banner cambia colore temporaneamente
+        popup.style.transition = "all 0.3s ease";
+        popup.style.backgroundColor = "#e8f5e9"; // Verde tenue di successo
+        popup.style.borderLeftColor = "#4caf50"; // Verde Biotech brillante
+        
+        // Dopo 1 secondo ripristina i colori originali del tema
+        setTimeout(() => {
+            popup.style.backgroundColor = ""; 
+            popup.style.borderLeftColor = "";
+        }, 1000);
+
+        console.log("%c 🟢 SRE Action: Export triggered from UI. Feedback deployed.", "color: #00c853; font-weight: bold;");
     });
 
     // 2. Click sulla X: chiusura manuale immediata
@@ -304,6 +316,8 @@ function exportHolidayData(format = 'json') {
 
     console.log(`%c 💾 Export completed: ${format.toUpperCase()} format generated.`, SRE_H_LOGS.backupDay + SRE_H_LOGS.base);
 }
+// Espone la funzione globalmente per l'uso via console (SRE Admin access)
+window.exportHolidayData = exportHolidayData;
 
 // Helper per il download fisico del file
 function downloadFile(content, fileName, contentType) {
