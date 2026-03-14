@@ -139,7 +139,7 @@ The project implements an **advanced technological maturity tracking system** vi
 ### Dashboard Features
 * ✅ **Real-time Performance Monitoring**: Metrics (0–100) updated every 24h via GitHub Actions.
 * ✅ **Resilience Intelligence**: Automated tracking of `optimized` and `compatible` states under stress.
-* 💾 **Open Data & Transparency**: Publicly accessible performance datasets. Users can **[Export Analytics (JSON/CSV)](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)** for third-party audits directly from the UI.
+* 💾 **Open Data & Transparency**: Access the **[Raw Performance Dataset (JSON)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)** for third-party verification or download analytics directly from the UI.
 
 👉 **View the live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
