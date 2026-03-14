@@ -104,29 +104,35 @@ function showHolidayPopup(holiday) {
     const popup = document.createElement('div');
     popup.className = `holiday-popup ${holiday.style}`;
     
-    // Contenuto con il messaggio e X chiudi
+    // Contenuto: Messaggio + Icona Export + X chiudi
     popup.innerHTML = `
         <span>${holiday.msg}</span>
+        <span class="popup-export" title="Export Holiday Data (CSV)">💾</span>
         <span class="popup-close" title="Chiudi">&times;</span>
     `;
     document.body.appendChild(popup);
 
-    // Timer per rimozione automatica (per poterlo cancellare se l'utente clicca X)
-    let autoCloseTimeout = setTimeout(() => {
-        closePopup();
-    }, 6000);
+    // --- LOGICA EVENTI ---
 
-    // Funzione interna per chiudere con grazia
-    function closePopup() {
+    // Evento per l'Export (CSV di default per facilità di lettura)
+    popup.querySelector('.popup-export').addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita interferenze con altri eventi
+        if (typeof exportHolidayData === 'function') {
+            exportHolidayData('csv'); 
+        } else {
+            console.error("Metodo exportHolidayData non trovato.");
+        }
+    });
+
+    // Evento per la chiusura
+    const closePopup = () => {
         popup.classList.remove('show');
         setTimeout(() => popup.remove(), 600);
-    }
-    // Evento click sulla X
-    popup.querySelector('.popup-close').addEventListener('click', () => {
-        clearTimeout(autoCloseTimeout); // Ferma il timer automatico
-        closePopup();
-    });
-    // Entrata
+    };
+
+    popup.querySelector('.popup-close').addEventListener('click', closePopup);
+
+    // Auto-rimozione (opzionale, forse meglio lasciarlo se l'utente vuole esportare)
     setTimeout(() => popup.classList.add('show'), 100);
 }
 
@@ -248,6 +254,59 @@ console.groupEnd();
         style: next.style
     };
 }
+
+/**
+ * [SRE UTILITY] exportHolidayData
+ * Esporta il dataset delle festività calcolato per analisi esterna o backup.
+ * @param {string} format - 'json' o 'csv'
+ */
+function exportHolidayData(format = 'json') {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    
+    // Recuperiamo i dati processati (simile alla logica in getNextHoliday)
+    const data = HOLIDAY_SCHEMA.map(h => {
+        const res = h.calc(currentYear);
+        let date = new Date(currentYear, res.month, res.day);
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+        if (date < today) {
+            const nextRes = h.calc(currentYear + 1);
+            date = new Date(currentYear + 1, nextRes.month, nextRes.day);
+        }
+
+        return {
+            holiday: h.name,
+            icon: h.icon,
+            date: date.toISOString().split('T')[0],
+            daysLeft: Math.ceil((date - today) / 86400000)
+        };
+    }).sort((a, b) => a.daysLeft - b.daysLeft);
+
+    if (format === 'csv') {
+        const csvRows = [
+            ["Icon", "Holiday", "Date", "DaysLeft"],
+            ...data.map(item => [item.icon, item.holiday, item.date, item.daysLeft])
+        ];
+        const csvContent = csvRows.map(e => e.join(",")).join("\n");
+        downloadFile(csvContent, 'biotech_holidays.csv', 'text/csv');
+    } else {
+        const jsonContent = JSON.stringify(data, null, 2);
+        downloadFile(jsonContent, 'biotech_holidays.json', 'application/json');
+    }
+
+    console.log(`%c 💾 Export completed: ${format.toUpperCase()} format generated.`, SRE_H_LOGS.backupDay + SRE_H_LOGS.base);
+}
+
+// Helper per il download fisico del file
+function downloadFile(content, fileName, contentType) {
+    const a = document.createElement("a");
+    const file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
 
 // Light effect functions
 function turnOnLight() {
