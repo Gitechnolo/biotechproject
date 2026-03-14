@@ -144,9 +144,32 @@ function showHolidayPopup(holiday) {
     setTimeout(() => popup.classList.add('show'), 100);
 }
 
+/**
+ * [SRE ENGINE] getProcessedHolidays
+ * Centralizza il calcolo per garantire coerenza tra UI, Log e Export.
+ */
+const getProcessedHolidays = () => {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const currentYear = today.getFullYear();
+
+    return HOLIDAY_SCHEMA.map(h => {
+        const res = h.calc(currentYear);
+        let date = new Date(currentYear, res.month, res.day);
+
+        if (date < today) {
+            const nextRes = h.calc(currentYear + 1);
+            date = new Date(currentYear + 1, nextRes.month, nextRes.day);
+        }
+
+        const diff = Math.ceil((date - today) / 86400000);
+        return { ...h, date, diff };
+    }).sort((a, b) => a.diff - b.diff);
+};
+
 // --- FUNZIONE HELPER PER TIMESTAMP DINAMICO ---
 function getTimestampWithPhase() {
-    const now = new Date(); // const invece di var
+    const now = new Date();
     const hours = now.getHours();
     const timestamp = now.toTimeString().split(' ')[0];
     
@@ -163,36 +186,34 @@ function getTimestampWithPhase() {
 
 // --- CALCOLATORI ATOMICI ---
 const HolidayCalcs = {
-    easter: function(y) {
-        var a = y % 19, b = Math.floor(y / 100), c = y % 100;
-        var d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
-        var g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
-        var i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
-        var m = Math.floor((a + 11 * h + 22 * l) / 451);
-        var month = Math.floor((h + l - 7 * m + 114) / 31);
-        var day = ((h + l - 7 * m + 114) % 31) + 1;
+    easter: (y) => {
+        const a = y % 19, b = Math.floor(y / 100), c = y % 100;
+        const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+        const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+        const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+        const m = Math.floor((a + 11 * h + 22 * l) / 451);
+        const month = Math.floor((h + l - 7 * m + 114) / 31);
+        const day = ((h + l - 7 * m + 114) % 31) + 1;
         return { month: month - 1, day: day };
     },
-    thanksgiving: function(y) {
-        var first = new Date(y, 10, 1).getDay();
-        var day = 22 + (4 - first + 7) % 7;
+    thanksgiving: (y) => {
+        const first = new Date(y, 10, 1).getDay();
+        const day = 22 + (4 - first + 7) % 7;
         return { month: 10, day: day };
     },
-    fixed: function(m, d) { return function() { return { month: m, day: d }; }; },
-    relative: function(calcFn, offsetDays) {
-        return function(y) {
-            var base = calcFn(y);
-            var date = new Date(y, base.month, base.day + offsetDays);
-            return { month: date.getMonth(), day: date.getDate() };
-        };
+    fixed: (m, d) => () => ({ month: m, day: d }),
+    relative: (calcFn, offsetDays) => (y) => {
+        const base = calcFn(y);
+        const date = new Date(y, base.month, base.day + offsetDays);
+        return { month: date.getMonth(), day: date.getDate() };
     }
 };
 
 // --- REGISTRO DELLE FESTIVITÀ ---
 const HOLIDAY_SCHEMA = [
     { name: "St. Patrick's Day", style: "stPatrick",    wish: "Happy St. Paddy's!",       icon: "☘️", calc: HolidayCalcs.fixed(2, 17) },
-    { name: "World Backup Day",  style: "backupDay", wish: "Resilience starts with a backup!", icon: "💾", calc: HolidayCalcs.fixed(2, 31) },
-    { name: "National DNA Day",  style: "dnaDay",    wish: "Celebrating the code of life!",    icon: "🧬", calc: HolidayCalcs.fixed(3, 25) },
+    { name: "World Backup Day",  style: "backupDay",    wish: "Resilience starts with a backup!", icon: "💾", calc: HolidayCalcs.fixed(2, 31) },
+    { name: "National DNA Day",  style: "dnaDay",       wish: "Celebrating the code of life!",    icon: "🧬", calc: HolidayCalcs.fixed(3, 25) },
     { name: "Labor Day",         style: "mayday",       wish: "Happy Labor Day!",         icon: "🛠️", calc: HolidayCalcs.fixed(4, 1)  },
     { name: "Easter",            style: "easter",       wish: "Happy Easter!",            icon: "🐣", calc: HolidayCalcs.easter       },
     { name: "Easter Monday",     style: "eastermonday", wish: "Happy Easter Monday!",     icon: "🧺", calc: HolidayCalcs.relative(HolidayCalcs.easter, 1) },
@@ -204,108 +225,78 @@ const HOLIDAY_SCHEMA = [
 
 // --- MAIN ENGINE ---
 function getNextHoliday() {
-    var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var currentYear = today.getFullYear();
-    var tData = getTimestampWithPhase();
+    const tData = getTimestampWithPhase();
+    const currentYear = new Date().getFullYear();
 
-    // Log ASTRO con stile oro per la fase e grigio per l'orario
     console.log(
-        "%c " + tData.part1 + " %c" + tData.part2 + " %c Syncing dynamic cycles for " + currentYear,
+        `%c ${tData.part1} %c${tData.part2} %c Syncing dynamic cycles for ${currentYear}`,
         SRE_H_LOGS.astro + SRE_H_LOGS.base,
         "color: #888; margin-left: 5px; font-family: monospace;",
         "color: #555; margin-left: 10px; font-style: italic;"
     );
 
-    var upcoming = HOLIDAY_SCHEMA.map(function(h) {
-        var res = h.calc(currentYear);
-        var date = new Date(currentYear, res.month, res.day);
+    const upcoming = getProcessedHolidays();
 
-        if (date < today) {
-            res = h.calc(currentYear + 1);
-            date = new Date(currentYear + 1, res.month, res.day);
-        }
-
-        var diff = Math.ceil((date - today) / 86400000);
-        return Object.assign({}, h, { date: date, diff: diff });
-    }).sort(function(a, b) { return a.diff - b.diff; });
-
-    // 📋 LOG TABELLA FESTIVITÀ - DETTAGLIATO E LEGGIBILE
     console.groupCollapsed('%c📅 Upcoming Holidays Table', SRE_H_LOGS.display + SRE_H_LOGS.base);
     console.table(upcoming.map(h => ({
-    Icon: h.icon,
-    Holiday: h.name,
-    Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
-    DaysLeft: h.diff === 0 ? '🎉 TODAY' : h.diff + 'd'
-})));
-console.groupEnd();
+        Icon: h.icon,
+        Holiday: h.name,
+        Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
+        DaysLeft: h.diff === 0 ? '🎉 TODAY' : `${h.diff}d`
+    })));
+    console.groupEnd();
 
-    // Seleziona la festività più vicina
-    var next = upcoming[0]; 
-    var isToday = next.diff === 0;
-    var logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
+    const next = upcoming[0]; 
+    const isToday = next.diff === 0;
+    const logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
 
-    // Log BiotechHoliday
     console.log(
-        "%c " + next.icon + " BiotechHoliday %c " + next.name + ": " + (isToday ? 'ACTIVE' : next.diff + 'd left'),
+        `%c ${next.icon} BiotechHoliday %c ${next.name}: ${isToday ? 'ACTIVE' : next.diff + 'd left'}`,
         logStyle + SRE_H_LOGS.base,
         "color: #bcbcbc; margin-left: 5px;"
     );
 
     return {
         msg: isToday
-            ? next.icon + ' <span class="holiday-name ' + next.style + '">' + next.wish + '</span>'
-            : 'Only ' + next.diff + ' days until ' + next.icon + ' <span class="holiday-name ' + next.style + '">' + next.name + '</span>!',
+            ? `${next.icon} <span class="holiday-name ${next.style}">${next.wish}</span>`
+            : `Only ${next.diff} days until ${next.icon} <span class="holiday-name ${next.style}">${next.name}</span>!`,
         style: next.style
     };
 }
 
 /**
- * [SRE UTILITY] exportHolidayData
- * Esporta il dataset delle festività calcolato per analisi esterna o backup.
- * @param {string} format - 'json' o 'csv'
+ * [SRE UTILITY] exportHolidayData (Versione Completa)
  */
 function exportHolidayData(format = 'json') {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    
-    // Recuperiamo i dati processati (simile alla logica in getNextHoliday)
-    const data = HOLIDAY_SCHEMA.map(h => {
-        const res = h.calc(currentYear);
-        let date = new Date(currentYear, res.month, res.day);
-        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-        if (date < today) {
-            const nextRes = h.calc(currentYear + 1);
-            date = new Date(currentYear + 1, nextRes.month, nextRes.day);
-        }
-
-        return {
-            holiday: h.name,
-            icon: h.icon,
-            date: date.toISOString().split('T')[0],
-            daysLeft: Math.ceil((date - today) / 86400000)
-        };
-    }).sort((a, b) => a.daysLeft - b.daysLeft);
+    const data = getProcessedHolidays();
+    const exportTime = new Date().toISOString();
 
     if (format === 'csv') {
-        const csvRows = [
-            ["Icon", "Holiday", "Date", "DaysLeft"],
-            ...data.map(item => [item.icon, item.holiday, item.date, item.daysLeft])
-        ];
-        const csvContent = csvRows.map(e => e.join(",")).join("\n");
-        downloadFile(csvContent, 'biotech_holidays.csv', 'text/csv');
+        const headers = ["Icon", "Holiday", "Date", "DaysLeft", "SystemStatus"];
+        const rows = data.map(item => [
+            item.icon, 
+            item.name, 
+            item.date.toISOString().split('T')[0], 
+            item.diff,
+            "SRE_VERIFIED"
+        ]);
+        const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
+        downloadFile(csvContent, `biotech_export_${new Date().getFullYear()}.csv`, 'text/csv');
     } else {
-        const jsonContent = JSON.stringify(data, null, 2);
-        downloadFile(jsonContent, 'biotech_holidays.json', 'application/json');
+        const payload = {
+            system: "Biotech-Core",
+            exportedAt: exportTime,
+            holidays: data.map(h => ({
+                name: h.name, icon: h.icon, date: h.date.toISOString().split('T')[0], daysLeft: h.diff
+            }))
+        };
+        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json');
     }
-
-    console.log(`%c 💾 Export completed: ${format.toUpperCase()} format generated.`, SRE_H_LOGS.backupDay + SRE_H_LOGS.base);
+    console.log(`%c 💾 Export completed: ${format.toUpperCase()}`, SRE_H_LOGS.backupDay + SRE_H_LOGS.base);
 }
-// Espone la funzione globalmente per l'uso via console (SRE Admin access)
+
 window.exportHolidayData = exportHolidayData;
 
-// Helper per il download fisico del file
 function downloadFile(content, fileName, contentType) {
     const a = document.createElement("a");
     const file = new Blob([content], { type: contentType });
