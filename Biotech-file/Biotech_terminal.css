@@ -112,6 +112,20 @@
     background: linear-gradient(to right, #f1f8e9, #fcf5e8 20%);
 }
 
+/* World Backup Day */
+.holiday-popup.backupDay { 
+    border-left: 6px solid #455a64; 
+    background: linear-gradient(to right, #eceff1, #fcf5e8 20%);
+}
+.holiday-name.backupDay { color: #455a64; font-weight: bold; }
+
+/* DNA Day */
+.holiday-popup.dnaDay { 
+    border-left: 6px solid #009688; 
+    background: linear-gradient(to right, #e0f2f1, #fcf5e8 20%);
+}
+.holiday-name.dnaDay { color: #009688; font-weight: bold; }
+
 /* Natale - Rosso Rubino */
 .holiday-popup.natale { 
     border-left: 6px solid #d32f2f;
