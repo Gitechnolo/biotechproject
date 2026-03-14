@@ -62,7 +62,7 @@
     width: 100%;
   }
 }
-
+/* ==== STYLE PER NOTIFICHE A COMPARSA FESTIVITÀ ==== */
 /* Container holiday popup: scende sotto il menu */
 .holiday-popup {
     position: fixed;
@@ -82,12 +82,10 @@
     align-items: center;
     gap: 10px;
 }
-
 .holiday-popup.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
 }
-
 /* Pulsante di chiusura (X) */
 .popup-close {
     position: absolute;
@@ -101,7 +99,58 @@
     transition: color 0.3s;
     line-height: 1;
 }
-
 .popup-close:hover {
     color: #4a3f44;
 }
+
+/* --- BIOTECH HOLIDAY THEMES --- */
+/* Stili specifici per festività */
+
+/* San Patrizio - Verde Smeraldo */
+.holiday-popup.stPatrick { 
+    border-left: 6px solid #2e7d32;
+    background: linear-gradient(to right, #f1f8e9, #fcf5e8 20%);
+}
+
+/* Natale - Rosso Rubino */
+.holiday-popup.natale { 
+    border-left: 6px solid #d32f2f;
+    background: linear-gradient(to right, #ffebee, #fcf5e8 20%);
+}
+
+/* Halloween - Arancio Zucca */
+.holiday-popup.halloween { 
+    border-left: 6px solid #ef6c00;
+    background: linear-gradient(to right, #fff3e0, #fcf5e8 20%);
+}
+
+/* Pasqua - Giallo Pulcino / Arancio */
+.holiday-popup.easter { 
+    border-left: 6px solid #ff9800;
+    background: linear-gradient(to right, #fff8e1, #fcf5e8 20%);
+}
+
+/* Lunedì dell'Angelo - Verde Prato */
+.holiday-popup.eastermonday { 
+    border-left: 6px solid #77dd77;
+    background: linear-gradient(to right, #f0fff0, #fcf5e8 20%);
+}
+
+/* Labor Day - Rosso Intenso */
+.holiday-popup.mayday { 
+    border-left: 6px solid #c62828;
+}
+
+/* 4 Luglio - Blu Notte */
+.holiday-popup.july4 { 
+    border-left: 6px solid #1565c0;
+    background: linear-gradient(to right, #e3f2fd, #fcf5e8 20%);
+}
+
+/* Thanksgiving - Marrone Autunno */
+.holiday-popup.thanksgiving { 
+    border-left: 6px solid #8d6e63;
+    background: linear-gradient(to right, #efebe9, #fcf5e8 20%);
+}
+
+/* --- FINE THEMES --- */
