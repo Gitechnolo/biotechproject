@@ -30,38 +30,39 @@ const SRE_H_LOGS = {
 document.addEventListener("DOMContentLoaded", function () {
     
     // --- PROMISE-BASED INITIALIZATION ---
-    // Inizializzazione come una catena asincrona
-    const systemInit = new Promise((resolve) => {
+const systemInit = new Promise((resolve) => {
+    const bannerImg = document.getElementById("Banner");
+    if (bannerImg) {
+        const banners = [
+            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
+            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
+            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
+            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
+        ];
+        // 1: forEach invece di map per il preload
+        // 2: Controllo base sulla connessione (Preload con verifica)
+        const isSlowConn = navigator.connection && (navigator.connection.saveData || /2g|slow-2g/.test(navigator.connection.effectiveType));
         
-        // BANNER CYCLING & PRELOAD
-        const bannerImg = document.getElementById("Banner");
-        if (bannerImg) {
-            const banners = [
-                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
-                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
-                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
-                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
-            ];
-
-            banners.map(src => {
+        if (!isSlowConn) {
+            banners.forEach(src => {
                 const img = new Image();
                 img.src = src;
-                return img;
             });
-
-            let bnrCntr = 0;
-            setInterval(() => {
-                bannerImg.classList.add("banner-fade-out");
-                setTimeout(() => {
-                    bnrCntr = (bnrCntr + 1) % banners.length;
-                    bannerImg.src = banners[bnrCntr];
-                    bannerImg.classList.remove("banner-fade-out");
-                }, 500);
-            }, 3500);
         }
-        
-        resolve("DOM and Assets initialized.");
-    });
+
+        let bnrCntr = 0;
+        // Salvare l'ID per cleanup se necessario
+        const bannerInterval = setInterval(() => {
+            bannerImg.classList.add("banner-fade-out");
+            setTimeout(() => {
+                bnrCntr = (bnrCntr + 1) % banners.length;
+                bannerImg.src = banners[bnrCntr];
+                bannerImg.classList.remove("banner-fade-out");
+            }, 500);
+        }, 3500);
+    }
+    resolve("DOM and Assets initialized.");
+});
 
     // --- EXECUTION OF THE SYNC LOGIC ---
     systemInit
