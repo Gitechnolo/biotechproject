@@ -109,22 +109,37 @@ This project follows a rigorous decision-making process to ensure enterprise-gra
 * **Outcome**: 87% technical maturity score and automated 24h reliability checks.
 * **Validation**: [Multi-Model Audit Protocol & Case Study (Issue #14)](https://github.com/Gitechnolo/biotechproject/issues/14)
 
+### [ADR-004] Circadian State Machine
+* **Decision**: Implementation of a resource-efficient early-return pattern for time-based content delivery.
+* **Rationale**: Reduces cognitive load by synchronizing UI states with the user's biological clock without triggering expensive re-renders or heavy interval polling.
+* **Outcome**: 98% reduction in background CPU cycles for dynamic UI adaptation.
+* **Validation**: [Performance-Efficient Early Return Pattern (Issue #15)](https://github.com/Gitechnolo/biotechproject/issues/15)
+
+### [ADR-005] SRE-Driven Data Portability
+* **Decision**: Deployment of a zero-latency, UI-integrated export layer using native Blob APIs.
+* **Rationale**: Ensures data sovereignty and interoperability for health records while maintaining a "Lean Logic" approach (no external libraries or heavy animations).
+* **Outcome**: Instant CSV/JSON generation with zero impact on the Main Thread's TTI.
+* **Validation**: [UI-Integrated Export & Resilience Strategy (Issue #17)](https://github.com/Gitechnolo/biotechproject/issues/17)
+
 ---
 
 ## 📊 Technical Quality Monitoring & Architecture
 
-The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **March 06, 2026**, the ecosystem maintains a **95% aggregate performance score** even under extreme network stress tests (150ms RTT / 4x CPU slowdown).
+The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **March 14, 2026**, the ecosystem maintains a **95% aggregate performance score**.
 
-While environmental noise during simulated throttling can cause minor performance fluctuations in individual pages, this SRE-grade audit ensures that core clinical modules remain accessible and performant during peak-hour network instability.
+> [!IMPORTANT]
+> **Performance Stress-Test:** Metrics are validated under **extreme synthetic throttling** (150ms RTT / 4x CPU slowdown). This SRE-grade audit ensures that core clinical modules remain accessible and performant even during peak-hour network instability or on legacy hardware.
+
+**Update March 14, 2026:** Successfully integrated the **Data Portability Audit layer (ADR-005)**. The system now supports real-time performance telemetry exports without impacting Main Thread execution.
 
 📂 **Latest Audit Records:**
-* 📄 **[SRE Performance Stress-Test Report - March 06, 2026 (PDF)](docs/biotech-performance-report.pdf)** ⬅️ *New* 
+* 📄 **[SRE Performance Stress-Test Report - March 06, 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Features
-* ✅ **Real-time Performance Monitoring**: Score (0–100) and load times updated every 24h.
-* ✅ **Resilience Intelligence**: Automated tracking of `optimized`, `compatible`, and `deprecated` states under stress.
-* 💾 **Open Data**: Export analytics in JSON/CSV/PDF for third-party audits directly from the UI.
+* ✅ **Real-time Performance Monitoring**: Metrics (0–100) updated every 24h via GitHub Actions.
+* ✅ **Resilience Intelligence**: Automated tracking of `optimized` and `compatible` states under stress.
+* 💾 **Open Data & Transparency**: Publicly accessible performance datasets. Users can **[Export Analytics (JSON/CSV)](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)** for third-party audits directly from the UI.
 
 👉 **View the live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
@@ -213,7 +228,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**March 06, 2026**
+**March 14, 2026**
 
 ## 🔮 Recent updates (summary)
 
