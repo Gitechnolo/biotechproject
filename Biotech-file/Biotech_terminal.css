@@ -90,7 +90,6 @@
     transform: translateX(-50%) translateY(-150px);
     background-color: #fcf5e8;
     color: #4a3f44;
-    padding: 12px 50px 12px 40px; /* Più spazio a destra per la X */
     border-radius: 50px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     z-index: 9999;
