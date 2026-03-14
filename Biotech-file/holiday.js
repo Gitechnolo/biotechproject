@@ -219,6 +219,15 @@ function getNextHoliday() {
         return Object.assign({}, h, { date: date, diff: diff });
     }).sort(function(a, b) { return a.diff - b.diff; });
 
+    // 📋 LOG TABELLA FESTIVITÀ - DETTAGLIATO E LEGGIBILE
+    console.log('%c 📅 Upcoming Holidays Table', 'color: #00c853; font-weight: bold; font-family: monospace; font-size: 12px;');
+    console.table(upcoming.map(h => ({
+    Icon: h.icon,
+    Holiday: h.name,
+    Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
+    DaysLeft: h.diff === 0 ? '🎉 TODAY' : h.diff + 'd'
+})));
+
     // Seleziona la festività più vicina
     var next = upcoming[0]; 
     var isToday = next.diff === 0;
