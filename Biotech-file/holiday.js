@@ -29,15 +29,18 @@ const SRE_H_LOGS = {
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    // Log di avvio SRE
-    console.log("%c 🛠️ SRE Bootstrap: Initializing Biotech Core...", "font-weight: bold; color: #00e676;");
+    console.log(
+        "%c 🛠️ SRE Bootstrap %c Initializing Biotech Core System...", 
+        SRE_H_LOGS.display + SRE_H_LOGS.base, 
+        "color: #888; font-style: italic; margin-left: 5px;"
+    );
 
     try {
         // --- 1. PROMISE-BASED INITIALIZATION (Banner & Assets) ---
         const systemInit = new Promise((resolve, reject) => {
             const bannerImg = document.getElementById("Banner");
             
-            // Gestione errore: se l'elemento Banner non esiste, non blocchiamo il resto
+            // Gestione SRE: se il banner manca, il sistema non crasha ma avvisa
             if (!bannerImg) {
                 reject(new Error("DOM Element #Banner missing. UI state: Limited."));
                 return;
@@ -50,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
             ];
 
-            // Preload intelligente basato sulla connessione
+            // Controllo della connessione per ottimizzazione risorse
             const isSlowConn = navigator.connection && (navigator.connection.saveData || /2g|slow-2g/.test(navigator.connection.effectiveType));
             
             if (!isSlowConn) {
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             let bnrCntr = 0;
-            // Salvataggio intervallo per gestione globale
+            // Salvataggio intervallo per eventuale cleanup
             window.biotechBannerInterval = setInterval(() => {
                 bannerImg.classList.add("banner-fade-out");
                 setTimeout(() => {
@@ -78,22 +81,22 @@ document.addEventListener("DOMContentLoaded", function () {
         // --- 2. PIPELINE DI ESECUZIONE (Logica Sincronizzata) ---
         systemInit
             .then(() => {
-                // Aspettiamo che tutto (CSS, altre immagini) sia caricato
+                // Attesa caricamento completo (immagini pesanti, stili, etc)
                 return new Promise(resolve => window.addEventListener("load", resolve));
             })
             .then(() => {
-                // --- SISTEMA PRONTO ---
-                const holiday = getNextHoliday(); // Calcolo
-                showHolidayPopup(holiday);        // UI
-                triggerHumanSync();               // Final Log
+                // Esecuzione Core del modulo Holidays
+                const holiday = getNextHoliday(); 
+                showHolidayPopup(holiday);        
+                triggerHumanSync();               
             })
             .catch(err => {
-                // Cattura errori dentro la catena .then
+                // Gestione errori controllata per la pipeline async
                 console.error("%c 🚨 Pipeline Graceful Stop:", "color: #ff5252; font-weight: bold;", err.message);
             });
 
     } catch (criticalError) {
-        // Cattura errori fatali immediati nel bootstrap
+        // Fallback per errori bloccanti nel thread principale
         console.error("%c ☢️ Critical Exception:", "background: red; color: white; padding: 2px 4px;", criticalError);
     }
 });
