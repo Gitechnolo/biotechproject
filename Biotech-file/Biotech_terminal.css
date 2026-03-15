@@ -100,7 +100,7 @@
     align-items: center;
     gap: 10px;
     /* Padding bilanciato SRE per centraggio perfetto del testo */
-    padding: 12px 50px; 
+    padding: 12px 75px 12px 40px; /* distanzia il testo dai bordi, quindi dall'icona*/
     min-width: 320px;
     /* Taglia la barra di progresso sugli angoli smussati del popup */
     overflow: hidden; 
@@ -125,9 +125,9 @@
 }
 .popup-close:hover { color: #4a3f44; }
 
-.popup-export {
+.popup-export {/* Sposta l'icona download (💾) */
     position: absolute;
-    right: 42px; 
+    right: 48px; /* Spostata a sinistra per distanziarla dalla X */
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
