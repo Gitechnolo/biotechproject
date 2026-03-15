@@ -156,7 +156,7 @@
 
     if (format === 'csv') {
         // Intestazioni minimali e pulite
-        const headers = ["Icon", "Holiday", "Date", "DaysLeft", "Countdown", "Status"];
+        const headers = ["Icon", "Holiday", "Date", "Countdown", "Status"];
         const rows = data.map(h => {
             const date = h.date;
             let countdown = "";
@@ -179,7 +179,6 @@
                 h.icon,
                 h.name,
                 date.toISOString().split('T'), // YYYY-MM-DD
-                h.diff,
                 countdown,
                 "SRE_VERIFIED"
             ];
@@ -208,7 +207,6 @@
                     name: h.name,
                     icon: h.icon,
                     date: h.date.toISOString().split('T'),
-                    daysLeft: h.diff,
                     countdown: countdown
                 };
             })
