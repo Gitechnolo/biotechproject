@@ -81,11 +81,11 @@
     width: 100%;
   }
 }
-/* ==== STYLE PER NOTIFICHE A COMPARSA FESTIVITÀ ==== */
-/* Container holiday popup: scende sotto il menu */
+/* ==== BIOTECH PROJECT: HOLIDAY POPUP ENGINE (FINAL SRE PUSH) ==== */
+
 .holiday-popup {
     position: fixed;
-    top: 80px; /* Valore in base all'altezza del menu biotech */
+    top: 80px; 
     left: 50%;
     transform: translateX(-50%) translateY(-150px);
     background-color: #fcf5e8;
@@ -99,13 +99,19 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 75px 12px 40px; /* 75px lascia spazio per 💾 e X */
+    /* Padding bilanciato SRE per centraggio perfetto del testo */
+    padding: 12px 50px; 
+    min-width: 320px;
+    /* Taglia la barra di progresso sugli angoli smussati del popup */
+    overflow: hidden; 
 }
+
 .holiday-popup.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
 }
-/* Pulsante di chiusura (X) */
+
+/* --- CONTROLLI POSIZIONATI IN ABSOLUTE --- */
 .popup-close {
     position: absolute;
     right: 15px;
@@ -116,15 +122,12 @@
     font-weight: bold;
     color: #aaa;
     transition: color 0.3s;
-    line-height: 1;
 }
-.popup-close:hover {
-    color: #4a3f44;
-}
-/* Pulsante Export nel Popup */
+.popup-close:hover { color: #4a3f44; }
+
 .popup-export {
     position: absolute;
-    right: 42px; /* Posizione fissa a sinistra della X */
+    right: 42px; 
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -132,144 +135,80 @@
     opacity: 0.7;
     transition: transform 0.2s;
 }
-.popup-export:hover {
-    transform: translateY(-50%) scale(1.2);
-    opacity: 1;
-}
+.popup-export:hover { transform: translateY(-50%) scale(1.2); opacity: 1; }
 
-
-/* --- SRE PROGRESS BAR (TTL Budget) --- */
+/* --- SRE PROGRESS BAR (FIX ANGOLI ARROTONDATI) --- */
 .popup-progress-container {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4px; /* Sottile ma visibile */
-    background: rgba(0, 0, 0, 0.03); /* Binario quasi invisibile */
-    border-radius: 0 0 50px 50px; /* Deve seguire l'arrotondamento del popup */
+    height: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 0 0 50px 50px;
     overflow: hidden;
-    pointer-events: none; /* Evita che la barra interferisca con i click */
+    pointer-events: none;
 }
 
 .popup-progress-bar {
     height: 100%;
     width: 100%;
-    /* Prende il colore definito nella classe della festività (es. .stPatrick) */
-    background: currentColor; 
-    box-shadow: 0 0 8px rgba(0, 200, 83, 0.4); /* Leggero bagliore neon */
-    opacity: 0.6; /* Trasparenza per non essere troppo pesante */
+    background: currentColor; /* Sincronizzato con il colore della festività */
+    box-shadow: 0 0 8px rgba(0, 200, 83, 0.3); 
+    opacity: 0.6;
     transform-origin: left;
     transition: transform 6000ms linear;
 }
 
-/* Trigger dell'animazione: quando il popup entra (classe .show) */
-.holiday-popup.show .popup-progress-bar {
-    transform: scaleX(0);
-}
+.holiday-popup.show .popup-progress-bar { transform: scaleX(0); }
 
-/* --- GESTIONE CONTROLLI (Icone 💾 e X) --- */
-.popup-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-left: 20px;
-}
-
-/* --- FIX RESILIENZA & LAYOUT --- */
-.holiday-name { 
-    font-weight: 800; 
-    letter-spacing: -0.2px;
-}
-
-/* Gestione Transizione Banner SRE */
-.banner-fade-out { 
-    opacity: 0 !important; 
-    transition: opacity 0.5s ease-in-out !important; 
-}
-
-/* Ottimizzazione per Mobile (Safe Area) */
-@media (max-width: 600px) {
-    .holiday-popup {
-        width: 90%;
-        padding: 12px 20px;
-        font-size: 13px;
-    }
-    .popup-controls { gap: 15px; }
-}
-
+/* --- FIX RESILIENZA & TEXT --- */
+.holiday-name { font-weight: 800; letter-spacing: -0.2px; }
+.holiday-popup .popup-text { color: #4a3f44; } /* Forza il testo scuro leggibile */
+.banner-fade-out { opacity: 0 !important; transition: opacity 0.5s ease-in-out !important; }
 
 /* --- BIOTECH HOLIDAY THEMES (SRE Sync Version) --- */
 
-/* Regola universale per mantenere il testo leggibile indipendentemente dal colore della festività */
-.holiday-popup .popup-text { color: #4a3f44; }
-
-/* San Patrizio - Verde Smeraldo */
 .holiday-popup.stPatrick { 
-    border-left: 6px solid #2e7d32;
-    color: #2e7d32; /* Colore per la Progress Bar */
+    border-left: 6px solid #2e7d32; color: #2e7d32; 
     background: linear-gradient(to right, #f1f8e9, #fcf5e8 20%);
 }
-
-/* World Backup Day - Grigio Ardesia */
 .holiday-popup.backupDay { 
-    border-left: 6px solid #455a64; 
-    color: #455a64;
+    border-left: 6px solid #455a64; color: #455a64;
     background: linear-gradient(to right, #eceff1, #fcf5e8 20%);
 }
-
-/* DNA Day - Teal */
 .holiday-popup.dnaDay { 
-    border-left: 6px solid #009688; 
-    color: #009688;
+    border-left: 6px solid #009688; color: #009688;
     background: linear-gradient(to right, #e0f2f1, #fcf5e8 20%);
 }
-
-/* Natale - Rosso Rubino */
 .holiday-popup.natale { 
-    border-left: 6px solid #d32f2f;
-    color: #d32f2f;
+    border-left: 6px solid #d32f2f; color: #d32f2f;
     background: linear-gradient(to right, #ffebee, #fcf5e8 20%);
 }
-
-/* Halloween - Arancio Zucca */
 .holiday-popup.halloween { 
-    border-left: 6px solid #ef6c00;
-    color: #ef6c00;
+    border-left: 6px solid #ef6c00; color: #ef6c00;
     background: linear-gradient(to right, #fff3e0, #fcf5e8 20%);
 }
-
-/* Pasqua - Arancio Giallo */
 .holiday-popup.easter { 
-    border-left: 6px solid #ff9800;
-    color: #ff9800;
+    border-left: 6px solid #ff9800; color: #ff9800;
     background: linear-gradient(to right, #fff8e1, #fcf5e8 20%);
 }
-
-/* Lunedì dell'Angelo - Verde Prato */
 .holiday-popup.eastermonday { 
-    border-left: 6px solid #77dd77;
-    color: #77dd77;
+    border-left: 6px solid #77dd77; color: #77dd77;
     background: linear-gradient(to right, #f0fff0, #fcf5e8 20%);
 }
-
-/* Labor Day - Rosso Intenso */
-.holiday-popup.mayday { 
-    border-left: 6px solid #c62828;
-    color: #c62828;
-}
-
-/* 4 Luglio - Blu Notte */
+.holiday-popup.mayday { border-left: 6px solid #c62828; color: #c62828; }
 .holiday-popup.july4 { 
-    border-left: 6px solid #1565c0;
-    color: #1565c0;
+    border-left: 6px solid #1565c0; color: #1565c0;
     background: linear-gradient(to right, #e3f2fd, #fcf5e8 20%);
 }
-
-/* Thanksgiving - Marrone Autunno */
 .holiday-popup.thanksgiving { 
-    border-left: 6px solid #8d6e63;
-    color: #8d6e63;
+    border-left: 6px solid #8d6e63; color: #8d6e63;
     background: linear-gradient(to right, #efebe9, #fcf5e8 20%);
+}
+
+@media (max-width: 600px) {
+    .holiday-popup { width: 90%; padding: 12px 20px; font-size: 13px; }
 }
 
 /* --- FINE THEMES --- */
