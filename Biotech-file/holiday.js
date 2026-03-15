@@ -122,70 +122,39 @@ function showHolidayPopup(holiday) {
     const popup = document.createElement('div');
     popup.className = `holiday-popup ${holiday.style}`;
     
+    // Struttura aggiornata: testo + icona export + chiusura
     popup.innerHTML = `
         <span class="popup-text">${holiday.msg}</span>
-        <span class="popup-timer" style="font-size: 0.8em; opacity: 0.7; margin-left: 5px; font-family: monospace;"></span>
         <span class="popup-export" title="Export CSV Data">💾</span>
         <span class="popup-close" title="Chiudi">&times;</span>
     `;
     document.body.appendChild(popup);
 
-    // Funzione interna per chiudere con grazia
+    // Funzione interna per chiudere con grazia (transizione CSS)
     const closePopup = () => {
         popup.classList.remove('show');
-        setTimeout(() => popup.remove(), 600);
-
-        // 🛡️ CLEANUP TIMER DEL POPUP
-        if (popup.dataset.timerId) {
-            clearInterval(parseInt(popup.dataset.timerId));
-            delete popup.dataset.timerId;
-        }
+        setTimeout(() => popup.remove(), 600); // Rimuove dal DOM dopo l'animazione
     };
 
     // --- LOGICA TIMER ---
+    // Il popup scompare automaticamente dopo 6 secondi
     let autoCloseTimeout = setTimeout(closePopup, 6000);
 
     // --- GESTIONE EVENTI ---
 
+    // 1. Click su Export: scarica il file e ferma il timer per dare tempo all'utente
     popup.querySelector('.popup-export').addEventListener('click', (e) => {
         e.stopPropagation();
         exportHolidayData('csv'); 
-        clearTimeout(autoCloseTimeout);
+        clearTimeout(autoCloseTimeout); // Blocca la sparizione automatica se l'utente interagisce
         console.log("%c 🟢 SRE Action: Export triggered from UI. Auto-close suspended.", "color: #00c853;");
     });
 
+    // 2. Click sulla X: chiusura manuale immediata
     popup.querySelector('.popup-close').addEventListener('click', () => {
         clearTimeout(autoCloseTimeout);
         closePopup();
     });
-
-    // --- TIMER LIVE NEL POPUP (SOLO SE FESTIVITÀ OGGI E NON ANCORA ATTIVA) ---
-    if (holiday.diff === 0) {
-        const now = new Date();
-        const holidayTime = new Date(now.getFullYear(), holiday.date.getMonth(), holiday.date.getDate(), 0, 0, 0);
-        const msLeft = holidayTime.getTime() - now.getTime();
-
-        if (msLeft > 0) {
-            const timerId = setInterval(() => {
-                const now = new Date();
-                const msLeft = holidayTime.getTime() - now.getTime();
-                const hours = Math.floor(msLeft / 3600000);
-                const mins = Math.floor((msLeft % 3600000) / 60000);
-                const secs = Math.floor((msLeft % 60000) / 1000);
-
-                if (msLeft <= 0) {
-                    clearInterval(timerId);
-                    popup.querySelector('.popup-timer').textContent = "🎉 ACTIVE NOW";
-                    popup.querySelector('.popup-text').innerHTML = `${holiday.icon} <span class="holiday-name ${holiday.style}">${holiday.wish}</span>`;
-                    return;
-                }
-
-                popup.querySelector('.popup-timer').textContent = `${hours}h ${mins}m ${secs}s`;
-            }, 1000);
-
-            popup.dataset.timerId = timerId;
-        }
-    }
 
     // Entrata (trigger animazione CSS)
     setTimeout(() => popup.classList.add('show'), 100);
@@ -293,82 +262,21 @@ function getNextHoliday() {
     })));
     console.groupEnd();
 
-    const next = upcoming; 
+    const next = upcoming[0]; 
     const isToday = next.diff === 0;
     const logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
 
-    let countdownLabel = isToday
-        ? "🎉 ACTIVE TODAY"
-        : next.diff > 7
-            ? `⏳ ${Math.floor(next.diff / 7)}w ${next.diff % 7}d left`
-            : `⏳ ${next.diff}d left`;
-
-    // 🆕 AGGIUNGI ORE/MINUTI SOLO SE < 24h
-    if (next.diff === 0) {
-        const now = new Date();
-        const holidayTime = new Date(now.getFullYear(), next.date.getMonth(), next.date.getDate(), 0, 0, 0);
-        const msLeft = holidayTime.getTime() - now.getTime();
-        const hours = Math.floor(msLeft / 3600000);
-        const mins = Math.floor((msLeft % 3600000) / 60000);
-        
-        if (hours > 0 || mins > 0) {
-            countdownLabel = `⏳ ${hours}h ${mins}m left`;
-        } else {
-            countdownLabel = "🎉 ACTIVE NOW";
-        }
-    }
-
     console.log(
-        `%c ${next.icon} BiotechHoliday %c ${next.name} %c ${countdownLabel}`,
+        `%c ${next.icon} BiotechHoliday %c ${next.name}: ${isToday ? 'ACTIVE' : next.diff + 'd left'}`,
         logStyle + SRE_H_LOGS.base,
-        "color: #bcbcbc; margin-left: 5px;",
-        "color: #00e676; font-weight: bold; margin-left: 5px; font-family: monospace;"
+        "color: #bcbcbc; margin-left: 5px;"
     );
-
-    // 🆕 TIMER LIVE IN CONSOLE (SOLO SE FESTIVITÀ OGGI E NON ANCORA ATTIVA)
-    if (next.diff === 0) {
-        const now = new Date();
-        const holidayTime = new Date(now.getFullYear(), next.date.getMonth(), next.date.getDate(), 0, 0, 0);
-        const msLeft = holidayTime.getTime() - now.getTime();
-
-        if (msLeft > 0) {
-            const timerId = setInterval(() => {
-                const now = new Date();
-                const msLeft = holidayTime.getTime() - now.getTime();
-                const hours = Math.floor(msLeft / 3600000);
-                const mins = Math.floor((msLeft % 3600000) / 60000);
-                const secs = Math.floor((msLeft % 60000) / 1000);
-
-                if (msLeft <= 0) {
-                    clearInterval(timerId);
-                    console.log(
-                        `%c 🎉 BiotechHoliday %c ${next.name} %c ACTIVE NOW`,
-                        logStyle + SRE_H_LOGS.base,
-                        "color: #bcbcbc; margin-left: 5px;",
-                        "color: #ffeb3b; font-weight: bold; margin-left: 5px; font-family: monospace;"
-                    );
-                    return;
-                }
-
-                console.log(
-                    `%c ⏱️ LIVE COUNTDOWN %c ${next.name} %c ${hours}h ${mins}m ${secs}s`,
-                    SRE_H_LOGS.astro + SRE_H_LOGS.base,
-                    "color: #bcbcbc; margin-left: 5px;",
-                    "color: #00e676; font-weight: bold; margin-left: 5px; font-family: monospace;"
-                );
-            }, 1000);
-
-            window.biotechLiveTimer = timerId;
-        }
-    }
 
     return {
         msg: isToday
             ? `${next.icon} <span class="holiday-name ${next.style}">${next.wish}</span>`
             : `Only ${next.diff} days until ${next.icon} <span class="holiday-name ${next.style}">${next.name}</span>!`,
-        style: next.style,
-        diff: next.diff,  // 🆕 Aggiunto per uso in showHolidayPopup
-        date: next.date  // 🆕 Aggiunto per uso in showHolidayPopup
+        style: next.style
     };
 }
 
