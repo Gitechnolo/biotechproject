@@ -144,9 +144,9 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.07); /* Leggermente più visibile */
-    border-radius: 0 0 50px 50px;
+    height: 4px; /* Sottile ma visibile */
+    background: rgba(0, 0, 0, 0.03); /* Binario quasi invisibile */
+    border-radius: 0 0 50px 50px; /* Deve seguire l'arrotondamento del popup */
     overflow: hidden;
     pointer-events: none; /* Evita che la barra interferisca con i click */
 }
@@ -154,12 +154,12 @@
 .popup-progress-bar {
     height: 100%;
     width: 100%;
-    /* currentColor eredita il colore del testo o del bordo. 
-       Assicurati che le classi .stPatrick, .natale ecc. abbiano una proprietà 'color' definita. */
+    /* Prende il colore definito nella classe della festività (es. .stPatrick) */
     background: currentColor; 
-    opacity: 0.8;
+    box-shadow: 0 0 8px rgba(0, 200, 83, 0.4); /* Leggero bagliore neon */
+    opacity: 0.6; /* Trasparenza per non essere troppo pesante */
     transform-origin: left;
-    transition: transform 6000ms linear; /* 6 Secondi di TTL */
+    transition: transform 6000ms linear;
 }
 
 /* Trigger dell'animazione: quando il popup entra (classe .show) */
@@ -198,67 +198,77 @@
 }
 
 
-/* --- BIOTECH HOLIDAY THEMES --- */
-/* Stili specifici per festività */
+/* --- BIOTECH HOLIDAY THEMES (SRE Sync Version) --- */
+
+/* Regola universale per mantenere il testo leggibile indipendentemente dal colore della festività */
+.holiday-popup .popup-text { color: #4a3f44; }
 
 /* San Patrizio - Verde Smeraldo */
 .holiday-popup.stPatrick { 
     border-left: 6px solid #2e7d32;
+    color: #2e7d32; /* Colore per la Progress Bar */
     background: linear-gradient(to right, #f1f8e9, #fcf5e8 20%);
 }
 
-/* World Backup Day */
+/* World Backup Day - Grigio Ardesia */
 .holiday-popup.backupDay { 
     border-left: 6px solid #455a64; 
+    color: #455a64;
     background: linear-gradient(to right, #eceff1, #fcf5e8 20%);
 }
-.holiday-name.backupDay { color: #455a64; font-weight: bold; }
 
-/* DNA Day */
+/* DNA Day - Teal */
 .holiday-popup.dnaDay { 
     border-left: 6px solid #009688; 
+    color: #009688;
     background: linear-gradient(to right, #e0f2f1, #fcf5e8 20%);
 }
-.holiday-name.dnaDay { color: #009688; font-weight: bold; }
 
 /* Natale - Rosso Rubino */
 .holiday-popup.natale { 
     border-left: 6px solid #d32f2f;
+    color: #d32f2f;
     background: linear-gradient(to right, #ffebee, #fcf5e8 20%);
 }
 
 /* Halloween - Arancio Zucca */
 .holiday-popup.halloween { 
     border-left: 6px solid #ef6c00;
+    color: #ef6c00;
     background: linear-gradient(to right, #fff3e0, #fcf5e8 20%);
 }
 
-/* Pasqua - Giallo Pulcino / Arancio */
+/* Pasqua - Arancio Giallo */
 .holiday-popup.easter { 
     border-left: 6px solid #ff9800;
+    color: #ff9800;
     background: linear-gradient(to right, #fff8e1, #fcf5e8 20%);
 }
 
 /* Lunedì dell'Angelo - Verde Prato */
 .holiday-popup.eastermonday { 
     border-left: 6px solid #77dd77;
+    color: #77dd77;
     background: linear-gradient(to right, #f0fff0, #fcf5e8 20%);
 }
 
 /* Labor Day - Rosso Intenso */
 .holiday-popup.mayday { 
     border-left: 6px solid #c62828;
+    color: #c62828;
 }
 
 /* 4 Luglio - Blu Notte */
 .holiday-popup.july4 { 
     border-left: 6px solid #1565c0;
+    color: #1565c0;
     background: linear-gradient(to right, #e3f2fd, #fcf5e8 20%);
 }
 
 /* Thanksgiving - Marrone Autunno */
 .holiday-popup.thanksgiving { 
     border-left: 6px solid #8d6e63;
+    color: #8d6e63;
     background: linear-gradient(to right, #efebe9, #fcf5e8 20%);
 }
 
