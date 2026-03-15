@@ -150,32 +150,71 @@
     }
 
     // --- 4. EXPORT ENGINE (Data Integrity & Cleanup) ---
-    function exportHolidayData(format = 'json') {
+    /**
+ * [SRE EXPORT ENGINE - GRANULAR COUNTDOWN]
+ * Calcola giorni, ore e minuti rimanenti per ogni festività.
+ */
+function exportHolidayData(format = 'json') {
     const data = getProcessedHolidays();
-    const exportTime = new Date().toISOString();
+    const now = new Date();
+    const exportTime = now.toISOString();
+    const phase = now.getHours() >= 6 && now.getHours() < 18 ? "Daylight" : "Nightly";
 
     if (format === 'csv') {
-        // Intestazioni pulite e minimali
-        const headers = ["Icon", "Holiday", "Date", "Status"];
-        const rows = data.map(h => [
-            h.icon,
-            h.name,
-            h.date.toISOString().split('T'), // YYYY-MM-DD
-            "SRE_VERIFIED"
-        ]);
+        // Nuovi Header con dettaglio temporale
+        const headers = ["Icon", "Holiday", "Date", "Countdown_Full", "Days", "Hours", "Minutes", "Status"];
+        
+        const rows = data.map(h => {
+            // Calcolo millisecondi tra 'ora' e 'mezzanotte della festività'
+            const diffMs = h.date - now;
+            
+            // Se diffMs è negativo, la festività è oggi
+            if (diffMs <= 0 && h.diff === 0) {
+                return [h.icon, h.name, h.date.toISOString().split('T')[0], "ACTIVE TODAY", 0, 0, 0, "SRE_VERIFIED"];
+            }
+
+            // Logica di scomposizione tempo
+            const d = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const h_rem = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m_rem = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+            return [
+                h.icon, 
+                h.name, 
+                h.date.toISOString().split('T')[0], 
+                `${d}d ${h_rem}h ${m_rem}m`, // Stringa leggibile
+                d,      // Solo giorni
+                h_rem,  // Solo ore
+                m_rem,  // Solo minuti
+                "SRE_VERIFIED"
+            ];
+        });
+
+        // Generazione file con BOM per Excel
         const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
-        downloadFile(csvContent, `biotech_export_${new Date().getFullYear()}.csv`, 'text/csv;charset=utf-8');
+        const fileName = `biotech_audit_${now.getFullYear()}.csv`;
+        
+        downloadFile(csvContent, fileName, 'text/csv;charset=utf-8');
+        console.log("%c 📈 SRE Export: Granular countdown injected into CSV.", "color: #00c853;");
     } else {
-        const payload = {
-            system: "Biotech-Core",
-            exportedAt: exportTime,
-            holidays: data.map(h => ({
-                name: h.name,
-                icon: h.icon,
-                date: h.date.toISOString().split('T')
-            }))
+        // Export JSON arricchito
+        const payload = { 
+            system: "Biotech-Core", 
+            exportedAt: exportTime, 
+            phase,
+            holidays: data.map(h => {
+                const diff = h.date - now;
+                return {
+                    ...h,
+                    countdown: {
+                        days: Math.floor(diff / 86400000),
+                        hours: Math.floor((diff % 86400000) / 3600000),
+                        minutes: Math.floor((diff % 3600000) / 60000)
+                    }
+                };
+            })
         };
-        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json;charset=utf-8');
+        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json');
     }
 }
 
