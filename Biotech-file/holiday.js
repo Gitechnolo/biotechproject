@@ -29,60 +29,73 @@ const SRE_H_LOGS = {
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    // --- PROMISE-BASED INITIALIZATION ---
-const systemInit = new Promise((resolve) => {
-    const bannerImg = document.getElementById("Banner");
-    if (bannerImg) {
-        const banners = [
-            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
-            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
-            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
-            "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
-        ];
-        // 1: forEach invece di map per il preload
-        // 2: Controllo base sulla connessione (Preload con verifica)
-        const isSlowConn = navigator.connection && (navigator.connection.saveData || /2g|slow-2g/.test(navigator.connection.effectiveType));
-        
-        if (!isSlowConn) {
-            banners.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
+    // Log di avvio SRE
+    console.log("%c 🛠️ SRE Bootstrap: Initializing Biotech Core...", "font-weight: bold; color: #00e676;");
 
-        let bnrCntr = 0;
-        // Salvare l'ID per cleanup se necessario
-        const bannerInterval = setInterval(() => {
-            bannerImg.classList.add("banner-fade-out");
-            setTimeout(() => {
-                bnrCntr = (bnrCntr + 1) % banners.length;
-                bannerImg.src = banners[bnrCntr];
-                bannerImg.classList.remove("banner-fade-out");
-            }, 500);
-        }, 3500);
-    }
-    resolve("DOM and Assets initialized.");
-});
-
-    // --- EXECUTION OF THE SYNC LOGIC ---
-    systemInit
-        .then(() => {
-            // Sistema pronto, ma attendiamo che la finestra sia caricata 
-            // per la sincronizzazione finale
-            return new Promise(resolve => window.addEventListener("load", resolve));
-        })
-        .then(() => {
-            // --- SISTEMA SINCRONIZZATO E PRONTO ---
+    try {
+        // --- 1. PROMISE-BASED INITIALIZATION (Banner & Assets) ---
+        const systemInit = new Promise((resolve, reject) => {
+            const bannerImg = document.getElementById("Banner");
             
-            // A. Calcoliamo la festività 
-            const holiday = getNextHoliday();
+            // Gestione errore: se l'elemento Banner non esiste, non blocchiamo il resto
+            if (!bannerImg) {
+                reject(new Error("DOM Element #Banner missing. UI state: Limited."));
+                return;
+            }
 
-            // B. TRIGGER DEL POPUP 
-            showHolidayPopup(holiday);
+            const banners = [
+                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif",
+                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner2.avif",
+                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner3.avif",
+                "https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner4.avif"
+            ];
 
-            // C. Log di sistema finale
-            triggerHumanSync();
+            // Preload intelligente basato sulla connessione
+            const isSlowConn = navigator.connection && (navigator.connection.saveData || /2g|slow-2g/.test(navigator.connection.effectiveType));
+            
+            if (!isSlowConn) {
+                banners.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onerror = () => console.warn(`%c ⚠️ Asset Failed: ${src}`, "color: #ff9800;");
+                });
+            }
+
+            let bnrCntr = 0;
+            // Salvataggio intervallo per gestione globale
+            window.biotechBannerInterval = setInterval(() => {
+                bannerImg.classList.add("banner-fade-out");
+                setTimeout(() => {
+                    bnrCntr = (bnrCntr + 1) % banners.length;
+                    bannerImg.src = banners[bnrCntr];
+                    bannerImg.classList.remove("banner-fade-out");
+                }, 500);
+            }, 3500);
+
+            resolve("DOM and Assets initialized.");
         });
+
+        // --- 2. PIPELINE DI ESECUZIONE (Logica Sincronizzata) ---
+        systemInit
+            .then(() => {
+                // Aspettiamo che tutto (CSS, altre immagini) sia caricato
+                return new Promise(resolve => window.addEventListener("load", resolve));
+            })
+            .then(() => {
+                // --- SISTEMA PRONTO ---
+                const holiday = getNextHoliday(); // Calcolo
+                showHolidayPopup(holiday);        // UI
+                triggerHumanSync();               // Final Log
+            })
+            .catch(err => {
+                // Cattura errori dentro la catena .then
+                console.error("%c 🚨 Pipeline Graceful Stop:", "color: #ff5252; font-weight: bold;", err.message);
+            });
+
+    } catch (criticalError) {
+        // Cattura errori fatali immediati nel bootstrap
+        console.error("%c ☢️ Critical Exception:", "background: red; color: white; padding: 2px 4px;", criticalError);
+    }
 });
 
 /**
