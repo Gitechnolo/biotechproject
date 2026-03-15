@@ -151,20 +151,71 @@
 
     // --- 4. EXPORT ENGINE (Data Integrity & Cleanup) ---
     function exportHolidayData(format = 'json') {
-        const data = getProcessedHolidays();
-        const exportTime = new Date().toISOString();
+    const data = getProcessedHolidays();
+    const exportTime = new Date().toISOString();
 
-        if (format === 'csv') {
-            const headers = ["Icon", "Holiday", "Date", "Status"];
-            const rows = data.map(h => [h.icon, h.name, h.date.toISOString().split('T')[0], "SRE_VERIFIED"]);
-            // Integrity: BOM + UTF-8
-            const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
-            downloadFile(csvContent, `biotech_export_${new Date().getFullYear()}.csv`, 'text/csv;charset=utf-8');
-        } else {
-            const payload = { system: "Biotech-Core", exportedAt: exportTime, holidays: data };
-            downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json;charset=utf-8');
-        }
+    if (format === 'csv') {
+        // Intestazioni minimali e pulite
+        const headers = ["Icon", "Holiday", "Date", "DaysLeft", "Countdown", "Status"];
+        const rows = data.map(h => {
+            const date = h.date;
+            let countdown = "";
+
+            // Calcola countdown fino all'inizio della festività
+            const now = new Date();
+            const diffMs = date - now;
+            if (diffMs > 0) {
+                const diffSec = Math.floor(diffMs / 1000);
+                const days = Math.floor(diffSec / 86400);
+                const hours = String(Math.floor((diffSec % 86400) / 3600)).padStart(2, '0');
+                const mins = String(Math.floor((diffSec % 3600) / 60)).padStart(2, '0');
+                const secs = String(diffSec % 60).padStart(2, '0');
+                countdown = `${days}d ${hours}:${mins}:${secs}`;
+            } else {
+                countdown = "PASSED";
+            }
+
+            return [
+                h.icon,
+                h.name,
+                date.toISOString().split('T'), // YYYY-MM-DD
+                h.diff,
+                countdown,
+                "SRE_VERIFIED"
+            ];
+        });
+        const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
+        downloadFile(csvContent, `biotech_export_${new Date().getFullYear()}.csv`, 'text/csv;charset=utf-8');
+    } else {
+        const payload = {
+            system: "Biotech-Core",
+            exportedAt: exportTime,
+            holidays: data.map(h => {
+                const now = new Date();
+                const diffMs = h.date - now;
+                let countdown = "";
+                if (diffMs > 0) {
+                    const diffSec = Math.floor(diffMs / 1000);
+                    const days = Math.floor(diffSec / 86400);
+                    const hours = String(Math.floor((diffSec % 86400) / 3600)).padStart(2, '0');
+                    const mins = String(Math.floor((diffSec % 3600) / 60)).padStart(2, '0');
+                    const secs = String(diffSec % 60).padStart(2, '0');
+                    countdown = `${days}d ${hours}:${mins}:${secs}`;
+                } else {
+                    countdown = "PASSED";
+                }
+                return {
+                    name: h.name,
+                    icon: h.icon,
+                    date: h.date.toISOString().split('T'),
+                    daysLeft: h.diff,
+                    countdown: countdown
+                };
+            })
+        };
+        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json;charset=utf-8');
     }
+}
 
     function downloadFile(content, fileName, contentType) {
         const file = new Blob([content], { type: contentType });
