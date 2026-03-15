@@ -137,6 +137,67 @@
     opacity: 1;
 }
 
+
+/* --- SRE PROGRESS BAR (TTL Budget) --- */
+.popup-progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.07); /* Leggermente più visibile */
+    border-radius: 0 0 50px 50px;
+    overflow: hidden;
+    pointer-events: none; /* Evita che la barra interferisca con i click */
+}
+
+.popup-progress-bar {
+    height: 100%;
+    width: 100%;
+    /* currentColor eredita il colore del testo o del bordo. 
+       Assicurati che le classi .stPatrick, .natale ecc. abbiano una proprietà 'color' definita. */
+    background: currentColor; 
+    opacity: 0.8;
+    transform-origin: left;
+    transition: transform 6000ms linear; /* 6 Secondi di TTL */
+}
+
+/* Trigger dell'animazione: quando il popup entra (classe .show) */
+.holiday-popup.show .popup-progress-bar {
+    transform: scaleX(0);
+}
+
+/* --- GESTIONE CONTROLLI (Icone 💾 e X) --- */
+.popup-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 20px;
+}
+
+/* --- FIX RESILIENZA & LAYOUT --- */
+.holiday-name { 
+    font-weight: 800; 
+    letter-spacing: -0.2px;
+}
+
+/* Gestione Transizione Banner SRE */
+.banner-fade-out { 
+    opacity: 0 !important; 
+    transition: opacity 0.5s ease-in-out !important; 
+}
+
+/* Ottimizzazione per Mobile (Safe Area) */
+@media (max-width: 600px) {
+    .holiday-popup {
+        width: 90%;
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    .popup-controls { gap: 15px; }
+}
+
+
 /* --- BIOTECH HOLIDAY THEMES --- */
 /* Stili specifici per festività */
 
