@@ -248,15 +248,36 @@ function getNextHoliday() {
     const tData = getTimestampWithPhase();
     const currentYear = new Date().getFullYear();
 
+    // Log di sincronizzazione iniziale (giallo/scuro)
     console.log(
-        `%c ${tData.part1} %c${tData.part2} %c Syncing cycles for ${currentYear}`,
+        `%c ${tData.part1} %c${tData.part2} %c Syncing dynamic cycles for ${currentYear}`,
         SRE_H_LOGS.astro + SRE_H_LOGS.base,
-        "color: #888; font-family: monospace;", "color: #555; font-style: italic;"
+        "color: #888; margin-left: 5px; font-family: monospace;",
+        "color: #555; margin-left: 10px; font-style: italic;"
     );
 
     const upcoming = getProcessedHolidays();
+
+    // --- TABELLA  ---
+    console.groupCollapsed('%c📅 Upcoming Holidays Table', SRE_H_LOGS.display + SRE_H_LOGS.base);
+    console.table(upcoming.map(h => ({
+        Icon: h.icon,
+        Holiday: h.name,
+        Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
+        DaysLeft: h.diff === 0 ? '🎉 TODAY' : `${h.diff}d`
+    })));
+    console.groupEnd();
+
     const next = upcoming[0]; 
     const isToday = next.diff === 0;
+    const logStyle = SRE_H_LOGS[next.style] || SRE_H_LOGS.display;
+
+    // Log di stato della festività imminente (verde in fondo allo screen)
+    console.log(
+        `%c ${next.icon} BiotechHoliday %c ${next.name}: ${isToday ? 'ACTIVE' : next.diff + 'd left'}`,
+        logStyle + SRE_H_LOGS.base,
+        "color: #bcbcbc; margin-left: 5px;"
+    );
 
     return {
         ...next,
