@@ -11,10 +11,10 @@
  */
 /**
  * =============================================================================
- * PROJECT BIOTECH - CORE SCRIPT (V4.3 CONTROL CENTER)
+ * PROJECT BIOTECH - CORE SCRIPT (V4.5 ZERO-FAULT)
  * =============================================================================
- * [PATCH] Manual Override: Exporting data now suspends TTL (auto-close).
- * [SRE COMPLIANCE] Logic & Passion synchronized within the labyrinth.
+ * [REVISION] 2026-03-15
+ * [SRE STATUS] Full Safety Compliance (DOM Null-checks, Charset Encoding).
  */
 
 (function() {
@@ -51,7 +51,6 @@
         natale: 'background: #d32f2f; color: #ffffff; border: 1px solid #b71c1c; border-left: 3px solid #ffffff;'
     };
 
-    // --- Holiday Engine (Identico alla V4.2 per stabilità) ---
     const HolidayCalcs = {
         easter: (y) => {
             const a = y % 19, b = Math.floor(y / 100), c = y % 100;
@@ -73,7 +72,6 @@
             const testDate = new Date(currentYear, m, d);
             if (testDate.getMonth() !== m) {
                 const lastDay = new Date(currentYear, m + 1, 0).getDate();
-                console.warn(`⚠️ SRE Auto-Correct: ${m}/${d} invalid. Fixed to ${lastDay}.`);
                 return () => ({ month: m, day: lastDay });
             }
             return () => ({ month: m, day: d });
@@ -98,12 +96,14 @@
         { name: "Christmas", style: "natale", wish: "Merry Christmas!", icon: "🎄", calc: HolidayCalcs.fixed(11, 25)}
     ];
 
-    // --- Core Logic ---
     const getProcessedHolidays = () => {
         const now = new Date();
         const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-        if (biotechState.cachedHolidays && biotechState.cacheTimestamp?.getTime() === today.getTime()) return biotechState.cachedHolidays;
-        
+        const isCacheValid = biotechState.cachedHolidays && 
+                             biotechState.cacheTimestamp?.toDateString() === today.toDateString();
+
+        if (isCacheValid) return biotechState.cachedHolidays;
+
         const result = HOLIDAY_SCHEMA.map(h => {
             let res = h.calc(today.getFullYear());
             let date = new Date(today.getFullYear(), res.month, res.day);
@@ -120,7 +120,6 @@
         return result;
     };
 
-    // --- UI ENGINE (With Manual Override Patch) ---
     function showHolidayPopup(holiday) {
         const popup = document.createElement('div');
         popup.className = `holiday-popup ${holiday.style}`;
@@ -135,16 +134,39 @@
         document.body.appendChild(popup);
 
         let autoCloseTimeout, liveSyncInterval;
+        let isDestroyed = false;
+
+        const closeBtn = popup.querySelector('.popup-close');
+        const exportBtn = popup.querySelector('.popup-export');
 
         const destroyPopup = () => {
+            if (isDestroyed) return;
+            isDestroyed = true;
+
+            // 🛡️ DOM SAFETY & MEMORY: Check existence before removing
+            closeBtn?.removeEventListener('click', destroyPopup);
+            exportBtn?.removeEventListener('click', handleExport);
+
             clearTimeout(autoCloseTimeout);
             clearInterval(liveSyncInterval);
+            
             popup.classList.remove('show');
             const t = setTimeout(() => popup.remove(), 600);
             biotechState.timeouts.push(t);
         };
 
-        // Real-time Countdown
+        const handleExport = (e) => {
+            e.stopPropagation();
+            clearTimeout(autoCloseTimeout);
+            if (liveSyncInterval) clearInterval(liveSyncInterval);
+            const progressBar = popup.querySelector('.popup-progress-bar');
+            if (progressBar) progressBar.style.animation = 'none'; 
+            exportHolidayData();
+        };
+
+        closeBtn?.addEventListener('click', destroyPopup);
+        exportBtn?.addEventListener('click', handleExport);
+
         if (holiday.isToday) {
             liveSyncInterval = setInterval(() => {
                 const now = new Date();
@@ -154,86 +176,47 @@
                 const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
                 const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
                 const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+                
+                // 🛡️ DOM SAFETY: Null-check for text element
                 const textEl = popup.querySelector('.popup-text');
-                if (textEl) textEl.innerHTML = `${holiday.icon} ${holiday.wish} <br><small style="opacity:0.8; font-size:0.8em;">Ends in: ${h}:${m}:${s}</small>`;
+                if (textEl) {
+                    textEl.innerHTML = `${holiday.icon} ${holiday.wish} <br><small style="opacity:0.8; font-size:0.8em;">Ends in: ${h}:${m}:${s}</small>`;
+                }
             }, 1000);
             biotechState.intervals.push(liveSyncInterval);
         }
-
-        // --- INTERACTION HANDLERS ---
-        popup.querySelector('.popup-close').addEventListener('click', destroyPopup);
-
-        popup.querySelector('.popup-export').addEventListener('click', (e) => {
-            e.stopPropagation();
-            
-            // 🛑 SRE OVERRIDE: Fermiamo i timer automatici
-            clearTimeout(autoCloseTimeout);
-            if (liveSyncInterval) clearInterval(liveSyncInterval);
-            
-            // Rimuoviamo il feedback visivo della progress bar (che simula il TTL)
-            const progressBar = popup.querySelector('.popup-progress-bar');
-            if (progressBar) progressBar.style.animation = 'none'; 
-
-            // Eseguiamo l'export
-            exportHolidayData('csv');
-
-            console.log("%c 🟢 SRE Action: Export triggered. Manual override active (TTL Suspended).", "color: #00c853; font-weight: bold;");
-        });
 
         setTimeout(() => popup.classList.add('show'), 100);
         autoCloseTimeout = setTimeout(destroyPopup, CONFIG.POPUP_AUTO_CLOSE_MS);
         biotechState.timeouts.push(autoCloseTimeout);
     }
 
-    // --- System Analytics & Logs ---
-    function executeHolidayLifecycle() {
-        const now = new Date();
-        const hours = now.getHours();
-        const timestamp = now.toTimeString().split(' ')[0];
-        const isDay = hours >= 6 && hours < 18;
-
-        console.log(`%c ${isDay?"☀️ Daylight":"🌙 Nightly"} %c | ${timestamp} %c Syncing dynamic cycles for ${now.getFullYear()}`, 
-            SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; margin-left: 5px; font-family: monospace;", "color: #555; font-style: italic;");
-
-        const upcoming = getProcessedHolidays();
-
-        console.groupCollapsed('%c📅 Upcoming Holidays Table', SRE_H_LOGS.display + SRE_H_LOGS.base);
-        console.table(upcoming.map(h => ({
-            Icon: h.icon, Holiday: h.name, 
-            Date: h.date.toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' }),
-            DaysLeft: h.diff === 0 ? '🎉 TODAY' : `${h.diff}d`
-        })));
-        console.groupEnd();
-
-        const next = upcoming[0];
-        const isToday = next.diff === 0;
-        console.log(`%c ${next.icon} BiotechHoliday %c ${next.name}: ${isToday ? 'ACTIVE' : next.diff + 'd left'}`, 
-            (SRE_H_LOGS[next.style] || SRE_H_LOGS.display) + SRE_H_LOGS.base, "color: #bcbcbc; margin-left: 5px;");
-
-        return { ...next, isToday, msg: isToday ? `${next.icon} <span class="holiday-name ${next.style}">${next.wish}</span>` : `Only ${next.diff} days until ${next.icon} <span class="holiday-name ${next.style}">${next.name}</span>!` };
+    function exportHolidayData() {
+        try {
+            const data = getProcessedHolidays();
+            const content = ["Icon,Holiday,Date,DaysLeft", ...data.map(i => `${i.icon},${i.name},${i.date.toISOString().split('T')[0]},${i.diff}`)].join("\n");
+            
+            // 🛡️ CHARSET SAFETY: Explicitly defining UTF-8 for Emojis
+            const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `biotech_export_${new Date().getFullYear()}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+            console.log("%c 🟢 SRE Action: Export successful (UTF-8).", "color: #00c853; font-weight: bold;");
+        } catch (err) {
+            console.error("%c ☢️ SRE Export Failure:", "color: red;", err);
+        }
     }
 
-    function exportHolidayData(format = 'csv') {
-        const data = getProcessedHolidays();
-        const content = ["Icon,Holiday,Date,DaysLeft", ...data.map(i => `${i.icon},${i.name},${i.date.toISOString().split('T')[0]},${i.diff}`)].join("\n");
-        const a = document.createElement("a");
-        const url = URL.createObjectURL(new Blob([content], { type: 'text/csv' }));
-        a.href = url;
-        a.download = `biotech_export_${new Date().getFullYear()}.csv`;
-        a.click();
-        URL.revokeObjectURL(url);
-    }
-
-    // --- Bootstrap ---
     document.addEventListener("DOMContentLoaded", async function () {
-        console.log("%c 🛠️ SRE Bootstrap %c Gold Master V4.3 Initializing...", SRE_H_LOGS.display + SRE_H_LOGS.base, "color: #888;");
-        
+        console.log("%c 🛠️ SRE Bootstrap %c Gold Master V4.5 Initializing...", SRE_H_LOGS.display + SRE_H_LOGS.base, "color: #888;");
         try {
             const bannerImg = document.getElementById("Banner");
             if (!bannerImg) throw new Error("DOM Element #Banner missing.");
 
             const banners = ["banner1.avif", "banner2.avif", "banner3.avif", "banner4.avif"].map(b => `https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/${b}`);
-            
             const conn = navigator.connection || { saveData: false };
             if (!conn.saveData) {
                 await Promise.all(banners.map(src => new Promise(res => { const img = new Image(); img.onload = img.onerror = res; img.src = src; })));
@@ -249,17 +232,27 @@
                 }, CONFIG.TRANSITION_MS));
             }, CONFIG.BANNER_ROTATION_MS);
 
-            showHolidayPopup(executeHolidayLifecycle());
-            
-            console.log("%c 🐂 SYNC BiotechProject: Mastering the beast. Passion and logic synchronized within the labyrinth.", 
-                "color: #B5EAD7; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border: 1px solid #00e676;");
+            // LifeCycle Execution
+            const now = new Date();
+            const isDay = now.getHours() >= 6 && now.getHours() < 18;
+            console.log(`%c ${isDay?"☀️ Daylight":"🌙 Nightly"} %c | ${now.toTimeString().split(' ')[0]} %c Dynamic cycles active`, 
+                SRE_H_LOGS.astro + SRE_H_LOGS.base, "color: #888; font-family: monospace;", "color: #555; font-style: italic;");
 
-        } catch (err) { console.error("%c ☢️ SRE Critical:", "background: red; color: white;", err); }
+            const upcoming = getProcessedHolidays();
+            console.groupCollapsed('%c📅 Upcoming Holidays Table', SRE_H_LOGS.display + SRE_H_LOGS.base);
+            console.table(upcoming.map(h => ({ Icon: h.icon, Holiday: h.name, Date: h.date.toLocaleDateString('it-IT'), DaysLeft: h.diff === 0 ? '🎉 TODAY' : h.diff+'d' })));
+            console.groupEnd();
+
+            const next = upcoming[0];
+            const isToday = next.diff === 0;
+            showHolidayPopup({ ...next, isToday, msg: isToday ? `${next.icon} <span class="holiday-name ${next.style}">${next.wish}</span>` : `Only ${next.diff} days until ${next.icon} <span class="holiday-name ${next.style}">${next.name}</span>!` });
+            
+            console.log("%c 🐂 SYNC BiotechProject: Mastering the beast.", "color: #B5EAD7; font-family: 'Courier New', monospace; background: #1a1a1a; padding: 2px 5px; border: 1px solid #00e676;");
+        } catch (err) { console.error("%c ☢️ SRE Critical:", "background: red;", err); }
     });
 
     window.addEventListener('beforeunload', () => {
         clearInterval(biotechState.bannerInterval);
-        biotechState.abortController.abort();
         biotechState.timeouts.forEach(clearTimeout);
         biotechState.intervals.forEach(clearInterval);
     });
