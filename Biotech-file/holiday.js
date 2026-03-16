@@ -46,7 +46,7 @@
     // --- 1. CONFIGURAZIONE & LOG STYLE ---
     const SRE_H_LOGS = {
         base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-        astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border-left: 1px solid #00c853;',
+        astro: 'background: rgba(230, 207, 0, 0.5); color: #000000; border: 1px solid #B8860B; border-left: 1px solid #00c853;',
         display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border-left: 1px solid #00c853;',
         boots: 'background: #3949ab; color: #ffffff; border: 1px solid #1a237e; border-left: 2px solid #00c853;',
         // Holiday-specific styles
