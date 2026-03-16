@@ -1,18 +1,45 @@
 /**
  * =============================================================================
- * PROJECT BIOTECH - CORE SCRIPT
+ * BIOTECH PROJECT - SRE ARCHITECTURAL FUNCTIONAL MAP (V4.6)
  * =============================================================================
- * [SRE ADVISORY & ARCHITECTURAL PHILOSOPHY]
- * This script implements "Graceful Degradation" and "Resilience by Design" logic.
- * We do not seek the illusion of a static, error-free system (Zero-Entropy), 
- * but instead aim for risk management through resource pre-loading 
- * and smooth transition state handling (UI/UX Latency Budget). 
+ *
+ * [ SECTION 1: CONFIG & LOGGING ]
+ * - SRE_H_LOGS: Visual debugging layer. Provides immediate visual feedback in 
+ * the console using a standardized theme system to identify system states.
+ * - STATE: The "Control Plane". Manages memory pointers for intervals and 
+ * timeouts to prevent resource leaks and ensure clean state transitions.
+ *
+ * [ SECTION 2: BOOTSTRAP & DOM INTEGRITY ]
+ * - DOMContentLoaded: The entry point. Performs health checks on critical DOM 
+ * elements (like #Banner) before initiating any logic (Fail-Fast principle).
+ * - Resource Preloader: Bandwidth-aware asset fetching to minimize UI latency.
+ * - Banner Rotation: A resilient loop with built-in cleanup logic if the 
+ * target element is removed from the live document.
+ *
+ * [ SECTION 3: UI ENGINE (POPUPS) ]
+ * - showHolidayPopup(): The user-facing notification layer. Implements
+ * automated TTL (Time-To-Live) and real-time countdown updates for 
+ * active holidays using high-frequency UI refreshes.
+ *
+ * [ SECTION 4: EXPORT ENGINE (AUDIT) ]
+ * - exportHolidayData(): The reporting bridge. Transforms internal state into
+ * standardized CSV/JSON audits. Focused on numerical precision (Days/Hrs/Min)
+ * while bypassing timezone-sensitive string formatting.
+ * - downloadFile(): Low-level blob handler with automated URL revocation to
+ * ensure browser memory remains optimized after data extraction.
+ *
+ * [ SECTION 5: CALCULATION CORE ]
+ * - HolidayCalcs: Pure mathematical functions for astronomical (Easter), 
+ * relative (Easter Monday), and fixed date determination.
+ * - getProcessedHolidays(): The "Truth Provider". Normalizes system time and
+ * calculates the delta between "Now" and "Event" across multiple years.
+ *
+ * [ SECTION 6: SYNC & EXPOSURE ]
+ * - triggerHumanSync(): Heartbeat signal for manual verification.
+ * - window.BiotechSRE: Public API exposure for administrative console access.
  * =============================================================================
  */
-/**
- * BIOTECH CORE SYSTEM - V4.5 SOBRIA (ZERO-FAULT)
- * Bilancio perfetto tra leggibilità e affidabilità SRE.
- */
+
 (() => {
     "use strict";
 
