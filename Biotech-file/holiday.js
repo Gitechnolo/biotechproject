@@ -150,71 +150,60 @@
     }
 
     // --- 4. EXPORT ENGINE (Data Integrity & Cleanup) ---
-    /**
- * [SRE EXPORT ENGINE - V4.6 FIX]
- * Risolve il bug del fuso orario UTC e aggiunge il countdown granulare.
- */
 function exportHolidayData(format = 'json') {
     const data = getProcessedHolidays();
     const now = new Date();
     const exportTime = now.toISOString();
     const phase = now.getHours() >= 6 && now.getHours() < 18 ? "Daylight" : "Nightly";
 
+    // Helper: calcola il countdown granulare
+    const calcCountdown = (targetDate) => {
+        const diffMs = targetDate - now;
+        if (diffMs <= 0) return { full: "ACTIVE TODAY", days: 0, hours: 0, minutes: 0 };
+        const days = Math.floor(diffMs / 86400000);
+        const hours = Math.floor((diffMs % 86400000) / 3600000);
+        const minutes = Math.floor((diffMs % 3600000) / 60000);
+        return { full: `${days}d ${hours}h ${minutes}m`, days, hours, minutes };
+    };
+
     if (format === 'csv') {
-        // Headers per il report
         const headers = ["Icon", "Holiday", "Date", "Countdown_Full", "Days", "Hours", "Minutes", "Status"];
-        
-        const rows = data.map(h => {
-            // FIX DATA INTEGRITY: Costruzione stringa YYYY-MM-DD locale (evita lo slittamento UTC)
-            const yyyy = h.date.getFullYear();
-            const mm = String(h.date.getMonth() + 1).padStart(2, '0');
-            const dd = String(h.date.getDate()).padStart(2, '0');
-            const localDateStr = `${yyyy}-${mm}-${dd}`;
-
-            // Calcolo tempo reale rimanente
-            const diffMs = h.date - now;
-            
-            // Gestione evento in corso (Oggi)
-            if (diffMs <= 0 && h.diff === 0) {
-                return [h.icon, h.name, localDateStr, "ACTIVE TODAY", 0, 0, 0, "SRE_VERIFIED"];
-            }
-
-            // Scomposizione temporale
-            const d = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            const h_rem = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m_rem = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
+        const rows = data.map(holiday => {
+            const ct = calcCountdown(holiday.date);
             return [
-                h.icon, 
-                h.name, 
-                localDateStr, 
-                `${d}d ${h_rem}h ${m_rem}m`, 
-                d, 
-                h_rem, 
-                m_rem, 
+                holiday.icon,
+                holiday.name,
+                holiday.date.toISOString().split('T'),
+                ct.full,
+                ct.days,
+                ct.hours,
+                ct.minutes,
                 "SRE_VERIFIED"
             ];
         });
-
-        // Generazione con BOM UTF-8 per compatibilità Excel/LibreOffice
         const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
-        const fileName = `biotech_audit_${yyyy}.csv`;
-        
-        downloadFile(csvContent, fileName, 'text/csv;charset=utf-8');
-        //console.log("%c 📈 SRE Export: Timezone fix applied. Data aligned with Local Time.", "color: #00c853; font-weight: bold;");
-        
+        downloadFile(csvContent, `biotech_audit_${now.getFullYear()}.csv`, 'text/csv;charset=utf-8');
+
     } else {
-        // Export JSON (mantiene coerenza con il fix locale)
-        const payload = { 
-            system: "Biotech-Core", 
-            exportedAt: exportTime, 
+        const payload = {
+            system: "Biotech-Core",
+            exportedAt: exportTime,
             phase,
-            holidays: data.map(h => ({
-                ...h,
-                date: `${h.date.getFullYear()}-${String(h.date.getMonth() + 1).padStart(2, '0')}-${String(h.date.getDate()).padStart(2, '0')}`
-            }))
+            holidays: data.map(holiday => {
+                const ct = calcCountdown(holiday.date);
+                return {
+                    name: holiday.name,
+                    icon: holiday.icon,
+                    date: holiday.date.toISOString().split('T'),
+                    countdown: {
+                        days: ct.days,
+                        hours: ct.hours,
+                        minutes: ct.minutes
+                    }
+                };
+            })
         };
-        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json');
+        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json;charset=utf-8');
     }
 }
 
