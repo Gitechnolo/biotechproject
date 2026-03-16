@@ -48,6 +48,8 @@
         base: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
         astro: 'background: #D4AF37; color: #000000; border: 1px solid #B8860B; border-left: 1px solid #00c853;',
         display: 'background: #008080; color: #ffffff; border: 1px solid #004d4d; border-left: 1px solid #00c853;',
+        boots: 'background: #3949ab; color: #ffffff; border: 1px solid #1a237e; border-left: 2px solid #00c853;',
+        // Holiday-specific styles
         stPatrick: 'background: #2e7d32; color: #ffffff; border: 1px solid #1b5e20; border-left: 2px solid #00c853;',
         backupDay: 'background: #455a64; color: #ffffff; border: 1px solid #263238; border-left: 3px solid #00c853;',
         dnaDay: 'background: #009688; color: #ffffff; border: 1px solid #00695c; border-left: 3px solid #ffffff;',
@@ -69,7 +71,7 @@
 
     // --- 2. BOOTSTRAP & DOM VALIDATION ---
     document.addEventListener("DOMContentLoaded", async () => {
-        console.log("%c 🛠️ SRE Bootstrap %c System Init...", SRE_H_LOGS.display + SRE_H_LOGS.base, "color: #888;");
+        console.log("%c 🛠️ SRE Bootstrap %c System Init...", SRE_H_LOGS.boots + SRE_H_LOGS.base, "color: #888;");
 
         const BANNER_ID = "Banner";
         const idPattern = /^[a-zA-Z0-9_-]+$/;
