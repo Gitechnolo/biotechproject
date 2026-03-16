@@ -149,42 +149,47 @@
         setTimeout(() => popup.classList.add('show'), 100);
     }
 
-    // --- 4. EXPORT ENGINE (Data Integrity & Cleanup) ---
+    // --- 4. EXPORT ENGINE (Data Integrity & Lean Mode) ---
 function exportHolidayData(format = 'json') {
     const data = getProcessedHolidays();
     const now = new Date();
     const exportTime = now.toISOString();
     const phase = now.getHours() >= 6 && now.getHours() < 18 ? "Daylight" : "Nightly";
 
-    // Helper: calcola il countdown granulare
+    // Helper: calcola il countdown granulare numerico
     const calcCountdown = (targetDate) => {
         const diffMs = targetDate - now;
-        if (diffMs <= 0) return { full: "ACTIVE TODAY", days: 0, hours: 0, minutes: 0 };
-        const days = Math.floor(diffMs / 86400000);
-        const hours = Math.floor((diffMs % 86400000) / 3600000);
-        const minutes = Math.floor((diffMs % 3600000) / 60000);
-        return { full: `${days}d ${hours}h ${minutes}m`, days, hours, minutes };
+        // Se l'evento è oggi, azzeriamo i contatori
+        if (diffMs <= 0) return { days: 0, hours: 0, minutes: 0 };
+        
+        return {
+            days: Math.floor(diffMs / 86400000),
+            hours: Math.floor((diffMs % 86400000) / 3600000),
+            minutes: Math.floor((diffMs % 3600000) / 60000)
+        };
     };
 
     if (format === 'csv') {
-        const headers = ["Icon", "Holiday", "Date", "Countdown_Full", "Days", "Hours", "Minutes", "Status"];
+        const headers = ["Icon", "Holiday", "Days", "Hours", "Minutes", "Status"];
+        
         const rows = data.map(holiday => {
             const ct = calcCountdown(holiday.date);
             return [
                 holiday.icon,
                 holiday.name,
-                holiday.date.toISOString().split('T'),
-                ct.full,
                 ct.days,
                 ct.hours,
                 ct.minutes,
                 "SRE_VERIFIED"
             ];
         });
+
+        // Generazione file con BOM UTF-8
         const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
         downloadFile(csvContent, `biotech_audit_${now.getFullYear()}.csv`, 'text/csv;charset=utf-8');
 
     } else {
+        // Versione JSON altrettanto snella
         const payload = {
             system: "Biotech-Core",
             exportedAt: exportTime,
@@ -194,8 +199,7 @@ function exportHolidayData(format = 'json') {
                 return {
                     name: holiday.name,
                     icon: holiday.icon,
-                    date: holiday.date.toISOString().split('T'),
-                    countdown: {
+                    remaining: {
                         days: ct.days,
                         hours: ct.hours,
                         minutes: ct.minutes
