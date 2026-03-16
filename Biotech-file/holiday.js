@@ -150,21 +150,62 @@
     }
 
     // --- 4. EXPORT ENGINE (Data Integrity & Cleanup) ---
-    function exportHolidayData(format = 'json') {
-        const data = getProcessedHolidays();
-        const exportTime = new Date().toISOString();
+function exportHolidayData(format = 'json') {
+    const data = getProcessedHolidays();
+    const now = new Date();
+    const exportTime = now.toISOString();
+    const phase = now.getHours() >= 6 && now.getHours() < 18 ? "Daylight" : "Nightly";
 
-        if (format === 'csv') {
-            const headers = ["Icon", "Holiday", "Date", "Status"];
-            const rows = data.map(h => [h.icon, h.name, h.date.toISOString().split('T')[0], "SRE_VERIFIED"]);
-            // Integrity: BOM + UTF-8
-            const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
-            downloadFile(csvContent, `biotech_export_${new Date().getFullYear()}.csv`, 'text/csv;charset=utf-8');
-        } else {
-            const payload = { system: "Biotech-Core", exportedAt: exportTime, holidays: data };
-            downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json;charset=utf-8');
-        }
+    // Helper: calcola il countdown granulare
+    const calcCountdown = (targetDate) => {
+        const diffMs = targetDate - now;
+        if (diffMs <= 0) return { full: "ACTIVE TODAY", days: 0, hours: 0, minutes: 0 };
+        const days = Math.floor(diffMs / 86400000);
+        const hours = Math.floor((diffMs % 86400000) / 3600000);
+        const minutes = Math.floor((diffMs % 3600000) / 60000);
+        return { full: `${days}d ${hours}h ${minutes}m`, days, hours, minutes };
+    };
+
+    if (format === 'csv') {
+        const headers = ["Icon", "Holiday", "Date", "Countdown_Full", "Days", "Hours", "Minutes", "Status"];
+        const rows = data.map(holiday => {
+            const ct = calcCountdown(holiday.date);
+            return [
+                holiday.icon,
+                holiday.name,
+                holiday.date.toISOString().split('T'),
+                ct.full,
+                ct.days,
+                ct.hours,
+                ct.minutes,
+                "SRE_VERIFIED"
+            ];
+        });
+        const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
+        downloadFile(csvContent, `biotech_audit_${now.getFullYear()}.csv`, 'text/csv;charset=utf-8');
+
+    } else {
+        const payload = {
+            system: "Biotech-Core",
+            exportedAt: exportTime,
+            phase,
+            holidays: data.map(holiday => {
+                const ct = calcCountdown(holiday.date);
+                return {
+                    name: holiday.name,
+                    icon: holiday.icon,
+                    date: holiday.date.toISOString().split('T'),
+                    countdown: {
+                        days: ct.days,
+                        hours: ct.hours,
+                        minutes: ct.minutes
+                    }
+                };
+            })
+        };
+        downloadFile(JSON.stringify(payload, null, 2), 'biotech_holidays.json', 'application/json;charset=utf-8');
     }
+}
 
     function downloadFile(content, fileName, contentType) {
         const file = new Blob([content], { type: contentType });
