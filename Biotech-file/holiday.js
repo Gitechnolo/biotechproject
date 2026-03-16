@@ -149,14 +149,14 @@
         setTimeout(() => popup.classList.add('show'), 100);
     }
 
-    // --- 4. EXPORT ENGINE (Data Integrity & Cleanup) ---
+    // --- 4. EXPORT ENGINE (Data Integrity & Timezone Fix) ---
 function exportHolidayData(format = 'json') {
     const data = getProcessedHolidays();
     const now = new Date();
     const exportTime = now.toISOString();
     const phase = now.getHours() >= 6 && now.getHours() < 18 ? "Daylight" : "Nightly";
 
-    // Helper: calcola il countdown granulare
+    // Helper: calcola il countdown granulare (ms tra 'ora' e 'mezzanotte target')
     const calcCountdown = (targetDate) => {
         const diffMs = targetDate - now;
         if (diffMs <= 0) return { full: "ACTIVE TODAY", days: 0, hours: 0, minutes: 0 };
@@ -170,10 +170,16 @@ function exportHolidayData(format = 'json') {
         const headers = ["Icon", "Holiday", "Date", "Countdown_Full", "Days", "Hours", "Minutes", "Status"];
         const rows = data.map(holiday => {
             const ct = calcCountdown(holiday.date);
+            
+            // FIX: Costruisce la data YYYY-MM-DD locale per evitare lo slittamento UTC (Z)
+            const localDate = holiday.date.getFullYear() + '-' + 
+                             String(holiday.date.getMonth() + 1).padStart(2, '0') + '-' + 
+                             String(holiday.date.getDate()).padStart(2, '0');
+
             return [
                 holiday.icon,
                 holiday.name,
-                holiday.date.toISOString().split('T'),
+                localDate,
                 ct.full,
                 ct.days,
                 ct.hours,
@@ -181,6 +187,8 @@ function exportHolidayData(format = 'json') {
                 "SRE_VERIFIED"
             ];
         });
+
+        // Generazione file con firma UTF-8 (BOM) per Excel
         const csvContent = "\ufeff" + [headers, ...rows].map(e => e.join(",")).join("\n");
         downloadFile(csvContent, `biotech_audit_${now.getFullYear()}.csv`, 'text/csv;charset=utf-8');
 
@@ -194,12 +202,8 @@ function exportHolidayData(format = 'json') {
                 return {
                     name: holiday.name,
                     icon: holiday.icon,
-                    date: holiday.date.toISOString().split('T'),
-                    countdown: {
-                        days: ct.days,
-                        hours: ct.hours,
-                        minutes: ct.minutes
-                    }
+                    date: holiday.date.getFullYear() + '-' + String(holiday.date.getMonth() + 1).padStart(2, '0') + '-' + String(holiday.date.getDate()).padStart(2, '0'),
+                    countdown: { days: ct.days, hours: ct.hours, minutes: ct.minutes }
                 };
             })
         };
