@@ -48,9 +48,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .bulb-glow {border-radius: 0; transition: box-shadow 0.1s, background 0.1s; box-shadow: 0 -30px 80px 40px rgb(255, 255, 180), 0 0 60px 30px rgb(255, 255, 180), 0 30px 40px 10px rgb(255, 255, 180), -40px -10px 60px 20px rgb(255, 255, 180), 40px -10px 60px 20px rgb(255, 255, 180); background-color: rgb(255, 255, 180);}
 .light-controls{ display: flex; justify-content: center; align-items: center; flex-direction: column; height: auto; padding: 10px 0; gap: 20px;}
 .light-controls img{ aspect-ratio: 100 / 180; width: 100px; height: auto; display: block}      
-.specialsGit-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
-.specialsGit-img:hover {transform: scale(1.02); box-shadow: 0 8px 24px rgba(0, 230, 118, 0.35);}
 .biotech-manifesto-container .terminal-window{background:rgba(1,8,8,.95);border:1px solid rgba(0,230,118,.4);border-radius:12px;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);box-shadow:0 20px 50px rgba(0,0,0,.8);overflow:hidden;display:flex;flex-direction:column}.biotech-manifesto-container .terminal-header{background:rgba(0,230,118,.1);padding:12px 20px;display:flex;align-items:center;border-bottom:1px solid rgba(0,230,118,.2)}.biotech-manifesto-container .terminal-dots{display:flex;gap:8px;margin-right:20px}.biotech-manifesto-container .dot{width:12px;height:12px;border-radius:50%}.biotech-manifesto-container .red{background:#ff5f56}.biotech-manifesto-container .yellow{background:#ffbd2e}.biotech-manifesto-container .green{background:#27c93f}.biotech-manifesto-container .terminal-title{font-family:monospace;color:#a7ffeb;font-size:.85rem;opacity:.7}.biotech-manifesto-container .terminal-content{padding:40px 6%;font-family:Sansation,sans-serif;color:#e0f2f1;line-height:1.8}.biotech-manifesto-container .command-line{font-family:monospace;color:#00e676;margin-bottom:30px;font-size:1.1rem}.biotech-manifesto-container .prompt{color:#00bfff;margin-right:10px}.biotech-manifesto-container .type-line{font-size:clamp(1rem,1.2vw,1.25rem);margin-bottom:25px;min-height:1.2em;opacity:0!important;transform:translateY(15px);transition:opacity .8s ease-out,transform .8s ease-out;will-change:opacity,transform}.biotech-manifesto-container .type-line.is-visible{opacity:1!important;transform:translateY(0)!important}.biotech-manifesto-container .final-statement-box{margin-top:40px;padding:25px;border:1px solid rgba(0,230,118,.3);background:rgba(0,230,118,.08);border-radius:8px;text-align:center;min-height:80px;display:flex;justify-content:center;align-items:center}.biotech-manifesto-container .final-statement-box .type-line{color:#00e676!important;font-weight:700;margin-bottom:0}@media (max-width:768px){.biotech-manifesto-container .terminal-content{padding:30px 20px}.biotech-manifesto-container{width:98%}}
+.mermaid-marketing-container{min-height:350px;contain:content;box-shadow:0 0 30px rgba(0,230,118,.15);margin-bottom:40px}.mermaid-marketing-container svg{max-width:100%!important;height:auto!important}.mermaid{background:rgba(1,8,8,.7);border-radius:12px;padding:20px;border:1px solid rgba(0,230,118,.3);font-family:Sansation,sans-serif!important}
 </style>
 </head>
 <body class="biotechbody" data-modern-menu>
@@ -78,7 +77,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <p class="biotechcenter text" data-lang-key="explore-text">Esplora i nostri progetti innovativi nel campo della biotecnologia e della tecnologia.</p>
 <img id="Banner" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/banner1.avif" alt="Banner il diritto è morale" width="400" height="50" style="display:block;margin:0 auto; max-width:100%; height:auto; object-fit: cover;" />
 
-<a href="https://github.com/Gitechnolo/biotechproject" title="Vai al repository GitHub del progetto"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/GitHub_project.png" alt="Repository GitHub del Biotech Project" class="specialsGit-img" width="895" height="651" loading="lazy"></a>
+<div class="biotechcenter" style="margin:40px 0">
+    <h2 class="biotechtitle">Architectural Resilience: The Stateless Edge</h2>
+    <div id="resilience-diagram" class="mermaid"></div>
+</div>
 <p class="biotechcenter text" style="color: #a7ffeb;" data-lang-key="call-to-action">Unisciti al progetto, contribuisci con le tue idee e aiutaci a plasmare il futuro della biotecnologia.</p>   
 <div id="about">
 <p class="sidenavtext" data-lang-key="project-info">Un progetto per il futuro della biotecnologia<br>Creato da <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a><br>Versione: 1.0.0</p>
@@ -126,5 +128,9 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/holiday-min.js" defer></script>
 <script>;!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r()||(i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))})).observe(o.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{r()}),t))}( "main-content", 300);</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",function(){const e=`graph TD\nA[Global Users]:::nodeStyle --> B{Stateless Edge}:::coreStyle\nB --> C[Zero-Backend Execution]:::nodeStyle\nB --> D[Privacy-by-Architecture]:::nodeStyle\nC --> E[TTI: 0.3s]:::outcomeStyle\nD --> F[Absolute Sovereignty]:::outcomeStyle\nclassDef nodeStyle fill:#141e30,stroke:#00bfff,color:#a7ffeb\nclassDef coreStyle fill:#1a2a3a,stroke:#00e676,stroke-width:3px,color:#fff\nclassDef outcomeStyle fill:#004d40,stroke:#00e676,color:#00e676,font-weight:bold`;document.getElementById("resilience-diagram").textContent=e;mermaid.initialize({startOnLoad:!0,theme:"dark",themeVariables:{primaryColor:"#00e676",primaryTextColor:"#fff",lineColor:"#00e676",fontSize:"16px"}});mermaid.contentLoaded()});
+</script>
 </body>
   </html> 
