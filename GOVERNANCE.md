@@ -17,10 +17,11 @@ Technical evolution is strictly managed through **Architectural Decision Records
 * **Maintainers:** Trusted contributors appointed by the Lead Maintainer to oversee specific modules, such as i18n expansion or WHO Data Integration.
 * **Contributors:** Community members providing code, scientific content, or translations. Contributions are meritocratic and must pass the **AI-Assisted SRE Auditing (ADR-003)** protocol.
 
-## 4. Financial & Institutional Neutrality
-BiotechProject may accept grants or institutional hosting (e.g., from global open-source foundations) to scale its impact, but it maintains strict technical independence.
+## 4. Financial & Institutional Neutrality (Code Sovereignty)
+BiotechProject may accept grants or institutional hosting to scale its impact, but it maintains **absolute technical independence**.
 * **Grant Usage:** External funds are strictly allocated to project milestones, such as **Offline Sync Engine** development, **WCAG AAA** audits, and **Replicability Toolkits**.
-* **Autonomy:** Institutional support or financial contributions do not grant decision-making power over the core architecture or the "Zero-Framework" philosophy.
+* **Sovereignty Clause:** Institutional support, sponsorships, or financial contributions do **not** grant any decision-making power over the core architecture, the "Zero-Framework" philosophy, or the roadmap.
+* **Technical Integrity:** The Lead Maintainer reserves the right to reject any funding that requires the implementation of proprietary dependencies or changes that degrade the project's resilience metrics.
 
 ## 5. Open Source Guarantee
 BiotechProject is and will always remain open source.
