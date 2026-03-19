@@ -27,7 +27,7 @@ BiotechProject may accept grants or institutional hosting to scale its impact, b
 BiotechProject is and will always remain open source.
 * **Source Code:** Distributed under the **MIT License**.
 * **Content & Documentation:** Distributed under **CC BY 4.0**.
-* Any attempt to enforce proprietary "lock-in" or vendor dependency is strictly prohibited by this charter.
+* Any attempt to enforce proprietary "lock-in" or vendor dependency is strictly prohibited by this charter..
 
 ---
 *“Anyone can contribute. Just respect the origin, and keep building with care.”*
