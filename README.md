@@ -126,6 +126,72 @@ This project follows a rigorous decision-making process to ensure enterprise-gra
 ## 📊 Technical Quality Monitoring & Architecture
 
 The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **March 14, 2026**, the ecosystem maintains a **95% aggregate performance score**.
+The following architecture illustrates how the "Last Mile" (the end-user) interacts with the system's decentralized core:
+
+graph TD
+    subgraph User_Level ["Global User Level (The Last Mile)"]
+        U1[Legacy Devices / 3G]
+        U2[Neurodivergent Users / Stress]
+        U3[Remote Areas / Fragile Infrastructure]
+    end
+
+    subgraph Core ["BiotechProject Core: Stateless Edge"]
+        direction TB
+        
+        subgraph Engine ["Client-Side Engine (Zero-Backend)"]
+            CE1[Vanilla JS ES6+ Runtime]
+            CE2[Molecular Calc Engine]
+            CE3[Circadian Sync Logic]
+            CE4[Local Encryption WebCrypto]
+        end
+
+        subgraph Data ["Data Resilience Layer"]
+            DL1[IndexedDB Encrypted]
+            DL2[Offline-First Cache]
+            DL3[Service Worker Strategy]
+        end
+
+        subgraph UX ["UI/UX Adaptive"]
+            UX1[Standard View]
+            UX2[Simplified Cognitive Path]
+            UX3[WCAG AAA Compliance]
+        end
+    end
+
+    subgraph Outcomes ["Strategic Outcomes"]
+        O1[TTI < 0.3s]
+        O2[Zero Server Cost @ Scale]
+        O3[Privacy by Architecture]
+        O4[Equitable Access]
+    end
+
+    %% Connections
+    U1 --> CE1
+    U2 --> UX2
+    U3 --> DL2
+    
+    CE1 --> CE2
+    CE1 --> CE3
+    CE2 --> DL1
+    CE3 --> DL1
+    CE4 --> DL1
+    
+    DL1 --> UX1
+    DL1 --> UX2
+    
+    UX1 --> O1
+    UX2 --> O1
+    
+    CE1 --> O2
+    CE4 --> O3
+    U2 --> O4
+
+    %% Styling
+    style CE1 fill:#2ecc71,stroke:#27ae60,color:#fff
+    style DL1 fill:#3498db,stroke:#2980b9,color:#fff
+    style UX2 fill:#f1c40f,stroke:#f39c12,color:#000
+    style O1 fill:#e74c3c,stroke:#c0392b,color:#fff
+    style O4 fill:#9b59b6,stroke:#8e44ad,color:#fff
 
 > [!IMPORTANT]
 > **Performance Stress-Test:** Metrics are validated under **extreme synthetic throttling** (150ms RTT / 4x CPU slowdown). This SRE-grade audit ensures that core clinical modules remain accessible and performant even during peak-hour network instability or on legacy hardware.
