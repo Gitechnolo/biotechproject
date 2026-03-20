@@ -89,9 +89,7 @@ The BiotechProject is engineered for stakeholders who prioritize resilience as a
 
 ## 🏗 Architectural Decision Records (ADR)
 
-This project follows a rigorous decision-making process to ensure enterprise-grade resilience and performance. Below are the core architectural pillars:
-
-We follow a rigorous decision-making process to ensure enterprise-grade resilience. Each decision is cross-validated for architectural integrity.
+This project follow a rigorous decision-making process to ensure enterprise-grade resilience. Each decision is cross-validated for architectural integrity.
 
 | ID | Decision | Core Outcome | Validation |
 | :--- | :--- | :--- | :--- |
