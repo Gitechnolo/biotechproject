@@ -91,35 +91,49 @@ The BiotechProject is engineered for stakeholders who prioritize resilience as a
 
 This project follows a rigorous decision-making process to ensure enterprise-grade resilience and performance. Below are the core architectural pillars:
 
+We follow a rigorous decision-making process to ensure enterprise-grade resilience. Each decision is cross-validated for architectural integrity.
+
+| ID | Decision | Core Outcome | Validation |
+| :--- | :--- | :--- | :--- |
+| **001** | **Zero-Framework Mandate** | < 20KB Bundle / 0.3s TTI | [Issue #12](https://github.com/Gitechnolo/biotechproject/issues/12) |
+| **002** | **Stateless Edge Intelligence** | 100% Service Availability | [Issue #13](https://github.com/Gitechnolo/biotechproject/issues/13) |
+| **003** | **AI-Assisted SRE Auditing** | 87% Tech Maturity Score | [Issue #14](https://github.com/Gitechnolo/biotechproject/issues/14) |
+| **004** | **Circadian State Machine** | 98% CPU Cycle Reduction | [Issue #15](https://github.com/Gitechnolo/biotechproject/issues/15) |
+| **005** | **SRE-Driven Data Portability** | Zero-Latency Data Export | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
+
+<details>
+<summary><b>Click to expand: Full ADR Rationale</b></summary>
+
 ### [ADR-001] Zero-Framework Mandate
-* **Decision**: Bypass modern frameworks (React/Angular/Vue) in favor of pure Vanilla JS (ES6+).
-* **Rationale**: Eliminates the "framework tax" on the Main Thread. In health-critical contexts, sub-second interactivity is a clinical requirement, not just a metric. 
-* **Outcome**: Initial bundle size **< 20KB** and TTI (Time to Interactive) of **0.3s**.
-* **Validation**: [Detailed Engineering Log & Performance Metrics (Issue #12)](https://github.com/Gitechnolo/biotechproject/issues/12)
+* **Decision**: Bypass modern frameworks (React/Angular/Vue) in favor of pure **Vanilla JS (ES6+)**.
+* **Rationale**: Eliminates the "framework tax". In health-critical contexts, sub-second interactivity is a clinical requirement.
+* **Outcome**: Initial bundle size **< 20KB** and TTI of **0.3s**.
+* **Validation**: [View Engineering Log (#12)](https://github.com/Gitechnolo/biotechproject/issues/12)
 
 ### [ADR-002] Stateless Edge & Client-Side Intelligence
-* **Decision**: Migrate complex metabolic and biological synchronization logic entirely to the client side.
-* **Rationale**: Guarantees **100% service availability** during network surges or backend outages. This ensures users have access to bio-data even in offline or degraded connectivity (3G/Edge) scenarios.
-* **Outcome**: 85% reduction in backend infrastructure costs and native GDPR/HIPAA data sovereignty.
-* **Validation**: [Strategic Equity Analysis & Resilience Report (Issue #13)](https://github.com/Gitechnolo/biotechproject/issues/13)
+* **Decision**: Migrate complex metabolic and biological sync logic entirely to the client side.
+* **Rationale**: Guarantees **100% service availability** during network surges or backend outages.
+* **Outcome**: 85% reduction in infrastructure costs.
+* **Validation**: [View Resilience Report (#13)](https://github.com/Gitechnolo/biotechproject/issues/13)
 
 ### [ADR-003] AI-Assisted SRE Auditing
-* **Decision**: Implementation of a cross-validation orchestration between Gemini 1.5 Pro and GitHub Copilot for code review and security audits.
-* **Rationale**: Overcomes individual LLM hallucinations by enforcing a multi-model "consensus" on type safety and architectural integrity.
-* **Outcome**: 87% technical maturity score and automated 24h reliability checks.
-* **Validation**: [Multi-Model Audit Protocol & Case Study (Issue #14)](https://github.com/Gitechnolo/biotechproject/issues/14)
+* **Decision**: Multi-model orchestration (Gemini + Copilot) for code review.
+* **Rationale**: Overcomes individual LLM hallucinations via "consensus" on type safety.
+* **Outcome**: 87% technical maturity score.
+* **Validation**: [View Audit Protocol (#14)](https://github.com/Gitechnolo/biotechproject/issues/14)
 
 ### [ADR-004] Circadian State Machine
-* **Decision**: Implementation of a resource-efficient early-return pattern for time-based content delivery.
-* **Rationale**: Reduces cognitive load by synchronizing UI states with the user's biological clock without triggering expensive re-renders or heavy interval polling.
-* **Outcome**: 98% reduction in background CPU cycles for dynamic UI adaptation.
-* **Validation**: [Performance-Efficient Early Return Pattern (Issue #15)](https://github.com/Gitechnolo/biotechproject/issues/15)
+* **Decision**: Implementation of a resource-efficient **Early Return pattern**.
+* **Rationale**: Reduces cognitive load without triggering expensive re-renders or heavy polling.
+* **Outcome**: 98% reduction in background CPU cycles.
+* **Validation**: [View Performance Pattern (#15)](https://github.com/Gitechnolo/biotechproject/issues/15)
 
 ### [ADR-005] SRE-Driven Data Portability
-* **Decision**: Deployment of a zero-latency, UI-integrated export layer using native Blob APIs.
-* **Rationale**: Ensures data sovereignty and interoperability for health records while maintaining a "Lean Logic" approach (no external libraries or heavy animations).
-* **Outcome**: Instant CSV/JSON generation with zero impact on the Main Thread's TTI.
-* **Validation**: [UI-Integrated Export & Resilience Strategy (Issue #17)](https://github.com/Gitechnolo/biotechproject/issues/17)
+* **Decision**: Deployment of a zero-latency export layer using native Blob APIs.
+* **Rationale**: Ensures data sovereignty for health records with "Lean Logic" (no libraries).
+* **Outcome**: Instant CSV/JSON generation.
+* **Validation**: [View Export Strategy (#17)](https://github.com/Gitechnolo/biotechproject/issues/17)
+</details>
 
 ---
 
