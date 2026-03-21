@@ -1052,9 +1052,10 @@ function updateLastModified(lang) {
   const lastModifiedDate = new Date(document.lastModified);
   if (isNaN(lastModifiedDate)) return;
 
-  // Definisce le etichette direttamente qui per risparmiare chiamate al JSON
+  // Sincronizzazione terminologica con l'Audit Globale (README/SRE)
+  // Etichetta hard-coded per garantire performance e zero dipendenze JSON
   const isEn = (lang === 'en');
-  const label = isEn ? 'Last modified' : 'Ultima modifica';
+  const label = isEn ? 'Last SRE Audit' : 'Ultima verifica SRE';
   const locale = isEn ? 'en-US' : 'it-IT';
 
   const options = { 
