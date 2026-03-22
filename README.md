@@ -52,6 +52,11 @@ It was created to show how technology can serve science and healthcare, while en
 
 It's a collaborative space for developers, researchers, and enthusiasts who want to explore **how the web can become a tool for inclusion and scientific innovation**.
 
+<div align="center">
+  <h3>🗺️ Strategic Roadmap for Global Scalability</h3>
+  <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
+</div>
+
 ---
 
 ## 🚀 Key Features
