@@ -177,16 +177,16 @@ The project implements an **advanced technological maturity tracking system** vi
 <details>
 <summary><b>🧬 Anatomy & Biological Systems (Standard & Easy-Read)</b></summary>
 
-| System | ⚡ Scientific standard version | 📝 Simple version (dyslexia) | 📅 Last Audit |
+| System | ⚡ Scientific standard | 📝 Dyslexia-friendly | 📅 Last Audit |
 | :--- | :--- | :--- | :--- |
-| **Digestive System** | [Launch](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-22 |
-| **Respiratory System** | [Launch](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-22 |
-| **Integumentary System** | [Launch](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-22 |
-| **Lymphatic System** | [Launch](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-22 |
-| **Heart / Cardiac** | [Launch](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-22 |
-| **Cell Biology** | [Launch](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-22 |
-| **Dermatology** | [Launch](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-22 |
-| **Hair / Capelli** | [Launch](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-22 |
+| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-22 |
+| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-22 |
+| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-22 |
+| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-22 |
+| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-22 |
+| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-22 |
+| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-22 |
+| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-22 |
 
 </details>
 
