@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
+  <img src="Biotech-file/images/biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
 </div>
 
 # BiotechProject 🧬 🇬🇧
