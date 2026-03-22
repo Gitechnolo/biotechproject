@@ -3,6 +3,7 @@
 </div>
 
 # BiotechProject 🧬 🇬🇧
+[![SRE Resilience Audit](https://img.shields.io/badge/SRE_Resilience-Clinical_Grade-blueviolet?style=flat-square&logo=shield-heart)](https://github.com/Gitechnolo/biotechproject/actions)
 
 🌐 **Read in other languages:**  
 [Italiano 🇮🇹](README.it.md) | 
@@ -176,7 +177,7 @@ The project implements an **advanced technological maturity tracking system** vi
 <details>
 <summary><b>🧬 Anatomy & Biological Systems (Standard & Easy-Read)</b></summary>
 
-| System | ⚡ Production Build (Minified) | 📝 Simplified Version | 📅 Last Audit |
+| System | ⚡ Scientific standard version | 📝 Simple version (dyslexia) | 📅 Last Audit |
 | :--- | :--- | :--- | :--- |
 | **Digestive System** | [Launch](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-22 |
 | **Respiratory System** | [Launch](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-22 |
