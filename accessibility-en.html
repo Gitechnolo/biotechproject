@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Accessibility - BiotechProject</title>
+<link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
+<link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" as="image" fetchpriority="high">
+<!-- Preload CSS critico -->
+<link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css"></noscript>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+#main-content {opacity: 0; transition: opacity 0.3s ease;}
+.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+body{background-color: #000f16; font-family: 'Sansation', sans-serif; color: #a7ffeb; max-width: 900px; line-height: 1.6;}
+h1, h2{ color: #00e676;}
+ul { padding-left: 20px; }
+footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
+a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
+table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
+ul { padding-left: 20px; }
+.conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}  
+/* Applica stile a tutti i <strong> dentro le celle */
+td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}            
+</style>
+<script>
+!function(){
+  const l = document.getElementById('preload-style');
+  const show = () => {
+    const c = document.getElementById('main-content');
+    if (c) c.style.setProperty('opacity', '1');
+  };
+
+  if (l) {
+    l.onload = () => { l.rel = 'stylesheet'; setTimeout(show, 50); };
+    if (l.sheet) l.rel = 'stylesheet';
+  }
+
+  // Fallback sicuro: esegui show() dopo 3s o al DOMContentLoaded, a seconda di quale arriva prima
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', show);
+  } else {
+    show();
+  }
+  setTimeout(show, 3000); // sicurezza finale
+}();
+</script>   
+</head>
+<body class="biotechbody" data-modern-menu>
+<!-- Link "Skip to main" salto per tastiera (accessibilità) -->
+<a href="#main" class="skip-link">Vai al contenuto principale</a>  
+<!-- Pulsante attivazione navigazione da tastiera -->
+<button id="keyboard-nav-toggle" aria-pressed="false" class="keyboard-toggle-btn hint" type="button"><span class="btn-visible-text" data-lang-key="keyboard-toggle">🔧 Navigazione Tastiera</span><span class="sr-only">Attiva o disattiva l'evidenziazione della navigazione da tastiera</span></button>
+<div class="canvas-wrapper"><canvas id="particles-canvas"></canvas></div>
+<!-- DNA animation -->
+<div class="dna-container-8"><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div><div class="dna-helix-8"></div></div>
+<!-- Nav Menu Moderno -->
+<div class="tech-nav-container" role="navigation" aria-label="Menu principale" id="tech-main-menu"><div class="tech-menu-item" data-menu="products"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="products" aria-label="Mostra le opzioni di Home" lang="it"><b>Home</b></button><div id="products" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/index.html" hreflang="it" role="menuitem" aria-label="Home"><b>Home</b></a></div></div></div><div class="tech-menu-item" data-menu="sales"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="sales" aria-label="Mostra le opzioni di Fisiologia" lang="it" data-lang-key="nav-physiology"><b>Fisiologia</b></button><div id="sales" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/Cellula.html" hreflang="it" role="menuitem" aria-label="Cellula" data-lang-key="nav-cell">Cellula</a><a href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" role="menuitem" aria-label="Apparato circolatorio" data-lang-key="nav-circulatory">Apparato circolatorio</a><a href="https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html" hreflang="it" role="menuitem" aria-label="Apparato respiratorio" data-lang-key="nav-respiratory">Apparato respiratorio</a><a href="https://gitechnolo.github.io/biotechproject/Apparato_digerente.html" hreflang="it" role="menuitem" aria-label="Apparato digerente" data-lang-key="nav-digestive">Apparato digerente</a><a href="https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html" hreflang="it" role="menuitem" aria-label="Apparato tegumentario" data-lang-key="nav-integumentary">Apparato tegumentario</a><a href="https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html" hreflang="it" role="menuitem" aria-label="Sistema linfatico immunitario" data-lang-key="nav-lymphatic">Sistema linfatico / immunitario</a><a href="https://gitechnolo.github.io/biotechproject/Dermatologia.html" hreflang="it" role="menuitem" aria-label="Dermatologia" data-lang-key="nav-dermatology">Dermatologia</a><a href="https://gitechnolo.github.io/biotechproject/Capelli.html" hreflang="it" role="menuitem" aria-label="Capelli" data-lang-key="nav-hair">Capelli</a></div></div></div><div class="tech-menu-item" data-menu="service"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="service" aria-label="Mostra i servizi disponibili" lang="it"><b>Service</b></button><div id="service" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><button role="menuitem" id="btn-support-os" aria-label="Apri il supporto O.S. Chat GPT in una nuova finestra" lang="it">O.S. Support Chat GPT</button><button role="menuitem" id="btn-contact-forum" aria-label="Contattaci tramite il forum ChatGPT" lang="it" data-lang-key="nav-contact">Contattaci</button><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" role="menuitem" aria-label="Accessibilità al progetto" data-lang-key="nav-accessibility">Accessibilità</a><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" hreflang="en" role="menuitem" aria-label="Accessibility to the project" data-lang-key="nav-accessibility-en">Accessibility</a><a href="#" id="theme-toggle" role="menuitem" aria-label="Cambia tema colore" hreflang="it" data-lang-key="nav-theme">🎨 Tema pulsanti</a><button role="menuitem" id="lang-toggle" aria-label="Cambia lingua" lang="it"><span id="lang-flag">🇮🇹</span><span id="lang-text" class="sr-only">Italiano</span><span id="lang-label">Cambia lingua</span></button></div></div></div><div class="tech-menu-item" data-menu="staff"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="staff" aria-label="Mostra le opzioni di Staff" lang="it"><b>Staff</b></button><div id="staff" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it" role="menuitem" aria-label="Incontra lo Staff">Meet the Staff</a><a href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html" hreflang="it" role="menuitem" aria-label="Maturità tecnologica">Tech Maturity</a><a href="https://gitechnolo.github.io/biotechproject/Progetti.html" hreflang="it" role="menuitem" aria-label="Progetti" data-lang-key="nav-progetti">Progetti</a></div></div></div><div class="tech-menu-item" data-menu="jobs"><button class="tech-nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="jobs" aria-label="Mostra le opzioni di Tecnologie" lang="it"><b>Technologies</b></button><div id="jobs" class="tech-dropdown biotechidden" role="menu"><div class="tech-dropdown-content"><a href="https://gitechnolo.github.io/biotechproject/Marketing.html" hreflang="it" role="menuitem" aria-label="Mercato cibernetica">Cybernetics Market</a><a href="https://gitechnolo.github.io/biotechproject/Specials.html" hreflang="it" role="menuitem" aria-label="Speciali">Specials</a></div></div></div></div>
+<div class="logo-wrapper-cls"><img fetchpriority="high" decoding="async" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" class="modern-logo pulse-logo" alt="BiotechProject logo" width="720" height="180"></div> 
+<!-- End Nav Menu Moderno -->
+<!-- Contenuto principale (per Skip to main e accessibilità) --> 
+<main id="main">
+<!-- Container: prevenzione CLS -->
+<div class="staff-layout-container" id="main-content">
+  <div class="staff-row">
+  <div class="staff-col">
+    <div class="staff-card">
+      <div class="staff-container">
+        <p><a href="https://gitechnolo.github.io/biotechproject/accessibility-it.html" hreflang="it" lang="it">Versione italiana disponibile</a></p>
+    <h1>Biotech Project Accessibility Statement</h1>
+<p><strong class="sansation-bold-italic">BiotechProject</strong> is built on the principle of <strong class="sansation-bold-italic">Equity-by-Design</strong>. We believe that health innovation and scientific data must be resilient and accessible to everyone, regardless of sensory, cognitive, or motor abilities.</p>
+<p>This platform is committed to digital inclusion and strictly complies with international standards, in line with the Legislative Decree 10 August 2018, n. 106 (transposing Directive (EU) 2016/2102) and the latest WCAG updates.</p>
+<hr>
+<h2>🥇 Conformance Status</h2>
+<p class="conformance-status"><strong class="sansation-bold-italic">Fully Conforming</strong>to the <strong class="sansation-bold-italic">Web Content Accessibility Guidelines (WCAG) 2.1 - Level AA</strong>, with significant implementations of <strong class="sansation-bold-italic">Level AAA</strong>criteria.</p>
+<ul><li><strong class="sansation-bold-italic">Last Technical Audit:</strong><time datetime="2026-03-06">March 06, 2026</time></li><li><strong class="sansation-bold-italic">Aggregate Accessibility Score:</strong>100/100 (Lighthouse SRE Audit)</li><li><strong class="sansation-bold-italic">Methodology:</strong>Multi-model SRE auditing (Gemini 1.5 Pro & Copilot), automated axe-core engines, and manual testing with NVDA/VoiceOver.</li></ul>
+<hr>
+<h2>🔑 Advanced Accessibility & Resilience Features</h2>
+<p>Beyond standard compliance, BiotechProject implements a <strong>"Stateless Edge"</strong> architecture to ensure the platform remains functional under extreme conditions (low bandwidth or high cognitive load).</p>
+<table><thead><tr><th>Feature</th><th>Implementation & Clinical Rationale</th><th>WCAG Ref.</th></tr></thead><tbody><tr><td data-label="Feature"><strong>Neurodivergent "Comfort Mode"</strong></td><td data-label="Implementation">A cognitively safe environment with reduced sensory input, stabilized layouts, and simplified biological context-aware advice.</td><td data-label="WCAG Ref."><strong>2.2.2, 2.3.3</strong></td></tr><tr><td data-label="Feature"><strong>Resilient Edge Access</strong></td><td data-label="Implementation">Zero-Framework (Vanilla JS) architecture ensuring a <strong>0.3s TTI</strong>. Critical for users in low-connectivity regions or using legacy assistive tech.</td><td data-label="WCAG Ref."><strong>4.1.1</strong></td></tr><tr><td data-label="Feature"><strong>DNA Scanner & Audit</strong></td><td data-label="Implementation">Secure focus management and bilingual <code>aria-label</code>attributes for interactive biological synchronization and PDF reporting.</td><td data-label="WCAG Ref."><strong>2.4.4, 4.1.2</strong></td></tr><tr><td data-label="Feature"><strong>Circadian & Axial Tilt Sync</strong></td><td data-label="Implementation">Visual states adapt to local time and season to reduce eye strain and align with user's biological rhythms.</td><td data-label="WCAG Ref."><strong>1.4.3, 3.1.2</strong></td></tr><tr><td data-label="Feature"><strong>Accessible Data Viz</strong></td><td data-label="Implementation">All charts (Tech Maturity/Metabolic) are paired with <strong>hidden ARIA tables</strong>and text descriptions for screen reader parity.</td><td data-label="WCAG Ref."><strong>1.1.1, 1.3.1</strong></td></tr><tr><td data-label="Feature"><strong>Privacy-by-Architecture</strong></td><td data-label="Implementation">100% client-side processing. Sensitive bio-data never leaves the browser, ensuring a safe environment for vulnerable users.</td><td data-label="WCAG Ref."><strong>G133</strong></td></tr></tbody></table>
+<hr>
+<h2>🚀 Strategic Vision for Level AAA</h2>
+<p>We treat performance and accessibility as non-negotiable clinical requirements. Our roadmap includes:</p>
+<ul><li><strong class="sansation-bold-italic">Universal Language Bridge:</strong>Expanding our modular i18n system to support automated plain-language (Easy-to-Read) versions for all scientific modules.</li><li><strong class="sansation-bold-italic">SRE-for-Humans:</strong>Maintaining a 95% aggregate performance score even under 4x CPU slowdown to prevent session timeouts for motor-impaired users.</li><li><strong class="sansation-bold-italic">Enhanced Semantics:</strong>Full adoption of ARIA 1.2 for all metabolic digital twin simulations.</li></ul>
+<hr>
+<h2>💬 Feedback and Reporting</h2>
+<p>Your feedback is vital. If you encounter content access barriers, difficulties using the new HUD features, or have suggestions for greater inclusivity, contact us:</p>
+<p>We respond to all reports to ensure maximum usability.</p>
+<img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" alt="Biotech Project Performance Summary" class="specials-img" width="895" height="500" decoding="async" loading="lazy" style="display: block; margin: 28px auto 1px auto;">
+<p class="sansation-light-italic" style="text-align: center; margin-bottom: 48px; color: #64ffda; font-size: 1.1em;">“Biotech Project is not just science: it's inclusion. Every line of code is designed to be accessible, resilient, and human.” </p>
+<!-- Badge di accessibilità -->
+<div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" class="hover-effect" hreflang="en" aria-label="BiotechProject Accessibility Statement - Compliant with WCAG 2.1 AA standards" title="Accessibility Statement - Compliant with WCAG 2.1 AA standards"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="BiotechProject Accessibility Statement" width="220" height="80"></a></div>
+<div id="lastModified"></div>
+<p style="text-align: center; font-size: 0.9em; color: #64ffda; opacity: 0.9; margin-top: 1rem;">BiotechProject. A project for a more inclusive web.</p>
+<p class="biotechcenter"><a href="https://www.linkedin.com/in/biotechproject" target="_blank" rel="noopener" class="hover-effect" aria-label="Follow the Biotech project on LinkedIn (opens in new window)">🔗 Follow Biotech Project on LinkedIn</a></p>
+</div>
+    </div>
+  </div>
+</div>
+
+</div>  
+<!-- End container: prevenzione CLS -->
+</main>
+<!-- End contenuto principale (per Skip to main e accessibilità) -->
+<!-- Avviso per utenti senza JavaScript --> 
+<div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
+<!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+</body>
+</html> 

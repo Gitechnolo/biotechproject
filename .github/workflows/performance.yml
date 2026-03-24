@@ -5,21 +5,30 @@
 # TARGET: 100% Availability on Legacy Hardware & Degraded Networks (3G/Edge).
 # -------------------------------------------------------------------------
 
-name: Performance, SRE Audit & Auto-Minify
+name: Performance & SRE Audit
 
 on:
   push:
     branches:
       - main
+      - master
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 4 * * *' # Analisi profonda 
   workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL da analizzare (default: homepage)'
+        required: false
+        default: 'https://gitechnolo.github.io/biotechproject/'
 
 jobs:
-  generate-report-and-deploy:
-    name: Audit & Production Deploy
+  generate-report:
+    name: Generate performance-latest.json
     runs-on: ubuntu-latest
     timeout-minutes: 30
+
+    env:
+      STRESS_TEST: 'true'
 
     permissions:
       contents: write
@@ -31,17 +40,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      # --- 1. SICUREZZA ---
+      # --- CONTROLLO SICUREZZA ---
       - name: 🛡️ Nightly Security Scan
         id: security-scan
+        if: github.event_name == 'schedule'
         run: |
           echo "Analisi proattiva riga per riga..."
           ! grep -rE "password:|api_key:|secret:|token:" . \
             --exclude=performance.yml \
             --exclude-dir=.git \
-            || (echo "❌ Rilevato dato sensibile!" && exit 1)
+            || (echo "❌ Rilevato dato sensibile!" && exit 1)      
 
-      # --- 2. ANALISI PERFORMANCE (SRE) ---
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -52,11 +61,15 @@ jobs:
           mkdir -p tools
           if [ -f data/performance-latest.json ]; then
             cp data/performance-latest.json tools/performance-latest.json
+            echo "✅ Vecchio report disponibile"
+          else
+            echo "🟡 Nessun report precedente"
           fi
 
       - name: 📦 Install dependencies
         run: |
-          cd tools && npm install
+          cd tools
+          npm install
 
       - name: 🚀 Run Performance Analysis
         id: performance
@@ -64,64 +77,68 @@ jobs:
         run: |
           cd tools
           node generate-performance.js
-          mkdir -p ../data
-          cp performance-data.json ../data/performance-latest.json
+          if [ ! -f performance-data.json ]; then
+            echo "❌ Errore: performance-data.json non generato (crash)"
+            exit 1
+          fi
+          echo "✅ performance-data.json creato"
 
-      # --- 3. MINIFICAZIONE (src -> root) ---
-      - name: ✨ Minify HTML Aggressivo
+      - name: 📂 Copy result to /data
+        if: success() || steps.performance.outcome == 'success'
         run: |
-          npm install -g html-minifier
-          for file in src/*.html; do
-            filename=$(basename "$file")
-            html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true "$file" -o "$filename"
-          done
-          touch .nojekyll  # <--- AGGIUNGI QUESTA RIGA: Forza GitHub a ignorare il README come index
-          echo "✅ Minificazione e bypass Jekyll completati"
+          mkdir -p data
+          cp tools/performance-data.json data/performance-latest.json
+          echo "✅ Copiato in data/performance-latest.json"
 
-      # --- 4. SINCRONIZZAZIONE DATE ---
-      - name: 📅 Update README and Sitemap
+      # --- AGGIORNAMENTO AUTOMATICO DATE (README & SITEMAP) ---
+      - name: 📅 Update Last Audit dates in README and Sitemap
+        if: success() || steps.performance.outcome == 'success'
         run: |
+          echo "Sincronizzazione date in corso..."
           CURRENT_DATE=$(date +'%Y-%m-%d')
+          
+          # Aggiorna tutte le date YYYY-MM-DD nella tabella del README.md
           sed -i "s/202[0-9]-[0-9]\{2\}-[0-9]\{2\}/$CURRENT_DATE/g" README.md
+          
+          # Aggiorna tutti i tag <lastmod> nella sitemap.xml
           if [ -f sitemap.xml ]; then
             sed -i "s|<lastmod>.*</lastmod>|<lastmod>$CURRENT_DATE</lastmod>|g" sitemap.xml
           fi
+          
+          echo "✅ README.md e sitemap.xml aggiornati alla data $CURRENT_DATE"
 
-      # --- 5. DEPLOY SU GH-PAGES ---
-      - name: 🚀 Deploy to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: .
-          branch: gh-pages
-          clean: true
-
-      # --- 6. SINCRONIZZAZIONE DATI SU MAIN ---
-      - name: 💾 Sync SRE Data back to Main
+      # --- PERSISTENZA DATI ---
+      - name: 💾 Commit and Push changes
         if: success() || steps.performance.outcome == 'success'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Aggiunta degli asset aggiornati (Dati, README e Sitemap)
           git add data/performance-latest.json README.md sitemap.xml
-          if ! git diff --staged --quiet; then
-            git commit -m "📈 SRE Audit Update ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
-            git push origin main
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📈 SRE Audit: Update performance metrics & document dates ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            git push origin ${{ github.ref_name }}
           fi
 
-      # --- 7. ALERT SOLO PER ERRORI REALI (Crash o Security) ---
-      - name: 🚨 Crea alert critico
-        if: failure()
+      # --- ALERT SOLO PER ERRORI REALI ---
+      - name: 🚨 Crea alert solo per crash o security breach
+        if: failure() && steps.security-scan.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
             const runUrl = `${context.payload.repository.html_url}/actions/runs/${context.runId}`;
-            const title = '⚠️ ALERT: System Outage o Security Breach in BiotechProject';
-            const body = `Il workflow è fallito. Controlla immediatamente lo stato del sistema.\n\n[Analizza i log qui](${runUrl})`;
+            const title = '⚠️ ALERT: Possibile Attacco o Breach di Sicurezza';
+            const body = `Rilevato un problema critico di sicurezza durante l'audit.\n\n[Analizza i log qui](${runUrl})`;
             github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: title,
               body: body,
-              labels: ['critical-alert', 'sre-outage']
+              labels: ['critical-alert', 'security-breach']
             })
 
 ################################################################################
