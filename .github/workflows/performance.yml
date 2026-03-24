@@ -71,12 +71,12 @@ jobs:
       - name: ✨ Minify HTML Aggressivo
         run: |
           npm install -g html-minifier
-          # Questo comando scansiona la cartella src e sputa i file minificati nella root
           for file in src/*.html; do
             filename=$(basename "$file")
             html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true "$file" -o "$filename"
           done
-          echo "✅ Minificazione completata con successo"
+          touch .nojekyll  # <--- AGGIUNGI QUESTA RIGA: Forza GitHub a ignorare il README come index
+          echo "✅ Minificazione e bypass Jekyll completati"
 
       # --- 4. SINCRONIZZAZIONE DATE ---
       - name: 📅 Update README and Sitemap
