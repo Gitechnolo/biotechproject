@@ -11,11 +11,12 @@
     <line x1="8" y1="12" x2="16" y2="12" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
   </g>
 
-  <text fill="#4FD1C5" font-family="Sansation, sans-serif" font-size="18" font-weight="bold" x="55" y="32">ACCESSIBLE</text>
+  <text fill="#4FD1C5" font-family="Sansation, sans-serif" font-size="17" font-weight="bold" x="55" y="28">ACCESSIBLE</text>
   
-  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="13" x="55" y="50">Keyboard Navigable</text>
+  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="11" x="55" y="44">Keyboard &amp; Screen Reader</text>
+  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="11" x="55" y="58">Fully Compatible</text>
   
-  <text fill="#00E676" font-family="Sansation, sans-serif" font-size="11" font-weight="bold" x="55" y="68">WCAG 2.1 AAA COMPLIANT</text>
+  <text fill="#00E676" font-family="Sansation, sans-serif" font-size="10" font-weight="bold" x="55" y="72">WCAG 2.1 AAA COMPLIANT</text>
 
   <circle cx="8" cy="8" r="2.5" fill="#00E676"/>
   <circle cx="212" cy="72" r="2.5" fill="#00E676"/>
