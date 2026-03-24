@@ -1,7 +1,7 @@
 <svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="220" height="80" rx="12" fill="#0D1619" stroke="#00E676" stroke-width="2"/>
+  <rect width="220" height="80" rx="12" fill="#0D1619" stroke="#00E676" stroke-width="2.5"/>
   
-  <g transform="translate(12, 18) scale(1.5)">
+  <g transform="translate(10, 8) scale(1.1)">
     <rect x="0" y="0" width="24" height="16" rx="2" stroke="#4FD1C5" stroke-width="2"/>
     <line x1="4" y1="4" x2="6" y2="4" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
     <line x1="9" y1="4" x2="11" y2="4" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
@@ -11,13 +11,13 @@
     <line x1="8" y1="12" x2="16" y2="12" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
   </g>
 
-  <text fill="#4FD1C5" font-family="Sansation, sans-serif" font-size="17" font-weight="bold" x="55" y="28">ACCESSIBLE</text>
+  <text fill="#4FD1C5" font-family="Sansation, sans-serif" font-size="22" font-weight="bold" x="45" y="24">ACCESSIBLE</text>
   
-  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="11" x="55" y="44">Keyboard &amp; Screen Reader</text>
-  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="11" x="55" y="58">Fully Compatible</text>
+  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="13" x="10" y="44">Keyboard &amp; Screen Reader</text>
+  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="13" x="10" y="58">Fully Compatible</text>
   
-  <text fill="#00E676" font-family="Sansation, sans-serif" font-size="10" font-weight="bold" x="55" y="72">WCAG 2.1 AAA COMPLIANT</text>
+  <text fill="#00E676" font-family="Sansation, sans-serif" font-size="13" font-weight="bold" x="10" y="73">WCAG 2.1 AAA COMPLIANT</text>
 
-  <circle cx="8" cy="8" r="2.5" fill="#00E676"/>
-  <circle cx="212" cy="72" r="2.5" fill="#00E676"/>
+  <circle cx="212" cy="10" r="3" fill="#00E676"/>
+  <circle cx="212" cy="70" r="3" fill="#00E676"/>
 </svg>
