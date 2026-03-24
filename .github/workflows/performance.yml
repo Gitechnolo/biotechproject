@@ -69,14 +69,14 @@ jobs:
 
       # --- 3. MINIFICAZIONE (src -> root) ---
       - name: ✨ Minify HTML Aggressivo
-        uses: chaitanyapotti/html-minifier-action@v2
-        with:
-          directory: 'src'
-          output_directory: '.' 
-          remove_comments: true
-          collapse_whitespace: true
-          minify_js: true
-          minify_css: true
+        run: |
+          npm install -g html-minifier
+          # Questo comando scansiona la cartella src e sputa i file minificati nella root
+          for file in src/*.html; do
+            filename=$(basename "$file")
+            html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true "$file" -o "$filename"
+          done
+          echo "✅ Minificazione completata con successo"
 
       # --- 4. SINCRONIZZAZIONE DATE ---
       - name: 📅 Update README and Sitemap
