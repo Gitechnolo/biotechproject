@@ -344,7 +344,7 @@ Ogni contributo - grande o piccolo - aiuta a rendere la scienza più accessibile
 
 Questo progetto adotta una **Strategia di Doppia Licenza** per garantire l'integrità sia della logica architetturale che dei contenuti scientifici educativi:
 
-* **Codice Sorgente**: [MIT License](LICENSE-MIT.md) — © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
+* **Codice Sorgente**: [MIT License](LICENSE-MIT.md) - © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
 * **Contenuti Scientifici (Testi, Grafica, Materiale Didattico)**: [Creative Commons Attribution 4.0 International](LICENSE-CC-BY-4.0.md)
 
 > “Chiunque può contribuire. Rispetta l'origine e continua a costruire con cura.”   
