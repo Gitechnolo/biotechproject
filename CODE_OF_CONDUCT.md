@@ -46,10 +46,6 @@ Reports can be made by:
 
 We take all reports seriously and will act promptly and fairly.
 
----
-
-## 🌐 Read in Other Languages
-[Italiano 🇮🇹](CODE_OF_CONDUCT.it.md)
 
 ---
 
