@@ -343,13 +343,12 @@ Jeder Beitrag — groß oder klein — macht Wissenschaft zugänglicher.
 
 ## 📄 Lizenz
 
-📄 Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
-Du kannst das Projekt teilen, anpassen und kommerziell nutzen, solange du angemessen nennst.
+Dieses Projekt implementiert eine **Doppellizenz-Strategie**, um die Integrität sowohl der Architekturlogik als auch der wissenschaftlichen Bildungsinhalte zu gewährleisten:
 
-- **Inhalt (Text, Grafik, Lernmaterial)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Quellcode**: [MIT License](https://opensource.org/licenses/MIT)
+* **Quellcode**: [MIT License](LICENSE-MIT.md) — © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
+* **Wissenschaftliche Inhalte (Texte, Grafiken, Lehrmaterialien)**: [Creative Commons Attribution 4.0 International](LICENSE-CC-BY-4.0.md)
 
-"Jeder kann beitragen. Respektiere einfach die Quelle und baue mit Sorgfalt weiter."   
+> „Jeder kann einen Beitrag leisten. Respektieren Sie einfach den Ursprung und bauen Sie mit Sorgfalt weiter.“   
 
 ---
 
