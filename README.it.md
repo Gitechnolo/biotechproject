@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
+  <img src="Biotech-file/images/biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
 </div>
 
 # BiotechProject 🧬 🇮🇹
+[![SRE Resilience Audit](https://img.shields.io/badge/SRE_Resilience-Clinical_Grade-blueviolet?style=flat-square&logo=shield-heart)](https://github.com/Gitechnolo/biotechproject/actions)
 
 🌐 **Leggi in altre lingue:**  
 [Italiano 🇮🇹](README.it.md) | 
@@ -13,44 +14,59 @@
 [Dutch 🇳🇱](README.nl.md) |
 [Português (BR) 🇧🇷](README.pt-br.md)
 
-> 🌍 *"Benvenuti tutti. Non parliamo tutte le lingue, ma parliamo la stessa lingua: la collaborazione."*  
-> L’inglese non è un ostacolo, è un ponte.  
-> 🔹 Per contribuire o conoscere le linee guida del progetto, visita i file principali in inglese:  
+> 💡 **Executive Briefing (17 gennaio 2026):**
+>
+> Questo progetto è evoluto da un esperimento orientato alle prestazioni in un **Modello Strategico per un'Architettura Sanitaria Resiliente**.  
+> Abbiamo formalizzato la nostra metodologia "Stateless Edge" in un nuovo report che affronta le disuguaglianze globali in salute causate dalla latenza e dalle barriere cognitive.  
+>
+> 👉 **Leggi il Report Strategico:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
+
+
+> 🌍 *"Non parliamo tutti le stesse lingue, ma parliamo la stessa lingua: collaborazione."*  
+> L’inglese non è una barriera - è un ponte.  
+> 🔹 Per contribuire o rivedere le linee guida del progetto, visita i file principali in inglese:  
 > - [Contributing Guidelines](CONTRIBUTING.md)  
 > - [Code of Conduct](CODE_OF_CONDUCT.md)  
-> L'uso dell'inglese favorisce la collaborazione internazionale.
+> Usare l’inglese supporta la collaborazione internazionale.
 
 **Un progetto open source che unisce scienza, salute e tecnologia web.**  
-Dove la biotecnologia incontra il codice per costruire strumenti digitali per la ricerca e l'innovazione.
+Dove la biotecnologia incontra il codice per costruire strumenti digitali per ricerca e innovazione.
 
 [![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)](https://github.com/Gitechnolo/biotechproject/blob/main/LICENSE-MIT.md)
 [![Workflow Status](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml/badge.svg)](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml)
-[![Last Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)](https://github.com/Gitechnolo/biotechproject/commits)         
+[![Last Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)](https://github.com/Gitechnolo/biotechproject/commits)
+[![Security](https://img.shields.io/badge/security-dependabot-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
+[![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 ---
 
 ## 🌱 Cos'è BiotechProject?
 
-BiotechProject è un **laboratorio digitale aperto** che combina **biotecnologia, salute e sviluppo web** in un sistema integrato progettato per essere:
+BiotechProject è un **laboratorio digitale aperto** che unisce **biotecnologia, salute e sviluppo web** in un sistema integrato progettato per essere:
 
 - 🔍 **Scientificamente affidabile**
 - 💻 **Tecnicamente robusto**
 - 🌐 **Accessibile a tutti**, inclusi utenti con disabilità
 - 🤝 **Aperto alla collaborazione globale**
 
-Nasce con l’obiettivo di dimostrare come la tecnologia possa servire la scienza e la salute, garantendo al contempo un accesso equo a chiunque, indipendentemente da capacità sensoriali, cognitive o motorie.
+È stato creato per dimostrare come la tecnologia possa servire la scienza e l'assistenza sanitaria, garantendo un accesso equo per tutti – indipendentemente da abilità sensoriali, cognitive o motorie.
 
 È uno spazio collaborativo per sviluppatori, ricercatori e appassionati che vogliono esplorare **come il web può diventare uno strumento di inclusione e innovazione scientifica**.
+
+<div align="center">
+  <h3>🗺️ La nostra Visione Strategica per la Scalabilità</h3>
+  <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
+</div>
 
 ---
 
 ## 🚀 Funzionalità principali
 
 ✅ **Open by design**  
-→ Aperto a contributi, idee e collaborazioni internazionali
+→ Aperto a contributi, idee e collaborazione internazionale
 
 ✅ **Workflow CI/CD integrato**  
-→ Test, analisi e aggiornamento automatico su ogni modifica
+→ Test, analisi e aggiornamenti automatici ad ogni modifica
 
 ✅ **Dashboard di performance automatica**  
 → Analisi continua di tutte le pagine con aggiornamento di `performance-data.json`
@@ -59,128 +75,265 @@ Nasce con l’obiettivo di dimostrare come la tecnologia possa servire la scienz
 → Interfaccia interattiva per esplorare lo stato di maturità tecnologica
 
 ✅ **Design responsive e accessibile**  
-→ Funziona su tutti i dispositivi, con attenzione all'usabilità e ai requisiti WCAG
+→ Funziona su tutti i dispositivi, con forte attenzione a usabilità e conformità WCAG
+
+✅ **Privacy-by-Architecture**  
+→ Elaborazione dati 100% client-side in modo che i dati bio-sensibili non lascino mai il browser dell'utente, allineato a GDPR/HIPAA by design.
+
+---
+
+## 🎯 Pubblico target e Visione Strategica
+
+BiotechProject è progettato per stakeholder che considerano la resilienza un requisito clinico:
+
+* **Sistemi sanitari e iniziative in salute**: progettato per scalare digital twin metabolici con costi di calcolo server-side zero, sfruttando Vanilla JS ad alte prestazioni per logica cliente complessa.
+* **Equità sanitaria globale**: pensato per utenti in zone a connettività ridotta, garantendo tempi di caricamento sotto 1 secondo (0,3s) anche su dispositivi legacy grazie a ottimizzazioni SRE-grade.
+* **Pazienti neurodivergenti**: conformità nativa WCAG AAA e "Comfort Mode" offrono un ambiente cognitivamente sicuro per l'interazione sanitaria, riducendo il sovraccarico sensoriale.
+* **SRE e sistemi engineer**: un blueprint per "SRE-for-Humans", dove le metriche di performance (punteggio aggregato 95%) sono un impegno per inclusione e affidabilità.
+
+---
+
+## 🏗 Architectural Decision Records (ADR)
+
+Questo progetto segue un rigoroso processo decisionale per garantire resilienza enterprise-grade. Ogni decisione è convalidata per integrità architetturale.
+
+| ID | Decisione | Risultato principale | Convalida |
+| :--- | :--- | :--- | :--- |
+| **001** | **Zero-Framework Mandate** | < 20KB Bundle / 0.3s TTI | [Issue #12](https://github.com/Gitechnolo/biotechproject/issues/12) |
+| **002** | **Stateless Edge Intelligence** | 100% Service Availability | [Issue #13](https://github.com/Gitechnolo/biotechproject/issues/13) |
+| **003** | **AI-Assisted SRE Auditing** | 87% Tech Maturity Score | [Issue #14](https://github.com/Gitechnolo/biotechproject/issues/14) |
+| **004** | **Circadian State Machine** | 98% CPU Cycle Reduction | [Issue #15](https://github.com/Gitechnolo/biotechproject/issues/15) |
+| **005** | **SRE-Driven Data Portability** | Zero-Latency Data Export | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
+
+<details>
+<summary><b>Click per espandere: Rationale completo ADR</b></summary>
+
+### [ADR-001] Zero-Framework Mandate
+* **Decisione**: evitare framework moderni (React/Angular/Vue) a favore di puro **Vanilla JS (ES6+)**.
+* **Razionale**: elimina il "framework tax". In contesti critici per la salute, l'interattività sub-secondo è un requisito clinico.
+* **Risultato**: dimensione iniziale del bundle **< 20KB** e TTI di **0.3s**.
+* **Validazione**: [View Engineering Log (#12)](https://github.com/Gitechnolo/biotechproject/issues/12)
+
+### [ADR-002] Stateless Edge & Client-Side Intelligence
+* **Decisione**: migrare tutta la logica di sincronizzazione metabolica e biologica complessa lato client.
+* **Razionale**: garantisce **100% disponibilità del servizio** durante picchi di rete o interruzioni backend.
+* **Risultato**: riduzione dell'85% dei costi di infrastruttura.
+* **Validazione**: [View Resilience Report (#13)](https://github.com/Gitechnolo/biotechproject/issues/13)
+
+### [ADR-003] AI-Assisted SRE Auditing
+* **Decisione**: orchestrazione mult-modello (Gemini + Copilot) per revisione del codice.
+* **Razionale**: supera le allucinazioni dei singoli LLM tramite "consensus" sulla type safety.
+* **Risultato**: punteggio di maturità tecnico dell'87%.
+* **Validazione**: [View Audit Protocol (#14)](https://github.com/Gitechnolo/biotechproject/issues/14)
+
+### [ADR-004] Circadian State Machine
+* **Decisione**: implementazione del pattern resource-efficient **Early Return**.
+* **Razionale**: riduce il carico cognitivo senza triggerare re-render costosi o polling pesante.
+* **Risultato**: riduzione del 98% dei cicli CPU in background.
+* **Validazione**: [View Performance Pattern (#15)](https://github.com/Gitechnolo/biotechproject/issues/15)
+
+### [ADR-005] SRE-Driven Data Portability
+* **Decisione**: deployment di un layer di export a latenza zero usando le API native Blob.
+* **Razionale**: garantisce sovranità dei dati per cartelle cliniche con "Lean Logic" (zero librerie).
+* **Risultato**: generazione istantanea di CSV/JSON.
+* **Validazione**: [View Export Strategy (#17)](https://github.com/Gitechnolo/biotechproject/issues/17)
+</details>
 
 ---
 
 ## 📊 Monitoraggio della Qualità Tecnica & Architettura
 
-> 📑 **Engineering Assets (Aggiornato al 17 Gennaio 2026):**
-> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
->   *Analisi strategica su come il "SRE for Humans" e l'ingegneria minimalista risolvono la latenza e le barriere cognitive nella salute globale.*
-> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+Il progetto implementa un **sistema avanzato di tracciamento della maturità tecnologica** tramite GitHub Actions. Al **14 marzo 2026**, l'ecosistema mantiene un **punteggio di performance aggregato del 95%**.
 
-Il progetto implementa un **sistema avanzato di tracciamento della maturità tecnologica** tramite GitHub Actions. Al **17 Gennaio 2026**, l'ecosistema mantiene un **punteggio di performance aggregato del 97%**, con i moduli bio-scientifici principali che raggiungono il **100% in Accessibilità e Prestazioni**.
+> [!IMPORTANT]
+> **Stress-test di performance:** Le metriche sono convalidate sotto **throttling sintetico estremo** (150ms RTT / 4x CPU slowdown). Questa verifica SRE-grade garantisce che i moduli clinici core restino accessibili e performanti anche in orari di picco o su hardware legacy.
 
-### Caratteristiche della Dashboard
-- ✅ **Monitoraggio Performance in Tempo Reale**: Score (0–100) e tempi di caricamento aggiornati ogni 24 ore.
-- ✅ **Maturity Intelligence**: Tracciamento automatizzato dello stato dei moduli (`optimized`, `compatible`, `deprecated`).
-- 📈 **Previsioni**: Grafico dei trend di maturità con proiezione realistica verso il completamento totale (Febbraio 2026).
-- 💾 **Open Data**: Esportazione delle analisi in formato JSON/CSV per audit di terze parti.
+**Aggiornamento 14 marzo 2026:** integrato con successo il **Data Portability Audit layer (ADR-005)**. Il sistema ora supporta esportazioni telemetriche di performance in tempo reale senza impattare il Main Thread.
 
-👉 **Vai alla dashboard live:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+📂 **Ultimi Audit:**
+* 📄 **[SRE Performance Stress-Test Report - 6 marzo 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+
+### Funzionalità Dashboard
+* ✅ **Monitoraggio Performance in Tempo Reale**: metriche (0–100) aggiornate ogni 24h via GitHub Actions.
+* ✅ **Resilience Intelligence**: tracking automatico degli stati `optimized` e `compatible` sotto stress.
+* 💾 **Open Data & Transparency**: accesso ai **[Raw Performance Dataset (JSON)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)** per verifica di terze parti o download diretto dall'UI.
+
+👉 **Visualizza la dashboard live:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+
+---
+
+## 📂 Hub di Navigazione (Asset Ottimizzati)
+
+> [!TIP]
+> Questa sezione fornisce un'interfaccia snella per accedere agli asset di produzione minificati. Per i file di sviluppo, usa la directory `src/`.
+
+### 🛡️ Asset di Produzione Verificati
+
+[![SRE Audit Status](https://img.shields.io/badge/SRE_Audit-Verified-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Gitechnolo/biotechproject/actions)
+> [!IMPORTANT]  
+> **Nota metodologica:** le date nella colonna "Last Audit" rappresentano la più recente **Global System Validation**. Include scansioni di sicurezza automatiche, stress-test di performance (Lighthouse) e controlli d'integrità dei link. Anche se il contenuto non cambia, l'affidabilità è ricertificata a ogni ciclo di audit.
+
+<details>
+<summary><b>🧬 Anatomia & Sistemi Biologici (Standard & Easy-Read)</b></summary>
+
+| Sistema | ⚡ Scientific standard | 📝 Dyslexia-friendly | 📅 Last Audit |
+| :--- | :--- | :--- | :--- |
+| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-24 |
+| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-24 |
+| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-24 |
+| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-24 |
+| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-24 |
+| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-24 |
+| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-24 |
+| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-24 |
+
+</details>
+
+<details>
+<summary><b>🛠️ Project Management & Utilities</b></summary>
+
+| Resource | Access Link | 📅 Last Audit |
+| :--- | :--- | :--- |
+| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-03-24 |
+| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-03-24 |
+| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-03-24 |
+| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-03-24 |
+| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-03-24 |
+
+</details>
+
+<details>
+<summary><b>♿ Accessibilità & Inclusione</b></summary>
+
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Aggiornato: 2026-03-24*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Aggiornato: 2026-03-24*
+- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Aggiornato: 2026-03-24*
+
+</details>
 
 ---
 
 ## 🌐 Accessibilità
 
-Il sito è **conforme alle Linee guida WCAG 2.1 Livello AA** per tutte le pagine principali.  
-La conformità è stata verificata tramite:
+Il sito è **conforme alle WCAG 2.1 Level AA** per tutte le pagine principali.  
+La conformità è stata verificata via:
 
 - Audit automatizzati (Lighthouse, axe, WAVE)
 - Test manuali con screen reader (NVDA, VoiceOver)
-- Navigazione completa da tastiera (tab, shift+tab, invio, spazio, frecce)
-- Validazione W3C del codice HTML
-- Ispezione diretta del codice per struttura semantica e uso corretto di ARIA
+- Navigazione completa da tastiera (tab, shift+tab, enter, space, arrows)
+- Validazione W3C del codice
+- Ispezione diretta del codice per struttura semantica e uso corretto ARIA
 
-Il progetto è **parzialmente conforme al Livello AAA**, in particolare per:
-- Contrasto del colore (maggior parte dei testi supera il rapporto 7:1)
+Il progetto è **parzialmente conforme a Level AAA**, in particolare su:
+- Contrasto colore (maggior parte dei testi supera 7:1)
 - Struttura gerarchica dei titoli
-- Uso di testo alternativo descrittivo
+- Uso di alternative text descrittive
 
-Tuttavia, alcuni criteri AAA non sono applicabili o non sono richiesti nel contesto attuale (es. sottotitoli per video, testo in lingua semplice esteso).
+Tuttavia alcuni criteri AAA non sono applicabili o richiesti nel contesto attuale (es. didascalie video, plain language esteso).   
 
 📄 **Dichiarazione completa:**  
-👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)  
-👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
+👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
 
 ### 🔍 Funzionalità avanzate di accessibilità
 
-- **Scanner DNA & Audit**: Modulo interattivo con generazione di report PDF strutturato, `aria-label` bilingue e gestione sicura del focus  
-- **HUD & Tooltips dinamici**: Spiegazioni scientifiche istantanee con descrizioni testuali e valori di intensità percentuale per tutti i punti dati  
-- **Sincronizzazione circadiana**: I contenuti si adattano a ora e stagione (inclinazione dell'asse), riducendo il carico cognitivo grazie a consigli biologici contestuali   
+- **DNA Scanner & Audit**: modulo interattivo con generazione report PDF strutturato, `aria-label` bilingue e gestione focus sicura  
+- **HUD & Tooltips dinamici**: spiegazioni scientifiche istantanee con descrizioni testuali e valori percentuali di intensità per tutti i data point  
+- **Sincronizzazione circadiana**: contenuti si adattano a ora e stagione (inclinazione asse), riducendo carico cognitivo con consigli biologici contestuali
 
 ---
 
 ## Accessibilità & Case Study
 
-Siamo impegnati a costruire una piattaforma inclusiva. Scopri come abbiamo implementato la conformità WCAG 2.1 AA e il supporto multilingue:
+Siamo impegnati a costruire una piattaforma inclusiva. Esplora come abbiamo implementato WCAG 2.1 AA e supporto multilingue:
 
-[![Case Study - Costruire una Piattaforma Biotech Accessibile](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibilit%C3%A0-brightgreen?logo=github&labelColor=222)](biotechproject-case-study.md)   
+[![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
 ## 🌍 Gestione Multilingua (i18n)
 
-BiotechProject supporta **più lingue** con un sistema di traduzione **modulare, leggero e accessibile**, progettato per funzionare su pagine statiche ospitate su GitHub Pages.
+BiotechProject supporta **più lingue** tramite un sistema di traduzione **modulare, leggero e accessibile**, progettato per funzionare sulle pagine statiche ospitate su GitHub Pages.
+"Mentre il contenuto testuale è completamente localizzato, i diagrammi scientifici mantengono prevalenza italiano/inglese per garantire accuratezza tecnica durante l’evoluzione rapida del progetto."
 
-Il sistema permette di:
-- ✅ Tradurre contenuti in tempo reale
-- ✅ Ricordare la lingua scelta tra le pagine (come Wikipedia o Google)
-- ✅ Supportare versioni semplici per utenti dislessici
-- ✅ Essere esteso facilmente da collaboratori
+Il sistema permette:
+- ✅ Traduzione dei contenuti in tempo reale  
+- ✅ Persistenza della lingua scelta tra le pagine (come Wikipedia o Google)  
+- ✅ Supporto a versioni semplificate per utenti dislessici  
+- ✅ Estendibilità facile per contribuenti
 
 ### 🧩 Architettura del sistema
 
-- **File JSON modulari**: ogni pagina ha il suo file di traduzione in `lang/`
-- **Common.json**: contiene testi condivisi (menu, footer, pulsante lingua)
-- **Nessun backend**: tutto funziona in JavaScript puro
-- **LocalStorage**: la lingua selezionata viene ricordata
-- **data-lang-key**: attributo HTML per identificare elementi traducibili
+- **File JSON modulari**: ogni pagina ha il proprio file di traduzione in `lang/`  
+- **Common.json**: contiene testi condivisi (menu, footer, pulsante lingua)  
+- **Nessun backend richiesto**: tutto funziona in JavaScript puro  
+- **LocalStorage**: la lingua selezionata viene ricordata  
+- **`data-lang-key`**: attributo HTML per identificare gli elementi traducibili
 
 ## 📁 Struttura della cartella `lang/`
 
-Per chiarezza, la seguente tabella mappa le pagine HTML ai rispettivi file JSON di traduzione. I file JSON sono modulari: `common.json` contiene stringhe condivise (menu, footer, ecc.), mentre i file specifici contengono i testi della singola pagina.
+`common.json` contiene stringhe condivise (menu, footer, ecc.), i file per pagina contengono testi specifici.
 
-| Pagina (.html) | File traduzione (.json) | Note |
-|---|---|---|
-| index.html | lang/home.json | Contenuto principale / home |
-| Progetti.html | lang/progetti.json | Elenco progetti |
-| Staff.html | lang/staff.json | Meet the Staff |
-| Marketing.html | lang/marketing.json | Pagina Marketing |
-| Tech_Maturity.html | lang/tech_maturity.json | Dashboard performance & report |
-| Dermatologia.html, Dermatologia-semplice.html | lang/dermatologia.json | Contenuto principale + versione semplificata |
-| Cuore.html, Cuore-semplice.html | lang/cuore.json | Contenuto + versione semplificata |
-| Cellula.html, Cellula-semplice.html | lang/cellula.json | Contenuto + versione semplificata |
-| Apparato_digerente.html, *-semplice.html* | lang/apparato_digerente.json | Contenuto + semplificata |
-| Apparato_respiratorio.html, *-semplice.html* | lang/apparato_respiratorio.json | Contenuto + semplificata |
-| Apparato_tegumentario.html, *-semplice.html* | lang/apparato_tegumentario.json | Contenuto + semplificata |
-| Sistema_linfatico.html, *-semplice.html* | lang/sistema_linfatico.json | Contenuto + semplificata |
-| Capelli.html, Capelli-semplice.html | lang/capelli.json | Nuove pagine incluse nel monitoraggio |
-| common strings | lang/common.json | Menu, footer, pulsanti condivisi |
+```text
+lang/
+├── common.json                  # Shared strings (menu, footer, UI)
+│
+├── home.json                    # index.html
+├── progetti.json                # Progetti.html
+├── staff.json                   # Staff.html
+├── marketing.json               # Marketing.html
+├── tech_maturity.json           # Tech_Maturity.html
+│
+├── dermatologia.json            # Dermatologia.html + Dermatologia-semplice.html
+├── cuore.json                   # Cuore.html + Cuore-semplice.html
+├── cellula.json                 # Cellula.html + Cellula-semplice.html
+├── apparato_digerente.json      # Apparato_digerente.html + -semplice.html
+├── apparato_respiratorio.json   # Apparato_respiratorio.html + -semplice.html
+├── apparato_tegumentario.json   # Apparato_tegumentario.html + -semplice.html
+├── sistema_linfatico.json       # Sistema_linfatico.html + -semplice.html
+└── capelli.json                 # Capelli.html + Capelli-semplice.html
+```
+
+
+## 📅 Data ultima verifica
+**22 marzo 2026**
+
+## 🔮 Aggiornamenti recenti (sintesi)
+
+Principali miglioramenti recenti:
+
+- Dashboard performance: Lighthouse integrato in data/performance-latest.json e visualizzato su Tech_Maturity.html (grafico + elenco pagine + esportazione).  
+- Export dati: JSON/CSV dalla dashboard (pulsante "Export data").  
+- Grafici & accessibilità: Chart.js con tabelle nascoste/descrizioni per tecnologie assistive.  
+- Ottimizzazioni performance: lazy-loading avanzato, script pesanti differiti, canvas particelle ottimizzato e cleanup.  
+- UX & preferenze: tema dinamico, preferenze persistenti (localStorage), navigazione da tastiera migliorata e focus/ARIA gestito.  
+- CI/CD & trasparenza: Lighthouse automatizzato (generate-performance.js) e JSON pubblico per audit.
 
 
 ## 💡 Vuoi contribuire?
 
-Benvenuto!  
-BiotechProject è un progetto **aperto a tutti**, in uno spirito simile a Wikipedia.
+Sei il benvenuto!  
+BiotechProject è un progetto **aperto a tutti**, ispirato allo spirito collaborativo di Wikipedia.
 
 🔹 Per iniziare:
 - Leggi le [**Contributing Guidelines**](CONTRIBUTING.md)
-- Rispetta il [**Code of Conduct**](CODE_OF_CONDUCT.md)
+- Segui il [**Code of Conduct**](CODE_OF_CONDUCT.md)
 
 Puoi aiutare con:
-- Nuovi contenuti scientifici
-- Miglioramenti tecnici o di accessibilità
+- Contenuti scientifici
+- Miglioramenti tecnici e accessibilità
 - Traduzioni
-- Bug report e suggerimenti
+- Segnalazioni di bug e suggerimenti
+
+Ogni contributo - grande o piccolo - aiuta a rendere la scienza più accessibile.
 
 ---
 
 ## 🛠️ Tecnologie utilizzate
-- HTML5 semantico
+- Semantic HTML5
 - CSS3 con Custom Properties
-- JavaScript vanilla (zero framework)
+- Vanilla JavaScript (senza framework)
 - ARIA 1.2 per interazioni dinamiche
 - GitHub Actions per CI/CD
 - Lighthouse per monitoraggio performance
@@ -190,10 +343,10 @@ Puoi aiutare con:
 ## 📄 Licenza
 
 📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
-Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.
+Sei libero di condividere, adattare e usare commercialmente il progetto, a condizione di dare credito appropriato.
 
 - **Contenuti (testo, grafica, materiale didattico)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Codice sorgente**: [Licenza MIT](https://opensource.org/licenses/MIT)
+- **Codice sorgente**: [MIT License](https://opensource.org/licenses/MIT)
 
 "Chiunque può contribuire. Basta rispettare l'origine e continuare a costruire con cura."   
 
@@ -203,76 +356,3 @@ Puoi condividere, modificare e usare il progetto anche a fini commerciali, purch
 
 Autore: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Progetto disponibile su: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
-
-
----
-
-## ✅ Caratteristiche di accessibilità implementate
-
-Il progetto adotta un approccio **"accessibilità fin dall’origine"** (*accessibility by design*). Tra le principali funzionalità:
-
-- **Navigazione da tastiera completa**: Tutte le funzionalità sono accessibili tramite tastiera, con un pulsante dedicato che attiva un’evidenziazione avanzata.
-- **Supporto avanzato ai menu**: Menu a tendina navigabili con frecce, <kbd>Home</kbd>, <kbd>End</kbd> e <kbd>Esc</kbd>, con gestione corretta del focus.
-- **Compatibilità con screen reader**: Struttura HTML semantica, uso corretto di `ARIA` e gestione dinamica dello stato.
-- **Contrasto sufficiente**: Tutti i testi rispettano il rapporto minimo 4.5:1 (testo normale) e 3:1 per elementi UI (WCAG 1.4.3, 1.4.11).
-- **Testo ridimensionabile**: Funzionale fino al 200% di zoom senza sovrapposizioni (WCAG 1.4.4, 1.4.10).
-- **Controllo delle animazioni**: Disattivate automaticamente con `prefers-reduced-motion: reduce`, più opzione manuale tramite pulsante “Comfort”.
-- **Supporto al contrasto elevato**: Applica automaticamente un tema blu profondo se `prefers-contrast: high` è attivo (WCAG 1.4.12, livello AAA).
-- **Tema visivo dinamico**: Cinque varianti cromatiche (Verde, Ciano, Viola, Arancione, Blu Profondo) per supportare diverse condizioni visive, inclusi vari tipi di daltonismo.
-- **Persistenza delle preferenze**: Il tema e lo stato della navigazione da tastiera vengono salvati in `localStorage` e ripristinati alla visita successiva.
-- **Popup accessibili**: Finestre modali con gestione corretta del focus, supporto a <kbd>Esc</kbd> e transizione verso `role="dialog"` per migliorare l’accessibilità.
-- **Lazy loading sicuro**: Immagini caricate con `IntersectionObserver`, fallback per browser vecchi, e testo alternativo sempre presente.
-- **Orologi e contatori accessibili**: Aggiornati dinamicamente con `aria-live="polite"` per screen reader.
-- **Design resiliente**: Zero framework esterni. JavaScript vanilla, CSS moderno ma retrocompatibile, HTML semantico.
-- **Pagine semplificate**: Versioni con linguaggio chiaro, frasi brevi e supporto visivo per utenti con dislessia o difficoltà cognitive (WCAG 3.1.5).
-- **Accessibilità dei dati visivi**: Grafici accompagnati da tabelle nascoste (`visually-hidden`) e testi alternativi strutturati.
-- **Esportazione dati**: Possibilità di esportare dati di performance e accessibilità in JSON o CSV per audit trasparenti.
-- **Comfort visivo automatico (QRedshift)**: Filtro di temperatura colore più caldo la sera, basato sull’ora locale, disattivabile manualmente.
-- **Supporto alla pronuncia e comprensione**: Uso del tag `<ruby>` per definizioni e pronuncia di termini scientifici complessi (WCAG 3.1.3, 3.1.5).
-- **Video accessibile**: Senza autoplay, controlli personalizzati con `aria-label`, descrizioni testuali e navigazione da tastiera.
-
-
-## 🚀 Conformità in corso verso WCAG 2.1 Livello AAA
-
-Stiamo implementando ulteriori miglioramenti per avvicinarci al livello **AAA**:
-
-- **Pronuncia di termini tecnici**: Espansione dell’uso di `<ruby>` con sillabazione e IPA (es. "CRISPR", "epigenetica").
-- **Spiegazione di acronimi**: Implementazione progressiva di `<abbr title="...">` per sigle come "PCR", "ATP", "DNA".
-- **Link con testo descrittivo**: Verifica continua che ogni link sia comprensibile anche fuori contesto (WCAG 2.4.9).
-- **Migrazione da popup a modali accessibili**: Sostituzione di `window.open()` con modali interni dotati di `role="dialog"`, trapping del focus e supporto completo da tastiera.   
-
-
-## ⚠️ Non conformità parziali o eccezioni
-
-Nonostante l’impegno, alcune parti non soddisfano pienamente tutti i criteri WCAG:
-
-- **Uso di `role="menu"` nei dropdown**: Attualmente utilizzato per un comportamento avanzato da tastiera, ma tecnicamente riservato a barre dei menu applicativi. In valutazione una transizione a un modello semantico più semplice e compatibile.
-- **Popup basati su `window.open()`**: Alcuni link aprono finestre esterne per retrocompatibilità con sistemi legacy. In fase di migrazione verso modali interni accessibili.
-
-
-## 💬 Feedback e segnalazioni
-
-Il tuo feedback è fondamentale per migliorare l’accessibilità del progetto.  
-Se riscontri barriere nell’accesso ai contenuti o hai suggerimenti, [contattaci](https://gitechnolo.github.io/biotechproject/accessibility-it.html#feedback) (sezione "Feedback e segnalazioni" della dichiarazione).
-
-## 📅 Data dell’ultima verifica
-**15 Gennaio 2026**   
-
-## 🔮 Aggiornamenti recenti (sintesi)
-
-Breve riepilogo delle novità più rilevanti implementate recentemente:
-
-- Dashboard performance: integrazione dei risultati Lighthouse in data/performance-latest.json e visualizzazione aggregata su Tech_Maturity.html (grafico + lista pagine con punteggi).
-- Esportazione dati: possibilità di scaricare in JSON/CSV dalla dashboard (pulsante "Esporta dati").
-- Visualizzazione & accessibilità dei dati: grafici con Chart.js accompagnati da tabelle alternative per screen reader.
-- Ottimizzazioni di performance: lazy-loading, caricamento differito degli script pesanti, ottimizzazioni del canvas delle particelle (frame-rate ridotto e cleanup).
-- UX & preferenze: tema dinamico, persistenza preferenze (localStorage), navigazione da tastiera migliorata e gestione focus/ARIA.
-- Trasparenza e CI/CD: pipeline che genera automaticamente i dati di performance (generate-performance.js → performance-latest.json); dati disponibili pubblicamente per audit indipendenti.
-
-
----
-
-📌 **Progetto**  
-🔧 Tecnologie: HTML5, CSS3, JavaScript vanilla, ARIA, W3C standards  
-🌍 Hosting: GitHub Pages  
-📄 Licenza: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Puoi condividere, modificare e usare il progetto anche a fini commerciali, purché citi l'autore originale.
