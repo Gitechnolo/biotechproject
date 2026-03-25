@@ -345,7 +345,7 @@ Every contribution — big or small — helps make science more accessible.
 
 This project implements a **Dual-Licensing Strategy** to ensure the integrity of both architectural logic and scientific educational content:
 
-* **Source Code**: [MIT License](LICENSE-MIT.md) — © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
+* **Source Code**: [MIT License](LICENSE-MIT.md) - © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
 * **Scientific Content (Text, Graphics, Educational Material)**: [Creative Commons Attribution 4.0 International](LICENSE-CC-BY-4.0.md)
 
 > “Anyone can contribute. Just respect the origin, and keep building with care.”   
