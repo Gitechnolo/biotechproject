@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
+  <img src="Biotech-file/images/biotech-performance-audit-2026.webp" alt="BiotechProject Performance Audit - 100% Lighthouse Scores" width="100%" />
 </div>
 
 # BiotechProject 🧬 🇳🇱
+[![SRE Resilience Audit](https://img.shields.io/badge/SRE_Resilience-Clinical_Grade-blueviolet?style=flat-square&logo=shield-heart)](https://github.com/Gitechnolo/biotechproject/actions)
 
 🌐 **Lees in andere talen:**  
 [Italiano 🇮🇹](README.it.md) | 
@@ -10,206 +11,345 @@
 [Español 🇪🇸](README.es.md) | 
 [Français 🇫🇷](README.fr.md) | 
 [Deutsch 🇩🇪](README.de.md) | 
-[Dutch 🇳🇱](README.nl.md) | 
+[Dutch 🇳🇱](README.nl.md) |
 [Português (BR) 🇧🇷](README.pt-br.md)
 
-> 🌍 *"Welkom allemaal. We spreken niet alle talen, maar we spreken dezelfde taal: samenwerking."*  
-> Engels is geen obstakel, het is een brug.  
-> 🔹 Voor bijdragen of projectrichtlijnen, bezoek de hoofdbestanden in het Engels:  
+> 💡 **Uitvoerende Samenvatting (17 januari 2026):**
+>
+> Dit project is geëvolueerd van een prestatiegericht experiment naar een **Strategisch Blauwdruk voor Veerkrachtige Gezondheidsarchitectuur**.  
+> We hebben onze "Stateless Edge" methodologie geformaliseerd in een nieuw rapport dat wereldwijde gezondheidsongelijkheden aanpakt veroorzaakt door latentie en cognitieve barrières.  
+>
+> 👉 **Lees het Strategische Rapport:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
+
+
+> 🌍 *"We spreken niet allemaal dezelfde talen, maar we spreken dezelfde taal: samenwerking."*  
+> Engels is geen barrière - het is een brug.  
+> 🔹 Om bij te dragen of de projectrichtlijnen te bekijken, bezoek de hoofdbestanden in het Engels:  
 > - [Contributing Guidelines](CONTRIBUTING.md)  
 > - [Code of Conduct](CODE_OF_CONDUCT.md)  
-> Het gebruik van Engels bevordert internationale samenwerking.
+> Engels gebruiken ondersteunt internationale samenwerking.
 
-**Een open-source project dat wetenschap, gezondheid en webtechnologie verenigt.**  
-Waar biotechnologie en code samenkomen om digitale hulpmiddelen voor onderzoek en innovatie te bouwen.
+**Een open source project dat wetenschap, gezondheid en webtechnologie verenigt.**  
+Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en innovatie.
 
 [![License](https://img.shields.io/github/license/Gitechnolo/biotechproject)](https://github.com/Gitechnolo/biotechproject/blob/main/LICENSE-MIT.md)
 [![Workflow Status](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml/badge.svg)](https://github.com/Gitechnolo/biotechproject/actions/workflows/performance.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/Gitechnolo/biotechproject?color=blue)](https://github.com/Gitechnolo/biotechproject/commits)
+[![Security](https://img.shields.io/badge/security-dependabot-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
+[![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 ---
 
 ## 🌱 Wat is BiotechProject?
 
-BiotechProject is een **open digitaal laboratorium** dat **biotechnologie, gezondheid en webontwikkeling** combineert in een geïntegreerd systeem dat ontworpen is om:
+BiotechProject is een **open digitaal lab** dat **biotechnologie, gezondheid en webontwikkeling** combineert in een geïntegreerd systeem dat ontworpen is om te zijn:
 
-- 🔍 **Wetenschappelijk betrouwbaar** te zijn
+- 🔍 **Wetenschappelijk betrouwbaar**
 - 💻 **Technisch robuust**
-- 🌐 **Voor iedereen toegankelijk**, inclusief gebruikers met een beperking
+- 🌐 **Toegankelijk voor iedereen**, inclusief gebruikers met handicaps
 - 🤝 **Open voor wereldwijde samenwerking**
 
-Het project is ontstaan om te laten zien hoe technologie de wetenschap en gezondheid kan ondersteunen, terwijl tegelijkertijd iedereen gelijke toegang heeft, ongeacht zintuiglijke, cognitieve of motorische vermogens.
+Het is gecreëerd om te demonstreren hoe technologie wetenschap en gezondheidszorg kan dienen, terwijl gelijke toegang voor iedereen wordt gegarandeerd – ongeacht sensorische, cognitieve of motorische vaardigheden.
 
-Het is een samenwerkingsruimte voor ontwikkelaars, onderzoekers en enthousiastelingen die willen verkennen **hoe het web een instrument kan worden voor inclusie en wetenschappelijke innovatie**.
+Het is een collaboratieve ruimte voor ontwikkelaars, onderzoekers en enthousiastelingen die willen verkennen **hoe het web een instrument kan worden voor inclusie en wetenschappelijke innovatie**.
+
+<div align="center">
+  <h3>🗺️ Onze Strategische Visie voor Schaalbaarheid</h3>
+  <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
+</div>
 
 ---
 
-## 🚀 Belangrijkste functies
+## 🚀 Belangrijkste Kenmerken
 
 ✅ **Open by design**  
 → Open voor bijdragen, ideeën en internationale samenwerking
 
 ✅ **Geïntegreerde CI/CD workflow**  
-→ Automatische tests, analyses en updates bij elke wijziging
+→ Geautomatiseerde testen, analyse en updates bij elke wijziging
 
-✅ **Automatische prestatiedashboard**  
-→ Continue analyse van alle pagina's met update van `performance-data.json`
+✅ **Geautomatiseerd performance dashboard**  
+→ Continue analyse van alle pagina's met updates naar `performance-data.json`
 
-✅ **Dynamisch filter op categorie**  
-→ Interactieve interface om de technologische rijpheid te verkennen
+✅ **Dynamische filter per categorie**  
+→ Interactieve interface om technologische maturiteitsstatus te verkennen
 
-✅ **Responsief en toegankelijk ontwerp**  
-→ Werkt op alle apparaten, met aandacht voor gebruiksvriendelijkheid en WCAG-eisen
+✅ **Responsive en toegankelijk ontwerp**  
+→ Werkt op alle apparaten, met sterke focus op bruikbaarheid en WCAG compliance
+
+✅ **Privacy-by-Architecture**
+→ 100% client-side gegevensverwerking zorgt ervoor dat bio-gevoelige gegevens nooit de browser van de gebruiker verlaten, afgestemd op GDPR/HIPAA standaarden by design.
 
 ---
 
-## 📊 Monitoring van Technische Kwaliteit & Architectuur
+## 🎯 Doelgroep en Strategische Visie
 
-> 📑 **Engineering Assets (Bijgewerkt op 17 januari 2026):**
-> * **[Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)**
->   *Strategische analyse over hoe "SRE for Humans" en minimalistische engineering wereldwijde latentieproblemen en cognitieve barrières in de gezondheidszorg oplossen.*
-> * **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+BiotechProject is ontworpen voor stakeholders die veerkracht als een klinische vereiste beschouwen:
 
-Het project implementeert een **geavanceerd systeem voor het volgen van technologische volwassenheid** via GitHub Actions. Vanaf **17 januari 2026** behoudt het ecosysteem een **geaggregeerde prestatiescore van 97%**, waarbij de **fysiologische kernmodules** **100% scoren op Toegankelijkheid en Prestaties**.
+* **Gezondheidssystemen en Gezondheidsinitiatieven**: Ontworpen om metabolische digitale tweelingen te schalen met nul server-side compute kosten, gebruikmakend van high-performance Vanilla JS voor complexe client-side logica.
+* **Wereldwijde Gezondheidsequiteit**: Specifiek ontworpen voor gebruikers in regio's met lage connectiviteit, zorgen voor sub-seconde (0,3s) laadtijden zelfs op legacy apparaten door SRE-grade optimalisatie.
+* **Neurodivergente Patiënten**: Native WCAG AAA compliance en 'Comfort Mode' bieden een cognitief veilige omgeving voor gezondheidsinteractie, verminderen sensorische overbelasting.
+* **SRE en Systeemingenieurs**: Een blauwdruk voor "SRE-for-Humans", waar performance metrics (95% aggregate score) worden behandeld als een commitment voor gebruikersinclusie en betrouwbaarheid.
+
+---
+
+## 🏗 Architectural Decision Records (ADR)
+
+Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkracht te waarborgen. Elke beslissing wordt cross-gevalideerd voor architecturale integriteit.
+
+| ID | Beslissing | Kern Uitkomst | Validatie |
+| :--- | :--- | :--- | :--- |
+| **001** | **Zero-Framework Mandate** | < 20KB Bundle / 0.3s TTI | [Issue #12](https://github.com/Gitechnolo/biotechproject/issues/12) |
+| **002** | **Stateless Edge Intelligence** | 100% Service Availability | [Issue #13](https://github.com/Gitechnolo/biotechproject/issues/13) |
+| **003** | **AI-Assisted SRE Auditing** | 87% Tech Maturity Score | [Issue #14](https://github.com/Gitechnolo/biotechproject/issues/14) |
+| **004** | **Circadian State Machine** | 98% CPU Cycle Reduction | [Issue #15](https://github.com/Gitechnolo/biotechproject/issues/15) |
+| **005** | **SRE-Driven Data Portability** | Zero-Latency Data Export | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
+
+<details>
+<summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
+
+### [ADR-001] Zero-Framework Mandate
+* **Beslissing**: Vermijd moderne frameworks (React/Angular/Vue) ten gunste van pure **Vanilla JS (ES6+)**.
+* **Rechtvaardiging**: Elimineert de "framework tax". In gezondheid-kritische contexten is sub-seconde interactiviteit een klinische vereiste.
+* **Uitkomst**: Initiële bundle grootte **< 20KB** en TTI van **0.3s**.
+* **Validatie**: [View Engineering Log (#12)](https://github.com/Gitechnolo/biotechproject/issues/12)
+
+### [ADR-002] Stateless Edge & Client-Side Intelligence
+* **Beslissing**: Migreer complexe metabolische en biologische sync logica volledig naar de client-side.
+* **Rechtvaardiging**: Garandeert **100% service beschikbaarheid** tijdens netwerkpieken of backend storingen.
+* **Uitkomst**: 85% reductie in infrastructuurkosten.
+* **Validatie**: [View Resilience Report (#13)](https://github.com/Gitechnolo/biotechproject/issues/13)
+
+### [ADR-003] AI-Assisted SRE Auditing
+* **Beslissing**: Multi-model orchestration (Gemini + Copilot) voor code review.
+* **Rechtvaardiging**: Overwint individuele LLM hallucinaties via "consensus" op type safety.
+* **Uitkomst**: 87% technische maturiteit score.
+* **Validatie**: [View Audit Protocol (#14)](https://github.com/Gitechnolo/biotechproject/issues/14)
+
+### [ADR-004] Circadian State Machine
+* **Beslissing**: Implementatie van een resource-efficient **Early Return pattern**.
+* **Rechtvaardiging**: Vermindert cognitieve belasting zonder dure re-renders of zware polling te triggeren.
+* **Uitkomst**: 98% reductie in background CPU cycles.
+* **Validatie**: [View Performance Pattern (#15)](https://github.com/Gitechnolo/biotechproject/issues/15)
+
+### [ADR-005] SRE-Driven Data Portability
+* **Beslissing**: Deployment van een zero-latency export layer met native Blob APIs.
+* **Rechtvaardiging**: Zorgt voor gegevenssoevereiniteit voor gezondheidsdossiers met "Lean Logic" (geen libraries).
+* **Uitkomst**: Instant CSV/JSON generatie.
+* **Validatie**: [View Export Strategy (#17)](https://github.com/Gitechnolo/biotechproject/issues/17)
+</details>
+
+---
+
+## 📊 Technische Kwaliteitsmonitoring en Architectuur
+
+Het project implementeert een **geavanceerd technologisch maturiteit tracking systeem** via GitHub Actions. Vanaf **14 maart 2026**, onderhoudt het ecosysteem een **95% geaggregeerde performance score**.
+
+> [!IMPORTANT]
+> **Performance Stress-Test:** Metrics worden gevalideerd onder **extreme synthetische throttling** (150ms RTT / 4x CPU vertraging). Deze SRE-grade audit zorgt ervoor dat kern klinische modules toegankelijk en performant blijven zelfs tijdens piek-uur netwerkinstabiliteit of op legacy hardware.
+
+**Update 14 maart 2026:** Succesvol geïntegreerd de **Data Portability Audit layer (ADR-005)**. Het systeem ondersteunt nu real-time performance telemetry exports zonder de Main Thread uitvoering te beïnvloeden.
+
+📂 **Laatste Audit Records:**
+* 📄 **[SRE Performance Stress-Test Report - 6 maart 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Kenmerken
-- ✅ **Real-time Prestatiebewaking**: Score (0–100) en laadtijden elke 24 uur bijgewerkt.
-- ✅ **Maturity Intelligence**: Geautomatiseerde tracking van de modulestatus (`optimized`, `compatible`, `deprecated`).
-- 📈 **Prognoses**: Trendgrafiek van volwassenheid met een realistische projectie naar volledige voltooiing (februari 2026).
-- 💾 **Open Data**: Export van analyses in JSON/CSV-formaat voor audits door derden.
+* ✅ **Real-time Performance Monitoring**: Metrics (0–100) bijgewerkt elke 24h via GitHub Actions.
+* ✅ **Resilience Intelligence**: Geautomatiseerde tracking van `optimized` en `compatible` statussen onder stress.
+* 💾 **Open Data & Transparantie**: Toegang tot de **[Raw Performance Dataset (JSON)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)** voor third-party verificatie of download analytics direct van de UI.
 
 👉 **Bekijk het live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
 ---
 
-## 🌐 Toegankelijkheid
+## 📂 Navigatiehub (Geoptimaliseerde Assets)
 
-De site is **in overeenstemming met de WCAG 2.1 Richtlijnen Niveau AA** voor alle hoofdpagina's.  
-De conformiteit is geverifieerd via:
+> [!TIP]
+> Deze sectie biedt een gestroomlijnde interface om toegang te krijgen tot de geminificeerde productie assets. Voor ontwikkelingsbestanden, raadpleeg de `src/` directory.
 
-- Geautomatiseerde audits (Lighthouse, axe, WAVE)
-- Handmatige tests met schermlezers (NVDA, VoiceOver)
-- Volledige toetsenbordnavigatie (tab, shift+tab, enter, spatie, pijltjes)
-- W3C-validatie van HTML-code
-- Directe code-inspectie voor semantische structuur en correct gebruik van ARIA
+### 🛡️ Geverifieerde Productie Assets
 
-Het project is **gedeeltelijk conform aan Niveau AAA**, met name voor:
-- Kleurcontrast (het grootste deel van de tekst overschrijdt de verhouding 7:1)
-- Hiërarchische titelstructuur
-- Gebruik van beschrijvende alternatieve tekst
+[![SRE Audit Status](https://img.shields.io/badge/SRE_Audit-Verified-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Gitechnolo/biotechproject/actions)
+> [!IMPORTANT]  
+> **Methodologische Opmerking:** De datums vermeld in de "Last Audit" kolom vertegenwoordigen de meest recente **Global System Validation**. Dit omvat geautomatiseerde beveiligingsscans, performance stress-tests (Lighthouse), en link integriteit controles. Zelfs als de inhoud van een specifiek asset ongewijzigd blijft, wordt de betrouwbaarheid tijdens elke auditcyclus hergecertificeerd.
 
-Echter, sommige AAA-criteria zijn niet van toepassing of niet vereist in de huidige context (bijv. ondertitels voor video's, uitgebreide eenvoudige taal).
+<details>
+<summary><b>🧬 Anatomie en Biologische Systemen (Standaard & Easy-Read)</b></summary>
 
-📄 **Volledige verklaring:**  
-👉 [Lees de Toegankelijkheidsverklaring (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
-👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
+| Systeem | ⚡ Wetenschappelijke standaard | 📝 Dyslexie-vriendelijk | 📅 Laatste Audit |
+| :--- | :--- | :--- | :--- |
+| **Spijsverteringssysteem** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-25 |
+| **Ademhalingssysteem** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-25 |
+| **Huidstelsel** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-25 |
+| **Lymfestelsel** | [Bekijk](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-25 |
+| **Hart / Hart** | [Bekijk](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-25 |
+| **Celbiologie** | [Bekijk](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-25 |
+| **Dermatologie** | [Bekijk](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-25 |
+| **Haar** | [Bekijk](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-25 |
 
+</details>
 
-### 🔍 Geavanceerde toegankelijkheidsfuncties
+<details>
+<summary><b>🛠️ Project Management en Utilities</b></summary>
 
-- **DNA-scanner & Audit**: Interactieve module met gestructureerde PDF-rapportgeneratie, tweetalige `aria-labels` en veilig focusbeheer  
-- **HUD & Dynamische tooltips**: Directe wetenschappelijke uitleg met tekstbeschrijvingen en procentuele intensiteitwaarden voor alle datapunten  
-- **Circadiane synchronisatie**: Inhoud past zich aan tijd en seizoen (asverkanting) aan en vermindert de cognitieve belasting via biologisch contextafhankelijke adviezen   
+| Resource | Toegang Link | 📅 Laatste Audit |
+| :--- | :--- | :--- |
+| 🚀 **Tech Maturity Score** | [Interactief Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-03-25 |
+| 📈 **Marketing Strategie** | [Strategische Analyse](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-03-25 |
+| 🏗️ **Project Portfolio** | [Project Overzicht](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-03-25 |
+| 👥 **Staff en Team** | [Governance en Leden](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-03-25 |
+| 💬 **Tablet Forum** | [Community Discussie](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-03-25 |
+
+</details>
+
+<details>
+<summary><b>♿ Toegankelijkheid en Inclusie</b></summary>
+
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Bijgewerkt: 2026-03-25*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Bijgewerkt: 2026-03-25*
+- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Bijgewerkt: 2026-03-25*
+
+</details>
 
 ---
 
-## Toegankelijkheid & Casus
+## 🌐 Toegankelijkheid
 
-We streven naar een inclusief platform. Ontdek hoe we WCAG 2.1 AA-conformiteit en meertalige ondersteuning hebben geïmplementeerd:
+De site is **conform WCAG 2.1 Level AA** voor alle hoofdpagina's.  
+Conformiteit is geverifieerd door:
 
-[![Casus - Een toegankelijk biotechplatform bouwen](https://img.shields.io/badge/Case%20Study-BiotechProject%20Toegankelijkheid-brightgreen?logo=github&labelColor=222)](biotechproject-case-study.md)   
+- Geautomatiseerde audits (Lighthouse, axe, WAVE)
+- Handmatige testen met schermlezers (NVDA, VoiceOver)
+- Volledige toetsenbordnavigatie (tab, shift+tab, enter, space, arrows)
+- W3C code validatie
+- Directe code inspectie voor semantische structuur en correct ARIA gebruik
+
+Het project is **gedeeltelijk conform Level AAA**, met name in:
+- Kleurcontrast (meeste tekst overschrijdt 7:1)
+- Hiërarchische kopstructuur
+- Gebruik van beschrijvende alternatieve tekst
+
+Echter, sommige AAA criteria zijn niet van toepassing of vereist in de huidige context (bijv. video ondertitels, uitgebreide plain language).   
+
+📄 **Volledige toegankelijkheidsverklaring:**  
+👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
+👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
+
+
+### 🔍 Geavanceerde Toegankelijkheidsfuncties
+
+- **DNA Scanner & Audit**: Interactieve module met gestructureerde PDF Rapport generatie, bilaterale `aria-label`, en veilige focus management  
+- **HUD & Dynamische Tooltips**: Instant wetenschappelijke uitleg met tekstuele beschrijvingen en percentage intensiteit waarden voor alle datapunten  
+- **Circadian Synchrony**: Inhoud past zich aan aan tijd en seizoen (axiale tilt), vermindert cognitieve belasting via biologisch contextbewuste advies
+
+---
+
+## Toegankelijkheid en Case Study
+
+We zijn toegewijd aan het bouwen van een inclusieve platform. Verken hoe we WCAG 2.1 AA compliance en meertalige ondersteuning hebben geïmplementeerd:
+
+[![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
 ## 🌍 Meertalig Beheer (i18n)
 
-BiotechProject ondersteunt **meerdere talen** via een **modulair, lichtgewicht en toegankelijk** vertalingssysteem, ontworpen voor statische pagina's op GitHub Pages.
+BiotechProject ondersteunt **meerdere talen** door een **modulaire, lichte en toegankelijke** vertalingssysteem, ontworpen om naadloos te werken op statische pagina's gehost op GitHub Pages.
+"Terwijl tekstinhoud volledig gelokaliseerd is, prioriteren wetenschappelijke diagrammen momenteel Italiaans/Engelse versies om technische nauwkeurigheid te behouden tijdens de snelle evolutie van het project."
 
-Het systeem zorgt voor:
-- ✅ Realtime vertaling van inhoud
-- ✅ Onthoudt de gekozen taal tussen pagina's (zoals Wikipedia of Google)
-- ✅ Ondersteunt vereenvoudigde versies voor gebruikers met dyslexie
-- ✅ Makkelijk uitbreidbaar door medewerkers
+Het systeem stelt in staat:
+- ✅ Real-time content vertaling  
+- ✅ Persistent taalselectie tussen pagina's (zoals Wikipedia of Google)  
+- ✅ Ondersteuning voor vereenvoudigde versies voor dyslectische gebruikers  
+- ✅ Gemakkelijke uitbreiding door contribuanten  
 
 ### 🧩 Systeemarchitectuur
 
-- **Modulaire JSON-bestanden**: elke pagina heeft een eigen vertaalbestand in `lang/`
-- **Common.json**: gedeelde teksten (menu, footer, taalknop)
-- **Geen backend**: alles werkt met puur JavaScript
-- **LocalStorage**: de gekozen taal wordt onthouden
-- **data-lang-key**: HTML-attribuut om vertaalbare elementen te markeren
+- **Modulaire JSON bestanden**: elke pagina heeft zijn eigen vertalingsbestand in de `lang/` directory  
+- **Common.json**: bevat gedeelde teksten (menu, footer, taal knop)  
+- **Geen backend vereist**: alles draait in pure JavaScript  
+- **LocalStorage**: onthoudt de geselecteerde taal van de gebruiker  
+- **`data-lang-key`**: HTML attribuut om vertaalbare elementen te identificeren  
 
-### 📁 Structuur van map `lang/`
+### 📁 Structuur van de `lang/` folder
 
-| Pagina (.html) | Vertalingsbestand (.json) | Opmerking |
-|---|---:|---|
-| index.html | lang/home.json | Home |
-| Progetti.html | lang/progetti.json | Projecten |
-| Staff.html | lang/staff.json | Team |
-| Marketing.html | lang/marketing.json | Marketing |
-| Tech_Maturity.html | lang/tech_maturity.json | Performance-dashboard |
-| Dermatologia.html / -semplice | lang/dermatologia.json | Hoofd + vereenvoudigde versie |
-| Cuore.html / -semplice | lang/cuore.json | Hoofd + vereenvoudigd |
-| Cellula.html / -semplice | lang/cellula.json | Hoofd + vereenvoudigd |
-| Apparato_digerente.html / -semplice | lang/apparato_digerente.json | Hoofd + vereenvoudigd |
-| Apparato_respiratorio.html / -semplice | lang/apparato_respiratorio.json | Hoofd + vereenvoudigd |
-| Apparato_tegumentario.html / -semplice | lang/apparato_tegumentario.json | Hoofd + vereenvoudigd |
-| Sistema_linfatico.html / -semplice | lang/sistema_linfatico.json | Hoofd + vereenvoudigd |
-| Capelli.html / -semplice | lang/capelli.json | Nieuwe pagina's in monitoring |
-| Gedeelde strings | lang/common.json | Menu, footer, gedeelde teksten |
+`common.json` bevat gedeelde strings (menu, footer, etc.), pagina bestanden bevatten per-pagina tekst.
 
----
+```text
+lang/
+├── common.json                  # Shared strings (menu, footer, UI)
+│
+├── home.json                    # index.html
+├── progetti.json                # Progetti.html
+├── staff.json                   # Staff.html
+├── marketing.json               # Marketing.html
+├── tech_maturity.json           # Tech_Maturity.html
+│
+├── dermatologia.json            # Dermatologia.html + Dermatologia-semplice.html
+├── cuore.json                   # Cuore.html + Cuore-semplice.html
+├── cellula.json                 # Cellula.html + Cellula-semplice.html
+├── apparato_digerente.json      # Apparato_digerente.html + -semplice.html
+├── apparato_respiratorio.json   # Apparato_respiratorio.html + -semplice.html
+├── apparato_tegumentario.json   # Apparato_tegumentario.html + -semplice.html
+├── sistema_linfatico.json       # Sistema_linfatico.html + -semplice.html
+└── capelli.json                 # Capelli.html + Capelli-semplice.html
+```
 
-## 📅 Datum van laatste verificatie
-**8 november 2025**
+
+## 📅 Laatste Verificatie Datum
+**22 maart 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
 Belangrijke recente verbeteringen (beknopt):
 
-- Prestatiedashboard: Lighthouse-gegevens geïntegreerd in data/performance-latest.json en gevisualiseerd op Tech_Maturity.html (grafiek + paginalijst + export).
-- Data-export: JSON/CSV-export vanuit dashboard ("Exporteer gegevens").
-- Grafieken + toegankelijkheid: Chart.js-grafieken vergezeld van verborgen tabellen/beschrijvingen voor hulpmiddelen.
-- Prestatieoptimalisaties: geavanceerde lazy-loading, uitgestelde zware scripts, geoptimaliseerde particle canvas en opschoning.
-- UX & voorkeuren: dynamisch thema, behouden voorkeuren (localStorage), verbeterde toetsenbordnavigatie en ARIA/focusbeheer.
-- CI/CD & transparantie: geautomatiseerde Lighthouse-runs (generate-performance.js) en openbare JSON voor audits.      
+- Performance dashboard: Lighthouse data geïntegreerd in data/performance-latest.json en gevisualiseerd op Tech_Maturity.html (grafiek + pagina lijst + export).
+- Data export: JSON/CSV export van dashboard ("Export data").
+- Grafieken + toegankelijkheid: Chart.js grafieken vergezeld van verborgen tabellen/beschrijvingen voor assistive tech.
+- Performance optimalisaties: geavanceerde lazy-loading, uitgestelde zware scripts, geoptimaliseerde particle canvas en cleanup.
+- UX en voorkeuren: dynamisch thema, gepersisteerde voorkeuren (localStorage), verbeterde toetsenbordnavigatie en ARIA/focus beheer.
+- CI/CD en transparantie: geautomatiseerde Lighthouse runs (generate-performance.js) en publiek JSON voor audits.
+
 
 
 ## 💡 Wil je bijdragen?
 
-Welkom!  
-BiotechProject is een **open project voor iedereen**, in de geest van Wikipedia.
+Je bent welkom!  
+BiotechProject is een **open project voor iedereen**, geïnspireerd door de collaboratieve geest van Wikipedia.
 
 🔹 Om te beginnen:
 - Lees de [**Contributing Guidelines**](CONTRIBUTING.md)
-- Volg de [**Gedragscode**](CODE_OF_CONDUCT.md)
+- Volg de [**Code of Conduct**](CODE_OF_CONDUCT.md)
 
 Je kunt helpen met:
-- Nieuwe wetenschappelijke inhoud
+- Wetenschappelijke inhoud
 - Technische of toegankelijkheidsverbeteringen
 - Vertalingen
-- Bugrapporten en suggesties
+- Bug rapporten en suggesties
+
+Elke bijdrage — groot of klein — helpt wetenschap toegankelijker te maken.
 
 ---
 
-## 🛠️ Gebruikte technologieën
+## 🛠️ Gebruikte Technologieën
 - Semantische HTML5
 - CSS3 met Custom Properties
-- Zuiver JavaScript (geen frameworks)
+- Vanilla JavaScript (geen frameworks)
 - ARIA 1.2 voor dynamische interacties
 - GitHub Actions voor CI/CD
-- Lighthouse voor prestatiebewaking
+- Lighthouse voor performance monitoring
 
 ---
 
 ## 📄 Licentie
 
 📄 Licentie: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
-Je mag het project delen, wijzigen en gebruiken voor commerciële doeleinden, mits je de oorspronkelijke auteur vermeldt.
+Je bent vrij om te delen, aan te passen en het project commercieel te gebruiken, zolang je passende credits geeft.
 
-- **Inhoud (tekst, afbeeldingen, educatief materiaal)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Broncode**: [MIT-licentie](https://opensource.org/licenses/MIT)
+- **Inhoud (tekst, graphics, educatief materiaal)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **Broncode**: [MIT License](https://opensource.org/licenses/MIT)
 
-"**Iedereen mag meehelpen. Respecteer gewoon de oorsprong en blijf zorgvuldig bouwen.**"
+"Iedereen kan bijdragen. Respecteer gewoon de oorsprong, en bouw verder met zorg."   
 
 ---
 
@@ -218,74 +358,4 @@ Je mag het project delen, wijzigen en gebruiken voor commerciële doeleinden, mi
 Auteur: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Project beschikbaar op: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
 
----
-
-## ✅ Geïmplementeerde toegankelijkheidsfuncties
-
-Het project hanteert een **"toegankelijkheid vanaf het begin"**-aanpak (*accessibility by design*). Belangrijkste functies:
-
-- **Volledige toetsenbordnavigatie**: alle functies zijn toegankelijk via toetsenbord, met een speciale knop voor geavanceerde focusmarkering.
-- **Geavanceerde menusteun**: uitklapmenu's navigeerbaar met pijltjes, <kbd>Home</kbd>, <kbd>End</kbd> en <kbd>Esc</kbd>, met correcte focusbeheersing.
-- **Schermlezercompatibiliteit**: semantische HTML-structuur, correct gebruik van `ARIA`, en dynamisch statusbeheer.
-- **Voldoende contrast**: alle teksten voldoen aan minimaal 4.5:1 (normale tekst) en 3:1 voor UI-elementen (WCAG 1.4.3, 1.4.11).
-- **Tekst herschaalbaar tot 200%**: zonder overlappingen (WCAG 1.4.4, 1.4.10).
-- **Animatiebeheer**: automatisch uitgeschakeld bij `prefers-reduced-motion: reduce`, plus handmatige optie via “Comfort”-knop.
-- **Ondersteuning hoge contrast**: past automatisch een donkerblauw thema toe bij `prefers-contrast: high` (WCAG 1.4.12, AAA-niveau).
-- **Dynamisch visueel thema**: vijf kleurvarianten (Groen, Cyaan, Paars, Oranje, Donkerblauw) voor diverse visuele behoeften, inclusief soorten kleurenblindheid.
-- **Vasthouden voorkeuren**: thema en toetsenbordstatus worden opgeslagen in `localStorage` en hersteld bij volgende bezoek.
-- **Toegankelijke pop-ups**: modale vensters met correcte focusbeheersing, ondersteuning voor <kbd>Esc</kbd> en `role="dialog"` voor betere toegankelijkheid.
-- **Veilige lazy loading**: afbeeldingen geladen met `IntersectionObserver`, fallback voor oude browsers, altijd aanwezige alternatieve tekst.
-- **Toegankelijke klokken en tellers**: dynamisch bijgewerkt met `aria-live="polite"` voor schermlezers.
-- **Robuust ontwerp**: geen externe frameworks. Zuiver JavaScript, modern maar achterwaarts compatibele CSS, semantische HTML.
-- **Vereenvoudigde pagina's**: versies met duidelijke taal, korte zinnen en visuele ondersteuning voor gebruikers met dyslexie of cognitieve beperkingen (WCAG 3.1.5).
-- **Toegankelijkheid visuele gegevens**: grafieken vergezeld van verborgen tabellen (`visually-hidden`) en gestructureerde alternatieve teksten.
-- **Gegevensexport**: mogelijkheid om prestatie- en toegankelijkheidsgegevens te exporteren naar JSON of CSV voor transparante audits.
-- **Automatische visuele comfortmodus (QRedshift)**: warmer kleurfilter 's avonds op basis van lokale tijd, handmatig uitschakelbaar.
-- **Uitspraak- en begrijpsteun**: gebruik van `<ruby>`-tag voor definitie en uitspraak van complexe wetenschappelijke termen (WCAG 3.1.3, 3.1.5).
-- **Toegankelijke video's**: geen automatisch afspelen, aangepaste besturing met `aria-label`, tekstuele beschrijvingen en toetsenbordnavigatie.
-
-## 🚀 Naleving in uitvoering naar WCAG 2.1 Niveau AAA
-
-We implementeren extra verbeteringen om dichter bij niveau **AAA** te komen:
-
-- **Uitspraak van technische termen**: Uitbreiding van `<ruby>` met lettergrepen en IPA (bijv. "CRISPR", "epigenetica").
-- **Uitleg van afkortingen**: Trapsgewijze implementatie van `<abbr title="...">` voor afkortingen zoals "PCR", "ATP", "DNA".
-- **Koppelingen met beschrijvende tekst**: Voortdurende controle of elke koppeling ook buiten context begrijpelijk is (WCAG 2.4.9).
-- **Migratie van pop-ups naar toegankelijke modals**: Vervanging van `window.open()` door interne modals met `role="dialog"`, focus-trapping en volledige toetsenbordondersteuning.
-
-## ⚠️ Gedeeltelijke niet-naleving of uitzonderingen
-
-Ondanks de inspanningen voldoen sommige onderdelen nog niet volledig aan alle WCAG-criteria:
-
-- **Gebruik van `role="menu"` in dropdowns**: Momenteel gebruikt voor geavanceerd toetsenbordgedrag, maar technisch gereserveerd voor applicatiemenu’s. Overgang naar een semantisch eenvoudiger en compatibelere aanpak wordt beoordeeld.
-- **Pop-ups gebaseerd op `window.open()`**: Sommige koppelingen openen externe vensters voor achterwaartse compatibiliteit met verouderde systemen. Migratie loopt naar toegankelijke interne modals.
-
-## 💬 Feedback en meldingen
-
-Jouw feedback is essentieel om de toegankelijkheid van het project te verbeteren.  
-Als je belemmeringen ervaart of suggesties hebt, [neem dan contact met ons op](https://gitechnolo.github.io/biotechproject/accessibility-it.html#feedback) (sectie "Feedback en meldingen" van de verklaring).
-
-## 📅 Datum van laatste controle
-**15 januari 2026**
-
-## 🔮 Toekomstige updates
-
-De verklaring wordt regelmatig bijgewerkt. De komende verbeteringen omvatten:
-
-- Volledige migratie naar interne modals.
-- Beoordeling van eenvoudigere ARIA-patronen voor menu’s, voor betere schermlezercompatibiliteit.
-- Optimalisatie van contrast in nachtmodus (QRedshift) om een minimumverhouding van 4.5:1 te garanderen, zelfs met actief filter.
-- Integratie van volledige transcripties en ondertitels voor alle toekomstige video’s.
-
-## 🌱 Projectfilosofie
-
-> *“BiotechProject is niet alleen wetenschap: het is inclusie. Elke coderegel is ontworpen om toegankelijk, veerkrachtig en menselijk te zijn.”*
-
-Dit project is een praktisch voorbeeld van **verantwoord ontwikkelen**, waar technologie, ethiek en gebruiksvriendelijkheid samenkomen. Het is bedoeld om een inclusievere webcultuur te inspireren, waar toegankelijkheid geen toevoeging is, maar de basis.
-
----
-
-📌 **Project**  
-🔧 Technologieën: HTML5, CSS3, zuiver JavaScript, ARIA, W3C-standaarden  
-🌍 Hosting: GitHub Pages  
-📄 Licentie: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Je mag het project delen, wijzigen en gebruiken voor commerciële doeleinden, mits je de oorspronkelijke auteur vermeldt.
+> "Iedereen kan bijdragen. Respecteer gewoon de oorsprong, en bouw verder met zorg."
