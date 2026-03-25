@@ -343,13 +343,12 @@ Every contribution — big or small — helps make science more accessible.
 
 ## 📄 License
 
-📄 License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
-You are free to share, adapt, and use the project commercially, as long as you give appropriate credit.
+This project implements a **Dual-Licensing Strategy** to ensure the integrity of both architectural logic and scientific educational content:
 
-- **Content (text, graphics, educational material)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Source code**: [MIT License](https://opensource.org/licenses/MIT)
+* **Source Code**: [MIT License](LICENSE-MIT.md) — © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
+* **Scientific Content (Text, Graphics, Educational Material)**: [Creative Commons Attribution 4.0 International](LICENSE-CC-BY-4.0.md)
 
-"Anyone can contribute. Just respect the origin, and keep building with care."   
+> “Anyone can contribute. Just respect the origin, and keep building with care.”   
 
 ---
 
