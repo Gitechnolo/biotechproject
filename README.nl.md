@@ -343,13 +343,12 @@ Elke bijdrage — groot of klein — helpt wetenschap toegankelijker te maken.
 
 ## 📄 Licentie
 
-📄 Licentie: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
-Je bent vrij om te delen, aan te passen en het project commercieel te gebruiken, zolang je passende credits geeft.
+Dit project hanteert een **Dubbele Licentiestrategie** om de integriteit van zowel de architecturale logica als de wetenschappelijke educatieve inhoud te waarborgen:
 
-- **Inhoud (tekst, graphics, educatief materiaal)**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Broncode**: [MIT License](https://opensource.org/licenses/MIT)
+* **Broncode**: [MIT License](LICENSE-MIT.md) — © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
+* **Wetenschappelijke Inhoud (Tekst, Graphics, Educatief Materiaal)**: [Creative Commons Attribution 4.0 International](LICENSE-CC-BY-4.0.md)
 
-"Iedereen kan bijdragen. Respecteer gewoon de oorsprong, en bouw verder met zorg."   
+> “Iedereen kan bijdragen. Respecteer de oorsprong en blijf met zorg bouwen.”   
 
 ---
 
