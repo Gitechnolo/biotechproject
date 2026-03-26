@@ -4,6 +4,7 @@
 
 # BiotechProject 🧬 🇳🇱
 [![SRE Resilience Audit](https://img.shields.io/badge/SRE_Resilience-Clinical_Grade-blueviolet?style=flat-square&logo=shield-heart)](https://github.com/Gitechnolo/biotechproject/actions)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?color=ea4aaa&style=flat-square)](https://github.com/sponsors/Gitechnolo)
 
 🌐 **Lees in andere talen:**  
 [Italiano 🇮🇹](README.it.md) | 
@@ -88,7 +89,7 @@ BiotechProject is ontworpen voor stakeholders die veerkracht als een klinische v
 
 * **Gezondheidssystemen en Gezondheidsinitiatieven**: Ontworpen om metabolische digitale tweelingen te schalen met nul server-side compute kosten, gebruikmakend van high-performance Vanilla JS voor complexe client-side logica.
 * **Wereldwijde Gezondheidsequiteit**: Specifiek ontworpen voor gebruikers in regio's met lage connectiviteit, zorgen voor sub-seconde (0,3s) laadtijden zelfs op legacy apparaten door SRE-grade optimalisatie.
-* **Neurodivergente Patiënten**: Native WCAG AAA compliance en 'Comfort Mode' bieden een cognitief veilige omgeving voor gezondheidsinteractie, verminderen sensorische overbelasting.
+* **Neurodivergente Patiënten**: Ontworpen met native **WCAG 2.2** principes. Hoewel we momenteel volledig voldoen aan de **AA-norm**, schalen we onze stateless architectuur en 'Comfort Mode' op naar de **AAA-gouden standaard** voor een cognitief veilige en sensorisch geoptimaliseerde omgeving.
 * **SRE en Systeemingenieurs**: Een blauwdruk voor "SRE-for-Humans", waar performance metrics (95% aggregate score) worden behandeld als een commitment voor gebruikersinclusie en betrouwbaarheid.
 
 ---
@@ -250,6 +251,10 @@ Echter, sommige AAA criteria zijn niet van toepassing of vereist in de huidige c
 We zijn toegewijd aan het bouwen van een inclusieve platform. Verken hoe we WCAG 2.1 AA compliance en meertalige ondersteuning hebben geïmplementeerd:
 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
+
+
+### 🎓 Academische Samenwerking
+We zijn momenteel in gesprek met de **HAN University of Applied Sciences (School of IT and Media Design)** voor een formele audit door experts. Dit partnerschap is gericht op het valideren van onze overgang van **WCAG 2.1 AA** naar de **WCAG 2.2 AAA** standaard.
 
 
 ## 🌍 Meertalig Beheer (i18n)
