@@ -4,6 +4,7 @@
 
 # BiotechProject 🧬 🇪🇸
 [![SRE Resilience Audit](https://img.shields.io/badge/SRE_Resilience-Clinical_Grade-blueviolet?style=flat-square&logo=shield-heart)](https://github.com/Gitechnolo/biotechproject/actions)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?color=ea4aaa&style=flat-square)](https://github.com/sponsors/Gitechnolo)
 
 🌐 **Lee en otros idiomas:**  
 [Italiano 🇮🇹](README.it.md) | 
@@ -250,6 +251,10 @@ Sin embargo, algunos criterios AAA no son aplicables o requeridos en el contexto
 Estamos comprometidos en construir una plataforma inclusiva. Explora cómo hemos implementado conformidad WCAG 2.1 AA y soporte multilingüe:
 
 [![Estudio de Caso - Construyendo una Plataforma Biotech Accesible](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
+
+
+### 🎓 Colaboración Académica  
+Actualmente estamos colaborando con la **HAN University of Applied Sciences (Escuela de TI y Diseño Multimedia)** para establecer una auditoría formal de expertos. Esta asociación tiene como objetivo validar nuestra transición del estándar **WCAG 2.1 AA** al estándar **WCAG 2.2 AAA**, estableciendo un nuevo referente para la resiliencia científica de código abierto.   
 
 
 ## 🌍 Gestión Multilingüe (i18n)
