@@ -89,7 +89,7 @@ The BiotechProject is engineered for stakeholders who prioritize resilience as a
 
 * **Health Systems & Health Initiatives**: Designed to scale metabolic digital twins with zero server-side compute costs, leveraging high-performance Vanilla JS for complex client-side logic.
 * **Global Health Equity**: Engineered specifically for users in low-connectivity regions, ensuring sub-second (0.3s) load times even on legacy devices through SRE-grade optimization.
-* **Neurodivergent Patients**: Native WCAG AAA compliance and 'Comfort Mode' provide a cognitively safe environment for healthcare interaction, reducing sensory overload.
+* * **Neurodivergent Patients**: Engineered with native **WCAG 2.2** design principles. While currently maintaining full **AA** compliance, our 'Comfort Mode' and stateless architecture are scaling toward the **AAA gold standard** to ensure a cognitively safe, sensory-optimized environment for healthcare interaction.
 * **SRE & Systems Engineers**: A blueprint for "SRE-for-Humans," where performance metrics (95% aggregate score) are treated as a commitment to user inclusion and reliability.
 
 ---
@@ -215,26 +215,23 @@ The project implements an **advanced technological maturity tracking system** vi
 
 ---
 
-## 🌐 Accessibility
+## 🌐 Accessibility & Compliance
 
-The site is **conformant with WCAG 2.1 Level AA** for all main pages.  
+BiotechProject is engineered with an **Accessibility-First** SRE mindset. Our "Zero-Framework" mandate allows us to control 100% of the DOM, ensuring that inclusive patterns are native, not patched.
+
+- **Current Status**: Fully conformant with **WCAG 2.1 Level AA**.
+- **Target**: Full certification for **WCAG 2.2 Level AAA**.
+
 Conformance has been verified through:
-
 - Automated audits (Lighthouse, axe, WAVE)
 - Manual testing with screen readers (NVDA, VoiceOver)
 - Full keyboard navigation (tab, shift+tab, enter, space, arrows)
-- W3C code validation
-- Direct code inspection for semantic structure and correct ARIA usage
+- W3C code validation and semantic structure inspection
 
-The project is **partially conformant with Level AAA**, particularly in:
-- Color contrast (most text exceeds 7:1 ratio)
-- Hierarchical heading structure
-- Use of descriptive alternative text
+> [!NOTE]
+> We are currently refining specific AAA criteria (such as advanced contrast ratios and enhanced focus visibility) to reach the highest level of digital inclusion for clinical software.
 
-However, some AAA criteria are not applicable or required in the current context (e.g. video captions, extended plain language).   
-
-📄 **Full accessibility statement:**  
-👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
+📄 **Full documentation:** 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
 
@@ -252,8 +249,8 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
-### 🎓 Academic Collaboration (In Progress)
-We are currently in the process of engaging with **HAN University of Applied Sciences** for a formal expert audit to elevate BiotechProject from WCAG 2.1 AA to a gold standard of inclusive scientific software.
+### 🎓 Academic Collaboration
+We are currently engaging with **HAN University of Applied Sciences (School of IT and Media Design)** to establish a formal expert audit. This partnership aims to validate our transition from **WCAG 2.1 AA** to the **WCAG 2.2 AAA** standard, setting a new benchmark for open-source scientific resilience.
 
 
 ## 🌍 Multilingual Management (i18n)
