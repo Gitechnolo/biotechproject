@@ -4,6 +4,7 @@
 
 # BiotechProject 🧬 🇬🇧
 [![SRE Resilience Audit](https://img.shields.io/badge/SRE_Resilience-Clinical_Grade-blueviolet?style=flat-square&logo=shield-heart)](https://github.com/Gitechnolo/biotechproject/actions)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?color=ea4aaa&style=flat-square)](https://github.com/sponsors/Gitechnolo)
 
 🌐 **Read in other languages:**  
 [Italiano 🇮🇹](README.it.md) | 
@@ -252,7 +253,7 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 ### 🎓 Academic Collaboration (In Progress)
-We are currently in the process of engaging with **HAN University of Applied Sciences** for a formal expert audit to elevate BiotechProject from WCAG 2.1 AA to a gold standard of inclusive scientific software..
+We are currently in the process of engaging with **HAN University of Applied Sciences** for a formal expert audit to elevate BiotechProject from WCAG 2.1 AA to a gold standard of inclusive scientific software.
 
 
 ## 🌍 Multilingual Management (i18n)
