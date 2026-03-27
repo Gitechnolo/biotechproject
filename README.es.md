@@ -256,6 +256,14 @@ Estamos comprometidos en construir una plataforma inclusiva. Explora cómo hemos
 ### 🎓 Colaboración Académica  
 Actualmente estamos colaborando con la **HAN University of Applied Sciences (Escuela de TI y Diseño Multimedia)** para establecer una auditoría formal de expertos. Esta asociación tiene como objetivo validar nuestra transición del estándar **WCAG 2.1 AA** al estándar **WCAG 2.2 AAA**, estableciendo un nuevo referente para la resiliencia científica de código abierto.   
 
+> [!NOTE]
+> ### 🏛️ Centro Institucional y Académico
+> ¿Eres un investigador o un representante universitario? Hemos establecido una carta específica para la colaboración académica, auditorías y proyectos de graduación.
+> 
+> 👉 **Ver la Carta de Colaboración:** [Carta de Colaboración Institucional (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 
+> Este documento detalla nuestras tres principales vías de participación: **Proyecto de Graduación**, **Laboratorio de Investigación**, y **Asociaciones Conjuntas de Subvenciones**.
+
 
 ## 🌍 Gestión Multilingüe (i18n)
 
@@ -302,7 +310,7 @@ lang/
 
 
 ## 📅 Fecha de Última Verificación
-**22 de marzo de 2026**
+**27 de marzo de 2026**
 
 ## 🔮 Actualizaciones Recientes (resumen)
 
