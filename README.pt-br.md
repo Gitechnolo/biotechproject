@@ -257,6 +257,15 @@ Estamos comprometidos em construir uma plataforma inclusiva. Explore como implem
 Atualmente, estamos colaborando com a **HAN University of Applied Sciences (Escola de TI e Design de Mídia)** para estabelecer uma auditoria formal de especialistas. Esta parceria tem como objetivo validar nossa transição do padrão **WCAG 2.1 AA** para o **WCAG 2.2 AAA**, estabelecendo uma nova referência para a resiliência científica de código aberto.   
 
 
+> [!NOTE]
+> ### 🏛️ Hub Institucional e Acadêmico
+> Você é um pesquisador ou representante universitário? Estabelecemos um estatuto específico para colaborações acadêmicas, auditorias e projetos de graduação.
+>
+> 👉 **Ver o Estatuto de Colaboração:** [Estatuto de Colaboração Institucional (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+>
+> Este documento detalha nossas três principais linhas de atuação: **Projeto de Graduação**, **Laboratório de Pesquisa** e **Parcerias em Projetos Conjuntos**.   
+
+
 ## 🌍 Gestão Multilíngue (i18n)
 
 BiotechProject suporta **múltiplos idiomas** através de um sistema de tradução **modular, leve e acessível**, projetado para funcionar perfeitamente em páginas estáticas hospedadas no GitHub Pages.
@@ -302,7 +311,7 @@ lang/
 
 
 ## 📅 Data da Última Verificação
-**22 de março de 2026**
+**27 de março de 2026**
 
 ## 🔮 Atualizações recentes (resumo)
 
