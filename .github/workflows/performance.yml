@@ -13,7 +13,7 @@ on:
       - main
       - master
   schedule:
-    - cron: '0 4 * * *' # Analisi profonda
+    - cron: '0 4 * * *' # Analisi profonda 
   workflow_dispatch:
     inputs:
       url:
@@ -90,34 +90,22 @@ jobs:
           cp tools/performance-data.json data/performance-latest.json
           echo "✅ Copiato in data/performance-latest.json"
 
-      # --- AGGIORNAMENTO AUTOMATICO DATE (TUTTI I README & SITEMAP) ---
-      - name: 📅 Update Last Audit dates in ALL READMEs and Sitemap
+      # --- AGGIORNAMENTO AUTOMATICO DATE (README & SITEMAP) ---
+      - name: 📅 Update Last Audit dates in README and Sitemap
         if: success() || steps.performance.outcome == 'success'
         run: |
-          echo "Sincronizzazione date internazionale in corso..."
+          echo "Sincronizzazione date in corso..."
           CURRENT_DATE=$(date +'%Y-%m-%d')
-          # Formato testuale per "Last Verification" (es. 27 March 2026)
-          TEXT_DATE=$(date +'%d %B %Y') 
           
-          # 1. Aggiorna le date nelle tabelle (Formato ISO: 2026-03-27)
-          # Applica a tutti i file README.*.md
-          sed -i -E "s/(Last Audit \| )202[0-9]-[0-9]{2}-[0-9]{2}/\1$CURRENT_DATE/g" README*.md
+          # Aggiorna tutte le date YYYY-MM-DD nella tabella del README.md
+          sed -i "s/202[0-9]-[0-9]\{2\}-[0-9]\{2\}/$CURRENT_DATE/g" README.md
           
-          # 2. Aggiorna le date nelle sezioni Accessibility (Updated: 2026-03-27)
-          sed -i -E "s/(Updated: )202[0-9]-[0-9]{2}-[0-9]{2}/\1$CURRENT_DATE/g" README*.md
-
-          # 3. Aggiorna la data di verifica testuale (Last Verification Date)
-          # Nota: Questo pattern cerca l'intestazione e aggiorna la riga successiva o la riga stessa
-          sed -i -E "s/(Last Verification Date[:]? \*\*)[^*]+(\*\*)/\1$TEXT_DATE\2/g" README*.md
-          # Fallback per date semplici nel testo
-          sed -i -E "s/(March|Marzo|Mars|Maart) [0-9]{1,2}, 202[0-9]/$TEXT_DATE/g" README*.md
-
-          # 4. Aggiorna tutti i tag <lastmod> nella sitemap.xml
+          # Aggiorna tutti i tag <lastmod> nella sitemap.xml
           if [ -f sitemap.xml ]; then
             sed -i "s|<lastmod>.*</lastmod>|<lastmod>$CURRENT_DATE</lastmod>|g" sitemap.xml
           fi
           
-          echo "✅ Internazionalizzazione completata per la data $CURRENT_DATE"
+          echo "✅ README.md e sitemap.xml aggiornati alla data $CURRENT_DATE"
 
       # --- PERSISTENZA DATI ---
       - name: 💾 Commit and Push changes
@@ -126,13 +114,13 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Aggiunta di TUTTI i README internazionalizzati
-          git add data/performance-latest.json README*.md sitemap.xml
+          # Aggiunta degli asset aggiornati (Dati, README e Sitemap)
+          git add data/performance-latest.json README.md sitemap.xml
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "📈 SRE Global Audit: Sync all READMEs & performance metrics ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            git commit -m "📈 SRE Audit: Update performance metrics & document dates ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
             git push origin ${{ github.ref_name }}
           fi
 
