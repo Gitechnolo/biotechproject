@@ -252,6 +252,14 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 ### 🎓 Academic Collaboration
 We are currently engaging with **HAN University of Applied Sciences (School of IT and Media Design)** to establish a formal expert audit. This partnership aims to validate our transition from **WCAG 2.1 AA** to the **WCAG 2.2 AAA** standard, setting a new benchmark for open-source scientific resilience.
 
+> [!NOTE]
+> ### 🏛️ Institutional & Academic Hub
+> Are you a researcher or a university representative? We have established a specific charter for academic collaboration, audits, and graduation projects.
+> 
+> 👉 **View the Collaboration Charter:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 
+> This document details our three primary engagement tracks: **Graduation Project**, **Research Lab**, and **Joint Grant Partnerships**.
+
 
 ## 🌍 Multilingual Management (i18n)
 
