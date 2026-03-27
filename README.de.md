@@ -256,6 +256,14 @@ Wir verpflichten uns zu einer inklusiven Plattform. Erkunde, wie wir WCAG 2.1 AA
 ### 🎓 Akademische Zusammenarbeit
 Wir arbeiten derzeit mit der **HAN University of Applied Sciences (School of IT and Media Design)** zusammen, um eine formale Expertenprüfung einzurichten. Diese Partnerschaft zielt darauf ab, unseren Übergang vom **WCAG 2.1 AA**- zum **WCAG 2.2 AAA**-Standard zu validieren und damit einen neuen Maßstab für die wissenschaftliche Widerstandsfähigkeit von Open-Source-Projekten zu setzen.   
 
+> [!NOTE]
+> ### 🏛️ Institutioneller und Akademischer Hub
+> Sind Sie ein Forscher oder ein Universitätsvertreter? Wir haben eine spezifische Charta für akademische Zusammenarbeit, Audits und Abschlussprojekte etabliert.
+> 
+> 👉 **Die Kollaborationscharta anzeigen:** [Institutionelle Kollaborationscharta (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 
+> Dieses Dokument beschreibt unsere drei primären Engagement-Tracks: **Abschlussprojekt**, **Forschungslabor**, und **Gemeinsame Förderpartnerschaften**.
+
 
 ## 🌍 Mehrsprachiges Management (i18n)
 
@@ -302,7 +310,7 @@ lang/
 
 
 ## 📅 Letzter Überprüfungszeitraum
-**22. März 2026**
+**27 März 2026**
 
 ## 🔮 Aktuelle Updates (Zusammenfassung)
 
