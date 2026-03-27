@@ -85,7 +85,7 @@ Es un espacio colaborativo para desarrolladores, investigadores y entusiastas qu
 
 ## 🎯 Público Objetivo y Visión Estratégica
 
-BiotechProject está diseñado para stakeholders que consideran la resiliencia como un requisito clínico:
+BiotechProject está diseñado para stakeholders que consideran la resiliencia como un requisito clínico;
 
 * **Sistemas de Salud e Iniciativas de Salud**: Diseñado para escalar gemelos digitales metabólicos con costos cero de computación del lado del servidor, aprovechando Vanilla JS de alto rendimiento para lógica compleja del lado del cliente.
 * **Equidad en Salud Global**: Diseñado específicamente para usuarios en regiones de baja conectividad, garantizando tiempos de carga sub-segundo (0,3s) incluso en dispositivos legacy gracias a optimización SRE-grade.
