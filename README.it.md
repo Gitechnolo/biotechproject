@@ -255,6 +255,14 @@ Siamo impegnati a costruire una piattaforma inclusiva. Esplora come abbiamo impl
 ### 🎓 Collaborazione Accademica  
 Stiamo attualmente collaborando con la **HAN University of Applied Sciences (Scuola di Informatica e Design Multimediale)** per stabilire una verifica formale da esperti. Questo partenariato mira a validare il nostro passaggio dallo standard **WCAG 2.1 AA** allo standard **WCAG 2.2 AAA**, stabilendo un nuovo punto di riferimento per la resilienza scientifica open source.
 
+> [!NOTE]
+> ### 🏛️ Hub Istituzionale e Accademico
+> Sei un ricercatore o un rappresentante universitario? Abbiamo stabilito una carta specifica per la collaborazione accademica, audit e progetti di laurea.
+> 
+> 👉 **Visualizza la Carta di Collaborazione:** [Carta di Collaborazione Istituzionale (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 
+> Questo documento dettaglia le nostre tre principali tracce di impegno: **Progetto di Laurea**, **Laboratorio di Ricerca**, e **Partnership di Sovvenzioni Congiunte**.
+
 
 ## 🌍 Gestione Multilingua (i18n)
 
