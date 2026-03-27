@@ -256,6 +256,14 @@ We zijn toegewijd aan het bouwen van een inclusieve platform. Verken hoe we WCAG
 ### 🎓 Academische Samenwerking
 We zijn momenteel in gesprek met de **HAN University of Applied Sciences (School of IT and Media Design)** voor een formele audit door experts. Dit partnerschap is gericht op het valideren van onze overgang van **WCAG 2.1 AA** naar de **WCAG 2.2 AAA** standaard.
 
+> [!NOTE]
+> ### 🏛️ Institutionele & Academische Hub
+> Bent u een onderzoeker of vertegenwoordiger van een universiteit? Wij hebben een specifiek kader opgesteld voor academische samenwerking, audits en afstudeerprojecten.
+> 
+> 👉 **Bekijk het Samenwerkingskader:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 
+> Dit document bevat details over onze drie samenwerkingstrajecten: **Graduation Project**, **Research Lab** en **Joint Grant Partnerships**.
+
 
 ## 🌍 Meertalig Beheer (i18n)
 
