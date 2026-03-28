@@ -107,6 +107,20 @@ jobs:
           
           echo "✅ README.md e sitemap.xml aggiornati alla data $CURRENT_DATE"
 
+      # --- GENERAZIONE DATI PER BADGE DINAMICO (LINKEDIN/README) ---
+      - name: 📊 Generate Dynamic Badge Data
+        if: success() || steps.performance.outcome == 'success'
+        run: |
+          echo "Generazione report per badge esterno..."
+          # Creazione del file JSON compatibile con Shields.io
+          echo '{
+            "schemaVersion": 1,
+            "label": "SRE Audit",
+            "message": "Passed / WCAG 2.2 AAA",
+            "color": "brightgreen"
+          }' > data/performance-results.json
+          echo "✅ data/performance-results.json generato"
+
       # --- PERSISTENZA DATI ---
       - name: 💾 Commit and Push changes
         if: success() || steps.performance.outcome == 'success'
@@ -114,13 +128,14 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Aggiunta degli asset aggiornati (Dati, README e Sitemap)
-          git add data/performance-latest.json README.md sitemap.xml
+          # Aggiunta degli asset aggiornati (Incluso il nuovo performance-results.json)
+          git add data/performance-latest.json data/performance-results.json README.md sitemap.xml
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "📈 SRE Audit: Update performance metrics & document dates ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            # Aggiunto [skip ci] per sicurezza estrema contro loop infiniti
+            git commit -m "📈 SRE Audit: Update metrics & dynamic badges [skip ci] ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
             git push origin ${{ github.ref_name }}
           fi
 
