@@ -171,9 +171,10 @@ The project implements an **advanced technological maturity tracking system** vi
 
 ### 🛡️ Verified Production Assets
 
-[![SRE Audit Status](https://img.shields.io/badge/SRE_Audit-Verified-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Gitechnolo/biotechproject/actions)
+[![SRE Audit Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Gitechnolo/biotechproject/main/data/performance-results.json)](https://github.com/Gitechnolo/biotechproject/actions) [![CodeQL](https://github.com/Gitechnolo/biotechproject/actions/workflows/codeql.yml/badge.svg)](https://github.com/Gitechnolo/biotechproject/actions/workflows/codeql.yml)
 > [!IMPORTANT]  
 > **Methodology Note:** The dates listed in the "Last Audit" column represent the most recent **Global System Validation**. This includes automated security scans, performance stress-tests (Lighthouse), and link integrity checks. Even if a specific asset's content remains unchanged, its reliability is recertified during each audit cycle.
+
 
 <details>
 <summary><b>🧬 Anatomy & Biological Systems (Standard & Easy-Read)</b></summary>
