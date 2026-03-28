@@ -1,21 +1,17 @@
-<svg width="220" height="80" viewBox="0 0 220 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="220" height="80" rx="12" fill="#0D1619" stroke="#00E676" stroke-width="2.5"/>
+<svg width="240" height="110" viewBox="0 0 240 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="110" rx="12" fill="#0D1117"/>
+  <rect x="1" y="1" width="238" height="108" rx="11" stroke="#00F2EA" stroke-opacity="0.3"/>
   
-  <g transform="translate(10, 8) scale(0.9)">
-    <rect x="0" y="0" width="24" height="16" rx="2" stroke="#4FD1C5" stroke-width="2"/>
-    <line x1="4" y1="4" x2="6" y2="4" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
-    <line x1="9" y1="4" x2="11" y2="4" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
-    <line x1="14" y1="4" x2="16" y2="4" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
-    <line x1="8" y1="12" x2="16" y2="12" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round"/>
-  </g>
-
-  <text fill="#4FD1C5" font-family="Sansation, sans-serif" font-size="22" font-weight="bold" x="40" y="24">ACCESSIBLE</text>
+  <path d="M15 28H35C36.1 28 37 28.9 37 30V46C37 47.1 36.1 48 35 48H15C13.9 48 13 47.1 13 46V30C13 28.9 13.9 28 15 28Z" stroke="#00F2EA" stroke-width="2"/>
+  <path d="M18 32H20V34H18V32ZM22 32H24V34H22V32ZM26 32H28V34H26V32ZM30 32H32V34H30V32ZM18 36H20V38H18V36ZM22 36H24V38H22V36ZM26 36H28V38H26V36ZM30 36H32V38H30V36ZM18 40H32V44H18V40Z" fill="#00F2EA"/>
   
-  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="15" font-weight="normal" x="12" y="44">Keyboard &amp; Screen Reader</text>
-  <text fill="#FFFFFF" font-family="Sansation, sans-serif" font-size="15" font-weight="normal" x="12" y="58">Fully Compatible</text>
+  <text fill="#00F2EA" font-family="Arial, sans-serif" font-size="22" font-weight="bold" x="48" y="45">ACCESSIBLE</text>
   
-  <text fill="#00E676" font-family="Sansation, sans-serif" font-size="12" font-weight="bold" x="12" y="73">WCAG 2.1 AAA COMPLIANT</text>
-
-  <circle cx="210" cy="10" r="3" fill="#00E676"/>
-  <circle cx="210" cy="70" r="3" fill="#00E676"/>
+  <text fill="white" fill-opacity="0.8" font-family="Arial, sans-serif" font-size="14" x="15" y="68">Keyboard &amp; Screen Reader</text>
+  <text fill="white" fill-opacity="0.8" font-family="Arial, sans-serif" font-size="14" x="15" y="85">Fully Compatible</text>
+  
+  <text fill="#00C853" font-family="Arial, sans-serif" font-size="13" font-weight="bold" x="15" y="103">WCAG 2.2 AAA COMPLIANT</text>
+  
+  <circle cx="225" cy="18" r="4" fill="#00C853"/>
+  <circle cx="225" cy="92" r="4" fill="#00C853"/>
 </svg>
