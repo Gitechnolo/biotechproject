@@ -25,7 +25,7 @@
 
 > 🌍 *"We don't all speak the same languages, but we speak the same language: collaboration."*  
 > English is not a barrier - it's a bridge.  
-> 🔹 To contribute or review project guidelines, visit the main English files:  
+> 🔹 To contribute or review project guidelines, visit the main English files;  
 > - [Contributing Guidelines](CONTRIBUTING.md)  
 > - [Code of Conduct](CODE_OF_CONDUCT.md)  
 > Using English supports international collaboration.
