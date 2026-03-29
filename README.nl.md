@@ -170,6 +170,15 @@ Het project implementeert een **geavanceerd technologisch maturiteit tracking sy
 
 👉 **Bekijk het live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
+<details>
+<summary><b>📸 Scannen voor mobiele toegang (AAA-standaard)</b></summary>
+<div align="center">
+  <br>
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR-code voor toegang tot het BiotechProject Tech Maturity Dashboard" width="220" />
+  <p><i>Richt uw camera om de prestaties en WCAG 2.2 AAA-toegankelijkheid in realtime te controleren op uw smartphone.</i></p>
+</div>
+</details>
+
 ---
 
 ## 📂 Navigatiehub (Geoptimaliseerde Assets)
