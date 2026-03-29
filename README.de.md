@@ -170,6 +170,14 @@ Das Projekt implementiert ein **fortschrittliches Tracking-System für technolog
 * 💾 **Open Data & Transparenz**: Zugriff auf den **[Raw Performance Dataset (JSON)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)** zur Drittvalidierung oder direkten Analyse-Downloads aus der UI.
 
 👉 **Live-Dashboard ansehen:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+<details>
+<summary><b>📸 Für mobilen Zugriff scannen (AAA-Standard)</b></summary>
+<div align="center">
+  <br>
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR-Code für den Zugriff auf das BiotechProject Tech Maturity Dashboard" width="220" />
+  <p><i>Richten Sie Ihre Kamera auf den Code, um Leistung und WCAG 2.2 AAA-Barrierefreiheit in Echtzeit auf Ihrem Smartphone zu prüfen.</i></p>
+</div>
+</details>
 
 ---
 
