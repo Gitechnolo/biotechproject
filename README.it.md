@@ -170,6 +170,15 @@ Il progetto implementa un **sistema avanzato di tracciamento della maturità tec
 
 👉 **Visualizza la dashboard live:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
+<details>
+<summary><b>📸 Scansiona per l'accesso mobile (Standard AAA)</b></summary>
+<div align="center">
+  <br>
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code per accedere alla Dashboard di Maturità Tecnologica di BiotechProject" width="200px" style="border: 2px solid #00E676; border-radius: 12px; padding: 10px; background: white;" />
+  <p><i>Punta la fotocamera per verificare le performance e l'accessibilità WCAG 2.2 AAA in tempo reale sul tuo smartphone.</i></p>
+</div>
+</details>
+
 ---
 
 ## 📂 Hub di Navigazione (Asset Ottimizzati)
