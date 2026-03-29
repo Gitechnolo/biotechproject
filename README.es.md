@@ -171,6 +171,15 @@ El proyecto implementa un **sistema avanzado de seguimiento de madurez tecnológ
 
 👉 **Ver el panel en vivo:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
 
+<details>
+<summary><b>📸 Escanea para acceso móvil (Estándar AAA)</b></summary>
+<div align="center">
+  <br>
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="Código QR para acceder al Panel de Madurez Tecnológica de BiotechProject" width="220" />
+  <p><i>Apunta con tu cámara para verificar el rendimiento y la accesibilidad WCAG 2.2 AAA en tiempo real en tu smartphone.</i></p>
+</div>
+</details>
+
 ---
 
 ## 📂 Centro de Navegación (Assets Optimizados)
