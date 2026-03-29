@@ -179,7 +179,7 @@ Il progetto implementa un **sistema avanzato di tracciamento della maturità tec
 
 ### 🛡️ Asset di Produzione Verificati
 
-[![SRE Audit Status](https://img.shields.io/badge/SRE_Audit-Verified-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Gitechnolo/biotechproject/actions)
+[![SRE Audit Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Gitechnolo/biotechproject/main/data/performance-results.json)](https://github.com/Gitechnolo/biotechproject/actions)
 > [!IMPORTANT]  
 > **Nota metodologica:** le date nella colonna "Last Audit" rappresentano la più recente **Global System Validation**. Include scansioni di sicurezza automatiche, stress-test di performance (Lighthouse) e controlli d'integrità dei link. Anche se il contenuto non cambia, l'affidabilità è ricertificata a ogni ciclo di audit.
 
