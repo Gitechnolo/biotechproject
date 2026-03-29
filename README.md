@@ -175,7 +175,7 @@ The project implements an **advanced technological maturity tracking system** vi
 <summary><b>📸 Scan for mobile access (AAA Standard)</b></summary>
 <div align="center">
   <br>
-  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code to access BiotechProject Tech Maturity Dashboard" width="200px" style="border: 2px solid #00E676; border-radius: 12px; padding: 10px; background: white;" />
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code per accedere alla Dashboard di Maturità Tecnologica di BiotechProject" width="220" />
   <p><i>Point your camera to verify performance and WCAG 2.2 AAA accessibility in real-time on your smartphone.</i></p>
 </div>
 </details>
