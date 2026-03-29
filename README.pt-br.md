@@ -170,6 +170,14 @@ O projeto implementa um **sistema avançado de rastreamento de maturidade tecnol
 * 💾 **Dados Abertos e Transparência**: Acesse o **[Conjunto de Dados de Performance Bruto (JSON)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)** para verificação de terceiros ou baixe análises diretamente da UI.
 
 👉 **Veja o painel ao vivo:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+<details>
+<summary><b>📸 Digitalize para acesso móvel (Padrão AAA)</b></summary>
+<div align="center">
+  <br>
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="Código QR para aceder ao Painel de Maturidade Tecnológica do BiotechProject" width="220" />
+  <p><i>Aponte a sua câmara per verificar o desempenho e a acessibilidade WCAG 2.2 AAA em tempo real no seu smartphone.</i></p>
+</div>
+</details>
 
 ---
 
