@@ -169,7 +169,16 @@ The project implements an **advanced technological maturity tracking system** vi
 * ✅ **Resilience Intelligence**: Automated tracking of `optimized` and `compatible` states under stress.
 * 💾 **Open Data & Transparency**: Access the **[Raw Performance Dataset (JSON)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)** for third-party verification or download analytics directly from the UI.
 
-👉 **View the live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+👉 **View live dashboard:** [Tech_Maturity.html](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html)
+
+<details>
+<summary><b>📸 Scan for mobile access (AAA Standard)</b></summary>
+<div align="center">
+  <br>
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code to access BiotechProject Tech Maturity Dashboard" width="200px" style="border: 2px solid #00E676; border-radius: 12px; padding: 10px; background: white;" />
+  <p><i>Point your camera to verify performance and WCAG 2.2 AAA accessibility in real-time on your smartphone.</i></p>
+</div>
+</details>
 
 ---
 
