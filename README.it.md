@@ -174,7 +174,7 @@ Il progetto implementa un **sistema avanzato di tracciamento della maturità tec
 <summary><b>📸 Scansiona per l'accesso mobile (Standard AAA)</b></summary>
 <div align="center">
   <br>
-  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code BiotechProject" width="220" align="center" style="border-radius: 15px; border: 2px solid #00E676; display: inline-block;">
+  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code per accedere alla Dashboard di Maturità Tecnologica di BiotechProject" width="220" />
   <p><i>Punta la fotocamera per verificare le performance e l'accessibilità WCAG 2.2 AAA in tempo reale sul tuo smartphone.</i></p>
 </div>
 </details>
