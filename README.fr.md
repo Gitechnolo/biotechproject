@@ -40,6 +40,14 @@ Où la biotechnologie rencontre le code pour construire des outils numériques p
 [![Security](https://img.shields.io/badge/security-dependabot-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
+> [!TIP]
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Étape importante : Contribution à l'écosystème mondial (31 mars 2026)**
+> 
+> Nous avons officiellement formalisé le workflow **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** dans la feuille de route de BiotechProject.  
+> Cette décision architecturale - **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** - établit une norme d'accessibilité à haut risque conçue pour la résilience clinique dans des environnements de santé à faible bande passante et critiques.
+> 
+> *Développé et maintenu par notre **Lead Architect**, cette norme est désormais ouverte à la validation experte et à l'implémentation mondiale dans le cadre de notre vision de Résilience et Évolutivité 2026.*
+
 ---
 
 ## 🌱 Qu'est-ce que BiotechProject ?
