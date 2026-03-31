@@ -41,10 +41,12 @@ Where biotechnology meets code to build digital tools for research and innovatio
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **🚀 Milestone: Global Ecosystem Contribution (March 31, 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Global Ecosystem Contribution (March 31, 2026)**
 > 
 > We have officially contributed our **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** workflow to the official [GitHub Awesome-Copilot Cookbook](https://github.com/github/awesome-copilot).  
-> This contribution - **[Pull Request #1242](https://github.com/github/awesome-copilot/pull/1244)** - exports the architectural resilience developed within BiotechProject to the global developer community, setting a new standard for AI-assisted accessibility auditing in low-bandwidth environments.
+> This contribution - **[Pull Request #1244](https://github.com/github/awesome-copilot/pull/1244)** - exports the architectural resilience developed within BiotechProject to the global developer community.
+> 
+> *Developed and maintained by our **High-Stakes Accessibility Specialist**, setting a new standard for AI-assisted auditing in low-bandwidth and critical health environments.*
 
 ---
 
