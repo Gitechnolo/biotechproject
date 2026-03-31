@@ -114,7 +114,8 @@ Este projeto segue um processo rigoroso de tomada de decisão para garantir resi
 | **003** | **Auditoria SRE Assistida por IA** | 87% Pontuação de Maturidade Técnica | [Issue #14](https://github.com/Gitechnolo/biotechproject/issues/14) |
 | **004** | **Máquina de Estado Circadiana** | 98% Redução de Ciclos de CPU | [Issue #15](https://github.com/Gitechnolo/biotechproject/issues/15) |
 | **005** | **Portabilidade de Dados Orientada por SRE** | Exportação Zero-Latência | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
-| **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
+| **006** | **AAA Accessibilidade Base** | Conformidade completa WCAG 2.2 | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
+| **007** | **Stateless Edge WCAG 2.2 AAA Audit** | Auditoria ultra-leve (~2KB) via Copilot para ambientes clínicos de baixa banda. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 
 <details>
 <summary><b>Clique para expandir: Justificativa Completa ADR</b></summary>
@@ -154,6 +155,12 @@ Este projeto segue um processo rigoroso de tomada de decisão para garantir resi
 * **Justificativa**: Eleva a inclusão digital no software clínico ao nível mais alto, assegurando segurança cognitiva e otimização sensorial.
 * **Resultado**: Conformidade total com WCAG 2.2.
 * **Validação**: [View Accessibility Statement (#19)](https://github.com/Gitechnolo/biotechproject/issues/19)
+
+### [ADR-007] Resilient WCAG 2.2 AAA Audit (Stateless Edge)
+* **Decisão**: Stateless Edge WCAG 2.2 AAA Audit
+* **Justificativa**: O approach Zero-Framework elimina bibliotecas pesadas, enquanto o Semantic Snapshotter captura o estado da interface de forma eficiente, reduzindo dependência de infraestrutura pesada e melhorando Health Equity em regiões de baixa conectividade.
+* **Resultado**: Auditoria ultra-leve (~2KB) via Copilot, garantindo operação em ambientes clínicos de baixa largura de banda.
+* **Validação**: [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
 
 </details>
 
