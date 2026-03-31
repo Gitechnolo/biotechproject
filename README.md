@@ -273,7 +273,7 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 ### 🎓 Academic Collaboration
 BiotechProject is engineered in alignment with **HAN University of Applied Sciences (School of IT and Media Design)** standards for inclusive design and accessibility. Our **WCAG 2.2 AAA** achievement is currently validated through rigorous internal SRE audits, and we are actively seeking academic peer-review to further elevate our standards.
 
-We invite researchers, students, and faculty from HAN and beyond to join us in establishing a formal expert audit—a proposed goal that will set a new benchmark for open-source scientific resilience. This collaboration offers exciting opportunities for academic engagement, including graduation projects, research partnerships, and joint grant applications.
+We invite researchers, students, and faculty from HAN and beyond to join us in establishing a formal expert audit, a proposed goal that will set a new benchmark for open-source scientific resilience. This collaboration offers exciting opportunities for academic engagement, including graduation projects, research partnerships, and joint grant applications.
 
 > [!NOTE]
 > ### 🏛️ Institutional & Academic Hub
@@ -359,7 +359,7 @@ You can help with:
 - Translations
 - Bug reports and suggestions
 
-Every contribution — big or small — helps make science more accessible.
+Every contribution, big or small, helps make science more accessible.
 
 ---
 
