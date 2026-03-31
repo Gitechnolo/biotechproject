@@ -44,7 +44,7 @@ Where biotechnology meets code to build digital tools for research and innovatio
 > **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Global Ecosystem Contribution (March 31, 2026)**
 > 
 > We have officially formalized the **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** workflow within the BiotechProject Roadmap.  
-> This architectural decision — **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** — establishes a high-stakes accessibility standard designed for clinical resilience in low-bandwidth and critical health environments.
+> This architectural decision - **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** - establishes a high-stakes accessibility standard designed for clinical resilience in low-bandwidth and critical health environments.
 > 
 > *Developed and maintained by our **Lead Architect**, this standard is now open for expert validation and global implementation as part of our Resilience & Scalability 2026 vision.*
 
