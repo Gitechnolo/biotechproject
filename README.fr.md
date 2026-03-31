@@ -115,6 +115,7 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 | **004** | **Machine d'État Circadienne** | 98% Réduction des Cycles CPU | [Issue #15](https://github.com/Gitechnolo/biotechproject/issues/15) |
 | **005** | **Portabilité de Données Orientée SRE** | Exportation Zero-Latence | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
+| **007** | **Audit WCAG 2.2 AAA Stateless Edge** | Auditoría de accesibilidad ultra ligera (~2KB) mediante Copilot para entornos clínicos con bajo ancho de banda. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 
 <details>
 <summary><b>Cliquez pour développer : Justification Complète ADR</b></summary>
@@ -154,6 +155,12 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 * **Justification** : Éléver l'inclusion digitale du logiciel clinique au niveau le plus élevé, en assurant sécurité cognitive et optimisation sensorielle.
 * **Résultat** : Conformité totale avec WCAG 2.2.
 * **Validation** : [View Accessibility Statement (#19)](https://github.com/Gitechnolo/biotechproject/issues/19)
+
+### [ADR-007] Audit WCAG 2.2 AAA Resilient (Stateless Edge)
+* **écision**: Audit WCAG 2.2 AAA Stateless Edge
+* **Justification**: L'approche "Zero-Framework" élimine les bibliothèques externes lourdes, tandis que le "Semantic Snapshotter" capture efficacement l'état de l'interface, réduisant la dépendance à l'infrastructure et améliorant l'équité sanitaire (Health Equity) dans les régions à faible connectivité.
+* **Résultat**: Audit d'accessibilité ultra-léger (~2KB) via Copilot, garantissant le fonctionnement dans les environnements cliniques à faible bande passante.
+* **Validation** : [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
 
 </details>
 
