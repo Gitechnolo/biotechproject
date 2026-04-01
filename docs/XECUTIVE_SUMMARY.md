@@ -7,7 +7,7 @@
 
 ### 1. Resilience at the Edge
 * **The Vision:** Healthcare AI that works where the patient is. By processing data locally (Edge), we ensure 100% availability even during network outages.
-* **The Proof:** See our [2026-2030 Strategic Roadmap](https://github.com/users/Gitechnolo/projects/1/views/1).
+* **The Proof:** See our [2026-2030 Strategic Roadmap](https://github.com/users/Gitechnolo/projects/2).
 
 ### 2. Security Without Compromise (Stateless Edge)
 * **The Vision:** Zero-Data Leaks. Our "Stateless" architecture means patient data is never stored permanently on the device hardware, eliminating physical theft risks.
