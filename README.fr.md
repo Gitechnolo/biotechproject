@@ -68,6 +68,11 @@ C'est un espace collaboratif pour développeurs, chercheurs et passionnés qui v
   <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
 </div>
 
+## 🗺️ Feuille de Route Stratégique et Évolution
+Pour maintenir la transparence et une fiabilité de niveau clinique, nous suivons nos jalons à long terme via une feuille de route publique. Cela garantit que notre vision "Resilience & Scalability 2026" reste alignée avec les standards mondiaux d'équité en santé.
+
+👉 **Voir la Feuille de Route Stratégique Complète :** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
+
 ---
 
 ## 🚀 Fonctionnalités Principales
@@ -116,6 +121,7 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 | **005** | **Portabilité de Données Orientée SRE** | Exportation Zero-Latence | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Audit WCAG 2.2 AAA Stateless Edge** | Auditoría de accesibilidad ultra ligera (~2KB) mediante Copilot para entornos clínicos con bajo ancho de banda. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
+| **008** | **Infrastructure: Nightly SRE Reliability Gate** | Mise en œuvre d'une porte d'intégrité automatisée pour garantir l'immuabilité architecturale et la validation 24h. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 
 <details>
 <summary><b>Cliquez pour développer : Justification Complète ADR</b></summary>
@@ -161,6 +167,12 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 * **Justification**: L'approche "Zero-Framework" élimine les bibliothèques externes lourdes, tandis que le "Semantic Snapshotter" capture efficacement l'état de l'interface, réduisant la dépendance à l'infrastructure et améliorant l'équité sanitaire (Health Equity) dans les régions à faible connectivité.
 * **Résultat**: Audit d'accessibilité ultra-léger (~2KB) via Copilot, garantissant le fonctionnement dans les environnements cliniques à faible bande passante.
 * **Validation** : [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
+
+### [ADR-008] Infrastructure: Nightly SRE Reliability Gate & Immutable Integrity
+* **Décision**: Mise en œuvre d'un "Nightly SRE Reliability Gate" automatisé.
+* **Justification**: Garantit que les scores Lighthouse à 100% et la conformité WCAG 2.2 AAA ne subissent aucune régression. Dans les environnements cliniques, l'intégrité logicielle (Immutable Integrity) est une exigence de sécurité critique pour la résilience du système.
+* **Résultat**: Cycle de validation automatisé de 24h avec "Zero-Tolerance" pour la dégradation des performances ou de l'accessibilité.
+* **Validation** : [View Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21)
 
 </details>
 
@@ -342,7 +354,7 @@ lang/
 
 
 ## 📅 Date de Dernière Vérification
-**27 mars 2026**
+**2 Avril 2026**
 
 ## 🔮 Mises à Jour Récentes (résumé)
 
