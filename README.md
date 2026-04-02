@@ -68,6 +68,11 @@ It's a collaborative space for developers, researchers, and enthusiasts who want
   <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
 </div>
 
+## 🗺️ Strategic Roadmap & Evolution
+To maintain transparency and clinical-grade reliability, we track our long-term milestones through a public roadmap. This ensures our "Resilience & Scalability 2026" vision remains aligned with global health equity standards.
+
+👉 **View Full Strategic Roadmap:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
+
 ---
 
 ## 🚀 Key Features
@@ -116,6 +121,7 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 | **005** | **SRE-Driven Data Portability** | Zero-Latency Data Export | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Stateless Edge WCAG 2.2 AAA Audit** | Ultra-light (~2KB) accessibility audit via Copilot for low-bandwidth clinical environments. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
+| **008** | **Nightly SRE Reliability Gate** | Immutable Integrity & 24h Validation | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 
 <details>
 <summary><b>Click to expand: Full ADR Rationale</b></summary>
@@ -161,6 +167,12 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 * **Rationale**: The Zero-Framework approach eliminates heavy external libraries, while the Semantic Snapshotter efficiently captures interface state, reducing infrastructure dependency and enhancing Health Equity in low-connectivity regions.
 * **Outcome**: Ultra-light (~2KB) accessibility audit via Copilot, ensuring operation in low-bandwidth clinical environments.
 * **Validation**: [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
+
+### [ADR-008] Infrastructure: Implementation of Nightly SRE Reliability Gate & Immutable Integrity
+* **Decision**: Deployment of an automated nightly integrity gate to enforce architectural immutability.
+* **Rationale**: Ensures that 100% Lighthouse scores and WCAG 2.2 AAA compliance are not regressed by new contributions. In clinical environments, software integrity is a safety requirement.
+* **Outcome**: Automated 24h validation cycle with "Zero-Tolerance" for performance degradation.
+* **Validation**: [View Infrastructure Log (#21)](https://github.com/Gitechnolo/biotechproject/issues/21)
 
 </details>
 
@@ -267,7 +279,8 @@ Conformance has been verified through:
 > [!NOTE]
 > We have achieved the highest level of digital inclusion for clinical software, including **Enhanced Focus Appearance (2.4.11)**, setting a new benchmark for open-source scientific resilience.
 
-📄 **Full documentation:** 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
+📄 **Full documentation:** 
+👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
 
@@ -344,7 +357,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**27 March 2026**
+**02 April 2026**
 
 ## 🔮 Recent updates (summary)
 
