@@ -188,8 +188,8 @@ Het project implementeert een **geavanceerd technologisch maturiteit tracking sy
 **Update 27 maart 2026:** Succesvol geïntegreerd de **Data Portability Audit layer (ADR-005)**. Het systeem ondersteunt nu real-time performance telemetry exports zonder de Main Thread uitvoering te beïnvloeden.
 
 📂 **Laatste Audit Records:**
-* 📄 **[SRE Performance Stress-Test Report - 27 maart 2026 (PDF)](docs/biotech-performance-report.pdf)**
-* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+* 📄 **[SRE Prestatietest Verslag - 2 April 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Samenvatting: Metabolische Digitale Twin Architectuur (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Kenmerken
 * ✅ **Real-time Performance Monitoring**: Metrics (0–100) bijgewerkt elke 24h via GitHub Actions.
