@@ -188,7 +188,7 @@ Das Projekt implementiert ein **fortschrittliches Tracking-System für technolog
 **Update 27. März 2026:** Erfolgreiche Integration der **Data Portability Audit Layer (ADR-005)**. Das System unterstützt jetzt Echtzeit-Telemetrieexporte von Performance-Daten, ohne die Main-Thread-Ausführung zu beeinträchtigen.
 
 📂 **Letzte Audit-Aufzeichnungen:**
-* 📄 **[SRE Performance Stress-Test Report - 27. März 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 2. April 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard-Funktionen
