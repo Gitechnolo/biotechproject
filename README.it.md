@@ -188,7 +188,7 @@ Il progetto implementa un **sistema avanzato di tracciamento della maturità tec
 **Aggiornamento 27 marzo 2026:** integrato con successo il **Data Portability Audit layer (ADR-005)**. Il sistema ora supporta esportazioni telemetriche di performance in tempo reale senza impattare il Main Thread.
 
 📂 **Ultimi Audit:**
-* 📄 **[SRE Performance Stress-Test Report - 27 marzo 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 2 Aprile 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funzionalità Dashboard
