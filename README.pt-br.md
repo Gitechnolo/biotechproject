@@ -188,7 +188,7 @@ O projeto implementa um **sistema avançado de rastreamento de maturidade tecnol
 **Atualização 27 de março de 2026:** Integrado com sucesso a **camada de Auditoria de Portabilidade de Dados (ADR-005)**. O sistema agora suporta exportações de telemetria de desempenho em tempo real sem impactar a execução do Main Thread.
 
 📂 **Últimos Registros de Auditoria:**
-* 📄 **[Relatório de Teste de Estresse de Performance SRE - 27 de março de 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Relatório de Teste de Estresse de Performance SRE - 2 de Abril de 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Resumo Executivo: Arquitetura de Gêmeo Digital Metabólico (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funcionalidades do Painel
