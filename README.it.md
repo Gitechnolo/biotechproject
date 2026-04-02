@@ -66,11 +66,12 @@ BiotechProject è un **laboratorio digitale aperto** che unisce **biotecnologia,
 <div align="center">
   <h3>🗺️ La nostra Visione Strategica per la Scalabilità</h3>
   <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="Diagramma della Roadmap Strategica di BiotechProject" width="100%" />
-  <p>
-    <b>🎯 Monitoraggio Roadmap Attuale:</b> 
-    <a href="https://github.com/users/Gitechnolo/projects/2/views/1">Visualizza la Roadmap Strategica Completa 2026</a>
-  </p>
 </div>
+
+## 🗺️ Roadmap Strategica ed Evoluzione
+Per mantenere la trasparenza e un'affidabilità di grado clinico, monitoriamo i nostri traguardi a lungo termine attraverso una roadmap pubblica. Questo garantisce che la nostra visione "Resilience & Scalability 2026" rimanga allineata con gli standard globali di equità sanitaria.
+
+👉 **Visualizza la Roadmap Strategica Completa:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
 
 ---
 
