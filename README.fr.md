@@ -188,7 +188,7 @@ Le projet implémente un **système avancé de suivi de maturité technologique*
 **Mise à jour 27 mars 2026 :** Intégré avec succès la **couche d'Audit de Portabilité de Données (ADR-005)**. Le système prend désormais en charge les exportations de télémétrie de performance en temps réel sans impacter l'exécution du Main Thread.
 
 📂 **Derniers Enregistrements d'Audit :**
-* 📄 **[Rapport de Test de Stress de Performance SRE - 27 mars 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Rapport de Test de Stress de Performance SRE - 2 Avril 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Résumé Exécutif : Architecture de Jumeau Numérique Métabolique (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Fonctionnalités du Tableau de Bord
