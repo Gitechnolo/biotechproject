@@ -166,13 +166,13 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 * **Decision**: Stateless Edge WCAG 2.2 AAA Audit
 * **Rationale**: The Zero-Framework approach eliminates heavy external libraries, while the Semantic Snapshotter efficiently captures interface state, reducing infrastructure dependency and enhancing Health Equity in low-connectivity regions.
 * **Outcome**: Ultra-light (~2KB) accessibility audit via Copilot, ensuring operation in low-bandwidth clinical environments.
-* **Validation**: [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
+* **Validation**: [View Stateless Edge (#20)](https://github.com/Gitechnolo/biotechproject/issues/20)
 
 ### [ADR-008] Infrastructure: Implementation of Nightly SRE Reliability Gate & Immutable Integrity
 * **Decision**: Deployment of an automated nightly integrity gate to enforce architectural immutability.
 * **Rationale**: Ensures that 100% Lighthouse scores and WCAG 2.2 AAA compliance are not regressed by new contributions. In clinical environments, software integrity is a safety requirement.
 * **Outcome**: Automated 24h validation cycle with "Zero-Tolerance" for performance degradation.
-* **Validation**: [View Infrastructure Log (#21)](https://github.com/Gitechnolo/biotechproject/issues/21)
+* **Validation**: [View Infrastructure (#21)](https://github.com/Gitechnolo/biotechproject/issues/21)
 
 </details>
 
