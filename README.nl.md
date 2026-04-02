@@ -68,6 +68,11 @@ Het is een collaboratieve ruimte voor ontwikkelaars, onderzoekers en enthousiast
   <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
 </div>
 
+## 🗺️ Strategische Roadmap & Evolutie
+Om transparantie en betrouwbaarheid van klinische kwaliteit te waarborgen, volgen we onze langetermijnmijlpalen via een openbare roadmap. Dit zorgt ervoor dat onze visie "Resilience & Scalability 2026" in lijn blijft met de wereldwijde normen voor rechtvaardigheid in de gezondheidszorg.
+
+👉 **Bekijk de Volledige Strategische Roadmap:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
+
 ---
 
 ## 🚀 Belangrijkste Kenmerken
@@ -116,6 +121,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 | **005** | **SRE-Driven Data Portability** | Zero-Latency Data Export | [Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17) |
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Stateless Edge WCAG 2.2 AAA Audit** | Ultra-lichte (~2KB) toegankelijkheidsaudit via Copilot voor klinische omgevingen met een lage bandbreedte. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
+| **008** | **Infrastructure: Nightly SRE Reliability Gate** | Implementatie van een geautomatiseerde integriteitspoort voor architecturale onveranderlijkheid en 24u-validatie. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 
 <details>
 <summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
@@ -156,11 +162,17 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Uitkomst**: Volledige WCAG 2.2 conformiteit.
 * **Validatie**: [View Accessibility Statement (#19)](https://github.com/Gitechnolo/biotechproject/issues/19)
 
-### [ADR-007] Veerkrachtige WCAG 2.2 AAA Audit (Stateless Edge)
+### [ADR-007] Resilient WCAG 2.2 AAA Audit (Stateless Edge)
 * **Besluit**: Stateless Edge WCAG 2.2 AAA Audit
 * **Motivering**: De "Zero-Framework" aanpak elimineert zware externe bibliotheken, terwijl de "Semantic Snapshotter" de interfacestatus efficiënt vastlegt. Dit vermindert de afhankelijkheid van infrastructuur en bevordert de gelijkheid in de gezondheidszorg (Health Equity) in regio's met beperkte connectiviteit.
 * **Resultaat**: Ultra-lichte (~2KB) toegankelijkheidsaudit via Copilot, wat de werking in klinische omgevingen met een lage bandbreedte garandeert.
 * **Validatie**: [Bekijk Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
+
+### [ADR-008] Infrastructure: Nightly SRE Reliability Gate & Immutable Integrity
+* **Besluit**: Implementatie van een geautomatiseerde "Nightly SRE Reliability Gate".
+* **Rechtvaardiging**: Garandeert dat 100% Lighthouse-scores en WCAG 2.2 AAA-conformiteit niet worden aangetast door regressies. In klinische omgevingen is software-integriteit (Immutable Integrity) een kritieke veiligheidseis voor systeemveerkracht.
+* **Resultaat**: Geautomatiseerde 24-uurs validatiecyclus met "Zero-Tolerance" voor prestatie- of toegankelijkheidsverlies.
+* **Validatie**: [View Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21)
 
 </details>
 
@@ -343,7 +355,7 @@ lang/
 
 
 ## 📅 Laatste Verificatie Datum
-**28 maart 2026**
+**2 April 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
