@@ -96,23 +96,23 @@ BiotechProject is building the future of resilient, clinical-grade digital healt
 
 <p align="center">
   <a href="https://github.com/sponsors/Gitechnolo">
-    <img src="https://img.placeholder.com/600x150/ffffff/555555.png?text=👑+Foundational+Partner+Logo+Space" alt="Foundational Partner Placeholder" width="500">
+    <img src="https://img.shields.io/badge/👑_FOUNDATIONAL_PARTNER-RESERVED_SPACE-D4AF37?style=for-the-badge&labelColor=333333" alt="Foundational Partner" height="60">
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/sponsors/Gitechnolo">
-    <img src="https://img.placeholder.com/200x70/f5f5f5/555555.png?text=💎+Strategic+Partner" alt="Strategic Partner Placeholder" height="60">
+    <img src="https://img.shields.io/badge/💎_STRATEGIC_PARTNER-OPEN_SLOT-00BCD4?style=for-the-badge&labelColor=333333" alt="Strategic Partner" height="40">
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/sponsors/Gitechnolo">
-    <img src="https://img.placeholder.com/200x70/f5f5f5/555555.png?text=🏛️+Institutional+Partner" alt="Institutional Partner Placeholder" height="60">
+    <img src="https://img.shields.io/badge/🏛️_INSTITUTIONAL_PARTNER-OPEN_SLOT-78909C?style=for-the-badge&labelColor=333333" alt="Institutional Partner" height="40">
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/sponsors/Gitechnolo">
-    <img src="https://img.placeholder.com/120x40/fafafa/555555.png?text=🥈+Silver+Partner" alt="Silver Partner Placeholder" height="30">
+    <img src="https://img.shields.io/badge/🥈_SILVER_PARTNER-AVAILABLE-C0C0C0?style=for-the-badge&labelColor=333333" alt="Silver Partner" height="30">
   </a>
 </p>
 
