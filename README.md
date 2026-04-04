@@ -81,12 +81,12 @@ BiotechProject is building the future of resilient, clinical-grade digital healt
 
 | Tier | Focus | Key Benefits | Action |
 | :--- | :--- | :--- | :---: |
-| **🌱 Supporter** | Community | Name in README & Profile Badge | [$5/mo](https://github.com/sponsors/Gitechnolo) |
-| **🚀 Developer** | Technical | Priority Support & SRE Workflow | [$25/mo](https://github.com/sponsors/Gitechnolo) |
-| **🥈 Silver** | Startups | Name/Small Logo & Social Mention | [$100/mo](https://github.com/sponsors/Gitechnolo) |
-| **🏛️ Partner** | Industrial | **Institutional Logo & Advisory** | [$250/mo](https://github.com/sponsors/Gitechnolo) |
-| **💎 Strategic** | Innovation | Monthly Engineering Syncs | [$1000/mo](https://github.com/sponsors/Gitechnolo) |
-| **👑 Foundational** | Visionary | **Top Branding & Governance** | [$5000/mo](https://github.com/sponsors/Gitechnolo) |
+| **🌱 Supporter** | Community | Name in README & Profile Badge | [$5](https://github.com/sponsors/Gitechnolo) |
+| **🚀 Developer** | Technical | Priority Support & SRE Workflow | [$25](https://github.com/sponsors/Gitechnolo) |
+| **🥈 Silver** | Startups | Name/Small Logo & Social Mention | [$100](https://github.com/sponsors/Gitechnolo) |
+| **🏛️ Partner** | Industrial | **Institutional Logo & Advisory** | [$250](https://github.com/sponsors/Gitechnolo) |
+| **💎 Strategic** | Innovation | Monthly Engineering Syncs | [$1000](https://github.com/sponsors/Gitechnolo) |
+| **👑 Foundational** | Visionary | **Top Branding & Governance** | [$5000](https://github.com/sponsors/Gitechnolo) |
 
 ---
 
