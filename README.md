@@ -81,12 +81,12 @@ BiotechProject is building the future of resilient, clinical-grade digital healt
 
 | Tier | Focus | Key Benefits | Action |
 | :--- | :--- | :--- | :---: |
-| **🌱 Supporter** | Community | Name in README & Profile Badge | [$5/mo](https://github.com/sponsors/Gitechnolo/checkout) |
-| **🚀 Developer** | Technical | Priority Support & SRE Workflow | [$25/mo](https://github.com/sponsors/Gitechnolo/checkout) |
-| **🥈 Silver** | Startups | Name/Small Logo & Social Mention | [$100/mo](https://github.com/sponsors/Gitechnolo/checkout) |
-| **🏛️ Partner** | Industrial | **Institutional Logo & Advisory** | [$250/mo](https://github.com/sponsors/Gitechnolo/checkout) |
-| **💎 Strategic** | Innovation | Monthly Engineering Syncs | [$1000/mo](https://github.com/sponsors/Gitechnolo/checkout) |
-| **👑 Foundational** | Visionary | **Top Branding & Governance** | [$5000/mo](https://github.com/sponsors/Gitechnolo/checkout) |
+| **🌱 Supporter** | Community | Name in README & Profile Badge | [$5/mo](https://github.com/sponsors/Gitechnolo) |
+| **🚀 Developer** | Technical | Priority Support & SRE Workflow | [$25/mo](https://github.com/sponsors/Gitechnolo) |
+| **🥈 Silver** | Startups | Name/Small Logo & Social Mention | [$100/mo](https://github.com/sponsors/Gitechnolo) |
+| **🏛️ Partner** | Industrial | **Institutional Logo & Advisory** | [$250/mo](https://github.com/sponsors/Gitechnolo) |
+| **💎 Strategic** | Innovation | Monthly Engineering Syncs | [$1000/mo](https://github.com/sponsors/Gitechnolo) |
+| **👑 Foundational** | Visionary | **Top Branding & Governance** | [$5000/mo](https://github.com/sponsors/Gitechnolo) |
 
 ---
 
@@ -95,17 +95,17 @@ BiotechProject is building the future of resilient, clinical-grade digital healt
 *Join the organizations driving global health equity through open-source excellence.*
 
 <p align="center">
-  <a href="https://github.com/sponsors/Gitechnolo/checkout">
+  <a href="https://github.com/sponsors/Gitechnolo">
     <img src="https://img.shields.io/badge/👑_FOUNDATIONAL_PARTNER-RESERVED_SPACE-D4AF37?style=for-the-badge&labelColor=333333" alt="Foundational Partner" height="60">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/sponsors/Gitechnolo/checkout">
+  <a href="https://github.com/sponsors/Gitechnolo">
     <img src="https://img.shields.io/badge/💎_STRATEGIC_PARTNER-OPEN_SLOT-00BCD4?style=for-the-badge&labelColor=333333" alt="Strategic Partner" height="40">
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/sponsors/Gitechnolo/checkout">
+  <a href="https://github.com/sponsors/Gitechnolo">
     <img src="https://img.shields.io/badge/🏛️_INSTITUTIONAL_PARTNER-OPEN_SLOT-78909C?style=for-the-badge&labelColor=333333" alt="Institutional Partner" height="40">
   </a>
 </p>
