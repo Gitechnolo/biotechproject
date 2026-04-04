@@ -75,6 +75,55 @@ Um Transparenz und klinische Zuverlässigkeit zu gewährleisten, verfolgen wir u
 
 ---
 
+## 💖 Unterstützen Sie die Mission
+
+BiotechProject baut die Zukunft einer resilienten digitalen Gesundheit auf klinischem Niveau. Ihre Unterstützung finanziert direkt unsere **Stateless Edge** Forschung, **WCAG 2.2 AAA** Audits und die globale Infrastruktur für gesundheitliche Chancengleichheit.
+
+| Tier | Fokus | Hauptvorteile | Aktion |
+| :--- | :--- | :--- | :---: |
+| **🌱 Supporter** | Community | Name im README & Profil-Badge | [€5](https://github.com/sponsors/Gitechnolo) |
+| **🚀 Developer** | Technisch | Priorisierter Support & SRE Workflow | [€25](https://github.com/sponsors/Gitechnolo) |
+| **🥈 Silver** | Startups | Name/Kleines Logo & Social Mention | [€100](https://github.com/sponsors/Gitechnolo) |
+| **🏛️ Partner** | Industrie | **Institutionelles Logo & Advisory** | [€250](https://github.com/sponsors/Gitechnolo) |
+| **💎 Strategic** | Innovation | Monatliche Engineering-Syncs | [€1000](https://github.com/sponsors/Gitechnolo) |
+| **👑 Foundational** | Visionär | **Top Branding & Governance** | [€5000](https://github.com/sponsors/Gitechnolo) |
+
+---
+
+### 🏆 Unsere Partner & Stakeholder
+
+*Schließen Sie sich den Organisationen an, die durch Open-Source-Exzellenz die globale gesundheitliche Chancengleichheit vorantreiben.*
+
+<p align="center">
+  <a href="https://github.com/sponsors/Gitechnolo">
+    <img src="https://img.shields.io/badge/👑_GRÜNDUNGSPARTNER-RESERVIERT-D4AF37?style=for-the-badge&labelColor=333333" alt="Gründungspartner" height="60">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/sponsors/Gitechnolo">
+    <img src="https://img.shields.io/badge/💎_STRATEGISCHER_PARTNER-OFFENER_SLOT-00BCD4?style=for-the-badge&labelColor=333333" alt="Strategischer Partner" height="40">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/sponsors/Gitechnolo">
+    <img src="https://img.shields.io/badge/🏛️_INSTITUTIONELLER_PARTNER-OFFENER_SLOT-78909C?style=for-the-badge&labelColor=333333" alt="Institutioneller Partner" height="40">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/sponsors/Gitechnolo">
+    <img src="https://img.shields.io/badge/🥈_SILVER_PARTNER-VERFÜGBAR-C0C0C0?style=for-the-badge&labelColor=333333" alt="Silver Partner" height="30">
+  </a>
+</p>
+
+#### 📜 Individuelle Unterstützer
+* **Ihr Name hier** – Werden Sie unser erster Supporter oder Developer!
+
+> [!IMPORTANT]
+> **Warum sponsern?** BiotechProject ist eine unabhängige Mission. Jedes Sponsoring stellt sicher, dass unsere Architektur sicher, stateless und für alle zugänglich bleibt. Für individuelle Partnerschaftsanfragen oder Fördergelder kontaktieren Sie unser **[Strategic Outreach Team](mailto:teambiotechproject%40proton%2e-me)**.
+
+---
+
 ## 🚀 Hauptfunktionen
 
 ✅ **Open by design**  
