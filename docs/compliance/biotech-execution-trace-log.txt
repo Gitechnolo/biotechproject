@@ -1,0 +1,223 @@
+lighthouse "https://gitechnolo.github.io/biotechproject/index.html" --channel wpt --enable-error-reporting --disable-full-page-screenshot --max-wait-for-load 80000 --hostname 127.0.0.1 --port 9263 --output html --output json --output-path "/home/wptagent/work/mxp-it-asg-xl3x-10.10.1.61/260403_instant_06ac89c7e62a47faabb787ec4d308199.1.0/lighthouse.json" --throttling-method provided --save-assets --emulatedUserAgent 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML like Gecko) Version/17.0 Mobile/15E148 Safari/604.1 PTST/26.03'
+2026-04-03T20:31:33.171Z LH:ChromeLauncher Found existing Chrome already running using port 9263, using that.
+2026-04-03T20:31:33.869Z LH:status Connecting to browser
+2026-04-03T20:31:33.876Z LH:status Navigating to about:blank
+2026-04-03T20:31:33.887Z LH:status Benchmarking machine
+2026-04-03T20:31:34.894Z LH:status Preparing target for navigation mode
+2026-04-03T20:31:34.911Z LH:status Cleaning origin data
+2026-04-03T20:31:34.913Z LH:status Cleaning browser cache
+2026-04-03T20:31:34.921Z LH:status Preparing network conditions
+2026-04-03T20:31:34.991Z LH:status Navigating to https://gitechnolo.github.io/biotechproject/index.html
+2026-04-03T20:31:53.772Z LH:status Getting artifact: DevtoolsLog
+2026-04-03T20:31:53.772Z LH:status Getting artifact: Trace
+2026-04-03T20:31:53.774Z LH:status Getting artifact: DevtoolsLog
+2026-04-03T20:31:53.774Z LH:status Getting artifact: Trace
+2026-04-03T20:31:53.774Z LH:status Getting artifact: Accessibility
+2026-04-03T20:31:54.290Z LH:status Getting artifact: AnchorElements
+2026-04-03T20:31:54.408Z LH:status Getting artifact: ConsoleMessages
+2026-04-03T20:31:54.408Z LH:status Getting artifact: CSSUsage
+2026-04-03T20:31:54.453Z LH:status Getting artifact: Doctype
+2026-04-03T20:31:54.454Z LH:status Getting artifact: DOMStats
+2026-04-03T20:31:54.461Z LH:status Getting artifact: EmbeddedContent
+2026-04-03T20:31:54.464Z LH:status Getting artifact: FontSize
+2026-04-03T20:31:54.641Z LH:status Getting artifact: Inputs
+2026-04-03T20:31:54.646Z LH:status Getting artifact: GlobalListeners
+2026-04-03T20:31:54.648Z LH:status Getting artifact: ImageElements
+2026-04-03T20:31:54.821Z LH:status Getting artifact: InstallabilityErrors
+2026-04-03T20:31:54.821Z LH:status Get webapp installability errors
+2026-04-03T20:31:54.822Z LH:status Getting artifact: InspectorIssues
+2026-04-03T20:31:54.822Z LH:status Getting artifact: JsUsage
+2026-04-03T20:31:54.823Z LH:status Getting artifact: LinkElements
+2026-04-03T20:31:54.828Z LH:status Getting artifact: MainDocumentContent
+2026-04-03T20:31:54.832Z LH:status Getting artifact: MetaElements
+2026-04-03T20:31:54.838Z LH:status Getting artifact: NetworkUserAgent
+2026-04-03T20:31:54.839Z LH:status Getting artifact: OptimizedImages
+2026-04-03T20:31:54.839Z LH:status Getting artifact: ResponseCompression
+2026-04-03T20:31:54.840Z LH:status Getting artifact: RobotsTxt
+2026-04-03T20:31:56.059Z LH:status Getting artifact: Scripts
+2026-04-03T20:31:56.060Z LH:status Getting artifact: SourceMaps
+2026-04-03T20:31:56.060Z LH:status Getting artifact: Stacks
+2026-04-03T20:31:56.060Z LH:status Collect stacks
+2026-04-03T20:31:56.082Z LH:status Getting artifact: TagsBlockingFirstPaint
+2026-04-03T20:31:56.085Z LH:status Getting artifact: TapTargets
+2026-04-03T20:31:56.113Z LH:status Getting artifact: TraceElements
+2026-04-03T20:31:56.619Z LH:status Getting artifact: ViewportDimensions
+2026-04-03T20:31:56.620Z LH:status Getting artifact: WebAppManifest
+2026-04-03T20:31:56.621Z LH:status Get webapp manifest
+2026-04-03T20:31:56.622Z LH:status Getting artifact: devtoolsLogs
+2026-04-03T20:31:56.622Z LH:status Getting artifact: traces
+2026-04-03T20:31:56.622Z LH:status Getting artifact: BFCacheFailures
+2026-04-03T20:31:56.970Z LH:status Analyzing and running audits...
+2026-04-03T20:31:56.977Z LH:status Auditing: Uses HTTPS
+2026-04-03T20:31:56.982Z LH:status Auditing: Has a `<meta name="viewport">` tag with `width` or `initial-scale`
+2026-04-03T20:31:56.984Z LH:status Auditing: First Contentful Paint
+2026-04-03T20:31:57.117Z LH:status Auditing: Largest Contentful Paint
+2026-04-03T20:31:57.118Z LH:status Auditing: First Meaningful Paint
+2026-04-03T20:31:57.119Z LH:status Auditing: Speed Index
+2026-04-03T20:31:57.625Z LH:status Auditing: Screenshot Thumbnails
+2026-04-03T20:31:57.625Z LH:status Auditing: Final Screenshot
+2026-04-03T20:31:57.629Z LH:status Auditing: Total Blocking Time
+2026-04-03T20:31:57.648Z LH:status Auditing: Max Potential First Input Delay
+2026-04-03T20:31:57.654Z LH:status Auditing: Cumulative Layout Shift
+2026-04-03T20:31:57.657Z LH:status Auditing: No browser errors logged to the console
+2026-04-03T20:31:57.660Z LH:status Auditing: Initial server response time was short
+2026-04-03T20:31:57.662Z LH:status Auditing: Time to Interactive
+2026-04-03T20:31:57.664Z LH:status Auditing: User Timing marks and measures
+2026-04-03T20:31:57.672Z LH:status Auditing: Avoid chaining critical requests
+2026-04-03T20:31:57.713Z LH:status Auditing: Avoid multiple page redirects
+2026-04-03T20:31:57.774Z LH:status Auditing: Web app manifest and service worker meet the installability requirements
+2026-04-03T20:31:57.782Z LH:status Auditing: Configured for a custom splash screen
+2026-04-03T20:31:57.785Z LH:status Auditing: Sets a theme color for the address bar.
+2026-04-03T20:31:57.787Z LH:status Auditing: Manifest has a maskable icon
+2026-04-03T20:31:57.789Z LH:status Auditing: Content is sized correctly for the viewport
+2026-04-03T20:31:57.790Z LH:status Auditing: Displays images with correct aspect ratio
+2026-04-03T20:31:57.794Z LH:status Auditing: Serves images with appropriate resolution
+2026-04-03T20:31:57.795Z LH:status Auditing: Fonts with `font-display: optional` are preloaded
+2026-04-03T20:31:57.796Z LH:status Auditing: Avoids deprecated APIs
+2026-04-03T20:31:57.797Z LH:status Auditing: Avoids third-party cookies
+2026-04-03T20:31:57.798Z LH:status Auditing: Minimizes main-thread work
+2026-04-03T20:31:58.061Z LH:status Auditing: JavaScript execution time
+2026-04-03T20:31:58.245Z LH:status Auditing: Preload key requests
+2026-04-03T20:31:58.246Z LH:status Auditing: Preconnect to required origins
+2026-04-03T20:31:58.254Z LH:status Auditing: All text remains visible during webfont loads
+2026-04-03T20:31:58.256Z LH:status Auditing: Diagnostics
+2026-04-03T20:31:58.260Z LH:status Auditing: Network Requests
+2026-04-03T20:31:58.262Z LH:status Auditing: Network Round Trip Times
+2026-04-03T20:31:58.263Z LH:status Auditing: Server Backend Latencies
+2026-04-03T20:31:58.264Z LH:status Auditing: Tasks
+2026-04-03T20:31:58.267Z LH:status Auditing: Metrics
+2026-04-03T20:31:58.273Z LH:status Auditing: Performance budget
+2026-04-03T20:31:58.274Z LH:status Auditing: Timing budget
+2026-04-03T20:31:58.275Z LH:status Auditing: Resources Summary
+2026-04-03T20:31:58.276Z LH:status Auditing: Minimize third-party usage
+2026-04-03T20:31:58.314Z LH:status Auditing: Lazy load third-party resources with facades
+2026-04-03T20:31:58.359Z LH:status Auditing: Largest Contentful Paint element
+2026-04-03T20:31:58.361Z LH:status Auditing: Largest Contentful Paint image was not lazily loaded
+2026-04-03T20:31:58.362Z LH:status Auditing: Avoid large layout shifts
+2026-04-03T20:31:58.363Z LH:status Auditing: Avoid long main-thread tasks
+2026-04-03T20:31:58.370Z LH:status Auditing: Avoids `unload` event listeners
+2026-04-03T20:31:58.371Z LH:status Auditing: Avoid non-composited animations
+2026-04-03T20:31:58.393Z LH:status Auditing: Image elements have explicit `width` and `height`
+2026-04-03T20:31:58.395Z LH:status Auditing: Page has valid source maps
+2026-04-03T20:31:58.396Z LH:status Auditing: Preload Largest Contentful Paint image
+2026-04-03T20:31:58.397Z LH:status Auditing: Ensure CSP is effective against XSS attacks
+2026-04-03T20:31:58.398Z LH:status Auditing: Script Treemap Data
+2026-04-03T20:31:58.402Z LH:status Auditing: Site works cross-browser
+2026-04-03T20:31:58.403Z LH:status Auditing: Page transitions don't feel like they block on the network
+2026-04-03T20:31:58.404Z LH:status Auditing: Each page has a URL
+2026-04-03T20:31:58.405Z LH:status Auditing: `[accesskey]` values are unique
+2026-04-03T20:31:58.407Z LH:status Auditing: `[aria-*]` attributes match their roles
+2026-04-03T20:31:58.411Z LH:status Auditing: Values assigned to `role=""` are valid ARIA roles.
+2026-04-03T20:31:58.414Z LH:status Auditing: `button`, `link`, and `menuitem` elements have accessible names
+2026-04-03T20:31:58.417Z LH:status Auditing: Elements with `role="dialog"` or `role="alertdialog"` have accessible names.
+2026-04-03T20:31:58.419Z LH:status Auditing: `[aria-hidden="true"]` is not present on the document `<body>`
+2026-04-03T20:31:58.423Z LH:status Auditing: `[aria-hidden="true"]` elements do not contain focusable descendents
+2026-04-03T20:31:58.424Z LH:status Auditing: ARIA input fields have accessible names
+2026-04-03T20:31:58.433Z LH:status Auditing: ARIA `meter` elements have accessible names
+2026-04-03T20:31:58.434Z LH:status Auditing: ARIA `progressbar` elements have accessible names
+2026-04-03T20:31:58.436Z LH:status Auditing: `[role]`s have all required `[aria-*]` attributes
+2026-04-03T20:31:58.440Z LH:status Auditing: Elements with an ARIA `[role]` that require children to contain a specific `[role]` have all required children.
+2026-04-03T20:31:58.441Z LH:status Auditing: `[role]`s are contained by their required parent element
+2026-04-03T20:31:58.442Z LH:status Auditing: `[role]` values are valid
+2026-04-03T20:31:58.444Z LH:status Auditing: Elements with the `role=text` attribute do not have focusable descendents.
+2026-04-03T20:31:58.445Z LH:status Auditing: ARIA toggle fields have accessible names
+2026-04-03T20:31:58.446Z LH:status Auditing: ARIA `tooltip` elements have accessible names
+2026-04-03T20:31:58.448Z LH:status Auditing: ARIA `treeitem` elements have accessible names
+2026-04-03T20:31:58.451Z LH:status Auditing: `[aria-*]` attributes have valid values
+2026-04-03T20:31:58.455Z LH:status Auditing: `[aria-*]` attributes are valid and not misspelled
+2026-04-03T20:31:58.459Z LH:status Auditing: Buttons have an accessible name
+2026-04-03T20:31:58.474Z LH:status Auditing: The page contains a heading, skip link, or landmark region
+2026-04-03T20:31:58.476Z LH:status Auditing: Background and foreground colors have a sufficient contrast ratio
+2026-04-03T20:31:58.479Z LH:status Auditing: `<dl>`'s contain only properly-ordered `<dt>` and `<dd>` groups, `<script>`, `<template>` or `<div>` elements.
+2026-04-03T20:31:58.480Z LH:status Auditing: Definition list items are wrapped in `<dl>` elements
+2026-04-03T20:31:58.482Z LH:status Auditing: Document has a `<title>` element
+2026-04-03T20:31:58.484Z LH:status Auditing: `[id]` attributes on active, focusable elements are unique
+2026-04-03T20:31:58.486Z LH:status Auditing: ARIA IDs are unique
+2026-04-03T20:31:58.488Z LH:status Auditing: All heading elements contain content.
+2026-04-03T20:31:58.491Z LH:status Auditing: No form fields have multiple labels
+2026-04-03T20:31:58.492Z LH:status Auditing: `<frame>` or `<iframe>` elements have a title
+2026-04-03T20:31:58.506Z LH:status Auditing: Heading elements appear in a sequentially-descending order
+2026-04-03T20:31:58.508Z LH:status Auditing: `<html>` element has a `[lang]` attribute
+2026-04-03T20:31:58.511Z LH:status Auditing: `<html>` element has a valid value for its `[lang]` attribute
+2026-04-03T20:31:58.513Z LH:status Auditing: `<html>` element has an `[xml:lang]` attribute with the same base language as the `[lang]` attribute.
+2026-04-03T20:31:58.515Z LH:status Auditing: Identical links have the same purpose.
+2026-04-03T20:31:58.517Z LH:status Auditing: Image elements have `[alt]` attributes
+2026-04-03T20:31:58.519Z LH:status Auditing: Image elements do not have `[alt]` attributes that are redundant text.
+2026-04-03T20:31:58.522Z LH:status Auditing: Input buttons have discernible text.
+2026-04-03T20:31:58.523Z LH:status Auditing: `<input type="image">` elements have `[alt]` text
+2026-04-03T20:31:58.538Z LH:status Auditing: Elements with visible text labels have matching accessible names.
+2026-04-03T20:31:58.540Z LH:status Auditing: Form elements have associated labels
+2026-04-03T20:31:58.542Z LH:status Auditing: Document has a main landmark.
+2026-04-03T20:31:58.544Z LH:status Auditing: Links have a discernible name
+2026-04-03T20:31:58.546Z LH:status Auditing: Links are distinguishable without relying on color.
+2026-04-03T20:31:58.548Z LH:status Auditing: Lists contain only `<li>` elements and script supporting elements (`<script>` and `<template>`).
+2026-04-03T20:31:58.550Z LH:status Auditing: List items (`<li>`) are contained within `<ul>`, `<ol>` or `<menu>` parent elements
+2026-04-03T20:31:58.553Z LH:status Auditing: The document does not use `<meta http-equiv="refresh">`
+2026-04-03T20:31:58.555Z LH:status Auditing: `[user-scalable="no"]` is not used in the `<meta name="viewport">` element and the `[maximum-scale]` attribute is not less than 5.
+2026-04-03T20:31:58.570Z LH:status Auditing: `<object>` elements have alternate text
+2026-04-03T20:31:58.571Z LH:status Auditing: Select elements have associated label elements.
+2026-04-03T20:31:58.573Z LH:status Auditing: Skip links are focusable.
+2026-04-03T20:31:58.575Z LH:status Auditing: No element has a `[tabindex]` value greater than 0
+2026-04-03T20:31:58.578Z LH:status Auditing: Tables have different content in the summary attribute and `<caption>`.
+2026-04-03T20:31:58.580Z LH:status Auditing: Tables use `<caption>` instead of cells with the `[colspan]` attribute to indicate a caption.
+2026-04-03T20:31:58.582Z LH:status Auditing: Touch targets have sufficient size and spacing.
+2026-04-03T20:31:58.584Z LH:status Auditing: `<td>` elements in a large `<table>` have one or more table headers.
+2026-04-03T20:31:58.586Z LH:status Auditing: Cells in a `<table>` element that use the `[headers]` attribute refer to table cells within the same table.
+2026-04-03T20:31:58.601Z LH:status Auditing: `<th>` elements and elements with `[role="columnheader"/"rowheader"]` have data cells they describe.
+2026-04-03T20:31:58.603Z LH:status Auditing: `[lang]` attributes have a valid value
+2026-04-03T20:31:58.606Z LH:status Auditing: `<video>` elements contain a `<track>` element with `[kind="captions"]`
+2026-04-03T20:31:58.608Z LH:status Auditing: Custom controls have associated labels
+2026-04-03T20:31:58.608Z LH:status Auditing: Custom controls have ARIA roles
+2026-04-03T20:31:58.608Z LH:status Auditing: User focus is not accidentally trapped in a region
+2026-04-03T20:31:58.608Z LH:status Auditing: Interactive controls are keyboard focusable
+2026-04-03T20:31:58.608Z LH:status Auditing: Interactive elements indicate their purpose and state
+2026-04-03T20:31:58.608Z LH:status Auditing: The page has a logical tab order
+2026-04-03T20:31:58.608Z LH:status Auditing: The user's focus is directed to new content added to the page
+2026-04-03T20:31:58.608Z LH:status Auditing: Offscreen content is hidden from assistive technology
+2026-04-03T20:31:58.608Z LH:status Auditing: HTML5 landmark elements are used to improve navigation
+2026-04-03T20:31:58.608Z LH:status Auditing: Visual order on the page follows DOM order
+2026-04-03T20:31:58.608Z LH:status Auditing: Uses efficient cache policy on static assets
+2026-04-03T20:31:58.611Z LH:status Auditing: Avoids enormous network payloads
+2026-04-03T20:31:58.612Z LH:status Auditing: Defer offscreen images
+2026-04-03T20:31:58.646Z LH:status Auditing: Eliminate render-blocking resources
+2026-04-03T20:31:58.656Z LH:status Auditing: Minify CSS
+2026-04-03T20:31:58.685Z LH:status Auditing: Minify JavaScript
+2026-04-03T20:31:58.725Z LH:status Auditing: Reduce unused CSS
+2026-04-03T20:31:58.737Z LH:status Auditing: Reduce unused JavaScript
+2026-04-03T20:31:58.753Z LH:status Auditing: Serve images in next-gen formats
+2026-04-03T20:31:58.763Z LH:status Auditing: Efficiently encode images
+2026-04-03T20:31:58.770Z LH:status Auditing: Enable text compression
+2026-04-03T20:31:58.777Z LH:status Auditing: Properly size images
+2026-04-03T20:31:58.788Z LH:status Auditing: Use video formats for animated content
+2026-04-03T20:31:58.795Z LH:status Auditing: Remove duplicate modules in JavaScript bundles
+2026-04-03T20:31:58.801Z LH:status Auditing: Avoid serving legacy JavaScript to modern browsers
+2026-04-03T20:31:58.824Z LH:status Auditing: Page has the HTML doctype
+2026-04-03T20:31:58.825Z LH:status Auditing: Properly defines charset
+2026-04-03T20:31:58.826Z LH:status Auditing: Avoids an excessive DOM size
+2026-04-03T20:31:58.838Z LH:status Auditing: Avoids requesting the geolocation permission on page load
+2026-04-03T20:31:58.839Z LH:status Auditing: No issues in the `Issues` panel in Chrome Devtools
+2026-04-03T20:31:58.839Z LH:status Auditing: Avoids `document.write()`
+2026-04-03T20:31:58.841Z LH:status Auditing: Detected JavaScript libraries
+2026-04-03T20:31:58.841Z LH:status Auditing: Avoids requesting the notification permission on page load
+2026-04-03T20:31:58.843Z LH:status Auditing: Allows users to paste into input fields
+2026-04-03T20:31:58.843Z LH:status Auditing: Use HTTP/2
+2026-04-03T20:31:58.851Z LH:status Auditing: Uses passive listeners to improve scrolling performance
+2026-04-03T20:31:58.852Z LH:status Auditing: Document has a meta description
+2026-04-03T20:31:58.853Z LH:status Auditing: Page has successful HTTP status code
+2026-04-03T20:31:58.859Z LH:status Auditing: Document uses legible font sizes
+2026-04-03T20:31:58.860Z LH:status Auditing: Links have descriptive text
+2026-04-03T20:31:58.862Z LH:status Auditing: Links are crawlable
+2026-04-03T20:31:58.863Z LH:status Auditing: Page isn’t blocked from indexing
+2026-04-03T20:31:58.864Z LH:status Auditing: robots.txt is valid
+2026-04-03T20:31:58.865Z LH:status Auditing: Tap targets are sized appropriately
+2026-04-03T20:31:58.867Z LH:status Auditing: Document has a valid `hreflang`
+2026-04-03T20:31:58.868Z LH:status Auditing: Document avoids plugins
+2026-04-03T20:31:58.869Z LH:status Auditing: Document has a valid `rel=canonical`
+2026-04-03T20:31:58.870Z LH:status Auditing: Structured data is valid
+2026-04-03T20:31:58.870Z LH:status Auditing: Page didn't prevent back/forward cache restoration
+2026-04-03T20:31:58.871Z LH:status Generating results...
+2026-04-03T20:31:58.935Z LH:saveAssets devtools log saved to disk: /home/wptagent/work/mxp-it-asg-xl3x-10.10.1.61/260403_instant_06ac89c7e62a47faabb787ec4d308199.1.0/lighthouse-0.devtoolslog.json
+2026-04-03T20:31:59.166Z LH:saveAssets trace file streamed to disk: /home/wptagent/work/mxp-it-asg-xl3x-10.10.1.61/260403_instant_06ac89c7e62a47faabb787ec4d308199.1.0/lighthouse-0.trace.json
+2026-04-03T20:31:59.168Z LH:Printer html output written to /home/wptagent/work/mxp-it-asg-xl3x-10.10.1.61/260403_instant_06ac89c7e62a47faabb787ec4d308199.1.0/lighthouse.report.html
+2026-04-03T20:31:59.168Z LH:CLI Protip: Run lighthouse with `--view` to immediately open the HTML report in your browser
+2026-04-03T20:31:59.170Z LH:Printer json output written to /home/wptagent/work/mxp-it-asg-xl3x-10.10.1.61/260403_instant_06ac89c7e62a47faabb787ec4d308199.1.0/lighthouse.report.json
