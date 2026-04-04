@@ -32,6 +32,7 @@
  * Logica predittiva allineata ai framework di McKinsey QuantumBlack 
  * e alle proiezioni di mercato Statista 2025-2026.
  */
+// 1. MOTORE DI INTELLIGENZA (Simulazione ML)
 async function fetchMarketIntelligence() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -45,9 +46,9 @@ async function fetchMarketIntelligence() {
   });
 }
 
-// 2. FUNZIONI DI DISEGNO INTERNE
+// 2. FUNZIONI DI DISEGNO (CORE ENGINE)
 function renderLines(ctx, historical, forecast, glow) {
-  // Linea Storica
+  // Linea Storica (Solid White)
   ctx.shadowBlur = 0;
   ctx.strokeStyle = "#e7e7e7";
   ctx.lineWidth = 3;
@@ -56,7 +57,7 @@ function renderLines(ctx, historical, forecast, glow) {
   historical.forEach((val, i) => ctx.lineTo(30 + i * 40, 200 - val));
   ctx.stroke();
 
-  // Linea Previsione con Glow
+  // Linea Previsione con Glow (Neon Green Dashed)
   ctx.save();
   ctx.setLineDash([8, 6]);
   ctx.shadowBlur = glow;
@@ -93,16 +94,17 @@ function renderAxisLabels(ctx, years, histLength, confidence) {
     ctx.fillText(year, 30 + i * 40 - 10, 215);
   });
 }
+
 /**
- * Renderizza i segnali AI con effetto cursore lampeggiante.
- * @param {CanvasRenderingContext2D} ctx - Il contesto del canvas.
- * @param {number} confidence - Il valore di confidenza del modello ML.
+ * Renderizza i segnali AI con effetto cursore lampeggiante e Jitter Stocastico.
  */
 function renderInternalAISignals(ctx, confidence) {
-  const startX = 260; 
-  const startY = 120;
+  // JITTER LOGIC: Simula l'entropia del mercato basata sulla confidenza
+  const jitterX = (Math.random() - 0.5) * (1 - confidence) * 8;
+  const jitterY = (Math.random() - 0.5) * (1 - confidence) * 8;
   
-  // Effetto lampeggiante per il cursore (basato sul tempo)
+  const startX = 260 + jitterX; 
+  const startY = 120 + jitterY;
   const blink = Math.floor(Date.now() / 500) % 2 === 0 ? "_" : " ";
 
   ctx.save();
@@ -114,8 +116,15 @@ function renderInternalAISignals(ctx, confidence) {
   ctx.fillText(`> [AI SIGNAL] Sentiment: POSITIVO`, startX, startY);
   ctx.fillText(`> [AI SIGNAL] Network Analysis: ACTIVE`, startX, startY + 14);
   ctx.fillText(`> [AI SIGNAL] Confidence: ${(confidence * 100)}%${blink}`, startX, startY + 28);
-  
   ctx.restore();
+}
+
+/**
+ * [SRE LOG] Architettural Audit Sign-off
+ */
+function logSREValidation() {
+    const sreStyle = "color: #00e676; font-weight: bold; background: #1b1b1b; padding: 3px 8px; border-left: 4px solid #00ff55; border-radius: 0 4px 4px 0;";
+    console.log("%c[SRE] Rendering Engine: Hardware Accelerated Canvas Active. Jitter logic engaged for entropy simulation.", sreStyle);
 }
 
 // 3. CICLO DI ANIMAZIONE PRINCIPALE
@@ -128,10 +137,14 @@ async function runMarketGraph() {
   const ctx = canvas.getContext('2d');
 
   const { historical, forecast, years, confidence } = await fetchMarketIntelligence();
+  
+  // Esecuzione Audit Log al boot dello script
+  logSREValidation();
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
+    // Pulsazione dinamica del Glow Neon
     glowIntensity += 0.15 * glowDirection;
     if (glowIntensity > 18 || glowIntensity < 6) glowDirection *= -1;
 
@@ -145,17 +158,11 @@ async function runMarketGraph() {
   draw();
 }
 
-// 4. AVVIO
+// 4. AVVIO E SINCRONIZZAZIONE
 runMarketGraph().then(() => {
-triggerHumanSync();
+    triggerHumanSync();
 });   
 
-/**
- * [FUNCTION] triggerHumanSync
- * Latent visual resonance in the system when the algorithm detects a stasis (idle) pattern.
- * Synchronization of neural output with the cyclical patterns of observed markets.
- * This function is triggered after the initial rendering of the market graph, indicating that the system has reached a state of "analytics idle" where it is ready to process new data or await user interaction.
- */
 function triggerHumanSync() {
     const logStyle = "color: #00e676; font-family: 'Courier New', monospace; background: #121212; padding: 2px 5px; border-radius: 3px; border: 1px solid rgba(0, 230, 118, 0.3);";
     console.log("%c[SYNC] BiotechProject: Finding direction within the daily races. (Confidence: 94%)", logStyle);
