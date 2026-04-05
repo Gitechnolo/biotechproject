@@ -41,12 +41,12 @@ Dove la biotecnologia incontra il codice per costruire strumenti digitali per ri
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Contributo all'Ecosistema Globale (31 marzo 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Resilienza Clinica Asset-Light (5 Aprile 2026)**
 > 
-> Abbiamo ufficialmente formalizzato il workflow **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** all'interno della Roadmap di BiotechProject.  
-> Questa decisione architettonica - **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** - stabilisce uno standard di accessibilità ad alto rischio progettato per la resilienza clinica in ambienti a bassa larghezza di banda e sanitari critici.
+> Abbiamo implementato con successo il protocollo **"Resilient Edge: Asset Pruning & GPU Stabilization"**.  
+> Questo salto architettonico - **[ADR-009 | Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)** - introduce una modalità di emergenza proattiva che rimuove i background pesanti (~70KB) e congela le animazioni 3D per garantire performance sotto il secondo anche su reti 2G/Satellitari.
 > 
-> *Sviluppato e mantenuto dal nostro **Lead Architect**, questo standard è ora aperto per la validazione esperta e l'implementazione globale come parte della nostra visione di Resilienza e Scalabilità 2026.*
+> *Questo aggiornamento assicura che i dati clinici abbiano la priorità assoluta in caso di instabilità di rete, rispettando il nostro mandato "SRE-for-Humans".*
 
 ---
 
@@ -171,6 +171,7 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Audit WCAG 2.2 AAA Stateless Edge** | Audit di accessibilità ultra-leggero (~2KB) tramite Copilot per ambienti clinici a bassa larghezza di banda. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 | **008** | **Gate di Affidabilità SRE Notturno** | Integrità Immutabile e Validazione 24h | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
+| **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 
 <details>
 <summary><b>Click per espandere: Rationale completo ADR</b></summary>
@@ -179,37 +180,37 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 * **Decisione**: evitare framework moderni (React/Angular/Vue) a favore di puro **Vanilla JS (ES6+)**.
 * **Razionale**: elimina il "framework tax". In contesti critici per la salute, l'interattività sub-secondo è un requisito clinico.
 * **Risultato**: dimensione iniziale del bundle **< 20KB** e TTI di **0.3s**.
-* **Validazione**: [View Engineering Log (#12)](https://github.com/Gitechnolo/biotechproject/issues/12)
+* **Validazione**: [Visualizza Issue #12](https://github.com/Gitechnolo/biotechproject/issues/12)
 
 ### [ADR-002] Stateless Edge & Client-Side Intelligence
 * **Decisione**: migrare tutta la logica di sincronizzazione metabolica e biologica complessa lato client.
 * **Razionale**: garantisce **100% disponibilità del servizio** durante picchi di rete o interruzioni backend.
 * **Risultato**: riduzione dell'85% dei costi di infrastruttura.
-* **Validazione**: [View Resilience Report (#13)](https://github.com/Gitechnolo/biotechproject/issues/13)
+* **Validazione**: [Visualizza Issue #13](https://github.com/Gitechnolo/biotechproject/issues/13)
 
 ### [ADR-003] AI-Assisted SRE Auditing
 * **Decisione**: orchestrazione mult-modello (Gemini + Copilot) per revisione del codice.
 * **Razionale**: supera le allucinazioni dei singoli LLM tramite "consensus" sulla type safety.
 * **Risultato**: punteggio di maturità tecnico dell'87%.
-* **Validazione**: [View Audit Protocol (#14)](https://github.com/Gitechnolo/biotechproject/issues/14)
+* **Validazione**: [Visualizza Issue #14](https://github.com/Gitechnolo/biotechproject/issues/14)
 
 ### [ADR-004] Circadian State Machine
 * **Decisione**: implementazione del pattern resource-efficient **Early Return**.
 * **Razionale**: riduce il carico cognitivo senza triggerare re-render costosi o polling pesante.
 * **Risultato**: riduzione del 98% dei cicli CPU in background.
-* **Validazione**: [View Performance Pattern (#15)](https://github.com/Gitechnolo/biotechproject/issues/15)
+* **Validazione**: [Visualizza Issue #15](https://github.com/Gitechnolo/biotechproject/issues/15)
 
 ### [ADR-005] SRE-Driven Data Portability
 * **Decisione**: deployment di un layer di export a latenza zero usando le API native Blob.
 * **Razionale**: garantisce sovranità dei dati per cartelle cliniche con "Lean Logic" (zero librerie).
 * **Risultato**: generazione istantanea di CSV/JSON.
-* **Validazione**: [View Export Strategy (#17)](https://github.com/Gitechnolo/biotechproject/issues/17)
+* **Validazione**: [Visualizza Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17)
 
 ### [ADR-006] AAA Accessibility Baseline
 * **Decisione**: implementazione della conformità **WCAG 2.2 Level AAA**, inclusi miglioramenti di Enhanced Focus Appearance e supporto cognitivo avanzato.
 * **Razionale**: Eleva l'inclusione digitale nel software clinico al massimo standard, garantendo sicurezza cognitiva e ottimizzazione sensoriale.
 * **Risultato**: Piena conformità WCAG 2.2.
-* **Validazione**: [View Accessibility Statement (#19)](https://github.com/Gitechnolo/biotechproject/issues/19)
+* **Validazione**: [Visualizza Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19)
 
 ### [ADR-007] Audit WCAG 2.2 AAA Resiliente (Stateless Edge)
 * **Decisione**: Audit WCAG 2.2 AAA Stateless Edge
@@ -221,7 +222,13 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 * **Decisione**: Implementazione di un gate di integrità automatizzato notturno per imporre l'immutabilità architettonica.
 * **Razionale**: Garantisce che i punteggi Lighthouse al 100% e la conformità WCAG 2.2 AAA non subiscano regressioni. In ambiti clinici, l'integrità del software è un requisito di sicurezza.
 * **Risultato**: Ciclo di validazione automatizzato ogni 24 ore con "Tolleranza Zero" per il degrado delle prestazioni.
-* **Validazione**: [Visualizza Log Infrastruttura (#21)](https://github.com/Gitechnolo/biotechproject/issues/21)
+* **Validazione**: [Visualizza Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21)
+
+### [ADR-009] Resilient Edge: Asset Pruning & GPU Stabilization
+* **Decisione**: Implementazione di una "Clinical Accessibility Mode" automatizzata, attivata quando l'RTT > 1000ms.
+* **Razionale**: Gli sfondi ad alta risoluzione e le animazioni 3D (elica del DNA) consumano larghezza di banda critica e cicli di CPU durante lo stress di rete.
+* **Risultato**: Recupero istantaneo di 70KB di banda e 0% di overhead GPU tramite snapshot CSS statici.
+* **Validazione**: [Visualizza Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)
 
 </details>
 
@@ -398,7 +405,7 @@ lang/
 
 
 ## 📅 Data ultima verifica
-**2 aprile 2026**
+**5 aprile 2026**
 
 ## 🔮 Aggiornamenti recenti (sintesi)
 
