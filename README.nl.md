@@ -41,12 +41,12 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Bijdrage aan het Wereldwijde Ecosysteem (31 maart 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Klinische Asset-Light Veerkracht (5 april 2026)**
 > 
-> We hebben officieel de workflow **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** geformaliseerd binnen de BiotechProject Roadmap.  
-> Deze architecturale beslissing - **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** - stelt een hoog-risico toegankelijkheidsstandaard vast die is ontworpen voor klinische veerkracht in omgevingen met lage bandbreedte en kritieke gezondheidszorg.
+> We hebben met succes het **"Resilient Edge: Asset Pruning & GPU Stabilization"** protocol geïmplementeerd.  
+> Deze architecturale sprong - **[ADR-009 | Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)** - introduceert een proactieve noodmodus die zware achtergronden (~70KB) verwijdert en 3D-animaties bevriest om sub-seconde prestaties te garanderen op 2G/Satelliet netwerken.
 > 
-> *Ontwikkeld en onderhouden door onze **Lead Architect**, deze standaard is nu open voor expertvalidatie en wereldwijde implementatie als onderdeel van onze visie voor Veerkracht en Schaalbaarheid 2026.*
+> *Deze update zorgt ervoor dat klinische gegevens de absolute prioriteit hebben bij netwerkinstabiliteit, waarmee we ons "SRE-for-Humans" mandaat nakomen.*
 
 ---
 
@@ -171,6 +171,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Stateless Edge WCAG 2.2 AAA Audit** | Ultra-lichte (~2KB) toegankelijkheidsaudit via Copilot voor klinische omgevingen met een lage bandbreedte. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 | **008** | **Infrastructure: Nightly SRE Reliability Gate** | Implementatie van een geautomatiseerde integriteitspoort voor architecturale onveranderlijkheid en 24u-validatie. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
+| **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 
 <details>
 <summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
@@ -222,6 +223,12 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Rechtvaardiging**: Garandeert dat 100% Lighthouse-scores en WCAG 2.2 AAA-conformiteit niet worden aangetast door regressies. In klinische omgevingen is software-integriteit (Immutable Integrity) een kritieke veiligheidseis voor systeemveerkracht.
 * **Resultaat**: Geautomatiseerde 24-uurs validatiecyclus met "Zero-Tolerance" voor prestatie- of toegankelijkheidsverlies.
 * **Validatie**: [View Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21)
+
+### [ADR-009] Resilient Edge: Asset Pruning & GPU Stabilization
+* **Besluit**: Implementatie van een geautomatiseerde "Clinical Accessibility Mode", geactiveerd wanneer RTT > 1000ms.
+* **Rationale**: Achtergronden met hoge resolutie en 3D-animaties (DNA-helix) verbruiken kritieke bandbreedte en CPU-cycli tijdens netwerkstress.
+* **Resultaat**: Onmiddellijk herstel van 70KB bandbreedte en 0% GPU-overhead via statische CSS-snapshots.
+* **Validatie**: [View Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)
 
 </details>
 
@@ -404,7 +411,7 @@ lang/
 
 
 ## 📅 Laatste Verificatie Datum
-**2 April 2026**
+**5 April 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
