@@ -41,12 +41,12 @@ Where biotechnology meets code to build digital tools for research and innovatio
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Global Ecosystem Contribution (March 31, 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Clinical Asset-Light Resilience (April 5, 2026)**
 > 
-> We have officially formalized the **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** workflow within the BiotechProject Roadmap.  
-> This architectural decision - **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** - establishes a high-stakes accessibility standard designed for clinical resilience in low-bandwidth and critical health environments.
+> We have successfully deployed the **"Resilient Edge: Asset Pruning & GPU Stabilization"** protocol.  
+> This architectural shift - **[ADR-009 | Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)** - introduces a proactive emergency mode that drops heavy backgrounds (~70KB) and freezes 3D animations to guarantee sub-second performance on 2G/Satellite networks.
 > 
-> *Developed and maintained by our **Lead Architect**, this standard is now open for expert validation and global implementation as part of our Resilience & Scalability 2026 vision.*
+> *This update ensures that clinical data remains the absolute priority during network instability, fulfilling our "SRE-for-Humans" mandate.*
 
 ---
 
@@ -171,6 +171,7 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Stateless Edge WCAG 2.2 AAA Audit** | Ultra-light (~2KB) accessibility audit via Copilot for low-bandwidth clinical environments. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 | **008** | **Nightly SRE Reliability Gate** | Immutable Integrity & 24h Validation | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
+| **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 
 <details>
 <summary><b>Click to expand: Full ADR Rationale</b></summary>
@@ -222,6 +223,12 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 * **Rationale**: Ensures that 100% Lighthouse scores and WCAG 2.2 AAA compliance are not regressed by new contributions. In clinical environments, software integrity is a safety requirement.
 * **Outcome**: Automated 24h validation cycle with "Zero-Tolerance" for performance degradation.
 * **Validation**: [View Infrastructure (#21)](https://github.com/Gitechnolo/biotechproject/issues/21)
+
+### [ADR-009] Resilient Edge: Asset Pruning & GPU Stabilization
+* **Decision**: Implementation of an automated "Clinical Accessibility Mode" triggered by RTT > 1000ms.
+* **Rationale**: High-resolution backgrounds and 3D animations (DNA helix) consume critical bandwidth and CPU cycles during network stress.
+* **Outcome**: Instant 70KB bandwidth recovery and 0% GPU overhead via static CSS snapshots.
+* **Validation**: [View SRE Audit (#23)](https://github.com/Gitechnolo/biotechproject/issues/23)
 
 </details>
 
@@ -406,7 +413,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**02 April 2026**
+**05 April 2026**
 
 ## 🔮 Recent updates (summary)
 
