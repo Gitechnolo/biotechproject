@@ -41,12 +41,12 @@ Wo Biotechnologie auf Code trifft, um digitale Werkzeuge für Forschung und Inno
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Meilenstein: Beitrag zum globalen Ökosystem (31. März 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Meilenstein: Klinische Asset-Light-Resilienz (5. April 2026)**
 > 
-> Wir haben offiziell den Workflow **"Resilient WCAG 2.2 AAA Audit (Stateless Edge)"** in der BiotechProject Roadmap formalisiert.  
-> Diese architektonische Entscheidung - **[ADR-007 | Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)** - etabliert einen hochriskanten Zugänglichkeitsstandard, der für klinische Widerstandsfähigkeit in Umgebungen mit niedriger Bandbreite und kritischer Gesundheitsversorgung ausgelegt ist.
+> Wir haben das Protokoll **"Resilient Edge: Asset Pruning & GPU Stabilization"** erfolgreich implementiert.  
+> Dieser architektonische Sprung - **[ADR-009 | Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)** - führt einen proaktiven Notfallmodus ein, der schwere Hintergründe (~70KB) entfernt und 3D-Animationen einfriert, um eine Sub-Sekunden-Performance in 2G/Satelliten-Netzwerken zu garantieren.
 > 
-> *Entwickelt und gepflegt von unserem **Lead Architect**, ist dieser Standard nun offen für Expertenvalidierung und globale Implementierung als Teil unserer Vision für Widerstandsfähigkeit und Skalierbarkeit 2026.*
+> *Dieses Update stellt sicher, dass klinische Daten bei Netzwerkinstabilität absolute Priorität haben und erfüllt unser "SRE-for-Humans"-Mandat.*
 
 ---
 
@@ -171,6 +171,7 @@ Dieses Projekt folgt einem rigorosen Entscheidungsprozess, um enterprise-grade R
 | **006** | **AAA Accessibility Baseline** | Full WCAG 2.2 Compliance | [Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19) |
 | **007** | **Stateless Edge WCAG 2.2 AAA Audit** | Extrem schlanker (~2KB) Barrierefreiheits-Audit via Copilot per klinische Umgebungen mit geringer Bandbreite. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 | **008** | **Infrastructure: Nightly SRE Reliability Gate** | Implementierung eines automatisierten Integritäts-Gates zur Gewährleistung der architektonischen Unveränderlichkeit und 24h-Validierung. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
+| **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 
 <details>
 <summary><b>Klicke zum Erweitern: Vollständige ADR-Begründung</b></summary>
@@ -222,6 +223,12 @@ Dieses Projekt folgt einem rigorosen Entscheidungsprozess, um enterprise-grade R
 * **Begründung**: Stellt sicher, dass 100% Lighthouse-Scores und die WCAG 2.2 AAA-Konformität nicht durch Regressionen beeinträchtigt werden. In klinischen Umgebungen ist die Software-Integrität (Immutable Integrity) eine kritische Sicherheitsanforderung für die Systemstabilität.
 * **Ergebnis**: Automatisierter 24-Stunden-Validierungszyklus mit „Zero-Tolerance“ für Leistungs- oder Barrierefreiheitsverluste.
 * **Validierung**: [View Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21)
+
+### [ADR-009] Resilient Edge: Asset Pruning & GPU Stabilization
+* **Entscheidung**: Implementierung eines automatisierten "Clinical Accessibility Mode", der bei RTT > 1000ms ausgelöst wird.
+* **Begründung**: Hochauflösende Hintergründe und 3D-Animationen (DNA-Helix) verbrauchen bei Netzwerkstress kritische Bandbreite und CPU-Zyklen.
+* **Ergebnis**: Sofortige Rückgewinnung von 70KB Bandbreite und 0% GPU-Overhead durch statische CSS-Snapshots.
+* **Validierung**: [SRE-Audit anzeigen (#23)](https://github.com/Gitechnolo/biotechproject/issues/23)
 
 </details>
 
@@ -403,7 +410,7 @@ lang/
 
 
 ## 📅 Letzter Überprüfungszeitraum
-**2 April 2026**
+**5 April 2026**
 
 ## 🔮 Aktuelle Updates (Zusammenfassung)
 
