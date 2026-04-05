@@ -1,14 +1,14 @@
 {
-  "lastUpdated": "2026-04-05T19:36:44.682Z",
+  "lastUpdated": "2026-04-05T19:44:27.692Z",
   "summary": {
     "totalPages": 26,
     "analyzed": 26,
     "failed": 0,
-    "averagePerformance": 94,
+    "averagePerformance": 93,
     "stressTest": {
       "simulatedUsers": 5000,
       "methodology": "Logarithmic Load Degradation (SRE 2026)",
-      "globalResilienceScore": 86,
+      "globalResilienceScore": 85,
       "status": "STABLE / HIGH_AVAILABILITY"
     }
   },
@@ -18,12 +18,12 @@
       "label": "Homepage",
       "slug": "index",
       "category": "biotecnologie",
-      "performanceScore": 94,
-      "loadTime": 1155,
-      "firstPaint": 948,
-      "lastAnalyzed": "2026-04-05T19:31:57.303Z",
-      "stressResilienceScore": 86,
-      "previousPerformanceScore": 93
+      "performanceScore": 99,
+      "loadTime": 1253,
+      "firstPaint": 1144,
+      "lastAnalyzed": "2026-04-05T19:39:38.641Z",
+      "stressResilienceScore": 90,
+      "previousPerformanceScore": 94
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Cuore.html",
@@ -31,46 +31,46 @@
       "slug": "cuore",
       "category": "fisiologia",
       "performanceScore": 100,
-      "loadTime": 1741,
-      "firstPaint": 1096,
-      "lastAnalyzed": "2026-04-05T19:32:08.266Z",
+      "loadTime": 1760,
+      "firstPaint": 1111,
+      "lastAnalyzed": "2026-04-05T19:39:49.617Z",
       "stressResilienceScore": 91,
-      "previousPerformanceScore": 96
+      "previousPerformanceScore": 100
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Cuore-semplice.html",
       "label": "Cuore (versione semplificata)",
       "slug": "cuore-semplice",
       "category": "accessibilità",
-      "performanceScore": 98,
-      "loadTime": 1196,
-      "firstPaint": 862,
-      "lastAnalyzed": "2026-04-05T19:32:20.376Z",
-      "stressResilienceScore": 89,
-      "previousPerformanceScore": 93
+      "performanceScore": 94,
+      "loadTime": 1090,
+      "firstPaint": 867,
+      "lastAnalyzed": "2026-04-05T19:40:01.532Z",
+      "stressResilienceScore": 86,
+      "previousPerformanceScore": 98
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html",
       "label": "Apparato respiratorio",
       "slug": "apparato-respiratorio",
       "category": "fisiologia",
-      "performanceScore": 95,
-      "loadTime": 2904,
-      "firstPaint": 1230,
-      "lastAnalyzed": "2026-04-05T19:32:31.789Z",
-      "stressResilienceScore": 86,
-      "previousPerformanceScore": 90
+      "performanceScore": 99,
+      "loadTime": 1801,
+      "firstPaint": 1180,
+      "lastAnalyzed": "2026-04-05T19:40:12.732Z",
+      "stressResilienceScore": 90,
+      "previousPerformanceScore": 95
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html",
       "label": "Apparato respiratorio (versione semplificata)",
       "slug": "apparato-respiratorio-semplice",
       "category": "accessibilità",
-      "performanceScore": 85,
-      "loadTime": 4244,
-      "firstPaint": 1582,
-      "lastAnalyzed": "2026-04-05T19:32:42.568Z",
-      "stressResilienceScore": 77,
+      "performanceScore": 80,
+      "loadTime": 3933,
+      "firstPaint": 1104,
+      "lastAnalyzed": "2026-04-05T19:40:24.219Z",
+      "stressResilienceScore": 73,
       "previousPerformanceScore": 85
     },
     {
@@ -78,36 +78,36 @@
       "label": "Apparato digerente",
       "slug": "apparato-digerente",
       "category": "fisiologia",
-      "performanceScore": 80,
-      "loadTime": 2810,
-      "firstPaint": 1012,
-      "lastAnalyzed": "2026-04-05T19:32:55.419Z",
-      "stressResilienceScore": 73,
-      "previousPerformanceScore": 87
+      "performanceScore": 83,
+      "loadTime": 2137,
+      "firstPaint": 1044,
+      "lastAnalyzed": "2026-04-05T19:40:36.934Z",
+      "stressResilienceScore": 76,
+      "previousPerformanceScore": 80
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html",
       "label": "Apparato digerente (versione semplificata)",
       "slug": "apparato-digerente-semplice",
       "category": "accessibilità",
-      "performanceScore": 90,
-      "loadTime": 2512,
-      "firstPaint": 1056,
-      "lastAnalyzed": "2026-04-05T19:33:08.324Z",
-      "stressResilienceScore": 82,
-      "previousPerformanceScore": 82
+      "performanceScore": 85,
+      "loadTime": 3281,
+      "firstPaint": 1064,
+      "lastAnalyzed": "2026-04-05T19:40:49.518Z",
+      "stressResilienceScore": 77,
+      "previousPerformanceScore": 90
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html",
       "label": "Apparato tegumentario",
       "slug": "apparato-tegumentario",
       "category": "fisiologia",
-      "performanceScore": 92,
-      "loadTime": 1716,
-      "firstPaint": 1266,
-      "lastAnalyzed": "2026-04-05T19:33:20.205Z",
-      "stressResilienceScore": 84,
-      "previousPerformanceScore": 93
+      "performanceScore": 93,
+      "loadTime": 1665,
+      "firstPaint": 1065,
+      "lastAnalyzed": "2026-04-05T19:41:01.407Z",
+      "stressResilienceScore": 85,
+      "previousPerformanceScore": 92
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html",
@@ -115,11 +115,11 @@
       "slug": "apparato-tegumentario-semplice",
       "category": "accessibilità",
       "performanceScore": 89,
-      "loadTime": 3154,
-      "firstPaint": 1044,
-      "lastAnalyzed": "2026-04-05T19:33:32.426Z",
+      "loadTime": 3145,
+      "firstPaint": 1164,
+      "lastAnalyzed": "2026-04-05T19:41:13.667Z",
       "stressResilienceScore": 81,
-      "previousPerformanceScore": 90
+      "previousPerformanceScore": 89
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html",
@@ -127,23 +127,23 @@
       "slug": "sistema-linfatico",
       "category": "fisiologia",
       "performanceScore": 96,
-      "loadTime": 1820,
-      "firstPaint": 1048,
-      "lastAnalyzed": "2026-04-05T19:33:44.096Z",
+      "loadTime": 1855,
+      "firstPaint": 1017,
+      "lastAnalyzed": "2026-04-05T19:41:25.472Z",
       "stressResilienceScore": 87,
-      "previousPerformanceScore": 97
+      "previousPerformanceScore": 96
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html",
       "label": "Sistema linfatico (versione semplificata)",
       "slug": "sistema-linfatico-semplice",
       "category": "accessibilità",
-      "performanceScore": 97,
-      "loadTime": 1993,
-      "firstPaint": 1153,
-      "lastAnalyzed": "2026-04-05T19:33:55.503Z",
-      "stressResilienceScore": 88,
-      "previousPerformanceScore": 94
+      "performanceScore": 92,
+      "loadTime": 1612,
+      "firstPaint": 1113,
+      "lastAnalyzed": "2026-04-05T19:41:37.010Z",
+      "stressResilienceScore": 84,
+      "previousPerformanceScore": 97
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Dermatologia.html",
@@ -151,22 +151,22 @@
       "slug": "dermatologia",
       "category": "fisiologia",
       "performanceScore": 100,
-      "loadTime": 1292,
-      "firstPaint": 1142,
-      "lastAnalyzed": "2026-04-05T19:34:06.433Z",
+      "loadTime": 1512,
+      "firstPaint": 1062,
+      "lastAnalyzed": "2026-04-05T19:41:48.082Z",
       "stressResilienceScore": 91,
-      "previousPerformanceScore": 99
+      "previousPerformanceScore": 100
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html",
       "label": "Dermatologia (versione semplificata)",
       "slug": "dermatologia-semplice",
       "category": "accessibilità",
-      "performanceScore": 96,
-      "loadTime": 1444,
-      "firstPaint": 994,
-      "lastAnalyzed": "2026-04-05T19:34:17.820Z",
-      "stressResilienceScore": 87,
+      "performanceScore": 89,
+      "loadTime": 2544,
+      "firstPaint": 911,
+      "lastAnalyzed": "2026-04-05T19:41:59.994Z",
+      "stressResilienceScore": 81,
       "previousPerformanceScore": 96
     },
     {
@@ -174,12 +174,12 @@
       "label": "Cellula",
       "slug": "cellula",
       "category": "fisiologia",
-      "performanceScore": 98,
-      "loadTime": 2149,
-      "firstPaint": 1347,
-      "lastAnalyzed": "2026-04-05T19:34:29.565Z",
-      "stressResilienceScore": 89,
-      "previousPerformanceScore": 90
+      "performanceScore": 95,
+      "loadTime": 2221,
+      "firstPaint": 1304,
+      "lastAnalyzed": "2026-04-05T19:42:11.989Z",
+      "stressResilienceScore": 86,
+      "previousPerformanceScore": 98
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Cellula-semplice.html",
@@ -187,47 +187,47 @@
       "slug": "cellula-semplice",
       "category": "accessibilità",
       "performanceScore": 89,
-      "loadTime": 2688,
-      "firstPaint": 1173,
-      "lastAnalyzed": "2026-04-05T19:34:40.715Z",
+      "loadTime": 2584,
+      "firstPaint": 1159,
+      "lastAnalyzed": "2026-04-05T19:42:23.159Z",
       "stressResilienceScore": 81,
-      "previousPerformanceScore": 87
+      "previousPerformanceScore": 89
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Capelli.html",
       "label": "Capelli",
       "slug": "capelli",
       "category": "fisiologia",
-      "performanceScore": 98,
-      "loadTime": 1908,
-      "firstPaint": 1246,
-      "lastAnalyzed": "2026-04-05T19:34:53.270Z",
-      "stressResilienceScore": 89,
-      "previousPerformanceScore": 97
+      "performanceScore": 95,
+      "loadTime": 1601,
+      "firstPaint": 1151,
+      "lastAnalyzed": "2026-04-05T19:42:36.140Z",
+      "stressResilienceScore": 86,
+      "previousPerformanceScore": 98
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Capelli-semplice.html",
       "label": "Capelli (versione semplificata)",
       "slug": "capelli-semplice",
       "category": "accessibilità",
-      "performanceScore": 93,
-      "loadTime": 2178,
-      "firstPaint": 1150,
-      "lastAnalyzed": "2026-04-05T19:35:04.697Z",
-      "stressResilienceScore": 85,
-      "previousPerformanceScore": 92
+      "performanceScore": 86,
+      "loadTime": 2561,
+      "firstPaint": 1106,
+      "lastAnalyzed": "2026-04-05T19:42:47.459Z",
+      "stressResilienceScore": 78,
+      "previousPerformanceScore": 93
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Staff.html",
       "label": "Staff",
       "slug": "staff",
       "category": "staff",
-      "performanceScore": 94,
-      "loadTime": 1380,
-      "firstPaint": 887,
-      "lastAnalyzed": "2026-04-05T19:35:16.296Z",
-      "stressResilienceScore": 86,
-      "previousPerformanceScore": 98
+      "performanceScore": 100,
+      "loadTime": 1473,
+      "firstPaint": 899,
+      "lastAnalyzed": "2026-04-05T19:42:59.201Z",
+      "stressResilienceScore": 91,
+      "previousPerformanceScore": 94
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Progetti.html",
@@ -235,11 +235,11 @@
       "slug": "progetti",
       "category": "altro",
       "performanceScore": 100,
-      "loadTime": 1620,
-      "firstPaint": 945,
-      "lastAnalyzed": "2026-04-05T19:35:27.113Z",
+      "loadTime": 1375,
+      "firstPaint": 1000,
+      "lastAnalyzed": "2026-04-05T19:43:09.788Z",
       "stressResilienceScore": 91,
-      "previousPerformanceScore": 95
+      "previousPerformanceScore": 100
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Marketing.html",
@@ -247,9 +247,9 @@
       "slug": "marketing",
       "category": "mercato cibernetica",
       "performanceScore": 100,
-      "loadTime": 1503,
-      "firstPaint": 903,
-      "lastAnalyzed": "2026-04-05T19:35:37.629Z",
+      "loadTime": 1510,
+      "firstPaint": 910,
+      "lastAnalyzed": "2026-04-05T19:43:20.445Z",
       "stressResilienceScore": 91,
       "previousPerformanceScore": 100
     },
@@ -259,9 +259,9 @@
       "slug": "os-support",
       "category": "supporto",
       "performanceScore": 100,
-      "loadTime": 1645,
-      "firstPaint": 862,
-      "lastAnalyzed": "2026-04-05T19:35:47.410Z",
+      "loadTime": 1655,
+      "firstPaint": 852,
+      "lastAnalyzed": "2026-04-05T19:43:30.069Z",
       "stressResilienceScore": 91,
       "previousPerformanceScore": 100
     },
@@ -271,9 +271,9 @@
       "slug": "tablet-forum",
       "category": "forum",
       "performanceScore": 86,
-      "loadTime": 903,
-      "firstPaint": 903,
-      "lastAnalyzed": "2026-04-05T19:35:56.738Z",
+      "loadTime": 762,
+      "firstPaint": 762,
+      "lastAnalyzed": "2026-04-05T19:43:39.356Z",
       "stressResilienceScore": 78,
       "previousPerformanceScore": 86
     },
@@ -283,23 +283,23 @@
       "slug": "specials",
       "category": "cellule staminali robotica",
       "performanceScore": 100,
-      "loadTime": 1462,
-      "firstPaint": 1012,
-      "lastAnalyzed": "2026-04-05T19:36:07.417Z",
+      "loadTime": 1161,
+      "firstPaint": 1011,
+      "lastAnalyzed": "2026-04-05T19:43:50.328Z",
       "stressResilienceScore": 91,
-      "previousPerformanceScore": 98
+      "previousPerformanceScore": 100
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html",
       "label": "Maturità tecnologica",
       "slug": "tech-maturity",
       "category": "maturità tecnologica",
-      "performanceScore": 79,
-      "loadTime": 1428,
-      "firstPaint": 795,
-      "lastAnalyzed": "2026-04-05T19:36:21.020Z",
-      "stressResilienceScore": 72,
-      "previousPerformanceScore": 78
+      "performanceScore": 76,
+      "loadTime": 1061,
+      "firstPaint": 804,
+      "lastAnalyzed": "2026-04-05T19:44:03.826Z",
+      "stressResilienceScore": 69,
+      "previousPerformanceScore": 79
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/accessibility-it.html",
@@ -307,23 +307,23 @@
       "slug": "accessibility-it",
       "category": "accessibilità",
       "performanceScore": 100,
-      "loadTime": 1448,
-      "firstPaint": 1052,
-      "lastAnalyzed": "2026-04-05T19:36:31.399Z",
+      "loadTime": 1604,
+      "firstPaint": 1102,
+      "lastAnalyzed": "2026-04-05T19:44:14.271Z",
       "stressResilienceScore": 91,
-      "previousPerformanceScore": 98
+      "previousPerformanceScore": 100
     },
     {
       "url": "https://gitechnolo.github.io/biotechproject/accessibility-en.html",
       "label": "Accessibility (information)",
       "slug": "accessibility-en",
       "category": "accessibilità",
-      "performanceScore": 99,
-      "loadTime": 2043,
-      "firstPaint": 1096,
-      "lastAnalyzed": "2026-04-05T19:36:41.651Z",
-      "stressResilienceScore": 90,
-      "previousPerformanceScore": 98
+      "performanceScore": 98,
+      "loadTime": 2318,
+      "firstPaint": 1060,
+      "lastAnalyzed": "2026-04-05T19:44:24.667Z",
+      "stressResilienceScore": 89,
+      "previousPerformanceScore": 99
     }
   ]
 }
