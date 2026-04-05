@@ -46,8 +46,8 @@ const BiotechResilience = (() => {
 
         const banner = document.createElement('div');
         banner.className = 'resilience-banner';
-        // Integrazione Font Sansation e Trasparenza richiesta
-        banner.style = "position:fixed; top:0; left:0; width:100%; color:#fff; text-align:center; z-index:2147483647; font-size:11px; padding:4px; font-weight:bold; letter-spacing:1px; font-family:'Sansation', monospace;";
+        // Integrazione Font Sansation e Trasparenza per un look moderno e non invasivo
+        banner.style = "position:fixed; top:0; left:0; width:100%; color:#fff; text-align:center; z-index:2147483647; font-size:11px; padding:4px; font-weight:bold; letter-spacing:1px; font-family: 'Sansation', 'Courier New', monospace;";
         banner.innerText = "RESILIENT EDGE ACTIVE: CLINICAL ACCESSIBILITY MODE";
         document.body.prepend(banner);
     };
