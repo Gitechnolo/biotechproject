@@ -16,11 +16,12 @@
 [Dutch 🇳🇱](README.nl.md) |
 [Português (BR) 🇧🇷](README.pt-br.md)
 
-> 💡 **Présentation Exécutive (27 mars 2026) :**
+> 💡 **Briefing Exécutif (28 mars 2026) :**
 >
-> Ce projet a évolué d'un experiment axé sur les performances vers un **Plan Stratégique pour une Architecture de Santé Résiliente**.  
-> Nous avons formalisé notre méthodologie "Stateless Edge" dans un nouveau rapport qui aborde les inégalités mondiales en santé causées par la latence et les barrières cognitives.  
+> Ce projet a **atteint le standard d'or WCAG 2.2 AAA** et a évolué d'une expérience axée sur la performance vers un **Strategic Blueprint pour une architecture de santé résiliente**.  
+> Nous avons formalisé notre méthodologie "Stateless Edge" dans un nouveau rapport qui traite des inégalités de santé mondiales causées par la latence et les barrières cognitives.  
 >
+> 🏛️ **Executive & Stakeholder Hub :** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
 > 👉 **Lire le Rapport Stratégique :** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
 
 
