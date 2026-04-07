@@ -21,6 +21,7 @@
 > This project has **Achieved WCAG 2.2 AAA Gold Standard** and evolved from a performance-driven experiment into a **Strategic Blueprint for Resilient Health Architecture**.  
 > We have formalized our "Stateless Edge" methodology in a new report that addresses global health inequities caused by latency and cognitive barriers.  
 >
+> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
 > 👉 **Read the Strategic Report:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
 
 
