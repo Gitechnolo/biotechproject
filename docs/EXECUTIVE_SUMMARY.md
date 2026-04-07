@@ -37,4 +37,13 @@
 | **Academic/HAN** | Compliance | [Institutional Collaboration Charter](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Institutional_Collaboration_Charter_2026.pdf) | Formal framework for audits and research partnerships. |
 
 ---
+
+## 🌐 Internationalization & Accessibility
+
+> [!NOTE]
+> **Language Localization:** This documentation is maintained in English to ensure terminological consistency with global SRE and Medical standards. For international stakeholders, we recommend using browser-native translation tools (Edge/Chrome/Safari), which provide 99% accuracy for our technical nomenclature and ADR structures.
+
+---
+
+
 *For further technical inquiries, contact the team at teambiotechproject@proton.me*
