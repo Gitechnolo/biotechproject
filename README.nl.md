@@ -16,12 +16,13 @@
 [Dutch 🇳🇱](README.nl.md) |
 [Português (BR) 🇧🇷](README.pt-br.md)
 
-> 💡 **Uitvoerende Samenvatting (27 maart 2026):**
+> 💡 **Executive Briefing (28 maart 2026):**
 >
-> Dit project is geëvolueerd van een prestatiegericht experiment naar een **Strategisch Blauwdruk voor Veerkrachtige Gezondheidsarchitectuur**.  
-> We hebben onze "Stateless Edge" methodologie geformaliseerd in een nieuw rapport dat wereldwijde gezondheidsongelijkheden aanpakt veroorzaakt door latentie en cognitieve barrières.  
+> Dit project heeft de **WCAG 2.2 AAA Gold Standard behaald** en is geëvolueerd van een prestatiegericht experiment naar een **Strategic Blueprint voor veerkrachtige gezondheidsarchitectuur**.  
+> We hebben onze "Stateless Edge"-methodologie geformaliseerd in een nieuw rapport dat wereldwijde ongelijkheid in de gezondheidszorg aanpakt, veroorzaakt door latentie en cognitieve barrières.  
 >
-> 👉 **Lees het Strategische Rapport:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
+> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
+> 👉 **Lees het Strategisch Rapport:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
 
 
 > 🌍 *"We spreken niet allemaal dezelfde talen, maar we spreken dezelfde taal: samenwerking."*  
