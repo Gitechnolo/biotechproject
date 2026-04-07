@@ -21,6 +21,10 @@
 * **The Vision:** We deliver results, not just promises. Our core infrastructure is already 100% complete and validated through automated SRE gates.
 * **The Proof:** [Milestone v1.x: Clinical-Grade Foundations](https://github.com/Gitechnolo/biotechproject/milestones) (**100% Complete**).
 
+> [!TIP]
+> **Architectural Paradigm: "Built with Cloud-Intelligence, Executed via Edge-Independence"**
+> BiotechProject leverages the global scale of GitHub Copilot during the design and audit phase to distill complex clinical logic into ultra-lean, Vanilla JS 'Discrete AI'. This ensures that while the architecture is born from high-end cloud intelligence, its clinical execution is 100% autonomous, stateless, and indestructible at the Edge - with zero cloud-dependency or operational costs during critical medical use.
+
 ---
 
 ## 🗺️ Executive Navigation Map (Deep Dive)
