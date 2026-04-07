@@ -100,19 +100,37 @@
                 });
             }
 
-            // Banner Rotation Logic (Race-Condition Protected)
-            let bnrCntr = 0;
-            STATE.bannerInterval = setInterval(() => {
-                const el = document.getElementById(BANNER_ID);
-                if (!el) { clearInterval(STATE.bannerInterval); return; } // Cleanup se sparisce dal DOM
+            // Banner Rotation Logic (Stop-on-Complete)
+let bnrCntr = 0;
 
-                el.classList.add("banner-fade-out");
-                setTimeout(() => {
-                    bnrCntr = (bnrCntr + 1) % banners.length;
-                    el.src = banners[bnrCntr];
-                    el.classList.remove("banner-fade-out");
-                }, 500);
-            }, 3500);
+STATE.bannerInterval = setInterval(() => {
+    const el = document.getElementById(BANNER_ID);
+    
+    // 1. Cleanup se l'elemento sparisce dal DOM
+    if (!el) { 
+        clearInterval(STATE.bannerInterval); 
+        return; 
+    }
+
+    // 2. Controllo fine ciclo: se siamo all'ultima immagine, fermiamo il timer
+    if (bnrCntr >= banners.length - 1) {
+        clearInterval(STATE.bannerInterval);
+        console.log("%c 🏁 Banner: Single cycle completed. Resources released.", "color: #4CAF50; font-weight: bold;");
+        return; 
+    }
+
+    // 3. Esecuzione transizione
+    el.classList.add("banner-fade-out");
+    
+    setTimeout(() => {
+        bnrCntr++; // Incremento lineare invece che ciclico
+        el.src = banners[bnrCntr];
+        el.classList.remove("banner-fade-out");
+        // Progresso log con indicazione numerica
+        console.log(`%c 🔄 Banner: Displaying ${bnrCntr + 1}/${banners.length}`, "color: #888;");
+    }, 500);
+
+}, 3500);
 
             // Avvio Sequenziale
             window.addEventListener("load", () => {
