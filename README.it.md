@@ -18,9 +18,10 @@
 
 > 💡 **Executive Briefing (28 marzo 2026):**
 >
-> Questo progetto è evoluto da un esperimento orientato alle prestazioni in un **Modello Strategico per un'Architettura Sanitaria Resiliente**.  
-> Abbiamo formalizzato la nostra metodologia "Stateless Edge" in un nuovo report che affronta le disuguaglianze globali in salute causate dalla latenza e dalle barriere cognitive.  
+> Questo progetto ha **raggiunto lo standard d'oro WCAG 2.2 AAA** ed è evoluto da un esperimento focalizzato sulle performance in un **Strategic Blueprint per un'architettura sanitaria resiliente**.  
+> Abbiamo formalizzato la nostra metodologia "Stateless Edge" in un nuovo report che affronta le disuguaglianze sanitarie globali causate dalla latenza e dalle barriere cognitive.  
 >
+> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
 > 👉 **Leggi il Report Strategico:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
 
 
