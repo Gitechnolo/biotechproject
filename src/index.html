@@ -32,8 +32,10 @@
 <style>
 /* CSS Critico Inline per Instant-Paint */
 html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
-/* Il contenuto parte visibile, ma se JS è presente viene nascosto per gestirlo */
-.js #main-content { opacity: 0; transition: opacity 0.3s ease; }
+/* 1. Il contenuto è visibile di default (per SEO e No-JS) */
+#main-content { opacity: 1; }
+/* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
+@supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
 @media(max-width:768px){.biotechbody{background-attachment:scroll;background-position:center 20%;background-image:linear-gradient(to bottom,rgba(1,8,8,.94),rgba(1,8,8,.75)),url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif")}.staff-layout-container{padding-left:18px;padding-right:18px;box-sizing:border-box}.biotechbody p{line-height:1.6;margin-bottom:1.5rem;text-align:justify;font-size:.95rem;background:rgba(0,8,8,.4);padding:12px;border-radius:6px}}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls { min-height: 215px; /* Ottimizzato */
@@ -48,7 +50,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     width: 100%; height: auto; background: rgba(255,255,255,0.03); /* Crea un'area grigia di attesa */}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
-<script>;!function(e,t,n){const o=document,r=()=>{(n=o.getElementById(e))&&(n.style.opacity="1")};r()||(i=new MutationObserver(((e,t)=>{r()&&(t.disconnect(),clearTimeout(c))})).observe(o.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{r()}),t))}( "main-content", 150);</script>
+<script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Biotech Project","alternateName":"Progetto Biotech","url":"https://gitechnolo.github.io/biotechproject/","description":"Portale educativo open source su biotecnologia e biologia umana. Inclusività scientifica e standard WCAG 2.1 per l'accessibilità cognitiva.","publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"],"inLanguage":["it","en"],"isAccessibleForFree":"True","educationalUse":["Science Education","Software Development Case Study"],"keywords":"Inclusive Design, WCAG 2.1, Biotech, Open Source, High Performance Web, DSA Accessibility, Multilingual"}</script>
 </head>
 <body class="biotechbody" data-modern-menu>
