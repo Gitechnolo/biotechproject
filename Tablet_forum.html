@@ -6,9 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="description" content="Biotech Chat - Contatta il nostro team di supporto, siamo qui per aiutarti!">
 <title>Biotech Chat</title>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" as="script">
 <!-- === CRITICAL CSS INLINE === -->
 <style>
 html, body{ margin: 0; padding: 0; background: #000f16; color: #d4d3d3; font-family: 'Sansation', sans-serif; min-height: 100%; position: relative;}
+/* 1. Il contenuto è visibile di default (per SEO e No-JS) */
+#main-content { opacity: 1; }
+/* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
+@supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
 /* === Testo in alto a sinistra (originale) === */
 .info-container{ position: fixed; top: 10px; left: 20px; z-index: 10; max-width: 600px; font-size: 14px; line-height: 1.5; padding: 0; margin: 0;}
 .biotechbold{ font-weight: bold; color: #00eaff;}
@@ -33,6 +38,8 @@ body.loaded #formChat{ opacity: 1; visibility: visible;}
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
 </noscript>
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
+<script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
 </head>
 <body>
 <!-- === INFO IN ALTO A SINISTRA === -->
