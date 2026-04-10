@@ -32,8 +32,8 @@ body.loaded #formChat{ opacity: 1; visibility: visible;}
 .open-button:hover{ background-color: #00ffff;}
 </style>
 <!-- === PRELOAD CSS ESTERNI === -->
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css" media="print" onload="this.media='all';this.onload=null;">
+<link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" media="print" onload="this.media='all';this.onload=null;">
 <noscript>
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_forumchat.min.css">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css">
@@ -42,6 +42,7 @@ body.loaded #formChat{ opacity: 1; visibility: visible;}
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
 </head>
 <body>
+<div id="main-content">  
 <!-- === INFO IN ALTO A SINISTRA === -->
 <div class="info-container">
 <button id="closeBtn" onclick="window.close()" aria-label="Chiudi finestra di supporto (tasto Enter)" title="Chiudi (tasto Enter)">
@@ -144,13 +145,13 @@ body.loaded #formChat{ opacity: 1; visibility: visible;}
 
   <!-- === Attiva transizione fluida dopo caricamento === -->
   <script>
-    // Forza il caricamento dei CSS e mostra tutto dopo un breve ritardo
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        document.body.classList.add('loaded');
-      }, 2000); // Leggero ritardo (a 1500 se veloce)
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 500ms o 1000ms per un'animazione elegante ma veloce
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+    }, 500); 
+  });
+</script>
 
 <!-- === FORM SODDISFAZIONE === -->
   <script>
@@ -192,6 +193,7 @@ document.getElementById('sendFeedback').addEventListener('click', async () => {
     document.getElementById('satisfactionForm').innerHTML = '<p>Grazie!</p>';
   }
 });
-</script>      
+</script>  
+</div>    
 </body>
 </html>   
