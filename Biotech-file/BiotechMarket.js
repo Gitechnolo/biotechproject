@@ -89,10 +89,34 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
   ctx.restore();
 }
 
+/**
+ * ACCESSIBILITY LAYER | DATA TABLE GENERATOR
+ * Genera la struttura dati per Screen Reader senza impattare il rendering GPU.
+ */
+function injectAccessibleData(d) {
+    const container = document.getElementById('accessible-table-container');
+    if (!container) return;
+
+    let rows = d.years.map((year, i) => {
+        const mVal = i < d.marketHist.length ? d.marketHist[i] : d.marketFore[i - d.marketHist.length];
+        const eVal = i < d.equityHist.length ? d.equityHist[i] : d.equityFore[i - d.equityHist.length];
+        const cVal = i < d.cyberHist.length ? d.cyberHist[i] : d.cyberFore[i - d.cyberHist.length];
+        return `<tr><td>${year}</td><td>${mVal}B</td><td>${eVal}%</td><td>${cVal}</td></tr>`;
+    }).join('');
+
+    container.innerHTML = `
+        <table class="sr-only">
+            <caption>Matrice Dati Biotech 2017-2032</caption>
+            <thead><tr><th>Anno</th><th>Market</th><th>Equity</th><th>Cyber</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table>`;
+}
+
 async function runBiotechEngineV61() {
   const canvas = document.getElementById('marketGraph');
   const ctx = canvas.getContext('2d');
   const d = await fetchIntegratedAnalytics();
+  injectAccessibleData(d);
   // --- LOG EVOLUTO ---
   const logStyle = "color: #00ff9d; font-family: 'Courier New', monospace; background: #0a0a0a; padding: 4px 8px; border-left: 3px solid #00ff9d; text-shadow: 0 0 5px rgba(0, 255, 157, 0.5);";
   
@@ -110,16 +134,23 @@ async function runBiotechEngineV61() {
   const vScale = (baseY - 120) / 450;
   const mapY = (val) => baseY - (val * vScale);
 
-  // GESTIONE PASSAGGIO MOUSE
+  // GESTIONE PASSAGGIO MOUSE (Versione Accessibile)
   canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     
-    // Calcola l'indice dell'anno più vicino al mouse
     const relativeX = mouseX - startX;
     const index = Math.round(relativeX / stepX);
     
     if (index >= 0 && index < d.years.length) {
+      // --- NUOVO: Aggiorna l'annunciatore solo se l'indice cambia ---
+      if (index !== activeYearIndex) {
+        const announcer = document.getElementById('live-announcer');
+        if (announcer) {
+          const mVal = index < d.marketHist.length ? d.marketHist[index] : d.marketFore[index - d.marketHist.length];
+          announcer.textContent = `Analisi anno ${d.years[index]}: valore mercato ${mVal}B.`;
+        }
+      }
       activeYearIndex = index;
     } else {
       activeYearIndex = -1;
