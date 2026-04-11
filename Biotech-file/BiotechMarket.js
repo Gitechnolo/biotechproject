@@ -33,6 +33,12 @@
  * -----------------------------------------------------------
  * Interaction: Mouse Hover | Logic: Neural Statistical Noise
  */
+const SRE_NEU = {
+    sint: 'font-family: "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px; margin-right: 5px;',
+    core: 'background: rgba(0, 200, 83, 0.15); color: #00ff55; border: 1px solid #00c853;',
+    inf:  'background: rgba(216, 0, 216, 0.15); color: #d800d8; border: 1px solid #d800d8;',
+    data: 'background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid #00d4ff;'
+  };
 
 let activeYearIndex = -1; // Indice dell'anno su cui si trova il mouse
 
@@ -117,13 +123,11 @@ async function runBiotechEngineV61() {
   const ctx = canvas.getContext('2d');
   const d = await fetchIntegratedAnalytics();
   injectAccessibleData(d);
-  // --- LOG EVOLUTO ---
-  const logStyle = "color: #00ff9d; font-family: 'Courier New', monospace; background: #0a0a0a; padding: 4px 8px; border-left: 3px solid #00ff9d; text-shadow: 0 0 5px rgba(0, 255, 157, 0.5);";
-  
-  console.group("BiotechProject Systems"); 
-  console.log("%c[NEURAL_CORE] v6.1: Cross-Sector Data Matrix Integrated.", logStyle);
-  console.log("%c[INFERENCE] Global Market Projections: Synced to 2032.", "color: #d455d4; font-family: 'Courier New', monospace;");
-  console.log("%c[DATA_FEED] WHO, Statista & Gartner streams: ACTIVE.", "color: #00d4ff; font-family: 'Courier New', monospace;");
+  // --- LOG SRE ---
+  console.group("%c BiotechProject Systems ", "color: #ffffff; background: #333; border-radius: 3px; font-family: sans-serif; font-weight: bold; padding: 2px 4px;"); 
+  console.log("%c🧠 NEURAL_CORE%c v6.1: Cross-Sector Data Matrix Integrated.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
+  console.log("%c🔮 INFERENCE%c Global Market Projections: Synced to 2032.", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
+  console.log("%c📥 DATA_FEED%c WHO, Statista & Gartner streams: ACTIVE.", SRE_NEU.sint + SRE_NEU.data, "color: #cccccc; font-family: monospace;");
   console.groupEnd();
 
   const startX = 80; 
