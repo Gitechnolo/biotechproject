@@ -217,6 +217,7 @@ async function runBiotechEngineV61() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const glow = 10 + Math.sin(Date.now() / 300) * 5;
 
+    // A. GRID & HIGHLIGHTER
     d.years.forEach((year, i) => {
       const x = startX + i * stepX;
       const isActive = (i === activeYearIndex);
@@ -229,18 +230,37 @@ async function runBiotechEngineV61() {
       ctx.fillText(year, x, baseY + 30);
     });
 
+    // --- MARKER DI SINCRONIZZAZIONE (Ripristino Design Avanzato) ---
     const transitionIndex = d.marketHist.length - 1; 
     const tx = startX + transitionIndex * stepX;
+
     ctx.save();
+    // Linea verticale tratteggiata
     ctx.strokeStyle = "rgba(231, 231, 231, 0.4)";
     ctx.setLineDash([4, 4]);
     ctx.beginPath(); ctx.moveTo(tx, baseY); ctx.lineTo(tx, 45); ctx.stroke();
+
+    // Doppia etichetta Sync Point
     ctx.textAlign = "center";
     ctx.fillStyle = "#e7e7e7";
     ctx.font = "bold 10px 'Sansation', monospace";
     ctx.fillText("SYNC POINT", tx, 40);
-    ctx.restore();
+    ctx.fillStyle = "rgba(0, 255, 85, 0.6)";
+    ctx.font = "8px 'Sansation', monospace";
+    ctx.fillText("NEURAL_INFERENCE_START", tx, 30);
 
+    // Nodo a Rombo SRE
+    const ty = mapY(d.marketHist[transitionIndex]);
+    ctx.translate(tx, ty);
+    ctx.rotate(Math.PI / 4);
+    ctx.fillStyle = "#fff";
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "#fff";
+    ctx.fillRect(-3, -3, 6, 6);
+    ctx.restore();
+    // -------------------------------------------------------------
+
+    // B. UI & PATHS
     renderProUI(ctx, canvas, d, startX, graphWidth, baseY);
     renderPath(ctx, d.equityHist.map(v=>mapY(v*1.6)), d.equityFore.map(v=>mapY(v*1.6)), "#00d4ff", startX, stepX, true);
     renderPath(ctx, d.cyberHist.map(v=>mapY(v)), d.cyberFore.map(v=>mapY(v)), "#d800d8", startX, stepX, false);
