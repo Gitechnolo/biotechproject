@@ -40,6 +40,36 @@ const SRE_NEU = {
     data: 'background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid #00d4ff;'
   };
 
+// --- BIOTECH AUDIO ENGINE (SONIFICATION LAYER) ---
+const BiotechAudio = {
+    ctx: null,
+    init() {
+        if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    },
+    playTone(value, type) {
+        this.init();
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        // Mapping: Frequenza base 200Hz + valore proporzionale
+        osc.frequency.setValueAtTime(200 + (value * 1.5), this.ctx.currentTime);
+        
+        // Timbro differenziato per settore (Cyber = Square, Health = Sine)
+        osc.type = (type === 'cyber') ? 'square' : 'sine';
+
+        gain.gain.setValueAtTime(0.05, this.ctx.currentTime); // Volume basso per non disturbare
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.3);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.3);
+    }
+};  
+
 let activeYearIndex = -1; // Indice dell'anno su cui si trova il mouse
 
 async function fetchIntegratedAnalytics() {
@@ -126,10 +156,25 @@ async function runBiotechEngineV61() {
   // --- LOG SRE ---
   console.group("%c BiotechProject Systems ", "color: #ffffff; background: #333; border-radius: 3px; font-family: sans-serif; font-weight: bold; padding: 2px 4px;"); 
   console.log("%c🧠 NEURAL_CORE%c v6.1: Cross-Sector Data Matrix Integrated.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
+  console.log("%c🔊 AUDIO_SON%c Neural Soundscape: READY (WCAG 3.0 Concept).", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c🔮 INFERENCE%c Global Market Projections: Synced to 2032.", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c📥 DATA_FEED%c WHO, Statista & Gartner streams: ACTIVE.", SRE_NEU.sint + SRE_NEU.data, "color: #cccccc; font-family: monospace;");
   console.groupEnd();
-
+  // --- LOGICA ATTIVAZIONE AUDIO ---
+  const audioBtn = document.getElementById('enable-audio-btn');
+  if (audioBtn) {
+    audioBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Previene interferenze con il canvas o altri moduli [cite: 39]
+      BiotechAudio.init();
+// Feedback visivo immediato conforme al tema dinamico
+    audioBtn.classList.add('active');
+      const statusLabel = document.getElementById('audio-status-label');
+      if (statusLabel) {
+        statusLabel.textContent = "Sonification: Active";
+        statusLabel.style.color = "#00ff55"; // SRE Green per stato operativo [cite: 12]
+      }
+    });
+  }
   const startX = 80; 
   const endX = canvas.width - 220; 
   const graphWidth = endX - startX;
@@ -149,6 +194,13 @@ async function runBiotechEngineV61() {
     if (index >= 0 && index < d.years.length) {
       // --- NUOVO: Aggiorna l'annunciatore solo se l'indice cambia ---
       if (index !== activeYearIndex) {
+
+// --- TRIGGER SONORO ---
+        const mVal = index < d.marketHist.length ? d.marketHist[index] : d.marketFore[index - d.marketHist.length];
+        const isCyber = true; // Possibile alternare il tipo in base al dataset focus
+        
+        BiotechAudio.playTone(mVal, isCyber ? 'cyber' : 'health');
+
         const announcer = document.getElementById('live-announcer');
         if (announcer) {
           const mVal = index < d.marketHist.length ? d.marketHist[index] : d.marketFore[index - d.marketHist.length];
