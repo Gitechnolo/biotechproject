@@ -38,7 +38,7 @@ const SRE_NEU = {
     core: 'background: rgba(0, 200, 83, 0.15); color: #00ff55; border: 1px solid #00c853;',
     inf:  'background: rgba(216, 0, 216, 0.15); color: #d800d8; border: 1px solid #d800d8;',
     data: 'background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid #00d4ff;'
-  };
+};
 
 // --- BIOTECH AUDIO ENGINE (SONIFICATION LAYER) ---
 const BiotechAudio = {
@@ -53,13 +53,13 @@ const BiotechAudio = {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
 
-        // Mapping: Frequenza base 200Hz + valore proporzionale
+        // Mapping: Frequenza base 200Hz + valore proporzionale al valore di mercato
         osc.frequency.setValueAtTime(200 + (value * 1.5), this.ctx.currentTime);
         
-        // Timbro differenziato per settore (Cyber = Square, Health = Sine)
+        // Timbro differenziato: Square per Cyber, Sine per Health
         osc.type = (type === 'cyber') ? 'square' : 'sine';
 
-        gain.gain.setValueAtTime(0.05, this.ctx.currentTime); // Volume basso per non disturbare
+        gain.gain.setValueAtTime(0.05, this.ctx.currentTime); 
         gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.3);
 
         osc.connect(gain);
@@ -70,7 +70,8 @@ const BiotechAudio = {
     }
 };  
 
-let activeYearIndex = -1; // Indice dell'anno su cui si trova il mouse
+let activeYearIndex = -1; 
+let isSonificationEnabled = false; // Master Switch per conformità SRE
 
 async function fetchIntegratedAnalytics() {
   return {
@@ -78,7 +79,6 @@ async function fetchIntegratedAnalytics() {
     marketHist: [100, 115, 120, 140, 160, 155, 180],
     equityHist: [40, 42, 48, 55, 62, 70, 78],
     cyberHist: [30, 45, 55, 60, 80, 100, 120],
-    // Proiezioni base
     marketFore: [200, 220, 240, 260, 280, 310, 335, 360, 390, 420],
     equityFore: [82, 86, 90, 93, 96, 99, 102, 105, 108, 112],
     cyberFore: [150, 180, 210, 240, 270, 300, 330, 360, 400, 450],
@@ -88,8 +88,6 @@ async function fetchIntegratedAnalytics() {
 
 function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
   ctx.save();
-  
-  // 1. NEURAL KEY
   const glossX = startX + 60; 
   const glossY = 50;
   ctx.font = "italic 10px monospace";
@@ -97,7 +95,6 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
   ctx.fillText("NEURAL INTERPRETATION GUIDE:", glossX, glossY);
   ctx.fillText("---------------------------------------", glossX, glossY + 10);
   
-  // Feedback dinamico nel glossario
   if (activeYearIndex !== -1) {
     ctx.fillStyle = "#00ff55";
     ctx.fillText(`PROBING TIMELINE: ${data.years[activeYearIndex]} | STATUS: ANALYZING...`, glossX, glossY + 25);
@@ -105,7 +102,6 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
     ctx.fillText("HOVER OVER GRAPH TO PROBE SPECIFIC DATA", glossX, glossY + 25);
   }
 
-  // 2. HUD FISSO (Spostato per bilanciamento)
   const xHUD = canvas.width - 120; 
   const yHUD = baseY - 148; 
   ctx.font = "bold 12px 'Sansation', monospace";
@@ -121,14 +117,9 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
     ctx.fillStyle = item.col;
     ctx.fillText(item.text, xHUD, yHUD + (i * 18));
   });
-
   ctx.restore();
 }
 
-/**
- * ACCESSIBILITY LAYER | DATA TABLE GENERATOR
- * Genera la struttura dati per Screen Reader senza impattare il rendering GPU.
- */
 function injectAccessibleData(d) {
     const container = document.getElementById('accessible-table-container');
     if (!container) return;
@@ -153,28 +144,39 @@ async function runBiotechEngineV61() {
   const ctx = canvas.getContext('2d');
   const d = await fetchIntegratedAnalytics();
   injectAccessibleData(d);
-  // --- LOG SRE ---
+
   console.group("%c BiotechProject Systems ", "color: #ffffff; background: #333; border-radius: 3px; font-family: sans-serif; font-weight: bold; padding: 2px 4px;"); 
   console.log("%c🧠 NEURAL_CORE%c v6.1: Cross-Sector Data Matrix Integrated.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
   console.log("%c🔊 AUDIO_SON%c Neural Soundscape: READY (WCAG 3.0 Concept).", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c🔮 INFERENCE%c Global Market Projections: Synced to 2032.", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c📥 DATA_FEED%c WHO, Statista & Gartner streams: ACTIVE.", SRE_NEU.sint + SRE_NEU.data, "color: #cccccc; font-family: monospace;");
   console.groupEnd();
-  // --- LOGICA ATTIVAZIONE AUDIO ---
+
+  // --- LOGICA ATTIVAZIONE AUDIO (MASTER CONTROL) ---
   const audioBtn = document.getElementById('enable-audio-btn');
   if (audioBtn) {
     audioBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Previene interferenze con il canvas o altri moduli [cite: 39]
+      e.stopPropagation();
       BiotechAudio.init();
-// Feedback visivo immediato conforme al tema dinamico
-    audioBtn.classList.add('active');
+      isSonificationEnabled = !isSonificationEnabled;
+      
       const statusLabel = document.getElementById('audio-status-label');
-      if (statusLabel) {
-        statusLabel.textContent = "Sonification: Active";
-        statusLabel.style.color = "#00ff55"; // SRE Green per stato operativo [cite: 12]
+      if (isSonificationEnabled) {
+        audioBtn.classList.add('active');
+        if (statusLabel) {
+          statusLabel.textContent = "Sonification: Active";
+          statusLabel.style.color = "#00ff55";
+        }
+      } else {
+        audioBtn.classList.remove('active');
+        if (statusLabel) {
+          statusLabel.textContent = "Sonification: Standby";
+          statusLabel.style.color = "#d800d8";
+        }
       }
     });
   }
+
   const startX = 80; 
   const endX = canvas.width - 220; 
   const graphWidth = endX - startX;
@@ -183,27 +185,23 @@ async function runBiotechEngineV61() {
   const vScale = (baseY - 120) / 450;
   const mapY = (val) => baseY - (val * vScale);
 
-  // GESTIONE PASSAGGIO MOUSE (Versione Accessibile)
   canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
-    
     const relativeX = mouseX - startX;
     const index = Math.round(relativeX / stepX);
     
     if (index >= 0 && index < d.years.length) {
-      // --- NUOVO: Aggiorna l'annunciatore solo se l'indice cambia ---
       if (index !== activeYearIndex) {
-
-// --- TRIGGER SONORO ---
         const mVal = index < d.marketHist.length ? d.marketHist[index] : d.marketFore[index - d.marketHist.length];
-        const isCyber = true; // Possibile alternare il tipo in base al dataset focus
-        
-        BiotechAudio.playTone(mVal, isCyber ? 'cyber' : 'health');
+
+        // Trigger Sonoro controllato dal Master Switch
+        if (typeof isSonificationEnabled !== 'undefined' && isSonificationEnabled) {
+          BiotechAudio.playTone(mVal, 'cyber');
+        }
 
         const announcer = document.getElementById('live-announcer');
         if (announcer) {
-          const mVal = index < d.marketHist.length ? d.marketHist[index] : d.marketFore[index - d.marketHist.length];
           announcer.textContent = `Analisi anno ${d.years[index]}: valore mercato ${mVal}B.`;
         }
       }
@@ -219,65 +217,38 @@ async function runBiotechEngineV61() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const glow = 10 + Math.sin(Date.now() / 300) * 5;
 
-    // A. GRID & HIGHLIGHTER
     d.years.forEach((year, i) => {
       const x = startX + i * stepX;
-      
       const isActive = (i === activeYearIndex);
       ctx.strokeStyle = isActive ? "rgba(0, 255, 85, 0.3)" : "rgba(255, 255, 255, 0.05)";
       ctx.lineWidth = isActive ? 2 : 1;
-
       ctx.beginPath(); ctx.moveTo(x, baseY); ctx.lineTo(x, 50); ctx.stroke();
-
       ctx.textAlign = "center";
       ctx.fillStyle = isActive ? "#00ff55" : (i < d.marketHist.length ? "#e7e7e7" : "rgba(0, 255, 85, 0.5)");
       ctx.font = isActive ? "bold 13px 'Sansation', monospace" : "bold 9px 'Sansation', monospace";
       ctx.fillText(year, x, baseY + 30);
     });
 
-    // --- NUOVO: MARKER DI SINCRONIZZAZIONE (Punto di transizione 2023) ---
     const transitionIndex = d.marketHist.length - 1; 
     const tx = startX + transitionIndex * stepX;
-
     ctx.save();
-    // Linea verticale tratteggiata di demarcazione
     ctx.strokeStyle = "rgba(231, 231, 231, 0.4)";
     ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    ctx.moveTo(tx, baseY);
-    ctx.lineTo(tx, 45);
-    ctx.stroke();
-
-    // Etichette del Sync Point
+    ctx.beginPath(); ctx.moveTo(tx, baseY); ctx.lineTo(tx, 45); ctx.stroke();
     ctx.textAlign = "center";
     ctx.fillStyle = "#e7e7e7";
     ctx.font = "bold 10px 'Sansation', monospace";
     ctx.fillText("SYNC POINT", tx, 40);
-    ctx.fillStyle = "rgba(0, 255, 85, 0.6)";
-    ctx.font = "8px 'Sansation', monospace";
-    ctx.fillText("NEURAL_INFERENCE_START", tx, 30);
-
-    // Nodo di giunzione (piccolo rombo bianco sulla linea principale)
-    const ty = mapY(d.marketHist[transitionIndex]);
-    ctx.translate(tx, ty);
-    ctx.rotate(Math.PI / 4);
-    ctx.fillStyle = "#fff";
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = "#fff";
-    ctx.fillRect(-3, -3, 6, 6);
     ctx.restore();
-    // --------------------------------------------------------------------
 
-    // B. UI & PATHS
     renderProUI(ctx, canvas, d, startX, graphWidth, baseY);
     renderPath(ctx, d.equityHist.map(v=>mapY(v*1.6)), d.equityFore.map(v=>mapY(v*1.6)), "#00d4ff", startX, stepX, true);
     renderPath(ctx, d.cyberHist.map(v=>mapY(v)), d.cyberFore.map(v=>mapY(v)), "#d800d8", startX, stepX, false);
     renderMarketMain(ctx, d.marketHist.map(v=>mapY(v)), d.marketFore.map(v=>mapY(v)), startX, stepX, glow);
 
     requestAnimationFrame(draw);
-}
+  }
 
-  // Funzioni renderPath e renderMarketMain rimangono invariate per stabilità
   function renderPath(ctx, h, f, col, sX, stX, dashed) {
     ctx.save();
     if(dashed) ctx.setLineDash([4, 4]);
