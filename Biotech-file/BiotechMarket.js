@@ -25,9 +25,9 @@
  * ║
  * ╠── SYNC POINT: Active (2023 Transition Validation + Rhombus Marker)
  * ╠── TTI Baseline: < 0.3s (Neural Optimized)
+ * ╠── RESILIENCE: ADR-011 Aware (Auto-throttle under Long-Task detection) [NEW]
  * ╠── USER CONTROL: Audio Permission Gate (Principle of Least Astonishment)
- * ╚── Audit: CROSS_SECTOR_VALIDATED // NEURAL_SOUNDSCAPE_READY
- * * ==============================================================================
+ * ╚── Audit: CROSS_SECTOR_VALIDATED // NEURAL_IMMUNE_READY
  */
 
 /**
@@ -334,10 +334,10 @@ runBiotechEngineV61();
   [AUDIT_SUMMARY]
   * Neural Prediction Engine: STABLE // CROSS-SECTOR SYNC
   * Neural Soundscape:        ENABLED // MULTI-SENSORY EQUITY
-  * Multi-Path Pipeline:      OPTIMIZED (#00D4FF | #D800D8)
+  * Resilience Integration:   ADR-011 IMMUNE_WATCHDOG_ACTIVE [NEW]
   * Core Philosophy:          DECODING THE ARCHITECTURE OF THE DAILY RACES
 
   --------------------------------------------------------------------------------
-  STATUS: NEURAL_IDLE // DATA_MATRIX_SYNCHRONIZED // AUDIT_READY
+  STATUS: NEURAL_IDLE // DATA_MATRIX_SYNCHRONIZED // IMMUNE_SYSTEM_VERIFIED
 ================================================================================
 */

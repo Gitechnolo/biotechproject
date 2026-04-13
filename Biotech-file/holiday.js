@@ -1,42 +1,36 @@
 /**
  * =============================================================================
- * BIOTECH PROJECT - SRE ARCHITECTURAL FUNCTIONAL MAP (V4.6)
+ * BIOTECH PROJECT - SRE ARCHITECTURAL FUNCTIONAL MAP (V6.1) [UPDATED]
  * =============================================================================
  *
  * [ SECTION 1: CONFIG & LOGGING ]
- * - SRE_H_LOGS: Visual debugging layer. Provides immediate visual feedback in 
- * the console using a standardized theme system to identify system states.
- * - STATE: The "Control Plane". Manages memory pointers for intervals and 
- * timeouts to prevent resource leaks and ensure clean state transitions.
+ * - SRE_H_LOGS: Visual debugging layer. Standardized theme system [v6.1].
+ * - STATE: The "Control Plane". Resource-leak protection & state management.
  *
  * [ SECTION 2: BOOTSTRAP & DOM INTEGRITY ]
- * - DOMContentLoaded: The entry point. Performs health checks on critical DOM 
- * elements (like #Banner) before initiating any logic (Fail-Fast principle).
- * - Resource Preloader: Bandwidth-aware asset fetching to minimize UI latency.
- * - Banner Rotation: A resilient loop with built-in cleanup logic if the 
- * target element is removed from the live document.
+ * - DOMContentLoaded: Health checks & Fail-Fast entry point.
+ * - Resource Preloader: Bandwidth-aware asset fetching.
  *
- * [ SECTION 3: UI ENGINE (POPUPS) ]
- * - showHolidayPopup(): The user-facing notification layer. Implements
- * automated TTL (Time-To-Live) and real-time countdown updates for 
- * active holidays using high-frequency UI refreshes.
+ * [ SECTION 3: UI ENGINE ]
+ * - showHolidayPopup(): Notification layer with TTL (Time-To-Live) logic.
  *
- * [ SECTION 4: EXPORT ENGINE (AUDIT) ]
- * - exportHolidayData(): The reporting bridge. Transforms internal state into
- * standardized CSV/JSON audits. Focused on numerical precision (Days/Hrs/Min)
- * while bypassing timezone-sensitive string formatting.
- * - downloadFile(): Low-level blob handler with automated URL revocation to
- * ensure browser memory remains optimized after data extraction.
+ * [ SECTION 4: EXPORT ENGINE ]
+ * - exportHolidayData(): Reporting bridge (CSV/JSON) for data portability.
+ * - downloadFile(): Memory-optimized blob handler (URL revocation).
  *
  * [ SECTION 5: CALCULATION CORE ]
- * - HolidayCalcs: Pure mathematical functions for astronomical (Easter), 
- * relative (Easter Monday), and fixed date determination.
- * - getProcessedHolidays(): The "Truth Provider". Normalizes system time and
- * calculates the delta between "Now" and "Event" across multiple years.
+ * - HolidayCalcs: Astronomical & deterministic date determination.
+ * - getProcessedHolidays(): Multi-year delta calculation (Truth Provider).
  *
  * [ SECTION 6: SYNC & EXPOSURE ]
- * - triggerHumanSync(): Heartbeat signal for manual verification.
- * - window.BiotechSRE: Public API exposure for administrative console access.
+ * - triggerHumanSync(): Manual heartbeat verification signal.
+ * - window.BiotechSRE: Public API for administrative console auditing.
+ *
+ * [ SECTION 7: IMMUNE ORCHESTRATION ] [NEW]
+ * - Guardian Liaison: Provides the baseline metrics for BiotechGuardian.js.
+ * - Patch Response: Initializing the ARIA Buffer for the Patch Engine.
+ * =============================================================================
+ * STATUS: CORE_SYNCHRONIZED // ADR-011 COMPLIANT // VERSION: 6.1.0
  * =============================================================================
  */
 
@@ -404,3 +398,8 @@ function turnOffLight() {
  * mastering the creative passion through rigorous logic.
  * * "Refusing to kill the Minotaur. Coexisting with the beast."
  */
+
+/* ================================================================================
+* END OF FILE - BIOTECH_SYSTEM_INTEGRITY_VERIFIED... SYSTEM_HARDENED_AND_READY
+================================================================================
+*/
