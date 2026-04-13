@@ -37,8 +37,8 @@
  */
 const SRE_NEU = {
     sint: 'font-family: "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px; margin-right: 5px;',
-    group: 'background: #333; color: #ffffff; border-radius: 3px; font-family: sans-serif; font-weight: bold; padding: 2px 4px;',
-    core: 'background: rgba(0, 200, 83, 0.15); color: #00ff55; border: 1px solid #00c853;',
+    group:'background: #333; color: #ffffff; border-radius: 3px; font-family: sans-serif; font-weight: bold; padding: 2px 4px;',
+    core: 'background: rgba(0, 200, 83, 0.15); color:  #00ff55; border: 1px solid #00c853;',
     inf:  'background: rgba(216, 0, 216, 0.15); color: #d800d8; border: 1px solid #d800d8;',
     data: 'background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid #00d4ff;'
 };
