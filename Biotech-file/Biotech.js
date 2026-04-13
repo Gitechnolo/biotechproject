@@ -1,16 +1,23 @@
 /**
- * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR
+ * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR [v6.1 - Neural Core]
  * -------------------------------------------------------------------------
  * ARCHITECTURE: Modular Vanilla JS (Zero-Dependency)
- * RELIABILITY: Multi-Entry DOMContentLoaded (Isolate Execution Contexts)
- * PERFORMANCE: Frame-throttled animations (10 FPS) & Lazy-Idle Hydration
- * COMPLIANCE: WCAG 2.1 AAA (Screen Reader Announcements & ARIA Controls)
- * NOTE: MODULE 06 & SERVICE - Molecular data computation handled by external specialized modules.
+ * RELIABILITY: SRE Passive Guardian & Anti-Fragile Patch Engine [ADR-010]
+ * PERFORMANCE: Frame-throttled (10 FPS) | TTI < 0.3s | Lazy-Idle Hydration
+ * COMPLIANCE: WCAG 2.2 AAA (Aria-Live Sonification & High-Resilience UI)
  * -------------------------------------------------------------------------
-BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
-=============================================
+BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (Updated v6.1)
+============================================================
 
-[ROOT] index.html / script.js
+[ROOT] index.html / Biotech.js (Core Orchestrator)
+ ║
+ ╠══ SRE RELIABILITY LAYER (The Immune System) [NEW]
+ ║   ║
+ ║   ╠── SERVICE: BiotechGuardian.js
+ ║   ║            (Passive PerformanceObserver / Long-Task Detection)
+ ║   ║
+ ║   ╚── SERVICE: BiotechPatchEngine.js
+ ║                (Auto-Resilience Scaling / 5s Anti-Loop Cooldown)
  ║
  ╠══ CORE AREA: UX & RENDERING PIPELINE
  ║   ║
@@ -26,7 +33,7 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
  ╠══ INTERFACE AREA: ACCESSIBILITY & DELIVERY
  ║   ║
  ║   ╠── MODULE 04: Core UI & A11y Controller
- ║   ║              (WCAG 2.1 AAA / Speech Synthesis / Focus Trap)
+ ║   ║              (WCAG 2.2 AAA / Speech Synthesis / Focus Trap)
  ║   ║
  ║   ╚── MODULE 05: i18n & Media Orchestrator
  ║                  (JSON Dynamic Translation / On-Demand Video Hydration)
@@ -37,16 +44,18 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026
      ║              (Earth Axial Tilt Tracking / Metabolic Sync)
      ║
      ╚── SERVICE: PDF Audit Generation System
-                  (Real-time Data Virtualization / Secure Download) 
+                  (SRE Audit Trace / Secure Data Virtualization) 
 */
 const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
-  pre: 'background: #4CAF50; color: #ffffff; border: 1px solid #00c853;',                  // Verde: Performance & Pre-fetching
-  vid: 'background: #2196F3; color: #ffffff; border: 1px solid #00c853;',                  // Blu: Video & Media
-  engita: 'background: #738576; color: #ffffff; border: 1px solid #00c853;',               // Grigio-Verde: i18n & Traduzioni
-  dom: 'background: #9C27B0; color: #ffffff; border: 1px solid #00c853;',                  // Viola: DOM & Inizializzazione
-  circadian: 'background: #FF6F00; color: #ffffff;',                                         // Arancione: Biocircadian & Sincronizzazione Oraria
-  speech: 'background: rgba(0, 230, 118, 0.5); color: #000000; border: 1px solid #00c853;' // Verde Chiaro: Speech Synthesis & A11y
+  pre: 'background: #4CAF50; color: #ffffff; border: 1px solid #00c853;',                     // Verde: Performance & Pre-fetching
+  vid: 'background: #2196F3; color: #ffffff; border: 1px solid #00c853;',                     // Blu: Video & Media
+  engita: 'background: #738576; color: #ffffff; border: 1px solid #00c853;',                  // Grigio-Verde: i18n & Traduzioni
+  dom: 'background: #9C27B0; color: #ffffff; border: 1px solid #00c853;',                     // Viola: DOM & Inizializzazione
+  circadian: 'background: #FF6F00; color: #ffffff;',                                            // Arancione: Biocircadian & Sincronizzazione Oraria
+  speech: 'background: rgba(0, 230, 118, 0.5); color: #000000; border: 1px solid #00c853;',   // Verde Chiaro: Speech Synthesis & A11y
+  guardian: 'background: rgba(0, 255, 180, 0.2); color: #00ffa2; border: 1px solid #00ffa2;', // Verde Menta: Sistema Immunitario (Monitoraggio)
+  patch: 'background: #ff9800; color: #ffffff; border: 1px solid #e65100;'                    // Arancione Intenso: Patch Engine (Interventi di Emergenza)
 };
 
 /**
@@ -1080,7 +1089,7 @@ function updateLastModified(lang) {
     // Import dinamico per preservare il TTI < 0.3s
     import('./BiotechGuardian.js')
       .then(() => {
-        console.log(`%c🛡️ SRE Guardian: Online & Monitoring`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.pre);
+        console.log(`%c🛡️ SRE Guardian: Online & Monitoring`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.guardian);
       })
       .catch(err => {
         console.warn(`%c⚠️ SRE Guardian: Load Bypass`, SRE_LOG_MAIN.syntax + 'background:#f44336;color:#fff;', err);
@@ -1096,18 +1105,19 @@ function updateLastModified(lang) {
 })();
 /*
 ================================================================================
-      BIOTECHPROJECT - SYSTEM AUDIT LOG & ARCHITECTURAL SIGN-OFF
+      BIOTECHPROJECT - SYSTEM AUDIT LOG & ARCHITECTURAL SIGN-OFF [v6.1]
 ================================================================================
-  Status:           SYSTEM_RELAXATION_MODE
+  Status:           SRE_STEALTH_MONITORING_ACTIVE
   Module Integrity: CIRCADIAN_RHYTHMS_STABILIZED [OK]
-  Filter Status:    QREDSHIFT_CALIBRATION_COMPLETE [OK]
-  Orchestration:    ALL MODULES (01-06) RETURNED TO IDLE [OK]
-  Timestamp:        2026-02-14 21:40:12 UTC
+  Immune System:    GUARDIAN_PE_OBSERVER_DEPLOYED [OK]
+  Resilience:       HIGH_RELIANCE_AUTO_SCALE_READY [OK]
+  Orchestration:    ALL MODULES (01-06) & SERVICES UNDER WATCH [OK]
+  Timestamp:        2026-04-13 14:45:00 UTC
 --------------------------------------------------------------------------------
-   What a wicked game you play, to make me feel this way.
+  What a wicked game you play, to make me feel this way.
    What a wicked thing to do, to let me dream of you.
    
    -- (The Red Stones Interpretation - Originally by Chris Isaak)
 --------------------------------------------------------------------------------
-* END OF FILE - BIOTECH_SYSTEM_IDLE... STANDBY_MODE_ACTIVE
+* END OF FILE - BIOTECH_SYSTEM_INTEGRITY_VERIFIED... STANDBY_MODE_ACTIVE
 */

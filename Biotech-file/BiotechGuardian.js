@@ -1,11 +1,32 @@
 /**
- * BIOTECH PROJECT | GUARDIAN SYSTEM (v1.1.0 - Observer Edition)
+ * BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog)
  * -------------------------------------------------------------------------
- * ROLE: Passive Performance Watchdog (Stealth Mode)
- * TARGET: FPS Integrity & Module 03 Latency
- * STATUS: Anti-Deprecation Optimized
+ * ARCHITECTURE: Passive Multi-Heuristic Observer
+ * MONITORING: Long-Tasks (FPS) & Module 03 Latency Execution
+ * STRATEGY: Stealth Mode (Zero-Interference via PerformanceObserver)
  * -------------------------------------------------------------------------
- */
+BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM
+===================================================
+
+ [INTERNAL SENSORS]
+        ║
+        ╠══ PerformanceObserver (longtask) ══╗
+        ║                                    ║
+        ╠══ setInterval (mod03-exec-marks) ══╬══[ EVALUATION ENGINE ]
+        ║                                    ║          ║
+        ╚══ Performance Timeline Analysis ═══╝          ║
+                                                        ║
+             ╔══════════════════════════════════════════╝
+             ║
+             ╠══ THRESHOLD CHECK (ADR-010: 10FPS / 150ms)
+             ║
+             ╠══ DEBOUNCE LOGIC (3000ms Cooldown)
+             ║
+             ╚══ BROADCAST: 'biotech:resilience-needed' (CustomEvent)
+
+-------------------------------------------------------------------------
+STATUS: STEALTH_WATCHDOG_ACTIVE // ZERO_DEPRECATION_SYNTAX
+*/
 
 const BiotechGuardian = (() => {
     const CONFIG = {
