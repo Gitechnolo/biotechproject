@@ -1070,6 +1070,30 @@ function updateLastModified(lang) {
   el.textContent = `${label}: ${lastModifiedDate.toLocaleString(locale, options)}`;
 } 
 // === End ultima modifica pagina ===
+
+// ==========================================================================
+// [ADR-010] GUARDIAN & RESILIENCE DYNAMIC ACTIVATION
+// Attiva il monitoraggio SRE solo a sistema stabilizzato.
+// ==========================================================================
+(function() {
+  const activateGuardian = () => {
+    // Import dinamico per preservare il TTI < 0.3s
+    import('./BiotechGuardian.js')
+      .then(() => {
+        console.log(`%c🛡️ SRE Guardian: Online & Monitoring`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.pre);
+      })
+      .catch(err => {
+        console.warn(`%c⚠️ SRE Guardian: Load Bypass`, SRE_LOG_MAIN.syntax + 'background:#f44336;color:#fff;', err);
+      });
+  };
+
+  // Verifichiamo lo stato del documento per l'aggancio "Idle"
+  if (document.readyState === 'complete') {
+    activateGuardian();
+  } else {
+    window.addEventListener('load', activateGuardian);
+  }
+})();
 /*
 ================================================================================
       BIOTECHPROJECT - SYSTEM AUDIT LOG & ARCHITECTURAL SIGN-OFF
