@@ -42,12 +42,12 @@ Wo Biotechnologie auf Code trifft, um digitale Werkzeuge für Forschung und Inno
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Meilenstein: Neuronale Intelligenz & Bio-Cyber-Konvergenz (11. April 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Meilenstein: Neural Core & Bio-Digital Immunity (14. April 2026)**
 > 
-> Wir haben das **[ADR-010 | Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26)** offiziell formalisiert.  
-> Dieser Meilenstein markiert den Übergang von statischer Resilienz zu **proaktiver Prognose (Forecasting)**. Durch die Integration unserer Neural Inference Engine (v6.1) synchronisieren wir nun Bio-Health-Datensätze mit Cyber-Security-Trends und garantieren Datentransparenz durch ein vollständig ARIA-konformes Mirroring-System.
+> Wir haben erfolgreich **[ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27)** implementiert.  
+> Das System verfügt jetzt über ein **autonomes Immunsystem (v6.2)**. Durch die Integration eines passiven `PerformanceObserver` (The Guardian) erkennt die Architektur Performance-Engpässe in Echtzeit und heilt sich selbst, um die Stabilität gemäß **WCAG 2.2 AAA** anche unter extremer Rechenlast zu gewährleisten.
 > 
-> *Dieses Update schließt die Lücke zwischen Rohdaten und strategischer Intelligenz und erfüllt unser Versprechen für eine fortschrittliche klinische Entscheidungsunterstützung.*
+> *Dieses Update führt das „SRE Guardian Terminal“ ein, eine Echtzeit-Telemetrieoberfläche zur proaktiven Überwachung der Systemgesundheit.*
 
 ---
 
@@ -174,6 +174,7 @@ Dieses Projekt folgt einem rigorosen Entscheidungsprozess, um enterprise-grade R
 | **008** | **Infrastructure: Nightly SRE Reliability Gate** | Implementierung eines automatisierten Integritäts-Gates zur Gewährleistung der architektonischen Unveränderlichkeit und 24h-Validierung. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neuronale Konvergenz & Sektorübergreifende Intelligenz** | Proaktive Bio-Cyber-Prognose | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
+| **011** | **Neural Core: Passiver SRE-Guardian** | Autonome Performance-Selbstheilung | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27) |
 
 <details>
 <summary><b>Klicke zum Erweitern: Vollständige ADR-Begründung</b></summary>
@@ -237,6 +238,12 @@ Dieses Projekt folgt einem rigorosen Entscheidungsprozess, um enterprise-grade R
 * **Begründung**: Weiterentwicklung über die statische Resilienz hinaus hin zu proaktiven Prognosen durch die Zusammenführung von WHO- (Bio) und Gartner-Datensätzen (Cyber).
 * **Ergebnis**: Echtzeit-Synchronisation zwischen dem GPU-beschleunigten Canvas und dem semantischen DOM, um die Barrierefreiheit für alle prädiktiven Datenpunkte zu gewährleisten.
 * **Validierung**: [Neuronale Logik anzeigen (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
+
+### [ADR-011] Neural Core v6.2: Passiver SRE-Guardian & Immunsystem
+* **Entscheidung**: Implementierung von `BiotechGuardian.js` (Passive Überwachung) und `BiotechPatchEngine.js` (Autonome Fehlerbehebung).
+* **Begründung**: Um „Antifragilität“ zu erreichen, muss das System Performance-Einbußen (Long Tasks > 100ms) ohne aktives Polling erkennen und automatisch in den „Clinical Mode“ wechseln, um die Barrierefreiheit zu schützen.
+* **Ergebnis**: Eine bio-digitale Immunantwort, die das Resilienz-Level autonom skaliert, verifiziert durch ein interaktives SRE-Echtzeit-Terminal.
+* **Validierung**: [Siehe Entwicklung des Immunsystems (#27)](https://github.com/Gitechnolo/biotechproject/issues/27)
 
 </details>
 
@@ -417,19 +424,17 @@ lang/
 ```
 
 
-## 📅 Letzter Überprüfungszeitraum
-**11 April 2026**
+## 📅 Letztes Verifizierungsdatum
+**14. April 2026**
 
 ## 🔮 Aktuelle Updates (Zusammenfassung)
 
-Wesentliche Verbesserungen der letzten Zeit:
+Wichtige aktuelle Verbesserungen (kurzgefasst):
 
-- Performance-Dashboard: Lighthouse-Daten integriert in data/performance-latest.json und visualisiert in Tech_Maturity.html (Diagramm + Seitenliste + Export).
-- Datenexport: JSON/CSV-Export vom Dashboard ("Export data").
-- Diagramme + Barrierefreiheit: Chart.js-Diagramme mit versteckten Tabellen/Beschreibungen für unterstützende Technologien.
-- Performance-Optimierungen: fortgeschrittenes Lazy-Loading, verzögertes Laden schwerer Skripte, optimiertes Partikel-Canvas und Aufräumarbeiten.
-- UX & Präferenzen: dynamisches Theme, persistierte Präferenzen (LocalStorage), verbesserte Tastaturnavigation und ARIA/Fokussteuerung.
-- CI/CD & Transparenz: automatisierte Lighthouse-Läufe (generate-performance.js) und öffentliches JSON für Audits.
+- **Neural Core v6.2 (Immunsystem)**: Einsatz von `BiotechGuardian.js` zur passiven Performance-Überwachung und `BiotechPatchEngine.js` zur autonomen Selbstheilung bei Rechenlast.
+- **Interaktives SRE-Terminal**: Integration eines Echtzeit-Telemetrie-Dashboards in die Benutzeroberfläche mit `aria-live`-Sonifizierung für hochgradig barrierefreie Systemprotokolle.
+- **Anti-Loop-Schutz**: Implementierung eines 5-sekündigen Cooldowns für Resilienz-Trigger, um die Systemstabilität während der Erholungsphasen zu gewährleisten.
+- **Lighthouse-Exzellenz**: Kontinuierliche Aufrechterhaltung von 100% Score-Werten durch automatisierte SRE-Integritätsprüfungen.
 
 
 
