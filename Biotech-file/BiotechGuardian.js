@@ -1,9 +1,9 @@
 /**
- * BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog)
+ * BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog) [v6.2]
  * -------------------------------------------------------------------------
- * ARCHITECTURE: Passive Multi-Heuristic Observer
+ * ARCHITECTURE: Passive Multi-Heuristic Observer & Telemetry Provider
  * MONITORING: Long-Tasks (FPS) & Module 03 Latency Execution
- * STRATEGY: Stealth Mode (Zero-Interference via PerformanceObserver)
+ * STRATEGY: Hybrid (Stealth Background & ADR-011 Dashboard Integration)
  * -------------------------------------------------------------------------
 BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM
 ===================================================
@@ -22,10 +22,12 @@ BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM
              ║
              ╠══ DEBOUNCE LOGIC (3000ms Cooldown)
              ║
+             ╠══ TELEMETRY FEED: SRE Interactive Dashboard [ADR-011]
+             ║
              ╚══ BROADCAST: 'biotech:resilience-needed' (CustomEvent)
 
 -------------------------------------------------------------------------
-STATUS: STEALTH_WATCHDOG_ACTIVE // ZERO_DEPRECATION_SYNTAX
+STATUS: ACTIVE_WATCHDOG_UI_CONNECTED // ZERO_DEPRECATION_SYNTAX
 */
 
 const BiotechGuardian = (() => {
