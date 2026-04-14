@@ -29,32 +29,27 @@ const BiotechPatchEngine = (() => {
     const COOLDOWN = 5000; // 5s di "Stato di Grazia" (ADR-008)
 
     const handleEmergency = (event) => {
-        const now = performance.now();
-        if (now - lastAction < COOLDOWN) return; // Anti-Loop attivo
+    const now = performance.now();
+    if (now - lastAction < COOLDOWN) return;
 
-        lastAction = now;
-        const report = event.detail;
+    lastAction = now;
+    const report = event.detail;
 
-        // LOG DI INTERVENTO: Utilizza la nuova classe 'patch' ambra
-        // Verifichiamo se SRE_LOG_MAIN esiste, altrimenti fallback su stile base
-        const logStyle = (typeof SRE_LOG_MAIN !== 'undefined') 
-            ? SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.patch 
-            : 'background: #ff9800; color: #fff; padding: 2px 5px;';
-        
-        console.log(`%c🛠️ Patch Engine: Applying High-Resilience Mode (${report.type})`, logStyle);
-
-        // Interazione con BiotechResilience (Invariante Etica)
+    // Usiamo requestAnimationFrame per evitare il Forced Reflow
+    requestAnimationFrame(() => {
         if (document.documentElement.getAttribute('data-resilience') !== 'high') {
-            // Scaliamo forzatamente lo stato di resilienza
             document.documentElement.setAttribute('data-resilience', 'clinical');
             
-            // Notifica silente per WCAG 2.2 AAA (ARIA Buffer)
             const buffer = document.getElementById('biotech-alert-buffer');
             if (buffer) {
                 buffer.innerText = "Sistema in modalità resiliente per ottimizzazione performance.";
             }
+            
+            // Log spostato qui per coerenza con l'esecuzione
+            console.log(`%c🛠️ Patch Engine: Applied Clinical Mode`, 'background: #ff9800; color: #000;');
         }
-    };
+    });
+};
 
     return {
         listen: () => {
