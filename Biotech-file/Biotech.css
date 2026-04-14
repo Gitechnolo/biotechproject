@@ -1189,6 +1189,102 @@ textarea:focus,
 .highlight.highlight:hover{transform:scale(1.12);filter:brightness(1.2);text-shadow:0 4px 15px rgba(0,0,0,0.1)}
 @supports not (background-clip:text){.highlight.highlight{color:hsl(204 100% 59%);animation:none}}
 /* End gradient text */
+/* --- SRE Dashboard Integration (ADR-011) --- */
+.sre-dashboard {
+    position: absolute; /* Oppure fixed se vuoi che ti segua */
+    right: 20px;
+    top: 100px; /* Regola in base all'altezza del tuo menu */
+    width: 280px;
+    z-index: 999;
+    
+    /* Layout Isolation (PageSpeed Safe) */
+    contain: layout style;
+    transform-origin: top right; /* L'espansione parte dall'angolo in alto a destra */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+.sre-dashboard:hover {
+    transform: scale(1.05); /* Si ingrandisce "verso l'interno" della pagina */
+}
+/* Effetto scomparsa su mobile per non coprire il testo */
+@media (max-width: 1100px) {
+    .sre-dashboard {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: auto;
+        margin: 20px;
+    }
+}
+.sre-header {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 12px;
+}
+.sre-title {
+  font-size: 0.85rem; 
+  color: #B5EAD7; 
+  font-weight: bold; 
+  text-transform: uppercase;
+}
+.sre-terminal {
+    background: #000;
+    border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+    padding: 8px;
+    height: 60px; /* Leggermente più alto per il testo a capo */
+    overflow-y: auto;
+}
+.sre-terminal code {
+  color: #E0FFFF; 
+  font-size: 0.8rem; 
+  font-family: monospace; /* Distingue il log dal testo normale */
+}
+/* LED animati */
+.led { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-left: 8px; }
+.led-green { background: #00e676; box-shadow: 0 0 8px #00e676; animation: pulse-sre 2s infinite; }
+.led-amber { background: #ff9800; box-shadow: 0 0 8px #ff9800; }
+.led-off { background: rgba(255,255,255,0.1); }
+
+@keyframes pulse-sre { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }  
+
+/* Feedback specifico per il pulsante di test nel dashboard */
+.sre-dashboard .tech-nav-btn:hover {
+    background: rgba(255, 152, 0, 0.15) !important;
+    border-color: #ff9800 !important;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+}
+/* Mantiene il terminale visibile durante la fase di patching */
+.sre-dashboard.is-alerting { 
+    opacity: 1 !important; 
+}
+/* --- SRE Typography & Internal Layout --- */
+.sre-title {
+    font-size: 0.7rem; 
+    color: #B5EAD7; 
+    font-weight: bold; 
+    text-transform: uppercase;
+}
+.sre-terminal code {
+    font-size: 0.7rem; 
+    line-height: 1.2;  
+    color: #E0FFFF; 
+    font-family: monospace;
+}
+.sre-action-zone {
+    margin-top: 8px; 
+}
+.sre-btn {
+    width: 100%;       
+    min-width: auto;   
+    font-size: 0.65rem; 
+    padding: 4px;      
+    text-align: center;
+}
+/* Supporto per la visibilità LED */
+.sre-led-container {
+    display: flex;
+    align-items: center;
+}
 
 /*
 ================================================================================

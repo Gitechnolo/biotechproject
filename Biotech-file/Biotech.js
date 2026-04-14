@@ -255,13 +255,48 @@ function updateCircadianState(isFirstRun = false) {
     }
 
     function setupUI() {
-        // Riferimenti DOM
+        // 1. Riferimenti DOM Originali
         state.elements.menu = document.getElementById('tech-main-menu');
         state.elements.particles = document.getElementById('particles-canvas');
         state.elements.dna = document.querySelector('.dna-container-8');
         state.elements.floatingIcon = document.querySelector('.qredshift-icon');
 
-        // Setup Pulsante Menu (se esiste il menu)
+        // 2. Riferimenti SRE Guardian (Nuovi)
+        state.elements.wing = document.getElementById('sre-wing');
+        state.elements.logDisplay = document.getElementById('sre-log-display');
+        state.elements.ledPatch = document.getElementById('led-patch');
+        const stressBtn = document.getElementById('sre-stress-btn');
+
+        // 3. Logica Interattiva Guardian (Gestione Hover & Stealth)
+        if (state.elements.wing) {
+            const wing = state.elements.wing;
+            wing.style.opacity = "0.5";
+            wing.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+
+            wing.addEventListener('mouseenter', () => {
+                wing.style.opacity = "1";
+                wing.style.transform = "scale(1.05)"; 
+            });
+
+            wing.addEventListener('mouseleave', () => {
+                // Ritorna stealth solo se non è in corso un'allerta
+                if (!wing.classList.contains('is-alerting')) {
+                    wing.style.opacity = "0.5";
+                    wing.style.transform = "scale(1)";
+                }
+            });
+        }
+
+        // 4. Aggancio Eventi SRE (Sostituisce l'onclick HTML)
+        if (stressBtn) {
+            stressBtn.addEventListener('click', () => {
+                if (typeof simulateStress === "function") {
+                    simulateStress();
+                }
+            });
+        }
+
+        // 5. Setup Pulsante Menu (Codice Originale BiotechProject)
         if (state.elements.menu) {
             const menuItem = document.createElement('div');
             menuItem.className = 'tech-menu-item';
@@ -274,11 +309,12 @@ function updateCircadianState(isFirstRun = false) {
             state.elements.toggleBtn = btn;
         }
 
-        // Setup Icona Flottante (se esiste nel DOM)
+        // 6. Setup Icona Flottante (Codice Originale BiotechProject)
         if (state.elements.floatingIcon) {
             state.elements.floatingIcon.addEventListener('click', toggleSystem);
         }
 
+        // 7. Sincronizzazione Visuale finale
         updateVisuals(); 
     }
 
@@ -299,6 +335,52 @@ function updateCircadianState(isFirstRun = false) {
 
     return { init };
 })();
+
+// ==========================================================================
+// SRE RESILIENCE LISTENER (Global Observer)
+// ==========================================================================
+window.addEventListener('biotech:resilience-needed', (e) => {
+    const report = e.detail;
+    const wing = document.getElementById('sre-wing');
+    const logDisplay = document.getElementById('sre-log-display');
+    const ledPatch = document.getElementById('led-patch');
+
+    if (wing) {
+        wing.style.opacity = "1";
+        wing.classList.add('is-alerting');
+    }
+
+    if (ledPatch) ledPatch.className = "led led-amber";
+    
+    // Aggiornamento sicuro (No .innerHTML per GitHub Audit)
+    if (logDisplay) {
+        logDisplay.textContent = `> [SIGNAL] ${report.type} detected: ${report.value}ms. Patching...`;
+    }
+
+    setTimeout(() => {
+        if (ledPatch) ledPatch.className = "led led-off";
+        if (logDisplay) logDisplay.textContent = `> System stabilized. Monitoring active...`;
+        
+        if (wing) {
+            wing.classList.remove('is-alerting');
+            if (!wing.matches(':hover')) wing.style.opacity = "0.5";
+            wing.style.transform = "scale(1)";
+        }
+    }, 5000); 
+});
+
+// Funzione di Stress Test accessibile globalmente dal pulsante
+function simulateStress() {
+    const start = performance.now();
+    let work = 0;
+    for (let i = 0; i < 5000000; i++) { work += Math.sqrt(i) * Math.sqrt(i); }
+    const end = performance.now();
+    const actualLatency = Math.round(end - start);
+
+    window.dispatchEvent(new CustomEvent('biotech:resilience-needed', { 
+        detail: { type: 'LATENCY_THRESHOLD', value: actualLatency } 
+    }));
+}
 
 document.addEventListener('DOMContentLoaded', BiotechSystem.init);
 
