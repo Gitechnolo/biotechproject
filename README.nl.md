@@ -42,12 +42,12 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Neurale Intelligentie & Bio-Cyber Convergentie (11 april 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Neural Core & Bio-Digitale Immuniteit (14 april 2026)**
 > 
-> We hebben de **[ADR-010 | Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26)** officieel geformaliseerd.  
-> Deze mijlpaal markeert de overgang van statische veerkracht naar **Proactieve Voorspelling (Forecasting)**. Door de integratie van onze Neural Inference Engine (v6.1) synchroniseren we nu Bio-Health datasets met Cyber-Security trends, waarbij datatransparantie wordt gegarandeerd via een volledig ARIA-compliant mirroringsysteem.
+> We hebben met succes **[ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27)** geïmplementeerd.  
+> Het systeem beschikt nu over een **Autonoom Immuunsysteem (v6.2)**. Door de integratie van een passieve `PerformanceObserver` (The Guardian) detecteert de architectuur prestatie-knelpunten in realtime en herstelt zichzelf om de **WCAG 2.2 AAA** stabiliteit te waarborgen, zelfs onder extreme rekenlast.
 > 
-> *Deze update overbrugt de kloof tussen ruwe data en strategische intelligentie en voldoet aan onze inzet voor geavanceerde klinische besluitvormingsondersteuning.*
+> *Deze update introduceert de "SRE Guardian Terminal", een realtime telemetrie-interface voor proactieve monitoring van de systeemgezondheid.*
 
 ---
 
@@ -174,6 +174,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 | **008** | **Infrastructure: Nightly SRE Reliability Gate** | Implementatie van een geautomatiseerde integriteitspoort voor architecturale onveranderlijkheid en 24u-validatie. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neurale Convergentie & Multisectorale Intelligentie** | Proactieve Bio-Cyber Voorspelling | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
+| **011** | **Neural Core: Passieve SRE Guardian** | Autonoom Prestatie-zelfherstel | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27) |
 
 <details>
 <summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
@@ -237,6 +238,12 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Motivering**: Evolueren van statische veerkracht naar proactieve voorspelling door het samenvoegen van WHO (Bio) en Gartner (Cyber) datasets.
 * **Resultaat**: Real-time synchronisatie tussen het GPU-versnelde canvas en de semantische DOM, waardoor toegankelijkheid voor alle voorspellende datapunten wordt gegarandeerd.
 * **Validatie**: [Bekijk Neurale Logica (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
+
+### [ADR-011] Neural Core v6.2: Passieve SRE Guardian & Immuunsysteem
+* **Besluit**: Implementatie van `BiotechGuardian.js` (Passieve Monitoring) en `BiotechPatchEngine.js` (Autonoom Zelfherstel).
+* **Motivering**: Om "Antifragiliteit" te bereiken, moet het systeem prestatievermindering (Long Tasks > 100ms) detecteren zonder actieve polling, wat een automatische overschakeling naar "Klinische Modus" activeert om de toegankelijkheid te beschermen.
+* **Resultaat**: Een bio-digitale immuunrespons die de veerkrachtniveaus autonoom schaalt, geverifieerd via een realtime interactieve SRE-terminal.
+* **Validatie**: [Bekijk de evolutie van het immuunsysteem (#27)](https://github.com/Gitechnolo/biotechproject/issues/27)
 
 </details>
 
@@ -418,19 +425,17 @@ lang/
 ```
 
 
-## 📅 Laatste Verificatie Datum
-**11 April 2026**
+## 📅 Laatste verificatiedatum
+**14 april 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
-Belangrijke recente verbeteringen (beknopt):
+Belangrijkste recente verbeteringen (beknopt):
 
-- Performance dashboard: Lighthouse data geïntegreerd in data/performance-latest.json en gevisualiseerd op Tech_Maturity.html (grafiek + pagina lijst + export).
-- Data export: JSON/CSV export van dashboard ("Export data").
-- Grafieken + toegankelijkheid: Chart.js grafieken vergezeld van verborgen tabellen/beschrijvingen voor assistive tech.
-- Performance optimalisaties: geavanceerde lazy-loading, uitgestelde zware scripts, geoptimaliseerde particle canvas en cleanup.
-- UX en voorkeuren: dynamisch thema, gepersisteerde voorkeuren (localStorage), verbeterde toetsenbordnavigatie en ARIA/focus beheer.
-- CI/CD en transparantie: geautomatiseerde Lighthouse runs (generate-performance.js) en publiek JSON voor audits.
+- **Neural Core v6.2 (Immuunsysteem)**: Inzet van `BiotechGuardian.js` voor passieve monitoring en `BiotechPatchEngine.js` voor autonoom zelfherstel onder druk.
+- **Interactieve SRE-terminal**: Integratie van een realtime telemetrie-dashboard in de UI met `aria-live` sonificatie voor zeer toegankelijke systeemlogboeken.
+- **Anti-Loop Bescherming**: Implementatie van een cooldown van 5 seconden voor veerkracht-triggers, wat de systeemstabiliteit tijdens herstelfases garandeert.
+- **Lighthouse Excellentie**: Behoud van 100% scores via geautomatiseerde SRE-integriteitscontroles.
 
 
 
