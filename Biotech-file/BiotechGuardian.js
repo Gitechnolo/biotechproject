@@ -1,43 +1,49 @@
 /**
- * BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog) [v6.2]
+ * BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance & Evolution Watchdog) [v7.0]
  * -------------------------------------------------------------------------
- * ARCHITECTURE: Passive Multi-Heuristic Observer & Telemetry Provider
- * MONITORING: Long-Tasks (FPS) & Module 03 Latency Execution
+ * ARCHITECTURE: Passive Multi-Heuristic Observer & Evolution Sentinel
+ * MONITORING: Long-Tasks, Mod03 Latency & Remote Evolution Manifests
  * STRATEGY: Hybrid (Stealth Background & ADR-011 Dashboard Integration)
  * -------------------------------------------------------------------------
 BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM
 ===================================================
 
- [INTERNAL SENSORS]
+ [INTERNAL & EXTERNAL SENSORS]
         ║
         ╠══ PerformanceObserver (longtask) ══╗
         ║                                    ║
         ╠══ setInterval (mod03-exec-marks) ══╬══[ EVALUATION ENGINE ]
         ║                                    ║          ║
-        ╚══ Performance Timeline Analysis ═══╝          ║
+        ╚══ Remote Evolution Watchdog ═══════╝          ║
+             (biotech-evolution.json)                   ║
                                                         ║
              ╔══════════════════════════════════════════╝
              ║
              ╠══ THRESHOLD CHECK (ADR-010: 10FPS / 150ms)
              ║
-             ╠══ DEBOUNCE LOGIC (3000ms Cooldown)
+             ╠══ VERSION COMPARISON (Evolution Discovery)
              ║
              ╠══ TELEMETRY FEED: SRE Interactive Dashboard [ADR-011]
              ║
-             ╚══ BROADCAST: 'biotech:resilience-needed' (CustomEvent)
+             ╠══ BROADCAST A: 'biotech:resilience-needed' (Stress Signal)
+             ║
+             ╚══ BROADCAST B: 'biotech:evolution-available' (Logic Signal)
 
 -------------------------------------------------------------------------
-STATUS: ACTIVE_WATCHDOG_UI_CONNECTED // ZERO_DEPRECATION_SYNTAX
+STATUS: v7.0_EVOLUTION_WATCHDOG_ACTIVE // STEALTH_MONITORING_ENABLED
 */
 
 const BiotechGuardian = (() => {
     const CONFIG = {
-        FPS_LIMIT: 10,     // Soglia ADR-010 (100ms per task)
-        LATENCY_MAX: 150,  // ms per il Modulo 03
-        COOLDOWN: 3000     // Evita notifiche multiple ravvicinate
+        FPS_LIMIT: 10,           // ADR-010 Threshold (100ms per task)
+        LATENCY_MAX: 150,        // ms for Module 03 execution
+        COOLDOWN: 3000,          // Prevent alert flooding
+        EVO_CHECK_INTERVAL: 60000, // Check for biotech-evolution.json every 60s
+        EVO_ENDPOINT: './biotech-evolution.json'
     };
 
     let lastAlertTime = 0;
+    let currentVersion = '6.2.0'; // Base version for comparison
 
     const reportDegradation = (type, duration) => {
         const now = performance.now();
@@ -51,17 +57,48 @@ const BiotechGuardian = (() => {
             timestamp: now 
         };
 
-        // Invia segnale al Patch Engine
+        // Signal dispatch to Patch Engine & Dashboard
         window.dispatchEvent(new CustomEvent('biotech:resilience-needed', { detail: report }));
         
-        // Log discreto in stile SRE
         console.warn(`%c🛡️ Guardian: Performance Stress Detected (${type}: ${Math.round(duration)}ms)`, 
             'color: #ff9800; font-weight: bold;');
     };
 
+    /**
+     * EVOLUTION WATCHDOG: Monitors remote manifest for logic upgrades
+     */
+    const checkForEvolution = async () => {
+        try {
+            // Cache-busting to ensure we get the latest manifest
+            const response = await fetch(`${CONFIG.EVO_ENDPOINT}?t=${Date.now()}`);
+            if (!response.ok) return;
+
+            const manifest = await response.json();
+
+            if (manifest.version !== currentVersion) {
+                console.log(`%c🧬 Evolution Signal: New Logic Detected (${manifest.version})`, 
+                    'color: #00ffa2; font-weight: bold;');
+                
+                // Broadcast evolution signal for PatchEngine and UI
+                window.dispatchEvent(new CustomEvent('biotech:evolution-available', {
+                    detail: {
+                        version: manifest.version,
+                        type: manifest.patchType || 'System Optimization',
+                        description: manifest.description,
+                        payloadUrl: manifest.payloadUrl
+                    }
+                }));
+                
+                // Update local version reference to prevent redundant signaling
+                currentVersion = manifest.version;
+            }
+        } catch (err) {
+            // Silent failure for evolution checks to preserve stealth mode
+        }
+    };
+
     const initObserver = () => {
-        // 1. Monitoraggio LONG TASKS (FPS Drop)
-        // Usiamo PerformanceObserver per evitare il log "Deprecated API"
+        // 1. LONG TASKS MONITORING (FPS Integrity)
         if (window.PerformanceObserver) {
             try {
                 const observer = new PerformanceObserver((list) => {
@@ -71,15 +108,13 @@ const BiotechGuardian = (() => {
                         }
                     });
                 });
-                // Buffered: true permette di recuperare anche task avvenuti appena prima dell'init
                 observer.observe({ type: 'longtask', buffered: true });
             } catch (e) {
-                console.log("%c🛡️ Guardian: LongTask Observer not supported, switching to fallback", "color: #888;");
+                console.log("%c🛡️ Guardian: Fallback mode active", "color: #888;");
             }
         }
 
-        // 2. Monitoraggio Latenza Modulo 03 (Esecuzione Specifica)
-        // Verifichiamo periodicamente ma in modo leggero tramite il Performance Timeline
+        // 2. MODULE 03 LATENCY MONITORING
         setInterval(() => {
             const marks = performance.getEntriesByName('biotech-mod03-exec');
             if (marks.length > 0) {
@@ -87,18 +122,20 @@ const BiotechGuardian = (() => {
                 if (lastMark.duration > CONFIG.LATENCY_MAX) {
                     reportDegradation('MOD03_LATENCY', lastMark.duration);
                 }
-                // Pulizia periodica per non accumulare entries in memoria
                 if (marks.length > 10) performance.clearMeasures('biotech-mod03-exec');
             }
-        }, 5000); // Check ogni 5 secondi, molto leggero
+        }, 5000);
+
+        // 3. START EVOLUTION WATCHDOG
+        checkForEvolution(); // Initial check
+        setInterval(checkForEvolution, CONFIG.EVO_CHECK_INTERVAL);
     };
 
     return {
         init: () => {
-            // Piccolo ritardo per assicurarsi che il caricamento iniziale sia terminato
             setTimeout(() => {
                 initObserver();
-                console.log("%c🛡️ Guardian: Stealth Monitoring Active", "color: #4CAF50; font-weight: bold;");
+                console.log("%c🛡️ Guardian: v7.0 Evolution Watchdog Active", "color: #4CAF50; font-weight: bold;");
             }, 1000);
         }
     };
