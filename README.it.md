@@ -363,16 +363,19 @@ Siamo impegnati a costruire una piattaforma inclusiva. Esplora come abbiamo impl
 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
-### 🎓 Collaborazione Accademica  
-Abbiamo già raggiunto internamente il traguardo **WCAG 2.2 AAA** e completato la convalida tecnica; la collaborazione con la **HAN University of Applied Sciences (Scuola di Informatica e Design Multimediale)** ora si concentra sulla **peer-review accademica** del Gold Standard. Questo approccio rafforza il nostro processo di validazione scientifica e la roadmap di resilienza per la comunità open source.
+### 🎓 Standard Accademici e Allineamento Strategico
+
+BiotechProject è basato su un'**architettura Zero Framework**, progettata per aderire alle linee guida del **Sapienza Innovation and Entrepreneurship Hub - SIEH** in materia di design inclusivo e accessibilità ad alte prestazioni. Il nostro standard **WCAG 2.2 AAA**, validato attraverso rigorosi audit SRE interni, viene presentato come proposta tecnica per soddisfare i benchmark di eccellenza dell'ecosistema di innovazione della Sapienza.
+
+In vista del debutto alla **RomaCup (28 marzo 2026)**, invitiamo ricercatori e docenti del **SIEH** ad avviare un processo formale di peer-review. Questo progetto si posiziona come candidato per l'impegno accademico, offrendo una base solida per futuri progetti di laurea, partnership di ricerca e domande congiunte di finanziamento all'interno del network della Sapienza.
 
 > [!NOTE]
 > ### 🏛️ Hub Istituzionale e Accademico
-> Sei un ricercatore o un rappresentante universitario? Abbiamo stabilito una carta specifica per la collaborazione accademica, audit e progetti di laurea.
+> Abbiamo allineato questo progetto ai più alti standard accademici. Sei un rappresentante universitario presente alla **RomaCup**? Abbiamo preparato una carta specifica per potenziali collaborazioni, audit e progetti di laurea.
 > 
-> 👉 **Visualizza la Carta di Collaborazione:** [Carta di Collaborazione Istituzionale (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Visualizza la Proposta di Collaborazione:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Questo documento dettaglia le nostre tre principali tracce di impegno: **Progetto di Laurea**, **Laboratorio di Ricerca**, e **Partnership di Sovvenzioni Congiunte**.
+> Questo documento dettaglia tre percorsi di coinvolgimento: **Progetti di Laurea**, **Laboratorio di Ricerca** e **Partnership per Finanziamenti**, progettati per integrarsi nell'ecosistema **SIEH**.
 
 
 ## 🌍 Gestione Multilingua (i18n)
