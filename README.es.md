@@ -368,16 +368,19 @@ Estamos comprometidos en construir una plataforma inclusiva. Explora cómo hemos
 [![Estudio de Caso - Construyendo una Plataforma Biotech Accesible](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Colaboración Académica  
-Ya hemos alcanzado internamente el hito **WCAG 2.2 AAA Gold Standard** y completado la validación técnica; nuestra colaboración con la **HAN University of Applied Sciences (Escuela de TI y Diseño Multimedia)** ahora se centra en la **revisión por pares académica**. Esto fortalece nuestra cadena de validación y nuestra hoja de ruta de resiliencia open source.   
+### 🎓 Estándares Académicos y Alineación Estratégica
+
+BiotechProject está basado en una **arquitectura Zero Framework**, diseñada para cumplir con las directrices del **Sapienza Innovation and Entrepreneurship Hub - SIEH** en materia de diseño inclusivo y accesibilidad de alto rendimiento. Nuestro estándar **WCAG 2.2 AAA**, validado mediante auditorías internas de SRE, se presenta como una propuesta técnica para alcanzar los niveles de excelencia del ecosistema de innovación de la Sapienza.
+
+Con vistas a su debut en la **RomaCup (28 de marzo de 2026)**, invitamos a investigadores y docentes del **SIEH** a iniciar un proceso formal de revisión por pares. Este proyecto se posiciona como un candidato para la colaboración académica, ofreciendo una base sólida para futuros proyectos de fin de grado, asociaciones de investigación y solicitudes conjuntas de subvenciones dentro de la red de la Sapienza.
 
 > [!NOTE]
-> ### 🏛️ Centro Institucional y Académico
-> ¿Eres un investigador o un representante universitario? Hemos establecido una carta específica para la colaboración académica, auditorías y proyectos de graduación.
+> ### 🏛️ Hub Institucional y Académico
+> Hemos alineado este proyecto con los más altos estándares académicos. ¿Es usted un representante universitario que asiste a la **RomaCup**? Hemos preparado un estatuto específico para posibles colaboraciones, auditorías y proyectos de graduación.
 > 
-> 👉 **Ver la Carta de Colaboración:** [Carta de Colaboración Institucional (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Ver el Estatuto de Colaboración Propuesto:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Este documento detalla nuestras tres principales vías de participación: **Proyecto de Graduación**, **Laboratorio de Investigación**, y **Asociaciones Conjuntas de Subvenciones**.
+> Este documento detalla tres vías de participación: **Proyectos de Fin de Carrera**, **Laboratorio de Investigación** y **Alianzas para Subvenciones**, diseñadas para integrarse en el ecosistema **SIEH**.
 
 
 ## 🌍 Gestión Multilingüe (i18n)
