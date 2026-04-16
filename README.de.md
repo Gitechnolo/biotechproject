@@ -368,16 +368,19 @@ Wir verpflichten uns zu einer inklusiven Plattform. Erkunde, wie wir den **WCAG 
 [![Fallstudie - Aufbau einer zugänglichen Biotech-Plattform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Akademische Zusammenarbeit
-Wir haben intern bereits den Meilenstein **WCAG 2.2 AAA Gold Standard** erreicht und die technische Validierung abgeschlossen; unsere Zusammenarbeit mit der **HAN University of Applied Sciences (School of IT and Media Design)** konzentriert sich nun auf akademisches **Peer-Review**. Dies stärkt unsere Validierungskette und unsere Open-Source-Resilienz-Roadmap.   
+### 🎓 Akademische Standards & Strategische Ausrichtung
+
+BiotechProject basiert auf einer **Zero-Framework-Architektur** und wurde so konzipiert, dass es den Richtlinien des **Sapienza Innovation and Entrepreneurship Hub - SIEH** für inklusives Design und Hochleistungs-Barrierefreiheit entspricht. Unser **WCAG 2.2 AAA** Standard, validiert durch interne SRE-Audits, wird als technischer Vorschlag präsentiert, um die Exzellenz-Benchmarks des Sapienza-Innovationsökosystems zu erfüllen.
+
+Im Hinblick auf das Debüt beim **RomaCup (28. März 2026)** laden wir Forscher und Dozenten des **SIEH** ein, einen formalen Peer-Review-Prozess einzuleiten. Dieses Projekt positioniert sich als Kandidat für akademisches Engagement und bietet eine robuste Grundlage für zukünftige Abschlussarbeiten, Forschungspartnerschaften und gemeinsame Förderanträge innerhalb des Sapienza-Netzwerks.
 
 > [!NOTE]
-> ### 🏛️ Institutioneller und Akademischer Hub
-> Sind Sie ein Forscher oder ein Universitätsvertreter? Wir haben eine spezifische Charta für akademische Zusammenarbeit, Audits und Abschlussprojekte etabliert.
+> ### 🏛️ Institutioneller & Akademischer Hub
+> Wir haben dieses Projekt an erstklassigen akademischen Standards ausgerichtet. Sind Sie ein Universitätsvertreter, der am **RomaCup** teilnimmt? Wir haben eine spezielle Charta für potenzielle Kooperationen, Audits und Abschlussprojekte vorbereitet.
 > 
-> 👉 **Die Kollaborationscharta anzeigen:** [Institutionelle Kollaborationscharta (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Vorgeschlagene Kooperationscharta ansehen:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Dieses Dokument beschreibt unsere drei primären Engagement-Tracks: **Abschlussprojekt**, **Forschungslabor**, und **Gemeinsame Förderpartnerschaften**.
+> Dieses Dokument beschreibt drei potenzielle Kooperationswege: **Abschlussarbeiten (Graduation Project)**, **Forschungslabor (Research Lab)** und **Gemeinsame Förderpartnerschaften**, die auf die Integration in das **SIEH**-Ökosystem zugeschnitten sind.
 
 
 ## 🌍 Mehrsprachiges Management (i18n)
