@@ -369,16 +369,19 @@ We zijn toegewijd aan het bouwen van een inclusieve platform. Verken hoe we het 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Academische Samenwerking
-We hebben intern al de **WCAG 2.2 AAA Gold Standard** bereikt en de technische validatie afgerond; onze samenwerking met de **HAN University of Applied Sciences (School of IT and Media Design)** richt zich nu op **academische peer-review**. Dit versterkt onze validatieketen en onze veerkrachtige open source roadmap.
+### 🎓 Academische Standaarden & Strategische Afstemming
+
+BiotechProject is gebaseerd op een **Zero Framework-architectuur**, ontworpen om te voldoen aan de richtlijnen van de **Sapienza Innovation and Entrepreneurship Hub - SIEH** op het gebied van inclusief ontwerp en hoogwaardige toegankelijkheid. Onze **WCAG 2.2 AAA** status, gevalideerd door middel van strikte interne SRE-audits, wordt gepresenteerd als een technisch voorstel om te voldoen aan de excellentie-benchmarks van het innovatie-ecosysteem van Sapienza.
+
+Met het oog op het debuut tijdens **RomaCup (28 maart 2026)**, nodigen wij onderzoekers en docenten van de **SIEH** uit om een formeel peer-review proces te starten. Dit project positioneert zich als kandidaat voor academische betrokkenheid en biedt een robuuste basis voor toekomstige afstudeerprojecten, onderzoekspartnerschappen en gezamenlijke subsidieaanvragen binnen het netwerk van Sapienza.
 
 > [!NOTE]
 > ### 🏛️ Institutionele & Academische Hub
-> Bent u een onderzoeker of vertegenwoordiger van een universiteit? Wij hebben een specifiek kader opgesteld voor academische samenwerking, audits en afstudeerprojecten.
+> We hebben dit project afgestemd op de hoogste academische standaarden. Bent u een vertegenwoordiger van een universiteit en aanwezig bij **RomaCup**? We hebben een specifiek charter opgesteld voor potentiële samenwerkingen, audits en afstudeerprojecten.
 > 
-> 👉 **Bekijk het Samenwerkingskader:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Bekijk het voorgestelde samenwerkingscharter:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Dit document bevat details over onze drie samenwerkingstrajecten: **Graduation Project**, **Research Lab** en **Joint Grant Partnerships**.
+> Dit document beschrijft drie mogelijke trajecten: **Afstudeerprojecten (Graduation Projects)**, **Onderzoekslab** en **Gezamenlijke Subsidiepartnerschappen**, ontworpen om te integreren met het **SIEH**-ecosysteem.
 
 
 ## 🌍 Meertalig Beheer (i18n)
