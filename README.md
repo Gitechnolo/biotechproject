@@ -369,18 +369,18 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
-### 🎓 Academic Collaboration
-BiotechProject is engineered in alignment with **HAN University of Applied Sciences (School of IT and Media Design)** standards for inclusive design and accessibility. Our **WCAG 2.2 AAA** achievement is currently validated through rigorous internal SRE audits, and we are actively seeking academic peer-review to further elevate our standards.
+### 🎓 Academic Standards & Proposed Alignment
+BiotechProject is built on a **Zero Framework** architecture, engineered to adhere to the **Sapienza Innovation and Entrepreneurship Hub - SIEH** guidelines for inclusive design and high-performance accessibility. Our **WCAG 2.2 AAA** achievement, validated through rigorous internal SRE audits, is presented as a technical proposal to meet the excellence benchmarks of the Sapienza innovation ecosystem.
 
-We invite researchers, students, and faculty from HAN and beyond to join us in establishing a formal expert audit, a proposed goal that will set a new benchmark for open-source scientific resilience. This collaboration offers exciting opportunities for academic engagement, including graduation projects, research partnerships, and joint grant applications.
+In view of its debut at **RomaCup (March 28, 2026)**, we invite researchers and faculty from **SIEH** to initiate a formal peer-review process. This project is positioned as a candidate for academic engagement, offering a robust foundation for future graduation projects, research partnerships, and joint grant applications within the Hub’s network.
 
 > [!NOTE]
 > ### 🏛️ Institutional & Academic Hub
-> Are you a researcher or a university representative? We have established a specific charter for academic collaboration, audits, and graduation projects.
+> We have aligned this project with top-tier academic standards. Are you a university representative attending **RomaCup**? We have prepared a specific charter for potential collaboration, audits, and graduation projects.
 > 
-> 👉 **View the Collaboration Charter:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **View the Proposed Collaboration Charter:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> This document details our three primary engagement tracks: **Graduation Project**, **Research Lab**, and **Joint Grant Partnerships**.
+> This document details three potential engagement tracks: **Graduation Project**, **Research Lab**, and **Joint Grant Partnerships**, designed to integrate with the **SIEH** ecosystem.
 
 
 ## 🌍 Multilingual Management (i18n)
