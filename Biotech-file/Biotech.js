@@ -1166,8 +1166,8 @@ function updateLastModified(lang) {
 // === End ultima modifica pagina ===
 
 // ==========================================================================
-// [ADR-010] GUARDIAN & EVOLUTION DYNAMIC ACTIVATION
-// Attiva monitoraggio SRE ed Evolution Watchdog a sistema stabilizzato.
+// [ADR-010] GUARDIAN & RESILIENCE DYNAMIC ACTIVATION
+// Attiva il monitoraggio SRE solo a sistema stabilizzato.
 // ==========================================================================
 (function() {
   const activateGuardian = () => {
