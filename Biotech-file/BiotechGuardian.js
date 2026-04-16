@@ -39,7 +39,7 @@ const BiotechGuardian = (() => {
         LATENCY_MAX: 150,        // ms for Module 03 execution
         COOLDOWN: 3000,          // Prevent alert flooding
         EVO_CHECK_INTERVAL: 60000, // Check for biotech-evolution.json every 60s
-        EVO_ENDPOINT: './biotech-evolution.json'
+        EVO_ENDPOINT: 'biotech-evolution.json'
     };
 
     let lastAlertTime = 0;
