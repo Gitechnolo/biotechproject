@@ -368,16 +368,19 @@ Nous nous engageons à construire une plateforme inclusive. Explorez comment nou
 [![Étude de Cas - Construire une Plateforme Biotech Accessible](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Collaboration Académique  
-Nous avons déjà atteint en interne le jalon **WCAG 2.2 AAA Gold Standard** et complété la validation technique ; notre collaboration avec la **HAN University of Applied Sciences (École d'Informatique et de Design Média)** se concentre désormais sur le **peer-review académique**. Cela renforce notre chaîne de validation et notre roadmap de résilience open source.   
+### 🎓 Standards Académiques & Alignement Stratégique
+
+BiotechProject repose sur une **architecture Zero Framework**, conçue pour adhérer aux directives du **Sapienza Innovation and Entrepreneurship Hub - SIEH** en matière de design inclusif et d'accessibilité haute performance. Notre certification **WCAG 2.2 AAA**, validée par des audits SRE internes, est présentée comme une proposition technique visant à atteindre les sommets d'excellence de l'écosystème d'innovation de la Sapienza.
+
+En vue de son début au **RomaCup (28 mars 2026)**, nous invitons les chercheurs et les professeurs du **SIEH** à initier un processus de revue par les pairs. Ce projet se positionne comme un candidat pour l'engagement académique, offrant une base solide pour de futurs projets de fin d'études, des partenariats de recherche et des demandes de subventions conjointes au sein du réseau de la Sapienza.
 
 > [!NOTE]
-> ### 🏛️ Hub Institutionnel et Académique
-> Êtes-vous un chercheur ou un représentant universitaire ? Nous avons établi une charte spécifique pour la collaboration académique, les audits et les projets de fin d'études.
+> ### 🏛️ Hub Institutionnel & Académique
+> Nous avons aligné ce projet sur les plus hauts standards académiques. Vous êtes un représentant universitaire présent au **RomaCup** ? Nous avons préparé une charte spécifique pour d'éventuels audits, collaborations et projets de diplôme.
 > 
-> 👉 **Voir la Charte de Collaboration :** [Charte de Collaboration Institutionnelle (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Consulter la Charte de Collaboration Proposée :** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Ce document détaille nos trois principales pistes d'engagement : **Projet de Fin d'Études**, **Laboratoire de Recherche**, et **Partenariats de Subventions Conjoints**.
+> Ce document détaille trois axes d'engagement : **Projets de Fin d'Études**, **Laboratoire de Recherche** et **Partenariats de Subvention**, conçus pour s'intégrer à l'écosystème **SIEH**.
 
 
 ## 🌍 Gestion Multilingue (i18n)
