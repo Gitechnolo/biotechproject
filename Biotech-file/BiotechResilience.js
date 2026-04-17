@@ -81,7 +81,7 @@ const BiotechResilience = (() => {
         const state = document.documentElement.getAttribute('data-resilience').toUpperCase();
         const banner = document.createElement('div');
         banner.className = 'resilience-banner';
-        banner.style = "position:fixed; top:0; left:0; width:100%; color:#00FF55; text-align:center; z-index:2147483647; font-size:10px; padding:3px; font-weight:bold; letter-spacing:1px; font-family: 'Sansation', monospace; pointer-events:none; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px);";
+        banner.style = "position:fixed; top:0; left:0; width:100%; color:#00FF55; text-align:center; z-index:2147483647; font-size:10px; padding:3px; font-weight:bold; letter-spacing:1px; font-family: 'Sansation', monospace; pointer-events:none;";
         banner.innerText = `IMMUNE SYSTEM ACTIVE: ${state} MODE`;
         document.body.prepend(banner);
     };
