@@ -609,7 +609,25 @@ function initDnaScanner() {
     setInterval(syncScannerData, 1000);
 }
 
-    initSeasonMonitor(); initBioClock(); initWeeklyGreeting(); initBiotechTooltips(); initDnaScanner();
+   // --- INIZIALIZZAZIONE ASINCRONA SCAGLIONATA (SRE-OPTIMIZED) ---
+    // Distribuiamo il carico per eliminare la Long Task da 1.5s rilevata
+    const biotechModules = [
+        initSeasonMonitor,
+        initBioClock,
+        initWeeklyGreeting,
+        initBiotechTooltips,
+        initDnaScanner
+    ];
+
+    biotechModules.forEach((module, index) => {
+        setTimeout(() => {
+            try {
+                module();
+            } catch (e) {
+                console.error(`[SRE-CORE] Fallimento modulo ${index}:`, e);
+            }
+        }, index * 100); // Scagliona ogni modulo di 100ms
+    });
 });
 
 // ==========================================================================
