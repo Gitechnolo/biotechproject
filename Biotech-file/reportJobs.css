@@ -183,6 +183,10 @@
   flex-wrap: wrap;
   gap: 16px;
   margin: 10px 0;
+/* --- SRE OPTIMIZATION: ISOLAMENTO LAYOUT --- */
+  contain: layout style; 
+  content-visibility: auto; 
+  contain-intrinsic-size: 1000px; /* Prenota lo spazio per evitare salti (CLS) */
 }
 
 .portfolio-col {
