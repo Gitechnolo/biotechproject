@@ -1238,11 +1238,27 @@ textarea:focus,
         right: auto;
         top: auto;
         width: auto;
-        margin: 20px;
-        min-height: 150px; 
-        padding: 10px;
-        contain: none;
+        
+        /* Aumentiamo il margine per dare aria ai bagliori laterali */
+        margin: 25px 20px; 
+        
+        /* 1. PORTIAMO L'ALTEZZA AL VALORE REALE: 150px era troppo conservativo. 
+           Includendo terminale, pulsante e padding, il valore reale è più vicino a 185px. */
+        min-height: 185px; 
+        
+        /* 2. EVITIAMO IL COLLASSO DEI MARGINI */
+        display: flow-root; 
+        
+        padding: 12px;
+        
+        /* 3. STABILIZZAZIONE DEL LAYOUT */
+        box-sizing: border-box; 
+        contain: layout style; /* Rimuoviamo size, ma manteniamo layout per isolare lo shift */
         overflow: visible;
+        
+        /* 4. ANTICIPIAMO IL RENDERING */
+        content-visibility: auto;
+        contain-intrinsic-size: 185px; 
     }
 }
 .sre-header {
