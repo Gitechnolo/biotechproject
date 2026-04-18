@@ -1215,21 +1215,21 @@ textarea:focus,
     position: absolute; 
     right: 20px;
     top: 100px; 
-    width: 280px;
+    width: 300px; /* Contiene i bagliori laterali del pulsante */
     z-index: 999;
-    /* --- FIX CLS PER DESKTOP --- */
-    /* Riserviamo l'altezza minima del banner in anticipo */
-    min-height: 120px; 
-    /* Comunica al browser che questo elemento non deve influenzare l'esterno */
-    contain: layout size style; 
-    /* Migliora la gestione del rendering */
+  /* --- FIX CLIPPING & CLS --- */
+    min-height: 180px;  /* Spazio verticale per terminale + pulsante + glow */
+    padding: 12px;     /* Cuscinetto interno per evitare tagli ai bordi */
+    /* Disabilitiamo il contenimento rigido ciò causa il taglio netto */
+    contain: layout style; 
+    overflow: visible; 
+  /* Ottimizzazione Rendering */
     content-visibility: auto;
-
     transform-origin: top right;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 .sre-dashboard:hover {
-    transform: scale(1.05); /* Si ingrandisce "verso l'interno" della pagina */
+    transform: scale(1.02); /* Leggermente ridotto per evitare di uscire dal viewport */
 }
 /* Ottimizzazione specifica per Mobile */
 @media (max-width: 1100px) {
@@ -1239,10 +1239,10 @@ textarea:focus,
         top: auto;
         width: auto;
         margin: 20px;
-        
-        /* FIX CLS: Impedisce al tag <main> di saltare quando appare il testo */
-        min-height: 85px; 
-        contain: layout size;
+        min-height: 150px; 
+        padding: 10px;
+        contain: none;
+        overflow: visible;
     }
 }
 .sre-header {
