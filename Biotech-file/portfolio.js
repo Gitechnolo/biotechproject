@@ -235,7 +235,7 @@ console.log('%c ✅ SYSTEM %c loadPerformanceData() completed. Lock released.', 
  * @param {AbortSignal} signal - Il segnale di aborto specifico per questa esecuzione.
  */
 async function renderCardsAsynchronously(pages, container, signal) {
-  const CHUNK_SIZE = 4; // Da 8 a 4 Numero di card da renderizzare per batch
+  const CHUNK_SIZE = 4; // Numero di card da renderizzare per batch
   let index = 0;
 
   async function processChunk() {
