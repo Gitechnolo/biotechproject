@@ -1212,21 +1212,26 @@ textarea:focus,
 /* End gradient text */
 /* --- SRE Dashboard Integration (ADR-011) --- */
 .sre-dashboard {
-    position: absolute; /* Oppure fixed se vuoi che ti segua */
+    position: absolute; 
     right: 20px;
-    top: 100px; /* Regola in base all'altezza del tuo menu */
+    top: 100px; 
     width: 280px;
     z-index: 999;
-    
-    /* Layout Isolation (PageSpeed Safe) */
-    contain: layout style;
-    transform-origin: top right; /* L'espansione parte dall'angolo in alto a destra */
+    /* --- FIX CLS PER DESKTOP --- */
+    /* Riserviamo l'altezza minima del banner in anticipo */
+    min-height: 120px; 
+    /* Comunica al browser che questo elemento non deve influenzare l'esterno */
+    contain: layout size style; 
+    /* Migliora la gestione del rendering */
+    content-visibility: auto;
+
+    transform-origin: top right;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 .sre-dashboard:hover {
     transform: scale(1.05); /* Si ingrandisce "verso l'interno" della pagina */
 }
-/* Effetto scomparsa su mobile per non coprire il testo */
+/* Ottimizzazione specifica per Mobile */
 @media (max-width: 1100px) {
     .sre-dashboard {
         position: relative;
@@ -1234,6 +1239,10 @@ textarea:focus,
         top: auto;
         width: auto;
         margin: 20px;
+        
+        /* FIX CLS: Impedisce al tag <main> di saltare quando appare il testo */
+        min-height: 85px; 
+        contain: layout size;
     }
 }
 .sre-header {
