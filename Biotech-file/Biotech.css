@@ -1210,20 +1210,20 @@ textarea:focus,
 .highlight.highlight:hover{transform:scale(1.12);filter:brightness(1.2);text-shadow:0 4px 15px rgba(0,0,0,0.1)}
 @supports not (background-clip:text){.highlight.highlight{color:hsl(204 100% 59%);animation:none}}
 /* End gradient text */
-/* --- SRE Dashboard Integration (ADR-011) --- */
+/* --- SRE Dashboard Integration (ADR-011) --- (SRE GUARDIAN) - Cumulative Layout Shift 0.1 */
 .sre-dashboard {
     position: absolute; 
     right: 20px;
     top: 100px; 
     width: 300px; /* Contiene i bagliori laterali del pulsante */
     z-index: 999;
-  /* --- FIX CLIPPING & CLS --- */
+/* --- FIX CLIPPING & CLS --- */
     min-height: 180px;  /* Spazio verticale per terminale + pulsante + glow */
     padding: 12px;     /* Cuscinetto interno per evitare tagli ai bordi */
     /* Disabilitiamo il contenimento rigido ciò causa il taglio netto */
     contain: layout style; 
     overflow: visible; 
-  /* Ottimizzazione Rendering */
+/* Ottimizzazione Rendering */
     content-visibility: auto;
     transform-origin: top right;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
@@ -1231,34 +1231,28 @@ textarea:focus,
 .sre-dashboard:hover {
     transform: scale(1.02); /* Leggermente ridotto per evitare di uscire dal viewport */
 }
-/* Ottimizzazione specifica per Mobile */
+/* Ottimizzazione specifica per Mobile - Cumulative Layout Shift 0 */
 @media (max-width: 1100px) {
-    .sre-dashboard {
-        position: relative;
-        right: auto;
-        top: auto;
-        width: auto;
-        
-        /* Aumentiamo il margine per dare aria ai bagliori laterali */
-        margin: 25px 20px; 
-        
-        /* 1. PORTIAMO L'ALTEZZA AL VALORE REALE: 150px era troppo conservativo. 
-           Includendo terminale, pulsante e padding, il valore reale è più vicino a 185px. */
-        min-height: 185px; 
-        
-        /* 2. EVITIAMO IL COLLASSO DEI MARGINI */
-        display: flow-root; 
-        
-        padding: 12px;
-        
-        /* 3. STABILIZZAZIONE DEL LAYOUT */
-        box-sizing: border-box; 
-        contain: layout style; /* Rimuoviamo size, ma manteniamo layout per isolare lo shift */
-        overflow: visible;
-        
-        /* 4. ANTICIPIAMO IL RENDERING */
-        content-visibility: auto;
-        contain-intrinsic-size: 185px; 
+.sre-dashboard {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+/* Aumentiamo il margine per dare aria ai bagliori laterali */
+    margin: 25px 20px; 
+/* 1. PORTIAMO L'ALTEZZA AL VALORE REALE: 150px era troppo conservativo. 
+Includendo terminale, pulsante e padding, il valore reale è più vicino a 185px. */
+    min-height: 185px; 
+/* 2. EVITIAMO IL COLLASSO DEI MARGINI */
+    display: flow-root; 
+    padding: 12px;
+/* 3. STABILIZZAZIONE DEL LAYOUT */
+    box-sizing: border-box; 
+    contain: layout style; /* Rimuoviamo size, ma manteniamo layout per isolare lo shift */
+    overflow: visible;
+/* 4. ANTICIPIAMO IL RENDERING */
+    content-visibility: auto;
+    contain-intrinsic-size: 185px; 
     }
 }
 .sre-header {
