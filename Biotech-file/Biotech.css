@@ -1260,19 +1260,39 @@ textarea:focus,
   font-size: 0.8rem; 
   font-family: monospace; /* Distingue il log dal testo normale */
 }
-/* LED animati */
-.led { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-left: 8px; }
-.led-green { background: #00e676; box-shadow: 0 0 8px #00e676; animation: pulse-sre 2s infinite; }
-.led-amber { background: #ff9800; box-shadow: 0 0 8px #ff9800; }
-.led-off { background: rgba(255,255,255,0.1); }
-
-@keyframes pulse-sre { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }  
-
-/* Feedback specifico per il pulsante di test nel dashboard */
+/* LED animati - Puliti per SRE Performance */
+.led { 
+    width: 9px; 
+    height: 9px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-left: 8px; 
+    /* Forza il browser a isolare l'elemento su un layer separato */
+    will-change: opacity; 
+}
+.led-green { 
+    background: #00e676; 
+    /* Usiamo un bordo solido o un filtro più leggero invece di box-shadow */
+    border: 1px solid rgba(0, 230, 118, 0.5);
+    animation: pulse-sre 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+}
+.led-amber { 
+    background: #ff9800; 
+    border: 1px solid rgba(255, 152, 0, 0.5);
+}
+.led-off { 
+    background: rgba(255,255,255,0.1); 
+}
+@keyframes pulse-sre { 
+    0%, 100% { opacity: 1; transform: scale(1); } 
+    50% { opacity: 0.4; transform: scale(1.05); } 
+}  
+/* Feedback Hover - Ottimizzato */
 .sre-dashboard .tech-nav-btn:hover {
     background: rgba(255, 152, 0, 0.15) !important;
     border-color: #ff9800 !important;
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+    /* Rimosso box-shadow: usiamo un leggero cambio di luminosità per il feedback */
+    filter: brightness(1.2);
 }
 /* Mantiene il terminale visibile durante la fase di patching */
 .sre-dashboard.is-alerting { 
