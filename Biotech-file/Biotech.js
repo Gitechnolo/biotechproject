@@ -903,12 +903,12 @@ async function initTranslations() {
   const savedLang = getSavedLanguage();
   const translations = { it: {}, en: {} };
   
-  const common = await loadTranslation('lang/common.json');
+  const common = await loadTranslation('./lang/common.json');
   if (common) { translations.it = { ...common.it }; translations.en = { ...common.en }; }
 
   if (translatablePages.includes(pageName)) {
     const pageKey = getPageKey(pageName);
-    const pageData = await loadTranslation(`lang/${pageKey}.json`);
+    const pageData = await loadTranslation(`./lang/${pageKey}.json`);
     if (pageData) {
       if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
       if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
@@ -923,8 +923,8 @@ async function initTranslations() {
 
 function setLanguage(lang) {
   const pageName = getPageName();
-  const promises = [loadTranslation('lang/common.json')];
-  if (translatablePages.includes(pageName)) promises.push(loadTranslation(`lang/${getPageKey(pageName)}.json`));
+  const promises = [loadTranslation('./lang/common.json')];
+  if (translatablePages.includes(pageName)) promises.push(loadTranslation(`./lang/${getPageKey(pageName)}.json`));
 
   Promise.all(promises).then(([common, pageData]) => {
     const translations = {
