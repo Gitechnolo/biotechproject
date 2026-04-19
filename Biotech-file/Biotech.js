@@ -62,36 +62,53 @@ const SRE_LOG_MAIN = {
 };
 
 /* ==========================================================================
-   WORKER CORE INTEGRATION [ADR-011 / 60fps]
-   Delega il parsing JSON e i calcoli pesanti al thread secondario.
+   WORKER CORE INTEGRATION [ADR-011 / 60fps / Legacy Optimized]
    ========================================================================== */
-const BiotechWorker = new Worker('./BiotechCoreWorker.js');
+const BiotechWorker = new Worker('./Biotech-file/BiotechCoreWorker.js');
 
 /**
- * Task Orchestrator: Gestisce le promesse asincrone con il Worker.
- * Garantisce che il thread principale rimanga libero per il rendering.
+ * Task Orchestrator con Fallback e Timeout
  */
-const workerQuery = (action, payload) => {
-    const taskId = crypto.randomUUID();
+const workerQuery = (action, payload, timeout = 5000) => {
+    // Generatore ID compatibile con vecchi browser (no crypto required)
+    const taskId = Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+    
     return new Promise((resolve, reject) => {
+        // Gestione del Timeout: evita che la UI rimanga appesa su 3G lento
+        const timer = setTimeout(() => {
+            BiotechWorker.removeEventListener('message', handler);
+            reject(new Error(`Timeout: Worker non ha risposto entro ${timeout}ms`));
+        }, timeout);
+
         const handler = (e) => {
-            if (e.data.taskId === taskId) {
+            if (e.data && e.data.taskId === taskId) {
+                clearTimeout(timer); // Cancella il timeout se riceve risposta
                 BiotechWorker.removeEventListener('message', handler);
                 e.data.success ? resolve(e.data.data) : reject(e.data.error);
             }
         };
+
         BiotechWorker.addEventListener('message', handler);
-        BiotechWorker.postMessage({ action, payload, taskId });
+
+        try {
+            BiotechWorker.postMessage({ action, payload, taskId });
+        } catch (err) {
+            clearTimeout(timer);
+            reject("PostMessage Fallito: " + err.message);
+        }
     });
 };
 
-// Inizializzazione immediata del motore di traduzione nel Worker
+// Inizializzazione con percorso corretto per la struttura cartelle
 workerQuery('INIT_TRANSLATION_ENGINE', { 
     fileUrl: '../lang/common.json' 
-}).then(() => {
-    console.log(`%c🧬 Worker: Translation Engine Ready (Privacy-First/Local)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
-}).catch(err => {
-    console.warn(`%c⚠️ Worker: Fallback Mode Active`, SRE_LOG_MAIN.syntax + 'background:#f44336;', err);
+}, 10000) // Timeout più lungo (10s) per il primo caricamento su 3G
+.then(() => {
+    console.log(`%c🧬 Worker: Ready (Legacy Mode Active)`, "color:#4CAF50; font-weight:bold;");
+})
+.catch(err => {
+    console.warn(`%c⚠️ Worker Error: Fallback al thread principale`, "color:#f44336;", err);
+    // Qui potresti inserire una funzione di fallback che carica i JSON normalmente
 });
 
 /**
