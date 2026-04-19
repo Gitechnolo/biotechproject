@@ -61,6 +61,39 @@ const SRE_LOG_MAIN = {
   patch: 'background: #ff9800; color: #ffffff; border: 1px solid #e65100;'                    // Arancione Intenso: Patch Engine (Interventi di Emergenza)
 };
 
+/* ==========================================================================
+   WORKER CORE INTEGRATION [ADR-011 / 60fps]
+   Delega il parsing JSON e i calcoli pesanti al thread secondario.
+   ========================================================================== */
+const BiotechWorker = new Worker('./BiotechCoreWorker.js');
+
+/**
+ * Task Orchestrator: Gestisce le promesse asincrone con il Worker.
+ * Garantisce che il thread principale rimanga libero per il rendering.
+ */
+const workerQuery = (action, payload) => {
+    const taskId = crypto.randomUUID();
+    return new Promise((resolve, reject) => {
+        const handler = (e) => {
+            if (e.data.taskId === taskId) {
+                BiotechWorker.removeEventListener('message', handler);
+                e.data.success ? resolve(e.data.data) : reject(e.data.error);
+            }
+        };
+        BiotechWorker.addEventListener('message', handler);
+        BiotechWorker.postMessage({ action, payload, taskId });
+    });
+};
+
+// Inizializzazione immediata del motore di traduzione nel Worker
+workerQuery('INIT_TRANSLATION_ENGINE', { 
+    fileUrl: '../lang/common.json' 
+}).then(() => {
+    console.log(`%c🧬 Worker: Translation Engine Ready (Privacy-First/Local)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+}).catch(err => {
+    console.warn(`%c⚠️ Worker: Fallback Mode Active`, SRE_LOG_MAIN.syntax + 'background:#f44336;', err);
+});
+
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
  * Features: Circadian Sync, Deep Sleep, Fluid Fade-out, Menu + Floating Icon Sync.
