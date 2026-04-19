@@ -35,20 +35,18 @@ self.onmessage = async function(e) {
     switch (action) {
         case 'PARSE_JSON_DATA': // Usato da loadTranslation
         case 'INIT_TRANSLATION_ENGINE':
-    try {
-        const response = await fetch(payload.fileUrl);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        // Il "lavoro" del parsing qui dentro
-        cachedData = await response.json(); 
-        
-        // Restituiamo il successo. Possiamo anche inviare i dati 
-        // se vogliamo che l'engine li usi subito per il primo rendering.
-        self.postMessage({ taskId, success: true, data: cachedData });
-    } catch (error) {
-        self.postMessage({ taskId, success: false, error: error.message });
-    }
-    break;
+            try {
+                const response = await fetch(payload.fileUrl);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                cachedData = await response.json();
+                const processedData = performHeavyCalculations(cachedData, payload.options);
+
+                self.postMessage({ taskId, success: true, data: processedData });
+            } catch (error) {
+                self.postMessage({ taskId, success: false, error: error.message });
+            }
+            break;
 
         case 'PROCESS_TRANSLATION': // Richiesto da getTranslation/getWorkerTranslation
             try {
