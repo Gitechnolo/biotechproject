@@ -1,6 +1,29 @@
 /**
- * BIOTECH PROJECT | CORE COMPUTATIONAL WORKER [v1.0.0]
- * Strategy: Local-Only / Zero-Exfiltration / Main-Thread Liberation
+ * BIOTECH PROJECT | CORE COMPUTATIONAL WORKER [v1.0.1]
+ * -------------------------------------------------------------------------
+ * STRATEGY: Off-Main-Thread Processing | Zero-Exfiltration | ADR-011
+ * ROLE: Primary Computational Engine for i18n & Heavy Data Parsing
+ * PERFORMANCE: Main-Thread Liberation (60fps Protection)
+ * -------------------------------------------------------------------------
+   WORKER TASK TOPOLOGY 2026
+   =========================
+   
+   [INCOMING MESSAGE] ──► [TASK ORCHESTRATOR] ──► [LOCAL CACHE]
+                                ║
+        ╠══ ACTION: INIT_TRANSLATION_ENGINE ══► Fetch & Heavy Parse
+        ║           (Offloads JSON overhead from Main Thread)
+        ║
+        ╠══ ACTION: PROCESS_TRANSLATION ══════► Key-Value Lookup
+        ║           (Non-blocking i18n resolution)
+        ║
+        ╠══ ACTION: CALCULATE_HOLIDAY_METRICS ► Deterministic Logic
+        ║           (Scientific D.A.T.A. offloading)
+        ║
+        ╚══ ACTION: DEFAULT ══════════════════► Error Handling (taskId Sync)
+
+ * -------------------------------------------------------------------------
+ * COMPLIANCE: Privacy-First (No external pings) | Local-Only Data Vault
+ * STATUS: ACTIVE // COMPUTATIONAL_CORE_READY
  */
 
 // Cache locale del Worker per evitare fetch ripetuti
@@ -12,18 +35,20 @@ self.onmessage = async function(e) {
     switch (action) {
         case 'PARSE_JSON_DATA': // Usato da loadTranslation
         case 'INIT_TRANSLATION_ENGINE':
-            try {
-                const response = await fetch(payload.fileUrl);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                
-                cachedData = await response.json();
-                const processedData = performHeavyCalculations(cachedData, payload.options);
-
-                self.postMessage({ taskId, success: true, data: processedData });
-            } catch (error) {
-                self.postMessage({ taskId, success: false, error: error.message });
-            }
-            break;
+    try {
+        const response = await fetch(payload.fileUrl);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        // Il "lavoro" del parsing qui dentro
+        cachedData = await response.json(); 
+        
+        // Restituiamo il successo. Possiamo anche inviare i dati 
+        // se vogliamo che l'engine li usi subito per il primo rendering.
+        self.postMessage({ taskId, success: true, data: cachedData });
+    } catch (error) {
+        self.postMessage({ taskId, success: false, error: error.message });
+    }
+    break;
 
         case 'PROCESS_TRANSLATION': // Richiesto da getTranslation/getWorkerTranslation
             try {

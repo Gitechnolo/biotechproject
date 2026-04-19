@@ -21,11 +21,36 @@
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- CONFIGURAZIONE LINGUA ---
-    const getActiveLang = () => localStorage.getItem('preferred-language') || (navigator.language.startsWith('en') ? 'en' : 'it');
-    let currentLang = getActiveLang();
-    const isIt = currentLang === 'it';
-    const pad = n => n < 10 ? '0' + n : n;
+    // --- CONFIGURAZIONE LINGUA (Worker Optimized) ---
+const getActiveLang = () => localStorage.getItem('preferred-language') || (navigator.language.startsWith('en') ? 'en' : 'it');
+let currentLang = getActiveLang();
+const isIt = currentLang === 'it';
+const pad = n => n < 10 ? '0' + n : n;
+
+// [WORKER OPTIMIZATION] - Caricamento asincrono delegato al Worker Core
+workerQuery('INIT_TRANSLATION_ENGINE', { fileUrl: `./lang/${currentLang}.json` })
+    .then(translations => {
+        // Definiamo la funzione di traduzione che attinge dai dati parsati dal Worker
+        const translate = (key) => translations[key] || key;
+
+        // Traduzione immediata degli elementi statici nel DOM
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (key) el.textContent = translate(key);
+        });
+
+        // Avviamo il saluto settimanale solo ORA che i dati sono pronti
+        initWeeklyGreeting(translate);
+
+        console.log(`%c 🌍 i18n %c Engine Hydrated via Worker [${currentLang}] `, 
+            'background: #2e7d32; color: #fff; padding: 2px 5px; border-radius: 3px 0 0 3px;', 
+            'background: #333; color: #fff; padding: 2px 5px; border-radius: 0 3px 3px 0;');
+    })
+    .catch(err => {
+        console.warn("SRE Engine: Worker i18n Fallback", err);
+        // Fallback: se il worker fallisce, avviamo il saluto con una funzione dummy
+        initWeeklyGreeting(k => k); 
+    });
 
     const getCurrentSeason = () => {
         const now = new Date();
@@ -353,22 +378,29 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         updateClock(); setInterval(updateClock, 1000);
     }
 
-    // --- 3. SALUTO SETTIMANALE ---
-    function initWeeklyGreeting() {
-        const weekElement = document.getElementById("week");
-        if (!weekElement) return;
-        const createSpans = (text, start) => text.split('').map((char, index) => `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-        const messages = { it: ['buona domenica!', 'buon lunedì!', 'buon martedì!', 'buon mercoledì!', 'buon giovedì!', 'buon venerdì!', 'buon sabato!'], en: ['happy sunday!', 'happy monday!', 'happy tuesday!', 'happy wednesday!', 'happy thursday!', 'happy friday!', 'happy saturday!'] };
-        const titles = { it: 'Biotech Project vi augura ', en: 'Biotech Project wishes you ' };
-        const greetings = { it: ['Buonanotte', 'Buongiorno', 'Buon pomeriggio', 'Buonasera'], en: ['Good night', 'Good morning', 'Good afternoon', 'Good evening'] };
-        const now = new Date(), hour = now.getHours(), today = now.getDay();
-        let gIdx = hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3;
-        window.requestAnimationFrame(() => {
-            const daySpans = createSpans(messages[isIt ? 'it' : 'en'][today], 26);
-            const titleSpans = createSpans(titles[isIt ? 'it' : 'en'], 1);
-            weekElement.innerHTML = `<div class="greeting-time">${greetings[isIt ? 'it' : 'en'][gIdx]}</div>${titleSpans + daySpans}`;
-        });
-    }
+    // --- 3. SALUTO SETTIMANALE (Worker Ready) ---
+function initWeeklyGreeting(translate) {
+    const weekElement = document.getElementById("week");
+    if (!weekElement) return;
+
+    const createSpans = (text, start) => text.split('').map((char, index) => 
+        `<span style='--i:${start + index}'>${char === ' ' ? '&nbsp;' : char}</span>`
+    ).join('');
+
+    const now = new Date(), hour = now.getHours(), today = now.getDay();
+    
+    // Recupero dei testi tramite la funzione translate del Worker
+    // Nota: le chiavi tipo 'day_0', 'greet_0' devono essere nel JSON
+    const dayMessage = translate(`day_${today}`); 
+    const titleMessage = translate('greeting_title');
+    const timeGreeting = translate(`greet_${hour < 6 ? 0 : hour < 14 ? 1 : hour < 18 ? 2 : 3}`);
+
+    window.requestAnimationFrame(() => {
+        const daySpans = createSpans(dayMessage, 26);
+        const titleSpans = createSpans(titleMessage, 1);
+        weekElement.innerHTML = `<div class="greeting-time">${timeGreeting}</div>${titleSpans + daySpans}`;
+    });
+}
 
     // --- 4. TOOLTIP GESTORE (UPDATED FOR HTML RENDERING) ---
     function initBiotechTooltips() {
