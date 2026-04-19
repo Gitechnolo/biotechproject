@@ -61,42 +61,6 @@ const SRE_LOG_MAIN = {
   patch: 'background: #ff9800; color: #ffffff; border: 1px solid #e65100;'                    // Arancione Intenso: Patch Engine (Interventi di Emergenza)
 };
 
-/* ==========================================================================
-   WORKER CORE INTEGRATION [ADR-011 / 60fps]
-   Delega il parsing JSON e i calcoli pesanti al thread secondario.
-   ========================================================================== */
-const BiotechWorker = new Worker('./BiotechCoreWorker.js');
-
-/**
- * Task Orchestrator: Gestisce le promesse asincrone con il Worker.
- * Versione Hardened: Compatibile con ambienti non-HTTPS e Minificazione.
- */
-const workerQuery = (action, payload) => {
-    // Generatore ID Deterministico (Sostituisce crypto.randomUUID per compatibilità totale)
-    const taskId = Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
-    
-    return new Promise((resolve, reject) => {
-        const handler = (e) => {
-            if (e.data.taskId === taskId) {
-                BiotechWorker.removeEventListener('message', handler);
-                if (e.data.success) {
-                    resolve(e.data.data);
-                } else {
-                    reject(e.data.error);
-                }
-            }
-        };
-        BiotechWorker.addEventListener('message', handler);
-        
-        // Protezione contro Worker non inizializzati
-        try {
-            BiotechWorker.postMessage({ action, payload, taskId });
-        } catch (err) {
-            reject("Worker postMessage failed: " + err.message);
-        }
-    });
-};
-
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
  * Features: Circadian Sync, Deep Sleep, Fluid Fade-out, Menu + Floating Icon Sync.
@@ -830,26 +794,15 @@ function getPageName() {
   return fileName.replace('-semplice', '');
 }
 
-/**
- * BIOTECH PROJECT | ASYNC TRANSLATION BRIDGE [ADR-011]
- * Delega il caricamento e il parsing al BiotechCoreWorker.
- */
 async function loadTranslation(path) {
-    try {
-        // Inviamo il percorso al Worker. 
-        // Il thread principale ora è LIBERO di renderizzare a 60fps.
-        const data = await workerQuery('INIT_TRANSLATION_ENGINE', { fileUrl: path });
-        
-        if (!data) throw new Error(`Worker non ha restituito dati per: ${path}`);
-        
-        return data; 
-    } catch (err) {
-        console.warn(`%c⚠️ SRE Bridge Error: Fallback su caricamento standard per ${path}`, SRE_LOG_MAIN.syntax + 'background:#f44336;', err);
-        
-        // Fallback di sicurezza: se il worker fallisce, carichiamo normalmente
-        const res = await fetch(path);
-        return await res.json();
-    }
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`File non trovato: ${path}`);
+    return await res.json();
+  } catch (err) {
+    console.warn(err);
+    return null;
+  }
 }
 
 function getSavedLanguage() {
@@ -903,12 +856,12 @@ async function initTranslations() {
   const savedLang = getSavedLanguage();
   const translations = { it: {}, en: {} };
   
-  const common = await loadTranslation('./lang/common.json');
+  const common = await loadTranslation('lang/common.json');
   if (common) { translations.it = { ...common.it }; translations.en = { ...common.en }; }
 
   if (translatablePages.includes(pageName)) {
     const pageKey = getPageKey(pageName);
-    const pageData = await loadTranslation(`./lang/${pageKey}.json`);
+    const pageData = await loadTranslation(`lang/${pageKey}.json`);
     if (pageData) {
       if (pageData.it) translations.it = { ...translations.it, ...pageData.it };
       if (pageData.en) translations.en = { ...translations.en, ...pageData.en };
@@ -923,8 +876,8 @@ async function initTranslations() {
 
 function setLanguage(lang) {
   const pageName = getPageName();
-  const promises = [loadTranslation('./lang/common.json')];
-  if (translatablePages.includes(pageName)) promises.push(loadTranslation(`./lang/${getPageKey(pageName)}.json`));
+  const promises = [loadTranslation('lang/common.json')];
+  if (translatablePages.includes(pageName)) promises.push(loadTranslation(`lang/${getPageKey(pageName)}.json`));
 
   Promise.all(promises).then(([common, pageData]) => {
     const translations = {
