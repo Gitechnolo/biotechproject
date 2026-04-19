@@ -65,7 +65,7 @@ const SRE_LOG_MAIN = {
    WORKER CORE INTEGRATION [ADR-011 / 60fps]
    Delega il parsing JSON e i calcoli pesanti al thread secondario.
    ========================================================================== */
-const BiotechWorker = new Worker('./Biotech-file/BiotechCoreWorker.js');
+const BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js');
 
 /**
  * Task Orchestrator: Gestisce le promesse asincrone con il Worker.
