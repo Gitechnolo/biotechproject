@@ -28,49 +28,6 @@
 
 // Cache locale del Worker per evitare fetch ripetuti
 let cachedData = null;
-
-self.onmessage = async function(e) {
-    const { action, payload, taskId } = e.data;
-
-    switch (action) {
-        /* * [CRITICAL] CASE: PARSE_JSON_DATA & INIT_TRANSLATION_ENGINE
-         * Collegato a: Biotech.js -> loadTranslation()
-         * Scopo: Caricamento asincrono dei file lingua. Non modificare.
-         */
-        case 'PARSE_JSON_DATA': // Usato da loadTranslation
-        case 'INIT_TRANSLATION_ENGINE':
-            try {
-                const response = await fetch(payload.fileUrl);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                
-                cachedData = await response.json();
-                const processedData = performHeavyCalculations(cachedData, payload.options);
-
-                self.postMessage({ taskId, success: true, data: processedData });
-            } catch (error) {
-                self.postMessage({ taskId, success: false, error: error.message });
-            }
-            break;
-
-        /* * [CRITICAL] CASE: PROCESS_TRANSLATION
-         * Collegato a: Biotech.js -> getTranslation() / getWorkerTranslation()
-         * Scopo: Motore i18n in tempo reale. Vitale per la UI.
-         */
-        case 'PROCESS_TRANSLATION': // Richiesto da getTranslation/getWorkerTranslation
-            try {
-                if (!cachedData) {
-                    // Se il worker viene interrogato prima dell'init, restituiamo la chiave
-                    self.postMessage({ taskId, success: true, data: payload.key });
-                    return;
-                }
-                const translatedText = cachedData[payload.key] || payload.key;
-                self.postMessage({ taskId, success: true, data: translatedText });
-            } catch (error) {
-                self.postMessage({ taskId, success: false, error: error.message });
-            }
-            break;
-
-
 /* * [PARALLEL MODULE] BIO-SCIENTIFIC EXPLANATIONS
  * Strategy: Memory-Offloading (ADR-011)
  */
@@ -218,7 +175,49 @@ self.onmessage = async function(e) {
             "LEVEL_LOW": "STATUS: DECLINING (METABOLIC PHASE)",
             "default": "Bio-synchronized data via Biotech Core engine."
         }
-    };            
+    };
+
+
+self.onmessage = async function(e) {
+    const { action, payload, taskId } = e.data;
+
+    switch (action) {
+        /* * [CRITICAL] CASE: PARSE_JSON_DATA & INIT_TRANSLATION_ENGINE
+         * Collegato a: Biotech.js -> loadTranslation()
+         * Scopo: Caricamento asincrono dei file lingua. Non modificare.
+         */
+        case 'PARSE_JSON_DATA': // Usato da loadTranslation
+        case 'INIT_TRANSLATION_ENGINE':
+            try {
+                const response = await fetch(payload.fileUrl);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                cachedData = await response.json();
+                const processedData = performHeavyCalculations(cachedData, payload.options);
+
+                self.postMessage({ taskId, success: true, data: processedData });
+            } catch (error) {
+                self.postMessage({ taskId, success: false, error: error.message });
+            }
+            break;
+
+        /* * [CRITICAL] CASE: PROCESS_TRANSLATION
+         * Collegato a: Biotech.js -> getTranslation() / getWorkerTranslation()
+         * Scopo: Motore i18n in tempo reale. Vitale per la UI.
+         */
+        case 'PROCESS_TRANSLATION': // Richiesto da getTranslation/getWorkerTranslation
+            try {
+                if (!cachedData) {
+                    // Se il worker viene interrogato prima dell'init, restituiamo la chiave
+                    self.postMessage({ taskId, success: true, data: payload.key });
+                    return;
+                }
+                const translatedText = cachedData[payload.key] || payload.key;
+                self.postMessage({ taskId, success: true, data: translatedText });
+            } catch (error) {
+                self.postMessage({ taskId, success: false, error: error.message });
+            }
+            break;
 
 
         case 'GET_BIO_DATA':
