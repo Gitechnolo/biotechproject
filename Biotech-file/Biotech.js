@@ -69,30 +69,33 @@ const BiotechWorker = new Worker('./Biotech-file/BiotechCoreWorker.js');
 
 /**
  * Task Orchestrator: Gestisce le promesse asincrone con il Worker.
- * Garantisce che il thread principale rimanga libero per il rendering.
+ * Versione Hardened: Compatibile con ambienti non-HTTPS e Minificazione.
  */
 const workerQuery = (action, payload) => {
-    const taskId = crypto.randomUUID();
+    // Generatore ID Deterministico (Sostituisce crypto.randomUUID per compatibilità totale)
+    const taskId = Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+    
     return new Promise((resolve, reject) => {
         const handler = (e) => {
             if (e.data.taskId === taskId) {
                 BiotechWorker.removeEventListener('message', handler);
-                e.data.success ? resolve(e.data.data) : reject(e.data.error);
+                if (e.data.success) {
+                    resolve(e.data.data);
+                } else {
+                    reject(e.data.error);
+                }
             }
         };
         BiotechWorker.addEventListener('message', handler);
-        BiotechWorker.postMessage({ action, payload, taskId });
+        
+        // Protezione contro Worker non inizializzati
+        try {
+            BiotechWorker.postMessage({ action, payload, taskId });
+        } catch (err) {
+            reject("Worker postMessage failed: " + err.message);
+        }
     });
 };
-
-// Inizializzazione immediata del motore di traduzione nel Worker
-workerQuery('INIT_TRANSLATION_ENGINE', { 
-    fileUrl: './lang/common.json' 
-}).then(() => {
-    console.log(`%c🧬 Worker: Translation Engine Ready (Privacy-First/Local)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
-}).catch(err => {
-    console.warn(`%c⚠️ Worker: Fallback Mode Active`, SRE_LOG_MAIN.syntax + 'background:#f44336;', err);
-});
 
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
