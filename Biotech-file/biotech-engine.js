@@ -612,14 +612,22 @@ function initDnaScanner() {
 }
 
    // --- INIZIALIZZAZIONE BILANCIATA (NO-SHIFT) ---
-    // Carichiamo subito la parte visiva per evitare salti di layout
     initSeasonMonitor();
     initBioClock();
     initWeeklyGreeting();
 
-    // Posticipiamo solo i motori pesanti e invisibili (Tooltip e Scanner)
-    // Questi non causano movimenti della pagina quando si attivano
-    setTimeout(initBiotechTooltips, 150); 
+    // Sostituito setTimeout(initBiotechTooltips, 150)
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            initBiotechTooltips();
+            console.log("🧬 SRE: Tooltips caricati in fase Idle (Massima fluidità)");
+        });
+    } else {
+        // Fallback per browser datati (es. Safari vecchi)
+        setTimeout(initBiotechTooltips, 200);
+    }
+
+    // Scanner col setTimeout, è un'attività ciclica
     setTimeout(initDnaScanner, 300);
 });
 
