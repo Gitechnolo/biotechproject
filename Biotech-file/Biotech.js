@@ -61,6 +61,39 @@ const SRE_LOG_MAIN = {
   patch: 'background: #ff9800; color: #ffffff; border: 1px solid #e65100;'                    // Arancione Intenso: Patch Engine (Interventi di Emergenza)
 };
 
+/* ==========================================================================
+   WORKER CORE INTEGRATION [ADR-011 / 60fps]
+   Delega il parsing JSON e i calcoli pesanti al thread secondario.
+   ========================================================================== */
+const BiotechWorker = new Worker('./Biotech-file/BiotechCoreWorker.js');
+
+/**
+ * Task Orchestrator: Gestisce le promesse asincrone con il Worker.
+ * Garantisce che il thread principale rimanga libero per il rendering.
+ */
+const workerQuery = (action, payload) => {
+    const taskId = crypto.randomUUID();
+    return new Promise((resolve, reject) => {
+        const handler = (e) => {
+            if (e.data.taskId === taskId) {
+                BiotechWorker.removeEventListener('message', handler);
+                e.data.success ? resolve(e.data.data) : reject(e.data.error);
+            }
+        };
+        BiotechWorker.addEventListener('message', handler);
+        BiotechWorker.postMessage({ action, payload, taskId });
+    });
+};
+
+// Inizializzazione immediata del motore di traduzione nel Worker
+workerQuery('INIT_TRANSLATION_ENGINE', { 
+    fileUrl: './lang/common.json' 
+}).then(() => {
+    console.log(`%c🧬 Worker: Translation Engine Ready (Privacy-First/Local)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+}).catch(err => {
+    console.warn(`%c⚠️ Worker: Fallback Mode Active`, SRE_LOG_MAIN.syntax + 'background:#f44336;', err);
+});
+
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
  * Features: Circadian Sync, Deep Sleep, Fluid Fade-out, Menu + Floating Icon Sync.
@@ -794,15 +827,26 @@ function getPageName() {
   return fileName.replace('-semplice', '');
 }
 
+/**
+ * BIOTECH PROJECT | ASYNC TRANSLATION BRIDGE [ADR-011]
+ * Delega il caricamento e il parsing al BiotechCoreWorker.
+ */
 async function loadTranslation(path) {
-  try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`File non trovato: ${path}`);
-    return await res.json();
-  } catch (err) {
-    console.warn(err);
-    return null;
-  }
+    try {
+        // Inviamo il percorso al Worker. 
+        // Il thread principale ora è LIBERO di renderizzare a 60fps.
+        const data = await workerQuery('INIT_TRANSLATION_ENGINE', { fileUrl: path });
+        
+        if (!data) throw new Error(`Worker non ha restituito dati per: ${path}`);
+        
+        return data; 
+    } catch (err) {
+        console.warn(`%c⚠️ SRE Bridge Error: Fallback su caricamento standard per ${path}`, SRE_LOG_MAIN.syntax + 'background:#f44336;', err);
+        
+        // Fallback di sicurezza: se il worker fallisce, carichiamo normalmente
+        const res = await fetch(path);
+        return await res.json();
+    }
 }
 
 function getSavedLanguage() {
