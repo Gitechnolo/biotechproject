@@ -73,160 +73,94 @@ async function loadJsPDF() {
   }
 }
 
-// --- Funzione principale: carica dati reali dal JSON ---
+/**
+ * Helper per comunicare con il BiotechCoreWorker in modo asincrono.
+ */
+function callWorker(action, payload) {
+    return new Promise((resolve, reject) => {
+        const taskId = Math.random().toString(36).substring(2, 9);
+        const worker = new Worker('js/BiotechCoreWorker.js'); 
+
+        const handler = (e) => {
+            if (e.data.taskId === taskId) {
+                worker.removeEventListener('message', handler);
+                worker.terminate(); // Pulizia immediata del worker una volta terminato il compito
+                if (e.data.success) resolve(e.data.data);
+                else reject(new Error(e.data.error));
+            }
+        };
+
+        worker.addEventListener('message', handler);
+        worker.postMessage({ action, payload, taskId });
+    });
+}
+
 async function loadPerformanceData() {
-  // 1. GESTIONE ATOMICA DELLE RICHIESTE CONCORRENTI
-  if (abortController) {
-    abortController.abort(); // Interrompe fetch e cicli di rendering precedenti
-  }
+    if (abortController) abortController.abort();
+    if (isRendering) isRendering = false;
 
-  // Se c'era un rendering attivo, lo resettiamo forzatamente per evitare blocchi prolungati
-  if (isRendering) {
-    isRendering = false; 
-  }
+    abortController = new AbortController();
+    const { signal } = abortController;
 
-  abortController = new AbortController();
-  const { signal } = abortController; // Estraiamo il segnale per passarlo ovunque
+    console.log('%c 🧠 SRE-WORKER %c Delegation started.', SRE_LOG.base + SRE_LOG.start, 'color: #2196F3;');
 
-  console.log('%c 🧠 ORCHESTRATOR %c loadPerformanceData() in progress.', SRE_LOG.base + SRE_LOG.start, 'color: #2196F3;');
+    try {
+        isRendering = true;
 
-  try {
-    isRendering = true;
+        // 1. Fetch Dati Raw
+        const response = await fetch('data/performance-latest.json', { signal });
+        if (!response.ok) throw new Error('Dati non disponibili');
+        const rawData = await response.json();
 
-    // 2. FETCH CON SIGNAL (Piena compatibilità con modalità offline/cache)
-    const response = await fetch('data/performance-latest.json', { signal }); 
-    if (!response.ok) throw new Error('Dati non disponibili');
+        // 2. Off-Main-Thread Processing
+        // Inviamo il JSON al Worker per il calcolo dei trend e delle medie
+        const analytics = await callWorker('PROCESS_PERFORMANCE', { 
+            rawJson: rawData, 
+            origin: window.location.origin 
+        });
 
-    const data = await response.json();
-    const container = document.querySelector('.portfolio-row');
-    if (!container) return;
+        if (signal.aborted) return;
 
-    // Se siamo stati interrotti durante il fetch, usciamo silenziosamente senza modificare lo stato
-    if (signal.aborted) return;
+        // 3. Rendering UI con i dati già processati
+        const container = document.querySelector('.portfolio-row');
+        if (container) {
+            container.innerHTML = '';
+            // Usiamo renderCardsAsynchronously per mantenere la UI reattiva
+            await renderCardsAsynchronously(analytics.pages, container, signal);
+        }
 
-    container.innerHTML = '';
+        // 4. Aggiornamento Metriche e Grafico
+        aggiornaPerformanceScore(analytics.avgPerf);
+        creaGrafico(analytics.history);
+        
+        const update = (id, value) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        };
 
-    // --- Inizio Elaborazione Dati (Invariata) ---
-    const homePage = data.pages.find(p =>
-      p.url.includes('/index.html') ||
-      p.url === 'https://gitechnolo.github.io/biotechproject/' ||
-      p.url === window.location.origin + '/biotechproject/'
-    );
+        update('analyzed-count', analytics.summary?.analyzed || 0);
+        update('avg-performance', `${analytics.avgPerf}%`);
+        update('global-resilience-score', analytics.summary?.stressTest?.globalResilienceScore ?? '--');
 
-    const reportTime = homePage?.generatedTime ? new Date(homePage.generatedTime) : 
-                       data.lastUpdated ? new Date(data.lastUpdated) : new Date();
+        // Aggiornamento trend indicator centrale
+        const trendEl = document.getElementById('trend-indicator');
+        if (trendEl) {
+            const diff = analytics.homePageTrend;
+            trendEl.textContent = diff > 0 ? '▲' : diff < 0 ? '▼' : '●';
+            trendEl.className = `trend-indicator ${diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal'}`;
+        }
 
-    const dateStr = reportTime.toLocaleDateString('it-IT');
-    const timeStr = reportTime.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+        filterSelection('all');
+        document.body.classList.add('portfolio-loaded');
 
-    const dateTargets = ['last-update', 'last-updated', 'last-updated-report'];
-    dateTargets.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.textContent = (id === 'last-updated') ? dateStr : `Aggiornato il: ${dateStr} alle ${timeStr}`;
-        if (el.hasAttribute('datetime')) el.setAttribute('datetime', reportTime.toISOString());
-      }
-    });
-
-    const avgPerf = Math.round(
-      data.pages.reduce((sum, p) => sum + (p.performanceScore || 0), 0) / data.pages.length
-    );
-    
-    aggiornaPerformanceScore(avgPerf);
-
-    // 3. RENDERING ASINCRONO CON PROPAGAZIONE SIGNAL
-    // Passiamo 'signal' per interrompere i chunk se l'utente aggiorna di nuovo
-    await renderCardsAsynchronously(data.pages, container, signal);
-
-    // Se l'operazione è stata annullata durante il rendering delle card, usciamo
-    if (signal.aborted) return;
-
-    filterSelection('all');
-
-    // --- Grafico e Metriche ---
-    const history = [];
-    if (homePage?.previousPerformanceScore !== undefined && homePage.previousPerformanceScore !== null) {
-      history.push({
-        date: subtractDays(reportTime, 5),
-        score: homePage.previousPerformanceScore,
-        note: 'Previous measurement'
-      });
+    } catch (error) {
+        if (error.name !== 'AbortError') {
+            console.error('⚠️ SRE Failure:', error);
+            showNotification('Errore elaborazione dati via Worker.');
+        }
+    } finally {
+        if (!signal.aborted) isRendering = false;
     }
-    history.push({
-      date: formatDate(reportTime),
-      score: avgPerf,
-      note: 'Current measurement'
-    });
-
-    creaGrafico(history);
-
-    const summary = data.summary || {};
-    const avgA11y = summary.averageAccessibility ?? 94;
-    const avgSeo = summary.averageSeo ?? 96;
-    const avgBest = summary.averageBestPractices ?? 97;
-
-    document.querySelectorAll('.progress-circle').forEach(circle => {
-      const metric = circle.dataset.metric;
-      const value = { 
-        performance: avgPerf, 
-        'performance-desktop': Math.min(avgPerf + 2, 100), 
-        accessibility: avgA11y, 
-        seo: avgSeo, 
-        'best-practices': avgBest 
-      }[metric] || 75;
-      const rounded = Math.round(value);
-      circle.style.setProperty('--value', `${rounded}%`);
-      circle.setAttribute('aria-valuenow', rounded);
-      circle.dataset.value = rounded;
-    });
-
-    const trendEl = document.getElementById('trend-indicator');
-    if (trendEl && homePage) {
-      const diff = (homePage.performanceScore || 0) - (homePage.previousPerformanceScore || 0);
-      const icons = { 1: '▲', 0: '●', '-1': '▼' };
-      trendEl.textContent = icons[diff > 0 ? 1 : diff < 0 ? -1 : 0];
-      trendEl.className = 'trend-indicator';
-      const trendClass = diff > 0 ? 'trend-up' : diff < 0 ? 'trend-down' : 'trend-equal';
-      trendEl.classList.add(trendClass);
-      trendEl.classList.remove('visually-hidden');
-    }
-
-    const update = (id, value) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = value;
-    };
-
-    update('analyzed-count', summary.analyzed || data.pages.length);
-    update('avg-performance', `${avgPerf}%`);
-    update('avg-accessibility', `${avgA11y}%`);
-    update('avg-seo', `${avgSeo}%`);
-    update('avg-best-practices', `${avgBest}%`);
-    update('global-resilience-score', data.summary?.stressTest?.globalResilienceScore ?? '--');
-
-    document.body.classList.add('portfolio-loaded');
-
-  } catch (error) {
-    if (error.name === 'AbortError') {
-      console.log('%c ❌ ABORT %c Request cancelled: superseded by a new call.', SRE_LOG.base + SRE_LOG.error, 'color: #f44336;');
-      // Importante: non resettiamo isRendering qui perché la nuova chiamata lo ha già impostato a true
-    } else {
-      console.warn('⚠️ Errore durante il caricamento reale:', error);
-      aggiornaPerformanceScore(85);
-      creaGrafico();
-      const errorDate = document.getElementById('last-update') || document.getElementById('last-updated');
-      if (errorDate) errorDate.textContent = 'Dati non disponibili';
-      showNotification('Dati temporaneamente non disponibili.');
-      document.body.classList.add('portfolio-loaded');
-      isRendering = false; // Solo in caso di errore vero resettiamo il lock
-    }
-  } finally {
-    // 4. RILASCIO DEL LOCK CONDIZIONALE
-    // Rilasciamo il lock solo se QUESTA specifica esecuzione è arrivata alla fine senza essere interrotta da una nuova chiamata (abort)
-    if (!signal.aborted) {
-      isRendering = false;
-console.log('%c ✅ SYSTEM %c loadPerformanceData() completed. Lock released.', SRE_LOG.base + SRE_LOG.success, 'color: #4caf50;');
-    }
-  }
 }
 /**
  * Rende il caricamento delle card non bloccante.
