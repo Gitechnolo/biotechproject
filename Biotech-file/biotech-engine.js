@@ -612,23 +612,34 @@ function initDnaScanner() {
 }
 
    // --- INIZIALIZZAZIONE BILANCIATA (NO-SHIFT) ---
-    initSeasonMonitor();
-    initBioClock();
-    initWeeklyGreeting();
+initSeasonMonitor();
+initBioClock();
+initWeeklyGreeting();
 
-    // Sostituito setTimeout(initBiotechTooltips, 150)
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            initBiotechTooltips();
-            console.log("🧬 SRE: Tooltips caricati in fase Idle (Massima fluidità)");
-        });
-    } else {
-        // Fallback per browser datati (es. Safari vecchi)
-        setTimeout(initBiotechTooltips, 200);
-    }
+// Iniezione ottimizzata dei Tooltip (Fase Idle)
+if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+        initBiotechTooltips();
+        console.log(
+            "%c🧬 CORE %c Tooltips active in idle phase", 
+            "color:#00ffcc; background:#002222; padding: 2px 5px; border-radius: 3px; font-weight:bold;", 
+            "color:#8899af;"
+        );
+    });
+} else {
+    // Fallback per browser datati (es. Safari vecchi)
+    setTimeout(() => {
+        initBiotechTooltips();
+        console.log(
+            "%c🧬 CORE %c Tooltips active via fallback", 
+            "color:#ffa500; background:#221100; padding: 2px 5px; border-radius: 3px; font-weight:bold;", 
+            "color:#8899af;"
+        );
+    }, 200);
+}
 
-    // Scanner col setTimeout, è un'attività ciclica
-    setTimeout(initDnaScanner, 300);
+// Scanner DNA con setTimeout essendo un'attività ciclica pesante
+setTimeout(initDnaScanner, 300);
 });
 
 // ==========================================================================
