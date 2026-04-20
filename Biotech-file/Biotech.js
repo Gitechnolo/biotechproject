@@ -412,7 +412,7 @@ window.addEventListener('biotech:resilience-needed', (e) => {
 
     setTimeout(() => {
         if (ledPatch) ledPatch.className = "led led-off";
-        if (logDisplay) logDisplay.textContent = `> System stabilized. Monitoring active...`;
+        if (logDisplay) logDisplay.textContent = `> MONITORING ACTIVE...`;
         
         if (wing) {
             wing.classList.remove('is-alerting');
