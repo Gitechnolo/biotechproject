@@ -835,37 +835,41 @@ if (canvas) {
   }
 }
 
-// --- Inizializzazione ---
+// --- INIZIALIZZAZIONE BILANCIATA (SRE-HARDENED) ---
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Priorità Massima: UI e Dati (Esecuzione immediata per interattività)
   setupRefreshButtons();
   loadPerformanceData();
-  // --- AGGIUNTA PER SUPPORTO OFFLINE ---
-  // Carica le librerie PDF subito, saranno in cache per il test offline
-  loadJsPDF().then(() => {
-  console.log("%c 📚 ASSETS %c PDF libraries loaded and ready for offline use. ", SRE_LOG.base + SRE_LOG.graphic, "color: #80cbc4; font-style: italic;");
-});
+
+  // 2. Priorità Background: Librerie PDF (Posticipate per eliminare Long Tasks)
+  // Scarica jsPDF in cache per garantire l'export anche offline senza bloccare l'avvio
+  setTimeout(() => {
+    loadJsPDF().then(() => {
+      console.log(
+        "%c 📚 ASSETS %c PDF libraries ready in background (SRE-Deferred).", 
+        SRE_LOG.base + SRE_LOG.graphic, 
+        "color: #80cbc4; font-style: italic;"
+      );
+    });
+  }, 2000); 
 
   const statusSpan = document.getElementById('filter-status');
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      // 1. Esegue la tua funzione esistente (gestisce card e classe .active)
       filterSelection(btn.dataset.filter);
-
-      // 2. AGGIUNTA ACCESSIBILITÀ:
-      // Aggiorna lo stato "premuto" su tutti i bottoni
+      
+      // Aggiorna accessibilità ARIA
       document.querySelectorAll('.filter-btn').forEach(b => {
         b.setAttribute('aria-pressed', b.classList.contains('active'));
       });
 
-      // Aggiorna la Live Region per lo screen reader
       if (statusSpan) {
         statusSpan.textContent = btn.textContent;
       }
     });
   });
 
-  // Collega il pulsante di esportazione
   const exportBtn = document.getElementById('export-data-btn');
   if (exportBtn) {
     exportBtn.addEventListener('click', exportToPDF);
