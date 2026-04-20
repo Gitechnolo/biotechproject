@@ -1275,18 +1275,19 @@ textarea:focus,
     background: #000;
     border: 1px solid rgba(var(--color-accent-rgb), 0.2);
     padding: 8px;
+    
+    /* 3. TERMINALE FISSO: Altezza bloccata per impedire 
+       che il testo del LONG_TASK forzi l'espansione del box. */
     height: 60px !important; 
     max-height: 60px !important; 
-    overflow-y: auto;
+    
+    overflow-y: auto; /* Il testo lungo scorrerà qui dentro senza muovere il sito */
     display: block;
     box-sizing: border-box;
-
-    /* --- FIX TESTUALE PER CLS ZERO --- */
-    line-height: 1.2 !important;      
-    white-space: pre-wrap !important; 
-    word-break: break-all !important; 
-    /* Nota: font-display va solitamente nella regola @font-face, 
-       ma forzare il rendering qui aiuta la stabilità */
+    line-height: 1.2;      /* Forza l'altezza della riga */
+    white-space: pre-wrap; /* Mantiene la formattazione senza ricalcoli improvvisi */
+    word-break: break-all; /* Evita che parole lunghe (come i log) forzino l'espansione */
+    font-display: block;   /* Evita lo shift dovuto al cambio font (Flash of Unstyled Text) */
 }
 .sre-terminal code {
   color: #E0FFFF; 
