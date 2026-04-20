@@ -245,6 +245,7 @@
   margin-left: 6px;
   padding: 3px 10px;
   letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 }
 
 /* 2. Specifica per Trend (Frecce e Numeri nelle card) */
