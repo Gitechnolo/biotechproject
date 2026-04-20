@@ -835,46 +835,42 @@ if (canvas) {
   }
 }
 
-// --- INIZIALIZZAZIONE BILANCIATA (STRATEGIA SRE PORTFOLIO) ---
+// --- Inizializzazione ---
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Priorità Alta: Configurazione pulsanti (Interattività immediata)
   setupRefreshButtons();
-  setupFilterAccessibility(); // Funzione estratta per pulizia
-
-  // 2. Caricamento Dati: Fase Idle (Evita il blocco iniziale del browser)
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-      loadPerformanceData();
-      console.log("%c📊 PORTFOLIO %c Data hydration started in idle phase", SRE_LOG.base + SRE_LOG.graphic, "color: #8899af;");
-    });
-  } else {
-    setTimeout(loadPerformanceData, 150);
-  }
-
-  // 3. Moduli Pesanti (PDF & Assets): Posticipati per non competere con il grafico
-  setTimeout(() => {
-    loadJsPDF().then(() => {
-      console.log("%c📚 ASSETS %c PDF libraries ready (deferred loading)", SRE_LOG.base + SRE_LOG.graphic, "color: #80cbc4; font-style: italic;");
-    });
-  }, 500); // Carichiamo le librerie PDF solo dopo mezzo secondo
+  loadPerformanceData();
+  // --- AGGIUNTA PER SUPPORTO OFFLINE ---
+  // Carica le librerie PDF subito, saranno in cache per il test offline
+  loadJsPDF().then(() => {
+  console.log("%c 📚 ASSETS %c PDF libraries loaded and ready for offline use. ", SRE_LOG.base + SRE_LOG.graphic, "color: #80cbc4; font-style: italic;");
 });
 
-// Funzione di supporto per pulire l'init
-function setupFilterAccessibility() {
   const statusSpan = document.getElementById('filter-status');
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      // 1. Esegue la tua funzione esistente (gestisce card e classe .active)
       filterSelection(btn.dataset.filter);
+
+      // 2. AGGIUNTA ACCESSIBILITÀ:
+      // Aggiorna lo stato "premuto" su tutti i bottoni
       document.querySelectorAll('.filter-btn').forEach(b => {
         b.setAttribute('aria-pressed', b.classList.contains('active'));
       });
-      if (statusSpan) statusSpan.textContent = btn.textContent;
+
+      // Aggiorna la Live Region per lo screen reader
+      if (statusSpan) {
+        statusSpan.textContent = btn.textContent;
+      }
     });
   });
 
+  // Collega il pulsante di esportazione
   const exportBtn = document.getElementById('export-data-btn');
-  if (exportBtn) exportBtn.addEventListener('click', exportToPDF);
-}
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportToPDF);
+  }
+});
 /*
 ================================================================================
 FINAL SYSTEM AUDIT & ARCHITECTURAL SIGN-OFF | BiotechProject v6.2

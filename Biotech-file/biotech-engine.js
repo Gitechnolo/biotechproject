@@ -621,7 +621,7 @@ if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
         initBiotechTooltips();
         console.log(
-            "%c🧬 CORE %c Tooltips active in idle phase", 
+            "%c🧬 ENGINE %c Tooltips active in idle phase", 
             "color:#00ffcc; background:#002222; padding: 2px 5px; border-radius: 3px; font-weight:bold;", 
             "color:#8899af;"
         );
@@ -631,7 +631,7 @@ if ('requestIdleCallback' in window) {
     setTimeout(() => {
         initBiotechTooltips();
         console.log(
-            "%c🧬 CORE %c Tooltips active via fallback", 
+            "%c🧬 ENGINE %c Tooltips active via fallback", 
             "color:#ffa500; background:#221100; padding: 2px 5px; border-radius: 3px; font-weight:bold;", 
             "color:#8899af;"
         );
