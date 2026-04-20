@@ -1238,19 +1238,21 @@ textarea:focus,
     right: auto;
     top: auto;
     width: auto;
-/* Aumentiamo il margine per dare aria ai bagliori laterali */
     margin: 25px 20px; 
-/* 1. PORTIAMO L'ALTEZZA AL VALORE REALE: 150px era troppo conservativo. 
-Includendo terminale, pulsante e padding, il valore reale è più vicino a 185px. */
-    min-height: 185px; 
-/* 2. EVITIAMO IL COLLASSO DEI MARGINI */
+    
+    /* 1. LOCK DELL'ALTEZZA: Invece di min-height, usiamo height fissa 
+       per bloccare il layout shift una volta per tutte. */
+    height: 185px; 
+    
     display: flow-root; 
     padding: 12px;
-/* 3. STABILIZZAZIONE DEL LAYOUT */
     box-sizing: border-box; 
-    contain: layout style; /* Rimuoviamo size, ma manteniamo layout per isolare lo shift */
+    
+    /* 2. ISOLAMENTO TOTALE: contain: strict dice al browser che 
+       nulla di ciò che accade dentro influenzerà il layout esterno. */
+    contain: strict; 
+    
     overflow: visible;
-/* 4. ANTICIPIAMO IL RENDERING */
     content-visibility: auto;
     contain-intrinsic-size: 185px; 
     }
@@ -1271,8 +1273,13 @@ Includendo terminale, pulsante e padding, il valore reale è più vicino a 185px
     background: #000;
     border: 1px solid rgba(var(--color-accent-rgb), 0.2);
     padding: 8px;
-    height: 60px; /* Leggermente più alto per il testo a capo */
-    overflow-y: auto;
+    
+    /* 3. TERMINALE FISSO: Impedisce l'espansione verticale 
+       se il messaggio è lungo (es. il LONG_TASK detected) */
+    height: 60px; 
+    max-height: 60px; 
+    overflow-y: auto; /* Abilita lo scroll interno invece di allungare il box */
+    display: block;
 }
 .sre-terminal code {
   color: #E0FFFF; 
