@@ -42,12 +42,10 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Neural Core & Bio-Digitale Immuniteit (14 april 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Neural Core v6.3.2 - Voorspellende Veerkracht (21 april 2026)**
 > 
-> We hebben met succes **[ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27)** geïmplementeerd.  
-> Het systeem beschikt nu over een **Autonoom Immuunsysteem (v6.2)**. Door de integratie van een passieve `PerformanceObserver` (The Guardian) detecteert de architectuur prestatie-knelpunten in realtime en herstelt zichzelf om de **WCAG 2.2 AAA** stabiliteit te waarborgen, zelfs onder extreme rekenlast.
-> 
-> *Deze update introduceert de "SRE Guardian Terminal", een realtime telemetrie-interface voor proactieve monitoring van de systeemgezondheid.*
+> We hebben met succes de **Neural Core v6.3.2** uitgerold ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)).  
+> Deze update markeert de overgang van passieve monitoring naar **Voorspellend Zelfherstel** (Predictive Self-Healing). Dankzij een lokale neurale inferentie-engine (aan de Worker-zijde) anticipeert de architectuur op prestatieknelpunten voordat ze zich voordoen. Dit resulteert in een **vermindering van 25,8% in TBT (112ms)** en garandeert een onwrikbare **WCAG 2.2 AAA** stabiliteit.
 
 ---
 
@@ -174,7 +172,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 | **008** | **Infrastructure: Nightly SRE Reliability Gate** | Implementatie van een geautomatiseerde integriteitspoort voor architecturale onveranderlijkheid en 24u-validatie. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neurale Convergentie & Multisectorale Intelligentie** | Proactieve Bio-Cyber Voorspelling | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
-| **011** | **Neural Core: Passieve SRE Guardian** | Autonoom Prestatie-zelfherstel | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27) |
+| **011** | **Neural Core: Predictive SRE Guardian** | **TBT: 112ms (-25,8%) & Ethische Wissing** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068) |
 
 <details>
 <summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
@@ -239,11 +237,11 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Resultaat**: Real-time synchronisatie tussen het GPU-versnelde canvas en de semantische DOM, waardoor toegankelijkheid voor alle voorspellende datapunten wordt gegarandeerd.
 * **Validatie**: [Bekijk Neurale Logica (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
 
-### [ADR-011] Neural Core v6.2: Passieve SRE Guardian & Immuunsysteem
-* **Besluit**: Implementatie van `BiotechGuardian.js` (Passieve Monitoring) en `BiotechPatchEngine.js` (Autonoom Zelfherstel).
-* **Motivering**: Om "Antifragiliteit" te bereiken, moet het systeem prestatievermindering (Long Tasks > 100ms) detecteren zonder actieve polling, wat een automatische overschakeling naar "Klinische Modus" activeert om de toegankelijkheid te beschermen.
-* **Resultaat**: Een bio-digitale immuunrespons die de veerkrachtniveaus autonoom schaalt, geverifieerd via een realtime interactieve SRE-terminal.
-* **Validatie**: [Bekijk de evolutie van het immuunsysteem (#27)](https://github.com/Gitechnolo/biotechproject/issues/27)
+### [ADR-011] Neural Core v6.3.2: Voorspellende SRE Guardian & Bio-Digitaal Immuunsysteem
+* **Besluit**: Implementatie van `BiotechCoreWorker.js` (Neural Inference Engine) en `BiotechGuardian.js` (Ambient Sensing).
+* **Rationale**: Evolueren van reactief herstel naar **Voorspellende Veerkracht**. Door de neurale belasting-inferentie uit te besteden aan een dedicated Web Worker, voorziet het systeem prestatievermindering (TBT/Long Tasks) voordat deze de interface beïnvloedt.
+* **Resultaat**: Een bio-digitale immuunrespons die autonoom schaalt, resulterend in een geverifieerde **TBT-reductie tot 112ms** en de handhaving van het **Ethische Gegevenswissingsbeleid** (opschoning elke 7 dagen).
+* **Validatie**: [Bekijk Neurale Evolutie & Benchmark Rapport (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)
 
 </details>
 
@@ -429,7 +427,7 @@ lang/
 
 
 ## 📅 Laatste verificatiedatum
-**14 april 2026**
+**21 april 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
