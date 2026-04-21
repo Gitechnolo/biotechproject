@@ -42,12 +42,10 @@ Donde la biotecnología se encuentra con el código para construir herramientas 
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Hito: Neural Core & Inmunidad Bio-Digital (14 de abril de 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Hito: Neural Core v6.3.2 - Resiliencia Predictiva (21 de abril de 2026)**
 > 
-> Hemos implementado con éxito el **[ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27)**.  
-> El sistema ahora cuenta con un **Sistema Inmunitario Autónomo (v6.2)**. Mediante la integración de un `PerformanceObserver` pasivo (The Guardian), la arquitectura detecta cuellos de botella de rendimiento en tiempo real y se auto-repara para garantizar la estabilidad **WCAG 2.2 AAA**, incluso bajo una carga computacional extrema.
-> 
-> *Esta actualización introduce el "SRE Guardian Terminal", una interfaz de telemetría en tiempo real para el monitoreo proactivo de la salud del sistema.*
+> Hemos desplegado con éxito el **Neural Core v6.3.2** ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)).  
+> Esta actualización marca la transición de un monitoreo pasivo a una **Autocuración Predictiva**. Mediante un motor de inferencia neuronal local (lado del Worker), la arquitectura anticipa cuellos de botella antes de que ocurran, logrando una **reducción del 25.8% en el TBT (112ms)** y garantizando una estabilidad **WCAG 2.2 AAA** inquebrantable.
 
 ---
 
@@ -173,7 +171,7 @@ Este proyecto sigue un proceso riguroso de toma de decisiones para asegurar resi
 | **008** | **Puerta di Fiabilidad SRE Nocturna** | Integridad Inmutable y Validación 24h | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Convergencia Neural e Inteligencia Multisectorial** | Pronóstico Bio-Cyber Proactivo | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
-| **011** | **Neural Core: Passive SRE Guardian** | Auto-reparación de Rendimiento Autónoma | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27) |
+| **011** | **Neural Core: Predictive SRE Guardian** | **TBT: 112ms (-25.8%) y Purga Ética** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068) |
 
 <details>
 <summary><b>Haz clic para expandir: Justificación Completa ADR</b></summary>
@@ -238,11 +236,11 @@ Este proyecto sigue un proceso riguroso de toma de decisiones para asegurar resi
 * **Resultado**: Sincronización en tiempo real entre el lienzo (canvas) acelerado por GPU y el DOM semántico, garantizando la accesibilidad de todos los puntos de datos predictivos.
 * **Validación**: [Ver Lógica Neural (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
 
-### [ADR-011] Neural Core v6.2: Passive SRE Guardian & Sistema Inmunitario
-* **Decisión**: Implementación de `BiotechGuardian.js` (Monitoreo Pasivo) y `BiotechPatchEngine.js` (Auto-reparación Autónoma).
-* **Justificación**: Para lograr la "Antifragilidad", el sistema debe detectar degradaciones de rendimiento (Long Tasks > 100ms) sin sondeos activos, activando un cambio automático al "Modo Clínico" para proteger la accesibilidad.
-* **Resultado**: Una respuesta inmunitaria bio-digital que escala los niveles de resiliencia de forma autónoma, verificada mediante una terminal SRE interactiva en tiempo real.
-* **Validación**: [Ver Evolución del Sistema Inmunitario (#27)](https://github.com/Gitechnolo/biotechproject/issues/27)
+### [ADR-011] Neural Core v6.3.2: Guardian SRE Predictivo y Sistema Inmune Bio-Digital
+* **Decisión**: Implementación de `BiotechCoreWorker.js` (Motor de Inferencia Neuronal) y `BiotechGuardian.js` (Sensor Ambiental).
+* **Justificación**: Evolucionar de una remediación reactiva a una **Resiliencia Predictiva**. Al delegar la inferencia de carga neuronal a un Web Worker dedicado, el sistema prevé degradaciones de rendimiento (TBT/Long Tasks) antes de que afecten a la interfaz.
+* **Resultado**: Una respuesta inmune bio-digital que escala de forma autónoma, verificando una **reducción del TBT a 112ms** y aplicando la política de **Olvido Ético de Datos** (purga cada 7 días).
+* **Validación**: [Ver Evolución Neuronal y Reporte de Benchmark (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)
 
 </details>
 
@@ -428,7 +426,7 @@ lang/
 
 
 ## 📅 Última fecha de verificación
-**14 de abril de 2026**
+**21 de abril de 2026**
 
 ## 🔮 Actualizaciones recientes (resumen)
 
