@@ -1217,11 +1217,21 @@ function updateLastModified(lang) {
 
 // ==========================================================================
 // [ADR-010] GUARDIAN & RESILIENCE DYNAMIC ACTIVATION
-// Attiva il monitoraggio SRE solo a sistema stabilizzato.
+// Attiva il monitoraggio SRE & Neural Core solo a sistema stabilizzato.
 // ==========================================================================
 (function() {
   const activateGuardian = () => {
-    // Import dinamico per preservare il TTI < 0.3s
+    
+    // 1. Inizializzazione Globale del Neural Worker (ADR-011)
+    // Lo rendiamo disponibile a window prima di caricare il Guardian
+    try {
+      window.BiotechWorker = new Worker('./BiotechCoreWorker.js');
+      console.log(`%c🧠 Neural Core: Worker Thread Initialized`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
+    } catch (e) {
+      console.error("⚠️ SRE: Neural Core Thread Allocation Failed", e);
+    }
+
+    // 2. Import dinamico del Guardian per preservare il TTI < 0.3s
     import('./BiotechGuardian.js')
       .then(() => {
         console.log(`%c🛡️ SRE Guardian: Online & Monitoring`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.guardian);
@@ -1231,7 +1241,7 @@ function updateLastModified(lang) {
       });
   };
 
-  // Verifichiamo lo stato del documento per l'aggancio "Idle"
+  // Esecuzione in fase Idle per non competere con il rendering critico
   if (document.readyState === 'complete') {
     activateGuardian();
   } else {
