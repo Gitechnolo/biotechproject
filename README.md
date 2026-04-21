@@ -42,12 +42,10 @@ Where biotechnology meets code to build digital tools for research and innovatio
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core & Bio-Digital Immunity (April 14, 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.3.2 - Predictive Resilience (April 21, 2026)**
 > 
-> We have successfully deployed **[ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27)**.  
-> The system now features an **Autonomous Immune System (v6.2)**. By integrating a passive `PerformanceObserver` (The Guardian), the architecture now detects and self-heals performance bottlenecks in real-time, ensuring **WCAG 2.2 AAA** stability even under extreme computational stress.
-> 
-> *This update introduces the "SRE Guardian Terminal," a real-time telemetry interface for proactive system health monitoring.*
+> We have successfully deployed the **Neural Core v6.3.2** ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)).  
+> This major update transitions the system from passive monitoring to **Predictive Self-Healing**. Using a local Neural Inference Engine (Worker-side), the architecture now anticipates performance bottlenecks before they occur, achieving a **-25.8% reduction in Total Blocking Time (112ms)** and ensuring rock-solid **WCAG 2.2 AAA** stability.
 
 ---
 
@@ -174,7 +172,7 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 | **008** | **Nightly SRE Reliability Gate** | Immutable Integrity & 24h Validation | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neural Convergence & Multi-Sector Intelligence** | Proactive Bio-Cyber Forecasting | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
-| **011** | **Neural Core: Passive SRE Guardian** | Autonomous Performance Self-Healing | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27) |
+| **011** | **Neural Core: Predictive SRE Guardian** | **TBT: 112ms (-25.8%) & Ethical Purge** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068) |
 
 <details>
 <summary><b>Click to expand: Full ADR Rationale</b></summary>
@@ -239,11 +237,11 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 * **Outcome**: Real-time synchronization between the GPU-accelerated canvas and the semantic DOM, guaranteeing accessibility for all predictive data points.
 * **Validation**: [View Neural Logic (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
 
-### [ADR-011] Neural Core v6.2: Passive SRE Guardian & Immune System
-* **Decision**: Implementation of `BiotechGuardian.js` (Passive Monitoring) and `BiotechPatchEngine.js` (Auto-Remediation).
-* **Rationale**: To achieve "Anti-Fragility," the system must detect performance degradation (Long Tasks > 100ms) without active polling, triggering an automatic shift to "Clinical Mode" to protect accessibility.
-* **Outcome**: A bio-digital immune response that scales resilience levels autonomously, verified by a real-time interactive SRE terminal.
-* **Validation**: [View Immune System Evolution (#27)](https://github.com/Gitechnolo/biotechproject/issues/27)
+### [ADR-011] Neural Core v6.3.2: Predictive SRE Guardian & Bio-Digital Immune System
+* **Decision**: Implementation of `BiotechCoreWorker.js` (Neural Inference Engine) and `BiotechGuardian.js` (Ambient Sensing).
+* **Rationale**: To evolve from reactive remediation to **Predictive Resilience**. By offloading neural load inference to a dedicated Web Worker, the system anticipates performance bottlenecks (TBT/Long Tasks) before they impact the UI.
+* **Outcome**: A bio-digital immune response that scales autonomously, achieving a verified **-25.8% reduction in TBT (112ms)** and enforcing **ADR-011 Ethical Data Oblivion**.
+* **Validation**: [View Neural Evolution & Benchmark Report (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)
 
 </details>
 
@@ -428,7 +426,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**14 April 2026**
+**21 April 2026**
 
 ## 🔮 Recent updates (summary)
 
