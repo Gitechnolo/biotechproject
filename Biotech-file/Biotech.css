@@ -1268,34 +1268,26 @@ textarea:focus,
   font-weight: bold; 
   text-transform: uppercase;
 }
-/* --- Terminale: Allineamento Top & Fixed Height --- */
+/* --- Terminale Hardened: Blocco Espansione --- */
 .sre-terminal {
     background: #000;
-    border: 1px solid rgba(181, 234, 215, 0.2);
-    padding: 4px 8px;
-    
-    /* Lock dimensionale per CLS 0.1 */
-    height: 60px; 
-    max-height: 60px; 
-    overflow-y: auto;
-    
-    /* Layout interno per eliminare il vuoto superiore */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    
+    border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+    padding: 8px;
+/* 3. TERMINALE FISSO: Altezza bloccata per impedire che il testo del LONG_TASK forzi l'espansione del box. */
+    height: 60px !important; 
+    max-height: 60px !important; 
+    overflow-y: auto; /* Il testo lungo scorre qui dentro senza muovere il terminale */
+    display: block;
     box-sizing: border-box;
-    line-height: 1.2;
+    line-height: 1.2;      /* Forza l'altezza della riga */
+    white-space: pre-wrap; /* Mantiene la formattazione senza ricalcoli improvvisi */
+    word-break: break-all; /* Evita che parole lunghe (come i log) forzino l'espansione */
+    font-display: block;   /* Evita lo shift dovuto al cambio font (Flash of Unstyled Text) */
 }
 .sre-terminal code {
-    display: block;
-    margin: 0;
-    padding: 0;
-    color: #E0FFFF; 
-    font-size: 0.7rem; 
-    font-family: monospace;
-    text-align: left;
+  color: #E0FFFF; 
+  font-size: 0.8rem; 
+  font-family: monospace; /* Distingue il log dal testo normale */
 }
 /* LED animati - Puliti per SRE Performance */
 .led { 
@@ -1319,15 +1311,6 @@ textarea:focus,
 }
 .led-off { 
     background: rgba(255,255,255,0.1); 
-}
-/* Feedback visivo per il P2P Handshake */
-.led-mesh { 
-    background: #00b0ff; /* Blu Medicale per distinguere dal sistema locale */
-    border: 1px solid rgba(0, 176, 255, 0.5);
-    will-change: transform, opacity;
-}
-.led-mesh.syncing {
-    animation: pulse-sre 1s ease-in-out infinite;
 }
 @keyframes pulse-sre { 
     0%, 100% { opacity: 1; transform: scale(1); } 
@@ -1357,43 +1340,15 @@ textarea:focus,
     color: #E0FFFF; 
     font-family: monospace;
 }
-/* --- Action Zone: Vertical Stack & Symmetry --- */
 .sre-action-zone {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: 100%;
+    margin-top: 8px; 
 }
 .sre-btn {
-    /* Layout */
-    width: 100%;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    
-    /* Typography */
-    font-size: 0.65rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    width: 100%;       
+    min-width: auto;   
+    font-size: 0.65rem; 
+    padding: 4px;      
     text-align: center;
-    white-space: nowrap;
-    cursor: pointer;
-    
-    /* Aesthetic: Original Biotech Green */
-    background: rgba(181, 234, 215, 0.05);
-    border: 1px solid rgba(181, 234, 215, 0.3);
-    color: #B5EAD7;
-    
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-/* Hover: Feedback visivo conforme */
-.sre-btn:hover {
-    background: rgba(181, 234, 215, 0.15);
-    border-color: #B5EAD7;
-    color: #fff;
 }
 /* Supporto per la visibilità LED */
 .sre-led-container {
@@ -1401,25 +1356,6 @@ textarea:focus,
     align-items: center;
 }
 
-#biotech-mesh-portal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(4px); /* Solo se il browser lo supporta (SRE-check) */
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/* Coerenza con .sre-terminal */
-.mesh-container {
-    background: #000;
-    border: 2px solid #B5EAD7;
-    padding: 20px;
-    font-family: monospace;
-    text-align: center;
-    max-width: 90vw;
-}
 /*
 ================================================================================
       BIOTECHPROJECT - VISUAL ENGINE & STYLESHEET SIGN-OFF
