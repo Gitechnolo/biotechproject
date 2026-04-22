@@ -42,10 +42,10 @@ Où la biotechnologie rencontre le code pour construire des outils numériques p
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Jalon : Neural Core v6.3.2 - Résilience Prédictive (21 avril 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Jalon : Neural Core v6.3.3 - Hardened Zero-Knowledge (23 avril 2026)**
 > 
-> Nous avons déployé avec succès le **Neural Core v6.3.2** ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)).  
-> Cette mise à jour marque la transition d'une surveillance passive vers une **Autoguérison Prédictive**. Grâce à un moteur d'inférence neuronale local (côté Worker), l'architecture anticipe les goulots d'étranglement avant qu'ils ne surviennent, atteignant une **réduction de 25.8% du TBT (112ms)** et garantissant une stabilité **WCAG 2.2 AAA** absolue.
+> Nous avons déployé avec succès le **Neural Core v6.3.3** ([ADR-011-PRO | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)).  
+> Cette mise à jour majeure introduit le **chiffrement AES-GCM Zero-Knowledge**, sécurisant les coffres de données biosensibles sans compromettre les performances. Le système atteint désormais un **Speed Index 1 (Tier Optimal)** et un **TBT stabilisé à 106ms**, fusionnant une confidentialité de niveau militaire avec une réactivité web d'élite.
 
 ---
 
@@ -134,6 +134,9 @@ BiotechProject construit l'avenir d'une santé numérique résiliente et de nive
 ✅ **Tableau de bord de performance automatisé**  
 → Analyse continue de toutes les pages avec mises à jour de `performance-data.json`
 
+✅ **Confidentialité par Architecture (Zero-Knowledge)**
+→ Chiffrement **AES-GCM** intégré avec des sels d'environnement dynamiques. Le traitement 100% côté client garantit que les données utilisateur restent indéchiffrables même en cas d'inspection du stockage local, s'alignant sur le standard « Proton » de souveraineté numérique.
+
 ✅ **Filtre dynamique par catégorie**  
 → Interface interactive pour explorer le statut de maturité technologique
 
@@ -172,7 +175,7 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 | **008** | **Infrastructure: Nightly SRE Reliability Gate** | Mise en œuvre d'une porte d'intégrité automatisée pour garantir l'immuabilité architecturale et la validation 24h. | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Convergence Neurale & Intelligence Multisectorielle** | Prévisions Bio-Cyber Proactives | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
-| **011** | **Neural Core: Predictive SRE Guardian** | **TBT: 112ms (-25.8%) & Purge Éthique** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068) |
+| **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
 
 <details>
 <summary><b>Cliquez pour développer : Justification Complète ADR</b></summary>
@@ -237,11 +240,11 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 * **Résultat** : Synchronisation en temps réel entre le canvas accéléré par GPU et le DOM sémantique, garantissant l'accessibilité de tous les points de données prédictifs.
 * **Validation** : [Voir la Logique Neurale (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
 
-### [ADR-011] Neural Core v6.3.2 : Gardien SRE Prédictif et Système Immunitaire Bio-Numérique
-* **Décision** : Implémentation de `BiotechCoreWorker.js` (Moteur d'Inférence Neuronale) et `BiotechGuardian.js` (Capteur Ambiant).
-* **Rationale** : Évoluer d'une remédiation réactive vers une **Résilience Prédictive**. En déléguant l'inférence de charge neuronale à un Web Worker dédié, le système prévoit les dégradations de performance (TBT/Long Tasks) avant qu'elles n'affectent l'interface.
-* **Résultat** : Une réponse immunitaire bio-numérique à l'échelle autonome, vérifiant une **réduction du TBT à 112ms** et appliquant la politique d'**Oubli Éthique des Données** (purge tous les 7 jours).
-* **Validation** : [Voir l'Évolution Neurale et le Rapport de Benchmark (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4288960068)
+### [ADR-011] Neural Core v6.3.3 : Hardened SRE Guardian & Confidentialité Zero-Knowledge
+* **Décision** : Implémentation du chiffrement AES-GCM au sein de `BiotechCoreWorker.js` et boucles de rétroaction neuronale dans `BiotechResilience.js`.
+* **Justification** : Évoluer d'une simple résilience prédictive vers une **Architecture Hardened Zero-Knowledge**. En intégrant un chiffrement de niveau militaire au moteur d'inférence neurale, les données biosensibles sont protégées tout en maintenant des performances d'élite.
+* **Résultat** : Une couche de confidentialité niveau « standard Proton » qui atteint un **TBT vérifié de 106ms (Warm Stable)** et un **Speed Index 1**, garantissant la souveraineté numérique sans dégradation de l'expérience utilisateur (UX).
+* **Validation** : [Voir l'évolution Hardened et le rapport Zero-Knowledge (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
 
 </details>
 
@@ -426,7 +429,7 @@ lang/
 
 
 ## 📅 Dernière date de vérification
-**21 avril 2026**
+**23 avril 2026**
 
 ## 🔮 Mises à jour récentes (résumé)
 
