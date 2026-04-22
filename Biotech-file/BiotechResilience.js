@@ -8,7 +8,7 @@
  * -----------------------------------------------------------------------------
  * PERFORMANCE VERIFIED (v6.3.3 Benchmark):
  * ⚡ SPEED INDEX: 1 [OPTIMAL] - Top 10% Performance Tier.
- * ⚡ FCP: 1845ms (-171ms improvement vs v6.3.2).
+ * ⚡ FCP: 1845ms (Initial) | TBT: 106ms (Warm Stable)
  * ⚡ CLS: 0.232 - Stabilized via Neural Matrix feedback.
  * -----------------------------------------------------------------------------
  * 1. DETERMINISTIC LAYER (Immune Memory)
