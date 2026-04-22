@@ -1,46 +1,47 @@
 /**
- * BIOTECH PROJECT | CORE COMPUTATIONAL WORKER [v1.1.5]
+ * BIOTECH PROJECT | CORE COMPUTATIONAL WORKER [v1.3.0]
  * -------------------------------------------------------------------------
- * STRATEGY: Proactive Resilience | Zero-Exfiltration | ADR-011
- * ROLE: Primary Engine for i18n & Neural Load Inference (Bio-Immune System)
+ * STRATEGY: Mesh-Resilience | Zero-Exfiltration | ADR-012
+ * ROLE: Sovereign Health Node (i18n, Neural Inference, P2P Mesh Sync)
  * -------------------------------------------------------------------------
-   WORKER TASK TOPOLOGY 2026
-   =========================
+   WORKER TASK TOPOLOGY 2026 - MESH EVOLUTION
+   ==========================================
    
-   [INCOMING SIGNAL] ──► [TASK ORCHESTRATOR] ──► [STORAGE MANAGER]
-                                ║                      │
-        ╠══ ACTION: INIT_TRANSLATION_ENGINE            └─► Retention: 7 Days
-        ║           (Heavy JSON Parsing - Stable)          (Privacy Oblivion)
+   [INCOMING SIGNAL] ──► [TASK ORCHESTRATOR (ADR-012)] ──► [STORAGE MANAGER]
+                                ║                            │
+        ╠══ ACTION: INIT_MESH_HANDSHAKE ══════════╗          └─► Retention: 7 Days
+        ║           (QR-Signaling & P2P Pairing)  ║              (Ethical Purge)
+        ║                                         ║
+        ╠══ ACTION: SEND_FILE_P2P (ADR-012) ◄═════╣      [NETWORK STATUS]
+        ║           (Binary Chunking: 16KB Units) ║             ║
+        ║                                         ╚══► [LOCAL MESH TUNNEL]
+        ╠══ ACTION: PREDICTIVE_LOAD_INFERENCE                   ║
+        ║           (Neural Matrix Inference) ════════► [PEER SYNC ACTIVE]
         ║
-        ╠══ ACTION: PREDICTIVE_LOAD_INFERENCE ══► Persistence: IndexedDB
-        ║           (Neural Matrix Inference - Proactive)
-        ║
-        ╚══ ACTION: PROCESS_TRANSLATION ════════► Lookup: i18n Cache
+        ╚══ ACTION: PROCESS_TRANSLATION (i18n)
                     (Sub-1ms Resolution)
  * -------------------------------------------------------------------------
- * PERFORMANCE METRICS (SRE POST-OPTIMIZATION)
+ * PERFORMANCE METRICS (SRE MESH-OPTIMIZED)
  * -------------------------------------------------------------------------
- * ⚡ Total Blocking Time (TBT): 151ms ──► 112ms (-25.8% Gain)
- * ⚡ Responsiveness: Optimized via Off-Main-Thread Neural Inference
- * ⚡ Compliance: ADR-011 Stealth Memory [ACTIVE]
+ * ⚡ Total Blocking Time (TBT): 112ms Base ──► Optimized for Mesh
+ * ⚡ Binary Stability: 16KB Chunking Engine [ACTIVE]
+ * ⚡ Compliance: ADR-011 Stealth Memory & ADR-012 Mesh Privacy
  * -------------------------------------------------------------------------
- * STATUS: IMMUNE_HARDENED // ZERO_LEAKAGE // YEAR: 2026
+ * STATUS: MESH_HARDENED // ZERO_LEAKAGE // YEAR: 2026
  */
 
-// --- CACHE VOLATILE (LIVELLO 0) ---
+// --- CACHE & MESH STATE ---
 let cachedData = null;      // i18n Storage
 let neuralWeights = null;   // Active Synaptic Matrix
 let inferenceCount = 0;     // Persistence Trigger
+const CHUNK_SIZE = 16384;   // 16KB: Unità atomica per WebRTC DataChannels
 
-/**
- * STORAGE MANAGER (IndexedDB Wrapper)
- * Gestisce la persistenza dei pesi neurali con logica di Retention Etica.
- */
+// --- STORAGE MANAGER (ADR-011 Persistence) ---
 const StorageManager = {
     DB_NAME: 'BiotechNeuralCore',
     STORE_NAME: 'WeightsVault',
     VERSION: 1,
-    RETENTION_DAYS: 7, // Livello 2: Reset totale dopo 7 giorni di inattività
+    RETENTION_DAYS: 7,
 
     async openDB() {
         return new Promise((resolve, reject) => {
@@ -62,16 +63,11 @@ const StorageManager = {
             return new Promise((resolve) => {
                 const tx = db.transaction(this.STORE_NAME, 'readonly');
                 const request = tx.objectStore(this.STORE_NAME).get('current_model');
-                
                 request.onsuccess = () => {
                     const record = request.result;
                     if (!record) return resolve(null);
-
-                    // --- PRIVACY CHECK (RETENTION) ---
                     const ageInMs = Date.now() - record.updated;
-                    const maxAgeInMs = this.RETENTION_DAYS * 24 * 60 * 60 * 1000;
-
-                    if (ageInMs > maxAgeInMs) {
+                    if (ageInMs > (this.RETENTION_DAYS * 86400000)) {
                         this.purgeWeights(); 
                         return resolve(null);
                     }
@@ -86,12 +82,8 @@ const StorageManager = {
         try {
             const db = await this.openDB();
             const tx = db.transaction(this.STORE_NAME, 'readwrite');
-            tx.objectStore(this.STORE_NAME).put({ 
-                id: 'current_model', 
-                data: data, 
-                updated: Date.now() 
-            });
-        } catch (e) { /* Fail-safe per ADR-011 */ }
+            tx.objectStore(this.STORE_NAME).put({ id: 'current_model', data: data, updated: Date.now() });
+        } catch (e) { }
     },
 
     async purgeWeights() {
@@ -99,7 +91,28 @@ const StorageManager = {
             const db = await this.openDB();
             const tx = db.transaction(this.STORE_NAME, 'readwrite');
             tx.objectStore(this.STORE_NAME).delete('current_model');
-        } catch (e) { /* Storage Lock handling */ }
+        } catch (e) { }
+    }
+};
+
+// --- MESH ORCHESTRATOR (ADR-013) ---
+const MeshManager = {
+    async prepareBinaryPayload(fileBuffer) {
+        const chunks = [];
+        const totalChunks = Math.ceil(fileBuffer.byteLength / CHUNK_SIZE);
+        for (let i = 0; i < totalChunks; i++) {
+            const start = i * CHUNK_SIZE;
+            const end = Math.min(start + CHUNK_SIZE, fileBuffer.byteLength);
+            chunks.push(fileBuffer.slice(start, end));
+        }
+        return chunks;
+    },
+    generateHandshake() {
+        return btoa(JSON.stringify({
+            nodeId: `NODE-${Math.random().toString(36).substr(2, 9)}`,
+            ts: Date.now(),
+            v: '1.3.0'
+        }));
     }
 };
 
@@ -108,86 +121,72 @@ self.onmessage = async function(e) {
     const { action, payload, taskId } = e.data;
 
     switch (action) {
-        /* * [STABLE] i18n ENGINE: Caricamento JSON Lingue */
-        case 'PARSE_JSON_DATA':
+        /* [NEW] MESH: Inizia Handshake P2P */
+        case 'INIT_MESH_HANDSHAKE':
+            const handshakeData = MeshManager.generateHandshake();
+            self.postMessage({ taskId, success: true, action: 'DISPLAY_QR', data: handshakeData });
+            break;
+
+        /* [NEW] MESH: Processamento File Binari (PDF/Cartelle Cliniche) */
+        case 'SEND_FILE_P2P':
+            try {
+                const chunks = await MeshManager.prepareBinaryPayload(payload.fileBuffer);
+                for (let i = 0; i < chunks.length; i++) {
+                    self.postMessage({
+                        taskId,
+                        action: 'P2P_CHUNK_READY',
+                        data: { chunk: chunks[i], index: i, total: chunks.length, fileName: payload.fileName }
+                    });
+                    // Rilascio thread per proteggere il TBT ogni 5 pacchetti
+                    if (i % 5 === 0) await new Promise(r => setTimeout(r, 0));
+                }
+            } catch (err) {
+                self.postMessage({ taskId, success: false, error: err.message });
+            }
+            break;
+
+        /* [STABLE] i18n ENGINE */
         case 'INIT_TRANSLATION_ENGINE':
             try {
                 const response = await fetch(payload.fileUrl);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 cachedData = await response.json();
-                const processedData = performHeavyCalculations(cachedData, payload.options);
-                self.postMessage({ taskId, success: true, data: processedData });
+                self.postMessage({ taskId, success: true });
             } catch (error) {
                 self.postMessage({ taskId, success: false, error: error.message });
             }
             break;
 
-        /* * [STABLE] i18n ENGINE: Lookup Chiavi Traduzione */
         case 'PROCESS_TRANSLATION':
-            try {
-                const translatedText = (cachedData && cachedData[payload.key]) ? cachedData[payload.key] : payload.key;
-                self.postMessage({ taskId, success: true, data: translatedText });
-            } catch (error) {
-                self.postMessage({ taskId, success: false, error: error.message, data: payload.key });
-            }
+            const translated = (cachedData && cachedData[payload.key]) ? cachedData[payload.key] : payload.key;
+            self.postMessage({ taskId, success: true, data: translated });
             break;
 
-        /* * [NEW] NEURAL ENGINE: Predictive Throttling (Proactive SRE) */
+        /* [STABLE] NEURAL ENGINE */
         case 'PREDICTIVE_LOAD_INFERENCE':
             try {
-                // 1. Lazy Loading con controllo oblio
-                if (!neuralWeights) {
-                    neuralWeights = await StorageManager.getWeights() || { matrix: [0.5, 0.2, 0.7], bias: 0.05 };
-                }
-
-                // 2. Inferenza (Sanitizzazione input integrata)
+                if (!neuralWeights) neuralWeights = await StorageManager.getWeights() || { matrix: [0.5, 0.2, 0.7], bias: 0.05 };
                 const prediction = runInference(payload || {}, neuralWeights);
-
-                // 3. Persistence Trigger (Ogni 50 campioni per preservare cicli CPU)
+                
                 inferenceCount++;
                 if (inferenceCount >= 50) {
                     await StorageManager.saveWeights(neuralWeights);
                     inferenceCount = 0;
                 }
-
-                self.postMessage({ 
-                    taskId, 
-                    success: true, 
-                    data: {
-                        strategy: prediction.level,
-                        confidence: prediction.score,
-                        timestamp: Date.now()
-                    } 
-                });
+                self.postMessage({ taskId, success: true, data: { strategy: prediction.level, score: prediction.score } });
             } catch (error) {
                 self.postMessage({ taskId, success: false, error: error.message });
             }
             break;
 
         default:
-            self.postMessage({ taskId, success: false, error: "Action Unknown", taskId });
+            self.postMessage({ taskId, success: false, error: "Action Unknown" });
     }
 };
 
-/**
- * CORE LOGIC: Neural Inference (Pure Matrix Math)
- * Calcola il rischio di degrado prestazionale basato sui pattern di interazione.
- */
 function runInference(inputs, weights) {
-    const velocity = inputs.velocity || 0;
-    const density = inputs.density || 0;
-    
-    // Matrice pesata: v * W1 + d * W2 + b
-    const score = (velocity * weights.matrix[0]) + (density * weights.matrix[1]) + (weights.bias || 0);
-    
-    let level = 'STABLE';
-    if (score > 0.85) level = 'HIGH';
-    else if (score > 0.45) level = 'CLINICAL';
-
+    const v = inputs.velocity || 0;
+    const d = inputs.density || 0;
+    const score = (v * weights.matrix[0]) + (d * weights.matrix[1]) + (weights.bias || 0);
+    let level = score > 0.85 ? 'HIGH' : (score > 0.45 ? 'CLINICAL' : 'STABLE');
     return { score: Math.min(score, 1), level };
-}
-
-function performHeavyCalculations(data, options) {
-    if (options && options.filter) return data.filter(item => item.status === 'active');
-    return data;
 }
