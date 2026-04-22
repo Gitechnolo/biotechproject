@@ -131,6 +131,9 @@ BiotechProject is building the future of resilient, clinical-grade digital healt
 ✅ **Integrated CI/CD workflow**  
 → Automated testing, analysis, and updates on every change
 
+✅ **Privacy-by-Architecture (Zero-Knowledge)**
+→ Integrated **AES-GCM Encryption** with dynamic environment salts. 100% client-side processing ensures that user data remains undecipherable even in the event of local storage inspection, aligning with the "Proton" standard of digital sovereignty.
+
 ✅ **Automated performance dashboard**  
 → Continuous analysis of all pages with updates to `performance-data.json`
 
