@@ -1,27 +1,27 @@
 /**
  * =============================================================================
- * BIOTECH-SRE-RESILIENCE-MAP // VERSION 2.1.0 (HYBRID SENTINEL)
+ * BIOTECH-SRE-RESILIENCE-MAP // VERSION 2.2.0-STABLE (NEURAL HYBRID)
  * =============================================================================
- * [STRATEGY]: Hybrid Resilience (Immune Memory + Ambient Context)
- * [GOAL]: Zero-Latency UX Adaptation via Multi-Vector Sensing.
- * [COMPLIANCE]: ADR-011 / WCAG 2.2 AAA / Sub-300ms TTI Target.
+ * [STRATEGY]: Adaptive Hybrid Resilience (Immune Memory + Neural Feedback)
+ * [GOAL]: Zero-Latency UX Adaptation with Neural Core Synchronization.
+ * [COMPLIANCE]: ADR-011-PRO / WCAG 2.2 AAA / SRE Hardened v2.
  * -----------------------------------------------------------------------------
  * 1. DETERMINISTIC LAYER (Immune Memory)
  * ║─► Vault: LocalStorage 'biotech_resilience_signal' for state persistence.
  * ║─► Predictive Boot: Synchronous millisecond-zero execution based on
- * ║   historical degradation. Eliminates Layout Shift (CLS).
+ * ║   historical degradation. Eliminates Layout Shift (CLS) at root.
  *
- * 2. CONTEXTUAL LAYER (Hybrid Sensing)
+ * 2. CONTEXTUAL & NEURAL LAYER (Hybrid Sensing)
  * ║─► Network Guard: Sincrono. Interception of 2G/3G/Save-Data signals.
- * ║─► Energy Guard: Asincrono. Background battery monitoring (<15%) without 
- * ║   blocking the Main Thread.
+ * ║─► Energy Guard: Asincrono. Background battery monitoring (<15%).
+ * ║─► Neural Sync: Asynchronous training feedback (actualLoad) to Core v2.0.1.
  *
- * 3. RESPONSE & HEALING (SRE Guardian)
+ * 3. RESPONSE & HEALING (Self-Healing System)
  * ║─► Pruning: Atomic CSS injection via insertRule() for 0ms overhead.
- * ║─► Auto-Healing: Post-load (1500ms) re-evaluation for hardware recovery.
- * ╚─► Optimization: Pauses animations and kills transitions to save CPU cycles.
+ * ║─► Auto-Healing: requestIdleCallback (Post-load) for hardware recovery.
+ * ╚─► Sync Task: Bridging TTFB real-data to Neural Matrix for adaptive LR.
  * -----------------------------------------------------------------------------
- * STATUS: ACTIVE // HYBRID_SENTINEL_ENABLED // YEAR: 2026
+ * STATUS: ACTIVE // NEURAL_HYBRID_ENABLED // YEAR: 2026
  * =============================================================================
  */
 const BiotechResilience = (() => {
@@ -89,22 +89,43 @@ const BiotechResilience = (() => {
                 applyResilience('REACTIVE', reason);
             });
 
-            // --- STEP C: SRE AUTO-HEALING & DIAGNOSTICS (Post-Load) ---
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    const navTiming = performance.getEntriesByType('navigation')[0];
-                    const ttfb = navTiming ? navTiming.responseStart : 0;
-                    
-                    if (ttfb > 1000) {
-                        applyResilience('REACTIVE', 'HIGH_LATENCY_DETECTION');
-                        localStorage.setItem(SIGNAL_KEY, 'high');
-                    } else if (ttfb < 300) {
-                        // SRE Recovery: Ripristino se il sistema torna nominale
-                        localStorage.setItem(SIGNAL_KEY, 'stable');
-                        // Opzionale: Rimuovere lo stile se la batteria non è critica
-                    }
-                }, 1500);
+            // --- STEP C: SRE AUTO-HEALING, DIAGNOSTICS & NEURAL SYNC (Post-Load) ---
+window.addEventListener('load', () => {
+    // Usiamo requestIdleCallback se disponibile per la massima fluidità, altrimenti setTimeout
+    const scheduleTask = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
+
+    scheduleTask(() => {
+        const navTiming = performance.getEntriesByType('navigation')[0];
+        if (!navTiming) return;
+
+        const ttfb = navTiming.responseStart;
+        const totalLoad = navTiming.duration;
+
+        // 1. Logica di Resilienza Deterministica
+        if (ttfb > 1000) {
+            applyResilience('REACTIVE', 'HIGH_LATENCY_DETECTION');
+            localStorage.setItem(SIGNAL_KEY, 'high');
+        } else if (ttfb < 300) {
+            localStorage.setItem(SIGNAL_KEY, 'stable');
+        }
+
+        // 2. Ponte Neurale v2.0.1 (Integrazione Leggera)
+        // Comunica al Worker la latenza reale per affinare i pesi della matrice
+        if (window.BiotechWorker) {
+            window.BiotechWorker.postMessage({
+                action: 'PREDICTIVE_LOAD_INFERENCE',
+                payload: { 
+                    velocity: 0, // In questo contesto la velocità è statica
+                    density: ttfb, // Usiamo il TTFB come indicatore di densità di carico
+                    actualLoad: (ttfb > 800 || totalLoad > 3000) ? 0.9 : 0.1 // Feedback per l'apprendimento
+                },
+                taskId: `resilience_sync_${Date.now()}`
             });
+        }
+        
+        console.log(`%c📡 Resilience: Diagnostic Sync Complete (TTFB: ${Math.round(ttfb)}ms)`, "color: #9e9e9e; font-size: 10px;");
+    });
+});
         }
     };
 })();
