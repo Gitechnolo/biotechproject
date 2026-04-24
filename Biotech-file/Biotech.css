@@ -1271,6 +1271,7 @@ textarea:focus,
 /* --- Terminale Hardened: Blocco Espansione --- */
 .sre-terminal {
     background: #000;
+    contain: strict !important; /* Dice al browser: "non ricalcolare il main se qui dentro cambia qualcosa" */
     border: 1px solid rgba(var(--color-accent-rgb), 0.2);
     padding: 8px;
 /* 3. TERMINALE FISSO: Altezza bloccata per impedire che il testo del LONG_TASK forzi l'espansione del box. */
