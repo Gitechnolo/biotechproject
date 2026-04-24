@@ -1210,192 +1210,150 @@ textarea:focus,
 .highlight.highlight:hover{transform:scale(1.12);filter:brightness(1.2);text-shadow:0 4px 15px rgba(0,0,0,0.1)}
 @supports not (background-clip:text){.highlight.highlight{color:hsl(204 100% 59%);animation:none}}
 /* End gradient text */
-/* =============================================================================
-   BIOTECH SRE DASHBOARD & INTELLIGENCE HUB (v6.4.0)
-   Compliance: ADR-011-PRO / WCAG 2.2 AAA / Speed Index 1
-============================================================================= */
-
-/* --- SRE Dashboard Base --- */
+/* --- SRE Dashboard Integration (ADR-011) --- (SRE GUARDIAN) - Cumulative Layout Shift 0.1 */
 .sre-dashboard {
     position: absolute; 
     right: 20px;
     top: 100px; 
-    width: 300px; 
+    width: 300px; /* Contiene i bagliori laterali del pulsante */
     z-index: 999;
-    min-height: 180px;
-    padding: 12px;
+/* --- FIX CLIPPING & CLS --- */
+    min-height: 180px;  /* Spazio verticale per terminale + pulsante + glow */
+    padding: 12px;     /* Cuscinetto interno per evitare tagli ai bordi */
+    /* Disabilitiamo il contenimento rigido ciò causa il taglio netto */
     contain: layout style; 
     overflow: visible; 
+/* Ottimizzazione Rendering */
     content-visibility: auto;
-    background: rgba(0, 0, 0, 0.85); 
-    border: 1px solid rgba(181, 234, 215, 0.2);
     transform-origin: top right;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
-
-/* Hover solo se non è espanso */
-.sre-dashboard:hover:not(.is-expanded) {
-    transform: scale(1.02);
+.sre-dashboard:hover {
+    transform: scale(1.02); /* Leggermente ridotto per evitare di uscire dal viewport */
 }
-
-/* --- LOGICA MOBILE & CLS PROTECTION --- */
+/* Ottimizzazione specifica per Mobile - Cumulative Layout Shift 0 */
 @media (max-width: 1100px) {
-    /* LOCK RIGIDO: Solo se NON è espanso per preservare lo Speed Index 1 */
-    .sre-dashboard:not(.is-expanded) {
-        position: relative;
-        right: auto;
-        top: auto;
-        width: auto;
-        margin: 25px 20px; 
-        height: 185px !important; 
-        max-height: 185px !important;
-        display: flow-root; 
-        contain: size layout style !important; 
-        overflow: hidden;
-        contain-intrinsic-size: 185px; 
+.sre-dashboard {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+    margin: 25px 20px; 
+/* 1. LOCK RIGIDO: Usiamo height e max-height identici con !important */
+    height: 185px !important; 
+    max-height: 185px !important;
+    
+    display: flow-root; 
+    padding: 12px;
+    box-sizing: border-box; 
+/* 2. ISOLAMENTO TOTALE: Aggiungiamo 'size' al containment.
+       Questo obbliga il browser a considerare l'elemento come un blocco 
+       di dimensioni fisse a prescindere dal contenuto (i log dello SRE). */
+    contain: size layout style !important; 
+    
+    overflow: hidden; /* Evita che eventuali overflow temporanei sporchino il CLS */
+    content-visibility: auto;
+    contain-intrinsic-size: 185px; 
     }
 }
-
 .sre-header {
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   margin-bottom: 12px;
 }
-
 .sre-title {
-  font-size: 0.7rem; 
+  font-size: 0.85rem; 
   color: #B5EAD7; 
   font-weight: bold; 
   text-transform: uppercase;
 }
-
-/* --- Terminale Hardened --- */
+/* --- Terminale Hardened: Blocco Espansione --- */
 .sre-terminal {
     background: #000;
-    border: 1px solid rgba(181, 234, 215, 0.2);
-    padding: 10px;
-    height: 65px; /* Altezza base */
-    overflow-y: auto;
-    overflow-x: hidden;
+    border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+    padding: 8px;
+/* 3. TERMINALE FISSO: Altezza bloccata per impedire che il testo del LONG_TASK forzi l'espansione del box. */
+    height: 60px !important; 
+    max-height: 60px !important; 
+    overflow-y: auto; /* Il testo lungo scorre qui dentro senza muovere il terminale */
     display: block;
     box-sizing: border-box;
-    transition: height 0.4s ease;
+    line-height: 1.2;      /* Forza l'altezza della riga */
+    white-space: pre-wrap; /* Mantiene la formattazione senza ricalcoli improvvisi */
+    word-break: break-all; /* Evita che parole lunghe (come i log) forzino l'espansione */
+    font-display: block;   /* Evita lo shift dovuto al cambio font (Flash of Unstyled Text) */
 }
-
 .sre-terminal code {
-    color: #E0FFFF; 
-    font-size: 0.7rem; 
-    line-height: 1.2;  
-    font-family: 'JetBrains Mono', monospace;
+  color: #E0FFFF; 
+  font-size: 0.8rem; 
+  font-family: monospace; /* Distingue il log dal testo normale */
 }
-
-/* --- LED animati --- */
+/* LED animati - Puliti per SRE Performance */
 .led { 
     width: 9px; 
     height: 9px; 
     border-radius: 50%; 
     display: inline-block; 
     margin-left: 8px; 
+    /* Forza il browser a isolare l'elemento su un layer separato */
     will-change: opacity; 
 }
-
 .led-green { 
     background: #00e676; 
+    /* Usiamo un bordo solido o un filtro più leggero invece di box-shadow */
     border: 1px solid rgba(0, 230, 118, 0.5);
     animation: pulse-sre 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
 }
-
 .led-amber { 
     background: #ff9800; 
     border: 1px solid rgba(255, 152, 0, 0.5);
 }
-
 .led-off { 
     background: rgba(255,255,255,0.1); 
 }
-
 @keyframes pulse-sre { 
     0%, 100% { opacity: 1; transform: scale(1); } 
     50% { opacity: 0.4; transform: scale(1.05); } 
 }  
-
-/* --- Action Zone & Buttons --- */
-.sre-action-zone {
-    margin-top: 8px; 
-}
-
-.sre-btn {
-    width: 100%;       
-    font-size: 0.65rem; 
-    padding: 6px;      
-    text-align: center;
-    cursor: pointer;
-}
-
+/* Feedback Hover - Ottimizzato */
 .sre-dashboard .tech-nav-btn:hover {
     background: rgba(255, 152, 0, 0.15) !important;
     border-color: #ff9800 !important;
+    /* Rimosso box-shadow: usiamo un leggero cambio di luminosità per il feedback */
     filter: brightness(1.2);
 }
-
+/* Mantiene il terminale visibile durante la fase di patching */
+.sre-dashboard.is-alerting { 
+    opacity: 1 !important; 
+}
+/* --- SRE Typography & Internal Layout --- */
+.sre-title {
+    font-size: 0.7rem; 
+    color: #B5EAD7; 
+    font-weight: bold; 
+    text-transform: uppercase;
+}
+.sre-terminal code {
+    font-size: 0.7rem; 
+    line-height: 1.2;  
+    color: #E0FFFF; 
+    font-family: monospace;
+}
+.sre-action-zone {
+    margin-top: 8px; 
+}
+.sre-btn {
+    width: 100%;       
+    min-width: auto;   
+    font-size: 0.65rem; 
+    padding: 4px;      
+    text-align: center;
+}
+/* Supporto per la visibilità LED */
 .sre-led-container {
     display: flex;
     align-items: center;
-}
-
-/* --- ESPANSIONE DINAMICA (Intelligence Hub v6.4.0) --- */
-.sre-dashboard.is-expanded {
-    position: fixed; 
-    top: 50% !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90vw;
-    max-width: 500px;
-    height: auto;
-    max-height: 85vh;
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(15px);
-    border: 1px solid #ff9800;
-    box-shadow: 0 0 50px rgba(255, 152, 0, 0.3);
-    z-index: 10000;
-    contain: none !important; 
-}
-
-.sre-dashboard.is-expanded .sre-terminal {
-    height: 350px !important;
-    max-height: 50vh !important;
-    border-color: rgba(255, 152, 0, 0.4);
-}
-
-/* --- Input Zone v6.4.0 --- */
-.sre-input-zone {
-    display: none; 
-    padding: 12px 0;
-    align-items: center;
-    gap: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sre-dashboard.is-expanded .sre-input-zone {
-    display: flex;
-}
-
-.sre-ai-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255, 152, 0, 0.3);
-    color: #00ffa2;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    width: 100%;
-    outline: none;
-    padding: 5px 0;
-}
-
-.sre-ai-input:focus {
-    border-bottom-color: #ff9800;
 }
 
 /*
