@@ -80,7 +80,36 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <main id="main">
 <!-- Container: prevenzione CLS -->
 <div class="staff-layout-container" id="main-content">
-<div class="sre-dashboard" id="sre-wing" role="complementary" aria-label="System Resilience Monitor"><div class="sre-header"><span class="sre-title">🛡️ SRE GUARDIAN</span><div class="sre-led-container"><span id="led-guardian" class="led led-green" role="img" aria-label="Status: System Online"></span><span id="led-patch" class="led led-off" role="img" aria-label="Patch Engine: Idle"></span></div></div><div class="sre-terminal"><code id="sre-log-display" aria-live="polite">SYSTEM READY. ADR-011 SECURE.</code></div><div class="sre-action-zone"><button id="sre-stress-btn" class="tech-nav-btn sre-btn" type="button" aria-controls="sre-log-display">RUN STRESS TEST </button></div></div>  
+<div class="sre-dashboard" id="sre-wing" role="complementary" aria-label="Medical Intelligence Hub">
+    
+    <div class="sre-header">
+        <span class="sre-title">🛡️ INTELLIGENCE CORE v6.4.0</span>
+        <div class="sre-led-container">
+            <span id="led-guardian" class="led led-green" title="Guardian Status (Active)"></span>
+            <span id="led-ai" class="led led-off" title="AI Core Status (Idle)"></span>
+        </div>
+    </div>
+
+    <div class="sre-terminal" id="sre-chat-container">
+        <code id="sre-log-display" aria-live="polite">SYSTEM_READY: Awaiting clinical activation...</code>
+    </div>
+
+    <div class="sre-input-zone">
+        <span style="color: #ff9800; font-family: monospace; font-weight: bold;">&gt;</span>
+        <input type="text" id="ai-command" class="sre-ai-input" 
+               placeholder="Digita comando clinico..." 
+               autocomplete="off" 
+               spellcheck="false"
+               aria-label="Intelligence Input Field">
+    </div>
+
+    <div class="sre-action-zone">
+        <button id="sre-ai-toggle" class="tech-nav-btn sre-btn" type="button">
+            OPEN INTELLIGENCE HUB
+        </button>
+    </div>
+    
+</div>  
 <div class="staff-row"><div class="staff-col"><div class="staff-card"><div class="staff-container">
 <header><h1 data-lang-key="main-heading" class="sansation-bold">Benvenuti nel Progetto Biotech!</h1><p class="text" data-lang-key="manifesto_title">Un organismo digitale resiliente: il ponte tra biologia umana e innovazione tecnologica d'avanguardia. </p></header>
 <section><p class="text"><span data-lang-key="manifesto_intro_p1">BiotechProject non è solo informazione: è un'architettura</span><span class="highlight-text">Stateless Edge</span><span data-lang-key="manifesto_intro_p2">progettata per democratizzare la scienza. Grazie al nostro</span><a href="https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956" target="_blank" rel="noopener" title="Issue GitHub" aria-label="Neural Core v6.3.3 (si apre in una nuova scheda su GitHub)"><span aria-hidden="true" style="text-decoration: none; display: inline-block;">🔗</span><span class="highlight-text">Neural Core v6.3.3</span></a><span data-lang-key="manifesto_intro_p3">, monitora la propria salute sistemica e protegge l'utente con filosofia Zero-Knowledge, garantendo accesso universale e privacy assoluta.</span></p><p class="text" data-lang-key="manifesto_pillars_title">I nostri pilastri evolutivi:</p><ul class="text"><li><strong data-lang-key="pillar_1_title">Inclusione Universale (WCAG 2.2 AAA):</strong><span data-lang-key="manifesto_pillar_1">Oltre la semplice accessibilità. Offriamo ecosistemi cognitivi ottimizzati per neurodivergenze e DSA, garantendo la stessa dignità informativa a ogni utente.</span></li><li><strong data-lang-key="pillar_2_title">Resilienza Predittiva:</strong><span data-lang-key="manifesto_pillar_2_p1">Monitoraggio passivo tramite</span><span class="highlight-text">The Guardian</span><span data-lang-key="manifesto_pillar_2_p2">. Il sistema auto-ripara le performance (Self-Healing) e adatta l'interfaccia in tempo reale ai ritmi biologici e alla latenza di rete.</span></li></ul><div><p class="text italic" data-lang-key="manifesto_goal">La nostra missione è trasformare la complessità in chiarezza, rendendo la salute e la biotecnologia un patrimonio accessibile, sicuro e sovrano.</p><p class="text" data-lang-key="main-description">"La salute è il nostro bene più prezioso, la nostra serenità è il nostro destino di salute."</p></div></section>
