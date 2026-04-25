@@ -1258,7 +1258,7 @@ function updateLastModified(lang) {
         }
       };
 
-      console.log(`%c🧠 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
+      console.log(`%c🔒 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
       
     } catch (e) {
       console.error("⚠️ SRE: Neural Core Thread Allocation Failed (Hardened Mode)", e);
