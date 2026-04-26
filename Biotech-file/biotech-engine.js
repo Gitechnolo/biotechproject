@@ -40,30 +40,39 @@ document.addEventListener('DOMContentLoaded', () => {
 let scientificDict = {}; 
 
 /**
- * Recupera i dati dal BiotechCoreWorker in parallelo
- * Evita di bloccare il Main Thread durante il parsing del JSON pesante
+ * Recupera i dati dal BiotechCoreWorker in parallelo con logica di resilienza.
+ * Se workerQuery non è ancora disponibile, riprova ricorsivamente.
  */
 async function syncScientificDict() {
+    // 1. Controllo disponibilità interfaccia di comunicazione
+    if (typeof window.workerQuery !== 'function') {
+        // Se non è pronta, riprova tra 100ms (evita errori undefined)
+        setTimeout(syncScientificDict, 100);
+        return;
+    }
+
     try {
-        // Utilizziamo l'interfaccia workerQuery definita in Biotech.js
-        const lang = getActiveLang();
+        // 2. Chiamata al Worker
         const data = await window.workerQuery('FETCH_SCIENTIFIC_DICT', { 
-            lang: lang,
-            path: `./lang/scientific-dict.json` 
+            path: './lang/scientific-dict.json' 
         });
 
+        // 3. Popolamento cache locale
         if (data) {
             scientificDict = data;
             console.log("%c⚛️ ENGINE %c Dizionario Scientifico sincronizzato (Parallel Mode)", 
                 "color:#00ff88; background:#112211; font-weight:bold;", "color:#8899af;");
         }
     } catch (error) {
-        console.error("❌ ENGINE: Errore sincronizzazione dizionario:", error);
+        // In caso di errore (es. path errato), logghiamo ma non blocchiamo il sistema
+        console.warn("⚠️ ENGINE: Sincronizzazione dizionario ritardata:", error);
     }
 }
 
-// Avviamo la sincronizzazione senza attendere (non blocca il DOMContentLoaded)
+// Avvio della procedura di allineamento
 syncScientificDict();
+
+
 
     // --- HELPER FORMATTAZIONE TOOLTIP (STABILE) ---
 const formatTip = (title, body, extra = "", barPerc = null) => {
