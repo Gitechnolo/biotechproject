@@ -1244,7 +1244,7 @@ function updateLastModified(lang) {
       window.BiotechWorker.postMessage({
         action: 'INIT_TRANSLATION_ENGINE',
         payload: { 
-          fileUrl: './assets/translations.json', // Percorso del tuo file i18n
+          fileUrl: './assets/translations.json', // Percorso del file i18n
           userSalt: dynamicSalt,
           options: { filter: true } 
         },
