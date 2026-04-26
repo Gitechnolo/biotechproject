@@ -118,148 +118,127 @@ const formatTip = (title, body, extra = "", barPerc = null) => {
         updateBioCycle(); setInterval(updateBioCycle, 3600000);
     }
 
-    // --- 2. OROLOGIO BIO-CIRCADIANO ---
-    function initBioClock() {
-        const clockEl = document.getElementById('clock2');
-        if (!clockEl) return;
+    // ==========================================================================
+// --- 2. OROLOGIO BIO-CIRCADIANO (INTEGRATED & PARALLEL ALIGNED) ---
+// ==========================================================================
+function initBioClock() {
+    const clockEl = document.getElementById('clock2');
+    if (!clockEl) return;
 
-        const circadianMap = {
-            0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINA", "TOTAL DARKNESS"] },
-            3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "CITOCHINE", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "CYTOKINES", "SOMATOTROPIN"] },
-            6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
-            8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "DHEA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "DHEA", "PROTEIN BREAKFAST"] },
-            11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
-            12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
-            13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "ADIPONECTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "ADIPONECTIN", "NUTRITION BREAK"] },
-            15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
-            17: { it: ["PICCO FISICO", "ENDORFINE + MIOCHINE", "ENDORFINE/MIOCHINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHINS + MYOKINES", "ENDORPHINS/MYOKINES", "WORKOUT"] },
-            19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
-            21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "ANANDAMIDE", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "ANANDAMIDE", "ACTIVE RELAX"] },
-            23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
+    // Mappa Circadiana: Le prime stringhe di ogni array fungono da CHIAVI per il JSON
+    const circadianMap = {
+        0:  { it: ["RIGENERAZIONE GLINFATICA", "PULIZIA CEREBRALE", "ADENOSINA", "BUIO TOTALE"], en: ["GLYMPHATIC REGEN", "BRAIN CLEARANCE", "ADENOSINA", "TOTAL DARKNESS"] },
+        3:  { it: ["RIPARAZIONE TESSUTI", "INIZIO PULIZIA", "CITOCHINE", "SOMATOTROPINA"], en: ["TISSUE REPAIR", "CLEARANCE START", "CYTOKINES", "SOMATOTROPIN"] },
+        6:  { it: ["PICCO DI CORTISOLO", "RESET CIRCADIANO", "CORTISOLO", "LUCE NATURALE"], en: ["CORTISOL SPIKE", "CIRCADIAN RESET", "CORTISOL", "NATURAL LIGHT"] },
+        8:  { it: ["VIGILANZA ELEVATA", "NORADRENALINA", "DHEA", "COLAZIONE PROT."], en: ["HIGH VIGILANCE", "NOREPINEPHRINE", "DHEA", "PROTEIN BREAKFAST"] },
+        11: { it: ["MASSIMA ALLERTA", "PICCO COGNITIVO", "GLUTAMMATO", "FOCUS ATTIVO"], en: ["MAX ALERTNESS", "COGNITIVE PEAK", "GLUTAMATE", "ACTIVE FOCUS"] },
+        12: { it: ["STIMOLO ORESSIGENICO", "BDNF", "GRELINA", "PAUSA NUTRIZIONE"], en: ["OREXIGENIC STIMULUS", "BDNF", "GHRELIN", "NUTRITION BREAK"] },
+        13: { it: ["RISPOSTA LEPTINICA", "SAZIETÀ METABOLICA", "ADIPONECTINA", "PAUSA NUTRIZIONE"], en: ["LEPTIN RESPONSE", "METABOLIC SATIETY", "ADIPONECTIN", "NUTRITION BREAK"] },
+        15: { it: ["MANTENIMENTO COGNITIVO", "STABILITÀ SINAPTICA", "ACETILCOLINA", "FOCUS ANALITICO"], en: ["COGNITIVE MAINT.", "SYNAPTIC STABILITY", "ACETYLCHOLINE", "ANALYTICAL FOCUS"] },
+        17: { it: ["PICCO FISICO", "ENDORFINE + MIOCHINE", "ENDORFINE/MIOCHINE", "MOVIMENTO"], en: ["PHYSICAL PEAK", "ENDORPHINS + MYOKINES", "ENDORPHINS/MYOKINES", "WORKOUT"] },
+        19: { it: ["FINESTRA ANABOLICA", "SINTESI PROTEICA", "INSULINA", "DECOMPRESSIONE"], en: ["ANABOLIC WINDOW", "PROTEIN SYNTHESIS", "INSULIN", "DOWNTIME"] },
+        21: { it: ["RELAZIONE SOCIALE", "OSSITOCINA", "ANANDAMIDE", "RELAX ATTIVO"], en: ["SOCIAL CONNECTION", "OXYTOCIN", "ANANDAMIDE", "ACTIVE RELAX"] },
+        23: { it: ["RILASCIO MELATONINA", "INIZIO PULIZIA", "MELATONINA", "NO LUCE BLU"], en: ["MELATONIN ONSET", "CLEARANCE START", "MELATONIN", "NO BLUE LIGHT"] }
+    };
+
+    const getDynamicAdvice = (h, base) => {
+        const s = getCurrentSeason();
+        const isColdSeason = (s === "winter" || s === "autumn");
+        const isIt = getActiveLang() === 'it';
+
+        if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
+        
+        if (h >= 6 && h < 9) {
+            if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
+            if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
+        }
+
+        if (h >= 10 && h <= 12 && isColdSeason) {
+            return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
+        }
+
+        if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
+        if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
+        if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
+        if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+
+        return base;
+    };
+
+    const updateClock = () => {
+        const now = new Date();
+        const hour = now.getHours();
+        const mins = now.getMinutes();
+        const isIt = getActiveLang() === 'it';
+        
+        const keys = Object.keys(circadianMap).map(Number);
+        const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
+        const currentIndex = keys.indexOf(currentKey);
+        const nextKey = keys[currentIndex + 1] || 24; 
+        const blockDuration = nextKey - currentKey;
+        const elapsed = (hour - currentKey) + (mins / 60);
+
+        const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
+
+        let levelKey = (elapsed >= blockDuration * 0.7) ? "LEVEL_LOW" : 
+                       (elapsed >= blockDuration * 0.4) ? "LEVEL_MEDIUM" : "LEVEL_HIGH";
+
+        const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
+        const advice = getDynamicAdvice(hour, data[3]); 
+
+        // Riferimento al dizionario sincronizzato dal Worker
+        const dict = (scientificDict && scientificDict[isIt ? 'it' : 'en']) ? scientificDict[isIt ? 'it' : 'en'] : {};
+
+        // Funzione di ricerca Ultra-Resiliente
+        const getDesc = (key) => {
+            const fallbackMsg = isIt ? "Sincronizzazione bio-dati..." : "Bio-data syncing...";
+            if (!scientificDict || Object.keys(scientificDict).length === 0) return fallbackMsg;
+            if (!key) return dict["default"] || fallbackMsg;
+            
+            const k = key.toString().toUpperCase().trim();
+            return dict[k] || 
+                   (isIt ? (scientificDict.en && scientificDict.en[k]) : (scientificDict.it && scientificDict.it[k])) || 
+                   dict["default"] || 
+                   fallbackMsg;
         };
 
-        const getDynamicAdvice = (h, base) => {
-    const s = getCurrentSeason();
-    const isColdSeason = (s === "winter" || s === "autumn");
+        // Estrazione descrizioni per i Tooltip
+        const molName = data[2];
+        const molDesc = getDesc(molName);
+        const advDesc = getDesc(advice);    
+        const statDesc = getDesc(data[0]);
+        const sysStateDesc = getDesc(data[1]);
+        const levelInfo = getDesc(levelKey);
 
-    // 1. PRIORITÀ MATTINA (6:00 - 8:59)
-    if (h >= 7 && h < 8) return isIt ? "VARIAZIONE TERMICA (FREDDO)" : "THERMAL VARIATION (COLD)";
-    
-    if (h >= 6 && h < 9) {
-        if (s === "winter") return isIt ? "LUCE ART. 10K LUX" : "10K LUX ART. LIGHT";
-        if (s === "summer") return isIt ? "SOLE DIRETTO 10M" : "DIRECT SUN 10M";
-    }
+        const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
+        const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
+        const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
 
-    // 2. PRIORITÀ VITAMINA D (10:00 - 12:59) - Fondamentale in Autunno/Inverno
-    if (h >= 10 && h <= 12 && isColdSeason) {
-        return isIt ? "INTEGRA VITAMINA D" : "VITAMIN D INTAKE";
-    }
+        const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
+        const aDesc = formatTip(labelAdvice, advDesc);
+        const sDesc = formatTip(labelStatus, statDesc);
+        const sysDesc = formatTip(labelAnalysis, sysStateDesc);
 
-    // 3. PRIORITÀ POMERIGGIO/SERA
-    if (h >= 13 && h < 17 && s === "summer") return isIt ? "IDRATAZIONE + SALI" : "HYDRATION + SALTS";
-    if (h >= 17 && h < 19) return isIt ? "ALLENAMENTO RESISTENZA" : "RESISTANCE TRAINING";
-    if (h >= 21 && h < 23) return isIt ? "FOTOBIOMODULAZIONE (ROSSO)" : "PHOTOBIOMODULATION (RED)";
-    if (h >= 20 && s === "winter") return isIt ? "THERMO-RELAX (CALDO)" : "WARM THERMO-RELAX";
+        const datePart = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+        const timePart = `${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
 
-    // Se nessuna condizione dinamica è attiva, usa il base della circadianMap
-    return base;
-};
+        clockEl.innerHTML = `
+            <div class="hud-inline-row">
+                <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
+                <span class="separator">|</span>
+                <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
+            </div>
+            <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
+            <span class="bio-clock-time">
+                ${datePart} <span class="digits-stable">${timePart}</span>
+            </span>
+            <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
+        `;
+    };
 
-        const updateClock = () => {
-    const now = new Date();
-    const hour = now.getHours(); // const hour = 11; - PER TESTING (VITAMINA D)
-    const mins = now.getMinutes();
-    
-    const keys = Object.keys(circadianMap).map(Number);
-    const currentKey = [...keys].reverse().find(k => hour >= k) || 0;
-    const currentIndex = keys.indexOf(currentKey);
-    const nextKey = keys[currentIndex + 1] || 24; 
-    const blockDuration = nextKey - currentKey;
-    const elapsed = (hour - currentKey) + (mins / 60);
-
-    const intensityPerc = Math.max(5, Math.floor((1 - (elapsed / blockDuration)) * 100));
-
-    // 1. Definizione bilingue della levelKey
-    let levelKey;
-    if (elapsed >= blockDuration * 0.7) {
-        levelKey = isIt ? "LIVELLO_BASSO" : "LEVEL_LOW";
-    } else if (elapsed >= blockDuration * 0.4) {
-        levelKey = isIt ? "LIVELLO_MEDIO" : "LEVEL_MEDIUM";
-    } else {
-        levelKey = isIt ? "LIVELLO_ALTO" : "LEVEL_HIGH";
-    }
-
-   // 2. Recupero dati e dizionario (REFACTORED per Parallel Loading)
-const data = circadianMap[currentKey][isIt ? 'it' : 'en'];
-const advice = getDynamicAdvice(hour, data[3]); 
-
-// Puntiamo alla variabile globale caricata dal Worker. 
-// Usiamo un oggetto vuoto {} come fallback iniziale per evitare errori di lettura.
-const dict = (scientificDict && scientificDict[isIt ? 'it' : 'en']) ? scientificDict[isIt ? 'it' : 'en'] : {};
-
-// 3. Funzione di ricerca Ultra-Resiliente (Versione v6.3.3)
-const getDesc = (key) => {
-    // Messaggio temporaneo nel rarissimo caso in cui il JSON non sia ancora arrivato
-    const fallbackMsg = isIt ? "Sincronizzazione bio-dati..." : "Bio-data syncing...";
-    
-    // Se scientificDict è ancora vuoto, restituiamo il fallback
-    if (!scientificDict || Object.keys(scientificDict).length === 0) return fallbackMsg;
-
-    if (!key) return dict["default"] || fallbackMsg;
-    
-    const k = key.toString().toUpperCase().trim();
-
-    // Logica di ricerca a cascata (Failsafe Hierarchy):
-    // 1. Cerca nel dizionario della lingua attiva
-    // 2. Cerca nell'altra lingua se la traduzione manca (Cross-Language Fallback)
-    // 3. Cerca il valore "default" nel dizionario
-    // 4. Fallback finale testuale
-    return dict[k] || 
-           (isIt ? (scientificDict.en && scientificDict.en[k]) : (scientificDict.it && scientificDict.it[k])) || 
-           dict["default"] || 
-           fallbackMsg;
-};
-
-    // 4. Estrazione descrizioni pulite
-    const molName = data[2];
-    const molDesc = getDesc(molName);
-    const advDesc = getDesc(advice);    // Qui prenderà la nuova descrizione della Vitamina D
-    const statDesc = getDesc(data[0]);
-    const sysStateDesc = getDesc(data[1]);
-    const levelInfo = getDesc(levelKey);
-
-    // 5. Etichette HUD
-    const labelAdvice = isIt ? "CONSIGLIO BIO-LOGICO" : "BIO-LOGICAL ADVICE";
-    const labelStatus = isIt ? "BIO-STATO" : "BIO-STATUS";
-    const labelAnalysis = isIt ? "ANALISI DI SISTEMA" : "SYSTEM ANALYSIS";
-
-    // 6. Generazione Tooltip
-    const fullMoleculeTooltip = formatTip(molName, molDesc, levelInfo, intensityPerc);
-    const aDesc = formatTip(labelAdvice, advDesc);
-    const sDesc = formatTip(labelStatus, statDesc);
-    const sysDesc = formatTip(labelAnalysis, sysStateDesc);
-
-    // --- Formatta la data e l'ora ---
-    const datePart = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
-    const timePart = `${pad(hour)}:${pad(mins)}:${pad(now.getSeconds())}`;
-    // -------------------------------------
-
-    // 7. Rendering HTML
-    clockEl.innerHTML = `
-        <div class="hud-inline-row">
-            <span data-bio-tip="${fullMoleculeTooltip}">${isIt ? 'MOLECOLA' : 'MOLECULE'}: <b class="bio-data-value">${molName}</b></span>
-            <span class="separator">|</span>
-            <span data-bio-tip="${aDesc}">${isIt ? 'CONSIGLIO' : 'ADVICE'}: <b class="bio-data-value">${advice}</b></span>
-        </div>
-        <span class="bio-status-label" data-bio-tip="${sDesc}">${data[0]}</span>
-        <span class="bio-clock-time">
-            ${datePart} <span class="digits-stable">${timePart}</span>
-        </span>
-        <span class="bio-system-state" data-bio-tip="${sysDesc}">SYS STATE: ${data[1]}</span>
-    `;
-};
-        updateClock(); setInterval(updateClock, 1000);
-    }
+    updateClock(); 
+    setInterval(updateClock, 1000);
+}
 
     // --- 3. SALUTO SETTIMANALE ---
     function initWeeklyGreeting() {
