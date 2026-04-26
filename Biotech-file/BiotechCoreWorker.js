@@ -50,8 +50,7 @@ const state = {
     errorCount: 0,
     circuitOpen: false,
     lastRecovery: 0,
-    userSalt: null,
-    scientificDict: null 
+    userSalt: null 
 };
 
 /**
@@ -298,39 +297,6 @@ self.onmessage = async function(e) {
                 });
                 handleCircuitBreaker(true);
                 break;
-
-            case 'FETCH_SCIENTIFIC_DICT':
-    try {
-        // 1. Controllo Cache: se lo abbiamo già, rispondiamo istantaneamente
-        if (state.scientificDict) {
-            self.postMessage({ taskId, action, payload: state.scientificDict });
-            break;
-        }
-
-        // 2. Fetch Parallelo: scarichiamo il file JSON
-        // Payload.path conterrà './lang/scientific-dict.json'
-        const response = await fetch(payload.path);
-        
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-        
-        const data = await response.json();
-
-        // 3. Memorizzazione: salviamo nello stato del Worker per query future
-        state.scientificDict = data;
-
-        // 4. Risposta: inviamo i dati al Main Thread (biotech-engine.js)
-        self.postMessage({ 
-            taskId, 
-            action, 
-            payload: state.scientificDict,
-            status: 'SUCCESS_PARALLEL_LOAD'
-        });
-
-    } catch (error) {
-        console.error("Worker Error [Scientific Dict]:", error);
-        self.postMessage({ taskId, action, error: error.message });
-    }
-         break;    
 
             default:
                 self.postMessage({ taskId, success: false, error: "Unknown Action" });
