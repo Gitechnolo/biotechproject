@@ -54,7 +54,7 @@ async function syncScientificDict() {
     try {
         // 2. Chiamata al Worker
         const data = await window.workerQuery('FETCH_SCIENTIFIC_DICT', { 
-            path: './lang/scientific-dict.json' 
+            path: 'https://gitechnolo.github.io/biotechproject/Biotech-file/lang/scientific-dict.json' 
         });
 
         // 3. Popolamento cache locale
