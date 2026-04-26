@@ -199,21 +199,23 @@ const dict = (scientificDict && scientificDict[isIt ? 'it' : 'en']) ? scientific
 
 // 3. Funzione di ricerca Ultra-Resiliente (Versione v6.3.3)
 const getDesc = (key) => {
-    // Messaggio temporaneo nel rarissimo caso in cui il JSON non sia ancora arrivato
     const fallbackMsg = isIt ? "Sincronizzazione bio-dati..." : "Bio-data syncing...";
     
-    // Se scientificDict è ancora vuoto, restituiamo il fallback
-    if (!scientificDict || Object.keys(scientificDict).length === 0) return fallbackMsg;
+    if (!scientificDict || !scientificDict[isIt ? 'it' : 'en']) {
+        console.warn("⚠️ dict non ancora caricato o struttura errata:", scientificDict);
+        return fallbackMsg;
+    }
 
+    const dict = scientificDict[isIt ? 'it' : 'en'];
     if (!key) return dict["default"] || fallbackMsg;
     
     const k = key.toString().toUpperCase().trim();
+    
+    // DEBUG: Se non trova la chiave, stampiamola per vedere com'è scritta
+    if (!dict[k]) {
+        console.log(`🔍 Chiave non trovata: "${k}" nel dizionario ${isIt ? 'IT' : 'EN'}`);
+    }
 
-    // Logica di ricerca a cascata (Failsafe Hierarchy):
-    // 1. Cerca nel dizionario della lingua attiva
-    // 2. Cerca nell'altra lingua se la traduzione manca (Cross-Language Fallback)
-    // 3. Cerca il valore "default" nel dizionario
-    // 4. Fallback finale testuale
     return dict[k] || 
            (isIt ? (scientificDict.en && scientificDict.en[k]) : (scientificDict.it && scientificDict.it[k])) || 
            dict["default"] || 
