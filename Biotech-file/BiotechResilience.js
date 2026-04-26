@@ -138,13 +138,13 @@ window.addEventListener('load', () => {
 BiotechResilience.boot();
 
 /* =============================================================================
-      BIOTECHPROJECT - SRE HYBRID SENTINEL & RESILIENCE SIGN-OFF [v2.1.0]
+      BIOTECHPROJECT - SRE HYBRID SENTINEL & RESILIENCE SIGN-OFF [v2.2.0]
 ================================================================================
-  Status:           HYBRID_SENTINEL_ACTIVE (ADR-011 / v2.1.0)
+  Status:           HYBRID_SENTINEL_ACTIVE (ADR-011 / v2.2.0)
   Intelligence:     PREDICTIVE_VAULT + AMBIENT_SENSING [OK]
   Core Pruning:     ATOMIC_INJECTION_STABLE [OK]
   Compliance:       WCAG 2.2 AAA / ADR-011 / GDPR Privacy-by-Design
-  Timestamp:        2026-04-18 (Pre-RomeCup Deployment)
+  Timestamp:        2026-04-26 (Pre-RomeCup Deployment)
 --------------------------------------------------------------------------------
    "God give me style and give me grace
     God put a smile upon my face"
