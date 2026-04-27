@@ -417,7 +417,7 @@ window.addEventListener('biotech:resilience-needed', (e) => {
     
     // Aggiornamento sicuro (No .innerHTML per GitHub Audit)
     if (logDisplay) {
-        logDisplay.textContent = `> ${report.type} DETECTED: ${report.value}ms.`;
+        logDisplay.textContent = `> ${report.type} DETECTED: ${report.value}ms. Patching...`;
     }
 
     setTimeout(() => {
