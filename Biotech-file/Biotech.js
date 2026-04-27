@@ -417,12 +417,12 @@ window.addEventListener('biotech:resilience-needed', (e) => {
     
     // Aggiornamento sicuro (No .innerHTML per GitHub Audit)
     if (logDisplay) {
-        logDisplay.textContent = `> [SIGNAL] ${report.type} detected: ${report.value}ms. Patching...`;
+        logDisplay.textContent = `> ${report.type} DETECTED: ${report.value}ms.`;
     }
 
     setTimeout(() => {
         if (ledPatch) ledPatch.className = "led led-off";
-        if (logDisplay) logDisplay.textContent = `> MONITORING ACTIVE...`;
+        if (logDisplay) logDisplay.textContent = `> ROMECUP PROTOCOL: ACTIVE...`;
         
         if (wing) {
             wing.classList.remove('is-alerting');
@@ -441,7 +441,7 @@ function simulateStress() {
     const actualLatency = Math.round(end - start);
 
     window.dispatchEvent(new CustomEvent('biotech:resilience-needed', { 
-        detail: { type: 'LATENCY_THRESHOLD', value: actualLatency } 
+        detail: { type: 'LATENCY', value: actualLatency } 
     }));
 }
 
