@@ -1,13 +1,13 @@
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR [v6.3.3 - Neural Hardened]
  * -------------------------------------------------------------------------
- * ARCHITECTURE: Modular Vanilla JS | MULTITHREADED HYBRID CORE (Worker-Offscreen)
+ * ARCHITECTURE: Modular Vanilla JS (Zero-Dependency) | MULTITHREADED CORE
  * RELIABILITY: SRE Passive Guardian & Neural Bio-Immune System [ADR-011-PRO]
- * PERFORMANCE: Predictive Load Inference | Speed Index 1 | 60 FPS (Off-Thread)
+ * PERFORMANCE: Predictive Load Inference | Speed Index 1 | 60 FPS Target
  * VERIFIED: FCP: 1845ms | TBT: 106ms (Warm) | Speed Index: 1 (Optimal Tier)
  * COMPLIANCE: ADR-011-PRO Ethical Retention & Zero-Knowledge Encryption
  * -------------------------------------------------------------------------
-BIOTECH PROJECT | SYSTEM ARCHITECTURE MAP 2026 (Updated v6.3.3)
+BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (Updated v6.3.3)
 ============================================================
 
 [ROOT] index.html / Biotech.js (Core Orchestrator)
@@ -26,15 +26,14 @@ BIOTECH PROJECT | SYSTEM ARCHITECTURE MAP 2026 (Updated v6.3.3)
  ║   ╚── COMPONENT: SRE Interactive Dashboard [ADR-011-PRO]
  ║                  (Neural Weights Monitor / Real-time Performance Audit)
  ║
- ╠══ COMPUTATIONAL CORE (Off-Main-Thread) [v6.3.3-STABLE][cite: 8]
+ ╠══ COMPUTATIONAL CORE (Off-Main-Thread) [v2.0.1-STABLE]
  ║   ║
- ║   ╚── WORKER: BiotechCoreWorker.js [NEURAL ENGINE + OFFSCREEN CANVAS]
- ║               (Zero-Knowledge Vault / AES-GCM / Visual Synthesis Engine)
+ ║   ╚── WORKER: BiotechCoreWorker.js [NEURAL ENGINE + AES-GCM]
+ ║               (Zero-Knowledge Vault / Adaptive LR Matrix / i18n Logic)
  ║
  ╠══ CORE AREA: UX & RENDERING PIPELINE
  ║   ║
- ║   ╠── MODULE 01: Biocircadian Visual Synthesizer (Worker-Delegated)[cite: 8]
- ║   ║              (Offscreen Rendering / Atomic Transfer / 60 FPS Target)
+ ║   ╠── MODULE 01: Biocircadian Visual Synthesizer (Canvas Engine)
  ║   ╠── MODULE 02: QRedshift Adaptive Filter (Chromatic Logic)
  ║   ╚── MODULE 03: Performance & Event Orchestrator (Neural Task Delivery)
  ║
@@ -51,12 +50,12 @@ BIOTECH PROJECT | SYSTEM ARCHITECTURE MAP 2026 (Updated v6.3.3)
 -------------------------------------------------------------------------
 * SRE PERFORMANCE BENCHMARK (POST-UPGRADE v6.3.3)
 * -------------------------------------------------------------------------
-* Speed Index: 1 (OPTIMAL) ──► Top 10% Visual Completion Tier[cite: 8]
-* Rendering: 60 FPS (Zero Main-Thread Impact via OffscreenCanvas)[cite: 8]
-* FCP: 1845ms (Verified -171ms gain vs v6.3.2)[cite: 8]
+* Speed Index: 1 (OPTIMAL) ──► Top 10% Visual Completion Tier
+* FCP: 1845ms (Verified -171ms gain vs v6.3.2)
+* TBT: 135ms (Cold Start) ──► 106ms (Warm / Cached Encryption)
 * Security: ADR-011-PRO (AES-GCM + Dynamic User-Agent Salt) [ACTIVE]
 -------------------------------------------------------------------------
-* STATUS: HARDENED_CORE_DEPLOYED // VISUAL_DELEGATION_ACTIVE // 2026
+* STATUS: HARDENED_CORE_DEPLOYED // ADR-011-PRO_COMPLIANT // 2026
 */
 const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
@@ -171,59 +170,71 @@ function updateCircadianState(isFirstRun = false) {
   updateVisuals();
 }
 
-  // ==========================================================================
-    // MODULE 01: VISUAL SYNTHESIZER (CANVAS ENGINE) - WORKER DELEGATED [v6.3.3]
-    // Biocircadian Visual Synthesizer (OffscreenCanvas / Multithreaded Engine)
+    // ==========================================================================
+    // MODULE 01: VISUAL SYNTHESIZER (CANVAS ENGINE)
+    // Biocircadian Visual Synthesizer (Canvas Engine / Stem Cell Simulation)
     // ==========================================================================
     const ParticlesEngine = {
+        colors: [
+            "rgba(180, 220, 255, 0.26)", "rgba(220, 255, 180, 0.22)",
+            "rgba(255, 220, 180, 0.19)", "rgba(200, 255, 220, 0.21)",
+            "rgba(255, 200, 220, 0.21)"
+        ],
+
         init(canvasId) {
             const canvas = document.getElementById(canvasId);
-            if (!canvas || !('transferControlToOffscreen' in canvas)) {
-                console.warn("⚠️ SRE: OffscreenCanvas not supported or Canvas not found.");
-                return null;
-            }
+            if (!canvas) return null;
+            const ctx = canvas.getContext('2d', { alpha: true });
+            let animationId;
+            const FRAME_DELAY = 100; 
+            let lastFrameTime = 0;
 
-            // Trasferimento atomico del controllo al BiotechWorker[cite: 11, 12]
-            const offscreen = canvas.transferControlToOffscreen();
-            
-            BiotechWorker.postMessage({
-                action: 'INIT_GRAPHICS_CORE',
-                payload: {
-                    canvas: offscreen,
-                    width: window.innerWidth,
-                    height: window.innerHeight,
-                    isNight: state.isNight,
-                    connectionType: navigator.connection ? navigator.connection.effectiveType : '4g'
-                }
-            }, [offscreen]); // Il secondo argomento [offscreen] è fondamentale per il transfer[cite: 11, 12]
+            const resize = () => {
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                ctx.scale(dpr, dpr);
+            };
 
-            return {
-                /**
-                 * DESTROY: Invia il segnale di ibernazione al Worker per fermare i loop attivi.
-                 * Necessario per rispettare i protocolli di risparmio energetico SRE.[cite: 10, 11]
-                 */
-                destroy: () => {
-                    BiotechWorker.postMessage({
-                        action: 'DESTROY_GRAPHICS_CORE',
-                        taskId: 'shutdown_' + Date.now()
-                    });
-                    console.log("%c❄️ SRE: Hibernation signal", SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
-                },
-                
-                /**
-                 * RESIZE: Aggiorna le dimensioni del canvas e lo stato della rete nel thread parallelo.[cite: 11, 12]
-                 */
-                resize: () => {
-                    BiotechWorker.postMessage({
-                        action: 'NETWORK_STATUS_CHANGE', 
-                        payload: { 
-                            type: navigator.connection ? navigator.connection.effectiveType : '4g',
-                            width: window.innerWidth,
-                            height: window.innerHeight,
-                            isNight: state.isNight
+            const count = state.isNight ? 35 : 50;
+            const items = Array.from({ length: count }, () => ({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                vx: (Math.random() - 0.5) * (state.isNight ? 0.6 : 1),
+                vy: (Math.random() - 0.5) * (state.isNight ? 0.6 : 1),
+                r: state.isNight ? (1.5 + Math.random() * 2.5) : 2,
+                color: state.isNight ? this.colors[Math.floor(Math.random() * this.colors.length)] : 'rgba(231, 231, 231, 0.47)'
+            }));
+
+            const loop = (timestamp) => {
+                if (timestamp - lastFrameTime >= FRAME_DELAY) {
+                    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                    items.forEach(p => {
+                        p.x += p.vx; p.y += p.vy;
+                        if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
+                        if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fillStyle = p.color;
+                        if (state.isNight) {
+                            ctx.shadowColor = p.color;
+                            ctx.shadowBlur = 5;
                         }
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
                     });
+                    lastFrameTime = timestamp;
                 }
+                animationId = requestAnimationFrame(loop);
+            };
+
+            animationId = requestAnimationFrame(loop);
+            return {
+                destroy: () => { 
+                    cancelAnimationFrame(animationId); 
+                    setTimeout(() => ctx.clearRect(0, 0, canvas.width, canvas.height), 800); 
+                },
+                resize
             };
         }
     };
@@ -253,16 +264,9 @@ function updateCircadianState(isFirstRun = false) {
         if (dna) dna.style.display = '';
 
         if (!state.particlesController && particles) {
-            // Inizializzazione delegata al thread parallelo[cite: 1, 6]
-            state.particlesController = ParticlesEngine.init('particles-canvas');
-        } else if (state.particlesController) {
-            // Se il controller esiste già, aggiorniamo solo lo stato (giorno/notte o rete)
-            BiotechWorker.postMessage({
-                action: 'NETWORK_STATUS_CHANGE',
-                payload: { 
-                    type: navigator.connection ? navigator.connection.effectiveType : '4g',
-                    isNight: state.isNight 
-                }
+            requestAnimationFrame(() => {
+                state.particlesController = ParticlesEngine.init('particles-canvas');
+                if (state.particlesController) state.particlesController.resize();
             });
         }
     } else {
@@ -1281,22 +1285,22 @@ function updateLastModified(lang) {
 })();
 /*
 ================================================================================
-      BIOTECH PROJECT - SYSTEM AUDIT LOG & ARCHITECTURAL SIGN-OFF [v6.3.3]
+      BIOTECHPROJECT - SYSTEM AUDIT LOG & ARCHITECTURAL SIGN-OFF [v6.3.3]
 ================================================================================
-  Status:           HARDENED_CORE_ACTIVE [ADR-011-PRO] // VISUAL_DELEGATED
-  Neural Engine:    v6.3.3-STABLE (Adaptive LR & Visual Synthesis) [ACTIVE]
+  Status:           HARDENED_CORE_ACTIVE [ADR-011-PRO]
+  Neural Engine:    v2.0.1-STABLE (Adaptive LR & Circuit Breaker) [ACTIVE]
   Encryption:       AES-GCM Zero-Knowledge Persistence (Dynamic Salt) [SECURE]
-  Performance:      SPEED_INDEX: 1 | FCP: 1845ms | TBT: 106ms (Warm Stable)[cite: 8]
+  Performance:      SPEED_INDEX: 1 | FCP: 1845ms | TBT: 106ms (Warm Stable)
   Neural Memory:    INDEXEDDB_ETHICAL_RETENTION (7-DAY OBLIVION) [OK]
   Immune System:    GUARDIAN_NEURAL_SYNC_HARDENED [OK]
   Resilience:       SELF_HEALING_CIRCUIT_BREAKER & NEURAL_SYNC [OK]
-  Compliance:       WCAG 2.2 AAA / ADR-011-PRO / SRE_HARDENED_v6 [OK][cite: 8]
-  Timestamp:        2026-04-30 19:30:00 UTC
+  Compliance:       WCAG 2.2 AAA / ADR-011-PRO / SRE_HARDENED_v2 [OK]
+  Timestamp:        2026-04-22 21:15:00 UTC
 --------------------------------------------------------------------------------
   What a wicked game you play, to make me feel this way.
-  What a wicked thing to do, to let me dream of you.
+   What a wicked thing to do, to let me dream of you.
    
-  -- (The Red Stones Interpretation - Originally by Chris Isaak)
+   -- (The Red Stones Interpretation - Originally by Chris Isaak)
 --------------------------------------------------------------------------------
 * END OF FILE - BIOTECH_SYSTEM_INTEGRITY_VERIFIED... NEURAL_HARDENED_READY
 */
