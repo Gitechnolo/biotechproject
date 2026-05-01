@@ -73,7 +73,7 @@ const SRE_LOG_MAIN = {
 /* ==========================================================================
    WORKER CORE INTEGRATION [ADR-011 / 60fps / Legacy Optimized]
    ========================================================================== */
-const BiotechWorker = new Worker('./Biotech-file/BiotechCoreWorker.js');
+const BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js'); // In produzione, questo percorso dovrebbe essere gestito dinamicamente o tramite un sistema di build per garantire la compatibilità con la struttura del progetto.
 
 /**
  * Task Orchestrator con Fallback e Timeout
@@ -1230,7 +1230,7 @@ function updateLastModified(lang) {
     
     // 1. Inizializzazione Globale del Neural Worker (v2.0.1-STABLE)
     try {
-      window.BiotechWorker = new Worker('./BiotechCoreWorker.js');
+      window.BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js');
       
       // Generiamo un Salt Dinamico per la Zero-Knowledge Persistence (ADR-011-PRO)
       // Nota: In produzione questo potrebbe essere legato all'ID sessione utente
