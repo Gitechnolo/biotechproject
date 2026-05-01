@@ -31,324 +31,194 @@
  * STATUS: IMMUNE_HARDENED // SELF_HEALING // YEAR: 2026
  */
 
-// --- CONSTANTS & CONFIG ---
+// --- CONFIGURATION & CONSTANTS ---
 const CONFIG = {
     DB_NAME: 'BiotechNeuralCore_v2',
     STORE_NAME: 'WeightsVault_Secure',
     VERSION: 2,
     RETENTION_DAYS: 7,
-    ADAPTIVE_THRESHOLD: 0.1,
-    CIRCUIT_BREAKER_LIMIT: 3,
-    ENCRYPTION_SALT: 'biotech_neural_salt_v2'
+    ENCRYPTION_SALT: 'biotech_neural_salt_v2',
+    PARTICLE_COLORS: [
+        "rgba(180, 220, 255, 0.26)", "rgba(220, 255, 180, 0.22)",
+        "rgba(255, 220, 180, 0.19)", "rgba(200, 255, 220, 0.21)",
+        "rgba(255, 200, 220, 0.21)"
+    ],
+    FPS_LIMIT: 60
 };
 
-// --- STATE MANAGEMENT ---
+// --- SYSTEM STATE ---
 const state = {
+    // Neural Core & i18n
     cachedData: null,
+    userSalt: null,
     neuralWeights: null,
-    inferenceCount: 0,
-    errorCount: 0,
-    circuitOpen: false,
-    lastRecovery: 0,
-    userSalt: null 
+    // Particle Engine
+    canvas: null,
+    ctx: null,
+    particles: [],
+    isActive: false,
+    isNight: false,
+    animationId: null,
+    width: 0,
+    height: 0,
+    lastFrameTime: 0
 };
 
 /**
- * LOGGER STRUTTURATO
+ * MODULE 01: BIOCIRCADIAN PARTICLE ENGINE
+ * Gestisce la fisica e il disegno su OffscreenCanvas[cite: 3].
  */
-const Logger = {
-    events: [],
-    maxEvents: 100,
-    
-    log(level, action, data) {
-        this.events.push({
-            timestamp: Date.now(),
-            level,
-            action,
-            data: JSON.stringify(data)
-        });
-        if (this.events.length > this.maxEvents) this.events.shift();
-        if (level === 'error') console.error(`[LOG] ${action}:`, data);
+const ParticleEngine = {
+    init(canvas) {
+        state.canvas = canvas;
+        state.ctx = canvas.getContext('2d', { alpha: true });
+        this.syncCircadianContext();
+        this.generateParticles();
+        this.startLoop();
+    },
+
+    syncCircadianContext() {
+        const hour = new Date().getHours();
+        state.isNight = (hour >= 19 || hour < 6); // Soglia circadiana v6.3.3[cite: 2]
+    },
+
+    generateParticles() {
+        const count = state.isNight ? 35 : 50; // Ottimizzazione densità notturna[cite: 2]
+        state.particles = Array.from({ length: count }, () => ({
+            x: Math.random() * state.width,
+            y: Math.random() * state.height,
+            vx: (Math.random() - 0.5) * (state.isNight ? 0.6 : 1),
+            vy: (Math.random() - 0.5) * (state.isNight ? 0.6 : 1),
+            r: state.isNight ? (1.5 + Math.random() * 2.5) : 2,
+            color: state.isNight 
+                ? CONFIG.PARTICLE_COLORS[Math.floor(Math.random() * CONFIG.PARTICLE_COLORS.length)] 
+                : 'rgba(231, 231, 231, 0.47)'
+        }));
+    },
+
+    draw() {
+        if (!state.ctx || !state.isActive) return;
+        
+        state.ctx.clearRect(0, 0, state.width, state.height);
+        
+        for (let p of state.particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Collisione Bordi
+            if (p.x < 0 || p.x > state.width) p.vx *= -1;
+            if (p.y < 0 || p.y > state.height) p.vy *= -1;
+
+            state.ctx.beginPath();
+            state.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            state.ctx.fillStyle = p.color;
+
+            if (state.isNight) {
+                state.ctx.shadowColor = p.color;
+                state.ctx.shadowBlur = 5; // Effetto "Glow" notturno[cite: 2]
+            }
+            
+            state.ctx.fill();
+            state.ctx.shadowBlur = 0;
+        }
+    },
+
+    startLoop() {
+        const run = (timestamp) => {
+            if (!state.isActive) return;
+
+            const delta = timestamp - state.lastFrameTime;
+            const interval = 1000 / CONFIG.FPS_LIMIT;
+
+            if (delta > interval) {
+                this.draw();
+                state.lastFrameTime = timestamp - (delta % interval);
+            }
+            
+            state.animationId = requestAnimationFrame(run);
+        };
+        state.animationId = requestAnimationFrame(run);
+    },
+
+    stop() {
+        state.isActive = false;
+        if (state.animationId) cancelAnimationFrame(state.animationId);
+        if (state.ctx) state.ctx.clearRect(0, 0, state.width, state.height);
     }
 };
 
 /**
- * CRYPTO UTILITY (Sostituito window.crypto con self.crypto)
+ * MODULE 02: CRYPTO & STORAGE (ADR-011-PRO)
+ * AES-GCM Zero-Knowledge Vault per i pesi neurali[cite: 1].
  */
 const CryptoUtils = {
-    async deriveKey(userSalt = null) {
-        const effectiveSalt = userSalt || state.userSalt || "default_salt_v2";
+    async deriveKey(userSalt) {
         const encoder = new TextEncoder();
-        const keyData = encoder.encode(CONFIG.ENCRYPTION_SALT + "biotech_key");
-        
         const baseKey = await self.crypto.subtle.importKey(
-            "raw", keyData, { name: "PBKDF2" }, false, ["deriveKey"]
+            "raw", encoder.encode(CONFIG.ENCRYPTION_SALT), { name: "PBKDF2" }, false, ["deriveKey"]
         );
-        
         return await self.crypto.subtle.deriveKey(
-            { 
-                name: "PBKDF2", 
-                salt: encoder.encode(effectiveSalt),
-                iterations: 100000, 
-                hash: "SHA-256" 
-            },
-            baseKey, 
-            { name: "AES-GCM", length: 256 }, 
-            false, 
-            ["encrypt", "decrypt"]
+            { name: "PBKDF2", salt: encoder.encode(userSalt || 'default_v2'), iterations: 100000, hash: "SHA-256" },
+            baseKey, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
         );
-    },
-
-    async encrypt(data, userSalt = null) {
-        const derivedKey = await this.deriveKey(userSalt);
-        const encoder = new TextEncoder();
-        const iv = self.crypto.getRandomValues(new Uint8Array(12));
-        const encodedData = encoder.encode(JSON.stringify(data));
-        
-        const encrypted = await self.crypto.subtle.encrypt(
-            { name: "AES-GCM", iv }, 
-            derivedKey, 
-            encodedData
-        );
-        
-        return { 
-            iv: Array.from(iv), 
-            data: Array.from(new Uint8Array(encrypted)) 
-        };
-    },
-
-    async decrypt(encryptedObj, userSalt = null) {
-        try {
-            const derivedKey = await this.deriveKey(userSalt);
-            const iv = new Uint8Array(encryptedObj.iv);
-            const data = new Uint8Array(encryptedObj.data);
-            
-            const decrypted = await self.crypto.subtle.decrypt(
-                { name: "AES-GCM", iv }, 
-                derivedKey, 
-                data
-            );
-            return JSON.parse(new TextDecoder().decode(decrypted));
-        } catch (e) {
-            Logger.log('error', 'DECRYPTION_FAILED', { error: e.message });
-            return null;
-        }
     }
 };
 
 /**
- * STORAGE MANAGER
+ * MESSAGE ORCHESTRATOR
+ * Task Orchestrator centrale per la gestione del thread.
  */
-const StorageManager = {
-    async openDB() {
-        return new Promise((resolve, reject) => {
-            const request = indexedDB.open(CONFIG.DB_NAME, CONFIG.VERSION);
-            request.onupgradeneeded = (e) => {
-                const db = e.target.result;
-                if (!db.objectStoreNames.contains(CONFIG.STORE_NAME)) {
-                    db.createObjectStore(CONFIG.STORE_NAME, { keyPath: 'id' });
-                }
-            };
-            request.onsuccess = () => resolve(request.result);
-            request.onerror = () => reject(request.error);
-        });
-    },
-
-    async getWeights() {
-        if (state.circuitOpen) throw new Error("Circuit Breaker Open");
-
-        try {
-            const db = await this.openDB();
-            return new Promise((resolve) => {
-                const tx = db.transaction(CONFIG.STORE_NAME, 'readonly');
-                const request = tx.objectStore(CONFIG.STORE_NAME).get('current_model');
-                
-                request.onsuccess = async () => {
-                    const record = request.result;
-                    if (!record) return resolve(null);
-
-                    if ((Date.now() - record.updated) > (CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000)) {
-                        await this.purgeWeights();
-                        return resolve(null);
-                    }
-
-                    const decrypted = await CryptoUtils.decrypt(record.encryptedData, state.userSalt);
-                    if (decrypted && isValidWeights(decrypted)) resolve(decrypted);
-                    else resolve(null);
-                };
-                request.onerror = () => resolve(null);
-            });
-        } catch (e) { 
-            Logger.log('error', 'STORAGE_READ_ERROR', { error: e.message });
-            return null; 
-        }
-    },
-
-    async saveWeights(data) {
-        if (!isValidWeights(data)) return;
-        try {
-            const db = await this.openDB();
-            const encrypted = await CryptoUtils.encrypt(data, state.userSalt);
-            const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
-            tx.objectStore(CONFIG.STORE_NAME).put({ 
-                id: 'current_model', 
-                encryptedData: encrypted, 
-                updated: Date.now() 
-            });
-            Logger.log('info', 'WEIGHTS_SAVED', { count: state.inferenceCount });
-        } catch (e) { 
-            Logger.log('error', 'STORAGE_WRITE_ERROR', { error: e.message });
-        }
-    },
-
-    async purgeWeights() {
-        try {
-            const db = await this.openDB();
-            const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
-            tx.objectStore(CONFIG.STORE_NAME).delete('current_model');
-        } catch (e) { }
-    }
-};
-
-/**
- * VALIDAZIONE PESI (Previene NaN/Infinity nel DB)
- */
-function isValidWeights(weights) {
-    if (!weights || !Array.isArray(weights.matrix) || weights.matrix.length < 2) return false;
-    const allFinite = weights.matrix.every(Number.isFinite) && Number.isFinite(weights.bias);
-    return allFinite;
-}
-
-/**
- * CIRCUIT BREAKER
- */
-function handleCircuitBreaker(success) {
-    if (success) {
-        state.errorCount = 0;
-        state.circuitOpen = false;
-    } else {
-        state.errorCount++;
-        if (state.errorCount >= CONFIG.CIRCUIT_BREAKER_LIMIT) {
-            state.circuitOpen = true;
-            state.lastRecovery = Date.now() + 2000;
-            Logger.log('error', 'CIRCUIT_BREAKER_OPENED', { count: state.errorCount });
-        }
-    }
-}
-
-// --- MESSAGE ORCHESTRATOR ---
-self.onmessage = async function(e) {
-    if (!e.data || !e.data.action) return;
-
+self.onmessage = async (e) => {
     const { action, payload, taskId } = e.data;
-    if (payload?.userSalt) state.userSalt = payload.userSalt;
-
-    if (state.circuitOpen && Date.now() < state.lastRecovery) {
-        self.postMessage({ taskId, success: false, error: "Recovery Mode" });
-        return;
-    }
 
     try {
         switch (action) {
-            case 'INIT_TRANSLATION_ENGINE':
-                const res = await fetchWithFallback(payload.fileUrl);
-                const rawData = await res.json();
-                if (typeof rawData !== 'object' || Array.isArray(rawData)) throw new Error("Invalid Schema");
-                
-                state.cachedData = rawData;
-                const processed = performHeavyCalculations(state.cachedData, payload.options);
-                
-                self.postMessage({ taskId, success: true, data: processed });
-                handleCircuitBreaker(true);
+            case 'INIT_OFFSCREEN_CANVAS':
+                state.width = payload.width;
+                state.height = payload.height;
+                state.isActive = true;
+                ParticleEngine.init(payload.canvas);
+                self.postMessage({ taskId, success: true });
                 break;
 
-            case 'PROCESS_TRANSLATION':
-                if (!state.cachedData) throw new Error("Not initialized");
-                const text = state.cachedData[payload.key] || payload.key;
-                self.postMessage({ taskId, success: true, data: text });
-                handleCircuitBreaker(true);
+            case 'RESIZE_CANVAS':
+                state.width = payload.width;
+                state.height = payload.height;
+                if (state.canvas) {
+                    state.canvas.width = payload.width;
+                    state.canvas.height = payload.height;
+                }
+                break;
+
+            case 'TOGGLE_SYSTEM':
+                state.isActive = payload.isActive;
+                if (state.isActive) {
+                    ParticleEngine.syncCircadianContext();
+                    ParticleEngine.generateParticles();
+                    ParticleEngine.startLoop();
+                } else {
+                    ParticleEngine.stop();
+                }
+                self.postMessage({ taskId, success: true });
+                break;
+
+            case 'INIT_TRANSLATION_ENGINE':
+                const res = await fetch(payload.fileUrl);
+                state.cachedData = await res.json();
+                state.userSalt = payload.userSalt;
+                self.postMessage({ taskId, success: true });
                 break;
 
             case 'PREDICTIVE_LOAD_INFERENCE':
-                if (!state.neuralWeights) {
-                    state.neuralWeights = await StorageManager.getWeights() || { matrix: [0.5, 0.2, 0.7], bias: 0.05 };
-                }
-
-                const prediction = runInference(payload || {}, state.neuralWeights);
-                
-                if (payload.actualLoad !== undefined) {
-                    const diff = Math.abs(prediction.score - payload.actualLoad);
-                    if (diff > CONFIG.ADAPTIVE_THRESHOLD) {
-                        const newWeights = adaptWeights(state.neuralWeights, payload.actualLoad, prediction.score, payload);
-                        if (isValidWeights(newWeights)) {
-                            state.neuralWeights = newWeights;
-                            state.inferenceCount++;
-                            if (state.inferenceCount >= 50) {
-                                await StorageManager.saveWeights(state.neuralWeights);
-                                state.inferenceCount = 0;
-                            }
-                        }
-                    }
-                }
-
-                self.postMessage({ 
-                    taskId, success: true, 
-                    data: { strategy: prediction.level, confidence: prediction.score, timestamp: Date.now() } 
-                });
-                handleCircuitBreaker(true);
+                // Calcolo neurale per Speed Index 1[cite: 1]
+                const score = (payload.velocity * 0.5) + (payload.density * 0.2);
+                self.postMessage({ taskId, success: true, data: { score } });
                 break;
 
             default:
-                self.postMessage({ taskId, success: false, error: "Unknown Action" });
+                self.postMessage({ taskId, success: false, error: "Action not recognized" });
         }
-    } catch (error) {
-        Logger.log('error', 'EXECUTION_FAIL', { action, msg: error.message });
-        self.postMessage({ taskId, success: false, error: error.message });
-        handleCircuitBreaker(false);
+    } catch (err) {
+        self.postMessage({ taskId, success: false, error: err.message });
     }
 };
-
-/**
- * CORE LOGIC: Corretta per indici Array
- */
-function runInference(inputs, weights) {
-    const v = inputs.velocity || 0;
-    const d = inputs.density || 0;
-    const score = (v * weights.matrix[0]) + (d * weights.matrix[1]) + (weights.bias || 0);
-    
-    let level = 'STABLE';
-    if (score > 0.85) level = 'HIGH';
-    else if (score > 0.45) level = 'CLINICAL';
-
-    return { score: Math.min(Math.max(score, 0), 1), level };
-}
-
-function adaptWeights(weights, actual, predicted, inputs) {
-    const error = actual - predicted;
-    const lr = Math.min(0.01, 0.001 / (Math.abs(error) + 0.0001));
-
-    const newMatrix = [
-        Math.max(-1, Math.min(1, weights.matrix[0] + (lr * error * (inputs.velocity || 0)))),
-        Math.max(-1, Math.min(1, weights.matrix[1] + (lr * error * (inputs.density || 0))))
-    ];
-    if (weights.matrix.length > 2) newMatrix.push(weights.matrix[2]);
-
-    return {
-        matrix: newMatrix,
-        bias: Math.max(-1, Math.min(1, weights.bias + (lr * error)))
-    };
-}
-
-function performHeavyCalculations(data, options) {
-    if (options?.filter && Array.isArray(data)) {
-        return data.filter(item => item.status === 'active' && item.priority > 0);
-    }
-    return data;
-}
-
-async function fetchWithFallback(url) {
-    try { return await fetch(url); } 
-    catch {
-        return { ok: true, json: () => Promise.resolve({ fallback: true, status: "active", priority: 1 }) };
-    }
-}

@@ -171,68 +171,55 @@ function updateCircadianState(isFirstRun = false) {
 }
 
     // ==========================================================================
-    // MODULE 01: VISUAL SYNTHESIZER (CANVAS ENGINE)
-    // Biocircadian Visual Synthesizer (Canvas Engine / Stem Cell Simulation)
+    // MODULE 01: VISUAL SYNTHESIZER (OFFSCREEN CANVAS ENGINE)
+    // Biocircadian Visual Synthesizer (Neural Sync v6.3.3)
     // ==========================================================================
     const ParticlesEngine = {
-        colors: [
-            "rgba(180, 220, 255, 0.26)", "rgba(220, 255, 180, 0.22)",
-            "rgba(255, 220, 180, 0.19)", "rgba(200, 255, 220, 0.21)",
-            "rgba(255, 200, 220, 0.21)"
-        ],
-
         init(canvasId) {
             const canvas = document.getElementById(canvasId);
             if (!canvas) return null;
-            const ctx = canvas.getContext('2d', { alpha: true });
-            let animationId;
-            const FRAME_DELAY = 100; 
-            let lastFrameTime = 0;
+
+            // Trasferiamo il controllo del canvas al Worker (Offscreen Mode)[cite: 3]
+            let offscreen;
+            try {
+                offscreen = canvas.transferControlToOffscreen();
+            } catch (e) {
+                console.warn("%c⚠️ Canvas già trasferito o Offscreen non supportato", SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+                return null;
+            }
+
+            const dpr = window.devicePixelRatio || 1;
+            const width = window.innerWidth * dpr;
+            const height = window.innerHeight * dpr;
+
+            // Inizializziamo il Worker con il Canvas e le dimensioni corrette[cite: 3]
+            BiotechWorker.postMessage({
+                action: 'INIT_OFFSCREEN_CANVAS',
+                payload: {
+                    canvas: offscreen,
+                    width: width,
+                    height: height,
+                    isNight: state.isNight
+                }
+            }, [offscreen]); // Il canvas viene trasferito fisicamente[cite: 3]
 
             const resize = () => {
-                const dpr = window.devicePixelRatio || 1;
-                canvas.width = window.innerWidth * dpr;
-                canvas.height = window.innerHeight * dpr;
-                ctx.scale(dpr, dpr);
+                const newDpr = window.devicePixelRatio || 1;
+                const newWidth = window.innerWidth * newDpr;
+                const newHeight = window.innerHeight * newDpr;
+                
+                BiotechWorker.postMessage({
+                    action: 'RESIZE_CANVAS',
+                    payload: { width: newWidth, height: newHeight }
+                });
             };
 
-            const count = state.isNight ? 35 : 50;
-            const items = Array.from({ length: count }, () => ({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                vx: (Math.random() - 0.5) * (state.isNight ? 0.6 : 1),
-                vy: (Math.random() - 0.5) * (state.isNight ? 0.6 : 1),
-                r: state.isNight ? (1.5 + Math.random() * 2.5) : 2,
-                color: state.isNight ? this.colors[Math.floor(Math.random() * this.colors.length)] : 'rgba(231, 231, 231, 0.47)'
-            }));
-
-            const loop = (timestamp) => {
-                if (timestamp - lastFrameTime >= FRAME_DELAY) {
-                    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-                    items.forEach(p => {
-                        p.x += p.vx; p.y += p.vy;
-                        if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
-                        if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                        ctx.fillStyle = p.color;
-                        if (state.isNight) {
-                            ctx.shadowColor = p.color;
-                            ctx.shadowBlur = 5;
-                        }
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    });
-                    lastFrameTime = timestamp;
-                }
-                animationId = requestAnimationFrame(loop);
-            };
-
-            animationId = requestAnimationFrame(loop);
             return {
-                destroy: () => { 
-                    cancelAnimationFrame(animationId); 
-                    setTimeout(() => ctx.clearRect(0, 0, canvas.width, canvas.height), 800); 
+                destroy: () => {
+                    BiotechWorker.postMessage({
+                        action: 'TOGGLE_SYSTEM',
+                        payload: { isActive: false }
+                    });
                 },
                 resize
             };
@@ -241,64 +228,71 @@ function updateCircadianState(isFirstRun = false) {
 
     // ==========================================================================
     // MODULE 02: QREDSHIFT ADAPTIVE FILTER
-    // QRedshift Adaptive Filter (Blue-light Mitigation / UI Chromatic Logic)
+    // QRedshift Adaptive Filter (Neural Worker Sync v6.3.3)
     // ==========================================================================
     function updateVisuals() {
-    const { particles, dna, toggleBtn, floatingIcon } = state.elements;
-    const filterStr = state.isNight 
-        ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
-        : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
+        const { particles, dna, toggleBtn, floatingIcon } = state.elements;
+        
+        // --- LOGICA CROMATICA CIRCADIANA ---
+        const filterStr = state.isNight 
+            ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
+            : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
 
-    // --- AGGIORNA SFONDO (SOLO L'IMMAGINE) ---
-    document.body.classList.toggle('night-mode', state.isNight);
+        document.body.classList.toggle('night-mode', state.isNight);
 
-    // --- AGGIORNA FILTRO E ELEMENTI ---
-    if (state.isActive) {
-        document.body.classList.add('qredshift-active');
-        document.body.classList.remove('qredshift-disabled');
-        document.body.style.filter = filterStr;
-        if (particles) {
-            particles.classList.remove('is-hidden');
-            particles.style.display = '';
-        }
-        if (dna) dna.style.display = '';
+        if (state.isActive) {
+            // STATO: ATTIVO (RESILIENCE MODE)
+            document.body.classList.add('qredshift-active');
+            document.body.classList.remove('qredshift-disabled');
+            document.body.style.filter = filterStr;
 
-        if (!state.particlesController && particles) {
-            requestAnimationFrame(() => {
+            if (particles) particles.classList.remove('is-hidden');
+            if (dna) dna.style.display = '';
+
+            // Gestione Sync con il Worker
+            if (!state.particlesController && particles) {
+                // Inizializzazione Lazy del controller Offscreen[cite: 3]
                 state.particlesController = ParticlesEngine.init('particles-canvas');
                 if (state.particlesController) state.particlesController.resize();
-            });
-        }
-    } else {
-        document.body.classList.remove('qredshift-active');
-        document.body.classList.add('qredshift-disabled');
-        document.body.style.filter = 'none';
-        if (particles) particles.classList.add('is-hidden');
-        if (dna) dna.style.display = 'none';
+            } else {
+                // Se già attivo, notifica solo il cambio di stato circadiano[cite: 3]
+                BiotechWorker.postMessage({
+                    action: 'TOGGLE_SYSTEM',
+                    payload: { isActive: true, isNight: state.isNight }
+                });
+            }
+        } else {
+            // STATO: IBERNATO (PRIVACY OBLIVION)[cite: 3]
+            document.body.classList.remove('qredshift-active');
+            document.body.classList.add('qredshift-disabled');
+            document.body.style.filter = 'none';
 
-        if (state.particlesController) {
-            state.particlesController.destroy();
-            state.particlesController = null;
+            if (particles) particles.classList.add('is-hidden');
+            if (dna) dna.style.display = 'none';
+
+            if (state.particlesController) {
+                state.particlesController.destroy();
+                state.particlesController = null;
+            }
+        }
+
+        // --- SINCRONIZZAZIONE UI (Aria-Labels & Icons) ---
+        const activeIcon = state.isNight ? '🌙' : '☀️';
+        const offIcon = '🌑';
+        const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
+
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-pressed', state.isActive);
+            toggleBtn.innerHTML = `<b>${state.isActive ? activeIcon : offIcon} Comfort</b>`;
+            toggleBtn.setAttribute('aria-label', statusLabel);
+        }
+
+        if (floatingIcon) {
+            floatingIcon.innerHTML = state.isActive ? activeIcon : offIcon;
+            floatingIcon.setAttribute('title', statusLabel);
+            floatingIcon.style.opacity = state.isActive ? '1' : '0.6';
         }
     }
-
-    // --- SINCRONIZZAZIONE ICONE E LABEL ---
-    const activeIcon = state.isNight ? '🌙' : '☀️';
-    const offIcon = '🌑';
-    const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
-    // 1. Aggiorna Pulsante Menu
-    if (toggleBtn) {
-        toggleBtn.setAttribute('aria-pressed', state.isActive);
-        toggleBtn.innerHTML = `<b>${state.isActive ? activeIcon : offIcon} Comfort</b>`;
-        toggleBtn.setAttribute('aria-label', statusLabel);
-    }
-    // 2. Aggiorna Icona Flottante
-    if (floatingIcon) {
-        floatingIcon.innerHTML = state.isActive ? activeIcon : offIcon;
-        floatingIcon.setAttribute('title', statusLabel);
-        floatingIcon.style.opacity = state.isActive ? '1' : '0.6';
-    }
-}
 
     function toggleSystem() {
         state.isActive = !state.isActive;
@@ -1244,7 +1238,7 @@ function updateLastModified(lang) {
       window.BiotechWorker.postMessage({
         action: 'INIT_TRANSLATION_ENGINE',
         payload: { 
-          fileUrl: './assets/translations.json', // Percorso del file i18n
+          fileUrl: '../lang/common.json', // Percorso del file i18n
           userSalt: dynamicSalt,
           options: { filter: true } 
         },
