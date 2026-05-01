@@ -251,18 +251,18 @@ function updateCircadianState(isFirstRun = false) {
 
             // Gestione Sync con il Worker
             if (!state.particlesController && particles) {
-                // Inizializzazione Lazy del controller Offscreen[cite: 3]
+                // Primo avvio: Inizializzazione Lazy del controller Offscreen[cite: 3, 7]
                 state.particlesController = ParticlesEngine.init('particles-canvas');
                 if (state.particlesController) state.particlesController.resize();
             } else {
-                // Se già attivo, notifica solo il cambio di stato circadiano[cite: 3]
+                // Riattivazione o Cambio Circadiano: Notifica il Worker senza distruggere il controller
                 BiotechWorker.postMessage({
                     action: 'TOGGLE_SYSTEM',
                     payload: { isActive: true, isNight: state.isNight }
                 });
             }
         } else {
-            // STATO: IBERNATO (PRIVACY OBLIVION)[cite: 3]
+            // STATO: IBERNATO (PRIVACY OBLIVION)[cite: 3, 7]
             document.body.classList.remove('qredshift-active');
             document.body.classList.add('qredshift-disabled');
             document.body.style.filter = 'none';
@@ -270,10 +270,12 @@ function updateCircadianState(isFirstRun = false) {
             if (particles) particles.classList.add('is-hidden');
             if (dna) dna.style.display = 'none';
 
-            if (state.particlesController) {
-                state.particlesController.destroy();
-                state.particlesController = null;
-            }
+            // Non distruggiamo l'oggetto controller (perché il canvas è già trasferito)
+            // Chiediamo al Worker di fermare il loop di rendering[cite: 7]
+            BiotechWorker.postMessage({
+                action: 'TOGGLE_SYSTEM',
+                payload: { isActive: false }
+            });
         }
 
         // --- SINCRONIZZAZIONE UI (Aria-Labels & Icons) ---
