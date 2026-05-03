@@ -58,7 +58,7 @@ BiotechProject is an **open digital lab** that combines **biotechnology, health,
 - 🌐 **Accessible to everyone**, including users with disabilities
 - 🤝 **Open to global collaboration**
 
-It was created to show how technology can serve science and healthcare, while ensuring equitable access for all — regardless of sensory, cognitive, or motor abilities. **This mission is deeply rooted in the tradition of Italian digital humanism and educational informatics, aiming to transform complex code into a tool for social and scientific empowerment.**
+It was created to show how technology can serve science and healthcare, while ensuring equitable access for all - regardless of sensory, cognitive, or motor abilities. **This mission is deeply rooted in the tradition of Italian digital humanism and educational informatics, aiming to transform complex code into a tool for social and scientific empowerment.**
 
 It's a collaborative space for developers, researchers, and enthusiasts who want to explore **how the web can become a bridge for inclusion and scientific innovation**.
 
