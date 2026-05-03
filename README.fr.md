@@ -42,10 +42,10 @@ Où la biotechnologie rencontre le code pour construire des outils numériques p
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Jalon : Neural Core v6.3.3 - Hardened Zero-Knowledge (23 avril 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone : Neural Core v6.4.0 - The Parallel Rendering Shift (3 mai 2026)**
 > 
-> Nous avons déployé avec succès le **Neural Core v6.3.3** ([ADR-011-PRO | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)).  
-> Cette mise à jour majeure introduit le **chiffrement AES-GCM Zero-Knowledge**, sécurisant les coffres de données biosensibles sans compromettre les performances. Le système atteint désormais un **Speed Index 1 (Tier Optimal)** et un **TBT stabilisé à 106ms**, fusionnant une confidentialité de niveau militaire avec une réactivité web d'élite.
+> Nous avons finalisé avec succès le délestage de la **Visual Pipeline** vers le `BiotechCoreWorker` ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)).  
+> Cette architecture multithread basée sur **OffscreenCanvas** a efficacement libéré le thread principal (main thread), réduisant le **TBT à 78ms (-26 %)** et atteignant un **Golden Tier CLS de 0,0001**. Le système garantit désormais une fluidité de 60 FPS tout en maintenant un chiffrement de niveau militaire **AES-GCM Zero-Knowledge**.
 
 ---
 
@@ -55,12 +55,12 @@ BiotechProject est un **laboratoire numérique ouvert** qui combine **biotechnol
 
 - 🔍 **Scientifiquement fiable**
 - 💻 **Techniquement robuste**
-- 🌐 **Accessible à tous**, y compris les utilisateurs handicapés
+- 🌐 **Accessible à tous**, y compris aux utilisateurs en situation de handicap
 - 🤝 **Ouvert à la collaboration mondiale**
 
-Il a été créé pour démontrer comment la technologie peut servir la science et la santé, tout en garantissant un accès équitable pour tous – indépendamment des capacités sensorielles, cognitives ou motrices.
+Il a été créé pour démontrer comment la technologie peut servir la science et la santé, tout en garantissant un accès équitable pour tous, quelles que soient les capacités sensorielles, cognitives ou motrices. **Cette mission est profondément ancrée dans la tradition de l'humanisme numérique italien et de l'informatique éducative, visant à transformer un code complexe en un outil d'émancipation sociale et scientifique.**
 
-C'est un espace collaboratif pour développeurs, chercheurs et passionnés qui veulent explorer **comment le web peut devenir un outil d'inclusion et d'innovation scientifique**.
+C'est un espace collaboratif pour les développeurs, les chercheurs et les passionnés qui souhaitent explorer **comment le web peut devenir un pont pour l'inclusion et l'innovation scientifique**.
 
 <div align="center">
   <h3>🗺️ Notre Vision Stratégique pour la Mise à l'Échelle</h3>
@@ -176,6 +176,7 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Convergence Neurale & Intelligence Multisectorielle** | Prévisions Bio-Cyber Proactives | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
+| **011v6.4** | **Rendu Parallèle & Offloading de Thread** | **TBT 78ms / CLS 0,0001 (Golden Tier)** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
 <summary><b>Cliquez pour développer : Justification Complète ADR</b></summary>
@@ -245,6 +246,12 @@ Ce projet suit un processus de prise de décision rigoureux pour assurer une ré
 * **Justification** : Évoluer d'une simple résilience prédictive vers une **Architecture Hardened Zero-Knowledge**. En intégrant un chiffrement de niveau militaire au moteur d'inférence neurale, les données biosensibles sont protégées tout en maintenant des performances d'élite.
 * **Résultat** : Une couche de confidentialité niveau « standard Proton » qui atteint un **TBT vérifié de 106ms (Warm Stable)** et un **Speed Index 1**, garantissant la souveraineté numérique sans dégradation de l'expérience utilisateur (UX).
 * **Validation** : [Voir l'évolution Hardened et le rapport Zero-Knowledge (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
+
+### [ADR-011v6.4] Neural Core v6.4.0 : Parallel Rendering Shift
+* **Décision** : Transition vers une architecture multithread **OffscreenCanvas** via `BiotechCoreWorker`.
+* **Justification** : Découpler la réactivité de l'interface utilisateur de la complexité graphique/mathématique (Particle Engine & QRedshift).
+* **Résultat** : **Libération du Main Thread**. TBT réduit de 26 % (78ms). CLS stabilisé à 0,0001.
+* **Validation** : [Voir le rapport de benchmark v6.4.0](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)
 
 </details>
 
@@ -429,7 +436,7 @@ lang/
 
 
 ## 📅 Dernière date de vérification
-**23 avril 2026**
+**3 mai 2026**
 
 ## 🔮 Mises à jour récentes (résumé)
 
