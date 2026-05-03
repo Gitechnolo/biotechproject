@@ -42,25 +42,26 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Mijlpaal: Neural Core v6.3.3 - Hardened Zero-Knowledge (23 april 2026)**
-> 
-> We hebben de **Neural Core v6.3.3** met succes geïmplementeerd ([ADR-011-PRO | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)).  
-> Deze grote update introduceert **AES-GCM Zero-Knowledge encryptie**, waarmee bio-sensitieve datakluizen worden beveiligd zonder de prestaties te beïnvloeden. Het systeem bereikt nu een **Speed Index 1 (Optimaal Niveau)** en een gestabiliseerde **TBT van 106ms**, waarbij militaire privacy wordt gecombineerd met elite web-responsiviteit.
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - The Parallel Rendering Shift (3 mei 2026)**
+>
+> We hebben de **Visual Pipeline offload** naar de `BiotechCoreWorker` succesvol afgerond ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)).
+>
+> Deze multithreaded **OffscreenCanvas**-architectuur heeft de main thread effectief ontlast, waardoor de **TBT is verlaagd naar 78ms (-26%)** en een **Golden Tier CLS van 0.0001** is bereikt. Het systeem garandeert nu een vloeiende 60fps met behoud van militaire **AES-GCM Zero-Knowledge** versleuteling.
 
 ---
 
 ## 🌱 Wat is BiotechProject?
 
-BiotechProject is een **open digitaal lab** dat **biotechnologie, gezondheid en webontwikkeling** combineert in een geïntegreerd systeem dat ontworpen is om te zijn:
+BiotechProject is een **open digitaal lab** dat **biotechnologie, gezondheid en webontwikkeling** combineert in een geïntegreerd systeem, ontworpen om te zijn:
 
 - 🔍 **Wetenschappelijk betrouwbaar**
 - 💻 **Technisch robuust**
-- 🌐 **Toegankelijk voor iedereen**, inclusief gebruikers met handicaps
+- 🌐 **Toegankelijk voor iedereen**, inclusie gebruikers met een beperking
 - 🤝 **Open voor wereldwijde samenwerking**
 
-Het is gecreëerd om te demonstreren hoe technologie wetenschap en gezondheidszorg kan dienen, terwijl gelijke toegang voor iedereen wordt gegarandeerd – ongeacht sensorische, cognitieve of motorische vaardigheden.
+Het is gecreëerd om te laten zien hoe technologie de wetenschap en de gezondheidszorg kan dienen, terwijl een rechtvaardige toegang voor iedereen wordt gewaarborgd - ongeacht zintuiglijke, cognitieve of motorische vermogens. **Deze missie is diep geworteld in de traditie van het Italiaanse digitale humanisme en de educatieve informatica, met als doel complexe code te transformeren in een instrument voor sociale en wetenschappelijke empowerment.**
 
-Het is een collaboratieve ruimte voor ontwikkelaars, onderzoekers en enthousiastelingen die willen verkennen **hoe het web een instrument kan worden voor inclusie en wetenschappelijke innovatie**.
+Het is een collaboratieve ruimte voor ontwikkelaars, onderzoekers en enthousiastelingen die willen verkennen **hoe het web een brug kan slaan voor inclusie en wetenschappelijke innovatie**.
 
 <div align="center">
   <h3>🗺️ Onze Strategische Visie voor Schaalbaarheid</h3>
@@ -176,6 +177,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neurale Convergentie & Multisectorale Intelligentie** | Proactieve Bio-Cyber Voorspelling | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
+| **011v6.4** | **Parallel Rendering & Thread Offloading** | **TBT 78ms / CLS 0.0001 (Golden Tier)** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
 <summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
@@ -220,7 +222,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Besluit**: Stateless Edge WCAG 2.2 AAA Audit
 * **Motivering**: De "Zero-Framework" aanpak elimineert zware externe bibliotheken, terwijl de "Semantic Snapshotter" de interfacestatus efficiënt vastlegt. Dit vermindert de afhankelijkheid van infrastructuur en bevordert de gelijkheid in de gezondheidszorg (Health Equity) in regio's met beperkte connectiviteit.
 * **Resultaat**: Ultra-lichte (~2KB) toegankelijkheidsaudit via Copilot, wat de werking in klinische omgevingen met een lage bandbreedte garandeert.
-* **Validatie**: [Bekijk Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
+* **Validatie**: [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
 
 ### [ADR-008] Infrastructure: Nightly SRE Reliability Gate & Immutable Integrity
 * **Besluit**: Implementatie van een geautomatiseerde "Nightly SRE Reliability Gate".
@@ -238,13 +240,19 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Besluit**: Implementatie van de **Neural Inference Engine (v6.1)** voor sectoroverschrijdende analyse.
 * **Motivering**: Evolueren van statische veerkracht naar proactieve voorspelling door het samenvoegen van WHO (Bio) en Gartner (Cyber) datasets.
 * **Resultaat**: Real-time synchronisatie tussen het GPU-versnelde canvas en de semantische DOM, waardoor toegankelijkheid voor alle voorspellende datapunten wordt gegarandeerd.
-* **Validatie**: [Bekijk Neurale Logica (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
+* **Validatie**: [View Neurale Logica (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
 
 ### [ADR-011] Neural Core v6.3.3: Hardened SRE Guardian & Zero-Knowledge Privacy
 * **Besluit**: Implementatie van AES-GCM encryptie binnen `BiotechCoreWorker.js` en neurale feedbackloops in `BiotechResilience.js`.
 * **Motivering**: Evolueren van eenvoudige voorspellende veerkracht naar een **Hardened Zero-Knowledge Architectuur**. Door encryptie van militaire graad te integreren met de Neural Inference Engine, worden bio-sensitieve gegevens beschermd terwijl de elite-prestaties behouden blijven.
 * **Resultaat**: Een privacylaag volgens de "Proton-standaard" die een geverifieerde **TBT van 106ms (Warm Stable)** en een **Speed Index 1** behaalt, waardoor digitale soevereiniteit wordt gegarandeerd zonder UX-verslechtering.
-* **Validatie**: [Bekijk Hardened Evolutie & Zero-Knowledge Rapport (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
+* **Validatie**: [View Hardened Evolutie & Zero-Knowledge Rapport (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
+
+### [ADR-011v6.4] Neural Core v6.4.0: Parallel Rendering Shift
+* **Besluit**: Transitie naar een multithreaded **OffscreenCanvas**-architectuur via `BiotechCoreWorker`.
+* **Rationale**: Ontkoppelen van UI-responsiviteit van grafische/wiskundige complexiteit (Particle Engine & QRedshift).
+* **Resultaat**: **Main-Thread bevrijding**. TBT verminderd met 26% (78ms). CLS gestabiliseerd op 0.0001.
+* **Validatie**: [View v6.4.0 Benchmark Rapport](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)
 
 </details>
 
@@ -429,8 +437,8 @@ lang/
 ```
 
 
-## 📅 Laatste verificatiedatum
-**23 april 2026**
+## 📅 Laatste Verificatiedatum
+**3 mei 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
