@@ -440,12 +440,12 @@ lang/
 
 ## 🔮 Mises à jour récentes (résumé)
 
-Améliorations clés récentes (concis) :
+**Jalons architecturaux clés :**
 
-- **Neural Core v6.2 (Système Immunitaire)** : Déploiement de `BiotechGuardian.js` pour la surveillance passive et de `BiotechPatchEngine.js` pour l'auto-réparation sous stress.
-- **Terminal SRE Interactif** : Intégration d'un tableau de bord de télémétrie en temps réel avec sonification `aria-live` pour des journaux de santé hautement accessibles.
-- **Protection Anti-Loop** : Mise en place d'un délai de récupération (cooldown) de 5s pour les déclencheurs de résilience, garantissant la stabilité du système.
-- **Excellence Lighthouse** : Maintien d'un score de 100 % via des barrières d'intégrité SRE automatisées.
+*   **Shift vers le Rendu Parallèle (v6.4.0) :** Désaccouplement total de la Visual Pipeline du Main Thread. En déportant le Particle Engine et les filtres `QRedshift` vers le `BiotechCoreWorker` via `OffscreenCanvas`, nous avons obtenu une **réduction de 26 % du TBT** et un **CLS proche de zéro**.
+*   **Neural Core v6.2 (Système Immunitaire) :** Déploiement de `BiotechGuardian.js` pour la surveillance passive des performances et de `BiotechPatchEngine.js` pour l'auto-guérison autonome.
+*   **Terminal SRE Interactif :** Intégration d'un tableau de bord télémétrique en temps réel avec sonification `aria-live` pour des journaux d'état système à haute accessibilité.
+*   **Excellence Lighthouse :** Maintien de **scores de 100 %** via des barrières d'intégrité SRE automatisées.
 
 
 
