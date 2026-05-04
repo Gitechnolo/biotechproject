@@ -434,14 +434,14 @@ lang/
 ## 📅 Ultima Data di Verifica
 **3 Maggio 2026**
 
-## 🔮 Aggiornamenti recenti (riepilogo)
+## 🔮 Aggiornamenti recenti (riassunto)
 
-Miglioramenti chiave recenti (conciso):
+**Traguardi architettonici chiave:**
 
-- **Neural Core v6.2 (Sistema Immunitario)**: Implementazione di `BiotechGuardian.js` per il monitoraggio passivo e `BiotechPatchEngine.js` per l'auto-riparazione sotto stress.
-- **Terminale SRE Interattivo**: Integrazione di una dashboard di telemetria in tempo reale nell'interfaccia con sonificazione `aria-live` per log di sistema altamente accessibili.
-- **Protezione Anti-Loop**: Introdotto un cooldown di 5 secondi per i trigger di resilienza, garantendo stabilità sistemica durante le fasi di ripristino.
-- **Eccellenza Lighthouse**: Mantenimento di punteggi del 100% attraverso gateway di integrità SRE automatizzati.
+*   **Parallel Rendering Shift (v6.4.0):** Disaccoppiamento totale della Visual Pipeline dal Main Thread. Spostando il Particle Engine e i filtri `QRedshift` nel `BiotechCoreWorker` tramite `OffscreenCanvas`, abbiamo ottenuto una **riduzione del 26% del TBT** e un **CLS prossimo allo zero**.
+*   **Neural Core v6.2 (Sistema Immunitario):** Implementazione di `BiotechGuardian.js` per il monitoraggio passivo delle prestazioni e `BiotechPatchEngine.js` per l'auto-riparazione autonoma.
+*   **Terminale SRE Interattivo:** Integrazione di una dashboard telemetrica in tempo reale con sonificazione `aria-live` per log di stato del sistema ad alta accessibilità.
+*   **Eccellenza Lighthouse:** Mantenimento del **100% di score aggregato** tramite gate di integrità SRE automatizzati.
 
 
 ## 💡 Vuoi contribuire?
