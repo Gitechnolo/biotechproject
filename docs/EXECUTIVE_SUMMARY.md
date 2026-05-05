@@ -33,8 +33,8 @@
 | :--- | :--- | :--- | :--- |
 | **Clinician** | Privacy & UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Maximum confidentiality; fluid 60fps interface without micro-stutters. |
 | **Procurement** | Efficiency & Lifecycle | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Operational on existing legacy hardware; significantly lower maintenance costs. |
-| **IT Manager** | Scalability & Tech Stack | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/26) | Zero technical debt; modern multithreaded architecture ready for 2030. |
-| **Compliance/SRE** | Audit & Reliability | [ADR-011: Immune System](https://github.com/Gitechnolo/biotechproject/issues/21) | Self-healing system with transparent, automated SRE audit logs. |
+| **IT Manager** | Scalability & Tech Stack | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) | Zero technical debt; modern multithreaded architecture ready for 2030. |
+| **Compliance/SRE** | Audit & Reliability | [ADR-011: Immune System](https://github.com/Gitechnolo/biotechproject/issues/27) | Self-healing system with transparent, automated SRE audit logs. |
 
 ---
 
