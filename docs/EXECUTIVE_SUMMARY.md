@@ -15,7 +15,7 @@
 
 ### 3. Security Without Compromise (Stateless & Encrypted)
 * **The Strategy:** Zero-Data Footprint. Our "Stateless" architecture ensures patient data never persists on the local hardware or external servers. **AES-GCM** military-grade encryption operates within a dedicated Worker thread, providing digital sovereignty with zero impact on the 60fps target.
-* **The Proof:** Refer to the [Architectural Equity & Global Resilience Report (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf).
+* **The Proof:** Refer to the [Zero-Knowledge Encryption & Speed Index 1](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956).
 
 ### 4. Universal Inclusivity (WCAG 2.2 AAA)
 * **The Vision:** A platform that leaves no one behind. In "Clinical Mode," the system activates **ARIA Sonification** and simplifies the UI to ensure total accessibility even on legacy hardware or degraded networks (3G/Edge).
