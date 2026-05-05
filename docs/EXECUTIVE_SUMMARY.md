@@ -31,6 +31,7 @@
 
 | Stakeholder | Key Interest | Recommended Document | Real-World Benefit |
 | :--- | :--- | :--- | :--- |
+| **All Stakeholders** | **Project Lifecycle** | [**Strategic Roadmap 2026**](https://github.com/users/Gitechnolo/projects/2) | Full visibility on upcoming milestones, long-term stability, and active Issue tracking. |
 | **Clinician** | Privacy & UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Maximum confidentiality; fluid 60fps interface without micro-stutters. |
 | **Procurement** | Efficiency & Lifecycle | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Operational on existing legacy hardware; significantly lower maintenance costs. |
 | **IT Manager** | Scalability & Tech Stack | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) | Zero technical debt; modern multithreaded architecture ready for 2030. |
