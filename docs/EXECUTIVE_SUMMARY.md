@@ -6,7 +6,7 @@
 ## Strategic Vision (High-Impact Concepts)
 
 ### 1. Autonomous Resilience: The Immune System (v6.1)
-* **The Vision:** An "Anti-Fragile" architecture. Utilizing the **Biotech Guardian**, the system passively monitors performance and autonomously triggers an immune response (**Patch Engine**) if tasks exceed the 100ms threshold.
+* **The Strategy:** An "Anti-Fragile" architecture. Utilizing the **Biotech Guardian**, the system monitors performance in real-time and autonomously triggers an immune response (**Patch Engine**) if any task exceeds the 100ms threshold, ensuring 100% uptime without external intervention.
 * **The Proof:** [ADR-011: System Integrity & Immune Response](https://github.com/Gitechnolo/biotechproject/issues/27).
 
 ### 2. Parallel Rendering: Main-Thread Liberation (v6.4)
@@ -14,7 +14,7 @@
 * **The Proof:** **TBT reduced by 26%** and **CLS stabilized at 0.0001** (Golden Tier). See [Benchmark v6.4.0](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827).
 
 ### 3. Security Without Compromise (Stateless & Encrypted)
-* **The Vision:** Zero-Data Leaks. Our "Stateless" architecture ensures patient data never resides on the device hardware, while **AES-GCM** encryption operates in the Worker thread with zero impact on the 60fps target.
+* **The Strategy:** Zero-Data Footprint. Our "Stateless" architecture ensures patient data never persists on the local hardware or external servers. **AES-GCM** military-grade encryption operates within a dedicated Worker thread, providing digital sovereignty with zero impact on the 60fps target.
 * **The Proof:** Refer to the [Architectural Equity & Global Resilience Report (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf).
 
 ### 4. Universal Inclusivity (WCAG 2.2 AAA)
@@ -22,8 +22,8 @@
 * **The Proof:** Refer to [ADR-007 | Issue #20: Stateless Edge WCAG 2.2 AAA Audit](https://github.com/Gitechnolo/biotechproject/issues/20).
 
 > [!TIP]
-> **Architectural Paradigm: "Built with Cloud-Intelligence, Executed via Edge-Independence"**
-> BiotechProject leverages GitHub Copilot to distill complex clinical logic into **Vanilla JS 'Discrete AI'**. This ensures that while the architecture is designed with high-end intelligence, its execution is 100% autonomous, multithreaded, and indestructible at the Edge—with zero operational costs during critical medical use.
+> **Architectural Paradigm: "AI-Distilled Logic, Edge-Native Autonomy"**
+> BiotechProject utilizes AI synthesis as a catalyst to translate sophisticated clinical protocols into **high-performance Vanilla JS 'Discrete Engines'**. This process ensures that while development is accelerated by cutting-edge tools, the final execution is **100% autonomous, air-gapped, and multithreaded**. The result is a system with zero operational costs and total data sovereignty, designed to remain indestructible at the Edge during critical medical use.
 
 ---
 
