@@ -3,27 +3,27 @@
 
 ---
 
-## 🚀 Strategic Vision (High-Impact Concepts)
+## Strategic Vision (High-Impact Concepts)
 
-### 1. Resilience at the Edge
-* **The Vision:** Healthcare AI that works where the patient is. By processing data locally (Edge), we ensure 100% availability even during network outages.
-* **The Proof:** See our [2026-2030 Strategic Roadmap](https://github.com/users/Gitechnolo/projects/2).
+### 1. Autonomous Resilience: The Immune System (v6.1)
+* **The Vision:** An "Anti-Fragile" architecture. Utilizing the **Biotech Guardian**, the system passively monitors performance and autonomously triggers an immune response (**Patch Engine**) if tasks exceed the 100ms threshold.
+* **The Proof:** [ADR-011: System Integrity & Immune Response](https://github.com/Gitechnolo/biotechproject/issues/27).
 
-### 2. Security Without Compromise (Stateless Edge)
-* **The Vision:** Zero-Data Leaks. Our "Stateless" architecture means patient data is never stored permanently on the device hardware, eliminating physical theft risks.
+### 2. Parallel Rendering: Main-Thread Liberation (v6.4)
+* **The Vision:** Absolute fluidity. We have decoupled complex visual logic from the UI responsiveness by offloading the rendering pipeline to the **BiotechCoreWorker** via `OffscreenCanvas`.
+* **The Proof:** **TBT reduced by 26%** and **CLS stabilized at 0.0001** (Golden Tier). See [Benchmark v6.4.0](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827).
+
+### 3. Security Without Compromise (Stateless & Encrypted)
+* **The Vision:** Zero-Data Leaks. Our "Stateless" architecture ensures patient data never resides on the device hardware, while **AES-GCM** encryption operates in the Worker thread with zero impact on the 60fps target.
 * **The Proof:** Refer to the [Architectural Equity & Global Resilience Report (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf).
 
-### 3. Universal Inclusivity (WCAG 2.2 AAA)
-* **The Vision:** A healthcare platform that leaves no one behind. We exceed international standards to ensure accessibility for every clinician and patient, regardless of disability.
+### 4. Universal Inclusivity (WCAG 2.2 AAA)
+* **The Vision:** A platform that leaves no one behind. In "Clinical Mode," the system activates **ARIA Sonification** and simplifies the UI to ensure total accessibility even on legacy hardware or degraded networks (3G/Edge).
 * **The Proof:** Refer to [ADR-007 | Issue #20: Stateless Edge WCAG 2.2 AAA Audit](https://github.com/Gitechnolo/biotechproject/issues/20).
-
-### 4. Proven Reliability & Audit-Ready
-* **The Vision:** We deliver results, not just promises. Our core infrastructure is already 100% complete and validated through automated SRE gates.
-* **The Proof:** [Milestone v1.x: Clinical-Grade Foundations](https://github.com/Gitechnolo/biotechproject/milestones) (**100% Complete**).
 
 > [!TIP]
 > **Architectural Paradigm: "Built with Cloud-Intelligence, Executed via Edge-Independence"**
-> BiotechProject leverages the global scale of GitHub Copilot during the design and audit phase to distill complex clinical logic into ultra-lean, Vanilla JS 'Discrete AI'. This ensures that while the architecture is born from high-end cloud intelligence, its clinical execution is 100% autonomous, stateless, and indestructible at the Edge - with zero cloud-dependency or operational costs during critical medical use.
+> BiotechProject leverages GitHub Copilot to distill complex clinical logic into **Vanilla JS 'Discrete AI'**. This ensures that while the architecture is designed with high-end intelligence, its execution is 100% autonomous, multithreaded, and indestructible at the Edge—with zero operational costs during critical medical use.
 
 ---
 
@@ -31,10 +31,21 @@
 
 | Stakeholder | Key Interest | Recommended Document | Real-World Benefit |
 | :--- | :--- | :--- | :--- |
-| **Clinician** | Data Privacy | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Maximum patient confidentiality; safe hardware mobility. |
-| **Procurement** | Cost & Efficiency | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Automated nightly audits = lower maintenance costs. |
-| **IT Manager** | Scalability | [Metabolic Digital Twin Summary](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Metabolic-Digital-Twin-Executive-Summary.pdf) | Clear vision with zero technical debt for the next 5 years. |
-| **Academic/HAN** | Compliance | [Institutional Collaboration Charter](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Institutional_Collaboration_Charter_2026.pdf) | Formal framework for audits and research partnerships. |
+| **Clinician** | Privacy & UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Maximum confidentiality; fluid 60fps interface without micro-stutters. |
+| **Procurement** | Efficiency & Lifecycle | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Operational on existing legacy hardware; significantly lower maintenance costs. |
+| **IT Manager** | Scalability & Tech Stack | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/26) | Zero technical debt; modern multithreaded architecture ready for 2030. |
+| **Compliance/SRE** | Audit & Reliability | [ADR-011: Immune System](https://github.com/Gitechnolo/biotechproject/issues/21) | Self-healing system with transparent, automated SRE audit logs. |
+
+---
+
+## 📊 Performance Benchmarks (v6.4.0 vs v6.3.3)
+
+| Metric | Target | Result (v6.4.0) | Status |
+| :--- | :--- | :--- | :--- |
+| **Total Blocking Time (TBT)** | < 100ms | **78ms** | 🟢 Optimal |
+| **Visual Stability (CLS)** | < 0.1 | **0.0001** | 🟢 Golden Tier |
+| **HTML Parsing** | Baseline | **8ms** | 🟢 Ultra-Light |
+| **Rendering Fluidity** | 60 FPS | **60 FPS** | 🟢 Constant |
 
 ---
 
@@ -44,6 +55,5 @@
 > **Language Localization:** This documentation is maintained in English to ensure terminological consistency with global SRE and Medical standards. For international stakeholders, we recommend using browser-native translation tools (Edge/Chrome/Safari), which provide 99% accuracy for our technical nomenclature and ADR structures.
 
 ---
-
 
 *For further technical inquiries, contact the team at teambiotechproject@proton.me*
