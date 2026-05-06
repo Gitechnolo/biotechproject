@@ -257,16 +257,19 @@ Este proyecto sigue un proceso riguroso de toma de decisiones para asegurar resi
 
 ## 📊 Monitoreo de Calidad Técnica y Arquitectura
 
-El proyecto implementa un **sistema avanzado de seguimiento de madurez tecnológica** vía GitHub Actions. Al **28 de marzo de 2026**, el ecosistema mantiene una **puntuación de rendimiento agregada del 95%**.
+El ecosistema implementa un **sistema avanzado de seguimiento de madurez tecnológica**. A partir del **6 de mayo de 2026**, la arquitectura ha sido validada en dos niveles de rendimiento principales:
+
+*   **Rendimiento Estándar (Baseline):** **95% de Puntuación Agregada** (condiciones ideales).
+*   **Resiliencia Stress-Test SRE:** **86% de Puntuación Global** (5.000 usuarios simultáneos).
 
 > [!IMPORTANT]
-> **Prueba de Estrés de Rendimiento:** Las métricas son validadas bajo **throttling sintético extremo** (150ms RTT / 4x desaceleración CPU). Esta auditoría SRE-grade asegura que los módulos clínicos core sigan accesibles y performantes incluso durante inestabilidad de red en hora pico o en hardware legacy.
+> **Validación de Resiliencia:** El sistema mantiene **Alta Disponibilidad** incluso bajo condiciones extremas de grado SRE (desaceleración de CPU de 4x y estrangulamiento de red 3G/4G), demostrando la eficacia de la capa de optimización actual.
 
-**Actualización 27 de marzo de 2026:** Integrado exitosamente la **capa de Auditoría de Portabilidad de Datos (ADR-005)**. El sistema ahora soporta exportaciones de telemetría de rendimiento en tiempo real sin impactar la ejecución del Main Thread.
+**Actualización 6 de mayo de 2026:** Se han integrado los últimos resultados de la auditoría del **SRE Scalability Engine 2026**. El delta entre las puntuaciones base y de estrés confirma una arquitectura robusta con una degradación mínima del rendimiento bajo carga.
 
-📂 **Últimos Registros de Auditoría:**
-* 📄 **[Informe de Prueba de Estrés de Rendimiento SRE - 2 de Abril de 2026 (PDF)](docs/biotech-performance-report.pdf)**
-* 📄 **[Resumen Ejecutivo: Arquitectura de Gemelo Digital Metabólico (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+### 📂 Últimos Informes de Auditoría
+* 📄 **[SRE Performance Stress-Test Report - 6 de mayo de 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funcionalidades del Panel
 * ✅ **Monitoreo de Rendimiento en Tiempo Real**: Métricas (0–100) actualizadas cada 24h vía GitHub Actions.
@@ -435,7 +438,7 @@ lang/
 
 
 ## 📅 Última fecha de verificación
-**3 de mayo de 2026**
+**6 de mayo de 2026**
 
 ## 🔮 Actualizaciones recientes (resumen)
 
