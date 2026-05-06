@@ -258,17 +258,20 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 
 ---
 
-## 📊 Monitoraggio della Qualità Tecnica & Architettura
+## 📊 Monitoraggio della Qualità Tecnica e Architettura
 
-Il progetto implementa un **sistema avanzato di tracciamento della maturità tecnologica** tramite GitHub Actions. Al **28 marzo 2026**, l'ecosistema mantiene un **punteggio di performance aggregato del 95%**.
+L'ecosistema implementa un **sistema avanzato di tracciamento della maturità tecnologica**. Al **6 maggio 2026**, l'architettura è stata validata su due livelli di prestazione principali:
+
+* **Performance Standard (Baseline):** **Punteggio Aggregato del 95%** (condizioni ideali).
+* **Resilienza Stress-Test SRE:** **Punteggio Globale dell'86%** (5.000 utenti simultanei).
 
 > [!IMPORTANT]
-> **Stress-test di performance:** Le metriche sono convalidate sotto **throttling sintetico estremo** (150ms RTT / 4x CPU slowdown). Questa verifica SRE-grade garantisce che i moduli clinici core restino accessibili e performanti anche in orari di picco o su hardware legacy.
+> **Validazione della Resilienza:** Il sistema mantiene l'**Alta Disponibilità (High Availability)** anche in condizioni estreme di classe SRE (rallentamento CPU 4x e strozzamento della rete 3G/4G), dimostrando l'efficacia dell'attuale livello di ottimizzazione.
 
-**Aggiornamento 27 marzo 2026:** integrato con successo il **Data Portability Audit layer (ADR-005)**. Il sistema ora supporta esportazioni telemetriche di performance in tempo reale senza impattare il Main Thread.
+**Aggiornamento 6 maggio 2026:** Sono stati integrati gli ultimi risultati dell'audit provenienti dal **SRE Scalability Engine 2026**. Il delta tra i punteggi baseline e quelli sotto stress conferma un'architettura robusta con un degrado prestazionale minimo sotto carico.
 
-📂 **Ultimi Audit:**
-* 📄 **[SRE Performance Stress-Test Report - 2 Aprile 2026 (PDF)](docs/biotech-performance-report.pdf)**
+### 📂 Ultimi Report di Audit
+* 📄 **[SRE Performance Stress-Test Report - 6 Maggio 2026 (PDF)](docs/biotech-performance-report.pdf)** 
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funzionalità Dashboard
@@ -432,7 +435,7 @@ lang/
 
 
 ## 📅 Ultima Data di Verifica
-**3 Maggio 2026**
+**6 maggio 2026**
 
 ## 🔮 Aggiornamenti recenti (riassunto)
 
