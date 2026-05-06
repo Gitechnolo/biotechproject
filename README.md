@@ -259,15 +259,18 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 
 ## 📊 Technical Quality Monitoring & Architecture
 
-The project implements an **advanced technological maturity tracking system** via GitHub Actions. As of **28 March 2026**, the ecosystem maintains a **95% aggregate performance score**.
+The ecosystem implements an **advanced technological maturity tracking system**. As of **6 May 2026**, the architecture has been validated across two primary performance tiers:
+
+*   **Standard Performance (Baseline):** **95% Aggregate Score** (Ideal conditions).
+*   **SRE Stress-Test Resilience:** **86% Global Score** (5,000 concurrent users).
 
 > [!IMPORTANT]
-> **Performance Stress-Test:** Metrics are validated under **extreme synthetic throttling** (150ms RTT / 4x CPU slowdown). This SRE-grade audit ensures that core clinical modules remain accessible and performant even during peak-hour network instability or on legacy hardware.
+> **Resilience Validation:** The system maintains **High Availability** even under extreme SRE-grade conditions (4x CPU slowdown and 3G/4G network throttling), proving the effectiveness of the current optimization layer.
 
-**Update 27 March 2026:** Successfully integrated the **Data Portability Audit layer (ADR-005)**. The system now supports real-time performance telemetry exports without impacting Main Thread execution.
+**Update 6 May 2026:** Integrated the latest audit results from the **SRE Scalability Engine 2026**. The delta between baseline and stress scores confirms a robust architecture with minimal performance degradation under load.
 
-📂 **Latest Audit Records:**
-* 📄 **[SRE Performance Stress-Test Report - 2 April 2026 (PDF)](docs/biotech-performance-report.pdf)**
+### 📂 Latest Audit Records
+* 📄 **[SRE Performance Stress-Test Report - 6 May 2026 (PDF)](biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Features
@@ -436,7 +439,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**3 May 2026**
+**6 May 2026**
 
 ## 🔮 Recent updates (summary)
 
