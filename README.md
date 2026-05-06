@@ -270,7 +270,7 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 **Update 6 May 2026:** Integrated the latest audit results from the **SRE Scalability Engine 2026**. The delta between baseline and stress scores confirms a robust architecture with minimal performance degradation under load.
 
 ### 📂 Latest Audit Records
-* 📄 **[SRE Performance Stress-Test Report - 6 May 2026 (PDF)](biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 6 May 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Features
