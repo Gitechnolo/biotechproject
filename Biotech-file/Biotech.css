@@ -958,8 +958,8 @@ body.qredshift-disabled .qredshift-icon {
 }
 /* End Mobile QRedshift Icon Style */
 /* Badge di accessibilità */
-.hover-effect img{height:42px;border:none;transition:transform .3s ease,filter .3s ease;display:block;margin:0 auto;}
-.hover-effect:hover img {transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));}
+.hover-effect img{height:60px;width: auto;border:none;transition:transform .3s ease,filter .3s ease;display:block;margin:0 auto;}
+.hover-effect:hover img {transform: translateY(-3px) scale(1.08); filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));}
 #lastModified {text-align: center; font-size: 0.85em; color: #64ffda; opacity: 0.8; margin: 8px 0 4px; /* ridotto: meno spazio sopra e sotto */padding: 0;}
 .biotech-copyright {text-align: center; font-size: 0.9em; color: #64ffda; opacity: 0.9; margin: 4px 0 12px; /* poco spazio sopra, un po’ sotto */padding: 0;}
 /* === MODALITÀ NAVIGAZIONE DA TASTIERA === */
