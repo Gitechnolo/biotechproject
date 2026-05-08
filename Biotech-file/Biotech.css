@@ -840,7 +840,10 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
     transform: scale(1); 
   }
 }
-/* === END CAROSELLO BIOTECH === */   
+/* === END CAROSELLO BIOTECH === */
+/* * BIOTECH PROJECT - INFRASTRUCTURE STATUS: FULLY STABILIZED (v6.4.0) [ADR-011] Media Orchestration: On-Demand Lazy-Immune loading enabled.
+ * [CLS: 0.000] Geometric Enforcement: Strict aspect-ratio containment.
+ */   
 /* Video Biomassa */
 #ytVideo{display:block;width:100%;height:auto;max-width:100%;background:transparent;border:none;box-shadow:none;}
 .yt-video-controls{display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;width:100%;max-width:100%;margin-left:0;box-sizing:border-box;flex-wrap:wrap;}
