@@ -1011,7 +1011,7 @@ function loadAndPlayVideo() {
   video.controls = false; 
   video.preload = 'metadata';
   video.poster = img.src;
-  video.style.cssText = 'width:100%; height:auto; display:block; max-height:600px; border-radius:8px;';
+  video.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block; max-height:600px; border-radius:8px;';
   video.setAttribute('playsinline', ''); 
 
   const source = document.createElement('source');

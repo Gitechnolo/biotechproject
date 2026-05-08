@@ -33,17 +33,18 @@ function loadAndPlayVideo() {
   if (!img) return;
 
   // 1. Crea l'elemento video
-  const video = document.createElement('video');
-  video.id = 'ytVideo';
-  video.controls = false;
-  video.preload = 'metadata';
-  video.poster = img.src;
-  video.style.width = '100%';
-  video.style.height = 'auto';
-  video.style.display = 'block';
-  video.style.maxHeight = '600px';
-  video.style.borderRadius = '8px';
-  video.setAttribute('playsinline', ''); // Importante per iOS
+const video = document.createElement('video');
+video.id = 'ytVideo';
+video.controls = false;
+video.preload = 'metadata';
+video.poster = img.src;
+video.style.width = '100%';
+video.style.height = '100%';       // Sostituito 'auto' con '100%'
+video.style.objectFit = 'cover';    // Aggiunto per mantenere le proporzioni
+video.style.display = 'block';
+video.style.maxHeight = '600px';
+video.style.borderRadius = '8px';
+video.setAttribute('playsinline', ''); // Importante per iOS
 
   // 2. Sorgente video (Auto del futuro)
   const source = document.createElement('source');
