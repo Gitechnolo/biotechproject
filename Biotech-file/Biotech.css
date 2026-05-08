@@ -842,7 +842,6 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 }
 /* === END CAROSELLO BIOTECH === */   
 /* Video Biomassa */
-#ytVideoContainer{max-width:600px;width:100%;margin-left:0;margin-right:auto;overflow:hidden;}
 #ytVideo{display:block;width:100%;height:auto;max-width:100%;background:transparent;border:none;box-shadow:none;}
 .yt-video-controls{display:flex;align-items:center;gap:8px;background:#181818;padding:10px 12px;border-radius:0 0 10px 10px;width:100%;max-width:100%;margin-left:0;box-sizing:border-box;flex-wrap:wrap;}
 .yt-range{flex:1 1 120px;accent-color:#e50914;height:4px;background:#222;border-radius:2px;outline:none;margin:0 6px;}

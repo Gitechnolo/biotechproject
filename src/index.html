@@ -46,9 +46,14 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     max-width: 90vw; height: auto; /* Permette al browser di usare l'aspect-ratio dalle prop width/height */
     aspect-ratio: 720 / 180; }.pulse-logo{ opacity: 0.9}
 #myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto; }.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}@media only screen and (max-width: 700px){ .modal-content{ margin-top: 80px !important; max-height: 50vh;} #caption{ font-size: 17px; padding-bottom: 100px;} .close{ top: 10px; right: 20px;}}
-/* Blocca lo spazio per l'anteprima video */
-#videoPoster { aspect-ratio: 633 / 281; /* Fondamentale! */
-    width: 100%; height: auto; background: rgba(255,255,255,0.03); /* Crea un'area grigia di attesa */}
+/* Applica l'aspect-ratio al CONTENITORE, non solo all'immagine */
+#ytVideoContainer{ aspect-ratio: 633 / 281; width: 100%; max-width: 633px; background: rgba(255,255,255,0.03); overflow: hidden; position: relative}
+/* L'immagine poster si adatta al contenitore già bloccato */
+#videoPoster{ width: 100%; height: 100%; object-fit: cover; display: block}
+/* Evita che la comparsa dei controlli sposti la pagina */
+.yt-video-controls{display:flex; position: absolute; bottom: 0; left: 0; z-index: 10; transform: translateY(100%); transition: transform 0.3s ease}
+/* Mostra i controlli al passaggio del mouse o quando il video è attivo (gestito dallo script) */
+#ytVideoContainer:hover .yt-video-controls{ transform: translateY(0)}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
