@@ -42,16 +42,10 @@ Where biotechnology meets code to build digital tools for research and innovatio
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Final Hardened Stability (May 8, 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - The Parallel Rendering Shift (May 3, 2026)**
 > 
-> The parallel architecture has reached full stabilization. By integrating a new **On-Demand Media Pipeline** with the `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), we have achieved **Absolute Main-Thread Liberation**.  
->
-> **Current Performance Benchmarks:**
-> * **TBT (Total Blocking Time):** Reduced to **46ms** (Desktop) and an **unprecedented 0ms** (Mobile).
-> * **CLS (Visual Stability):** Achieved **0.0000 (Absolute Zero)** through geometric enforcement.
-> * **A11y:** Hardened **WCAG 2.2 AAA** layer with synchronized dual-language media orchestration.
->
-> **Status:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
+> We have successfully completed the **Visual Pipeline offload** to the `BiotechCoreWorker` ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)).  
+> This multithreaded **OffscreenCanvas** architecture has effectively liberated the main thread, reducing **TBT to 78ms (-26%)** and achieving a **Golden Tier CLS of 0.0001**. The system now guarantees 60fps fluidity while maintaining military-grade **AES-GCM Zero-Knowledge** encryption.
 
 ---
 
@@ -314,14 +308,14 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 
 | System | ⚡ Scientific standard | 📝 Dyslexia-friendly | 📅 Last Audit |
 | :--- | :--- | :--- | :--- |
-| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-05-09 |
-| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-05-09 |
-| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-05-09 |
-| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-05-09 |
-| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-05-09 |
-| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-05-09 |
-| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-05-09 |
-| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-05-09 |
+| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-05-08 |
+| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-05-08 |
+| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-05-08 |
+| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-05-08 |
+| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-05-08 |
+| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-05-08 |
+| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-05-08 |
+| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-05-08 |
 
 </details>
 
@@ -330,26 +324,20 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 
 | Resource | Access Link | 📅 Last Audit |
 | :--- | :--- | :--- |
-| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-05-09 |
-| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-05-09 |
-| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-05-09 |
-| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-05-09 |
-| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-05-09 |
+| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-05-08 |
+| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-05-08 |
+| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-05-08 |
+| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-05-08 |
+| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-05-08 |
 
 </details>
 
 <details>
 <summary><b>♿ Accessibility & Inclusion</b></summary>
 
-<<<<<<< HEAD
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) - *Updated: 2026-05-08*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) - *Updated: 2026-05-08*
-- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) - *Updated: 2026-05-08*
-=======
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Updated: 2026-05-09*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Updated: 2026-05-09*
-- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Updated: 2026-05-09*
->>>>>>> 0775d9392cd241b29af6349b0c065d9c80cbaa74
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Updated: 2026-05-08*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Updated: 2026-05-08*
+- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Updated: 2026-05-08*
 
 </details>
 
@@ -392,26 +380,18 @@ We're committed to building an inclusive platform. Explore how we implemented WC
 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
-### 🎓 Academic Standards & Strategic Roadmap
-BiotechProject is built on a **Zero Framework** architecture, engineered to adhere to the **Sapienza Innovation and Entrepreneurship Hub (SIEH)** guidelines for inclusive design. Our achievement of **WCAG 2.2 AAA** compliance-validated through rigorous internal SRE audits - is presented as a technical benchmark for the Sapienza innovation ecosystem.
+### 🎓 Academic Standards & Proposed Alignment
+BiotechProject is built on a **Zero Framework** architecture, engineered to adhere to the **Sapienza Innovation and Entrepreneurship Hub - SIEH** guidelines for inclusive design and high-performance accessibility. Our **WCAG 2.2 AAA** achievement, validated through rigorous internal SRE audits, is presented as a technical proposal to meet the excellence benchmarks of the Sapienza innovation ecosystem.
 
-Following a **strategic observation phase at RomeCup (March 2026)**, the project has evolved into a "Candidate Platform" for institutional showcases. We are currently refining our integration models to align with the **Fondazione Mondo Digitale** excellence standards, positioning BiotechProject as a primary candidate for future exhibitions, academic peer-reviews, and high-impact research partnerships.
-
-This project serves as a robust foundation for:
-*   **Institutional Alignment:** Bridging the gap between high-performance SRE-grade code and clinical accessibility standards.
-*   **Academic Collaboration:** Providing a field-tested infrastructure for future graduation projects, research labs, and joint grant applications within the **SIEH** network.
-
-> [!IMPORTANT]
-> **The Human Value of Performance:**  
-> In line with the mission of **Fondazione Mondo Digitale**, we believe that technical excellence is a tool for social equity. Every millisecond of optimization (TBT) and every accessibility standard (AAA) we implement ensures that high-level scientific tools remain accessible to everyone-regardless of their device's age, connection speed, or cognitive/motor abilities. **For us, performance is not just a metric; it is a commitment to digital inclusion.**
+In view of its debut at **RomaCup (March 28, 2026)**, we invite researchers and faculty from **SIEH** to initiate a formal peer-review process. This project is positioned as a candidate for academic engagement, offering a robust foundation for future graduation projects, research partnerships, and joint grant applications within the Hub’s network.
 
 > [!NOTE]
-> ### 🏛️ Institutional & Academic Hub (Update: May 8, 2026)
-> Following our attendance at **RomeCup 2026**, we have released the **v6.4.0 Strategic Partnership Report**. This document defines our roadmap for "Resilience by Design" and invites academic stakeholders to explore our engagement tracks.
+> ### 🏛️ Institutional & Academic Hub
+> We have aligned this project with top-tier academic standards. Are you a university representative attending **RomaCup**? We have prepared a specific charter for potential collaboration, audits, and graduation projects.
 > 
-> 👉 **View the Updated Strategic Partnership Document:** [BiotechProject x Academic Partners (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **View the Proposed Collaboration Charter:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> *Includes detailed engagement tracks: **(A) Graduation Thesis**, **(B) Research Lab Case-Study**, and **(C) Strategic EU Grant Partnerships**.*
+> This document details three potential engagement tracks: **Graduation Project**, **Research Lab**, and **Joint Grant Partnerships**, designed to integrate with the **SIEH** ecosystem.
 
 
 ## 🌍 Multilingual Management (i18n)
@@ -459,7 +439,7 @@ lang/
 
 
 ## 📅 Last Verification Date
-**9 May 2026**
+**6 May 2026**
 
 ## 🔮 Recent updates (summary)
 
