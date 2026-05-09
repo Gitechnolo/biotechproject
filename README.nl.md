@@ -42,11 +42,16 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - The Parallel Rendering Shift (3 mei 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Finale Geharde Stabiliteit (8 mei 2026)**
+> 
+> De parallelle architectuur heeft volledige stabilisatie bereikt. Door de integratie van een nieuwe **On-Demand Media Pipeline** met de `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), hebben we **Absolute Main-Thread Bevrijding** gerealiseerd.  
 >
-> We hebben de **Visual Pipeline offload** naar de `BiotechCoreWorker` succesvol afgerond ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)).
+> **Huidige Prestatie-Benchmarks:**
+> * **TBT (Total Blocking Time):** Verlaagd naar **46ms** (Desktop) en een **ongekende 0ms** (Mobile).
+> * **CLS (Visuele Stabiliteit):** **0.0000 (Absoluut Nulpunt)** bereikt door geometrische handhaving.
+> * **A11y:** Geharde **WCAG 2.2 AAA** laag met gesynchroniseerde tweetalige media-orkestratie.
 >
-> Deze multithreaded **OffscreenCanvas**-architectuur heeft de main thread effectief ontlast, waardoor de **TBT is verlaagd naar 78ms (-26%)** en een **Golden Tier CLS van 0.0001** is bereikt. Het systeem garandeert nu een vloeiende 60fps met behoud van militaire **AES-GCM Zero-Knowledge** versleuteling.
+> **Status:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
 
 ---
 
@@ -381,19 +386,27 @@ We zijn toegewijd aan het bouwen van een inclusieve platform. Verken hoe we het 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Academische Standaarden & Strategische Afstemming
+### 🎓 Academische Standaarden & Strategische Roadmap
 
-BiotechProject is gebaseerd op een **Zero Framework-architectuur**, ontworpen om te voldoen aan de richtlijnen van de **Sapienza Innovation and Entrepreneurship Hub - SIEH** op het gebied van inclusief ontwerp en hoogwaardige toegankelijkheid. Onze **WCAG 2.2 AAA** status, gevalideerd door middel van strikte interne SRE-audits, wordt gepresenteerd als een technisch voorstel om te voldoen aan de excellentie-benchmarks van het innovatie-ecosysteem van Sapienza.
+BiotechProject is gebouwd op een **Zero Framework** architectuur, technisch ontworpen om te voldoen aan de richtlijnen van de **Sapienza Innovation and Entrepreneurship Hub (SIEH)** voor inclusief ontwerp. Het bereiken van de **WCAG 2.2 AAA** conformiteit - gevalideerd door rigoureuze interne SRE-audits - wordt gepresenteerd als een technische benchmark voor het innovatie-ecosysteem van Sapienza.
 
-Met het oog op het debuut tijdens **RomaCup (28 maart 2026)**, nodigen wij onderzoekers en docenten van de **SIEH** uit om een formeel peer-review proces te starten. Dit project positioneert zich als kandidaat voor academische betrokkenheid en biedt een robuuste basis voor toekomstige afstudeerprojecten, onderzoekspartnerschappen en gezamenlijke subsidieaanvragen binnen het netwerk van Sapienza.
+Na een **strategische observatiefase tijdens de RomeCup (maart 2026)**, is het project geëvolueerd naar een "Kandidaat Platform" voor institutionele presentaties. We verfijnen momenteel onze integratiemodellen om aan te sluiten bij de uitmuntendheidsnormen van de **Fondazione Mondo Digitale**, waarmee we BiotechProject positioneren als een primaire kandidaat voor toekomstige tentoonstellingen, academische peer-reviews en onderzoeks-partnerschappen met hoge impact.
+
+Dit project dient als een robuuste basis voor:
+*   **Institutionele Afstemming:** Het overbruggen van de kloof tussen hoogwaardige code op SRE-niveau en klinische toegankelijkheidsnormen.
+*   **Academische Samenwerking:** Het bieden van een in de praktijk geteste infrastructuur voor toekomstige afstudeerprojecten, onderzoekslaboratoria en gezamenlijke subsidieaanvragen binnen het **SIEH** netwerk.
+
+> [!IMPORTANT]
+> **De Menselijke Waarde van Prestaties:**  
+> In lijn met de missie van **Fondazione Mondo Digitale**, geloven wij dat technische uitmuntendheid een instrument is voor sociale gelijkheid. Elke milliseconde optimalisatie (TBT) en elke toegankelijkheidsnorm (AAA) die we implementeren, zorgt ervoor dat hoogwaardige wetenschappelijke tools toegankelijk blijven voor iedereen - ongeacht de ouderdom van hun apparaat, verbindingssnelheid of cognitieve/motorische vermogens. **Voor ons is prestatie niet alleen een statistiek; het is een toewijding aan digitale inclusie.**
 
 > [!NOTE]
-> ### 🏛️ Institutionele & Academische Hub
-> We hebben dit project afgestemd op de hoogste academische standaarden. Bent u een vertegenwoordiger van een universiteit en aanwezig bij **RomaCup**? We hebben een specifiek charter opgesteld voor potentiële samenwerkingen, audits en afstudeerprojecten.
+> ### 🏛️ Institutionele & Academische Hub (Update: 8 mei 2026)
+> **v6.4.0 Strategisch Partnerschapsrapport**. Dit document definieert onze roadmap voor "Resilience by Design" en nodigt academische belanghebbenden uit om onze samenwerkingstrajecten te verkennen.
 > 
-> 👉 **Bekijk het voorgestelde samenwerkingscharter:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Bekijk het bijgewerkte Strategische Partnerschapsdocument:** [BiotechProject x Academische Partners (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Dit document beschrijft drie mogelijke trajecten: **Afstudeerprojecten (Graduation Projects)**, **Onderzoekslab** en **Gezamenlijke Subsidiepartnerschappen**, ontworpen om te integreren met het **SIEH**-ecosysteem.
+> *Bevat gedetailleerde betrokkenheidstrajecten: **(A) Afstudeerscriptie**, **(B) Onderzoekslab Case-Study**, en **(C) Strategische EU-subsidiepartnerschappen**.*
 
 
 ## 🌍 Meertalig Beheer (i18n)
@@ -441,7 +454,7 @@ lang/
 
 
 ## 📅 Laatste Verificatiedatum
-**6 mei 2026**
+**9 mei 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
