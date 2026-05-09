@@ -42,11 +42,16 @@ Onde a biotecnologia encontra o código para construir ferramentas digitais para
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - The Parallel Rendering Shift (3 de maio de 2026)**
->
-> Concluímos com sucesso o **Visual Pipeline offload** para o `BiotechCoreWorker` ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)).
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Estabilidade Final Consolidada (8 de maio de 2026)**
 > 
-> Esta arquitetura multithreaded baseada em **OffscreenCanvas** liberou efetivamente a thread principal, reduzindo o **TBT para 78ms (-26%)** e alcançando um **CLS Golden Tier de 0.0001**. O sistema agora garante fluidez de 60fps enquanto mantém a criptografia de nível militar **AES-GCM Zero-Knowledge**.
+> A arquitetura paralela atingiu estabilização total. Através da integração de um novo **Pipeline de Mídia On-Demand** com o `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), alcançamos a **Liberação Absoluta da Main-Thread**.  
+>
+> **Benchmarks de Performance Atuais:**
+> * **TBT (Total Blocking Time):** Reduzido para **46ms** (Desktop) e um **inédito 0ms** (Mobile).
+> * **CLS (Estabilidade Visual):** Alcançado **0.0000 (Zero Absoluto)** através de imposição geométrica.
+> * **A11y:** Camada **WCAG 2.2 AAA** consolidada com orquestração de mídia bilíngue sincronizada.
+>
+> **Status:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
 
 ---
 
@@ -380,19 +385,27 @@ Estamos comprometidos em construir uma plataforma inclusiva. Explore como implem
 [![Estudo de Caso - Construindo uma Plataforma Biotech Acessível](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Padrões Acadêmicos e Alinhamento Estratégico
+### 🎓 Padrões Acadêmicos e Roadmap Estratégico
 
-O BiotechProject é baseado em uma **arquitetura Zero Framework**, projetada para aderir às diretrizes do **Sapienza Innovation and Entrepreneurship Hub - SIEH** em termos de design inclusivo e acessibilidade de alto desempenho. Nosso padrão **WCAG 2.2 AAA**, validado por meio de rigorosas auditorias internas de SRE, é apresentado como uma proposta técnica para atender aos benchmarks de excelência do ecossistema de inovação da Sapienza.
+O BiotechProject é construído sobre uma arquitetura **Zero Framework**, projetada para aderir às diretrizes do **Sapienza Innovation and Entrepreneurship Hub (SIEH)** para design inclusivo. Nossa conquista da conformidade **WCAG 2.2 AAA** — validada por rigorosas auditorias internas de SRE — é apresentada como um benchmark técnico para o ecossistema de inovação da Sapienza.
 
-Com vistas à sua estreia na **RomaCup (28 de março de 2026)**, convidamos pesquisadores e docentes do **SIEH** a iniciarem um processo formal de revisão por pares (peer-review). Este projeto posiciona-se como um candidato para o engajamento acadêmico, oferecendo uma base sólida para futuros projetos de graduação, parcerias de pesquisa e solicitações conjuntas de financiamento dentro da rede da Sapienza.
+Após uma **fase de observação estratégica na RomeCup (março de 2026)**, o projeto evoluiu para uma "Plataforma Candidata" para exibições institucionais. Atualmente, estamos refinando nossos modelos de integração para alinhamento com os padrões de excelência da **Fondazione Mondo Digitale**, posicionando o BiotechProject como um candidato principal para futuras exposições, revisões acadêmicas por pares e parcerias de pesquisa de alto impacto.
+
+Este projeto serve como uma base robusta para:
+*   **Alinhamento Institucional:** Unindo a lacuna entre código de alto desempenho (nível SRE) e padrões de acessibilidade clínica.
+*   **Colaboração Acadêmica:** Fornecendo uma infraestrutura testada em campo para futuros projetos de graduação, laboratórios de pesquisa e solicitações conjuntas de bolsas dentro da rede **SIEH**.
+
+> [!IMPORTANT]
+> **O Valor Humano da Performance:**  
+> Em linha com a missão da **Fondazione Mondo Digitale**, acreditamos que a excelência técnica é uma ferramenta para a equidade social. Cada milissegundo de otimização (TBT) e cada padrão de acessibilidade (AAA) que implementamos garante que ferramentas científicas de alto nível permaneçam acessíveis a todos — independentemente da idade do dispositivo, velocidade de conexão ou habilidades cognitivas/motoras. **Para nós, performance não é apenas uma métrica; é um compromisso com a inclusão digital.**
 
 > [!NOTE]
-> ### 🏛️ Hub Institucional e Acadêmico
-> Alinhamos este projeto aos mais altos padrões acadêmicos. Você é um representante universitário presente na **RomaCup**? Preparamos uma carta específica para potenciais colaborações, auditorias e projetos de graduação.
+> ### 🏛️ Hub Institucional e Acadêmico (Atualização: 8 de maio de 2026)
+> **Relatório de Parceria Estratégica v6.4.0**. Este documento define nosso roadmap para "Resiliência por Design" e convida os stakeholders acadêmicos a explorar nossas trilhas de engajamento.
 > 
-> 👉 **Visualizar a Proposta de Colaboração:** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Visualizar o Documento de Parceria Estratégica Atualizado:** [BiotechProject x Parceiros Acadêmicos (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Este documento detalha três caminhos de envolvimento: **Projetos de Graduação**, **Laboratório de Pesquisa** e **Parcerias para Financiamento**, projetados para se integrarem ao ecossistema **SIEH**.
+> *Inclui trilhas de engajamento detalhadas: **(A) Teses de Graduação**, **(B) Estudo de Caso para Laboratórios de Pesquisa** e **(C) Parcerias Estratégicas para Bolsas da UE**.*
 
 
 ## 🌍 Gestão Multilíngue (i18n)
@@ -440,7 +453,7 @@ lang/
 
 
 ## 📅 Data da Última Verificação
-**6 de maio de 2026**
+**9 de maio de 2026**
 
 ## 🔮 Atualizações recentes (resumo)
 
