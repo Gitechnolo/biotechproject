@@ -447,7 +447,7 @@ lang/
 
 
 ## 📅 Ultima Data di Verifica
-**6 maggio 2026**
+**9 maggio 2026**
 
 ## 🔮 Aggiornamenti recenti (riassunto)
 
