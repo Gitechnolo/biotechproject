@@ -42,10 +42,16 @@ Où la biotechnologie rencontre le code pour construire des outils numériques p
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone : Neural Core v6.4.0 - The Parallel Rendering Shift (3 mai 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Jalon : Neural Core v6.4.0 - Stabilité Renforcée Finale (8 mai 2026)**
 > 
-> Nous avons finalisé avec succès le délestage de la **Visual Pipeline** vers le `BiotechCoreWorker` ([ADR-011 | Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)).  
-> Cette architecture multithread basée sur **OffscreenCanvas** a efficacement libéré le thread principal (main thread), réduisant le **TBT à 78ms (-26 %)** et atteignant un **Golden Tier CLS de 0,0001**. Le système garantit désormais une fluidité de 60 FPS tout en maintenant un chiffrement de niveau militaire **AES-GCM Zero-Knowledge**.
+> L'architecture parallèle a atteint sa stabilisation complète. Grâce à l'intégration d'un nouveau **Pipeline Médias à la Demande** avec le `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), nous avons réalisé la **Libération Absolue du Main-Thread**.  
+>
+> **Benchmarks de Performance Actuels :**
+> * **TBT (Total Blocking Time) :** Réduit à **46ms** (Desktop) et un **historique 0ms** (Mobile).
+> * **CLS (Stabilité Visuelle) :** Atteint **0.0000 (Zéro Absolu)** via une application géométrique stricte.
+> * **A11y :** Couche **WCAG 2.2 AAA** renforcée avec orchestration média bilingue synchronisée.
+>
+> **Statut :** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
 
 ---
 
@@ -379,19 +385,27 @@ Nous nous engageons à construire une plateforme inclusive. Explorez comment nou
 [![Étude de Cas - Construire une Plateforme Biotech Accessible](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
 
-### 🎓 Standards Académiques & Alignement Stratégique
+### 🎓 Normes Académiques & Feuille de Route Stratégique
 
-BiotechProject repose sur une **architecture Zero Framework**, conçue pour adhérer aux directives du **Sapienza Innovation and Entrepreneurship Hub - SIEH** en matière de design inclusif et d'accessibilité haute performance. Notre certification **WCAG 2.2 AAA**, validée par des audits SRE internes, est présentée comme une proposition technique visant à atteindre les sommets d'excellence de l'écosystème d'innovation de la Sapienza.
+BiotechProject repose sur una architecture **Zero Framework**, conçue pour respecter les directives du **Sapienza Innovation and Entrepreneurship Hub (SIEH)** en matière de design inclusif. L'atteinte de la conformité **WCAG 2.2 AAA** — validée par des audits SRE internes rigoureux — est présentée comme une référence technique pour l'écosystème d'innovation de la Sapienza.
 
-En vue de son début au **RomaCup (28 mars 2026)**, nous invitons les chercheurs et les professeurs du **SIEH** à initier un processus de revue par les pairs. Ce projet se positionne comme un candidat pour l'engagement académique, offrant une base solide pour de futurs projets de fin d'études, des partenariats de recherche et des demandes de subventions conjointes au sein du réseau de la Sapienza.
+Suite à une **phase d'observation stratégique à la RomeCup (mars 2026)**, le projet a évolué vers un statut de « Plateforme Candidate » pour les présentations institutionnelles. Nous affinons actuellement nos modèles d'intégration pour nous aligner sur les standards d'excellence de la **Fondazione Mondo Digitale**, positionnant BiotechProject comme un candidat de premier plan pour de futures expositions, des revues académiques par les pairs et des partenariats de recherche à fort impact.
+
+Ce projet constitue une base solide pour :
+*   **Alignement Institutionnel :** Combler l'écart entre un code de haute performance (SRE-grade) et les normes d'accessibilité clinique.
+*   **Collaboration Académique :** Fournir une infrastructure éprouvée sur le terrain pour les futurs projets de fin d'études, les laboratoires de recherche et les demandes de subventions conjointes au sein du réseau **SIEH**.
+
+> [!IMPORTANT]
+> **La Valeur Humaine de la Performance :**  
+> En phase avec la mission de la **Fondazione Mondo Digitale**, nous sommes convaincus que l'excellence technique est un levier d'équité sociale. Chaque milliseconde d'optimisation (TBT) et chaque critère d'accessibilité (AAA) mis en œuvre garantissent que les outils scientifiques de haut niveau restent accessibles à tous, quels que soient l'âge de l'appareil, la vitesse de connexion ou les capacités cognitives et motrices. **Pour nous, la performance n'est pas seulement une métrique ; c'est un engagement envers l'inclusion numérique.**
 
 > [!NOTE]
-> ### 🏛️ Hub Institutionnel & Académique
-> Nous avons aligné ce projet sur les plus hauts standards académiques. Vous êtes un représentant universitaire présent au **RomaCup** ? Nous avons préparé une charte spécifique pour d'éventuels audits, collaborations et projets de diplôme.
+> ### 🏛️ Hub Institutionnel & Académique (Mise à jour : 8 mai 2026)
+> **Rapport de Partenariat Stratégique v6.4.0**. Ce document définit notre feuille de route pour la « Résilience par la Conception » et invite les acteurs académiques à explorer nos pistes de collaboration.
 > 
-> 👉 **Consulter la Charte de Collaboration Proposée :** [Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Consulter le document de partenariat stratégique mis à jour :** [BiotechProject x Partenaires Académiques (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
-> Ce document détaille trois axes d'engagement : **Projets de Fin d'Études**, **Laboratoire de Recherche** et **Partenariats de Subvention**, conçus pour s'intégrer à l'écosystème **SIEH**.
+> *Comprend des pistes d'engagement détaillées : **(A) Thèses de fin d'études**, **(B) Études de cas pour laboratoires de recherche**, et **(C) Partenariats stratégiques pour les subventions de l'UE**.*
 
 
 ## 🌍 Gestion Multilingue (i18n)
@@ -439,7 +453,7 @@ lang/
 
 
 ## 📅 Dernière date de vérification
-**6 Mai 2026**
+**9 Mai 2026**
 
 ## 🔮 Mises à jour récentes (résumé)
 
