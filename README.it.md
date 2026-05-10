@@ -348,9 +348,24 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 
 ---
 
-## 🌐 Accessibilità & Compliance
+## 🌐 Accessibilità e Conformità
 
-BiotechProject è progettato con una mentalità **Accessibility-First** e SRE. Il nostro mandato "Zero-Framework" consente il controllo totale del DOM, garantendo che i pattern inclusivi siano nativi e non patchati.
+BiotechProject è progettato con una mentalità SRE **Accessibility-First** (l'accessibilità prima di tutto). Il nostro mandato "Zero-Framework" ci permette di controllare il 100% del DOM, garantendo che i pattern inclusivi siano nativi e non correzioni posticce.
+
+<details>
+<summary><b>🎥 Visualizza Audit di Accessibilità: Navigazione da tastiera e Focus (30s)</b></summary>
+<br>
+
+### 🎥 Audit Manuale di Accessibilità: Navigazione da Tastiera
+> [!IMPORTANT]
+> Questo video fornisce la prova visiva dell'audit manuale condotto per **ADR-006**, convalidando specificamente i criteri **WCAG 2.4.11 (Focus Appearance)** e **2.1.1 (Keyboard access)** in un ambiente privo di framework.
+
+https://github.com/user-attachments/assets/89187047-929d-4e61-ae8d-2a09e997aaa2
+
+* **Focus del Test:** Navigazione sequenziale, funzionalità dei link di salto (skip-links) e indicatori di focus ad alta visibilità.
+* **Risultato:** Verificata la conformità agli standard di Livello AAA.
+
+</details>
 
 - **Stato attuale**: pienamente conforme al **WCAG 2.2 Level AAA Gold Standard**.
 - **Target**: mantenere e monitorare la conformità AAA come benchmark di resilienza clinica.
