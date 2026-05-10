@@ -375,7 +375,11 @@ Conformance has been verified through:
 ### 🔍 Advanced Accessibility Features
 
 <div align="center">
-  <video src="https://github.com/Gitechnolo/biotechproject/raw/main/Biotech-file/images/Biotech-menu/Neural_Core_v6.4.0.mp4" width="100%" autoplay loop muted playsinline></video>
+  <video src="https://github.com/Gitechnolo/biotechproject/raw/main/Biotech-file/images/Biotech-menu/Neural_Core_v6.4.0.mp4" 
+         width="100%" 
+         title="Video demonstration of keyboard navigation and focus management"
+         autoplay loop muted playsinline>
+  </video>
   <p><i><b>Clinical Accessibility in Action:</b> Demonstration of full keyboard navigation, focus management, and WCAG 2.2 AAA compliance.</i></p>
 </div>
 
