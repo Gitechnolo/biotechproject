@@ -374,6 +374,11 @@ Conformance has been verified through:
 
 ### 🔍 Advanced Accessibility Features
 
+<div align="center">
+  <video src="https://github.com/Gitechnolo/biotechproject/raw/main/Biotech-file/images/Biotech-menu/Neural_Core_v6.4.0.mp4" width="100%" autoplay loop muted playsinline></video>
+  <p><i><b>Clinical Accessibility in Action:</b> Demonstration of full keyboard navigation, focus management, and WCAG 2.2 AAA compliance.</i></p>
+</div>
+
 - **DNA Scanner & Audit**: Interactive module with structured PDF Report generation, bilingual `aria-label`, and secure focus management  
 - **HUD & Dynamic Tooltips**: Instant scientific explanations with text descriptions and percentage intensity values for all data points  
 - **Circadian Synchrony**: Content adapts to time and season (axial tilt), reducing cognitive load via biological context-aware advice
