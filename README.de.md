@@ -367,7 +367,7 @@ https://github.com/user-attachments/assets/89187047-929d-4e61-ae8d-2a09e997aaa2
 </details>
 
 - **Aktueller Status**: Vollständig konform mit **WCAG 2.2 Level AAA**.
-- **Ziel**: WCAG 2.2 Level AAA erreicht.
+- **Ziel**: WCAG 2.2 Level AAA erreicht
 
 Die Konformität wurde durch folgende Maßnahmen verifiziert:
 - Automatisierte Audits (Lighthouse, axe, WAVE)
