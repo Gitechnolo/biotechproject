@@ -353,6 +353,21 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 
 BiotechProject is engineered with an **Accessibility-First** SRE mindset. Our "Zero-Framework" mandate allows us to control 100% of the DOM, ensuring that inclusive patterns are native, not patched.
 
+<details>
+<summary><b>🎥 View Accessibility Audit: Keyboard Navigation & Focus (30s)</b></summary>
+<br>
+
+### 🎥 Manual Accessibility Audit: Keyboard Navigation
+> [!IMPORTANT]
+> This video provides visual evidence of the manual audit conducted for **ADR-006**, specifically validating **WCAG 2.4.11 (Focus Appearance)** and **2.1.1 (Keyboard access)** in a zero-framework environment.
+
+https://github.com/user-attachments/assets/89187047-929d-4e61-ae8d-2a09e997aaa2
+
+* **Test Focus:** Sequential navigation, skip-links functionality, and high-visibility focus indicators.
+* **Result:** Verified compliant with Level AAA standards.
+
+</details>
+
 - **Current Status**: Fully conformant with **WCAG 2.2 Level AAA**.
 - **Target**: Achieved WCAG 2.2 Level AAA.
 
