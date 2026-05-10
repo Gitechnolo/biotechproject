@@ -347,25 +347,40 @@ O ecossistema implementa um **sistema avançado de rastreamento de maturidade te
 
 ---
 
-## 🌐 Acessibilidade
+## 🌐 Acessibilidade e Conformidade
 
-O site é **conforme com o WCAG 2.2 Level AAA Gold Standard** para todas as páginas principais.  
-A conformidade foi verificada através de:
+O BiotechProject foi projetado com uma mentalidade SRE **Accessibility-First** (Acessibilidade em primeiro lugar). Nosso mandato "Zero-Framework" nos permite controlar 100% do DOM, garantindo que os padrões inclusivos sejam nativos, e não correções paliativas.
 
+<details>
+<summary><b>🎥 Ver Auditoria de Acessibilidade: Navegação por Teclado e Foco (30s)</b></summary>
+<br>
+
+### 🎥 Auditoria Manual de Acessibilidade: Navegação por Teclado
+> [!IMPORTANT]
+> Este vídeo fornece evidência visual da auditoria manual realizada para o **ADR-006**, validando especificamente os critérios **WCAG 2.4.11 (Focus Appearance)** e **2.1.1 (Keyboard access)** em um ambiente sem frameworks.
+
+https://github.com/user-attachments/assets/89187047-929d-4e61-ae8d-2a09e997aaa2
+
+* **Foco do Teste:** Navegação sequencial, funcionalidade de links de salto (skip-links) e indicadores de foco de alta visibilidade.
+* **Resultado:** Conformidade verificada com os padrões de Nível AAA.
+
+</details>
+
+- **Status Atual**: Totalmente em conformidade com **WCAG 2.2 Nível AAA**.
+- **Objetivo**: Nível WCAG 2.2 AAA alcançado.
+
+A conformidade foi verificada por meio de:
 - Auditorias automatizadas (Lighthouse, axe, WAVE)
 - Testes manuais com leitores de tela (NVDA, VoiceOver)
-- Navegação completa por teclado (tab, shift+tab, enter, space, arrows)
-- Validação de código W3C
-- Inspeção direta de código para estrutura semântica e uso correto de ARIA
+- Navegação completa por teclado (tab, shift+tab, enter, espaço, setas)
+- Validação de código W3C e inspeção de estrutura semântica
 
-O projeto é **parcialmente conforme com Level AAA**, particularmente em:
-- Contraste de cor (a maioria dos textos excede 7:1)
-- Estrutura hierárquica de títulos
-- Uso de texto alternativo descritivo
+**Data da última verificação**: 28 de março de 2026
 
-No entanto, alguns critérios AAA não são aplicáveis ou necessários no contexto atual (ex. legendas de vídeo, linguagem simples estendida).   
+> [!NOTE]
+> Alcançamos o nível mais alto de inclusão digital para software clínico, incluindo **Aparência de Foco Aprimorada (2.4.11)**, estabelecendo um novo padrão para a resiliência científica em código aberto.
 
-📄 **Declaração completa de acessibilidade:**  
+📄 **Documentação completa:** 
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
