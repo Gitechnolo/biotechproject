@@ -275,7 +275,7 @@ El ecosistema implementa un **sistema avanzado de seguimiento de madurez tecnol�
 **Actualización 6 de mayo de 2026:** Se han integrado los últimos resultados de la auditoría del **SRE Scalability Engine 2026**. El delta entre las puntuaciones base y de estrés confirma una arquitectura robusta con una degradación mínima del rendimiento bajo carga.
 
 ### 📂 Últimos Informes de Auditoría
-* 📄 **[SRE Performance Stress-Test Report - 6 de mayo de 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 9 de mayo de 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funcionalidades del Panel
