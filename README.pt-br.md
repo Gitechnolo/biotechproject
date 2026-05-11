@@ -276,7 +276,7 @@ O ecossistema implementa um **sistema avançado de rastreamento de maturidade te
 **Atualização em 6 de maio de 2026:** Integrados os últimos resultados de auditoria do **SRE Scalability Engine 2026**. O delta entre as pontuações de baseline e de estresse confirma uma arquitetura robusta com degradação mínima de desempenho sob carga.
 
 ### 📂 Relatórios de Auditoria Mais Recentes
-* 📄 **[Relatório de Stress-Test de Desempenho SRE - 6 de maio de 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Relatório de Stress-Test de Desempenho SRE - 9 de maio de 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Resumo Executivo: Arquitetura do Gêmeo Digital Metabólico (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funcionalidades do Painel
