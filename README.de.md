@@ -276,7 +276,7 @@ Das Ökosystem implementiert ein **fortschrittliches System zur Verfolgung der t
 **Update 6. Mai 2026:** Integration der neuesten Audit-Ergebnisse der **SRE Scalability Engine 2026**. Das Delta zwischen Baseline- und Stress-Werten bestätigt eine robuste Architektur mit minimalem Leistungsabfall unter Last.
 
 ### 📂 Aktuelle Audit-Berichte
-* 📄 **[SRE Performance Stress-Test Report - 6. Mai 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 9. Mai 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard-Funktionen
