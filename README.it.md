@@ -276,7 +276,7 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 **Aggiornamento 6 maggio 2026:** Sono stati integrati gli ultimi risultati dell'audit provenienti dal **SRE Scalability Engine 2026**. Il delta tra i punteggi baseline e quelli sotto stress conferma un'architettura robusta con un degrado prestazionale minimo sotto carico.
 
 ### 📂 Ultimi Report di Audit
-* 📄 **[SRE Performance Stress-Test Report - 6 Maggio 2026 (PDF)](docs/biotech-performance-report.pdf)** 
+* 📄 **[SRE Performance Stress-Test Report - 9 Maggio 2026 (PDF)](docs/biotech-performance-report.pdf)** 
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Funzionalità Dashboard
