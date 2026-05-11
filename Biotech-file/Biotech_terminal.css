@@ -211,3 +211,55 @@
 }
 
 /* --- FINE THEMES --- */
+
+/* Container della Matrice */
+.impact-matrix-container {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 15px;
+    background: rgba(0, 77, 64, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(224, 242, 241, 0.1);
+}
+
+/* Titolo della Tabella */
+.matrix-title {
+    font-size: 0.9em;
+    color: #4db6ac;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Struttura Tabella */
+.impact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+    color: #e0f2f1;
+}
+
+/* Header e Celle */
+.impact-table th, 
+.impact-table td {
+    text-align: left;
+    padding: 12px 10px;
+}
+
+.impact-table th {
+    color: #80cbc4;
+    border-bottom: 1px solid rgba(224, 242, 241, 0.2);
+}
+
+.impact-table td {
+    border-bottom: 1px solid rgba(224, 242, 241, 0.1);
+}
+
+/* Rimuove il bordo dall'ultima riga */
+.impact-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Enfasi sui termini tecnici */
+.impact-table strong {
+    color: #b2dfdb;
+}
