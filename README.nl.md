@@ -276,7 +276,7 @@ Het ecosysteem implementeert een **geavanceerd systeem voor het volgen van techn
 **Update 6 mei 2026:** De nieuwste auditresultaten van de **SRE Scalability Engine 2026** zijn geïntegreerd. Het verschil tussen de baseline- en stress-scores bevestigt een robuuste architectuur met minimale prestatievermindering onder belasting.
 
 ### 📂 Nieuwste Auditrapporten
-* 📄 **[SRE Performance Stress-Test Report - 6 mei 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 9 mei 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Kenmerken
