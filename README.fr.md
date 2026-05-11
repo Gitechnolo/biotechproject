@@ -276,7 +276,7 @@ L'écosystème implémente un **système avancé de suivi de la maturité techno
 **Mise à jour du 6 mai 2026 :** Intégration dei derniers résultats d'audit du **SRE Scalability Engine 2026**. L'écart entre les scores de base et les scores sous stress confirme une architecture robuste avec une dégradation minimale des performances sous charge.
 
 ### 📂 Derniers Rapports d'Audit
-* 📄 **[SRE Performance Stress-Test Report - 6 Mai 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 9 Mai 2026 (PDF)](docs/biotech-performance-report.pdf)**
 * 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Fonctionnalités du Tableau de Bord
