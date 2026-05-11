@@ -271,7 +271,7 @@ Het ecosysteem implementeert een **geavanceerd systeem voor het volgen van techn
 *   **SRE Stress-Test Veerkracht:** **86% Globale Score** (5.000 gelijktijdige gebruikers).
 
 > [!IMPORTANT]
-> **Validatie van Veerkracht:** Het systeem behoudt **Hoge Beschikbaarheid (High Availability)** zelfs onder extreme SRE-omstandigheden (4x CPU-vertraging en 3G/4G-netwerkbeperking), wat de effectiviteit van de huidige optimalisatielaag bewijst.
+> **Validatie van Veerkracht:** Het systeem behoudt **Hoge Beschikbaarheid (High Availability)** zelfs onder extreme SRE-omstandigheden (4x CPU-vertraging en 3G/4G-netwerkbeperking), wat de effectiviteit van de huidige optimalisatielaag bewijst
 
 **Update 6 mei 2026:** De nieuwste auditresultaten van de **SRE Scalability Engine 2026** zijn geïntegreerd. Het verschil tussen de baseline- en stress-scores bevestigt een robuuste architectuur met minimale prestatievermindering onder belasting.
 
