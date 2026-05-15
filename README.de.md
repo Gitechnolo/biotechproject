@@ -273,7 +273,7 @@ Das Ökosystem implementiert ein **fortschrittliches System zur Verfolgung der t
 > [!IMPORTANT]
 > **Resilienz-Validierung:** Das System behält die **Hochverfügbarkeit (High Availability)** auch unter extremen Bedingungen der SRE-Klasse bei (4-fache CPU-Verlangsamung und 3G/4G-Netzwerk-Drosselung), was die Wirksamkeit der aktuellen Optimierungsebene beweist.
 
-**Update 6. Mai 2026:** Integration der neuesten Audit-Ergebnisse der **SRE Scalability Engine 2026**. Das Delta zwischen Baseline- und Stress-Werten bestätigt eine robuste Architektur mit minimalem Leistungsabfall unter Last.
+**Update 9. Mai 2026:** Integration der neuesten Audit-Ergebnisse der **SRE Scalability Engine 2026**. Das Delta zwischen Baseline- und Stress-Werten bestätigt eine robuste Architektur mit minimalem Leistungsabfall unter Last.
 
 ### 📂 Aktuelle Audit-Berichte
 * 📄 **[SRE Performance Stress-Test Report - 9. Mai 2026 (PDF)](docs/biotech-performance-report.pdf)**
