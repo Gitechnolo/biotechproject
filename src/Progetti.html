@@ -78,9 +78,20 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     <div class="staff-card">
       <div class="staff-container">
 <h2 class="sansation-bold" data-lang-key="projects-title">Progetti del Biotech Project</h2>
-<section class="biotech-manifesto-container">
-  <div class="terminal-window">
-    <div class="terminal-header" aria-hidden="true">
+<section class="biotech-manifesto-container" aria-labelledby="manifesto-heading">
+<!-- 1. Testo accessibile (statico e invisibile) -->
+  <div id="manifesto-content-sr" class="sr-only">
+    <h2 id="manifesto-heading">Manifesto Biotech Project</h2>
+    <p>Ingegneria della Resilienza Sanitaria</p>
+    <p>Il lavoro di BiotechProject si concentra sul paradigma 'Stateless Edge': una metodologia progettata per eliminare i 'caselli digitali' imposti dai framework pesanti e dalle infrastrutture centralizzate.</p>
+    <p>BiotechProject ha dimostrato che migrando i calcoli biologici complessi interamente sul Client (Vanilla JS), possiamo ottenere prestazioni inferiori al secondo (0.3s TTI) mantenendo costi operativi di backend pari a zero.</p>
+    <p>La missione è sostituire le architetture legacy ad alta latenza con un'Ingegneria Minimalista che garantisca equità sanitaria globale, accessibilità AAA nativa e una privacy assoluta per progettazione.</p>
+    <blockquote>Crediamo che nei sistemi critici per la vita, la semplicità sia la massima forma di affidabilità.</blockquote>
+  </div>
+<!-- 2. Terminale animato (nascosto agli screen reader) -->
+  <!-- aria-hidden="true" evita che lo screen reader legga i tag vuoti o l'animazione -->
+  <div class="terminal-window" aria-hidden="true">
+    <div class="terminal-header">
       <div class="terminal-dots">
         <span class="dot red"></span>
         <span class="dot yellow"></span>
@@ -88,8 +99,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       </div>
       <div class="terminal-title">architect@biotech: ~/manifesto.log</div>
     </div>
-    <div class="terminal-content" role="log" aria-live="polite">
-      <div class="command-line" aria-hidden="true">
+    <div class="terminal-content">
+      <div class="command-line">
         <span class="prompt">$</span>cat mission_statement.sh 
       </div>
       <div class="manifesto-text">
