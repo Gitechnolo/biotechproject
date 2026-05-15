@@ -273,7 +273,7 @@ L'écosystème implémente un **système avancé de suivi de la maturité techno
 > [!IMPORTANT]
 > **Validation de la Résilience :** Le système maintient une **Haute Disponibilité** même dans des conditions extrêmes de classe SRE (ralentissement CPU 4x et bridage réseau 3G/4G), prouvant l'efficacité de l'actuelle couche d'optimisation.
 
-**Mise à jour du 6 mai 2026 :** Intégration dei derniers résultats d'audit du **SRE Scalability Engine 2026**. L'écart entre les scores de base et les scores sous stress confirme une architecture robuste avec une dégradation minimale des performances sous charge.
+**Mise à jour du 9 mai 2026 :** Intégration dei derniers résultats d'audit du **SRE Scalability Engine 2026**. L'écart entre les scores de base et les scores sous stress confirme une architecture robuste avec une dégradation minimale des performances sous charge.
 
 ### 📂 Derniers Rapports d'Audit
 * 📄 **[SRE Performance Stress-Test Report - 9 Mai 2026 (PDF)](docs/biotech-performance-report.pdf)**
