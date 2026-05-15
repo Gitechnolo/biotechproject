@@ -367,66 +367,26 @@ function turnOffLight() {
     if (img) { img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif'; img.classList.remove('bulb-glow'); }
 }
 
-// === EFFECT WITH FADE-IN SEQUENCE (Optimized & Accessible) ===
+// === EFFECT WITH FADE-IN SEQUENCE (Encapsulated) ===
 (function() {
     const initFadeInSequence = () => {
-        // 1. Segnaliamo al CSS che JS è attivo e può nascondere le righe per l'animazione
-        document.documentElement.classList.add('js-enabled');
-
         const lines = document.querySelectorAll(".type-line");
         let currentLineIndex = 0;
-        let attempts = 0; // Per evitare loop infiniti se il JSON fallisce
-
         const showNextLine = () => {
             if (currentLineIndex >= lines.length) return;
-
             const line = lines[currentLineIndex];
-            const textContent = line.textContent.trim();
-
-            // 2. Controllo robusto del testo
-            if (textContent.length === 0) {
-                attempts++;
-                // Se dopo 10 secondi (200 * 50ms) il testo non c'è, interrompiamo per non consumare CPU
-                if (attempts > 200) {
-                    console.warn("Biotech Project: Text not found for line", currentLineIndex);
-                    return;
-                }
-                setTimeout(showNextLine, 50);
-                return;
-            }
-
-            // 3. Reset dei tentativi per la riga successiva e attivazione visiva
-            attempts = 0;
+            if (line.textContent.trim().length === 0) { setTimeout(showNextLine, 50); return; }
             line.classList.add("is-visible");
             currentLineIndex++;
-            
-            // Ritardo tra le righe (0.5s) per un effetto più fluido e meno frenetico
             setTimeout(showNextLine, 500);
         };
-
-        // 4. Attivazione tramite IntersectionObserver (Performance SRE)
         const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                showNextLine();
-                observer.disconnect();
-            }
+            if (entries[0].isIntersecting) { showNextLine(); observer.disconnect(); }
         }, { threshold: 0.2 });
-
         const terminalWindow = document.querySelector(".terminal-window");
-        if (terminalWindow) {
-            observer.observe(terminalWindow);
-        } else {
-            // Fallback se la finestra terminale non viene trovata
-            showNextLine();
-        }
+        if (terminalWindow) observer.observe(terminalWindow);
     };
-
-    // Usiamo DOMContentLoaded invece di load per una risposta più rapida (0.3s TTI)
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initFadeInSequence);
-    } else {
-        initFadeInSequence();
-    }
+    window.addEventListener("load", initFadeInSequence);
 })();
 
 /**
