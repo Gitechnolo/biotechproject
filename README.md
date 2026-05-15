@@ -382,7 +382,7 @@ Conformance has been verified through:
 > [!NOTE]
 > We have achieved the highest level of digital inclusion for clinical software, including **Enhanced Focus Appearance (2.4.11)**, setting a new benchmark for open-source scientific resilience.
 
-📄 **Full documentation:** 
+📄 **Full documentation:**
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
