@@ -18,7 +18,36 @@
 #main-content { opacity: 1; }
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
-.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}
+
+/* --- FIX CLS: AGGIUNTO RELATIVE SUL CONTAINER --- */
+.staff-layout-container{ 
+  padding-top: 30px; 
+  width: 100%; 
+  min-height: 1px;
+  position: relative !important; /* Forza l'ancoraggio del widget assoluto */
+}
+
+/* --- FIX CLS: BLOCCO RIGIDO DESKTOP (CRITICAL CSS) --- */
+.sre-dashboard {
+  height: 204px !important;      /* Altezza calcolata: 180px + 24px padding */
+  max-height: 204px !important;  /* Impedisce variazioni prima del rendering del testo */
+  contain: size layout style !important; /* Isola dimensionalmente l'elemento */
+  contain-intrinsic-size: 300px 204px !important; /* Raddoppia la sicurezza di allocazione spazio */
+}
+
+/* Ripristiniamo le regole mobile per evitare che il blocco desktop rompa il tuo layout responsive */
+@media (max-width: 1100px) {
+  .sre-dashboard {
+    height: 185px !important;
+    max-height: 185px !important;
+    contain-intrinsic-size: 185px !important;
+  }
+}
+
+.tech-nav-container {min-height: 56px;}
+.logo-wrapper-cls {min-height: 215px;}
+.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 body{background-color: #000f16; font-family: 'Sansation', sans-serif; color: #a7ffeb; max-width: 900px; line-height: 1.6;}
 h1, h2{ color: #00e676;}
 ul { padding-left: 20px; }
