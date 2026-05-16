@@ -66,10 +66,10 @@ td strong { color: #00e676; font-weight: bold; }/* Manteniamo uno stile pulito p
 <h2 aria-label="Stato di Conformità"><span aria-hidden="true">🥇</span> Stato di Conformità</h2>
 <p class="conformance-status"><strong class="sansation-bold-italic">Pienamente Conforme</strong> alle <strong class="sansation-bold-italic">Linee Guida per l'Accessibilità dei Contenuti Web (WCAG) 2.2 - Livello AAA</strong>.</p>
 <ul>
-    <li><strong class="sansation-bold-italic">Ultima Verifica Tecnica:</strong> <time datetime="2026-05-08">8 Maggio 2026</time> (Milestone v6.4.0)</li>
-    <li><strong class="sansation-bold-italic">Punteggio di Accessibilità Aggregato:</strong> <span aria-label="100 su 100">100/100</span> (Audit SRE Lighthouse)</li>
-    <li><strong class="sansation-bold-italic">TBT (Total Blocking Time):</strong> <span aria-label="0 millisecondi su mobile">0ms (Mobile)</span> / 46ms (Desktop)</li>
-    <li><strong class="sansation-bold-italic">CLS (Stabilità Visiva):</strong> <span aria-label="0.0000 stabilità assoluta">0.0000 (Zero Assoluto)</span></li>
+<li><strong class="sansation-bold-italic">Ultima Verifica Tecnica:</strong> <time datetime="2026-05-08">8 Maggio 2026</time> (Milestone v6.4.0)</li>
+<li><strong class="sansation-bold-italic">Punteggio di Accessibilità Aggregato:</strong> <span aria-label="100 su 100">100/100</span> (Audit SRE Lighthouse)</li>
+<li><strong class="sansation-bold-italic">TBT (Total Blocking Time):</strong> <span aria-label="0 millisecondi su mobile">0ms (Mobile)</span> / 46ms (Desktop)</li>
+<li><strong class="sansation-bold-italic">CLS (Stabilità Visiva):</strong> <span aria-label="0.0000 stabilità assoluta">0.0000 (Zero Assoluto)</span></li>
 </ul>
 <hr>
 <h2 aria-label="Innovazioni e Funzionalità di Accessibilità"><span aria-hidden="true">🔑</span> Innovazioni e Funzionalità di Accessibilità</h2>
@@ -78,39 +78,39 @@ td strong { color: #00e676; font-weight: bold; }/* Manteniamo uno stile pulito p
 <caption>Dettaglio delle implementazioni tecniche e riferimenti WCAG per l'accessibilità</caption>
 <thead><tr><th scope="col">Area</th><th scope="col">Implementazione e Obiettivo Clinico</th><th scope="col">Rif. WCAG</th></tr></thead>
 <tbody>
-    <tr>
-        <td data-label="Area" class="table-spec-text">Liberazione del Main-Thread</td>
-        <td data-label="Implementazione">Disaccoppiamento totale della UI tramite <strong>BiotechCoreWorker</strong>. Raggiunge 0ms di TBT su mobile, eliminando i lag di interazione per utenti con disabilità motorie.</td>
-        <td data-label="Rif. WCAG" class="table-spec-text">2.2.1, 4.1.2</td>
-    </tr>
-    <tr>
-        <td data-label="Area" class="table-spec-text">Contenimento Geometrico Media</td>
-        <td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo un ambiente a <strong>Zero Layout Shift</strong> durante il rendering parallelo.</td>
-        <td data-label="Rif. WCAG" class="table-spec-text">2.2.2, 2.3.3</td>
-    </tr>
-    <tr>
-        <td data-label="Area" class="table-spec-text">Sincronizzazione Media Bilingue</td>
-        <td data-label="Implementazione">Sottotitoli sincronizzati (EN/IT) e controlli video mappati da tastiera gestiti senza sovraccarico del thread principale.</td>
-        <td data-label="Rif. WCAG" class="table-spec-text">1.2.1, 1.2.2</td>
-    </tr>
-    <tr>
-        <td data-label="Area" class="table-spec-text">Resilienza "Stateless Edge"</td>
-        <td data-label="Implementazione">Architettura Zero-Framework con TTI immediato. Vitale per utenti con tecnologie assistive datate o connessioni instabili.</td>
-        <td data-label="Rif. WCAG" class="table-spec-text">4.1.1</td>
-    </tr>
-    <tr>
-        <td data-label="Area" class="table-spec-text">Oblio Etico dei Dati</td>
-        <td data-label="Implementazione">Cancellazione automatica dei pesi neurali e dei dati temporanei (ADR-011), garantendo un ambiente sicuro e privato.</td>
-        <td data-label="Rif. WCAG" class="table-spec-text">G133</td>
-    </tr>
+<tr>
+<td data-label="Area" class="table-spec-text">Liberazione del Main-Thread</td>
+<td data-label="Implementazione">Disaccoppiamento totale della UI tramite <strong>BiotechCoreWorker</strong>. Raggiunge 0ms di TBT su mobile, eliminando i lag di interazione per utenti con disabilità motorie.</td>
+<td data-label="Rif. WCAG" class="table-spec-text">2.2.1, 4.1.2</td>
+</tr>
+<tr>
+<td data-label="Area" class="table-spec-text">Contenimento Geometrico Media</td>
+<td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo un ambiente a <strong>Zero Layout Shift</strong> durante il rendering parallelo.</td>
+<td data-label="Rif. WCAG" class="table-spec-text">2.2.2, 2.3.3</td>
+</tr>
+<tr>
+<td data-label="Area" class="table-spec-text">Sincronizzazione Media Bilingue</td>
+<td data-label="Implementazione">Sottotitoli sincronizzati (EN/IT) e controlli video mappati da tastiera gestiti senza sovraccarico del thread principale.</td>
+<td data-label="Rif. WCAG" class="table-spec-text">1.2.1, 1.2.2</td>
+</tr>
+<tr>
+<td data-label="Area" class="table-spec-text">Resilienza "Stateless Edge"</td>
+<td data-label="Implementazione">Architettura Zero-Framework con TTI immediato. Vitale per utenti con tecnologie assistive datate o connessioni instabili.</td>
+<td data-label="Rif. WCAG" class="table-spec-text">4.1.1</td>
+</tr>
+<tr>
+<td data-label="Area" class="table-spec-text">Oblio Etico dei Dati</td>
+<td data-label="Implementazione">Cancellazione automatica dei pesi neurali e dei dati temporanei (ADR-011), garantendo un ambiente sicuro e privato.</td>
+<td data-label="Rif. WCAG" class="table-spec-text">G133</td>
+</tr>
 </tbody>
 </table>
 <hr>
 <h2 aria-label="Visione Strategica verso il Livello AAA"><span aria-hidden="true">🚀</span> Visione Strategica verso il Livello AAA</h2>
 <ul>
-    <li><strong class="sansation-bold-italic">Orchestrazione On-Demand:</strong> Utilizzo dei pesi locali per bilanciare qualità media e prestazioni, assicurando la priorità assoluta ai layer di accessibilità (ARIA/Screen Reader).</li>
-    <li><strong class="sansation-bold-italic">SRE-for-Humans:</strong> Mantenimento della soglia 0ms TBT per prevenire l'affaticamento cognitivo e da interazione.</li>
-    <li><strong class="sansation-bold-italic">Affidabilità Clinica:</strong> Validazione costante tramite il sistema <code>SRE Guardian</code> per mantenere il "Golden Tier" di stabilità visiva.</li>
+<li><strong class="sansation-bold-italic">Orchestrazione On-Demand:</strong> Utilizzo dei pesi locali per bilanciare qualità media e prestazioni, assicurando la priorità assoluta ai layer di accessibilità (ARIA/Screen Reader).</li>
+<li><strong class="sansation-bold-italic">SRE-for-Humans:</strong> Mantenimento della soglia 0ms TBT per prevenire l'affaticamento cognitivo e da interazione.</li>
+<li><strong class="sansation-bold-italic">Affidabilità Clinica:</strong> Validazione costante tramite il sistema <code>SRE Guardian</code> per mantenere il "Golden Tier" di stabilità visiva.</li>
 </ul>
 <hr>
 <h2 aria-label="Segnalazioni e Feedback"><span aria-hidden="true">💬</span> Segnalazioni e Feedback</h2>
