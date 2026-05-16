@@ -75,48 +75,38 @@ td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: 
 <h2 aria-label="Innovazioni e Funzionalità di Accessibilità"><span aria-hidden="true">🔑</span> Innovazioni e Funzionalità di Accessibilità</h2>
 <p>Oltre alla conformità standard, BiotechProject adotta un'architettura <strong>"Neural-Hardened Stateless Edge"</strong> con una <strong>Pipeline Media On-Demand</strong> dedicata per garantire che la piattaforma rimanga fluida anche sotto stress computazionale.</p>
 
-<p id="table-context" class="sr-only">
-    La seguente tabella dettaglia le ottimizzazioni tecniche del BiotechProject, 
-    collegando ogni area di intervento (come la liberazione del main-thread) 
-    al relativo obiettivo clinico e al criterio di successo WCAG 2.2 corrispondente.
-</p>
-
-<table aria-describedby="table-context">
-    <caption>Dettaglio delle implementazioni tecniche e riferimenti WCAG per l'accessibilità</caption>
-    <thead>
-        <tr>
-            <th scope="col">Area</th>
-            <th scope="col">Implementazione e Obiettivo Clinico</th>
-            <th scope="col">Rif. WCAG</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row" data-label="Area"><strong>Liberazione del Main-Thread</strong></th>
-            <td data-label="Implementazione">Disaccoppiamento totale della UI tramite <strong>BiotechCoreWorker</strong>. Raggiunge 0ms di TBT su mobile, eliminando i lag di interazione per utenti con disabilità motorie.</td>
-            <td data-label="Rif. WCAG"><strong>2.2.1, 4.1.2</strong></td>
-        </tr>
-        <tr>
-            <th scope="row" data-label="Area"><strong>Contenimento Geometrico Media</strong></th>
-            <td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo <strong>Zero Layout Shift (0.0000)</strong> durante il rendering parallelo.</td>
-            <td data-label="Rif. WCAG"><strong>2.2.2, 2.3.3</strong></td>
-        </tr>
-        <tr>
-            <th scope="row" data-label="Area"><strong>Sincronizzazione Media Bilingue</strong></th>
-            <td data-label="Implementazione">Sottotitoli sincronizzati (EN/IT) e controlli video mappati da tastiera gestiti senza sovraccarico del thread principale.</td>
-            <td data-label="Rif. WCAG"><strong>1.2.1, 1.2.2</strong></td>
-        </tr>
-        <tr>
-            <th scope="row" data-label="Area"><strong>Resilienza "Stateless Edge"</strong></th>
-            <td data-label="Implementazione">Architettura Zero-Framework con TTI immediato. Vitale per utenti con tecnologie assistive datate o connessioni instabili.</td>
-            <td data-label="Rif. WCAG"><strong>4.1.1</strong></td>
-        </tr>
-        <tr>
-            <th scope="row" data-label="Area"><strong>Oblio Etico dei Dati</strong></th>
-            <td data-label="Implementazione">Cancellazione automatica dei pesi neurali e dei dati temporanei (ADR-011), garantendo un ambiente sicuro e privato.</td>
-            <td data-label="Rif. WCAG"><strong>G133</strong></td>
-        </tr>
-    </tbody>
+<table>
+<caption>Dettaglio delle implementazioni tecniche e riferimenti WCAG per l'accessibilità</caption>
+<thead>
+    <tr><th scope="col">Area</th><th scope="col">Implementazione e Obiettivo Clinico</th><th scope="col">Rif. WCAG</th></tr>
+</thead>
+<tbody>
+    <tr>
+        <td data-label="Area"><strong>Liberazione del Main-Thread</strong></td>
+        <td data-label="Implementazione">Disaccoppiamento totale della UI tramite <strong>BiotechCoreWorker</strong>. Raggiunge 0ms di TBT su mobile, eliminando i lag di interazione per utenti con disabilità motorie.</td>
+        <td data-label="Rif. WCAG"><strong>2.2.1, 4.1.2</strong></td>
+    </tr>
+    <tr>
+        <td data-label="Area"><strong>Contenimento Geometrico Media</strong></td>
+        <td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo <strong>Zero Layout Shift (0.0000)</strong> durante il rendering parallelo.</td>
+        <td data-label="Rif. WCAG"><strong>2.2.2, 2.3.3</strong></td>
+    </tr>
+    <tr>
+        <td data-label="Area"><strong>Sincronizzazione Media Bilingue</strong></td>
+        <td data-label="Implementazione">Sottotitoli sincronizzati (EN/IT) e controlli video mappati da tastiera gestiti senza sovraccarico del thread principale.</td>
+        <td data-label="Rif. WCAG"><strong>1.2.1, 1.2.2</strong></td>
+    </tr>
+    <tr>
+        <td data-label="Area"><strong>Resilienza "Stateless Edge"</strong></td>
+        <td data-label="Implementazione">Architettura Zero-Framework con TTI immediato. Vitale per utenti con tecnologie assistive datate o connessioni instabili.</td>
+        <td data-label="Rif. WCAG"><strong>4.1.1</strong></td>
+    </tr>
+    <tr>
+        <td data-label="Area"><strong>Oblio Etico dei Dati</strong></td>
+        <td data-label="Implementazione">Cancellazione automatica dei pesi neurali e dei dati temporanei (ADR-011), garantendo un ambiente sicuro e privato.</td>
+        <td data-label="Rif. WCAG"><strong>G133</strong></td>
+    </tr>
+</tbody>
 </table>
 
 <hr>
