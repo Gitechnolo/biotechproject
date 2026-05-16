@@ -27,8 +27,18 @@ a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8p
 table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
 ul { padding-left: 20px; }
 .conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}     
-/* Applica stile a tutti i <strong> dentro le celle */
-td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}          
+/* Miglioramento contrasto AAA */
+th { 
+  background-color: #1a344d; 
+  color: #ffffff; /* Bianco per contrasto perfetto > 7:1 */
+}
+
+/* Stile per le celle*/
+.tech-highlight {
+  font-family: 'Sansation', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}          
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>   
@@ -75,36 +85,40 @@ td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: 
 <h2 aria-label="Innovazioni e Funzionalità di Accessibilità"><span aria-hidden="true">🔑</span> Innovazioni e Funzionalità di Accessibilità</h2>
 <p>Oltre alla conformità standard, BiotechProject adotta un'architettura <strong>"Neural-Hardened Stateless Edge"</strong> con una <strong>Pipeline Media On-Demand</strong> dedicata per garantire che la piattaforma rimanga fluida anche sotto stress computazionale.</p>
 
-<table>
+<table class="accessibility-table">
 <caption>Dettaglio delle implementazioni tecniche e riferimenti WCAG per l'accessibilità</caption>
 <thead>
-    <tr><th scope="col">Area</th><th scope="col">Implementazione e Obiettivo Clinico</th><th scope="col">Rif. WCAG</th></tr>
+    <tr>
+        <th scope="col">Area</th>
+        <th scope="col">Implementazione e Obiettivo Clinico</th>
+        <th scope="col">Rif. WCAG</th>
+    </tr>
 </thead>
 <tbody>
     <tr>
-        <td data-label="Area"><strong>Liberazione del Main-Thread</strong></td>
+        <td data-label="Area" class="tech-highlight">Liberazione del Main-Thread</td>
         <td data-label="Implementazione">Disaccoppiamento totale della UI tramite <strong>BiotechCoreWorker</strong>. Raggiunge 0ms di TBT su mobile, eliminando i lag di interazione per utenti con disabilità motorie.</td>
-        <td data-label="Rif. WCAG"><strong>2.2.1, 4.1.2</strong></td>
+        <td data-label="Rif. WCAG" class="tech-highlight">2.2.1, 4.1.2</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Contenimento Geometrico Media</strong></td>
+        <td data-label="Area" class="tech-highlight">Contenimento Geometrico Media</td>
         <td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo <strong>Zero Layout Shift (0.0000)</strong> durante il rendering parallelo.</td>
-        <td data-label="Rif. WCAG"><strong>2.2.2, 2.3.3</strong></td>
+        <td data-label="Rif. WCAG" class="tech-highlight">2.2.2, 2.3.3</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Sincronizzazione Media Bilingue</strong></td>
+        <td data-label="Area" class="tech-highlight">Sincronizzazione Media Bilingue</td>
         <td data-label="Implementazione">Sottotitoli sincronizzati (EN/IT) e controlli video mappati da tastiera gestiti senza sovraccarico del thread principale.</td>
-        <td data-label="Rif. WCAG"><strong>1.2.1, 1.2.2</strong></td>
+        <td data-label="Rif. WCAG" class="tech-highlight">1.2.1, 1.2.2</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Resilienza "Stateless Edge"</strong></td>
+        <td data-label="Area" class="tech-highlight">Resilienza "Stateless Edge"</td>
         <td data-label="Implementazione">Architettura Zero-Framework con TTI immediato. Vitale per utenti con tecnologie assistive datate o connessioni instabili.</td>
-        <td data-label="Rif. WCAG"><strong>4.1.1</strong></td>
+        <td data-label="Rif. WCAG" class="tech-highlight">4.1.1</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Oblio Etico dei Dati</strong></td>
+        <td data-label="Area" class="tech-highlight">Oblio Etico dei Dati</td>
         <td data-label="Implementazione">Cancellazione automatica dei pesi neurali e dei dati temporanei (ADR-011), garantendo un ambiente sicuro e privato.</td>
-        <td data-label="Rif. WCAG"><strong>G133</strong></td>
+        <td data-label="Rif. WCAG" class="tech-highlight">G133</td>
     </tr>
 </tbody>
 </table>
