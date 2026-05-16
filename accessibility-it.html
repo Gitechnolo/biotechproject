@@ -24,11 +24,41 @@ h1, h2{ color: #00e676;}
 ul { padding-left: 20px; }
 footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
 a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
-table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
+
+/* Struttura base tabella originaria con colore modificato in bianco per contrasto normativo AAA (>7:1) */
+table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} 
+th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} 
+th{ background-color: #1a344d; color: #ffffff;} 
+
 ul { padding-left: 20px; }
 .conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}     
-/* Applica stile a tutti i <strong> dentro le celle */
+/* Applica stile a tutti i <strong> dentro le celle (mantenuto per il tuo HTML originale) */
 td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}          
+
+/* ==========================================================================
+   LOCK GEOMETRICO ISO-DESKTOP (RISOLUZIONE DEL CLS 0.304 SU COMPUTER)
+   ========================================================================== */
+@media (min-width: 1101px) {
+  /* Blocca lo spostamento fittizio del Canvas all'avvio dello script di rendering */
+  .canvas-wrapper {
+    contain: strict !important;
+    pointer-events: none;
+  }
+
+  /* Stabilizza la geometria della tabella prima che il browser carichi il font */
+  table {
+    table-layout: fixed !important;
+    contain: layout style !important;
+  }
+  table th:nth-child(1), table td:nth-child(1) { width: 25%; }
+  table th:nth-child(2), table td:nth-child(2) { width: 55%; }
+  table th:nth-child(3), table td:nth-child(3) { width: 20%; }
+
+  /* Forza la presenza della barra di scorrimento verticale per evitare il ricalcolo della larghezza viewport */
+  html {
+    overflow-y: scroll !important;
+  }
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>   
