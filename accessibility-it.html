@@ -25,39 +25,39 @@ ul { padding-left: 20px; }
 footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
 a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
 
-/* Struttura base tabella originaria con colore modificato in bianco per contrasto normativo AAA (>7:1) */
+/* Struttura base tabella originaria con contrasto normativo AAA (>7:1) */
 table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} 
 th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} 
 th{ background-color: #1a344d; color: #ffffff;} 
 
 ul { padding-left: 20px; }
 .conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}     
-/* Applica stile a tutti i <strong> dentro le celle (mantenuto per il tuo HTML originale) */
-td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}          
+
+/* Nuova classe per formattare le colonne senza abusare di strong nell'HTML */
+.table-spec-text { font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic; }
+/* Manteniamo uno stile pulito per gli strong rimanenti nell'implementazione */
+td strong { color: #00e676; font-weight: bold; }
 
 /* ==========================================================================
-   LOCK GEOMETRICO ISO-DESKTOP (RISOLUZIONE DEL CLS 0.304 SU COMPUTER)
+   LOCK GEOMETRICO ISO-DESKTOP POTENZIATO (CONTRO LE OSCILLAZIONI DI LIGHTHOUSE)
    ========================================================================== */
 @media (min-width: 1101px) {
-  /* Blocca lo spostamento fittizio del Canvas all'avvio dello script di rendering */
+  html {
+    overflow-y: scroll !important;
+  }
   .canvas-wrapper {
     contain: strict !important;
     pointer-events: none;
   }
-
-  /* Stabilizza la geometria della tabella prima che il browser carichi il font */
   table {
     table-layout: fixed !important;
     contain: layout style !important;
+    content-visibility: auto;
+    contain-intrinsic-size: 450px; /* Altezza ottimizzata senza strong */
   }
-  table th:nth-child(1), table td:nth-child(1) { width: 25%; }
-  table th:nth-child(2), table td:nth-child(2) { width: 55%; }
-  table th:nth-child(3), table td:nth-child(3) { width: 20%; }
-
-  /* Forza la presenza della barra di scorrimento verticale per evitare il ricalcolo della larghezza viewport */
-  html {
-    overflow-y: scroll !important;
-  }
+  table th:nth-child(1), table td:nth-child(1) { width: 25% !important; }
+  table th:nth-child(2), table td:nth-child(2) { width: 55% !important; }
+  table th:nth-child(3), table td:nth-child(3) { width: 20% !important; }
 }
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
@@ -112,29 +112,29 @@ td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: 
 </thead>
 <tbody>
     <tr>
-        <td data-label="Area"><strong>Liberazione del Main-Thread</strong></td>
+        <td data-label="Area" class="table-spec-text">Liberazione del Main-Thread</td>
         <td data-label="Implementazione">Disaccoppiamento totale della UI tramite <strong>BiotechCoreWorker</strong>. Raggiunge 0ms di TBT su mobile, eliminando i lag di interazione per utenti con disabilità motorie.</td>
-        <td data-label="Rif. WCAG"><strong>2.2.1, 4.1.2</strong></td>
+        <td data-label="Rif. WCAG" class="table-spec-text">2.2.1, 4.1.2</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Contenimento Geometrico Media</strong></td>
-        <td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo <strong>Zero Layout Shift (0.0000)</strong> durante il rendering parallelo.</td>
-        <td data-label="Rif. WCAG"><strong>2.2.2, 2.3.3</strong></td>
+        <td data-label="Area" class="table-spec-text">Contenimento Geometrico Media</td>
+        <td data-label="Implementazione">Imposizione di <code>aspect-ratio</code> rigidi per gli asset video on-demand, garantendo un ambiente a Zero Layout Shift durante il rendering parallelo.</td>
+        <td data-label="Rif. WCAG" class="table-spec-text">2.2.2, 2.3.3</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Sincronizzazione Media Bilingue</strong></td>
+        <td data-label="Area" class="table-spec-text">Sincronizzazione Media Bilingue</td>
         <td data-label="Implementazione">Sottotitoli sincronizzati (EN/IT) e controlli video mappati da tastiera gestiti senza sovraccarico del thread principale.</td>
-        <td data-label="Rif. WCAG"><strong>1.2.1, 1.2.2</strong></td>
+        <td data-label="Rif. WCAG" class="table-spec-text">1.2.1, 1.2.2</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Resilienza "Stateless Edge"</strong></td>
+        <td data-label="Area" class="table-spec-text">Resilienza "Stateless Edge"</td>
         <td data-label="Implementazione">Architettura Zero-Framework con TTI immediato. Vitale per utenti con tecnologie assistive datate o connessioni instabili.</td>
-        <td data-label="Rif. WCAG"><strong>4.1.1</strong></td>
+        <td data-label="Rif. WCAG" class="table-spec-text">4.1.1</td>
     </tr>
     <tr>
-        <td data-label="Area"><strong>Oblio Etico dei Dati</strong></td>
+        <td data-label="Area" class="table-spec-text">Oblio Etico dei Dati</td>
         <td data-label="Implementazione">Cancellazione automatica dei pesi neurali e dei dati temporanei (ADR-011), garantendo un ambiente sicuro e privato.</td>
-        <td data-label="Rif. WCAG"><strong>G133</strong></td>
+        <td data-label="Rif. WCAG" class="table-spec-text">G133</td>
     </tr>
 </tbody>
 </table>
