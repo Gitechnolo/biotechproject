@@ -16,55 +16,18 @@
 <style>
 /* 1. Il contenuto è visibile di default (per SEO e No-JS) */
 #main-content { opacity: 1; }
-
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
-
-/* RISOLUZIONE CLS CANVAS: Isoliamento totale del ciclo di rendering (Containment) */
-.canvas-wrapper { 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100vw; 
-  height: 100vh; 
-  z-index: -1; 
-  overflow: hidden;
-  contain: strict; /* Forza il browser a non ricalcolare il layout globale all'avvio del canvas */
-  pointer-events: none;
-}
-
-/* Ancoraggio sicuro per il posizionamento assoluto */
-.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px; position: relative !important;}
-
-.tech-nav-container {min-height: 56px;}
-.logo-wrapper-cls {min-height: 215px;}
-
-.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-
+.canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}.logo-wrapper-cls {min-height: 215px;}.modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 body{background-color: #000f16; font-family: 'Sansation', sans-serif; color: #a7ffeb; max-width: 900px; line-height: 1.6;}
 h1, h2{ color: #00e676;}
 ul { padding-left: 20px; }
 footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
 a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
-
-/* RISOLUZIONE CLS TABELLA: Layout fisso e contenimento */
-table { 
-  width: 100%; 
-  table-layout: fixed; /* Impedisce alla tabella di ridimensionarsi in base al testo/font caricato */
-  border-collapse: collapse; 
-  margin: 1.5em 0; 
-  background-color: #0c1a26;
-  contain: layout style; /* Isola la tabella dal resto della pagina */
-} 
-
-/* Distribuzione fissa delle colonne per evitare shifting macroscopico */
-table th:nth-child(1), table td:nth-child(1) { width: 25%; }
-table th:nth-child(2), table td:nth-child(2) { width: 55%; }
-table th:nth-child(3), table td:nth-child(3) { width: 20%; }
-
-th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2); overflow: hidden; text-overflow: ellipsis;} 
-th{ background-color: #1a344d; color: #00e676;}
+table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
+ul { padding-left: 20px; }
 .conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}     
+/* Applica stile a tutti i <strong> dentro le celle */
 td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}          
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
