@@ -23,11 +23,15 @@ h1, h2{ color: #00e676;}
 ul { padding-left: 20px; }
 footer{ margin-top: 50px; font-size: 0.9em; color: #64ffda;}
 a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5))}  
-table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
+table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;}/* Struttura tabella con contrasto normativo AAA (>7:1) */ 
+th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} 
+th{ background-color: #1a344d; color: #ffffff;} 
 ul { padding-left: 20px; }
-.conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}  
-/* Applica stile a tutti i <strong> dentro le celle */
-td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}            
+.conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}     
+.table-spec-text { font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic; }/* Formatta le colonne senza abusare di strong nell'HTML */
+td strong { color: #00e676; font-weight: bold; }/* Manteniamo uno stile pulito per gli strong rimanenti nell'implementazione */
+/* LOCK GEOMETRICO ISO-DESKTOP POTENZIATO (CONTRO LE OSCILLAZIONI DI LIGHTHOUSE) contain-intrinsic-size: 450px; - Altezza ottimizzata senza strong */
+@media (min-width: 1101px){ html{ overflow-y: scroll !important;} .canvas-wrapper{ contain: strict !important; pointer-events: none;} table{ table-layout: fixed !important; contain: layout style !important; content-visibility: auto; contain-intrinsic-size: 450px; } table th:nth-child(1), table td:nth-child(1){ width: 25% !important;} table th:nth-child(2), table td:nth-child(2){ width: 55% !important;} table th:nth-child(3), table td:nth-child(3){ width: 20% !important;}}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>   
@@ -57,9 +61,7 @@ td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: 
 <h1>Biotech Project Accessibility Statement</h1>
 <p><strong class="sansation-bold-italic">BiotechProject</strong> is built on the principle of <strong class="sansation-bold-italic">Equity-by-Design</strong>. We believe that health innovation and scientific data must be resilient and accessible to everyone, regardless of sensory, cognitive, or motor abilities.</p>
 <p>This platform is committed to digital inclusion and strictly complies with international standards, in line with the <abbr title="Legislative Decree">Legis. Dec.</abbr> 10 August 2018, n. 106 and the latest <strong>WCAG 2.2 updates</strong>.</p>
-
 <hr>
-
 <h2 aria-label="Conformance Status"><span aria-hidden="true">🥇</span> Conformance Status</h2>
 <p class="conformance-status"><strong class="sansation-bold-italic">Fully Conforming</strong> to the <strong class="sansation-bold-italic">Web Content Accessibility Guidelines (WCAG) 2.2 - Level AAA</strong>.</p>
 <ul>
@@ -68,60 +70,50 @@ td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: 
     <li><strong class="sansation-bold-italic">TBT (Total Blocking Time):</strong> <span aria-label="0 milliseconds on mobile">0ms (Mobile)</span> / 46ms (Desktop)</li>
     <li><strong class="sansation-bold-italic">CLS (Cumulative Layout Shift):</strong> <span aria-label="0.0000 absolute stability">0.0000 (Absolute Zero)</span></li>
 </ul>
-
 <hr>
-
 <h2 aria-label="Advanced Accessibility and Resilience Features"><span aria-hidden="true">🔑</span> Advanced Accessibility &amp; Resilience Features</h2>
 <p>Beyond standard compliance, BiotechProject implements a <strong>"Neural-Hardened Stateless Edge"</strong> architecture with a dedicated <strong>On-Demand Media Pipeline</strong> to ensure the platform remains stable under extreme conditions.</p>
-
 <table>
 <caption>Technical accessibility features and WCAG compliance references</caption>
-<thead>
-    <tr><th scope="col">Feature</th><th scope="col">Implementation &amp; Clinical Rationale</th><th scope="col">WCAG Ref.</th></tr>
-</thead>
+<thead><tr><th scope="col">Feature</th><th scope="col">Implementation &amp; Clinical Rationale</th><th scope="col">WCAG Ref.</th></tr></thead>
 <tbody>
     <tr>
-        <td data-label="Feature"><strong>Main-Thread Liberation</strong></td>
+        <td data-label="Feature" class="table-spec-text">Main-Thread Liberation</td>
         <td data-label="Implementation">Full decoupling of UI from graphical tasks via <strong>BiotechCoreWorker</strong>. Achieves 0ms TBT (Mobile), preventing interaction lag for motor-impaired users.</td>
-        <td data-label="WCAG Ref."><strong>2.2.1, 4.1.2</strong></td>
+        <td data-label="WCAG Ref." class="table-spec-text">2.2.1, 4.1.2</td>
     </tr>
     <tr>
-        <td data-label="Feature"><strong>Media Geometric Enforcement</strong></td>
+        <td data-label="Feature" class="table-spec-text">Media Geometric Enforcement</td>
         <td data-label="Implementation">Strict <code>aspect-ratio</code> containment for on-demand media assets, ensuring <strong>Zero Layout Shift (0.0000)</strong> during rendering.</td>
-        <td data-label="WCAG Ref."><strong>2.2.2, 2.3.3</strong></td>
+        <td data-label="WCAG Ref." class="table-spec-text">2.2.2, 2.3.3</td>
     </tr>
     <tr>
-        <td data-label="Feature"><strong>Bilingual Media Sync</strong></td>
+        <td data-label="Feature" class="table-spec-text">Bilingual Media Sync</td>
         <td data-label="Implementation">Synchronized dual-language subtitles (EN/IT) and keyboard-mapped video controls processed with zero main-thread overhead.</td>
-        <td data-label="WCAG Ref."><strong>1.2.1, 1.2.2</strong></td>
+        <td data-label="WCAG Ref." class="table-spec-text">1.2.1, 1.2.2</td>
     </tr>
     <tr>
-        <td data-label="Feature"><strong>Neural-Hardened Edge</strong></td>
+        <td data-label="Feature" class="table-spec-text">Neural-Hardened Edge</td>
         <td data-label="Implementation">Zero-Framework (Vanilla JS) architecture ensuring immediate TTI. Critical for users with legacy assistive tech.</td>
-        <td data-label="WCAG Ref."><strong>4.1.1</strong></td>
+        <td data-label="WCAG Ref." class="table-spec-text">4.1.1</td>
     </tr>
     <tr>
-        <td data-label="Feature"><strong>Privacy-by-Architecture</strong></td>
+        <td data-label="Feature" class="table-spec-text">Privacy-by-Architecture</td>
         <td data-label="Implementation">100% client-side processing with <strong>7-day Ethical Retention</strong> (ADR-011), ensuring a safe environment for vulnerable users.</td>
-        <td data-label="WCAG Ref."><strong>G133</strong></td>
+        <td data-label="WCAG Ref." class="table-spec-text">G133</td>
     </tr>
 </tbody>
 </table>
-
 <hr>
-
 <h2 aria-label="Strategic Vision for Level AAA"><span aria-hidden="true">🚀</span> Strategic Vision for Level AAA</h2>
 <ul>
     <li><strong class="sansation-bold-italic">On-Demand Orchestration:</strong> Using our local weights (ADR-011) to balance media quality and performance, ensuring that accessibility layers (ARIA/Screen Readers) always take priority.</li>
     <li><strong class="sansation-bold-italic">SRE-for-Humans:</strong> Maintaining the 0ms TBT threshold on mobile to prevent "interaction fatigue" and cognitive overload.</li>
     <li><strong class="sansation-bold-italic">Clinical Reliability:</strong> Validating every update through our <code>SRE Guardian</code> to maintain the "Golden Tier" of visual stability.</li>
 </ul>
-
 <hr>
-
 <h2 aria-label="Feedback and Reporting"><span aria-hidden="true">💬</span> Feedback and Reporting</h2>
 <p>If you encounter content access barriers, please <a href="mailto:teambiotechproject@proton.me?subject=Feedback" class="link-highlight">contact us</a>.</p>
-
 <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" alt="Performance Summary Chart: TBT 112ms, 10x memory efficiency, and 0.3s TTI" class="specials-img" width="895" height="500" decoding="async" loading="lazy" style="display: block; margin: 28px auto 1px auto;">
 
 <p class="sansation-light-italic" style="text-align: center; margin-bottom: 48px; color: #64ffda; font-size: 1.1em;">“Biotech Project is not just science: it's inclusion. Every line of code is designed to be accessible, resilient, and human.”</p>
