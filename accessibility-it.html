@@ -19,32 +19,11 @@
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}
-
-/* --- FIX CLS: AGGIUNTO RELATIVE SUL CONTAINER --- */
-.staff-layout-container{ 
-  padding-top: 30px; 
-  width: 100%; 
-  min-height: 1px;
-  position: relative !important; /* Forza l'ancoraggio del widget assoluto */
-}
-
-/* --- FIX CLS: BLOCCO RIGIDO DESKTOP (CRITICAL CSS) --- */
-.sre-dashboard {
-  height: 204px !important;      /* Altezza calcolata: 180px + 24px padding */
-  max-height: 204px !important;  /* Impedisce variazioni prima del rendering del testo */
-  contain: size layout style !important; /* Isola dimensionalmente l'elemento */
-  contain-intrinsic-size: 300px 204px !important; /* Raddoppia la sicurezza di allocazione spazio */
-}
-
-/* Ripristiniamo le regole mobile per evitare che il blocco desktop rompa il tuo layout responsive */
-@media (max-width: 1100px) {
-  .sre-dashboard {
-    height: 185px !important;
-    max-height: 185px !important;
-    contain-intrinsic-size: 185px !important;
-  }
-}
-
+/* Ancoraggio sicuro per il posizionamento assoluto */
+.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px; position: relative !important;}
+/* Applichiamo il blocco rigido SOLO su Desktop (sopra i 1100px). 
+   Sotto i 1100px, il browser userà nativamente le regole mobile nel CSS esterno! */
+@media (min-width: 1101px){ .sre-dashboard{ height: 204px !important; max-height: 204px !important; contain: size layout style !important; contain-intrinsic-size: 300px 204px !important;}}
 .tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls {min-height: 215px;}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
@@ -56,7 +35,6 @@ a:hover img{ transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 0 8p
 table{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background-color: #0c1a26;} th, td{ padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.2);} th{ background-color: #1a344d; color: #00e676;}
 ul { padding-left: 20px; }
 .conformance-status{ font-weight: bold; color: #aaffaa; font-size: 1.2em;}     
-/* Applica stile a tutti i <strong> dentro le celle */
 td strong{ font-family: 'Sansation', sans-serif; font-weight: bold; font-style: italic}          
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
