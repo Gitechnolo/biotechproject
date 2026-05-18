@@ -10,8 +10,8 @@
 * **The Proof:** [ADR-011: System Integrity & Immune Response](https://github.com/Gitechnolo/biotechproject/issues/27).
 
 ### 2. Parallel Rendering: Main-Thread Liberation (v6.4)
-* **The Vision:** Absolute fluidity. We have decoupled complex visual logic from the UI responsiveness by offloading the rendering pipeline to the **BiotechCoreWorker** via `OffscreenCanvas`.
-* **The Proof:** **TBT reduced by 26%** and **CLS stabilized at 0.0001** (Golden Tier). See [Benchmark v6.4.0](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827).
+* **The Vision:** Absolute fluidity achieved. We have fully decoupled the UI from graphical complexity via **BiotechCoreWorker**, eliminating main-thread blocking for all rendering tasks.
+* **The Proof:** **TBT slashed to 46ms (Desktop) and 0ms (Mobile)**, with **CLS locked at 0.0000** (Absolute Zero). The main thread is now 100% dedicated to interaction and A11y, validated by the updated [Benchmark v6.4.0 Final](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895).
 
 ### 3. Security Without Compromise (Stateless & Encrypted)
 * **The Strategy:** Zero-Data Footprint. Our "Stateless" architecture ensures patient data never persists on the local hardware or external servers. **AES-GCM** military-grade encryption operates within a dedicated Worker thread, providing digital sovereignty with zero impact on the 60fps target.
