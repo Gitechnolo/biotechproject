@@ -522,5 +522,3 @@ Dieses Projekt implementiert eine **Doppellizenz-Strategie**, um die Integrität
 
 Autor: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Projekt verfügbar unter: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
-
-> "Jeder kann beitragen. Respektiere einfach die Quelle und baue mit Sorgfalt weiter."
