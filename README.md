@@ -525,5 +525,3 @@ This project implements a **Dual-Licensing Strategy** to ensure the integrity of
 
 Author: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Project available at: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
-
-> “Anyone can contribute. Just respect the origin, and keep building with care.”
