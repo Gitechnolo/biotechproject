@@ -524,5 +524,3 @@ Este proyecto implementa una **Estrategia de Doble Licencia** para garantizar la
 
 Autor: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Proyecto disponible en: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
-
-> "Cualquiera puede contribuir. Simplemente respeta el origen, y continúa construyendo con cuidado."
