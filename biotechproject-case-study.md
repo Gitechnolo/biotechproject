@@ -67,5 +67,5 @@ Following defensive field testing and strategic observations at **RomeCup (March
 
 BiotechProject demonstrates that maximizing performance and establishing strict accessibility compliance are complementary goals. Moving forward into late 2026, the project serves as an active candidate platform for institutional showcases within the **SIEH** ecosystem, offering a reliable, production-ready framework for academic research labs, graduation theses, and cross-border EU grant partnerships.
 
-> **Explore the Architecture:** [View Full ADR Records](https://github.com/Gitechnolo/biotechproject#architectural-decision-records-adr)  
+> 🗺️ **Strategic Roadmap:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
 > 🏛️ **Academic Alignment:** [Download Institutional Collaboration Charter (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
