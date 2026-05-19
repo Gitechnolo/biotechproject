@@ -526,5 +526,3 @@ Dit project hanteert een **Dubbele Licentiestrategie** om de integriteit van zow
 
 Auteur: **Fabrizio** ([@Gitechnolo](https://github.com/Gitechnolo))  
 Project beschikbaar op: [https://github.com/Gitechnolo/biotechproject](https://github.com/Gitechnolo/biotechproject)
-
-> "Iedereen kan bijdragen. Respecteer gewoon de oorsprong, en bouw verder met zorg."
