@@ -32,7 +32,7 @@
 | Stakeholder | Interesse Chiave | Documento Consigliato | Beneficio Reale |
 | :--- | :--- | :--- | :--- |
 | **Tutti gli Stakeholder** | **Ciclo di Vita del Progetto** | [**Tabella di Marcia Strategica 2026**](https://github.com/users/Gitechnolo/projects/2) | Piena visibilità sui traguardi futuri, stabilità a lungo termine e tracciamento attivo delle Issue. |
-| **Clinici** | Privacy e UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Massima riservatezza; interfaccia fluida a 60fps priva di micro-scatti (*micro-stutters*). |
+| **Clinici** | Privacy e UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Rapporto_Equità_Architetturale_Resilienza_IT.pdf) | Massima riservatezza; interfaccia fluida a 60fps priva di micro-scatti (*micro-stutters*). |
 | **Acquisti/Procurement** | Efficienza e Ciclo di Vita | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Operativo sull'hardware legacy esistente; costi di manutenzione significativamente inferiori. |
 | **IT Manager** | Scalabilità e Stack Tecnologico | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) | Zero debito tecnico; moderna architettura multithread pronta per il 2030. |
 | **Compliance/SRE** | Audit e Affidabilità | [ADR-011: Sistema Immunitario](https://github.com/Gitechnolo/biotechproject/issues/27) | Sistema auto-riparante (*self-healing*) con registri di audit SRE automatizzati e trasparenti. |
