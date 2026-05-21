@@ -53,7 +53,7 @@
 ## 🌐 Internazionalizzazione e Accessibilità
 
 > [!NOTE]
-> **Localizzazione Linguistica:** Questa documentazione viene mantenuta in lingua inglese per garantire la coerenza terminologica con gli standard globali SRE e medici. Per gli stakeholder internazionali, si raccomanda l'uso di strumenti di traduzione nativi del browser (Edge/Chrome/Safari), che offrono un'accuratezza del 99% per la nostra nomenclatura tecnica e le strutture ADR.
+> **Localizzazione Linguistica:** Questa documentazione è la versione ufficiale in lingua italiana, strutturata per l'audit istituzionale e per preservare la massima coerenza con gli standard SRE e clinici globali. Per i documenti tecnici profondi non ancora localizzati (come le singole ADR), si rimanda alla versione inglese o all'utilizzo di strumenti di traduzione nativi del browser, che garantiscono un'accuratezza del 99% sulla nostra nomenclatura tecnologica.
 
 ---
 
