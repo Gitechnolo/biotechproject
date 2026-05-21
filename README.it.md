@@ -21,8 +21,8 @@
 > Questo progetto ha **raggiunto lo standard d'oro WCAG 2.2 AAA** ed è evoluto da un esperimento focalizzato sulle performance in un **Strategic Blueprint per un'architettura sanitaria resiliente**.  
 > Abbiamo formalizzato la nostra metodologia "Stateless Edge" in un nuovo report che affronta le disuguaglianze sanitarie globali causate dalla latenza e dalle barriere cognitive.  
 >
-> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
-> 👉 **Leggi il Report Strategico:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
+> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY_IT.md)  
+> 👉 **Leggi il Report Strategico:** [Architectural Equity & Global Resilience Report (PDF)](docs/Rapporto_Equità_Architetturale_Resilienza_IT.pdf)
 
 
 > 🌍 *"Non parliamo tutti le stesse lingue, ma parliamo la stessa lingua: collaborazione."*  
@@ -277,7 +277,7 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 
 ### 📂 Ultimi Report di Audit
 * 📄 **[SRE Performance Stress-Test Report - 9 Maggio 2026 (PDF)](docs/biotech-performance-report.pdf)** 
-* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Sintesi-Esecutiva-Gemello-Digitale-Metabolico_IT.pdf)**
 
 ### Funzionalità Dashboard
 * ✅ **Monitoraggio Performance in Tempo Reale**: metriche (0–100) aggiornate ogni 24h via GitHub Actions.
@@ -412,7 +412,7 @@ Questo progetto funge da solida base per:
 > ### 🏛️ Hub Istituzionale e Accademico (Aggiornamento: 8 Maggio 2026)
 > **Report di Partnership Strategica v6.4.0**. Questo documento definisce la nostra roadmap per la "Resilienza per Progettazione" e invita gli stakeholder accademici a esplorare i nostri percorsi di collaborazione.
 > 
-> 👉 **Visualizza il Documento di Partnership Strategica Aggiornato:** [BiotechProject x Academic Partners (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **Visualizza il Documento di Partnership Strategica Aggiornato:** [BiotechProject x Academic Partners (PDF)](docs/Protocollo_Collaborazione_Istituzionale_2026_IT.pdf)
 > 
 > *Include percorsi di coinvolgimento dettagliati: **(A) Tesi di Laurea**, **(B) Case-Study per Laboratori di Ricerca** e **(C) Partnership Strategiche per Bandi UE**.*
 
