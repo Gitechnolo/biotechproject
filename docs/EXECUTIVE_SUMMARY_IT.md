@@ -39,14 +39,18 @@
 
 ---
 
-## 📊 Benchmark di Prestazione (v6.4.0 vs v6.3.3)
+## 📊 Benchmark di Prestazione (v6.4.0 Final Hardened)
 
-| Metrica | Obiettivo | Risultato (v6.4.0) | Stato |
-| :--- | :--- | :--- | :--- |
-| **Tempo Totale di Blocco (TBT)** | < 100ms | **78ms** | 🟢 Ottimale |
-| **Stabilità Visiva (CLS)** | < 0.1 | **0.0001** | 🟢 Livello Oro (*Golden Tier*) |
-| **Parsing HTML** | Baseline | **8ms** | 🟢 Ultra-Leggero |
-| **Fluidità di Rendering** | 60 FPS | **60 FPS** | 🟢 Costante |
+| Metrica | Obiettivo | Baseline (v6.4.0 Parallel) | Risultato (v6.4.0 Final) | Stato / Variazione |
+| :--- | :--- | :--- | :--- | :--- |
+| **Tempo Totale di Blocco (TBT)** | < 100ms | 78ms | **46ms** (Desktop)<br>**0ms** (Mobile) | 🚀 -41% Riduzione / Liberazione Totale |
+| **Stabilità Visiva (CLS)** | < 0.1 | 0.0001 | **0.0000** | 🟢 Zero Assoluto (Mobile) |
+| **Primo Rendering Visivo (FCP)** | < 1800ms | 1848ms | **1741ms** | 🟢 Visibilità Migliorata |
+| **Rendering Contenuto Principale (LCP)** | < 2500ms | 1845ms | **1741ms** | 🟢 Sincronizzazione Perfetta |
+
+### 💡 Note Tecniche sull'Aggiornamento
+* **Orchestrazione Media On-Demand:** L'introduzione di `OffscreenCanvas` combinata con il controllo geometrico rigoroso (`aspect-ratio`) degli asset video ha azzerato l'attrito sul thread principale, portando il TBT su mobile a 0ms e blindando il CLS sullo zero assoluto.
+* **Sincronizzazione FCP/LCP:** Il fatto che FCP e LCP si attestino sullo stesso identico millisecondo (**1741ms**) indica che il blocco di contenuto principale viene renderizzato insieme al primo layout utile, eliminando i delay di caricamento asincrono.
 
 ---
 
