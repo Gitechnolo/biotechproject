@@ -1,4 +1,15 @@
-/* === CHAT: Popup moderno con effetto glassmorphism === */
+/* ==========================================================================
+   INDICE / MAPPA DEI CONTENUTI
+   ==========================================================================
+   1. STRUTTURA PRINCIPALE (Popup Glassmorphism)
+   2. TRIGGER (Pulsante di apertura stile Biotech)
+   3. FORM & INPUTS (Layout, Email, Area di testo)
+   4. AREA MESSAGGI (Chat logs, Scrollbar personalizzata, Bolle utente/sistema)
+   5. AZIONI (Pulsanti Invia e Chiudi)
+   6. STATI & FEEDBACK (Messaggi di stato e transizioni)
+   7. MEDIA QUERIES (Ottimizzazioni per dispositivi Mobile)
+   8. ACCESSIBILITÀ (Stili avanzati per focus da tastiera)
+   ========================================================================== */
 .chat-popup {
   display: none;
   position: fixed;
@@ -201,12 +212,6 @@
   opacity: 0.95;
 }
 
-/* Pulsante "Invia" */
-.form-container .btn {
-  background: rgba(0, 230, 118, 0.1);
-  color: #a7ffeb;
-}
-
 .form-container .btn:hover,
 .form-container .btn:focus {
   background: rgba(0, 230, 118, 0.2);
@@ -323,4 +328,13 @@
 .form-container .btn:focus {
   z-index: 1;
   transition: all 0.3s ease;
-}   
+}  
+
+/* ==========================================================================
+   FINE DEL FILE (End of Stylesheet)
+   ==========================================================================
+   "I wanna know what love is, I want you to show me...
+    I wanna feel what love is, I know you can show me."
+   
+   [ Generated & Maintained with care. System operational. ]
+   ========================================================================== */
