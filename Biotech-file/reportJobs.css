@@ -27,6 +27,9 @@
   --bg-panel: rgba(20, 30, 48, 0.85);
   --shadow-green: 0 0 10px rgba(0, 230, 118, 0.4);
   --shadow-green-strong: 0 0 20px rgba(0, 230, 118, 0.4);
+  
+  /* FIX: Rimosso border-color globale per evitare conflitti con altri componenti */
+  --border-color: rgba(0, 230, 118, 0.3);
 
   /* Dimensioni */
   --size-sm: 60px;
@@ -119,7 +122,7 @@
     margin-top: 10px;
 }
 
-/* --- FIX LEGENDA (Spostata da HEAD a qui con alta specificità) --- */
+/* --- FIX LEGENDA --- */
 .tech-section .filter-legend-container {
   background: var(--primary-100);
   border-top: 1px solid var(--primary-300);
@@ -142,7 +145,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.9rem;
-  color: #ffffff; /* Bianco puro: contrasto garantito */
+  color: #ffffff;
   font-family: var(--font-main);
 }
 
@@ -183,10 +186,10 @@
   flex-wrap: wrap;
   gap: 16px;
   margin: 10px 0;
-/* --- SRE OPTIMIZATION: ISOLAMENTO LAYOUT --- */
+  /* SRE OPTIMIZATION: ISOLAMENTO LAYOUT */
   contain: layout style; 
   content-visibility: auto; 
-  contain-intrinsic-size: 1000px; /* Prenota lo spazio per evitare salti (CLS) */
+  contain-intrinsic-size: 1000px; 
 }
 
 .portfolio-col {
@@ -234,7 +237,6 @@
   color: #226a42;
 }
 
-/* 1. Regola generale migliorata */
 .status-badge {
   font-size: 12px;
   font-weight: 700;
@@ -248,7 +250,6 @@
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 }
 
-/* 2. Specifica per Trend (Frecce e Numeri nelle card) */
 .status-badge.badge-trend {
   padding: 1px 6px;
   margin-left: 4px;
@@ -256,45 +257,37 @@
   font-size: 11px;
 }
 
-/* 3. Colori Badge di Stato (WCAG AA compliant) */
-
-/* COMPATIBLE: Scurito leggermente per contrasto con bianco */
+/* Colori Badge di Stato (Conformi WCAG AA) */
 .badge-compatible { 
-    background-color: #1e7e44 !important; /* Verde foresta */
-    color: #ffffff !important;           /* Passiamo al BIANCO */
+    background-color: #1e7e44; 
+    color: #ffffff;           
 }
 
-/* OPTIMIZED: Scurito per contrasto con bianco */
 .badge-optimized { 
-    background-color: #117864 !important; /* Turchese profondo */
-    color: #ffffff !important;            /* BIANCO obbligatorio */
+    background-color: #117864; 
+    color: #ffffff;            
 }
 
-/* NEEDS IMPROVEMENT: Arancione scuro calibrato per contrasto 4.5:1 con testo bianco */
 .badge-needs-improvement { 
-    background-color: #bc4e00 !important; /* Arancione ruggine più profondo */
-    color: #ffffff !important;           /* Bianco puro */
+    background-color: #bc4e00; 
+    color: #ffffff;           
 }
 
-/* DEPRECATED: Rosso più scuro */
 .badge-deprecated { 
-    background-color: #a93226 !important; /* Rosso mattone */
-    color: #ffffff !important; 
+    background-color: #a93226; 
+    color: #ffffff; 
 }
 
-/* 4. Nuove classi per il Trend (Indicatori e Freccette) */
+/* Nuove classi per il Trend */
+.trend-up { color: #1e7e44; animation: bounce-subtle 2s infinite ease-in-out; }
+.trend-down { color: #a93226; animation: bounce-subtle 2s infinite ease-in-out reverse; }
+.trend-equal { color: #bc4e00; }
 
-/* Colore solo testo (per l'indicatore principale) */
-.trend-up { color: #1e7e44 !important; animation: bounce-subtle 2s infinite ease-in-out; /* Rimbalzo continuo e delicato */ }
-.trend-down { color: #a93226 !important; animation: bounce-subtle 2s infinite ease-in-out reverse; /* Rimbalzo inverso per la discesa */}
-.trend-equal { color: #bc4e00 !important; }
+.badge-trend.trend-up { background-color: #1e7e44; color: #ffffff; }
+.badge-trend.trend-down { background-color: #a93226; color: #ffffff; }
+.badge-trend.trend-equal { background-color: #bc4e00; color: #ffffff; }
 
-/* Colore con sfondo (per i badge trend dentro le card) */
-.badge-trend.trend-up { background-color: #1e7e44 !important; color: #ffffff !important; }
-.badge-trend.trend-down { background-color: #a93226 !important; color: #ffffff !important; }
-.badge-trend.trend-equal { background-color: #bc4e00 !important; color: #ffffff !important; }
-
-/* --- Fadebox: Testo descrittivo con effetto hover --- */
+/* --- Fadebox --- */
 .fadebox {
   font-family: var(--font-main);
   opacity: 0.7;
@@ -338,7 +331,7 @@
   transform: translateY(0);
 }
 
-/* --- Trend Details (tooltips) --- */
+/* --- Trend Details (Tooltips) --- */
 .trend-details {
   position: absolute;
   top: 100%;
@@ -432,27 +425,24 @@
   letter-spacing: 0.5px;
 }
 
-/* Centra tutto il blocco */
 .score-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Contenitore relativo per il numero */
 .score-display {
   position: relative;
   display: inline-flex;
   align-items: center;
 }
 
-/* La freccia non sposta il numero */
 #score-trend-indicator {
   position: absolute;
-  left: 100%;       /* Inizia esattamente dove finisce il numero */
-  margin-left: 8px; /* Distanza fissa dal numero */
+  left: 100%;       
+  margin-left: 8px; 
   font-size: 1.5em;
-  transition: all 0.5s ease; /* Transizione fluida se la freccia cambia direzione */
+  transition: all 0.5s ease; 
 }
 
 @keyframes bounce-subtle {
@@ -495,7 +485,7 @@
   }
 }
 
-/* Schermi grandi: forza 5 colonne */
+/* Schermi grandi */
 @media (min-width: 1200px) {
   .metrics-grid {
     grid-template-columns: repeat(5, 1fr);
@@ -504,96 +494,9 @@
   }
 }
 
-
-/* --- Cerchio di progresso: stile base --- */
-.progress-circle {
-  --value: 0%;
-  --size: var(--size-sm);
-  --thickness: var(--thickness);
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: conic-gradient(var(--primary) var(--value), #0d47a1 0);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  z-index: 1;
-  transition: all 1.2s ease;
-}
-
-/* ::before: buco centrale + effetto OLED (migliorato) */
-.progress-circle::before {
-  content: '';
-  position: absolute;
-  width: calc(var(--size) - var(--thickness) * 2);
-  height: calc(var(--size) - var(--thickness) * 2);
-  background: #000d1a;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 230, 118, 0.1);
-  box-shadow: 
-    inset 0 0 10px rgba(0, 230, 118, 0.2),
-    0 0 3px rgba(0, 230, 118, 0.05);
-  z-index: 1;
-}
-
-/* ::before: effetto di luminosità interna per punteggi alti */
-.progress-circle.high::before {
-  box-shadow: 
-    inset 0 0 12px rgba(0, 230, 118, 0.25),
-    0 0 4px rgba(0, 230, 118, 0.1);
-}
-
-/* ::after: testo centrale + glow avanzato */
-.progress-circle::after {
-  content: attr(data-value) '%';
-  position: relative;
-  z-index: 2;
-  font-size: 1.4em;
-  font-family: var(--font-main);
-  font-weight: 300;
-  color: var(--primary-text);
-  text-shadow: 
-    0 0 5px rgba(0, 230, 118, 0.7),
-    0 0 10px rgba(100, 255, 218, 0.5),
-    0 0 2px rgba(0, 180, 90, 0.8);
-}
-
-
-/* --- GLOW DINAMICO IN BASE AL LIVELLO --- */
-
-/* High: 75–100 */
-.progress-circle.high[data-value^="7"],
-.progress-circle.high[data-value^="8"],
-.progress-circle.high[data-value^="9"],
-.progress-circle.high[data-value="100"] {
-  box-shadow: 0 0 22px rgba(0, 230, 118, 0.65);
-}
-
-/* Medium: 50–74 */
-.progress-circle.medium[data-value^="5"],
-.progress-circle.medium[data-value^="6"],
-.progress-circle.medium[data-value^="70"],
-.progress-circle.medium[data-value^="71"],
-.progress-circle.medium[data-value^="72"],
-.progress-circle.medium[data-value^="73"],
-.progress-circle.medium[data-value^="74"] {
-  box-shadow: 0 0 16px rgba(0, 230, 118, 0.45);
-}
-
-/* Low: 0–49 */
-.progress-circle.low[data-value^="0"],
-.progress-circle.low[data-value^="1"],
-.progress-circle.low[data-value^="2"],
-.progress-circle.low[data-value^="3"],
-.progress-circle.low[data-value^="40"] {
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
-  filter: brightness(0.95);
-}      
-
-/* --- Animazione metriche --- */
+/* FIX: Mettiamo in relative il contenitore per agganciare bene il tooltip absolute */
 .metric {
+  position: relative;
   opacity: 0;
   transform: translateY(10px);
   animation: fadeInUp 0.6s ease forwards;
@@ -612,7 +515,7 @@
   }
 }
 
-/* --- Indicatore di tendenza (▲/▼) --- */
+/* --- Indicatore di tendenza --- */
 #trend-indicator {
   transition: var(--transition-transform), color 0.3s ease;
   display: inline-block;
@@ -714,6 +617,85 @@
   border-bottom-color: var(--primary-text);
   text-shadow: 0 0 5px rgba(100, 255, 218, 0.4);
 }
+
+/* --- Cerchio di progresso --- */
+.progress-circle {
+  --value: 0%;
+  --size: var(--size-sm);
+  --thickness: var(--thickness);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: conic-gradient(var(--primary) var(--value), #0d47a1 0);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 1;
+  transition: all 1.2s ease;
+}
+
+.progress-circle::before {
+  content: '';
+  position: absolute;
+  width: calc(var(--size) - var(--thickness) * 2);
+  height: calc(var(--size) - var(--thickness) * 2);
+  background: #000d1a;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 230, 118, 0.1);
+  box-shadow: 
+    inset 0 0 10px rgba(0, 230, 118, 0.2),
+    0 0 3px rgba(0, 230, 118, 0.05);
+  z-index: 1;
+}
+
+.progress-circle.high::before {
+  box-shadow: 
+    inset 0 0 12px rgba(0, 230, 118, 0.25),
+    0 0 4px rgba(0, 230, 118, 0.1);
+}
+
+/* NOTA: Rimosso ::after content injection per garantire accessibilità nativa su screen reader */
+.progress-circle::after {
+  position: relative;
+  z-index: 2;
+  font-size: 1.4em;
+  font-family: var(--font-main);
+  font-weight: 300;
+  color: var(--primary-text);
+  text-shadow: 
+    0 0 5px rgba(0, 230, 118, 0.7),
+    0 0 10px rgba(100, 255, 218, 0.5),
+    0 0 2px rgba(0, 180, 90, 0.8);
+}
+
+/* --- GLOW DINAMICO --- */
+.progress-circle.high[data-value^="7"],
+.progress-circle.high[data-value^="8"],
+.progress-circle.high[data-value^="9"],
+.progress-circle.high[data-value="100"] {
+  box-shadow: 0 0 22px rgba(0, 230, 118, 0.65);
+}
+
+.progress-circle.medium[data-value^="5"],
+.progress-circle.medium[data-value^="6"],
+.progress-circle.medium[data-value^="70"],
+.progress-circle.medium[data-value^="71"],
+.progress-circle.medium[data-value^="72"],
+.progress-circle.medium[data-value^="73"],
+.progress-circle.medium[data-value^="74"] {
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.45);
+}
+
+.progress-circle.low[data-value^="0"],
+.progress-circle.low[data-value^="1"],
+.progress-circle.low[data-value^="2"],
+.progress-circle.low[data-value^="3"],
+.progress-circle.low[data-value^="40"] {
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+  filter: brightness(0.95);
+}      
 
 /* --- Job Listing --- */
 .job-listing {
@@ -832,7 +814,6 @@
     max-width: 100%;
   }
 
-  /* Responsive Fix Legenda */
   .tech-section .filter-legend-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -841,23 +822,22 @@
   }
 } 
 
-/* --- Resilience Score Summary Section (Aggiornata) --- */
+/* --- Resilience Score Summary Section --- */
 .resilience-summary {
     text-align: center;
     margin-bottom: 25px;
     padding-bottom: 20px;
-    position: relative; /* Necessario per posizionare la linea */
+    position: relative; 
 }
 
-/* La linea "corta" creata con uno pseudo-elemento */
 .resilience-summary::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%); /* Centra perfettamente la linea */
-    width: 60px; /* Lunghezza della linea: regolabile */
-    height: 2px; /* Spessore della linea */
+    transform: translateX(-50%); 
+    width: 60px; 
+    height: 2px; 
     background: linear-gradient(90deg, transparent, var(--primary), transparent);
     opacity: 0.6;
 }
@@ -894,6 +874,7 @@
     color: var(--primary-text);
     font-weight: 300;
 }
+
 /* ==========================================================================
     Whenever I'm alone with you
     You make me feel like I am home again
