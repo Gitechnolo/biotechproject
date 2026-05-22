@@ -1,22 +1,31 @@
 /**
  * =============================================================================
- * BIOTECH PROJECT - THE TAUROMACHIA MODULE (CSS ARCHITECTURE)
+ * BIOTECH PROJECT - CSS ARCHITECTURE MAP
  * =============================================================================
- * "Refusing to kill the Minotaur."
+ * 
+ * [SECTION 1] THE MODALS (The Vision)
+ * - Image Triggers & Hover Effects (#myImg...)
+ * - Modal Background (.modal)
+ * - Layout, Content & Captions (.modal-content, #caption)
+ * - Animations & Responsive Adaptations (@keyframes, @media)
  *
- * This architecture is a projection of the conflict between Logic and Entropy.
- * Inspired by Picasso’s tauromachy (1927-1938), we do not seek to destroy 
- * the 'Beast'-the raw energy of system complexity. We seek to coexist with it.
+ * [SECTION 2] THE POPUPS (The Thread)
+ * - Holiday Popup Engine (.holiday-popup)
+ * - Interactive Controls (Close/Export)
+ * - SRE Progress Bar Engine (.popup-progress-container)
+ * - Biotech Holiday Themes (Thematic Colors & Gradients)
  *
- * 1. THE MODALS (The Vision): Confronting the Minotaur through immersive 
- * projections. The 'zoom' is the expansion of consciousness within the labyrinth.
+ * [SECTION 3] BUSINESS IMPACT MATRIX (The Core)
+ * - Matrix Containers & Titles (.impact-matrix-container, .matrix-title)
+ * - Tabular Data Layout (.impact-table)
  *
- * 2. THE POPUPS (The Thread): Ariadne's Thread synchronization. 
- * A guiding pulse that prevents the Labyrinth from becoming a prison.
- *
- * "We seek to coexist with the beast, mastering the passion as P. Picasso teaches us."
  * =============================================================================
  */
+
+/* =============================================================================
+   [SECTION 1] THE MODALS (The Vision)
+   ============================================================================= */
+
 /* Modal trigger images (all) */
 #myImg, #myImg2, #myImg3, #myImg4, #myImg5, #myImg6 {
   border-radius: 5px;
@@ -81,6 +90,10 @@
     width: 100%;
   }
 }
+
+/* =============================================================================
+   [SECTION 2] THE POPUPS (The Thread)
+   ============================================================================= */
 /* ==== BIOTECH PROJECT: HOLIDAY POPUP ENGINE (FINAL SRE PUSH) ==== */
 
 .holiday-popup {
@@ -212,6 +225,9 @@
 
 /* --- FINE THEMES --- */
 
+/* =============================================================================
+   [SECTION 3] BUSINESS IMPACT MATRIX (The Core)
+   ============================================================================= */
 /* ==== BIOTECH PROJECT: BUSINESS IMPACT MATRIX ==== */
 /* Container della Matrice */
 .impact-matrix-container {
@@ -264,3 +280,23 @@
 .impact-table strong {
     color: #b2dfdb;
 }
+
+/**
+ * =============================================================================
+ * BIOTECH PROJECT - THE TAUROMACHIA MODULE (PHILOSOPHICAL OVERVIEW)
+ * =============================================================================
+ * "Refusing to kill the Minotaur."
+ *
+ * This architecture is a projection of the conflict between Logic and Entropy.
+ * Inspired by Picasso’s tauromachy (1927-1938), we do not seek to destroy 
+ * the 'Beast'-the raw energy of system complexity. We seek to coexist with it.
+ *
+ * 1. THE MODALS (The Vision): Confronting the Minotaur through immersive 
+ * projections. The 'zoom' is the expansion of consciousness within the labyrinth.
+ *
+ * 2. THE POPUPS (The Thread): Ariadne's Thread synchronization. 
+ * A guiding pulse that prevents the Labyrinth from becoming a prison.
+ *
+ * "We seek to coexist with the beast, mastering the passion as P. Picasso teaches us."
+ * =============================================================================
+ */
