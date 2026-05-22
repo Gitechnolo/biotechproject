@@ -656,8 +656,9 @@
     0 0 4px rgba(0, 230, 118, 0.1);
 }
 
-/* NOTA: Rimosso ::after content injection per garantire accessibilità nativa su screen reader */
+/* --- Valore dinamico al centro del cerchio --- */
 .progress-circle::after {
+  content: attr(data-value) '%'; /* Recupera il valore dall'HTML e appende il simbolo % */
   position: relative;
   z-index: 2;
   font-size: 1.4em;
