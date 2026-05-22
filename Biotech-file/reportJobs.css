@@ -698,30 +698,6 @@
   filter: brightness(0.95);
 }      
 
-/* --- Job Listing --- */
-.job-listing {
-  background-color: var(--bg-darker);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.job-title {
-  color: var(--primary-light);
-  font-size: 1.2em;
-  margin: 0 0 8px 0;
-}
-
-.job-location,
-.job-type,
-.job-salary,
-.job-date {
-  color: var(--text-dark);
-  font-size: 0.9em;
-  margin: 4px 0;
-}
-
 /* --- Pulsante Azione --- */
 .action-btn {
   margin-top: 12px;
