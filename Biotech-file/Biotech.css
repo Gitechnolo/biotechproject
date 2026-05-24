@@ -363,32 +363,23 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     font-family: 'Sansation', sans-serif;
     font-weight: bold;
     text-align: center;
-    margin: 5px auto 0 auto; /* Assicuriamoci che non abbia margine bottom eccessivo */
-    
-    /* Allineamento dimensionale col Logo Biotech (553px) */
     width: 90vw;
     max-width: 553px;
-    margin: 5px auto;
-    
-    /* Altezza compressa al massimo */
-    padding: 4px 12px;      /* Ridotto per minimizzare l'ingombro verticale */
-    line-height: 1.1;         /* Forza le righe a stare vicine */
-    
+    margin: 5px auto; 
+    padding: 4px 12px;
+    line-height: 1.1;
     background: rgba(0, 230, 118, 0.05);
     border: 1px solid rgba(0, 230, 118, 0.3);
     border-radius: 6px;
     backdrop-filter: blur(10px);
-    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0px;               /* Eliminato lo spazio automatico tra le righe */
-
-    /* Maschera di sfumatura aggiornata per non tagliare il testo compresso */
+    gap: 0px;
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-     mask-image: linear-gradient(to bottom, black 70%, transparent 100%); 
-     overflow: hidden;  
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%); 
+    overflow: hidden;  
 }
 
 /* Classi interne con margini negativi per avvicinare i testi */
@@ -508,10 +499,24 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;margin-bottom: -13px; /* Riduce lo spazio sotto 'Buongiorno' */ line-height: 1.9; /* Comprime l'altezza della riga */}
 .modern-greeting { position: relative; top: -45px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; margin: 15px auto 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 85%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
-/* Contenitore per orologio, conto alla rovescia e augurio - Per smartphone */
-@media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
-/* Contenitore per orologio, conto alla rovescia e augurio - Per tablet */
-@media (min-width:768px) and (max-width:1024px){.container_welcome{gap:12px}}
+/* Stile Base (Valido per TUTTI i dispositivi: Smartphone, Tablet e PC) */
+.modern-clock, .modern-countdown, .modern-greeting {
+    font-size: 1em;
+    padding: 6px 10px;
+}
+.container_welcome {
+    gap: 6px;
+    margin-top: -30px;
+}
+
+/* Modifiche solo per schermi grandi (Tablet e PC) */
+@media (min-width: 768px) {
+    .container_welcome {
+        gap: 12px;
+        margin-top: 0; /* Ripristina il margine corretto sui grandi schermi */
+    }
+    /* Rimosso l'aumento del font-size, così resta a 1em anche su PC */
+}
 /* TOOLTIP TECNOLOGICO BIO-TECH - OTTIMIZZATO */
 .biotech-tooltip {
     display: none;
