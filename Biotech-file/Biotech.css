@@ -49,13 +49,20 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
 /* Adatta su mobile */
 @media (max-width: 768px) {rt {font-size: 12px;   /* Più grande su schermi piccoli */ }}
 /* End annotazioni Ruby */
-/* Utility classes - Applica il font a tutte le classi che iniziano con "sansation-" */
-[class^="sansation-"],[class*=" sansation-"]{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
-/* Utility specifiche senza ripetere il font-family */
+/* === CENTRALIZZAZIONE DEL FONT (Principio DRY: Don't Repeat Yourself) ===
+  Uso del selettore di attributo parziale (*=): intercetta QUALSIASI elemento HTML la cui classe contenga la stringa "sansation-", a prescindere dalla sua posizione.
+  Evita di dover ripetere lo stack 'font-family' in ognuna delle classi sottostanti.
+*/
+[class*="sansation-"]{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
+/* === UTILITY CLASSES (Modificatori di Stile) ===
+  Non dichiariano il font-family (lo ereditiamo dal selettore sopra).
+  "Modificatori" per gestire solo peso, stile ed effetti visivi.
+*/
 .sansation-bold{font-weight:bold;font-size:34px;color:#a7ffeb;-webkit-mask-image:linear-gradient(black,transparent);mask-image:linear-gradient(black,transparent);}
-.sansation-bold-italic{font-weight:bold;font-style:italic;}
-.sansation-light{font-weight:300;}
-.sansation-light-italic{font-weight:300;font-style:italic;}
+/* Varianti compatte per pesi leggeri e corsivi */
+.sansation-bold-italic   { font-weight: bold; font-style: italic; }
+.sansation-light         { font-weight: 300; }
+.sansation-light-italic  { font-weight: 300; font-style: italic; }
 .atkinson-bold {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: bold;
