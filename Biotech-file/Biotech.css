@@ -49,11 +49,13 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
 /* Adatta su mobile */
 @media (max-width: 768px) {rt {font-size: 12px;   /* Più grande su schermi piccoli */ }}
 /* End annotazioni Ruby */
-/* Utility classes */
-.sansation-bold {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-size: 34px; color: #a7ffeb; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
-.sansation-bold-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-style: italic;}
-.sansation-light {font-family: 'Sansation', Tahoma, Verdana, sans-serif;font-weight: 300;}
-.sansation-light-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: 300; font-style: italic;}
+/* Utility classes - Applica il font a tutte le classi che iniziano con "sansation-" */
+[class^="sansation-"],[class*=" sansation-"]{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
+/* Utility specifiche senza ripetere il font-family */
+.sansation-bold{font-weight:bold;font-size:34px;color:#a7ffeb;-webkit-mask-image:linear-gradient(black,transparent);mask-image:linear-gradient(black,transparent);}
+.sansation-bold-italic{font-weight:bold;font-style:italic;}
+.sansation-light{font-weight:300;}
+.sansation-light-italic{font-weight:300;font-style:italic;}
 .atkinson-bold {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: bold;
@@ -500,23 +502,10 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;margin-bottom: -13px; /* Riduce lo spazio sotto 'Buongiorno' */ line-height: 1.9; /* Comprime l'altezza della riga */}
 .modern-greeting { position: relative; top: -45px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; margin: 15px auto 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 85%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
 /* Stile Base (Valido per TUTTI i dispositivi: Smartphone, Tablet e PC) */
-.modern-clock, .modern-countdown, .modern-greeting {
-    font-size: 1em;
-    padding: 6px 10px;
-}
-.container_welcome {
-    gap: 6px;
-    margin-top: -30px;
-}
-
+.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px;}
+.container_welcome{gap:6px;margin-top:-30px;}
 /* Modifiche solo per schermi grandi (Tablet e PC) */
-@media (min-width: 768px) {
-    .container_welcome {
-        gap: 12px;
-        margin-top: 0; /* Ripristina il margine corretto sui grandi schermi */
-    }
-    /* Rimosso l'aumento del font-size, così resta a 1em anche su PC */
-}
+@media (min-width:768px){.container_welcome{gap:12px;margin-top:0}} /* Ripristina il margine corretto sui grandi schermi */
 /* TOOLTIP TECNOLOGICO BIO-TECH - OTTIMIZZATO */
 .biotech-tooltip {
     display: none;
