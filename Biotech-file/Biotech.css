@@ -16,6 +16,22 @@
  * 9. STRUTTURE UTILITY LEGACY & WIDGET TERMINALE SRE
  * ============================================================================
  */
+ :root {color-scheme: dark;
+/* Colore principale dinamico */
+  --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
+  --color-accent-h: 143;
+  --color-accent-s: 100%;
+  --color-accent-l: 45%;
+/* Sfumature trasparenti */
+  --color-accent-bg: rgba(var(--color-accent-rgb), 0.08);
+  --color-accent-bg-hover: rgba(var(--color-accent-rgb), 0.18);
+  --color-accent-bg-active: rgba(var(--color-accent-rgb), 0.12);
+/* Colore glow per focus */
+  --color-glow: hsl(var(--color-accent-h), 100%, 70%);
+/* Transizioni */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.3s;
+}
 *, /* Reset globale */
 *::before,
 *::after {margin: 0; padding: 0; box-sizing: border-box;}
@@ -642,22 +658,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 @media (prefers-reduced-motion: reduce) {.tech-dropdown, .tech-nav-btn {transition: none;}}
 /* --- Singola voce del menu (wrapper per pulsante + dropdown) --- */
 .tech-menu-item {position: relative; display: flex; flex-direction: column; align-items: center;}
-:root {color-scheme: dark;
-/* Colore principale dinamico */
-  --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
-  --color-accent-h: 143;
-  --color-accent-s: 100%;
-  --color-accent-l: 45%;
-/* Sfumature trasparenti */
-  --color-accent-bg: rgba(var(--color-accent-rgb), 0.08);
-  --color-accent-bg-hover: rgba(var(--color-accent-rgb), 0.18);
-  --color-accent-bg-active: rgba(var(--color-accent-rgb), 0.12);
-/* Colore glow per focus */
-  --color-glow: hsl(var(--color-accent-h), 100%, 70%);
-/* Transizioni */
-  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration: 0.3s;
-}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: #e6e6e6; text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s;}
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
