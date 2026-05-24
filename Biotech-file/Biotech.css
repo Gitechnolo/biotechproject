@@ -5,7 +5,7 @@
  * Version: 2026.05.24 - STABLE
  * Design System: Bio-Circadian Dark HUD - (REF: CSS-INDEX)
  * ----------------------------------------------------------------------------
- * 1. RESET GENERALE & STRUTTURA BASE (html, body, *, scrollbar)
+ * 1. VARIABILI GLOBALI (:root), RESET GENERALE & STRUTTURA BASE
  * 2. MOTORE TIPOGRAFICO (Dichiarazioni @font-face e utility classi di testo)
  * 3. COMPONENTI TABELLE & IMMAGINI (Gestione responsive e Pilosebaceo)
  * 4. STRUTTURA DEI COLLEGAMENTI (Selettori tag 'a' e target blank)
@@ -16,6 +16,28 @@
  * 9. STRUTTURE UTILITY LEGACY & WIDGET TERMINALE SRE
  * ============================================================================
  */
+:root {
+  color-scheme: dark;
+/* Colore principale dinamico */
+  --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
+  --color-accent-h: 143;
+  --color-accent-s: 100%;
+  --color-accent-l: 45%;
+/* Sfumature trasparenti */
+  --color-accent-bg: rgba(var(--color-accent-rgb), 0.08);
+  --color-accent-bg-hover: rgba(var(--color-accent-rgb), 0.18);
+  --color-accent-bg-active: rgba(var(--color-accent-rgb), 0.12);
+/* Colore glow per focus */
+  --color-glow: hsl(var(--color-accent-h), 100%, 70%);
+/* Transizioni */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.3s;
+}
+*, /* Reset globale */
+*::before,
+*::after {margin: 0; padding: 0; box-sizing: border-box;}
+body, html {max-width: 100vw !important; overflow-x: hidden !important;}
+/* --- Importazione font personalizzati --- */
  :root {color-scheme: dark;
 /* Colore principale dinamico */
   --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
