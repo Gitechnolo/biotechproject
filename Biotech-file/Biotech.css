@@ -53,7 +53,7 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
   Uso del selettore di attributo parziale (*=): intercetta QUALSIASI elemento HTML la cui classe contenga la stringa "sansation-", a prescindere dalla sua posizione.
   Evita di dover ripetere lo stack 'font-family' in ognuna delle classi sottostanti.
 */
-[class*="sansation-"],ul.list,ol.list,li,p,h1,h2{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
+[class*="sansation-"],ul.list,ol.list,li,p,h1,h2,.modern-clock,.bio-data-value{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
 /* === UTILITY CLASSES (Modificatori di Stile) ===
   Non dichiariano il font-family (lo ereditiamo dal selettore sopra).
   "Modificatori" per gestire solo peso, stile ed effetti visivi.
@@ -117,44 +117,21 @@ a[target="_blank"] span[aria-hidden="true"] {
 }
 img {border-radius: 6px; max-width: 100%; height: auto; display: block;}   
 /* Stilizzazione Paragrafi Base */
-p {
-    font-size: 16px; 
-    font-weight: normal; 
-    color: rgb(212, 211, 211); 
-    text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); 
-    transition: color 0.3s ease, text-shadow 0.3s ease; /* Gestisce fluidamente sia l'andata che il ritorno */
-    cursor: default;
+p {font-size: 16px; 
+   font-weight: normal; 
+   color: rgb(212, 211, 211); 
+   text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); 
+   transition: color 0.3s ease, text-shadow 0.3s ease; /* Gestisce fluidamente sia l'andata che il ritorno */
+   cursor: default;
 }
-
-p:hover {
-    color: #ffffff; 
-    text-shadow: 0 0 4px rgba(138, 43, 226, 0.5), 0 0 6px rgba(138, 43, 226, 0.2);
+p:hover {color: #ffffff; text-shadow: 0 0 4px rgba(138, 43, 226, 0.5), 0 0 6px rgba(138, 43, 226, 0.2);
     /* cursor e transition ereditati da p */
 }
-
 /* Accessibilità (Media Query): Rispetto delle preferenze di movimento dell'utente */
-@media (prefers-reduced-motion: reduce) {
-    p {
-        transition: none; /* Disabilita la transizione alla radice */
-    }
-}
+@media (prefers-reduced-motion: reduce) {p {transition: none; /* Disabilita la transizione alla radice */}}
 /* Stilizzazione Titoli Principali (Solo proprietà specifiche) */
-h1 {
-    font-weight: 600; 
-    font-size: 34px; 
-    color: #9fe8d0; 
-    text-shadow: 0 0 3px rgba(138, 43, 226, 0.5), 0 0 6px rgba(138, 43, 226, 0.2); 
-    cursor: default; 
-    opacity: 0.95;
-}   
-
-h2 {
-    font-size: 27px; 
-    font-weight: normal; 
-    color: rgb(212, 211, 211); 
-    text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); 
-    cursor: default;
-}
+h1{font-weight:600;font-size:34px;color:#9fe8d0;text-shadow:0 0 3px rgba(138,43,226,.5),0 0 6px rgba(138,43,226,.2);cursor:default;opacity:.95;}  
+h2{font-size:27px;font-weight:normal;color:rgb(212,211,211);text-shadow:0 0 4px rgba(138,43,226,.6),0 0 8px rgba(138,43,226,.3);cursor:default;}
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
 /* End element natural */
 /* === 1. BACKGROUND BIOTECH (Desktop & Base) === */
@@ -360,7 +337,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 .bio-data-value {
     color: #00e676; /* Verde neon acceso solo per il dato */
-    font-family: 'Sansation', sans-serif;
     font-size: 1.1em; 
     text-transform: uppercase;
     text-shadow: 0 0 8px rgba(0, 230, 118, 0.4);
@@ -372,7 +348,6 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .modern-clock {
     color: #a7ffeb;
     opacity: 0.7;
-    font-family: 'Sansation', sans-serif;
     font-weight: bold;
     text-align: center;
     width: 90vw;
