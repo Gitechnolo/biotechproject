@@ -1,12 +1,20 @@
 /**
- * BIOTECH PROJECT - MAIN STYLESHEET
- * Version: 2026.1.29
- * Structure:
- * 1. Global Reset & Variables
- * 2. Typography & Custom Fonts
- * 3. Bio-Circadian UI (Clock & HUD)
- * 4. DNA Engine & Animations
- * 5. Accessibility & Keyboard Nav
+ * ============================================================================
+ * BIOTECH SYSTEM - CORE ARCHITECTURE & STYLESHEET
+ * ============================================================================
+ * Version: 2026.05.24 - STABLE
+ * Design System: Bio-Circadian Dark HUD - (REF: CSS-INDEX)
+ * ----------------------------------------------------------------------------
+ * 1. RESET GENERALE & STRUTTURA BASE (html, body, *, scrollbar)
+ * 2. MOTORE TIPOGRAFICO (Dichiarazioni @font-face e utility classi di testo)
+ * 3. COMPONENTI TABELLE & IMMAGINI (Gestione responsive e Pilosebaceo)
+ * 4. STRUTTURA DEI COLLEGAMENTI (Selettori tag 'a' e target blank)
+ * 5. SEZIONE PARAGRAFI E TITOLI (Gestione hover ed effetti glow di testo)
+ * 6. MECCANICA DI BACKGROUND (Biotechbody e Night-Mode)
+ * 7. INTERFACCIA HUD CORE (Scanner DNA, Orologio, Countdown, Tooltip)
+ * 8. SISTEMA NAVIGAZIONE & COLD DROPDOWN (Classi .tech-nav-btn e stati JS)
+ * 9. STRUTTURE UTILITY LEGACY & WIDGET TERMINALE SRE
+ * ============================================================================
  */
 *, /* Reset globale */
 *::before,
@@ -53,7 +61,7 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
   Uso del selettore di attributo parziale (*=): intercetta QUALSIASI elemento HTML la cui classe contenga la stringa "sansation-", a prescindere dalla sua posizione.
   Evita di dover ripetere lo stack 'font-family' in ognuna delle classi sottostanti.
 */
-[class*="sansation-"],ul.list,ol.list,li,p,h1,h2,.modern-clock,.bio-data-value{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
+[class*="sansation-"],ul.list,ol.list,li,p,h1,h2,a,.modern-clock,.bio-data-value{font-family:'Sansation',Tahoma,Verdana,sans-serif;}
 /* === UTILITY CLASSES (Modificatori di Stile) ===
   Non dichiariano il font-family (lo ereditiamo dal selettore sopra).
   "Modificatori" per gestire solo peso, stile ed effetti visivi.
@@ -91,7 +99,7 @@ table{border:0;padding:4px;border-spacing:4px;font-weight:bold;font-size:18px;te
 .tab { width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed; }
 .biotech-img { margin: 2px auto; max-width: 100%; border-radius: 12px; }
 /* End tabelle capelli.html*/
-a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
+a {color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
 a:visited {color: rgb(116, 9, 116); /* Solo il colore cambia */}
 a:hover, a:focus {color: #a7ffeb; /* Leggero aumento dell'effetto */text-shadow: 0 0 6px rgba(138, 43, 226, 0.8), 0 0 10px rgba(138, 43, 226, 0.5);}
 a:active {color: #fffb00;}
