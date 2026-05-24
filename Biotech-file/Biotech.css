@@ -16,23 +16,6 @@
  * 9. STRUTTURE UTILITY LEGACY & WIDGET TERMINALE SRE
  * ============================================================================
  */
-:root {
-  color-scheme: dark;
-/* Colore principale dinamico */
-  --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
-  --color-accent-h: 143;
-  --color-accent-s: 100%;
-  --color-accent-l: 45%;
-/* Sfumature trasparenti */
-  --color-accent-bg: rgba(var(--color-accent-rgb), 0.08);
-  --color-accent-bg-hover: rgba(var(--color-accent-rgb), 0.18);
-  --color-accent-bg-active: rgba(var(--color-accent-rgb), 0.12);
-/* Colore glow per focus */
-  --color-glow: hsl(var(--color-accent-h), 100%, 70%);
-/* Transizioni */
-  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --duration: 0.3s;
-}
 *, /* Reset globale */
 *::before,
 *::after {margin: 0; padding: 0; box-sizing: border-box;}
@@ -638,6 +621,23 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
+/* === FOCUS + modalità tastiera attiva === */
+.keyboard-navigation-on .tech-nav-btn:focus {
+  outline: 2px solid #00e676;
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 10px rgba(0, 230, 118, 0.4),
+    0 0 20px rgba(0, 230, 118, 0.25),
+    0 0 0 1px rgba(0, 255, 180, 0.2);
+}
+/* Stato di focus visibile (importante per tastiera) */
+/* Rinforza il focus per tastiera (accessibilità avanzata) */
+.biotech-simple-link:focus {
+  outline: 2px solid #00e676;
+  outline-offset: 4px;
+  /* Nessun rischio di sovrascrittura: stiamo aggiungendo,
+     non rimuovendo. L'effetto hover-like resta attivo. */
+}
 .tech-nav-btn:active {
   background: var(--color-accent-bg-active);
   transform: translateY(0);
@@ -656,30 +656,30 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .tech-dropdown button:focus {box-shadow: 0 0 0 2px rgba(0, 230, 118, 0.4);}   
 /* ✅ MANTIENI HOVER SU DESKTOP (solo con mouse) */
 .tech-menu-item:hover .tech-dropdown {opacity: 1; transform: translateY(0) translateX(-50%) scale(1); visibility: visible; pointer-events: auto;}
-/* === FOCUS + modalità tastiera attiva (Unificato qui in sicurezza) === */
-.keyboard-navigation-on .tech-nav-btn:focus {
-  outline: 2px solid #00e676;
-  outline-offset: 3px;
-  box-shadow: 
-    0 0 10px rgba(0, 230, 118, 0.4),
-    0 0 20px rgba(0, 230, 118, 0.25),
-    0 0 0 1px rgba(0, 255, 180, 0.2);
-}
-/* Stato di focus visibile (importante per tastiera) */
-/* Rinforza il focus per tastiera (accessibilità avanzata) */
-.biotech-simple-link:focus {
-  outline: 2px solid #00e676;
-  outline-offset: 4px;
-  /* Nessun rischio di sovrascrittura: stiamo aggiungendo,
-     non rimuovendo. L'effetto hover-like resta attivo. */
-}
+.tech-nav-btn:focus {background: rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0, 230, 118, 0.7), 0 0 20px rgba(0, 230, 118, 0.5), 0 0 0 4px rgba(0, 230, 118, 0.4); outline: 2px solid #00bfff; outline-offset: 3px; filter: brightness(1.1);}    
 /* --- Responsive: adatta il menu su mobile --- */
 @media (max-width: 768px) {.tech-nav-container {flex-direction: column; align-items: center; padding: 12px; gap: 4px;} .tech-nav-btn {width: 100%; max-width: 280px; justify-content: center;} .tech-dropdown {min-width: 300px; max-width: 90vw; left: 50%; transform: translateY(-12px) translateX(-50%) scale(0.96);} .tech-dropdown a {font-size: 1rem; padding: 12px 20px;}}
 @media (max-width: 480px) {.tech-nav-container {padding: 8px;}.tech-nav-btn {font-size: 0.95rem; padding: 9px 14px;} .tech-dropdown {min-width: 260px;} .tech-dropdown a {font-size: 0.95rem; padding: 10px 16px;}}
 @media (prefers-reduced-motion: reduce) {.tech-dropdown, .tech-nav-btn {transition: none;}}
 /* --- Singola voce del menu (wrapper per pulsante + dropdown) --- */
 .tech-menu-item {position: relative; display: flex; flex-direction: column; align-items: center;}
-/* --- Stili vari per i testi --- */
+:root {
+  color-scheme: dark;
+/* Colore principale dinamico */
+  --color-accent-rgb: 0, 230, 118;   /* Verde neon (default) */
+  --color-accent-h: 143;
+  --color-accent-s: 100%;
+  --color-accent-l: 45%;
+/* Sfumature trasparenti */
+  --color-accent-bg: rgba(var(--color-accent-rgb), 0.08);
+  --color-accent-bg-hover: rgba(var(--color-accent-rgb), 0.18);
+  --color-accent-bg-active: rgba(var(--color-accent-rgb), 0.12);
+/* Colore glow per focus */
+  --color-glow: hsl(var(--color-accent-h), 100%, 70%);
+/* Transizioni */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.3s;
+}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: #e6e6e6; text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s;}
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}
