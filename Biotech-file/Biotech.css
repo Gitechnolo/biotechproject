@@ -355,15 +355,16 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     font-family: 'Sansation', sans-serif;
     font-weight: bold;
     text-align: center;
-    
-    /* 1. Risolto il conflitto: un solo margine chiaro con bottom a 0 */
-    width: 100%;            /* Sostituito 90vw con 100% per evitare i calcoli instabili della scrollbar */
+    margin: 5px auto 0 auto; /* Assicuriamoci che non abbia margine bottom eccessivo */
+        
+    /* Allineamento dimensionale col Logo Biotech (553px) */
+    width: 90vw;
     max-width: 553px;
-    margin: 5px auto 0 auto; 
+    margin: 5px auto;
     
     /* Altezza compressa al massimo */
-    padding: 4px 12px;      
-    line-height: 1.2;       /* Leggermente aumentato da 1.1 a 1.2 per dare tolleranza ai font di fallback */
+    padding: 4px 12px;      /* Ridotto per minimizzare l'ingombro verticale */
+    line-height: 1.1;         /* Forza le righe a stare vicine */
     
     background: rgba(0, 230, 118, 0.05);
     border: 1px solid rgba(0, 230, 118, 0.3);
@@ -374,17 +375,20 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0px;               
-/* Sfumatura professionale: il testo emerge dallo sfondo */
+    gap: 0px;               /* Eliminato lo spazio automatico tra le righe */
+
+    /* Maschera di sfumatura aggiornata per non tagliare il testo compresso */
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%); 
-    overflow: hidden;  
+     mask-image: linear-gradient(to bottom, black 70%, transparent 100%); 
+     overflow: hidden;  
 }
-/* Classi per le etichette e i dati all'interno dell'orologio */
+
+/* Classi interne con margini negativi per avvicinare i testi */
 .bio-status-label {
     font-size: 0.65em;
     opacity: 0.5;
     letter-spacing: 2px;
+    margin-bottom: -1px;    /* Avvicina l'etichetta superiore all'orologio */
     text-transform: uppercase;
 }
 
