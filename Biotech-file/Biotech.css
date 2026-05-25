@@ -355,6 +355,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
     font-family: 'Sansation', sans-serif;
     font-weight: bold;
     text-align: center;
+    margin: 5px auto 0 auto; /* Assicuriamoci che non abbia margine bottom eccessivo */
         
     /* Allineamento dimensionale col Logo Biotech (553px) */
     width: 90vw;
