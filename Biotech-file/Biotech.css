@@ -49,15 +49,19 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
 /* Adatta su mobile */
 @media (max-width: 768px) {rt {font-size: 12px;   /* Più grande su schermi piccoli */ }}
 /* End annotazioni Ruby */
-/* Fallback personalizzato per Tahoma rimpicciolito al 95% */
-@font-face{font-family:'Tahoma-CLS-Fix';src:local('Tahoma');size-adjust:95%;}
-/* Fallback personalizzato per Verdana rimpicciolito al 95% */
-@font-face{font-family:'Verdana-CLS-Fix';src:local('Verdana');size-adjust:95%;}
+/* Fallback personalizzato per Tahoma (Regular e Light) rimpicciolito al 95% */
+@font-face { font-family: 'Tahoma-CLS-Fix'; src: local('Tahoma'); font-weight: 300 normal; size-adjust: 95%; }
+/* Fallback personalizzato per Verdana (Regular e Light) rimpicciolito al 95% */
+@font-face { font-family: 'Verdana-CLS-Fix'; src: local('Verdana'); font-weight: 300 normal; size-adjust: 95%; }
+/* Fallback Tahoma BOLD rimpicciolito al 92% per compensare il peso maggiore del grassetto */ 
+@font-face { font-family: 'Tahoma-CLS-Fix'; src: local('Tahoma Bold'), local('Tahoma'); font-weight: bold; size-adjust: 92%; }
+/* Fallback Verdana BOLD rimpicciolito al 92% per compensare il peso maggiore del grassetto */
+@font-face { font-family: 'Verdana-CLS-Fix'; src: local('Verdana Bold'), local('Verdana'); font-weight: bold; size-adjust: 92%; }
 /* Utility classes aggiornate per azzerare il CLS */
-.sansation-bold{font-family:'Sansation','Tahoma-CLS-Fix','Verdana-CLS-Fix',Tahoma,Verdana,sans-serif;font-weight:bold;font-size:34px;color:#a7ffeb;-webkit-mask-image:linear-gradient(black,transparent);mask-image:linear-gradient(black,transparent);}
-.sansation-bold-italic{font-family:'Sansation','Tahoma-CLS-Fix','Verdana-CLS-Fix',Tahoma,Verdana,sans-serif;font-weight:bold;font-style:italic;}
-.sansation-light{font-family:'Sansation','Tahoma-CLS-Fix','Verdana-CLS-Fix',Tahoma,Verdana,sans-serif;font-weight:300;}
-.sansation-light-italic{font-family:'Sansation','Tahoma-CLS-Fix','Verdana-CLS-Fix',Tahoma,Verdana,sans-serif;font-weight:300;font-style:italic;}
+.sansation-bold { font-family: 'Sansation', 'Tahoma-CLS-Fix', 'Verdana-CLS-Fix', Tahoma, Verdana, sans-serif; font-weight: bold; font-size: 34px; color: #a7ffeb; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent); }
+.sansation-bold-italic { font-family: 'Sansation', 'Tahoma-CLS-Fix', 'Verdana-CLS-Fix', Tahoma, Verdana, sans-serif; font-weight: bold; font-style: italic; }
+.sansation-light { font-family: 'Sansation', 'Tahoma-CLS-Fix', 'Verdana-CLS-Fix', Tahoma, Verdana, sans-serif; font-weight: 300; }
+.sansation-light-italic { font-family: 'Sansation', 'Tahoma-CLS-Fix', 'Verdana-CLS-Fix', Tahoma, Verdana, sans-serif; font-weight: 300; font-style: italic; }
 .atkinson-bold {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: bold;
