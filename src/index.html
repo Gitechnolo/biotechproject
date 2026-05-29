@@ -45,7 +45,22 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .modern-logo { display: block;
     max-width: 90vw; height: auto; /* Permette al browser di usare l'aspect-ratio dalle prop width/height */
     aspect-ratio: 720 / 180; }.pulse-logo{ opacity: 0.9}
-#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto; }.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}@media only screen and (max-width: 700px){ .modal-content{ margin-top: 80px !important; max-height: 50vh;} #caption{ font-size: 17px; padding-bottom: 100px;} .close{ top: 10px; right: 20px;}}
+#myImg,#myImg2,#myImg3,#myImg4{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto; }.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}
+@media only screen and (max-width: 700px) {
+  .modal-content { 
+    margin-top: 80px !important; 
+    width: 95% !important;     /* Forza l'immagine a usare quasi tutta la larghezza dello smartphone */
+    max-height: 65vh !important; /* Alziamo il limite d'altezza per dare spazio all'immagine di allargarsi */
+  }
+  #caption { 
+    font-size: 17px; 
+    padding-bottom: 100px;
+  }
+  .close { 
+    top: 15px;                 /* Ripristina lo spazio corretto per non toccare il bordo o la tacca */
+    right: 20px;
+  }
+}
 /* Applica l'aspect-ratio al CONTENITORE, non solo all'immagine [CLS: 0.000] */
 #ytVideoContainer{ aspect-ratio: 633 / 281; width: 100%; max-width: 633px; background: rgba(255,255,255,0.03); overflow: hidden; position: relative}
 /* L'immagine poster si adatta al contenitore già bloccato */
