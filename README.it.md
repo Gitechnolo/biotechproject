@@ -416,6 +416,12 @@ Questo progetto funge da solida base per:
 > 
 > *Include percorsi di coinvolgimento dettagliati: **(A) Tesi di Laurea**, **(B) Case-Study per Laboratori di Ricerca** e **(C) Partnership Strategiche per Bandi UE**.*
 
+>
+> 📚 **Integrazione Didattica / Corso di Laboratorio:**
+> È disponibile una traccia pronta per l'implementazione di un modulo didattico di 5 settimane incentrato sull'Ingegneria dei Sistemi Web Concorrenti, ideale per corsi di Laurea Magistrale o attività di laboratorio.
+>
+> 👉 **Scarica il Programma del Laboratorio (5 Settimane):** [Proposta_Modulo_Didattico_BiotechProject (PDF)](docs/Proposta_Modulo_Didattico_BiotechProject.pdf)
+
 
 ## 🌍 Gestione Multilingua (i18n)
 
