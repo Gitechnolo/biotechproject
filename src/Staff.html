@@ -73,6 +73,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <!-- Contenuto principale (per Skip to main e accessibilità) --> 
 <main id="main">
 <h1>Responsive "Meet The Staff" Section</h1>
+<h2 class="sr-only">Il Nostro Team</h2>
 <!-- Container: prevenzione CLS -->
 <div class="staff-layout-container" id="main-content">
 <div class="sre-dashboard" id="sre-wing" role="complementary" aria-label="System Resilience Monitor"><div class="sre-header"><span class="sre-title">🛡️ SRE GUARDIAN</span><div class="sre-led-container"><span id="led-guardian" class="led led-green" role="img" aria-label="Status: System Online"></span><span id="led-patch" class="led led-off" role="img" aria-label="Patch Engine: Idle"></span></div></div><div class="sre-terminal"><code id="sre-log-display" aria-live="polite">SYSTEM READY. ADR-011 SECURE.</code></div><div class="sre-action-zone"><button id="sre-stress-btn" class="tech-nav-btn sre-btn" type="button" aria-controls="sre-log-display">RUN STRESS TEST </button></div></div>  
@@ -87,7 +88,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="staff-card">
 <picture><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena-348w.avif" type="image/avif"><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena-348w.jpg" type="image/jpeg"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.avif" type="image/avif"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" type="image/jpeg"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" alt="Ritratto fotografico di Elena, Copywriter del team Biotech Project" class="imgStaff" fetchpriority="high" loading="eager" width="604" height="408" style="font-style: italic; color: #00e676; display: block; max-width: 100%; height: auto;"></picture>   
 <div class="staff-container">
-<p class="sidenavtext">Elena</p>
+<h3 class="sidenavtext">Elena</h3>
 <p class="staff-title">Copywriter</p><br>
 <p class="yellowtext" data-lang-key="staff-quoteElena">Il giusto è razionale, morale, e non solo vigente, ma ancorato nella realtà!</p><br>
 <p class="staff-role">Content Strategist</p><br>
@@ -99,7 +100,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="staff-card">
 <picture><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.avif" type="image/avif"><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.jpg" type="image/jpeg"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.avif" type="image/avif"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" type="image/jpeg"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Ritratto di Fabrizio, Founder e Art Director del Biotech Project" class="imgStaff" fetchpriority="high" loading="eager" width="604" height="408" style="font-style: italic; color: #00e676; display: block; max-width: 100%; height: auto;"></picture>
 <div class="staff-container">
-<p class="sidenavtext">Fabrizio</p>
+<h3 class="sidenavtext">Fabrizio</h3>
 <p class="staff-title">Founder & CTO</p><br>
 <p class="yellowtext" data-lang-key="staff-quoteFabrizio">La passione, recepire per elaborare, l'azione consapevole in un giorno qualunque!</p><br>
 <p class="staff-role">Lead Full-Stack Engineer</p><br>
@@ -111,7 +112,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="staff-card">
 <picture><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio-348w.avif" type="image/avif"><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio-348w.jpg" type="image/jpeg"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio.avif" type="image/avif"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio.jpg" type="image/jpeg"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio.jpg" alt="Ritratto di Tullio, Designer del team Biotech Project" class="imgStaff" fetchpriority="high" loading="eager" width="604" height="408" style="font-style: italic; color: #00e676; display: block; max-width: 100%; height: auto;"></picture>   
 <div class="staff-container">
-<p class="sidenavtext">Tullio</p>
+<h3 class="sidenavtext">Tullio</h3>
 <p class="staff-title">Social Inclusion Specialist</p><br>
 <p class="yellowtext" data-lang-key="staff-quoteTullio">Una mente vera non soffre mai di noia o solitudine, sa tener un'egregia compagnia a sè stessa!</p><br>
 <p class="staff-role">Research & Impact Lead</p><br>
@@ -120,7 +121,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 </div>
 </div>
 </div>
-<p class="text" data-lang-key="staff-intro-1">Benvenuti nella sezione Meet The Staff di BiotechProject.</p>
+<h2 data-lang-key="staff-intro-1">Benvenuti nella sezione Meet The Staff di BiotechProject.</h2>
 <p class="text" data-lang-key="staff-intro-2">Qui non presentiamo solo un team di lavoro, ma una comunità di idee, valori e impegno condiviso verso la scienza e l’inclusione.</p>  
 <p class="text" data-lang-key="staff-mission-1">Siamo un gruppo eterogeneo di professionisti — sviluppatori, divulgatori, progettisti accessibili, pensatori critici — uniti da una missione comune:</p>
 <p class="text highlight-text" data-lang-key="staff-mission-2">Rendere la biotecnologia e la tecnologia digitale accessibili, trasparenti e al servizio del bene comune.</p>
