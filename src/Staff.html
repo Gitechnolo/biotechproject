@@ -41,9 +41,9 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-.imgStaff {max-width: 100%; height: auto; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
+.imgStaff {max-width: 100%; height: auto; aspect-ratio: 604 / 408; -webkit-mask-image: linear-gradient(black, transparent); mask-image: linear-gradient(black, transparent);}
 .imgStaff:hover {opacity: 0.5; -webkit-mask-image: none; mask-image: none; transition: opacity 4.0s ease-in-out;}
-.staff-role {color: lightgoldenrodyellow; letter-spacing: normal; text-align: center;}
+.staff-role {color: lightgoldenrodyellow; letter-spacing: normal; text-align: center; margin: 15px 0;}
 /* Applica l'aspect-ratio al CONTENITORE, non solo all'immagine [CLS: 0.000] */
 #ytVideoContainer{ aspect-ratio: 633 / 281; width: 100%; max-width: 633px; background: rgba(255,255,255,0.03); overflow: hidden; position: relative}
 /* L'immagine poster si adatta al contenitore già bloccato */
@@ -92,10 +92,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               <picture><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena-348w.avif" type="image/avif"><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena-348w.jpg" type="image/jpeg"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.avif" type="image/avif"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" type="image/jpeg"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Elena.jpg" alt="Ritratto fotografico di Elena, Copywriter del team Biotech Project" class="imgStaff" fetchpriority="high" loading="eager" width="604" height="408" style="font-style: italic; color: #00e676; display: block; max-width: 100%; height: auto;"></picture>   
               <div class="staff-container">
                 <h3 class="sidenavtext">Elena</h3>
-                <p class="staff-title">Copywriter</p><br>
-                <p class="yellowtext" data-lang-key="staff-quoteElena">Il giusto è razionale, morale, e non solo vigente, ma ancorato nella realtà!</p><br>
-                <p class="staff-role">Content Strategist</p><br>
-                <p><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank" rel="noopener" class="staff-button">GitHub Elena <span class="sr-only">(apre in una nuova scheda)</span></a></p><br>
+                <p class="staff-title" style="margin-bottom: 15px;">Copywriter</p>
+                <p class="yellowtext" data-lang-key="staff-quoteElena">Il giusto è razionale, morale, e non solo vigente, ma ancorato nella realtà!</p>
+                <p class="staff-role">Content Strategist</p>
+                <p style="margin-bottom: 20px;"><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank" rel="noopener" class="staff-button">GitHub Elena <span class="sr-only">(apre in una nuova scheda)</span></a></p>
               </div>
             </div>
           </div>
@@ -105,10 +105,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               <picture><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.avif" type="image/avif"><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio-348w.jpg" type="image/jpeg"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.avif" type="image/avif"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" type="image/jpeg"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Fabrizio.jpg" alt="Ritratto di Fabrizio, Founder e Art Director del Biotech Project" class="imgStaff" fetchpriority="high" loading="eager" width="604" height="408" style="font-style: italic; color: #00e676; display: block; max-width: 100%; height: auto;"></picture>
               <div class="staff-container">
                 <h3 class="sidenavtext">Fabrizio</h3>
-                <p class="staff-title">Founder & CTO</p><br>
-                <p class="yellowtext" data-lang-key="staff-quoteFabrizio">La passione, recepire per elaborare, l'azione consapevole in un giorno qualunque!</p><br>
-                <p class="staff-role">Lead Full-Stack Engineer</p><br>
-                <p><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank" rel="noopener" class="staff-button">GitHub Fabrizio <span class="sr-only">(apre in una nuova scheda)</span></a></p><br>
+                <p class="staff-title" style="margin-bottom: 15px;">Founder & CTO</p>
+                <p class="yellowtext" data-lang-key="staff-quoteFabrizio">La passione, recepire per elaborare, l'azione consapevole in un giorno qualunque!</p>
+                <p class="staff-role">Lead Full-Stack Engineer</p>
+                <p style="margin-bottom: 20px;"><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank" rel="noopener" class="staff-button">GitHub Fabrizio <span class="sr-only">(apre in una nuova scheda)</span></a></p>
               </div>
             </div>
           </div>
@@ -118,10 +118,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               <picture><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio-348w.avif" type="image/avif"><source media="(max-width: 603px)" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio-348w.jpg" type="image/jpeg"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio.avif" type="image/avif"><source srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio.jpg" type="image/jpeg"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Tullio.jpg" alt="Ritratto di Tullio, Designer del team Biotech Project" class="imgStaff" fetchpriority="high" loading="eager" width="604" height="408" style="font-style: italic; color: #00e676; display: block; max-width: 100%; height: auto;"></picture>   
               <div class="staff-container">
                 <h3 class="sidenavtext">Tullio</h3>
-                <p class="staff-title">Social Inclusion Specialist</p><br>
-                <p class="yellowtext" data-lang-key="staff-quoteTullio">Una mente vera non soffre mai di noia o solitudine, sa tener un'egregia compagnia a sè stessa!</p><br>
-                <p class="staff-role">Research & Impact Lead</p><br>
-                <p><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank" rel="noopener" class="staff-button">GitHub Tullio <span class="sr-only">(apre in una nuova scheda)</span></a></p><br>
+                <p class="staff-title" style="margin-bottom: 15px;">Social Inclusion Specialist</p>
+                <p class="yellowtext" data-lang-key="staff-quoteTullio">Una mente vera non soffre mai di noia o solitudine, sa tener un'egregia compagnia a sè stessa!</p>
+                <p class="staff-role">Research & Impact Lead</p>
+                <p style="margin-bottom: 20px;"><a href="https://github.com/Gitechnolo/biotechproject/blob/main/README.md" target="_blank" rel="noopener" class="staff-button">GitHub Tullio <span class="sr-only">(apre in una nuova scheda)</span></a></p>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <p class="text highlight-text" data-lang-key="staff-call-emphasis">siamo qui per ascoltarti.</p>
 <p class="text" data-lang-key="staff-open-invite">Siamo sempre aperti a nuove idee, collaborazioni, confronti. Se vuoi sapere di più sui nostri progetti, discutere di tecnologia accessibile o semplicemente scambiare due parole,</p>
 <p class="text"><a href="mailto:teambiotechproject@proton.me?subject=Inquiry%20regarding%20BiotechProject" class="link-highlight" data-lang-key="staff-contact-link">non esitare a contattarci </a>.</p>
-<p class="text" data-lang-key="staff-thanks-1">Grazie per aver letto fin qui. Il nostro viaggio è appena cominciato - e siamo entusiasti di condividerlo con te.</p><br>
+<p class="text" style="margin-bottom: 20px;" data-lang-key="staff-thanks-1">Grazie per aver letto fin qui. Il nostro viaggio è appena cominciato - e siamo entusiasti di condividerlo con te.</p>
 <div id="ytVideoContainer">
 <!-- Poster come immagine cliccabile -->
 <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Auto_del_futuro-Metropoli.avif" alt="Anteprima video: Auto del futuro – un viaggio verso l'innovazione e la sostenibilità" loading="lazy" decoding="async" role="button" tabindex="0" aria-label="Riproduci video: Auto del futuro – un viaggio verso l'innovazione e la sostenibilità" style="width:100%; display:block; cursor:pointer; border:none;" width="633" height="281">  
@@ -151,9 +151,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="yt-video-controls" style="display:none;"><button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button><input type="range" id="ytProgress" aria-label="Progresso range" min="0" value="0" step="0.01" class="yt-range"><span id="ytCurrentTime" class="yt-Ctime">0:00</span>/ <span id="ytDuration" class="yt-video-duration">0:00</span><button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button><input type="range" id="ytVolume" aria-label="Volume" min="0" max="1" step="0.01" value="1" class="yt-vol"><button id="ytFullscreen" aria-label="Attiva modalità schermo intero">⛶</button><button id="ytExitFullscreen" style="display:none;" aria-label="Esci dalla modalità schermo intero">⤫</button></div>
 </div>
 <div>
-<p class="sansation-light-italic" data-lang-key="video-description">Il video mostra l'auto del futuro, un viaggio verso l'innovazione e la sostenibilità.</p>
-</div> 
-<br><br><br>
+<p class="sansation-light-italic" style="margin-bottom: 60px;" data-lang-key="video-description">Il video mostra l'auto del futuro, un viaggio verso l'innovazione e la sostenibilità.</p>
+</div>
 <div id="about">
   <section aria-labelledby="audio-title" aria-describedby="audio-description">
   <h2 id="audio-title" class="sr-only">Musica di sottofondo</h2>
