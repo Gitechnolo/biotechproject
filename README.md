@@ -314,14 +314,14 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 
 | System | ⚡ Scientific standard | 📝 Dyslexia-friendly | 📅 Last Audit |
 | :--- | :--- | :--- | :--- |
-| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-06-01 |
-| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-06-01 |
-| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-06-01 |
-| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-06-01 |
-| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-06-01 |
-| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-06-01 |
-| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-06-01 |
-| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-06-01 |
+| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-06-02 |
+| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-06-02 |
+| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-06-02 |
+| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-06-02 |
+| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-06-02 |
+| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-06-02 |
+| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-06-02 |
+| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-06-02 |
 
 </details>
 
@@ -330,20 +330,20 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 
 | Resource | Access Link | 📅 Last Audit |
 | :--- | :--- | :--- |
-| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-06-01 |
-| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-06-01 |
-| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-06-01 |
-| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-06-01 |
-| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-06-01 |
+| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-06-02 |
+| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-06-02 |
+| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-06-02 |
+| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-06-02 |
+| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-06-02 |
 
 </details>
 
 <details>
 <summary><b>♿ Accessibility & Inclusion</b></summary>
 
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Updated: 2026-06-01*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Updated: 2026-06-01*
-- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Updated: 2026-06-01*
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Updated: 2026-06-02*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Updated: 2026-06-02*
+- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Updated: 2026-06-02*
 
 </details>
 
