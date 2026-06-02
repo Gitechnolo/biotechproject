@@ -699,24 +699,12 @@ if ('requestIdleCallback' in window) {
 
     function handleNavKeyDown(e) {
       const target = e.target;
-      
-      // ESCAPE: Chiude il dropdown aperto e riposiziona il focus sul trigger principale in sicurezza
       if (e.key === 'Escape' && openDropdown) {
         const triggerBtn = openDropdown.previousElementSibling;
         closeDropdown(openDropdown);
-        triggerBtn?.focus(); 
+        triggerBtn.focus();
         return;
       }
-
-      // SE TI TROVI SUL PULSANTE PRINCIPALE E PREMI FRECCIA GIÙ: APRI E SPOSTA IL FOCUS ALL'INTERNO
-      if (target.classList.contains('tech-nav-btn') && e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (target.getAttribute('aria-expanded') !== 'true') handleDropdownToggle(target);
-        setTimeout(() => target.nextElementSibling?.querySelector('[role="menuitem"]')?.focus(), 150);
-        return;
-      }
-
-      // NAVIGAZIONE INTERNA AL MENU APERTO (Ciclo continuo degli indici)
       if (openDropdown && openDropdown.contains(target)) {
         const items = Array.from(openDropdown.querySelectorAll('[role="menuitem"]:not([disabled])'));
         const currentIndex = items.indexOf(target);
@@ -724,10 +712,7 @@ if ('requestIdleCallback' in window) {
         else if (e.key === 'ArrowUp') { e.preventDefault(); items[(currentIndex - 1 + items.length) % items.length].focus(); }
         else if (e.key === 'Home') { e.preventDefault(); items[0].focus(); }
         else if (e.key === 'End') { e.preventDefault(); items[items.length - 1].focus(); }
-      } 
-      // ATTIVAZIONE DIRETTA DA TASTIERA (Spazio / Enter)
-      else if (target.classList.contains('tech-nav-btn') && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault(); // Blocca lo scroll nativo del browser quando viene premuto il tasto Spazio
+      } else if (target.classList.contains('tech-nav-btn') && (e.key === 'Enter' || e.key === ' ')) {
         setTimeout(() => target.nextElementSibling?.querySelector('[role="menuitem"]')?.focus(), 120);
       }
     }
