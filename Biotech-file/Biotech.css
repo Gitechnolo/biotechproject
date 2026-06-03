@@ -116,7 +116,7 @@ a[target="_blank"] {
 }
 /* La freccetta magica */
 a[target="_blank"]::after {
-    content: " ↗";
+    content: " ↗" / ""; /* Secondo parametro vuoto per dire alle tecnologie assistive di ignorare la freccia */
     display: inline-block; 
     text-decoration: none; /* Fondamentale: la freccia non deve avere la riga sotto */
     font-size: 0.75em;
