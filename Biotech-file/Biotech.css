@@ -124,7 +124,7 @@ a[target="_blank"]::after {
     vertical-align: baseline; /* Più stabile per i font tecnici */
     opacity: 0.7;
 }
-/* Rimuove la sottolineatura dall'emoji se lo span è presente */
+/* Rimuove la sottolineatura da icone/emoji decorative interne se presente lo span dedicato */
 a[target="_blank"] span[aria-hidden="true"] {
     text-decoration: none;
     margin-right: 4px;
