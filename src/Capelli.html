@@ -46,7 +46,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
 /* SRE-Performance: Gestione carico estremo 130KB */
-.text, .image-text-wrapper, .image-text-wrapper-reversed, ul, dl, ol, .quotes{ content-visibility: auto; contain-intrinsic-size: auto 300px;}
+.image-text-wrapper, .image-text-wrapper-reversed{ content-visibility: auto; contain-intrinsic-size: auto 350px; }
 /* Escludi il primo blocco (Above the Fold) per un caricamento istantaneo */
 h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible !important; contain: none !important}
 /* Mantenimento Layout esistente */
