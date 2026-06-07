@@ -45,22 +45,26 @@
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech_terminal.min.css">
 </noscript>
 <style>
-html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', system-ui, sans-serif; line-height: 1.6; font-size: 16px; width: 100%;}
+html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4d3d3; font-family: 'Sansation', sans-serif, system-ui; line-height: 1.6; font-size: 16px; width: 100%;}
 /* 1. Il contenuto è visibile di default (per SEO e No-JS) */
 #main-content { opacity: 1; }
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
-/* SRE Performance: Accelerazione per blocchi pesanti, Grid e Sezioni Critiche */
-.text, .grid-container, .grid-container50, .grid-container20x80, .list, .staff-row, .biotech-summary-box{ content-visibility: auto;}
+
+/* SRE Performance: Accelerazione per blocchi pesanti e Sezioni Critiche (Rimosse le grid generiche per evitare sfarfallii) */
+.text, .list, .staff-row, .biotech-summary-box { content-visibility: auto; }
 .text, .list { contain-intrinsic-size: 1px 400px; }
-.grid-container, .grid-container50, .grid-container20x80 { contain-intrinsic-size: 1px 500px; }
+
 /* [CLS FIX] Prenotazione dello spazio per blocchi asincroni above-the-fold */
-.staff-row { contain-intrinsic-size: 1px 600px; } 
-.biotech-summary-box { contain-intrinsic-size: 1px 250px; } 
+/* Valori di default ottimizzati per Mobile (schermi stretti = blocchi più alti) */
+.staff-row { contain-intrinsic-size: 1px 950px; } 
+.biotech-summary-box { contain-intrinsic-size: 1px 580px; } 
+
 /* Protezione Modali e Logo (Priorità di rendering) */
 .modal, .modal-content, .modern-logo, h1 { content-visibility: visible !important; contain: none !important; }
 /* [CLS FIX] Isolamento dell'animazione del logo per impedire reflow del testo */
 .modern-logo { will-change: transform; } 
+
 /* Layout e Stili Base */
 .canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; }
 .staff-layout-container { padding-top: 30px; width: 100%; min-height: 1px; }
@@ -68,13 +72,29 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
 .modern-logo { display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9; }
 .pulse-logo { opacity: 0.9; }
-/* Grid Layout */
+
+/* Grid Layout Base (Mobile First) */
 .grid-container, .grid-container50, .grid-container20x80 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media (min-width: 768px){ .grid-container{ grid-template-columns: 37% 31% 31%;} .grid-container50{ grid-template-columns: 1fr 1fr;} .grid-container20x80{ grid-template-columns: 20% 80%;}} 
+
+/* Elementi d'immagine e spaziatura */
 .imgRightfl, .imgLeftfl { display: flex; margin: 10px; }
 .imgRightfl { margin-left: auto; }
 .imgLeftfl { margin-right: auto; }
 .mt-30 { margin-bottom: 30px; }
+
+/* ==========================================
+   MEDIA QUERY UNICA PER SCHERMI GRANDI (Desktop)
+   ========================================== */
+@media (min-width: 768px) {
+    /* [CLS FIX Desktop] I blocchi affiancati tornano ad essere più bassi */
+    .staff-row { contain-intrinsic-size: 1px 600px; } 
+    .biotech-summary-box { contain-intrinsic-size: 1px 250px; }
+    
+    /* Configurazione Colonne Grid Layout */
+    .grid-container { grid-template-columns: 37% 31% 31%; } 
+    .grid-container50 { grid-template-columns: 1fr 1fr; } 
+    .grid-container20x80 { grid-template-columns: 20% 80%; }
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
