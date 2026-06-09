@@ -38,6 +38,7 @@
 <link id="preload-style" rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <!-- Preload font -->
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2" as="font" type="font/woff2" crossorigin>
 <noscript><link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css"></noscript>
 <style>
 html,body{margin:0;padding:0;background-color:rgba(1,8,8,.94);color:#d4d3d3;font-family:'Sansation',system-ui,sans-serif;line-height:1.6;font-size:16px;width:100%}
@@ -45,17 +46,29 @@ html,body{margin:0;padding:0;background-color:rgba(1,8,8,.94);color:#d4d3d3;font
 #main-content { opacity: 1; }
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
-/* SRE Performance - Applicato SOLO ai blocchi di testo puro per non rompere i popup */
+
+/* SRE Performance - Ottimizzazione rendering blocchi di testo */
 .text{ content-visibility: auto; contain-intrinsic-size: 1px 300px; contain: layout style}
-/* Escludiamo esplicitamente le gallerie e i modali per preservare il layout */
-.modal, .modal-content, .row, .column{ content-visibility: visible !important; contain: none !important}
+
+/* [CLS FIX CRITICO] Prenotazione spazio per la struttura principale (Previene lo shift di 0.796) */
+.staff-row { 
+  content-visibility: auto; 
+  contain-intrinsic-size: 1px 950px; /* Valore ottimale per Mobile (testo lungo in verticale) */
+  contain: layout style;
+  line-height: 1.6 !important; /* Blocca le linee per evitare che il cambio carattere sposti il layout */
+}
+
+/* Escludiamo esplicitamente le gallerie, i modali e i componenti critici */
+.modal, .modal-content, .row, .column, #sre-wing, .sre-dashboard { content-visibility: visible !important; contain: none !important}
 h1,.modern-logo{content-visibility:visible!important}
+
 .canvas-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden}
 .staff-layout-container{padding-top:30px;width:100%;min-height:1px}
 .tech-nav-container{min-height:56px}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{display:block;margin:15px auto 20px;max-width:90vw;height:auto;aspect-ratio:720/180;border-radius:8px;border:0;opacity:.9}
 .pulse-logo{opacity:.9}
+
 div.gallery{border:1px solid #ccc;border-radius:6px}
 div.gallery:hover{border:1px solid #777;border-radius:6px}
 div.gallery img{width:100%;height:auto}
@@ -63,8 +76,18 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
 *{box-sizing:border-box}
 .responsive{padding:0 6px;float:left;width:24.99999%}
 .clearfix:after{content:"";display:table;clear:both}
+
+/* Responsive e Correzione CLS Desktop */
 @media only screen and (max-width:700px){.responsive{width:49.99999%;margin:6px 0}}
 @media only screen and (max-width:500px){.responsive{width:100%}}
+
+/* [CLS FIX DESKTOP] Su computer lo schermo è largo, il testo si distende in orizzontale e l'altezza diminuisce */
+@media only screen and (min-width: 1024px) {
+  .staff-row { 
+    contain-intrinsic-size: 1px 400px; /* Altezza stimata reale per schermi grandi */
+    min-height: 400px;
+  }
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
