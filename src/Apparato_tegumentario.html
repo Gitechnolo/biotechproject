@@ -50,23 +50,21 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 #main-content { opacity: 1; }
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
-/* SRE Performance: Accelerazione per blocchi pesanti e Sezioni Critiche (Rimosse le grid generiche per evitare sfarfallii) */
+/* SRE Performance: Accelerazione rendering per sezioni asincrone */
 .text, .list, .staff-row, .biotech-summary-box { content-visibility: auto; }
 .text, .list { contain-intrinsic-size: 1px 400px; }
-/* [CLS FIX] Prenotazione dello spazio per blocchi asincroni above-the-fold */
-/* Valori default per Mobile: schermi stretti = i testi vanno a capo e i blocchi si allungano in verticale (CLS Mobile stabile a 0.12) */
+/* [CLS FIX Mobile] Prenotazione dello spazio per blocchi verticali su schermi stretti */
 .staff-row { contain-intrinsic-size: 1px 950px; } 
 .biotech-summary-box { contain-intrinsic-size: 1px 580px; } 
-/* Protezione Modali e Logo (Priorità di rendering) */
+/* Protezione elementi critici Above-The-Fold e Modali */
 .modal, .modal-content, .modern-logo, h1 { content-visibility: visible !important; contain: none !important; }
-/* [CLS FIX] Isolamento dell'animazione del logo per impedire reflow del testo */
-.modern-logo { will-change: transform; } 
 /* Layout e Stili Base */
 .canvas-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; }
 .staff-layout-container { padding-top: 30px; width: 100%; min-height: 1px; }
 .tech-nav-container { min-height: 56px; }
 .logo-wrapper-cls { min-height: 215px; display: flex; align-items: center; justify-content: center; }
-.modern-logo { display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9; }
+/* Accorpate le regole di stile e isolamento del logo in un unico selettore */
+.modern-logo { display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9; will-change: transform; }
 .pulse-logo { opacity: 0.9; }
 /* Grid Layout Base (Mobile First) */
 .grid-container, .grid-container50, .grid-container20x80 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
