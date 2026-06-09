@@ -47,18 +47,18 @@ html,body{margin:0;padding:0;background-color:rgba(1,8,8,.94);color:#d4d3d3;font
 /* 2. Se il browser è moderno (supporta :has), nascondilo subito in attesa dello script */
 @supports (selector(html:has(body))){ #main-content{ opacity: 0; transition: opacity 0.3s ease;}}
 
-/* SRE Performance - Ottimizzazione rendering blocchi di testo genenerici */
+/* SRE Performance - Ottimizzazione rendering blocchi di testo */
 .text{ content-visibility: auto; contain-intrinsic-size: 1px 300px; contain: layout style}
 
-/* Configurazione Mobile Base per il blocco critico (Stima prudenziale per schermi stretti) */
+/* [CLS FIX CRITICO] Prenotazione spazio per la struttura principale (Previene lo shift di 0.796) */
 .staff-row { 
   content-visibility: auto; 
-  contain-intrinsic-size: 1px 750px; 
+  contain-intrinsic-size: 1px 950px; /* Valore ottimale per Mobile (testo lungo in verticale) */
   contain: layout style;
-  line-height: 1.6 !important; /* Blocca le righe contro i micro-salti causati dai font web */
+  line-height: 1.6 !important; /* Blocca le linee per evitare che il cambio carattere sposti il layout */
 }
 
-/* Escludiamo esplicitamente le gallerie, i modali e i componenti analitici per non bloccarne le funzioni */
+/* Escludiamo esplicitamente le gallerie, i modali e i componenti critici */
 .modal, .modal-content, .row, .column, #sre-wing, .sre-dashboard { content-visibility: visible !important; contain: none !important}
 h1,.modern-logo{content-visibility:visible!important}
 
@@ -77,15 +77,15 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
 .responsive{padding:0 6px;float:left;width:24.99999%}
 .clearfix:after{content:"";display:table;clear:both}
 
-/* Griglia responsive per immagini e colonne */
+/* Responsive e Correzione CLS Desktop */
 @media only screen and (max-width:700px){.responsive{width:49.99999%;margin:6px 0}}
 @media only screen and (max-width:500px){.responsive{width:100%}}
 
-/* [CLS FIX TABLET & DESKTOP] Schermi ampi da 992px in su: 
-   Il testo si distende in orizzontale, riduciamo la stima dello spazio per evitare vuoti artificiali */
-@media only screen and (min-width: 992px) {
+/* [CLS FIX DESKTOP] Su computer lo schermo è largo, il testo si distende in orizzontale e l'altezza diminuisce */
+@media only screen and (min-width: 1024px) {
   .staff-row { 
-    contain-intrinsic-size: 1px 400px; 
+    contain-intrinsic-size: 1px 400px; /* Altezza stimata reale per schermi grandi */
+    min-height: 400px;
   }
 }
 </style>
