@@ -104,8 +104,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <!-- Modal -->
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <h2 id="modal-title" class="sr-only">Immagine ingrandita</h2>
-    <!-- ACCESSIBILITÀ: Convertito span in vero button -->
-    <button type="button" class="close" aria-label="Chiudi"><span aria-hidden="true">&times;</span></button>
+<!-- ACCESSIBILITÀ: Sostituito span con <button> nativo e nascosto l'entità grafico agli screen reader per evitare letture errate -->
+<button type="button" class="close" aria-label="Chiudi"><span aria-hidden="true">&times;</span></button>
     <img class="modal-content" id="img01" alt="">
     <div id="caption"></div>
 </div>
