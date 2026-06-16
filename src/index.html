@@ -55,13 +55,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .yt-video-controls{display:flex; position: absolute; bottom: 0; left: 0; z-index: 10; transform: translateY(100%); transition: transform 0.3s ease}
 /* Mostra i controlli al passaggio del mouse o quando il video è attivo (gestito dallo script) */
 #ytVideoContainer:hover .yt-video-controls{ transform: translateY(0)}
-.biotech-modal-trigger {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-}
+.biotech-modal-trigger{ background: none; border: none; padding: 0; font: inherit; cursor: pointer}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -98,7 +92,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <header><h1 data-lang-key="main-heading" class="sansation-bold">Benvenuti nel Progetto Biotech!</h1><p class="text" data-lang-key="manifesto_title">Un organismo digitale resiliente: il ponte tra biologia umana e innovazione tecnologica d'avanguardia. </p></header>
 <section style="margin-bottom: 7px;"><p class="text"><span data-lang-key="manifesto_intro_p1">BiotechProject non è solo informazione: è un'architettura</span><span class="highlight-text">Stateless Edge</span><span data-lang-key="manifesto_intro_p2">progettata per democratizzare la scienza. Grazie al nostro</span><a href="https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827" target="_blank" rel="noopener" title="Issue GitHub" aria-label="Neural Core v6.4.0 (si apre in una nuova scheda su GitHub)"><span aria-hidden="true" style="text-decoration: none; display: inline-block;">🔗</span><span class="highlight-text">Neural Core v6.4.0</span></a><span data-lang-key="manifesto_intro_p3">, monitora la propria salute sistemica e protegge l'utente con filosofia Zero-Knowledge, garantendo accesso universale e privacy assoluta.</span></p><p class="text" data-lang-key="manifesto_pillars_title">I nostri pilastri evolutivi:</p><ul class="text"><li><strong data-lang-key="pillar_1_title">Inclusione Universale (WCAG 2.2 AAA):</strong><span data-lang-key="manifesto_pillar_1">Oltre la semplice accessibilità. Offriamo ecosistemi cognitivi ottimizzati per neurodivergenze e DSA, garantendo la stessa dignità informativa a ogni utente.</span></li><li><strong data-lang-key="pillar_2_title">Resilienza Predittiva:</strong><span data-lang-key="manifesto_pillar_2_p1">Monitoraggio passivo tramite</span><span class="highlight-text">The Guardian</span><span data-lang-key="manifesto_pillar_2_p2">. Il sistema auto-ripara le performance (Self-Healing) e adatta l'interfaccia in tempo reale ai ritmi biologici e alla latenza di rete.</span></li></ul><div><p class="text italic" data-lang-key="manifesto_goal">La nostra missione è trasformare la complessità in chiarezza, rendendo la salute e la biotecnologia un patrimonio accessibile, sicuro e sovrano.</p><p class="text" data-lang-key="main-description">"La salute è il nostro bene più prezioso, la nostra serenità è il nostro destino di salute."</p></div></section>
 <div id="ytVideoContainer">
-  <!-- Poster caricato come immagine con priorità bassa. (accessibilità video con supporto tastiera) -->
+<!-- Poster caricato come immagine con priorità bassa. (accessibilità video con supporto tastiera) -->
 <img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" alt="Anteprima video: Foresta verticale di Singapore" loading="lazy" decoding="sync" role="button" tabindex="0" aria-label="Riproduci video: Foresta verticale di Singapore" style="width:100%; display:block; cursor:pointer;" width="633" height="281">
 <!-- Controlli (inizialmente nascosti) -->
 <div class="yt-video-controls" style="display:none;"><button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button><input type="range" id="ytProgress" aria-label="Progresso range" min="0" value="0" step="0.01" class="yt-range"><span id="ytCurrentTime" class="yt-Ctime">0:00</span>/ <span id="ytDuration" class="yt-video-duration">0:00</span><button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button><input type="range" id="ytVolume" aria-label="Volume" min="0" max="1" step="0.01" value="1" class="yt-vol"><button id="ytFullscreen" aria-label="Attiva modalità schermo intero" title="Enter Fullscreen">⛶</button><button id="ytExitFullscreen" style="display:none;" aria-label="Esci dalla modalità schermo intero" title="Exit Fullscreen">⤫</button></div>
@@ -106,24 +100,21 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div aria-label="Descrizione del video" class="mb-25"><p class="sansation-light-italic" data-lang-key="video-desc">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div>
 <p class="text highlight-text" data-lang-key="simple_cellular_understanding_intro">Comprendere il nostro corpo a livello cellulare è il primo passo verso un benessere consapevole. Ecco alcuni concetti fondamentali:</p>
 <div id="descrizione-completa" class="mb-25">
-  <h2 class="secHeader" data-lang-key="section-science">Fondamenti biologici dell'integrità sistemica: i pilastri della salute cellulare.</h2>
-  
-  <!-- Modal -->
-  <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<h2 class="secHeader" data-lang-key="section-science">Fondamenti biologici dell'integrità sistemica: i pilastri della salute cellulare.</h2>
+<!-- Modal -->
+<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <h2 id="modal-title" class="sr-only">Immagine ingrandita</h2>
     <!-- ACCESSIBILITÀ: Convertito span in vero button -->
     <button type="button" class="close" aria-label="Chiudi">&times;</button>
     <img class="modal-content" id="img01" alt="">
     <div id="caption"></div>
-  </div>
-
-  <!-- Immagini nascoste -->
+</div>
+<!-- Immagini nascoste -->
   <img id="myImg" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Mitocondri.avif" data-lang-key="modal-mitocondri-alt" alt="Mitocondri" style="display:none" width="1000" height="571" loading="lazy" decoding="async">
   <img id="myImg2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Lisosoma.avif" data-lang-key="modal-lisosoma-alt" alt="Lisosoma" style="display:none" width="1000" height="523" loading="lazy" decoding="async">
   <img id="myImg3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Miochine.avif" data-lang-key="modal-miochine-alt" alt="Miochine" style="display:none" width="1000" height="523" loading="lazy" decoding="async">
   <img id="myImg4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Pelle.avif" data-lang-key="modal-pelle-alt" alt="Pelle" style="display:none" width="1000" height="523" loading="lazy" decoding="async">
-
-  <!-- Termine: Mitocondri -->
+<!-- Termine: Mitocondri -->
   <ruby class="pronounceable">
     <span class="Biotech-icon">🔬</span>
     <button type="button" class="highlight biotech-modal-trigger" data-lang-key="mitocondri-term" data-target-img="myImg">Mitocondri</button>
@@ -137,8 +128,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="biotechtitle" data-lang-key="mitocondri-analogy">Sono le "centrali energetiche" della cellula.</p>
   <p class="biotechtitle" data-lang-key="mitocondri-function">Producono l'energia necessaria a tutte le funzioni vitali, trasformando i nutrienti in ATP, il "carburante" universale della cellula.</p>
   <p class="biotechtitle" data-lang-key="mitocondri-process-name">Questo processo è noto come respirazione cellulare.</p>
-
-  <!-- Termine: Lisosoma -->
+<!-- Termine: Lisosoma -->
   <ruby class="pronounceable">
     <span class="Biotech-icon">🔬</span>
     <button type="button" class="highlight biotech-modal-trigger" data-lang-key="lisosoma-term" data-target-img="myImg2">Lisosoma</button>
@@ -152,8 +142,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="biotechtitle" data-lang-key="lisosoma-analogy">Immagina i lisosomi come la "discarica" e il "centro di riciclaggio" della cellula.</p>
   <p class="biotechtitle" data-lang-key="lisosoma-function">Il loro compito è distruggere le parti vecchie o danneggiate e i germi, per poi riciclare i materiali utili per costruire nuove strutture.</p>
   <p class="biotechtitle" data-lang-key="lisosoma-summary">In questo modo, aiutano la cellula a mantenersi pulita e sana.</p>
-
-  <!-- Termine: Miochine -->
+<!-- Termine: Miochine -->
   <ruby class="pronounceable">
     <span class="Biotech-icon">🔬</span>
     <button type="button" class="highlight biotech-modal-trigger" data-lang-key="miochine-term" data-target-img="myImg3">Miochine</button>
@@ -167,8 +156,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="biotechtitle" data-lang-key="miochine-intro">Le miochine sono molecole speciali rilasciate dai muscoli quando ti muovi. Sono come messaggeri che viaggiano attraverso il corpo per comunicare con gli altri organi.</p>
   <p class="biotechtitle" data-lang-key="miochine-functions">Hanno diversi ruoli importanti: combattono l'infiammazione e possono aiutare a prevenire i tumori, ma servono anche a migliorare le funzioni del cervello, come la memoria e l'attenzione.</p>
   <p class="biotechtitle" data-lang-key="miochine-conclusion">Questo è uno dei motivi per cui l'attività fisica regolare è fondamentale per la salute generale e per il benessere del cervello.</p>
-
-  <!-- Termine: La pelle -->
+<!-- Termine: La pelle -->
   <ruby class="pronounceable">
     <span class="Biotech-icon">🔬</span>
     <button type="button" class="highlight biotech-modal-trigger" data-lang-key="pelle-term" data-target-img="myImg4">La pelle</button>
