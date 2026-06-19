@@ -189,9 +189,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     </p>
 </div>
 <div class="light-controls">
-<button onclick="turnOnLight()" data-lang-key="light-on" class="tech-nav-btn">Accendi la luce</button>
-<img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif" alt="Immagine lampadina" width="100" height="180" loading="lazy" />
-<button onclick="turnOffLight()" data-lang-key="light-off" class="tech-nav-btn">Spegni la luce</button>
+    <button id="btn-on" data-lang-key="light-on" class="tech-nav-btn">Accendi la luce</button>
+    
+    <img id="myImage" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif" alt="Lampadina spenta" width="100" height="180" loading="lazy" />
+    
+    <button id="btn-off" data-lang-key="light-off" class="tech-nav-btn">Spegni la luce</button>
+
+    <div id="accessible-status" aria-live="polite" class="sr-only">La luce è attualmente spenta.</div>
 </div>
 <div id="about">
 <p class="sansation-light-italic" data-lang-key="minotaur_quote">"Rinunciamo ad uccidere il Minotauro."</p>
@@ -220,7 +224,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     </div>
   </div>
 </div>
- </div>  
+   
 <!-- End container: prevenzione CLS -->
 </main>
 <!-- End contenuto principale (per Skip to main e accessibilità) -->

@@ -356,15 +356,31 @@ function exportHolidayData(format = 'json') {
 
 })();
 
-
 // Light effect functions
-function turnOnLight() {
-    const img = document.getElementById('myImage');
-    if (img) { img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif'; img.classList.add('bulb-glow'); }
+// 1. Seleziona tutti gli elementi necessari dal DOM
+const btnOn = document.getElementById('btn-on');
+const btnOff = document.getElementById('btn-off');
+const img = document.getElementById('myImage');
+const statusText = document.getElementById('accessible-status');
+
+// 2. Gestione del click per ACCENDERE
+if (btnOn && img && statusText) {
+    btnOn.addEventListener('click', () => {
+        img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
+        img.alt = 'Lampadina accesa e splendente';
+        img.classList.add('bulb-glow');
+        statusText.textContent = 'La luce è stata accesa.'; 
+    });
 }
-function turnOffLight() {
-    const img = document.getElementById('myImage');
-    if (img) { img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif'; img.classList.remove('bulb-glow'); }
+
+// 3. Gestione del click per SPEGNERE
+if (btnOff && img && statusText) {
+    btnOff.addEventListener('click', () => {
+        img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
+        img.alt = 'Lampadina spenta';
+        img.classList.remove('bulb-glow');
+        statusText.textContent = 'La luce è stata spenta.'; 
+    });
 }
 
 // === EFFECT WITH FADE-IN SEQUENCE (Encapsulated) ===
