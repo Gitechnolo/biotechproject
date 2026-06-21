@@ -42,6 +42,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 .specialsMarket-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
+/* Stile sezione di analisi del mercato */
+.biotech-section-title{ font-family: 'Sansation', 'Segoe UI', Roboto, sans-serif; font-size: 1.4rem; color: #e7e7e7; margin-top: 20px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid #00ff55; padding-left: 10px;}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -69,10 +71,32 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<p class="sansation-bold mb-15" data-lang-key="intelligence_title">Hub di Bio-Cyber Intelligence e Proiezioni Neurali</p>
+<h1 class="sansation-bold mb-15" data-lang-key="intelligence_title">Hub di Bio-Cyber Intelligence e Proiezioni Neurali</h1>
 <p class="text" data-lang-key="intelligence_intro">Qui analizziamo le tendenze globali nei settori del Marketing Cibernetico e della Bio-Health, illustrando come le nostre architetture neurali permettano alle aziende di scalare in questi mercati ad alta densità tecnologica. In un ecosistema in costante mutamento, la nostra missione è trasformare i dati predittivi in asset strategici per superare le sfide della transizione cibernetica.</p><br>
 <p class="biotechcenter" data-lang-key="network_analysis_full">Analisi di Rete: <span style="color: #00d4ff;">Bio-Health</span> & <span style="color: #d800d8;">Marketing Cibernetico</span> <span class="sansation-light-italic">(Tendenze Evolutive Globali)</span></p>   
-<section class="market-analysis-layer" aria-labelledby="graph-heading"><h1 id="graph-heading" class="sr-only">Biotech Market Neural Inference</h1><div class="sonification-control-wrapper mb-15" style="text-align: center;"><span class="pronounceable"><button id="enable-audio-btn" class="pronounce-btn" aria-label="Attiva Sonificazione dei dati (Trend Acustico)" title="Attiva feedback sonoro per i trend dei dati">🔊 <span class="pronunciation-text" style="font-size: 10px;">ENABLE SONIFICATION</span></button></span></div><div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div><canvas id="marketGraph" width="800" height="400" class="specialsMarket-img" role="img" aria-label="Analisi predittiva mercato biotech 2017-2032"><div id="accessible-table-container"></div></canvas></section>
+<!-- Sezione di analisi del mercato con grafico e sonificazione -->
+<section class="market-analysis-layer" aria-labelledby="graph-heading">
+<h2 id="graph-heading" class="biotech-section-title">Biotech Market Neural Inference </h2>
+<div class="sonification-control-wrapper mb-15" style="text-align: center;">
+    <span class="pronounceable">
+      <button id="enable-audio-btn" class="pronounce-btn" aria-label="Attiva Sonificazione dei dati (Trend Acustico)" title="Attiva feedback sonoro per i trend dei dati">
+        <span aria-hidden="true">🔊</span> 
+        <span class="pronunciation-text" style="font-size: 10px;">ENABLE SONIFICATION</span>
+      </button>
+    </span>
+</div>
+<div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+<canvas id="marketGraph" 
+          width="800" 
+          height="400" 
+          class="specialsMarket-img" 
+          role="img" 
+          aria-label="Grafico delle proiezioni di mercato Biotech (2017-2032)." 
+          aria-describedby="accessible-table-container">
+</canvas>
+<div id="accessible-table-container"></div>
+</section>
+<!-- Fine sezione di analisi del mercato -->
 <div class="biotechcenter mb-25" style="letter-spacing: 0.4px;"><p class="sansation-light-italic" data-lang-key="network_system_title" style="margin: 0;">Sistema di analisi di rete BiotechProject</p></div>    
 <p class="text" data-lang-key="network_system_intro"><span class="biotechbold">Il nostro sistema sfrutta architetture di rete avanzate per l'analisi dei mercati:</span><br>Le proiezioni per il settore della cibernetica indicano una crescita costante con un incremento stimato del 50% entro il 2028, puntando a un raddoppio del valore di adozione entro il 2032. Questo trend è supportato dalla crescente convergenza tra automazione industriale e infrastrutture di sicurezza neurale. Utilizziamo modelli addestrati su dataset multidimensionali che integrano serie temporali e sentiment analysis in tempo reale. Progettati per l'apprendimento continuo, i nostri algoritmi garantiscono che l'accuratezza predittiva rimanga elevata anche in mercati ad alta volatilità, fornendo alle aziende una comprensione profonda delle dinamiche attuali per supportare decisioni strategiche basate sui dati.</p>   
 <p class="text mb-25" data-lang-key="predictive_analysis">Siamo in grado di identificare correlazioni profonde tra eventi globali e fluttuazioni di mercato, elevando sensibilmente la precisione delle proiezioni.<br>Grazie a queste tecnologie avanzate, elaboriamo volumi massivi di dati in tempo reale, individuando tendenze e pattern complessi che sfuggirebbero a un'analisi tradizionale.<br>Questo garantisce un vantaggio competitivo cruciale per le aziende del settore, permettendo loro di anticipare i movimenti del mercato e ottimizzare le proprie strategie in modo proattivo.</p>   
