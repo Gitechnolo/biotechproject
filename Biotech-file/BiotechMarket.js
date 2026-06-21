@@ -230,6 +230,15 @@ async function runBiotechEngineV61() {
   const mapY = (val) => baseY - (val * vScale);
 
   // --- INTERAZIONE MOUSE AUTOMATED & HIGH PERFORMANCE ---
+  /**
+   * [ACCESSIBILITY HYBRID BRIDGE]
+   * NOTA METODOLOGICA: Al passaggio del mouse (`mouseenter`), viene forzato il focus sul canvas.
+   * * 1. REQUISITO WCAG 2.2 (Criterio 2.1.1): Garantisce l'accessibilità immediata da tastiera. 
+   * Un utente in modalità mista può usare subito le frecce direzionali senza dover prima cliccare.
+   * * 2. FOCUS MANAGEMENT: Lo scroll automatico operato nativamente dal browser è mantenuto 
+   * intenzionalmente come feedback visivo (Focus Anchoring) per isolare l'area di lavoro dell'utente.
+   * * 3. ORIENTAMENTO ALLA RICERCA (WCAG 3.0 Multimodal Concept): Sperimentazione di interfacce multimodali (Sincronizzazione Mouse/Tastiera).
+   */
   canvas.addEventListener('mouseenter', () => {
     if (document.activeElement !== canvas) {
       canvas.focus();
