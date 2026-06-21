@@ -96,7 +96,9 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
   const glossX = startX + 60; 
   const glossY = 50;
   ctx.font = "italic 10px monospace";
-  ctx.fillStyle = "rgba(231, 231, 231, 0.5)";
+  
+  // OTTIMIZZAZIONE CONTRASTO WCAG: Incrementata opacità a 0.85 per leggibilità su sfondo scuro
+  ctx.fillStyle = "rgba(231, 231, 231, 0.85)";
   ctx.fillText("NEURAL INTERPRETATION GUIDE:", glossX, glossY);
   ctx.fillText("---------------------------------------", glossX, glossY + 10);
   
@@ -144,13 +146,12 @@ function injectAccessibleData(d) {
         </table>`;
 }
 
-// --- FUNZIONE HELPER CENTRALIZZATA PER L'ATTIVAZIONE DELL'INDICE DATI ---
+// --- FUNZIONE HELPER PER L'ATTIVAZIONE DELL'INDICE DATI ---
 function activateDataIndex(index, data) {
   if (index === activeYearIndex) return;
   
   activeYearIndex = index;
   
-  // Calcolo dinamico del valore corretto (Storico vs Forecast)
   const mVal = index < data.marketHist.length 
     ? data.marketHist[index] 
     : data.marketFore[index - data.marketHist.length];
@@ -174,19 +175,24 @@ async function runBiotechEngineV61() {
   injectAccessibleData(d);
 
   console.group("%c BiotechProject Systems ", SRE_NEU.group); 
-  console.log("%c🧠 NEURAL_CORE%c v6.2: Cross-Sector Data Matrix Integrated.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
+  console.log("%c🧠 NEURAL_CORE%c v6.2.1: High-Performance Performance Stack Sync.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
   console.log("%c🔊 AUDIO_SON%c Neural Soundscape: READY (WCAG 3.0 Concept).", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c🔮 INFERENCE%c Global Market Projections: Synced to 2032.", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c📥 DATA_FEED%c WHO, Statista & Gartner streams: ACTIVE.", SRE_NEU.sint + SRE_NEU.data, "color: #cccccc; font-family: monospace;");
   console.groupEnd();
 
-  // --- LOGICA ATTIVAZIONE AUDIO (MASTER CONTROL) ---
+  // --- LOGICA ATTIVAZIONE AUDIO (MASTER CONTROL CON STRUTTURA ARIA COMPLIANT) ---
   const audioBtn = document.getElementById('enable-audio-btn');
   if (audioBtn) {
+    audioBtn.setAttribute('aria-pressed', 'false');
+
     audioBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       BiotechAudio.init();
       isSonificationEnabled = !isSonificationEnabled;
+      
+      // Aggiornamento dinamico aria-pressed per Screen Reader
+      audioBtn.setAttribute('aria-pressed', isSonificationEnabled ? 'true' : 'false');
       
       const statusLabel = document.getElementById('audio-status-label');
       if (isSonificationEnabled) {
@@ -213,9 +219,15 @@ async function runBiotechEngineV61() {
   const vScale = (baseY - 120) / 450;
   const mapY = (val) => baseY - (val * vScale);
 
-  // --- INTERAZIONE MOUSE ---
+  // --- INTERAZIONE MOUSE AUTOMATED & HIGH PERFORMANCE ---
+  // Gestisce lo spostamento del focus all'ingresso dell'area una volta sola
+  canvas.addEventListener('mouseenter', () => {
+    if (document.activeElement !== canvas) {
+      canvas.focus();
+    }
+  });
+
   canvas.addEventListener('mousemove', (e) => {
-    // Sicurezza preventiva
     if (!d || !d.years || !d.years.length) return;
 
     const rect = canvas.getBoundingClientRect();
@@ -232,9 +244,15 @@ async function runBiotechEngineV61() {
 
   canvas.addEventListener('mouseleave', () => activeYearIndex = -1);
 
-  // --- INTERAZIONE TASTIERA AVANZATA (PROGRAMMAZIONE DIFENSIVA WCAG 3.0) ---
+  // --- FOCUS MANAGEMENT TASTIERA ---
+  canvas.addEventListener('focus', () => {
+    if (activeYearIndex === -1 && d && d.years && d.years.length > 0) {
+      activateDataIndex(0, d);
+    }
+  });
+
+  // --- INTERAZIONE TASTIERA AVANZATA (DISABILITY EQUITY PROMPTS) ---
   canvas.addEventListener('keydown', (e) => {
-    // Sicurezza: se la matrice dati non è definita o vuota, ignora l'evento
     if (!d || !d.years || !d.years.length) return; 
 
     let newIndex = activeYearIndex;
@@ -242,39 +260,31 @@ async function runBiotechEngineV61() {
 
     if (e.key === 'ArrowRight') {
       e.preventDefault();
-      if (activeYearIndex === -1) {
-        newIndex = 0; // Se non inizializzato, parte dal primo anno (2017)
-        moved = true;
-      } else if (activeYearIndex < d.years.length - 1) {
-        newIndex = activeYearIndex + 1; // Avanza senza loop disorientanti
+      if (activeYearIndex < d.years.length - 1) {
+        newIndex = activeYearIndex + 1;
         moved = true;
       }
     } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      if (activeYearIndex === -1) {
-        newIndex = d.years.length - 1; // Se non inizializzato, parte dall'ultimo anno (2032)
-        moved = true;
-      } else if (activeYearIndex > 0) {
-        newIndex = activeYearIndex - 1; // Arretra senza loop
+      if (activeYearIndex > 0) {
+        newIndex = activeYearIndex - 1;
         moved = true;
       }
     } else if (e.key === 'Home') {
       e.preventDefault();
-      newIndex = 0; // Salto istantaneo all'origine della timeline
+      newIndex = 0;
       moved = true;
     } else if (e.key === 'End') {
       e.preventDefault();
-      newIndex = d.years.length - 1; // Salto istantaneo al termine del forecast
+      newIndex = d.years.length - 1;
       moved = true;
     }
 
-    // Aggiorna lo stato globale solo se il movimento è confermato e l'indice differisce
     if (moved && newIndex !== activeYearIndex) {
       activateDataIndex(newIndex, d);
     }
   });
 
-  // Reset dello stato e notifica di chiusura al blur (perdita focus del Canvas)
   canvas.addEventListener('blur', () => {
     activeYearIndex = -1;
     const announcer = document.getElementById('live-announcer');
@@ -292,7 +302,9 @@ async function runBiotechEngineV61() {
     d.years.forEach((year, i) => {
       const x = startX + i * stepX;
       const isActive = (i === activeYearIndex);
-      ctx.strokeStyle = isActive ? "rgba(0, 255, 85, 0.3)" : "rgba(255, 255, 255, 0.05)";
+      
+      // OTTIMIZZAZIONE CONTRASTO WCAG: Incrementata opacità griglia base a 0.15 per rendering definito
+      ctx.strokeStyle = isActive ? "rgba(0, 255, 85, 0.3)" : "rgba(255, 255, 255, 0.15)";
       ctx.lineWidth = isActive ? 2 : 1;
       ctx.beginPath(); ctx.moveTo(x, baseY); ctx.lineTo(x, 50); ctx.stroke();
       ctx.textAlign = "center";
@@ -327,7 +339,7 @@ async function runBiotechEngineV61() {
     ctx.fillRect(-3, -3, 6, 6);
     ctx.restore();
 
-    // B. UI & PATHS (Il loop legge in tempo reale l'activeYearIndex modificato da mouse/tastiera)
+    // B. UI & PATHS
     renderProUI(ctx, canvas, d, startX, graphWidth, baseY);
     renderPath(ctx, d.equityHist.map(v=>mapY(v*1.6)), d.equityFore.map(v=>mapY(v*1.6)), "#00d4ff", startX, stepX, true);
     renderPath(ctx, d.cyberHist.map(v=>mapY(v)), d.cyberFore.map(v=>mapY(v)), "#d800d8", startX, stepX, false);
