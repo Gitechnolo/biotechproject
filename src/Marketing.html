@@ -42,6 +42,17 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 .specialsMarket-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
+/* Reset preventivo del focus di default del browser */
+.specialsMarket-img:focus{ outline: none}
+/* Stato di Focus Avanzato SOLO per Navigazione da Tastiera (WCAG 3.0 / SRE Approved) */
+.specialsMarket-img:focus-visible {
+  outline: 2px solid #00ff55;                  /* Bordo verde neon solido */
+  outline-offset: 4px;                          /* Distanziato dal canvas */
+  box-shadow: 0 0 20px rgba(0, 255, 85, 0.6);    /* Effetto Glow Cyberpunk */
+  transform: scale(1.015);                      /* Leggero ingrandimento (rifinito a 1.015 per stabilità) */
+  border-color: #00ff55;                        /* Bordo reale verde se presente */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transizione fluida per l'attivazione */
+}
 /* Stile sezione di analisi del mercato */
 .biotech-section-title{ font-family: 'Sansation', 'Segoe UI', Roboto, sans-serif; font-size: 1.4rem; color: #e7e7e7; margin-top: 20px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid #00ff55; padding-left: 10px;}
 </style>
@@ -87,12 +98,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 </div>
 <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 <canvas id="marketGraph" 
-          width="800" 
-          height="400" 
-          class="specialsMarket-img" 
-          role="img" 
-          aria-label="Grafico delle proiezioni di mercato Biotech (2017-2032)." 
-          aria-describedby="accessible-table-container">
+        tabindex="0"
+        width="800" 
+        height="400" 
+        class="specialsMarket-img" 
+        role="img" 
+        aria-label="Grafico delle proiezioni di mercato Biotech (2017-2032). Usa le frecce Destra e Sinistra per esplorare i dati cronologicamente." 
+        aria-describedby="accessible-table-container">
 </canvas>
 <div id="accessible-table-container"></div>
 </section>

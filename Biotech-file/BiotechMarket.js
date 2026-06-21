@@ -7,7 +7,8 @@
  * ║
  * ╠══ @Processing: Multi-Layer Predictive Intelligence (Bio-Cyber Convergence)
  * ╠══ @Model: Continuous Learning Neural Engine (Historical + Synthetic)
- * ╠══ @Accessibility: Neural Soundscape Integration (WCAG 3.0 Concept) 🔊
+ * ╠── @Accessibility: Neural Soundscape Integration (WCAG 3.0 Concept) 🔊
+ * ╚══ @Keyboard: Full Navigation Support (Arrow Keys + Home/End)    
  * ╚══ @Graphics: Hardware Accelerated Canvas API (Direct GPU Pipeline)
  * * [DATA FLOW PIPELINE]
  * ║
@@ -33,7 +34,8 @@
 /**
  * BIOTECH PROJECT | ANALYTICS ENGINE V6.1 (ZERO-FRAMEWORK AI)
  * -----------------------------------------------------------
- * Interaction: Mouse Hover | Logic: Neural Sonification (WCAG 3.0)
+ * Interaction: Mouse Hover & Keyboard Navigation (Frecce/Home/End)
+ * Logic: Neural Sonification (WCAG 3.0 Ready Concept)
  */
 const SRE_NEU = {
     sint: 'font-family: "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px; margin-right: 5px;',
@@ -102,7 +104,7 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
     ctx.fillStyle = "#00ff55";
     ctx.fillText(`PROBING TIMELINE: ${data.years[activeYearIndex]} | STATUS: ANALYZING...`, glossX, glossY + 25);
   } else {
-    ctx.fillText("HOVER OVER GRAPH TO PROBE SPECIFIC DATA", glossX, glossY + 25);
+    ctx.fillText("HOVER OR NAVIGATE GRAPH TO PROBE SPECIFIC DATA", glossX, glossY + 25);
   }
 
   const xHUD = canvas.width - 120; 
@@ -142,6 +144,29 @@ function injectAccessibleData(d) {
         </table>`;
 }
 
+// --- FUNZIONE HELPER CENTRALIZZATA PER L'ATTIVAZIONE DELL'INDICE DATI ---
+function activateDataIndex(index, data) {
+  if (index === activeYearIndex) return;
+  
+  activeYearIndex = index;
+  
+  // Calcolo dinamico del valore corretto (Storico vs Forecast)
+  const mVal = index < data.marketHist.length 
+    ? data.marketHist[index] 
+    : data.marketFore[index - data.marketHist.length];
+
+  // Trigger della Sonificazione (Vincolato al Master Switch)
+  if (typeof isSonificationEnabled !== 'undefined' && isSonificationEnabled) {
+    BiotechAudio.playTone(mVal, 'cyber');
+  }
+
+  // Aggiornamento atomico del Live Announcer per Screen Reader
+  const announcer = document.getElementById('live-announcer');
+  if (announcer) {
+    announcer.textContent = `Anno ${data.years[index]}. Valore mercato: ${mVal} Miliardi.`;
+  }
+}
+
 async function runBiotechEngineV61() {
   const canvas = document.getElementById('marketGraph');
   const ctx = canvas.getContext('2d');
@@ -149,7 +174,7 @@ async function runBiotechEngineV61() {
   injectAccessibleData(d);
 
   console.group("%c BiotechProject Systems ", SRE_NEU.group); 
-  console.log("%c🧠 NEURAL_CORE%c v6.1: Cross-Sector Data Matrix Integrated.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
+  console.log("%c🧠 NEURAL_CORE%c v6.2: Cross-Sector Data Matrix Integrated.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
   console.log("%c🔊 AUDIO_SON%c Neural Soundscape: READY (WCAG 3.0 Concept).", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c🔮 INFERENCE%c Global Market Projections: Synced to 2032.", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c📥 DATA_FEED%c WHO, Statista & Gartner streams: ACTIVE.", SRE_NEU.sint + SRE_NEU.data, "color: #cccccc; font-family: monospace;");
@@ -188,27 +213,18 @@ async function runBiotechEngineV61() {
   const vScale = (baseY - 120) / 450;
   const mapY = (val) => baseY - (val * vScale);
 
+  // --- INTERAZIONE MOUSE ---
   canvas.addEventListener('mousemove', (e) => {
+    // Sicurezza preventiva
+    if (!d || !d.years || !d.years.length) return;
+
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const relativeX = mouseX - startX;
     const index = Math.round(relativeX / stepX);
     
     if (index >= 0 && index < d.years.length) {
-      if (index !== activeYearIndex) {
-        const mVal = index < d.marketHist.length ? d.marketHist[index] : d.marketFore[index - d.marketHist.length];
-
-        // Trigger Sonoro controllato dal Master Switch
-        if (typeof isSonificationEnabled !== 'undefined' && isSonificationEnabled) {
-          BiotechAudio.playTone(mVal, 'cyber');
-        }
-
-        const announcer = document.getElementById('live-announcer');
-        if (announcer) {
-          announcer.textContent = `Analisi anno ${d.years[index]}: valore mercato ${mVal}B.`;
-        }
-      }
-      activeYearIndex = index;
+      activateDataIndex(index, d);
     } else {
       activeYearIndex = -1;
     }
@@ -216,6 +232,58 @@ async function runBiotechEngineV61() {
 
   canvas.addEventListener('mouseleave', () => activeYearIndex = -1);
 
+  // --- INTERAZIONE TASTIERA AVANZATA (PROGRAMMAZIONE DIFENSIVA WCAG 3.0) ---
+  canvas.addEventListener('keydown', (e) => {
+    // Sicurezza: se la matrice dati non è definita o vuota, ignora l'evento
+    if (!d || !d.years || !d.years.length) return; 
+
+    let newIndex = activeYearIndex;
+    let moved = false;
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (activeYearIndex === -1) {
+        newIndex = 0; // Se non inizializzato, parte dal primo anno (2017)
+        moved = true;
+      } else if (activeYearIndex < d.years.length - 1) {
+        newIndex = activeYearIndex + 1; // Avanza senza loop disorientanti
+        moved = true;
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (activeYearIndex === -1) {
+        newIndex = d.years.length - 1; // Se non inizializzato, parte dall'ultimo anno (2032)
+        moved = true;
+      } else if (activeYearIndex > 0) {
+        newIndex = activeYearIndex - 1; // Arretra senza loop
+        moved = true;
+      }
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      newIndex = 0; // Salto istantaneo all'origine della timeline
+      moved = true;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      newIndex = d.years.length - 1; // Salto istantaneo al termine del forecast
+      moved = true;
+    }
+
+    // Aggiorna lo stato globale solo se il movimento è confermato e l'indice differisce
+    if (moved && newIndex !== activeYearIndex) {
+      activateDataIndex(newIndex, d);
+    }
+  });
+
+  // Reset dello stato e notifica di chiusura al blur (perdita focus del Canvas)
+  canvas.addEventListener('blur', () => {
+    activeYearIndex = -1;
+    const announcer = document.getElementById('live-announcer');
+    if (announcer) {
+      announcer.textContent = "Navigazione grafico terminata.";
+    }
+  });
+
+  // --- LOOP DI RENDERING GRAFICO ---
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const glow = 10 + Math.sin(Date.now() / 300) * 5;
@@ -233,17 +301,15 @@ async function runBiotechEngineV61() {
       ctx.fillText(year, x, baseY + 30);
     });
 
-    // --- MARKER DI SINCRONIZZAZIONE (Ripristino Design Avanzato) ---
+    // --- MARKER DI SINCRONIZZAZIONE ---
     const transitionIndex = d.marketHist.length - 1; 
     const tx = startX + transitionIndex * stepX;
 
     ctx.save();
-    // Linea verticale tratteggiata
     ctx.strokeStyle = "rgba(231, 231, 231, 0.4)";
     ctx.setLineDash([4, 4]);
     ctx.beginPath(); ctx.moveTo(tx, baseY); ctx.lineTo(tx, 45); ctx.stroke();
 
-    // Doppia etichetta Sync Point
     ctx.textAlign = "center";
     ctx.fillStyle = "#e7e7e7";
     ctx.font = "bold 10px 'Sansation', monospace";
@@ -252,7 +318,6 @@ async function runBiotechEngineV61() {
     ctx.font = "8px 'Sansation', monospace";
     ctx.fillText("NEURAL_INFERENCE_START", tx, 30);
 
-    // Nodo a Rombo SRE
     const ty = mapY(d.marketHist[transitionIndex]);
     ctx.translate(tx, ty);
     ctx.rotate(Math.PI / 4);
@@ -261,9 +326,8 @@ async function runBiotechEngineV61() {
     ctx.shadowColor = "#fff";
     ctx.fillRect(-3, -3, 6, 6);
     ctx.restore();
-    // -------------------------------------------------------------
 
-    // B. UI & PATHS
+    // B. UI & PATHS (Il loop legge in tempo reale l'activeYearIndex modificato da mouse/tastiera)
     renderProUI(ctx, canvas, d, startX, graphWidth, baseY);
     renderPath(ctx, d.equityHist.map(v=>mapY(v*1.6)), d.equityFore.map(v=>mapY(v*1.6)), "#00d4ff", startX, stepX, true);
     renderPath(ctx, d.cyberHist.map(v=>mapY(v)), d.cyberFore.map(v=>mapY(v)), "#d800d8", startX, stepX, false);
