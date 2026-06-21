@@ -64,7 +64,7 @@ const BiotechAudio = {
         // Timbro differenziato: Square per Cyber, Sine per Health
         osc.type = (type === 'cyber') ? 'square' : 'sine';
 
-        gain.gain.setValueAtTime(0.05, this.ctx.currentTime); 
+        gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.3);
 
         osc.connect(gain);
@@ -75,8 +75,11 @@ const BiotechAudio = {
     }
 };  
 
-let activeYearIndex = -1; 
+let activeYearIndex = -1;
 let isSonificationEnabled = false; // Master Switch per conformità SRE
+
+// Riferimento globale alla funzione draw per permettere il trigger dagli event listener asincroni
+let triggerCanvasDraw = () => {};
 
 async function fetchIntegratedAnalytics() {
   return {
@@ -93,7 +96,7 @@ async function fetchIntegratedAnalytics() {
 
 function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
   ctx.save();
-  const glossX = startX + 60; 
+  const glossX = startX + 60;
   const glossY = 50;
   ctx.font = "italic 10px monospace";
   
@@ -109,13 +112,13 @@ function renderProUI(ctx, canvas, data, startX, graphWidth, baseY) {
     ctx.fillText("HOVER OR NAVIGATE GRAPH TO PROBE SPECIFIC DATA", glossX, glossY + 25);
   }
 
-  const xHUD = canvas.width - 120; 
-  const yHUD = baseY - 148; 
+  const xHUD = canvas.width - 120;
+  const yHUD = baseY - 148;
   ctx.font = "bold 12px 'Sansation', monospace";
   
   const currentCyber = data.cyberFore[data.cyberFore.length - 1];
   const items = [
-    { text: `> [CYBER_ADOPT] ${currentCyber}.0 INDEX`, col: "#d800d8" },
+    { text: `> [CYBER_ADOPT] ${currentCyber}.0 INDEX`, col: "#ff66ff" }, // OTTIMIZZAZIONE CONTRASTO: Modificato da #d800d8 a #ff66ff (fucsia chiaro) per soddisfare il WCAG AA richiesto nell'HTML
     { text: `> [MARKET_CAP] ${data.marketFore[data.marketFore.length-1]}B`, col: "#00ff55" },
     { text: `> [HEALTH_EQ] ${(data.equityScore * 100).toFixed(1)}%`, col: "#00d4ff" }
   ];
@@ -148,12 +151,12 @@ function injectAccessibleData(d) {
 
 // --- FUNZIONE HELPER PER L'ATTIVAZIONE DELL'INDICE DATI ---
 function activateDataIndex(index, data) {
-  if (index === activeYearIndex) return;
+  if (index === activeYearIndex) return; // Arresto atomico se l'indice è identico (Blocco del re-render inutile)
   
   activeYearIndex = index;
   
-  const mVal = index < data.marketHist.length 
-    ? data.marketHist[index] 
+  const mVal = index < data.marketHist.length
+    ? data.marketHist[index]
     : data.marketFore[index - data.marketHist.length];
 
   // Trigger della Sonificazione (Vincolato al Master Switch)
@@ -166,6 +169,9 @@ function activateDataIndex(index, data) {
   if (announcer) {
     announcer.textContent = `Anno ${data.years[index]}. Valore mercato: ${mVal} Miliardi.`;
   }
+
+  // AGGIORNAMENTO CORRETTIVO: Richiede un singolo fotogramma solo in caso di cambio stato reale
+  triggerCanvasDraw();
 }
 
 async function runBiotechEngineV61() {
@@ -174,7 +180,11 @@ async function runBiotechEngineV61() {
   const d = await fetchIntegratedAnalytics();
   injectAccessibleData(d);
 
-  console.group("%c BiotechProject Systems ", SRE_NEU.group); 
+  // Rende visibile il layout principale eliminando eventuali attese asincrone dell'opacità CSS
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) mainContent.style.opacity = "1";
+
+  console.group("%c BiotechProject Systems ", SRE_NEU.group);
   console.log("%c🧠 NEURAL_CORE%c v6.2.1: High-Performance Performance Stack Sync.", SRE_NEU.sint + SRE_NEU.core, "color: #cccccc; font-family: monospace;");
   console.log("%c🔊 AUDIO_SON%c Neural Soundscape: READY (WCAG 3.0 Concept).", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
   console.log("%c🔮 INFERENCE%c Global Market Projections: Synced to 2032.", SRE_NEU.sint + SRE_NEU.inf, "color: #cccccc; font-family: monospace;");
@@ -211,16 +221,15 @@ async function runBiotechEngineV61() {
     });
   }
 
-  const startX = 80; 
-  const endX = canvas.width - 220; 
+  const startX = 80;
+  const endX = canvas.width - 220;
   const graphWidth = endX - startX;
-  const baseY = canvas.height - 80; 
+  const baseY = canvas.height - 80;
   const stepX = graphWidth / (d.years.length - 1);
   const vScale = (baseY - 120) / 450;
   const mapY = (val) => baseY - (val * vScale);
 
   // --- INTERAZIONE MOUSE AUTOMATED & HIGH PERFORMANCE ---
-  // Gestisce lo spostamento del focus all'ingresso dell'area una volta sola
   canvas.addEventListener('mouseenter', () => {
     if (document.activeElement !== canvas) {
       canvas.focus();
@@ -238,11 +247,17 @@ async function runBiotechEngineV61() {
     if (index >= 0 && index < d.years.length) {
       activateDataIndex(index, d);
     } else {
-      activeYearIndex = -1;
+      if (activeYearIndex !== -1) {
+        activeYearIndex = -1;
+        triggerCanvasDraw();
+      }
     }
   });
 
-  canvas.addEventListener('mouseleave', () => activeYearIndex = -1);
+  canvas.addEventListener('mouseleave', () => {
+    activeYearIndex = -1;
+    triggerCanvasDraw(); // Forza l'aggiornamento per ripulire lo stato attivo visivo
+  });
 
   // --- FOCUS MANAGEMENT TASTIERA ---
   canvas.addEventListener('focus', () => {
@@ -253,7 +268,7 @@ async function runBiotechEngineV61() {
 
   // --- INTERAZIONE TASTIERA AVANZATA (DISABILITY EQUITY PROMPTS) ---
   canvas.addEventListener('keydown', (e) => {
-    if (!d || !d.years || !d.years.length) return; 
+    if (!d || !d.years || !d.years.length) return;
 
     let newIndex = activeYearIndex;
     let moved = false;
@@ -291,20 +306,25 @@ async function runBiotechEngineV61() {
     if (announcer) {
       announcer.textContent = "Navigazione grafico terminata.";
     }
+    triggerCanvasDraw(); // Sbianca e pulisce la selezione sul canvas all'uscita dal fuoco
   });
 
-  // --- LOOP DI RENDERING GRAFICO ---
+  // --- FUNZIONE DI RENDERING GRAFICO (OTTIMIZZATA SENZA LOOP) ---
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const glow = 10 + Math.sin(Date.now() / 300) * 5;
+    
+    // Gestione Accessibilità: Rispetto del flag di sistema per la riduzione dei movimenti d'animazione
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Rimossa la logica oscillante basata su Math.sin(Date.now()): ora il glow è statico e performante
+    const glow = prefersReducedMotion ? 6 : 12; 
 
     // A. GRID & HIGHLIGHTER
     d.years.forEach((year, i) => {
       const x = startX + i * stepX;
       const isActive = (i === activeYearIndex);
       
-      // OTTIMIZZAZIONE CONTRASTO WCAG: Incrementata opacità griglia base a 0.15 per rendering definito
-      ctx.strokeStyle = isActive ? "rgba(0, 255, 85, 0.3)" : "rgba(255, 255, 255, 0.15)";
+      // OTTIMIZZAZIONE CONTRASTO WCAG: Incrementata opacità griglia attiva a 0.4 per la conformità visuale
+      ctx.strokeStyle = isActive ? "rgba(0, 255, 85, 0.4)" : "rgba(255, 255, 255, 0.15)";
       ctx.lineWidth = isActive ? 2 : 1;
       ctx.beginPath(); ctx.moveTo(x, baseY); ctx.lineTo(x, 50); ctx.stroke();
       ctx.textAlign = "center";
@@ -314,7 +334,7 @@ async function runBiotechEngineV61() {
     });
 
     // --- MARKER DI SINCRONIZZAZIONE ---
-    const transitionIndex = d.marketHist.length - 1; 
+    const transitionIndex = d.marketHist.length - 1;
     const tx = startX + transitionIndex * stepX;
 
     ctx.save();
@@ -342,10 +362,10 @@ async function runBiotechEngineV61() {
     // B. UI & PATHS
     renderProUI(ctx, canvas, d, startX, graphWidth, baseY);
     renderPath(ctx, d.equityHist.map(v=>mapY(v*1.6)), d.equityFore.map(v=>mapY(v*1.6)), "#00d4ff", startX, stepX, true);
-    renderPath(ctx, d.cyberHist.map(v=>mapY(v)), d.cyberFore.map(v=>mapY(v)), "#d800d8", startX, stepX, false);
+    renderPath(ctx, d.cyberHist.map(v=>mapY(v)), d.cyberFore.map(v=>mapY(v)), "#ff66ff", startX, stepX, false); // Colore allineato a #ff66ff per contrasto ottimizzato
     renderMarketMain(ctx, d.marketHist.map(v=>mapY(v)), d.marketFore.map(v=>mapY(v)), startX, stepX, glow);
 
-    requestAnimationFrame(draw);
+    // RIMOZIONE CRITICA: requestAnimationFrame(draw); <-- LINEA ELIMINATA. Il loop infinito è interrotto.
   }
 
   function renderPath(ctx, h, f, col, sX, stX, dashed) {
@@ -374,7 +394,13 @@ async function runBiotechEngineV61() {
     ctx.stroke(); ctx.restore();
   }
 
-  draw();
+  // Assegna il trigger globale per incapsulare la chiamata di disegno in modo sicuro
+  triggerCanvasDraw = () => {
+    requestAnimationFrame(draw);
+  };
+
+  // Primo rendering iniziale (One-Shot) all'avvio della pagina
+  triggerCanvasDraw();
 }
 
 runBiotechEngineV61();
