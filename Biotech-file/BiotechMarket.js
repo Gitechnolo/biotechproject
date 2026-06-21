@@ -21,7 +21,7 @@
  * ╠── MARKET MAIN (#E7E7E7) ────────► Verified Base Telemetry (Historical)
  * ╠── MARKET FORECAST (#00FF55) ─────► Neural Growth Projection (Dashed)
  * ╠── AUDIO FEEDBACK ───────────────► Active Master Switch (Gate Control Enabled)
- * ╚── CYBER-MARKETING (#D800D8) ─────► Cybernetic Adoption Index (High-Frequency Tone)
+ * ╚── CYBER-MARKETING (#FF66FF) ─────► Cybernetic Adoption Index (High-Frequency Tone)
  * * [SRE & COMPLIANCE]
  * ║
  * ╠── SYNC POINT: Active (2023 Transition Validation + Rhombus Marker)
