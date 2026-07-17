@@ -512,7 +512,7 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 </div>  
 </div>
 
-<!--Sezione IL pH: Definizione (ph_biology) -->
+<!--Sezione IL pH: Definizione (Chiave: ph_biology) -->
 <div data-lang-key="ph_biology">
     <!-- Titolo Principale: Definizione Termodinamica -->
     <h2 class="secHeader biotechcenter">IL pH: Definizione, Termodinamica e Importanza Biologica 🧬</h2>
@@ -554,40 +554,148 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
         Un pH ematico fisiologico di circa 7,4 (intervallo: 7,35–7,45) è essenziale per la struttura, la carica elettrica e la funzione delle proteine e delle membrane cellulari. Alterazioni del pH intracellulare e degli organelli (es. endosomi e lisosomi) sono correlate a patologie come neoplasie, malattie neurodegenerative e disturbi metabolici. Il sistema endo-lisosomiale, in particolare, richiede un'acidificazione progressiva (fino a valori di pH di circa 4,5–5,0) per il corretto smaltimento e la degradazione enzimatica dei detriti cellulari.
     </p>
 </div>
-
-
-<h2 class="secHeader mt-15" data-lang-key="title_ph_cutaneo">pH Cutaneo, Eudermia e Difesa 🛡️</h2>
-<p class="text" data-lang-key="desc_ph_cutaneo">I cosmetici, applicati sulla superficie cutanea (in conformità al Regolamento UE sui prodotti cosmetici), interagiscono direttamente con lo strato corneo e il film idrolipidico. È pertanto essenziale che il loro pH sia <strong>compatibile</strong> con il pH fisiologico della pelle per garantire l'<span class="biotechbold">eudermicità</span> (non irritatività e rispetto della barriera).</p>
-<h2 class="subtitle mt-15" data-lang-key="subtitle_manto_acido">Il Manto Acido e la Barriera Cutanea</h2>
-<div>
-    <p class="mb-15" data-lang-key="desc_manto_acido">L'epidermide è protetta da un <strong>manto acido</strong> superficiale che funge da meccanismo di difesa primario contro l'insorgenza di microrganismi patogeni e la disidratazione.</p>
+<!-- 
+  SEZIONE: pH Cutaneo, Eudermia e Difesa (Chiave: ph_cutaneo)
+  Ruolo: Applicazione pratica del pH sulla barriera cutanea e microbiota.
+  Nota: Non ridefinisce il pH teorico. Si concentra sull'interazione cosmetico-pelle.
+-->
+<div data-lang-key="ph_cutaneo">
+    <h2 class="secHeader mt-15">pH Cutaneo, Eudermia e Difesa 🛡️</h2>
+    
+    <p class="text">
+        I cosmetici, applicati sulla superficie cutanea (in conformità al Regolamento UE sui prodotti cosmetici), interagiscono direttamente con lo strato corneo e il film idrolipidico. È pertanto essenziale che il loro pH sia <strong>compatibile</strong> con il pH fisiologico della pelle per garantire l'<span class="biotechbold">eudermicità</span> (assenza di irritazione e rispetto della funzione barriera).
+    </p>
+    
+    <h2 class="subtitle mt-15">Il Manto Acido e la Barriera Cutanea</h2>
+    
+    <p class="mb-15">
+        L'epidermide è protetta da un <strong>manto acido</strong> superficiale, un meccanismo di difesa primario che regola la colonizzazione microbica e previene la disidratazione transepidermica (TEWL).
+    </p>
+    
     <ul class="text">
-        <li data-lang-key="pH_pelle"><strong>Pelle (Corpo):</strong> pH compreso tra 4,5 e 6,0 (valore medio ottimale: 5,5).</li>
-        <li data-lang-key="pH_capelli"><strong>Cuoio Capelluto:</strong> pH compreso tra 4,2 e 5,0.</li>
+        <li>
+            <strong>Pelle (Corpo):</strong> pH compreso tra 4,5 e 6,0 (valore medio ottimale: 5,5).
+        </li>
+        <li>
+            <strong>Cuoio Capelluto:</strong> pH compreso tra 4,2 e 5,0.
+        </li>
+    </ul>
+    
+    <h2 class="subtitle mt-15">Conseguenze di un pH Inappropriato</h2>
+    
+    <dl class="text note2">
+        <dt>
+            <span class="orangetext">Ambiente Alcalino (pH &gt; 5,5–6):</span>
+        </dt>
+        <dd>
+            Favorisce la proliferazione di microrganismi patogeni. Il batterio responsabile dell'acne, <em>Cutibacterium acnes</em>, prospera in ambienti con pH &gt; 5,5. Un pH alcalino compromette l'integrità della barriera cutanea, altera il film idrolipidico, induce disidratazione, secchezza, ipersensibilità e accelera i processi di invecchiamento cutaneo.
+        </dd>
+        
+        <dt>
+            <span class="orangetext">Ambiente Eccessivamente Acido (pH &lt; 4,5):</span>
+        </dt>
+        <dd>
+            Può alterare la <strong>flora batterica commensale</strong> (microbiota cutaneo), indebolendo la difesa biologica naturale. Può causare irritazione, eritema, prurito e compromissione della funzione barriera.
+        </dd>
+    </dl>
+</div>
+
+
+<!-- 
+  SEZIONE: pH Ideale per Prodotto e Regolazione in Formulazione (Chiave: ph_formulation)
+  Ruolo: Guida pratica ai valori target e protocolli di correzione del pH.
+  Nota: Evita ripetizioni teoriche di acido/base. Si concentra su applicazioni e sicurezza.
+-->
+<div data-lang-key="ph_formulation">
+    <h2 class="secHeader mt-15">pH Ideale per Categoria di Prodotto 🧪</h2>
+    
+    <p class="text">
+        La determinazione del pH ideale è fondamentale per l'integrità cutanea e la stabilità della formula. Di seguito i valori di pH ottimali (eudermici) per le principali categorie di cosmetici:
+    </p>
+    
+    <h2 class="subtitle mt-15">Tabella dei Valori Target (Range di pH)</h2>
+    
+    <table class="text tab">
+        <thead>
+            <tr style="background-color: rgba(0, 191, 255, 0.2);">
+                <th class="Pilosebaceo">Prodotto</th>
+                <th class="Pilosebaceo">pH Target</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Crema Viso / Corpo</td>
+                <td data-label="pH Target" class="Pilosebaceo">5,5 – 6,0</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Latte Detergente Viso</td>
+                <td data-label="pH Target" class="Pilosebaceo">6,0 – 7,0</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Tonico Viso</td>
+                <td data-label="pH Target" class="Pilosebaceo">4,5 – 5,5</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Esfoliante Viso / Corpo (Ad alta concentrazione)</td>
+                <td data-label="pH Target" class="Pilosebaceo"><span class="orangetext">~3,5</span></td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Esfoliante Viso / Corpo (Pelli Sensibili)</td>
+                <td data-label="pH Target" class="Pilosebaceo">~4,5</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Contorno Occhi</td>
+                <td data-label="pH Target" class="Pilosebaceo">~6,0 (Compromesso: pelle ≈ 5,5, occhio ≈ 7)</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Doccia Corpo</td>
+                <td data-label="pH Target" class="Pilosebaceo">5,5 – 6,5</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Prodotto Intimo</td>
+                <td data-label="pH Target" class="Pilosebaceo"><span class="greentext">4,0 – 4,5</span> (Maggiore acidità protettiva)</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Shampoo Capelli</td>
+                <td data-label="pH Target" class="Pilosebaceo">4,5 – 5,0</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Balsamo Capelli</td>
+                <td data-label="pH Target" class="Pilosebaceo">~4,5</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Deodorante Ascelle</td>
+                <td data-label="pH Target" class="Pilosebaceo">4,0 – 5,0</td>
+            </tr>
+            <tr>
+                <td data-label="Prodotto" class="Pilosebaceo">Sapone (Tradizionale)</td>
+                <td data-label="pH Target" class="Pilosebaceo"><span class="orangetext">8,5 – 9,5</span> (Netta alcalinità)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2 class="subtitle mt-15">Regolazione del pH in Formulazione 🧪</h2>
+    
+    <p class="text">
+        La correzione del pH richiede agenti specifici in base alla direzione desiderata. Per <strong>innalzare il pH</strong> (alcalinizzazione) si utilizzano basi forti come l'<strong>Idrossido di Sodio</strong> (NaOH) o l'<strong>Idrossido di Potassio</strong> (KOH), oppure tamponi come il <strong>Bicarbonato di Sodio</strong> (efficace fino a pH ~8,3). Per <strong>abbassare il pH</strong> (acidificazione) si impiegano acidi organici deboli come l'<strong>Acido Citrico</strong>, l'<strong>Acido Lattico</strong> o l'<strong>Acido Glicolico</strong>. L'uso di aceto (Acido Acetico) è sconsigliato nelle formulazioni stabili a causa delle impurità organiche e dell'odore persistente.
+    </p>
+    
+    <p class="text">
+        Le correzioni richiedono precisione: aggiungere l'agente regolatore <strong>goccia a goccia</strong> sotto agitazione, misurando il pH dopo ogni aliquota per evitare overshoot (sbilanciamenti eccessivi). Le soluzioni stock standardizzate più sicure ed efficaci sono:
+    </p>
+    
+    <ul class="text">
+        <li>
+            <strong>Acido Citrico 10-20%:</strong> (10-20 g in 80-90 mL di acqua distillata).
+        </li>
+        <li>
+            <strong>Idrossido di Sodio (NaOH) 10-18%:</strong> (10-18 g in 80-90 mL di acqua distillata). <em>Nota: Manipolare con DPI (guanti, occhiali) poiché fortemente corrosivo.</em>
+        </li>
+        <li>
+            <strong>Bicarbonato di Sodio 5-10%:</strong> (5-10 g in 90-95 mL di acqua). Utile come tampone leggero.
+        </li>
     </ul>
 </div>
-<h2 class="subtitle mt-15" data-lang-key="subtitle_conseguenze_pH">Conseguenze di un pH Inappropriato</h2>
-<dl class="text note2">
-    <dt data-lang-key="dt_ambiente_alcalino"><span class="orangetext">Ambiente Alcalino (pH &gt; 5,5–6):</span></dt>
-    <dd data-lang-key="dd_ambiente_alcalino">Favorisce la proliferazione di microrganismi patogeni. Il batterio responsabile dell'acne, <em>Cutibacterium acnes</em>, prospera in ambienti con pH &gt; 5,5. Un pH alcalino compromette l'integrità della barriera cutanea, altera il film idrolipidico, induce disidratazione, secchezza, ipersensibilità e accelera i processi di invecchiamento cutaneo.</dd>
-    <dt data-lang-key="dt_ambiente_acido"><span class="orangetext">Ambiente Eccessivamente Acido (pH &lt; 4,5):</span></dt>
-    <dd data-lang-key="dd_ambiente_acido">Può alterare la <strong>flora batterica commensale</strong> (microbiota cutaneo), indebolendo la difesa biologica naturale. Può causare irritazione, eritema, prurito e compromissione della funzione barriera.</dd>
-</dl>   
-
-
-<h2 class="secHeader mt-15" data-lang-key="title_ph_ideale">PH Ideale per Categoria di Prodotto 🧪</h2>
-<p class="text" data-lang-key="desc_ph_ideale">La determinazione del pH ideale è fondamentale per l'integrità cutanea. Di seguito i valori di pH ottimali (eudermici) per le principali categorie di cosmetici: </p>
-<h2 class="subtitle mt-15" data-lang-key="subtitle_tabella_ph">Tabella dei Valori Target (Range di pH)</h2><table class="text tab"><thead><tr style="background-color: rgba(0, 191, 255, 0.2);"><th class="Pilosebaceo" data-lang-key="tabella_prodotto">Prodotto</th><th class="Pilosebaceo">pH Target</th></tr></thead><tbody><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_crema_visocorpo">Crema Viso / Corpo</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_crema_visocorpo">5,5 – 6,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_latte_detergente">Latte Detergente Viso</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_latte_detergente">6,0 – 7,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_tonico">Tonico Viso</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_tonico">4,5 – 5,5</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_esfoliante_urto">Esfoliante Viso / Corpo (D'urto)</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_esfoliante_urto"><span class="orangetext">3,5 ca.</span></td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_esfoliante_sensibile">Esfoliante Viso / Corpo (Pelli Sensibili)</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_esfoliante_sensibile">4,5 ca.</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_contorno_occhi">Contorno Occhi</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_contorno_occhi">6,0 ca. (Compromesso tra pelle ≈ 5,5 e occhio ≈ 7)</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_doccia_corpo">Doccia Corpo</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_doccia_corpo">5,5 – 6,5</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_intimo">Prodotto Intimo</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_intimo"><span class="greentext">4,0 – 4,5</span>(Maggiore acidità protettiva)</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_shampoo">Shampoo Capelli</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_shampoo">4,5 – 5,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_balsamo">Balsamo Capelli</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_balsamo">4,5 ca.</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_deodorante">Deodorante Ascelle</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_deodorante">4,0 – 5,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_sapone">Sapone (Tradizionale)</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_sapone"><span class="orangetext">8,5 – 9,5</span>(Netta alcalinità)</td></tr></tbody></table>
-
-<h2 class="subtitle mt-15" data-lang-key="subtitle_regolazione_ph">Regolazione del pH in Formulazione 🧪</h2>
-<p class="text" data-lang-key="desc_regolazione_ph">La regolazione del pH richiede agenti specifici in base alla direzione di correzione desiderata. Per <strong>innalzare il pH</strong> (alcalinizzazione) si utilizzano basi forti come l'<strong>Idrossido di Sodio</strong> (NaOH) o l'<strong>Idrossido di Potassio</strong> (KOH), oppure tamponi come il <strong>Bicarbonato di Sodio</strong> (efficace fino a pH ~8,3). Per <strong>abbassare il pH</strong> (acidificazione) si impiegano acidi organici deboli come l'<strong>Acido Citrico</strong>, l'<strong>Acido Lattico</strong> o l'<strong>Acido Glicolico</strong>. L'uso di aceto (Acido Acetico) è sconsigliato in formulazioni stabili per la presenza di impurità organiche.</p>
-<p class="text" data-lang-key="note_regolazione_ph">Le correzioni richiedono precisione: aggiungere l'agente regolatore <strong>goccia a goccia</strong> sotto agitazione, misurando il pH dopo ogni aliquota per evitare overshoot (sbilanciamenti eccessivi). Le soluzioni stock standardizzate più sicure ed efficaci sono:</p>
-<ul class="text">
-  <li data-lang-key="soluzione_acido_citrico"><strong>Acido Citrico 10-20%:</strong> (10-20 g in 80-90 mL acqua distillata).</li>
-  <li data-lang-key="soluzione_soda_caustica"><strong>Idrossido di Sodio (NaOH) 10-18%:</strong> (10-18 g in 80-90 mL acqua distillata). <em>Nota: Manipolare con DPI (guanti, occhiali) poiché fortemente corrosivo.</em></li>
-  <li data-lang-key="soluzione_bicarbonato"><strong>Bicarbonato di Sodio 5-10%:</strong> (5-10 g in 90-95 mL acqua). Utile come tampone leggero.</li>
-</ul>
-
 
 
 <h2 class="secHeader mt-15" data-lang-key="title_ph_capelli">pH e Capelli: Elettrostatica e Integrità della Cuticola 💇</h2>
