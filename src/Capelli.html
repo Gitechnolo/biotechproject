@@ -55,7 +55,7 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 .image-text-wrapper, .image-text-wrapper-reversed{ display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; flex-wrap: wrap; }.image-text-wrapper{ flex-direction: row;}.image-text-wrapper-reversed{ flex-direction: row-reverse;}.image-side{ flex: 0 0 480px; max-width: 100%;}.text-side{ flex: 1; min-width: 300px;}@media (max-width: 768px){ .image-text-wrapper, .image-text-wrapper-reversed{ flex-direction: column; } .image-text-wrapper .image-side{ flex: 1 1 auto; margin: 0 auto;}}
 .mt-15{ margin-top: 15px} .mt-5{ margin-top: 5px} .f22{ font-size: 22px;} .pl-40{ padding-left: 40px}
-.note{ border-left: 3px solid #FFD166; padding-left: 10px;} .note2{ border-left: 3px solid #00bfff; padding-left: 10px;} .fs30{font-size:30px;color:#B5EAD7}
+.note{ border-left: 3px solid #FFD166; padding-left: 10px;} .note2{ border-left: 3px solid #00bfff; padding-left: 10px;} .fs30{font-size:30px;color:#B5EAD7} .note3{padding: 1px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);}
 </style> 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -453,9 +453,6 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 <p class="greentext"><strong>Esempio:</strong><br>HCl + NaOH &rarr; NaCl + H<sub>2</sub>O<br>(Acido cloridrico + Idrossido di sodio &rarr; Cloruro di sodio + Acqua)</p>
 </div>
 
-
-
-
 <!--Sezione MISCELE E SISTEMI DISPERSI (Chiave: mixtures) --> 
 <div data-lang-key="mixtures">
 <h2 class="secHeader mt-15">MISCELE E SISTEMI DISPERSI ⚗️</h2>
@@ -515,20 +512,44 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 </div>  
 </div>
 
-
-
-<h2 class="secHeader biotechcenter" data-lang-key="title_ph">IL pH: Definizione e Importanza Biologica 🧬</h2>
-<p class="text" data-lang-key="desc_ph">Il <span class="biotechbold">pH (potenziale di idrogeno)</span> è una scala logaritmica che misura l'acidità o l'alcalinità delle soluzioni acquose, definibile come il logaritmo negativo dell'attività degli ioni idrogeno (H<sup>+</sup>). Indica il rapporto tra la concentrazione di ioni idrogeno (H<sup>+</sup>) e ioni idrossido (OH<sup>−</sup>).</p>
-<h2 class="subtitle mt-15" data-lang-key="subtitle_scala_classificazione">Scala e Classificazione</h2>
-<ul class="text" style="padding: 1px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);">
-    <li data-lang-key="scala_valori"><span class="orangetext">Scala:</span> Generalmente da 0 (massima acidità) a 14 (massima alcalinità) in soluzioni acquose a 25°C.</li>
-    <li data-lang-key="scala_neutro"><span class="orangetext">Neutro:</span> pH = 7 (es. acqua pura, dove [H<sup>+</sup>] = [OH<sup>−</sup>]).</li>
-    <li data-lang-key="scala_acido"><span class="greentext">Acido:</span> pH &lt; 7 ([H<sup>+</sup>] &gt; [OH<sup>−</sup>]). Un acido è una specie chimica capace di <strong>cedere protoni (H<sup>+</sup>)</strong> al solvente.</li>
-    <li data-lang-key="scala_alcalino"><span class="greentext">Alcalino (o Basico):</span> pH &gt; 7 ([H<sup>+</sup>] &lt; [OH<sup>−</sup>]). Una base è una specie chimica capace di <strong>accettare protoni (H<sup>+</sup>)</strong> dal solvente.</li>
+<!--Sezione IL pH: Definizione (ph_biology) -->
+<div data-lang-key="ph_biology">
+<!-- Titolo Principale: Definizione Termodinamica -->
+<h2 class="secHeader biotechcenter">IL pH: Definizione, Termodinamica e Importanza Biologica 🧬</h2>
+<!-- Paragrafo Definizione: Distinzione tra concentrazione e attività termodinamica -->
+<p class="text">
+Il <span class="biotechbold">pH (potenziale di idrogeno)</span> è una scala logaritmica che quantifica l'acidità o l'alcalinità di una soluzione acquosa. È definito termodinamicamente come il logaritmo decimale negativo dell'<strong>attività</strong> degli ioni idrogeno (H<sup>+</sup>). Indica il rapporto tra le attività degli ioni idrogeno (H<sup>+</sup>) e degli ioni idrossido (OH<sup>−</sup>).
+</p>
+<!-- Sezione: Scala e Classificazione -->
+<h2 class="subtitle mt-15">Scala e Classificazione</h2>
+<!-- Lista non ordinata: Valori di riferimento a 25°C -->
+<ul class="text note3">
+<li>
+<span class="orangetext">Scala:</span> Generalmente da 0 (massima acidità) a 14 (massima alcalinità) in soluzioni acquose a 25°C.
+</li>
+<li>
+<span class="orangetext">Neutro:</span> pH = 7 (es. acqua pura, dove [H<sup>+</sup>] = [OH<sup>−</sup>]).
+</li>
+<li>
+<span class="greentext">Acido:</span> pH &lt; 7 ([H<sup>+</sup>] &gt; [OH<sup>−</sup>]). Un acido di Brønsted-Lowry è una specie capace di <strong>donare protoni (H<sup>+</sup>)</strong> al solvente.
+</li>
+<li>
+<span class="greentext">Alcalino (o Basico):</span> pH &gt; 7 ([H<sup>+</sup>] &lt; [OH<sup>−</sup>]). Una base è una specie capace di <strong>accettare protoni (H<sup>+</sup>)</strong> dal solvente.
+</li>
 </ul>
-<h2 class="subtitle mt-15" data-lang-key="subtitle_rilevanza_biologia">Rilevanza Biologica</h2>
-<p class="text" data-lang-key="rilevanza_biologia_testo1">Variazioni di pH, anche minime, sono critiche per l'organismo umano, composto per circa il 70% di soluzioni acquose. Le reazioni metaboliche e l'attività enzimatica dipendono strettamente dal mantenimento delle concentrazioni ioniche ([H<sup>+</sup>] e [OH<sup>−</sup>]) entro intervalli fisiologici ristretti (omeostasi).</p>
-<p class="text" data-lang-key="rilevanza_biologia_testo2">Un pH ematico fisiologico di circa 7,4 (intervallo: 7,37–7,43) è essenziale per la struttura e la funzione delle proteine e delle membrane cellulari. Alterazioni del pH intracellulare e degli organelli (es. endosomi e lisosomi) sono correlate a patologie come neoplasie, malattie neurodegenerative e disturbi metabolici. Il sistema endo-lisosomiale richiede un'acidificazione progressiva per il corretto smaltimento dei detriti cellulari.</p>
+<!-- Sezione: Rilevanza Biologica e Omeostasi -->
+<h2 class="subtitle mt-15">Rilevanza Biologica e Omeostasi</h2>
+<!-- Paragrafo: Impatto sulle reazioni metaboliche -->
+<p class="text">
+Variazioni di pH, anche minime, sono critiche per l'organismo umano, composto per circa il 70% di soluzioni acquose. Le reazioni metaboliche e l'attività enzimatica dipendono strettamente dal mantenimento delle concentrazioni ioniche ([H<sup>+</sup>] e [OH<sup>−</sup>]) entro intervalli fisiologici ristretti (omeostasi).
+</p>
+<!-- Paragrafo: pH ematico e patologie correlate -->
+<p class="text">
+Un pH ematico fisiologico di circa 7,4 (intervallo: 7,35–7,45) è essenziale per la struttura e la funzione delle proteine e delle membrane cellulari. Alterazioni del pH intracellulare e degli organelli (es. endosomi e lisosomi) sono correlate a patologie come neoplasie, malattie neurodegenerative e disturbi metabolici. Il sistema endo-lisosomiale richiede un'acidificazione progressiva per il corretto smaltimento dei detriti cellulari.
+</p>
+</div>
+
+
 <h2 class="secHeader mt-15" data-lang-key="title_ph_cutaneo">pH Cutaneo, Eudermia e Difesa 🛡️</h2>
 <p class="text" data-lang-key="desc_ph_cutaneo">I cosmetici, applicati sulla superficie cutanea (in conformità al Regolamento UE sui prodotti cosmetici), interagiscono direttamente con lo strato corneo e il film idrolipidico. È pertanto essenziale che il loro pH sia <strong>compatibile</strong> con il pH fisiologico della pelle per garantire l'<span class="biotechbold">eudermicità</span> (non irritatività e rispetto della barriera).</p>
 <h2 class="subtitle mt-15" data-lang-key="subtitle_manto_acido">Il Manto Acido e la Barriera Cutanea</h2>
@@ -547,6 +568,7 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
     <dd data-lang-key="dd_ambiente_acido">Può alterare la <strong>flora batterica commensale</strong> (microbiota cutaneo), indebolendo la difesa biologica naturale. Può causare irritazione, eritema, prurito e compromissione della funzione barriera.</dd>
 </dl>   
 
+
 <h2 class="secHeader mt-15" data-lang-key="title_ph_ideale">PH Ideale per Categoria di Prodotto 🧪</h2>
 <p class="text" data-lang-key="desc_ph_ideale">La determinazione del pH ideale è fondamentale per l'integrità cutanea. Di seguito i valori di pH ottimali (eudermici) per le principali categorie di cosmetici: </p>
 <h2 class="subtitle mt-15" data-lang-key="subtitle_tabella_ph">Tabella dei Valori Target (Range di pH)</h2><table class="text tab"><thead><tr style="background-color: rgba(0, 191, 255, 0.2);"><th class="Pilosebaceo" data-lang-key="tabella_prodotto">Prodotto</th><th class="Pilosebaceo">pH Target</th></tr></thead><tbody><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_crema_visocorpo">Crema Viso / Corpo</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_crema_visocorpo">5,5 – 6,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_latte_detergente">Latte Detergente Viso</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_latte_detergente">6,0 – 7,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_tonico">Tonico Viso</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_tonico">4,5 – 5,5</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_esfoliante_urto">Esfoliante Viso / Corpo (D'urto)</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_esfoliante_urto"><span class="orangetext">3,5 ca.</span></td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_esfoliante_sensibile">Esfoliante Viso / Corpo (Pelli Sensibili)</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_esfoliante_sensibile">4,5 ca.</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_contorno_occhi">Contorno Occhi</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_contorno_occhi">6,0 ca. (Compromesso tra pelle ≈ 5,5 e occhio ≈ 7)</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_doccia_corpo">Doccia Corpo</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_doccia_corpo">5,5 – 6,5</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_intimo">Prodotto Intimo</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_intimo"><span class="greentext">4,0 – 4,5</span>(Maggiore acidità protettiva)</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_shampoo">Shampoo Capelli</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_shampoo">4,5 – 5,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_balsamo">Balsamo Capelli</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_balsamo">4,5 ca.</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_deodorante">Deodorante Ascelle</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_deodorante">4,0 – 5,0</td></tr><tr><td data-label="Prodotto" class="Pilosebaceo" data-lang-key="tabella_sapone">Sapone (Tradizionale)</td><td data-label="pH Target" class="Pilosebaceo" data-lang-key="valore_sapone"><span class="orangetext">8,5 – 9,5</span>(Netta alcalinità)</td></tr></tbody></table>
@@ -559,6 +581,9 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
   <li data-lang-key="soluzione_soda_caustica"><strong>Idrossido di Sodio (NaOH) 10-18%:</strong> (10-18 g in 80-90 mL acqua distillata). <em>Nota: Manipolare con DPI (guanti, occhiali) poiché fortemente corrosivo.</em></li>
   <li data-lang-key="soluzione_bicarbonato"><strong>Bicarbonato di Sodio 5-10%:</strong> (5-10 g in 90-95 mL acqua). Utile come tampone leggero.</li>
 </ul>
+
+
+
 <h2 class="secHeader mt-15" data-lang-key="title_ph_capelli">pH e Capelli: Elettrostatica e Integrità della Cuticola 💇</h2>
 <p class="text" data-lang-key="desc_ph_capelli">La salute del fusto pilifero è governata dal pH, che determina la <strong>carica elettrica netta</strong> della superficie e lo stato di apertura delle squame cuticolari. Il capello possiede un <strong>punto isoelettrico (pI)</strong> compreso tra 3,67 e 5,6, punto in cui le cariche positive e negative si bilanciano.</p>
 <h2 class="subtitle mt-15" data-lang-key="subtitle_valori_fisiologici">Stato Fisiologico e Chiusura Cuticolare</h2>
