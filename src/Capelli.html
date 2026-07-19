@@ -55,7 +55,7 @@ h1, .modern-logo, .image-text-wrapper:first-of-type{ content-visibility: visible
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 .image-text-wrapper, .image-text-wrapper-reversed{ display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; flex-wrap: wrap; }.image-text-wrapper{ flex-direction: row;}.image-text-wrapper-reversed{ flex-direction: row-reverse;}.image-side{ flex: 0 0 480px; max-width: 100%;}.text-side{ flex: 1; min-width: 300px;}@media (max-width: 768px){ .image-text-wrapper, .image-text-wrapper-reversed{ flex-direction: column; } .image-text-wrapper .image-side{ flex: 1 1 auto; margin: 0 auto;}}
 .mt-15{ margin-top: 15px} .mt-5{ margin-top: 5px} .f22{ font-size: 22px;} .pl-40{ padding-left: 40px}
-.note{ border-left: 3px solid #FFD166; padding-left: 10px;} .note2{ border-left: 3px solid #00bfff; padding-left: 10px;} .fs30{font-size:30px;color:#B5EAD7} .note3{padding: 1px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .eq{ text-align: center; font-style: italic; background-color: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px} .note4{padding: 10px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .note5{padding: 15px; background-color: rgba(138, 43, 226, 0.1);}
+.note{ border-left: 3px solid #FFD166; padding-left: 10px;} .note2{ border-left: 3px solid #00bfff; padding-left: 10px;} .fs30{font-size:30px;color:#B5EAD7} .note3{padding: 1px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .eq{ text-align: center; font-style: italic; background-color: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px} .note4{padding: 10px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .note5{padding: 15px; background-color: rgba(138, 43, 226, 0.1);} .red{border-left: 3px solid red; padding-left: 10px;}
 </style> 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -880,61 +880,64 @@ Le correzioni richiedono precisione: aggiungere l'agente regolatore <strong>gocc
     </div>
 </div>  
 
-
-
-
-<h2 class="secHeader mt-15" data-lang-key="title_ingredienti_critici">INGREDIENTI CRITICI e Sostanze con Restrizione (Reg. CE 1223/2009) 🛑</h2>
-<p class="text" data-lang-key="desc_regolamento">Il <strong>Regolamento CE n. 1223/2009</strong> (e successivi aggiornamenti 2024-2025) impone severe restrizioni o divieti su sostanze potenzialmente pericolose, cancerogene, mutagene o interferenti endocrini (EDC).</p>
-<dl class="text" style="border-left: 3px solid red; padding-left: 10px;">
+<!--Sezione: INGREDIENTI CRITICI e Sostanze con Restrizione (Chiave: section_ingredienti_critici) -->
+<div data-lang-key="section_ingredienti_critici">
+<h2 class="secHeader mt-15">INGREDIENTI CRITICI e Sostanze con Restrizione (Reg. CE 1223/2009) 🛑</h2>
+<p class="text">Il <strong>Regolamento CE n. 1223/2009</strong> (e successivi aggiornamenti) impone severe restrizioni o divieti su sostanze potenzialmente pericolose, cancerogene, mutagene o interferenti endocrini (EDC).</p>
+<dl class="text red">
     <!-- PPD -->
-    <dt data-lang-key="dt_catrame_ppd"><span class="orangetext">Catrame di Carbon Fossile / P-Fenilendiammina (PPD):</span></dt>
+    <dt><span class="orangetext">Catrame di Carbon Fossile / P-Fenilendiammina (PPD):</span></dt>
     <dd>
-        <p data-lang-key="rischio_catrame_ppd"><strong>Rischio:</strong> Il catrame di carbone fossile è <strong>vietato</strong> (Allegato II). La <strong>PPD</strong> (sintetica) è un potente allergene e sensibilizzante cutaneo; sebbene storicamente associata a rischi sistemici, è consentita nelle tinture entro limiti rigorosi.</p>
-        <p data-lang-key="normativa_catrame_ppd"><strong>Normativa:</strong> La PPD è consentita solo nelle tinture per capelli fino a un massimo del <strong>2%</strong> sul prodotto finito. È obbligatorio riportare l'avvertenza: "Può causare una reazione allergica" e istruzioni per il test di sensibilità. L'uso è vietato su ciglia e sopracciglia.</p>
+        <p><strong>Rischio:</strong> Il catrame di carbone fossile è <strong>vietato</strong> (Allegato II). La <strong>PPD</strong> (sintetica) è un potente allergene e sensibilizzante cutaneo; sebbene storicamente associata a rischi sistemici, è consentita nelle tinture entro limiti rigorosi.</p>
+        <p><strong>Normativa:</strong> La PPD è consentita solo nelle tinture per capelli fino a un massimo del <strong>2%</strong> sul prodotto finito. È obbligatorio riportare l'avvertenza: "Può causare una reazione allergica" e istruzioni per il test di sensibilità. L'uso è vietato su ciglia e sopracciglia.</p>
     </dd>
     <!-- AMINE -->
-    <dt data-lang-key="dt_amine_meateadea"><span class="orangetext">MEA/TEA/DEA (Alcanolammine):</span></dt>
+    <dt><span class="orangetext">MEA/TEA/DEA (Alcanolammine):</span></dt>
     <dd>
-        <p data-lang-key="rischio_amine_meateadea"><strong>Rischio:</strong> Potenzialmente tossiche se contaminate. Le derivati secondari (come la DEA) possono reagire con agenti nitrificanti formando <strong>nitrosamine</strong> (classificate come possibili cancerogeni IARC).</p>
-        <p data-lang-key="normativa_amine_meateadea"><strong>Normativa:</strong> L'UE vieta l'uso di DEA e suoi derivati in prodotti contenenti agenti nitrificanti. La concentrazione di nitrosamine deve essere mantenuta sotto i <strong>50 µg/kg</strong> e la sostanza deve essere conservata in contenitori privi di nitriti.</p>
+        <p><strong>Rischio:</strong> Potenzialmente tossiche se contaminate. I derivati secondari (come la DEA) possono reagire con agenti nitrificanti formando <strong>nitrosamine</strong> (classificate come possibili cancerogeni IARC).</p>
+        <p><strong>Normativa:</strong> L'UE vieta l'uso di DEA e suoi derivati in prodotti contenenti agenti nitrificanti. La concentrazione di nitrosamine deve essere mantenuta sotto i <strong>50 &#181;g/kg</strong> e la sostanza deve essere conservata in contenitori privi di nitriti.</p>
     </dd>
     <!-- SLS/SLES -->
-    <dt data-lang-key="dt_sls_sles"><span class="orangetext">SLS/SLES (Solfati Etossilati):</span></dt>
+    <dt><span class="orangetext">SLS/SLES (Solfati Etossilati):</span></dt>
     <dd>
-        <p data-lang-key="rischio_sls_sles"><strong>Rischio:</strong> Tensioattivi aggressivi per la barriera cutanea. Il rischio principale non è la cancerogenicità diretta, ma la possibile contaminazione da <strong>1,4-diossano</strong> (sottoprodotto dell'etossilazione) e la formazione di nitrosamine in condizioni specifiche.</p>
-        <p data-lang-key="normativa_sls_sles"><strong>Normativa:</strong> L'UE impone rigorosi controlli di purezza per minimizzare la presenza di 1,4-diossano e altre impurezze nei tensioattivi etossilati.</p>
+        <p><strong>Rischio:</strong> Tensioattivi aggressivi per la barriera cutanea. Il rischio principale non è la cancerogenicità diretta, ma la possibile contaminazione da <strong>1,4-diossano</strong> (sottoprodotto dell'etossilazione) e la formazione di nitrosamine in condizioni specifiche.</p>
+        <p><strong>Normativa:</strong> L'UE impone rigorosi controlli di purezza per minimizzare la presenza di 1,4-diossano e altre impurezze nei tensioattivi etossilati.</p>
     </dd>
     <!-- FORMALDEIDE -->
-    <dt data-lang-key="dt_formaldeide"><span class="orangetext">Formaldeide e Rilasciatori (FRP):</span></dt>
+    <dt><span class="orangetext">Formaldeide e Rilasciatori (FRP):</span></dt>
     <dd>
-        <p data-lang-key="rischio_formaldeide"><strong>Rischio:</strong> Fortemente irritante, sensibilizzante e cancerogena (Cat. 1B). Usata come conservante (rilasciatori) o come impurezza.</p>
-        <p data-lang-key="normativa_formaldeide"><strong>Normativa:</strong> La formaldeide libera è vietata sopra lo 0,05%. Per i rilasciatori di formaldeide, la soglia di etichettatura obbligatoria ("contiene formaldeide") è stata abbassata drasticamente allo <strong>0,001%</strong> (10 ppm) per proteggere i consumatori sensibilizzati (Reg. UE 2022/2195).</p>
+        <p><strong>Rischio:</strong> Fortemente irritante, sensibilizzante e cancerogena (Cat. 1B). Usata come conservante (rilasciatori) o come impurezza.</p>
+        <p><strong>Normativa:</strong> La formaldeide libera è vietata sopra lo 0,05%. Per i rilasciatori di formaldeide, la soglia di etichettatura obbligatoria ("contiene formaldeide") è stata abbassata drasticamente allo <strong>0,001%</strong> (10 ppm) per proteggere i consumatori sensibilizzati (Reg. UE 2022/2195).</p>
     </dd>
     <!-- PARABENI -->
-    <dt data-lang-key="dt_parabeni"><span class="orangetext">Parabeni:</span></dt>
+    <dt><span class="orangetext">Parabeni:</span></dt>
     <dd>
-        <p data-lang-key="rischio_parabeni"><strong>Rischio:</strong> Conservanti sospettati di attività estrogenica debole (interferenti endocrini). I parabeni a catena lunga hanno maggior potenziale di bioaccumulo.</p>
-        <p data-lang-key="normativa_parabeni"><strong>Normativa:</strong> Cinque parabeni (Isopropil-, Isobutil-, Fenil-, Benzil-, Pentilparabene) sono <strong>VIETATI</strong>. Quelli ammessi (Metil-, Etil-, Propil-, Butilparabene) hanno un limite singolo dello <strong>0,4%</strong> e totale dello <strong>0,8%</strong>. Per Propil- e Butilparabene in prodotti leave-on per la zona pannolino (bambini <3 anni), l'uso è <strong>vietato</strong>.</p>
+        <p><strong>Rischio:</strong> Conservanti sospettati di attività estrogenica debole (interferenti endocrini). I parabeni a catena lunga hanno maggior potenziale di bioaccumulo.</p>
+        <p><strong>Normativa:</strong> Cinque parabeni (Isopropil-, Isobutil-, Fenil-, Benzil-, Pentilparabene) sono <strong>VIETATI</strong>. Quelli ammessi (Metil-, Etil-, Propil-, Butilparabene) hanno un limite singolo dello <strong>0,4%</strong> e totale dello <strong>0,8%</strong>. Per Propil- e Butilparabene in prodotti leave-on per la zona pannolino (bambini &lt; 3 anni), l'uso è <strong>vietato</strong>.</p>
     </dd>
     <!-- PETROLATI -->
-    <dt data-lang-key="dt_petrolati"><span class="orangetext">Petrolati, Oli Minerali e Paraffine:</span></dt>
-    <dd>
-        <p data-lang-key="rischio_petrolati"><strong>Rischio:</strong> Sottoprodotti del petrolio. Il rischio teorico è la contaminazione da <strong>IPA (Idrocarburi Aromatici Policiclici)</strong>, cancerogeni noti, se non raffinati correttamente.</p>
-        <p data-lang-key="normativa_petrolati"><strong>Normativa:</strong> Nell'UE sono ammessi <strong>solo se raffinati completamente</strong>. La storia di raffinazione deve dimostrare l'assenza di proprietà cancerogene e il rispetto delle specifiche di purezza della Farmacopea Europea (assenza di IPA).</p>
-    </dd>
-    <!-- TOLUENE / TRICLOSAN -->
-    <dt data-lang-key="dt_toluene_triclosano_piombo"><span class="orangetext">Toluene / Triclosano / Piombo:</span></dt>
-    <dd>
-        <p data-lang-key="rischio_toluene_triclosano_piombo"><strong>Rischio:</strong> Il Toluene è tossico per la riproduzione. Il Triclosano è un interferente endocrino e favorisce l'antibiotico-resistenza. Il Piombo è un contaminante vietato (non ingrediente intenzionale).</p>
-        <p data-lang-key="normativa_toluene_triclosano_piombo"><strong>Normativa:</strong> Il <strong>Triclosano</strong> è soggetto a restrizioni severe e, dal <strong>31 ottobre 2025</strong>, non potrà più essere immesso sul mercato nella maggior parte dei cosmetici (Reg. UE 2024/996). Il 4-Methylbenzylidene Camphor (4-MBC) è vietato dal 1° maggio 2025.</p>
-    </dd>
+<dt><span class="orangetext">Petrolati, Oli Minerali e Paraffine:</span></dt>
+<dd>
+    <p><strong>Rischio:</strong> Sottoprodotti del petrolio. Il rischio teorico è la contaminazione da <strong>IPA (Idrocarburi Aromatici Policiclici)</strong>, cancerogeni noti, se non raffinati correttamente.</p>
+    <p><strong>Normativa:</strong> Nell'UE sono ammessi <strong>solo se raffinati completamente</strong>. <strong>La storia</strong> di raffinazione deve dimostrare l'assenza di proprietà cancerogene e il rispetto delle specifiche di purezza della Farmacopea Europea (assenza di IPA).</p>
+</dd>
+
+<!-- TOLUENE / TRICLOSAN -->
+<dt><span class="orangetext">Toluene / Triclosano / Piombo:</span></dt>
+<dd>
+    <p><strong>Rischio:</strong> Il Toluene è tossico per la riproduzione. Il Triclosano è un interferente endocrino e favorisce l'antibiotico-resistenza. Il Piombo è un contaminante vietato (non ingrediente intenzionale).</p>
+    <p><strong>Normativa:</strong> Il <strong>Piombo è vietato come ingrediente</strong> e il <strong>Toluene è vietato</strong> nei cosmetici per la sua tossicità. Il <strong>Triclosano</strong> non può più essere immesso sul mercato nella maggior parte dei prodotti cosmetici (Reg. UE 2024/996), così come il 4-Methylbenzylidene Camphor (4-MBC), il cui divieto è ormai pienamente effettivo.</p>
+</dd>
     <!-- PEG -->
-    <dt data-lang-key="dt_peg"><span class="orangetext">PEG (Glicole Polietilenico) e Tensioattivi Etossilati:</span></dt>
+    <dt><span class="orangetext">PEG (Glicole Polietilenico) e Tensioattivi Etossilati:</span></dt>
     <dd>
-        <p data-lang-key="rischio_peg"><strong>Rischio:</strong> Usati come emulsionanti e penetranti. Il rischio principale è la contaminazione da processi di etossilazione con <strong>1,4-Diossano</strong> (probabile cancerogeno) e Ossido di Etilene.</p>
-        <p data-lang-key="normativa_peg"><strong>Normativa:</strong> L'UE richiede che i PEG e i tensioattivi etossilati siano sottoposti a processi di purificazione per ridurre i contaminanti ai livelli tecnici minimi possibili. La presenza di 1,4-diossano è rigorosamente monitorata.</p>
+        <p><strong>Rischio:</strong> Usati come emulsionanti e penetranti. Il rischio principale è la contaminazione da processi di etossilazione con <strong>1,4-Diossano</strong> (probabile cancerogeno) e Ossido di Etilene.</p>
+        <p><strong>Normativa:</strong> L'UE richiede che i PEG e i tensioattivi etossilati siano sottoposti a processi di purificazione per ridurre i contaminanti ai livelli tecnici minimi possibili. La presenza di 1,4-diossano è rigorosamente monitorata.</p>
     </dd>
 </dl>
+</div>
+
+
 
 <h2 class="secHeader mt-15" data-lang-key="title_shampoo">SHAMPOO PER CAPELLI: Funzione e Composizione 🧼</h2>
 <p class="text" data-lang-key="desc_shampoo">Lo shampoo è un sistema colloidale acquoso complesso. La sua funzione primaria è la rimozione meccanica di sebo e sporco tramite l'azione sinergica di tensioattivi, senza alterare la barriera fisiologica del cuoio capelluto.</p>
