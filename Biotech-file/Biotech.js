@@ -740,7 +740,7 @@ if ('requestIdleCallback' in window) {
       'dna': 'Acido desossiribonucleico',
       'rna': 'Acido ribonucleico',
       'tegumento': 'Te-gu-men-to',
-      'pecquet': 'Pes-ché'     
+      'chilo': 'Ki-lo'     
     };
 
     const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
