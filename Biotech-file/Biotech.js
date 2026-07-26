@@ -739,8 +739,7 @@ if ('requestIdleCallback' in window) {
       'atp': 'Adenosina trifosfato',
       'dna': 'Acido desossiribonucleico',
       'rna': 'Acido ribonucleico',
-      'tegumento': 'Te-gu-men-to',
-      'chilo': 'Ki-lo'     
+      'tegumento': 'Te-gu-men-to'           
     };
 
     const langMap = { 'italiano': 'it-IT', 'inglese': 'en-US' };
