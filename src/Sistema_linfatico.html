@@ -185,14 +185,52 @@ DESCRIZIONE: Unificazione di funzioni, composizione linfa, ruolo venoso e linfoe
 </div>
 
 
-<div class="mb-25">
-<p class="secHeader mb-15" data-lang-key="immune_title">SISTEMA IMMUNITARIO</p>
-<p class="text"><span data-lang-key="immune_overview">Il sistema immunitario è una complessa rete integrata di organi, cellule specializzate e mediatori solubili deputata alla salvaguardia dell'integrità biologica dell'organismo contro agenti patogeni e non-self.</span><br><span data-lang-key="immune_network">Tutte le componenti di questa rete cooperano in modo coordinato, sfruttando il circolo ematico e il sistema linfatico come vie principali di comunicazione e migrazione cellulare.</span><br><br><span data-lang-key="immune_composition_intro">Nello specifico, il sistema immunitario si articola in:</span><br><span data-lang-key="immune_cells">Cellule immunitarie (Leucociti o globuli bianchi), capaci di migrare tra i compartimenti vascolari e i tessuti per svolgere funzioni effettrici, suddivise in granulociti, monociti/macrofagi e linfociti;</span><br><span data-lang-key="immune_organs">Organi linfoidi primari (o centrali), come il midollo osseo e il timo, deputati alla generazione e maturazione dei linfociti; e organi linfoidi secondari (o periferici), quali linfonodi, milza e tessuto linfoide associato alle mucose o MALT (tonsille, appendice, placche di Peyer);</span><br><span data-lang-key="immune_proteins">Mediatori solubili e citochine: molecole di segnalazione che orchestrano, amplificano e regolano l'intensità della risposta immunitaria, consentendo la comunicazione intercellulare.</span><br><br><span data-lang-key="immune_how_question">Fasi della risposta immunitaria:</span><br><span data-lang-key="immune_response_intro">Una risposta immunitaria coordinata si articola essenzialmente in quattro fasi principali:</span>
-</p>
-<ul class="list"><li data-lang-key="immune_step_1">1. Riconoscimento: l'agente estraneo (antigene) viene rilevato dai recettori cellulari o molecolari;</li><li data-lang-key="immune_step_2">2. Attivazione e Reclutamento: il sistema attiva le cascate di segnalazione e recluta le cellule effettrici nel sito di infezione;</li><li data-lang-key="immune_step_3">3. Fase Effettrice: l'antigene viene neutralizzato o eliminato tramite fagocitosi, citotossicità o anticorpi;</li><li data-lang-key="immune_step_4">4. Risoluzione e Memoria: la risposta viene spenta e una frazione di linfociti si differenzia in cellule di memoria per garantire protezione futura;</li></ul>   
-<p class="text"><span data-lang-key="immune_bone_marrow_role">L'organo primario responsabile dell'emopoiesi e della produzione di tutti i precursori leucocitari è il midollo osseo.</span><br><span data-lang-key="immune_bone_marrow_location">Quest'ultimo si trova all'interno del tessuto osseo spugnoso delle ossa piatte (come il bacino e lo sterno) e nelle epifisi delle ossa lunghe.</span><br><br><span data-lang-key="immune_key_cells">I globuli bianchi rappresentano l'architettura cellulare della difesa e si dividono in linee mieloidi (granulociti, monociti) e linfoidi (linfociti T, B e NK).</span><br><span data-lang-key="immune_other_components">Molte delle componenti periferiche del sistema immunitario sono integrate nel sistema linfatico.</span><br><span data-lang-key="immune_lymphatic_function">Quest'ultimo raccoglie il fluido dagli spazi interstiziali tissutali e lo convoglia verso il sistema circolatorio principale.</span><br><span data-lang-key="immune_lymphatic_role">Il ruolo del sistema linfatico non è solo di drenaggio, ma anche di trasporto degli antigeni verso gli organi linfoidi periferici, che agiscono come centri di difesa:</span><br><br><span data-lang-key="immune_spleen">La milza, organo linfoide secondario localizzato nell'ipocondrio sinistro, che scherma il circolo ematico intercettando ed eliminando i patogeni veicolati dal sangue;</span><br><span data-lang-key="immune_lymph_nodes">I linfonodi, stazioni di filtraggio della linfa dove i linfociti incontrano l'antigene, si attivano e vanno incontro a espansione clonale;</span><br><span data-lang-key="immune_lymphatic_vessels">I vasi linfatici, che formano la rete vascolare deputata al ricircolo della linfa e all'homing delle cellule immunitarie.</span><br><br><span data-lang-key="immune_how_many_responses_question">Come si classifica la risposta immunitaria?</span><br><span data-lang-key="immune_response_types_intro">Per proteggere l'organismo in modo efficiente, il sistema immunitario adotta due strategie principali e strettamente coordinate, supportate da barriere anatomiche costruttive:</span><br><span data-lang-key="immune_innate_adaptive_cooperation">L'immunità innata e quella adattiva agiscono in sinergia, scambiandosi segnali molecolari per ottimizzare l'eliminazione del patogeno.</span>
-</p>
-<ul class="list"><li data-lang-key="immune_response_mechanical">1. Barriere fisico-chimiche (meccaniche): cute, mucose, pH gastrico e secrezioni, che costituiscono la linea di difesa costitutiva ed impediscono l'accesso dei patogeni;</li><li data-lang-key="immune_response_innate">2. Immunità Innata (aspecifica): presente fin dalla nascita, risponde rapidamente ai pattern molecolari comuni dei patogeni (PAMPs) tramite fagociti e proteine del complemento;</li><li data-lang-key="immune_response_adaptive">3. Immunità Adattiva (specifica): si attiva tardivamente, riconosce selettivamente specifici epitopi antigenici e genera memoria immunologica a lungo termine grazie ai linfociti T e B.</li></ul>   
+<div class="mb-25" data-lang-key="immune_section">
+  <p class="secHeader mb-20" role="heading" aria-level="2">SISTEMA IMMUNITARIO</p>
+  
+  <p class="text mb-15">
+    Il sistema immunitario è una rete integrata e complessa di organi, popolazioni cellulari e mediatori solubili deputata alla salvaguardia dell'integrità biologica dell'organismo attraverso il riconoscimento e la neutralizzazione di agenti patogeni (non-self) e cellule aberranti o danneggiate (self alterato).
+  </p>
+  
+  <p class="text mb-25">
+    Tutte le componenti della rete operano in modo coordinato, sfruttando il circolo ematico e la rete linfatica per il continuo ricircolo (homing) e la sorveglianza immunologica sistemica dei tessuti.
+  </p>
+
+  <!-- SOTTOSEZIONE 1 -->
+  <p class="secSubHeader mb-10" role="heading" aria-level="3"><strong>Architettura ed Elementi Costitutivi</strong></p>
+  <ul class="list mb-25">
+    <li class="mb-10">
+      <strong>Componente Cellulare (Leucociti):</strong> Generati tramite emopoiesi nel midollo osseo (organo linfoide primario), si dividono in linea mieloide (granulociti neutrofili, eosinofili, basofili, monociti/macrofagi e cellule dendritiche) e linea linfoide (linfociti T, B e cellule NK). Le cellule dendritiche (APC) fungono da ponte fondamentale tra risposta innata e adattiva mediante la presentazione dell'antigene.
+    </li>
+    <li class="mb-10">
+      <strong>Mediatori Solubili e Umorali:</strong> Includono le citochine e chemochine (segnalazione intercellulare e reclutamento chemotattico), le proteine del sistema del complemento (lisi, opsonizzazione e flogosi) e le immunoglobuline/anticorpi (effettori della risposta umorale specifica).
+    </li>
+    <li class="mb-10">
+      <strong>Compartimenti Linfoidi Periferici:</strong> Gli organi linfoidi secondari (linfonodi, milza e tessuto MALT) costituiscono i centri reattivi in cui le APC presentano gli antigeni ai linfociti naive per innescare l'espansione clonale.
+    </li>
+  </ul>
+
+  <!-- SOTTOSEZIONE 2 -->
+  <p class="secSubHeader mb-10" role="heading" aria-level="3"><strong>Classificazione della Risposta Immunitaria</strong></p>
+  <p class="text mb-10">La difesa biologica si articola in due strategie sinergiche ed evolutivamente integrate:</p>
+  <ul class="list mb-25">
+    <li class="mb-12">
+      <strong>1. Immunità Innata (Aspecifica o Naturale):</strong> Rapida (minuti/ore) e priva di memoria immunologica. Comprende le barriere anatomico-funzionali e microbiologiche (cute, mucose, pH, microbiota), fagociti, cellule NK e sistema del complemento. Riconosce motivi molecolari conservati sui patogeni (PAMPs) o rilasciati dai tessuti danneggiati (DAMPs) tramite recettori ad ampia specificità (PRR).
+    </li>
+    <li class="mb-12">
+      <strong>2. Immunità Adattiva (Specifica o Acquisita):</strong> Tardiva (giorni) ma altamente selettiva. Mediata dai linfociti T (immunità cellulo-mediata) e B (immunità umorale). Riconosce specifici epitopi antigenici tramite i recettori somatotipici TCR e BCR, va incontro a espansione clonale e genera memoria immunologica a lungo termine.
+    </li>
+  </ul>
+
+  <!-- SOTTOSEZIONE 3 -->
+  <p class="secSubHeader mb-10" role="heading" aria-level="3"><strong>Cinematica della Risposta Immunitaria</strong></p>
+  <p class="text mb-10">L'innesco e lo sviluppo della risposta immunitaria si dividono in quattro fasi sequenziali:</p>
+  <ul class="list">
+    <li class="mb-8"><strong>1. Riconoscimento:</strong> Identificazione dell'antigene o dei segnali di pericolo (PAMPs/DAMPs) da parte delle cellule sentinella e dei recettori di superficie o solubili.</li>
+    <li class="mb-8"><strong>2. Attivazione e Reclutamento:</strong> Trasduzione del segnale, secrezione di citochine pro-infiammatorie e stravaso/pattugliamento delle cellule effettrici nel sito di lesione o infezione.</li>
+    <li class="mb-8"><strong>3. Fase Effettrice:</strong> Neutralizzazione ed eliminazione del target tramite fagocitosi, citotossicità cellulare diretta (NK/CTL) o immunocomplessi.</li>
+    <li class="mb-8"><strong>4. Risoluzione e Memoria:</strong> Spegnimento della risposta infiammatoria per via apoptotica (fase di contrazione) e differenziamento dei linfociti di memoria per garantire protezione a lungo termine.</li>
+  </ul>
 </div>
 <!-- Badge di accessibilità -->
 <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" class="hover-effect" hreflang="en" aria-label="BiotechProject Accessibility Statement - Certified WCAG 2.2 AAA compliant"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Official badge: BiotechProject Accessibility Compliance - Triple-A Level" width="165" height="60" loading="lazy" decoding="async"></a></div>
