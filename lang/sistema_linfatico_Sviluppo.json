@@ -1,10 +1,7 @@
 {
   "it": {
    "_section_lymphatic": "=== SISTEMA LINFATICO ===",
-"lymph_title": "SISTEMA LINFATICO",
-  "lymph_intro_1": "I capillari sanguigni e le vene costituiscono il sistema principale di perfusione e riassorbimento dei liquidi tissutali.",
-  "lymph_intro_2": "La quantità di proteine nel liquido interstiziale è fisiologicamente ridotta; tuttavia, in condizioni patologiche o infiammatorie, può aumentare considerevolmente, superando la capacità di riassorbimento del versante capillare venoso.",
-  "lymph_intro_3": "Entra così in gioco il sistema linfatico, un sistema di drenaggio unidirezionale e a fondo cieco, la cui funzione cruciale è recuperare il fluido interstiziale e le proteine in eccesso dallo spazio extracellulare per reimmetterli nel circolo ematico.",
+"lymph_section_1": "<h1 class=\"sansation-bold\">SISTEMA LINFATICO: Fisiologia e Drenaggio</h1>\n\n<p class=\"text\">\n  I capillari sanguigni e le vene costituiscono il sistema principale di perfusione e riassorbimento dei liquidi tissutali. \n  Tuttavia, il riassorbimento venoso non è totale.\n</p>\n\n<p class=\"text\">\n  La concentrazione di proteine nel liquido interstiziale è fisiologicamente bassa; in condizioni patologiche o infiammatorie, \n  essa può aumentare, superando la capacità di riassorbimento del versante capillare venoso e alterando l'equilibrio delle forze di Starling.\n</p>\n\n<p class=\"text mb-15\">\n  Entra così in gioco il <strong>sistema linfatico</strong>: una rete di drenaggio <strong>unidirezionale</strong> e <strong>a fondo cieco</strong>. \n  La sua funzione cruciale è recuperare il fluido interstiziale in eccesso e le proteine non riassorbite dallo spazio extracellulare, \n  reimmettendole nel circolo ematico per mantenere l'omeostasi dei fluidi.\n</p>",
 "lymph_structure_1": "Il sistema linfatico è costituito da una fitta rete di capillari linfatici che convergono in vasi collettori di calibro maggiore, dotati in alcuni distretti di attività contrattile autonoma (linfangioni).",
   "lymph_structure_2": "L'intero sistema è provvisto di valvole a nido di rondine che garantiscono il flusso unidirezionale della linfa, impedendone il reflusso. I vasi linfatici provenienti dagli arti inferiori e dalle viscere addominali confluiscono nella ",
   "lymph_structure_3": "e da qui nel dotto toracico che risale per immettersi nel sistema venoso in corrispondenza del confluente giugulo-succlavio sinistro.",
@@ -198,10 +195,7 @@
   },
   "en": {
 "_section_lymphatic": "=== LYMPHATIC SYSTEM ===",
-"lymph_title": "LYMPHATIC SYSTEM",
-  "lymph_intro_1": "Blood capillaries and veins constitute the primary system for the perfusion and reabsorption of tissue fluids.",
-  "lymph_intro_2": "The protein content in interstitial fluid is physiologically low; however, under pathological or inflammatory conditions, it can increase considerably, exceeding the reabsorption capacity of the venous capillary bed.",
-  "lymph_intro_3": "This is where the lymphatic system comes into play: a unidirectional, blind-ended drainage system whose crucial function is to recover excess interstitial fluid and proteins from the extracellular space and return them to the bloodstream.",
+"lymph_section_1": "<h1 class=\"sansation-bold\">LYMPHATIC SYSTEM: Physiology and Drainage</h1>\n\n<p class=\"text\">\n  Blood capillaries and veins constitute the main system for tissue fluid perfusion and reabsorption. \n  However, venous reabsorption is not complete.\n</p>\n\n<p class=\"text\">\n  The concentration of proteins in interstitial fluid is physiologically low; under pathological or inflammatory conditions, \n  it can increase, exceeding the reabsorption capacity of the venous capillary side and altering the balance of Starling forces.\n</p>\n\n<p class=\"text mb-15\">\n  This is where the <strong>lymphatic system</strong> comes into play: a <strong>unidirectional</strong> and <strong>blind-ended</strong> drainage network. \n  Its crucial function is to recover excess interstitial fluid and unreabsorbed proteins from the extracellular space, \n  returning them to the bloodstream to maintain fluid homeostasis.\n</p>",
 "lymph_structure_1": "The lymphatic system consists of a dense network of lymphatic capillaries that converge into larger collector vessels, equipped in some districts with autonomous contractile activity (lymphangions).",
   "lymph_structure_2": "The entire system is provided with semilunar valves that ensure the unidirectional flow of lymph, preventing reflux. Lymphatic vessels from the lower limbs and abdominal viscera converge into the ",
   "lymph_structure_3": "and from here into the thoracic duct, which ascends to enter the venous system at the left jugulo-subclavian junction.",
