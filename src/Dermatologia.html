@@ -86,24 +86,94 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<h1 class="sansation-bold" data-lang-key="dermatology-title">DERMATOLOGIA</h1>
-<p class="text" data-lang-key="dermatology-description">La dermatologia è la branca della medicina che si occupa dello studio, della diagnosi e del trattamento delle malattie della pelle, dei capelli e delle unghie.<br>Essa comprende una vasta gamma di condizioni, dalle più comuni come acne e dermatiti, a malattie più complesse come psoriasi e melanoma.</p>   
-<section class="biotech-summary-box" aria-labelledby="org-title" style="margin: 30px 0;"><h2 id="org-title" data-lang-key="org_main_title" style="color: #00e676; text-align: center; text-transform: uppercase; letter-spacing: 1px;">ORGANISMO UMANO: ORGANIZZAZIONE </h2><div class="structure-grid" role="list" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;"><article class="structure-card glow" role="listitem"><h3 class="dbmb-10" data-lang-key="cell_level_title">CELLULA</h3><p><span data-lang-key="cell_desc">Unità fondamentale della vita.</span></p></article><article class="structure-card glow" role="listitem"><h3 class="dbmb-10" data-lang-key="tissue_level_title">TESSUTI</h3><p class="mb-15" data-lang-key="tissue_def">Insieme di più cellule con la stessa funzione.</p><ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;"><li>• <strong data-lang-key="epithelial_label">Epiteliale:</strong><span data-lang-key="epithelial_ex">es. Epidermide</span></li><li>• <strong data-lang-key="connective_label">Connettivo:</strong><span data-lang-key="connective_ex">es. Derma, Ipoderma</span></li><li>• <strong data-lang-key="muscular_label">Muscolare</strong></li><li>• <strong data-lang-key="nervous_label">Nervoso</strong></li></ul></article><article class="structure-card glow" role="listitem"><h3 class="dbmb-10" data-lang-key="organ_level_title">ORGANI</h3><p class="mb-15" data-lang-key="organ_def">Insieme di tessuti diversi per una stessa attività.</p><p style="font-size: 0.95rem; margin: 0;">• <strong data-lang-key="organ_example_label">Esempio CUTE:</strong><br><span data-lang-key="skin_composition">Composta da tessuto epiteliale (epidermide) e connettivo (derma/ipoderma).</span></p></article><article class="structure-card glow" role="listitem"><h3 class="dbmb-10" data-lang-key="system_level_title">APPARATI E SISTEMI</h3><p class="mb-15" data-lang-key="system_def">Collaborazione di organi per funzioni specifiche.</p><p style="font-size: 0.95rem; margin: 0;">• <strong data-lang-key="integ_sys_label">Apparato Tegumentario:</strong><br><span data-lang-key="integ_sys_elements">Include cute e annessi (peli, unghie, ghiandole).</span></p></article></div></section>
-<p class="secHeader" data-lang-key="tissues_title">I TESSUTI</p>
-<p class="text" data-lang-key="tissues_description">Un tessuto è un insieme organizzato di cellule che condividono la stessa origine embrionale, struttura e specificità funzionale. Queste cellule sono integrate all'interno di una matrice extracellulare, la cui abbondanza, composizione e consistenza variano in base alla tipologia tissutale.<br>I tessuti fondamentali del corpo umano si classificano in:</p>
-<ol class="list">
-  <li data-lang-key="epithelial_tissue">tessuto epiteliale;</li>
-  <li data-lang-key="connective_tissue">tessuto connettivo;</li>
-  <li data-lang-key="muscle_tissue">tessuto muscolare;</li>
-  <li data-lang-key="nervous_tissue">tessuto nervoso.</li>
-</ol>   
-<p class="text">
-  <span class="subtitle" data-lang-key="epithelial_tissue_description">Tessuto epiteliale</span><br>
-  <span class="biotechbold" data-lang-key="epithelial_description">Il tessuto epiteliale è caratterizzato da cellule strettamente adese l'una all'altra, con uno spazio extracellulare virtualmente nullo</span>.<br>
-  <span data-lang-key="epithelial_junctions">La coesione cellulare è garantita da specializzazioni della membrana plasmatica che consentono l'interconnessione tra cellule adiacenti. Tali strutture molecolari si organizzano per formare complessi giunzionali (giunzioni ancoranti, serrate e comunicanti) che sigillano e stabilizzano il tessuto.</span><br>
-  <span data-lang-key="epithelial_types">In base alla funzione e alla localizzazione, si distinguono in: epiteli di rivestimento (con funzione di protezione e assorbimento sulle superfici interne ed esterne), epiteli ghiandolari (specializzati nella secrezione) ed epiteli sensoriali (deputati alla ricezione di stimoli, come i recettori gustativi e olfattivi).</span><br>
-  <span data-lang-key="epithelial_basement">Essendo un tessuto non vascolarizzato, l'epitelio poggia costantemente su un tessuto connettivo sottostante, deputato al sostegno meccanico e al trofismo. L'ancoraggio avviene tramite la membrana basale — una matrice extracellulare specializzata — attraverso la quale l'ossigeno e i nutrienti diffondono dai vasi sanguigni del connettivo verso le cellule epiteliali.</span>
-</p>   
+ 
+<!-- Contenitore principale: il contenuto statico qui è accessibile subito -->
+<div data-lang-key="dermatology_section">
+  
+  <!-- Titolo -->
+  <h1 class="sansation-bold">DERMATOLOGIA</h1>
+  
+  <!-- Descrizione -->
+  <p class="text">
+    La dermatologia è la branca della medicina dedicata allo studio, alla diagnosi e alla terapia delle patologie della cute, dei capelli e delle unghie.<br>
+    Il campo comprende un ampio spettro di condizioni, dalle affezioni comuni (acne, dermatiti) alle neoplasie complesse (psoriasi, melanoma).
+  </p>   
+  
+  <!-- Sezione Organizzazione -->
+  <section class="biotech-summary-box" aria-labelledby="org-title" style="margin: 30px 0;">
+    <h2 id="org-title" style="color: #00e676; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+      ORGANISMO UMANO: ORGANIZZAZIONE
+    </h2>
+    
+    <div class="structure-grid" role="list" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+      
+      <!-- Card: Cellula -->
+<article class="structure-card glow" role="listitem">
+  <h3 class="dbmb-10">CELLULA</h3>
+  <p>
+    <span>Unità fondamentale della vita. Delimitata dalla <strong>membrana plasmatica</strong>, contiene il <strong>citoplasma</strong> e il <strong>nucleo</strong> (sede del <strong>DNA</strong>). È l'unità minima capace di metabolismo, crescita e riproduzione.</span>
+  </p>
+</article>
+      
+      <!-- Card: Tessuti -->
+      <article class="structure-card glow" role="listitem">
+        <h3 class="dbmb-10">TESSUTI</h3>
+        <p class="mb-15">Insieme di cellule differenziate con origine, struttura e funzione comune, integrate in una matrice extracellulare.</p>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+          <li>• <strong>Epiteliale:</strong><span>es. Epidermide (stratificato), Endotelio (semplice)</span></li>
+          <li>• <strong>Connettivo:</strong><span>es. Derma, Ipoderma, Sangue, Osso</span></li>
+          <li>• <strong>Muscolare</strong></li>
+          <li>• <strong>Nervoso</strong></li>
+        </ul>
+      </article>
+      
+      <!-- Card: Organi -->
+      <article class="structure-card glow" role="listitem">
+        <h3 class="dbmb-10">ORGANI</h3>
+        <p class="mb-15">Strutture composte da tessuti diversi che cooperano per una funzione specifica.</p>
+        <p style="font-size: 0.95rem; margin: 0;">
+          • <strong>Esempio: CUTE</strong><br>
+          <span>Organo complesso derivante dall'interazione di epitelio (epidermide) e connettivo (derma/ipoderma).</span>
+        </p>
+      </article>
+      
+      <!-- Card: Apparati -->
+      <article class="structure-card glow" role="listitem">
+        <h3 class="dbmb-10">APPARATI E SISTEMI</h3>
+        <p class="mb-15">Insieme di organi che collaborano per funzioni fisiologiche integrate.</p>
+        <p style="font-size: 0.95rem; margin: 0;">
+          • <strong>Apparato Tegumentario:</strong><br>
+          <span>Cute e annessi (follicoli piliferi, unghie, ghiandole sebacee/sudoripare).</span>
+        </p>
+      </article>
+      
+    </div>
+  </section>
+
+  <!-- Sezione I Tessuti -->
+  <p class="secHeader">I TESSUTI</p>
+  <p class="text">
+    Un tessuto è un insieme organizzato di cellule che condividono la stessa origine embrionale, struttura ultrastrutturale e specificità funzionale. Queste cellule sono integrate all'interno di una matrice extracellulare (MEC), la cui composizione biochimica (proteoglicani, glicoproteine, fibre) e consistenza variano in base alla tipologia tissutale.<br>
+    I quattro tessuti fondamentali del corpo umano sono classificati come segue:
+  </p>
+  
+  <ol class="list">
+    <li>Tessuto epiteliale;</li>
+    <li>Tessuto connettivo;</li>
+    <li>Tessuto muscolare;</li>
+    <li>Tessuto nervoso.</li>
+  </ol>   
+  
+  <!-- Sezione Dettagli Epiteliale -->
+  <p class="text">
+    <span class="subtitle">Tessuto epiteliale</span><br>
+    <span class="biotechbold">Il tessuto epiteliale è caratterizzato da cellule strettamente adese tramite complessi giunzionali, con uno spazio extracellulare intercellulare minimo o assente.</span><br>
+    <span>La coesione cellulare è garantita da specializzazioni della membrana plasmatica che mediano l'adesione e la comunicazione tra cellule adiacenti. Tali strutture molecolari includono: <i>giunzioni strette</i> (occludine, claudine) per la barriera paracellulare; <i>desmosomi</i> (caderine desmosomiali, desmoplachina) per la resistenza meccanica; <i>emi-desmosomi</i> per l'ancoraggio alla membrana basale; e <i>giunzioni comunicanti</i> (connessine) per lo scambio di ioni e piccole molecole.</span><br>
+    <span>In base alla funzione e alla localizzazione, si distinguono in: <i>epiteli di rivestimento</i> (protezione, assorbimento, secrezione sulle superfici), <i>epiteli ghiandolari</i> (sintesi e rilascio di prodotti secretori) ed <i>epiteli sensoriali</i> (ricezione di stimoli specifici, es. recettori gustativi e olfattivi).</span><br>
+    <span>Essendo un tessuto asanguigno (non vascolarizzato), l'epitelio poggia su una <i>membrana basale</i> (composta da lamina basale e lamina reticolare), che funge da interfaccia selettiva. Il trofismo cellulare è assicurato dalla diffusione di <i>O<sub>2</sub></i> e nutrienti dai capillari del connettivo sottostante.</span>
+  </p>
+</div>
+
 <div class="grid-container">
 <div><p class="subtitle" data-lang-key="lining_epithelia">Epiteli di rivestimento.</p><p class="biotechbold" data-lang-key="lining_epithelia_classification">Gli epiteli di rivestimento vengono classificati sia in base al numero di strati cellulari, sia in base alla morfologia delle cellule dello strato superficiale:</p><ol class="list"><li data-lang-key="simple_epithelium"><span class="biotechbold">1. Epitelio semplice (monostratificato):</span> costituito da un singolo strato di cellule che poggiano tutte sulla membrana basale.</li><li data-lang-key="stratified_epithelium"><span class="biotechbold">2. Epitelio composto (pluristratificato):</span> formato da due o più strati sovrapposti di cellule; solo lo strato più profondo poggia sulla membrana basale.</li><li data-lang-key="pseudostratified_epithelium"><span class="biotechbold">3. Epitelio pseudostratificato:</span> composto da un unico strato di cellule di altezze diverse. Poiché i nuclei si distribuiscono a vari livelli, il tessuto simula un'organizzazione pluristratificata, sebbene tutte le cellule contattino la membrana basale.</li><li data-lang-key="squamous_epithelium"><span class="biotechbold">4. Epitelio pavimentoso semplice:</span> costituito da un singolo strato di cellule piatte dai contorni irregolari, unite da fitte interdigitazioni giunzionali. L'esiguo spessore garantisce un'elevata permeabilità, rendendolo ideale per il trasporto passivo (diffusione e filtrazione) di gas e fluidi. Riveste gli alveoli polmonari, i segmenti sottili del nefrone nei reni, l'orecchio medio e costituisce il mesotelio delle sierose (pleura, pericardio, peritoneo) e l'endotelio dei vasi sanguigni e linfatici.</li><li data-lang-key="cuboidal_epithelium"><span class="biotechbold">5. Epitelio cubico (isoprismatico) semplice:</span> formato da un unico strato di cellule cubiche (con altezza e larghezza equivalenti). Svolge funzioni di secrezione e assorbimento, offrendo al contempo una moderata protezione meccanica. Si riscontra sulla superficie dell'ovaio, nei tubuli collettori renali, nei dotti escretori di ghiandole esocrine (salivari, pancreas), nei plessi corioidei, nella capsula del cristallino e nell'epitelio pigmentato della retina.</li></ol></div>
 <div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuti2.avif" class="transparent specials-img" alt="Tessuti" width="430" height="180" loading="lazy" decoding="async"><ul class="list"><li data-lang-key="columnar_epithelium"><span class="biotechbold">6. Epitelio cilindrico (batiprismatico) semplice:</span> costituito da cellule sviluppate prevalentemente in altezza. È specializzato nell'assorbimento e nella secrezione e riveste la superficie interna di gran parte degli organi cavi dell'apparato digerente e riproduttivo. Si suddivide in ciliato e non ciliato, a seconda della presenza di specializzazioni della membrana apicale (ciglia).</li><li data-lang-key="transitional_epithelium"><span class="biotechbold">7. Epitelio di transizione (urotelio):</span> un epitelio pluristratificato plastico, le cui cellule modificano la propria forma (da cubiche a piatte) in base allo stato di distensione dell'organo. È altamente specializzato per resistere alla tossicità e all'ipertonicità dell'urina; riveste le vie urinarie, inclusi gli ureteri e la vescica.</li></ul></div>
