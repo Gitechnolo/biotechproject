@@ -48,22 +48,6 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* --- DIAGRAM SYSTEM (Reusable Component) --- */
-.diagram-flow{ display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 720px; margin: 24px auto; font-family: system-ui, -apple-system, sans-serif}
-/* Griglia per ramificazioni a 2 o 3 colonne */
-.diagram-grid{ display: flex; gap: 16px; width: 100%}.diagram-col{ flex: 1}
-/* Scheda/Nodo del diagramma */
-.diagram-node{ background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #94a3b8; border-radius: 8px; padding: 12px 16px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); transition: transform 0.2s ease, box-shadow 0.2s ease}.diagram-node:hover{ transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08)}.diagram-tag{ display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 4px}.diagram-node h4{ margin: 0 0 4px 0; color: #0f172a; font-size: 0.95rem; font-weight: 600}.diagram-node p{ margin: 0; color: #475569; font-size: 0.85rem; line-height: 1.4}
-/* Connettori e frecce */
-.diagram-arrow{ color: #94a3b8; font-size: 1rem; font-weight: bold; user-select: none}
-/* Modificatori Semantici di Colore (Riutilizzabili ovunque) */
-.diagram-node.is-red    { border-left-color: #ef4444; background: #fef2f2; } /* Sangue Arterioso / Sistemic */
-.diagram-node.is-blue   { border-left-color: #3b82f6; background: #eff6ff; } /* Sangue Venoso / Polmonare */
-.diagram-node.is-purple { border-left-color: #8b5cf6; background: #f5f3ff; } /* Intrinseca / Linfatico */
-.diagram-node.is-amber  { border-left-color: #f59e0b; background: #fffbe2; } /* Innesco / Danno / Piastrine */
-.diagram-node.is-green  { border-left-color: #10b981; background: #ecfdf5; } /* Esito / Coagulo Stabile */
-/* Responsive Mobile */
-@media (max-width: 580px){ .diagram-grid{ flex-direction: column;}}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
