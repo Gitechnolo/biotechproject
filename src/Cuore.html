@@ -3,33 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Apparato Circolatorio: Anatomia del Cuore, Vasi Sanguigni e Sangue | Biotech Project</title>
-<meta name="description" content="Scopri l'anatomia e le funzioni dell'apparato circolatorio: cuore, vasi sanguigni e sangue. Approfondimento scientifico con linguaggio chiaro, schemi e inclusività cognitiva.">
+<title>Apparato Circolatorio: Fisiologia e Sangue | Biotech Project</title>
+<meta name="description" content="Guida alla fisiologia dell'apparato circolatorio: biofisica emodinamica, componenti del sangue, emostasi e diagnostica di laboratorio con indici ematologici.">
+<!-- Directives for Search Engine Crawlers (Robots) -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<!-- URL Canonici e Versioni Alternative (Accessibilità) -->
 <link rel="canonical" href="https://gitechnolo.github.io/biotechproject/Cuore.html">
 <link rel="alternate" href="https://gitechnolo.github.io/biotechproject/Cuore.html" hreflang="it" title="Versione standard">
 <link rel="alternate" href="https://gitechnolo.github.io/biotechproject/Cuore-semplice.html" hreflang="it-x-simple" title="Versione semplice per dislessia">
-<meta name="google-site-verification" content="Gpt5PTNSnDEI_NT2_bynuXH9pOAdVbiZZ36LyKGsyTc" />
+<!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://gitechnolo.github.io/biotechproject/Cuore.html">
-<meta property="og:title" content="Apparato Circolatorio: Anatomia del Cuore, Vasi Sanguigni e Sangue">
-<meta property="og:description" content="Scopri l'anatomia e le funzioni dell'apparato circolatorio: cuore, vasi sanguigni e sangue. Approfondimento scientifico con linguaggio chiaro, schemi e inclusività cognitiva.">
+<meta property="og:title" content="Apparato Circolatorio: Fisiologia, Sangue ed Emostasi">
+<meta property="og:description" content="Approfondimento scientifico ed emodinamico sull'apparato cardiovascolare: legge di Poiseuille, elementi del sangue, emostasi e parametri della diagnostica ematologica.">
 <meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotech-cuore.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Anatomia del cuore e circolazione sanguigna - Biotech Project">
 <meta property="og:site_name" content="Biotech Project">
 <meta property="og:locale" content="it_IT">
+<!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@biotechproject">
-<meta name="twitter:title" content="Apparato Circolatorio: Anatomia del Cuore, Vasi Sanguigni e Sangue">
-<meta name="twitter:description" content="Scopri l'anatomia e le funzioni dell'apparato circolatorio: cuore, vasi sanguigni e sangue. Approfondimento scientifico con linguaggio chiaro, schemi e inclusività cognitiva.">
+<meta name="twitter:title" content="Apparato Circolatorio: Fisiologia, Sangue ed Emostasi">
+<meta name="twitter:description" content="Approfondimento scientifico ed emodinamico sull'apparato cardiovascolare: legge di Poiseuille, elementi del sangue, emostasi e parametri della diagnostica ematologica.">
 <meta name="twitter:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotech-cuore.png">
 <meta name="twitter:image:alt" content="Anatomia del cuore e circolazione sanguigna - Biotech Project">
+<!-- Autore e Datetime articolo -->
 <meta name="author" content="Biotech Project Team">
 <meta name="article:author" content="https://www.linkedin.com/in/biotechproject">
 <meta name="article:published_time" content="2025-09-15T09:05:00+02:00">
-<meta name="article:modified_time" content="2026-07-10T17:50:00+02:00">
+<meta name="article:modified_time" content="2026-07-30T11:19:00+02:00">
+<!-- Asset ed Eventuali Preconnect -->
 <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
 <link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" as="script">
@@ -48,154 +54,36 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* ==========================================
-   CYBERPUNK / BIOTECH UI COMPONENTS
-   (Tabelle Diagnostiche & Diagrammi di Flusso)
-   ========================================== */
-
-/* --- TABELLE DIAGNOSTICHE (Sezione 8 & Sezione 6) --- */
-.cyber-table-container {
-  width: 100%;
-  overflow-x: auto;
-  margin: 18px 0 24px 0;
-  border-radius: 8px;
-}
-
-.cyber-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: rgba(10, 16, 26, 0.85);
-  border: 1px solid rgba(0, 230, 118, 0.25);
-  border-radius: 8px;
-  overflow: hidden;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 12px rgba(0, 230, 118, 0.05);
-}
-
-.cyber-table th {
-  background: rgba(0, 230, 118, 0.12);
-  color: #00e676;
-  font-family: 'Consolas', 'Fira Code', monospace, system-ui;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 12px 14px;
-  text-align: left;
-  border-bottom: 1px solid rgba(0, 230, 118, 0.3);
-}
-
-.cyber-table td {
-  padding: 12px 14px;
-  color: #cbd5e1;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cyber-table tr:last-child td {
-  border-bottom: none;
-}
-
-.cyber-table tr:hover td {
-  background: rgba(0, 230, 118, 0.05);
-}
-
+/* --- TABELLE DIAGNOSTICHE & Diagrammi di Flusso - (Sezione 8 & Sezione 6) --- */
+.cyber-table-container{ width: 100%; overflow-x: auto; margin: 18px 0 24px 0; border-radius: 8px}
+.cyber-table{ width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.25); border-radius: 8px; overflow: hidden; backdrop-filter: blur(6px); box-shadow: 0 0 12px rgba(0, 230, 118, 0.05)}
+.cyber-table th{ background: rgba(0, 230, 118, 0.12); color: #00e676; font-family: 'Consolas', 'Fira Code', monospace, system-ui; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.3)}
+.cyber-table td{ padding: 12px 14px; color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; border-bottom: 1px solid rgba(255, 255, 255, 0.05)}
+.cyber-table tr:last-child td{ border-bottom: none}
+.cyber-table tr:hover td{ background: rgba(0, 230, 118, 0.05)}
 /* --- DIAGRAMMA DI FLUSSO DINAMICO (Sezione 6) --- */
-.cyber-flowchart {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.flow-branches {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.flow-card {
-  background: rgba(10, 16, 26, 0.85);
-  border: 1px solid rgba(0, 230, 118, 0.25);
-  border-radius: 8px;
-  padding: 12px 14px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.05);
-}
-
-.flow-card.extrinsic {
-  border-color: rgba(255, 152, 0, 0.4);
-}
-
-.flow-card.intrinsic {
-  border-color: rgba(255, 235, 59, 0.4);
-}
-
-.flow-card.common {
-  border-color: rgba(0, 230, 118, 0.5);
-  background: rgba(0, 230, 118, 0.06);
-}
-
-.flow-card.lysis {
-  border-color: rgba(33, 150, 243, 0.4);
-  background: rgba(33, 150, 243, 0.05);
-}
-
-.flow-tag {
-  font-family: 'Consolas', 'Fira Code', monospace;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-
+.cyber-flowchart{ display: flex; flex-direction: column; gap: 12px; margin: 20px 0}
+.flow-branches{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px}
+.flow-card{ background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.25); border-radius: 8px; padding: 12px 14px; backdrop-filter: blur(6px); box-shadow: 0 0 10px rgba(0, 230, 118, 0.05)}
+.flow-card.extrinsic{ border-color: rgba(255, 152, 0, 0.4)}
+.flow-card.intrinsic{ border-color: rgba(255, 235, 59, 0.4)}
+.flow-card.common{ border-color: rgba(0, 230, 118, 0.5); background: rgba(0, 230, 118, 0.06)}
+.flow-card.lysis{ border-color: rgba(33, 150, 243, 0.4); background: rgba(33, 150, 243, 0.05)}
+.flow-tag{ font-family: 'Consolas', 'Fira Code', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; font-weight: bold}
 .tag-extrinsic { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
 .tag-intrinsic { background: rgba(255, 235, 59, 0.2); color: #ffeb3b; }
 .tag-common { background: rgba(0, 230, 118, 0.2); color: #00e676; }
 .tag-lysis { background: rgba(33, 150, 243, 0.2); color: #64b5f6; }
-
-.flow-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.flow-desc {
-  font-size: 0.82rem;
-  color: #cbd5e1;
-  line-height: 1.4;
-}
-
-.flow-arrow-down {
-  text-align: center;
-  color: #00e676;
-  font-size: 1.2rem;
-  line-height: 1;
-  margin: 2px 0;
-  opacity: 0.8;
-}
-
+.flow-title{ font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 4px}
+.flow-desc{ font-size: 0.82rem; color: #cbd5e1; line-height: 1.4}
+.flow-arrow-down{ text-align: center; color: #00e676; font-size: 1.2rem; line-height: 1; margin: 2px 0; opacity: 0.8}
 /* --- ADATTAMENTO MOBILE RESPONSIVE --- */
-@media (max-width: 680px) {
-  .flow-branches {
-    grid-template-columns: 1fr;
-  }
-  .cyber-table th, .cyber-table td {
-    padding: 10px 10px;
-    font-size: 0.78rem;
-  }
-}
+@media (max-width: 680px){ .flow-branches{ grid-template-columns: 1fr;} .cyber-table th, .cyber-table td{ padding: 10px 10px; font-size: 0.78rem;}}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
 <!-- Schema.org structured data (JSON-LD) -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Apparato Circolatorio: Anatomia del Cuore, Vasi Sanguigni e Sangue","description":"Scopri l'anatomia e le funzioni dell'apparato circolatorio: cuore, vasi sanguigni e sangue. Approfondimento scientifico con linguaggio chiaro, schemi e inclusività cognitiva.","url":"https://gitechnolo.github.io/biotechproject/Cuore.html","mainEntityOfPage":"https://gitechnolo.github.io/biotechproject/Cuore.html","image":[{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotech-cuore.png","width":"1200","height":"630","caption":"Anatomia del cuore e circolazione sanguigna - Biotech Project"}],"datePublished":"2025-09-15T09:05:00+02:00","dateModified":"2026-07-10T17:50:00+02:00","inLanguage":"it","educationalLevel":"Intermediate","isAccessibleForFree":true,"accessibilityFeature":["alternativeText","structuralNavigation","tableOfContents","readingHelpers"],"accessibilityControl":["fullKeyboardControl","fullMouseControl"],"author":{"@type":"Organization","name":"Biotech Project Team"},"publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"]},"isPartOf":{"@type":"WebSite","name":"Biotech Project","url":"https://gitechnolo.github.io/biotechproject/"},"hasPart":{"@type":"WebPage","url":"https://gitechnolo.github.io/biotechproject/Cuore-semplice.html","name":"Versione Semplice: Apparato Circolatorio per Tutti","description":"Spiegazione semplificata del cuore, sangue e vasi sanguigni con linguaggio chiaro e struttura accessibile","alternativeHeadline":"Apparato circolatorio spiegato facile per dislessia e accessibilità cognitiva","accessibilityFeature":["alternativeText","highContrast","longDescription","readingOrder","textToSpeech"],"accessibilityHazard":["noFlashingHazard","noMotionSimulationHazard","noSoundHazard"],"accessibilitySummary":"Questa versione è pensata per persone con dislessia o difficoltà di lettura. Usa un font adatto, frasi brevi, strutture semplici e contrasto elevato per una lettura facilitata."},"significantLink":"https://gitechnolo.github.io/biotechproject/Cuore-semplice.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Apparato Circolatorio: Fisiologia, Emodinamica e Diagnostica di Laboratorio","description":"Trattato scientifico dettagliato su biofisica dell'apparato cardiovascolare, fisiologia del sangue, sistemi di coagulazione, immunoematologia e indici diagnostici di laboratorio.","url":"https://gitechnolo.github.io/biotechproject/Cuore.html","mainEntityOfPage":"https://gitechnolo.github.io/biotechproject/Cuore.html","image":[{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotech-cuore.png","width":"1200","height":"630","caption":"Anatomia e Fisiologia dell'Apparato Circolatorio"}],"datePublished":"2025-09-15T09:05:00+02:00","dateModified":"2026-07-30T11:19:00+02:00","inLanguage":"it","educationalLevel":"Advanced","isAccessibleForFree":true,"accessibilityFeature":["alternativeText","structuralNavigation","tableOfContents","readingHelpers"],"accessibilityControl":["fullKeyboardControl","fullMouseControl"],"author":{"@type":"Organization","name":"Biotech Project Team"},"publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"},"sameAs":["https://www.linkedin.com/in/biotechproject","https://github.com/gitechnolo/biotechproject"]},"isPartOf":{"@type":"WebSite","name":"Biotech Project","url":"https://gitechnolo.github.io/biotechproject/"},"hasPart":{"@type":"WebPage","url":"https://gitechnolo.github.io/biotechproject/Cuore-semplice.html","name":"Versione Semplice: Apparato Circolatorio per Tutti","description":"Spiegazione semplificata del cuore, sangue e vasi sanguigni con linguaggio chiaro e struttura accessibile","alternativeHeadline":"Apparato circolatorio spiegato facile per dislessia e accessibilità cognitiva","accessibilityFeature":["alternativeText","highContrast","longDescription","readingOrder","textToSpeech"],"accessibilityHazard":["noFlashingHazard","noMotionSimulationHazard","noSoundHazard"],"accessibilitySummary":"Questa versione è pensata per persone con dislessia o difficoltà di lettura. Usa un font adatto, frasi brevi, strutture semplici e contrasto elevato per una lettura facilitata."},"significantLink":"https://gitechnolo.github.io/biotechproject/Cuore-semplice.html"}</script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->
@@ -405,8 +293,7 @@ DESCRIZIONE: Modello classico e cellulare della coagolazione (vie estrinseca, in
 ========================================== -->
 <section aria-labelledby="coagulation-title" class="text-block mb-15" data-lang-key="coagulation_section">
   <h2 id="coagulation-title" class="secHeader">EMOSTASI SECONDARIA, CASCATA COAGULATIVA E FIBRINOLISI</h2>
-  
-  <!-- Hook Narrativo -->
+    <!-- Hook Narrativo -->
   <div class="mb-15">
     <p><strong>In breve:</strong> Se l'emostasi primaria crea un tappo piastrinico provvisorio, l'emostasi secondaria stende sopra di esso una solida "rete da pesca" molecolare fatta di fibrina. Questo processo avviene attraverso una reazione a catena di enzimi (la cascata coagulativa) guidata dalla trombina. Una volta riparata la parete del vaso, la fibrinolisi interviene come una cesoia molecolare per sciogliere il coagulo ed evitare che ostruisca la circolazione.</p>
   </div>
@@ -552,8 +439,7 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
 ========================================== -->
 <section aria-labelledby="labdiagnostics-title" class="text-block mb-25" data-lang-key="lab_diagnostics_section">
   <h2 id="labdiagnostics-title" class="secHeader">METROLOGIA EMATOLOGICA E DIAGNOSTICA DI LABORATORIO</h2>
-  
-  <!-- Hook Narrativo -->
+   <!-- Hook Narrativo -->
   <div class="mb-25">
     <p><strong>In breve:</strong> Un referto ematologico è una fotografia quantitativa e qualitativa della salute vascolare e sistemica. Saper interpretare le interrelazioni matematiche tra il volume delle cellule, la concentrazione di emoglobina e i tempi di formazione della fibrina permette di passare dal dato metrologico grezzo alla corretta diagnosi clinico-patologica.</p>
   </div>
