@@ -84,24 +84,46 @@ DESCRIZIONE: Organizzazione dell'apparato cardiovascolare, convezione di massa e
   <h1 id="main-title" class="sansation-bold">APPARATO CIRCOLATORIO</h1>
   <h2 class="secHeader">PRINCIPI GENERALI E FISIOLOGIA EMODINAMICA</h2>
 
+  <div class="insight-box mb-15">
+    <p class="text-sm"><strong>In breve:</strong> Un'autostrada biologica di oltre 100.000 km che trasporta vita in pochi secondi. Se ci affidassimo alla sola diffusione molecolare, una singola molecola di ossigeno impiegherebbe anni per raggiungere i piedi; grazie alla convezione guidata dal cuore, ci impiega meno di un secondo.</p>
+  </div>
+
   <h3 class="biotechbold">CONVEZIONE DI MASSA ED EMODINAMICA CARDIOVASCOLARE</h3>
   <p class="text">
-    L'<strong>apparato cardiovascolare</strong> è un sistema chiuso ad alta efficienza deputato alla <strong class="yellowtext">convezione di massa (bulk flow)</strong> del sangue. Tale meccanismo garantisce il rapido trasporto a lunga distanza di ossigeno (O<sub>2</sub>), anidride carbonica (CO<sub>2</sub>), nutrienti, cataboliti del metabolismo, ormoni e calore, mantenendo rigorosamente costante l'omeostasi del microambiente extracellulare.
+    L'<strong>apparato cardiovascolare</strong> è un sistema idraulico chiuso ad alta efficienza deputato alla <strong class="yellowtext">convezione di massa (bulk flow)</strong> del sangue. Questo trasporto convettivo a lunga distanza supera i limiti fisici della semplice diffusione molecolare, descritta dalla <i>Prima Legge di Fick</i>:
+  </p>
+  <div class="formula-box text-center my-10">
+    <i>J</i> = &minus;<i>D</i> &middot; (&Delta;<i>C</i> / &Delta;<i>x</i>)
+  </div>
+  <p class="text">
+    Laddove la diffusione è efficace solo su distanze microscopiche (&lt; 100 &mu;m), il flusso ematico convettivo è guidato da <strong class="yellowtext">gradienti di pressione idraulica (&Delta;P)</strong> impressi dal <strong class="orangetext">cuore</strong>, che opera come una doppia pompa aspirante e premente disposta in serie tra i circuiti sistemico e polmonare.
   </p>
 
+  <h3 class="biotechbold">BIOFISICA DEL FLUSSO E LEGGE DI POISEUILLE</h3>
   <p class="text">
-    A differenza dei processi di pura diffusione molecolare (governati dalla Prima Legge di Fick, efficaci solo su distanze microscopiche &lt; 100 &mu;m), il trasporto convettivo ematico è guidato da <strong class="yellowtext">gradienti di pressione idraulica (&Delta;P)</strong> generati dal <strong class="orangetext">cuore</strong>, che agisce da doppia pompa aspirante e premente posizionata in serie tra i due circuiti principali.
+    Nei vasi di conduzione, la relazione tra portata ematica (<i>Q</i>), gradiente pressorio (&Delta;<i>P</i>) e resistenza idrodinamica (<i>R</i>) è descritta dalla <strong>Legge di Poiseuille</strong>:
+  </p>
+  <div class="formula-box text-center my-15">
+    <i>Q</i> = &Delta;<i>P</i> / <i>R</i> &emsp;&mdash;&emsp; dove &emsp; <i>R</i> = (8 &middot; &eta; &middot; <i>L</i>) / (&pi; &middot; <i>r</i><sup>4</sup>)
+  </div>
+  <p class="text">
+    La dipendenza della resistenza dalla <strong>quarta potenza del raggio vascolare (<i>r</i><sup>4</sup>)</strong> ha un significato fisiologico straordinario: un piccolo restringimento del vaso (vasocostrizione) riduce enormemente il flusso, permettendo all'organismo di deviare il sangue dove serve con una precisione millimetrica, regolando le <strong class="yellowtext">Resistenze Periferiche Totali (TPR)</strong> e la pressione arteriosa.
   </p>
 
   <h3 class="biotechbold">ACCOPPIAMENTO ELETTROMECCANICO E GERARCHIA VASCOLARE</h3>
   <p class="text">
-    Il cuore converte l'energia chimica in lavoro meccanico di pressione mediante l'automatismo delle cellule pacemaker del <strong class="orangetext">nodo senoatriale</strong>, la cui attività elettrica si propaga al miocardio determinando le fasi ritmiche di contrazione (sistole) e rilasciamento (diastole). Il sangue viene distribuito attraverso una rete vascolare gerarchizzata:
+    L'automatismo cardiaco nasce dalle cellule pacemaker del <strong class="orangetext">nodo senoatriale</strong>, il cui potenziale d'azione si propaga al sincizio miocardico determinando le fasi di sistole e diastole. Il sangue viene canalizzato attraverso una rete gerarchizzata:
   </p>
   <ul class="text-list">
-    <li><strong class="orangetext">Arterie elastiche e di conduzione</strong>: Smorzano la pulsatilità sistolica immagazzinando energia elastica durante l'eiezione e restituendola in diastole (<strong class="yellowtext">effetto Windkessel</strong>), garantendo un flusso continuo nei distretti periferici.</li>
-    <li><strong class="orangetext">Arteriole (vasi di resistenza)</strong>: Regolano le resistenze periferiche totali (TPR) e la pressione arteriosa sistemica mediante variazioni del tono vasomotore guidate dal sistema nervoso autonomo, da ormoni e da autoregolazione locale.</li>
-    <li><strong class="orangetext">Capillari (unità microvascolari)</strong>: Vasi monoendoteliali adibiti agli scambi gassosi e di soluti per diffusione e alla filtrazione transcapillare regolata dalle forze idrostatiche ed oncotiche (<strong class="yellowtext">equazione di Starling</strong>).</li>
-    <li><strong class="orangetext">Vene (vasi di capacitanza)</strong>: Caratterizzate da elevata cedevolezza (compliance), accolgono circa il 60–70% del volume ematico. Il ritorno venoso è sostenuto dalle valvole a nido di rondine, dalla pompa muscolare e dalla pressione intratoracica.</li>
+    <li><strong class="orangetext">Arterie elastiche (es. Aorta)</strong>: Smorzano la pulsatilità sistolica accumulando energia potenziale elastica durante l'eiezione e restituendola in diastole (<strong class="yellowtext">effetto Windkessel</strong>), trasformando un flusso pulsato in un flusso periferico continuo.</li>
+    <li><strong class="orangetext">Arteriole (vasi di resistenza)</strong>: Principale sede di controllo delle TPR, regolate finemente dal sistema nervoso autonomo, da ormoni e da autoregolazione metabolica locale.</li>
+    <li><strong class="orangetext">Capillari (unità di scambio)</strong>: Vasi monoendoteliali privi di tonaca muscolare. Lo scambio di fluidi tra lume e interstizio è governato dall'<strong>Equazione di Starling</strong>:
+      <div class="formula-sub my-10">
+        <i>J</i><sub>v</sub> = <i>K</i><sub>f</sub> &middot; [(<i>P</i><sub>c</sub> &minus; <i>P</i><sub>i</sub>) &minus; &sigma;(<i>&pi;</i><sub>c</sub> &minus; <i>&pi;</i><sub>i</sub>)]
+      </div>
+      dove <i>P</i><sub>c</sub> e <i>P</i><sub>i</sub> indicano le pressioni idrostatiche (capillare e interstiziale), mentre <i>&pi;</i><sub>c</sub> e <i>&pi;</i><sub>i</sub> rappresentano le pressioni colloido-osmotiche (oncotiche).
+    </li>
+    <li><strong class="orangetext">Vene (vasi di capacitanza)</strong>: Caratterizzate da un'elevata cedevolezza (compliance, <i>C</i> = &Delta;<i>V</i> / &Delta;<i>P</i>), accolgono circa il 60–70% del volume ematico totale. Il ritorno venoso al cuore è sostenuto da valvole unidirezionali a nido di rondine, dalla pompa muscolare e dalla pressione intratoracica negativa.</li>
   </ul>
 </section>
 <!-- Contenitore principale del carosello -->
