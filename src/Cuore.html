@@ -48,7 +48,12 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* --- CYBERPUNK / BIOTECH TABLES & DATA GRIDS --- */
+/* ==========================================
+   CYBERPUNK / BIOTECH UI COMPONENTS
+   (Tabelle Diagnostiche & Diagrammi di Flusso)
+   ========================================== */
+
+/* --- TABELLE DIAGNOSTICHE (Sezione 8 & Sezione 6) --- */
 .cyber-table-container {
   width: 100%;
   overflow-x: auto;
@@ -71,7 +76,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .cyber-table th {
   background: rgba(0, 230, 118, 0.12);
   color: #00e676;
-  font-family: 'Consolas', 'Fira Code', system-ui, sans-serif;
+  font-family: 'Consolas', 'Fira Code', monospace, system-ui;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -96,8 +101,91 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   background: rgba(0, 230, 118, 0.05);
 }
 
-/* Modalità Responsive Mobile */
-@media (max-width: 640px) {
+/* --- DIAGRAMMA DI FLUSSO DINAMICO (Sezione 6) --- */
+.cyber-flowchart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.flow-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.flow-card {
+  background: rgba(10, 16, 26, 0.85);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  border-radius: 8px;
+  padding: 12px 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.05);
+}
+
+.flow-card.extrinsic {
+  border-color: rgba(255, 152, 0, 0.4);
+}
+
+.flow-card.intrinsic {
+  border-color: rgba(255, 235, 59, 0.4);
+}
+
+.flow-card.common {
+  border-color: rgba(0, 230, 118, 0.5);
+  background: rgba(0, 230, 118, 0.06);
+}
+
+.flow-card.lysis {
+  border-color: rgba(33, 150, 243, 0.4);
+  background: rgba(33, 150, 243, 0.05);
+}
+
+.flow-tag {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.tag-extrinsic { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
+.tag-intrinsic { background: rgba(255, 235, 59, 0.2); color: #ffeb3b; }
+.tag-common { background: rgba(0, 230, 118, 0.2); color: #00e676; }
+.tag-lysis { background: rgba(33, 150, 243, 0.2); color: #64b5f6; }
+
+.flow-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.flow-desc {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.flow-arrow-down {
+  text-align: center;
+  color: #00e676;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin: 2px 0;
+  opacity: 0.8;
+}
+
+/* --- ADATTAMENTO MOBILE RESPONSIVE --- */
+@media (max-width: 680px) {
+  .flow-branches {
+    grid-template-columns: 1fr;
+  }
   .cyber-table th, .cyber-table td {
     padding: 10px 10px;
     font-size: 0.78rem;
@@ -317,6 +405,7 @@ DESCRIZIONE: Modello classico e cellulare della coagolazione (vie estrinseca, in
 ========================================== -->
 <section aria-labelledby="coagulation-title" class="text-block mb-15" data-lang-key="coagulation_section">
   <h2 id="coagulation-title" class="secHeader">EMOSTASI SECONDARIA, CASCATA COAGULATIVA E FIBRINOLISI</h2>
+  
   <!-- Hook Narrativo -->
   <div class="mb-15">
     <p><strong>In breve:</strong> Se l'emostasi primaria crea un tappo piastrinico provvisorio, l'emostasi secondaria stende sopra di esso una solida "rete da pesca" molecolare fatta di fibrina. Questo processo avviene attraverso una reazione a catena di enzimi (la cascata coagulativa) guidata dalla trombina. Una volta riparata la parete del vaso, la fibrinolisi interviene come una cesoia molecolare per sciogliere il coagulo ed evitare che ostruisca la circolazione.</p>
@@ -326,26 +415,89 @@ DESCRIZIONE: Modello classico e cellulare della coagolazione (vie estrinseca, in
     L'<strong class="biotechbold">EMOSTASI SECONDARIA</strong> consolida il tappo piastrinico primario attraverso la conversione del fibrinogeno solubile in un reticolo insolubile di <strong class="orangetext">fibrina polimerizzata</strong>, stabilizzata dai legami covalenti crociati catalizzati dal Fattore XIIIa attivato dalla trombina.
   </p>
 
-  <h3 class="biotechbold">CASCATA COAGULATIVA E MODELLO CELLULARE</h3>
+  <h3 class="biotechbold">DIAGRAMMA DI FLUSSO: MODELLO CELLULARE DELLA COAGULAZIONE</h3>
   <p class="text">
-    Tradizionalmente descritta come una sequenza di attivazioni zimogeniche divise in vie, la coagolazione opera <em>in vivo</em> secondo un modello integrato basato sulle membrane cellulari (fasi di Iniziazione, Amplificazione e Propagazione):
+    Rappresentazione schematica delle vie di innesco, amplificazione, generazione di trombina e successiva dissoluzione del coagulo:
   </p>
 
-  <ul class="text-list">
-    <li><strong class="orangetext">Via Estrinseca (Inizio in vivo)</strong>: Innescata dal <strong class="yellowtext">Fattore Tissutale (TF/Fattore III)</strong> espresso dal subendotelio leso, che lega il Fattore VIIa formando il complesso catalitico TF-FVIIa.</li>
-    <li><strong class="orangetext">Via Intrinseca (Amplificazione)</strong>: Coinvolge i fattori XII, XI, IX e VIII. Il complesso tenasi intrinseco (FIXa-FVIIIa su fosfolipidi piastrinici) amplifica massivamente l'attivazione del Fattore X.</li>
-    <li><strong class="orangetext">Via Comune</strong>: Il complesso prothrombinasico (<strong class="greentext">FXa-FVa</strong> in presenza di Ca<sup>2+</sup>) converte la protrombina (FII) in <strong class="orangetext">trombina (FIIa)</strong>, l'enzima chiave che scinde il fibrinogeno in monomeri di fibrina.</li>
-  </ul>
+  <!-- DIAGRAMMA DI FLUSSO DINAMICO -->
+  <div class="cyber-flowchart">
+    <!-- Vie Iniziali (Estrinseca + Intrinseca) -->
+    <div class="flow-branches">
+      <div class="flow-card extrinsic">
+        <span class="flow-tag tag-extrinsic">Via Estrinseca (Iniziazione)</span>
+        <div class="flow-title">Lesione &amp; Fattore Tissutale (TF)</div>
+        <div class="flow-desc">Il TF subendoteliale lega il <strong>FVIIa</strong> creando il complesso catalitico <strong>TF-FVIIa</strong> che innesca l'attivazione del Fattore X.</div>
+      </div>
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Via Intrinseca (Amplificazione)</span>
+        <div class="flow-title">Complesso Tenasi (FIXa-FVIIIa)</div>
+        <div class="flow-desc">I fattori <strong>FXII, FXI, FIX e FVIIIa</strong> amplificano massivamente il segnale sulle membrane piastriniche cariche negativamente.</div>
+      </div>
+    </div>
 
-  <h3 class="biotechbold">ANTICOAGULAZIONE FISIOLOGICA E FIBRINOLISI</h3>
+    <div class="flow-arrow-down">↓</div>
+
+    <!-- Via Comune -->
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Via Comune (Propagazione)</span>
+      <div class="flow-title">Complesso Prothrombinasico &amp; Trombina (FIIa)</div>
+      <div class="flow-desc">Il complesso <strong>FXa-FVa + Ca<sup>2+</sup></strong> converte la Protrombina (FII) nell'enzima chiave: la <strong>Trombina (FIIa)</strong>.</div>
+    </div>
+
+    <div class="flow-arrow-down">↓</div>
+
+    <!-- Formazione Fibrina -->
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Emostasi Conclusa</span>
+      <div class="flow-title">Fibrinogeno → Fibrina Crociata (FXIIIa)</div>
+      <div class="flow-desc">La trombina scinde il Fibrinogeno in monomeri di Fibrina; il <strong>Fattore XIIIa</strong> li salda con legami covalenti stabilizzando il trombo.</div>
+    </div>
+
+    <div class="flow-arrow-down">↓</div>
+
+    <!-- Fibrinolisi -->
+    <div class="flow-card lysis">
+      <span class="flow-tag tag-lysis">Fibrinolisi (Risoluzione)</span>
+      <div class="flow-title">t-PA → Plasmina → D-Dimero</div>
+      <div class="flow-desc">L'attivatore tissutale (t-PA) genera <strong>Plasmina</strong>, che proteolizza la rete di fibrina rilasciando frammenti di degradazione (<strong>D-Dimero</strong>).</div>
+    </div>
+  </div>
+
+  <h3 class="biotechbold">ANTICOAGULAZIONE FISIOLOGICA ENDOGENA</h3>
   <p class="text">
-    Per limitare la formazione del trombo al solo sito di lesione ed evitarne la propagazione intravascolare, l'organismo impiega potenti sistemi di controllo e dissoluzione:
+    Per evitare la propagazione incontrollata del trombo, l'organismo impiega tre sistemi inibitori principali:
   </p>
 
-  <ul class="text-list">
-    <li><strong class="orangetext">Anticoagulanti Endogeni</strong>: L'<strong class="greentext">Antitrombina III (AT-III)</strong> inattiva la trombina e il FXa (azione potenziata dall'eparina); la <strong class="greentext">Proteina C e Proteina S</strong> degradano i cofattori FVa e FVIIIa; il <strong class="greentext">TFPI</strong> blocca la via estrinseca.</li>
-    <li><strong class="orangetext">Fibrinolisi</strong>: L'attivatore tissutale del plasminogeno (t-PA) converte il plasminogeno in <strong class="yellowtext">plasmina</strong>, che proteolizza la rete di fibrina rilasciando prodotti di degradazione, tra cui il <strong class="orangetext">D-Dimero</strong> (marcatore clinico di fibrinolisi attiva).</li>
-  </ul>
+  <!-- TABELLA ANTICOAGULANTI -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Anticoagulante Endogeno</th>
+          <th>Meccanismo d'Azione</th>
+          <th>Impatto Clinico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="greentext">Antitrombina III (AT-III)</strong></td>
+          <td>Inattiva Trombina (FIIa) e FXa (potenziata dall'eparina)</td>
+          <td>Deficit causa uno stato trombofilico ereditario grave.</td>
+        </tr>
+        <tr>
+          <td><strong class="greentext">Proteina C &amp; Proteina S</strong></td>
+          <td>Degradano proteoliticamente i cofattori attivati FVa e FVIIIa</td>
+          <td>Sostengono il sistema anticoagulante proteico endoteliale.</td>
+        </tr>
+        <tr>
+          <td><strong class="greentext">TFPI (Tissue Factor Pathway Inhibitor)</strong></td>
+          <td>Blocca reversibilmente il complesso estrinseco TF-FVIIa e FXa</td>
+          <td>Frena precocemente la fase di iniziazione.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 <!-- ==========================================
 SEZIONE 7: Immunoematologia e Gruppi Sanguigni (immunohematology_section)
