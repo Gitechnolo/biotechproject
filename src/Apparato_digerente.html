@@ -673,78 +673,151 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
     <p><strong>In sintesi:</strong> La digestione non si limita alla scissione meccanica, ma è il punto di partenza di complesse vie metaboliche. Capire la cinetica enzimatica, il Ciclo di Krebs (il motore energetico della cellula) e il Ciclo dell'Urea (il sistema di smaltimento dell'azoto) è fondamentale per comprendere come i nutrienti vengono trasformati in energia e biomolecole, e come l'organismo gestisce i prodotti di scarto tossici.</p>
   </div>
 
+  <!-- CINETICA ENZIMATICA -->
   <h3 class="biotechbold">CINETICA ENZIMATICA: L'EQUAZIONE DI MICHAELIS-MENTEN</h3>
   <p class="text">
     La velocità con cui un enzima catalizza una reazione non è lineare rispetto alla concentrazione del substrato, ma segue una curva iperbolica descritta dall'equazione di <strong class="biotechbold">Michaelis-Menten</strong>. Questo modello descrive la relazione tra la velocità di reazione (<em>V</em>) e la concentrazione del substrato (<em>[S]</em>).
   </p>
-  <p class="text">
-    L'equazione fondamentale è:
-  </p>
-  <div class="biochem-formula">
-    <p style="text-align: center; font-size: 1.2em;">
-      V = <span style="display: inline-block; vertical-align: middle; text-align: center;">
-        <span style="display: block; border-bottom: 1px solid black;">V<sub>max</sub>[S]</span>
-        <span style="display: block;">K<sub>m</sub> + [S]</span>
+  
+  <p class="text">L'equazione fondamentale è:</p>
+  
+  <div class="biochem-formula" style="text-align: center; margin: 20px 0; padding: 15px; background: rgba(10, 16, 26, 0.6); border-radius: 8px; border: 1px solid rgba(0, 230, 118, 0.2);">
+    <p style="font-size: 1.35em; margin: 0; color: #00e676; font-family: 'Consolas', 'Fira Code', monospace;">
+      <em>V</em> = 
+      <span style="display: inline-block; vertical-align: middle; text-align: center; margin-left: 5px;">
+        <span style="display: block; border-bottom: 2px solid #00e676; padding-bottom: 2px;"><em>V</em><sub>max</sub> [S]</span>
+        <span style="display: block; padding-top: 2px;"><em>K</em><sub>m</sub> + [S]</span>
       </span>
     </p>
   </div>
-  <p class="text">
-    Dove:
-  </p>
+
+  <p class="text">Dove:</p>
   <ul class="text-list">
     <li><strong class="biotechbold">V<sub>max</sub></strong> è la velocità massima teorica della reazione, raggiunta quando tutti i siti attivi dell'enzima sono saturi dal substrato.</li>
     <li><strong class="biotechbold">K<sub>m</sub> (Costante di Michaelis)</strong> è la concentrazione di substrato alla quale la velocità di reazione è pari alla metà di V<sub>max</sub>. È un indice inverso dell'<strong class="orangetext">affinità</strong> dell'enzima per il substrato: un K<sub>m</sub> basso indica alta affinità (l'enzima lavora efficientemente anche a basse concentrazioni), mentre un K<sub>m</sub> alto indica bassa affinità.</li>
   </ul>
+
+  <!-- TABELLA COMPARATIVA INIBIZIONE ENZIMATICA -->
   <p class="text">
-    La <strong class="greentext">cinetica di Michaelis-Menten</strong> è fondamentale per comprendere la regolazione metabolica. L'inibizione enzimatica (competitiva, non competitiva, incompetitiva) modifica i valori di V<sub>max</sub> e K<sub>m</sub>, alterando l'efficienza della reazione. Molti farmaci agiscono proprio come inibitori enzimatici specifici.
+    La <strong class="greentext">cinetica di Michaelis-Menten</strong> è fondamentale per comprendere la regolazione metabolica e la farmacodinamica. Gli inibitori enzimatici alterano i parametri cinetici con modalità caratteristiche:
   </p>
 
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Tipo di Inibizione</th>
+          <th>Effetto su V<sub>max</sub></th>
+          <th>Effetto su K<sub>m</sub></th>
+          <th>Meccanismo d'Azione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="orangetext">Competitiva</strong></td>
+          <td>Invariata</td>
+          <td><span class="orangetext">Aumenta</span> (apparente)</td>
+          <td>L'inibitore si lega al <em>sito attivo</em> libero. Superabile aumentando [S].</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Non Competitiva</strong></td>
+          <td><span class="orangetext">Diminuisce</span></td>
+          <td>Invariata</td>
+          <td>L'inibitore si lega a un <em>sito allosterico</em> sia sull'enzima libero che sul complesso ES.</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Incompetitiva</strong></td>
+          <td><span class="orangetext">Diminuisce</span></td>
+          <td><span class="greentext">Diminuisce</span> (apparente)</td>
+          <td>L'inibitore si lega <em>esclusivamente</em> al complesso Enzima-Substrato (ES).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CICLO DI KREBS -->
   <h3 class="biotechbold">IL CICLO DI KREBS (CICLO DELL'ACIDO TRICARBOSSILICO)</h3>
   <p class="text">
-    Il Ciclo di Krebs, situato nella matrice mitocondriale, è la <strong class="biotechbold">via metabolica centrale</strong> dell'ossidazione completa dei nutrienti. È il punto di convergenza per il catabolismo di glucidi, lipidi e proteine, e la fonte principale di energia (ATP) e potere riducente (NADH, FADH<sub>2</sub>) per la cellula.
+    Il Ciclo di Krebs, situato nella <strong class="biotechbold">matrice mitocondriale</strong>, è la via metabolica centrale dell'ossidazione completa dei nutrienti. È il punto di convergenza per il catabolismo di glucidi, lipidi e amminoacidi, e la fonte principale di potere riducente (NADH, FADH<sub>2</sub>) per la catena respiratoria.
   </p>
   <p class="text">
-    Il ciclo inizia con la condensazione dell'<strong class="yellowtext">acetil-CoA</strong> (derivato dalla glicolisi, beta-ossidazione degli acidi grassi o degradazione amminoacidica) con l'<strong class="yellowtext">ossalacetato</strong> (4 carboni) per formare <strong class="yellowtext">citrato</strong> (6 carboni).
+    Il ciclo inizia con la condensazione dell'<strong class="yellowtext">acetil-CoA</strong> (2 carboni) con l'<strong class="yellowtext">ossalacetato</strong> (4 carboni) per formare <strong class="yellowtext">citrato</strong> (6 carboni), catalizzata dalla <em>citrato sintasi</em>.
   </p>
   <p class="text">
-    Attraverso una serie di 8 reazioni enzimatiche, il citrato viene ossidato, rilasciando due molecole di <strong class="orangetext">CO<sub>2</sub></strong> (sottoprodotto del metabolismo energetico) e rigenerando l'ossalacetato per un nuovo ciclo.
-  </p>
-  <p class="text">
-    <strong class="biotechbold">Prodotti netti per ogni molecola di acetil-CoA:</strong>
-  </p>
-  <ul class="text-list">
-    <li><strong class="greentext">3 NADH</strong> (potere riducente per la catena di trasporto degli elettroni).</li>
-    <li><strong class="greentext">1 FADH<sub>2</sub></strong> (potere riducente).</li>
-    <li><strong class="greentext">1 GTP</strong> (convertibile in ATP, fonte di energia diretta).</li>
-    <li><strong class="greentext">2 CO<sub>2</sub></strong> (sottoprodotto da eliminare tramite la respirazione).</li>
-  </ul>
-  <p class="text">
-    Il Ciclo di Krebs non è solo una via catabolica, ma anche <strong class="biotechbold">anfibolica</strong> (sia catabolica che anabolica), fornendo intermedi per la sintesi di amminoacidi, nucleotidi e porfirine. È strettamente regolato da feedback inibitorio (es. da ATP, NADH) e attivazione (es. da ADP, Ca<sup>2+</sup>).
+    Attraverso una sequenza di 8 reazioni enzimatiche, il citrato viene ossidato, rilasciando due molecole di <strong class="orangetext">CO<sub>2</sub></strong> e rigenerando l'ossalacetato per un nuovo ciclo.
   </p>
 
+  <p class="text">
+    <strong class="biotechbold">Resa netta per ogni molecola di Acetil-CoA ossidata:</strong>
+  </p>
+  <ul class="text-list">
+    <li><strong class="greentext">3 NADH</strong> (trasferiscono 6 elettroni ad alta energia alla catena respiratoria).</li>
+    <li><strong class="greentext">1 FADH<sub>2</sub></strong> (donatore di elettroni al Complesso II mitocondriale).</li>
+    <li><strong class="greentext">1 GTP / ATP</strong> (generato per fosforilazione a livello del substrato via succinil-CoA sintetasi).</li>
+    <li><strong class="greentext">2 CO<sub>2</sub></strong> (sottoprodotti di scarto della decarbossilazione ossidativa).</li>
+  </ul>
+
+  <p class="text">
+    Il Ciclo di Krebs è una via <strong class="biotechbold">anfibolica</strong> (catabolica e anabolica): fornisce intermedi per la gluconeogenesi, la sintesi di acidi grassi, amminoacidi e porfirine. È regolato allostericamente da carica energetica (ATP/ADP) e stato redox (NADH/NAD<sup>+</sup>).
+  </p>
+
+  <!-- CICLO DELL'UREA CON FLOWCHART -->
   <h3 class="biotechbold">IL CICLO DELL'UREA: SMALTIMENTO DELL'AZOTO</h3>
   <p class="text">
-    Il catabolismo degli amminoacidi rilascia gruppi amminici (-NH<sub>2</sub>) che vengono convertiti in <strong class="orangetext">ammoniaca (NH<sub>3</sub>)</strong>, una sostanza altamente tossica per il sistema nervoso centrale. Il fegato trasforma l'ammoniaca in <strong class="biotechbold">urea</strong>, un composto meno tossico e solubile, pronto per l'escrezione renale. Questo processo avviene principalmente nel fegato e coinvolge sia il mitocondrio che il citosol.
-  </p>
-  <p class="text">
-    Le tappe principali sono:
-  </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Formazione del Carbamoil Fosfato:</strong> L'ammoniaca reagisce con CO<sub>2</sub> e ATP nei mitocondri, catalizzata dalla <em>carbamoil fosfato sintetasi I</em> (CPS I).</li>
-    <li><strong class="biotechbold">Sintesi della Citrullina:</strong> Il carbamoil fosfato si condensa con l'ornitina per formare citrullina, che esce dal mitocondrio.</li>
-    <li><strong class="biotechbold">Sintesi dell'Arginina:</strong> Nel citosol, la citrullina si combina con l'aspartato (che fornisce un secondo gruppo amminico) per formare arginina.</li>
-    <li><strong class="biotechbold">Idrolisi dell'Arginina:</strong> L'arginasi scinde l'arginina in <strong class="biotechbold">urea</strong> (escreta) e <strong class="biotechbold">ornitina</strong> (riciclata nel mitocondrio).</li>
-  </ul>
-  <p class="text">
-    Il ciclo consuma energia (4 legami ad alta energia per molecola di urea) ma è essenziale per la detossificazione. Difetti enzimatici nel ciclo dell'urea causano iperammonemia, una condizione grave che richiede dieta povera di proteine e interventi immediati.
+    Il catabolismo degli amminoacidi libera gruppi amminici (-NH<sub>2</sub>) sotto forma di <strong class="orangetext">ammoniaca (NH<sub>3</sub>/NH<sub>4</sub><sup>+</sup>)</strong>, neurotossica a concentrazioni micromolari. Il fegato converte l'ammoniaca in <strong class="biotechbold">urea</strong> tramite un ciclo metabolico che richiede la cooperazione anatomica tra mitocondrio e citosol.
   </p>
 
+  <div class="cyber-flowchart">
+    <!-- FASE MITOCONDRO -->
+    <div class="flow-card intrinsic">
+      <span class="flow-tag tag-intrinsic">Fase Mitocondriale · Tappa 1</span>
+      <div class="flow-title">Formazione del Carbamoil Fosfato</div>
+      <div class="flow-desc">NH<sub>4</sub><sup>+</sup> + HCO<sub>3</sub><sup>-</sup> + 2 ATP &rarr; <strong>Carbamoil Fosfato</strong>. Catalizzata dalla <em>Carbamoil Fosfato Sintetasi I (CPS I)</em>, enzima chiave e regolato allostericamente dall'N-acetilglutammato.</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <div class="flow-card intrinsic">
+      <span class="flow-tag tag-intrinsic">Fase Mitocondriale · Tappa 2</span>
+      <div class="flow-title">Sintesi della Citrullina & Transit Citosolico</div>
+      <div class="flow-desc">Il Carbamoil Fosfato reagisce con l'<strong>Ornitina</strong> (via <em>Ornitina Transcarbamilasi - OTC</em>) formando <strong>Citrullina</strong>, che viene traslocata nel citosol.</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <!-- FASE CITOSOL -->
+    <div class="flow-card extrinsic">
+      <span class="flow-tag tag-extrinsic">Fase Citosolica · Tappa 3 & 4</span>
+      <div class="flow-title">Condensazione & Scissione Argininosuccinato</div>
+      <div class="flow-desc">La Citrullina si lega all'<strong>Aspartato</strong> (che apporta il secondo gruppo amminico) consumando 1 ATP &rarr; AMP + PPi (equivalente a 2 ATP). L'Argininosuccinato viene poi scisso in <strong>Arginina</strong> e <strong>Fumarato</strong> (ponte verso il Ciclo di Krebs).</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <!-- RISULTATO FINALE -->
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Fase Citosolica / Finale · Tappa 5</span>
+      <div class="flow-title">Idrolisi dell'Arginina & Rigenerazione Ornitina</div>
+      <div class="flow-desc">L'<em>Arginasi</em> scinde l'Arginina liberando <strong>Urea</strong> (destinata all'escrezione renale) e rigenerando l'<strong>Ornitina</strong>, che rientra nel mitocondrio per riavviare il ciclo.</div>
+    </div>
+  </div>
+
+  <p class="text">
+    Il ciclo consuma il corrispettivo stechiometrico di <strong class="biotechbold">4 legami fosfato ad alta energia</strong> (3 ATP &rarr; 2 ADP + 1 AMP) per ogni molecola di urea prodotta. Difetti genetici a carico degli enzimi del ciclo (es. deficit di OTC) determinano grave iperammonemia e richiedono restrizione proteica ed escretori alternativi dell'azoto.
+  </p>
+
+  <!-- INTEGRAZIONE METABOLICA -->
   <h3 class="biotechbold">INTEGRAZIONE METABOLICA: IL FLUSSO ENERGETICO</h3>
   <p class="text">
-    Questi tre processi (cinetica enzimatica, Krebs, urea) non sono isolati. La velocità delle reazioni enzimatiche (regolata da K<sub>m</sub> e inibitori) determina il flusso attraverso il Ciclo di Krebs, che a sua volta fornisce l'energia necessaria per il Ciclo dell'Urea. L'equilibrio tra questi pathway garantisce l'<strong class="biotechbold">omeostasi</strong> cellulare: se l'energia è abbondante (ATP alto), il Krebs viene rallentato; se l'azoto è eccessivo, il ciclo dell'urea viene attivato per prevenire la tossicità.
+    Questi tre sistemi operano in stretta coordinazione metabolica:
   </p>
+  <ul class="text-list">
+    <li>Il <strong class="biotechbold">Fumarato</strong> prodotto nel ciclo dell'urea entra direttamente nel mitocondrio e alimenta il Ciclo di Krebs (<em>bicicletta di Krebs-Urea</em>).</li>
+    <li>L'<strong class="biotechbold">ATP</strong> prodotto dalla catena respiratoria via Krebs/NADH sostiene il costo energetico del ciclo dell'urea e delle biosintesi epatiche.</li>
+    <li>I parametri cinetici enzmatici (<strong class="greentext">K<sub>m</sub> e V<sub>max</sub></strong>) determinano la flessibilità con cui il fegato passa dallo stato post-prandiale al digiuno prolungato.</li>
+  </ul>
   <p class="text">
-    Comprendere queste interconnessioni è vitale per la biochimica clinica, permettendo di diagnosticare e trattare disordini metabolici, insufficienze epatiche e alterazioni nutrizionali.
+    Comprendere queste interconnessioni è vitale per la biochimica clinica, fornendo le basi per diagnosticare disordini metabolici ereditari, encefalopatia epatica e valutare lo stato nutrizionale del paziente.
   </p>
 </section>
 <!-- Badge di accessibilità -->
