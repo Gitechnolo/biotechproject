@@ -82,6 +82,130 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
     min-height: 400px;
   }
 }
+/* --- RESET BOX MODEL (Indispensabile per evitare lo shift a destra su Mobile) --- */
+.cyber-table-container, .cyber-table-container *,
+.cyber-flowchart, .cyber-flowchart * {
+  box-sizing: border-box;
+}
+
+/* --- TABELLE DIAGNOSTICHE --- */
+.cyber-table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 18px auto 24px auto;
+  border-radius: 8px;
+  -webkit-overflow-scrolling: touch; /* Scorrimento fluido su iOS */
+}
+
+.cyber-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(10, 16, 26, 0.85);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.05);
+}
+
+.cyber-table th {
+  background: rgba(0, 230, 118, 0.12);
+  color: #00e676;
+  font-family: 'Consolas', 'Fira Code', monospace, system-ui;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.cyber-table td {
+  padding: 12px 14px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cyber-table tr:last-child td { border-bottom: none; }
+.cyber-table tr:hover td { background: rgba(0, 230, 118, 0.05); }
+
+/* --- DIAGRAMMA DI FLUSSO DINAMICO --- */
+.cyber-flowchart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 100%;
+  align-items: center; /* Mantiene l'asse centrale */
+}
+
+.flow-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+.flow-card {
+  width: 100%;
+  background: rgba(10, 16, 26, 0.85);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  border-radius: 8px;
+  padding: 12px 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.05);
+}
+
+.flow-card.extrinsic { border-color: rgba(255, 152, 0, 0.4); }
+.flow-card.intrinsic { border-color: rgba(255, 235, 59, 0.4); }
+.flow-card.common    { border-color: rgba(0, 230, 118, 0.5); background: rgba(0, 230, 118, 0.06); }
+.flow-card.lysis     { border-color: rgba(33, 150, 243, 0.4); background: rgba(33, 150, 243, 0.05); }
+
+.flow-tag {
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.tag-extrinsic { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
+.tag-intrinsic { background: rgba(255, 235, 59, 0.2); color: #ffeb3b; }
+.tag-common    { background: rgba(0, 230, 118, 0.2); color: #00e676; }
+.tag-lysis     { background: rgba(33, 150, 243, 0.2); color: #64b5f6; }
+
+.flow-title { font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+.flow-desc  { font-size: 0.82rem; color: #cbd5e1; line-height: 1.4; }
+
+.flow-arrow-down {
+  width: 100%;
+  text-align: center;
+  color: #00e676;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin: 2px 0;
+  opacity: 0.8;
+}
+
+/* --- ADATTAMENTO MOBILE RESPONSIVE --- */
+@media (max-width: 680px) {
+  .flow-branches {
+    grid-template-columns: 1fr; /* Colonna singola perfettamente centrata */
+  }
+  .cyber-table th, .cyber-table td {
+    padding: 10px 8px;
+    font-size: 0.78rem;
+  }
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -365,8 +489,8 @@ DESCRIZIONE: Digestione gastrica e intestinale, ruolo di fegato e pancreas, mecc
 SEZIONE 4: Patofisiologia e Clinica (apparato_digerente_patofisiologia_clinica)
 DESCRIZIONE: Ulcere, malassorbimento, IBS, cancro e approcci diagnostici.
 ========================================== -->
-<section class="text text-block mb-25" aria-labelledby="main-title-4" data-lang-key="apparato_digerente_patofisiologia_clinica">
-  <h2 class="secHeader">PATOFISIOLOGIA E CLINICA</h2>
+<section class="text text-block" aria-labelledby="main-title-4" data-lang-key="apparato_digerente_patofisiologia_clinica">
+  <h2 class="secHeader" id="main-title-4">PATOFISIOLOGIA E CLINICA</h2>
 
   <div class="mb-15">
     <p><strong>In sintesi:</strong> La salute dell'apparato digerente non è solo l'assenza di malattia, ma l'equilibrio dinamico tra fattori protettivi (mucosa, enzimi, flora batterica) e fattori aggressivi (acidi, tossine, patogeni). La comprensione dei meccanismi patologici è fondamentale per diagnosi precise e terapie mirate.</p>
@@ -374,67 +498,116 @@ DESCRIZIONE: Ulcere, malassorbimento, IBS, cancro e approcci diagnostici.
 
   <h3 class="biotechbold">ULCERA GASTRODUODENALE: LO SQUILIBRIO</h3>
   <p class="text">
-    L'ulcera è una lesione che penetra oltre la mucosa, coinvolgendo la sottomucosa e spesso la muscolare. È il risultato di uno squilibrio tra <strong class="biotechbold">fattori aggressivi</strong> (acido cloridrico, pepsina, <em>H. pylori</em>, FANS) e <strong class="biotechbold">fattori protettivi</strong> (mucina, bicarbonati, flusso sanguigno, prostaglandine).
+    L'ulcera è una lesione che penetra oltre la mucosa, coinvolgendo la sottomucosa e spesso la muscolare. È il risultato del sovvertimento dell'equilibrio fisiologico epiteliale:
   </p>
+
+  <!-- DIAGRAMMA DI FLUSSO: EZIOPATOGENESI ULCEROSA -->
+  <div class="cyber-flowchart">
+    <div class="flow-branches">
+      <div class="flow-card extrinsic">
+        <span class="flow-tag tag-extrinsic">Fattori Aggressivi</span>
+        <div class="flow-title">Insulti Chimici &amp; Batterici</div>
+        <div class="flow-desc">Acido cloridrico (HCl), pepsina, infezione da <em>Helicobacter pylori</em> (attività ureasica/tossine) e FANS.</div>
+      </div>
+      <div class="flow-card common">
+        <span class="flow-tag tag-common">Fattori Protettivi</span>
+        <div class="flow-title">Difese della Barriera Mucosa</div>
+        <div class="flow-desc">Strato di mucina, secrezione di Bicarbonati (HCO₃⁻), microcircolo ematico adeguato e Prostaglandine E₂.</div>
+      </div>
+    </div>
+    <div class="flow-arrow-down">&#9660;</div>
+    <div class="flow-card lysis">
+      <span class="flow-tag tag-lysis">Quadro Clinico</span>
+      <div class="flow-title">Danno Epiteliale &amp; Manifestazione Sintomatica</div>
+      <div class="flow-desc">Dolore epigastrico post-prandiale (precoce nelle ulcere gastriche, tardivo/alleviato dal cibo nelle duodenali), nausea e rischio di complicanze (emorragia, perforazione).</div>
+    </div>
+  </div>
+
   <p class="text">
-    L'<strong class="biotechbold">Helicobacter pylori</strong> è un batterio che colonizza la mucosa gastrica, producendo ureasi (che neutralizza l'acido locale) e tossine che danneggiano le cellule epiteliali. È la causa principale delle ulcere duodenali e gastriche.
-  </p>
-  <p class="text">
-    I <strong class="orangetext">sintomi</strong> includono dolore epigastrico, spesso legato ai pasti (peggiora con i pasti nelle ulcere gastriche, migliora nelle duodenali), nausea e, nei casi gravi, emorragia o perforazione.
+    L'<strong class="biotechbold">Helicobacter pylori</strong> è un batterio gram-negativo microaerofilo che colonizza la mucosa gastrica. Producendo ureasi, converte l'urea in ammoniaca e CO₂, neutralizzando l'acido locale per sopravvivere e rilasciando citotossine (VacA, CagA) che danneggiano le cellule epiteliali.
   </p>
 
   <h3 class="biotechbold">MALASSORBIMENTO: QUANDO L'ASSORBIMENTO FALLISCE</h3>
   <p class="text">
-    Il malassorbimento è l'incapacità dell'intestino tenue di assorbire nutrienti, vitamine, minerali o acqua in modo adeguato. Le cause sono molteplici e possono essere:
+    Il malassorbimento definisce la ridotta capacità dell'intestino tenue di assimilare nutrienti, elettroliti o vitamine. Le etiopatogenesi principali si articolano in:
   </p>
   <ul class="text-list">
-    <li><strong class="biotechbold">Deficit enzimatici</strong> (es. insufficienza pancreatica, intolleranza al lattosio).</li>
-    <li><strong class="biotechbold">Danni alla mucosa</strong> (es. malattia celiaca, morbo di Crohn, radioterapia).</li>
-    <li><strong class="biotechbold">Sovracrescita batterica</strong> (SIBO) che consuma i nutrienti.</li>
-    <li><strong class="biotechbold">Ridotta superficie assorbente</strong> (es. resezione intestinale).</li>
+    <li><strong class="biotechbold">Deficit enzimatici e digestivi:</strong> Insufficienza pancreatica esocrina, deficit di lattasi.</li>
+    <li><strong class="biotechbold">Danni strutturali alla mucosa:</strong> Atrofia dei villi nella malattia celiaca, flogosi transmurale nel morbo di Crohn, esiti da radioterapia.</li>
+    <li><strong class="biotechbold">Sovracrescita batterica (SIBO):</strong> Proliferazione anomala nel tenue con consumo concorrenziale dei nutrienti (es. vitamina B12).</li>
+    <li><strong class="biotechbold">Riduzione della superficie assorbente:</strong> Sindrome dell'intestino corto da resezione chirurgica.</li>
   </ul>
   <p class="text">
-    I <strong class="greentext">sintomi</strong> includono steatorrea (feci grasse e maleodoranti), perdita di peso, anemia, carenze vitaminiche (es. vitamina B12, D, K) e gonfiore addominale.
+    I <strong class="greentext">sintomi cardine</strong> includono steatorrea (evacuazione di grassi non digeriti), calo ponderale, anemia sideropenica o megaloblastica, osteopenia da deficit di Vitamina D/Calcio e distensione addominale.
   </p>
 
   <h3 class="biotechbold">SINDROME DELL'INTESTINO IRRITABILE (IBS)</h3>
   <p class="text">
-    L'IBS è un disturbo funzionale caratterizzato da dolore addominale ricorrente, associato a alterazioni dell'alvo (stitichezza, diarrea o misto), in assenza di lesioni organiche evidenti. La patogenesi è complessa e coinvolge:
+    L'IBS è un disturbo funzionale gastrointestinale ad eziologia multifattoriale, privo di lesioni strutturali evidenziabili con l'imaging convenzionale. La patogenesi include:
   </p>
   <ul class="text-list">
-    <li><strong class="biotechbold">Ipersensibilità viscerale</strong> (percezione amplificata degli stimoli intestinali).</li>
-    <li><strong class="biotechbold">Alterata motilità</strong> intestinale.</li>
-    <li><strong class="biotechbold">Disbiosi</strong> (alterazione della flora batterica).</li>
-    <li><strong class="biotechbold">Fattori psicosociali</strong> (stress, ansia).</li>
+    <li><strong class="biotechbold">Ipersensibilità viscerale:</strong> Abbassamento della soglia del dolore agli stimoli meccanici e da distensione.</li>
+    <li><strong class="biotechbold">Dismotilità intestinale:</strong> Alterazione delle onde peristaltiche (iper/ipomotilità).</li>
+    <li><strong class="biotechbold">Disbiosi quantitativa e qualitativa:</strong> Alterazione dell'ecosistema microbico autoctono.</li>
+    <li><strong class="biotechbold">Disregolazione dell'Asse Gut-Brain:</strong> Modulazione psicosociale e risposte alterate allo stress.</li>
   </ul>
   <p class="text">
-    La diagnosi è clinica, basata sui <strong class="orangetext">criteri di Roma IV</strong>, ed è una diagnosi di esclusione.
+    La diagnosi è fondata sui <strong class="orangetext">Criteri di Roma IV</strong> ed è posta per esclusione di patologie organiche (IBD, celiachia, neoplasie).
   </p>
 
   <h3 class="biotechbold">NEOPLASIE DIGESTIVE: CANCRO DEL COLON E DELLO STOMACO</h3>
   <p class="text">
-    I tumori del tratto digerente sono tra i più frequenti. La maggior parte dei <strong class="biotechbold">carcinomi del colon-retto</strong> origina da polipi adenomatosi che, nel tempo, subiscono trasformazione maligna (sequenza adenoma-carcinoma).
+    I tumori maligni del tubo digerente rappresentano una quota primaria della patologia oncologica. La maggior parte dei <strong class="biotechbold">carcinomi del colon-retto</strong> si sviluppa attraverso la sequenza adenoma-carcinoma (accumulo di mutazioni su APC, KRAS, p53).
   </p>
   <p class="text">
-    I <strong class="orangetext">fattori di rischio</strong> includono età avanzata, dieta ricca di carni rosse e processate, basso apporto di fibre, obesità, fumo e familiarità.
+    I <strong class="orangetext">fattori di rischio</strong> comprendono età avanzata, diete ad alto apporto di carni rosse/processate e ridotto tenore di fibre, obesità, fumo e sindromi ereditarie (Lynch, FAP).
   </p>
   <p class="text">
-    I <strong class="greentext">sintomi</strong> possono essere aspecifici: cambiamento dell'abito intestinale, sangue nelle feci, anemia, perdita di peso inspiegabile. Lo <strong class="biotechbold">screening</strong> (ricerca di sangue occulto nelle feci, colonoscopia) è fondamentale per la diagnosi precoce.
+    I <strong class="greentext">sintomi</strong> (spesso tardivi) includono modificazioni dell'alvo, rettrorragia o melena, anemia microcitica insidiosa e calo ponderale. Lo <strong class="biotechbold">screening</strong> (SOF e colonoscopia con polipectomia preventiva) riduce drasticamente la mortalità.
   </p>
   <p class="text">
-    Il <strong class="biotechbold">carcinoma gastrico</strong> è spesso associato a infezione da <em>H. pylori</em>, dieta ricca di salumi e cibi affumicati, e fumo. I sintomi iniziali sono spesso vaghi (dispepsia), rendendo la diagnosi tardiva.
+    Il <strong class="biotechbold">carcinoma gastrico</strong> è correlato a gastrite cronica atrofica da <em>H. pylori</em>, consumo di cibi conservati sotto sale/affumicati e nitrosammine. La diagnosi è spesso tardiva a causa dell'aspecificità dei sintomi iniziali (dispepsia lene).
   </p>
 
   <h3 class="biotechbold">DIAGNOSTICA: STRUMENTI E APPROCCI</h3>
   <p class="text">
-    La diagnosi delle patologie digestive si avvale di:
+    Il percorso diagnostico in gastroenterologia combina metodiche di laboratorio, strumentali ed anatomopatologiche:
   </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Esami di laboratorio</strong>: Emocromo (anemia), markers infiammatori (PCR, VES), test respiratori (per <em>H. pylori</em> o SIBO), dosaggio di enzimi pancreatici (amylasi, lipasi).</li>
-    <li><strong class="biotechbold">Endoscopia</strong> (gastroscopia, colonscopia): permette la visualizzazione diretta della mucosa e il prelievo di biopsie.</li>
-    <li><strong class="biotechbold">Imaging</strong>: Ecografia, TAC, risonanza magnetica, colangio-RMN per le vie biliari.</li>
-    <li><strong class="biotechbold">Test di funzionalità</strong>: test di assorbimento, test del respiro, test di stimolazione secrezionale.</li>
-  </ul>
+
+  <!-- TABELLA DIAGNOSTICA CYBER -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Modalità Diagnostica</th>
+          <th>Metodologia / Target</th>
+          <th>Applicazioni &amp; Reperti Clinici</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="biotechbold">Esami ematochimici e feci</strong></td>
+          <td>Biomarcatori sistemici</td>
+          <td>Valutazione anemia (Hb, ferritina), flogosi (PCR, VES), enzimi pancreatici (amilasi/lipasi) e SOF.</td>
+        </tr>
+        <tr>
+          <td><strong class="biotechbold">Endoscopia Digestiva</strong></td>
+          <td>EGDS e Colonscopia</td>
+          <td>Ispezione diretta della mucosa, esecuzione di biopsie istologiche e procedure operative (polipectomia).</td>
+        </tr>
+        <tr>
+          <td><strong class="biotechbold">Diagnostic Imaging</strong></td>
+          <td>US, TAC, RMN, Colangio-RM</td>
+          <td>Stadiazione neoplastica, studio delle pareti intestinali e mappatura dell'albero bilio-pancreatico.</td>
+        </tr>
+        <tr>
+          <td><strong class="biotechbold">Test Funzionali &amp; Breath Test</strong></td>
+          <td>Substrati marcati (es. ¹³C-Urea, Lattosio)</td>
+          <td>Diagnosi non invasiva di infezione da <em>H. pylori</em>, malassorbimento di zuccheri e SIBO.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 <!-- ==========================================
 SEZIONE 5: Microbiota e Asse Intestino-Cervello (apparato_digerente_microbiota_asse_intestino_cervello)
