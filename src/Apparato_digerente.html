@@ -263,130 +263,197 @@ DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticaz
 <!-- Fine immagini correlate alla sezione Masticazione e deglutizione -->
 
 <!-- ==========================================
-SEZIONE 3: Fisiologia Gastroduodenale, Assorbimento e Metabolismo (apparato_digerente_fisiologia_gastro_metabolismo)
-DESCRIZIONE: Digestione gastrica e intestinale, ruolo di fegato e pancreas, meccanismi di assorbimento, e principi fondamentali del metabolismo e dell'omeostasi.
+SEZIONE 3: Fisiologia Gastroduodenale, Assorbimento e Metabolismo Epatico (apparato_digerente_fisiologia_gastro_metabolismo)
+DESCRIZIONE: Meccanismi molecolari della secrezione gastrica e pancreatica, emulsione biliare, trasportatori di membrana intestinali e primo passaggio epatico.
 ========================================== -->
 <section class="text text-block mb-25" aria-labelledby="main-title-3" data-lang-key="apparato_digerente_fisiologia_gastro_metabolismo">
- <h2 class="secHeader">FISIOLGIA GASTRO-DUODENALE E METABOLISMO</h2>
+  <h2 class="secHeader" id="main-title-3">FISIOLOGIA GASTRODUODENALE, ASSORBIMENTO E METABOLISMO EPATICO</h2>
 
-  <!-- Hook Narrativo -->
   <div class="mb-15">
-    <p><strong>In sintesi:</strong> Il passaggio dallo stomaco all'intestino è un sistema di regolazione ormonale e nervosa di precisione. Mentre lo stomaco inizia la demolizione, l'intestino tenue è la "fabbrica" dove avviene la magia della digestione enzimatica e dell'assorbimento, regolato da un complesso dialogo tra ormoni e nervi.</p>
+    <p><strong>In sintesi:</strong> Il passaggio dallo stomaco all'intestino rappresenta un sistema di regolazione ormonale e nervosa di estrema precisione. Dalla secrezione acida controllata dalle pompe protoniche alle cascate zimogeniche duodenali, l'organismo demolisce i macronutrienti fino a monomeri assimilabili. I trasportatori di membrana dell'orletto a spazzola guidano poi l'assorbimento specifico, convogliando i nutrienti idrosolubili verso il fegato tramite la vena porta e i lipidi complessi nel sistema linfatico.</p>
   </div>
 
-  <h3 class="biotechbold">DIGESTIONE GASTRICA: ACIDITÀ E DEMOLIZIONE</h3>
+  <!-- FISIOLOGIA GASTRICA E SECREZIONE ACIDA -->
+  <h3 class="biotechbold">1. FISIOLOGIA GASTRICA E SECREZIONE ACIDA</h3>
   <p class="text">
-    La digestione gastrica è un processo di <strong class="biotechbold">3-4 ore</strong> per un pasto medio, caratterizzato da intensa <strong class="greentext">attività meccanica</strong> (peristalsi antrale) e <strong class="greentext">chimica</strong>. Le contrazioni dello stomaco vuoto, invece, coincidono con la <strong class="orangetext">sensazione di fame</strong>.
-  </p>
-  <p class="text">
-    Le pareti gastriche sono costituite da <strong class="yellowtext">tuniche sovrapposte</strong>, con una mucosa specializzata in <strong class="yellowtext">aree gastriche</strong> (zone esagonali) dove sboccano milioni di <strong class="yellowtext">ghiandole tubulari</strong>. Queste contengono:
+    La digestione gastrica converte il bolo alimentare in <strong class="biotechbold">chimo</strong> attraverso un'intensa attività motoria (onde peristaltiche antrali) e chimico-enzimatica. La secrezione acida ad opera delle cellule parietali è integrata in tre fasi fisiologiche distinte:
   </p>
   <ul class="text-list">
-    <li><strong class="biotechbold">Cellule principali</strong>: Secernono il <strong class="yellowtext">pepsinogeno</strong> (proenzima).</li>
-    <li><strong class="biotechbold">Cellule pariétali (oxintiche)</strong>: Secernono <strong class="yellowtext">acido cloridrico (HCl)</strong>.</li>
+    <li><strong class="biotechbold">Fase Cefalica (~30%):</strong> Innescata da stimoli visivi, olfattivi, gustativi o mnemonici. Attiva il nervo vago (NC X), il quale rilascia acetilcolina e stimola direttamente le cellule parietali e le cellule G gastriniche.</li>
+    <li><strong class="biotechbold">Fase Gastrica (~60%):</strong> Provocata dalla distensione meccanica dello stomaco e dalla presenza di peptidi/amminoacidi nel lume. Rappresenta la fase di massima secrezione.</li>
+    <li><strong class="biotechbold">Fase Intestinale (~10%):</strong> Innescata dall'ingresso iniziale del chimo nel duodeno; inizialmente stimolatoria, diventa rapidamente inibitoria grazie al rilascio di enterogastroni (secretina, somatostatina).</li>
   </ul>
+
+  <h3 class="biotechbold">MECCANISMO MOLECOLARE DELLA CELLULA PARIETALE</h3>
   <p class="text">
-    Il <strong class="biotechbold">succo gastrico</strong> (liquido acquoso) contiene HCl e pepsina. L'HCl crea un ambiente acido essenziale per:
+    La secrezione di acido cloridrico (HCl) ad opera delle cellule parietali (oxintiche) si basa sull'azione dell'enzima transmembrana <strong class="biotechbold">H<sup>+</sup>/K<sup>+</sup>-ATPasi</strong> (pompa protonica). Questa pompa estrude ioni H<sup>+</sup> nel lume gastrico scambiandoli con ioni K<sup>+</sup> contro gradiente di concentrazione, con consumo diretto di ATP.
+  </p>
+
+  <!-- TABELLA MEDIATORI E RECETTORI GASTRICI -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Mediatore</th>
+          <th>Recettore Parietale</th>
+          <th>Via di Trasduzione</th>
+          <th>Effetto Fisiologico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="orangetext">Istamina</strong> (da cellule ECL)</td>
+          <td>H<sub>2</sub></td>
+          <td>Proteina G<sub>s</sub> &rarr; Adenilato Ciclasi &rarr; &uarr; cAMP &rarr; PKA</td>
+          <td>Forte attivazione della Pompa H<sup>+</sup>/K<sup>+</sup></td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Acetilcolina</strong> (Vagale)</td>
+          <td>M<sub>3</sub></td>
+          <td>Proteina G<sub>q</sub> &rarr; PLC &rarr; IP<sub>3</sub>/DAG &rarr; &uarr; Ca<sup>2+</sup> citosolico</td>
+          <td>Attivazione della secrezione idro-acida</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Gastrina</strong> (da Cellule G)</td>
+          <td>CCK<sub>B</sub> (CCK<sub>2</sub>)</td>
+          <td>Proteina G<sub>q</sub> &rarr; PLC &rarr; &uarr; Ca<sup>2+</sup> citosolico</td>
+          <td>Stimolazione parietale e rilascio di Istamina da ECL</td>
+        </tr>
+        <tr>
+          <td><strong class="greentext">Somatostatina / PGE<sub>2</sub></strong></td>
+          <td>SST<sub>2</sub> / EP<sub>3</sub></td>
+          <td>Proteina G<sub>i</sub> &rarr; Inibizione Adenilato Ciclasi &rarr; &darr; cAMP</td>
+          <td>Potente inibizione della secrezione acida</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text">
+    L'ambiente gastrico raggiunge pH compresi tra 1.5 e 2.0. La mucosa si difende dall'autodigestione tramite la <strong class="biotechbold">barriera mucosa gastrica</strong>, costituita da uno strato viscoso di mucina idratata secreto dalle cellule foveolari e da un gradiente alcalino superficiale mantenuto dalla secrezione attiva di bicarbonato (HCO<sub>3</sub><sup>-</sup>).
+  </p>
+  <p class="text">
+    Il <strong class="biotechbold">pepsinogeno</strong> (proenzima inattivo secreto dalle cellule principali) subisce una cleavage autocatalitica a pH &lt; 5.0, trasformandosi in <strong class="orangetext">pepsina</strong>, un'endopeptidasi con optimum catalitico a pH 1.8–2.0 che scinde i legami peptidici interni delle proteine. Le cellule parietali secernono inoltre il <strong class="biotechbold">Fattore Intrinseco di Castle</strong>, una glicoproteina essenziale per l'assorbimento della Vitamina B<sub>12</sub> a livello dell'ileo terminale.
+  </p>
+
+  <!-- SECREZIONI PANCREATICHE E BILIARI -->
+  <h3 class="biotechbold">2. SECREZIONI PANCREATICHE E BILIARI NEL DUODENO</h3>
+  <p class="text">
+    Nel duodeno il chimo acido viene neutralizzato e sottoposto all'attacco dell'arsenale idrolitico secreto dal pancreas esocrino e dalle vie biliari.
   </p>
   <ul class="text-list">
-    <li>Attivare il pepsinogeno in <strong class="yellowtext">pepsina</strong> (che scinde le proteine in <strong class="yellowtext">peptoni</strong>).</li>
-    <li>Agire come potente agente <strong class="greentext">antisettico</strong> (sterilizzazione).</li>
-    <li>Coagulare le proteine del latte (nelle lattanti, grazie alla <strong class="yellowtext">rennina/chimosina</strong>).</li>
+    <li><strong class="greentext">Secretina:</strong> Rilasciata dalle cellule S duodenali in risposta alla caduta del pH luminale (&lt; 4.5). Stimola le cellule duttali a secernere un fluido acquoso ricco di HCO<sub>3</sub><sup>-</sup>, portando il pH duodenale a valori ottimali per la catalisi enzimica (pH 7.5–8.0).</li>
+    <li><strong class="greentext">Colecistochinina (CCK):</strong> Rilasciata dalle cellule I in risposta ad acidi grassi e amminoacidi. Stimola le cellule acinari del pancreas al rilascio di zimogeni e indusse la contrazione della colecisti con rilasciamento dello sfintere di Oddi.</li>
   </ul>
+
+  <!-- CASCATA DI ATTIVAZIONE ZIMOGENI PANCREATICI -->
+  <h3 class="biotechbold">ATTIVAZIONE DEGLI ZIMOGENI PANCREATICI</h3>
   <p class="text">
-    La secrezione è regolata da una fase <strong class="biotechbold">cefalica</strong> (nervi vaghi, stimoli visivi/olfattivi) e da una fase <strong class="orangetext">ormonale</strong> (rilascio di <strong class="orangetext">gastrina</strong> dalla mucosa pilorica a contatto con il chimo). La <strong class="yellowtext">mucina</strong> protegge la mucosa dall' "autodigestione" dello stomaco da parte dei suoi stessi enzimi.
+    Per prevenire l'autodigestione del tessuto pancreatico, gli enzimi proteolitici vengono sintetizzati ed escreti come proenzimi inattivi. La cascata attivatoria avviene esclusivamente nel lume duodenale:
   </p>
 
-  <h3 class="biotechbold">LA DIGESTIONE NELL'INTESTINO TENUE: IL CUORE DEL SISTEMA</h3>
+  <div class="cyber-flowchart">
+    <div class="flow-card intrinsic">
+      <span class="flow-tag tag-intrinsic">Tappa 1 · Orletto a Spazzola</span>
+      <div class="flow-title">Innesco dell'Enterochinasi</div>
+      <div class="flow-desc">L'enzima di membrana <em>enterochinasi</em> scinde un esapeptide dal tripsinogeno convertendolo in <strong>Tripsina attiva</strong>.</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <div class="flow-card extrinsic">
+      <span class="flow-tag tag-extrinsic">Tappa 2 · Autocatalisi & Amplificazione</span>
+      <div class="flow-title">Cascata Enzimatica Pancreatica</div>
+      <div class="flow-desc">La Tripsina attiva altro tripsinogeno e proteolizza gli altri zimogeni: <em>chimotripsinogeno</em> &rarr; <strong>chimotripsina</strong>; <em>proelastasi</em> &rarr; <strong>elastasi</strong>; <em>procarbossipeptidasi</em> &rarr; <strong>carbossipeptidasi A e B</strong>.</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Tappa 3 · Idrolisi dei Carboidrati</span>
+      <div class="flow-title">Azione dell'Amilasi Pancreatica</div>
+      <div class="flow-desc">L'<strong>Amilasi pancreatica</strong> (secreta già in forma attiva) idrolizza i legami &alpha;-(1,4) dell'amido producendo maltosio, maltotriosio e destrine limite.</div>
+    </div>
+  </div>
+
+  <h3 class="biotechbold">FISIOLOGIA BILIARE ED EMULSIONE DEI LIPIDI</h3>
   <p class="text">
-    Nell'intestino tenue si compie la <strong class="biotechbold">parte fondamentale della digestione</strong>. Qui confluiscono i secreti del <strong class="yellowtext">pancreas</strong> e del <strong class="yellowtext">fegato</strong> (tramite il <strong class="yellowtext">coledoco</strong> e il <strong class="yellowtext">dotto di Wirsung</strong>), completando la scissione degli alimenti.
+    La bile prodotta dagli epatociti e concentrata nella colecisti è priva di enzimi digestivi, ma contiene <strong class="biotechbold">sali biliari</strong> (derivati dal colesterolo per idrossilazione e coniugazione con glicina o taurina, come l'acido glicocolico e taurocolico).
   </p>
   <p class="text">
-    La superficie interna è massicciamente aumentata da <strong class="yellowtext">villi intestinali</strong> (fino a 1000/cm² nell'ileo), <strong class="yellowtext">valvole conniventi</strong> e <strong class="yellowtext">microvilli</strong> (spazzola). Ogni villo contiene <strong class="yellowtext">vasi sanguigni</strong>, <strong class="yellowtext">vasi linfatici</strong> (chiliferi) e fibre nervose.
+    Essendo molecole anfipatiche, i sali biliari riducono la tensione superficiale delle gocce lipidiche frazionandole in un'emulsione sottile. Ciò aumenta l'area superficiale esposta all'azione della <strong class="orangetext">lipasi pancreatica</strong> (che agisce in sinergia con la <em>colipasi</em>). I prodotti dell'idrolisi lipidica e i sali biliari formano infine <strong class="yellowtext">micelle miste</strong> (diametro 3-10 nm), necessarie per la diffusione dei grassi fino alla superficie assorbente dell'enterocito.
   </p>
 
-  <h3 class="biotechbold">REGOLAZIONE NEURO-UMORALE DEL DUODENO</h3>
+  <!-- MECCANISMI MOLECOLARI DELL'ASSORBIMENTO INTESTINALE -->
+  <h3 class="biotechbold">3. MECCANISMI MOLECOLARI DELL'ASSORBIMENTO INTESTINALE</h3>
   <p class="text">
-    L'arrivo del chimo acido nel duodeno stimola la mucosa a secernere ormoni chiave:
+    L'assorbimento avviene prevalentemente nel digiuno e nell'ileo grazie ai villi e ai microvilli dell'orletto a spazzola che amplificano la superficie epiteliale.
+  </p>
+
+  <!-- TABELLA TRASPORTATORI DI MEMBRANA -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Nutriente</th>
+          <th>Trasportatore Apicale (Luminale)</th>
+          <th>Meccanismo Molecolare</th>
+          <th>Efflusso Basolaterale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="yellowtext">Glucosio / Galattosio</strong></td>
+          <td><strong class="biotechbold">SGLT1</strong></td>
+          <td>Cotrasporto attivo secondario Na<sup>+</sup>-dipendente (gradiente guidato da Na<sup>+</sup>/K<sup>+</sup>-ATPasi)</td>
+          <td><strong class="biotechbold">GLUT2</strong> (Diffusione facilitata)</td>
+        </tr>
+        <tr>
+          <td><strong class="yellowtext">Fruttosio</strong></td>
+          <td><strong class="biotechbold">GLUT5</strong></td>
+          <td>Diffusione facilitata indipendente da sodio ed energia</td>
+          <td><strong class="biotechbold">GLUT2</strong> (Diffusione facilitata)</td>
+        </tr>
+        <tr>
+          <td><strong class="greentext">Dipeptidi / Tripeptidi</strong></td>
+          <td><strong class="biotechbold">PepT1</strong></td>
+          <td>Cotrasporto attivo secondario H<sup>+</sup>-dipendente (accoppiato al trasportatore NHE3)</td>
+          <td>Idrolisi citosolica ad AA liberi &rarr; Trasportatori di AA</td>
+        </tr>
+        <tr>
+          <td><strong class="greentext">Amminoacidi Liberi</strong></td>
+          <td>Sistemi B<sup>0</sup>, ASC, X<sub>A</sub><sup>-</sup></td>
+          <td>Trasportatori attivi secondari specifici per amminoacidi neutri, basici o acidi</td>
+          <td>Diffusione facilitata via trasportatori basolaterali</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="biotechbold">ASSORBIMENTO LIPIDICO E FORMAZIONE DEI CHILOMICRONI</h3>
+  <p class="text">
+    I monogliceridi e gli acidi grassi a catena lunga (&gt; 12 atomi di carbonio) liberati dalle micelle attraversano la membrana apicale per diffusione e tramite trasportatori specifici (es. FAT/CD36).
+  </p>
+  <p class="text">
+    Nel reticolo endoplasmatico liscio dell'enterocito questi prodotti vengono riesterificati in <strong class="biotechbold">trigliceridi</strong>. Insieme al colesterolo esterificato e alle apolipoproteine (in particolare <strong class="orangetext">ApoB-48</strong>), vengono assemblati nell'apparato di Golgi formando i <strong class="yellowtext">chilomicroni</strong>. Data la loro dimensione molecolare, i chilomicroni vengono secreti nei <strong class="greentext">vasi chiliferi (linfatici)</strong> e immessi nella circolazione sistemica tramite il dotto toracico, bypassando temporaneamente il fegato.
+  </p>
+  <p class="text">
+    L'assorbimento dell'acqua (7-8 litri/die) avviene per osmosi al seguito del riassorbimento attivo del sodio. Nel colon, l'epitelio esprime canali per il sodio <strong class="biotechbold">ENaC</strong> regolati dall'aldosterone, consentendo la concentrazione del chimo e il recupero quasi totale degli elettroliti.
+  </p>
+
+  <!-- PRIMO PASSAGGIO EPATICO E DESTINO METABOLICO -->
+  <h3 class="biotechbold">4. PRIMO PASSAGGIO EPATICO E DESTINO METABOLICO</h3>
+  <p class="text">
+    I nutrienti idrosolubili (monosaccaridi, amminoacidi, acidi grassi a catena corta ed elettroliti) assorbiti dall'epitelio intestinale vengono raccolti dalle vene mesenteriche e convogliati nella <strong class="biotechbold">Vena Porta</strong>, raggiungendo direttamente il fegato.
+  </p>
+  <p class="text">
+    Il fegato opera come coordinatore metabolico centrale prima della distribuzione dei nutrienti al circolo sistemico:
   </p>
   <ul class="text-list">
-    <li><strong class="orangetext">Secretina</strong>: Stimola il pancreas a secernere bicarbonati (neutralizza l'acido) e inibisce la gastrina.</li>
-    <li><strong class="orangetext">Pancreozimina-Colecistochinina (CCK)</strong>: Stimola il pancreas a secernere enzimi e la colecisti a contrarsi (rilascio di bile).</li>
+    <li><strong class="yellowtext">Destino dei Carboidrati:</strong> Nel periodo post-prandiale, l'insulina favorisce l'estrazione epaticomediata del glucosio via GLUT2 e la sua conversione in riserva tramite la <strong class="biotechbold">glicogenosintesi</strong>. Il glucosio in eccesso viene indirizzato alla lipogenesi <em>de novo</em>.</li>
+    <li><strong class="greentext">Destino degli Amminoacidi:</strong> Utilizzati per la sintesi delle proteine plasmatiche (albumina, fattori della coagulazione) e tissutali, oppure avviati a deaminazione. I gruppi amminici tossici liberati sotto forma di ammoniaca vengono smaltiti mediante il <em>Ciclo dell'Urea</em> nel fegato.</li>
+    <li><strong class="orangetext">Destino dei Lipidi:</strong> Gli acidi grassi giunti via porta e i residui di chilomicroni (remnants) rimossi dal circolo vengono rielaborati dagli epatociti. Il fegato sintetizza e secerne lipoproteine a bassissima densità (<strong class="biotechbold">VLDL</strong>) per distribuire i trigliceridi endogeni ai tessuti periferici.</li>
   </ul>
-
-  <h3 class="biotechbold">ENZIMATOLOGIA: PANCREAS E SUCO ENTERICO</h3>
-  <p class="text">
-    Il <strong class="yellowtext">succo enterico</strong> (alcalino) e il <strong class="yellowtext">succo pancreatico</strong> contengono l'arsenale enzimatico:
-  </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Enterochinasi</strong>: Attiva il tripsinogeno in <strong class="yellowtext">tripsina</strong>, che a sua volta attiva altri proenzimi (endopeptidasi, esopeptidasi, nucleasi).</li>
-    <li><strong class="yellowtext">Amilasi pancreatica</strong>: Scinde gli amidi in disaccaridi.</li>
-    <li><strong class="yellowtext">Lipasi pancreatica</strong>: Scinde i grassi in acidi grassi e glicerina. La sua azione è resa possibile dai <strong class="orangetext">sali biliari</strong> che formano <strong class="biotechbold">micelle</strong> (interfase grasso-acqua).</li>
-  </ul>
-  <p class="text">
-    Gli <strong class="biotechbold">enzimi dei villi</strong> completano il lavoro scindendo i disaccaridi (lattosio, maltosio, saccarosio) in monosaccaridi (glucosio, galattosio, fruttosio).
-  </p>
-
-  <h3 class="biotechbold">RUOLO DELLA BILE E FORMAZIONE DEL CHILO</h3>
-  <p class="text">
-    Il <strong class="biotechbold">fegato</strong> produce bile (1 litro/die), che viene concentrata nella <strong class="yellowtext">vescicetta biliare</strong>. La bile non contiene enzimi, ma:
-  </p>
-  <ul class="text-list">
-    <li>Emulsiona i grassi (formazione di micelle).</li>
-    <li>Neutralizza l'acidità del chimo.</li>
-    <li>Stimola la peristalsi e ha azione antisettica.</li>
-  </ul>
-  <p class="text">
-    Il contenuto intestinale, ora un liquido lattiginoso, prende il nome di <strong class="biotechbold">chilo</strong>.
-  </p>
-
-  <h3 class="biotechbold">ASSORBIMENTO E CIRCOLAZIONE</h3>
-  <p class="text">
-    L'<strong class="biotechbold">assorbimento</strong> avviene principalmente nei villi:
-  </p>
-  <ul class="text-list">
-    <li><strong class="yellowtext">Via sanguigna</strong>: Amminoacidi, monosaccaridi, glicerina, vitamine, acqua e sali minerali entrano nei capillari sanguigni → <strong class="yellowtext">vene mesenteriche</strong> → <strong class="yellowtext">vena porta</strong> → <strong class="yellowtext">fegato</strong> → circolazione sistemica.</li>
-    <li><strong class="biotechbold">Via linfatica</strong>: Acidi grassi e monogliceridi (formati in micelle) entrano nei <strong class="yellowtext">chiliferi</strong> → <strong class="yellowtext">cisterna del Pecquet</strong> → <strong class="yellowtext">dotto toracico</strong> → <strong class="yellowtext">vena succlavia sinistra</strong>.</li>
-  </ul>
-
-  <h3 class="biotechbold">FUNZIONE DELL'INTESTINO CRASSO E FECI</h3>
-  <p class="text">
-    Nell'intestino crasso la digestione è <strong class="orangetext">nulla</strong> (niente enzimi). Avvengono:
-  </p>
-  <ul class="text-list">
-    <li><strong class="greentext">Assorbimento dell'acqua</strong> (concentrazione del residuo).</li>
-    <li><strong class="greentext">Processi fermentativi e putrefattivi</strong> operati dalla <strong class="biotechbold">flora batterica</strong>.</li>
-  </ul>
-  <p class="text">
-    Il risultato è la formazione delle <strong class="biotechbold">feci</strong>, composte da acqua, residui alimentari, batteri e cellule epiteliali desquamate.
-  </p>
-
-  <h3 class="biotechbold">IL FEGATO: LABORATORIO CHIMICO DELL'ORGANISMO</h3>
-  <p class="text">
-    Il fegato (1.500g, ipocondrio destro) non si limita a produrre bile. È il centro metabolico principale:
-  </p>
-  <ul class="list text-block">
-    <li><strong class="yellowtext">Anabolismo proteico</strong>: Sintesi di albumine, globuline, fattori della coagulazione.</li>
-    <li><strong class="yellowtext">Metabolismo glucidico</strong>: Glicogenesi (riserva di glicogeno) e glicolisi.</li>
-    <li><strong class="yellowtext">Detossificazione</strong>: Inattivazione di tossine e farmaci.</li>
-    <li><strong class="yellowtext">Metabolismo lipidico</strong>: Sintesi di colesterolo e acidi biliari.</li>
-    <li><strong class="yellowtext">Catabolismo eme</strong>: Produzione di bilirubina.</li>
-  </ul>
-
-  <h3 class="biotechbold">IL METABOLISMO: ANABOLISMO E CATABOLISMO</h3>
-  <p class="text">
-    Il <strong class="biotechbold">metabolismo</strong> è l'insieme delle trasformazioni chimiche e biologiche che sostengono la vita. Si divide in:
-  </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Anabolismo (assimilazione)</strong>: Costruzione di molecole complesse (es. proteine) a partire da semplici, consumando energia. Prevalente nell'età giovanile.</li>
-    <li><strong class="biotechbold">Catabolismo</strong>: Degradazione di molecole complesse per produrre energia e calore. Prevalente nell'età avanzata.</li>
-  </ul>
-  <p class="text">
-    Queste reazioni, catalizzate da circa 25.000 <strong class="yellowtext">enzimi</strong>, mantengono l'<strong class="biotechbold">omeostasi</strong> (costanza dell'ambiente interno).
-  </p>
-  <p class="text">
-    Il <strong class="biotechbold">metabolismo basale</strong> è l'energia minima spesa a <strong class="orangetext">riposo assoluto</strong> per mantenere le funzioni vitali (respirazione, circolazione, temperatura). È misurato in base al consumo di <strong class="yellowtext">ossigeno</strong> e influenzato dalla <strong class="yellowtext">tiroide</strong>.
-  </p>
 </section>
 <!-- ==========================================
 SEZIONE 4: Patofisiologia e Clinica (apparato_digerente_patofisiologia_clinica)
