@@ -82,130 +82,33 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
     min-height: 400px;
   }
 }
-/* --- RESET BOX MODEL (Indispensabile per evitare lo shift a destra su Mobile) --- */
-.cyber-table-container, .cyber-table-container *,
-.cyber-flowchart, .cyber-flowchart * {
-  box-sizing: border-box;
-}
-
+/* --- RESET BOX MODEL (Evita lo shift a destra su Mobile) --- */
+.cyber-table-container, .cyber-table-container *,.cyber-flowchart, .cyber-flowchart *{ box-sizing: border-box}
 /* --- TABELLE DIAGNOSTICHE --- */
-.cyber-table-container {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  margin: 18px auto 24px auto;
-  border-radius: 8px;
-  -webkit-overflow-scrolling: touch; /* Scorrimento fluido su iOS */
-}
-
-.cyber-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: rgba(10, 16, 26, 0.85);
-  border: 1px solid rgba(0, 230, 118, 0.25);
-  border-radius: 8px;
-  overflow: hidden;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 12px rgba(0, 230, 118, 0.05);
-}
-
-.cyber-table th {
-  background: rgba(0, 230, 118, 0.12);
-  color: #00e676;
-  font-family: 'Consolas', 'Fira Code', monospace, system-ui;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 12px 14px;
-  text-align: left;
-  border-bottom: 1px solid rgba(0, 230, 118, 0.3);
-}
-
-.cyber-table td {
-  padding: 12px 14px;
-  color: #cbd5e1;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
+.cyber-table-container{ width: 100%; max-width: 100%; overflow-x: auto; margin: 18px auto 24px auto; border-radius: 8px; -webkit-overflow-scrolling: touch; }
+.cyber-table{ width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.25); border-radius: 8px; overflow: hidden; backdrop-filter: blur(6px); box-shadow: 0 0 12px rgba(0, 230, 118, 0.05)}
+.cyber-table th{ background: rgba(0, 230, 118, 0.12); color: #00e676; font-family: 'Consolas', 'Fira Code', monospace, system-ui; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.3)}
+.cyber-table td{ padding: 12px 14px; color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; border-bottom: 1px solid rgba(255, 255, 255, 0.05)}
 .cyber-table tr:last-child td { border-bottom: none; }
 .cyber-table tr:hover td { background: rgba(0, 230, 118, 0.05); }
-
 /* --- DIAGRAMMA DI FLUSSO DINAMICO --- */
-.cyber-flowchart {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 20px auto;
-  width: 100%;
-  max-width: 100%;
-  align-items: center; /* Mantiene l'asse centrale */
-}
-
-.flow-branches {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  width: 100%;
-}
-
-.flow-card {
-  width: 100%;
-  background: rgba(10, 16, 26, 0.85);
-  border: 1px solid rgba(0, 230, 118, 0.25);
-  border-radius: 8px;
-  padding: 12px 14px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.05);
-}
-
+.cyber-flowchart{ display: flex; flex-direction: column; gap: 12px; margin: 20px auto; width: 100%; max-width: 100%; align-items: center; }
+.flow-branches{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%}
+.flow-card{ width: 100%; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.25); border-radius: 8px; padding: 12px 14px; backdrop-filter: blur(6px); box-shadow: 0 0 10px rgba(0, 230, 118, 0.05)}
 .flow-card.extrinsic { border-color: rgba(255, 152, 0, 0.4); }
 .flow-card.intrinsic { border-color: rgba(255, 235, 59, 0.4); }
 .flow-card.common    { border-color: rgba(0, 230, 118, 0.5); background: rgba(0, 230, 118, 0.06); }
 .flow-card.lysis     { border-color: rgba(33, 150, 243, 0.4); background: rgba(33, 150, 243, 0.05); }
-
-.flow-tag {
-  font-family: 'Consolas', 'Fira Code', monospace;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-
+.flow-tag{ font-family: 'Consolas', 'Fira Code', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 6px; font-weight: bold}
 .tag-extrinsic { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
 .tag-intrinsic { background: rgba(255, 235, 59, 0.2); color: #ffeb3b; }
 .tag-common    { background: rgba(0, 230, 118, 0.2); color: #00e676; }
 .tag-lysis     { background: rgba(33, 150, 243, 0.2); color: #64b5f6; }
-
 .flow-title { font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
 .flow-desc  { font-size: 0.82rem; color: #cbd5e1; line-height: 1.4; }
-
-.flow-arrow-down {
-  width: 100%;
-  text-align: center;
-  color: #00e676;
-  font-size: 1.2rem;
-  line-height: 1;
-  margin: 2px 0;
-  opacity: 0.8;
-}
-
+.flow-arrow-down{ width: 100%; text-align: center; color: #00e676; font-size: 1.2rem; line-height: 1; margin: 2px 0; opacity: 0.8}
 /* --- ADATTAMENTO MOBILE RESPONSIVE --- */
-@media (max-width: 680px) {
-  .flow-branches {
-    grid-template-columns: 1fr; /* Colonna singola perfettamente centrata */
-  }
-  .cyber-table th, .cyber-table td {
-    padding: 10px 8px;
-    font-size: 0.78rem;
-  }
-}
+@media (max-width: 680px){ .flow-branches{ grid-template-columns: 1fr; } .cyber-table th, .cyber-table td{ padding: 10px 8px; font-size: 0.78rem;}}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -614,7 +517,7 @@ SEZIONE 5: Microbiota e Asse Intestino-Cervello (apparato_digerente_microbiota_a
 DESCRIZIONE: Il ruolo della flora batterica, l'asse intestino-cervello, neurotrasmettitori e immunità.
 ========================================== -->
 <section class="text text-block mb-25" aria-labelledby="main-title-5" data-lang-key="apparato_digerente_microbiota_asse_intestino_cervello">
-  <h2 class="secHeader">MICROBIOTA E ASSE INTESTINO-CERVELLO</h2>
+  <h2 class="secHeader" id="main-title-5">MICROBIOTA E ASSE INTESTINO-CERVELLO</h2>
 
   <div class="mb-15">
     <p><strong>In sintesi:</strong> L'intestino non è solo un organo digerente, ma un ecosistema complesso e un centro di elaborazione neurale. Il microbiota intestinale (l'insieme dei microrganismi che lo abitano) dialoga costantemente con il cervello attraverso vie neurali, ormonali e immunitarie, influenzando umore, comportamento e salute generale.</p>
@@ -622,66 +525,141 @@ DESCRIZIONE: Il ruolo della flora batterica, l'asse intestino-cervello, neurotra
 
   <h3 class="biotechbold">IL MICROBIOTA INTESTINALE: UN ORGANISMO SIMBIOTICO</h3>
   <p class="text">
-    Il microbiota intestinale è composto da trilioni di batteri, virus, funghi e archei, con un numero di geni microbiotici che supera di 150 volte quello del genoma umano. Non è un semplice "ospite", ma un vero e proprio <strong class="biotechbold">organo metabolico</strong> acquisito.
+    Il microbiota intestinale è composto da trilioni di batteri, virus, funghi e archei, con un patrimonio genico (metagenoma) che supera di 150 volte quello del genoma umano. Non è un semplice "ospite", ma un vero e proprio <strong class="biotechbold">organo metabolico</strong> acquisito.
   </p>
-  <p class="text">
-    Le sue funzioni principali includono:
-  </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Digestione di substrati indigeribili</strong> (fibre, amidi resistenti) con produzione di acidi grassi a catena corta (SCFA) come butirrato, propionato e acetato, fondamentali per la salute della mucosa colica.</li>
-    <li><strong class="biotechbold">Sintesi di vitamine</strong> (vitamina K, vitamina B12, folati, biotina).</li>
-    <li><strong class="biotechbold">Protezione contro patogeni</strong> (effetto barriera competitiva, produzione di batteriocine).</li>
-    <li><strong class="biotechbold">Sviluppo e modulazione del sistema immunitario</strong> (fino al 70% delle cellule immunitarie risiede nell'intestino).</li>
+  <p class="text">Le sue funzioni fisiologiche principali comprendono:</p>
+  <ul class="text-list mb-15">
+    <li><strong class="biotechbold">Digestione di substrati indigeribili:</strong> Demolizione di fibre e amidi resistenti con produzione di acidi grassi a catena corta (SCFA) come butirrato, propionato e acetato, fondamentali per la troficità della mucosa colica.</li>
+    <li><strong class="biotechbold">Sintesi di micronutrienti essenziali:</strong> Biosintesi di vitamina K, vitamina B12, folati e biotina.</li>
+    <li><strong class="biotechbold">Effetto barriera e protezione da patogeni:</strong> Competizione per la nicchia ecologica, secrezione di batteriocine e conservazione dell'integrità delle giunzioni strette.</li>
+    <li><strong class="biotechbold">Modulazione del sistema immunitario:</strong> Regolazione e sviluppo del GALT (fino al 70% del tessuto linfoide corporeo risiede nell'intestino).</li>
   </ul>
   <p class="text">
-    La <strong class="orangetext">disbiosi</strong> (alterazione della composizione del microbiota) è associata a numerose patologie: malattie infiammatorie croniche intestinali (IBD), sindrome dell'intestino irritabile (IBS), obesità, diabete di tipo 2, allergie e persino disturbi neurologici.
+    La <strong class="orangetext">disbiosi</strong> (alterazione qualitativa e quantitativa del microbiota) compromette questo equilibrio, venendo correlata a patologie infiammatorie (IBD, IBS), dismetaboliche (obesità, diabete tipo 2), allergiche e sindromi neuropsichiatriche.
   </p>
 
-  <h3 class="biotechbold">L'ASSE INTESTINO-CERVELLO: IL DIALOGO COSTANTE</h3>
-  <p class="text">
-    L'asse intestino-cervello è il sistema di comunicazione bidirezionale che collega il sistema nervoso enterico (SNE, il "secondo cervello" dell'intestino) al sistema nervoso centrale (SNC). Le principali vie di comunicazione sono:
-  </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Via nervosa:</strong> Il <strong class="greentext">nervo vago</strong> è la principale autostrada neurale, trasmettendo segnali dall'intestino al cervello e viceversa.</li>
-    <li><strong class="biotechbold">Via ormonale:</strong> Le cellule enteroendocrine dell'intestino secernono ormoni (es. serotonina, grelina, leptina) che influenzano l'appetito, l'umore e la risposta allo stress.</li>
-    <li><strong class="biotechbold">Via immunitaria:</strong> I mediatori infiammatori prodotti nell'intestino (citochine) possono attraversare la barriera emato-encefalica e influenzare la funzione cerebrale.</li>
-    <li><strong class="biotechbold">Via metabolica:</strong> I metaboliti prodotti dal microbiota (SCFA, neurotrasmettitori) entrano in circolo e raggiungono il cervello.</li>
-  </ul>
-
-  <h3 class="biotechbold">NEUROTRASMETTITORI E MICROBIOTA</h3>
-  <p class="text">
-    Il microbiota intestinale è in grado di produrre o stimolare la produzione di numerosi neurotrasmettitori chiave:
-  </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Serotonina (5-HT):</strong> Circa il 90% della serotonina corporea è prodotta nell'intestino. Regola l'umore, il sonno, l'appetito e la motilità intestinale. Un'alterata produzione è legata a depressione e ansia.</li>
-    <li><strong class="biotechbold">GABA (acido gamma-amminobutirrico):</strong> Il principale neurotrasmettitore inibitorio del cervello, prodotto da alcuni ceppi batterici (es. <em>Lactobacillus</em>, <em>Bifidobacterium</em>). Ha effetti ansiolitici e rilassanti.</li>
-    <li><strong class="biotechbold">Dopamina:</strong> Coinvolta nel piacere, nella motivazione e nella regolazione motoria. Alcuni batteri intestinali possono influenzarne la sintesi.</li>
-    <li><strong class="biotechbold">Acetilcolina:</strong> Coinvolta nella memoria, nell'apprendimento e nella contrazione muscolare (inclusa la motilità intestinale).</li>
-  </ul>
-  <p class="text">
-    Studi recenti dimostrano che la modulazione del microbiota (tramite probiotici, prebiotici o trapianto fecale) può influenzare positivamente l'umore, ridurre l'ansia e migliorare le funzioni cognitive, aprendo nuove frontiere per la terapia di disturbi psichiatrici e neurologici.
+  <h3 class="biotechbold" style="margin-top: 20px;">L'ASSE INTESTINO-CERVELLO: IL DIALOGO COSTANTE</h3>
+  <p class="text mb-15">
+    L'asse intestino-cervello rappresenta una rete di comunicazione bidirezionale che connette il Sistema Nervoso Enterico (SNE) al Sistema Nervoso Centrale (SNC). Tale dialogo si sviluppa lungo quattro direttrici principali:
   </p>
 
-  <h3 class="biotechbold">IMMUNITÀ E MICROBIOTA</h3>
+  <!-- GRID FLUSSO DELLE 4 VIE DI COMUNICAZIONE -->
+  <div class="cyber-flowchart">
+    <div class="flow-branches">
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Via 1 &middot; Neurale</span>
+        <div class="flow-title">Nervo Vago e SNE</div>
+        <div class="flow-desc">Principale autostrada neurale per la trasmissione rapida di segnali afferenti dall'epitelio intestinale al tronco encefalico e viceversa.</div>
+      </div>
+      <div class="flow-card common">
+        <span class="flow-tag tag-common">Via 2 &middot; Endocrina</span>
+        <div class="flow-title">Cellule Enteroendocrine</div>
+        <div class="flow-desc">Secrezione di peptidi e ormoni sistemici (es. serotonina, grelina, leptina) a regolazione dell'appetito, dell'umore e della risposta allo stress.</div>
+      </div>
+    </div>
+    
+    <div class="flow-branches">
+      <div class="flow-card lysis">
+        <span class="flow-tag tag-lysis">Via 3 &middot; Immunitaria</span>
+        <div class="flow-title">Citochine e GALT</div>
+        <div class="flow-desc">I mediatori infiammatori prodotti a livello intestinale possono oltrepassare la barriera emato-encefalica (BEE) influenzando la funzione cerebrale.</div>
+      </div>
+      <div class="flow-card extrinsic">
+        <span class="flow-tag tag-extrinsic">Via 4 &middot; Metabolica</span>
+        <div class="flow-title">Metaboliti Microbici</div>
+        <div class="flow-desc">SCFA (butirrato), neurotrasmettitori e derivati del triptofano che entrano in circolo ematico agendo direttamente sui recettori centrali.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="biotechbold" style="margin-top: 20px;">NEUROTRASMETTITORI E MICROBIOTA</h3>
   <p class="text">
-    Il microbiota è essenziale per lo sviluppo e la regolazione del sistema immunitario. Interagisce con le cellule immunitarie della mucosa intestinale (linfociti T, macrofagi, cellule dendritiche) per mantenere un equilibrio tra tolleranza (verso antigeni alimentari e commensali) e difesa (contro patogeni).
-  </p>
-  <p class="text">
-    Una disbiosi precoce (nei primi anni di vita) può predisporre a malattie autoimmuni, allergie e asma. Gli SCFA prodotti dal microbiota (in particolare il butirrato) hanno potenti effetti antinfiammatori e rafforzano la barriera intestinale, impedendo il passaggio di tossine nel circolo sanguigno ("leaky gut").
+    Il microbiota intestinale opera come un centro neurochimico avanzato, producendo direttamente o modulando la sintesi di neuromediatori chiave:
   </p>
 
-  <h3 class="biotechbold">FATTORI CHE INFLUENZANO IL MICROBIOTA</h3>
+  <!-- TABELLA NEUROTRASMETTITORI -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Neurotrasmettitore</th>
+          <th>Origine / Meccanismo Microbico</th>
+          <th>Ruolo Fisiologico & Impatto Clinico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="greentext">Serotonina (5-HT)</strong></td>
+          <td>~90% prodotta dalle cellule enterocromaffini per stimolazione dei metaboliti batterici.</td>
+          <td>Regolazione della motilità intestinale, umore, sonno ed appetito. Alterazioni correlate ad ansia e depressione.</td>
+        </tr>
+        <tr>
+          <td><strong class="tag-common">GABA (&gamma;-amminobutirrato)</strong></td>
+          <td>Sintetizzato direttamente da ceppi come <em>Lactobacillus</em> e <em>Bifidobacterium</em>.</td>
+          <td>Principale neurotrasmettitore inibitorio centralizzato; esercita un'azione ansiolitica e distensiva.</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Dopamina</strong></td>
+          <td>Sintesi e modulazione tissutale ad opera di specifiche popolazioni microbiche.</td>
+          <td>Regolazione dei circuiti di ricompensa, motivazione e coordinazione motoria.</td>
+        </tr>
+        <tr>
+          <td><strong class="tag-lysis">Acetilcolina</strong></td>
+          <td>Prodotta da diversi ceppi batterici commensali dell'ambiente enterico.</td>
+          <td>Modulazione della memoria, funzioni cognitive e contrazione della muscolatura liscia viscerale.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <p class="text">
-    La composizione del microbiota è influenzata da:
+    L'evidenza scientifica sottolinea come la modulazione mirata del microbiota (tramite probiotici, prebiotici o trapianto fecale FMT) costituisca una nuova frontiera terapeutica in campo psichiatrico e neurologico.
   </p>
-  <ul class="text-list">
-    <li><strong class="biotechbold">Dieta:</strong> Una dieta ricca di fibre, verdure e alimenti fermentati favorisce la diversità batterica. Al contrario, diete ricche di grassi saturi, zuccheri semplici e cibi processati promuovono la disbiosi.</li>
-    <li><strong class="biotechbold">Farmaci:</strong> Gli antibiotici sono i principali responsabili di alterazioni drastiche del microbiota. Anche altri farmaci (PPI, antinfiammatori, antidepressivi) possono influenzarlo.</li>
-    <li><strong class="biotechbold">Stile di vita:</strong> Stress cronico, mancanza di sonno e sedentarietà alterano la composizione batterica.</li>
-    <li><strong class="biotechbold">Modalità di nascita e allattamento:</strong> I bambini nati per via vaginale e allattati al seno acquisiscono un microbiota più diversificato e benefico rispetto a quelli nati con taglio cesareo e allattati artificialmente.</li>
-  </ul>
+
+  <h3 class="biotechbold" style="margin-top: 20px;">IMMUNITÀ E MICROBIOTA</h3>
   <p class="text">
-    Mantenere un microbiota sano è fondamentale per la salute globale, dall'intestino al cervello.
+    Il microbiota è fondamentale per lo sviluppo e l'omeostasi del sistema immunitario. Interagendo con le cellule della mucosa intestinale (linfociti T, macrofagi, cellule dendritiche), mantiene il costante equilibrio tra <strong class="biotechbold">tolleranza immunologica</strong> (verso antigeni alimentari e commensali) e <strong class="biotechbold">risposta difensiva</strong> (contro agenti patogeni).
+  </p>
+  <p class="text">
+    Una disbiosi precoce nei primi anni di vita può alterare la maturazione immunitaria, predisponendo a malattie autoimmuni, allergie ed asma. Gli SCFA (in particolare il <strong class="greentext">butirrato</strong>) hanno potenti effetti antinfiammatori e rafforzano la barriera intestinale, prevenendo l'iperpermeabilità ("<em>leaky gut</em>").
+  </p>
+
+  <h3 class="biotechbold" style="margin-top: 20px;">FATTORI DETERMINANTI SULLA COMPOSIZIONE MICROBICA</h3>
+  <p class="text mb-15">
+    La struttura e la diversità dell'ecosistema microbico intestinale sono plasmate da quattro fattori chiave:
+  </p>
+
+  <!-- GRID FATTORI INFLUENTI -->
+  <div class="cyber-flowchart">
+    <div class="flow-branches">
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Alimentazione</span>
+        <div class="flow-title">Dieta e Nutrienti</div>
+        <div class="flow-desc">Diete ricche di fibre e cibi fermentati promuovono la biodiversità batterica; grassi saturi e zuccheri raffinati favoriscono la disbiosi.</div>
+      </div>
+      <div class="flow-card extrinsic">
+        <span class="flow-tag tag-extrinsic">Farmacologia</span>
+        <div class="flow-title">Trattamenti Farmacologici</div>
+        <div class="flow-desc">Gli antibiotici causano alterazioni drastiche del microbioma; anche IPP, FANS e psicofarmaci ne influenzano la composizione.</div>
+      </div>
+    </div>
+    
+    <div class="flow-branches">
+      <div class="flow-card common">
+        <span class="flow-tag tag-common">Stile di Vita</span>
+        <div class="flow-title">Stress ed Ambiente</div>
+        <div class="flow-desc">Lo stress cronico, la privazione di sonno e la sedentarietà alterano la motilità intestinale e la barriera mucosa.</div>
+      </div>
+      <div class="flow-card lysis">
+        <span class="flow-tag tag-lysis">Sviluppo Precoce</span>
+        <div class="flow-title">Nascita ed Allattamento</div>
+        <div class="flow-desc">Il parto naturale e l'allattamento al seno favoriscono la colonizzazione da parte di microflora più diversificata e benefica.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text" style="margin-top: 15px;">
+    Mantenere un microbiota in eubiosi è un pilastro fondamentale per la salute globale dell'organismo, dall'intestino al cervello.
   </p>
 </section>
 <!-- ==========================================
