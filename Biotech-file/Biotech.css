@@ -93,8 +93,12 @@ h2.atkinson-bold,
     display: block;
     margin-bottom: 12px;
   }   
-ul.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; list-style-type: none; margin: 1; padding: 1; color: #B5EAD7; /* Menta Chiaro */;}
-ol.list {font-family: 'Sansation', Tahoma, Verdana, sans-serif; margin: 1; padding: 1; color: #B5EAD7; /* Menta Chiaro */;}
+ul.list, ol.list {
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+  margin: 1px; /* o 0 */
+  padding: 1px; /* o 0 */
+  color: #B5EAD7;
+}
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 table{border:0;padding:4px;border-spacing:4px;font-weight:bold;font-size:18px;text-align:center;}
