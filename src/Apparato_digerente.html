@@ -93,14 +93,7 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
 .cyber-table-container{ width: 100%; max-width: 100%; overflow-x: auto; margin: 18px auto 24px auto; border-radius: 8px; -webkit-overflow-scrolling: touch; }
 .cyber-table{ width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.25); border-radius: 8px; overflow: hidden; backdrop-filter: blur(6px); box-shadow: 0 0 12px rgba(0, 230, 118, 0.05)}
 .cyber-table th{ background: rgba(0, 230, 118, 0.12); color: #00e676; font-family: 'Consolas', 'Fira Code', monospace, system-ui; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.3)}
-.cyber-table td {
-  padding: 12px 14px;
-  color: #cbd5e1;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  text-align: left; /* <-- Allinemento a sinistra */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
+.cyber-table td{ padding: 12px 14px; color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05)}
 .cyber-table tr:last-child td { border-bottom: none; }
 .cyber-table tr:hover td { background: rgba(0, 230, 118, 0.05); }
 /* --- DIAGRAMMA DI FLUSSO DINAMICO --- */
@@ -814,17 +807,47 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
     </table>
   </div>
 
-  <!-- CICLO DI KREBS -->
+  <!-- CICLO DI KREBS CON FLOWCHART -->
   <h3 class="biotechbold">IL CICLO DI KREBS (CICLO DELL'ACIDO TRICARBOSSILICO)</h3>
   <p class="text">
     Il Ciclo di Krebs, situato nella <strong class="biotechbold">matrice mitocondriale</strong>, è la via metabolica centrale dell'ossidazione completa dei nutrienti. È il punto di convergenza per il catabolismo di glucidi, lipidi e amminoacidi, e la fonte principale di potere riducente (NADH, FADH<sub>2</sub>) per la catena respiratoria.
   </p>
-  <p class="text">
-    Il ciclo inizia con la condensazione dell'<strong class="yellowtext">acetil-CoA</strong> (2 carboni) con l'<strong class="yellowtext">ossalacetato</strong> (4 carboni) per formare <strong class="yellowtext">citrato</strong> (6 carboni), catalizzata dalla <em>citrato sintasi</em>.
-  </p>
-  <p class="text">
-    Attraverso una sequenza di 8 reazioni enzimatiche, il citrato viene ossidato, rilasciando due molecole di <strong class="orangetext">CO<sub>2</sub></strong> e rigenerando l'ossalacetato per un nuovo ciclo.
-  </p>
+
+  <div class="cyber-flowchart">
+    <!-- TAPPA 1 -->
+    <div class="flow-card intrinsic">
+      <span class="flow-tag tag-intrinsic">Fase Iniziale · Tappa 1</span>
+      <div class="flow-title">Condensazione & Sintesi del Citrato</div>
+      <div class="flow-desc">L'<strong>Acetil-CoA</strong> (2C) si condensa con l'<strong>Ossalacetato</strong> (4C) per formare <strong>Citrato</strong> (6C). Reazione irreversibile e fortemente esoergonica catalizzata dalla <em>citrato sintasi</em>.</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <!-- TAPPA 2 -->
+    <div class="flow-card extrinsic">
+      <span class="flow-tag tag-extrinsic">Fase Ossidativa · Tappe 2 - 4</span>
+      <div class="flow-title">Isomerizzazione & Decarbossilazione Ossidativa</div>
+      <div class="flow-desc">Il Citrato viene convertito in Isocitrato e subisce due decarbossilazioni ossidative successive (via <em>isocitrato DH</em> e <em>&alpha;-chetoglutarato DH</em>), liberando <strong>2 CO<sub>2</sub></strong> e generando <strong>2 NADH</strong> + <strong>Succinil-CoA</strong> (4C).</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <!-- TAPPA 3 -->
+    <div class="flow-card lysis">
+      <span class="flow-tag tag-lysis">Fase Energetica · Tappa 5</span>
+      <div class="flow-title">Fosforilazione a Livello del Substrato</div>
+      <div class="flow-desc">La scissione del legame tioestere ad alta energia del Succinil-CoA (via <em>succinil-CoA sintetasi</em>) è accoppiata alla sintesi diretta di <strong>1 GTP / ATP</strong> e alla formazione di <strong>Succinato</strong>.</div>
+    </div>
+
+    <div class="flow-arrow-down">&#8595;</div>
+
+    <!-- TAPPA 4 -->
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Fase di Rigenerazione · Tappe 6 - 8</span>
+      <div class="flow-title">Deidrogenazione & Rigenerazione dell'Ossalacetato</div>
+      <div class="flow-desc">Il Succinato viene ossidato a Fumarato (generando <strong>1 FADH<sub>2</sub></strong> via <em>succinato DH</em>), idratato a L-Malato e infine ossidato a <strong>Ossalacetato</strong> (generando <strong>1 NADH</strong> via <em>malato DH</em>), riavviando il ciclo.</div>
+    </div>
+  </div>
 
   <p class="text">
     <strong class="biotechbold">Resa netta per ogni molecola di Acetil-CoA ossidata:</strong>
@@ -893,7 +916,7 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
   <ul class="text-list">
     <li>Il <strong class="biotechbold">Fumarato</strong> prodotto nel ciclo dell'urea entra direttamente nel mitocondrio e alimenta il Ciclo di Krebs (<em>bicicletta di Krebs-Urea</em>).</li>
     <li>L'<strong class="biotechbold">ATP</strong> prodotto dalla catena respiratoria via Krebs/NADH sostiene il costo energetico del ciclo dell'urea e delle biosintesi epatiche.</li>
-    <li>I parametri cinetici enzmatici (<strong class="greentext">K<sub>m</sub> e V<sub>max</sub></strong>) determinano la flessibilità con cui il fegato passa dallo stato post-prandiale al digiuno prolungato.</li>
+    <li>I parametri cinetici enzimatici (<strong class="greentext">K<sub>m</sub> e V<sub>max</sub></strong>) determinano la flessibilità con cui il fegato passa dallo stato post-prandiale al digiuno prolungato.</li>
   </ul>
   <p class="text">
     Comprendere queste interconnessioni è vitale per la biochimica clinica, fornendo le basi per diagnosticare disordini metabolici ereditari, encefalopatia epatica e valutare lo stato nutrizionale del paziente.
