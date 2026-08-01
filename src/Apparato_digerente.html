@@ -89,13 +89,27 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
 }
 /* --- RESET BOX MODEL (Evita lo shift a destra su Mobile) --- */
 .cyber-table-container, .cyber-table-container *,.cyber-flowchart, .cyber-flowchart *{ box-sizing: border-box}
+
 /* --- TABELLE DIAGNOSTICHE --- */
-.cyber-table-container{ width: 100%; max-width: 100%; overflow-x: auto; margin: 18px auto 24px auto; border-radius: 8px; -webkit-overflow-scrolling: touch; }
+.cyber-table-container{ 
+  width: 100%; 
+  max-width: 100%; 
+  overflow-x: auto; 
+  margin: 18px auto 24px auto; 
+  border-radius: 8px; 
+  -webkit-overflow-scrolling: touch; 
+  /* --- INDICATORE DI SCORRIMENTO (SCROLL HINT NEON) --- */
+  background: 
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 230, 118, 0.35), transparent) 100% 0 / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 0% 50%, rgba(0, 230, 118, 0.35), transparent) 0% 0 / 14px 100% no-repeat scroll;
+}
+
 .cyber-table{ width: 100%; border-collapse: separate; border-spacing: 0; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.25); border-radius: 8px; overflow: hidden; backdrop-filter: blur(6px); box-shadow: 0 0 12px rgba(0, 230, 118, 0.05)}
 .cyber-table th{ background: rgba(0, 230, 118, 0.12); color: #00e676; font-family: 'Consolas', 'Fira Code', monospace, system-ui; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(0, 230, 118, 0.3)}
 .cyber-table td{ padding: 12px 14px; color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05)}
 .cyber-table tr:last-child td { border-bottom: none; }
 .cyber-table tr:hover td { background: rgba(0, 230, 118, 0.05); }
+
 /* --- DIAGRAMMA DI FLUSSO DINAMICO --- */
 .cyber-flowchart{ display: flex; flex-direction: column; gap: 12px; margin: 20px auto; width: 100%; max-width: 100%; align-items: center; }
 .flow-branches{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%}
@@ -112,6 +126,7 @@ div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-ali
 .flow-title { font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
 .flow-desc  { font-size: 0.82rem; color: #cbd5e1; line-height: 1.4; }
 .flow-arrow-down{ width: 100%; text-align: center; color: #00e676; font-size: 1.2rem; line-height: 1; margin: 2px 0; opacity: 0.8}
+
 /* --- ADATTAMENTO MOBILE RESPONSIVE --- */
 @media (max-width: 680px){ .flow-branches{ grid-template-columns: 1fr; } .cyber-table th, .cyber-table td{ padding: 10px 8px; font-size: 0.78rem;}}
 </style>
