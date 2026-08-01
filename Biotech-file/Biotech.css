@@ -101,7 +101,6 @@ ul.list, ol.list {
 }
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
-
 a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
 a:visited {color: rgb(116, 9, 116); /* Solo il colore cambia */}
 a:hover, a:focus {color: #a7ffeb; /* Leggero aumento dell'effetto */text-shadow: 0 0 6px rgba(138, 43, 226, 0.8), 0 0 10px rgba(138, 43, 226, 0.5);}
@@ -661,6 +660,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
   --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 0.3s;
 }
+.line {border: 0; border-top: 1px solid rgba(0, 230, 118, 0.15); margin: 28px 0;}
 .sidenavtext {font-size: 18px; font-weight: normal; color: hsla(0, 100%, 100%, 0.692);}
 .text {font-size: 16px; font-weight: normal; color: #e6e6e6; text-shadow: 2px 2px 5px blueviolet; transition: color 1.3s, text-shadow 1.8s;}
 .text:hover, .text:focus {color: #ffffff; text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;}

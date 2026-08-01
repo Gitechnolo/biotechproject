@@ -193,12 +193,14 @@ SEZIONE 2: Anatomia Funzionale e Fisiologia Orale (apparato_digerente_anatomia_o
 DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticazione, composizione della saliva e meccanismi di deglutizione e peristalsi.
 ========================================== -->
 <section class="text text-block mb-15" aria-labelledby="main-title-2" data-lang-key="apparato_digerente_anatomia_orale">
-  <h2 class="secHeader">ANATOMIA FUNZIONALE E FISIOLOGIA ORO-FARINGEA</h2>
-  <!-- Hook Narrativo -->
+  <h2 id="main-title-2" class="secHeader">ANATOMIA FUNZIONALE E FISIOLOGIA ORO-FARINGEA</h2>
+
+  <!-- Executive Summary -->
   <div class="mb-15">
     <p><strong>In sintesi:</strong> Un sistema di tubi continuo e specializzato, lungo circa 9-10 metri, che trasforma chimicamente e meccanicamente il cibo in molecole assimilabili. Ogni tratto ha una funzione specifica, dalla triturazione meccanica alla regolazione ormonale del flusso.</p>
   </div>
 
+  <!-- Blocco 1: Topografia -->
   <h3 class="biotechbold">TOPOGRAFIA E ORGANIZZAZIONE DEL TUBO DIGERENTE</h3>
   <p class="text">
     L'apparato digerente si configura come un <strong class="biotechbold">tubo continuo</strong> di circa 9-10 metri, articolato in tratti distinti per morfologia e funzione. Il percorso inizia con la <strong class="yellowtext">bocca</strong>, delimitata dalle <strong class="yellowtext">labbra</strong>, e prosegue attraverso l'<strong class="biotechbold">istmo delle fauci</strong> verso la <strong class="yellowtext">faringe</strong>, crocevia anatomico critico tra le vie digestive e respiratorie.
@@ -206,21 +208,50 @@ DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticaz
   <p class="text">
     Dalla faringe, il bolo discende nell'<strong class="yellowtext">esofago</strong>, un condotto muscolare che congiunge la faringe allo <strong class="yellowtext">stomaco</strong>. Quest'ultimo, la porzione più dilatata (spesso paragonata a una cornamusa per la sua forma variabile), agisce come serbatoio e reattore chimico iniziale. La sua uscita è controllata dallo <strong class="biotechbold">sfintere pilorico</strong>, un anello di <strong class="yellowtext">fibre muscolari circolari</strong> che regola il passaggio del chimo nell'<strong class="yellowtext">intestino</strong>.
   </p>
-  <p class="text">
-    L'intestino si suddivide in due tratti funzionali:
-  </p>
-  <ul class="text-list">
-    <li>
-      <strong class="yellowtext">Intestino Tenue</strong> (~6,8 m): Suddiviso in <strong class="yellowtext">duodeno</strong>, <strong class="yellowtext">digiuno</strong> e <strong class="yellowtext">ileo</strong>. Nel duodeno confluiscono i secreti del <strong class="yellowtext">pancreas</strong> e del <strong class="yellowtext">fegato</strong>. L'ileo termina con la <strong class="biotechbold">valvola ileo-cecale</strong>, che immette nel crasso.
-    </li>
-    <li>
-      <strong class="yellowtext">Intestino Crasso</strong> (~1,8 m): Comprende il <strong class="yellowtext">cieco</strong>, il <strong class="yellowtext">colon</strong> (ascendente, trasverso, discendente) e il <strong class="yellowtext">retto</strong>, che sfocia all'esterno tramite lo <strong class="biotechbold">sfintere anale</strong>.
-    </li>
-  </ul>
+
+  <p class="text">L'intestino si suddivide in due tratti funzionali:</p>
+  
+  <div class="flow-branches" style="margin: 16px 0 20px 0;">
+  <!-- Intestino Tenue -->
+  <div class="flow-card intrinsic">
+    <span class="flow-tag tag-intrinsic">Tratto Digestivo & Assorbitivo</span>
+    <div class="flow-title">Intestino Tenue (~6,8 m)</div>
+    <div class="flow-desc">
+      <p style="margin: 0 0 8px 0;">
+        Sede primaria della digestione chimica e dell'assorbimento. La superficie d'accumulo è amplificata da <strong class="yellowtext">pliche circolari</strong>, <strong class="yellowtext">villi</strong> e <strong class="biotechbold">microvilli (orletto a spazzola)</strong>.
+      </p>
+      <ul>
+        <li><strong class="yellowtext">Duodeno:</strong> Riceve bile e succo pancreatico; secerne <strong class="orangetext">Secretina</strong> e <strong class="orangetext">CCK</strong> per la neutralizzazione del chimo.</li>
+        <li><strong class="yellowtext">Digiuno:</strong> Sede d'elezione per l'assorbimento di amminoacidi, monosaccaridi e lipidi.</li>
+        <li><strong class="yellowtext">Ileo:</strong> Sede delle <strong class="biotechbold">Placche di Peyer</strong> (GALT); riassorbe <strong class="greentext">sali biliari</strong> e <strong class="greentext">Vitamina B12</strong>. Termina con la <strong class="biotechbold">valvola ileo-cecale</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Intestino Crasso -->
+  <div class="flow-card extrinsic">
+    <span class="flow-tag tag-extrinsic">Tratto Riassorbitivo & Fermentativo</span>
+    <div class="flow-title">Intestino Crasso (~1,8 m)</div>
+    <div class="flow-desc">
+      <p style="margin: 0 0 8px 0;">
+        Privo di villi, strutturato in <strong class="yellowtext">tenie</strong> ed <strong class="yellowtext">haustra</strong>. Specializzato nel bilancio idroelettrolitico e nella simbiosi metabolica con il microbiota.
+      </p>
+      <ul>
+        <li><strong class="yellowtext">Cieco & Appendice:</strong> Punto d'ingresso e riserva immunitaria/microbica.</li>
+        <li><strong class="yellowtext">Colon (Asc., Trasv., Disc., Sigmoideo):</strong> Riassorbe <strong class="greentext">acqua ed elettroliti</strong>; il microbiota sintettizza <strong class="biotechbold">SCFA</strong> (butirrato, acetato, propionato) e vitamine.</li>
+        <li><strong class="yellowtext">Retto & Canale Anale:</strong> Compattazione ed eliminazione delle feci tramite lo sfintere anale <strong class="biotechbold">interno (involontario)</strong> ed <strong class="biotechbold">esterno (volontario)</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
   <p class="text">
     La superficie interna, rivestita da <strong class="yellowtext">mucosa</strong>, presenta nel tenue specializzazioni morfologiche cruciali per l'assorbimento: le <strong class="yellowtext">valvole conniventi</strong> (plicature circolari della mucosa) e i <strong class="yellowtext">villi intestinali</strong>, che moltiplicano esponenzialmente la superficie di scambio.
   </p>
 
+  <hr class="line" />
+
+  <!-- Blocco 2: Microbiota -->
   <h3 class="biotechbold">IL RUOLO DEL MICROBIOTA E LA FORMAZIONE DELLE FECI</h3>
   <p class="text">
     Nell'intestino crasso l'attività enzimatica digestiva è trascurabile, ma regna sovrana l'azione della <strong class="biotechbold">flora microbica</strong> (microbiota intestinale). Questi microrganismi svolgono funzioni essenziali:
@@ -233,6 +264,9 @@ DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticaz
     Le <strong class="orangetext">feci</strong>, espulse attraverso l'<strong class="yellowtext">ano</strong>, non sono solo residui alimentari, ma un complesso biologico composto per gran parte da <strong class="biotechbold">batteri intestinali</strong>, cellule epiteliali desquamate e acqua.
   </p>
 
+  <hr class="line" />
+
+  <!-- Blocco 3: Masticazione -->
   <h3 class="biotechbold">MASTICAZIONE E DEGLUTIZIONE: DALLA MECCANICA AL RIFLESSO</h3>
   <p class="text">
     La <strong class="yellowtext">masticazione</strong> è il primo atto della digestione, un processo di <strong class="greentext">triturazione meccanica</strong> operata dai denti, coordinato dai movimenti di lingua e guance. Questo atto è governato da centri nervosi nella <strong class="orangetext">corteccia temporale</strong> e nel <strong class="orangetext">bulbo</strong>, che attivano i muscoli masticatori (masseteri, temporali, pterigoidei) per la demolizione del cibo.
@@ -241,18 +275,42 @@ DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticaz
     Parallelamente alla meccanica, inizia la <strong class="biotechbold">digestione chimica</strong> ad opera degli <strong class="biotechbold">enzimi</strong>. Gli enzimi sono <strong class="orangetext">catalizzatori biologici</strong> specifici: accelerano reazioni chimiche (come l'idrolisi) senza consumarsi, agendo su substrati specifici (es. pepsina per le proteine, amilasi per i carboidrati). Già nel XVIII secolo, <strong class="yellowtext">Lazzaro Spallanzani</strong> intuì il ruolo cruciale dei <strong class="biotechbold">succhi gastrici</strong> in questi processi.
   </p>
 
+  <hr class="line" />
+
+  <!-- Blocco 4: Saliva (Formattato in Cyber-Table per la massima leggibilità scientifica) -->
   <h3 class="biotechbold">FISIOLOGIA DELLA SALIVA E CONTROLLO NEURO-UMORALE</h3>
   <p class="text">
     Le <strong class="yellowtext">ghiandole salivari</strong> (parotidi, sottolinguali, sottomascellari) secernono la saliva, un fluido composto per il 98,7% da acqua e da una frazione organica e inorganica complessa:
   </p>
-  <ul class="text-list">
-    <li><strong class="orangetext">Componenti inorganici:</strong> I <strong class="orangetext">cloruri</strong> attivano l'amilasi; i <strong class="yellowtext">bicarbonati e fosfati</strong> costituiscono un <strong class="biotechbold">sistema tampone</strong> che mantiene il pH vicino alla neutralità.</li>
-    <li><strong class="yellowtext">Componenti organici:</strong> La <strong class="yellowtext">mucina</strong> (lubrificante) e la <strong class="biotechbold">ptialina</strong> (amilasi salivare), che idrolizza l'amido in destrine e maltosio a pH neutro. L'azione della ptialina cessa nello stomaco per l'inattivazione da parte dell'<strong class="orangetext">acido cloridrico</strong>.</li>
-  </ul>
+
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Frazione Salivare</th>
+          <th>Componenti e Funzioni Fisiologiche</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="orangetext">Componenti inorganici:</strong></td>
+          <td>I <strong class="orangetext">cloruri</strong> attivano l'amilasi; i <strong class="yellowtext">bicarbonati e fosfati</strong> costituiscono un <strong class="biotechbold">sistema tampone</strong> che mantiene il pH vicino alla neutralità.</td>
+        </tr>
+        <tr>
+          <td><strong class="yellowtext">Componenti organici:</strong></td>
+          <td>La <strong class="yellowtext">mucina</strong> (lubrificante) e la <strong class="biotechbold">ptialina</strong> (amilasi salivare), che idrolizza l'amido in destrine e maltosio a pH neutro. L'azione della ptialina cessa nello stomaco per l'inattivazione da parte dell'<strong class="orangetext">acido cloridrico</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <p class="text">
-    La secrezione salivare è regolata da un <strong class="biotechbold">riflesso nervoso</strong> (parasimpatico > simpatico), innescato da stimoli meccanici, chimici, visivi o olfattivi. La saliva non solo favorisce la digestione e la formazione del <strong class="biotechbold">bolo alimentare</strong>, ma svolge anche funzioni protettive (denti), gustative e di regolazione idrica (sensazione di sete).
+    La secrezione salivare è regolata da un <strong class="biotechbold">riflesso nervoso</strong> (parasimpatico &gt; simpatico), innescato da stimoli meccanici, chimici, visivi o olfattivi. La saliva non solo favorisce la digestione e la formazione del <strong class="biotechbold">bolo alimentare</strong>, ma svolge anche funzioni protettive (denti), gustative e di regolazione idrica (sensazione di sete).
   </p>
 
+  <hr class="line" />
+
+  <!-- Blocco 5: Deglutizione & Peristalsi (Formattato con Cyber-Flowchart) -->
   <h3 class="biotechbold">MECCANISMI DELLA DEGLUTIZIONE E PERISTALSI</h3>
   <p class="text">
     Una volta formato, il <strong class="biotechbold">bolo alimentare</strong> viene deglutito. Da questo momento, il processo diventa involontario, controllato dal <strong class="orangetext">centro della deglutizione</strong> nel bulbo.
@@ -260,12 +318,26 @@ DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticaz
   <p class="text">
     La deglutizione è un atto riflesso complesso che garantisce la sicurezza delle vie aeree:
   </p>
-  <ul class="text-list">
-    <li>Sollevamento del <strong class="greentext">velo palatino</strong> per chiudere le coane.</li>
-    <li>Abbassamento dell'<strong class="greentext">epiglottide</strong> (grazie all'osso ioide) per proteggere la laringe.</li>
-    <li><strong class="biotechbold">Apnea da deglutizione</strong>: interruzione temporanea della respirazione.</li>
-  </ul>
-  <p class="text">
+
+  <!-- Schema Sequenziale Visivo -->
+  <div class="cyber-flowchart" style="max-width: 650px;">
+    <div class="flow-card intrinsic">
+      <span class="flow-tag tag-intrinsic">Fase 1</span>
+      <div class="flow-desc">Sollevamento del <strong class="greentext">velo palatino</strong> per chiudere le coane.</div>
+    </div>
+    <div class="flow-arrow-down">↓</div>
+    <div class="flow-card intrinsic">
+      <span class="flow-tag tag-intrinsic">Fase 2</span>
+      <div class="flow-desc">Abbassamento dell'<strong class="greentext">epiglottide</strong> (grazie all'osso ioide) per proteggere la laringe.</div>
+    </div>
+    <div class="flow-arrow-down">↓</div>
+    <div class="flow-card lysis">
+      <span class="flow-tag tag-lysis">Protezione Respiratoria</span>
+      <div class="flow-desc"><strong class="biotechbold">Apnea da deglutizione</strong>: interruzione temporanea della respirazione.</div>
+    </div>
+  </div>
+
+  <p class="text" style="margin-top: 20px;">
     Nel <strong class="yellowtext">esofago</strong>, il bolo è spinto dalla <strong class="greentext">peristalsi</strong>: onde di contrazione e rilassamento muscolare che si propagano lungo tutto il tubo digerente. L'onda peristaltica rallenta allo sfintere del <strong class="yellowtext">cardias</strong>, permettendone il rilassamento e l'ingresso del bolo nello stomaco.
   </p>
 </section>
