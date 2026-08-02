@@ -134,7 +134,7 @@ h2 {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 27px; font
 video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); background: rgba(0, 0, 0, 0.5); font-size: 1.2em; line-height: 1.4; border-radius: 4px; padding: 4px 8px;} /* Sottotitoli visibili */  
 /* End element natural */
 
-/* --- RESET BOX MODEL per TABELLE DIAGNOSTICHE & Diagrammi di Flusso (Evita lo shift a destra su Mobile) --- */
+/* === PREVENTIVE RESET BOX MODEL per TABELLE DIAGNOSTICHE & Diagrammi di Flusso (Evita lo shift a destra su Mobile) === */
 .cyber-table-container, .cyber-table-container *,.cyber-flowchart, .cyber-flowchart *{ box-sizing: border-box}
 /* --- TABELLE DIAGNOSTICHE --- */
 .cyber-table-container{ 
@@ -171,6 +171,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .flow-arrow-down{ width: 100%; text-align: center; color: #00e676; font-size: 1.2rem; line-height: 1; margin: 2px 0; opacity: 0.8}
 /* --- ADATTAMENTO MOBILE RESPONSIVE --- */
 @media (max-width: 680px){ .flow-branches{ grid-template-columns: 1fr; } .cyber-table th, .cyber-table td{ padding: 10px 8px; font-size: 0.78rem;}}
+/* === END TABELLE DIAGNOSTICHE & Diagrammi di Flusso === */
 
 /* === 1. BACKGROUND BIOTECH (Desktop & Base) === */
 .biotechbody {
