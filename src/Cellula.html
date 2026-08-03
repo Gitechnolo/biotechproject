@@ -343,64 +343,49 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
 </section>
 <!-- ==========================================
   SEZIONE: Struttura del DNA (dna_structure_section)
-  DESCRIZIONE: DNA come molecola dell'ereditarietà, struttura a doppia elica, nucleotidi (scheletro e basi), legami fosfodiesterici e idrogeno, codice genetico.
+  DESCRIZIONE: Architettura molecolare del B-DNA, stereochimica dei nucleotidi, geometria degli appaiamenti di Chargaff e basi molecolari dell'informazione genetica.
   ========================================== -->
-<div class="text text-block mb-30" data-lang-key="dna_structure_section">
+<section class="text text-block mb-30" aria-labelledby="dna-structure-header" data-lang-key="dna_structure_section">
   <!-- Titolo Sezione DNA -->
-  <strong class="biotechbold">DNA: molecola dell’ereditarietà</strong>
+  <h2 id="dna-structure-header" class="secHeader">DNA: ARCHITETTURA MOLECOLARE E CUSTODIA DELL'INFORMAZIONE GENETICA</h2>
   
   <!-- Introduzione alla struttura del DNA -->
   <div class="description-block mb-15">
-    Il DNA (acido desossiribonucleico) è un 
-    <span class="orangetext">polimero biologico (macromolecola)</span>
-    la cui unità fondamentale ripetuta è il 
-    <span class="yellowtext">NUCLEOTIDE</span>. 
-    La sua struttura tridimensionale, descritta come una 
-    <span class="orangetext">doppia elica destrorsa</span>, 
-    è formata da 
-    <span class="yellowtext">due filamenti polinucleotidici antiparalleli avvolti attorno a un asse centrale.</span>
+    <p class="text">
+      <strong>In sintesi:</strong> L'acido desossiribonucleico (DNA) è un <span class="orangetext">biopolimero informazionale</span> la cui unità monomerica ripetuta è il <span class="yellowtext">NUCLEOTIDE</span>. Nella sua conformazione fisiologica prevalente (<strong class="biotechbold">B-DNA</strong>), la macromolecola si organizza in una <span class="orangetext">doppia elica destrorsa</span> costituita da <span class="yellowtext">due catene polinucleotidiche antiparallele (orientate in direzioni opposte 5'&rarr;3' e 3'&rarr;5') avvolte attorno a un asse centrale comune.</span>
+    </p>
   </div>
   
   <!-- Struttura dei Nucleotidi (Lista Annidata) -->
-  <span class="biotechbold">I nucleotidi che compongono ciascun filamento sono costituiti da:</span>
-  <ul class="mb-15">
+  <p class="text"><strong class="biotechbold">Ciascun nucleotide componente la catena è strutturato in tre domini fondamentali:</strong></p>
+  <ul class="text mb-15 pad-l20">
     <!-- Componente Esterna -->
     <li>
-      <strong class="yellowtext">Uno scheletro esterno idrofilo:</strong>
-      <ul>
-        <li><span class="orangetext">Gruppo fosfato</span></li>
-        <li><span class="orangetext">Zucchero pentoso (desossiribosio)</span></li>
+      <strong class="yellowtext">Impalcatura esterna idrofilica (Backbone):</strong>
+      <ul class="pad-l20">
+        <li><span class="orangetext">Gruppo fosfato (conferisce carica netta negativa alla molecola)</span></li>
+        <li><span class="orangetext">Zucchero pentoso (2'-desossiribosio)</span></li>
       </ul>
     </li>
     <!-- Componente Interna -->
     <li>
-      <strong class="yellowtext">Un nucleo interno idrofobico:</strong>
-      <ul>
-        <li><span class="orangetext">Basi azotate: adenina (A), guanina (G), citosina (C), timina (T)</span></li>
+      <strong class="yellowtext">Core interno idrofobico:</strong>
+      <ul class="pad-l20">
+        <li><span class="orangetext">Basi azotate eterocicliche: Purine [Adenina (A), Guanina (G)] e Pirimidine [Citosina (C), Timina (T)]</span></li>
       </ul>
     </li>
   </ul>
   
   <!-- Footer: Legami Chimici e Codice Genetico -->
   <div class="footer-text">
-    I nucleotidi si uniscono covalentemente lungo il singolo filamento mediante 
-    <span class="yellowtext">legami fosfodiesterici tra il gruppo fosfato di un nucleotide e l'ossidrile in posizione 3' dello zucchero del nucleotide successivo</span>. 
-    I due filamenti complementari sono tenuti uniti da legami a idrogeno tra le basi azotate rivolte verso l'interno, seguendo una rigida geometria di appaiamento: 
-    <span class="orangetext">l’adenina si appaia esclusivamente con la timina, e la guanina con la citosina</span>. 
-    La 
-    <span class="biotechbold">sequenza lineare di queste basi costituisce l'informazione genetica primaria</span>, 
-    codificando per le funzioni cellulari, 
-    <span class="greentext">mentre lo scheletro di zuccheri e fosfati fornisce stabilità chimica e </span>
-    <span class="greentext">sostegno strutturale.</span>
-    <br>
-    Le informazioni codificate nella sequenza del DNA, lette attraverso le triplette di nucleotidi del 
-    <span class="biotechbold">CODICE GENETICO</span>, 
-    definiscono l'intero 
-    <span class="orangetext">profilo d'espressione genica</span> 
-    e determinano le 
-    <span class="yellowtext">caratteristiche morfologiche, biochimiche e fisiologiche dell’organismo.</span>
+    <p class="text">
+      La polimerizzazione del singolo filamento avviene mediante <span class="yellowtext">legami covalenti fosfodiesterici tra il gruppo fosfato legato al carbonio 5' di un desossiribosio e il gruppo ossidrilico (-OH) in posizione 3' dello zucchero adiacente</span>. L'associazione dei due filamenti complementari è stabilizzata da <strong class="biotechbold">interazioni di base stacking (impilamento)</strong> e da legami a idrogeno specifici rivolti verso l'asse interno, secondo la rigida geometria di appaiamento di Chargaff: <span class="orangetext">l'Adenina si lega alla Timina tramite 2 legami a idrogeno (A=T), mentre la Guanina si appaia alla Citosina tramite 3 legami a idrogeno (G&equiv;C)</span>.
+    </p>
+    <p class="text">
+      La <span class="biotechbold">sequenza nucleotidica primaria costituisce il codice informazionale della cellula</span>, mentre lo scheletro fosfodiesterico esterno protegge l'integrità chimica delle basi. L'informazione codificata, decodificata sotto forma di triplette (codoni) mediante il <span class="biotechbold">CODICE GENETICO</span> degenerato e quasi universale, governa l'<span class="orangetext">expression profile</span> della cellula, determinando in ultima analisi le <span class="yellowtext">caratteristiche strutturali, metaboliche e funzionali dell'intero organismo.</span>
+    </p>
   </div>
-</div>
+</section>
 <!-- ==========================================
   SEZIONE: Geni, Proteine e Cromosomi (genes_proteins_chromosomes_section)
   DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina), struttura dei cromosomi, cariotipo umano, autosomi, eterocromosomi e concetti aploide/diploide.
