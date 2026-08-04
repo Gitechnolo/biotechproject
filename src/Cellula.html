@@ -601,86 +601,154 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
     <h2 class="secHeader" id="titolo-organuli-cellulari">ORGANULI CELLULARI: STRUTTURA, BIOENERGETICA ED OMEOSTASI COMPARTIMENTALE</h2>
   </header>
 
-  <!-- Introduzione della sezione (In sintesi) ad assi funzionali -->
   <div class="description-block mb-15">
     <p class="text-intro mb-10">
-      <strong>In sintesi: La compartimentazione cellulare si articola su tre assi fisiologici primari:</strong>
+      <b>In sintesi: La compartimentazione cellulare si articola su tre assi fisiologici primari:</b>
     </p>
     <ul class="summary-list mb-15">
       <li class="mb-5">
-        <strong>Flusso Genico ed Energetico:</strong> <span class="yellowtext">Nucleo e Mitocondri</span> (organuli a doppia membrana) presiedono alla conservazione/trascrizione del genoma e alla sintesi di ATP tramite accoppiamento chemiosmotico.
+        <b>Flusso Genico ed Energetico:</b> <span class="yellowtext">Nucleo e Mitocondri</span> (organuli a doppia membrana) presiedono alla conservazione e trascrizione del genoma ed alla sintesi di ATP tramite gradiente protonico elettrochimico e accoppiamento chemiosmotico.
       </li>
       <li class="mb-5">
-        <strong>Biosintesi e Traffico Vescicolare:</strong> <span class="orangetext">Reticolo Endoplasmatico e Apparato del Golgi</span> coordinano la traslocazione, il folding, le modificazioni post-traduzionali (glicosilazione) e lo smistamento delle biomolecole, gestendo al contempo le riserve di Ca<sup>2+</sup>.
+        <b>Biosintesi e Traffico Vescicolare:</b> <span class="orangetext">Reticolo Endoplasmatico e Apparato del Golgi</span> coordinano la traslocazione co-traduzionale, il folding guidato da chaperone, le modificazioni post-traduzionali (glicosilazione) e lo smistamento mirato via vescicole rivestite (COPI, COPII, Clatrina), gestendo al contempo il sequestro di Ca<sup>2+</sup>.
       </li>
       <li class="mb-5">
-        <strong>Ossidazione, Clearance Litica e Redox:</strong> <span class="greentext">Perossisomi e Lisosomi</span> regolano la &beta;-ossidazione dei VLCFA, la neutralizzazione delle specie reattive dell'ossigeno (ROS) e i flussi autogafici ed eterofagici a pH acido.
+        <b>Ossidazione, Clearance Litica e Redox:</b> <span class="greentext">Perossisomi e Lisosomi</span> regolano la &beta;-ossidazione degli acidi grassi a catena molto lunga (VLCFA), la neutralizzazione delle specie reattive dell'ossigeno (ROS) mediata da catalasi e i flussi catabolici autofagici ed eterofagici coordinati da idrolasi ad alto gradiente protonico acido.
       </li>
     </ul>
   </div>
 
   <article class="text">
     
-    <!-- SUB-SEZIONE 1: FLUSSO GENICO E BIOENERGETICA (DOPPIA MEMBRANA) -->
     <h3 class="biotechbold">1. COMPARTIMENTI A DOPPIA MEMBRANA: FLUSSO GENICO E BIOENERGETICA</h3>
     
     <p class="mb-15">
-      <span class="subtitle">NUCLEO CELLULARE</span><br>
-      Organulo master delimitato da un involucro nucleare a doppia membrana fosfolipidica provvisto di complessi del poro nucleare (NPC) per il trasporto macromolecolare selettivo. Costituisce la <span class="yellowtext">sede primaria di conservazione del genoma (DNA) e dei processi di replicazione e trascrizione dell'RNA</span>.
+      <span class="subtitle">NUCLEO CELLULARE E COMPLESSO DEL PORO NUCLEARE (NPC)</span><br>
+      Sede primaria del genoma nucleare, racchiuso da un involucro nucleare a doppio bilayer fosfolipidico con lume perinucleare in continuità strutturale con il RER. La comunicazione nucleocitoplasmatica è regolata dai <b>Complessi del Poro Nucleare (NPC)</b>, strutture macromolecolari da ~110 MDa composte da oltre 30 nucleoporine (NUP) distinte. Il trasporto selettivo di macromolecole idrofile >40 kDa è strettamente dipendente da recettori trasportatori (Karioferine: Importine ed Esportine) e guidato dalla pendenza di gradiente della GTPasi monomerica <b>Ran</b>, mantenuta nello stato <code>Ran-GTP</code> nel nucleo (tramite il fattore di scambio RCC1) e <code>Ran-GDP</code> nel citosol (tramite RanGAP).
     </p>
 
     <p class="mb-15">
-      <span class="subtitle">MITOCONDRIO</span><br>
-      Organulo bioenergetico semiautonomo provvisto di mtDNA. Sede centrale del metabolismo aerobico, presiede alla <span class="yellowtext">produzione di ATP tramite &beta;-ossidazione, ciclo degli acidi tricarbossilici (Krebs) e fosforilazione ossidativa</span> condotta dai complessi della catena di trasporto degli elettroni sulla membrana interna. Partecipa attivamente all'omeostasi del Ca<sup>2+</sup> ed all'innesco dell'apoptosi (rilascio del citocromo <i>c</i>).
+      <span class="subtitle">MITOCONDRIO: BIOENERGETICA ED ACCOPPIAMENTO CHEMIOSMOTICO</span><br>
+      Organulo semiautonomo endosimbionte provvisto di DNA circolare (mtDNA) e ribosomi 50S/30S simili (70S). La membrana mitocondriale interna (IMM), altamente impermeabile e ricca di cardiolipina, si invagina in creste che ospitano la catena di trasporto degli elettroni (ETC, Complessi I-IV). L'ossidazione dei coenzimi ridotti (NADH e FADH<sub>2</sub>) genera un potenziale elettrochimico transmembrana (&Delta;p = &Delta;&Psi;<sub>m</sub> - 2.3 RT/F &Delta;pH, con &Delta;&Psi;<sub>m</sub> &approx; -180 mV ed un gradiente di pH di ~0.75 unità). Questo gradiente forza il rientro dei protoni nel matrice attraverso il canale F<sub>o</sub> della <b>F<sub>o</sub>F<sub>1</sub>-ATP Sintasi</b>, azionando la rotazione del gambo &gamma; e la sintesi di ATP da ADP ed P<sub>i</sub>. Il mitocondrio presiede inoltre al ciclo di Krebs, alla &beta;-ossidazione degli acidi grassi e, in presenza di stress ossidativo o sovraccarico di Ca<sup>2+</sup>, all'innesco della via intrinseca dell'apoptosi mediante apertura del poro di transizione di permeabilità mitocondriale (mPTP) e rilascio del citocromo <i>c</i> nel citosol.
     </p>
 
     <hr class="line" />
 
-    <!-- SUB-SEZIONE 2: SISTEMA ENDOMEMBRANOSO ED OMEOSTASI MOLECOLARE -->
     <h3 class="biotechbold">2. SISTEMA DI ENDOMEMBRANE: BIOSINTESI, OMEOSTASI E TRAFFICO VESCICOLARE</h3>
 
     <p class="mb-15">
       <span class="subtitle">RETICOLO ENDOPLASMATICO (R.E.)</span><br>
-      Rete interconnessa di cisterne e tubuli integrata nel citoplasma, suddivisa in due domini morfologico-funzionali:
+      Network tridimensionale di cisterne e tubuli adibito alla biosintesi ed al bilancio ionico, suddiviso nei domini:
     </p>
 
     <ul class="mb-15">
       <li class="mb-15">
-        <span class="biotechbold">R.E. Rugoso (R.E.R.):</span> Caratterizzato da ribosomi adesi al versante citosolico. Sede d'elezione per la <span class="orangetext">traslocazione co-traduzionale e il folding assistito da chaperone</span> di proteine destinate alla secrezione o all'inserimento nelle membrane biologiche.
+        <span class="biotechbold">Reticolo Endoplasmatico Rugoso (R.E.R.):</span> Associazionato a ribosomi ancorati tramite le subunità translocone (Sec61). Presiede alla traslocazione co-traduzionale guidata dalla particella di riconoscimento del segnale (SRP) ed al folding assistito da chaperone molecolari (BiP/GRP78, Calnexina, Calreticulina) e dalla proteina disolfuro isomerasi (PDI). È sede dell'innesco della <i>N</i>-glicosilazione (trasferimento del blocco dolicolo-oligosaccaride Glc<sub>3</sub>Man<sub>9</sub>GlcNAc<sub>2</sub> su residui di Asparagina all'interno del sequone Asn-X-Ser/Thr).
       </li>
       <li class="mb-15">
-        <span class="biotechbold">R.E. Liscio (R.E.L.):</span> Struttura tubulare priva di ribosomi. Presiede alla <span class="yellowtext">biosintesi dei lipidi di membrana e degli ormoni steroidei</span>. Funge da principale deposito e <span class="greentext">rilascio controllato di ioni Calcio (Ca<sup>2+</sup>)</span> per la segnalazione cellulare ed esprime i complessi del citocromo P450 per la <span class="yellowtext">detossificazione epatica di xenobiotici</span>.
+        <span class="biotechbold">Reticolo Endoplasmatico Liscio (R.E.L.):</span> Organizzazione tubulare priva di elementi ribosomiali. Sede centrale per la sintesi dei fosfolipidi di membrana, dello colesterolo e degli ormoni steroidei. Agisce da principale riserva endocellulare di ioni Ca<sup>2+</sup> tramite l'azione attiva della pompa ATPasica <b>SERCA</b> (<i>Sarco/Endoplasmic Reticulum Ca<sup>2+</sup>-ATPase</i>). Nei tessuti epatici, esprime elevati livelli di isoenzimi del superfamiglia <b>Citocromo P450 (CYP450)</b> preposti alle reazioni di Fase I (ossidazione, idrossilazione) per la detossificazione di xenobiotici e farmaci lipofili.
       </li>
     </ul>
 
     <p class="mb-15">
-      <span class="subtitle">APPARATO DEL GOLGI</span><br>
-      Compartimento membranoso polarizzato (fasi <i>cis</i>, <i>mediale</i> e <i>trans</i>) adibito alla maturazione e modificazione post-traduzionale delle biomolecole (<i>O</i>- e <i>N</i>-glicosilazione complessa). <span class="yellowtext">Smista ed indirizza i flussi di vescicole provenienti dal R.E. verso la membrana plasmatica o la via endo-lisosomiale</span>.
+      <span class="subtitle">APPARATO DEL GOLGI E DINAMICA DEL TRAFFICO VESCICOLARE</span><br>
+      Pila polarizzata di cisterne suddivisa strutturalmente e funzionalmente in <i>cis</i>-Golgi Network (CGN), Golgi Mediale, <i>trans</i>-Golgi Network (TGN). Riceve dal RER le vescicole modellate dalla proteina di rivestimento <b>COPII</b> (trasporto anterogrado), mentre ricicla le proteine residenti del RER dotate di sequenza segnale KDEL via vescicole <b>COPI</b> (trasporto retrogrado). All'interno delle cisterne avvengono le successive maturazioni glicaniche (remozione di mannosio, addizione di GlcNAc, Galattosio e Acido Sialico) e la <i>O</i>-glicosilazione su residui di Serina/Treonina. Nel TGN, le biomolecole vengono impacchettate in vescicole rivestite da <b>Clatrina</b> o altre proteina-adattatrici, indirizzandole selettivamente alla membrana plasmatica (secrezione costitutiva o regolata) o al compartimento endo-lisosomiale mediante marcatura con Mannosio-6-Fosfato (M6P).
     </p>
 
     <hr class="line" />
 
-    <!-- SUB-SEZIONE 3: COMPARTIMENTI METABOLICI E CLEARANCE LITICA -->
-    <h3 class="biotechbold">3. COMPARTIMENTI MONOMEMBRANA: REAZIONI OSSIDATIVE E CLEARANCE LITICA</h3>
+    <h3 class="biotechbold">3. COMPARTIMENTI METABOLICI E CLEARANCE LITICA</h3>
 
     <p class="mb-15">
-      <span class="subtitle">PEROSSISOMA</span><br>
-      Organulo monomembrana specializzato nei processi ossidativi. È il <span class="yellowtext">sito chiave per la &beta;-ossidazione dei VLCFA e la biosintesi dei plasmalogeni</span>. Produce perossido di idrogeno (H<sub>2</sub>O<sub>2</sub>) come sottoprodotto, prontamente convertito in H<sub>2</sub>O e O<sub>2</sub> dall'enzima <span class="biotechbold">catalasi</span> per preservare l'omeostasi redox.
+      <span class="subtitle">PEROSSISOMA: METABOLISMO OSSIDATIVO E OMEOSTASI REDOX</span><br>
+      Organulo monomembrana privo di genoma proprio, che importa le sue proteine matriciali tramite sequenze di targeting perossisomiale (PTS1 o PTS2) riconosciute dalle perossine (PEX). Rappresenta il compartimento elettivo per la &beta;-ossidazione di acidi grassi a catena molto lunga (&ge;C22, VLCFA) e acidi grassi ramificati, catalizzata da acil-CoA ossidasi con produzione di perossido di idrogeno (H<sub>2</sub>O<sub>2</sub>). L'enzima tetramerico <b>catalasi</b> decompone istantaneamente H<sub>2</sub>O<sub>2</sub> in H<sub>2</sub>O e O<sub>2</sub>, prevenendo lo stress ossidativo. Svolge inoltre ruoli chiave nella biosintesi dei plasmalogeni (etere-lipidi fondamentali per la mielina) e nel catabolismo delle purine e dell'acido urico.
     </p>
 
     <p class="mb-15">
-      <span class="subtitle">LISOSOMA</span><br>
-      Compartimento litico a pH acido (~4.5–5.0) mantenuto da pompe protoniche V-type ATPasi. Sede del turnover e riciclo macromolecolare cellulare attraverso idrolasi acide:
+      <span class="subtitle">LISOSOMA: DEGRADAZIONE MACROMOLECOLARE E AUTOFAGIA</span><br>
+      Vescicola monomembrana contenente oltre 60 idrolasi acide (proteasi, nucleasi, lipasi, glicosidasi, fosfatasi) caratterizzate da un optimum d'attività a pH &approx; 4.5–5.0. Il gradiente protonico interno è generato e mantenuto dal pompaggio attivo della pompa <b>V-type H<sup>+</sup>-ATPase</b> consumando ATP. La membrana lisosomiale è protetta dall'autodigestione grazie a un denso mantello interno di glicoproteine ad alta glicosilazione (LAMP-1, LAMP-2). Il compartimento lisosomiale costituisce il punto di convergenza di tre vie principali di degradazione:
     </p>
 
     <ul class="mb-15">
       <li class="mb-10">
-        <span class="yellowtext">Autofagia:</span> Degradazione e riciclo di organuli danneggiati e complessi proteici endogeni.
+        <b>Autofagia (Macroautofagia):</b> Sequestro di porzioni di citosol o organuli senescenti in autofagosomi a doppia membrana, regolato dal complesso ULK1 e coordinato da LC3-II, seguitato dalla fusione con il lisosoma (autolisosoma).
       </li>
       <li class="mb-10">
-        <span class="yellowtext">Eterofagia e Fagocitosi:</span> Digestione di materiale extracellulare ed eliminazione dei patogeni internalizzati.
+        <b>Eterofagia e Endocitosi:</b> Fusione con endosomi tardivi contenenti materiale extracellulare internalizzato per endocitosi mediata da recettore o pinocitosi.
+      </li>
+      <li class="mb-10">
+        <b>Fagocitosi:</b> Internalizzazione ed eliminazione di grandi particelle, detriti cellulari o patogeni da parte di cellule specializzate (es. macrofagi e neutrofili) integrando il fagolisosoma.
       </li>
     </ul>
+
+    <hr class="line" />
+
+    <h3 class="biotechbold">4. COMPARAZIONE QUANTITATIVA E BIOFISICA DEGLI ORGANULI</h3>
+
+    <div class="cyber-table-container">
+      <table class="cyber-table">
+        <thead>
+          <tr>
+            <th>Organulo</th>
+            <th>Struttura Membrana</th>
+            <th>Microambiente (pH / Potenziale)</th>
+            <th>Funzione Bioenergetica / Metabolica Primaria</th>
+            <th>Marcatori Biochimici di Riferimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Nucleo</b></td>
+            <td>Doppia (involucro con NPC)</td>
+            <td>pH ~7.2–7.4 (isotonico al citosol)</td>
+            <td>Replicazione DNA, Trascrizione RNA, Assemblaggio Ribosomiale</td>
+            <td>Istoni (H3, H4), Laminina A/C, Fibrillarina</td>
+          </tr>
+          <tr>
+            <td><b>Mitocondrio</b></td>
+            <td>Doppia (IMM impermeabile)</td>
+            <td>Matrice: pH ~7.8; &Delta;&Psi;<sub>m</sub> ~ -180 mV</td>
+            <td>Sintesi ATP (OXPHOS), Ciclo Krebs, &beta;-ossidazione, Apoptosi</td>
+            <td>Citocromo c ossidasi (COX), Cardiolipina, VDAC</td>
+          </tr>
+          <tr>
+            <td><b>R.E. Rugoso</b></td>
+            <td>Singola (connesse al nucleo)</td>
+            <td>pH ~7.2; ricca presenza di Ca<sup>2+</sup></td>
+            <td>Traslocazione co-traduzionale, Folding, <i>N</i>-glicosilazione</td>
+            <td>Sec61, BiP/GRP78, Calnexina, PDI</td>
+          </tr>
+          <tr>
+            <td><b>R.E. Liscio</b></td>
+            <td>Singola (tubulare)</td>
+            <td>pH ~7.2; [Ca<sup>2+</sup>]<sub>lume</sub> ~ 0.5–1.0 mM</td>
+            <td>Sintesi lipidi/steroidi, Sequestro Ca<sup>2+</sup>, Detossificazione CYP450</td>
+            <td>SERCA, Citocromo P450, Calsequestrina</td>
+          </tr>
+          <tr>
+            <td><b>Apparato del Golgi</b></td>
+            <td>Singola (cisterne stacked)</td>
+            <td>pH ~6.5 (CGN) &rarr; pH ~6.0 (TGN)</td>
+            <td>Glicosilazione post-traduzionale, Smistamento M6P/Vescicolare</td>
+            <td>Sialiltrasferasi, Galattosiltrasferasi, GM130</td>
+          </tr>
+          <tr>
+            <td><b>Perossisoma</b></td>
+            <td>Singola</td>
+            <td>pH ~7.0–7.2</td>
+            <td>&beta;-ossidazione VLCFA, Ossidazione H<sub>2</sub>O<sub>2</sub>, Sintesi Plasmalogeni</td>
+            <td>Catalasi, Acil-CoA Ossidasi, PEX5</td>
+          </tr>
+          <tr>
+            <td><b>Lisosoma</b></td>
+            <td>Singola (ricca in LAMPs)</td>
+            <td>pH ~4.5–5.0 (elevato gradiente H<sup>+</sup>)</td>
+            <td>Degradazione idrolitica macromolecole, Autofagia, Fagocitosi</td>
+            <td>LAMP-1, Catepsina D, Fosfatasi acida, V-ATPase</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </article>
 </section>
