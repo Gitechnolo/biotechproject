@@ -247,23 +247,45 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
 
   <div class="mb-15">
     <p class="text">
-      <strong>In sintesi:</strong> La compartimentazione cellulare garantisce il rigoroso controllo del microambiente citosolico. La permeabilità selettiva del bilayer lipidico, integrata da trasportatori transmembrana e dal glicocalice antigenico, regola i flussi molecolari e l'identità cellulare. All'interno, una rete citoscheletrica dinamica sostiene la biomeccanica molecolare, mentre un sistema integrato di organuli specializzati presiede all'anabolismo, al catabolismo litico e alla trasduzione bioenergetica.
+      <strong>In sintesi:</strong> La compartimentazione cellulare garantisce un rigoroso controllo del microambiente citosolico mediante barriere idrofobiche e trasportatori ad alta selettività. Il trasporto transmembrana regola i flussi ionici e nutrizionali mantenendo il potenziale elettrico di membrana a riposo (<i>V</i><sub>m</sub>). All'interno, una rete citoscheletrica altamente dinamica gestisce la biomeccanica, il traffico intracellulare e la divisione cellulare, mentre il sistema endomembranoso e gli organuli bioenergetici cooperano per coordinare anabolismo, catabolismo litico e la sintesi di ATP tramite fosforilazione ossidativa.
     </p>
   </div>
 
   <h3 class="biotechbold">BIOFISICA DEI TRASPORTI E GLICOCALICE</h3>
   <p class="text">
-    La natura anfipatica del doppio strato fosfolipidico impone una barriera idrofobica ad alta resistenza elettrica: ioni, macromolecole polari e soluti idrofili necessitano di complessi proteici intrinseci per il transito transmembrana. Il trasporto avviene sia tramite <strong class="yellowtext">diffusione facilitata</strong> (canali ionici e acquaporine guidati da gradienti elettrochimici) sia mediante <strong class="orangetext">trasporto attivo primario e secondario</strong> (pompe ATP-dipendenti come la Na<sup>+</sup>/K<sup>+</sup>-ATPasi e co-trasportatori), preservando rigorosamente l'omeostasi ionica e il potenziale di membrana a riposo.
+    La barriera idrofobica del bilayer fosfolipidico presenta una permeabilità altamente selettiva, quantificata dal coefficiente di permeabilità <i>P</i> (cm/s). Mentre gas apolari (O<sub>2</sub>, CO<sub>2</sub>, N<sub>2</sub>) e piccole molecole non cariche diffondono spontaneamente, ioni idratati (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>) e soluti polari necessitano di proteine transmembrana. Il transito avviene secondo due modalità fondamentali:
   </p>
+  
+  <ul class="text pad-l20 mb-15">
+    <li>
+      <strong class="yellowtext">Trasporto Passivo / Diffusione Facilitata:</strong> Processo esoergonico con variazione di energia libera negativa (<i>&Delta;G</i> &lt; 0) privo di consumo diretto di ATP, guidato dal gradiente di concentrazione o dal potenziale elettrochimico transmembrana <i>&Delta;&mu;</i><sub>X</sub>, descritto dall'equazione del potenziale di equilibrio di Nernst:
+      <br /><br />
+      <code><i>E</i><sub>ion</sub> = (<i>R</i> &middot; <i>T</i> / <i>z</i> &middot; <i>F</i>) &middot; ln([ion]<sub>est</sub> / [ion]<sub>int</sub>)</code>
+      <br /><br />
+      Il potenziale di membrana a riposo globale (<i>V</i><sub>m</sub> &approx; &minus;70 mV) tiene conto delle permeabilità relative dei singoli ioni (<i>P</i><sub>K</sub>, <i>P</i><sub>Na</sub>, <i>P</i><sub>Cl</sub>) mediante l'equazione di Goldman-Hodgkin-Katz (GHK):
+      <br /><br />
+      <code><i>V</i><sub>m</sub> = (<i>R</i> &middot; <i>T</i> / <i>F</i>) &middot; ln( (<i>P</i><sub>K</sub>[K<sup>+</sup>]<sub>est</sub> + <i>P</i><sub>Na</sub>[Na<sup>+</sup>]<sub>est</sub> + <i>P</i><sub>Cl</sub>[Cl<sup>-</sup>]<sub>int</sub>) / (<i>P</i><sub>K</sub>[K<sup>+</sup>]<sub>int</sub> + <i>P</i><sub>Na</sub>[Na<sup>+</sup>]<sub>int</sub> + <i>P</i><sub>Cl</sub>[Cl<sup>-</sup>]<sub>est</sub>) )</code>
+      <br /><br />
+      Sfrutta canali ionici regolati da voltaggio o ligando, trasportatori uniporti saturabili (cinetica di Michaelis-Menten: <i>v</i> = <i>V</i><sub>max</sub> &middot; [S] / (<i>K</i><sub>m</sub> + [S])) e le aquaporine (AQP) prive di transito protonico grazie ai motivi conservati Asn-Pro-Ala (NPA).
+    </li>
+    <li>
+      <strong class="orangetext">Trasporto Attivo (Primario e Secondario):</strong> Processo endoergonico (<i>&Delta;G</i> &gt; 0) che muove i soluti contro gradiente elettrolitico. Il trasporto attivo primario accoppia l'idrolisi dell'adenosina trifosfato (ATP &rarr; ADP + P<sub>i</sub>) al lavoro di pompaggio. L'esempio cardine è la pompa Na<sup>+</sup>/K<sup>+</sup>-ATPasi (di classe P), che con un rapporto stechiometrico elettrogenico estromette 3 Na<sup>+</sup> ed importa 2 K<sup>+</sup> per ogni molecola di ATP idrolizzata:
+      <br /><br />
+      <code>3 Na<sup>+</sup><sub>int</sub> + 2 K<sup>+</sup><sub>est</sub> + ATP<sub>int</sub> &rarr; 3 Na<sup>+</sup><sub>est</sub> + 2 K<sup>+</sup><sub>int</sub> + ADP<sub>int</sub> + P<sub>i</sub></code>
+      <br /><br />
+      Il trasporto attivo secondario (simporti ed antiporti, come il cotrasportatore Na<sup>+</sup>/Glucosio SGLT-1) sfrutta l'energia potenziale accumulata nel gradiente di concentrazione del sodio (<i>&Delta;&mu;</i><sub>Na<sup>+</sup></sub>) per guidare l'ingresso endoergonico di altri soluti.
+    </li>
+  </ul>
+
   <p class="text">
-    Sul versante extracellulare, le catene oligosaccaridiche legate a proteine e lipidi strutturano il <strong class="greentext">glicocalice</strong>. Questa impalcatura glicidica agisce come filtro sterico e interfaccia fondamentale di adesione (via selectine e integrine) e riconoscimento antigenico. Essa espone i marcatori del <strong class="biotechbold">Complesso Maggiore di Istocompatibilità (MHC)</strong>, consentendo al sistema immunitario la sorveglianza e il discrimine primario tra strutture <em>self</em> ed elementi estranei (<em>non-self</em>).
+    Sul versante esofacciale, le catene oligosaccaridiche di glicoproteine, proteoglicani e glicolipidi costituiscono il <strong class="greentext">glicocalice</strong>. Questo strato polimerico idratato agisce come barriera biomeccanica e filtro sterico idrodinamico, oltre a mediare l'adesione cellulare via selectine, integrine e caderine. Esso espone le molecole del <strong class="biotechbold">Complesso Maggiore di Istocompatibilità (MHC di Classe I e II)</strong> e gli antigeni di superficie, consentendo la sorveglianza immunologica, la self-ricognizione ed impedendo l'attivazione impropria del sistema del complemento.
   </p>
 
   <hr class="line" />
 
   <h3 class="biotechbold">ARCHITETTURA CITOSCHELETRICA E MOTILITÀ INTRACELLULARE</h3>
   <p class="text">
-    Il sostegno biomeccanico, la morfogenesi e la compartimentazione dinamica del citosol sono garantiti dal <strong class="yellowtext">citoscheletro</strong>, un network polimerico tridimensionale e altamente dinamico articolato in tre sistemi fondamentali:
+    Il sostegno biomeccanico, la morfogenesi e la compartimentazione dinamica del citosol sono garantiti dal <strong class="yellowtext">citoscheletro</strong>, una matrice polimerica tridimensionale ed altamente interconvertibile articolata su tre filamenti proteici principali:
   </p>
 
   <div class="cyber-table-container">
@@ -271,29 +293,29 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
       <thead>
         <tr>
           <th>Sostegno Polimerico</th>
-          <th>Monomeri e Struttura</th>
-          <th>Motori Molecolari / Ancoraggio</th>
+          <th>Monomeri, Diametro e Dinamica Biofisica</th>
+          <th>Motori Molecolari / Ancoraggi</th>
           <th>Funzione Fisiologica Primaria</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Microfilamenti</strong></td>
-          <td>Actina-G che polimerizza in F-actina (polarizzata)</td>
-          <td>Miosine (I, II, V)</td>
-          <td>Contrazione, citodieresi, motilità (lamellipodi), giunzioni aderenti.</td>
+          <td>Monomeri di G-actina legati ad ATP che polimerizzano in F-actina elicoidale bipolare (&empty; ~7 nm). Esibiscono una cinetica di <i>treadmilling</i> regolata dall'idrolisi dell'ATP legato alla subunità nel polo plus (+).</td>
+          <td>Superfamiglia delle miosine (I, II, V) mediante scorrimento ATP-dipendente.</td>
+          <td>Contrazione muscolare e non-muscolare, citodieresi (anello contrattile), migrazione cellulare (lamellipodi e filopodi), ancoraggio alle giunzioni aderenti e foche di adesione focalizzata.</td>
         </tr>
         <tr>
           <td><strong>Filamenti Intermedi</strong></td>
-          <td>Proteine fibrose (Cheratine, Vimentina, Lamine)</td>
-          <td>Desmosomi ed Emidesmosomi (apolari)</td>
-          <td>Resistenza alla trazione meccanica e integrità dell'involucro nucleare.</td>
+          <td>Tetrameri sfalsati apolari idrofobici di proteine fibrose (&empty; ~10 nm): Cheratine, Vimentina, Desmina, GFAP, Neurofilamenti e Lamine nucleari A/B/C. Privi di polarità e privi di attività nucleotidica.</td>
+          <td>Ancoraggio strutturale via placche giunzionali (Desmosomi mediante desmoplachine ed Emidesmosomi via integrine &alpha;<sub>6</sub>&beta;<sub>4</sub>).</td>
+          <td>Resistenza ad elevate sollecitazioni Meccaniche da trazione, stabilizzazione della posizione degli organuli e architettura dell'involucro nucleare.</td>
         </tr>
         <tr>
           <td><strong>Microtubuli</strong></td>
-          <td>Eterodimeri di &alpha; e &beta;-tubulina (polarizzati)</td>
-          <td>Chinesine (anterogrado) e Dineine (retrogrado)</td>
-          <td>Traffico vescicolare, fuso mitotico, motilità di ciglia e flagelli.</td>
+          <td>Eterodimeri di &alpha;- e &beta;-tubulina polimerizzati in 13 protofilamenti cavi (&empty; ~25 nm). Polarizzati (+/&ndash;). Sottoposti ad <i>instabilità dinamica</i> (transizioni tra accrescimento e catastrofe) regolata dall'idrolisi del GTP. Originano dal centrosoma (MTOC) via complesso &gamma;-TuRC.</td>
+          <td>Chinesine (trasporto anterogrado verso il polo +) e Dineine citoplasmatiche (trasporto retrogrado verso il polo &ndash;) accoppiate al complesso della dinactina.</td>
+          <td>Traffico organellare e vescicolare, segregazione cromosomica tramite il fuso mitotico, architettura motile e battito di ciglia e flagelli (struttura assonemica 9+2 mediata da dineina assonemale).</td>
         </tr>
       </tbody>
     </table>
@@ -303,22 +325,22 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
 
   <h3 class="biotechbold">FLUSSO DEL TRAFFICO ENDOMEMBRANOSO</h3>
   <p class="text">
-    L'integrazione funzionale tra gli organuli si riflette nel flusso direzionale delle biomolecole lungo la via secretoria ed endo-lisosomiale:
+    Il sistema di endomembrane costituisce una rete dinamica interconnessa tramite vescicole di trasporto gemmanti e ricoperte da mantelli proteici specifici (COPI, COPII, Clatrina). La selettività del targeting e della fusione di membrana è garantita da piccole GTPasi della famiglia Rab e da complessi recettoriali SNARE (v-SNARE su vescicola e t-SNARE su membrana bersaglio):
   </p>
 
   <div class="cyber-flowchart">
     <div class="flow-card extrinsic">
       <span class="flow-tag tag-extrinsic">1. Biosintesi e Folding (RER)</span>
       <div class="flow-title">Traslocazione e Controllo Qualità</div>
-      <div class="flow-desc">Sintesi polipeptidica sui ribosomi, traslocazione nel lume del RER, N-glicosilazione precoce e assistenza delle chaperone molecolari.</div>
+      <div class="flow-desc">Riconoscimento del peptide segnale via SRP, traslocazione cotraduzionale attraverso il canale Sec61 nel lume del RER. N-glicosilazione cotraduzionale (transfer dell'oligosaccaride Glc<sub>3</sub>Man<sub>9</sub>GlcNAc<sub>2</sub>) e controllo del folding mediato dalle chaperone (Calnexina/Calreticulina, BiP). Eliminazione delle proteine misfolded via ERAD (Endoplasmic-Reticulum-Associated Degradation). Vescicole rivestite da mantello COPII per il trasporto anterogrado verso il Golgi.</div>
     </div>
 
     <div class="flow-arrow-down">&darr;</div>
 
     <div class="flow-card intrinsic">
       <span class="flow-tag tag-intrinsic">2. Processamento e Sorting (Golgi)</span>
-      <div class="flow-title">Maturazione e Indirizzamento</div>
-      <div class="flow-desc">Transito <i>cis</i>&rarr;<i>trans</i> Golgi, maturazione glicidica (O-glicosilazione), solfatazione e selezione nelle vescicole gemmanti.</div>
+      <div class="flow-title">Maturazione e Indirizzamento Selettivo</div>
+      <div class="flow-desc">Transito sequenziale attraverso i compartimenti <i>cis</i>, <i>medial</i> e <i>trans</i>-Golgi. Modificazione delle catene oligosaccaridiche (trimming del mannosio, O-glicosilazione su residui di Ser/Thr, solfatazione e fosforilazione). Nel <i>trans</i>-Golgi Network (TGN), smistamento terminale verso le destinazioni cellulari. Vescicole COPI regolano il traffico retrogrado verso il RER (recupero della sequenza C-terminale KDEL).</div>
     </div>
 
     <div class="flow-arrow-down">&darr;</div>
@@ -326,13 +348,13 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
     <div class="flow-branches">
       <div class="flow-card common">
         <span class="flow-tag tag-common">3a. Via Secretoria / Esocitosi</span>
-        <div class="flow-title">Membrana &amp; Secrezione</div>
-        <div class="flow-desc">Fusione delle vescicole di secrezione con la membrana plasmatica per il rinnovo del bilayer o il rilascio di ormoni/fattori.</div>
+        <div class="flow-title">Membrana &amp; Secrezione Esterna</div>
+        <div class="flow-desc">Rilascio costitutivo (rinnovo lipoproteico di membrana) o regolato (stoccaggio in granuli di secrezione rilasciati previa stimolazione da Ca<sup>2+</sup> extracellulare, es. ormoni, neurotrasmettitori) mediante fusione azionata dal complesso v/t-SNARE.</div>
       </div>
       <div class="flow-card lysis">
         <span class="flow-tag tag-lysis">3b. Via Endo-Lisosomiale</span>
-        <div class="flow-title">Compartimento Litico</div>
-        <div class="flow-desc">Riconoscimento del segnale Mannosio-6-Fosfato (M6P) e veicolazione verso i lisosomi per la degradazione enzimatica.</div>
+        <div class="flow-title">Compartimento Litico &amp; Autofagico</div>
+        <div class="flow-desc">Riconoscimento delle idrolasi contrassegnate con Mannosio-6-Fosfato (M6P) da parte del recettore MPR nel TGN. Gemmazione di vescicole rivestite da Clatrina ed adattatore AP-1, destinate alla fusione con gli endosomi tardivi ed i lisosomi.</div>
       </div>
     </div>
   </div>
@@ -341,22 +363,32 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
 
   <h3 class="biotechbold">ORGANULLI CELLULARI: BIOENERGETICA ED OMEOSTASI</h3>
   <p class="text">
-    La coordinazione metabolica poggia su strutture ad alta specializzazione funzionale:
+    La coordinazione metabolica poggia sulla compartimentazione di reazioni specializzate all'interno di organuli sub-cellulari altamente evoluti:
   </p>
 
   <div class="mb-15">
     <ul class="text pad-l20">
       <li>
-        <strong class="yellowtext">Reticolo Endoplasmatico Liscio (REL):</strong> Dominio tubulare esente da ribosomi; presiede alla biosintesi dei lipidi complessi, alla steroidogenesi, alla detossificazione di xenobiotici via citocromo P450 e al sequestro/rilascio controllato di Ca<sup>2+</sup> (es. reticolo sarcoplasmatico).
+        <strong class="yellowtext">Reticolo Endoplasmatico Liscio (REL):</strong> Rete tubulare priva di ribosomi. Presiede alla biosintesi di lipidi strutturali (fosfolipidi, colesterolo) e ormoni steroidei, alla metabolizzazione del glicogeno (tramite la glucosio-6-fosfatasi) e alla detossificazione di xenobiotici e farmaci apolari guidata dalle idrossilasi della famiglia del Citocromo P450. Nelle cellule muscolari costituisce il reticolo sarcoplasmatico, specializzato nel sequestro e rilascio rapido di Ca<sup>2+</sup> mediante pompe SERCA e recettori per la rianodina (RyR).
       </li>
       <li>
-        <strong class="orangetext">Mitocondri:</strong> Organuli bioenergetici semiautonomi (con mDNA e mitoribosomi). Sede della &beta;-ossidazione, del ciclo di Krebs e della fosforilazione ossidativa condotta sui complessi della membrana interna per generare ATP tramite potenziale protonico.
+        <strong class="orangetext">Mitocondri e Bioenergetica:</strong> Organuli endosimbiontici semiautonomi delimitati da una doppia membrana (esterna permeabile tramite porine, interna ripiegata in creste ad altissima resistenza elettrica e ricca di cardiolipina). Il lume matriciale racchiude un genoma circolare proprio (mDNA) e mitoribosomi 55S. Sede della decarbossilazione ossidativa del piruvato, della <i>&beta;</i>-ossidazione degli acidi grassi e del ciclo di Krebs. I complessi respiratori della membrana interna (I, II, III, IV) trasferiscono elettroni all'ossigeno molecolare (O<sub>2</sub>) pompando protoni nello spazio intermembrana per generare la forza proton-motrice (<i>&Delta;p</i>):
+        <br /><br />
+        <code><i>&Delta;p</i> = <i>&Delta;&Psi;</i><sub>m</sub> &minus; (2.303 &middot; <i>R</i> &middot; <i>T</i> / <i>F</i>) &middot; <i>&Delta;</i>pH</code>
+        <br /><br />
+        dove <i>&Delta;&Psi;</i><sub>m</sub> rappresenta il potenziale elettrico di membrana mitocondriale (&approx; &minus;160 / &minus;180 mV) e <i>&Delta;</i>pH &approx; 0.5&ndash;1.0 unità di pH. Il flusso rientrante di protoni nella matrice aziona il motore rotazionale della F<sub>o</sub>F<sub>1</sub>-ATP Sintasi per la fosforilazione dell'ADP:
+        <br /><br />
+        <code>ADP + P<sub>i</sub> + 4 H<sup>+</sup><sub>intermembrana</sub> &rarr; ATP + H<sub>2</sub>O + 4 H<sup>+</sup><sub>matrice</sub></code>
       </li>
       <li>
-        <strong class="yellowtext">Lisosomi:</strong> Vescicole litiche con idrolasi acide (pH &approx; 4.5-5.0 mantenuto dalla pompa v-ATPasi), deputate al turnover organellare (autofagia) e all'eliminazione di cataboliti o patogeni fagocitati.
+        <strong class="yellowtext">Lisosomi e Perossisomi:</strong> I lisosomi sono vescicole cataboliche a singolo bilayer contenenti idrolasi acide (pH &approx; 4.5&ndash;5.0 mantenuto dal pompaggio attivo di protoni condotto da una v-ATPasi); svolgono un ruolo chiave in eterofagia, autofagia organellare (macroautofagia) e crinofagia. I perossisomi sono organuli ossidativi; utilizzano flavoproteine ossidasi producendo perossido di idrogeno (H<sub>2</sub>O<sub>2</sub>), eliminato dalla catalasi:
+        <br /><br />
+        <code>2 H<sub>2</sub>O<sub>2</sub> &rarr; 2 H<sub>2</sub>O + O<sub>2</sub></code>
+        <br /><br />
+        Svolgono inoltre la <i>&alpha;</i>- e <i>&beta;</i>-ossidazione degli acidi grassi a catena molto lunga (VLCFA, C &ge; 22).
       </li>
       <li>
-        <strong class="biotechbold">Nucleo Cellulare e Cromatina:</strong> Sede del genoma protetto dall'involucro nucleare con pori (NPC). Organizza il DNA in <strong class="greentext">eucromatina</strong> (trascrizionalmente attiva) ed <strong class="orangetext">eterocromatina</strong> (silenziata).
+        <strong class="biotechbold">Nucleo Cellulare, Involucro Nucleare e Cromatina:</strong> Sede del genoma, separato dal citosol da un doppio bilayer interrotto dai Complessi del Foro Nucleare (NPC, costituiti da nucleoporine) che regolano il traffico nucleo-citoplasmatico guidato dalle GTPasi Ran (RanGAP/RanGEF). Racchiude il nucleolo e la cromatina: <strong class="greentext">eucromatina</strong> (decondensata, trascritta attivamente, arricchita in H3K9ac e H3K4me3) ed <strong class="orangetext">eterocromatina</strong> (ipercondensata, silenziata, distinta in costitutiva o facoltativa e contrassegnata da H3K9me3 e H3K27me3).
       </li>
     </ul>
   </div>
