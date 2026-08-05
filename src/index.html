@@ -110,7 +110,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="staff-row"><div class="staff-col"><div class="staff-card"><div class="staff-container">
 <!-- ==========================================
   SEZIONE: Pagina Principale (main_page_section)
-  DESCRIZIONE: Header, Manifesto del progetto, Pilastri evolutivi (Inclusione, Resilienza), Missione e descrizione.
+  DESCRIZIONE: Manifesto del progetto, Pilastri evolutivi (Inclusione, Resilienza), Missione e descrizione.
   ========================================== -->
 <section data-lang-key="main_page_section" aria-labelledby="main-title" class="mb-7">
   <h1 id="main-title" class="sansation-bold">Benvenuti nel Progetto Biotech!</h1>
@@ -136,10 +136,11 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <!-- Controlli (inizialmente nascosti) -->
 <div class="yt-video-controls" style="display:none;"><button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button><input type="range" id="ytProgress" aria-label="Progresso range" min="0" value="0" step="0.01" class="yt-range"><span id="ytCurrentTime" class="yt-Ctime">0:00</span>/ <span id="ytDuration" class="yt-video-duration">0:00</span><button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button><input type="range" id="ytVolume" aria-label="Volume" min="0" max="1" step="0.01" value="1" class="yt-vol"><button id="ytFullscreen" aria-label="Attiva modalità schermo intero" title="Enter Fullscreen">⛶</button><button id="ytExitFullscreen" style="display:none;" aria-label="Esci dalla modalità schermo intero" title="Exit Fullscreen">⤫</button></div>
 </div>
-<div aria-label="Descrizione del video" class="mb-25"><p class="sansation-light-italic" data-lang-key="video-desc">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div>
+<div class="mb-25"><p class="sansation-light-italic" data-lang-key="video-desc">Il video mostra la foresta verticale di Singapore, un edificio coperto di piante che integra natura e architettura urbana.</p></div>
 <p class="text highlight-text" data-lang-key="simple_cellular_understanding_intro">Comprendere il nostro corpo a livello cellulare è il primo passo verso un benessere consapevole. Ecco alcuni concetti fondamentali:</p>
-<div id="descrizione-completa" class="mb-25">
-<h2 class="secHeader" data-lang-key="section-science">Fondamenti biologici dell'integrità sistemica: i pilastri della salute cellulare.</h2>
+
+<section id="descrizione-completa" class="mb-25" aria-labelledby="section-science-title">
+<h2 id="section-science-title" class="secHeader" data-lang-key="section-science">Fondamenti biologici dell'integrità sistemica: i pilastri della salute cellulare.</h2>
 <!-- Modal -->
 <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <h2 id="modal-title" class="sr-only">Immagine ingrandita</h2>
@@ -240,7 +241,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="biotechtitle">Questa fotoprotezione biologica previene il danno diretto al DNA, la formazione di radicali liberi e l'infiammazione, riducendo il rischio di fotoinvecchiamento e di lesioni neoplastiche <span class="yellowtext">(protegge il DNA e previene l'invecchiamento precoce e il cancro)</span>.</p>
   <p class="biotechtitle">L'integrità della barriera cutanea è essenziale non solo per la termoregolazione, ma anche per la funzione immunitaria locale e la prevenzione della disidratazione transepidermica.</p>
 </div>
-</div>
+</section>
+
 <figure class="infografica-container"><figcaption class="sansation-light-italic biotechcenter"><span data-lang-key="infografica" style="color: #a7ffeb;">Infografica sulle funzioni cellulari: mitocondri, lisosomi, miochine e pelle. </span></figcaption><img class="infografica-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body.avif" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body-364.avif 364w, https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body-650.avif 650w, https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body.avif 1408w" sizes="(max-width: 768px) 95vw, (max-width: 1280px) 650px, (max-width: 1408px) 1292px, 1408px" alt="Riepilogo delle funzioni cellulari e biotecnologiche" loading="lazy" decoding="async" width="1408" height="768"></figure>            
 <!-- ==========================================
   SEZIONE: Medicina Preventiva e Immunometabolismo (preventive_medicine_section)
