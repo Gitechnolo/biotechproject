@@ -716,6 +716,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .biotechtitle:hover {color: hwb(56 18% 9%); text-shadow: 1px 1px 3px rgba(137, 43, 226, 0.568), 1px 1px 3px rgba(137, 43, 226, 0.568); outline: none;} 
 .biotechcenter {text-align: center;}
 .about {color: lightgoldenrodyellow; letter-spacing: normal; text-align: center;}
+.mb-7  { margin-bottom: 7px; }
 .mb-15 { margin-bottom: 15px; }
 .mb-25 { margin-bottom: 25px; }
 .mb-30 { margin-bottom: 30px; }
