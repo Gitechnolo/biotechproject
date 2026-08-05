@@ -734,11 +734,6 @@ if ('requestIdleCallback' in window) {
       'mitocondri': 'Mi-to-con-dri',
       'lisosoma': 'Li-so-so-ma',
       'miochine': 'Mi-o-ki-ne',
-      'sinaptogenesi': 'Si-na-to-jen-e-si',
-      'epigenetiche': 'E-pi-je-ne-ti-che',
-      'atp': 'Adenosina trifosfato',
-      'dna': 'Acido desossiribonucleico',
-      'rna': 'Acido ribonucleico',
       'tegumento': 'Te-gu-men-to'           
     };
 
