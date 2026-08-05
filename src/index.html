@@ -250,9 +250,9 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <figure class="infografica-container"><figcaption class="sansation-light-italic biotechcenter"><span data-lang-key="infografica" style="color: #a7ffeb;">Infografica sulle funzioni cellulari: mitocondri, lisosomi, miochine e pelle. </span></figcaption><img class="infografica-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body.avif" srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body-364.avif 364w, https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body-650.avif 650w, https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Human_body.avif 1408w" sizes="(max-width: 768px) 95vw, (max-width: 1280px) 650px, (max-width: 1408px) 1292px, 1408px" alt="Riepilogo delle funzioni cellulari e biotecnologiche" loading="lazy" decoding="async" width="1408" height="768"></figure>            
 <!-- ==========================================
   SEZIONE: Medicina Preventiva e Immunometabolismo (preventive_medicine_section)
-  DESCRIZIONE: Livello accademico (inflammaging, asse HPA, epigenetica). 
-               Terminologia molecolare per docenti e ricerca. 
-               Nota: Contenuto centralizzato nel JSON.
+  DESCRIZIONE: Livello accademico (inflammaging, HPA, epigenetica). 
+     Terminologia molecolare avanzata.
+     FLUSSO VISIVO: Stressor → Intervento → 5 Pilastri (Mitocondri, Lisosomi, Miochine, Microbiota, Pelle) → Esito Sistemico.
   ========================================== -->
 <section id="descrizione-preventiva" class="text-block mb-25" aria-labelledby="preventiva-main-title" data-lang-key="preventive_medicine_section">
 
@@ -357,28 +357,53 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   </div>
 
   <!-- DIAGRAMMA DI FLUSSO PER RIEPILOGO INTERVENTI -->
-  <div class="cyber-flowchart" role="region" aria-label="Flusso operativo della riprogrammazione dello stile di vita">
-    <div class="flow-branches">
-      <div class="flow-card extrinsic">
-        <span class="flow-tag tag-extrinsic">Stressor Ambientali</span>
-        <div class="flow-title">Infiammazione &amp; Senescenza</div>
-        <div class="flow-desc">Sedentarietà, disbiosi intestinale, cibi ultra-processati e stress cronico attivano l'asse HPA e l'infiammasoma NLRP3, accelerando l'invecchiamento cellulare.</div>
-      </div>
-      <div class="flow-card intrinsic">
-        <span class="flow-tag tag-intrinsic">Intervento Preventivo</span>
-        <div class="flow-title">Riprogrammazione dello Stile di Vita</div>
-        <div class="flow-desc">Esercizio di precisione, chrono-nutrition, supporto al microbiota e modulazione dello stress guidano l'adattamento metabolico e la resilienza tissutale.</div>
-      </div>
-    </div>
-
-    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
-
-    <div class="flow-card common">
-      <span class="flow-tag tag-common">Esito Epigenetico &amp; Sistemico</span>
-      <div class="flow-title">Preservazione della Riserva Funzionale</div>
-      <div class="flow-desc">Attivazione di AMPK/SIRT1, ripristino dell'autofagia, abbattimento del carico endotossico e conservazione della neuroplasticità a lungo termine.</div>
-    </div>
+<div class="cyber-flowchart" role="region" aria-label="Flusso operativo della riprogrammazione dello stile di vita">
+  <div class="flow-branches">
+    <div class="flow-card extrinsic">
+  <span class="flow-tag tag-extrinsic">Stressor Ambientali</span>
+  <div class="flow-title">Infiammazione &amp; Senescenza</div>
+  <div class="flow-desc">
+    Sedentarietà, disbiosi, cibi ultra-processati e stress cronico inibiscono la biogenesi mitocondriale, bloccano l'autofagia lisosomiale e aumentano i ROS, innescando l'asse HPA e l'inflammaging.
   </div>
+</div>
+    <div class="flow-card intrinsic">
+  <span class="flow-tag tag-intrinsic">Intervento Preventivo</span>
+  <div class="flow-title">Riprogrammazione dello Stile di Vita</div>
+  <div class="flow-desc">
+    Esercizio di precisione, chrono-nutrition, supporto al microbiota e gestione dello stress attivano direttamente i pathway di riparazione cellulare (mitofagia, autofagia, secrezione di miochine) per rigenerare i tessuti.
+  </div>
+</div>
+  </div>
+
+  <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
+
+  <!-- CARD: MECCANISMI CELLULARI (Mitocondri, Lisosomi, Miochine, Microbiota, Pelle) -->
+  <div class="flow-card lysis">
+  <span class="flow-tag tag-lysis">Meccanismi di Risposta Cellulare</span>
+  <div class="flow-title">Attivazione Organelli &amp; Sistemi</div>
+  <div class="flow-desc">
+    <ul>
+      <li><strong>Mitocondri:</strong> Biogenesi e fusione/fissione per massimizzare l'ATP e ridurre i ROS.</li>
+      <li><strong>Lisosomi:</strong> Ripristino dell'autofagia per il riciclo di detriti e proteine danneggiate.</li>
+      <li><strong>Muscolo (Miochine):</strong> Secrezione di citochine antinfiammatorie e neuroprotettive (BDNF).</li>
+      <li><strong>Microbiota:</strong> Produzione di SCFA (butirrato) e rafforzamento delle giunzioni serrate per bloccare l'endotossemia.</li>
+      <li><strong>Pelle:</strong> Rafforzamento barriera e melanogenesi per protezione UV e integrità tissutale.</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
+
+  <div class="flow-card common">
+  <span class="flow-tag tag-common">Esito Epigenetico &amp; Sistemico</span>
+  <div class="flow-title">Preservazione della Riserva Funzionale</div>
+  <div class="flow-desc">
+    Ottimizzazione bioenergetica (ATP) e clearance dei detriti cellulari. 
+    Abbattimento dell'inflammaging cronico e ripristino delle barriere (intestinale e cutanea). 
+    Mantenimento della neuroplasticità e rallentamento della senescenza tissutale a lungo termine.
+  </div>
+</div>
+</div>
 
 </section>
 <figure class="quotes mb-25"><blockquote cite="https://it.wikipedia.org/wiki/Jiddu_Krishnamurti"><p data-lang-key="quote">«Non è segno di buona salute mentale essere ben adattati a una società malata.»</p></blockquote><figcaption>&mdash; Jiddu Krishnamurti</figcaption></figure>
