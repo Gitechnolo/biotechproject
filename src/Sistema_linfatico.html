@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Sistema Linfatico e Immunitario: Fisiologia, Drenaggio e Difese | Biotech Project</title>
 <meta name="description" content="Risorsa accademica avanzata sul sistema linfatico e immunitario: fisiologia vascolare, drenaggio glinfatico, linfangiogenesi patologica, imaging avanzato (NIRF, RM intratecale) e immunoterapia oncologica con checkpoint immunitari." />
-<meta name="keywords" content="sistema linfatico, immunologia, linfangiogenesi, VEGF-C, VEGFR-3, sistema glinfatico, linfoscintigrafia, immunoterapia, checkpoint immunitari, PD-1, PD-L1, microcircolazione, oncologia" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Biotech Project Team">
 
@@ -53,6 +51,17 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+.biotech-trigger-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em; /* Spazio tra icona e bottone */
+}
+button.biotech-modal-trigger {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -136,6 +145,13 @@ DESCRIZIONE: Descrizione anatomica della rete linfatica (capillari, vasi collett
   <!-- Executive Summary -->
   <div class="mb-15">
     <p class="text"><strong>In sintesi:</strong> L'architettura del sistema linfatico si snoda dai capillari a fondo cieco dotati di microvalvole primarie fino ai dotti collettori principali. Il movimento della linfa è garantito dalla contrazione autonoma dei linfangioni e da forze estrinseche, permettendo al fluido di essere filtrato dai linfonodi e di veicolare i linfociti tra gli organi linfoidi primari (sede di maturazione) e secondari (sede della risposta immunitaria).</p>
+  <!-- Immagine nascosta per il modale -->
+<img id="myImg5" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico.avif" data-lang-key="modal-linfatico-alt" alt="Schema completo del Sistema Linfatico" style="display:none" width="1024" height="1024" loading="lazy" decoding="async">
+  <!-- Trigger -->
+<span class="biotech-trigger-container">
+  <span class="Biotech-icon" aria-hidden="true">🔬</span>
+  <button type="button" class="highlight biotech-modal-trigger" data-target-img="myImg5">Schema completo Sistema Linfatico ↗</button>
+</span>  
   </div>
 
   <!-- Blocco 1: Microstruttura Capillare -->
