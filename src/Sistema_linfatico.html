@@ -52,9 +52,131 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 /* Modal per immagine ingrandita - Sistema Linfatico*/    
-#myImg5{border-radius:5px;cursor:pointer;transition:.3s}.modal{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto;}.modal.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}.modal-content{ display: block !important; flex-shrink: 0; margin: 60px auto 20px auto !important; width: 90%; max-width: 1000px; height: auto; max-height: 65vh; object-fit: contain; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}.modal.show .modal-content{ transform: scale(1)}#caption{ display: block !important; flex-shrink: 0; margin: 0 auto !important; width: 90%; max-width: 850px; text-align: center; color: #ddd; padding: 10px 20px 80px 20px; font-family: 'Sansation', Arial, sans-serif; font-size: 20px; line-height: 1.5; float: none !important; clear: both !important}.close{ position: fixed; top: 15px; right: 25px; color: #fff; font-size: 50px; font-weight: bold; z-index: 20001; cursor: pointer; line-height: 1}@media only screen and (max-width: 700px){ .modal-content{ margin-top: 80px !important; width: 95% !important; max-height: 65vh !important; } #caption{ font-size: 17px; padding-bottom: 100px;} .close{ top: 15px; right: 20px;}}
-.biotech-trigger-container { display: inline-flex; align-items: center; gap: 0.5em; /* Spazio tra icona e bottone */}
-button.biotech-modal-trigger{ border: none; background: transparent; padding: 0; cursor: pointer}
+/* Garantisce che l'immagine sorgente non occupi spazio nel DOM */
+#myImg5 {
+  display: none !important;
+}
+
+/* Modale isolata: Contenitore Principale */
+.single-img-modal {
+  display: none;
+  position: fixed;
+  z-index: 20000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.96);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.single-img-modal.show {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important; /* Centra l'immagine a tutto schermo */
+  opacity: 1;
+}
+
+/* Immagine 1024x1024: Massima Espansione Senza Schiacciarsi */
+.single-img-modal .modal-content {
+  display: block !important;
+  flex-shrink: 1;
+  margin: 0 auto !important;
+  width: auto !important; /* Preserva l'aspect ratio 1:1 */
+  height: auto !important;
+  max-width: 92vw !important;  /* Utilizza fino al 92% della larghezza schermo */
+  max-height: 85vh !important; /* Aumentato drasticamente per mostrare l'immagine a 1024px */
+  object-fit: contain;
+  float: none !important;
+  clear: both !important;
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1.2);
+  border-radius: 6px;
+  animation: none !important; /* Annulla l'animazione zoom del carosello per evitare conflitti */
+}
+
+.single-img-modal.show .modal-content {
+  transform: scale(1);
+}
+
+/* Didascalia Modale Singola */
+.single-img-modal #singleCaption {
+  display: block !important;
+  flex-shrink: 0;
+  margin: 12px auto 0 auto !important;
+  width: 90%;
+  max-width: 850px;
+  text-align: center;
+  color: #ddd;
+  padding: 0 10px;
+  font-family: 'Sansation', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  float: none !important;
+  clear: both !important;
+  max-height: 10vh;
+  overflow-y: auto;
+}
+
+/* Bottone di Chiusura Isolato */
+.single-img-modal .close {
+  position: fixed;
+  top: 15px;
+  right: 25px;
+  color: #fff;
+  font-size: 45px;
+  font-weight: bold;
+  z-index: 20001;
+  cursor: pointer;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  transition: color 0.2s ease;
+}
+
+.single-img-modal .close:hover {
+  color: #a7ffeb;
+  background: transparent;
+}
+
+/* Trigger Bottone */
+.biotech-trigger-container { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5em; 
+}
+
+button.biotech-modal-trigger { 
+  border: none; 
+  background: transparent; 
+  padding: 0; 
+  cursor: pointer; 
+}
+
+/* Responsive Mobile */
+@media only screen and (max-width: 700px) {
+  .single-img-modal .modal-content {
+    max-width: 96vw !important;
+    max-height: 78vh !important;
+  }
+  .single-img-modal #singleCaption {
+    font-size: 15px;
+    max-height: 12vh;
+  }
+  .single-img-modal .close {
+    top: 10px;
+    right: 15px;
+    font-size: 40px;
+  }
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -249,8 +371,8 @@ DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingr
     Per una visione completa del sistema linfatico, è possibile aprire l'immagine ingrandita qui sotto. Si aprirà un popup accessibile, con didascalia e possibilità di chiusura tramite tastiera o click.
   </p>
 
-  <!-- A. Modal Singola Isolata -->
-  <div id="singleModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="single-modal-title">
+  <!-- A. Modal Singola Isolata (Classe aggiunta: single-img-modal) -->
+  <div id="singleModal" class="modal single-img-modal" role="dialog" aria-modal="true" aria-labelledby="single-modal-title">
     <h2 id="single-modal-title" class="sr-only">Immagine ingrandita del Sistema Linfatico</h2>
     <!-- Chiusura -->
     <button type="button" class="close" id="closeSingle" aria-label="Chiudi immagine"><span aria-hidden="true">&times;</span></button>
@@ -261,23 +383,23 @@ DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingr
   </div>
 
   <!-- B. Immagine Sorgente Nascosta -->
-  <img id="myImg5" 
-       src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico.avif" 
-       data-lang-key="modal-linfatico-alt" 
-       alt="Schema completo del Sistema Linfatico" 
-       style="display:none" 
-       width="1024" 
-       height="1024" 
-       loading="lazy" 
-       decoding="async">
+  <img id="myImg5"
+    src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico.avif"
+    data-lang-key="modal-linfatico-alt"
+    alt="Schema completo del Sistema Linfatico"
+    style="display:none !important;"
+    width="1024"
+    height="1024"
+    loading="lazy"
+    decoding="async">
 
   <!-- C. Trigger (Apertura Popup Immagine) -->
   <span class="biotech-trigger-container">
     <span class="Biotech-icon" aria-hidden="true">🔬</span>
-    <button type="button" 
-            class="highlight biotech-modal-trigger" 
-            data-target-img="myImg5" 
-            data-lang-key="btn-sistema-linfatico">
+    <button type="button"
+      class="highlight biotech-modal-trigger"
+      data-target-img="myImg5"
+      data-lang-key="btn-sistema-linfatico">
       Schema completo Sistema Linfatico ↗
     </button>
   </span>
