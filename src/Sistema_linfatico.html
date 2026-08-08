@@ -52,55 +52,12 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
 /* Modal per immagine ingrandita - Sistema Linfatico */
-#myImg5 {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.modal-single {
-  display: none;
-  position: fixed;
-  z-index: 20000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.97);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.modal-single.show {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  opacity: 1;
-}
-
+#myImg5{ border-radius: 5px; cursor: pointer; transition: 0.3s}
+.modal-single{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto}
+.modal-single.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}
 /* Gestione ottimizzata per immagine quadrata 1024x1024 */
-.modal-content-single {
-  display: block !important;
-  flex-shrink: 0;
-  margin: 50px auto 20px auto !important;
-  width: min(92vw, 80vh) !important;
-  max-width: 1024px !important;
-  max-height: 80vh !important;
-  height: auto !important;
-  object-fit: contain !important;
-  float: none !important;
-  clear: both !important;
-  transform: scale(0);
-  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
-}
-
-.modal-single.show .modal-content-single {
-  transform: scale(1);
-}
-
+.modal-content-single{ display: block !important; flex-shrink: 0; margin: 50px auto 20px auto !important; width: min(92vw, 80vh) !important; max-width: 1024px !important; max-height: 80vh !important; height: auto !important; object-fit: contain !important; float: none !important; clear: both !important; transform: scale(0); transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2)}
+.modal-single.show .modal-content-single{ transform: scale(1)}
 /* Didascalia (inclusa gestione per #singleCaption della modale singola) */
 #caption,
 #singleCaption {
@@ -110,7 +67,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   width: 90%;
   max-width: 850px;
   text-align: center;
-  color: #ddd;
+  color: #B5EAD7;
   padding: 10px 20px 80px 20px;
   font-family: 'Sansation', Arial, sans-serif;
   font-size: 20px;
@@ -118,7 +75,6 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   float: none !important;
   clear: both !important;
 }
-
 @media only screen and (max-width: 700px) {
   .modal-content-single {
     margin-top: 75px !important;
@@ -132,19 +88,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   }
  
 }
-
-.biotech-trigger-container {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-}
-
-button.biotech-modal-trigger {
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-}
+.biotech-trigger-container{ display: inline-flex; align-items: center; gap: 0.5em}
+button.biotech-modal-trigger{ border: none; background: transparent; padding: 0; cursor: pointer}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
