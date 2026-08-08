@@ -101,9 +101,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   transform: scale(1);
 }
 
-/* Didascalia (inclusa gestione per #singleCaption della modale singola) */
-#caption,
-#singleCaption {
+/* Didascalia (inclusa gestione per .singleCaption della modale singola) */
+.singleCaption {
   display: block !important;
   flex-shrink: 0;
   margin: 0 auto !important;
@@ -125,8 +124,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     width: 92% !important;
     max-height: 75vh !important;
   }
-  #caption,
-  #singleCaption {
+  .singleCaption {
     font-size: 17px;
     padding-bottom: 100px;
   }
@@ -347,7 +345,7 @@ DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingr
     <!-- Immagine dinamica -->
     <img class="modal-content-single" id="singleImg" alt="">
     <!-- Didascalia -->
-    <div id="singleCaption"></div>
+    <div class="singleCaption"></div>
   </div>
 
   <!-- B. Immagine Sorgente Nascosta -->
