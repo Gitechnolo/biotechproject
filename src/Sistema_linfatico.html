@@ -58,7 +58,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   transition: 0.3s;
 }
 
-.modal {
+.modal-single {
   display: none;
   position: fixed;
   z-index: 20000;
@@ -73,7 +73,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   overflow-y: auto;
 }
 
-.modal.show {
+.modal-single.show {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -97,7 +97,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
 }
 
-.modal.show .modal-content-single {
+.modal-single.show .modal-content-single {
   transform: scale(1);
 }
 
@@ -340,7 +340,7 @@ DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingr
   </p>
 
   <!-- A. Modal Singola Isolata -->
-  <div id="singleModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="single-modal-title">
+  <div id="singleModal" class="modal-single" role="dialog" aria-modal="true" aria-labelledby="single-modal-title">
     <h2 id="single-modal-title" class="sr-only">Immagine ingrandita del Sistema Linfatico</h2>
     <!-- Chiusura -->
     <button type="button" class="close" id="closeSingle" aria-label="Chiudi immagine"><span aria-hidden="true">&times;</span></button>
