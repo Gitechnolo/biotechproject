@@ -82,7 +82,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 }
 
 /* Gestione ottimizzata per immagine quadrata 1024x1024 */
-.modal-content {
+.modal-content-single {
   display: block !important;
   flex-shrink: 0;
   margin: 50px auto 20px auto !important;
@@ -97,7 +97,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
 }
 
-.modal.show .modal-content {
+.modal.show .modal-content-single {
   transform: scale(1);
 }
 
@@ -132,7 +132,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 }
 
 @media only screen and (max-width: 700px) {
-  .modal-content {
+  .modal-content-single {
     margin-top: 75px !important;
     width: 92% !important;
     max-height: 75vh !important;
@@ -360,7 +360,7 @@ DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingr
     <!-- Chiusura -->
     <button type="button" class="close" id="closeSingle" aria-label="Chiudi immagine"><span aria-hidden="true">&times;</span></button>
     <!-- Immagine dinamica -->
-    <img class="modal-content" id="singleImg" alt="">
+    <img class="modal-content-single" id="singleImg" alt="">
     <!-- Didascalia -->
     <div id="singleCaption"></div>
   </div>
