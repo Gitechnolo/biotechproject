@@ -248,36 +248,39 @@ DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingr
   <p class="sansation-light-italic biotechcenter" style="color: #a7ffeb;" data-lang-key="lymph_modal_desc">
     Per una visione completa del sistema linfatico, è possibile aprire l'immagine ingrandita qui sotto. Si aprirà un popup accessibile, con didascalia e possibilità di chiusura tramite tastiera o click.
   </p>
-<!-- A. Modal -->
-<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <h2 id="modal-title" class="sr-only">Immagine ingrandita del Sistema Linfatico</h2>
-  <!-- Chiusura -->
-  <button type="button" class="close" aria-label="Chiudi immagine"><span aria-hidden="true">&times;</span></button>
-  <!-- Immagine dinamica (ID: img01) -->
-  <img class="modal-content" id="img01" alt="">
-  <!-- Didascalia (si riempie automaticamente via JS quando si apre o cambia lingua) -->
-  <div id="caption"></div>
-</div>
-<!-- B. Immagine Sorgente Nascosta -->
-<img id="myImg5" 
-     src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico.avif" 
-     data-lang-key="modal-linfatico-alt" 
-     alt="Schema completo del Sistema Linfatico" 
-     style="display:none" 
-     width="1024" 
-     height="1024" 
-     loading="lazy" 
-     decoding="async">
-<!-- C. Trigger (Apertura Popup Immagine) -->
-<span class="biotech-trigger-container">
-  <span class="Biotech-icon" aria-hidden="true">🔬</span>
-  <button type="button" 
-          class="highlight biotech-modal-trigger" 
-          data-target-img="myImg5" 
-          data-lang-key="btn-sistema-linfatico">
-    Schema completo Sistema Linfatico ↗
-  </button>
-</span>
+
+  <!-- A. Modal Singola Isolata -->
+  <div id="singleModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="single-modal-title">
+    <h2 id="single-modal-title" class="sr-only">Immagine ingrandita del Sistema Linfatico</h2>
+    <!-- Chiusura -->
+    <button type="button" class="close" id="closeSingle" aria-label="Chiudi immagine"><span aria-hidden="true">&times;</span></button>
+    <!-- Immagine dinamica -->
+    <img class="modal-content" id="singleImg" alt="">
+    <!-- Didascalia -->
+    <div id="singleCaption"></div>
+  </div>
+
+  <!-- B. Immagine Sorgente Nascosta -->
+  <img id="myImg5" 
+       src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico.avif" 
+       data-lang-key="modal-linfatico-alt" 
+       alt="Schema completo del Sistema Linfatico" 
+       style="display:none" 
+       width="1024" 
+       height="1024" 
+       loading="lazy" 
+       decoding="async">
+
+  <!-- C. Trigger (Apertura Popup Immagine) -->
+  <span class="biotech-trigger-container">
+    <span class="Biotech-icon" aria-hidden="true">🔬</span>
+    <button type="button" 
+            class="highlight biotech-modal-trigger" 
+            data-target-img="myImg5" 
+            data-lang-key="btn-sistema-linfatico">
+      Schema completo Sistema Linfatico ↗
+    </button>
+  </span>
 </section>
 
 <!-- ==========================================================

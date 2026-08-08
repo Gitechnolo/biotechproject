@@ -652,13 +652,16 @@ if ('requestIdleCallback' in window) {
         });
       });
 
-      // 2. Gestione link Modal
+      // 2. Gestione link Modal (Inoltra alla Modale Singola se presente, altrimenti al Carosello)
       const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
       modalLinks.forEach(link => {
         const triggerModal = (event) => {
           event.preventDefault();
           const imgId = link.getAttribute('data-target-img');
-          if (typeof openBiotechModal === 'function') {
+          
+          if (document.getElementById("singleModal") && typeof openSingleModal === 'function') {
+            openSingleModal(imgId, event);
+          } else if (typeof openBiotechModal === 'function') {
             openBiotechModal(imgId, event);
           }
         };
@@ -1124,10 +1127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelectorAll('.gallery-item').forEach(img => {
       bindAction(img, () => openCarousel(parseInt(img.getAttribute('data-slide'))));
     });
-    document.querySelectorAll('.biotech-modal-trigger').forEach(trigger => {
-      const targetId = trigger.getAttribute('data-target-img');
-      bindAction(trigger, () => window.openBiotechModal(targetId, { currentTarget: trigger }));
-    });
+
     document.querySelectorAll('.demo').forEach(thumb => {
       bindAction(thumb, () => currentSlide(parseInt(thumb.getAttribute('data-slide'))));
     });
@@ -1136,7 +1136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindAction(document.getElementById('prevSlide'), () => plusSlides(-1));
     bindAction(document.getElementById('nextSlide'), () => plusSlides(1));
 
-    // C. Logica Zoom
+    // C. Logica Zoom Carosello
     document.querySelectorAll('.zoom-container').forEach(container => {
       const img = container.querySelector('img');
       container.addEventListener('click', () => container.classList.toggle('zoomed'));
@@ -1150,7 +1150,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     });
 
-    // D. Focus Trap & Keydown (Frecce incluse)
+    // D. Focus Trap & Keydown Carosello
     document.addEventListener('keydown', (e) => {
       if (modal.style.display === "none" || modal.style.display === "") return;
       if (e.key === "Escape") closeModal();
@@ -1168,6 +1168,57 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+  }
+
+  // B2. Inizializza Modale Singola (Isolata dal Carosello)
+  const singleModal = document.getElementById("singleModal");
+  if (singleModal) {
+    const singleImg = document.getElementById("singleImg");
+    const singleCaption = document.getElementById("singleCaption");
+    const closeSingleBtn = document.getElementById("closeSingle");
+
+    window.openSingleModal = function(imgId, event) {
+      const targetImg = document.getElementById(imgId);
+      if (!targetImg || !singleModal || !singleImg) return;
+
+      lastFocusedElement = event ? event.currentTarget : null;
+      if (lastFocusedElement) {
+        const rect = lastFocusedElement.getBoundingClientRect();
+        singleImg.style.transformOrigin = `${rect.left + rect.width / 2}px ${rect.top + rect.height / 2}px`;
+      }
+
+      singleImg.src = targetImg.src;
+      singleImg.alt = targetImg.alt || "";
+      if (singleCaption) singleCaption.textContent = targetImg.alt || "";
+
+      singleModal.style.display = "flex";
+      setTimeout(() => { 
+        singleModal.classList.add("show"); 
+        closeSingleBtn?.focus(); 
+      }, 10);
+    };
+
+    const closeSingleModal = () => {
+      singleModal.classList.remove("show");
+      setTimeout(() => {
+        singleModal.style.display = "none";
+        if (singleImg) singleImg.src = "";
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }, 300);
+    };
+
+    if (closeSingleBtn) {
+      closeSingleBtn.addEventListener("click", (e) => { e.preventDefault(); closeSingleModal(); });
+    }
+
+    singleModal.addEventListener("click", (e) => {
+      if (e.target === singleModal) closeSingleModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (singleModal.style.display === "none" || singleModal.style.display === "") return;
+      if (e.key === "Escape") closeSingleModal();
+    });
   }
 
   // E. Inizializza Video (Solo se il poster esiste)
