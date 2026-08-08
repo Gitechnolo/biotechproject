@@ -51,6 +51,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
+.biotech-trigger-container { display: inline-flex; align-items: center; gap: 0.5em; /* Spazio tra icona e bottone */}
+button.biotech-modal-trigger{ border: none; background: transparent; padding: 0; cursor: pointer}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -128,7 +130,7 @@ DESCRIZIONE: Fisiologia avanzata del drenaggio linfatico: integrazione con il mo
 SEZIONE: Anatomia e Fisiologia del Sistema Linfatico (lymph_section_2)
 DESCRIZIONE: Descrizione anatomica della rete linfatica (capillari, vasi collettori, linfangioni), percorso dei dotti (toracico e destro), composizione della linfa, meccanismi di flusso e organizzazione degli organi linfoidi.
 ========================================================== -->
-<section class="text text-block mb-15" aria-labelledby="lymph-heading" data-lang-key="lymph_section_2">
+<section class="text text-block" aria-labelledby="lymph-heading" data-lang-key="lymph_section_2">
   <h2 id="lymph-heading" class="secHeader">ANATOMIA E FISIOLOGIA DEL SISTEMA LINFATICO</h2>
 
   <!-- Executive Summary -->
@@ -234,6 +236,48 @@ DESCRIZIONE: Descrizione anatomica della rete linfatica (capillari, vasi collett
     </div>
   </div>
 </section>
+
+<!-- ==========================================================
+SEZIONE: Visualizzatore Immagine Sistema Linfatico
+DESCRIZIONE: Sezione contenente il popup accessibile per la visualizzazione ingrandita dello schema del Sistema Linfatico. Include il trigger di apertura, la struttura della modale (immagine dinamica, didascalia automatica, pulsante di chiusura) e l'immagine sorgente nascosta con metadati per l'accessibilità e l'internazionalizzazione.
+========================================================== -->
+<section class="mb-15 biotechcenter" aria-labelledby="lymph-modal-label">
+  <h2 id="lymph-modal-label" class="sr-only">Visualizzatore Immagine Sistema Linfatico</h2>
+  <p class="sansation-light-italic biotechcenter" style="color: #a7ffeb;" data-lang-key="lymph_modal_desc">
+    Per una visione completa del sistema linfatico, è possibile aprire l'immagine ingrandita qui sotto. Si aprirà un popup accessibile, con didascalia e possibilità di chiusura tramite tastiera o click.
+  </p>
+<!-- A. Modal -->
+<div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <h2 id="modal-title" class="sr-only">Immagine ingrandita del Sistema Linfatico</h2>
+  <!-- Chiusura -->
+  <button type="button" class="close" aria-label="Chiudi immagine"><span aria-hidden="true">&times;</span></button>
+  <!-- Immagine dinamica (ID: img01) -->
+  <img class="modal-content" id="img01" alt="">
+  <!-- Didascalia (si riempie automaticamente via JS quando si apre o cambia lingua) -->
+  <div id="caption"></div>
+</div>
+<!-- B. Immagine Sorgente Nascosta -->
+<img id="myImg5" 
+     src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Sistema_linfatico.avif" 
+     data-lang-key="modal-linfatico-alt" 
+     alt="Schema completo del Sistema Linfatico" 
+     style="display:none" 
+     width="1024" 
+     height="1024" 
+     loading="lazy" 
+     decoding="async">
+<!-- C. Trigger (Apertura Popup Immagine) -->
+<span class="biotech-trigger-container">
+  <span class="Biotech-icon" aria-hidden="true">🔬</span>
+  <button type="button" 
+          class="highlight biotech-modal-trigger" 
+          data-target-img="myImg5" 
+          data-lang-key="btn-sistema-linfatico">
+    Schema completo Sistema Linfatico ↗
+  </button>
+</span>
+</section>
+
 <!-- ==========================================================
 SEZIONE: Funzioni e Composizione Linfatica (lymph_functions_and_composition)
 DESCRIZIONE: Unificazione delle funzioni fisiologiche, composizione chimico-fisica della linfa, ricircolo immunitario e patofisiologia del linfoedema.
