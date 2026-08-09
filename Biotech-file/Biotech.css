@@ -887,16 +887,10 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
 /* ==========================================================
    SEZIONE: MODALE SINGOLA POPUP (Accessibile & Multilingua)
    Nota: Per aggiungere nuove immagini trigger, basta accodare
-   i nuovi ID qui sotto separandoli da virgola (es. #myImg5, #myImg6, #myImg7)
+   i nuovi ID qui sotto separandoli da virgola (es. #myImg5, #myImg6)
    ========================================================== */
-
-/* ID Immagini Trigger */
-#myImg5 { 
-  border-radius: 5px; 
-  cursor: pointer; 
-  transition: 0.3s;
-}
-
+/* ID Immagini Trigger specifiche */
+#myImg5{border-radius:5px;cursor:pointer;transition:.3s;}
 /* Struttura Modale */
 .modal-single { 
   display: none; 
@@ -912,7 +906,6 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
   overflow-x: hidden; 
   overflow-y: auto;
 }
-
 .modal-single.show { 
   display: flex; 
   flex-direction: column; 
@@ -920,7 +913,6 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
   justify-content: flex-start; 
   opacity: 1;
 }
-
 .modal-content-single { 
   display: block; 
   flex-shrink: 0; 
@@ -935,12 +927,14 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
   transform: scale(0); 
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
 }
-
-.modal-single.show .modal-content-single { 
-  transform: scale(1);
-}
-
-/* Didascalie (Mantenuti ID per lo script di traduzione) */
+.modal-single.show .modal-content-single{transform:scale(1);}
+/* 
+ * DIDASCALIE E TRADUZIONI (#caption e #singleCaption)
+ * NOTA INTENZIONALE: La condivisione dello stile tramite #caption è VOLUTA.
+ * Permette al Carosello di ereditare la stessa formattazione (font Sansation, 
+ * colore #B5EAD7 e spaziature), mantenendo un'identità visiva coerente 
+ * tra tutti i visualizzatori popup del sito.
+ */
 #caption, #singleCaption { 
   display: block; 
   flex-shrink: 0; 
@@ -956,35 +950,31 @@ img.hover-shadow{transition:.3s}.hover-shadow:hover{box-shadow:0 4px 8px 0 rgba(
   float: none; 
   clear: both;
 }
-
 /* Bottone e Contenitore Trigger */
 .biotech-trigger-container { 
   display: inline-flex; 
   align-items: center; 
   gap: 0.5em;
 }
-
 button.biotech-modal-trigger { 
   border: none; 
   background: transparent; 
   padding: 0; 
   cursor: pointer;
 }
-
-/* Responsività Mobile */
+/* Responsività Mobile Modal Singola e Carosello */
 @media only screen and (max-width: 700px) { 
   .modal-content-single { 
     margin-top: 75px; 
     max-width: 92%; 
     max-height: 70vh;
   } 
-  
+ 
   #caption, #singleCaption { 
     font-size: 17px; 
     padding-bottom: 100px;
   }
 }
-
 /* === FINE SEZIONE: MODALE SINGOLA POPUP === */
 
 /* * BIOTECH PROJECT - INFRASTRUCTURE STATUS: FULLY STABILIZED (v6.4.0) [ADR-011] Media Orchestration: On-Demand Lazy-Immune loading enabled.
