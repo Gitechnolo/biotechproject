@@ -51,7 +51,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* Modal per immagine singola ingrandita - PopUp */
+/* === MODAL IMMAGINE SINGOLA (POPUP) === */
 #myImg5 { 
   border-radius: 5px; 
   cursor: pointer; 
@@ -74,24 +74,24 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 }
 
 .modal-single.show { 
-  display: flex !important; 
-  flex-direction: column !important; 
-  align-items: center !important; 
-  justify-content: flex-start !important; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-start; 
   opacity: 1;
 }
 
 .modal-content-single { 
-  display: block !important; 
+  display: block; 
   flex-shrink: 0; 
-  margin: 50px auto 20px auto !important; 
-  width: auto !important; 
-  height: auto !important; 
-  max-width: min(1024px, 95vw) !important; 
-  max-height: 85vh !important; 
-  object-fit: contain !important; 
-  float: none !important; 
-  clear: both !important; 
+  margin: 50px auto 20px auto; 
+  width: auto; 
+  height: auto; 
+  max-width: min(1024px, 95vw); 
+  max-height: 85vh; 
+  object-fit: contain; 
+  float: none; 
+  clear: both; 
   transform: scale(0); 
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
 }
@@ -100,22 +100,21 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   transform: scale(1);
 }
 
-/* Didascalia */
-#caption,
-#singleCaption {
-  display: block !important;
-  flex-shrink: 0;
-  margin: 0 auto !important;
-  width: 90%;
-  max-width: 850px;
-  text-align: center;
-  color: #B5EAD7;
-  padding: 10px 20px 80px 20px;
-  font-family: 'Sansation', Arial, sans-serif;
-  font-size: 20px;
-  line-height: 1.5;
-  float: none !important;
-  clear: both !important;
+/* Didascalie (mantenuti gli ID per lo script di traduzione) */
+#caption, #singleCaption { 
+  display: block; 
+  flex-shrink: 0; 
+  margin: 0 auto; 
+  width: 90%; 
+  max-width: 850px; 
+  text-align: center; 
+  color: #B5EAD7; 
+  padding: 10px 20px 80px 20px; 
+  font-family: 'Sansation', Arial, sans-serif; 
+  font-size: 20px; 
+  line-height: 1.5; 
+  float: none; 
+  clear: both;
 }
 
 .biotech-trigger-container { 
@@ -132,16 +131,15 @@ button.biotech-modal-trigger {
 }
 
 /* Responsività Modal Singola */
-@media only screen and (max-width: 700px) {
-  .modal-content-single {
-    margin-top: 75px !important;
-    max-width: 92% !important; 
-    max-height: 70vh !important;
-  }
+@media only screen and (max-width: 700px) { 
+  .modal-content-single { 
+    margin-top: 75px; 
+    max-width: 92%; 
+    max-height: 70vh;
+  } 
   
-  #caption,
-  #singleCaption {
-    font-size: 17px;
+  #caption, #singleCaption { 
+    font-size: 17px; 
     padding-bottom: 100px;
   }
 }
