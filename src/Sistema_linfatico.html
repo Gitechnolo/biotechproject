@@ -51,33 +51,54 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* Modal per immagine ingrandita - Sistema Linfatico */
-#myImg5{ border-radius: 5px; cursor: pointer; transition: 0.3s}
-.modal-single{ display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.97); opacity: 0; transition: opacity 0.3s ease; overflow-x: hidden; overflow-y: auto}
-.modal-single.show{ display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-start !important; opacity: 1}
+/* Modal per immagine singola ingrandita - PopUp */
+#myImg5 { 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: 0.3s;
+}
 
-/* GESTIONE OTTIMIZZATA CORRETTA */
-.modal-content-single{ 
+.modal-single { 
+  display: none; 
+  position: fixed; 
+  z-index: 20000; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.97); 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+.modal-single.show { 
+  display: flex !important; 
+  flex-direction: column !important; 
+  align-items: center !important; 
+  justify-content: flex-start !important; 
+  opacity: 1;
+}
+
+.modal-content-single { 
   display: block !important; 
   flex-shrink: 0; 
   margin: 50px auto 20px auto !important; 
-  
-  /* MODIFICHE QUI SOTTO */
-  width: auto !important; /* Lascia che l'altezza o il max-width controllino la dimensione */
+  width: auto !important; 
   height: auto !important; 
-  max-width: 95vw !important; /* Usa la larghezza del viewport come limite, non l'altezza */
-  max-height: 85vh !important; /* Lascia più spazio verticale */
-  
+  max-width: min(1024px, 95vw) !important; 
+  max-height: 85vh !important; 
   object-fit: contain !important; 
   float: none !important; 
   clear: both !important; 
   transform: scale(0); 
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.2);
-  /* Aggiunto per garantire che l'immagine non superi i 1024px nativi se lo spazio lo permette */
-  max-width: min(1024px, 95vw) !important; 
 }
 
-.modal-single.show .modal-content-single{ transform: scale(1)}
+.modal-single.show .modal-content-single { 
+  transform: scale(1);
+}
 
 /* Didascalia */
 #caption,
@@ -97,21 +118,33 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   clear: both !important;
 }
 
+.biotech-trigger-container { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5em;
+}
+
+button.biotech-modal-trigger { 
+  border: none; 
+  background: transparent; 
+  padding: 0; 
+  cursor: pointer;
+}
+
+/* Responsività Modal Singola */
 @media only screen and (max-width: 700px) {
   .modal-content-single {
     margin-top: 75px !important;
-    /* Su mobile, usiamo la larghezza come riferimento principale */
     max-width: 92% !important; 
     max-height: 70vh !important;
   }
+  
   #caption,
   #singleCaption {
     font-size: 17px;
     padding-bottom: 100px;
   }
 }
-.biotech-trigger-container{ display: inline-flex; align-items: center; gap: 0.5em}
-button.biotech-modal-trigger{ border: none; background: transparent; padding: 0; cursor: pointer}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
