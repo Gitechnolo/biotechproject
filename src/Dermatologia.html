@@ -59,8 +59,6 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .imgRightfl, .imgLeftfl {display: flex; margin: 10px;}
 .imgRightfl {margin-left: auto;}
 .imgLeftfl {margin-right: auto;}
-.dbmb-10 {color: #00e676; display: block; margin-bottom: 10px;}
-.glow {flex: 1; min-width: 280px; border: 1px solid rgba(0, 230, 118, 0.3); padding: 15px; border-radius: 8px; background: rgba(0,230,118,0.05); backdrop-filter: blur(4px);}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -90,82 +88,135 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     <div class="staff-card">
       <div class="staff-container">
 <!-- ==========================================================
-SEZIONE: Organizzazione del Corpo Umano e Tessuto Epiteliale (dermatology_section)
-DESCRIZIONE: Panoramica gerarchica dell'organizzazione biologica (cellula, tessuti, organi, apparati) con focus scientifico approfondito sul tessuto epiteliale: tipologie, giunzioni cellulari (occludine, claudine, desmosomi) e ruolo della membrana basale.
+SEZIONE: Organizzazione Gerarchica dell'Organismo e Biologia del Tessuto Epiteliale (dermatology_section)
+DESCRIZIONE: Inquadramento dermatologico, transizione gerarchica (cellula-tessuti-organi-sistemi), classificazione dei quattro tessuti fondamentali e dissezione molecolare del tessuto epiteliale (complessi giunzionali, polarità e membrana basale).
 ========================================================== -->
-<div data-lang-key="dermatology_section">
-<h1 class="sansation-bold">DERMATOLOGIA</h1>
-<!-- Descrizione -->
-<p class="text">
- La dermatologia è la branca della medicina dedicata allo studio, alla diagnosi e alla terapia delle patologie della cute, dei capelli e delle unghie.<br>
- Il campo comprende un ampio spettro di condizioni, dalle affezioni comuni (acne, dermatiti) alle patologie infiammatorie complesse (psoriasi) e alle neoplasie (melanoma).
-</p>   
-<!-- Sezione Organizzazione -->
-<section class="biotech-summary-box" aria-labelledby="org-title" style="margin: 30px 0;">
-<h2 id="org-title" style="color: #00e676; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
- ORGANISMO UMANO: ORGANIZZAZIONE
-</h2>
-    
-<div class="structure-grid" role="list" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-<!-- Card: Cellula -->
-<article class="structure-card glow" role="listitem">
-<h3 class="dbmb-10">CELLULA</h3>
-<p>
- <span>Unità fondamentale della vita. Delimitata dalla <strong>membrana plasmatica</strong>, contiene il <strong>citoplasma</strong> e il <strong>nucleo</strong> (sede del <strong>DNA</strong>). È l'unità minima capace di metabolismo, crescita e riproduzione.</span>
-</p>
-</article>
-<!-- Card: Tessuti -->
-<article class="structure-card glow" role="listitem">
-<h3 class="dbmb-10">TESSUTI</h3>
-<p class="mb-15">Insieme di cellule differenziate con origine, struttura e funzione comune, integrate in una matrice extracellulare.</p>
-<ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
- <li>• <strong>Epiteliale:</strong><span>es. Epidermide (stratificato), Endotelio (semplice)</span></li>
- <li>• <strong>Connettivo:</strong><span>es. Derma, Ipoderma, Sangue, Osso</span></li>
- <li>• <strong>Muscolare</strong></li>
- <li>• <strong>Nervoso</strong></li>
-</ul>
-</article>
-<!-- Card: Organi -->
-<article class="structure-card glow" role="listitem">
-<h3 class="dbmb-10">ORGANI</h3>
-<p class="mb-15">Strutture composte da tessuti diversi che cooperano per una funzione specifica.</p>
-<p style="font-size: 0.95rem; margin: 0;">
- • <strong>Esempio: CUTE</strong><br>
-<span>Organo complesso derivante dall'interazione di epitelio (epidermide) e connettivo (derma/ipoderma).</span>
-</p>
-</article>
-<!-- Card: Apparati -->
-<article class="structure-card glow" role="listitem">
-<h3 class="dbmb-10">APPARATI E SISTEMI</h3>
-<p class="mb-15">Insieme di organi che collaborano per funzioni fisiologiche integrate.</p>
-<p style="font-size: 0.95rem; margin: 0;">
- • <strong>Apparato Tegumentario:</strong><br>
-<span>Cute e annessi (follicoli piliferi, unghie, ghiandole sebacee/sudoripare).</span>
-</p>
-</article>
-</div>
+<section aria-labelledby="dermatology-main-title" data-lang-key="dermatology_section">
+  <h1 id="dermatology-main-title" class="sansation-bold">DERMATOLOGIA</h1>
+  <h2 class="secHeader">ORGANIZZAZIONE BIOLOGICA E BIOLOGIA DEL TESSUTO EPITELIALE</h2>
+
+  <!-- Hook Narrativo -->
+  <div class="mb-15">
+    <p><strong>In sintesi:</strong> La cute rappresenta il paradigma dell'integrazione biologica: cellule altamente specializzate cooperano all'interno di tessuti distinti per formare una barriera dinamica e reattiva. Alla base di questa architettura vi è il tessuto epiteliale, un mosaico compatto e polarizzato in cui specifici complessi macromolecolari (claudine, caderine, integrine) sigillano lo spazio intercellulare e ancorano le cellule alla matrice sottostante, garantendo protezione chimico-fisica, compartimentazione e comunicazione selettiva.</p>
+  </div>
+
+  <h3 class="biotechbold">INQUADRAMENTO CLINICO-BIOLOGICO</h3>
+  <p class="text">
+    La <strong class="yellowtext">dermatologia</strong> è la disciplina biomedica preposta all'indagine eziopatogenetica, all'inquadramento istopatologico e all'intervento terapeutico delle affezioni a carico dell'apparato tegumentario (cute e annessi cutanei: apparato pilosebaceo, ghiandole sudoripare e lamine ungueali).
+  </p>
+  <p class="text">
+    Il dominio clinico spazia dalle dermopatie disreattive e infiammatorie ad alta prevalenza (acne vulgaris, dermatiti eczematose) ai disordini immuno-mediati complessi ad impronta sistemica (psoriasi, pemfigo autoimmune), sino all'oncologia dermatologica molecolare (carcinomi basocellulari, spinocellulari e melanoma cutaneo).
+  </p>
+
+  <hr class="line" />
+
+  <h3 class="biotechbold">ORGANIZZAZIONE GERARCHICA DELL'ORGANISMO UMANO</h3>
+  <p class="text">
+    La fisiologia tegumentaria rispecchia la rigida stratificazione modulare e morfo-funzionale dell'organismo umano:
+  </p>
+
+  <!-- Diagramma di Flusso Gerarchico -->
+  <div class="cyber-flowchart">
+    <div class="flow-branches">
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Livello 01 - Unità Base</span>
+        <div class="flow-title">Cellula</div>
+        <div class="flow-desc">Unità autonoma fondamentale delimitata dal doppio strato fosfolipidico; sede del compartimento citosolico, degli organuli metabolici e del nucleo interfasico contenente il genoma.</div>
+      </div>
+      <div class="flow-card extrinsic">
+        <span class="flow-tag tag-extrinsic">Livello 02 - Specializzazione</span>
+        <div class="flow-title">Tessuto</div>
+        <div class="flow-desc">Aggregato cooperativo di cellule differenziate derivanti dal medesimo foglietto embrionale, integrate e coordinate da una specifica matrice extracellulare (MEC).</div>
+      </div>
+    </div>
+    <div class="flow-arrow-down">↓</div>
+    <div class="flow-branches">
+      <div class="flow-card common">
+        <span class="flow-tag tag-common">Livello 03 - Integrazione</span>
+        <div class="flow-title">Organo (es. Cute)</div>
+        <div class="flow-desc">Complessità morfo-funzionale costituita dall'interazione sinergica di epitelio (epidermide) e connettivo (derma e ipoderma adiposo).</div>
+      </div>
+      <div class="flow-card lysis">
+        <span class="flow-tag tag-lysis">Livello 04 - Omeostasi</span>
+        <div class="flow-title">Apparato Tegumentario</div>
+        <div class="flow-desc">Sistema coordinato comprendente il rivestimento cutaneo e gli annessi ghiandolari e cheratinizzati per la termoregolazione, barriera e ricezione neurosensoriale.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="line" />
+
+  <h3 class="biotechbold">I QUATTRO TESSUTI FONDAMENTALI</h3>
+  <p class="text">
+    Un <strong class="yellowtext">tessuto biologico</strong> è un consorzio morfo-funzionale di cellule differenziate che condividono derivazione embriologica e pathway trascrizionali. La natura biomeccanica e biochimica del tessuto è determinata dalla tipologia e densità della <strong class="orangetext">Matrice Extracellulare (MEC)</strong>:
+  </p>
+  <ul class="text-list">
+    <li><strong class="yellowtext">Tessuto Epiteliale:</strong> Cellule in stretta contiguità morfo-funzionale a giunzioni serrate, con MEC intercellulare virtuale o minima.</li>
+    <li><strong class="yellowtext">Tessuto Connettivo:</strong> Cellule residenti e migranti ampiamente disperse in un'abbondante MEC idratata e fibrillare (funzione trofica, strutturale e difensiva).</li>
+    <li><strong class="yellowtext">Tessuto Muscolare:</strong> Elementi sinciziali o mononucleati dotati di apparati miofibrillari actina-miosina atti alla trasduzione meccano-chimica (contrazione).</li>
+    <li><strong class="yellowtext">Tessuto Nervoso:</strong> Rete eccitabile e cellule gliali accessorie adibite alla propagazione unidirezionale e all'integrazione di segnali elettrochimici.</li>
+  </ul>
+
+  <hr class="line" />
+
+  <h3 class="biotechbold">TESSUTO EPITELIALE: MORFOGENESI E COMPLESSI GIUNZIONALI</h3>
+  <p class="text">
+    Il <strong class="yellowtext">tessuto epiteliale</strong> costituisce un sistema continuo e avascolare caratterizzato da polarità cellulare intrinseca (dominio apicale esposto al lume o ambiente esterno e dominio basolaterale ancorato al substrato). La stabilità della barriera e la selettività paracellulare sono mediate da complessi proteici transmembrana e citoscheletrici:
+  </p>
+
+  <!-- Tabella Diagnostico-Molecolare delle Giunzioni Cellulari -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Complesso Giunzionale</th>
+          <th>Proteine Transmembrana</th>
+          <th>Ancoraggio Citoscheletrico</th>
+          <th>Funzione Fisiologica Primaria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="orangetext">Zonula Occludens (Tight Junctions)</strong></td>
+          <td>Claudine, Occludine, JAM (Junctional Adhesion Molecules)</td>
+          <td>Microfilamenti di Actina (tramite proteine ponte ZO-1, ZO-2, ZO-3)</td>
+          <td>Sigillo dello spazio intercellulare, controllo selettivo del trasporto paracellulare e mantenimento della polarità di membrana ("fence function").</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Zonula Adherens</strong></td>
+          <td>E-caderine (dipendenti da Ca<sup>2+</sup>)</td>
+          <td>Corteccia di Actina (mediata da α-catenina, β-catenina e p120-catenina)</td>
+          <td>Adesione meccanica intercellulare continua, regolazione della tensione tissutale e morfogenesi epiteliale.</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Macula Adherens (Desmosomi)</strong></td>
+          <td>Desmocollina (Dsc), Desmogleina (Dsg)</td>
+          <td>Filamenti Intermedi di Cheratina / Tonofilamenti (tramite Placoglobina, Placofilina, Desmoplachina)</td>
+          <td>Massima resistenza meccanica alle forze di trazione e taglio multidirezionali (particolarmente abbondanti nello strato spinoso epidermico).</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Nexus (Gap Junctions)</strong></td>
+          <td>Connessine (organizzate in esameri funzionali denominati Connessoni)</td>
+          <td>Nessun ancoraggio diretto primario ai filamenti contrattili</td>
+          <td>Accoppiamento metabolico ed elettrochimico diretto tra citosoli adiacenti (passaggio di ioni, cAMP, IP<sub>3</sub> &lt; 1-1.5 kDa).</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Emidesmosomi</strong></td>
+          <td>Integrina α6β4, Collagene XVII (BP180), CD151</td>
+          <td>Filamenti Intermedi (Cheratina 5/14 tramite Plectina e BP230)</td>
+          <td>Ancoraggio del dominio basale cellulare alla lamina densa della membrana basale; prevenzione del distacco dermo-epidermico.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text">
+    In base al distretto anatomico e alla specializzazione citologica, gli epiteli si dividono in <strong class="yellowtext">epiteli di rivestimento</strong> (protezione, assorbimento e compartimentazione), <strong class="yellowtext">epiteli ghiandolari</strong> (specializzati nella sintesi e secrezione esocrina/endocrina) ed <strong class="yellowtext">epiteli sensoriali</strong> (trasduttori recettoriali neuroepiteliali).
+  </p>
+  <p class="text">
+    Trattandosi di un tessuto <strong class="orangetext">asanguigno</strong>, il supporto metabolico e gli scambi respiratori (diffusione passiva di O<sub>2</sub> e nutrienti, rimozione di cataboliti) dipendono interamente dall'interfaccia connettivale sottostante mediata dalla <strong class="biotechbold">membrana basale</strong> (strutturata in <em>lamina lucida</em>, <em>lamina densa</em> ricca in collagene di tipo IV e perlecano, e <em>lamina reticolare</em> con fibrille di ancoraggio in collagene di tipo VII).
+  </p>
 </section>
-<!-- Sezione I Tessuti -->
-<p class="secHeader">I TESSUTI</p>
-<p class="text">
- Un tessuto è un insieme organizzato di cellule che condividono la stessa origine embrionale, struttura ultrastrutturale e specificità funzionale. Queste cellule sono integrate all'interno di una matrice extracellulare (MEC), la cui composizione biochimica (proteoglicani, glicoproteine, fibre) e consistenza variano in base alla tipologia tissutale.<br>
- I quattro tessuti fondamentali del corpo umano sono classificati come segue:
-</p>
-<ol class="list">
- <li>Tessuto epiteliale;</li>
- <li>Tessuto connettivo;</li>
- <li>Tessuto muscolare;</li>
- <li>Tessuto nervoso.</li>
-</ol>   
-<!-- Sezione Dettagli Epiteliale -->
-<p class="text">
-<span class="subtitle">Tessuto epiteliale</span><br>
-<span class="biotechbold">Il tessuto epiteliale è caratterizzato da cellule strettamente adese tramite complessi giunzionali, con uno spazio extracellulare intercellulare minimo o assente.</span><br>
-<span>La coesione cellulare è garantita da specializzazioni della membrana plasmatica che mediano l'adesione e la comunicazione tra cellule adiacenti. Tali strutture molecolari includono: <i>giunzioni strette</i> (occludine, claudine) per la barriera paracellulare; <i>desmosomi</i> (caderine desmosomiali, desmoplachina) per la resistenza meccanica; <i>emi-desmosomi</i> per l'ancoraggio alla membrana basale; e <i>giunzioni comunicanti</i> (connessine) per lo scambio di ioni e piccole molecole.</span><br>
-<span>In base alla funzione e alla localizzazione, si distinguono in: <i>epiteli di rivestimento</i> (protezione, assorbimento, secrezione sulle superfici), <i>epiteli ghiandolari</i> (sintesi e rilascio di prodotti secretori) ed <i>epiteli sensoriali</i> (ricezione di stimoli specifici, es. recettori gustativi e olfattivi).</span><br>
-<span>Essendo un tessuto asanguigno (non vascolarizzato), l'epitelio poggia su una <i>membrana basale</i> (composta da lamina basale e lamina reticolare), che funge da interfaccia selettiva. Il trofismo cellulare è assicurato dalla diffusione di <i>O<sub>2</sub></i> e nutrienti dai capillari del connettivo sottostante.</span>
-</p>
-</div>
 <!-- ==========================================================
 SEZIONE: Dettagli sugli Epiteli di Rivestimento (lining_epithelia_details)
 DESCRIZIONE: Approfondimento scientifico sulla biologia molecolare degli epiteli di rivestimento, focalizzandosi sulla polarità cellulare (complessi PAR, Crumbs, Scribble), sui complessi giunzionali (tight junctions, desmosomi, gap junctions, emidesmosomi) e sulla struttura della membrana basale. Include la classificazione completa per stratificazione (semplice, composto, pseudostratificato) e per morfologia cellulare (pavimentoso, cubico, cilindrico, transizione/urotelio) con riferimenti specifici alle proteine chiave (claudine, occludine, caderine, connessine, uroplachine).
