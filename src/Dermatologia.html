@@ -379,9 +379,9 @@ DESCRIZIONE: Approfondimento biochimico della Matrice Extracellulare (GAG, prote
       </thead>
       <tbody>
         <tr>
-          <td><strong class="orangetext">GAG & Proteoglicani</strong></td>
+          <td><strong class="orangetext">GAG &amp; Proteoglicani</strong></td>
           <td>Acido Ialuronico (non solforato), Condroitin solfato, Eparan solfato legati a core proteici (Aggrecano, Decorina).</td>
-          <td>Polianioni che sequestrano cationi ($Na^+$) e molecole d'acqua per generare pressione di turgore idrostatico e filtrare metaboliti.</td>
+          <td>Polianioni che sequestrano cationi (Na<sup>+</sup>) e molecole d'acqua per generare pressione di turgore idrostatico e filtrare metaboliti.</td>
         </tr>
         <tr>
           <td><strong class="orangetext">Fibre Collagene (I, II, III)</strong></td>
@@ -420,7 +420,7 @@ DESCRIZIONE: Approfondimento biochimico della Matrice Extracellulare (GAG, prote
         </li>
         <li><strong class="yellowtext">Connettivo Adiposo:</strong> Specializzazione uniloculare (WAT, deposito energetico ed endocrino) e pluriloculare (BAT, dissipazione protonica termogenica mediata da UCP-1).</li>
         <li><strong class="yellowtext">Connettivo Cartilagineo:</strong> Matrice gommosa semirigida avascolare (ialina, elastica, fibrosa) dominata da condrociti e aggrecano.</li>
-        <li><strong class="yellowtext">Connettivo Osseo:</strong> Matrice mineralizzata da idrossiapatite $[Ca_{10}(PO_4)_6(OH)_2]$ e collagene I, sede del rimodellamento osteoblastico/osteoclastico.</li>
+        <li><strong class="yellowtext">Connettivo Osseo:</strong> Matrice mineralizzata da idrossiapatite [Ca<sub>10</sub>(PO<sub>4</sub>)<sub>6</sub>(OH)<sub>2</sub>] e collagene I, sede del rimodellamento osteoblastico/osteoclastico.</li>
         <li><strong class="yellowtext">Connettivi a Matrice Fluida:</strong> <em>Sangue</em> e <em>linfa</em>, caratterizzati da plasma acquoso privo di fibrillogenesi spontanea extracellulare.</li>
       </ul>
     </div>
@@ -439,33 +439,92 @@ DESCRIZIONE: Approfondimento biochimico della Matrice Extracellulare (GAG, prote
 <hr class="line" />
 
 <!-- ==========================================================
-SEZIONE: Tessuto Adiposo e Fisiologia Metabolica (adipose_tissue_section)
-DESCRIZIONE: Approfondimento sul tessuto adiposo come connettivo specializzato e organo endocrino. Descrizione morfologica e funzionale degli adipociti: distinzione dettagliata tra Tessuto Adiposo Bianco (WAT, uniloculare) come riserva energetica e secrezione di adipochine (leptina, adiponectina), e Tessuto Adiposo Bruno (BAT, pluriloculare) specializzato nella termogenesi senza brivido tramite la proteina UCP-1 (termogenina) e l'attività mitocondriale.
+SEZIONE: Tessuto Adiposo e Fisiologia Endocrino-Metabolica (adipose_tissue_section)
+DESCRIZIONE: Approfondimento citologico, biochimico ed endocrino sul tessuto adiposo (WAT vs BAT vs beige/brite). Analisi dei meccanismi di lipogenesi/lipolisi, termogenesi mediata da UCP-1 e profilazione secretoria delle principali adipochine (leptina, adiponectina, resistina, citochine pro-infiammatorie).
 ========================================================== -->
-<div class="grid-container50">
-  <!-- Colonna Sinistra: Descrizione e Tipologie -->
-  <div data-lang-key="adipose_tissue_section">
-    <!-- Titolo e Introduzione -->
-    <p class="subtitle">Tessuto Adiposo e Fisiologia Metabolica</p>
-    <p class="yellowtext">
-      Il tessuto adiposo è un tessuto connettivo specializzato costituito prevalentemente da <i>adipociti</i>, elementi cellulari deputati all'accumulo di lipidi sotto forma di trigliceridi e alla regolazione del bilancio energetico sistemico. Oltre alla funzione di riserva energetica e isolamento termico, agisce come un articolato organo endocrino e metabolico.
-    </p>
-    <p>
-      In base alla morfologia cellulare, al corredo organellare e alla specifica funzione fisiologica, si distinguono due varietà principali:
-    </p>
+<section aria-labelledby="adipose-main-title" data-lang-key="adipose_tissue_section">
+  <div class="grid-container50">
+    <!-- Colonna Sinistra: Testo e Inquadramento Scientifico -->
+    <div>
+      <h3 id="adipose-main-title" class="biotechbold">TESSUTO ADIPOSO E FISIOLOGIA ENDOCRINO-METABOLICA</h3>
 
-    <!-- Lista Dettagliata: Bianco vs Bruno -->
-    <ul>
-      <li><strong class="biotechbold">Tessuto Adiposo Bianco (WAT - Uniloculare):</strong> Caratterizzato da un'unica grande goccia lipidica citoplasmatica che confina il nucleo e gli organelli alla periferia. Svolge funzioni di riserva energetica a lungo termine, protezione meccanica dagli urti, isolamento termico e secrezione attiva di <i>adipochine</i> (es. <i>leptina</i>, <i>adiponectina</i>).</li>
-      <li><strong class="biotechbold">Tessuto Adiposo Bruno (BAT - Pluriloculare):</strong> Composto da cellule contenenti molteplici micro-gocce lipidiche e un'elevata densità di mitocondri ricchi di citocromi. È specializzato nella <i>termogenesi senza brivido</i> grazie all'espressione della proteina disaccoppiante <strong>UCP-1</strong> (<i>termogenina</i>), che dissipa il gradiente protonico mitocondriale generando calore anziché ATP.</li>
-    </ul>
-  </div>
+      <!-- Hook Narrativo -->
+      <div class="mb-15">
+        <p><strong>In sintesi:</strong> Oltre a rappresentare il principale serbatoio energetico corporeo sotto forma di triacilgliceroli neutri, il tessuto adiposo è un organo endocrino altamente plastico ed eterogeneo. Attraverso la secrezione di adipochine immunometaboliche e la modulazione della spesa energetica tramite termogenesi mitocondriale disaccoppiata, esso regola sistematicamente la sensibilità insulinica, il bilancio termico e l'omeostasi nutrizionale.</p>
+      </div>
 
-  <!-- Colonna Destra: Immagine -->
-  <div>
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_adiposo.avif" class="transparent specials-img" alt="Tessuto adiposo" width="200" height="148" loading="lazy" decoding="async">
+      <h4 class="subtitle">Dimorfismo Istologico e Funzionale</h4>
+      <p class="text">
+        In base all'origine embriologica, alla densità vascolare/noradrenergica e al corredo mitocondriale, si distinguono due sottopopolazioni primarie (oltre al fenotipo inducibile <em>beige/brite</em>):
+      </p>
+
+      <ul class="text-list">
+        <li>
+          <strong class="yellowtext">Tessuto Adiposo Bianco (WAT - Uniloculare):</strong> 
+          Adipociti a castone con vacuolo lipidico singolo centrale che comprime il nucleo al polo basale. Coordina la lipogenesi post-prandiale (mediata da lipoproteina lipasi e insulina) e la lipolisi a digiuno (attivazione della lipasi ormono-sensibile HSL e ATGL mediata da glucagone/catecolamine).
+        </li>
+        <li>
+          <strong class="yellowtext">Tessuto Adiposo Bruno (BAT - Pluriloculare):</strong> 
+          Cellule poligonali a citoplasma eosinofilo stipate di gocciole microvescicolari e mitocondri con creste dense ricche di citocromi. È specializzato nella <strong class="orangetext">termogenesi senza brivido</strong> (<em>non-shivering thermogenesis</em>) attivata dall'innervazione simpatica (recettori β3-adrenergici).
+        </li>
+      </ul>
+
+      <hr class="line" />
+
+      <h4 class="subtitle">Profilo Endocrino e Adipochinochine</h4>
+      <p class="text">
+        Il WAT funge da regolatore neuroendocrino rilasciando fattori bioattivi:
+      </p>
+      <ul class="text-list">
+        <li><strong class="orangetext">Leptina:</strong> Ormone anoressizzante che agisce a livello dell'ipotalamo ventromediale per inibire il neuropeptide Y (NPY) e stimolare il segnale POMC/CART della sazietà.</li>
+        <li><strong class="orangetext">Adiponectina:</strong> Glicoproteina insulino-sensibilizzante, antinfiammatoria e antiaterogena mediata dall'attivazione della protein chinasi AMPK e del recettore PPAR-α.</li>
+      </ul>
+    </div>
+
+    <!-- Colonna Destra: Immagine e Tabella Comparativa Molecolare -->
+    <div>
+      <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_adiposo.avif" class="transparent specials-img" alt="Istologia comparativa tra tessuto adiposo bianco uniloculare e bruno pluriloculare" width="200" height="148" loading="lazy" decoding="async">
+
+      <!-- Tabella Diagnostico-Molecolare WAT vs BAT -->
+      <div class="cyber-table-container">
+        <table class="cyber-table">
+          <thead>
+            <tr>
+              <th>Parametro</th>
+              <th>WAT (Bianco)</th>
+              <th>BAT (Bruno)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong class="orangetext">Morfologia Lipidica</strong></td>
+              <td>Uniloculare (singola goccia &gt; 100 μm)</td>
+              <td>Pluriloculare (microgocce multiple &lt; 20 μm)</td>
+            </tr>
+            <tr>
+              <td><strong class="orangetext">Apparato Mitocondriale</strong></td>
+              <td>Scarso, creste rudimentali; fosforilazione ossidativa canonica (sintesi ATP)</td>
+              <td>Molto abbondante; espressione marcata di proteina disaccoppiante <strong>UCP-1 (termogenina)</strong></td>
+            </tr>
+            <tr>
+              <td><strong class="orangetext">Meccanismo Energetico</strong></td>
+              <td>Accumulo di trigliceridi e stoccaggio chilocalorico netto</td>
+              <td>Dissipazione del gradiente protonico &Delta;<i>&mu;</i><sub>H<sup>+</sup></sub> sotto forma di calore metabolico diretto</td>
+            </tr>
+            <tr>
+              <td><strong class="orangetext">Origine Embrionale</strong></td>
+              <td>Linea mesenchimale generica (adipoblasti PPARγ+)</td>
+              <td>Linea miogenica scheletrica (precursori Myf5+ / Pax7+)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div> 
+</section>
+
+<hr class="line" />
+
 <!-- ==========================================================
 SEZIONE: Tessuto Nervoso e Neurofisiologia (nervous_tissue_section)
 DESCRIZIONE: Approfondimento sul tessuto nervoso come sistema di elaborazione bioelettrica. Descrizione della dualità cellulare tra neuroni (unità morfo-funzionali) e neuroglia (sostegno, isolamento, difesa). Analisi strutturale del neurone (soma, dendriti afferenti, assone efferente con guaina mielinica e conduzione saltatoria). Dettaglio delle proprietà fisiologiche: eccitabilità (canali ionici), conducibilità (potenziale d'azione) e trasmissione sinaptica (neurotrasmettitori, sinapsi chimiche). Cenni alla struttura dei nervi periferici (endonevrio, perinevrio, epinevrio) e natura post-mitotica dei neuroni.
