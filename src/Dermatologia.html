@@ -351,56 +351,93 @@ DESCRIZIONE: Approfondimento morfo-funzionale dei compartimenti di rivestimento 
 <hr class="line" />
 
 <!-- ==========================================================
-SEZIONE: Tessuto Connettivo e Matrice Extracellulare (connective_tissue_section)
-DESCRIZIONE: Analisi comparativa del tessuto connettivo rispetto all'epiteliale, focalizzandosi sulla Matrice Extracellulare (MEC): composizione della sostanza fondamentale amorfa (GAG, proteoglicani, acido ialuronico) e della componente fibrillare (collagene, reticolina, elastina/fibrillina). Include la classificazione istologica completa (connettivo propriamente detto lasso/denso, adiposo bianco/bruno, cartilagineo, osseo, fluidi) e un riepilogo delle funzioni sistemiche (connessione, sostegno, trofismo, difesa immunitaria).
+SEZIONE: Tessuto Connettivo e Dinamica della Matrice Extracellulare (connective_tissue_section)
+DESCRIZIONE: Approfondimento biochimico della Matrice Extracellulare (GAG, proteoglicani, glicoproteine di adesione e fibre), tassonomia istologica (connettivi propriamente detti e specializzati) e network funzionale sistemico.
 ========================================================== -->
-<div data-lang-key="connective_tissue_section">
-  <!-- Titolo e Introduzione alla MEC -->
-  <p class="subtitle">Tessuto Connettivo e Matrice Extracellulare</p>
-  <p class="yellowtext">
-    A differenza dei tessuti epiteliali, caratterizzati da stretta contiguità cellulare, il tessuto connettivo è costituito da elementi cellulari (es. <i>fibroblasti</i>, <i>macrofagi</i>, <i>mastociti</i>) ampiamente spaziati e immersi in un'abbondante <strong>Matrice Extracellulare (MEC)</strong>.
-  </p>
-  <p>
-    La MEC si compone di una <strong>sostanza fondamentale amorfa</strong> — gel altamente idratato ricco di glicosaminoglicani (GAG, come l'<i>acido ialuronico</i>) e proteoglicani, essenziali per la turgidità tissutale e la diffusione di soluti — e da una <strong>componente fibrillare</strong> organizzata in tre varietà:
+<section aria-labelledby="connective-main-title" data-lang-key="connective_tissue_section">
+  <h3 id="connective-main-title" class="biotechbold">TESSUTO CONNETTIVO E MATRICE EXTRACELLULARE (MEC)</h3>
+
+  <!-- Hook Narrativo -->
+  <div class="mb-15">
+    <p><strong>In sintesi:</strong> A differenza degli epiteli, il tessuto connettivo è dominato dalla Matrice Extracellulare (MEC), un network idro-elettrolitico e fibrillare tridimensionale sintetizzato dai fibroblasti. La MEC non funge solo da impalcatura strutturale e riserva idromeccanica, ma agisce come piattaforma dinamica per il signalling paracrino, la modulazione immunitaria e la trasmissione delle forze meccano-trasduttive ai citoscheletri cellulari.</p>
+  </div>
+
+  <h4 class="subtitle">Composizione Biochimica della Sostanza Fondamentale e Fibre</h4>
+  <p class="text">
+    La componente acellulare si articola in una <strong class="yellowtext">sostanza fondamentale amorfa</strong> (fase idratata colloidale) e in una <strong class="yellowtext">componente fibrillare</strong> ad alto modulo elastico o tensivo:
   </p>
 
-  <!-- Lista delle Fibre della MEC -->
-  <ul>
-    <li><strong class="biotechbold">Fibre Collagene:</strong> Strutture ad elevata resistenza alla trazione e all'allungamento meccanico.</li>
-    <li><strong class="biotechbold">Fibre Reticolari:</strong> Reticoli sottili di collagene di tipo III che costituiscono l'impalcatura (<i>stroma</i>) degli organi parenchimatosi e dei tessuti emopoietici.</li>
-    <li><strong class="biotechbold">Fibre Elastiche:</strong> Reticoli idrofobici ricchi di <i>elastina</i> e <i>fibrillina</i> che conferiscono estensibilità e ritorno elastico reversibile.</li>
-  </ul>
+  <!-- Tabella Molecolare Componenti MEC -->
+  <div class="cyber-table-container">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Macromolecola</th>
+          <th>Costituenti e Organizzazione</th>
+          <th>Ruolo Fisiologico e Biomeccanico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong class="orangetext">GAG & Proteoglicani</strong></td>
+          <td>Acido Ialuronico (non solforato), Condroitin solfato, Eparan solfato legati a core proteici (Aggrecano, Decorina).</td>
+          <td>Polianioni che sequestrano cationi ($Na^+$) e molecole d'acqua per generare pressione di turgore idrostatico e filtrare metaboliti.</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Fibre Collagene (I, II, III)</strong></td>
+          <td>Tripla elica di tropocollagene (ripetizioni Gly-Pro-Hyp) assemblata in fibrille a bandeggiamento periodico (67 nm).</td>
+          <td>Resistenza primaria alle forze di trazione assiale; il tipo I predomina nel derma reticolare, il tipo III forma la reticolina stromale.</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Fibre Elastiche</strong></td>
+          <td>Core centrale amorfo di Elastina reticolata da legami di desmosina/isodesmosina, rivestito da microfibrille di Fibrillina-1.</td>
+          <td>Capacità di deformazione estensiva e ritorno elastico reversibile senza dissipazione energetica (pareti arteriose, derma papillare).</td>
+        </tr>
+        <tr>
+          <td><strong class="orangetext">Glicoproteine di Adesione</strong></td>
+          <td>Fibronectina, Laminina dotate di sequenze RGD (Arg-Gly-Asp).</td>
+          <td>Ponte macromolecolare di ancoraggio tra i recettori integrinici della membrana cellulare e le fibrille collagene della MEC.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="line" />
 
   <!-- Griglia: Immagine e Classificazione Istologica -->
   <div class="grid-container20x80">
-    <!-- Colonna Immagine -->
     <div class="mb-15">
-      <img class="specials-img transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_connettivo.avif" alt="Tessuto connettivo" width="340" height="218" loading="lazy" decoding="async">
+      <img class="specials-img transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/tessuto_connettivo.avif" alt="Microfotografia e organizzazione del tessuto connettivo" width="340" height="218" loading="lazy" decoding="async">
     </div>
     
-    <!-- Colonna Testo: Classificazione -->
     <div>
-      <p class="biotechbold">Classificazione Istologica dei Tessuti Connettivi:</p>
-      <p>La composizione della MEC, la densità delle fibre e le popolazioni cellulari caratterizzanti definiscono le diverse varietà tissutali:</p>
-      <ol class="list">
-        <li><strong class="biotechbold">Tessuto Connettivo Propriamente Detto:</strong> Distinto in <i>lasso</i> (trofico, ipoderme, tonaca propria) e <i>denso</i> (meccanico, tendini, legamenti, derma reticolare).</li>
-        <li><strong class="biotechbold">Tessuto Adiposo:</strong> Specializzato nell'accumulo lipidico e nella termogenesi (<i>bianco/uniloculare</i> e <i>bruno/pluriloculare</i>).</li>
-        <li><strong class="biotechbold">Tessuto Cartilagineo:</strong> Connettivo di sostegno semirigido e avascolare (<i>ialino</i>, <i>elastico</i>, <i>fibroso</i>).</li>
-        <li><strong class="biotechbold">Tessuto Osseo:</strong> Matrice mineralizzata ad elevata rigidità per il sostegno scheletrico e la riserva idrica/minerale di calcio.</li>
-        <li><strong class="biotechbold">Tessuti Connettivi Fluidi:</strong> <i>Sangue</i> e <i>linfa</i>, caratterizzati da una matrice acquosa priva di fibre polimerizzate in condizioni fisiologiche.</li>
-      </ol>
+      <h4 class="biotechbold">Classificazione Tassonomica dei Connettivi</h4>
+      <p class="text">L'eterogeneità della MEC e la specificità del citotipo residente determinano la suddivisione istologica:</p>
+      <ul class="text-list">
+        <li><strong class="yellowtext">Connettivo Propriamente Detto:</strong>
+          <em>Lasso</em> (lamina propria, tonaca sottomucosa; prevalenza di cellule e sostanza fondamentale amorfa per il trofismo) e 
+          <em>Denso</em> (derma reticolare, tendini, capsule articolari; fasci collagene stipati ad orientamento regolare o irregolare per la tenuta meccanica).
+        </li>
+        <li><strong class="yellowtext">Connettivo Adiposo:</strong> Specializzazione uniloculare (WAT, deposito energetico ed endocrino) e pluriloculare (BAT, dissipazione protonica termogenica mediata da UCP-1).</li>
+        <li><strong class="yellowtext">Connettivo Cartilagineo:</strong> Matrice gommosa semirigida avascolare (ialina, elastica, fibrosa) dominata da condrociti e aggrecano.</li>
+        <li><strong class="yellowtext">Connettivo Osseo:</strong> Matrice mineralizzata da idrossiapatite $[Ca_{10}(PO_4)_6(OH)_2]$ e collagene I, sede del rimodellamento osteoblastico/osteoclastico.</li>
+        <li><strong class="yellowtext">Connettivi a Matrice Fluida:</strong> <em>Sangue</em> e <em>linfa</em>, caratterizzati da plasma acquoso privo di fibrillogenesi spontanea extracellulare.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Sezione Funzioni Sistemiche -->
-  <p class="subtitle">Funzioni Sistemiche del Tessuto Connettivo</p>
-  <ol class="list">
-    <li><strong class="biotechbold">Connessione e Coesione Tissutale:</strong> Assicura l'integrazione anatomica e la continuità strutturale tra organi e tessuti adiacenti.</li>
-    <li><strong class="biotechbold">Sostegno Meccanico e Protezione:</strong> Costituisce l'impalcatura scheletrica dell'organismo e lo stroma interno dei visceri, ammortizzando sollecitazioni e traumi.</li>
-    <li><strong class="biotechbold">Trofismo e Trasporto Metabolico:</strong> Regola il passaggio di nutrienti, cataboliti, gas respiratori e segnali molecolari tra il sistema vascolare e le cellule parenchimali.</li>
-    <li><strong class="biotechbold">Difesa Immunitaria e Riparazione:</strong> Sede primaria delle risposte infiammatorie, immunitarie e dei processi di cicatrizzazione grazie a leucociti e cellule residenti.</li>
-  </ol>
-</div>
+  <hr class="line" />
+
+  <h4 class="subtitle">Integrazione Funzionale Sistemica</h4>
+  <ul class="text-list">
+    <li><strong class="orangetext">Integrazione Meccanica e Continuità:</strong> Trasmissione vettoriale dei carichi tensili tra apparato muscolo-scheletrico e stroma d'organo.</li>
+    <li><strong class="orangetext">Scambi Metabolici e Termoregolazione:</strong> Interfaccia trofica per perfusione ematica, trasporto di soluti e veicolazione dei gradienti termici.</li>
+    <li><strong class="orangetext">Sorveglianza Immunologica:</strong> Microambiente primario per l'extravasazione di neutrofili/monociti, degranulazione mastocitaria e presentazione antigenica macrofagica.</li>
+  </ul>
+</section>
+
+<hr class="line" />
+
 <!-- ==========================================================
 SEZIONE: Tessuto Adiposo e Fisiologia Metabolica (adipose_tissue_section)
 DESCRIZIONE: Approfondimento sul tessuto adiposo come connettivo specializzato e organo endocrino. Descrizione morfologica e funzionale degli adipociti: distinzione dettagliata tra Tessuto Adiposo Bianco (WAT, uniloculare) come riserva energetica e secrezione di adipochine (leptina, adiponectina), e Tessuto Adiposo Bruno (BAT, pluriloculare) specializzato nella termogenesi senza brivido tramite la proteina UCP-1 (termogenina) e l'attività mitocondriale.
