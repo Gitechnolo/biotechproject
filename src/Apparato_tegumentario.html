@@ -76,6 +76,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .imgRightfl, .imgLeftfl { display: flex; margin: 10px; }
 .imgRightfl { margin-left: auto; }
 .imgLeftfl { margin-right: auto; }
+.img-center{ display: block; margin-left: auto; margin-right: auto}
 /* ==========================================
    MEDIA QUERY UNICA PER SCHERMI GRANDI (Desktop) - colonne affiancate e blocchi più bassi (CLS Desktop a 0.07)
    ========================================== */
@@ -411,7 +412,7 @@ DESCRIZIONE: Approfondimento biochimico su struttura dell'alfa-cheratina, ponti 
 SEZIONE: Melanina e Melanogenesi (melanin_process_content)
 DESCRIZIONE: Approfondimento biochimico su melanogenesi, via cAMP/PKA/MITF, tirosinasi/TYRP1/DCT, biforcazione eumelanina/feomelanina, unita epidermo-melaninica e dinamica di trasferimento citocrino via RAB27A/Miosina Va.
 ========================================================== -->
-<div class="grid-container54x46 mb-25">
+<section class="grid-container54x46 mb-25">
   
   <!-- Blocco Testo & Modelli Strutturati Traducibili -->
   <div data-lang-key="melanin_process_content" class="mb-15">
@@ -447,7 +448,7 @@ DESCRIZIONE: Approfondimento biochimico su melanogenesi, via cAMP/PKA/MITF, tiro
     </div>
 
     <p class="text mb-15">
-      A valle del DOPAchinone, la biforcazione metabolica è governata dall'attività genetica del recettore **MC1R** (Melanocortin 1 Receptor) e dalla disponibilità intra-melanosomiale di composti tiolici (cisteina o glutatione ridotto):
+      A valle del DOPAchinone, la biforcazione metabolica è governata dall'attività genetica del recettore <strong>MC1R</strong> (Melanocortin 1 Receptor) e dalla disponibilità intra-melanosomiale di composti tiolici (cisteina o glutatione ridotto):
     </p>
 
     <!-- TABELLA COMPARATIVA EUMELANINA VS FEOMELANINA -->
@@ -464,7 +465,7 @@ DESCRIZIONE: Approfondimento biochimico su melanogenesi, via cAMP/PKA/MITF, tiro
           <tr>
             <td><strong>Eumelanina</strong></td>
             <td>Polimero ad alto peso molecolare di DHI e DHICA. Insolubile, colore marrone-nero.</td>
-            <td><strong>Fotoprotettiva:</strong> Dissipa >99% delle radiazioni UV sotto forma di calore, neutralizza i ROS e scherma il DNA.</td>
+            <td><strong>Fotoprotettiva:</strong> Dissipa &gt;99% delle radiazioni UV sotto forma di calore, neutralizza i ROS e scherma il DNA.</td>
           </tr>
           <tr>
             <td><strong>Feomelanina</strong></td>
@@ -481,7 +482,7 @@ DESCRIZIONE: Approfondimento biochimico su melanogenesi, via cAMP/PKA/MITF, tiro
 
     <h4 class="subHeader mb-7">Unità Epidermo-Melaninica e Trasferimento Citocrino</h4>
     <p class="text">
-      I melanociti sono cellule dendritiche derivate dalla cresta neurale insediate nello strato basale epidermico (in rapporto circa 1:10 con i cheratinociti basali). Ciascun melanocita costituisce un'<strong>unità epidermo-melaninica</strong> estendendo i propri arbori dendritici verso circa 36 cheratinociti sovrastanti. I melanosomi maturi (stadio IV) vengono trasportati lungo i microfilamenti di actina corticale mediante il complesso trimetrico **RAB27A – Melanofilina (MLPH) – Miosina Va**. Il trasferimento ai cheratinociti avviene per via citocrina/fagocitica; una volta internalizzati, i melanosomi si organizzano a formare un "cappuccio nucleare" micro-sopranucleare (<em>supranuclear umbrella</em>), assorbendo fisicamente i raggi UV prima che raggiungano il genoma cellulare.
+      I melanociti sono cellule dendritiche derivate dalla cresta neurale insediate nello strato basale epidermico (in rapporto circa 1:10 con i cheratinociti basali). Ciascun melanocita costituisce un'<strong>unità epidermo-melaninica</strong> estendendo i propri arbori dendritici verso circa 36 cheratinociti sovrastanti. I melanosomi maturi (stadio IV) vengono trasportati lungo i microfilamenti di actina corticale mediante il complesso trimetrico <strong>RAB27A – Melanofilina (MLPH) – Miosina Va</strong>. Il trasferimento ai cheratinociti avviene per via citocrina/fagocitica; una volta internalizzati, i melanosomi si organizzano a formare un "cappuccio nucleare" micro-sopranucleare (<em>supranuclear umbrella</em>), assorbendo fisicamente i raggi UV prima che raggiungano il genoma cellulare.
     </p>
   </div>
 
@@ -490,21 +491,66 @@ DESCRIZIONE: Approfondimento biochimico su melanogenesi, via cAMP/PKA/MITF, tiro
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/processo_melanogenesi.avif" class="transparent specials-img" alt="Rappresentazione schematica del processo di melanogenesi e trasferimento melanosomiale" width="581" height="374" loading="lazy" decoding="async">
   </div>
 
-</div>
+</section>
 
-<div class="grid-container50">
-<!-- Il Derma -->  
-<div data-lang-key="derma_content">
-<h2 class="secHeader">Il derma</h2>
-<p class="text">Il derma è un tessuto connettivo propriamente detto, vascularizzato e innervato, che garantisce sostegno meccanico, elasticità e nutrizione all'epidermide avascolare sovrastante. Il suo spessore varia da 1 a 4 mm a seconda della sede corporea (massimo su dorso e piante dei piedi). Oltre alla funzione strutturale, ospita la rete vascolare linfatica e sanguigna, le terminazioni nervose sensitive e gli annessi cutanei (follicoli piliferi, ghiandole sebacee e sudoripare).</p>
-<p class="text">Istologicamente, il derma non presenta una netta separazione ma si articola in due strati principali che differiscono per densità della matrice extracellulare e tipologia di recettori:</p>
-<h3 class="subHeader">1. Derma papillare (superficiale)</h3>
-<p class="text">Costituisce circa il 20% dello spessore dermico ed è formato da tessuto connettivo lasso. La sua caratteristica distintiva sono le <strong>papille dermiche</strong>, proiezioni digitiformi che si interdigitano con le creste epidermiche (rete ridges), aumentando la superficie di scambio per i nutrienti e l'ancoraggio meccanico (giunzione dermo-epidermica).  Questo strato è ricco di capillari terminali e fibre nervose sensitive, inclusi i <strong>corpuscoli di Meissner</strong> (tatto fine) e le terminazioni libere per la percezione termica e dolorifica.</p> 
-<h3 class="subHeader">2. Derma reticolare (profondo)</h3>
-<p class="text">Rappresenta la porzione predominante (80% dello spessore) ed è composto da tessuto connettivo denso irregolare. La sua matrice è caratterizzata da robusti fasci intrecciati di <strong>collagene di tipo I</strong> (che conferisce resistenza alla trazione) e fibre elastiche (che garantiscono il recoil elastico). In questo strato risiedono i vasi sanguigni di grosso calibro, le strutture ghiandolari profonde e i recettori meccanici specializzati: i <strong>corpuscoli di Pacini</strong> (pressione profonda e vibrazione) e i <strong>corpuscoli di Ruffini</strong> (stiramento cutaneo e propriocezione).  La disposizione delle fibre collagene segue linee di tensione note come <strong>linee di Langer</strong>, rilevanti in chirurgia per la cicatrizzazione.</p>
-</div>
-<div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/derma.avif" class="transparent specials-img" alt="Derma" width="825" height="481" loading="lazy" decoding="async"></div>
-</div>
+<!-- ========================================================== 
+SEZIONE: Il Derma (derma_content)
+DESCRIZIONE: Anatomia istologica, biomeccanica e microvascolarizzazione del derma. Confronto strutturale tra derma papillare e reticolare, rete neuro-recettoriale e linee di Langer.
+========================================================== -->
+<section class="mb-25">
+  
+  <!-- Blocco Testo & Modelli Strutturati Traducibili -->
+  <div data-lang-key="derma_content" class="mb-15">
+    <h3 class="secHeader">Il Derma: Architettura e Biomeccanica Cutanea</h3>
+    
+    <p class="text mb-15">
+      Il <strong>derma</strong> rappresenta l'impalcatura connettivale e il motore metabolico della cute. Situato al di sotto dell'epidermide, questo tessuto connettivo propriamente detto, altamente vascolarizzato e innervato, garantisce sostegno meccanico, elasticità e nutrizione all'epidermide avascolare sovrastante. Il suo spessore varia da 1 mm (nelle palpebre) fino a 4 mm (nel dorso e nella pianta dei piedi). Oltre alla funzione strutturale, ospita la rete vascolare ematica e linfatica, i recettori sensoriali e gli annessi cutanei.
+    </p>
+
+    <p class="text mb-15">
+      Dal punto di vista istologico, il derma sfuma gradualmente senza una demarcazione netta, articolandosi in due compartimenti funzionali distinti per densità della matrice extracellulare (ECM) e specializzazione recettoriale:
+    </p>
+
+    <!-- TABELLA COMPARATIVA: DERMA PAPILLARE VS RETICOLARE -->
+    <div class="cyber-table-container mb-15">
+      <table class="cyber-table">
+        <thead>
+          <tr>
+            <th>Strato Dermico</th>
+            <th>Caratteristiche Istologiche</th>
+            <th>Neuro-Recettori &amp; Vasi</th>
+            <th>Ruolo Fisiomeccanico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Derma Papillare</strong><br><em>(Superficiale ~20%)</em></td>
+            <td>Tessuto connettivo lasso con <strong>papille dermiche</strong> interdigitate alle creste epidermiche (<em>rete ridges</em>). Collagene tipo III prevalente.</td>
+            <td>Plesso capillare subpapillare, <strong>corpuscoli di Meissner</strong> (tatto fine), terminazioni libere.</td>
+            <td>Ancoraggio alla giunzione dermo-epidermica (DEJ), nutrimento per diffusione all'epidermide, percezione tattile superficiale.</td>
+          </tr>
+          <tr>
+            <td><strong>Derma Reticolare</strong><br><em>(Profondo ~80%)</em></td>
+            <td>Tessuto connettivo denso irregolare. Robusti fasci intrecciati di <strong>collagene tipo I</strong> e fibre elastiche.</td>
+            <td>Vasi di grosso calibro, <strong>corpuscoli di Pacini</strong> (pressione/vibrazione) e <strong>Ruffini</strong> (stiramento).</td>
+            <td>Resistenza alle sollecitazioni di trazione, <em>recoil</em> elastico e supporto agli annessi profondi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="subHeader mb-7">Linee di Langer e Tensione Cutanea</h4>
+    <p class="text">
+      Nel derma reticolare, l'orientamento prevalente dei fasci di collagene definisce le <strong>linee di tensione di Langer</strong>. In ambito chirurgico e dermatologico, l'esecuzione di incisioni parallele a queste linee riduce al minimo la trazione sui margini della ferita, favorendo una cicatrizzazione esteticamente ottimale e prevenendo la formazione di cheloidi.
+    </p>
+  </div>
+
+  <!-- Blocco Immagine Statico -->
+  <div>
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/derma.avif" class="transparent specials-img img-center" alt="Sezione istologica e schematica del derma papillare e reticolare" width="825" height="481" loading="lazy" decoding="async">
+  </div>
+
+</section>
 
 <div class="grid-container50">
 <!-- Cellule del Derma -->
