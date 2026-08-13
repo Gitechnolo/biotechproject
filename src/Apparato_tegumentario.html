@@ -407,22 +407,89 @@ DESCRIZIONE: Approfondimento biochimico su struttura dell'alfa-cheratina, ponti 
 
 <hr class="line" />
 
+<!-- ========================================================== 
+SEZIONE: Melanina e Melanogenesi (melanin_process_content)
+DESCRIZIONE: Approfondimento biochimico su melanogenesi, via cAMP/PKA/MITF, tirosinasi/TYRP1/DCT, biforcazione eumelanina/feomelanina, unita epidermo-melaninica e dinamica di trasferimento citocrino via RAB27A/Miosina Va.
+========================================================== -->
 <div class="grid-container54x46 mb-25">
-<!-- Melanina e Melanogenesi -->
-<div data-lang-key="melanin_process_content" class="mb-15">
-<h3 class="secHeader">La melanina e il processo di melanogenesi</h3>
-<p class="text">Il colore della pelle e dei capelli è determinato dalla quantità, dal tipo e dalla distribuzione del pigmento melanina. La melanogenesi è un processo biochimico complesso che avviene nei melanosomi, organuli specifici dei melanociti, e ha come substrato iniziale l'amminoacido L-tirosina. L'enzima chiave che regola la velocità di questa reazione è la tirosinasi, che catalizza l'ossidazione della tirosina in DOPA e successivamente in dopachinone.</p>
-<p class="text">A valle di questa reazione, la via metabolica si biforca in base alla presenza di cisteina e all'attività genetica del recettore MC1R, producendo due forme distinte di melanina:</p>
-<ul class="list">
-<li><strong>Eumelanina:</strong> Un polimero di colore marrone-nero, insolubile e altamente fotoprotettivo. Agisce come un filtro fisico assorbendo le radiazioni UV e neutralizzando i radicali liberi (azione antiossidante), proteggendo il DNA nucleare dai danni mutageni.</li>
-<li><strong>Feomelanina:</strong> Un polimero contenente zolfo (derivato dalla cisteina) di colore giallo-rossastro. È meno efficace nell'assorbimento degli UV e, sotto irradiazione, può agire come fotosensibilizzatore generando specie reattive dell'ossigeno (ROS), aumentando potenzialmente il rischio di danno ossidativo cellulare.</li>
-</ul>
-<p class="text">La pelle chiara, ricca di feomelanina e povera di eumelanina, offre una protezione naturale inferiore contro le radiazioni solari. Tuttavia, questa minore schermatura favorisce la penetrazione dei raggi UVB necessari per la sintesi cutanea di vitamina D3 (colecalciferolo), essenziale per l'assorbimento intestinale del calcio, la mineralizzazione ossea e la regolazione di funzioni immunitarie.</p>
-<h4 class="subHeader">Meccanismo di melanogenesi e trasferimento</h4>
-<p class="text">Nello strato basale dell'epidermide, i melanociti sono cellule dendritiche di origine neuroectodermica distribuite tra i cheratinociti. Ogni melanocita forma un'<strong>unità epidermo-melaninica</strong> contattando tramite i suoi prolungamenti dendritici circa 30-40 cheratinociti vicini. All'interno del citoplasma del melanocita, i melanosomi maturi (stadio III e IV) vengono trasportati lungo i dendriti grazie al citoscheletro di actina e miosina.</p>
-<p class="text">La produzione e il trasferimento del pigmento sono regolati da fattori endogeni ed esogeni. Il principale regolatore ormonale è l'<strong>α-MSH</strong> (ormone melanocita-stimolante), rilasciato dai cheratinociti in risposta ai danni al DNA indotti dagli UV. Legandosi al recettore MC1R sulla superficie del melanocita, l'α-MSH attiva la via di segnalazione cAMP/PKA, stimolando l'espressione della tirosinasi e favorendo la sintesi di eumelanina protettiva. Una volta trasferiti nei cheratinociti tramite citocrinia (o fagocitosi dei dendriti), i melanosomi si dispongono a "cappuccio" sopra il nucleo cellulare, schermando fisicamente il materiale genetico dalle radiazioni ionizzanti (UVA e UVB).</p>
-</div>
-<div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/processo_melanogenesi.avif" class="transparent specials-img" alt="processo_melanogenesi" width="581" height="374" loading="lazy" decoding="async"></div>
+  
+  <!-- Blocco Testo & Modelli Strutturati Traducibili -->
+  <div data-lang-key="melanin_process_content" class="mb-15">
+    <h3 class="secHeader">La Melanina e il Processo di Melanogenesi</h3>
+    
+    <p class="text mb-15">
+      Il colorito della cute e dei foglietti annessiali è dettato dalla concentrazione, dalla qualità e dalla distribuzione spaziale della melanina. La melanogenesi è una via biosintetica complessa localizzata all'interno di organelli specializzati di derivazione lisosomiale, i <strong>melanosomi</strong>, presenti nei melanociti. Il substrato iniziale è l'amminoacido L-tirosina; la tappa limitante la velocità del processo è catalizzata dalla <strong>tirosinasi (TYR)</strong>, un metallo-enzima rame-dipendente che ossida la L-tirosina in L-DOPA (L-3,4-diidrossifenilalanina) e successivamente in DOPAchinone.
+    </p>
+
+    <!-- DIAGRAMMA DI FLUSSO: BIFORCAZIONE METABOLICA -->
+    <div class="cyber-flowchart mb-15">
+      <div class="flow-card common">
+        <span class="flow-tag tag-common">Substrato Iniziale</span>
+        <div class="flow-title">L-Tirosina &rarr; L-DOPA &rarr; DOPAchinone</div>
+        <div class="flow-desc">Catalisi mediante Tirosinasi (TYR) coordinata da proteina regolatrice MITF.</div>
+      </div>
+      
+      <div class="flow-arrow-down">&darr;</div>
+      
+      <div class="flow-branches">
+        <div class="flow-card extrinsic">
+          <span class="flow-tag tag-extrinsic">Feomelanogenesi</span>
+          <div class="flow-title">+ L-Cisteina / GSH</div>
+          <div class="flow-desc">Reazione con gruppi tiolici &rarr; Cisteinil-DOPA. Polimero solforato giallo-rosso.</div>
+        </div>
+        
+        <div class="flow-card intrinsic">
+          <span class="flow-tag tag-intrinsic">Eumelanogenesi</span>
+          <div class="flow-title">Assenza di Tioli (DCT / TYRP1)</div>
+          <div class="flow-desc">Ciclizzazione in DOPAcrocroma &rarr; DHICA / DHI. Polimero insolubile bruno-nero.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text mb-15">
+      A valle del DOPAchinone, la biforcazione metabolica è governata dall'attività genetica del recettore **MC1R** (Melanocortin 1 Receptor) e dalla disponibilità intra-melanosomiale di composti tiolici (cisteina o glutatione ridotto):
+    </p>
+
+    <!-- TABELLA COMPARATIVA EUMELANINA VS FEOMELANINA -->
+    <div class="cyber-table-container">
+      <table class="cyber-table">
+        <thead>
+          <tr>
+            <th>Polimero Pigmentario</th>
+            <th>Proprietà Fisico-Chimiche</th>
+            <th>Impatto Fotobiochimico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Eumelanina</strong></td>
+            <td>Polimero ad alto peso molecolare di DHI e DHICA. Insolubile, colore marrone-nero.</td>
+            <td><strong>Fotoprotettiva:</strong> Dissipa >99% delle radiazioni UV sotto forma di calore, neutralizza i ROS e scherma il DNA.</td>
+          </tr>
+          <tr>
+            <td><strong>Feomelanina</strong></td>
+            <td>Oligomero contenente benzotiazina/benzotiazolo. Solubile in ambiente alcalino, colore giallo-rosso.</td>
+            <td><strong>Fotosensibilizzante:</strong> Sotto irradiazione UVA/UVB genera ROS e perossidi, incrementando il rischio di danno mutageno.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text mb-15">
+      Nei fototipi chiari (I e II), la prevalenza di feomelanina correla con una ridotta protezione intrinseca contro il danno foto-indotto. Tuttavia, la minore attenuazione del flusso fotonico negli strati sovrabasali favorisce l'assorbimento dei fotoni UVB (290–315 nm) necessari per la fotolisi del 7-deidrocolesterolo in <strong>previtamina D3</strong> (successivamente isomerizzata a colecalciferolo), essenziale per la mineralizzazione ossea e l'omeostasi immunitaria.
+    </p>
+
+    <h4 class="subHeader mb-7">Unità Epidermo-Melaninica e Trasferimento Citocrino</h4>
+    <p class="text">
+      I melanociti sono cellule dendritiche derivate dalla cresta neurale insediate nello strato basale epidermico (in rapporto circa 1:10 con i cheratinociti basali). Ciascun melanocita costituisce un'<strong>unità epidermo-melaninica</strong> estendendo i propri arbori dendritici verso circa 36 cheratinociti sovrastanti. I melanosomi maturi (stadio IV) vengono trasportati lungo i microfilamenti di actina corticale mediante il complesso trimetrico **RAB27A – Melanofilina (MLPH) – Miosina Va**. Il trasferimento ai cheratinociti avviene per via citocrina/fagocitica; una volta internalizzati, i melanosomi si organizzano a formare un "cappuccio nucleare" micro-sopranucleare (<em>supranuclear umbrella</em>), assorbendo fisicamente i raggi UV prima che raggiungano il genoma cellulare.
+    </p>
+  </div>
+
+  <!-- Blocco Immagine Statico (Esterno al JSON) -->
+  <div>
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/processo_melanogenesi.avif" class="transparent specials-img" alt="Rappresentazione schematica del processo di melanogenesi e trasferimento melanosomiale" width="581" height="374" loading="lazy" decoding="async">
+  </div>
+
 </div>
 
 <div class="grid-container50">
