@@ -557,14 +557,14 @@ DESCRIZIONE: Anatomia istologica, biomeccanica e microvascolarizzazione del derm
 <hr class="line" />
 
 <!-- ========================================================== 
-SEZIONE: Cellule del Derma (dermal_cells_content)
-DESCRIZIONE: Dinamica di popolazione del derma: citologia, immunobiologia, marcatori funzionali e risposte infiammatorie.
+SEZIONE: Cellule e Componente Fibrillare del Derma (dermal_cells_content)
+DESCRIZIONE: Dinamica di popolazione del derma (citologia, immunobiologia, marcatori) e architettura della matrice fibrillare (collagene, elastina, degradazione).
 ========================================================== -->
 <section class="mb-25" data-lang-key="dermal_cells_content">
   <h3 class="secHeader">Citologia e Microambiente Dermico: Popolazioni Residenti e Migranti</h3>
   
   <p class="text mb-15">
-    La citodinamica del derma si regge su un delicato equilibrio tra un compartimento cellulare autoctono e stazionario e una quota dinamica adibita alla sorveglianza immunologia. Questa popolazione cellulare eterogenea si suddivide funzionalmente in due grandi categorie: le <strong>cellule residenti</strong>, finemente integrate nella trama macromolecolare della matrice extracellulare (ECM), e le <strong>cellule migranti (o transitorie)</strong>, guidate da gradienti chemiotattici attraverso il microcircolo ematico e linfatico in risposta a insulti meccanici, patogeni o eventi infiammatori.
+    La citodinamica del derma si regge su un delicato equilibrio tra un compartimento cellulare autoctono e stazionario e una quota dinamica adibita alla sorveglianza immunitaria. Questa popolazione cellulare eterogenea si suddivide funzionalmente in due grandi categorie: le <strong>cellule residenti</strong>, finemente integrate nella trama macromolecolare della matrice extracellulare (ECM), e le <strong>cellule migranti (o transitorie)</strong>, guidate da gradienti chemiotattici attraverso il microcircolo ematico e linfatico in risposta a insulti meccanici, patogeni o eventi infiammatori.
   </p>
 
   <h4 class="subHeader mb-7">1. Cellule Residenti: I Guardiani dell'Omeostasi Tissutale</h4>
@@ -573,7 +573,7 @@ DESCRIZIONE: Dinamica di popolazione del derma: citologia, immunobiologia, marca
   </p>
   <ul class="list mb-15">
     <li>
-      <strong>Fibroblasti:</strong> Rappresentano gli elementi stromali più abbondanti e metabolicamente poliedrici del tessuto connettivo. Caratterizzati da una morfologia fusiforme o stellata con spiccato reticolo endoplasmatico rugoso, sono la "fabbrica biochimica" del derma. Oltre a sintetizzare i precursori fibrillari (collagene, elastina) e le macromolecole idrofile della sostanza fondamentale (GAG, proteoglicani), orchestrano il rimodellamento tissutale secreto di metalloproteinasi (MMP) e citochine paracrine, ricoprendo un ruolo chiave durante le fasi di riepitelizzazione e cicatrizzazione.
+      <strong>Fibroblasti:</strong> Rappresentano gli elementi stromali più abbondanti e metabolicamente poliedrici del tessuto connettivo. Caratterizzati da una morfologia fusiforme o stellata con spiccato reticolo endoplasmatico rugoso, costituiscono la "fabbrica biochimica" del derma. Oltre a sintetizzare i precursori fibrillari (collagene, elastina) e le macromolecole idrofile della sostanza fondamentale (GAG, proteoglicani), orchestrano il rimodellamento tissutale mediante secrezione di metalloproteinasi (MMP) e citochine paracrine, ricoprendo un ruolo chiave durante le fasi di riepitelizzazione e cicatrizzazione.
     </li>
     <li>
       <strong>Macrofagi Dermici (Istiociti):</strong> Fagociti mononucleati di origine monocitaria stabilmente insediati nel connettivo. Oltre a ripulire la matrice da detriti cellulari e macromolecole degradate, fungono da cellule presentanti l'antigene (APC) di seconda linea espressori di molecole MHC-II, interfacciano la risposta innata con quella adattativa ed emettono mediatori profibrotici e rigenerativi (es. TGF-β).
@@ -589,7 +589,7 @@ DESCRIZIONE: Dinamica di popolazione del derma: citologia, immunobiologia, marca
   </p>
   <ul class="list mb-15">
     <li>
-      <strong>Linfociti (T e NK):</strong> Prevalgono i linfociti T (CD4+ helper e CD8+ citotossici) deputati alla sorveglianza immunitaria cutanea e alla memoria immunologica locale (T-memory residenti TRM).
+      <strong>Linfociti (T e NK):</strong> Prevalgono i linfociti T (CD4+ helper e CD8+ citotossici) deputati alla sorveglianza immunitaria cutanea e alla memoria immunologica locale (T-memory residenti T<sub>RM</sub>).
     </li>
     <li>
       <strong>Plasmacellule:</strong> Effettori terminali differenziati dai linfociti B attivati; sono specializzate nella produzione e secrezione sistemica e locale di immunoglobuline (IgG, IgA, IgE) ad alta affinità.
@@ -639,8 +639,8 @@ DESCRIZIONE: Dinamica di popolazione del derma: citologia, immunobiologia, marca
     </table>
   </div>
 
-  <!-- FIGURE CON ACCESSIBILITÀ MIGLIORATA -->
-  <figure class="img-container">
+  <!-- FIGURA CELLULE DERMICHE -->
+  <figure class="mb-25">
     <img 
       src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/cellule_derma.avif" 
       class="transparent specials-img img-center" 
@@ -652,21 +652,93 @@ DESCRIZIONE: Dinamica di popolazione del derma: citologia, immunobiologia, marca
     >
     <figcaption class="sr-only">Rappresentazione schematica della composizione cellulare residente e transitoria del derma umano.</figcaption>
   </figure>
+
+  <!-- ========================================================== -->
+  <!-- SOTTOSEZIONE INTEGRATA ED OTTIMIZZATA: LE FIBRE DELL'ECM   -->
+  <!-- ========================================================== -->
+  <h3 class="secHeader mt-20 mb-15">La Matrice Extracellulare Dermica: Componente Fibrillare e Biomeccanica</h3>
+  
+  <p class="text mb-15">
+    La resistenza meccanica, la viscoelasticità e la plasticità strutturale del derma dipendono dall'architettura tridimensionale della sua Matrice Extracellulare (ECM). Sintetizzata prevalentemente dai fibroblasti residenti, la componente fibrillare è organizzata in due sistemi sovramolecolari altamente interconnessi: il <strong>Sistema Collagenico</strong> e il <strong>Sistema Elastico</strong>.
+  </p>
+
+  <h4 class="subHeader mb-7">1. Il Sistema Collagenico (Resistenza alla Trazione)</h4>
+  <p class="text mb-10">
+    Il collagene costituisce circa il 75-80% del peso secco del derma. I monomeri di tropocollagene, stabilizzati da legami covalenti incrociati (<em>cross-linking</em>) catalizzati dall'enzima lisil ossidasi, si organizzano in strutture sopramolecolari distinte a seconda del compartimento:
+  </p>
+  <ul class="list mb-15">
+    <li>
+      <strong>Collagene di Tipo I (80–85% del collagene totale):</strong> Prevale nel <em>derma reticolare</em>, organizzato in robusti fasci intrecciati ad andamento parallelo alla superficie. Definisce le <em>linee di tensione di Langer</em> ed è il principale responsabile della resistenza alle forze di trazione e di taglio.
+    </li>
+    <li>
+      <strong>Collagene di Tipo III (10–15% del collagene totale):</strong> Caratteristico del <em>derma papillare</em> e dello stroma perivascolare. Forma una rete di fibre reticolari sottili e flessibili, essenziale per il supporto alla microvascolarizzazione, l'ancoraggio dell'epidermide e la plasticità nei processi di cicatrizzazione.
+    </li>
+    <li>
+      <strong>Collagene di Tipo VII:</strong> Localizzato nella zona sottostante la lamina densa della giunzione dermo-epidermica (DEJ), dove forma le <em>fibrille di ancoraggio</em> che fissano saldamente l'epidermide allo stroma dermico.
+    </li>
+  </ul>
+
+  <h4 class="subHeader mb-7">2. Il Sistema Elastico (Estensibilità e Recoil)</h4>
+  <p class="text mb-10">
+    Le fibre elastiche rappresentano il 2–4% del peso secco dermico e conferiscono la proprietà di viscoelasticità, permettendo alla cute di deformarsi sotto carico meccanico e di recuperare passivamente la conformazione originaria (<em>recoil elastico</em>):
+  </p>
+  <ul class="list mb-15">
+    <li>
+      <strong>Architettura Macromolecolare:</strong> La fibra matura è composta da un nucleo centrale amorfo di <strong>elastina</strong> (derivata dalla polimerizzazione della tropoelastina) racchiuso da una guaina periferica di microfibrille di <strong>fibrillina-1 e fibrillina-2</strong>.
+    </li>
+    <li>
+      <strong>Distribuzione Compartimentale:</strong> Nel <em>derma papillare</em> le fibre si assottigliano e si diramano verticalmente verso la DEJ sotto forma di fibre <em>ossitalaniche</em> ed <em>elauniniche</em>; nel <em>derma reticolare</em> si assemblano in spessi nastri ondulati intrecciati ai fasci di collagene I.
+    </li>
+  </ul>
+
+  <!-- DIAGRAMMA DI FLUSSO PER LA FISIOPATOLOGIA DELLA DEGRADAZIONE DELLE FIBRE -->
+  <h4 class="subHeader mb-7">3. Fisiopatologia Fibrillare: Cascata di Degradazione e Fotoinvecchiamento</h4>
+  <div class="cyber-flowchart mb-15">
+    <div class="flow-card extrinsic">
+      <span class="flow-tag tag-extrinsic">Innesco Ossidativo (ROS)</span>
+      <div class="flow-title">Radiazioni UV &amp; Inquinanti (PM2.5)</div>
+      <div class="flow-desc">Generazione di ROS che attivano le vie di segnalazione intracellulare <strong>MAPK/AP-1</strong> e <strong>NF-κB</strong>.</div>
+    </div>
+
+    <div class="flow-arrow-down">↓</div>
+
+    <div class="flow-branches">
+      <div class="flow-card lysis">
+        <span class="flow-tag tag-lysis">Taglio Primario</span>
+        <div class="flow-title">MMP-1 (Collagenasi-1)</div>
+        <div class="flow-desc">Scissione proteolitica iniziale dei fasci di collagene nativo di tipo I e III.</div>
+      </div>
+      
+      <div class="flow-card lysis">
+        <span class="flow-tag tag-lysis">Degradazione Secondaria</span>
+        <div class="flow-title">MMP-3 &amp; MMP-9</div>
+        <div class="flow-desc">Frammentazione catalitica avanzata dei residui collagenici e destrutturazione della giunzione dermo-epidermica.</div>
+      </div>
+    </div>
+
+    <div class="flow-arrow-down">↓</div>
+
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Esito Tissutale</span>
+      <div class="flow-title">Elastosi Solare (Elastoide Dermica)</div>
+      <div class="flow-desc">Accumulo di tropoelastina frammentata in masse basofile amorfe; perdita permanente di <em>recoil elastico</em>, fragilità vascolare e formazione di rughe profonde.</div>
+    </div>
+  </div>
+
+  <!-- FIGURA FIBRE DERMICHE -->
+  <figure>
+    <img 
+      src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/fibre.avif" 
+      class="transparent specials-img img-center" 
+      alt="Rappresentazione schematica e micrografica delle fibre di collagene ed elastiche nella matrice extracellulare del derma" 
+      width="114" 
+      height="148" 
+      loading="lazy" 
+      decoding="async"
+    >
+    <figcaption class="sr-only">Organizzazione strutturale delle fibre di collagene e del sistema elastico nel derma.</figcaption>
+  </figure>
 </section>
-
-<hr class="line" />
-
-<div>
-<!-- Sezione Fibre -->
-<div data-lang-key="fibers_content">
-<h3 class="secHeader">Le fibre</h3>
-<p class="text">
-  La matrice extracellulare del derma è strutturata da tre tipi principali di fibre proteiche sintetizzate dai fibroblasti. La componente predominante è il collagene, organizzato in fibrille che si aggregano in fasci. Sebbene il derma reticolare sia caratterizzato da robusti fasci di collagene di tipo I, responsabili della resistenza meccanica, lo strato papillare superficiale presenta fibre più sottili e ramificate, costituite prevalentemente da collagene di tipo III. Queste formano un reticolo di sostegno fondamentale per l'ancoraggio dell'epidermide (giunzione dermo-epidermica) e il supporto alla microvascolarizzazione.<br>
-  La resistenza intrinseca del tessuto deriva non solo dalla struttura fibrosa, ma dalla formazione di stabili legami covalenti incrociati (cross-linking) tra le molecole di tropocollagene. Accanto al collagene, il derma contiene una frazione minoritaria di fibre elastiche (circa il 2-4% delle proteine cutanee), costituite da un core amorfo di elastina circondato da un mantello di microfibrille di fibrillina. Questo complesso conferisce al tessuto la proprietà di viscoelasticità, permettendo alla pelle di deformarsi sotto stress meccanico (mimica, variazioni di volume) e di recuperare passivamente la conformazione originale una volta cessato lo stimolo.
-</p>
-</div>
-<div><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/fibre.avif" class="transparent specials-img img-center" alt="Fibre del derma" width="114" height="148" loading="lazy" decoding="async"></div>
-</div>
 
 <hr class="line" />
 
