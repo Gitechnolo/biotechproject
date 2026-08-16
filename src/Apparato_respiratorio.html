@@ -90,28 +90,125 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="staff-container">
 <!-- ==========================================
   SEZIONE: Apparato Respiratorio e Fasi della Respirazione - (respirazione_intro)
-  DESCRIZIONE: Titolo dell'apparato, definizione integrata della respirazione e sequenza dei processi ventilatori, ematici e cellulari.
+  DESCRIZIONE: Introduzione multilivello all'apparato respiratorio con Executive Summary, sequenza fisiologica, approfondimento molecolare ed esame di frontiera.
   ========================================== -->
-<div data-lang-key="respirazione_intro">        
-<h1 class="sansation-bold">APPARATO RESPIRATORIO</h1>
+<section class="mb-7" data-lang-key="respirazione_intro" aria-labelledby="titolo-apparato-respiratorio">        
+  <h1 id="titolo-apparato-respiratorio" class="sansation-bold">APPARATO RESPIRATORIO</h1>
+  
   <!-- Sottotitolo -->
-  <h2 class="biotechbold">La Respirazione</h2>
-  <!-- Introduzione -->
-  <p class="text">
-    La respirazione, intesa nella sua globale accezione fisiologica, comprende i seguenti <span class="biotechbold">processi sequenziali</span>:
+  <h2 class="biotechbold">La Respirazione: Fisiologia Integrata e Meccanismi Molecolari</h2>
+  
+  <!-- Executive Summary -->
+  <div class="mb-15">
+    <p class="text">
+      <strong>In sintesi:</strong> La respirazione integra la convezione dell'aria, lo scambio gassoso alveolare, il trasporto ematico dell'ossigeno e la respirazione cellulare mitocondriale per sostenere il metabolismo dell'organismo. Oltre a garantire la clearance della CO<sub>2</sub>, l'apparato respiratorio gestisce lo stress cellulare mediante l'autofagia e l'Unfolded Protein Response (UPR) ed è connesso in modo bidirezionale al sistema nervoso centralizzato tramite l'Asse Polmone-Cervello.
+    </p>
+  </div>
+
+  <!-- Introduzione Generica / Livello Base -->
+  <p class="text mb-15">
+    La respirazione, intesa nella sua globale accezione fisiologica, non si riduce al solo atto di inspirare ed espirare, ma costituisce un sistema integrato di trasporto di massa, scambi gassosi e risposte metaboliche. Il processo si articola in una serie di <span class="biotechbold">fasi sequenziali indissolubili</span>:
   </p>
-  <!-- Lista Processi -->
-  <ol class="list">
-    <li>Convezione dell'aria attraverso le vie respiratorie fino agli <span class="yellowtext">alveoli polmonari</span></li>
-    <li>Diffusione dell'<span class="yellowtext">ossigeno (O<sub>2</sub>)</span> attraverso la membrana emato-gassosa al <span class="yellowtext">sangue</span></li>
-    <li>Trasporto dell'ossigeno mediante il <span class="yellowtext">sangue</span> e sua <span class="greentext">distribuzione sistemica</span> ai tessuti</li>
-    <li>Utilizzazione dell'<span class="yellowtext">ossigeno (O<sub>2</sub>)</span> nei processi metabolici cellulari</li>
-    <li>Produzione endogena di <span class="yellowtext">anidride carbonica (CO<sub>2</sub>)</span> a livello cellulare</li>
-    <li>Trasporto dell'anidride carbonica attraverso il <span class="yellowtext">sangue</span> verso il circolo polmonare</li>
-    <li>Diffusione dell'anidride carbonica dal <span class="yellowtext">sangue</span> capillare agli alveoli polmonari</li>
-    <li><span class="greentext">Espulsione</span> dell'aria dai <span class="yellowtext">polmoni</span> durante l'espirazione</li>
-  </ol> 
-</div>
+  
+  <!-- Lista Processi Sequenziali -->
+  <ol class="list mb-25">
+    <li><span class="biotechbold">Convezione aerea:</span> flusso di massa dell'aria attraverso la zona di conduzione fino agli <span class="yellowtext">alveoli polmonari</span>.</li>
+    <li><span class="biotechbold">Hematosis (Scambio gassoso alveolare):</span> diffusione passiva dell'<span class="yellowtext">ossigeno (O<sub>2</sub>)</span> attraverso la barriera emato-gassosa verso il torrente ematico.</li>
+    <li><span class="biotechbold">Trasporto ematico:</span> veicolazione dell'O<sub>2</sub> legato all'emoglobina e sua <span class="greentext">distribuzione sistemica</span> ai tessuti periferici.</li>
+    <li><span class="biotechbold">Respirazione cellulare:</span> utilizzo dell'<span class="yellowtext">O<sub>2</sub></span> nei mitocondri come accettore finale di elettroni per la sintesi di ATP.</li>
+    <li><span class="biotechbold">Metabolismo della CO<sub>2</sub>:</span> produzione endogena di <span class="yellowtext">anidride carbonica</span> e tamponamento ematico (anione bicarbonato/carbaminoemoglobina).</li>
+    <li><span class="biotechbold">Ritorno venoso e diffusione inversa:</span> trasporto della CO<sub>2</sub> al circolo polmonare e passaggio dai capillari agli alveoli.</li>
+    <li><span class="biotechbold">Eliminazione:</span> <span class="greentext">espulsione</span> della CO<sub>2</sub> mediante la fase espiratoria della ventilazione.</li>
+  </ol>
+
+  <!-- Diagramma di Flusso Dinamico: Sequenza Fisiologica della Respirazione -->
+  <div class="cyber-flowchart mb-30" role="region" aria-label="Diagramma di flusso delle fasi della respirazione">
+    <div class="flow-card common">
+      <span class="flow-tag tag-common">Fase 1: Ventilazione</span>
+      <div class="flow-title">Convezione &amp; Condizionamento</div>
+      <div class="flow-desc">Transito dell'aria nelle vie aeree superiori/inferiori e raggiungimento dello spazio alveolare.</div>
+    </div>
+    
+    <div class="flow-arrow-down" aria-hidden="true">↓</div>
+    
+    <div class="flow-branches">
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Fase 2: Diffusione Alveolare</span>
+        <div class="flow-title">Scambio Emato-Gassoso (O<sub>2</sub>)</div>
+        <div class="flow-desc">Gradienti di pressione parziale spingono l'O<sub>2</sub> dall'alveolo ai globuli rossi nei capillari.</div>
+      </div>
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Fase 3: Perfusione &amp; Trasporto</span>
+        <div class="flow-title">Distribuzione Sistemica</div>
+        <div class="flow-desc">L'ossiemoglobina raggiunge i letti capillari periferici per gradiente pressorio.</div>
+      </div>
+    </div>
+    
+    <div class="flow-arrow-down" aria-hidden="true">↓</div>
+    
+    <div class="flow-card extrinsic">
+      <span class="flow-tag tag-extrinsic">Fase 4: Respirazione Cellulare</span>
+      <div class="flow-title">Ossidazione Mitocondriale</div>
+      <div class="flow-desc">Consumo di O<sub>2</sub> per fosforilazione ossidativa e generazione di CO<sub>2</sub> di scarto.</div>
+    </div>
+    
+    <div class="flow-arrow-down" aria-hidden="true">↓</div>
+
+    <div class="flow-card lysis">
+      <span class="flow-tag tag-lysis">Fase 5: Eliminazione CO<sub>2</sub></span>
+      <div class="flow-title">Espirazione &amp; Clearance</div>
+      <div class="flow-desc">Ritorno venoso della CO<sub>2</sub> sotto forma di HCO<sub>3</sub><sup>-</sup>, re-diffusione alveolare ed espulsione.</div>
+    </div>
+  </div>
+
+  <hr class="line">
+
+  <!-- Livello Avanzato: Box Approfondimento Scientifico (Autofagia e Stress ER) -->
+  <h3 id="approfondimento-autofagia" class="biotechbold mb-15">Approfondimento Scientifico: Autofagia e Stress del Reticolo Endoplasmatico</h3>
+  <p class="text mb-15">
+    Al di là del classico modello di scambio gassoso, le cellule del parenchima polmonare (in particolare gli pneumociti) sono costantemente esposte a stress ambientali molecolari, tra cui particolato atmosferico, ossidanti e tossine da fumo. Per preservare l'integrità della barriera emato-gassosa, la cellula attiva complessi meccanismi di sorveglianza e "pulizia" interna.
+  </p>
+
+  <div class="cyber-table-container" role="region" aria-labelledby="approfondimento-autofagia" tabindex="0">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th scope="col">Target / Meccanismo</th>
+          <th scope="col">Funzione Fisiologica (Neofiti)</th>
+          <th scope="col">Pathways Molecolari e Clinica (Esperti)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="biotechbold">Autofagia Cellulare</span></td>
+          <td>Sistema di riciclaggio e pulizia interna delle tossine e dei detriti cellulari accumulati.</td>
+          <td>Riconoscimento di organelli danneggiati tramite complessi ATG/LC3; una sua clearance alterata accumula ROS e stimola la senescenza cellulare nei bronchioli.</td>
+        </tr>
+        <tr>
+          <td><span class="biotechbold">Stress del Reticolo (ER)</span></td>
+          <td>Risposta d'allarme quando la cellula produce troppe proteine difettose o modificate dall'inquinamento.</td>
+          <td>Attivazione dell'<span class="yellowtext">UPR (Unfolded Protein Response)</span> mediata dai sensori PERK, IRE1α e ATF6 per bloccare la traduzione e ripristinare il folding con chaperonine (BiP/GRP78).</td>
+        </tr>
+        <tr>
+          <td><span class="biotechbold">Implicazione Patologica</span></td>
+          <td>Inceppamento del sistema di pulizia, con accumulo di "spazzatura" e danno permanente ai tessuti.</td>
+          <td>Se lo stress da UPR persiste, si innescano la transizione epitelio-mesenchimale (EMT) e l'apoptosi via CHOP, motori primari nella patogenesi della <span class="greentext">Fibrosi Polmonare Idiopatica (IPF)</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="line">
+
+  <!-- Livello Frontiera: Asse Polmone-Cervello e Neuro-Infiammazione -->
+  <h3 class="biotechbold mb-15">Frontiere della Ricerca: L'Asse Polmone-Cervello e l'Infiammazione Neuro-Immunologica</h3>
+  <p class="text mb-15">
+    Recenti evidenze di neuro-immunologia dimostrano che il polmone non è un organo isolato, ma comunica costantemente con il sistema nervoso centrale attraverso l'<strong>Asse Polmone-Cervello</strong>. Citochine infiammatorie prodotte nel parenchima respiratorio in risposta a infezioni o allergeni possono attraversare la barriera emato-encefalica o stimolare afferenze vagali dirette, scatenando risposte neuro-infiammatorie nel tronco encefalico e nel sistema limbico.
+  </p>
+  <p class="text">
+    Questa diafonia bidirezionale spiega perché patologie croniche come la BPCO o l'asma siano frequentemente associate a disturbi d'ansia, depressione e percezione esacerbata della dispnea. Allo stesso modo, segnali di stress neurogeno centrali modulano la reattività della muscolatura liscia bronchiale e la degranulazione mastocitaria polmonare, aprendo la strada a nuovi target terapeutici neuro-immuni.
+  </p>
+</section>
 <!-- Contenitore principale del carosello -->
 <div class="row" id="main-gallery" role="region" aria-roledescription="carosello" aria-label="Immagini dell'apparato respiratorio"><div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio_box1.avif" class="hover-shadow cursor gallery-item" data-slide="1" width="284" height="402" loading="lazy" decoding="async" alt="Schema dell'apparato respiratorio" tabindex="0" role="button" aria-label="Apri l'immagine ingrandita: Schema generale dell'apparato respiratorio" data-lang-key="resp_schema_1"></div><div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio_box2.avif" class="hover-shadow cursor gallery-item" data-slide="2" width="284" height="402" loading="lazy" decoding="async" alt="Alveoli polmonari e capillari" tabindex="0" role="button" aria-label="Apri l'immagine ingrandita: Dettaglio alveoli e capillari" data-lang-key="resp_schema_2"></div><div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio_box3.avif" class="hover-shadow cursor gallery-item" data-slide="3" width="284" height="402" loading="lazy" decoding="async" alt="Le lamine della pleura" tabindex="0" role="button" aria-label="Apri l'immagine ingrandita: Schema della pleura" data-lang-key="resp_schema_3"></div><div class="column transparent"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio_box4.avif" class="hover-shadow cursor gallery-item" data-slide="4" width="284" height="402" loading="lazy" decoding="async" alt="Ventilazione polmonare" tabindex="0" role="button" aria-label="Apri l'immagine ingrandita: Meccanismo di ventilazione polmonare" data-lang-key="resp_schema_4"></div></div><div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeadingResp"><h2 id="modalHeadingResp" class="sr-only">Galleria Immagini Apparato Respiratorio</h2><span class="close cursor" id="closeBtn" tabindex="0" role="button" aria-label="Chiudi modale">&times;</span><div class="modal-content" id="modalCarousel"><div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">1 / 4</div><div class="zoom-container"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio1.avif" style="width:100%" fetchpriority="high" decoding="sync" alt="Anatomia generale dell'apparato respiratorio umano" data-lang-key="resp_desc_1"></div></div><div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">2 / 4</div><div class="zoom-container"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio2.avif" style="width:100%" loading="lazy" decoding="async" alt="Dettaglio dello scambio di gas tra alveoli polmonari e capillari" data-lang-key="resp_desc_2"></div></div><div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">3 / 4</div><div class="zoom-container"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio3.avif" style="width:100%" loading="lazy" decoding="async" alt="Schema delle due lamine della pleura" data-lang-key="resp_desc_3"></div></div><div class="mySlides" role="group" aria-roledescription="slide"><div class="numbertext">4 / 4</div><div class="zoom-container"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio4.avif" style="width:100%" loading="lazy" decoding="async" alt="Meccanismo fisico della ventilazione polmonare" data-lang-key="resp_desc_4"></div></div><button class="prev" id="prevSlide" aria-label="Slide precedente">&#10094;</button><button class="next" id="nextSlide" aria-label="Slide successiva">&#10095;</button><div class="caption-container"><p id="caption" role="status" aria-live="polite"></p></div><div class="row" id="thumb-gallery"><div class="column"><img class="demo cursor" data-slide="1" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio1.avif" style="width:100%" decoding="async" alt="Anatomia generale dell'apparato respiratorio umano" tabindex="0" data-lang-key="resp_desc_1"></div><div class="column"><img class="demo cursor" data-slide="2" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio2.avif" style="width:100%" decoding="async" alt="Dettaglio dello scambio di gas tra alveoli polmonari e capillari" tabindex="0" data-lang-key="resp_desc_2"></div><div class="column"><img class="demo cursor" data-slide="3" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio3.avif" style="width:100%" decoding="async" alt="Schema delle due lamine della pleura" tabindex="0" data-lang-key="resp_desc_3"></div><div class="column"><img class="demo cursor" data-slide="4" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Apparatorespiratorio4.avif" style="width:100%" decoding="async" alt="Meccanismo fisico della ventilazione polmonare" tabindex="0" data-lang-key="resp_desc_4"></div></div></div></div>
 <!-- End carosello -->
