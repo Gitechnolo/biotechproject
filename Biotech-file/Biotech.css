@@ -102,7 +102,7 @@ ul.list, ol.list {
 li::marker {color: rgb(208, 255, 0); content: "~";}
 li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
-a:visited {color: rgb(116, 9, 116); /* Solo il colore cambia */}
+a:visited { color: #c084fc; /* Viola lilla luminoso e ben contrastato - (Alto contrasto & Accessible Dark Mode)*/}
 a:hover, a:focus {color: #a7ffeb; /* Leggero aumento dell'effetto */text-shadow: 0 0 6px rgba(138, 43, 226, 0.8), 0 0 10px rgba(138, 43, 226, 0.5);}
 a:active {color: #fffb00;}
 a[target="_blank"] {
@@ -165,7 +165,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .tag-extrinsic { background: rgba(255, 152, 0, 0.2); color: #ff9800; }
 .tag-intrinsic { background: rgba(255, 235, 59, 0.2); color: #ffeb3b; }
 .tag-common    { background: rgba(0, 230, 118, 0.2); color: #00e676; }
-.tag-lysis     { background: rgba(33, 150, 243, 0.2); color: #64b5f6; }
+.tag-lysis     { background: rgba(33, 150, 243, 0.2); color: #64b5f6; text-shadow: none; text-decoration: none; }
+.tag-lysis:visited { color: inherit; }
 .flow-title { font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
 .flow-desc  { font-size: 0.82rem; color: #cbd5e1; line-height: 1.4; }
 .flow-arrow-down{ width: 100%; text-align: center; color: #00e676; font-size: 1.2rem; line-height: 1; margin: 2px 0; opacity: 0.8}
