@@ -173,6 +173,13 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* --- ADATTAMENTO MOBILE RESPONSIVE --- */
 @media (max-width: 680px){ .flow-branches{ grid-template-columns: 1fr; } .cyber-table th, .cyber-table td{ padding: 10px 8px; font-size: 0.78rem;}}
 /* === END TABELLE DIAGNOSTICHE & Diagrammi di Flusso === */
+/* === Riferimenti Scientifici e Bibliografia Link Esterni - Fondo Pagina === */
+.f-85 {font-size: 0.85rem;}
+.f-78 {font-size: 0.78rem;}
+.slate {color: #64748b;}
+.text-neon{ color: #00e676; font-size: 1.1rem; margin-top: 4px; }  
+.divider-glow{ border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(0, 230, 118, 0.5), transparent); margin: 60px 0}
+/* === END Riferimenti Scientifici e Bibliografia Link Esterni === */
 
 /* === 1. BACKGROUND BIOTECH (Desktop & Base) === */
 .biotechbody {
