@@ -54,45 +54,71 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
 .sansation-bold-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: bold; font-style: italic;}
 .sansation-light {font-family: 'Sansation', Tahoma, Verdana, sans-serif;font-weight: 300;}
 .sansation-light-italic {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-weight: 300; font-style: italic;}
+/* =========================================================
+   Classi Font Atkinson Hyperlegible (Base)
+   ========================================================= */
 .atkinson-bold {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: bold;
   font-size: 34px;
-  color: #a7ffeb; /* Verde acqua chiaro, */
+  color: #a7ffeb;
   padding: 12px 16px;
   border-radius: 8px;
   display: inline-block;
   margin: 10px 0;
-  /* Leggero glow per far risaltare il testo */
   text-shadow: 0 0 4px rgba(167, 255, 235, 0.3);
 }
+/* Unificata e ripulita: definisce le proprietà base del testo */
 .atkinson-regular {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-weight: normal;
   font-size: 18px;
-  color: #ffffff; /* Bianco per massima leggibilità */
+  color: #ffffff;
   line-height: 1.6;
   max-width: 80ch;
 }
 .atkinson-italic {
   font-family: 'Atkinson Hyperlegible', sans-serif;
   font-style: italic;
+  font-weight: 600; /* Leggermente più spesso per migliorare la leggibilità del corsivo */
   color: #a7ffeb;
   font-size: 24px;
 }
+/* =========================================================
+   Spaziature e Layout specifici per tag
+   ========================================================= */
+/* Applica il margine verso il basso SOLO ai paragrafi <p> ed evita di rompere <ul> o <span> */
+p.atkinson-regular {
+  margin-bottom: 12px;
+}
 h2.atkinson-bold,
-  h3.atkinson-bold {
-    margin-top: 24px;
-    margin-bottom: 12px;
-  }
-  ul.atkinson-regular {
-    margin-top: 12px;
-    margin-bottom: 16px;
-  }
-  .atkinson-regular {
-    display: block;
-    margin-bottom: 12px;
-  }   
+h3.atkinson-bold {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+/* Gestione corretta delle liste per mantenere rientranza e spaziatura tra i punti */
+ul.atkinson-regular,
+ol.atkinson-regular {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  padding-left: 28px;
+}
+ul.atkinson-regular li,
+ol.atkinson-regular li {
+  margin-bottom: 8px;
+}
+/* =========================================================
+   Atkinson Hyperlegible - Scheda contenitore per isolare il testo dallo sfondo (Opzionale)
+   ========================================================= */
+.section-card {
+  background-color: rgba(6, 20, 22, 0.88);
+  padding: 24px 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 255, 235, 0.15);
+  backdrop-filter: blur(4px);
+  margin-bottom: 30px;
+}
+
 ul.list, ol.list {
   font-family: 'Sansation', Tahoma, Verdana, sans-serif;
   margin: 1px; /* o 0 */
