@@ -50,7 +50,12 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 /* SRE: Isolamento di rendering e calcolo GPU per animazione logo */
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9; will-change: transform; contain: layout paint}
 .pulse-logo{ opacity: 0.9}
-.big{font-size: 42px; margin: 20px 0;}
+.big {
+  font-size: 2.5rem; /* ~40px, reattivo e scalabile */
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.025em; /* Aumenta leggermente lo spazio tra le lettere grandi */
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
