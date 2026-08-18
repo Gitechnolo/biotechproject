@@ -103,8 +103,17 @@ ul.atkinson-regular li,
 ol.atkinson-regular li {
   margin-bottom: 0.625rem; /* Aumenta leggermente lo spazio tra i punti */
 }
+/* Gestione dei marker/numerazione ad alto contrasto */
+ol.atkinson-regular {
+  list-style-type: decimal;
+  padding-left: 2.5rem;
+}
+ol.atkinson-regular li::marker {
+  color: #a7ffeb;
+  font-weight: 700;
+}
 /* =========================================================
-   Atkinson Hyperlegible - Scheda contenitore isolamento testo dallo sfondo (Opzionale)
+   Atkinson Hyperlegible - Scheda contenitore isolamento testo dallo sfondo
    ========================================================= */
 .section-card {
   background-color: rgba(6, 20, 22, 0.96); /* Opacità al 96%: isola il testo ma mantiene la percezione di profondità */
