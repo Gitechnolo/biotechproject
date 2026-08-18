@@ -120,8 +120,9 @@ ul.list, ol.list {
   padding: 1px; /* o 0 */
   color: #B5EAD7;
 }
-li::marker {color: rgb(208, 255, 0); content: "~";}
-li {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
+
+/* Applica Sansation solo ai li che NON si trovano dentro elementi con classe atkinson */
+li:not(.atkinson-regular):not(.atkinson-bold) {font-family: 'Sansation', Tahoma, Verdana, sans-serif;}
 a {font-family: 'Sansation', Tahoma, Verdana, sans-serif; color: #a7ffeb; text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); text-decoration: underline; text-decoration-color: rgba(209, 206, 206, 0.267); text-decoration-thickness: 2px; text-decoration-style: solid; text-underline-offset: 4px; transition: color 0.3s ease, text-shadow 0.3s ease;}
 a:visited { color: #c084fc; /* Viola lilla luminoso e ben contrastato - (Alto contrasto & Accessible Dark Mode)*/}
 a:hover, a:focus {color: #a7ffeb; /* Leggero aumento dell'effetto */text-shadow: 0 0 6px rgba(138, 43, 226, 0.8), 0 0 10px rgba(138, 43, 226, 0.5);}
