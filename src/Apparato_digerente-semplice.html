@@ -46,46 +46,14 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
-* {
-    box-sizing: border-box;
-  }
-
-  /* Card dello step (sostituisce div.gallery e .responsive) */
-  .digestion-step {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 16px;
-    border-radius: 12px;
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
-
-  /* Immagine centrata e fluida */
-  .digestion-step img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: block;
-  }
-
-  /* Titolo e testi dentro lo step (sostituisce div.desc) */
-  .digestion-step h3 {
-    margin: 16px 0 8px;
-  }
-
-  .digestion-step p {
-    margin: 0 0 8px 0;
-    line-height: 1.5;
-  }
-
-  /* Focus da tastiera per accessibilità (mantenuta e integrata) */
-  .digestion-step:focus {
-    outline: 3px solid #a7ffeb;
-    border-radius: 12px;
-    box-shadow: 0 0 8px rgba(167, 255, 235, 0.4);
-    transition: outline 0.2s ease, box-shadow 0.2s ease;
-  }
+*{ box-sizing: border-box;}
+ .digestion-step{ max-width: 900px; margin: 30px auto; padding: 16px; border-radius: 12px; background-color: #1e1e1e; color: #ffffff;}
+/* Immagine centrata e fluida */
+.digestion-step img{ width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); display: block;}
+/* Titolo e testi dentro lo step */
+ .digestion-step h3{ margin: 16px 0 8px;} .digestion-step p{ margin: 0 0 8px 0; line-height: 1.5;}
+/* Focus da tastiera per accessibilità (mantenuta e integrata) */
+.digestion-step:focus{ outline: 3px solid #a7ffeb; border-radius: 12px; box-shadow: 0 0 8px rgba(167, 255, 235, 0.4); transition: outline 0.2s ease, box-shadow 0.2s ease;}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
