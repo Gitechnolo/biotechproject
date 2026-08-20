@@ -72,99 +72,274 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="staff-layout-container" id="main-content"><div class="sre-dashboard" id="sre-wing" role="complementary" aria-label="System Resilience Monitor"><div class="sre-header"><span class="sre-title">🛡️ SRE GUARDIAN</span><div class="sre-led-container"><span id="led-guardian" class="led led-green" role="img"><span class="sr-only">Status: System Online</span></span><span id="led-patch" class="led led-off" role="img"><span class="sr-only">Patch Engine: Idle</span></span></div></div><div class="sre-terminal"><code id="sre-log-display" aria-live="polite">SYSTEM READY. ADR-011 SECURE.</code></div><div class="sre-action-zone"><button id="sre-stress-btn" class="tech-nav-btn sre-btn" type="button" aria-controls="sre-log-display">RUN STRESS TEST </button></div></div>  <div class="staff-row">
   <div class="staff-col">
     <div class="staff-card">
-      <div class="staff-container mb-30"><div class="tech-content-wrapper">
-  <h1 class="sansation-bold" data-lang-key="stem-cells-title">Architetture Rigenerative: La Biologia al Servizio dell'Innovazione Robotica</h1>
+      <div class="staff-container mb-30">
 
-  <div>
-    <h2 class="secHeader" data-lang-key="what-are-stem-cells">L'Essenza delle Cellule Staminali</h2>
-    <p data-lang-key="stem-cells-description">
-      Le cellule staminali rappresentano la riserva rigenerativa fondamentale della vita. Si tratta di unità biologiche non differenziate caratterizzate dalla capacità di auto-rinnovarsi e di evolvere in lignaggi cellulari specializzati attraverso complessi segnali biochimici. Svolgono un ruolo cruciale non solo nella crescita embrionale, ma anche nel mantenimento dell'omeostasi e nella riparazione dei tessuti danneggiati. La loro classificazione si basa sulla potenza: dalle pluripotenti (embrionali), capaci di generare ogni tipo di tessuto, alle multipotenti (adulte), specializzate nella rigenerazione di organi specifici.
-    </p>
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Final_stem_cell_differentiation.avif" alt="Diagramma della differenziazione cellulare da cellula staminale a tessuti specializzati" class="specialsCenter-img" width="420" height="297" decoding="async">
-    <div class="specials-ref">Fonte: Wikipedia (<a href="https://en.wikipedia.org/wiki/Stem_cell" target="_blank" style="color:#aee9f7;">Stem cell</a>)</div>
-  </div>
+<section class="tech-content-wrapper" aria-labelledby="main-stem-cells-title" data-lang-key="tech-content-wrapper">
+  
+  <!-- Titolo Principale Sintetizzato -->
+  <h1 id="main-stem-cells-title" class="sansation-bold">
+    Bio-Robotica: L'Incontro tra Biologia e Ingegneria per un Futuro Bio-Ibrido
+  </h1>
 
-  <div>
-    <h2 class="secHeader" data-lang-key="stem-cells-in-robotics">Integrazione Bio-Ibrida e Sistemi Autonomi</h2>
-    <p data-lang-key="biohybrid-robots-description">
-      L'intersezione tra ingegneria dei tessuti e robotica sta dando vita ai sistemi bio-ibridi. Invece di limitarsi a imitare la natura con materiali sintetici, la ricerca utilizza miociti e cardiomiociti differenziati a partire da cellule staminali come veri e propri attuatori biologici. Questi sistemi sfruttano la meccano-trasduzione — la capacità delle cellule di convertire stimoli meccanici in risposte biologiche — permettendo ai flussi di informazione di muoversi dal microambiente al dispositivo. Il risultato sono macchine capaci di auto-riparazione (self-healing) e adattabilità dinamica, proprietà impossibili da ottenere con la sola elettronica tradizionale.
-    </p>
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Protein translation.avif" alt="Sintesi proteica e traduzione cellulare alla base della bio-ingegneria" class="specialsCenter-img" width="420" height="420" decoding="async">
-    <div class="specials-ref">Fonte: Wikipedia (<a href="https://en.wikipedia.org/wiki/Biohybrid_robot" target="_blank" style="color:#aee9f7;">Biohybrid robot</a>)</div>
-  </div>
-
-  <div>
-    <h2 class="secHeader" data-lang-key="applications">Efficienza Metabolica e Bio-attuazione</h2>
-    <p data-lang-key="future-applications-description">
-      Un vantaggio chiave dell'uso di tessuti muscolari coltivati da staminali risiede nella gestione termica e nella biocompatibilità intrinseca. A differenza dei motori elettrici convenzionali, che dissipano calore e richiedono schermature rigide, i bio-attuatori operano mediante l'idrolisi dell'ATP, convertendo l'energia chimica in movimento senza surriscaldamento locale. Questo approccio converge con i principi della Soft Robotics: la flessibilità strutturale dei tessuti organici permette ai robot di operare in sicurezza all'interno del corpo umano o in ecosistemi fragili, garantendo una navigazione fluida e a basso impatto termico in ambienti non strutturati.
-    </p>
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Soft_Robotics_1.avif" alt="Schema tecnico di un attuatore per soft robotics e prototipo bio-ibrido flessibile" class="specialsCenter-img" width="420" height="484" decoding="async">
-    <div class="specials-ref">Fonte: Wikipedia (<a href="https://en.wikipedia.org/wiki/Soft_robotics" target="_blank" style="color:#aee9f7;">Soft robotics</a>)</div>
-  </div>
-
-  <div class="mb-15">
-    <h2 class="secHeader" data-lang-key="bci-clinical">Interfacce Cervello-Computer e Reti Neurali in Vitro</h2>
-    <p data-lang-key="bci-clinical-description">
-      Le interfacce cervello-computer (BCI) rappresentano il punto di incontro tra neuroscienze e robotica medica. Le frontiere più avanzate della ricerca esplorano l'integrazione di reti neurali biologiche coltivate in vitro a partire da cellule staminali pluripotenti indotte (iPSC). Collegando questi micro-tessuti cerebrali a matrici di elettrodi, gli scienziati stanno studiando come decodificare i segnali bio-elettrici e favorire la neuroplasticità. Sebbene i sistemi clinici di routine richiedano ancora significativi avanzamenti nella stabilità a lungo termine, questa sinergia apre la strada, a livello di proof-of-concept, a modelli bio-ibridi per lo studio della neuroplasticità. Le prospettive future mirano a neuroprotesi avanzate capaci di interfacciarsi con il sistema nervoso umano, con l'obiettivo a lungo termine di ripristinare l'autonomia motoria e sensoriale.
-    </p>
-  </div>
-
-  <div class="mb-15">
-    <h2 class="secHeader" data-lang-key="xenobots">Xenobots: Bio-design Programmabile</h2>
-    <p data-lang-key="xenobots-description">
-      Attualmente confinati a scenari sperimentali in vitro e modelli computazionali, gli Xenobots rappresentano una frontiera promettente per il bio-design programmabile. Questi bio-robot sintetici sono ottenuti riconfigurando cellule staminali embrionali (originate dal modello biologico <em>Xenopus laevis</em>) mediante algoritmi evolutivi computazionali. Essendo entità interamente biologiche, eliminano i rischi di tossicità legati alle micro-macchine metalliche o plastiche. La loro natura completamente biodegradabile li rende modelli di studio ideali per esplorare future applicazioni speculative di micro-biochirurgia mirata e drug-delivery avanzato, propedeutiche allo sviluppo di vettori terapeutici capaci di agire riducendo gli effetti collaterali sistemici.
-    </p>
-  </div>
-
-  <div class="mb-15">
-    <h2 class="secHeader" data-lang-key="biohybrid-sensory">Robotica Ecologica e Biodegradabilità</h2>
-    <p data-lang-key="biohybrid-sensory-description">
-      L'integrazione di biosensori naturali permette ai robot bio-ibridi di agire come sentinelle ambientali. Utilizzando tessuti viventi sensibili alle minime variazioni chimiche, questi sistemi possono rilevare inquinanti e microplastiche negli oceani senza introdurre ulteriori rifiuti elettronici. Una volta terminata la loro missione, questi sistemi si degradano naturalmente reintegrandosi nel ciclo biologico, offrendo una soluzione sostenibile per la protezione della biodiversità marina.
-    </p>
-  </div>
-
+  <!-- SEZIONE 1: Gerarchia e Differenziamento -->
   <div class="mb-25">
-    <h2 class="secHeader" data-lang-key="future-prospects">Verso l'Auto-Sostenibilità Biotecnologica</h2>
-    <p data-lang-key="future-prospects-description">
-      Il futuro della robotica risiede nella simbiosi perfetta tra silicio e cellula. La ricerca punta a sistemi capaci di apprendimento e adattamento autonomo tramite l'integrazione di hardware computazionale e reti neurali biologiche ingegnerizzate. Con un mercato previsto in crescita esponenziale (5,3 miliardi di dollari entro il 2031), la sfida non sarà più solo tecnica, ma etica: definire i confini tra organismo vivente e macchina intelligente per un progresso che rispetti l'integrità della vita.
+    <h2 class="secHeader">Biologia Differenziativa e Gerarchia di Pluripotenza</h2>
+    <p class="mb-15">
+      Le cellule staminali costituiscono il substrato biologico fondamentale per l'ingegneria dei tessuti e il modellamento di dispositivi bio-ibridi. Caratterizzate dalla capacità di autorinnovamento e da un potenziale di differenziamento orchestrato da fattori di trascrizione e segnali biofisici microambientali, esse si articolano lungo una rigida gerarchia di potenza: dalle cellule staminali embrionali (ESC) e pluripotenti indotte (iPSC) fino ai progenitori multipotenti tessuto-specifici.
+    </p>
+
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Final_stem_cell_differentiation.avif" 
+         alt="Diagramma della gerarchia di differenziazione da cellula staminale pluripotente a lignaggi somatici specializzati" 
+         class="specialsCenter-img" width="420" height="297" decoding="async">
+    <div class="specials-ref mb-15">
+      Fonte: Zakrzewski et al., <em>Stem Cell Research & Therapy</em> (DOI: <a href="https://doi.org/10.1186/s13287-019-1165-5" target="_blank" style="color:#aee9f7;">10.1186/s13287-019-1165-5</a>)
+    </div>
+
+    <!-- TABELLA DIAGNOSTICA -->
+    <div class="cyber-table-container">
+      <table class="cyber-table">
+        <thead>
+          <tr>
+            <th>Tipologia Cellulare</th>
+            <th>Potenziale di Differenziamento</th>
+            <th>Applicazione Bio-Ibrida / Bionica</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ESC / iPSC</strong></td>
+            <td>Pluripotente (Endoderma, Mesoderma, Ectoderma)</td>
+            <td>Generazione di bio-attuatori (cardiomiociti, miociti scheletrici) e organoidi.</td>
+          </tr>
+          <tr>
+            <td><strong>Progenitori Multipotenti</strong></td>
+            <td>Limitato a uno specifico lineage tissutale</td>
+            <td>Mantenimento dell'omeostasi e riparazione parenchimale localizzata.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="line">
+
+  <!-- SEZIONE 2: Meccanotrasduzione e Attuazione -->
+  <div class="mb-25">
+    <h2 class="secHeader">Integrazione Bio-Ibrida: Meccanotrasduzione e Attuazione Cellulare</h2>
+    <p class="mb-15">
+      L'intersezione tra ingegneria dei tessuti e bionica d'avanguardia ha promosso lo sviluppo di sistemi bio-ibridi, in cui miociti scheletrici e cardiomiociti differenziati da iPSC operano come attuatori biologici integrati. Tali complessi convertono la dinamica biochimica in forza meccanica attraverso processi di meccanotrasduzione mediati da canali ionici meccanosensibili (es. Piezo1/2) e complessi integrinici d'adesione focale.
+    </p>
+
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Protein translation.avif" 
+         alt="Rappresentazione molecolare della sintesi e traduzione proteica per il mantenimento dei bio-attuatori" 
+         class="specialsCenter-img" width="420" height="420" decoding="async">
+    <div class="specials-ref mb-15">
+      Fonte: Ricotti et al., <em>Science Robotics</em> (DOI: <a href="https://doi.org/10.1126/scirobotics.aaq0495" target="_blank" style="color:#aee9f7;">10.1126/scirobotics.aaq0495</a>)
+    </div>
+
+    <!-- DIAGRAMMA DI FLUSSO DINAMICO -->
+    <div class="cyber-flowchart">
+      <div class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Fase 1: Input Esterno</span>
+        <div class="flow-title">Sollecitazione Meccanica / Biochimica</div>
+        <div class="flow-desc">Stimolo dal microambiente extracellulare e dallo scaffold sintetico.</div>
+      </div>
+
+      <div class="flow-arrow-down">▼</div>
+
+      <div class="flow-branches">
+        <div class="flow-card extrinsic">
+          <span class="flow-tag tag-extrinsic">Canali Piezo1/2</span>
+          <div class="flow-title">Trasduzione Ionica</div>
+          <div class="flow-desc">Apertura dei varchi meccanosensibili per il flusso di ioni.</div>
+        </div>
+        <div class="flow-card extrinsic">
+          <span class="flow-tag tag-extrinsic">Adesioni Focali</span>
+          <div class="flow-title">Cascade Integrinica</div>
+          <div class="flow-desc">Riorganizzazione del citoscheletro e ancoraggio alla matrice.</div>
+        </div>
+      </div>
+
+      <div class="flow-arrow-down">▼</div>
+
+      <div class="flow-card common">
+        <span class="flow-tag tag-common">Fase Finale: Output</span>
+        <div class="flow-title">Lavoro Meccanico & Self-Healing</div>
+        <div class="flow-desc">Rimodellamento adattivo, autoriparazione e superamento della fatica dei polimeri.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="line">
+
+  <!-- SEZIONE 3: Bio-Energetica e Soft Robotics -->
+  <div class="mb-25">
+    <h2 class="secHeader" data-lang-key="applications">Efficienza Metabolica e Bio-attuazione</h2>
+    <p class="mb-15" data-lang-key="future-applications-description">
+      Un vantaggio chiave dell'uso di tessuti muscolari coltivati da staminali risiede nella gestione termica e nella biocompatibilità intrinseca. A differenza dei motori elettrici convenzionali, che dissipano calore e richiedono schermature rigide, i bio-attuatori operano mediante l'idrolisi dell'ATP, convertendo l'energia chimica in movimento senza surriscaldamento locale. Questo approccio converge con i principi della Soft Robotics: la flessibilità strutturale degli scaffold polimerici e dei tessuti organici permette ai robot di operare in sicurezza all'interno del corpo umano o in ecosistemi fragili, garantendo una navigazione fluida in ambienti non strutturati.
+    </p>
+
+    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Soft_Robotics_1.avif" 
+         alt="Schema tecnico di un attuatore elastomerico flessibile per la soft robotics" 
+         class="specialsCenter-img" width="420" height="484" decoding="async">
+    <div class="specials-ref mb-15">
+      Fonte schema: Rus & Tolley, <em>Nature</em> (DOI: <a href="https://doi.org/10.1038/nature14543" target="_blank" style="color:#aee9f7;">10.1038/nature14543</a>)
+    </div>
+  </div>
+
+  <hr class="line">
+
+  <!-- SEZIONE 4: Interfacce Brain-Computer & Organoidi -->
+  <div class="mb-25">
+    <h2 class="secHeader">Interfacce Neuro-Elettroniche e Reti Neurali in Vitro</h2>
+    <p>
+      Le interfacce cervello-computer (BCI) di nuova generazione sfruttano colture bidimensionali e tridimensionali (organoidi cerebrali) di neuroni funzionali derivati da iPSC. Interfacciate con matrici di microelettrodi (MEA) o transistor a effetto di campo (OECT), queste reti neurali <em>in vitro</em> permettono di decodificare pattern complessi di potenziale d'azione e di studiare i meccanismi di neuroplasticità e sinaptogenesi.
+    </p>
+  </div>
+
+  <!-- SEZIONE 5: Xenobots -->
+  <div class="mb-25">
+    <h2 class="secHeader">Xenobots: Morfogenesi Computazionale e Bio-Design Programmabile</h2>
+    <p>
+      Gli Xenobots rappresentano il paradigma del bio-design programmabile <em>in silico</em>. Derivati dall'assemblaggio guidato di cellule epidermiche e cardiache embrionali di <em>Xenopus laevis</em>, questi agenti biologici autonomi sono progettati mediante algoritmi evolutivi per compiere specifici compiti cinematici. Essendo privi di componenti sintetiche o metalliche, mostrano completa biodegradabilità e biocompatibilità.
+    </p>
+  </div>
+
+  <!-- SEZIONE 6: Robotica Ecologica -->
+  <div class="mb-25">
+    <h2 class="secHeader">Robotica Ecologica, Biosensing e Sostenibilità Ambientale</h2>
+    <p>
+      L'integrazione di biosensori cellulari all'interno di piattaforme bio-ibride autonome offre opportunità inedite nel monitoraggio ecologico sostenibile. Sfruttando il chemiotassismo naturale e le risposte fisiologiche dei tessuti vitali ai gradienti chimici, questi robot ecologici agiscono come unità d'analisi <em>in situ</em> per il rilevamento di microinquinanti e tossine senza generare e-waste.
+    </p>
+  </div>
+
+  <!-- SEZIONE 7: Bio-Computazione & Etica -->
+  <div class="mb-25">
+    <h2 class="secHeader">Frontiere della Bio-Computazione e Quadrante Etico-Normativo</h2>
+    <p class="mb-15">
+      La convergenza tra bio-informatica, ingegneria tissutale e hardware al silicio sta ridefinendo i confini dei sistemi autonomi. Le prospettive a lungo termine puntano all'integrazione di circuiti computazionali biologici dotati di capacità di apprendimento associativo non-supervisionato.
     </p>
 
     <div>
-      <p class="highlight-text" data-lang-key="ethics-note">
-        "L'integrazione di componenti biologiche che vivono nei sistemi artificiali richiede un nuovo quadro normativo e bioetico, volto a garantire che l'evoluzione della robotica bio-ibrida rimanga al servizio dell'umanità e della salvaguardia della biosfera."
+      <p class="highlight-text">
+        "L'integrazione di materia biologica vivente in architetture artificiali impone l'elaborazione di un rigoroso quadro bioetico e regolatorio, necessario a garantire che il progresso della robotica bio-ibrida rimanga ancorato alla sicurezza della biosfera e alla tutela della dignità umana."
       </p>
     </div>
   </div>
 
-  <section aria-labelledby="references-title">
-    <h2 class="secHeader" id="references-title" data-lang-key="references">Riferimenti e Approfondimenti</h2>
-    <ul style="color:#ffe066;">
-      <li>
-        <a href="https://en.wikipedia.org/wiki/Stem_cell" target="_blank" style="color:#aee9f7;">
-          Stem cell - Biology and Applications
-          <span class="sr-only">(apre in una nuova scheda)</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://en.wikipedia.org/wiki/Biohybrid_robot" target="_blank" style="color:#aee9f7;">
-          Biohybrid Systems and Robotics Engineering
-          <span class="sr-only">(apre in una nuova scheda)</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://en.wikipedia.org/wiki/Soft_robotics" target="_blank" style="color:#aee9f7;">
-          Soft Robotics: Mechanical and Biological Principles
-          <span class="sr-only">(apre in una nuova scheda)</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.sciencedirect.com/science/article/pii/S3050562325000947" target="_blank" style="color:#aee9f7;">
-          Biohybrid robotics: State of the Art (2025 Review)
-          <span class="sr-only">(apre in una nuova scheda)</span>
-        </a>
-      </li>
-    </ul>
-  </section></div></div><blockquote class="quotes mb-25" data-lang-key="quote-main">
+  <hr class="divider-glow">
+
+  <!-- ==========================================
+    SEZIONE 8: Riferimenti Scientifici e Bibliografia Specialistica
+    ========================================== -->
+  <section id="bibliografia" class="text-block mb-7" data-lang-key="biorobotica_bibliografia_letteratura_scientifica">
+    <div class="flow-card intrinsic mb-25">
+      <span class="flow-tag tag-intrinsic">Letteratura Scientifica &amp; DOI</span>
+      <h3 id="titolo-bibliografia" class="flow-title text-neon">
+        Riferimenti Scientifici e Bibliografia Specialistica
+      </h3>
+      <p class="flow-desc">
+        Fonti primarie peer-reviewed, landmark papers e ricerche traslazionali su cellule staminali, meccanotransduzione, bio-attuatori, soft robotics e xenobots.
+      </p>
+    </div>
+
+    <div class="cyber-table-container mb-15">
+      <table class="cyber-table">
+        <thead>
+          <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 25%;">Autori &amp; Anno</th>
+            <th style="width: 45%;">Titolo &amp; Rivista</th>
+            <th style="width: 25%;">Identificatore DOI / Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="flow-tag tag-common">1</span></td>
+            <td><strong>Zakrzewski, W., et al.</strong><br><small class="slate">(2019)</small></td>
+            <td>
+              <div class="flow-title f-85">Stem cells: past, present, and future</div>
+              <div class="flow-desc f-78">Stem Cell Research &amp; Therapy, 10(1), 68</div>
+            </td>
+            <td>
+              <a href="https://doi.org/10.1186/s13287-019-1165-5" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+                10.1186/s13287-019-1165-5
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="flow-tag tag-common">2</span></td>
+            <td><strong>Ricotti, L., et al.</strong><br><small class="slate">(2017)</small></td>
+            <td>
+              <div class="flow-title f-85">Biohybrid actuators for robotics: A review of devices actuated by living cells</div>
+              <div class="flow-desc f-78">Science Robotics, 2(12), eaaq0495</div>
+            </td>
+            <td>
+              <a href="https://doi.org/10.1126/scirobotics.aaq0495" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+                10.1126/scirobotics.aaq0495
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="flow-tag tag-common">3</span></td>
+            <td><strong>Webster-Wood, V. A., et al.</strong><br><small class="slate">(2022)</small></td>
+            <td>
+              <div class="flow-title f-85">Biohybrid robots: recent progress, challenges, and perspectives</div>
+              <div class="flow-desc f-78">Bioinspiration &amp; Biomimetics, 17(6), 061001</div>
+            </td>
+            <td>
+              <a href="https://doi.org/10.1088/1748-3190/ac9c3b" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+                10.1088/1748-3190/ac9c3b
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="flow-tag tag-common">4</span></td>
+            <td><strong>Rus, D., &amp; Tolley, M. T.</strong><br><small class="slate">(2015)</small></td>
+            <td>
+              <div class="flow-title f-85">Design, fabrication and control of soft robots</div>
+              <div class="flow-desc f-78">Nature, 521(7553), 467–475</div>
+            </td>
+            <td>
+              <a href="https://doi.org/10.1038/nature14543" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+                10.1038/nature14543
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="flow-tag tag-common">5</span></td>
+            <td><strong>Kriegman, S., et al.</strong><br><small class="slate">(2020)</small></td>
+            <td>
+              <div class="flow-title f-85">A scalable pipeline for designing reconfigurable organisms</div>
+              <div class="flow-desc f-78">Proceedings of the National Academy of Sciences (PNAS), 117(4), 1853–1859</div>
+            </td>
+            <td>
+              <a href="https://doi.org/10.1073/pnas.1910837117" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+                10.1073/pnas.1910837117
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="flow-tag tag-common">6</span></td>
+            <td><strong>NCBI PubMed Portal</strong><br><small class="slate">(2024)</small></td>
+            <td>
+              <div class="flow-title f-85">National Center for Biotechnology Information</div>
+              <div class="flow-desc f-78">Raccolta articoli peer-reviewed su biohybrid robotics e bio-actuators</div>
+            </td>
+            <td>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/?term=biohybrid+robotics" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+                pubmed.ncbi.nlm.nih.gov
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</section>
+
+</div><blockquote class="quotes mb-25" data-lang-key="quote-main">
   <p>
     La scienza è un modo di vivere raffinato, che richiede una mente aperta e una continua curiosità.<br>
     La ricerca sulle cellule staminali e la robotica non è solo un campo di studio, ma un viaggio verso il futuro della tecnologia e della biologia.
