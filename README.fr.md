@@ -57,16 +57,17 @@ Où la biotechnologie rencontre le code pour construire des outils numériques p
 
 ## 🌱 Qu'est-ce que BiotechProject ?
 
-BiotechProject est un **laboratoire numérique ouvert** qui combine **biotechnologie, santé et développement web** dans un système intégré conçu pour être :
+BiotechProject est un **laboratoire numérique ouvert** qui combine **biotechnologie, bioinformatique, santé et développement web accessible** dans un écosystème intégré conçu pour être :
 
-- 🔍 **Scientifiquement fiable**
+- 🔍 **Scientifiquement fiable et transparent**
 - 💻 **Techniquement robuste**
-- 🌐 **Accessible à tous**, y compris aux utilisateurs en situation de handicap
-- 🤝 **Ouvert à la collaboration mondiale**
+- 📚 **Orienté vers l'enseignement et la recherche** (des enseignants du secondaire aux laboratoires universitaires)
+- 🌐 **Accessible à tous**, en garantissant l'inclusion numérique de chaque utilisateur
+- 📖 **Engagé pour le Savoir Libre (Open Knowledge)**, en contribuant à la diffusion scientifique publique (ex. Wikipédia)
 
-Il a été créé pour démontrer comment la technologie peut servir la science et la santé, tout en garantissant un accès équitable pour tous, quelles que soient les capacités sensorielles, cognitives ou motrices. **Cette mission est profondément ancrée dans la tradition de l'humanisme numérique italien et de l'informatique éducative, visant à transformer un code complexe en un outil d'émancipation sociale et scientifique.**
+Il a été créé pour jeter un pont entre la recherche académique, l'enseignement et la société, en démontrant comment les technologies web et la bioinformatique peuvent soutenir les éducateurs, les étudiants et les chercheurs. **Cette mission est profondément enracinée dans la tradition de l'humanisme numérique et de l'informatique éducative, transformant des données scientifiques et du code complexes en outils ouverts pour l'émancipation sociale et scientifique.**
 
-C'est un espace collaboratif pour les développeurs, les chercheurs et les passionnés qui souhaitent explorer **comment le web peut devenir un pont pour l'inclusion et l'innovation scientifique**.
+C'est un espace collaboratif pour les développeurs, chercheurs, enseignants et passionnés qui souhaitent construire un pont vers l'inclusion, la science ouverte et l'innovation scientifique.
 
 <div align="center">
   <h3>🗺️ Notre Vision Stratégique pour la Mise à l'Échelle</h3>
