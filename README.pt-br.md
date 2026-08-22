@@ -57,16 +57,17 @@ Onde a biotecnologia encontra o código para construir ferramentas digitais para
 
 ## 🌱 O que é o BiotechProject?
 
-O BiotechProject é um **laboratório digital aberto** que combina **biotecnologia, saúde e desenvolvimento web** em um sistema integrado projetado para ser:
+O BiotechProject é um **laboratório digital aberto** que combina **biotecnologia, bioinformática, saúde e desenvolvimento web acessível** em um ecossistema integrado projetado para ser:
 
-- 🔍 **Cientificamente confiável**
+- 🔍 **Cientificamente confiável e transparente**
 - 💻 **Tecnicamente robusto**
-- 🌐 **Acessível a todos**, incluindo usuários com deficiências
-- 🤝 **Aberto à colaboração global**
+- 📚 **Voltado para a educação e a pesquisa** (desde professores do ensino médio até laboratórios universitários)
+- 🌐 **Acessível a todos**, garantindo a inclusão digital para qualquer usuário
+- 📖 **Comprometido com o Conhecimento Aberto (Open Knowledge)**, contribuindo diretamente para a divulgação científica pública (ex.: Wikipedia)
 
-Ele foi criado para mostrar como a tecnologia pode servir à ciência e à saúde, garantindo acesso equitativo para todos - independentemente de habilidades sensoriais, cognitivas ou motoras. **Esta missão está profundamente enraizada na tradição do humanismo digital italiano e da informática educacional, com o objetivo de transformar códigos complexos em uma ferramenta de empoderamento social e científico.**
+Ele foi criado para interligar a pesquisa acadêmica, o ensino e a sociedade — demonstrando como a tecnologia web moderna e a bioinformática podem capacitar educadores, estudantes e pesquisadores. **Esta missão está profundamente enraizada na tradição do humanismo digital e da informática educativa, transformando dados científicos e códigos complexos em ferramentas abertas e acessíveis para a emancipação social e científica.**
 
-É um espaço colaborativo para desenvolvedores, pesquisadores e entusiastas que desejam explorar **como a web pode se tornar uma ponte para a inclusão e a inovação científica**.
+É um espaço colaborativo para desenvolvedores, pesquisadores, educadores e entusiastas que desejam construir uma ponte para a inclusão, a ciência aberta e a inovação científica.
 
 <div align="center">
   <h3>🗺️ Nossa Visão Estratégica para Escalabilidade</h3>
