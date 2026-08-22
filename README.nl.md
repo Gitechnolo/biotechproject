@@ -57,16 +57,17 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 
 ## 🌱 Wat is BiotechProject?
 
-BiotechProject is een **open digitaal lab** dat **biotechnologie, gezondheid en webontwikkeling** combineert in een geïntegreerd systeem, ontworpen om te zijn:
+BiotechProject is een **open digitaal laboratorium** dat **biotechnologie, bio-informatica, gezondheid en toegankelijke webontwikkeling** combineert in een geïntegreerd ecosysteem dat ontworpen is om:
 
-- 🔍 **Wetenschappelijk betrouwbaar**
-- 💻 **Technisch robuust**
-- 🌐 **Toegankelijk voor iedereen**, inclusie gebruikers met een beperking
-- 🤝 **Open voor wereldwijde samenwerking**
+- 🔍 **Wetenschappelijk betrouwbaar en transparant** te zijn
+- 💻 **Technisch robuust** te zijn
+- 📚 **Afgestemd op onderwijs en onderzoek** te zijn (van docenten in het voortgezet onderwijs tot universitaire laboratoria)
+- 🌐 **Toegankelijk voor iedereen** te zijn, met gegarandeerde digitale inclusie voor elke gebruiker
+- 📖 **Toegewijd aan Open Kennis (Open Knowledge)** te zijn, met directe bijdragen aan openbare wetenschapscommunicatie (bijv. Wikipedia)
 
-Het is gecreëerd om te laten zien hoe technologie de wetenschap en de gezondheidszorg kan dienen, terwijl een rechtvaardige toegang voor iedereen wordt gewaarborgd - ongeacht zintuiglijke, cognitieve of motorische vermogens. **Deze missie is diep geworteld in de traditie van het Italiaanse digitale humanisme en de educatieve informatica, met als doel complexe code te transformeren in een instrument voor sociale en wetenschappelijke empowerment.**
+Het is opgezet om de brug te slaan tussen academisch onderzoek, onderwijs en de samenleving — door te tonen hoe moderne webtechnologie en bio-informatica docenten, studenten en onderzoekers kunnen versterken. **Deze missie is diep verworteld in de traditie van het digitaal humanisme en de onderwijsinformatica, waarbij complexe wetenschappelijke gegevens en code worden omgezet in open, toegankelijke instrumenten voor sociale en wetenschappelijke emancipatie.**
 
-Het is een collaboratieve ruimte voor ontwikkelaars, onderzoekers en enthousiastelingen die willen verkennen **hoe het web een brug kan slaan voor inclusie en wetenschappelijke innovatie**.
+Het is een samenwerkingsruimte voor ontwikkelaars, onderzoekers, docenten en enthousiastelingen die een brug willen bouwen voor inclusie, open wetenschap en wetenschappelijke innovatie.
 
 <div align="center">
   <h3>🗺️ Onze Strategische Visie voor Schaalbaarheid</h3>
