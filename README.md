@@ -57,16 +57,17 @@ Where biotechnology meets code to build digital tools for research and innovatio
 
 ## 🌱 What is BiotechProject?
 
-BiotechProject is an **open digital lab** that combines **biotechnology, health, and web development** into an integrated system designed to be:
+BiotechProject is an **open digital lab** that combines **biotechnology, bioinformatics, health, and accessible web development** into an integrated ecosystem designed to be:
 
-- 🔍 **Scientifically reliable**
+- 🔍 **Scientifically reliable & transparent**
 - 💻 **Technically robust**
-- 🌐 **Accessible to everyone**, including users with disabilities
-- 🤝 **Open to global collaboration**
+- 📚 **Tailored for education & research** (from high school teachers to university labs)
+- 🌐 **Accessible to everyone**, ensuring digital inclusion for all users
+- 📖 **Committed to Open Knowledge**, contributing directly to public science dissemination (e.g. Wikipedia)
 
-It was created to show how technology can serve science and healthcare, while ensuring equitable access for all - regardless of sensory, cognitive, or motor abilities. **This mission is deeply rooted in the tradition of Italian digital humanism and educational informatics, aiming to transform complex code into a tool for social and scientific empowerment.**
+It was created to bridge the gap between academic research, teaching, and society, showing how modern web technology and bioinformatics can empower educators, students, and researchers alike. **This mission is deeply rooted in the tradition of Italian digital humanism, transforming complex scientific data and code into open, accessible tools for social and scientific empowerment.**
 
-It's a collaborative space for developers, researchers, and enthusiasts who want to explore **how the web can become a bridge for inclusion and scientific innovation**.
+It's a collaborative space for developers, researchers, educators, and enthusiasts who want to build a bridge for inclusion, open science, and scientific innovation.
 
 <div align="center">
   <h3>🗺️ Our Strategic Vision for Scalability</h3>
