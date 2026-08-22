@@ -57,16 +57,17 @@ Dove la biotecnologia incontra il codice per costruire strumenti digitali per ri
 
 ## 🌱 Cos'è BiotechProject?
 
-BiotechProject è un **laboratorio digitale aperto** che unisce **biotecnologia, salute e sviluppo web** in un sistema integrato progettato per essere:
+BiotechProject è un **laboratorio digitale aperto** che unisce **biotecnologie, bioinformatica, salute e sviluppo web accessibile** in un ecosistema integrato progettato per essere:
 
-- 🔍 **Scientificamente affidabile**
+- 🔍 **Scientificamente affidabile e trasparente**
 - 💻 **Tecnicamente robusto**
-- 🌐 **Accessibile a tutti**, inclusi gli utenti con disabilità
-- 🤝 **Aperto alla collaborazione globale**
+- 📚 **Orientato alla didattica e alla ricerca** (dai docenti delle superiori ai laboratori universitari)
+- 🌐 **Accessibile a tutti**, garantendo l'inclusione digitale
+- 📖 **Impegnato per la Conoscenza Libera (Open Knowledge)**, contribuendo alla divulgazione scientifica pubblica (es. Wikipedia)
 
-È stato creato per dimostrare come la tecnologia possa servire la scienza e l'assistenza sanitaria, garantendo al contempo un accesso equo per tutti, indipendentemente dalle capacità sensoriali, cognitive o motorie. **Questa missione è profondamente radicata nella tradizione dell'umanesimo digitale italiano e dell'informatica educativa, con l'obiettivo di trasformare un codice complesso in uno strumento di emancipazione sociale e scientifica.**
+È stato creato per connettere la ricerca accademica, la didattica e la società, dimostrando come le tecnologie web e la bioinformatica possano supportare docenti, studenti e ricercatori. **Questa missione è profondamente radicata nella tradizione dell'umanesimo digitale e dell'informatica educativa italiana, trasformando dati scientifici e codice complessi in strumenti aperti per l'emancipazione sociale e scientifica.**
 
-È uno spazio collaborativo per sviluppatori, ricercatori e appassionati che vogliono esplorare **come il web possa diventare un ponte per l'inclusione e l'innovazione scientifica**.
+È uno spazio collaborativo per sviluppatori, ricercatori, docenti e appassionati che vogliono costruire un ponte per l'inclusione, la scienza aperta e l'innovazione scientifica.
 
 <div align="center">
   <h3>🗺️ La nostra Visione Strategica per la Scalabilità</h3>
