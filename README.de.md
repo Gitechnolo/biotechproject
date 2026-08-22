@@ -57,16 +57,17 @@ Wo Biotechnologie auf Code trifft, um digitale Werkzeuge für Forschung und Inno
 
 ## 🌱 Was ist BiotechProject?
 
-BiotechProject ist ein **offenes digitales Labor**, das **Biotechnologie, Gesundheit und Webentwicklung** in einem integrierten System vereint, das nach folgenden Grundsätzen entwickelt wurde:
+BiotechProject ist ein **offenes digitales Labor**, das **Biotechnologie, Bioinformatik, Gesundheit und barrierefreie Webentwicklung** in einem integrierten Ökosystem verbindet, das für folgende Zwecke konzipiert wurde:
 
-- 🔍 **Wissenschaftlich zuverlässig**
+- 🔍 **Wissenschaftlich zuverlässig und transparent**
 - 💻 **Technisch robust**
-- 🌐 **Barrierefrei für alle**, einschließlich Nutzer mit Behinderungen
-- 🤝 **Offen für globale Zusammenarbeit**
+- 📚 **Auf Bildung und Forschung zugeschnitten** (von Lehrkräften an weiterführenden Schulen bis hin zu Universitätslaboren)
+- 🌐 **Für jeden zugänglich**, unter Gewährleistung digitaler Inklusion für alle Nutzer
+- 📖 **Der Open Knowledge verpflichtet**, mit direktem Beitrag zur öffentlichen Wissenschaftskommunikation (z. B. Wikipedia)
 
-Es wurde ins Leben gerufen, um zu zeigen, wie Technologie der Wissenschaft und dem Gesundheitswesen dienen kann, während gleichzeitig ein gerechter Zugang für alle gewährleistet wird - unabhängig von sensorischen, kognitiven oder motorischen Fähigkeiten. **Diese Mission ist tief in der Tradition des italienischen digitalen Humanismus und der Bildungsinformatik verwurzelt mit dem Ziel, komplexen Code in ein Werkzeug für soziales und wissenschaftliches Empowerment zu verwandeln.**
+Es wurde geschaffen, um die Kluft zwischen akademischer Forschung, Lehre und Gesellschaft zu überwinden – und zu zeigen, wie moderne Webtechnologie und Bioinformatik Lehrkräfte, Studierende und Forschende gleichermaßen stärken können. **Diese Mission ist tief in der Tradition des digitalen Humanismus und der Bildungsinformatik verwurzelt und verwandelt komplexe wissenschaftliche Daten und Code in offene, zugängliche Werkzeuge für soziale und wissenschaftliche Teilhabe.**
 
-Es ist ein gemeinschaftlicher Raum für Entwickler, Forscher und Enthusiasten, die erforschen wollen, **wie das Web zu einer Brücke für Inklusion und wissenschaftliche Innovation werden kann**.
+Es ist ein kollaborativer Raum für Entwickler, Forschende, Lehrkräfte und Enthusiasten, die eine Brücke für Inklusion, offene Wissenschaft und wissenschaftliche Innovation bauen möchten.
 
 <div align="center">
   <h3>🗺️ Unsere Strategische Vision für Skalierbarkeit</h3>
