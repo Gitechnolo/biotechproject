@@ -71,7 +71,36 @@ table{border:0;padding:4px;border-spacing:4px;font-weight:bold;font-size:18px;te
 /* End tabelle capelli.html*/
 /* OVERRIDE DI PROTEZIONE PER CYBER-TABLE */
 .cyber-table-container table.cyber-table{ font-weight: normal !important; font-size: 14px !important; text-align: left !important; border-spacing: 0 !important; padding: 0 !important; width: 100% !important}
-@media only screen and (max-width: 768px){ .cyber-table-container table.cyber-table, .cyber-table-container table.cyber-table thead, .cyber-table-container table.cyber-table tbody, .cyber-table-container table.cyber-table th, .cyber-table-container table.cyber-table td, .cyber-table-container table.cyber-table tr{ display: table-cell !important;} .cyber-table-container table.cyber-table tr{ display: table-row !important; border-bottom: none !important; margin: 0 !important;} .cyber-table-container table.cyber-table thead{ display: table-header-group !important;} .cyber-table-container table.cyber-table td{ padding-left: 12px !important; position: static !important;} .cyber-table-container table.cyber-table td:before{ content: none !important;}}
+@media only screen and (max-width: 768px) {
+  .cyber-table-container table.cyber-table,
+  .cyber-table-container table.cyber-table thead,
+  .cyber-table-container table.cyber-table tbody,
+  .cyber-table-container table.cyber-table th,
+  .cyber-table-container table.cyber-table td,
+  .cyber-table-container table.cyber-table tr {
+    display: table-cell !important;
+  }
+  .cyber-table-container table.cyber-table tr { 
+    display: table-row !important; 
+    border-bottom: none !important; 
+    margin: 0 !important;
+  }
+  .cyber-table-container table.cyber-table thead { 
+    display: table-header-group !important; 
+  }
+  .cyber-table-container table.cyber-table th {
+    text-align: left !important;
+    padding-left: 12px !important;
+  }
+  .cyber-table-container table.cyber-table td { 
+    padding-left: 12px !important; 
+    position: static !important;
+    text-align: left !important;
+  }
+  .cyber-table-container table.cyber-table td:before { 
+    content: none !important; 
+  }
+}
 </style> 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
