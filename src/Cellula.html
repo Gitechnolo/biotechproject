@@ -76,6 +76,48 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
 .pad-l20{padding-left: 20px;}
+/* --- STILE DEI BADGE DI CITAZIONE NEL TESTO --- */
+.citation-badge {
+  display: inline-block;
+  margin-left: 6px;
+  margin-right: 4px;
+  vertical-align: super;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(33, 150, 243, 0.2); 
+  color: #64b5f6;
+  padding: 0 4px;
+  border-radius: 4px;
+  border: 1px solid rgba(33, 150, 243, 0.4);
+  line-height: 1;
+  position: relative;
+}
+.citation-badge:hover {
+  background: rgba(33, 150, 243, 0.4);
+  color: #fff;
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.6);
+  transform: none;
+}
+/* --- EVIDENZIAZIONE ATTIVA (ZERO CLS + LEGGIBILITÀ) --- */
+.citation-active-row {
+  background: rgba(0, 230, 118, 0.15) !important;
+  box-shadow: inset 0 0 10px rgba(0, 230, 118, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.citation-active-text {
+  background: rgba(0, 230, 118, 0.1);
+  box-shadow: inset 4px 0 0 0 rgba(0, 230, 118, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: box-shadow;
+}
+/* Reset sicuro */
+.text:not(.citation-active-text), 
+.research-insight-box:not(.citation-active-text),
+p:not(.citation-active-text) {
+  box-shadow: none;
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -141,18 +183,18 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
       Oltre ai fattori di trascrizione canonici, l'identità cellulare è governata dall'<strong>epigenoma</strong>: la metilazione del DNA (isole CpG), le modificazioni post-traduzionali degli istoni (es. H3K9ac per l'eucromatina e H3K27me3 per l'eterocromatina) e gli RNA non codificanti (miRNA, lncRNA) guidano la plasticità fenotipica senza alterare la sequenza primaria.
     </p>
     <p class="text">
-      Inoltre, la biologia moderna riconosce la cellula come un <strong>sistema stocastico</strong>. La variabilità trascrizionale tra cellule geneticamente identiche (<i>gene expression noise</i>) non è un errore, ma un meccanismo adattativo chiave (es. resistenza eterogenea ai farmaci in oncologia), oggi esplorato ad alta risoluzione tramite la sequenziazione su singola cellula (<strong>scRNA-seq</strong>).
+      Inoltre, la biologia moderna riconosce la cellula come un <strong>sistema stocastico</strong>. La variabilità trascrizionale tra cellule geneticamente identiche (<i>gene expression noise</i>) non è un errore, ma un meccanismo adattativo chiave (es. resistenza eterogenea ai farmaci in oncologia), oggi esplorato ad alta risoluzione tramite la sequenziazione su singola cellula (<strong>scRNA-seq</strong>) <span class="citation-badge" data-ref="4">[4]</span> <span class="citation-badge" data-ref="5">[5]</span> <span class="citation-badge" data-ref="9">[9]</span>
     </p>
   </div>
 
   <!-- Blocco 2: Mitosi, DDR e Senescenza -->
   <h3 class="biotechbold">AUTORINNOVAMENTO CELLULARE, DNA DAMAGE RESPONSE (DDR) E SENESCENZA</h3>
-  <p class="text">
-    In linea con i principi cardine della biologia molecolare, le cellule somatiche originano esclusivamente dalla divisione di elementi preesistenti. La proliferazione cellulare avviene mediante <strong class="orangetext">MITOSI</strong>, un processo di divisione equazionale finemente orchestrato dalle chinasi ciclina-dipendenti (CDK) e dai relativi checkpoint del ciclo cellulare (G<sub>1</sub>/S, Intra-S e G<sub>2</sub>/M, supervisionati dagli oncosoppressori molecolari p53 e pRb). Questo network regolatorio assicura la replicazione semiconservativa ad alta fedeltà del DNA e la corretta segregazione dei cromatidi fratelli tramite il fuso mitotico, preservando l'integrità del cariotipo e la stabilità genomica nelle cellule figlie.
+  <p class="text mb-15">
+    In linea con i principi cardine della biologia molecolare, le cellule somatiche originano esclusivamente dalla divisione di elementi preesistenti. La proliferazione cellulare avviene mediante <strong class="orangetext">MITOSI</strong>, un processo di divisione equazionale finemente orchestrato dalle chinasi ciclina-dipendenti (CDK) e dai relativi checkpoint del ciclo cellulare (G<sub>1</sub>/S, Intra-S e G<sub>2</sub>/M, supervisionati dagli oncosoppressori molecolari p53 e pRb). Questo network regolatorio assicura la replicazione semiconservativa ad alta fedeltà del DNA e la corretta segregazione dei cromatidi fratelli tramite il fuso mitotico, preservando l'integrità del cariotipo e la stabilità genomica nelle cellule figlie. <span class="citation-badge" data-ref="6">[6]</span>
   </p>
 
   <!-- INSIGHT AVANZATO 2: Riparazione del DNA e SASP -->
-  <div class="research-insight-box mb-15">
+  <div class="research-insight-box">
     <h4 class="biotechbold">RESEARCH INSIGHT | Meccanismi di Riparazione (DDR) e Fate Cellulare</h4>
     <p class="text">
       In presenza di lesioni al genoma, la cellula attiva la risposta al danno del DNA (<strong>DDR</strong>, <i>DNA Damage Response</i>) ingaggiando pathway specifici di riparazione:
@@ -162,7 +204,7 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
       <li><strong>Danni puntuali:</strong> Gestiti da <i>Base Excision Repair</i> (BER) e <i>Mismatch Repair</i> (MMR).</li>
     </ul>
     <p class="text">
-      Se il danno supera la soglia critico-riparativa o in caso di erosione telomerica, p53/p21 inducono l'attivazione dell'<strong>apoptosi</strong> (morte programmata) o della <strong>senescenza cellulare</strong>. Le cellule senescenti, pur bloccando permanentemente il ciclo cellulare, rimangono metabolicamente attive e secernono il fenotipo <strong>SASP</strong> (<i>Senescence-Associated Secretory Phenotype</i>), una miscela pro-infiammatoria di citochine e metalloproteasi che altera profondamente il microambiente circostante e contribuisce all'invecchiamento tissutale e alla progressione tumorale.
+      Se il danno supera la soglia critico-riparativa o in caso di erosione telomerica, p53/p21 inducono l'attivazione dell'<strong>apoptosi</strong> (morte programmata) o della <strong>senescenza cellulare</strong>. Le cellule senescenti, pur bloccando permanentemente il ciclo cellulare, rimangono metabolicamente attive e secernono il fenotipo <strong>SASP</strong> (<i>Senescence-Associated Secretory Phenotype</i>), una miscela pro-infiammatoria di citochine e metalloproteasi che altera profondamente il microambiente circostante e contribuisce all'invecchiamento tissutale e alla progressione tumorale. <span class="citation-badge" data-ref="7">[7]</span> <span class="citation-badge" data-ref="8">[8]</span>
     </p>
   </div>
 </section>
@@ -233,7 +275,7 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
         <tr>
           <td><strong>Organizzazione Genomica</strong></td>
           <td>DNA circolare bicatenario superavvolto (DNA girasi/topoisomerasi IV) associato a proteine nucleoidi (NAPs, assenza di istoni canonici nei Bacteria)</td>
-          <td>Cromosomi lineari multipli compattati in cromatina mediante ottameri istonici (H2A, H2B, H3, H4) ed istone H1; compartimentazione nucleare</td>
+          <td>Cromosomi lineari multipli compattati in cromatina mediante ottameri istonici (H2A, H2B, H3, H4) ed istone H1; compartimentazione nucleare <span class="citation-badge" data-ref="4">[4]</span></td>
         </tr>
         <tr>
           <td><strong>Compartimentazione Membranosa</strong></td>
@@ -258,7 +300,7 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
   <div class="research-insight-box mb-15">
     <h4 class="biotechbold">RESEARCH INSIGHT | Organuli Senza Membrana e Separazione di Fase (LLPS)</h4>
     <p class="text">
-      Oltre alla compartimentazione classica delimitata da membrane fosfolipidiche, la biologia cellulare moderna ha dimostrato l'esistenza di organuli privi di membrana (es. nucleolo, granuli di stress, corpi P). Questi compartimenti dinamici si formano per <strong>separazione di fase liquido-liquido (LLPS, <i>Liquid-Liquid Phase Separation</i>)</strong> guidata da interazioni deboli e multivalenti tra proteine intrinsecamente disordinate (IDPs) e molecole di RNA, regolando processi chiave come la trascrizione e la risposta allo stress fisiologico.
+      Oltre alla compartimentazione classica delimitata da membrane fosfolipidiche, la biologia cellulare moderna ha dimostrato l'esistenza di organuli privi di membrana (es. nucleolo, granuli di stress, corpi P). Questi compartimenti dinamici si formano per <strong>separazione di fase liquido-liquido (LLPS, <i>Liquid-Liquid Phase Separation</i>)</strong> guidata da interazioni deboli e multivalenti tra proteine intrinsecamente disordinate (IDPs) e molecole di RNA, regolando processi chiave come la trascrizione e la risposta allo stress fisiologico. <span class="citation-badge" data-ref="3">[3]</span>
     </p>
   </div>
 
@@ -273,7 +315,7 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
   </p>
 
   <p class="text">
-    Sviluppato nel 1972 da S.J. Singer e G.L. Nicolson, il <strong class="orangetext">Modello a Mosaico Fluido</strong> definisce la membrana come un liquido bidimensionale viscoso e orientato, in cui proteine integrali monotopiche o politopiche e proteine periferiche si intercalano bidimensionalmente nel doppio strato. I lipidi e le proteine mostrano un'elevata dinamica molecolare caratterizzata da:
+    Sviluppato nel 1972 da S.J. Singer e G.L. Nicolson, il <strong class="orangetext">Modello a Mosaico Fluido</strong> definisce la membrana come un liquido bidimensionale viscoso e orientato, in cui proteine integrali monotopiche o politopiche e proteine periferiche si intercalano bidimensionalmente nel doppio strato. I lipidi e le proteine mostrano un'elevata dinamica molecolare caratterizzata da: <span class="citation-badge" data-ref="1">[1]</span>
   </p>
 
   <ul class="text pad-l20 mb-15">
@@ -286,12 +328,12 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
     La reologia e la visco-elasticità del bilayer sono regolate dalla temperatura di transizione di fase (<i>T</i><sub>m</sub>, da fase gel ordinata a fase liquido-cristallina disordinata). Tale parametro fisio-chimico è modulato dalla lunghezza delle catene alchiliche, dalla presenza di doppi legami <i>cis</i> che introducono ripiegamenti sterici (<i>kinks</i>) riducendo le forze di Van der Waals tra catene adiacenti, e dall'azione omeostatica del <strong class="greentext">colesterolo</strong>. 
   </p>
 
-  <p class="text">
-    Il colesterolo agisce come un rigido tampone di fluidità (<i>plasticizzante molecolare</i>): mediante il suo nucleo steroideo rigido interfacciato con la porzione prossimale delle catene di acido grasso, impedisce l'eccessiva fluidificazione ad alte temperature riducendo la mobilità alchilica e, al contempo, ostacola l'impaccamento rigido e la cristallizzazione a basse temperature prevenendo lo stato di gel. Inoltre, l'interazione preferenziale tra colesterolo e sfingolipidi saturi promuove la segregazione di microdomini di membrana altamente ordinati e resistenti ai detergenti non ionici, noti come <strong class="biotechbold">zolle lipidiche (lipid rafts)</strong>, piattaforme dinamiche fondamentali per il reclutamento di recettori e la modulazione della trasduzione del segnale.
+  <p class="text mb-15">
+        Il colesterolo agisce come un rigido tampone di fluidità (<i>plasticizzante molecolare</i>): mediante il suo nucleo steroideo rigido interfacciato con la porzione prossimale delle catene di acido grasso, impedisce l'eccessiva fluidificazione ad alte temperature riducendo la mobilità alchilica e, al contempo, ostacola l'impaccamento rigido e la cristallizzazione a basse temperature prevenendo lo stato di gel. Inoltre, l'interazione preferenziale tra colesterolo e sfingolipidi saturi promuove la segregazione di microdomini di membrana altamente ordinati e resistenti ai detergenti non ionici, noti come <strong class="biotechbold">zolle lipidiche (lipid rafts)</strong>, piattaforme dinamiche fondamentali per il reclutamento di recettori e la modulazione della trasduzione del segnale. <span class="citation-badge" data-ref="2">[2]</span>
   </p>
 
   <!-- INSIGHT AVANZATO 2: Asimmetria, Caveole e Picket-Fence Model -->
-  <div class="research-insight-box mb-15">
+  <div class="research-insight-box">
     <h4 class="biotechbold">RESEARCH INSIGHT | Asimmetria Transversale e Restrizioni Citoscheletriche (Picket-Fence)</h4>
     <p class="text">
       <strong>Asimmetria Lipidica e Segnalazione:</strong> Il doppio strato fosfolipidico presenta una marcata asimmetria tra i due foglietti. Il foglietto esofacciale è ricco in fosfatidilcolina e sfingomielina, mentre quello citosolico concentra fosfatidilserina (PS) e fosfatidilinositolo-4,5-bisfosfato (PIP<sub>2</sub>). La perdita dell'asimmetria con l'esposizione della PS sul foglietto esterno funge da segnale di fagocitosi (<i>eat-me signal</i>) durante l'apoptosi.
@@ -300,7 +342,7 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
       <strong>Caveole e Meccanotrasduzione:</strong> Particolari invaginazioni della membrana ricche di colesterolo e sfingolipidi, denominate <i>caveole</i>, sono stabilizzate dalle proteine <strong>caveoline</strong> e <strong>cavitine</strong>. Agiscono come riserve di superficie per assorbire lo stress meccanico di membrana e come hub per l'endocitosi e la trasduzione del segnale.
     </p>
     <p class="text">
-      <strong>Modello Picket-Fence (Pali di Recinzione):</strong> La libera diffusione laterale delle proteine e dei lipidi di membrana è delimitata dal citoscheletro corticale actinico sottostante. Le proteine ancorate all'actina agiscono come "pali" (<i>pickets</i>) e le maglie di actina come "recinzioni" (<i>fences</i>), creando micro-compartimenti in cui i lipidi e le recettori rimangono temporaneamente confinati (<i>hop diffusion</i>).
+      <strong>Modello Picket-Fence (Pali di Recinzione):</strong> La libera diffusione laterale delle proteine e dei lipidi di membrana è delimitata dal citoscheletro corticale actinico sottostante. Le proteine ancorate all'actina agiscono come "pali" (<i>pickets</i>) e le maglie di actina come "recinzioni" (<i>fences</i>), creando micro-compartimenti in cui i lipidi e le recettori rimangono temporaneamente confinati (<i>hop diffusion</i>). <span class="citation-badge" data-ref="2">[2]</span>
     </p>
   </div>
 </section>
@@ -319,7 +361,7 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
 
   <h3 class="biotechbold">BIOFISICA DEI TRASPORTI E GLICOCALICE</h3>
   <p class="text">
-    La barriera idrofobica del bilayer fosfolipidico presenta una permeabilità altamente selettiva, quantificata dal coefficiente di permeabilità <i>P</i> (cm/s). Mentre gas apolari (O<sub>2</sub>, CO<sub>2</sub>, N<sub>2</sub>) e piccole molecole non cariche diffongono spontaneamente, ioni idratati (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>) e soluti polari necessitano di proteine transmembrana. Il transito avviene secondo due modalità fondamentali:
+    La barriera idrofobica del bilayer fosfolipidico presenta una permeabilità altamente selettiva, quantificata dal coefficiente di permeabilità <i>P</i> (cm/s). Mentre gas apolari (O<sub>2</sub>, CO<sub>2</sub>, N<sub>2</sub>) e piccole molecole non cariche diffondono spontaneamente, ioni idratati (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>) e soluti polari necessitano di proteine transmembrana. Il transito avviene secondo due modalità fondamentali:
   </p>
   
   <ul class="text pad-l20 mb-15">
@@ -393,7 +435,7 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
       <strong>Meccanotrasduzione Citoscheletrica:</strong> Il citoscheletro non è solo una struttura portante passiva, ma una rete dinamica di trasmissione della forza. Tensioni meccaniche applicate alle integrine di superficie vengono trasmesse direttamente al nucleo attraverso il complesso LINC (<i>Linker of Nucleoskeleton and Cytoskeleton</i>: proteine SUN-Nesprina), modulando l'architettura della cromatina e l'espressione genica in risposta allo stress meccanico ambientale.
     </p>
     <p class="text">
-      <strong>Siti di Contatto Inter-Organellare (MCS):</strong> Il traffico intracellulare non dipende esclusivamente da vescicole. Piattaforme prive di fusione denominate Membrane Contact Sites (MCS) collegano direttamente organuli vicini (es. MAM tra RER e mitocondri). Questi microdomini consentono il trasferimento diretto di calcio (Ca<sup>2+</sup>) e lipidi (es. fosfatidilserina), regolando la bioenergetica mitocondriale e la biogenesi delle membrane.
+      <strong>Siti di Contatto Inter-Organellari (MCS):</strong> Il traffico intracellulare non dipende esclusivamente da vescicole. Piattaforme prive di fusione denominate Membrane Contact Sites (MCS) collegano direttamente organuli vicini (es. MAM tra RER e mitocondri). Questi microdomini consentono il trasferimento diretto di calcio (Ca<sup>2+</sup>) e lipidi (es. fosfatidilserina), regolando la bioenergetica mitocondriale e la biogenesi delle membrane. <span class="citation-badge" data-ref="3">[3]</span>
     </p>
   </div>
 
@@ -464,7 +506,7 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
         Svolgono inoltre la <i>&alpha;</i>- e <i>&beta;</i>-ossidazione degli acidi grassi a catena molto lunga (VLCFA, C &ge; 22).
       </li>
       <li>
-        <strong class="biotechbold">Nucleo Cellulare, Involucro Nucleare e Cromatina:</strong> Sede del genoma, separato dal citosol da un doppio bilayer interrotto dai Complessi del Poro Nucleare (NPC, costituiti da nucleoporine) che regolano il traffico nucleo-citoplasmatico guidato dalle GTPasi Ran (RanGAP/RanGEF). Racchiude il nucleolo e la cromatina: <strong class="greentext">eucromatina</strong> (decondensata, trascritta attivamente, arricchita in H3K9ac e H3K4me3) ed <strong class="orangetext">eterocromatina</strong> (ipercondensata, silenziata, distinta in costitutiva o facoltativa e contrassegnata da H3K9me3 e H3K27me3).
+        <strong class="biotechbold">Nucleo Cellulare, Involucro Nucleare e Cromatina:</strong> Sede del genoma, separato dal citosol da un doppio bilayer interrotto dai Complessi del Poro Nucleare (NPC, costituiti da nucleoporine) che regolano il traffico nucleo-citoplasmatico guidato dalle GTPasi Ran (RanGAP/RanGEF). Racchiude il nucleolo e la cromatina: <strong class="greentext">eucromatina</strong> (decondensata, trascritta attivamente, arricchita in H3K9ac e H3K4me3) ed <strong class="orangetext">eterocromatina</strong> (ipercondensata, silenziata, distinta in costitutiva o facoltativa e contrassegnata da H3K9me3 e H3K27me3). <span class="citation-badge" data-ref="4">[4]</span>
       </li>
     </ul>
   </div>
@@ -499,12 +541,12 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
     </li>
   </ul>
   
-  <div class="footer-text">
+  <div class="footer-text mb-15">
     <p class="text">
       La polimerizzazione del singolo filamento avviene tramite <span class="yellowtext">legami covalenti fosfodiesterici tra il gruppo fosfato alfa legato al C-5' di un desossiribosio e l'ossidrile (-OH) nucleofilo in posizione 3' dello zucchero adiacente</span>. L'associazione e la stabilità termodinamica del duplex complementare sono sostenute dai <span class="orangetext">legami a idrogeno specifici di Watson-Crick rivolti verso il centro del duplex &mdash; 2 legami H per la coppia A=T e 3 legami H per la coppia G&equiv;C</span> &mdash;, combinati al contributo prevalente dell'<strong class="biotechbold">impilamento idrofobico di basi (base stacking)</strong> mediato da interazioni di van der Waals e sovrapposizione degli orbitali &pi; tra anelli eterociclici adiacenti (passo elicoidale di 3,4 nm per 10,5 coppie di basi per giro, con scanalatura maggiore e minore).
     </p>
     <p class="text">
-      La <span class="biotechbold">sequenza nucleotidica primaria costituisce il codice codificante della cellula</span>, in cui il backbone fosfodiesterico esterno garantisce protezione chimica e stabilità idrolitica al core centrale. L'informazione genetica, decodificata in triplette non sovrapposte (codoni) mediante un <span class="biotechbold">CODICE GENETICO</span> degenerato e quasi universale, determina finemente il <span class="orangetext">transcriptoma e il profilo proteomico</span>, governando la dinamica molecolare, l'omeostasi e le <span class="yellowtext">proprietà fenotipiche dell'intero organismo.</span>
+      La <span class="biotechbold">sequenza nucleotidica primaria costituisce il codice codificante della cellula</span>, in cui il backbone fosfodiesterico esterno garantisce protezione chimica e stabilità idrolitica al core centrale. L'informazione genetica, decodificata in triplette non sovrapposte (codoni) mediante un <span class="biotechbold">CODICE GENETICO</span> degenerato e quasi universale, determina finemente il <span class="orangetext">transcriptoma e il profilo proteomico</span>, governando la dinamica molecolare, l'omeostasi e le <span class="yellowtext">proprietà fenotipiche dell'intero organismo.</span> <span class="citation-badge" data-ref="9">[9]</span> <span class="citation-badge" data-ref="10">[10]</span>
     </p>
   </div>
 
@@ -517,7 +559,7 @@ DESCRIZIONE: Dinamica di membrana, permeabilità selettiva, architettura citosch
       <strong>Dinamica dei Solchi e Riconoscimento Proteico:</strong> Il <i>solco maggiore</i> (major groove) espone una sequenza altamente specifica di atomi e gruppi funzionali (donatori/accettori di legami H, gruppi metilici) che costituiscono un "codice di superficie" letto da fattori di trascrizione e domini di legame al DNA (es. zinc finger, helix-turn-helix). Il <i>solco minore</i> (minor groove) presenta minore variabilità di pattern elettrostatico ed è preferenzialmente riconosciuto da proteine che inducono curvatura o distorsione (es. TBP).
     </p>
     <p class="text">
-      <strong>Epigenetica e Lesioni Chimiche:</strong> Le modificazioni covalenti delle basi, come la metilazione della citosina a <i>5-metilcitosina (5mC)</i>, alterano il profilo di lettura nel solco maggiore senza de-stabilizzare gli appaiamenti di Watson-Crick, regolando il silenziamento genico. Viceversa, lesioni chimiche come la deaminazione spontanea della citosina ad uracile o la formazione di dimeri di pirimidina da radiazione UV destabilizzano localmente lo stacking e richiedono l'attivazione dei sistemi di riparazione (BER, NER).
+      <strong>Epigenetica e Lesioni Chimiche:</strong> Le modificazioni covalenti delle basi, come la metilazione della citosina a <i>5-metilcitosina (5mC)</i>, alterano il profilo di lettura nel solco maggiore senza de-stabilizzare gli appaiamenti di Watson-Crick, regolando il silenziamento genico. Viceversa, lesioni chimiche come la deaminazione spontanea della citosina ad uracile o la formazione di dimeri di pirimidina da radiazione UV destabilizzano localmente lo stacking e richiedono l'attivazione dei sistemi di riparazione (BER, NER). <span class="citation-badge" data-ref="5">[5]</span> <span class="citation-badge" data-ref="7">[7]</span>
     </p>
   </div>
 </section>
@@ -542,7 +584,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       Il <span class="yellowtext">genoma nucleare e mitocondriale</span> governa l'omeostasi cellulare regolando la trascrizione temporo-spaziale delle sequenze informazionali. Un <span class="biotechbold">GENE</span> è definibile come un segmento polinucleotidico continuo o discontinuo (intervallato da esoni ed introni negli eucarioti) provvisto di regioni regolatorie (promotori, enhancer, silencer) che codifica per un trascritto di RNA funzionale: RNA messaggero (mRNA), RNA transfer (tRNA), RNA ribosomiale (rRNA) o ncRNA regolatori (miRNA, lncRNA). Mediante il complesso traduzionale, l'mRNA viene convertito in una <span class="biotechbold">catena polipeptidica con una specifica struttura primaria</span>. Le <span class="yellowtext">proteine</span> derivate &mdash; enzimi catalitici, elementi del citoscheletro, recettori trasduttori e fattori di trascrizione &mdash; determinano la <span class="greentext">CINETICA METABOLICA, LA PROLIFERAZIONE E IL DIFFERENZIAMENTO</span> del citotipo.
     </p>
     <p>
-      Ciascuna specie ed individuo esprime uno specifico <span class="orangetext">profilo proteomico (proteoma dinamico)</span>, risultante dal processamento post-trascrizionale (splicing alternativo) e dalle modificazioni post-traduzionali (fosforilazione, glicosilazione, ubiquitinazione), definendo in ultima analisi il <span class="orangetext">fenotipo molecolare e la penetranza dei caratteri ereditari.</span>
+      Ciascuna specie ed individuo esprime uno specifico <span class="orangetext">profilo proteomico (proteoma dinamico)</span>, risultante dal processamento post-trascrizionale (splicing alternativo) e dalle modificazioni post-traduzionali (fosforilazione, glicosilazione, ubiquitinazione), definendo in ultima analisi il <span class="orangetext">fenotipo molecolare e la penetranza dei caratteri ereditari.</span><span class="citation-badge" data-ref="10">[10]</span>
     </p>
 
     <hr class="line" />
@@ -557,16 +599,16 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     <div class="cyber-flowchart" role="img" aria-label="Flusso dell'informazione genica: Trascrizione nel nucleo e Traduzione nel citoplasma da DNA ad RNA a Proteine">
       <div class="flow-branches">
         <div class="flow-card intrinsic">
-          <span class="flow-tag tag-intrinsic">Fase 1 &middot; Compartimento Nucleare</span>
+          <span class="flow-tag tag-intrinsic">Fase 1 · Compartimento Nucleare</span>
           <div class="flow-title">TRASCRIZIONE</div>
           <div class="flow-desc">
             <span class="biotechbold">Sintesi di pre-mRNA / mRNA</span><br />
-            L'enzima <span class="yellowtext">RNA Polimerasi II</span> catalizza la sintesi di un filamento di RNA complementare al filamento stampo del <span class="yellowtext">DNA (3'&rarr;5')</span>, seguita da 5'-capping, poliadenilazione e splicing.
+            L'enzima <span class="yellowtext">RNA Polimerasi II</span> catalizza la sintesi di un filamento di RNA complementare al filamento stampo del <span class="yellowtext">DNA (3'→5')</span>, seguita da 5'-capping, poliadenilazione e splicing.
           </div>
         </div>
 
         <div class="flow-card common">
-          <span class="flow-tag tag-common">Fase 2 &middot; Compartimento Citosolico</span>
+          <span class="flow-tag tag-common">Fase 2 · Compartimento Citosolico</span>
           <div class="flow-title">TRADUZIONE</div>
           <div class="flow-desc">
             <span class="biotechbold">Sintesi Polipeptidica Ribosomiale</span><br />
@@ -579,9 +621,9 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 
       <div class="flow-card lysis" style="text-align: center;">
         <span class="flow-tag tag-lysis">Esito Funzionale / Fenotipo</span>
-        <div class="flow-title"><span class="yellowtext">DNA</span> &rarr; <span class="yellowtext">RNA</span> &rarr; <span class="yellowtext">PROTEINA FUNZIONALE</span></div>
+        <div class="flow-title"><span class="yellowtext">DNA</span> → <span class="yellowtext">RNA</span> → <span class="yellowtext">PROTEINA FUNZIONALE</span></div>
         <div class="flow-desc">
-          Ripiegamento tridimensionale della catena amminoacidica (folding auto-assemblante) e maturazione nell'<span class="yellowtext">effettore</span> proteico finale per la modulazione del <span class="orangetext">network metabolico e trasduttivo.</span>
+          Ripiegamento tridimensionale della catena amminoacidica (folding auto-assemblante) e maturazione nell'<span class="yellowtext">effettore</span> proteico finale per la modulazione del <span class="orangetext">network metabolico e trasduttivo.</span><span class="citation-badge" data-ref="8">[8]</span>
         </div>
       </div>
     </div>
@@ -592,7 +634,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       I <span class="subtitle">CROMOSOMI</span> rappresentano la massima condensazione sovramolecolare della cromatina, visibili durante la <span class="biotechbold">metafase mitotica o meiotica</span>. In questa fase, il cromosoma duplicato è strutturato in due <span class="yellowtext">CROMATIDI FRATELLI</span> identici, tenuti uniti da complessi proteici di coesina e saldati a livello della regione strozzata primaria definita <span class="yellowtext">CENTROMERO</span>, sede di assemblaggio del complesso macromolecolare del <span class="biotechbold">cinetocore</span> per l'aggancio dei microtubuli del fuso.
     </p>
     <p>
-      L'impalcatura dei cromosomi si fonda sulla <span class="yellowtext">cromatina</span>, un complesso nucleoproteico dato dall'associazione del DNA con proteine basiche ad alta carica positiva (<span class="yellowtext">ISTONI H2A, H2B, H3, H4</span> costituenti il core ottamerico del nucleosoma, ed <span class="yellowtext">ISTONE H1</span> linker) e proteine non istoniche regolatorie. Questa sovrastruttura scala da nucleosomi "a filo di perle" (11 nm) fino a domini ad ansa (TADs) e strutture ad ordine superiore per la segregazione e la trasmissione ereditaria del genoma.
+      L'impalcatura dei cromosomi si fonda sulla <span class="yellowtext">cromatina</span>, un complesso nucleoproteico dato dall'associazione del DNA con proteine basiche ad alta carica positiva (<span class="yellowtext">ISTONI H2A, H2B, H3, H4</span> costituenti il core ottamerico del nucleosoma, ed <span class="yellowtext">ISTONE H1</span> linker) e proteine non istoniche regolatorie. Questa sovrastruttura scala da nucleosomi "a filo di perle" (11 nm) fino a domini ad ansa (TADs) e strutture ad ordine superiore per la segregazione e la trasmissione ereditaria del genoma.<span class="citation-badge" data-ref="4">[4]</span>
     </p>
 
     <!-- RESEARCH INSIGHT BOX -->
@@ -602,7 +644,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
         <strong>Organizzazione Tridimensionale del Genoma (TADs):</strong> L'architettura della cromatina interfasica non è casuale ma organizzata in Topologically Associating Domains (TADs), delimitati da complessi isolanti CTCF e coesina. All'interno di ciascun TAD, gli enhancer interagiscono fisicamente con i promotori target formando loop di trascrizione, impedendo l'attivazione impropria di geni in TADs adiacenti.
       </p>
       <p class="text">
-        <strong>Inattivazione Epigenetica del Cromosoma X (XCI):</strong> Per garantire la compensazione del dosaggio genico tra i sessi (46,XX vs 46,XY), nei mammiferi femmina uno dei due cromosomi X viene casualmente inattivato durante l'embriogenesi precocissima. Il processo è guidato dall'ncRNA non codificante <i>XIST</i>, che riveste il cromosoma X destinato al silenziamento reclutando complessi repressori Polycomb (PRC1/PRC2), inducendo ipoacetilazione degli istoni, ipermetilazione dei CpG ed eterocromatizzazione condensata nel <i>corpo di Barr</i>.
+        <strong>Inattivazione Epigenetica del Cromosoma X (XCI):</strong> Per garantire la compensazione del dosaggio genico tra i sessi (46,XX vs 46,XY), nei mammiferi femmina uno dei due cromosomi X viene casualmente inattivato durante l'embriogenesi precocissima. Il processo è guidato dall'ncRNA non codificante <i>XIST</i>, che riveste il cromosoma X destinato al silenziamento reclutando complessi repressori Polycomb (PRC1/PRC2), inducendo ipoacetilazione degli istoni, ipermetilazione dei CpG ed eterocromatizzazione condensata nel <i>corpo di Barr</i>.<span class="citation-badge" data-ref="5">[5]</span>
       </p>
       <p class="text">
         <strong>Evoluzione della Definizione Molecolare di Gene:</strong> Dalla classica visione del cistrone mono-cistronico codificante proteina, le tecniche di sequenziamento RNA-Seq e mappatura ENCODE hanno rivelato che oltre l'80% del genoma umano è trascrittazionalmente attivo. Molti geni generano molteplici trascritti non codificanti ad azione regolatoria (lncRNA, circRNA) o subiscono trascritti chimerici trans-splicing, ridefinendo il gene come un'unità trascrizionale complessa e multifunzionale.
@@ -625,7 +667,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     </ul>
 
     <p>
-      Mentre le cellule somatiche mantengono un assetto <span class="biotechbold">diploide (<i>2n</i> = 46)</span>, le cellule germinali mature (gameti) presentano un corredo <span class="biotechbold">aploide (<i>n</i> = 23)</span> in modo da garantire la costanza del numero cromosomico di specie al momento della fecondazione.
+      Mentre le cellule somatiche mantengono un assetto <span class="biotechbold">diploide (<i>2n</i> = 46)</span>, le cellule germinali mature (gameti) presentano un corredo <span class="biotechbold">aploide (<i>n</i> = 23)</span> in modo da garantire la costanza del numero cromosomico di specie al momento della fecondazione.<span class="citation-badge" data-ref="9">[9]</span>
     </p>
   </article>
 </section>
@@ -654,7 +696,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       Questo ciclo di divisione garantisce la trasmissione fedele e cariotipicamente invariata del DNA alle due cellule figlie. Tale accuratezza si basa sulla duplicazione semiconservativa ad alta fedeltà della fase S e sull'interazione biomeccanica dei microtubuli cinetocorici con i centromeri nella piastra metafasica, seguita dalla degradazione proteasomica della securina e dalla scissione della cohesina mediata da separasi nell'anafase. La successiva citodieresi è guidata dal restringimento dell'anello contrattile di actina-miosina II regolato dalla GTPasi RhoA, ripartendo equamente il citosol e la rete organellare.
     </p>
     <p class="mb-15">
-      Sebbene la mitosi avvenga nelle <span class="yellowtext">cellule somatiche in grado di superare il punto di restrizione (G0/G1)</span>, la capacità replicativa varia radicalmente: dai citotipi perenni a differenziamento terminale alle cerchie di indifferenziati noti come <span class="biotechbold greentext">cellule staminali</span>. Esse mantengono una potenziale capacità di autorinnovamento mediante divisione asimmetrica, preservando la nicchia e originando progenitori transitori (transit-amplifying cells) destinati al differenziamento nei diversi compartimenti tissutali.
+      Sebbene la mitosi avvenga nelle <span class="yellowtext">cellule somatiche in grado di superare il punto di restrizione (G0/G1)</span>, la capacità replicativa varia radicalmente: dai citotipi perenni a differenziamento terminale alle cerchie di indifferenziati noti come <span class="biotechbold greentext">cellule staminali</span>. Esse mantengono una potenziale capacità di autorinnovamento mediante divisione asimmetrica, preservando la nicchia e originando progenitori transitori (transit-amplifying cells) destinati al differenziamento nei diversi compartimenti tissutali.<span class="citation-badge" data-ref="6">[6]</span>
     </p>
 
     <hr class="line" />
@@ -668,14 +710,14 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       Biologicamente, il ciclo meiotico consiste in due successive divisioni nucleari e cellulari (Meiosi I riduzionale e Meiosi II equazionale) precedute da una singola fase di replicazione del DNA. Questo ciclo trasforma una <span class="yellowtext">cellula germinale diploide (<i>2n</i>)</span> in elementi funzionali a corredo genomico <span class="biotechbold">aploide (<i>n</i>)</span>.
     </p>
     <p class="mb-15">
-      La meiosi culmina nella formazione di <span class="orangetext">quattro cellule figlie aploidi</span>, dotate di un patrimonio genico unico e ricombinato. Durante la prolungata profase I (articolata nei sottostadi leptotene, zigotene, pachitene, diplotene e diacinesi), i cromosomi omologhi si appaiano formando tetradi stabilizzate dal <span class="biotechbold">complesso sinaptonemico</span>. In questa fase avviene il <span class="biotechbold greentext">crossing-over (ricombinazione omologa)</span> catalizzato da endonucleasi ricombinative (es. SPO11), con rottura a doppio filamento e scambio fisico di segmenti di DNA non fratelli (visibili come chiasmi). Tale evento, unito all'orientamento casuale e all'assortimento indipendente delle coppie omologhe alla metafase I, costituisce il propulsore molecolare dell'<span class="biotechbold">evoluzione filogenetica e della diversità fenotipica intraspecifica</span>.
+      La meiosi culmina nella formazione di <span class="orangetext">quattro cellule figlie aploidi</span>, dotate di un patrimonio genico unico e ricombinato. Durante la prolungata profase I (articolata nei sottostadi leptotene, zigotene, pachitene, diplotene e diacinesi), i cromosomi omologhi si appaiano formando tetradi stabilizzate dal <span class="biotechbold">complesso sinaptonemico</span>. In questa fase avviene il <span class="biotechbold greentext">crossing-over (ricombinazione omologa)</span> catalizzato da endonucleasi ricombinative (es. SPO11), con rottura a doppio filamento e scambio fisico di segmenti di DNA non fratelli (visibili come chiasmi). Tale evento, unito all'orientamento casuale e all'assortimento indipendente delle coppie omologhe alla metafase I, costituisce il propulsore molecolare dell'<span class="biotechbold">evoluzione filogenetica e della diversità fenotipica intraspecifica</span>.<span class="citation-badge" data-ref="9">[9]</span>
     </p>
 
     <!-- RESEARCH INSIGHT BOX -->
     <div class="research-insight-box mb-15">
       <h4 class="biotechbold">RESEARCH INSIGHT | Checkpoints Molecolari, Non-Disgiunzione ed Omeostasi della Fecondazione</h4>
       <p class="text">
-        <strong>Checkpoint del Ciclo Cellulare e Tumorigenesi:</strong> La progressione nel ciclo cellulare è governata da varichi di controllo molecolari. Il checkpoint G1/S (punto di restrizione) risponde all'integrità del DNA via p53-p21 e fosforilazione di Rb da parte di CDK4/6-Ciclina D. Il checkpoint G2/M arresta la cellula in presenza di danni al DNA via chinasi ATM/ATR e Chk1/Chk2, inibendo la fosfatasi Cdc25. Il checkpoint SAC inibisce l'Anaphase-Promoting Complex (APC/C<sup>Cdc20</sup>) finché tutti i cinetocori non sono legati sotto tensione amphitelica ai microtubuli.
+        <strong>Checkpoint del Ciclo Cellulare e Tumorigenesi:</strong> La progressione nel ciclo cellulare è governata da varichi di controllo molecolari. Il checkpoint G1/S (punto di restrizione) risponde all'integrità del DNA via p53-p21 e fosforilazione di Rb da parte di CDK4/6-Ciclina D. Il checkpoint G2/M arresta la cellula in presenza di danni al DNA via chinasi ATM/ATR e Chk1/Chk2, inibendo la fosfatasi Cdc25. Il checkpoint SAC inibisce l'Anaphase-Promoting Complex (APC/C<sup>Cdc20</sup>) finché tutti i cinetocori non sono legati sotto tensione amphitelica ai microtubuli.<span class="citation-badge" data-ref="7">[7]</span>
       </p>
       <p class="text">
         <strong>Aneuploidie da Non-Disgiunzione Meiotica:</strong> Errori nella segregazione cromosomica durante la Meiosi I (mancata separazione degli omologhi) o la Meiosi II (mancata separazione dei cromatidi fratelli) generano gameti aneuploidi (<i>n</i>+1 o <i>n</i>&minus;1). Alla fecondazione, questi provocano trisomie autosomiche (es. Trisomia 21 o Sindrome di Down, Trisomia 18) o monosomie (es. 45,X o Sindrome di Turner), con un'incidenza strettamente correlata all'aumento dell'età materna e al deterioramento della cohesina centromerica.
@@ -693,7 +735,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       La meiosi rappresenta l'evento maturativo propedeutico obbligato per la <span class="biotechbold yellowtext">riproduzione sessuale (anfimissi)</span>; la fusione gametica e la ricombinazione allelica incrementano l'eterozigosi ed eliminano mutazioni deleterie nel pool genico della popolazione.
     </p>
     <p class="mb-15">
-      Ciascun gamete apporta un set cromosomico aploide monocromatidico <span class="biotechbold">(<i>n</i>)</span>: l'<span class="yellowtext">ovocita secondario</span> materno (bloccato in metafase II fino al contatto dello spermatozoo) e lo <span class="yellowtext">spermatozoo</span> paterno flagellato. Il processo di <span class="biotechbold yellowtext">fecondazione (singamia)</span> prende avvio con il riconoscimento recettoriale zona-pellucida (ZP3), scatenando la reazione acrosomiale e il blocco rapido (depolarizzazione di membrana) e lento (reazione corticale ed esocitosi Ca<sup>2+</sup>-dipendente dei granuli) della polispermia. La fusione delle due membrane cellulari e la successiva cariogamia dei due pronuclei ripristina lo stato diploide (<i>2n</i> = 46) nello <span class="biotechbold greentext">zigote totipotente</span>, innescando le prime divisioni di segmentazione dello sviluppo embrionale.
+      Ciascun gamete apporta un set cromosomico aploide monocromatidico <span class="biotechbold">(<i>n</i>)</span>: l'<span class="yellowtext">ovocita secondario</span> materno (bloccato in metafase II fino al contatto dello spermatozoo) e lo <span class="yellowtext">spermatozoo</span> paterno flagellato. Il processo di <span class="biotechbold yellowtext">fecondazione (singamia)</span> prende avvio con il riconoscimento recettoriale zona-pellucida (ZP3), scatenando la reazione acrosomiale e il blocco rapido (depolarizzazione di membrana) e lento (reazione corticale ed esocitosi Ca<sup>2+</sup>-dipendente dei granuli) della polispermia. La fusione delle due membrane cellulari e la successiva cariogamia dei due pronuclei ripristina lo stato diploide (<i>2n</i> = 46) nello <span class="biotechbold greentext">zigote totipotente</span>, innescando le prime divisioni di segmentazione dello sviluppo embrionale.<span class="citation-badge" data-ref="10">[10]</span>
     </p>
 
   </article>
@@ -736,7 +778,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 
     <p class="mb-15">
       <span class="subtitle">MITOCONDRIO</span><br>
-      Organulo bioenergetico semiautonomo provvisto di mtDNA. Sede centrale del metabolismo aerobico, presiede alla <span class="yellowtext">produzione di ATP tramite &beta;-ossidazione, ciclo degli acidi tricarbossilici (Krebs) e fosforilazione ossidativa</span> condotta dai complessi della catena di trasporto degli elettroni sulla membrana interna. Partecipa attivamente all'omeostasi del Ca<sup>2+</sup> e all'innesco dell'apoptosi (rilascio del citocromo <i>c</i>).
+      Organulo bioenergetico semiautonomo provvisto di mtDNA. Sede centrale del metabolismo aerobico, presiede alla <span class="yellowtext">produzione di ATP tramite &beta;-ossidazione, ciclo degli acidi tricarbossilici (Krebs) e fosforilazione ossidativa</span> condotta dai complessi della catena di trasporto degli elettroni sulla membrana interna. Partecipa attivamente all'omeostasi del Ca<sup>2+</sup> e all'innesco dell'apoptosi (rilascio del citocromo <i>c</i>).<span class="citation-badge" data-ref="8">[8]</span>
     </p>
 
     <hr class="line" />
@@ -760,7 +802,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 
     <p class="mb-15">
       <span class="subtitle">APPARATO DEL GOLGI</span><br>
-      Compartimento membranoso polarizzato (fasi <i>cis</i>, <i>mediale</i> e <i>trans</i>) adibito alla maturazione e modificazione post-traduzionale delle biomolecole (<i>O</i>- e <i>N</i>-glicosilazione complessa). <span class="yellowtext">Smista e indirizza i flussi di vescicole provenienti dal R.E. verso la membrana plasmatica o la via endo-lisosomiale</span>.
+      Compartimento membranoso polarizzato (fasi <i>cis</i>, <i>mediale</i> e <i>trans</i>) adibito alla maturazione e modificazione post-traduzionale delle biomolecole (<i>O</i>- e <i>N</i>-glicosilazione complessa). <span class="yellowtext">Smista e indirizza i flussi di vescicole provenienti dal R.E. verso la membrana plasmatica o la via endo-lisosomiale</span>.<span class="citation-badge" data-ref="2">[2]</span>
     </p>
 
     <hr class="line" />
@@ -791,7 +833,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     <div class="research-insight-box mb-15">
       <h4 class="biotechbold">RESEARCH INSIGHT | Interfacce MAMs, Dinamica di Fissione/Fusione, Traffico COPI/COPII ed Asse mTORC1-TFEB</h4>
       <p class="text">
-        <strong>Interfaccia MAMs e Omeostasi Metabolica:</strong> Le membrane del reticolo endoplasmatico e dei mitocondri interagiscono fisicamente tramite microdomini lipidici specializzati noti come MAMs (Mitochondria-Associated ER Membranes). Mediante complessi di tethering (es. VAPB-PTPIP51 e recettori IP3R-VDAC1/GRP75), le MAMs coordinano il trasferimento diretto di Ca<sup>2+</sup> e lipidi (es. fosfatidilserina), regolando la bioenergetica mitocondriale e la segnalazione pro-apoptotica.
+        <strong>Interfaccia MAMs e Omeostasi Metabolica:</strong> Le membrane del reticolo endoplasmatico e dei mitocondri interagiscono fisicamente tramite microdomini lipidici specializzati noti come MAMs (Mitochondria-Associated ER Membranes). Mediante complessi di tethering (es. VAPB-PTPIP51 e recettori IP3R-VDAC1/GRP75), le MAMs coordinano il trasferimento diretto di Ca<sup>2+</sup> e lipidi (es. fosfatidilserina), regolando la bioenergetica mitocondriale e la segnalazione pro-apoptotica.<span class="citation-badge" data-ref="1">[1]</span>
       </p>
       <p class="text">
         <strong>Dinamica Mitocondriale e Qualità dell'Organello:</strong> I mitocondri non sono strutture statiche ma una rete dinamica regolata da eventi di fusione (mediati dalle GTPasi MFN1, MFN2 e OPA1) e scissione (guidata dalla GTPasi DRP1). La frammentazione mitocondriale consente di isolare le porzioni di rete depolarizzate, avviandole alla degradazione selettiva tramite mitofagia coordinata dalle vie PINK1/Parkin.
@@ -821,14 +863,14 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     <!-- SUB-SEZIONE 1: DEFINIZIONE E I 4 TESSUTI FONDAMENTALI -->
     <h3 class="biotechbold">ORGANIZZAZIONE TISSUTALE E MATRICE EXTRACELLULARE</h3>
     <p>
-      Un tessuto costituisce un livello di organizzazione biologica integrato, composto da un consorzio di cellule accomunate da origine embrionale, caratteristiche morfologiche e cooperazione funzionale. Tali popolazioni cellulari sono strutturate per mezzo della <span class="yellowtext">matrice extracellulare (ECM)</span>, un network macromolecolare di composizione chimica e consistenza <span class="greentext">estremamente variabile</span> (da fluida nel sangue, a gel idratato nel connettivo molle, fino a mineralizzata nell'osso).
+      Un tessuto costituisce un livello di organizzazione biologica integrato, composto da un consorzio di cellule accomunate da origine embrionale, caratteristiche morfologiche e cooperazione funzionale. Tali popolazioni cellulari sono strutturate per mezzo della <span class="yellowtext">matrice extracellulare (ECM)</span>, un network macromolecolare di composizione chimica e consistenza <span class="greentext">estremamente variabile</span> (da fluida nel sangue, a gel idratato nel connettivo molle, fino a mineralizzata nell'osso).<span class="citation-badge" data-ref="1">[1]</span>
     </p>
 
     <!-- Flowchart dei 4 Tessuti Fondamentali -->
     <div class="cyber-flowchart" role="img" aria-label="Organizzazione e classificazione dei quattro tessuti fondamentali dell'organismo umano">
       <div class="flow-branches">
         <div class="flow-card intrinsic">
-          <span class="flow-tag tag-intrinsic">Tessuto 1 &middot; Barriere</span>
+          <span class="flow-tag tag-intrinsic">Tessuto 1 · Barriere</span>
           <div class="flow-title">EPITELIALE</div>
           <div class="flow-desc">
             <span class="biotechbold">Cellule adese e polarizzate</span><br />
@@ -837,7 +879,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
         </div>
 
         <div class="flow-card common">
-          <span class="flow-tag tag-common">Tessuto 2 &middot; Connessione</span>
+          <span class="flow-tag tag-common">Tessuto 2 · Connessione</span>
           <div class="flow-title">CONNETTIVO</div>
           <div class="flow-desc">
             <span class="biotechbold">Abbondante Matrice Extracellulare</span><br />
@@ -848,7 +890,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 
       <div class="flow-branches mb-15">
         <div class="flow-card extrinsic">
-          <span class="flow-tag tag-extrinsic">Tessuto 3 &middot; Contrazione</span>
+          <span class="flow-tag tag-extrinsic">Tessuto 3 · Contrazione</span>
           <div class="flow-title">MUSCOLARE</div>
           <div class="flow-desc">
             <span class="biotechbold">Proteine Contrattili (Atto-Miosina)</span><br />
@@ -857,7 +899,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
         </div>
 
         <div class="flow-card lysis">
-          <span class="flow-tag tag-lysis">Tessuto 4 &middot; Integrazione</span>
+          <span class="flow-tag tag-lysis">Tessuto 4 · Integrazione</span>
           <div class="flow-title">NERVOSO</div>
           <div class="flow-desc">
             <span class="biotechbold">Neuroni e Cellule Gliali</span><br />
@@ -916,7 +958,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     </div>
 
     <p>
-      Il tessuto epiteliale poggia costantemente sulla <span class="biotechbold">membrana basale</span> (struttura acellulare composta da lamina basale e lamina reticolare, ricca di collagene di tipo IV, laminina e perlecano). Poiché l'epitelio è <span class="biotechbold orangetext">completamente avascolare</span>, la nutrizione e l'ossigenazione avvengono per diffusione passiva dai letti capillari situati nel tessuto connettivo sottostante (tonaca propria o derma).
+      Il tessuto epiteliale poggia costantemente sulla <span class="biotechbold">membrana basale</span> (struttura acellulare composta da lamina basale e lamina reticolare, ricca di collagene di tipo IV, laminina e perlecano). Poiché l'epitelio è <span class="biotechbold orangetext">completamente avascolare</span>, la nutrizione e l'ossigenazione avvengono per diffusione passiva dai letti capillari situati nel tessuto connettivo sottostante (tonaca propria o derma).<span class="citation-badge" data-ref="2">[2]</span>
     </p>
 
     <hr class="line" />
@@ -1018,7 +1060,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       <strong class="biotechbold yellowtext">Ghiandole esocrine:</strong> riversano il secreto all'esterno o nel lume di organi cavi tramite <strong class="greentext">dotti escretori</strong>. Si classificano in base alla modalità di secrezione in <strong class="biotechbold">merocrine</strong> (esocitosi pura), <strong class="biotechbold">apocrine</strong> (distacco del dominio apicale) e <strong class="biotechbold">olocrine</strong> (disintegrazione apoptotica dell'intera cellula).
     </li>
     <li class="mb-15">
-      <strong class="biotechbold yellowtext">Ghiandole endocrine:</strong> prive di dotti escretori, rilasciano i propri messaggeri chimici (<strong class="greentext">ormoni</strong>) direttamente nel liquido interstiziale affinché diffondano nei capillari fenestrati verso organi bersaglio distanti. Presentano un'organizzazione prevalentemente <strong class="biotechbold">cordonale</strong> (es. surrene, ipofisi) o <strong class="biotechbold">follicolare</strong> (es. tiroide).
+      <strong class="biotechbold yellowtext">Ghiandole endocrine:</strong> prive di dotti escretori, rilasciano i propri messaggeri chimici (<strong class="greentext">ormoni</strong>) direttamente nel liquido interstiziale affinché diffondano nei capillari fenestrati verso organi bersaglio distanti. Presentano un'organizzazione prevalentemente <strong class="biotechbold">cordonale</strong> (es. surrene, ipofisi) o <strong class="biotechbold">follicolare</strong> (es. tiroide).<span class="citation-badge" data-ref="9">[9]</span>
     </li>
   </ul>
 
@@ -1045,7 +1087,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
       <strong class="biotechbold">Tessuto adiposo:</strong> connettivo specializzato costituito da adipociti <strong class="greentext">uniloculari (bianco)</strong> per la riserva energetica o <strong class="greentext">multiloculari (bruno)</strong> per la termogenesi (espressione di UCP-1);
     </li>
     <li class="mb-15">
-      <strong class="biotechbold">Tessuto osseo:</strong> matrice extracellulare mineralizzata da cristalli di idrossiapatite di calcio, strutturata in varietà compatta e spugnosa per il sostegno scheletrico e la riserva minerale.
+      <strong class="biotechbold">Tessuto osseo:</strong> matrice extracellulare mineralizzata da cristalli di idrossiapatite di calcio, strutturata in varietà compatta e spugnosa per il sostegno scheletrico e la riserva minerale.<span class="citation-badge" data-ref="10">[10]</span>
     </li>
   </ol>
 </section>
@@ -1082,7 +1124,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
         <span class="biotechbold greentext">Tessuto Adiposo Bianco (Uniloculare):</span> Caratterizzato da una singola grande goccia lipidica che confina il nucleo e il citoplasma alla periferia cellulare. Funziona da riserva energetica primaria, isolante termico-meccanico e organo endocrino sistemico (secrezione di adipokine come la leptina).
       </li>
       <li class="mb-15">
-        <span class="biotechbold greentext">Tessuto Adiposo Bruno (Multiloculare):</span> Composto da cellule ricche di goccioline lipidiche multiple e un elevato numero di mitocondri. È specializzato nella <span class="biotechbold">termogenesi senza brivido</span>: dissipa il gradiente protonico mitocondriale producendo energia termica (calore) grazie all'espressione specifica della proteina disaccoppiante <span class="orangetext">UCP-1 (Termogenina)</span>.
+        <span class="biotechbold greentext">Tessuto Adiposo Bruno (Multiloculare):</span> Composto da cellule ricche di goccioline lipidiche multiple e un elevato numero di mitocondri. È specializzato nella <span class="biotechbold">termogenesi senza brivido</span>: dissipa il gradiente protonico mitocondriale producendo energia termica (calore) grazie all'espressione specifica della proteina disaccoppiante <span class="orangetext">UCP-1 (Termogenina)</span>.<span class="citation-badge" data-ref="8">[8]</span>
       </li>
     </ul>
 
@@ -1111,7 +1153,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     </ul>
 
     <p class="mb-15">
-      I neuroni altamente differenziati sono tradizionalmente considerati elementi perenni, bloccati stabilmente nella <span class="biotechbold">fase G<sub>0</sub> del ciclo cellulare</span>. Tuttavia, la neurobiologia moderna ha confermato la presenza di processi di <span class="orangetext">neurogenesi adulta</span>, guidati da cellule staminali neurali residenti in specifiche nicchie cerebrali microambientali (come la <span class="biotechbold">zona sottogranulare del giro dentato dell'ippocampo</span>).
+      I neuroni altamente differenziati sono tradizionalmente considerati elementi perenni, bloccati stabilmente nella <span class="biotechbold">fase G<sub>0</sub> del ciclo cellulare</span>. Tuttavia, la neurobiologia moderna ha confermato la presenza di processi di <span class="orangetext">neurogenesi adulta</span>, guidati da cellule staminali neurali residenti in specifiche nicchie cerebrali microambientali (come la <span class="biotechbold">zona sottogranulare del giro dentato dell'ippocampo</span>).<span class="citation-badge" data-ref="6">[6]</span>
     </p>
 
     <hr class="line" />
@@ -1136,7 +1178,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     </p>
 
     <p class="mb-15">
-      Nelle <span class="biotechbold">sinapsi chimiche</span>, la depolarizzazione portata dal potenziale d'azione sul terminale presinaptico innesca l'ingresso di Ca<sup>2+</sup> e la conseguente <span class="orangetext">esocitosi di neurotrasmettitori</span> nella fessura sinaptica. Il legame sequenziale di queste molecole segnale ai recettori specifici sulla membrana postsinaptica genera potenziali graduati (eccitatori o inibitori) coordinando finemente la rete neurale e l'integrazione sistemica dell'organismo.
+      Nelle <span class="biotechbold">sinapsi chimiche</span>, la depolarizzazione portata dal potenziale d'azione sul terminale presinaptico innesca l'ingresso di Ca<sup>2+</sup> e la conseguente <span class="orangetext">esocitosi di neurotrasmettitori</span> nella fessura sinaptica. Il legame sequenziale di queste molecole segnale ai recettori specifici sulla membrana postsinaptica genera potenziali graduati (eccitatori o inibitori) coordinando finemente la rete neurale e l'integrazione sistemica dell'organismo.<span class="citation-badge" data-ref="1">[1]</span>
     </p>
 
   </article>
@@ -1160,7 +1202,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
   </div>
 
   <div class="cyber-table-container mb-15">
-    <table class="cyber-table">
+    <table class="cyber-table" id="bibliography-table">
       <thead>
         <tr>
           <th style="width: 5%;">#</th>
@@ -1170,7 +1212,8 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <!-- data-ref corrisponde all'ID del testo -->
+        <tr data-ref="1">
           <td><span class="flow-tag tag-common">1</span></td>
           <td><strong>Singer, S. J., &amp; Nicolson, G. L.</strong><br><small class="slate">(1972)</small></td>
           <td>
@@ -1183,7 +1226,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="2">
           <td><span class="flow-tag tag-common">2</span></td>
           <td><strong>Kusumi, A., et al.</strong><br><small class="slate">(2012)</small></td>
           <td>
@@ -1196,7 +1239,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="3">
           <td><span class="flow-tag tag-common">3</span></td>
           <td><strong>Shin, Y., &amp; Brangwynne, C. P.</strong><br><small class="slate">(2017)</small></td>
           <td>
@@ -1209,7 +1252,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="4">
           <td><span class="flow-tag tag-common">4</span></td>
           <td><strong>Dixon, J. R., et al.</strong><br><small class="slate">(2012)</small></td>
           <td>
@@ -1222,7 +1265,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="5">
           <td><span class="flow-tag tag-common">5</span></td>
           <td><strong>Galupa, R., &amp; Heard, E.</strong><br><small class="slate">(2018)</small></td>
           <td>
@@ -1235,7 +1278,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="6">
           <td><span class="flow-tag tag-common">6</span></td>
           <td><strong>Musacchio, A.</strong><br><small class="slate">(2015)</small></td>
           <td>
@@ -1248,7 +1291,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="7">
           <td><span class="flow-tag tag-common">7</span></td>
           <td><strong>Jackson, S. P., &amp; Bartek, J.</strong><br><small class="slate">(2009)</small></td>
           <td>
@@ -1261,7 +1304,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="8">
           <td><span class="flow-tag tag-common">8</span></td>
           <td><strong>Harms, M., &amp; Seale, P.</strong><br><small class="slate">(2013)</small></td>
           <td>
@@ -1274,7 +1317,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="9">
           <td><span class="flow-tag tag-common">9</span></td>
           <td><strong>GTEx Consortium</strong><br><small class="slate">(2020)</small></td>
           <td>
@@ -1287,7 +1330,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="10">
           <td><span class="flow-tag tag-common">10</span></td>
           <td><strong>Human Protein Atlas</strong><br><small class="slate">(2023)</small></td>
           <td>
@@ -1300,7 +1343,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-ref="11">
           <td><span class="flow-tag tag-common">11</span></td>
           <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
           <td>
@@ -1336,6 +1379,55 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 <div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const badges = document.querySelectorAll('.citation-badge');
+  const tableRows = document.querySelectorAll('#bibliography-table tbody tr');
+  const textSections = document.querySelectorAll('.text, .research-insight-box, p, article, section');
+
+  function clearHighlights() {
+    tableRows.forEach(function(row) { row.classList.remove('citation-active-row'); });
+    textSections.forEach(function(section) { section.classList.remove('citation-active-text'); });
+    document.body.classList.remove('citation-mode-active');
+  }
+
+  function handleBadgeClick(e) {
+    e.preventDefault();
+    e.stopPropagation(); 
+
+    const currentBadge = e.currentTarget;
+    const refId = currentBadge.getAttribute('data-ref');
+
+    clearHighlights();
+
+    const targetRow = document.querySelector('#bibliography-table tbody tr[data-ref="' + refId + '"]');
+    if (targetRow) {
+      targetRow.classList.add('citation-active-row');
+      targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    const parentSection = currentBadge.closest('p, .text, .research-insight-box, article, section');
+    if (parentSection) {
+      parentSection.classList.add('citation-active-text');
+    }
+
+    document.body.classList.add('citation-mode-active');
+  }
+
+  badges.forEach(function(badge) {
+    badge.addEventListener('click', handleBadgeClick);
+  });
+
+  document.addEventListener('click', function(e) {
+    const clickedOnBadge = e.target.closest('.citation-badge');
+    const clickedOnTable = e.target.closest('#bibliography-table');
+
+    if (!clickedOnBadge && !clickedOnTable) {
+      clearHighlights();
+    }
+  }, true);
+});
+</script>
 </body>
 </html>
