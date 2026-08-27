@@ -1382,51 +1382,54 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const badges = document.querySelectorAll('.citation-badge');
-  const tableRows = document.querySelectorAll('#bibliography-table tbody tr');
-  const textSections = document.querySelectorAll('.text, .research-insight-box, p, article, section');
-
   function clearHighlights() {
-    tableRows.forEach(function(row) { row.classList.remove('citation-active-row'); });
-    textSections.forEach(function(section) { section.classList.remove('citation-active-text'); });
+    var activeRows = document.querySelectorAll('#bibliography-table tbody tr.citation-active-row');
+    var activeTexts = document.querySelectorAll('.citation-active-text');
+    var i;
+
+    for (i = 0; i < activeRows.length; i++) {
+      activeRows[i].classList.remove('citation-active-row');
+    }
+    for (i = 0; i < activeTexts.length; i++) {
+      activeTexts[i].classList.remove('citation-active-text');
+    }
     document.body.classList.remove('citation-mode-active');
   }
 
-  function handleBadgeClick(e) {
-    e.preventDefault();
-    e.stopPropagation(); 
-
-    const currentBadge = e.currentTarget;
-    const refId = currentBadge.getAttribute('data-ref');
-
-    clearHighlights();
-
-    const targetRow = document.querySelector('#bibliography-table tbody tr[data-ref="' + refId + '"]');
-    if (targetRow) {
-      targetRow.classList.add('citation-active-row');
-      targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    const parentSection = currentBadge.closest('p, .text, .research-insight-box, article, section');
-    if (parentSection) {
-      parentSection.classList.add('citation-active-text');
-    }
-
-    document.body.classList.add('citation-mode-active');
-  }
-
-  badges.forEach(function(badge) {
-    badge.addEventListener('click', handleBadgeClick);
-  });
-
   document.addEventListener('click', function(e) {
-    const clickedOnBadge = e.target.closest('.citation-badge');
-    const clickedOnTable = e.target.closest('#bibliography-table');
+    var badge = e.target.closest ? e.target.closest('.citation-badge') : null;
+    var table = e.target.closest ? e.target.closest('#bibliography-table') : null;
+    var refId;
+    var targetRow;
+    var parentSection;
 
-    if (!clickedOnBadge && !clickedOnTable) {
+    if (badge) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      refId = badge.getAttribute('data-ref');
+      clearHighlights();
+
+      if (refId) {
+        targetRow = document.querySelector('#bibliography-table tbody tr[data-ref="' + refId + '"]');
+        if (targetRow) {
+          targetRow.classList.add('citation-active-row');
+          if (typeof targetRow.scrollIntoView === 'function') {
+            targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+
+      parentSection = badge.closest('.research-insight-box') || badge.closest('p') || badge.closest('section');
+      if (parentSection) {
+        parentSection.classList.add('citation-active-text');
+      }
+
+      document.body.classList.add('citation-mode-active');
+    } else if (!table) {
       clearHighlights();
     }
-  }, true);
+  });
 });
 </script>
 </body>
