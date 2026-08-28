@@ -82,7 +82,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
    BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero & Mobile Scroll Fixed)
    ========================================================== */
 
-/* --- Container Tabella con Layout Orzzontale Scorrevole --- */
+/* --- Container Tabella con Layout Orizzontale Scorrevole --- */
 .cyber-table-container {
   width: 100%;
   max-width: 100%;
@@ -90,7 +90,9 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su dispositivi iOS */
   margin-bottom: 15px;
   box-sizing: border-box;
-  /* NOTA: Rimosse min-height rigide e mask-image per evitare spaziatura vuota su Desktop e blocco touch su Mobile */
+  /* PREVIENE IL CLS SU DESKTOP SENZA CREARE SPAZI VUOTI */
+  contain-intrinsic-size: auto 320px;
+  content-visibility: auto;
 }
 
 .cyber-table {
