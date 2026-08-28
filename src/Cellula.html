@@ -79,44 +79,40 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
 .pad-l20{padding-left: 20px;}
 /* ==========================================================
-   BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero & Mobile Scroll Fixed)
+   BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero Definitivo)
    ========================================================== */
+
+/* --- Lista Interattiva Citotipi (BLOCCO FISSO ANTI-CLS) --- */
+.interactive-cytotype-list {
+  /* Riserva lo spazio della lista completa per evitare lo scatto dei pulsanti */
+  min-height: 216px; /* <--- Questo blocca il movimento del testo! (Aggiusta tra 200px e 350px se necessario) */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.interactive-cytotype-list li {
+  box-sizing: border-box;
+}
 
 /* --- Container Tabella con Layout Orizzontale Scorrevole --- */
 .cyber-table-container {
   width: 100%;
   max-width: 100%;
   overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su dispositivi iOS */
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 15px;
   box-sizing: border-box;
-  /* Transizione sull'altezza per evitare scatti improvvisi al cambio filtri */
-  transition: min-height 0.25s ease-out;
+  /* Ripristinata altezza naturale o minima standard per la tabella */
+  min-height: 180px; 
 }
 
 .cyber-table {
   width: 100%;
-  min-width: 620px; /* GARANTISCE LO SCROLL ORIZZONTALE SU MOBILE SENZA SCHIACCIARE LE COLONNE */
+  min-width: 620px;
   border-collapse: collapse;
-  /* ESSENZIALE PER CLS: blocca la larghezza delle colonne durante la ricerca/filtri */
   table-layout: fixed; 
-}
-
-/* Transizione di trasparenza sulle righe per ammorbidire la scomparsa durante i filtri */
-.cyber-table tbody tr {
-  transition: opacity 0.2s ease, background-color 0.2s ease; 
-}
-
-/* --- Lista Interattiva (Riserva lo spazio visivo) --- */
-.interactive-cytotype-list {
-  min-height: 120px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.interactive-cytotype-list li {
-  box-sizing: border-box;
 }
 
 /* --- Barra dei Filtri Interattiva --- */
@@ -221,92 +217,40 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   box-sizing: border-box;
 }
 
-.cyber-input {
-  flex: 1 1 240px;
-  height: 38px;
-  box-sizing: border-box;
-  background: rgba(10, 16, 26, 0.85);
-  border: 1px solid rgba(0, 230, 118, 0.3);
-  border-radius: 6px;
-  padding: 8px 14px;
-  color: #ffffff;
-  font-family: 'Consolas', 'Fira Code', monospace;
-  font-size: 0.82rem;
-  outline: none;
-  backdrop-filter: blur(6px);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.cyber-input::placeholder {
-  color: #64748b;
-}
-
-.cyber-input:focus {
-  border-color: #00e676;
-  box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
-}
-
-.cyber-select {
-  flex: 0 1 200px;
+.cyber-input, .cyber-select {
   height: 38px;
   box-sizing: border-box;
   background: rgba(10, 16, 26, 0.85);
   border: 1px solid rgba(0, 230, 118, 0.3);
   border-radius: 6px;
   padding: 8px 12px;
-  color: #00e676;
   font-family: 'Consolas', 'Fira Code', monospace;
   font-size: 0.82rem;
   outline: none;
-  cursor: pointer;
   backdrop-filter: blur(6px);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cyber-select:focus {
+.cyber-input { flex: 1 1 240px; color: #ffffff; }
+.cyber-select { flex: 0 1 200px; color: #00e676; cursor: pointer; }
+.cyber-input::placeholder { color: #64748b; }
+.cyber-input:focus, .cyber-select:focus {
   border-color: #00e676;
   box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
 }
 
-.cyber-select option {
-  background: #0a101a;
-  color: #cbd5e1;
-}
+.cyber-select option { background: #0a101a; color: #cbd5e1; }
+.cyber-table tbody tr { transition: background-color 0.2s ease; }
 
-/* Utility Layout */
-.d-flex { display: flex; }
-.justify-content-between { justify-content: space-between; }
-.align-items-center { align-items: center; }
-.flex-wrap { flex-wrap: wrap; }
-.gap-10 { gap: 10px; }
-.gap-12 { gap: 12px; }
-.mt-10 { margin-top: 10px; }
-
-/* --- Responsive Layout per Schermi Piccoli (< 680px) --- */
+/* --- Responsive Layout (< 680px) --- */
 @media (max-width: 680px) {
-  .interactive-controls-bar {
+  .interactive-controls-bar, .biblio-filter-bar, .insight-header {
     flex-direction: column;
     align-items: flex-start;
     min-height: auto;
   }
-
-  .biblio-filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-    min-height: auto;
-  }
-  
-  .cyber-input, .cyber-select {
-    flex: 1 1 100%;
-    width: 100%;
-  }
-
-  .insight-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    min-height: auto;
-  }
+  .biblio-filter-bar { gap: 8px; }
+  .cyber-input, .cyber-select { flex: 1 1 100%; width: 100%; }
 }
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
