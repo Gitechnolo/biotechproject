@@ -239,6 +239,32 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   .biblio-filter-bar { gap: 8px; }
   .cyber-input, .cyber-select { flex: 1 1 100%; width: 100%; }
 }
+/* ==========================================================
+   RESEARCH INSIGHT BOX & UTILITIES
+   ========================================================== */
+
+.research-insight-box {
+  background: rgba(10, 16, 26, 0.75);
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  border-left: 4px solid #00e676;
+  border-radius: 8px;
+  padding: 16px 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 230, 118, 0.1);
+  margin-bottom: 20px;
+}
+
+.research-insight-box h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.research-insight-box p:last-child {
+  margin-bottom: 0;
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -371,7 +397,7 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
     <ol class="list">
       <li><strong class="yellowtext">Unità morfologica e strutturale:</strong> Tutti gli organismi viventi sono costituiti da una o più cellule (unicellulari o pluricellulari) integrati in un'architettura autonoma;</li>
       <li><strong class="biotechbold">Unità funzionale e metabolica:</strong> La cellula rappresenta la più piccola entità biologica in cui avvengono i processi catalitici, la trasduzione dell'energia biochimica e le reazioni anabolico/cataboliche;</li>
-      <li><strong class="greentext">Biogenesi e continuità genomica:</strong> Ogni cellula origina esclusivamente dalla divisione di una cellula preesistente (<i>omnis cellula ex cellula</i>), mediante trasmissione fedele del patrimonio genetico.</li>
+      <li><strong class="greentext">Biogenesi e continuità genomica:</strong> Ogni cellula origina esclusivamente dalla divisione di una cellula preesistente (<em>omnis cellula ex cellula</em>), mediante trasmissione fedele del patrimonio genetico.</li>
     </ol>
   </div>
 
@@ -379,8 +405,8 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
     Indipendentemente dalla divergenza filogenetica, ogni forma di vita cellulare condivide quattro sistemi macromolecolari primari:
   </p>
 
-  <ul class="text pad-l20">
-    <li><strong class="yellowtext">Citoplasma e Citosol:</strong> Fase liquida acquosa ad altissimo affollamento macromolecolare (<i>macromolecular crowding</i>, ~200-300 mg/mL di proteine), caratterizzata da un microambiente viscoso in cui avvengono le vie metaboliche centrali (es. glicolisi, via dei pentosi fosfati);</li>
+  <ul class="text list-styled mb-15">
+    <li><strong class="yellowtext">Citoplasma e Citosol:</strong> Fase liquida acquosa ad altissimo affollamento macromolecolare (<em>macromolecular crowding</em>, ~200-300 mg/mL di proteine), caratterizzata da un microambiente viscoso in cui avvengono le vie metaboliche centrali (es. glicolisi, via dei pentosi fosfati);</li>
     <li><strong class="biotechbold">Membrana Plasmatica:</strong> Doppio strato idrofobico ad altissima resistenza elettrica e permeabilità selettiva, deputato alla compartimentazione chimico-fisica, alla generazione di potenziali elettrochimici di membrana e all'omeostasi ionica;</li>
     <li><strong class="greentext">Genoma (DNA):</strong> Polimero bicatenario desossiribonucleotidico antiparallelo contenente l'informazione codificante e regolatoria, organizzato per la replica semiconservativa e la trascrizione;</li>
     <li><strong class="orangetext">Ribosomi:</strong> Complessi ribonucleoproteici supramolecolari dotati di attività ribozimica peptidil-trasferasica, catalizzatori fondamentali della traduzione dell'mRNA in catene polipeptidiche.</li>
@@ -391,7 +417,7 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
   <!-- Blocco 2: Confronto Procarioti vs Eucarioti con Cyber-Table -->
   <h3 class="biotechbold">DIVERSIFICAZIONE STRUTTURALE: PROCARIOTI ED EUCARIOTI</h3>
   <p class="text">
-    La principale divergenza evolutiva e strutturale risiede nel grado di <strong class="biotechbold">compartimentazione sub-cellulare</strong>. I procarioti (domini <i>Bacteria</i> e <i>Archaea</i>) mantengono un'organizzazione priva di organuli membranosi interni, con genoma aploide circolare localizzato nella regione nucleoidea a diretto contatto con il citosol. Gli eucarioti (dominio <i>Eukarya</i>) hanno evoluto un complesso sistema di endomembrane, un nucleo delimitato da involucro a doppio bilayer porato e organuli bioenergetici e metabolici specializzati.
+    La principale divergenza evolutiva e strutturale risiede nel grado di <strong class="biotechbold">compartimentazione sub-cellulare</strong>. I procarioti (domini <em>Bacteria</em> e <em>Archaea</em>) mantengono un'organizzazione priva di organuli membranosi interni, con genoma aploide circolare localizzato nella regione nucleoidea a diretto contatto con il citosol. Gli eucarioti (dominio <em>Eukarya</em>) hanno evoluto un complesso sistema di endomembrane, un nucleo delimitato da involucro a doppio bilayer porato e organuli bioenergetici e metabolici specializzati.
   </p>
 
   <!-- Cyber Table Comparativa -->
@@ -399,9 +425,9 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Parametro Bio-funzionale</th>
-          <th>Dominio Procariotico (Bacteria / Archaea)</th>
-          <th>Dominio Eucariotico (Eukarya)</th>
+          <th scope="col">Parametro Bio-funzionale</th>
+          <th scope="col">Dominio Procariotico (Bacteria / Archaea)</th>
+          <th scope="col">Dominio Eucariotico (Eukarya)</th>
         </tr>
       </thead>
       <tbody>
@@ -435,10 +461,10 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
   </div>
 
   <!-- INSIGHT AVANZATO 1: Condensati Biomolecolari -->
-  <div class="research-insight-box mb-15">
+  <div class="research-insight-box">
     <h4 class="biotechbold">RESEARCH INSIGHT | Organuli Senza Membrana e Separazione di Fase (LLPS)</h4>
     <p class="text">
-      Oltre alla compartimentazione classica delimitata da membrane fosfolipidiche, la biologia cellulare moderna ha dimostrato l'esistenza di organuli privi di membrana (es. nucleolo, granuli di stress, corpi P). Questi compartimenti dinamici si formano per <strong>separazione di fase liquido-liquido (LLPS, <i>Liquid-Liquid Phase Separation</i>)</strong> guidata da interazioni deboli e multivalenti tra proteine intrinsecamente disordinate (IDPs) e molecole di RNA, regolando processi chiave come la trascrizione e la risposta allo stress fisiologico.
+      Oltre alla compartimentazione classica delimitata da membrane fosfolipidiche, la biologia cellulare moderna ha dimostrato l'esistenza di organuli privi di membrana (es. nucleolo, granuli di stress, corpi P). Questi compartimenti dinamici si formano per <strong>separazione di fase liquido-liquido (LLPS, <em>Liquid-Liquid Phase Separation</em>)</strong> guidata da interazioni deboli e multivalenti tra proteine intrinsecamente disordinate (IDPs) e molecole di RNA, regolando processi chiave come la trascrizione e la risposta allo stress fisiologico.
     </p>
   </div>
 
@@ -456,31 +482,31 @@ DESCRIZIONE: Postulati storici, compartimentazione strutturale, biofisica del do
     Sviluppato nel 1972 da S.J. Singer e G.L. Nicolson, il <strong class="orangetext">Modello a Mosaico Fluido</strong> definisce la membrana come un liquido bidimensionale viscoso e orientato, in cui proteine integrali monotopiche o politopiche e proteine periferiche si intercalano bidimensionalmente nel doppio strato. I lipidi e le proteine mostrano un'elevata dinamica molecolare caratterizzata da:
   </p>
 
-  <ul class="text pad-l20 mb-15">
+  <ul class="text list-styled mb-15">
     <li><strong>Diffusione laterale:</strong> Moti traslazionali bidimensionali rapidissimi (coefficiente di diffusione D &approx; 10<sup>-8</sup> cm<sup>2</sup>/s);</li>
     <li><strong>Rotazione:</strong> Spin assiale lungo il proprio asse longitudinale;</li>
-    <li><strong>Transizione trasversale (Flip-Flop):</strong> Trasferimento di lipidi da un foglietto all'altro. Processo termodinamicamente svantaggiato (&Delta;G elevato a causa del passaggio della testa polare attraverso il core idrofobico) che necessita della catalisi di traslocasi ATP-dipendenti (<i>flippasi</i> [P4-ATPasi] per la traslocazione aminofosfolipidica verso il lato citosolico; <i>floppasi</i> [ABC-transporters] verso il lato esofacciale) o passive (<i>scramblasi</i> Ca<sup>2+</sup>-dipendenti durante l'apoptosi o l'attivazione piastrinica).</li>
+    <li><strong>Transizione trasversale (Flip-Flop):</strong> Trasferimento di lipidi da un foglietto all'altro. Processo termodinamicamente svantaggiato (&Delta;G elevato a causa del passaggio della testa polare attraverso il core idrofobico) che necessita della catalisi di traslocasi ATP-dipendenti (<em>flippasi</em> [P4-ATPasi] per la traslocazione aminofosfolipidica verso il lato citosolico; <em>floppasi</em> [ABC-transporters] verso il lato esofacciale) o passive (<em>scramblasi</em> Ca<sup>2+</sup>-dipendenti durante l'apoptosi o l'attivazione piastrinica).</li>
   </ul>
 
   <p class="text">
-    La reologia e la visco-elasticità del bilayer sono regolate dalla temperatura di transizione di fase (<i>T</i><sub>m</sub>, da fase gel ordinata a fase liquido-cristallina disordinata). Tale parametro fisio-chimico è modulato dalla lunghezza delle catene alchiliche, dalla presenza di doppi legami <i>cis</i> che introducono ripiegamenti sterici (<i>kinks</i>) riducendo le forze di Van der Waals tra catene adiacenti, e dall'azione omeostatica del <strong class="greentext">colesterolo</strong>. 
+    La reologia e la visco-elasticità del bilayer sono regolate dalla temperatura di transizione di fase (<em>T</em><sub>m</sub>, da fase gel ordinata a fase liquido-cristallina disordinata). Tale parametro fisio-chimico è modulato dalla lunghezza delle catene alchiliche, dalla presenza di doppi legami <em>cis</em> che introducono ripiegamenti sterici (<em>kinks</em>) riducendo le forze di Van der Waals tra catene adiacenti, e dall'azione omeostatica del <strong class="greentext">colesterolo</strong>. 
   </p>
 
   <p class="text">
-    Il colesterolo agisce come un rigido tampone di fluidità (<i>plasticizzante molecolare</i>): mediante il suo nucleo steroideo rigido interfacciato con la porzione prossimale delle catene di acido grasso, impedisce l'eccessiva fluidificazione ad alte temperature riducendo la mobilità alchilica e, al contempo, ostacola l'impaccamento rigido e la cristallizzazione a basse temperature prevenendo lo stato di gel. Inoltre, l'interazione preferenziale tra colesterolo e sfingolipidi saturi promuove la segregazione di microdomini di membrana altamente ordinati e resistenti ai detergenti non ionici, noti come <strong class="biotechbold">zolle lipidiche (lipid rafts)</strong>, piattaforme dinamiche fondamentali per il reclutamento di recettori e la modulazione della trasduzione del segnale.
+    Il colesterolo agisce come un rigido tampone di fluidità (<em>plasticizzante molecolare</em>): mediante il suo nucleo steroideo rigido interfacciato con la porzione prossimale delle catene di acido grasso, impedisce l'eccessiva fluidificazione ad alte temperature riducendo la mobilità alchilica e, al contempo, ostacola l'impaccamento rigido e la cristallizzazione a basse temperature prevenendo lo stato di gel. Inoltre, l'interazione preferenziale tra colesterolo e sfingolipidi saturi promuove la segregazione di microdomini di membrana highly ordinati e resistenti ai detergenti non ionici, noti come <strong class="biotechbold">zolle lipidiche (lipid rafts)</strong>, piattaforme dinamiche fondamentali per il reclutamento di recettori e la modulazione della trasduzione del segnale.
   </p>
 
   <!-- INSIGHT AVANZATO 2: Asimmetria, Caveole e Picket-Fence Model -->
   <div class="research-insight-box mb-15">
     <h4 class="biotechbold">RESEARCH INSIGHT | Asimmetria Transversale e Restrizioni Citoscheletriche (Picket-Fence)</h4>
     <p class="text">
-      <strong>Asimmetria Lipidica e Segnalazione:</strong> Il doppio strato fosfolipidico presenta una marcata asimmetria tra i due foglietti. Il foglietto esofacciale è ricco in fosfatidilcolina e sfingomielina, mentre quello citosolico concentra fosfatidilserina (PS) e fosfatidilinositolo-4,5-bisfosfato (PIP<sub>2</sub>). La perdita dell'asimmetria con l'esposizione della PS sul foglietto esterno funge da segnale di fagocitosi (<i>eat-me signal</i>) durante l'apoptosi.
+      <strong>Asimmetria Lipidica e Segnalazione:</strong> Il doppio strato fosfolipidico presenta una marcata asimmetria tra i due foglietti. Il foglietto esofacciale è ricco in fosfatidilcolina e sfingomielina, mentre quello citosolico concentra fosfatidilserina (PS) e fosfatidilinositolo-4,5-bisfosfato (PIP<sub>2</sub>). La perdita dell'asimmetria con l'esposizione della PS sul foglietto esterno funge da segnale di fagocitosi (<em>eat-me signal</em>) durante l'apoptosi.
     </p>
     <p class="text">
-      <strong>Caveole e Meccanotrasduzione:</strong> Particolari invaginazioni della membrana ricche di colesterolo e sfingolipidi, denominate <i>caveole</i>, sono stabilizzate dalle proteine <strong>caveoline</strong> e <strong>cavitine</strong>. Agiscono come riserve di superficie per assorbire lo stress meccanico di membrana e come hub per l'endocitosi e la trasduzione del segnale.
+      <strong>Caveole e Meccanotrasduzione:</strong> Particolari invaginazioni della membrana ricche di colesterolo e sfingolipidi, denominate <em>caveole</em>, sono stabilizzate dalle proteine <strong>caveoline</strong> e <strong>cavitine</strong>. Agiscono come riserve di superficie per assorbire lo stress meccanico di membrana e come hub per l'endocitosi e la trasduzione del segnale.
     </p>
     <p class="text">
-      <strong>Modello Picket-Fence (Pali di Recinzione):</strong> La libera diffusione laterale delle proteine e dei lipidi di membrana è delimitata dal citoscheletro corticale actinico sottostante. Le proteine ancorate all'actina agiscono come "pali" (<i>pickets</i>) e le maglie di actina come "recinzioni" (<i>fences</i>), creando micro-compartimenti in cui i lipidi e le recettori rimangono temporaneamente confinati (<i>hop diffusion</i>).
+      <strong>Modello Picket-Fence (Pali di Recinzione):</strong> La libera diffusione laterale delle proteine e dei lipidi di membrana è delimitata dal citoscheletro corticale actinico sottostante. Le proteine ancorate all'actina agiscono come "pali" (<em>pickets</em>) e le maglie di actina come "recinzioni" (<em>fences</em>), creando micro-compartimenti in cui i lipidi e i recettori rimangono temporaneamente confinati (<em>hop diffusion</em>).
     </p>
   </div>
 </section>
