@@ -79,8 +79,36 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
 .pad-l20{padding-left: 20px;}
 /* ==========================================================
-   BIOTECHPROJECT INTERACTIVE COMPONENTS (Estensione)
+   BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero Optimized)
    ========================================================== */
+
+/* --- Container Tabella con Layout Fisso (Previene CLS su ricerca/filtri) --- */
+.cyber-table-container {
+  width: 100%;
+  overflow-x: auto;
+  /* Mantiene un'altezza minima stimata per la tabella bibliografica */
+  min-height: 480px; 
+}
+
+.cyber-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* ESSENZIALE PER CLS: blocca il ricalcolo della larghezza delle colonne durante i filtri */
+  table-layout: fixed; 
+}
+
+/* --- Lista Interattiva (Riserva lo spazio visivo) --- */
+.interactive-cytotype-list {
+  min-height: 120px; /* Previene il collasso del contenitore */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.interactive-cytotype-list li {
+  /* Previene scatti di layout sul cambio di display */
+  box-sizing: border-box;
+}
 
 /* --- Barra dei Filtri Interattiva --- */
 .interactive-controls-bar {
@@ -93,6 +121,9 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   border: 1px solid rgba(0, 230, 118, 0.2);
   border-radius: 8px;
   backdrop-filter: blur(6px);
+  /* Mantiene l'altezza minima della barra controlli costante */
+  min-height: 52px; 
+  box-sizing: border-box;
 }
 
 .control-label {
@@ -102,6 +133,9 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 600;
+  /* Previene shift del testo prima del caricamento font custom */
+  line-height: 1.2;
+  display: inline-block;
 }
 
 /* Button Filtri Cyber */
@@ -112,10 +146,15 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   font-family: 'Consolas', 'Fira Code', monospace;
   font-size: 0.76rem;
   padding: 5px 12px;
+  height: 30px; /* Mantiene fissa l'altezza del bottone */
+  box-sizing: border-box;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-filter:hover {
@@ -140,6 +179,8 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   align-items: center;
   border-bottom: 1px solid rgba(0, 230, 118, 0.2);
   padding-bottom: 8px;
+  min-height: 36px; /* Evita il saltellamento dell'header del box */
+  box-sizing: border-box;
 }
 
 .badge-interactive {
@@ -154,6 +195,8 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   border: 1px solid rgba(0, 230, 118, 0.4);
   box-shadow: 0 0 6px rgba(0, 230, 118, 0.2);
   animation: pulse-glow 2.5s infinite alternate;
+  /* Usa transform invece di proprietà fisiche nelle animazioni per non impattare il layout */
+  will-change: box-shadow; 
 }
 
 @keyframes pulse-glow {
@@ -167,10 +210,13 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   gap: 12px;
   flex-wrap: wrap;
   width: 100%;
+  min-height: 40px; /* Dimensione fisicamente riservata al caricamento */
 }
 
 .cyber-input {
   flex: 1 1 240px;
+  height: 38px; /* Altezza fisicamente bloccata per prevenire il reflow */
+  box-sizing: border-box;
   background: rgba(10, 16, 26, 0.85);
   border: 1px solid rgba(0, 230, 118, 0.3);
   border-radius: 6px;
@@ -180,7 +226,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   font-size: 0.82rem;
   outline: none;
   backdrop-filter: blur(6px);
-  transition: all 0.25s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cyber-input::placeholder {
@@ -194,6 +240,8 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 
 .cyber-select {
   flex: 0 1 200px;
+  height: 38px; /* Stessa altezza fisicamente bloccata dell'input */
+  box-sizing: border-box;
   background: rgba(10, 16, 26, 0.85);
   border: 1px solid rgba(0, 230, 118, 0.3);
   border-radius: 6px;
@@ -204,7 +252,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   outline: none;
   cursor: pointer;
   backdrop-filter: blur(6px);
-  transition: all 0.25s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cyber-select:focus {
@@ -217,12 +265,13 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   color: #cbd5e1;
 }
 
-/* --- Transizioni Fluidi per Righe della Tabella Bibliografica --- */
+/* --- Righe della Tabella Bibliografica --- */
 .cyber-table tbody tr {
-  transition: background 0.2s ease, opacity 0.25s ease;
+  /* Transizioni ristrette solo alle proprietà visive (evita reflow durante i filtri) */
+  transition: background-color 0.2s ease; 
 }
 
-/* Classi Utility Layout --- */
+/* Classi Utility Layout con box-sizing compresso --- */
 .d-flex { display: flex; }
 .justify-content-between { justify-content: space-between; }
 .align-items-center { align-items: center; }
@@ -236,6 +285,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   .interactive-controls-bar {
     flex-direction: column;
     align-items: flex-start;
+    min-height: auto;
   }
   
   .cyber-input, .cyber-select {
@@ -247,6 +297,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    min-height: auto;
   }
 }
 </style>
