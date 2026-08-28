@@ -79,19 +79,22 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
 .pad-l20{padding-left: 20px;}
 /* ==========================================================
-   BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero Optimized)
+   BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero & Mobile Scroll Fixed)
    ========================================================== */
 
 /* --- Container Tabella con Layout Fisso (Previene CLS su ricerca/filtri) --- */
 .cyber-table-container {
   width: 100%;
-  overflow-x: auto;
+  max-width: 100%;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su iOS */
   /* Mantiene un'altezza minima stimata per la tabella bibliografica */
   min-height: 480px; 
 }
 
 .cyber-table {
   width: 100%;
+  min-width: 620px; /* GARANTISCE LO SCROLL ORIZZONTALE SU MOBILE SENZA SCHIACCIARE LE COLONNE */
   border-collapse: collapse;
   /* ESSENZIALE PER CLS: blocca il ricalcolo della larghezza delle colonne durante i filtri */
   table-layout: fixed; 
@@ -286,6 +289,11 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
     flex-direction: column;
     align-items: flex-start;
     min-height: auto;
+  }
+
+  .biblio-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
   }
   
   .cyber-input, .cyber-select {
