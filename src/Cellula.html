@@ -82,13 +82,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
    BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero & Mobile Scroll Fixed)
    ========================================================== */
 
-/* --- Fix CLS Desktop su Contenitore Padre --- */
-div.mb-15 {
-  min-height: 200px; /* Prenota lo spazio su Desktop ed evita lo shift di 0.102 al caricamento JS */
-  box-sizing: border-box;
-}
-
-/* --- Container Tabella con Layout Orizzontale Scorrevole --- */
+/* --- Container Tabella con Layout Orzzontale Scorrevole --- */
 .cyber-table-container {
   width: 100%;
   max-width: 100%;
@@ -96,28 +90,15 @@ div.mb-15 {
   -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su dispositivi iOS */
   margin-bottom: 15px;
   box-sizing: border-box;
+  /* NOTA: Rimosse min-height rigide e mask-image per evitare spaziatura vuota su Desktop e blocco touch su Mobile */
 }
 
 .cyber-table {
   width: 100%;
   min-width: 620px; /* GARANTISCE LO SCROLL ORIZZONTALE SU MOBILE SENZA SCHIACCIARE LE COLONNE */
   border-collapse: collapse;
-  /* ESSENZIALE PER CLS DESKTOP: blocca la larghezza delle colonne durante la ricerca/filtri */
+  /* ESSENZIALE PER CLS: blocca il ricalcolo della larghezza delle colonne durante la ricerca/filtri */
   table-layout: fixed; 
-}
-
-/* Gestione testo celle per prevenire salti di altezza improvvisi */
-.cyber-table th,
-.cyber-table td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  word-break: break-word;
-}
-
-/* Righe della tabella */
-.cyber-table tbody tr {
-  transition: background-color 0.2s ease; 
 }
 
 /* --- Lista Interattiva (Riserva lo spazio visivo) --- */
@@ -286,6 +267,11 @@ div.mb-15 {
   color: #cbd5e1;
 }
 
+/* Righe della tabella */
+.cyber-table tbody tr {
+  transition: background-color 0.2s ease; 
+}
+
 /* Utility Layout */
 .d-flex { display: flex; }
 .justify-content-between { justify-content: space-between; }
@@ -297,10 +283,6 @@ div.mb-15 {
 
 /* --- Responsive Layout per Schermi Piccoli (< 680px) --- */
 @media (max-width: 680px) {
-  div.mb-15 {
-    min-height: auto; /* Sblocco layout su schermi piccoli */
-  }
-
   .interactive-controls-bar {
     flex-direction: column;
     align-items: flex-start;
