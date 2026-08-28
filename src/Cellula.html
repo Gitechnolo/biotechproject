@@ -132,7 +132,7 @@ div.mb-15 {
   box-sizing: border-box;
 }
 
-/* --- Barra dei Filtri Interattiva --- */
+/* --- Barra dei Filtri Interattiva (Stabilizzata a CLS 0.000) --- */
 .interactive-controls-bar {
   display: flex;
   align-items: center;
@@ -143,7 +143,15 @@ div.mb-15 {
   border: 1px solid rgba(0, 230, 118, 0.2);
   border-radius: 8px;
   backdrop-filter: blur(6px);
-  min-height: 52px; /* Mantiene l'altezza minima della barra controlli costante */
+  min-height: 52px; 
+  box-sizing: border-box;
+  contain: layout style; /* Rende il box completamente indipendente dai reflow esterni */
+}
+
+/* Evita micro-shift del testo prima dell'applicazione del font custom */
+.interactive-controls-bar .control-label,
+.interactive-controls-bar .btn-filter {
+  line-height: 1.2;
   box-sizing: border-box;
 }
 
