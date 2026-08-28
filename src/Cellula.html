@@ -90,22 +90,26 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su dispositivi iOS */
   margin-bottom: 15px;
   box-sizing: border-box;
-  /* PREVIENE IL CLS SU DESKTOP SENZA CREARE SPAZI VUOTI */
-  contain-intrinsic-size: auto 320px;
-  content-visibility: auto;
+  /* Transizione sull'altezza per evitare scatti improvvisi al cambio filtri */
+  transition: min-height 0.25s ease-out;
 }
 
 .cyber-table {
   width: 100%;
   min-width: 620px; /* GARANTISCE LO SCROLL ORIZZONTALE SU MOBILE SENZA SCHIACCIARE LE COLONNE */
   border-collapse: collapse;
-  /* ESSENZIALE PER CLS: blocca il ricalcolo della larghezza delle colonne durante la ricerca/filtri */
+  /* ESSENZIALE PER CLS: blocca la larghezza delle colonne durante la ricerca/filtri */
   table-layout: fixed; 
+}
+
+/* Transizione di trasparenza sulle righe per ammorbidire la scomparsa durante i filtri */
+.cyber-table tbody tr {
+  transition: opacity 0.2s ease, background-color 0.2s ease; 
 }
 
 /* --- Lista Interattiva (Riserva lo spazio visivo) --- */
 .interactive-cytotype-list {
-  min-height: 120px; /* Previene il collasso del contenitore durante la renderizzazione */
+  min-height: 120px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -126,7 +130,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   border: 1px solid rgba(0, 230, 118, 0.2);
   border-radius: 8px;
   backdrop-filter: blur(6px);
-  min-height: 52px; /* Mantiene l'altezza minima della barra controlli costante */
+  min-height: 52px;
   box-sizing: border-box;
 }
 
@@ -149,7 +153,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   font-family: 'Consolas', 'Fira Code', monospace;
   font-size: 0.76rem;
   padding: 5px 12px;
-  height: 30px; /* Mantiene fissa l'altezza del bottone */
+  height: 30px;
   box-sizing: border-box;
   border-radius: 4px;
   cursor: pointer;
@@ -212,7 +216,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   gap: 12px;
   flex-wrap: wrap;
   width: 100%;
-  min-height: 40px; /* Impedisce il reflow/jump al caricamento dei filtri */
+  min-height: 40px;
   margin-bottom: 15px;
   box-sizing: border-box;
 }
@@ -267,11 +271,6 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .cyber-select option {
   background: #0a101a;
   color: #cbd5e1;
-}
-
-/* Righe della tabella */
-.cyber-table tbody tr {
-  transition: background-color 0.2s ease; 
 }
 
 /* Utility Layout */
