@@ -82,34 +82,34 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
    BIOTECHPROJECT INTERACTIVE COMPONENTS (CLS Zero & Mobile Scroll Fixed)
    ========================================================== */
 
-/* --- Container Tabella con Layout Fisso (Previene CLS su ricerca/filtri) --- */
+/* --- Container Tabella con Layout Orzzontale Scorrevole --- */
 .cyber-table-container {
   width: 100%;
   max-width: 100%;
   overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su iOS */
-  /* Mantiene un'altezza minima stimata per la tabella bibliografica */
-  min-height: 480px; 
+  -webkit-overflow-scrolling: touch; /* Momentum scroll fluido su dispositivi iOS */
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  /* NOTA: Rimosse min-height rigide e mask-image per evitare spaziatura vuota su Desktop e blocco touch su Mobile */
 }
 
 .cyber-table {
   width: 100%;
   min-width: 620px; /* GARANTISCE LO SCROLL ORIZZONTALE SU MOBILE SENZA SCHIACCIARE LE COLONNE */
   border-collapse: collapse;
-  /* ESSENZIALE PER CLS: blocca il ricalcolo della larghezza delle colonne durante i filtri */
+  /* ESSENZIALE PER CLS: blocca il ricalcolo della larghezza delle colonne durante la ricerca/filtri */
   table-layout: fixed; 
 }
 
 /* --- Lista Interattiva (Riserva lo spazio visivo) --- */
 .interactive-cytotype-list {
-  min-height: 120px; /* Previene il collasso del contenitore */
+  min-height: 120px; /* Previene il collasso del contenitore durante la renderizzazione */
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .interactive-cytotype-list li {
-  /* Previene scatti di layout sul cambio di display */
   box-sizing: border-box;
 }
 
@@ -124,8 +124,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   border: 1px solid rgba(0, 230, 118, 0.2);
   border-radius: 8px;
   backdrop-filter: blur(6px);
-  /* Mantiene l'altezza minima della barra controlli costante */
-  min-height: 52px; 
+  min-height: 52px; /* Mantiene l'altezza minima della barra controlli costante */
   box-sizing: border-box;
 }
 
@@ -136,7 +135,6 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 600;
-  /* Previene shift del testo prima del caricamento font custom */
   line-height: 1.2;
   display: inline-block;
 }
@@ -182,7 +180,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   align-items: center;
   border-bottom: 1px solid rgba(0, 230, 118, 0.2);
   padding-bottom: 8px;
-  min-height: 36px; /* Evita il saltellamento dell'header del box */
+  min-height: 36px;
   box-sizing: border-box;
 }
 
@@ -198,7 +196,6 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   border: 1px solid rgba(0, 230, 118, 0.4);
   box-shadow: 0 0 6px rgba(0, 230, 118, 0.2);
   animation: pulse-glow 2.5s infinite alternate;
-  /* Usa transform invece di proprietà fisiche nelle animazioni per non impattare il layout */
   will-change: box-shadow; 
 }
 
@@ -213,12 +210,14 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   gap: 12px;
   flex-wrap: wrap;
   width: 100%;
-  min-height: 40px; /* Dimensione fisicamente riservata al caricamento */
+  min-height: 40px; /* Impedisce il reflow/jump al caricamento dei filtri */
+  margin-bottom: 15px;
+  box-sizing: border-box;
 }
 
 .cyber-input {
   flex: 1 1 240px;
-  height: 38px; /* Altezza fisicamente bloccata per prevenire il reflow */
+  height: 38px;
   box-sizing: border-box;
   background: rgba(10, 16, 26, 0.85);
   border: 1px solid rgba(0, 230, 118, 0.3);
@@ -243,7 +242,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 
 .cyber-select {
   flex: 0 1 200px;
-  height: 38px; /* Stessa altezza fisicamente bloccata dell'input */
+  height: 38px;
   box-sizing: border-box;
   background: rgba(10, 16, 26, 0.85);
   border: 1px solid rgba(0, 230, 118, 0.3);
@@ -268,13 +267,12 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   color: #cbd5e1;
 }
 
-/* --- Righe della Tabella Bibliografica --- */
+/* Righe della tabella */
 .cyber-table tbody tr {
-  /* Transizioni ristrette solo alle proprietà visive (evita reflow durante i filtri) */
   transition: background-color 0.2s ease; 
 }
 
-/* Classi Utility Layout con box-sizing compresso --- */
+/* Utility Layout */
 .d-flex { display: flex; }
 .justify-content-between { justify-content: space-between; }
 .align-items-center { align-items: center; }
@@ -294,6 +292,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   .biblio-filter-bar {
     flex-direction: column;
     align-items: stretch;
+    min-height: auto;
   }
   
   .cyber-input, .cyber-select {
