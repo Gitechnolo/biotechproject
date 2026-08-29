@@ -86,21 +86,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
 /* --- Lista Interattiva & Tabelle --- */
-/* Riserva lo spazio e isola il layout della lista per azzerare il CLS */
-.interactive-cytotype-list {
-  min-height: 190px;
-  contain: layout;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-left: 1.2rem;
-  list-style: none;
-}
-/* Previene il margin collapsing sul contenitore padre */
-div:has(> .interactive-cytotype-list) {
-  min-height: 190px;
-  display: block;
-  clear: both;
-}
+.interactive-cytotype-list { min-height: 216px; list-style: none; padding: 0; margin: 0; }
 .cyber-table-container { width: 100%; max-width: 100%; overflow-x: auto !important; margin-bottom: 15px; min-height: 180px; }
 .cyber-table { width: 100%; min-width: 620px; border-collapse: collapse; table-layout: fixed; }
 .cyber-table tbody tr { transition: background-color 0.2s ease; }
