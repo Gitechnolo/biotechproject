@@ -89,19 +89,9 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
 .interactive-controls-bar, .interactive-controls-bar *, .interactive-cytotype-list, .interactive-cytotype-list * { box-sizing: border-box; }
 
-/* Previene il Layout Shift di 15px durante il caricamento del CSS esterno */
-.mb-15 { margin-bottom: 15px; }
-
-/* --- Lista Interattiva Cytotype & Evidenziazione (Fix FOUT / Text Height per CLS 0.000) --- */
-.interactive-cytotype-list { list-style: none; padding: 0; margin: 0; contain: layout style; }
-.interactive-cytotype-list li { 
-  font-size: 0.85rem; 
-  line-height: 1.5; 
-  padding: 6px 10px; 
-  border-radius: 6px; 
-  border: 1px solid transparent; 
-  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; 
-}
+/* --- Lista Interattiva Cytotype & Evidenziazione --- */
+.interactive-cytotype-list { list-style: none; padding: 0; margin: 0; }
+.interactive-cytotype-list li { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
 .interactive-cytotype-list li.highlighted { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); }
 
 /* --- Tabelle Diagnostiche & Bibliografia --- */
@@ -1460,6 +1450,6 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
-<script>(()=>{ const init=()=>{ document.addEventListener("click", (t=>{ const e=t.target.closest(".btn-filter"); if (!e) return; const n=e.closest("section, .flow-card") || document, o=n.querySelectorAll(".btn-filter"), c=n.querySelectorAll(".interactive-cytotype-list li, .interactive-section-list li"); o.forEach((t=>t.classList.remove("active"))); e.classList.add("active"); const r=e.getAttribute("data-filter"); c.forEach((t=>{ const e=t.getAttribute("data-cytotype") || t.getAttribute("data-filter-item"); "all"===r ? t.classList.remove("highlighted") : e===r ? t.classList.add("highlighted") : t.classList.remove("highlighted");}));})); function t(){ const t=document.getElementById("biblio-search"), e=document.getElementById("biblio-topic-filter"), n=document.querySelectorAll("#biblio-table tbody tr"); if (!n.length) return; const o=t ? t.value.toLowerCase().trim() : "", c=e ? e.value : "all"; n.forEach((t=>{ const e=t.textContent.toLowerCase(), n=t.getAttribute("data-topic"), r=""===o || e.includes(o), i="all"===c || n===c; t.style.display=r && i ? "" : "none";}));} document.addEventListener("input", (e=>{ e.target && "biblio-search"===e.target.id && t();})); document.addEventListener("change", (e=>{ e.target && "biblio-topic-filter"===e.target.id && t();}));}; if (document.readyState==="complete"){ requestAnimationFrame(init);} else{ window.addEventListener("load", ()=>requestAnimationFrame(init));}})();</script>
+<script>(()=>{document.addEventListener("click",(t=>{const e=t.target.closest(".btn-filter");if(!e)return;const n=e.closest("section, .flow-card")||document,o=n.querySelectorAll(".btn-filter"),c=n.querySelectorAll(".interactive-cytotype-list li, .interactive-section-list li");o.forEach((t=>t.classList.remove("active"))),e.classList.add("active");const r=e.getAttribute("data-filter");c.forEach((t=>{const e=t.getAttribute("data-cytotype")||t.getAttribute("data-filter-item");"all"===r?t.classList.remove("highlighted"):e===r?t.classList.add("highlighted"):t.classList.remove("highlighted")}))}));function t(){const t=document.getElementById("biblio-search"),e=document.getElementById("biblio-topic-filter"),n=document.querySelectorAll("#biblio-table tbody tr");if(!n.length)return;const o=t?t.value.toLowerCase().trim():"",c=e?e.value:"all";n.forEach((t=>{const e=t.textContent.toLowerCase(),n=t.getAttribute("data-topic"),r=""===o||e.includes(o),i="all"===c||n===c;t.style.display=r&&i?"":"none"}))}document.addEventListener("input",(e=>{e.target&&"biblio-search"===e.target.id&&t()})),document.addEventListener("change",(e=>{e.target&&"biblio-topic-filter"===e.target.id&&t()}))})();</script>
 </body>
 </html>
