@@ -82,12 +82,12 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
 /* ==========================================================
-   BIOTECHPROJECT INTERACTIVE & RESEARCH COMPONENTS (Optimized)
+   BIOTECHPROJECT INTERACTIVE & RESEARCH COMPONENTS (Refactored)
    ========================================================== */
-/* --- Utility, Box-Model e Layout Condivisi (Zero CLS) --- */
-.research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+
+/* --- Typography & System Box-Model Shared --- */
 .control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
-.interactive-controls-bar, .interactive-controls-bar *, .interactive-filter-list, .interactive-filter-list * { box-sizing: border-box; }
+.research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); }
 
 /* --- Lista Interattiva da Evidenziare (Agnostica) --- */
 .interactive-filter-list { list-style: none; padding: 0; margin: 0; }
@@ -95,25 +95,25 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .interactive-filter-list li.highlighted { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); }
 
 /* --- Tabelle Diagnostiche & Bibliografia --- */
-.cyber-table-container { width: 100%; max-width: 100%; overflow-x: auto !important; margin-bottom: 15px; min-height: 180px; }
+.cyber-table-container { width: 100%; overflow-x: auto !important; margin-bottom: 15px; min-height: 180px; }
 .cyber-table { width: 100%; min-width: 620px; border-collapse: collapse; table-layout: fixed; }
 .cyber-table tbody tr { transition: background 0.2s ease; }
 
 /* --- Controls & Filter Bar --- */
-.interactive-controls-bar { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding: 10px 14px; background: rgba(10, 16, 26, 0.6); border: 1px solid rgba(0, 230, 118, 0.2); border-radius: 8px; min-height: 52px; }
-.control-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; line-height: 1.2; display: inline-block; }
+.interactive-controls-bar { display: flex; align-items: center; gap: 10px; overflow-x: auto; padding: 10px 14px; background: rgba(10, 16, 26, 0.6); border: 1px solid rgba(0, 230, 118, 0.2); border-radius: 8px; min-height: 52px; }
+.control-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; line-height: 1.2; display: inline-block; flex-shrink: 0; }
 
 /* --- Filter Buttons --- */
-.btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
 .btn-filter:hover { background: rgba(0, 230, 118, 0.12); color: #00e676; border-color: rgba(0, 230, 118, 0.6); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); }
 .btn-filter.active { background: rgba(0, 230, 118, 0.25); color: #00e676; border-color: #00e676; font-weight: 700; box-shadow: 0 0 10px rgba(0, 230, 118, 0.35); }
 
 /* --- Research Insight & Badge --- */
 .research-insight-box { background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(0, 230, 118, 0.35); border-left: 4px solid #00e676; border-radius: 8px; padding: 16px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 230, 118, 0.1); margin-bottom: 20px; }
-.research-insight-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 0.95rem; letter-spacing: 0.5px; }
+.research-insight-box h4 { margin: 0 0 10px; font-size: 0.95rem; letter-spacing: 0.5px; }
 .research-insight-box p:last-child { margin-bottom: 0; }
-.insight-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 230, 118, 0.2); padding-bottom: 8px; min-height: 36px; }
-.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate; }
+.insight-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 230, 118, 0.2); padding-bottom: 8px; min-height: 36px; gap: 10px; }
+.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate; flex-shrink: 0; }
 @keyframes pulse-glow { 0% { box-shadow: 0 0 4px rgba(0, 230, 118, 0.2); } 100% { box-shadow: 0 0 12px rgba(0, 230, 118, 0.6); } }
 
 /* --- Input & Select Bibliografia --- */
@@ -127,7 +127,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 
 /* --- Responsive Layout (< 680px) --- */
 @media (max-width: 680px) {
-  .interactive-controls-bar, .biblio-filter-bar, .insight-header { flex-direction: column; align-items: flex-start; min-height: auto; }
+  .interactive-controls-bar, .biblio-filter-bar { flex-direction: column; align-items: flex-start; min-height: auto; }
   .biblio-filter-bar { gap: 8px; }
   .cyber-input, .cyber-select { flex: 1 1 100%; width: 100%; }
 }
