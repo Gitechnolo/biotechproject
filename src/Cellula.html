@@ -85,9 +85,10 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
    BIOTECHPROJECT INTERACTIVE & RESEARCH COMPONENTS (Refactored)
    ========================================================== */
 
-/* --- Typography & System Box-Model Shared --- */
+/* --- Typography & System Box-Model Shared (Zero CLS) --- */
 .control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
 .research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); }
+.interactive-filter-list, .interactive-filter-list *, .interactive-controls-bar, .interactive-controls-bar * { box-sizing: border-box; }
 
 /* --- Lista Interattiva da Evidenziare (Agnostica) --- */
 .interactive-filter-list { list-style: none; padding: 0; margin: 0; }
@@ -104,7 +105,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .control-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; line-height: 1.2; display: inline-block; flex-shrink: 0; }
 
 /* --- Filter Buttons --- */
-.btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .btn-filter:hover { background: rgba(0, 230, 118, 0.12); color: #00e676; border-color: rgba(0, 230, 118, 0.6); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); }
 .btn-filter.active { background: rgba(0, 230, 118, 0.25); color: #00e676; border-color: #00e676; font-weight: 700; box-shadow: 0 0 10px rgba(0, 230, 118, 0.35); }
 
@@ -118,7 +119,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 
 /* --- Input & Select Bibliografia --- */
 .biblio-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; min-height: 40px; margin-bottom: 15px; }
-.cyber-input, .cyber-select { height: 38px; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 8px 12px; font-size: 0.82rem; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.cyber-input, .cyber-select { height: 38px; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 8px 12px; font-size: 0.82rem; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; box-sizing: border-box; }
 .cyber-input { flex: 1 1 240px; color: #ffffff; }
 .cyber-select { flex: 0 1 200px; color: #00e676; cursor: pointer; }
 .cyber-input::placeholder { color: #64748b; }
