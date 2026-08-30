@@ -87,12 +87,12 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 /* --- Utility, Box-Model e Layout Condivisi (Zero CLS) --- */
 .research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
-.interactive-controls-bar, .interactive-controls-bar *, .interactive-cytotype-list, .interactive-cytotype-list * { box-sizing: border-box; }
+.interactive-controls-bar, .interactive-controls-bar *, .interactive-filter-list, .interactive-filter-list * { box-sizing: border-box; }
 
-/* --- Lista Interattiva Cytotype & Evidenziazione --- */
-.interactive-cytotype-list { list-style: none; padding: 0; margin: 0; }
-.interactive-cytotype-list li { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
-.interactive-cytotype-list li.highlighted { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); }
+/* --- Lista Interattiva da Evidenziare (Agnostica) --- */
+.interactive-filter-list { list-style: none; padding: 0; margin: 0; }
+.interactive-filter-list li { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+.interactive-filter-list li.highlighted { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); }
 
 /* --- Tabelle Diagnostiche & Bibliografia --- */
 .cyber-table-container { width: 100%; max-width: 100%; overflow-x: auto !important; margin-bottom: 15px; min-height: 180px; }
@@ -100,18 +100,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .cyber-table tbody tr { transition: background 0.2s ease; }
 
 /* --- Controls & Filter Bar --- */
-.interactive-controls-bar { 
-  display: flex; 
-  align-items: center; 
-  gap: 10px; 
-  flex-wrap: nowrap; /* Blocca l'andata a capo dei bottoni per eliminare il CLS */
-  overflow-x: auto;  /* Permette lo scorrimento orizzontale se lo spazio non basta */
-  padding: 10px 14px; 
-  background: rgba(10, 16, 26, 0.6); 
-  border: 1px solid rgba(0, 230, 118, 0.2); 
-  border-radius: 8px; 
-  min-height: 52px; 
-}
+.interactive-controls-bar { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding: 10px 14px; background: rgba(10, 16, 26, 0.6); border: 1px solid rgba(0, 230, 118, 0.2); border-radius: 8px; min-height: 52px; }
 .control-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; line-height: 1.2; display: inline-block; }
 
 /* --- Filter Buttons --- */
@@ -203,11 +192,11 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
   </div>
 
   <div class="mb-15">
-    <ol class="list interactive-cytotype-list">
-      <li data-cytotype="cardiomiocita"><strong class="yellowtext">Inotropismo ed eccitabilità cardiaca:</strong> Generazione di forza contrattile nel miocardiocita guidata dall'accoppiamento eccitazione-contrazione (CICR, <i>Calcium-Induced Calcium Release</i>) e dal transito di Ca<sup>2+</sup> attraverso i canali voltaggio-dipendenti di tipo L (Ca<sub>v</sub>1.2);</li>
-      <li data-cytotype="neurone"><strong class="biotechbold">Trasduzione e computazione neurale:</strong> Genesi e propagazione saltatoria dei potenziali d'azione lungo la membrana assonica tramite canali del Na<sup>+</sup> e K<sup>+</sup> voltaggio-dipendenti, combinata alla modulazione neurotrasmettitoriale delle sinapsi centrali;</li>
-      <li data-cytotype="podocita"><strong class="greentext">Ultrafiltrazione renale:</strong> Mantenimento dell'omeostasi idro-elettrolitica e del volume plasmatico mediante la barriera di filtrazione glomerulare costituita dall'endotelio fenestrato, dalla membrana basale glomerulare e dai podociti;</li>
-      <li data-cytotype="staminale"><strong class="orangetext">Omeostasi ed elasticità epiteliale:</strong> Continuo turnover tissutale sostenuto da nicchie di cellule staminali adulte e mantenimento della funzione barriera selettiva mediante giunzioni occludenti ed ancoranti.</li>
+    <ol class="list interactive-filter-list">
+      <li data-filter-item="cardiomiocita"><strong class="yellowtext">Inotropismo ed eccitabilità cardiaca:</strong> Generazione di forza contrattile nel miocardiocita guidata dall'accoppiamento eccitazione-contrazione (CICR, <i>Calcium-Induced Calcium Release</i>) e dal transito di Ca<sup>2+</sup> attraverso i canali voltaggio-dipendenti di tipo L (Ca<sub>v</sub>1.2);</li>
+      <li data-filter-item="neurone"><strong class="biotechbold">Trasduzione e computazione neurale:</strong> Genesi e propagazione saltatoria dei potenziali d'azione lungo la membrana assonica tramite canali del Na<sup>+</sup> e K<sup>+</sup> voltaggio-dipendenti, combinata alla modulazione neurotrasmettitoriale delle sinapsi centrali;</li>
+      <li data-filter-item="podocita"><strong class="greentext">Ultrafiltrazione renale:</strong> Mantenimento dell'omeostasi idro-elettrolitica e del volume plasmatico mediante la barriera di filtrazione glomerulare costituita dall'endotelio fenestrato, dalla membrana basale glomerulare e dai podociti;</li>
+      <li data-filter-item="staminale"><strong class="orangetext">Omeostasi ed elasticità epiteliale:</strong> Continuo turnover tissutale sostenuto da nicchie di cellule staminali adulte e mantenimento della funzione barriera selettiva mediante giunzioni occludenti ed ancoranti.</li>
     </ol>
   </div>
 
@@ -1461,6 +1450,6 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
-<script>(()=>{document.addEventListener("click",(t=>{const e=t.target.closest(".btn-filter");if(!e)return;const n=e.closest("section, .flow-card")||document,o=n.querySelectorAll(".btn-filter"),c=n.querySelectorAll(".interactive-cytotype-list li, .interactive-section-list li");o.forEach((t=>t.classList.remove("active"))),e.classList.add("active");const r=e.getAttribute("data-filter");c.forEach((t=>{const e=t.getAttribute("data-cytotype")||t.getAttribute("data-filter-item");"all"===r?t.classList.remove("highlighted"):e===r?t.classList.add("highlighted"):t.classList.remove("highlighted")}))}));function t(){const t=document.getElementById("biblio-search"),e=document.getElementById("biblio-topic-filter"),n=document.querySelectorAll("#biblio-table tbody tr");if(!n.length)return;const o=t?t.value.toLowerCase().trim():"",c=e?e.value:"all";n.forEach((t=>{const e=t.textContent.toLowerCase(),n=t.getAttribute("data-topic"),r=""===o||e.includes(o),i="all"===c||n===c;t.style.display=r&&i?"":"none"}))}document.addEventListener("input",(e=>{e.target&&"biblio-search"===e.target.id&&t()})),document.addEventListener("change",(e=>{e.target&&"biblio-topic-filter"===e.target.id&&t()}))})();</script>
+<script>(()=>{document.addEventListener("click",(t=>{const e=t.target.closest(".btn-filter");if(!e)return;const n=e.closest("section, .flow-card")||document,o=n.querySelectorAll(".btn-filter"),c=n.querySelectorAll("[data-filter-item]");o.forEach((t=>t.classList.remove("active"))),e.classList.add("active");const r=e.getAttribute("data-filter");c.forEach((t=>{const e=t.getAttribute("data-filter-item");"all"===r?t.classList.remove("highlighted"):e===r?t.classList.add("highlighted"):t.classList.remove("highlighted")}))}));function t(){const t=document.getElementById("biblio-search"),e=document.getElementById("biblio-topic-filter"),n=document.querySelectorAll("#biblio-table tbody tr");if(!n.length)return;const o=t?t.value.toLowerCase().trim():"",c=e?e.value:"all";n.forEach((t=>{const e=t.textContent.toLowerCase(),n=t.getAttribute("data-topic"),r=""===o||e.includes(o),i="all"===c||n===c;t.style.display=r&&i?"":"none"}))}document.addEventListener("input",(e=>{e.target&&"biblio-search"===e.target.id&&t()})),document.addEventListener("change",(e=>{e.target&&"biblio-topic-filter"===e.target.id&&t()}))})();</script>
 </body>
 </html>
