@@ -84,13 +84,14 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 /* ==========================================================
    BIOTECHPROJECT INTERACTIVE & RESEARCH COMPONENTS (Optimized)
    ========================================================== */
-/* --- Utility e Layout Condivisi --- */
+/* --- Utility, Box-Model e Layout Condivisi (Zero CLS) --- */
 .research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
+.interactive-controls-bar, .interactive-controls-bar *, .interactive-cytotype-list, .interactive-cytotype-list * { box-sizing: border-box; }
 
-/* --- Lista Interattiva Cytotype & Evidenziazione (Zero CLS) --- */
+/* --- Lista Interattiva Cytotype & Evidenziazione --- */
 .interactive-cytotype-list { list-style: none; padding: 0; margin: 0; }
-.interactive-cytotype-list li { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; transition: all 0.25s ease; }
+.interactive-cytotype-list li { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
 .interactive-cytotype-list li.highlighted { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); }
 
 /* --- Tabelle Diagnostiche & Bibliografia --- */
@@ -103,7 +104,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .control-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; line-height: 1.2; display: inline-block; }
 
 /* --- Filter Buttons --- */
-.btn-filter { background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
 .btn-filter:hover { background: rgba(0, 230, 118, 0.12); color: #00e676; border-color: rgba(0, 230, 118, 0.6); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); }
 .btn-filter.active { background: rgba(0, 230, 118, 0.25); color: #00e676; border-color: #00e676; font-weight: 700; box-shadow: 0 0 10px rgba(0, 230, 118, 0.35); }
 
