@@ -302,138 +302,215 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <hr class="divider-glow">
 
 <!-- ==========================================
-    SEZIONE: Riferimenti Scientifici e Bibliografia Specialistica
-    ========================================== -->
-  <section id="bibliografia" class="text-block mb-25" data-lang-key="biorobotica_letteratura_scientifica">
-    <div class="flow-card intrinsic mb-15">
-      <span class="flow-tag tag-intrinsic">Letteratura Scientifica &amp; DOI</span>
-      <h3 id="titolo-bibliografia" class="flow-title text-neon">
-        Riferimenti Scientifici e Bibliografia Specialistica
-      </h3>
-      <p class="flow-desc">
-        Fonti primarie peer-reviewed, landmark papers e ricerche traslazionali su cellule staminali, meccanotransduzione, bio-attuatori, soft robotics e xenobots.
-      </p>
-    </div>
+  SEZIONE: Riferimenti Scientifici e Bibliografia Specialistica (biorobotica_letteratura_scientifica)
+  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e ricerche traslazionali per la pagina Biorobotica. Include DOI, filtri interattivi e portali ufficiali.
+  ========================================== -->
+<section id="bibliografia" class="text-block mb-25" data-lang-key="biorobotica_letteratura_scientifica">
+  <div class="flow-card intrinsic mb-15">
+    <span class="flow-tag tag-intrinsic">Letteratura Scientifica &amp; DOI</span>
+    <h3 id="titolo-bibliografia" class="flow-title text-neon">
+      Riferimenti Scientifici e Bibliografia Specialistica
+    </h3>
+    <p class="flow-desc">
+      Fonti primarie peer-reviewed, landmark papers e ricerche traslazionali su cellule staminali, meccanotransduzione, bio-attuatori, soft robotics, xenobots e bio-computazione.
+    </p>
+  </div>
 
-    <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
-    <div class="biblio-filter-bar mb-15">
-      <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
-      <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
-        <option value="all">Tutti gli argomenti</option>
-        <option value="stem-cells">Cellule Staminali</option>
-        <option value="biohybrid">Bio-attuatori &amp; Bioibridi</option>
-        <option value="soft-robotics">Soft Robotics</option>
-        <option value="xenobots">Xenobots &amp; Bio-design</option>
-        <option value="databases">Database &amp; Open Knowledge</option>
-      </select>
-    </div>
+  <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
+  <div class="biblio-filter-bar mb-15">
+    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
+    <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
+      <option value="all">Tutti gli argomenti</option>
+      <option value="stem-cells">Cellule Staminali</option>
+      <option value="mechanotransduction">Meccanotransduzione &amp; Piezo</option>
+      <option value="biohybrid">Bio-attuatori &amp; Bioibridi</option>
+      <option value="soft-robotics">Soft Robotics</option>
+      <option value="xenobots">Xenobots &amp; Bio-design</option>
+      <option value="neuro-interfaces">Interfacce Neuro-Elettroniche</option>
+      <option value="biocomputing-ethics">Bio-Computazione &amp; Etica</option>
+      <option value="databases">Database &amp; Open Knowledge</option>
+    </select>
+  </div>
 
-    <div class="cyber-table-container mb-15">
-      <table class="cyber-table" id="biblio-table">
-        <thead>
-          <tr>
-            <th style="width: 5%;">#</th>
-            <th style="width: 25%;">Autori &amp; Anno</th>
-            <th style="width: 45%;">Titolo &amp; Rivista</th>
-            <th style="width: 25%;">Identificatore DOI / Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-topic="stem-cells">
-            <td><span class="flow-tag tag-common">1</span></td>
-            <td><strong>Zakrzewski, W., et al.</strong><br><small class="slate">(2019)</small></td>
-            <td>
-              <div class="flow-title f-85">Stem cells: past, present, and future</div>
-              <div class="flow-desc f-78">Stem Cell Research &amp; Therapy, 10(1), 68</div>
-            </td>
-            <td>
-              <a href="https://doi.org/10.1186/s13287-019-1165-5" target="_blank" rel="noopener" class="flow-tag tag-lysis">
-                10.1186/s13287-019-1165-5
-              </a>
-            </td>
-          </tr>
-          <tr data-topic="biohybrid">
-            <td><span class="flow-tag tag-common">2</span></td>
-            <td><strong>Ricotti, L., et al.</strong><br><small class="slate">(2017)</small></td>
-            <td>
-              <div class="flow-title f-85">Biohybrid actuators for robotics: A review of devices actuated by living cells</div>
-              <div class="flow-desc f-78">Science Robotics, 2(12), eaaq0495</div>
-            </td>
-            <td>
-              <a href="https://doi.org/10.1126/scirobotics.aaq0495" target="_blank" rel="noopener" class="flow-tag tag-lysis">
-                10.1126/scirobotics.aaq0495
-              </a>
-            </td>
-          </tr>
-          <tr data-topic="biohybrid">
-            <td><span class="flow-tag tag-common">3</span></td>
-            <td><strong>Webster-Wood, V. A., et al.</strong><br><small class="slate">(2022)</small></td>
-            <td>
-              <div class="flow-title f-85">Biohybrid robots: recent progress, challenges, and perspectives</div>
-              <div class="flow-desc f-78">Bioinspiration &amp; Biomimetics, 17(6), 061001</div>
-            </td>
-            <td>
-              <a href="https://doi.org/10.1088/1748-3190/ac9c3b" target="_blank" rel="noopener" class="flow-tag tag-lysis">
-                10.1088/1748-3190/ac9c3b
-              </a>
-            </td>
-          </tr>
-          <tr data-topic="soft-robotics">
-            <td><span class="flow-tag tag-common">4</span></td>
-            <td><strong>Rus, D., &amp; Tolley, M. T.</strong><br><small class="slate">(2015)</small></td>
-            <td>
-              <div class="flow-title f-85">Design, fabrication and control of soft robots</div>
-              <div class="flow-desc f-78">Nature, 521(7553), 467–475</div>
-            </td>
-            <td>
-              <a href="https://doi.org/10.1038/nature14543" target="_blank" rel="noopener" class="flow-tag tag-lysis">
-                10.1038/nature14543
-              </a>
-            </td>
-          </tr>
-          <tr data-topic="xenobots">
-            <td><span class="flow-tag tag-common">5</span></td>
-            <td><strong>Kriegman, S., et al.</strong><br><small class="slate">(2020)</small></td>
-            <td>
-              <div class="flow-title f-85">A scalable pipeline for designing reconfigurable organisms</div>
-              <div class="flow-desc f-78">Proceedings of the National Academy of Sciences (PNAS), 117(4), 1853–1859</div>
-            </td>
-            <td>
-              <a href="https://doi.org/10.1073/pnas.1910837117" target="_blank" rel="noopener" class="flow-tag tag-lysis">
-                10.1073/pnas.1910837117
-              </a>
-            </td>
-          </tr>
-          <tr data-topic="databases">
-            <td><span class="flow-tag tag-common">6</span></td>
-            <td><strong>NCBI PubMed Portal</strong><br><small class="slate">(2024)</small></td>
-            <td>
-              <div class="flow-title f-85">National Center for Biotechnology Information</div>
-              <div class="flow-desc f-78">Raccolta articoli peer-reviewed su biohybrid robotics e bio-actuators</div>
-            </td>
-            <td>
-              <a href="https://pubmed.ncbi.nlm.nih.gov/?term=biohybrid+robotics" target="_blank" rel="noopener" class="flow-tag tag-lysis">
-                pubmed.ncbi.nlm.nih.gov
-              </a>
-            </td>
-          </tr>
-          <tr data-topic="databases">
-            <td><span class="flow-tag tag-common">7</span></td>
-            <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
-            <td>
-              <div class="flow-title f-85">Iniziativa Open Knowledge &amp; Divulgazione Scientifica</div>
-              <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
-            </td>
-            <td>
-              <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
-                wiki/Gitechnolo
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <div class="cyber-table-container mb-15">
+    <table class="cyber-table" id="biblio-table">
+      <thead>
+        <tr>
+          <th style="width: 5%;">#</th>
+          <th style="width: 25%;">Autori &amp; Anno</th>
+          <th style="width: 45%;">Titolo &amp; Rivista</th>
+          <th style="width: 25%;">Identificatore DOI / Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 1. Staminali -->
+        <tr data-topic="stem-cells">
+          <td><span class="flow-tag tag-common">1</span></td>
+          <td><strong>Zakrzewski, W., et al.</strong><br><small class="slate">(2019)</small></td>
+          <td>
+            <div class="flow-title f-85">Stem cells: past, present, and future</div>
+            <div class="flow-desc f-78">Stem Cell Research &amp; Therapy, 10(1), 68</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1186/s13287-019-1165-5" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1186/s13287-019-1165-5
+            </a>
+          </td>
+        </tr>
+
+        <!-- 2. Meccanotransduzione (Piezo1/2) - NUOVO -->
+        <tr data-topic="mechanotransduction">
+          <td><span class="flow-tag tag-common">2</span></td>
+          <td><strong>Coste, B., et al.</strong><br><small class="slate">(2010)</small></td>
+          <td>
+            <div class="flow-title f-85">Piezo1 and Piezo2 are essential components of distinct mechanically-activated cation channels</div>
+            <div class="flow-desc f-78">Science, 330(6000), 55–60</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1126/science.1193270" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1126/science.1193270
+            </a>
+          </td>
+        </tr>
+
+        <!-- 3. Bio-ibridi & Attuatori -->
+        <tr data-topic="biohybrid">
+          <td><span class="flow-tag tag-common">3</span></td>
+          <td><strong>Ricotti, L., et al.</strong><br><small class="slate">(2017)</small></td>
+          <td>
+            <div class="flow-title f-85">Biohybrid actuators for robotics: A review of devices actuated by living cells</div>
+            <div class="flow-desc f-78">Science Robotics, 2(12), eaaq0495</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1126/scirobotics.aaq0495" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1126/scirobotics.aaq0495
+            </a>
+          </td>
+        </tr>
+
+        <!-- 4. Biohybrid Robots / Biosensing - NUOVO -->
+        <tr data-topic="biohybrid">
+          <td><span class="flow-tag tag-common">4</span></td>
+          <td><strong>Raman, R., et al.</strong><br><small class="slate">(2016)</small></td>
+          <td>
+            <div class="flow-title f-85">Optogenetic skeletal muscle-powered biohybrid machines</div>
+            <div class="flow-desc f-78">Proceedings of the National Academy of Sciences (PNAS), 113(13), 3497–3502</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1073/pnas.1516139113" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1073/pnas.1516139113
+            </a>
+          </td>
+        </tr>
+
+        <!-- 5. Biohybrid Progress -->
+        <tr data-topic="biohybrid">
+          <td><span class="flow-tag tag-common">5</span></td>
+          <td><strong>Webster-Wood, V. A., et al.</strong><br><small class="slate">(2022)</small></td>
+          <td>
+            <div class="flow-title f-85">Biohybrid robots: recent progress, challenges, and perspectives</div>
+            <div class="flow-desc f-78">Bioinspiration &amp; Biomimetics, 17(6), 061001</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1088/1748-3190/ac9c3b" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1088/1748-3190/ac9c3b
+            </a>
+          </td>
+        </tr>
+
+        <!-- 6. Soft Robotics -->
+        <tr data-topic="soft-robotics">
+          <td><span class="flow-tag tag-common">6</span></td>
+          <td><strong>Rus, D., &amp; Tolley, M. T.</strong><br><small class="slate">(2015)</small></td>
+          <td>
+            <div class="flow-title f-85">Design, fabrication and control of soft robots</div>
+            <div class="flow-desc f-78">Nature, 521(7553), 467–475</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1038/nature14543" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1038/nature14543
+            </a>
+          </td>
+        </tr>
+
+        <!-- 7. Xenobots -->
+        <tr data-topic="xenobots">
+          <td><span class="flow-tag tag-common">7</span></td>
+          <td><strong>Kriegman, S., et al.</strong><br><small class="slate">(2020)</small></td>
+          <td>
+            <div class="flow-title f-85">A scalable pipeline for designing reconfigurable organisms</div>
+            <div class="flow-desc f-78">Proceedings of the National Academy of Sciences (PNAS), 117(4), 1853–1859</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1073/pnas.1910837117" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1073/pnas.1910837117
+            </a>
+          </td>
+        </tr>
+
+        <!-- 8. Interfacce Neuro-Elettroniche / DishBrain - NUOVO -->
+        <tr data-topic="neuro-interfaces">
+          <td><span class="flow-tag tag-common">8</span></td>
+          <td><strong>Kagan, B. J., et al.</strong><br><small class="slate">(2022)</small></td>
+          <td>
+            <div class="flow-title f-85">In vitro neurons learn and exhibit sentience when embodied in a simulated game-world</div>
+            <div class="flow-desc f-78">Neuron, 110(23), 3952–3969</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1016/j.neuron.2022.09.001" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1016/j.neuron.2022.09.001
+            </a>
+          </td>
+        </tr>
+
+        <!-- 9. Bio-Computazione & Etica / Organoid Intelligence - NUOVO -->
+        <tr data-topic="biocomputing-ethics">
+          <td><span class="flow-tag tag-common">9</span></td>
+          <td><strong>Smirnova, L., et al.</strong><br><small class="slate">(2023)</small></td>
+          <td>
+            <div class="flow-title f-85">Organoid intelligence (OI): The new frontier in biocomputing and intelligence-in-a-dish</div>
+            <div class="flow-desc f-78">Frontiers in Science, 1, 1017235</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.3389/fsci.2023.1017235" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.3389/fsci.2023.1017235
+            </a>
+          </td>
+        </tr>
+
+        <!-- 10. Database PubMed -->
+        <tr data-topic="databases">
+          <td><span class="flow-tag tag-common">10</span></td>
+          <td><strong>NCBI PubMed Portal</strong><br><small class="slate">(2024)</small></td>
+          <td>
+            <div class="flow-title f-85">National Center for Biotechnology Information</div>
+            <div class="flow-desc f-78">Raccolta articoli peer-reviewed su biohybrid robotics e bio-actuators</div>
+          </td>
+          <td>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=biohybrid+robotics" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              pubmed.ncbi.nlm.nih.gov
+            </a>
+          </td>
+        </tr>
+
+        <!-- 11. Wikipedia / Open Knowledge -->
+        <tr data-topic="databases">
+          <td><span class="flow-tag tag-common">11</span></td>
+          <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
+          <td>
+            <div class="flow-title f-85">Iniziativa Open Knowledge &amp; Divulgazione Scientifica</div>
+            <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
+          </td>
+          <td>
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+              wiki/Gitechnolo
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
 </div><blockquote class="quotes mb-25" data-lang-key="quote-main">
   <p>
