@@ -1272,74 +1272,54 @@ function updateLastModified(lang) {
 // Attiva il monitoraggio SRE & Neural Core Hardened a sistema stabilizzato.
 // ==========================================================================
 (function() {
-  
-  // 0. PRE-ALLOCAZIONE SPAZIO (Zero CLS Guarantee)
-  // Pre-alloca lo spazio nel DOM prima del primo paint senza alterare il layout
-  const reserveGuardianSpace = () => {
-    if (document.getElementById('sre-wing')) return;
-    
-    const skeleton = document.createElement('div');
-    skeleton.className = 'sre-dashboard';
-    skeleton.id = 'sre-wing';
-    skeleton.setAttribute('role', 'complementary');
-    skeleton.setAttribute('aria-label', 'System Resilience Monitor');
-    
-    // Inserisce il contenitore prima del blocco main
-    const mainEl = document.getElementById('main') || document.body.firstChild;
-    if (mainEl && mainEl.parentNode) {
-      mainEl.parentNode.insertBefore(skeleton, mainEl);
-    }
-  };
-
   const activateGuardian = () => {
     
     // 1. Inizializzazione Globale del Neural Worker (v2.0.1-STABLE)
     try {
       window.BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js');
       
+      // Generiamo un Salt Dinamico per la Zero-Knowledge Persistence (ADR-011-PRO)
+      // Nota: In produzione questo potrebbe essere legato all'ID sessione utente
       const dynamicSalt = btoa(navigator.userAgent).substring(0, 16);
 
+      // Inizializzazione immediata con Payload Hardened
       window.BiotechWorker.postMessage({
         action: 'INIT_TRANSLATION_ENGINE',
         payload: { 
-          fileUrl: '../lang/common.json',
+          fileUrl: '../lang/common.json', // Percorso del file i18n
           userSalt: dynamicSalt,
           options: { filter: true } 
         },
         taskId: 'core_init_v2'
       });
 
+      // Listener per il monitoraggio dello stato di salute del Worker
       window.BiotechWorker.onmessage = (e) => {
         if (e.data.error === "Worker in Recovery Mode") {
           console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
         }
       };
 
-      console.log(`%c🔒 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, (window.SRE_LOG_MAIN?.syntax || '') + (window.SRE_LOG_MAIN?.worker || ''));
+      console.log(`%c🔒 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
       
     } catch (e) {
       console.error("⚠️ SRE: Neural Core Thread Allocation Failed (Hardened Mode)", e);
     }
 
-    // 2. Import dinamico del Guardian (Popola l'interfaccia nel box pre-allocato)
+    // 2. Import dinamico del Guardian per preservare il TTI < 0.3s
+    // Il Guardian ora troverà il window.BiotechWorker già inizializzato e pronto
     import('./BiotechGuardian.js')
       .then(() => {
-        console.log(`%c🛡️ SRE Guardian: Online & Monitoring Neural Sync`, (window.SRE_LOG_MAIN?.syntax || '') + (window.SRE_LOG_MAIN?.guardian || ''));
+        console.log(`%c🛡️ SRE Guardian: Online & Monitoring Neural Sync`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.guardian);
       })
       .catch(err => {
-        console.warn(`%c⚠️ SRE Guardian: Load Bypass`, (window.SRE_LOG_MAIN?.syntax || '') + 'background:#f44336;color:#fff;', err);
+        console.warn(`%c⚠️ SRE Guardian: Load Bypass`, SRE_LOG_MAIN.syntax + 'background:#f44336;color:#fff;', err);
       });
   };
 
-  // FASE 1: Prenotazione layout immediata (0ms) -> CLS = 0
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', reserveGuardianSpace);
-  } else {
-    reserveGuardianSpace();
-  }
-
-  // FASE 2: Valutazione condizioni e avvio Worker (500ms) -> Preserva la logica SRE
+  // Esecuzione in fase Idle (Priority: Low) per non competere con il rendering critico
   if (document.readyState === 'complete') {
+    // Piccolo delay aggiuntivo per garantire che il thread principale sia libero
     setTimeout(activateGuardian, 500); 
   } else {
     window.addEventListener('load', () => setTimeout(activateGuardian, 500));
