@@ -1393,7 +1393,7 @@ textarea:focus,
 .highlight.highlight:hover{transform:scale(1.12);filter:brightness(1.2);text-shadow:0 4px 15px rgba(0,0,0,0.1)}
 @supports not (background-clip:text){.highlight.highlight{color:hsl(204 100% 59%);animation:none}}
 /* End gradient text */
-/* --- SRE Dashboard Integration (ADR-011) --- (SRE GUARDIAN) - Cumulative Layout Shift 0.1 */
+/* --- SRE Dashboard Integration (ADR-011) --- (SRE GUARDIAN) - Zero CLS --- */
 .sre-dashboard {
     position: absolute; 
     right: 20px;
@@ -1403,11 +1403,11 @@ textarea:focus,
 /* --- FIX CLIPPING & CLS --- */
     min-height: 180px;  /* Spazio verticale per terminale + pulsante + glow */
     padding: 12px;     /* Cuscinetto interno per evitare tagli ai bordi */
+    box-sizing: border-box;
     /* Disabilitiamo il contenimento rigido ciò causa il taglio netto */
     contain: layout style; 
     overflow: visible; 
-/* Ottimizzazione Rendering */
-    content-visibility: auto;
+/* Rimosso content-visibility: auto per evitare il salto di layout */
     transform-origin: top right;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
@@ -1422,21 +1422,18 @@ textarea:focus,
     top: auto;
     width: auto;
     margin: 25px 20px; 
-/* 1. LOCK RIGIDO: Usiamo height e max-height identici con !important */
+/* 1. LOCK RIGIDO: height e max-height identici */
     height: 185px !important; 
     max-height: 185px !important;
     
     display: flow-root; 
     padding: 12px;
     box-sizing: border-box; 
-/* 2. ISOLAMENTO TOTALE: Aggiungiamo 'size' al containment.
-       Questo obbliga il browser a considerare l'elemento come un blocco 
-       di dimensioni fisse a prescindere dal contenuto (i log dello SRE). */
-    contain: size layout style !important; 
+/* 2. ISOLAMENTO TOTALE: Rimosso 'size' che causava il ricalcolo tardivo */
+    contain: layout style !important; 
     
     overflow: hidden; /* Evita che eventuali overflow temporanei sporchino il CLS */
-    content-visibility: auto;
-    contain-intrinsic-size: 185px; 
+    /* Rimossi content-visibility e contain-intrinsic-size */
     }
 }
 .sre-header {
