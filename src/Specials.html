@@ -73,6 +73,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .specialsCenter-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
   background: rgba(220, 230, 220, 0.5); /* Sfondo semi-trasparente e centrata*/
   backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
+.f-sb-cw {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;}
 /* ==========================================================
    BIOTECHPROJECT INTERACTIVE & RESEARCH COMPONENTS (Optimized)
    ========================================================== */
@@ -149,6 +150,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     <div class="staff-card">
       <div class="staff-container mb-30">
 
+<!-- ==========================================
+  SEZIONE: Bio-Robotica e Soft Robotics (tech-content-wrapper)
+  DESCRIZIONE: Modulo scientifico su gerarchia di pluripotenza, meccanotransduzione (Piezo1/2), bio-attuatori, Xenobots, organoidi cerebrali e quadro etico. Include badge interattivi, banche dati live e flowchart dinamico.
+  ========================================== -->
 <section class="tech-content-wrapper" aria-labelledby="main-stem-cells-title" data-lang-key="tech-content-wrapper">
   
   <!-- Titolo Principale Sintetizzato -->
@@ -158,7 +163,18 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- SEZIONE 1: Gerarchia e Differenziamento -->
   <div class="mb-25">
-    <h2 class="secHeader">Biologia Differenziativa e Gerarchia di Pluripotenza</h2>
+    <div class="f-sb-cw">
+      <h2 class="secHeader" style="margin-bottom: 0;">Biologia Differenziativa e Gerarchia di Pluripotenza</h2>
+      <!-- Badge 1: Single-Cell Atlas Explorer -->
+      <a href="https://data.humancellatlas.org/" 
+         target="_blank" 
+         rel="noopener" 
+         class="badge-interactive">
+         EXPLORER LIVE
+         <span class="sr-only">(apre la banca dati Single-Cell su Human Cell Atlas in una nuova scheda)</span>
+      </a>
+    </div>
+
     <p class="mb-15">
       Le cellule staminali costituiscono il substrato biologico fondamentale per l'ingegneria dei tessuti e il modellamento di dispositivi bio-ibridi. Caratterizzate dalla capacità di autorinnovamento e da un potenziale di differenziamento orchestrato da fattori di trascrizione e segnali biofisici microambientali, esse si articolano lungo una rigida gerarchia di potenza: dalle cellule staminali embrionali (ESC) e pluripotenti indotte (iPSC) fino ai progenitori multipotenti tessuto-specifici.
     </p>
@@ -202,7 +218,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <div class="mb-25">
     <h2 class="secHeader">Integrazione Bio-Ibrida: Meccanotrasduzione e Attuazione Cellulare</h2>
     <p class="mb-15">
-      L'intersezione tra ingegneria dei tessuti e bionica d'avanguardia ha promosso lo sviluppo di sistemi bio-ibridi, in cui miociti scheletrici e cardiomiociti differenziati da iPSC operano come attuatori biologici integrati. Tali complessi convertono la dinamica biochimica in forza meccanica attraverso processi di meccanotrasduzione mediati da canali ionici meccanosensibili (es. Piezo1/2) e complessi integrinici d'adesione focale.
+      L'intersezione tra ingegneria dei tessuti e bionica d'avanguardia ha promosso lo sviluppo di sistemi bio-ibridi, in cui miociti scheletrici e cardiomiociti differenziati da iPSC operano come attuatori biologici integrati. Tali complessi convertono la dinamica biochimica in forza meccanica attraverso processi di meccanotransduzione mediati da canali ionici meccanosensibili (es. Piezo1/2) e complessi integrinici d'adesione focale.
     </p>
 
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Protein translation.avif" 
@@ -224,10 +240,22 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
       <div class="flow-branches">
         <div class="flow-card extrinsic">
-          <span class="flow-tag tag-extrinsic">Canali Piezo1/2</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <span class="flow-tag tag-extrinsic">Canali Piezo1/2</span>
+            <!-- Badge Interattivo Piezo (Science DOI) -->
+            <a href="https://doi.org/10.1126/science.1193270" 
+               target="_blank" 
+               rel="noopener" 
+               class="badge-interactive"
+               style="text-decoration: none;">
+               SCIENCE DOI
+               <span class="sr-only">(apre lo studio sui canali meccanosensibili Piezo1/2 su Science in una nuova scheda)</span>
+            </a>
+          </div>
           <div class="flow-title">Trasduzione Ionica</div>
           <div class="flow-desc">Apertura dei varchi meccanosensibili per il flusso di ioni.</div>
         </div>
+
         <div class="flow-card extrinsic">
           <span class="flow-tag tag-extrinsic">Adesioni Focali</span>
           <div class="flow-title">Cascade Integrinica</div>
@@ -266,7 +294,17 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- SEZIONE 4: Interfacce Brain-Computer & Organoidi -->
   <div class="mb-25">
-    <h2 class="secHeader">Interfacce Neuro-Elettroniche e Reti Neurali in Vitro</h2>
+    <div class="f-sb-cw">
+      <h2 class="secHeader" style="margin-bottom: 0;">Interfacce Neuro-Elettroniche e Reti Neurali in Vitro</h2>
+      <!-- Badge 2: DishBrain Paper (Neuron DOI) -->
+      <a href="https://doi.org/10.1016/j.neuron.2022.09.001" 
+         target="_blank" 
+         rel="noopener" 
+         class="badge-interactive">
+         NEURON DOI
+         <span class="sr-only">(apre lo studio DishBrain sulle reti neurali embodied su Neuron in una nuova scheda)</span>
+      </a>
+    </div>
     <p>
       Le interfacce cervello-computer (BCI) di nuova generazione sfruttano colture bidimensionali e tridimensionali (organoidi cerebrali) di neuroni funzionali derivati da iPSC. Interfacciate con matrici di microelettrodi (MEA) o transistor a effetto di campo (OECT), queste reti neurali <em>in vitro</em> permettono di decodificare pattern complessi di potenziale d'azione e di studiare i meccanismi di neuroplasticità e sinaptogenesi.
     </p>
@@ -274,7 +312,17 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- SEZIONE 5: Xenobots -->
   <div class="mb-25">
-    <h2 class="secHeader">Xenobots: Morfogenesi Computazionale e Bio-Design Programmabile</h2>
+    <div class="f-sb-cw">
+      <h2 class="secHeader" style="margin-bottom: 0;">Xenobots: Morfogenesi Computazionale e Bio-Design Programmabile</h2>
+      <!-- Badge 3: Xenobots PNAS DOI -->
+      <a href="https://doi.org/10.1073/pnas.1910837117" 
+         target="_blank" 
+         rel="noopener" 
+         class="badge-interactive">
+         PNAS DOI
+         <span class="sr-only">(apre lo studio sulla progettazione di Xenobots su PNAS in una nuova scheda)</span>
+      </a>
+    </div>
     <p>
       Gli Xenobots rappresentano il paradigma del bio-design programmabile <em>in silico</em>. Derivati dall'assemblaggio guidato di cellule epidermiche e cardiache embrionali di <em>Xenopus laevis</em>, questi agenti biologici autonomi sono progettati mediante algoritmi evolutivi per compiere specifici compiti cinematici. Essendo privi di componenti sintetiche o metalliche, mostrano completa biodegradabilità e biocompatibilità.
     </p>
@@ -290,7 +338,17 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- SEZIONE 7: Bio-Computazione & Etica -->
   <div class="mb-25">
-    <h2 class="secHeader">Frontiere della Bio-Computazione e Quadrante Etico-Normativo</h2>
+    <div class="f-sb-cw">
+      <h2 class="secHeader" style="margin-bottom: 0;">Frontiere della Bio-Computazione e Quadrante Etico-Normativo</h2>
+      <!-- Badge 4: Organoid Intelligence Frontiers DOI -->
+      <a href="https://doi.org/10.3389/fsci.2023.1017235" 
+         target="_blank" 
+         rel="noopener" 
+         class="badge-interactive">
+         ORGANOID INTEL
+         <span class="sr-only">(apre il manifesto Organoid Intelligence su Frontiers in Science in una nuova scheda)</span>
+      </a>
+    </div>
     <p class="mb-15">
       La convergenza tra bio-informatica, ingegneria tissutale e hardware al silicio sta ridefinendo i confini dei sistemi autonomi. Le prospettive a lungo termine puntano all'integrazione di circuiti computazionali biologici dotati di capacità di apprendimento associativo non-supervisionato.
     </p>
