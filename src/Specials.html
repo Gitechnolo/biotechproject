@@ -69,6 +69,56 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .specialsCenter-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2);
   background: rgba(220, 230, 220, 0.5); /* Sfondo semi-trasparente e centrata*/
   backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
+/* ==========================================================
+   BIOTECHPROJECT INTERACTIVE & RESEARCH COMPONENTS (Optimized)
+   ========================================================== */
+/* --- Utility, Box-Model e Layout Condivisi (Zero CLS) --- */
+.research-insight-box, .interactive-controls-bar, .cyber-input, .cyber-select { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.control-label, .btn-filter, .badge-interactive, .cyber-input, .cyber-select { font-family: 'Consolas', 'Fira Code', monospace; }
+.interactive-controls-bar, .interactive-controls-bar *, .interactive-filter-list, .interactive-filter-list * { box-sizing: border-box; }
+
+/* --- Lista Interattiva da Evidenziare (Agnostica) --- */
+.interactive-filter-list { list-style: none; padding: 0; margin: 0; }
+.interactive-filter-list li { padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+.interactive-filter-list li.highlighted { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.4); box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); }
+
+/* --- Tabelle Diagnostiche & Bibliografia --- */
+.cyber-table-container { width: 100%; max-width: 100%; overflow-x: auto !important; margin-bottom: 15px; min-height: 180px; }
+.cyber-table { width: 100%; min-width: 620px; border-collapse: collapse; table-layout: fixed; }
+.cyber-table tbody tr { transition: background 0.2s ease; }
+
+/* --- Controls & Filter Bar --- */
+.interactive-controls-bar { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding: 10px 14px; background: rgba(10, 16, 26, 0.6); border: 1px solid rgba(0, 230, 118, 0.2); border-radius: 8px; min-height: 52px; }
+.control-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; line-height: 1.2; display: inline-block; }
+
+/* --- Filter Buttons --- */
+.btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn-filter:hover { background: rgba(0, 230, 118, 0.12); color: #00e676; border-color: rgba(0, 230, 118, 0.6); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); }
+.btn-filter.active { background: rgba(0, 230, 118, 0.25); color: #00e676; border-color: #00e676; font-weight: 700; box-shadow: 0 0 10px rgba(0, 230, 118, 0.35); }
+
+/* --- Research Insight & Badge --- */
+.research-insight-box { background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(0, 230, 118, 0.35); border-left: 4px solid #00e676; border-radius: 8px; padding: 16px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 230, 118, 0.1); margin-bottom: 20px; }
+.research-insight-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 0.95rem; letter-spacing: 0.5px; }
+.research-insight-box p:last-child { margin-bottom: 0; }
+.insight-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 230, 118, 0.2); padding-bottom: 8px; min-height: 36px; }
+.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate; }
+@keyframes pulse-glow { 0% { box-shadow: 0 0 4px rgba(0, 230, 118, 0.2); } 100% { box-shadow: 0 0 12px rgba(0, 230, 118, 0.6); } }
+
+/* --- Input & Select Bibliografia --- */
+.biblio-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; min-height: 40px; margin-bottom: 15px; }
+.cyber-input, .cyber-select { height: 38px; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 8px 12px; font-size: 0.82rem; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.cyber-input { flex: 1 1 240px; color: #ffffff; }
+.cyber-select { flex: 0 1 200px; color: #00e676; cursor: pointer; }
+.cyber-input::placeholder { color: #64748b; }
+.cyber-input:focus, .cyber-select:focus { border-color: #00e676; box-shadow: 0 0 10px rgba(0, 230, 118, 0.3); }
+.cyber-select option { background: #0a101a; color: #cbd5e1; }
+
+/* --- Responsive Layout (< 680px) --- */
+@media (max-width: 680px) {
+  .interactive-controls-bar, .biblio-filter-bar, .insight-header { flex-direction: column; align-items: flex-start; min-height: auto; }
+  .biblio-filter-bar { gap: 8px; }
+  .cyber-input, .cyber-select { flex: 1 1 100%; width: 100%; }
+}  
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -254,8 +304,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <!-- ==========================================
     SEZIONE: Riferimenti Scientifici e Bibliografia Specialistica
     ========================================== -->
-  <section id="bibliografia" class="text-block mb-7" data-lang-key="biorobotica_letteratura_scientifica">
-    <div class="flow-card intrinsic mb-25">
+  <section id="bibliografia" class="text-block mb-25" data-lang-key="biorobotica_letteratura_scientifica">
+    <div class="flow-card intrinsic mb-15">
       <span class="flow-tag tag-intrinsic">Letteratura Scientifica &amp; DOI</span>
       <h3 id="titolo-bibliografia" class="flow-title text-neon">
         Riferimenti Scientifici e Bibliografia Specialistica
@@ -265,8 +315,21 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       </p>
     </div>
 
+    <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
+    <div class="biblio-filter-bar mb-15">
+      <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
+      <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
+        <option value="all">Tutti gli argomenti</option>
+        <option value="stem-cells">Cellule Staminali</option>
+        <option value="biohybrid">Bio-attuatori &amp; Bioibridi</option>
+        <option value="soft-robotics">Soft Robotics</option>
+        <option value="xenobots">Xenobots &amp; Bio-design</option>
+        <option value="databases">Database &amp; Open Knowledge</option>
+      </select>
+    </div>
+
     <div class="cyber-table-container mb-15">
-      <table class="cyber-table">
+      <table class="cyber-table" id="biblio-table">
         <thead>
           <tr>
             <th style="width: 5%;">#</th>
@@ -276,7 +339,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-topic="stem-cells">
             <td><span class="flow-tag tag-common">1</span></td>
             <td><strong>Zakrzewski, W., et al.</strong><br><small class="slate">(2019)</small></td>
             <td>
@@ -289,7 +352,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               </a>
             </td>
           </tr>
-          <tr>
+          <tr data-topic="biohybrid">
             <td><span class="flow-tag tag-common">2</span></td>
             <td><strong>Ricotti, L., et al.</strong><br><small class="slate">(2017)</small></td>
             <td>
@@ -302,7 +365,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               </a>
             </td>
           </tr>
-          <tr>
+          <tr data-topic="biohybrid">
             <td><span class="flow-tag tag-common">3</span></td>
             <td><strong>Webster-Wood, V. A., et al.</strong><br><small class="slate">(2022)</small></td>
             <td>
@@ -315,7 +378,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               </a>
             </td>
           </tr>
-          <tr>
+          <tr data-topic="soft-robotics">
             <td><span class="flow-tag tag-common">4</span></td>
             <td><strong>Rus, D., &amp; Tolley, M. T.</strong><br><small class="slate">(2015)</small></td>
             <td>
@@ -328,7 +391,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               </a>
             </td>
           </tr>
-          <tr>
+          <tr data-topic="xenobots">
             <td><span class="flow-tag tag-common">5</span></td>
             <td><strong>Kriegman, S., et al.</strong><br><small class="slate">(2020)</small></td>
             <td>
@@ -341,7 +404,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               </a>
             </td>
           </tr>
-          <tr>
+          <tr data-topic="databases">
             <td><span class="flow-tag tag-common">6</span></td>
             <td><strong>NCBI PubMed Portal</strong><br><small class="slate">(2024)</small></td>
             <td>
@@ -354,19 +417,19 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
               </a>
             </td>
           </tr>
-          <tr>
-          <td><span class="flow-tag tag-common">7</span></td>
-          <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
-          <td>
-            <div class="flow-title f-85">Iniziativa Open Knowledge &amp; Divulgazione Scientifica</div>
-            <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
-          </td>
-          <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
-              wiki/Gitechnolo
-            </a>
-          </td>
-        </tr>
+          <tr data-topic="databases">
+            <td><span class="flow-tag tag-common">7</span></td>
+            <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
+            <td>
+              <div class="flow-title f-85">Iniziativa Open Knowledge &amp; Divulgazione Scientifica</div>
+              <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
+            </td>
+            <td>
+              <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+                wiki/Gitechnolo
+              </a>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -389,5 +452,6 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script>(()=>{document.addEventListener("click",(t=>{const e=t.target.closest(".btn-filter");if(!e)return;const n=e.closest("section, .flow-card")||document,o=n.querySelectorAll(".btn-filter"),c=n.querySelectorAll("[data-filter-item]");o.forEach((t=>t.classList.remove("active"))),e.classList.add("active");const r=e.getAttribute("data-filter");c.forEach((t=>{const e=t.getAttribute("data-filter-item");"all"===r?t.classList.remove("highlighted"):e===r?t.classList.add("highlighted"):t.classList.remove("highlighted")}))}));function t(){const t=document.getElementById("biblio-search"),e=document.getElementById("biblio-topic-filter"),n=document.querySelectorAll("#biblio-table tbody tr");if(!n.length)return;const o=t?t.value.toLowerCase().trim():"",c=e?e.value:"all";n.forEach((t=>{const e=t.textContent.toLowerCase(),n=t.getAttribute("data-topic"),r=""===o||e.includes(o),i="all"===c||n===c;t.style.display=r&&i?"":"none"}))}document.addEventListener("input",(e=>{e.target&&"biblio-search"===e.target.id&&t()})),document.addEventListener("change",(e=>{e.target&&"biblio-topic-filter"===e.target.id&&t()}))})();</script>
 </body>
 </html>
