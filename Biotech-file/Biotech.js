@@ -568,7 +568,7 @@ if ('requestIdleCallback' in window) {
 
 // ==========================================================================
 // MODULE 04: CORE UI SYSTEM & ACCESSIBILITY ORCHESTRATOR
-// Scope: Navigation, Interactive Modals, Speech Synthesis, Dynamic Theming & Biblio
+// Scope: Navigation, Interactive Modals, Speech Synthesis, and Dynamic Theming
 // Strategy: "Exit-Early" Pattern & Event Delegation for Memory Efficiency
 // Standards: WCAG 2.1 AAA | ARIA 1.2 State Management
 // ==========================================================================
@@ -635,44 +635,12 @@ if ('requestIdleCallback' in window) {
     // --- [D] GESTIONE PRONUNCIA E MODAL (Integrale) ---
     initSpeechAndModals();
 
-    // --- [E] FILTRO TABELLA BIBLIOGRAFIA SCIENTIFICA (ISOLATO) ---
-    initBiblioFilter();
-
     // ———————————————————————————————————————————————————————
     // 🔹 FUNZIONI INTERNE DI INIZIALIZZAZIONE (Helper)
     // ———————————————————————————————————————————————————————
 
-    function initBiblioFilter() {
-  const searchInput = document.getElementById('biblio-search');
-  const topicFilter = document.getElementById('biblio-topic-filter');
-  const tableRows = document.querySelectorAll('#biblio-table tbody tr');
-
-  // Se la tabella o i filtri non esistono in questa pagina, esci immediatamente
-  if (!tableRows.length || (!searchInput && !topicFilter)) return;
-
-  function filterTable() {
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const selectedTopic = topicFilter ? topicFilter.value : 'all';
-
-    requestAnimationFrame(() => {
-      tableRows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        const topic = row.getAttribute('data-topic');
-
-        const matchesSearch = query === '' || text.includes(query);
-        const matchesTopic = selectedTopic === 'all' || topic === selectedTopic;
-
-        row.style.display = (matchesSearch && matchesTopic) ? '' : 'none';
-      });
-    });
-  }
-
-  // Event Listener Diretti (risposta immediata all'interazione dell'utente)
-  searchInput?.addEventListener('input', filterTable);
-  topicFilter?.addEventListener('change', filterTable);
-}
-
     function initSpeechAndModals() {
+      // 1. Gestione click sui pulsanti di pronuncia (🔊)
       const audioButtons = document.querySelectorAll('.pronounce-btn');
       audioButtons.forEach(btn => {
         btn.addEventListener('click', (event) => {
@@ -751,10 +719,10 @@ if ('requestIdleCallback' in window) {
         setTimeout(() => target.nextElementSibling?.querySelector('[role="menuitem"]')?.focus(), 120);
       }
     }
-  }); // Chiusura DOMContentLoaded
+  });
 
   // ———————————————————————————————————————————————————————
-  // 🔹 LOGICA DI SUPPORTO (Utility esterne al DOMContentLoaded)
+  // 🔹 LOGICA DI SUPPORTO (Utility esterne)
   // ———————————————————————————————————————————————————————
   
   function speakTerm(term, language = 'italiano') {
@@ -790,7 +758,7 @@ if ('requestIdleCallback' in window) {
       }, 1000);
     }
 
-    console.log(`%c🎤 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.speech, '', 'font-weight: bold; color: #2196F3;', '' );
+console.log(`%c🎤 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.speech, '', 'font-weight: bold; color: #2196F3;', '' );
     speechSynthesis.speak(utterance);
   }
 
@@ -844,7 +812,7 @@ if ('requestIdleCallback' in window) {
       localStorage.setItem('biotech-theme', currentThemeIndex);
     });
   }
-})(); // Chiusura del Modulo 04 protetta dell'IIFE
+})();
   
 // ==========================================================================
 // MODULE 05: CONTENT DELIVERY & MEDIA ORCHESTRATION

@@ -1450,37 +1450,6 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
-<script>
-(() => {
-  
-  const filterContainers = document.querySelectorAll("section, .flow-card");
-  
-  filterContainers.forEach(container => {
-    
-    container.addEventListener("click", event => {
-      const btn = event.target.closest(".btn-filter");
-      if (!btn) return;
-
-      const buttons = container.querySelectorAll(".btn-filter");
-      const items = container.querySelectorAll("[data-filter-item]");
-      const filterValue = btn.getAttribute("data-filter");
-
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      items.forEach(item => {
-        const itemValue = item.getAttribute("data-filter-item");
-        if (filterValue === "all") {
-          item.classList.remove("highlighted");
-        } else if (itemValue === filterValue) {
-          item.classList.add("highlighted");
-        } else {
-          item.classList.remove("highlighted");
-        }
-      });
-    });
-  });
-})();
-</script>
+<script>(()=>{document.addEventListener("click",(t=>{const e=t.target.closest(".btn-filter");if(!e)return;const n=e.closest("section, .flow-card")||document,o=n.querySelectorAll(".btn-filter"),c=n.querySelectorAll("[data-filter-item]");o.forEach((t=>t.classList.remove("active"))),e.classList.add("active");const r=e.getAttribute("data-filter");c.forEach((t=>{const e=t.getAttribute("data-filter-item");"all"===r?t.classList.remove("highlighted"):e===r?t.classList.add("highlighted"):t.classList.remove("highlighted")}))}));function t(){const t=document.getElementById("biblio-search"),e=document.getElementById("biblio-topic-filter"),n=document.querySelectorAll("#biblio-table tbody tr");if(!n.length)return;const o=t?t.value.toLowerCase().trim():"",c=e?e.value:"all";n.forEach((t=>{const e=t.textContent.toLowerCase(),n=t.getAttribute("data-topic"),r=""===o||e.includes(o),i="all"===c||n===c;t.style.display=r&&i?"":"none"}))}document.addEventListener("input",(e=>{e.target&&"biblio-search"===e.target.id&&t()})),document.addEventListener("change",(e=>{e.target&&"biblio-topic-filter"===e.target.id&&t()}))})();</script>
 </body>
 </html>
