@@ -81,9 +81,16 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9} 
-/* === COMPONENTI INTERATTIVI, CONTROLLI & FIX ANTI-CLS (PageSpeed) === */
+/* === COMPONENTI INTERATTIVI, CONTROLLI & CORREZIONI ANTI-CLS (PageSpeed Fix) === */
 
-/* --- Controlli, Filtri e Input (Invarianza Dimensionale) --- */
+/* --- Isolamento Contenitori Header & Margin (Zero Layout Shift) --- */
+.mb-15 { 
+  margin-bottom: 15px; 
+  min-height: 50px; 
+  contain: layout style; 
+}
+
+/* --- Controlli, Filtri e Input --- */
 .interactive-controls-bar, 
 .biblio-filter-bar { 
   display: flex; 
@@ -94,8 +101,9 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   background: rgba(10, 16, 26, 0.6); 
   border: 1px solid rgba(0, 230, 118, 0.2); 
   border-radius: 8px; 
-  min-height: 52px; /* Stabilizza l'altezza ed evita il CLS da traduzione/rendering */
+  min-height: 52px; 
   margin-bottom: 15px; 
+  box-sizing: border-box;
 }
 
 .control-label { 
@@ -109,7 +117,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   display: inline-block; 
 }
 
-/* Pulsanti Filtro con min-width fissa per prevenire CLS con il traduttore automatico */
+/* Pulsanti Filtro */
 .btn-filter { 
   white-space: nowrap; 
   background: rgba(15, 23, 42, 0.8); 
@@ -119,14 +127,15 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   font-size: 0.76rem; 
   padding: 5px 12px; 
   height: 30px; 
-  min-width: 120px; /* Previene il reflow orizzontale se il testo cambia lingua */
+  min-width: 110px; 
   border-radius: 4px; 
   cursor: pointer; 
-  transition: all 0.2s ease; 
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; 
   outline: none; 
   display: inline-flex; 
   align-items: center; 
   justify-content: center; 
+  box-sizing: border-box;
 }
 
 .btn-filter:hover { 
@@ -144,7 +153,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   box-shadow: 0 0 10px rgba(0, 230, 118, 0.35); 
 }
 
-/* Input Cerca e Select Dropdown Terminal Style */
+/* Input Cerca & Select Dropdown Terminal Style */
 .cyber-input, 
 .cyber-select { 
   height: 38px; 
@@ -155,9 +164,10 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   font-family: 'Consolas', 'Fira Code', monospace; 
   font-size: 0.82rem; 
   outline: none; 
-  transition: all 0.2s ease; 
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  box-sizing: border-box;
 }
 
 .cyber-input { 
@@ -195,9 +205,20 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   color: #0f172a !important; 
 }
 
-/* --- Refinement Tabella Bibliografica Anti-CLS --- */
-.cyber-table { 
-  table-layout: fixed; /* Basa il layout sulla griglia, isolando il testo tradotto */
+/* --- Tabella Bibliografica Fluida Anti-CLS --- */
+.cyber-table-container { 
+  width: 100%; 
+  max-width: 100%; 
+  overflow-x: auto !important; 
+  margin: 18px auto 24px auto; 
+  border-radius: 8px; 
+  min-height: 220px; /* Previene il salto verticale in fase di caricamento dei dati */
+  contain: layout style;
+}
+
+.cyber-table td {
+  word-break: break-word; /* Gestisce i titoli lunghi ed evita lo shift orizzontale */
+  vertical-align: top;
 }
 
 /* --- Research Insight Box & Highlighting --- */
@@ -211,6 +232,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   margin-bottom: 20px; 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  box-sizing: border-box;
 }
 
 .badge-interactive { 
@@ -235,7 +257,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   padding: 6px 10px; 
   border-radius: 6px; 
   border: 1px solid transparent; 
-  transition: all 0.25s ease; 
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; 
 }
 
 .interactive-filter-list li.highlighted { 
@@ -244,7 +266,7 @@ h1, .modern-logo, .yellowtext[data-lang-key="cellula_subtitle"]{ content-visibil
   box-shadow: 0 0 10px rgba(0, 230, 118, 0.15); 
 }
 
-/* Media Query Mobile Override */
+/* Responsive Overrides */
 @media (max-width: 680px) {
   .interactive-controls-bar, 
   .biblio-filter-bar { 
