@@ -643,40 +643,34 @@ if ('requestIdleCallback' in window) {
     // ———————————————————————————————————————————————————————
 
     function initBiblioFilter() {
-      const biblioSection = document.getElementById('bibliografia');
-      if (!biblioSection) return;
+  const searchInput = document.getElementById('biblio-search');
+  const topicFilter = document.getElementById('biblio-topic-filter');
+  const tableRows = document.querySelectorAll('#biblio-table tbody tr');
 
-      const searchInput = document.getElementById('biblio-search');
-      const topicFilter = document.getElementById('biblio-topic-filter');
-      const tableRows = biblioSection.querySelectorAll('#biblio-table tbody tr');
+  // Se la tabella o i filtri non esistono in questa pagina, esci immediatamente
+  if (!tableRows.length || (!searchInput && !topicFilter)) return;
 
-      if (!tableRows.length) return;
+  function filterTable() {
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const selectedTopic = topicFilter ? topicFilter.value : 'all';
 
-      function filterTable() {
-        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const selectedTopic = topicFilter ? topicFilter.value : 'all';
+    requestAnimationFrame(() => {
+      tableRows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const topic = row.getAttribute('data-topic');
 
-        requestAnimationFrame(() => {
-          tableRows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            const topic = row.getAttribute('data-topic');
+        const matchesSearch = query === '' || text.includes(query);
+        const matchesTopic = selectedTopic === 'all' || topic === selectedTopic;
 
-            const matchesSearch = query === '' || text.includes(query);
-            const matchesTopic = selectedTopic === 'all' || topic === selectedTopic;
-
-            row.style.display = (matchesSearch && matchesTopic) ? '' : 'none';
-          });
-        });
-      }
-
-      biblioSection.addEventListener('input', (e) => {
-        if (e.target && e.target.id === 'biblio-search') filterTable();
+        row.style.display = (matchesSearch && matchesTopic) ? '' : 'none';
       });
+    });
+  }
 
-      biblioSection.addEventListener('change', (e) => {
-        if (e.target && e.target.id === 'biblio-topic-filter') filterTable();
-      });
-    }
+  // Event Listener Diretti (risposta immediata all'interazione dell'utente)
+  searchInput?.addEventListener('input', filterTable);
+  topicFilter?.addEventListener('change', filterTable);
+}
 
     function initSpeechAndModals() {
       const audioButtons = document.querySelectorAll('.pronounce-btn');
