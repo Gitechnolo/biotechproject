@@ -215,6 +215,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .f-85 {font-size: 0.85rem;}
 .f-78 {font-size: 0.78rem;}
 .slate {color: #94a3b8;}
+.flex-between {display: flex; align-items: center; justify-content: space-between; gap: 8px;}
 .text-neon{ color: #00e676; font-size: 1.1rem; margin-top: 4px; }  
 .divider-glow{ border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(0, 230, 118, 0.5), transparent); margin: 60px 0}
 /* === END Riferimenti Scientifici e Bibliografia Link Esterni === */
@@ -246,7 +247,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .research-insight-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 0.95rem; letter-spacing: 0.5px; }
 .research-insight-box p:last-child { margin-bottom: 0; }
 .insight-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 230, 118, 0.2); padding-bottom: 8px; min-height: 36px; }
-.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate; white-space: nowrap;}
+.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate;}
 @keyframes pulse-glow { 0% { box-shadow: 0 0 4px rgba(0, 230, 118, 0.2); } 100% { box-shadow: 0 0 12px rgba(0, 230, 118, 0.6); } }
 /* --- Input & Select Bibliografia --- */
 .biblio-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; min-height: 40px; margin-bottom: 15px; }
