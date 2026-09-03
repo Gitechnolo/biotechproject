@@ -252,6 +252,8 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 /* Feedback di interazione universale (Desktop Hover + Mobile Touch/Focus) */
 .badge-interactive:hover,.badge-interactive:focus-visible{background:rgba(0,230,118,.3);border-color:#00e676;color:#ffffff;box-shadow:0 0 10px rgba(0,230,118,.4);outline:none;}
 @keyframes pulse-glow{0%{box-shadow:0 0 4px rgba(0,230,118,.2)}100%{box-shadow:0 0 12px rgba(0,230,118,.6)}}
+/* Disattiva la pulsazione se l'utente ha chiesto al sistema operativo di ridurre i movimenti */
+@media (prefers-reduced-motion:reduce){.badge-interactive{animation:none}}
 /* --- Input & Select Bibliografia --- */
 .biblio-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; min-height: 40px; margin-bottom: 15px; }
 .cyber-input, .cyber-select { height: 38px; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 8px 12px; font-size: 0.82rem; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
