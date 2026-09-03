@@ -75,49 +75,18 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-/* ==========================================================
-   LAYOUT GRID RESPONSIBO (Mobile First)
-   ========================================================== */
-[class*="grid-container"] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  width: 100%;
-}
-
-[class*="grid-container"] > div {
-  flex: 1 1 100%;
-  min-width: 0; /* EVITA CHE TABELLE O IMMAGINI TAGLINO IL LAYOUT SU MOBILE */
-}
-
-/* Layout Desktop (dai 768px in su) */
-@media (min-width: 768px) {
-  [class*="grid-container"] {
-    flex-wrap: nowrap;
-  }
-
-  /* Grid 50/50 */
-  .grid-container50 > div {
-    flex: 0 0 calc(50% - 0.75rem);
-  }
-
-  /* Grid a 3 colonne (37% - 31.5% - 31.5%) */
-  .grid-container > div:nth-child(1) { 
-    flex: 0 0 calc(37% - 1rem); 
-  }
-  .grid-container > div:nth-child(2),
-  .grid-container > div:nth-child(3) { 
-    flex: 0 0 calc(31.5% - 1rem); 
-  }
-
-  /* Grid 20/80 */
-  .grid-container20x80 > div:nth-child(1) { 
-    flex: 0 0 calc(20% - 0.75rem); 
-  }
-  .grid-container20x80 > div:nth-child(2) { 
-    flex: 0 0 calc(80% - 0.75rem); 
-  }
-}
+/* Estensione dinamica per tutti i container griglia */
+    [class*="grid-container"] { display: flex; flex-wrap: wrap; gap: 1.5rem; width: 100%; }
+    [class*="grid-container"] > div { flex: 1 1 100%; min-width: 0; }
+/* Desktop Breakpoint (≥768px) */
+    @media (min-width: 768px) {
+      [class*="grid-container"] { flex-wrap: nowrap; }
+      .grid-container50 > div { flex: 0 0 calc(50% - 0.75rem); }
+      .grid-container > div:nth-child(1) { flex: 0 0 calc(37% - 1rem); }
+      .grid-container > div:nth-child(2),
+      .grid-container > div:nth-child(3) { flex: 0 0 calc(31.5% - 1rem); }
+      .grid-container20x80 > div:nth-child(1) { flex: 0 0 calc(20% - 0.75rem); }
+      .grid-container20x80 > div:nth-child(2) { flex: 0 0 calc(80% - 0.75rem); }}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>

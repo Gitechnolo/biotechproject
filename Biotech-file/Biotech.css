@@ -247,7 +247,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .research-insight-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 0.95rem; letter-spacing: 0.5px; }
 .research-insight-box p:last-child { margin-bottom: 0; }
 .insight-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 230, 118, 0.2); padding-bottom: 8px; min-height: 36px; }
-.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate;}
+.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate; text-decoration: none; }
 @keyframes pulse-glow { 0% { box-shadow: 0 0 4px rgba(0, 230, 118, 0.2); } 100% { box-shadow: 0 0 12px rgba(0, 230, 118, 0.6); } }
 /* --- Input & Select Bibliografia --- */
 .biblio-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; min-height: 40px; margin-bottom: 15px; }
