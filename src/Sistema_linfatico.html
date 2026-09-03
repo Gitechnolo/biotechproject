@@ -469,7 +469,13 @@ SEZIONE: Sistema Immunitario (immune_section)
 DESCRIZIONE: Architettura cellulare e umorale, classificazione (innata e adattiva) e cinematica della risposta immunitaria.
 ========================================================== -->
 <section class="text text-block mb-15" aria-labelledby="immune-main-title" data-lang-key="immune_section">
-  <h2 id="immune-main-title" class="secHeader">SISTEMA IMMUNITARIO</h2>
+  <div class="flex-between mb-10">
+    <h1 id="immune-main-title" class="secHeader">SISTEMA IMMUNITARIO</h1>
+    <a href="https://doi.org/10.1101/SQB.1989.054.01.003" target="_blank" rel="noopener" class="badge-interactive">
+      REF #2 DOI
+      <span class="sr-only">(apre la pubblicazione di Janeway sul riconoscimento immunitario e la risposta innata/adattiva)</span>
+    </a>
+  </div>
 
   <!-- Executive Summary -->
   <div class="mb-15">
@@ -478,25 +484,27 @@ DESCRIZIONE: Architettura cellulare e umorale, classificazione (innata e adattiv
 
   <!-- Blocco 1: Architettura ed Elementi Costitutivi -->
   <h3 class="biotechbold">ARCHITETTURA ED ELEMENTI COSTITUTIVI</h3>
-  <p class="text">
+  <p class="text mb-10">
     L'efficacia della risposta difensiva si fonda sulla cooperazione sinergica tra elementi cellulari, fattori umorali e microambienti tissutali specializzati:
   </p>
 
-  <div class="cyber-table-container">
+  <div class="cyber-table-container mb-15">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th style="width: 25%;">Componente</th>
-          <th style="width: 35%;">Elementi Chiave</th>
-          <th style="width: 40%;">Ruolo Fisiologico</th>
+          <th>Componente</th>
+          <th>Elementi Chiave</th>
+          <th>Ruolo Fisiologico</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong class="yellowtext">Cellulare (Leucociti)</strong></td>
           <td>
-            • <strong>Linea Mieloide:</strong> Granulociti, Monociti/Macrofagi, Cellule Dendritiche (APC).<br>
-            • <strong>Linea Linfoide:</strong> Linfociti T, Linfociti B, Cellule NK.
+            <ul>
+              <li><strong>Linea Mieloide:</strong> Granulociti, Monociti/Macrofagi, Cellule Dendritiche (APC).</li>
+              <li><strong>Linea Linfoide:</strong> Linfociti T, Linfociti B, Cellule NK.</li>
+            </ul>
           </td>
           <td>Sorveglianza, fagocitosi, presentazione dell'antigene e citotossicità. Le APC collegano l'immunità innata a quella adattiva.</td>
         </tr>
@@ -514,15 +522,15 @@ DESCRIZIONE: Architettura cellulare e umorale, classificazione (innata e adattiv
     </table>
   </div>
 
-  <hr class="line" />
+  <hr class="line mb-15" />
 
   <!-- Blocco 2: Classificazione (Innata vs Adattiva) -->
   <h3 class="biotechbold">CLASSIFICAZIONE DELLA RISPOSTA IMMUNITARIA</h3>
-  <p class="text">
+  <p class="text mb-10">
     La difesa dell'organismo si articola in due strategie integrate evolutivamente:
   </p>
 
-  <div class="flow-branches" style="margin: 16px 0 20px 0;">
+  <div class="flow-branches mb-15">
     <!-- Innata -->
     <div class="flow-card intrinsic">
       <span class="flow-tag tag-intrinsic">Prima Linea di Difesa</span>
@@ -552,35 +560,35 @@ DESCRIZIONE: Architettura cellulare e umorale, classificazione (innata e adattiv
     </div>
   </div>
 
-  <hr class="line" />
+  <hr class="line mb-15" />
 
   <!-- Blocco 3: Cinematica della Risposta Immunitaria -->
   <h3 class="biotechbold">CINEMATICA E FASI DELLA RISPOSTA IMMUNITARIA</h3>
-  <p class="text">
+  <p class="text mb-10">
     Lo sviluppo e la risoluzione di una reazione immunitaria fisiologica seguono una sequenza temporale ben definita:
   </p>
 
-  <div class="cyber-flowchart" style="max-width: 680px;">
+  <div class="cyber-flowchart">
     <div class="flow-card intrinsic">
-      <span class="flow-tag tag-intrinsic">Fase 1 · Identificazione</span>
+      <span class="flow-tag tag-intrinsic">Fase 1 &middot; Identificazione</span>
       <div class="flow-title">1. Riconoscimento</div>
       <div class="flow-desc">Identificazione dell'antigene o dei segnali di pericolo (<strong class="orangetext">PAMPs/DAMPs</strong>) da parte delle cellule sentinella e dei recettori PRR/TCR/BCR.</div>
     </div>
-    <div class="flow-arrow-down">↓</div>
+    <div class="flow-arrow-down">&darr;</div>
     <div class="flow-card common">
-      <span class="flow-tag tag-common">Fase 2 · Amplificazione</span>
+      <span class="flow-tag tag-common">Fase 2 &middot; Amplificazione</span>
       <div class="flow-title">2. Attivazione e Reclutamento</div>
       <div class="flow-desc">Secrezione di citochine pro-infiammatorie, stravaso leucocitario e migrazione chemotattica delle cellule effettrici verso il sito di flogosi.</div>
     </div>
-    <div class="flow-arrow-down">↓</div>
+    <div class="flow-arrow-down">&darr;</div>
     <div class="flow-card extrinsic">
-      <span class="flow-tag tag-extrinsic">Fase 3 · Neutralizzazione</span>
+      <span class="flow-tag tag-extrinsic">Fase 3 &middot; Neutralizzazione</span>
       <div class="flow-title">3. Fase Effettrice</div>
       <div class="flow-desc">Eliminazione del patogeno mediante fagocitosi, citotossicità cellulare (NK/CTL), opsonizzazione e formazione di immunocomplessi.</div>
     </div>
-    <div class="flow-arrow-down">↓</div>
+    <div class="flow-arrow-down">&darr;</div>
     <div class="flow-card lysis">
-      <span class="flow-tag tag-lysis">Fase 4 · Omeostasi &amp; Memoria</span>
+      <span class="flow-tag tag-lysis">Fase 4 &middot; Omeostasi &amp; Memoria</span>
       <div class="flow-title">4. Risoluzione e Memoria</div>
       <div class="flow-desc">Spegnimento della risposta infiammatoria tramite apoptosi dei cloni effettori (contrazione) e differenziamento delle cellule di memoria.</div>
     </div>
