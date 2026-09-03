@@ -176,13 +176,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
  ========================================================== */
 .cyber-table-container, .cyber-table-container *,.cyber-flowchart, .cyber-flowchart *{ box-sizing: border-box}
 /* --- TABELLE DIAGNOSTICHE --- */
-.cyber-table-container{ 
-  width: 100%; 
-  max-width: 100%; 
-  overflow-x: auto; 
-  margin: 18px auto 24px auto; 
-  border-radius: 8px; 
-  -webkit-overflow-scrolling: touch; 
+.cyber-table-container{width:100%;max-width:100%;overflow-x:auto;margin:18px auto 24px auto;border-radius:8px;-webkit-overflow-scrolling:touch; 
 /* Maschera di dissolvenza a destra testo nitido al 100% fino al 93% della larghezza */
   -webkit-mask-image: linear-gradient(to right, #000 93%, transparent 100%);
   mask-image: linear-gradient(to right, #000 93%, transparent 100%);
