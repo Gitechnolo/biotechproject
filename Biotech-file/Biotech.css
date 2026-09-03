@@ -243,13 +243,15 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 .btn-filter { white-space: nowrap; background: rgba(15, 23, 42, 0.8); color: #cbd5e1; border: 1px solid rgba(0, 230, 118, 0.25); font-size: 0.76rem; padding: 5px 12px; height: 30px; border-radius: 4px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; outline: none; display: inline-flex; align-items: center; justify-content: center; }
 .btn-filter:hover { background: rgba(0, 230, 118, 0.12); color: #00e676; border-color: rgba(0, 230, 118, 0.6); box-shadow: 0 0 8px rgba(0, 230, 118, 0.2); }
 .btn-filter.active { background: rgba(0, 230, 118, 0.25); color: #00e676; border-color: #00e676; font-weight: 700; box-shadow: 0 0 10px rgba(0, 230, 118, 0.35); }
-/* --- Research Insight & Badge --- */
+/* --- Research Insight & Inteactive Badge --- */
 .research-insight-box { background: rgba(10, 16, 26, 0.75); border: 1px solid rgba(0, 230, 118, 0.35); border-left: 4px solid #00e676; border-radius: 8px; padding: 16px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 230, 118, 0.1); margin-bottom: 20px; }
 .research-insight-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 0.95rem; letter-spacing: 0.5px; }
 .research-insight-box p:last-child { margin-bottom: 0; }
 .insight-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 230, 118, 0.2); padding-bottom: 8px; min-height: 36px; }
-.badge-interactive { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; background: rgba(0, 230, 118, 0.15); color: #00e676; border: 1px solid rgba(0, 230, 118, 0.4); animation: pulse-glow 2.5s infinite alternate; text-decoration: none; }
-@keyframes pulse-glow { 0% { box-shadow: 0 0 4px rgba(0, 230, 118, 0.2); } 100% { box-shadow: 0 0 12px rgba(0, 230, 118, 0.6); } }
+.badge-interactive{font-size:.68rem;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;background:rgba(0,230,118,.15);color:#00e676;border:1px solid rgba(0,230,118,.4);animation:pulse-glow 2.5s infinite alternate;text-decoration:none}
+/* Feedback di interazione universale (Desktop Hover + Mobile Touch/Focus) */
+.badge-interactive:hover,.badge-interactive:focus-visible{background:rgba(0,230,118,.3);border-color:#00e676;color:#ffffff;box-shadow:0 0 10px rgba(0,230,118,.4);outline:none;}
+@keyframes pulse-glow{0%{box-shadow:0 0 4px rgba(0,230,118,.2)}100%{box-shadow:0 0 12px rgba(0,230,118,.6)}}
 /* --- Input & Select Bibliografia --- */
 .biblio-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; width: 100%; min-height: 40px; margin-bottom: 15px; }
 .cyber-input, .cyber-select { height: 38px; background: rgba(10, 16, 26, 0.85); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 6px; padding: 8px 12px; font-size: 0.82rem; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
