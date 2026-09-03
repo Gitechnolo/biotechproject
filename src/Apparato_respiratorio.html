@@ -935,57 +935,75 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
 <!-- ==========================================
   SEZIONE: Riferimenti Scientifici e Bibliografia Clinico-Molecolare (bibliografia_letteratura_scientifica)
-  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, linee guida cliniche e review traslazionali utilizzate per la redazione del documento. Include DOI per accesso diretto.
+  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, linee guida cliniche e review traslazionali utilizzate per la redazione del documento.
   ========================================== -->
 <section id="bibliografia" class="text-block mb-25" data-lang-key="bibliografia_letteratura_scientifica">
-  <div class="flow-card intrinsic mb-25">
+  <div class="flow-card intrinsic mb-15">
     <span class="flow-tag tag-intrinsic">Letteratura Scientifica &amp; DOI</span>
     <h3 id="titolo-bibliografia" class="flow-title text-neon">
       Riferimenti Scientifici e Bibliografia Clinico-Molecolare
     </h3>
     <p class="flow-desc">
-      Fonti primarie peer-reviewed, linee guida cliniche e review traslazionali utilizzate per la redazione del documento.
+      Fonti primarie peer-reviewed, landmark papers e linee guida cliniche a supporto dei contenuti traslazionali della pagina.
     </p>
   </div>
 
+  <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
+  <div class="biblio-filter-bar mb-15">
+    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
+    <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
+      <option value="all">Tutti gli argomenti</option>
+      <option value="microbiota">Microbiota &amp; Asse Polmone-Cervello</option>
+      <option value="ards">ARDS &amp; Emogasanalisi (EGA)</option>
+      <option value="fisiologia">Fisiologia &amp; Surfattante</option>
+      <option value="fibrosi">Stress ER &amp; Fibrosi</option>
+      <option value="databases">Open Knowledge &amp; Contributi</option>
+    </select>
+  </div>
+
   <div class="cyber-table-container mb-15">
-    <table class="cyber-table">
+    <table class="cyber-table" id="biblio-table">
       <thead>
         <tr>
           <th style="width: 5%;">#</th>
           <th style="width: 25%;">Autori &amp; Anno</th>
           <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI</th>
+          <th style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <!-- 1. Dickson et al. (Microbiota Polmonare) -->
+        <tr data-topic="microbiota">
           <td><span class="flow-tag tag-common">1</span></td>
           <td><strong>Dickson, R. P., et al.</strong><br><small class="slate">(2016)</small></td>
           <td>
             <div class="flow-title f-85">The microbiome and the respiratory tract</div>
-            <div class="flow-desc f-78">Annu Rev Physiol / Nature Medicine</div>
+            <div class="flow-desc f-78">Annual Review of Physiology, 78, 481–501</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1146/annurev-physiol-021115-105238" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
-              10.1146/annurev-physiol-021115-105238
+            <a href="https://doi.org/10.1146/annurev-physiol-021115-105238" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1146/annurev...
             </a>
           </td>
         </tr>
-        <tr>
+
+        <!-- 2. Budden et al. (Asse Gut-Lung) -->
+        <tr data-topic="microbiota">
           <td><span class="flow-tag tag-common">2</span></td>
           <td><strong>Budden, K. F., et al.</strong><br><small class="slate">(2017)</small></td>
           <td>
-            <div class="flow-title f-85">Emerging pathogenic links between microbiota and the gut-lung axis</div>
-            <div class="flow-desc f-78">Nature Microbiology, 2(6), 17041</div>
+            <div class="flow-title f-85">Emerging pathogenic links between microbiota and the gut–lung axis</div>
+            <div class="flow-desc f-78">Nature Reviews Microbiology, 15(1), 55–63</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nmicrobiol.2017.41" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
-              10.1038/nmicrobiol.2017.41
+            <a href="https://doi.org/10.1038/nrmicro.2016.142" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1038/nrmicro...
             </a>
           </td>
         </tr>
-        <tr>
+
+        <!-- 3. ARDS Task Force (Definizione di Berlino) -->
+        <tr data-topic="ards">
           <td><span class="flow-tag tag-common">3</span></td>
           <td><strong>ARDS Task Force</strong><br><small class="slate">(2012)</small></td>
           <td>
@@ -993,26 +1011,75 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">JAMA, 307(23), 2526–2533</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1001/jama.2012.5669" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
-              10.1001/jama.2012.5669
+            <a href="https://doi.org/10.1001/jama.2012.5669" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1001/jama...
             </a>
           </td>
         </tr>
-        <tr>
+
+        <!-- 4. Guyenet et al. (Chemocettori & Controllo Respiratorio Brainstem) -->
+        <tr data-topic="fisiologia">
           <td><span class="flow-tag tag-common">4</span></td>
+          <td><strong>Guyenet, P. G., et al.</strong><br><small class="slate">(2010)</small></td>
+          <td>
+            <div class="flow-title f-85">Central respiratory chemoreception</div>
+            <div class="flow-desc f-78">Journal of Comparative Neurology, 518(19), 3883–3906</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1002/cne.22435" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1002/cne.22435
+            </a>
+          </td>
+        </tr>
+
+        <!-- 5. Goerke (Surfattante Polmonare) -->
+        <tr data-topic="fisiologia">
+          <td><span class="flow-tag tag-common">5</span></td>
+          <td><strong>Goerke, J.</strong><br><small class="slate">(1998)</small></td>
+          <td>
+            <div class="flow-title f-85">Pulmonary surfactant: surface properties and physiological functions</div>
+            <div class="flow-desc f-78">Biochimica et Biophysica Acta (BBA), 1408(2-3), 79–89</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1016/S0925-4439(98)00060-X" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1016/S0925...
+            </a>
+          </td>
+        </tr>
+
+        <!-- 6. Korfei et al. (Stress RE & Fibrosi) -->
+        <tr data-topic="fibrosi">
+          <td><span class="flow-tag tag-common">6</span></td>
           <td><strong>Korfei, M., et al.</strong><br><small class="slate">(2008)</small></td>
           <td>
             <div class="flow-title f-85">Epithelial endoplasmic reticulum stress and apoptosis in lung fibrosis</div>
             <div class="flow-desc f-78">Am J Respir Crit Care Med, 178(8), 838–846</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1164/rccm.200802-313OC" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
-              10.1164/rccm.200802-313OC
+            <a href="https://doi.org/10.1164/rccm.200802-313OC" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.1164/rccm...
             </a>
           </td>
         </tr>
-        <tr>
-          <td><span class="flow-tag tag-common">5</span></td>
+
+        <!-- 7. Davis et al. (Linee Guida Emogasanalisi EGA) -->
+        <tr data-topic="ards">
+          <td><span class="flow-tag tag-common">7</span></td>
+          <td><strong>Davis, M. D., et al.</strong><br><small class="slate">(2013)</small></td>
+          <td>
+            <div class="flow-title f-85">AARC clinical practice guideline: blood gas analysis and hemoximetry: 2013</div>
+            <div class="flow-desc f-78">Respiratory Care, 58(10), 1694–1703</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.4187/respcare.02786" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+              10.4187/respcare...
+            </a>
+          </td>
+        </tr>
+
+        <!-- 8. Wikipedia / Open Knowledge -->
+        <tr data-topic="databases">
+          <td><span class="flow-tag tag-common">8</span></td>
           <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
           <td>
             <div class="flow-title f-85">Iniziativa Open Knowledge &amp; Divulgazione Scientifica</div>
@@ -1047,5 +1114,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script>
+<!-- Script Gestione Filtro Bibliografia Specialistica -->
+<script>(function(){ 'use strict'; function filterBiblio(){ const searchInput=document.getElementById('biblio-search'); const topicFilter=document.getElementById('biblio-topic-filter'); const tableRows=document.querySelectorAll('#biblio-table tbody tr'); if (!tableRows.length) return; const query=searchInput ? searchInput.value.toLowerCase().trim() : ''; const selectedTopic=topicFilter ? topicFilter.value : 'all'; requestAnimationFrame(function(){ tableRows.forEach(function(row){ const text=row.textContent.toLowerCase(); const topic=row.getAttribute('data-topic'); const matchesSearch=query==='' || text.includes(query); const matchesTopic=selectedTopic==='all' || topic===selectedTopic; if (matchesSearch && matchesTopic){ row.style.removeProperty('display');} else{ row.style.setProperty('display', 'none', 'important');}});});} document.addEventListener('input', function(e){ if (e.target && e.target.id==='biblio-search') filterBiblio();}); document.addEventListener('change', function(e){ if (e.target && e.target.id==='biblio-topic-filter') filterBiblio();})})();</script>
 </body>
   </html>
