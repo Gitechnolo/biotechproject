@@ -106,7 +106,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   SEZIONE: Apparato Respiratorio e Fasi della Respirazione - (respirazione_intro)
   DESCRIZIONE: Introduzione multilivello all'apparato respiratorio con Executive Summary, sequenza fisiologica, approfondimento molecolare ed esame di frontiera.
   ========================================== -->
-<section class="mb-7" data-lang-key="respirazione_intro" aria-labelledby="titolo-apparato-respiratorio">        
+<section class="mb-25" data-lang-key="respirazione_intro" aria-labelledby="titolo-apparato-respiratorio">        
   <h1 id="titolo-apparato-respiratorio" class="sansation-bold">APPARATO RESPIRATORIO</h1>
   
   <!-- Sottotitolo -->
@@ -123,7 +123,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="text mb-15">
     La respirazione, intesa nella sua globale accezione fisiologica, non si riduce al solo atto di inspirare ed espirare, ma costituisce un sistema integrato di trasporto di massa, scambi gassosi e risposte metaboliche. Il processo si articola in una serie di <span class="biotechbold">fasi sequenziali indissolubili</span>:
   </p>
-  
+
   <!-- Lista Processi Sequenziali -->
   <ol class="list mb-25">
     <li><span class="biotechbold">Convezione aerea:</span> flusso di massa dell'aria attraverso la zona di conduzione fino agli <span class="yellowtext">alveoli polmonari</span>.</li>
@@ -143,7 +143,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="flow-desc">Transito dell'aria nelle vie aeree superiori/inferiori e raggiungimento dello spazio alveolare.</div>
     </div>
     
-    <div class="flow-arrow-down" aria-hidden="true">↓</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
     
     <div class="flow-branches">
       <div class="flow-card intrinsic">
@@ -158,7 +158,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       </div>
     </div>
     
-    <div class="flow-arrow-down" aria-hidden="true">↓</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
     
     <div class="flow-card extrinsic">
       <span class="flow-tag tag-extrinsic">Fase 4: Respirazione Cellulare</span>
@@ -166,7 +166,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="flow-desc">Consumo di O<sub>2</sub> per fosforilazione ossidativa e generazione di CO<sub>2</sub> di scarto.</div>
     </div>
     
-    <div class="flow-arrow-down" aria-hidden="true">↓</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
 
     <div class="flow-card lysis">
       <span class="flow-tag tag-lysis">Fase 5: Eliminazione CO<sub>2</sub></span>
@@ -177,13 +177,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <hr class="line">
 
-  <!-- Livello Avanzato: Box Approfondimento Scientifico (Autofagia e Stress ER) -->
+  <!-- Livello Avanzato: Tabella Approfondimento Scientifico (Autofagia e Stress ER) -->
   <h3 id="approfondimento-autofagia" class="biotechbold mb-15">Approfondimento Scientifico: Autofagia e Stress del Reticolo Endoplasmatico</h3>
   <p class="text mb-15">
     Al di là del classico modello di scambio gassoso, le cellule del parenchima polmonare (in particolare gli pneumociti) sono costantemente esposte a stress ambientali molecolari, tra cui particolato atmosferico, ossidanti e tossine da fumo. Per preservare l'integrità della barriera emato-gassosa, la cellula attiva complessi meccanismi di sorveglianza e "pulizia" interna.
   </p>
 
-  <div class="cyber-table-container" role="region" aria-labelledby="approfondimento-autofagia" tabindex="0">
+  <div class="cyber-table-container mb-25" role="region" aria-labelledby="approfondimento-autofagia" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
@@ -194,17 +194,41 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       </thead>
       <tbody>
         <tr>
-          <td><span class="biotechbold">Autofagia Cellulare</span></td>
+          <td>
+            <div class="flex-between">
+              <span class="biotechbold">Autofagia Cellulare</span>
+              <a href="https://doi.org/10.1186/1465-9921-13-19" target="_blank" rel="noopener" class="badge-interactive">
+                REF #7 DOI
+                <span class="sr-only">(apre lo studio di Mizumura et al. sull'autofagia polmonare in una nuova scheda)</span>
+              </a>
+            </div>
+          </td>
           <td>Sistema di riciclaggio e pulizia interna delle tossine e dei detriti cellulari accumulati.</td>
           <td>Riconoscimento di organelli danneggiati tramite complessi ATG/LC3; una sua clearance alterata accumula ROS e stimola la senescenza cellulare nei bronchioli.</td>
         </tr>
         <tr>
-          <td><span class="biotechbold">Stress del Reticolo (ER)</span></td>
+          <td>
+            <div class="flex-between">
+              <span class="biotechbold">Stress del Reticolo (ER)</span>
+              <a href="https://doi.org/10.1016/S0925-4439(98)00060-X" target="_blank" rel="noopener" class="badge-interactive">
+                REF #5 DOI
+                <span class="sr-only">(apre lo studio di Ryter et al. sullo stress del reticolo endoplasmatico in una nuova scheda)</span>
+              </a>
+            </div>
+          </td>
           <td>Risposta d'allarme quando la cellula produce troppe proteine difettose o modificate dall'inquinamento.</td>
           <td>Attivazione dell'<span class="yellowtext">UPR (Unfolded Protein Response)</span> mediata dai sensori PERK, IRE1α e ATF6 per bloccare la traduzione e ripristinare il folding con chaperonine (BiP/GRP78).</td>
         </tr>
         <tr>
-          <td><span class="biotechbold">Implicazione Patologica</span></td>
+          <td>
+            <div class="flex-between">
+              <span class="biotechbold">Implicazione Patologica</span>
+              <a href="https://doi.org/10.1164/rccm.200802-313OC" target="_blank" rel="noopener" class="badge-interactive">
+                REF #6 DOI
+                <span class="sr-only">(apre lo studio di Korfei et al. sulla fibrosi polmonare in una nuova scheda)</span>
+              </a>
+            </div>
+          </td>
           <td>Inceppamento del sistema di pulizia, con accumulo di "spazzatura" e danno permanente ai tessuti.</td>
           <td>Se lo stress da UPR persiste, si innescano la transizione epitelio-mesenchimale (EMT) e l'apoptosi via CHOP, motori primari nella patogenesi della <span class="greentext">Fibrosi Polmonare Idiopatica (IPF)</span>.</td>
         </tr>
@@ -214,20 +238,40 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <hr class="line">
 
-  <!-- Asse Polmone-Cervello e Neuro-Infiammazione -->
-  <h3 class="biotechbold mb-15">Frontiere della Ricerca: L'Asse Polmone-Cervello e Neuro-Infiammazione</h3>
-  <p class="text mb-15">
-    Recenti evidenze di neuro-immunologia dimostrano che il polmone non è un organo isolato, ma comunica costantemente con il sistema nervoso centrale attraverso l'<strong>Asse Polmone-Cervello</strong>. Citochine infiammatorie prodotte nel parenchima respiratorio in risposta a infezioni o allergeni possono attraversare la barriera emato-encefalica o stimolare afferenze vagali dirette, scatenando risposte neuro-infiammatorie nel tronco encefalico e nel sistema limbico.
-  </p>
-  <p class="text mb-15">
-    Questa diafonia bidirezionale spiega perché patologie croniche come la BPCO o l'asma siano frequentemente associate a disturbi d'ansia, depressione e percezione esacerbata della dispnea. Allo stesso modo, segnali di stress neurogeno centrali modulano la reattività della muscolatura liscia bronchiale e la degranulazione mastocitaria polmonare, aprendo la strada a nuovi target terapeutici neuro-immuni.
-  </p>
-
-  <!-- Nuove Frontiere: Microbiota e Meccanotrasduzione -->
-  <div>
-    <h4 class="biotechbold mb-10"><span class="yellowtext">Paradigmi Emergenti:</span> Microbiota Polmonare e Meccanotrasduzione</h4>
+  <!-- Asse Polmone-Cervello e Neuro-Infiammazione in Research Insight Box -->
+  <div class="research-insight-box mb-20">
+    <div class="insight-header">
+      <h4 class="biotechbold">RESEARCH INSIGHT | L'Asse Polmone-Cervello e Neuro-Infiammazione</h4>
+      <a href="https://doi.org/10.1186/s12974-026-03807-1" target="_blank" rel="noopener" class="badge-interactive">
+        REF #4 DOI
+        <span class="sr-only">(apre lo studio di Villalba et al. sul crosstalk polmone-cervello in una nuova scheda)</span>
+      </a>
+    </div>
     <p class="text mb-10">
-      <strong>L'Ecosistema Commensale Polmonare:</strong> Superato il vecchio dogma del polmone sterile, la metagenomica moderna dimostra l'esistenza di un <em>microbiota polmonare dinamico</em>. Analogo all'asse intestinale, l'equilibrio delle comunità microbiche residenti previene la disbiosi, modulando il pattern immunitario (LPS, acidi grassi a catena corta) nell'asma, nella BPCO e persino la risposta del paziente all'immunoterapia oncologica (anti-PD-1/PD-L1).
+      Recenti evidenze di neuro-immunologia dimostrano che il polmone non è un organo isolato, ma comunica costantemente con il sistema nervoso centrale attraverso l'<strong>Asse Polmone-Cervello</strong>. Citochine infiammatorie prodotte nel parenchima respiratorio in risposta a infezioni o allergeni possono attraversare la barriera emato-encefalica o stimolare afferenze vagali dirette, scatenando risposte neuro-infiammatorie nel tronco encefalico e nel sistema limbico.
+    </p>
+    <p class="text">
+      Questa diafonia bidirezionale spiega perché patologie croniche come la BPCO o l'asma siano frequentemente associate a disturbi d'ansia, depressione e percezione esacerbata della dispnea. Allo stesso modo, segnali di stress neurogeno centrali modulano la reattività della muscolatura liscia bronchiale e la degranulazione mastocitaria polmonare, aprendo la strada a nuovi target terapeutici neuro-immuni.
+    </p>
+  </div>
+
+  <!-- Nuove Frontiere: Microbiota Polmonare e Meccanotrasduzione in Research Insight Box -->
+  <div class="research-insight-box mb-15">
+    <div class="insight-header">
+      <h4 class="biotechbold"><span class="yellowtext">PARADIGMI EMERGENTI |</span> Microbiota Polmonare e Meccanotrasduzione</h4>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <a href="https://doi.org/10.1126/science.aan4236" target="_blank" rel="noopener" class="badge-interactive">
+          REF #1 DOI
+          <span class="sr-only">(apre lo studio di Gopalakrishnan et al. sull'interazione tra microbiota e immunoterapia in una nuova scheda)</span>
+        </a>
+        <a href="https://doi.org/10.3389/fphys.2026.1885524" target="_blank" rel="noopener" class="badge-interactive">
+          REF #2 DOI
+          <span class="sr-only">(apre lo studio di Tao et al. su PIEZO1 e VILI in una nuova scheda)</span>
+        </a>
+      </div>
+    </div>
+    <p class="text mb-10">
+      <strong>L'Ecosistema Commensale Polmonare:</strong> Superato il vecchio dogma del polmone sterile, la metagenomica moderna dimostra l'esistenza di un <em>microbiota dinamico</em>. L'equilibrio delle comunità microbiche residenti previene la disbiosi, modulando il pattern immunitario (LPS, acidi grassi a catena corta) nell'asma, nella BPCO e dettando persino l'efficacia della risposta clinica all'immunoterapia oncologica mediante inibitori dei checkpoint immunitari (anti-PD-1/PD-L1).
     </p>
     <p class="text">
       <strong>Biosensori Meccanici e Signal Transduction:</strong> La respirazione integra segnali chimici e biofisici. Attraverso la <em>meccanotrasduzione</em>, i canali ionici meccanosensibili (es. PIEZO1) e il citoscheletro degli pneumociti convertono lo stress da stiramento in segnali molecolari di riparazione. Tuttavia, un'eccessiva sollecitazione meccanica (es. durante la ventilazione forzata) innesca la risposta pro-infiammatoria da barotrauma/volutrauma (VILI - <em>Ventilator-Induced Lung Injury</em>), rendendo fondamentale la ventilazione protettiva e l'impiego della PEEP.
