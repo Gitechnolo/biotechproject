@@ -1304,7 +1304,7 @@ textarea:focus,
     .keyboard-toggle-btn {
         display: none !important;
     }
-    /* CORREZIONE CRITICA: Sposta lo Skip Link in alto (12px) quando il pulsante (48px) è nascosto */
+    /* CORREZIONE CRITICA: Sposta lo Skip Link in alto (12px) quando il pulsante (48px) è nascosto. */
     .skip-link:focus {
         top: 12px !important; 
     }
