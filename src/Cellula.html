@@ -1197,9 +1197,9 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 
 <!-- ==========================================
   SEZIONE: Riferimenti Scientifici e Bibliografia Cellulare (cellula_bibliografia_letteratura_scientifica)
-  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e review traslazionali per la pagina Cellula. Include DOI e portali ufficiali.
+  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e review traslazionali per la pagina Cellula. Include DOI e portali ufficiali, con accessibilità WCAG 2.2 AAA e supporto ARIA Live.
   ========================================== -->
-<section id="bibliografia" class="text-block mb-25" data-lang-key="cellula_bibliografia_letteratura_scientifica">
+<section id="bibliografia" class="text-block mb-25" aria-labelledby="titolo-bibliografia" data-lang-key="cellula_bibliografia_letteratura_scientifica">
   <div class="flow-card intrinsic mb-15">
     <span class="flow-tag tag-intrinsic">Letteratura Scientifica &amp; DOI</span>
     <h3 id="titolo-bibliografia" class="flow-title text-neon">
@@ -1210,9 +1210,12 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     </p>
   </div>
 
-  <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
-  <div class="biblio-filter-bar mb-15">
-    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
+  <!-- Barra di Ricerca e Selezione Argomento Dinamica con Label Accessibili -->
+  <div class="biblio-filter-bar mb-15" role="search" aria-labelledby="titolo-bibliografia">
+    <label for="biblio-search" class="sr-only">Cerca nella bibliografia per autore, titolo o DOI</label>
+    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca autore, titolo o DOI nella bibliografia">
+
+    <label for="biblio-topic-filter" class="sr-only">Filtra riferimenti per argomento</label>
     <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
       <option value="all">Tutti gli argomenti</option>
       <option value="membrane">Membrane e Struttura</option>
@@ -1222,14 +1225,17 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
     </select>
   </div>
 
+  <!-- Regione Live ARIA per gli annunci vocali agli Screen Reader (aggiornata dallo Script) -->
+  <div id="biblio-aria-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <div class="cyber-table-container mb-15">
-    <table class="cyber-table" id="biblio-table">
+    <table class="cyber-table" id="biblio-table" aria-labelledby="titolo-bibliografia">
       <thead>
         <tr>
-          <th style="width: 5%;">#</th>
-          <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI / Link</th>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 25%;">Autori &amp; Anno</th>
+          <th scope="col" style="width: 45%;">Titolo &amp; Rivista</th>
+          <th scope="col" style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
@@ -1241,7 +1247,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Science, 175(4023), 720–731</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1126/science.175.4023.720" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1126/science.175.4023.720" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1126/science.175.4023.720 (apre in una nuova scheda)">
               10.1126/science.175.4023.720
             </a>
           </td>
@@ -1254,7 +1260,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Trends in Biochemical Sciences, 37(11), 509–517</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/j.tibs.2012.08.004" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/j.tibs.2012.08.004" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/j.tibs.2012.08.004 (apre in una nuova scheda)">
               10.1016/j.tibs.2012.08.004
             </a>
           </td>
@@ -1267,7 +1273,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Cell, 168(6), 1001–1016</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/j.cell.2017.02.008" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/j.cell.2017.02.008" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/j.cell.2017.02.008 (apre in una nuova scheda)">
               10.1016/j.cell.2017.02.008
             </a>
           </td>
@@ -1280,7 +1286,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Nature, 485(7398), 376–380</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nature11082" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nature11082" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nature11082 (apre in una nuova scheda)">
               10.1038/nature11082
             </a>
           </td>
@@ -1293,7 +1299,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Genes &amp; Development, 32(1), 89–100</div>
           </td>
           <td>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/29358327/" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/29358327/" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="PubMed PMID 29358327 (apre in una nuova scheda)">
               PMID: 29358327
             </a>
           </td>
@@ -1306,7 +1312,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Biochemistry, 54(37), 5694–5704</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1021/acs.biochem.5b00712" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1021/acs.biochem.5b00712" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1021/acs.biochem.5b00712 (apre in una nuova scheda)">
               10.1021/acs.biochem.5b00712
             </a>
           </td>
@@ -1319,7 +1325,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Nature, 461(7267), 1071–1078</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nature08984" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nature08984" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nature08984 (apre in una nuova scheda)">
               10.1038/nature08984
             </a>
           </td>
@@ -1332,7 +1338,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Nature Medicine, 19(10), 1252–1263</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nm.3361" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nm.3361" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nm.3361 (apre in una nuova scheda)">
               10.1038/nm.3361
             </a>
           </td>
@@ -1345,7 +1351,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Human Tissue Gene Expression Atlas</div>
           </td>
           <td>
-            <a href="https://www.gtexportal.org/" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://www.gtexportal.org/" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="Portale GTEx gtexportal.org (apre in una nuova scheda)">
               gtexportal.org
             </a>
           </td>
@@ -1358,7 +1364,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Svenska Stiftelsen för Strategisk Forskning</div>
           </td>
           <td>
-            <a href="https://www.proteinatlas.org/" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://www.proteinatlas.org/" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="Portale Human Protein Atlas proteinatlas.org (apre in una nuova scheda)">
               proteinatlas.org
             </a>
           </td>
@@ -1371,7 +1377,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
             <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
           </td>
           <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis" aria-label="Profilo contributi Wikipedia wiki/Gitechnolo (apre in una nuova scheda)">
               wiki/Gitechnolo
             </a>
           </td>
@@ -1400,6 +1406,7 @@ DESCRIZIONE: Definizione di gene e proteina, dogma centrale (DNA->RNA->Proteina)
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
-<script>(()=>{document.addEventListener("click",(t=>{const e=t.target.closest(".btn-filter");if(!e)return;const n=e.closest("section, .flow-card")||document,o=n.querySelectorAll(".btn-filter"),c=n.querySelectorAll("[data-filter-item]");o.forEach((t=>t.classList.remove("active"))),e.classList.add("active");const r=e.getAttribute("data-filter");c.forEach((t=>{const e=t.getAttribute("data-filter-item");"all"===r?t.classList.remove("highlighted"):e===r?t.classList.add("highlighted"):t.classList.remove("highlighted")}))}));function t(){const t=document.getElementById("biblio-search"),e=document.getElementById("biblio-topic-filter"),n=document.querySelectorAll("#biblio-table tbody tr");if(!n.length)return;const o=t?t.value.toLowerCase().trim():"",c=e?e.value:"all";n.forEach((t=>{const e=t.textContent.toLowerCase(),n=t.getAttribute("data-topic"),r=""===o||e.includes(o),i="all"===c||n===c;t.style.display=r&&i?"":"none"}))}document.addEventListener("input",(e=>{e.target&&"biblio-search"===e.target.id&&t()})),document.addEventListener("change",(e=>{e.target&&"biblio-topic-filter"===e.target.id&&t()}))})();</script>
+<!-- Script Gestione Filtro Fisiologia + Bibliografia (Accessibile WCAG AAA) -->
+<script>(function(){'use strict';document.addEventListener('click',function(e){var t=e.target.closest('.btn-filter');if(!t)return;var n=t.closest('section, .flow-card')||document,r=n.querySelectorAll('.btn-filter'),i=n.querySelectorAll('[data-filter-item]'),o=t.getAttribute('data-filter');r.forEach(function(e){e.classList.remove('active');e.setAttribute('aria-pressed','false')});t.classList.add('active');t.setAttribute('aria-pressed','true');i.forEach(function(e){var t=e.getAttribute('data-filter-item');'all'===o?e.classList.remove('highlighted'):t===o?e.classList.add('highlighted'):e.classList.remove('highlighted')})});var e=null;function t(){var t=document.getElementById('biblio-search'),n=document.getElementById('biblio-topic-filter'),r=document.querySelectorAll('#biblio-table tbody tr'),i=document.getElementById('biblio-aria-status');if(!r.length)return;var o=t?t.value.toLowerCase().trim():'',a=n?n.value:'all';requestAnimationFrame(function(){var e=0,t=r.length;r.forEach(function(t){var n=t.textContent.toLowerCase(),r=t.getAttribute('data-topic'),i=''===o||n.includes(o),s='all'===a||r===a;i&&s?(t.style.removeProperty('display'),e++):t.style.setProperty('display','none','important')});i&&(e===t?i.textContent='Visualizzati tutti gli '+t+' elementi della bibliografia.':0===e?i.textContent='Nessun risultato trovato per i filtri selezionati.':i.textContent='Trovati '+e+' elementi su '+t+'.')})}function n(){e&&clearTimeout(e);e=setTimeout(t,200)}document.addEventListener('input',function(e){e.target&&'biblio-search'===e.target.id&&n()});document.addEventListener('change',function(e){e.target&&'biblio-topic-filter'===e.target.id&&t()})})();</script>
 </body>
 </html>
