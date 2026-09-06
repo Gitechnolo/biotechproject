@@ -1020,7 +1020,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
 <!-- ==========================================
   SEZIONE: Riferimenti Scientifici e Bibliografia Clinico-Molecolare (bibliografia_letteratura_scientifica)
-  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, linee guida cliniche e review traslazionali utilizzate per la redazione del documento.
+  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, linee guida cliniche e review traslazionali con filtro dinamico ed elevata accessibilità (WCAG 2.2 AAA).
   ========================================== -->
 <section id="bibliografia" class="text-block mb-25" data-lang-key="bibliografia_letteratura_scientifica">
   <div class="flow-card intrinsic mb-15">
@@ -1035,8 +1035,18 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
   <div class="biblio-filter-bar mb-15">
-    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
-    <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
+    <input 
+      type="search" 
+      id="biblio-search" 
+      class="cyber-input" 
+      placeholder="Cerca autore, titolo o DOI..." 
+      aria-label="Cerca nella bibliografia"
+    >
+    <select 
+      id="biblio-topic-filter" 
+      class="cyber-select" 
+      aria-label="Filtra per argomento"
+    >
       <option value="all">Tutti gli argomenti</option>
       <option value="microbiota">Microbiota &amp; Asse Polmone-Cervello</option>
       <option value="fisiologia">Fisiologia &amp; Meccanotrasduzione</option>
@@ -1046,18 +1056,21 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     </select>
   </div>
 
+  <!-- Regione Live ARIA per notifica dinamica Screen Reader -->
+  <div id="biblio-aria-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <div class="cyber-table-container mb-15">
-    <table class="cyber-table" id="biblio-table">
+    <table id="biblio-table" class="cyber-table" aria-describedby="titolo-bibliografia">
       <thead>
         <tr>
-          <th style="width: 5%;">#</th>
-          <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI / Link</th>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 25%;">Autori &amp; Anno</th>
+          <th scope="col" style="width: 45%;">Titolo &amp; Rivista</th>
+          <th scope="col" style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
-        <!-- REF #1: Gopalakrishnan et al. (Microbiota & Immunoterapia) -->
+        <!-- REF #1 -->
         <tr data-topic="microbiota">
           <td><span class="flow-tag tag-common">1</span></td>
           <td><strong>Gopalakrishnan, V., et al.</strong><br><small class="slate">(2018)</small></td>
@@ -1066,13 +1079,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Science, 359(6371), 97–103</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1126/science.aan4236" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1126/science.aan4236" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1126/science.aan4236 (si apre in una nuova scheda)">
               10.1126/science.aan4236
             </a>
           </td>
         </tr>
 
-        <!-- REF #2: Tao et al. (PIEZO1 & VILI / Meccanotrasduzione) -->
+        <!-- REF #2 -->
         <tr data-topic="fisiologia">
           <td><span class="flow-tag tag-common">2</span></td>
           <td><strong>Tao, L., et al.</strong><br><small class="slate">(2026)</small></td>
@@ -1081,13 +1094,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Frontiers in Physiology, 17, 1885524</div>
           </td>
           <td>
-            <a href="https://doi.org/10.3389/fphys.2026.1885524" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.3389/fphys.2026.1885524" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.3389/fphys.2026.1885524 (si apre in una nuova scheda)">
               10.3389/fphys.2026...
             </a>
           </td>
         </tr>
 
-        <!-- REF #3: ARDS Task Force (Definizione di Berlino) -->
+        <!-- REF #3 -->
         <tr data-topic="ards">
           <td><span class="flow-tag tag-common">3</span></td>
           <td><strong>ARDS Task Force</strong><br><small class="slate">(2012)</small></td>
@@ -1096,13 +1109,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">JAMA, 307(23), 2526–2533</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1001/jama.2012.5669" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1001/jama.2012.5669" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1001/jama.2012.5669 (si apre in una nuova scheda)">
               10.1001/jama.2012...
             </a>
           </td>
         </tr>
 
-        <!-- REF #4: Villalba et al. (Asse Polmone-Cervello) -->
+        <!-- REF #4 -->
         <tr data-topic="microbiota">
           <td><span class="flow-tag tag-common">4</span></td>
           <td><strong>Villalba, N., Beard, R. S., &amp; Yuan, S. Y.</strong><br><small class="slate">(2026)</small></td>
@@ -1111,13 +1124,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Journal of Neuroinflammation, 23(1), 164</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1186/s12974-026-03807-1" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1186/s12974-026-03807-1" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1186/s12974-026-03807-1 (si apre in una nuova scheda)">
               10.1186/s12974-026...
             </a>
           </td>
         </tr>
 
-        <!-- REF #5: Goerke (Fisiologia e Composizione del Surfattante Polmonare) -->
+        <!-- REF #5 -->
         <tr data-topic="fisiologia">
           <td><span class="flow-tag tag-common">5</span></td>
           <td><strong>Goerke, J.</strong><br><small class="slate">(1998)</small></td>
@@ -1126,13 +1139,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Biochimica et Biophysica Acta (BBA) - Molecular Basis of Disease, 1408(2-3), 79–89</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/S0925-4439(98)00060-X" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/S0925-4439(98)00060-X" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/S0925-4439(98)00060-X (si apre in una nuova scheda)">
               10.1016/S0925-4439...
             </a>
           </td>
         </tr>
 
-        <!-- REF #6: Korfei et al. (Stress ER & Fibrosi) -->
+        <!-- REF #6 -->
         <tr data-topic="fibrosi">
           <td><span class="flow-tag tag-common">6</span></td>
           <td><strong>Korfei, M., et al.</strong><br><small class="slate">(2008)</small></td>
@@ -1141,13 +1154,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Am J Respir Crit Care Med, 178(8), 838–846</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1164/rccm.200802-313OC" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1164/rccm.200802-313OC" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1164/rccm.200802-313OC (si apre in una nuova scheda)">
               10.1164/rccm.2008...
             </a>
           </td>
         </tr>
 
-        <!-- REF #7: Kudo et al. (IL-32 & Stress Ossidativo / COPD) - CORRETTO CON L'ABSTRACT REALE -->
+        <!-- REF #7 -->
         <tr data-topic="fibrosi">
           <td><span class="flow-tag tag-common">7</span></td>
           <td><strong>Kudo, M., Ogawa, E., et al.</strong><br><small class="slate">(2012)</small></td>
@@ -1156,13 +1169,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Respiratory Research, 13(1), 19</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1186/1465-9921-13-19" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1186/1465-9921-13-19" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1186/1465-9921-13-19 (si apre in una nuova scheda)">
               10.1186/1465-9921...
             </a>
           </td>
         </tr>
 
-        <!-- REF #8: Mizumura et al. (Mitofagia, Necroptosi e BPCO) -->
+        <!-- REF #8 -->
         <tr data-topic="fibrosi">
           <td><span class="flow-tag tag-common">8</span></td>
           <td><strong>Mizumura, K., et al.</strong><br><small class="slate">(2014)</small></td>
@@ -1171,13 +1184,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">The Journal of Clinical Investigation, 124(9), 3987–4003</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1172/JCI74985" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1172/JCI74985" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1172/JCI74985 (si apre in una nuova scheda)">
               10.1172/JCI74985
             </a>
           </td>
         </tr>
 
-        <!-- REF #9: Davis et al. (Linee Guida Emogasanalisi EGA) -->
+        <!-- REF #9 -->
         <tr data-topic="ards">
           <td><span class="flow-tag tag-common">9</span></td>
           <td><strong>Davis, M. D., et al.</strong><br><small class="slate">(2013)</small></td>
@@ -1186,13 +1199,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Respiratory Care, 58(10), 1694–1703</div>
           </td>
           <td>
-            <a href="https://doi.org/10.4187/respcare.02786" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.4187/respcare.02786" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.4187/respcare.02786 (si apre in una nuova scheda)">
               10.4187/respcare...
             </a>
           </td>
         </tr>
 
-        <!-- REF #10: Wikipedia / Open Knowledge -->
+        <!-- REF #10 -->
         <tr data-topic="databases">
           <td><span class="flow-tag tag-common">10</span></td>
           <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
@@ -1201,7 +1214,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
           </td>
           <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis" aria-label="Wikipedia Contributi Gitechnolo (si apre in una nuova scheda)">
               wiki/Gitechnolo
             </a>
           </td>
@@ -1229,7 +1242,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script>
-<!-- Script Gestione Filtro Bibliografia Specialistica -->
-<script>(function(){ 'use strict'; function filterBiblio(){ const searchInput=document.getElementById('biblio-search'); const topicFilter=document.getElementById('biblio-topic-filter'); const tableRows=document.querySelectorAll('#biblio-table tbody tr'); if (!tableRows.length) return; const query=searchInput ? searchInput.value.toLowerCase().trim() : ''; const selectedTopic=topicFilter ? topicFilter.value : 'all'; requestAnimationFrame(function(){ tableRows.forEach(function(row){ const text=row.textContent.toLowerCase(); const topic=row.getAttribute('data-topic'); const matchesSearch=query==='' || text.includes(query); const matchesTopic=selectedTopic==='all' || topic===selectedTopic; if (matchesSearch && matchesTopic){ row.style.removeProperty('display');} else{ row.style.setProperty('display', 'none', 'important');}});});} document.addEventListener('input', function(e){ if (e.target && e.target.id==='biblio-search') filterBiblio();}); document.addEventListener('change', function(e){ if (e.target && e.target.id==='biblio-topic-filter') filterBiblio();})})();</script>
+<!-- Script Gestione Filtro Bibliografia Specialistica (Accessibile WCAG AAA) -->
+<script>(function(){'use strict';var timer=null;function filterBiblio(){var searchInput=document.getElementById('biblio-search');var topicFilter=document.getElementById('biblio-topic-filter');var tableRows=document.querySelectorAll('#biblio-table tbody tr');var ariaStatus=document.getElementById('biblio-aria-status');if(!tableRows.length)return;var query=searchInput?searchInput.value.toLowerCase().trim():'';var selectedTopic=topicFilter?topicFilter.value:'all';requestAnimationFrame(function(){var visibleCount=0;var totalCount=tableRows.length;tableRows.forEach(function(row){var text=row.textContent.toLowerCase();var topic=row.getAttribute('data-topic');var matchesSearch=query===''||text.includes(query);var matchesTopic=selectedTopic==='all'||topic===selectedTopic;if(matchesSearch&&matchesTopic){row.style.removeProperty('display');visibleCount++;}else{row.style.setProperty('display','none','important');}});if(ariaStatus){if(visibleCount===totalCount){ariaStatus.textContent='Visualizzati tutti gli '+totalCount+' elementi della bibliografia.';}else if(visibleCount===0){ariaStatus.textContent='Nessun risultato trovato per i filtri selezionati.';}else{ariaStatus.textContent='Trovati '+visibleCount+' elementi su '+totalCount+'.';}}});}function debouncedFilter(){if(timer)clearTimeout(timer);timer=setTimeout(filterBiblio,200);}document.addEventListener('input',function(e){if(e.target&&e.target.id==='biblio-search')debouncedFilter();});document.addEventListener('change',function(e){if(e.target&&e.target.id==='biblio-topic-filter')filterBiblio();});})();</script>
 </body>
   </html>
