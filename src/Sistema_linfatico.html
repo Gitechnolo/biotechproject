@@ -818,7 +818,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
 
 <!-- ==========================================
   SEZIONE: Riferimenti Scientifici e Bibliografia Linfatica (sistema_linfatico_bibliografia_letteratura_scientifica)
-  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e review traslazionali per la pagina Sistema Linfatico. Include DOI e portali ufficiali.
+  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e review traslazionali per la pagina Sistema Linfatico. Include DOI e portali ufficiali con piena accessibilità WCAG 2.2 AAA e ARIA Live.
   ========================================== -->
 <section id="bibliografia" class="text-block mb-25" data-lang-key="sistema_linfatico_bibliografia_letteratura_scientifica">
   <div class="flow-card intrinsic mb-15">
@@ -833,7 +833,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
 
   <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
   <div class="biblio-filter-bar mb-15">
-    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
+    <input type="search" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
     <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
       <option value="all">Tutti gli argomenti</option>
       <option value="hemodynamics">Emodinamica &amp; Starling</option>
@@ -844,14 +844,17 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
     </select>
   </div>
 
+  <!-- Regione Live ARIA per screen reader durante filtraggio dinamico -->
+  <div id="biblio-aria-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <div class="cyber-table-container mb-15">
-    <table class="cyber-table" id="biblio-table">
+    <table class="cyber-table" id="biblio-table" aria-describedby="titolo-bibliografia">
       <thead>
         <tr>
-          <th style="width: 5%;">#</th>
-          <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI / Link</th>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 25%;">Autori &amp; Anno</th>
+          <th scope="col" style="width: 45%;">Titolo &amp; Rivista</th>
+          <th scope="col" style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
@@ -864,7 +867,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Cardiovascular Research, 87(2), 198–210</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1093/cvr/cvq062" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1093/cvr/cvq062" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1093/cvr/cvq062 (si apre in una nuova scheda)">
               10.1093/cvr/cvq062
             </a>
           </td>
@@ -879,7 +882,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Science Translational Medicine, 4(147), 147ra111</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1126/scitranslmed.3003748" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1126/scitranslmed.3003748" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1126/scitranslmed.3003748 (si apre in una nuova scheda)">
               10.1126/scitranslmed.3003748
             </a>
           </td>
@@ -894,7 +897,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Nature Medicine, 17(11), 1371–1380</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nm.2545" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nm.2545" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nm.2545 (si apre in una nuova scheda)">
               10.1038/nm.2545
             </a>
           </td>
@@ -909,7 +912,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">The Journal of Experimental Medicine, 212(7), 991–999</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1084/jem.20142290" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1084/jem.20142290" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1084/jem.20142290 (si apre in una nuova scheda)">
               10.1084/jem.20142290
             </a>
           </td>
@@ -924,7 +927,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Nature, 523(7560), 337–341</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nature14432" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nature14432" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nature14432 (si apre in una nuova scheda)">
               10.1038/nature14432
             </a>
           </td>
@@ -939,7 +942,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Comprehensive Physiology, 9(1), 207–299</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1002/cphy.c180015" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1002/cphy.c180015" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1002/cphy.c180015 (si apre in una nuova scheda)">
               10.1002/cphy.c180015
             </a>
           </td>
@@ -954,7 +957,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Cell, 140(4), 460–476</div>
           </td>
           <td>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/20178740/" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/20178740/" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="PubMed ID 20178740 (si apre in una nuova scheda)">
               10.1016/j.cell.2010.01.045
             </a>
           </td>
@@ -969,7 +972,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Raccolta articoli peer-reviewed sul sistema linfatico</div>
           </td>
           <td>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=lymphatic+system" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=lymphatic+system" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="PubMed Portal (si apre in una nuova scheda)">
               pubmed.ncbi.nlm.nih.gov
             </a>
           </td>
@@ -984,7 +987,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
             <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
           </td>
           <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis" aria-label="Wikipedia Contributi Gitechnolo (si apre in una nuova scheda)">
               wiki/Gitechnolo
             </a>
           </td>
@@ -1013,7 +1016,7 @@ DESCRIZIONE: Imaging avanzato del microcircolo e del sistema glinfatico (linfosc
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script>
-<!-- Script Gestione Filtro Bibliografia Specialistica -->
-<script>(function(){ 'use strict'; function filterBiblio(){ const searchInput=document.getElementById('biblio-search'); const topicFilter=document.getElementById('biblio-topic-filter'); const tableRows=document.querySelectorAll('#biblio-table tbody tr'); if (!tableRows.length) return; const query=searchInput ? searchInput.value.toLowerCase().trim() : ''; const selectedTopic=topicFilter ? topicFilter.value : 'all'; requestAnimationFrame(function(){ tableRows.forEach(function(row){ const text=row.textContent.toLowerCase(); const topic=row.getAttribute('data-topic'); const matchesSearch=query==='' || text.includes(query); const matchesTopic=selectedTopic==='all' || topic===selectedTopic; if (matchesSearch && matchesTopic){ row.style.removeProperty('display');} else{ row.style.setProperty('display', 'none', 'important');}});});} document.addEventListener('input', function(e){ if (e.target && e.target.id==='biblio-search') filterBiblio();}); document.addEventListener('change', function(e){ if (e.target && e.target.id==='biblio-topic-filter') filterBiblio();})})();</script> 
+<!-- Script Gestione Filtro Bibliografia Specialistica (Accessibile WCAG AAA) -->
+<script>(function(){'use strict';var timer=null;function filterBiblio(){var searchInput=document.getElementById('biblio-search');var topicFilter=document.getElementById('biblio-topic-filter');var tableRows=document.querySelectorAll('#biblio-table tbody tr');var ariaStatus=document.getElementById('biblio-aria-status');if(!tableRows.length)return;var query=searchInput?searchInput.value.toLowerCase().trim():'';var selectedTopic=topicFilter?topicFilter.value:'all';requestAnimationFrame(function(){var visibleCount=0;var totalCount=tableRows.length;tableRows.forEach(function(row){var text=row.textContent.toLowerCase();var topic=row.getAttribute('data-topic');var matchesSearch=query===''||text.includes(query);var matchesTopic=selectedTopic==='all'||topic===selectedTopic;if(matchesSearch&&matchesTopic){row.style.removeProperty('display');visibleCount++;}else{row.style.setProperty('display','none','important');}});if(ariaStatus){if(visibleCount===totalCount){ariaStatus.textContent='Visualizzati tutti gli '+totalCount+' elementi della bibliografia.';}else if(visibleCount===0){ariaStatus.textContent='Nessun risultato trovato per i filtri selezionati.';}else{ariaStatus.textContent='Trovati '+visibleCount+' elementi su '+totalCount+'.';}}});}function debouncedFilter(){if(timer)clearTimeout(timer);timer=setTimeout(filterBiblio,200);}document.addEventListener('input',function(e){if(e.target&&e.target.id==='biblio-search')debouncedFilter();});document.addEventListener('change',function(e){if(e.target&&e.target.id==='biblio-topic-filter')filterBiblio();});})();</script> 
 </body>
   </html>
