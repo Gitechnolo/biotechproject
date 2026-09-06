@@ -314,7 +314,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
 <!-- ==========================================
   SEZIONE: Riferimenti Scientifici e Bibliografia Specialistica (biorobotica_letteratura_scientifica)
-  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e ricerche traslazionali per la pagina Biorobotica. Include DOI, filtri interattivi e portali ufficiali.
+  DESCRIZIONE: Elenco delle fonti primarie peer-reviewed, landmark papers e ricerche traslazionali con accessibilità WCAG 2.2 AAA e supporto ARIA Live.
   ========================================== -->
 <section id="bibliografia" class="text-block mb-25" data-lang-key="biorobotica_letteratura_scientifica">
   <div class="flow-card intrinsic mb-15">
@@ -329,7 +329,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- Barra di Ricerca e Selezione Argomento Dinamica -->
   <div class="biblio-filter-bar mb-15">
-    <input type="text" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
+    <input type="search" id="biblio-search" class="cyber-input" placeholder="Cerca autore, titolo o DOI..." aria-label="Cerca nella bibliografia">
     <select id="biblio-topic-filter" class="cyber-select" aria-label="Filtra per argomento">
       <option value="all">Tutti gli argomenti</option>
       <option value="stem-cells">Cellule Staminali</option>
@@ -343,14 +343,17 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     </select>
   </div>
 
+  <!-- Regione Live ARIA per feedback vocale dinamico -->
+  <div id="biblio-aria-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <div class="cyber-table-container mb-15">
-    <table class="cyber-table" id="biblio-table">
+    <table class="cyber-table" id="biblio-table" aria-describedby="titolo-bibliografia">
       <thead>
         <tr>
-          <th style="width: 5%;">#</th>
-          <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI / Link</th>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 25%;">Autori &amp; Anno</th>
+          <th scope="col" style="width: 45%;">Titolo &amp; Rivista</th>
+          <th scope="col" style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
@@ -363,13 +366,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Stem Cell Research &amp; Therapy, 10(1), 68</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1186/s13287-019-1165-5" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1186/s13287-019-1165-5" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1186/s13287-019-1165-5 (si apre in una nuova scheda)">
               10.1186/s13287-019-1165-5
             </a>
           </td>
         </tr>
 
-        <!-- 2. Meccanotransduzione (Piezo1/2) - NUOVO -->
+        <!-- 2. Meccanotransduzione (Piezo1/2) -->
         <tr data-topic="mechanotransduction">
           <td><span class="flow-tag tag-common">2</span></td>
           <td><strong>Coste, B., et al.</strong><br><small class="slate">(2010)</small></td>
@@ -378,7 +381,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Science, 330(6000), 55–60</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1126/science.1193270" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1126/science.1193270" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1126/science.1193270 (si apre in una nuova scheda)">
               10.1126/science.1193270
             </a>
           </td>
@@ -393,13 +396,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Science Robotics, 2(12), eaaq0495</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1126/scirobotics.aaq0495" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1126/scirobotics.aaq0495" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1126/scirobotics.aaq0495 (si apre in una nuova scheda)">
               10.1126/scirobotics.aaq0495
             </a>
           </td>
         </tr>
 
-        <!-- 4. Biohybrid Robots / Biosensing - NUOVO -->
+        <!-- 4. Biohybrid Robots / Biosensing -->
         <tr data-topic="biohybrid">
           <td><span class="flow-tag tag-common">4</span></td>
           <td><strong>Raman, R., et al.</strong><br><small class="slate">(2016)</small></td>
@@ -408,7 +411,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Proceedings of the National Academy of Sciences (PNAS), 113(13), 3497–3502</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1073/pnas.1516139113" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1073/pnas.1516139113" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1073/pnas.1516139113 (si apre in una nuova scheda)">
               10.1073/pnas.1516139113
             </a>
           </td>
@@ -423,7 +426,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Bioinspiration &amp; Biomimetics, 17(6), 061001</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1088/1748-3190/ac9c3b" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1088/1748-3190/ac9c3b" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1088/1748-3190/ac9c3b (si apre in una nuova scheda)">
               10.1088/1748-3190/ac9c3b
             </a>
           </td>
@@ -438,7 +441,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Nature, 521(7553), 467–475</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nature14543" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nature14543" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nature14543 (si apre in una nuova scheda)">
               10.1038/nature14543
             </a>
           </td>
@@ -453,13 +456,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Proceedings of the National Academy of Sciences (PNAS), 117(4), 1853–1859</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1073/pnas.1910837117" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1073/pnas.1910837117" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1073/pnas.1910837117 (si apre in una nuova scheda)">
               10.1073/pnas.1910837117
             </a>
           </td>
         </tr>
 
-        <!-- 8. Interfacce Neuro-Elettroniche / DishBrain - NUOVO -->
+        <!-- 8. Interfacce Neuro-Elettroniche / DishBrain -->
         <tr data-topic="neuro-interfaces">
           <td><span class="flow-tag tag-common">8</span></td>
           <td><strong>Kagan, B. J., et al.</strong><br><small class="slate">(2022)</small></td>
@@ -468,13 +471,13 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Neuron, 110(23), 3952–3969</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/j.neuron.2022.09.001" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/j.neuron.2022.09.001" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/j.neuron.2022.09.001 (si apre in una nuova scheda)">
               10.1016/j.neuron.2022.09.001
             </a>
           </td>
         </tr>
 
-        <!-- 9. Bio-Computazione & Etica / Organoid Intelligence - NUOVO -->
+        <!-- 9. Bio-Computazione & Etica / Organoid Intelligence -->
         <tr data-topic="biocomputing-ethics">
           <td><span class="flow-tag tag-common">9</span></td>
           <td><strong>Smirnova, L., et al.</strong><br><small class="slate">(2023)</small></td>
@@ -483,7 +486,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Frontiers in Science, 1, 1017235</div>
           </td>
           <td>
-            <a href="https://doi.org/10.3389/fsci.2023.1017235" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.3389/fsci.2023.1017235" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.3389/fsci.2023.1017235 (si apre in una nuova scheda)">
               10.3389/fsci.2023.1017235
             </a>
           </td>
@@ -498,7 +501,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Raccolta articoli peer-reviewed su biohybrid robotics e bio-actuators</div>
           </td>
           <td>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=biohybrid+robotics" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=biohybrid+robotics" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="PubMed Portal (si apre in una nuova scheda)">
               pubmed.ncbi.nlm.nih.gov
             </a>
           </td>
@@ -513,7 +516,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
           </td>
           <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis" aria-label="Wikipedia Contributi Gitechnolo (si apre in una nuova scheda)">
               wiki/Gitechnolo
             </a>
           </td>
@@ -540,7 +543,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 <div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script><script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
-<!-- Script Gestione Filtro Bibliografia Specialistica -->
-<script>(function(){ 'use strict'; function filterBiblio(){ const searchInput=document.getElementById('biblio-search'); const topicFilter=document.getElementById('biblio-topic-filter'); const tableRows=document.querySelectorAll('#biblio-table tbody tr'); if (!tableRows.length) return; const query=searchInput ? searchInput.value.toLowerCase().trim() : ''; const selectedTopic=topicFilter ? topicFilter.value : 'all'; requestAnimationFrame(function(){ tableRows.forEach(function(row){ const text=row.textContent.toLowerCase(); const topic=row.getAttribute('data-topic'); const matchesSearch=query==='' || text.includes(query); const matchesTopic=selectedTopic==='all' || topic===selectedTopic; if (matchesSearch && matchesTopic){ row.style.removeProperty('display');} else{ row.style.setProperty('display', 'none', 'important');}});});} document.addEventListener('input', function(e){ if (e.target && e.target.id==='biblio-search') filterBiblio();}); document.addEventListener('change', function(e){ if (e.target && e.target.id==='biblio-topic-filter') filterBiblio();})})();</script>
+<!-- Script Gestione Filtro Bibliografia Specialistica (Accessibile WCAG AAA) -->
+<script>(function(){'use strict';var timer=null;function filterBiblio(){var searchInput=document.getElementById('biblio-search');var topicFilter=document.getElementById('biblio-topic-filter');var tableRows=document.querySelectorAll('#biblio-table tbody tr');var ariaStatus=document.getElementById('biblio-aria-status');if(!tableRows.length)return;var query=searchInput?searchInput.value.toLowerCase().trim():'';var selectedTopic=topicFilter?topicFilter.value:'all';requestAnimationFrame(function(){var visibleCount=0;var totalCount=tableRows.length;tableRows.forEach(function(row){var text=row.textContent.toLowerCase();var topic=row.getAttribute('data-topic');var matchesSearch=query===''||text.includes(query);var matchesTopic=selectedTopic==='all'||topic===selectedTopic;if(matchesSearch&&matchesTopic){row.style.removeProperty('display');visibleCount++;}else{row.style.setProperty('display','none','important');}});if(ariaStatus){if(visibleCount===totalCount){ariaStatus.textContent='Visualizzati tutti gli '+totalCount+' elementi della bibliografia.';}else if(visibleCount===0){ariaStatus.textContent='Nessun risultato trovato per i filtri selezionati.';}else{ariaStatus.textContent='Trovati '+visibleCount+' elementi su '+totalCount+'.';}}});}function debouncedFilter(){if(timer)clearTimeout(timer);timer=setTimeout(filterBiblio,200);}document.addEventListener('input',function(e){if(e.target&&e.target.id==='biblio-search')debouncedFilter();});document.addEventListener('change',function(e){if(e.target&&e.target.id==='biblio-topic-filter')filterBiblio();});})();</script>
 </body>
 </html>
