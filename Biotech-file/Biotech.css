@@ -625,7 +625,7 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 }
 
 /* Augurio moderno */
-.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;margin-bottom: -13px; /* Riduce lo spazio sotto 'Buongiorno' */ line-height: 1.9; /* Comprime l'altezza della riga */}
+.greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px; margin-bottom: -3px; /* Distanza tra saluto e augurio */ line-height: 1.1; /* Mantiene compattezza proteggendo le lettere estese (saluto e augurio) */}
 .modern-greeting { position: relative; top: -45px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; margin: 15px auto 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 85%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
 /* Contenitore per orologio, conto alla rovescia e augurio - Per smartphone */
 @media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
