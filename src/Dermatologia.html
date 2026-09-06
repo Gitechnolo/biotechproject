@@ -724,14 +724,17 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
     </select>
   </div>
 
+  <!-- Regione Live ARIA per notifica dinamica Screen Reader -->
+  <div id="biblio-aria-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <div class="cyber-table-container">
-    <table id="biblio-table" class="cyber-table">
+    <table id="biblio-table" class="cyber-table" aria-describedby="titolo-bibliografia">
       <thead>
         <tr>
-          <th style="width: 5%;">#</th>
-          <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI / Link</th>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 25%;">Autori &amp; Anno</th>
+          <th scope="col" style="width: 45%;">Titolo &amp; Rivista</th>
+          <th scope="col" style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
@@ -743,7 +746,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">The Journal of Cell Biology, 17(2), 375–412</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1083/jcb.17.2.375" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1083/jcb.17.2.375" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1083/jcb.17.2.375 (si apre in una nuova scheda)">
               10.1083/jcb.17.2.375
             </a>
           </td>
@@ -756,7 +759,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Nature Reviews Molecular Cell Biology, 2(4), 285–293</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/35067088" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/35067088" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/35067088 (si apre in una nuova scheda)">
               10.1038/35067088
             </a>
           </td>
@@ -769,7 +772,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Journal of Investigative Dermatology, 127(11), 2525–2532</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/sj.jid.5700865" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/sj.jid.5700865" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/sj.jid.5700865 (si apre in una nuova scheda)">
               10.1038/sj.jid.5700865
             </a>
           </td>
@@ -782,7 +785,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Progress in Molecular Biology and Translational Science, 116, 95–120</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/B978-0-12-394311-8.00005-4" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/B978-0-12-394311-8.00005-4" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/B978-0-12-394311-8.00005-4 (si apre in una nuova scheda)">
               10.1016/B978-0-12-394311-8.00005-4
             </a>
           </td>
@@ -795,7 +798,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Nature Reviews Molecular Cell Biology, 10(3), 207–217</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nrm2636" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nrm2636" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nrm2636 (si apre in una nuova scheda)">
               10.1038/nrm2636
             </a>
           </td>
@@ -808,7 +811,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Cell, 110(6), 673–687</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/S0092-8674(02)00971-6" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/S0092-8674(02)00971-6" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/S0092-8674(02)00971-6 (si apre in una nuova scheda)">
               10.1016/S0092-8674(02)00971-6
             </a>
           </td>
@@ -821,7 +824,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Nature Reviews Molecular Cell Biology, 4(4), 285–295</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/nrm1072" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1038/nrm1072" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/nrm1072 (si apre in una nuova scheda)">
               10.1038/nrm1072
             </a>
           </td>
@@ -834,7 +837,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Journal of Cell Science, 123(24), 4195–4200</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1242/jcs.023820" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1242/jcs.023820" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1242/jcs.023820 (si apre in una nuova scheda)">
               10.1242/jcs.023820
             </a>
           </td>
@@ -847,7 +850,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Clinics in Dermatology, 22(5), 360–366</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1016/j.clindermatol.2004.03.004" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://doi.org/10.1016/j.clindermatol.2004.03.004" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/j.clindermatol.2004.03.004 (si apre in una nuova scheda)">
               10.1016/j.clindermatol.2004.03.004
             </a>
           </td>
@@ -860,7 +863,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Raccolta articoli peer-reviewed su biologia epiteliale e dermatologia</div>
           </td>
           <td>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=epithelial+tissue+dermatology" target="_blank" rel="noopener" class="flow-tag tag-lysis">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/?term=epithelial+tissue+dermatology" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="NCBI PubMed Portal (si apre in una nuova scheda)">
               pubmed.ncbi.nlm.nih.gov
             </a>
           </td>
@@ -873,7 +876,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
             <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
           </td>
           <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis" aria-label="Wikipedia Contributi Gitechnolo (si apre in una nuova scheda)">
               wiki/Gitechnolo
             </a>
           </td>
@@ -902,7 +905,7 @@ DESCRIZIONE: Tabella riassuntiva dei meccanismi biofisici (potenziale di riposo,
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
-<!-- Script Gestione Filtro Bibliografia Specialistica -->
-<script>(function(){ 'use strict'; function filterBiblio(){ const searchInput=document.getElementById('biblio-search'); const topicFilter=document.getElementById('biblio-topic-filter'); const tableRows=document.querySelectorAll('#biblio-table tbody tr'); if (!tableRows.length) return; const query=searchInput ? searchInput.value.toLowerCase().trim() : ''; const selectedTopic=topicFilter ? topicFilter.value : 'all'; requestAnimationFrame(function(){ tableRows.forEach(function(row){ const text=row.textContent.toLowerCase(); const topic=row.getAttribute('data-topic'); const matchesSearch=query==='' || text.includes(query); const matchesTopic=selectedTopic==='all' || topic===selectedTopic; if (matchesSearch && matchesTopic){ row.style.removeProperty('display');} else{ row.style.setProperty('display', 'none', 'important');}});});} document.addEventListener('input', function(e){ if (e.target && e.target.id==='biblio-search') filterBiblio();}); document.addEventListener('change', function(e){ if (e.target && e.target.id==='biblio-topic-filter') filterBiblio();})})();</script>
+<!-- Script Gestione Filtro Bibliografia Specialistica (Accessibile WCAG AAA) -->
+<script>(function(){'use strict';var timer=null;function filterBiblio(){var searchInput=document.getElementById('biblio-search');var topicFilter=document.getElementById('biblio-topic-filter');var tableRows=document.querySelectorAll('#biblio-table tbody tr');var ariaStatus=document.getElementById('biblio-aria-status');if(!tableRows.length)return;var query=searchInput?searchInput.value.toLowerCase().trim():'';var selectedTopic=topicFilter?topicFilter.value:'all';requestAnimationFrame(function(){var visibleCount=0;var totalCount=tableRows.length;tableRows.forEach(function(row){var text=row.textContent.toLowerCase();var topic=row.getAttribute('data-topic');var matchesSearch=query===''||text.includes(query);var matchesTopic=selectedTopic==='all'||topic===selectedTopic;if(matchesSearch&&matchesTopic){row.style.removeProperty('display');visibleCount++;}else{row.style.setProperty('display','none','important');}});if(ariaStatus){if(visibleCount===totalCount){ariaStatus.textContent='Visualizzati tutti gli '+totalCount+' elementi della bibliografia.';}else if(visibleCount===0){ariaStatus.textContent='Nessun risultato trovato per i filtri selezionati.';}else{ariaStatus.textContent='Trovati '+visibleCount+' elementi su '+totalCount+'.';}}});}function debouncedFilter(){if(timer)clearTimeout(timer);timer=setTimeout(filterBiblio,200);}document.addEventListener('input',function(e){if(e.target&&e.target.id==='biblio-search')debouncedFilter();});document.addEventListener('change',function(e){if(e.target&&e.target.id==='biblio-topic-filter')filterBiblio();});})();</script>
 </body>
   </html>
