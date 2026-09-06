@@ -563,18 +563,40 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
     </p>
   </div>
 
-  <div class="cyber-table-container mb-15">
-    <table class="cyber-table">
+  <!-- Barra di Controllo Filtro -->
+  <div class="biblio-filter-bar">
+    <input 
+      type="search" 
+      id="biblio-search" 
+      class="cyber-input" 
+      placeholder="Cerca per autore, titolo, rivista o DOI..." 
+      aria-label="Cerca nella bibliografia"
+    >
+    <select 
+      id="biblio-topic-filter" 
+      class="cyber-select" 
+      aria-label="Filtra per argomento"
+    >
+      <option value="all">Tutti gli argomenti</option>
+      <option value="emodinamica">Biofisica ed Emodinamica</option>
+      <option value="emostasi">Emostasi e Trombosi</option>
+      <option value="immunoematologia">Immunoematologia</option>
+      <option value="database">Banche Dati &amp; Open Access</option>
+    </select>
+  </div>
+
+  <div class="cyber-table-container">
+    <table id="biblio-table" class="cyber-table">
       <thead>
         <tr>
           <th style="width: 5%;">#</th>
           <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
+          <th style="width: 45%;">Titolo &amp; Rivista / Standard</th>
           <th style="width: 25%;">Identificatore DOI / Link</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr data-topic="emodinamica">
           <td><span class="flow-tag tag-common">1</span></td>
           <td><strong>Starling, E. H.</strong><br><small class="slate">(1896)</small></td>
           <td>
@@ -587,7 +609,7 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-topic="emodinamica">
           <td><span class="flow-tag tag-common">2</span></td>
           <td><strong>Hoffman, J. I., &amp; Spaan, J. A.</strong><br><small class="slate">(1990)</small></td>
           <td>
@@ -600,7 +622,7 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-topic="emostasi">
           <td><span class="flow-tag tag-common">3</span></td>
           <td><strong>Mackman, N.</strong><br><small class="slate">(2008)</small></td>
           <td>
@@ -613,7 +635,7 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-topic="immunoematologia">
           <td><span class="flow-tag tag-common">4</span></td>
           <td><strong>Springer, T. A.</strong><br><small class="slate">(1994)</small></td>
           <td>
@@ -626,7 +648,7 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-topic="database">
           <td><span class="flow-tag tag-common">5</span></td>
           <td><strong>NCBI PubMed Portal</strong><br><small class="slate">(2024)</small></td>
           <td>
@@ -639,7 +661,7 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-topic="database">
           <td><span class="flow-tag tag-common">6</span></td>
           <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
           <td>
@@ -677,5 +699,6 @@ DESCRIZIONE: Guida alla lettura dell'emocromo completo (indici eritrocitari MCV,
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script>(function(){ 'use strict'; function filterBiblio(){ const searchInput=document.getElementById('biblio-search'); const topicFilter=document.getElementById('biblio-topic-filter'); const tableRows=document.querySelectorAll('#biblio-table tbody tr'); if (!tableRows.length) return; const query=searchInput ? searchInput.value.toLowerCase().trim() : ''; const selectedTopic=topicFilter ? topicFilter.value : 'all'; requestAnimationFrame(function(){ tableRows.forEach(function(row){ const text=row.textContent.toLowerCase(); const topic=row.getAttribute('data-topic'); const matchesSearch=query==='' || text.includes(query); const matchesTopic=selectedTopic==='all' || topic===selectedTopic; if (matchesSearch && matchesTopic){ row.style.removeProperty('display');} else{ row.style.setProperty('display', 'none', 'important');}});});} document.addEventListener('input', function(e){ if (e.target && e.target.id==='biblio-search') filterBiblio();}); document.addEventListener('change', function(e){ if (e.target && e.target.id==='biblio-topic-filter') filterBiblio();})})();</script>
 </body>
 </html> 
