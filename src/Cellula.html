@@ -131,18 +131,18 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
     Il proteoma e il profilo di espressione genica guidato da network trascrizionali specifici ed <strong class="greentext">epigenetici</strong> dirigono il differenziamento di oltre 200 citotipi nel corpo umano, garantendo la coordinazione di funzioni fisiologiche ad alta specializzazione molecolare:
   </p>
 
-  <!-- Controllo di Filtro Interattivo -->
-  <div class="interactive-controls-bar mb-15">
-    <span class="control-label">Filtra Fisiologia:</span>
-    <button class="btn-filter active" data-filter="all">Tutti</button>
-    <button class="btn-filter" data-filter="cardiomiocita">Cardiomiocita</button>
-    <button class="btn-filter" data-filter="neurone">Neurone</button>
-    <button class="btn-filter" data-filter="podocita">Podocita</button>
-    <button class="btn-filter" data-filter="staminale">Epiteliale / Staminale</button>
+  <!-- Controllo di Filtro Interattivo (Accessibilità WCAG AAA) -->
+  <div class="interactive-controls-bar mb-15" role="group" aria-labelledby="label-filtro-fisiologia">
+    <span class="control-label" id="label-filtro-fisiologia">Filtra Fisiologia:</span>
+    <button type="button" class="btn-filter active" data-filter="all" aria-pressed="true">Tutti</button>
+    <button type="button" class="btn-filter" data-filter="cardiomiocita" aria-pressed="false">Cardiomiocita</button>
+    <button type="button" class="btn-filter" data-filter="neurone" aria-pressed="false">Neurone</button>
+    <button type="button" class="btn-filter" data-filter="podocita" aria-pressed="false">Podocita</button>
+    <button type="button" class="btn-filter" data-filter="staminale" aria-pressed="false">Epiteliale / Staminale</button>
   </div>
 
   <div class="mb-15">
-    <ol class="list interactive-filter-list">
+    <ol class="list interactive-filter-list" aria-live="polite" aria-atomic="false">
       <li data-filter-item="cardiomiocita"><strong class="yellowtext">Inotropismo ed eccitabilità cardiaca:</strong> Generazione di forza contrattile nel miocardiocita guidata dall'accoppiamento eccitazione-contrazione (CICR, <i>Calcium-Induced Calcium Release</i>) e dal transito di Ca<sup>2+</sup> attraverso i canali voltaggio-dipendenti di tipo L (Ca<sub>v</sub>1.2);</li>
       <li data-filter-item="neurone"><strong class="biotechbold">Trasduzione e computazione neurale:</strong> Genesi e propagazione saltatoria dei potenziali d'azione lungo la membrana assonica tramite canali del Na<sup>+</sup> e K<sup>+</sup> voltaggio-dipendenti, combinata alla modulazione neurotrasmettitoriale delle sinapsi centrali;</li>
       <li data-filter-item="podocita"><strong class="greentext">Ultrafiltrazione renale:</strong> Mantenimento dell'omeostasi idro-elettrolitica e del volume plasmatico mediante la barriera di filtrazione glomerulare costituita dall'endotelio fenestrato, dalla membrana basale glomerulare e dai podociti;</li>
@@ -153,15 +153,16 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
   <!-- INSIGHT AVANZATO 1: Epigenetica e Stocasticità -->
   <div class="research-insight-box mb-15">
     <div class="insight-header">
-      <h4 class="biotechbold">RESEARCH INSIGHT | Epigenetica e Sistemi Stocastici (Single-Cell)</h4>
+      <h3 class="biotechbold f-85">RESEARCH INSIGHT | Epigenetica e Sistemi Stocastici (Single-Cell)</h3>
       <!-- Badge per il Single-Cell / Epigenetica (es. Human Cell Atlas) -->
-<a href="https://data.humancellatlas.org/" 
-   target="_blank" 
-   rel="noopener" 
-   class="badge-interactive">
-   EXPLORER LIVE
-   <span class="sr-only">(apre la banca dati Single-Cell su Human Cell Atlas in una nuova scheda)</span>
-</a>
+      <a href="https://data.humancellatlas.org/" 
+         target="_blank" 
+         rel="noopener" 
+         class="badge-interactive"
+         title="Apri il portale Human Cell Atlas Data Explorer in una nuova scheda">
+         EXPLORER LIVE
+         <span class="sr-only">(apre la banca dati Single-Cell su Human Cell Atlas in una nuova scheda)</span>
+      </a>
     </div>
     <p class="text mt-10">
       Oltre ai fattori di trascrizione canonici, l'identità cellulare è governata dall'<strong>epigenoma</strong>: la metilazione del DNA (isole CpG), le modificazioni post-traduzionali degli istoni (es. H3K9ac per l'eucromatina e H3K27me3 per l'eterocromatina) e gli RNA non codificanti (miRNA, lncRNA) guidano la plasticità fenotipica senza alterare la sequenza primaria.
@@ -172,7 +173,7 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
   </div>
 
   <!-- Blocco 2: Mitosi, DDR e Senescenza -->
-  <h3 class="biotechbold">AUTORINNOVAMENTO CELLULARE, DNA DAMAGE RESPONSE (DDR) E SENESCENZA</h3>
+  <h2 class="biotechbold">AUTORINNOVAMENTO CELLULARE, DNA DAMAGE RESPONSE (DDR) E SENESCENZA</h2>
   <p class="text mb-15">
     In linea con i principi cardine della biologia molecolare, le cellule somatiche originano esclusivamente dalla divisione di elementi preesistenti. La proliferazione cellulare avviene mediante <strong class="orangetext">MITOSI</strong>, un processo di divisione equazionale finemente orchestrato dalle chinasi ciclina-dipendenti (CDK) e dai relativi checkpoint del ciclo cellulare (G<sub>1</sub>/S, Intra-S e G<sub>2</sub>/M, supervisionati dagli oncosoppressori molecolari p53 e pRb). Questo network regolatorio assicura la replicazione semiconservativa ad alta fedeltà del DNA e la corretta segregazione dei cromatidi fratelli tramite il fuso mitotico, preservando l'integrità del cariotipo e la stabilità genomica nelle cellule figlie.
   </p>
@@ -180,15 +181,16 @@ DESCRIZIONE: Unità fondamentale della vita, dinamica stocastica, epigenetica, n
   <!-- INSIGHT AVANZATO 2: Riparazione del DNA e SASP -->
   <div class="research-insight-box mb-15">
     <div class="insight-header">
-      <h4 class="biotechbold">RESEARCH INSIGHT | Meccanismi di Riparazione (DDR) e Fate Cellulare</h4>
+      <h3 class="biotechbold f-85">RESEARCH INSIGHT | Meccanismi di Riparazione (DDR) e Fate Cellulare</h3>
       <!-- Badge per il Pathway del ciclo cellulare / DDR (es. KEGG) -->
-<a href="https://www.kegg.jp/pathway/hsa04115" 
-   target="_blank" 
-   rel="noopener" 
-   class="badge-interactive">
-   PATHWAY EXPLORER
-   <span class="sr-only">(apre il diagramma molecolare su KEGG in una nuova scheda)</span>
-</a>
+      <a href="https://www.kegg.jp/pathway/hsa04115" 
+         target="_blank" 
+         rel="noopener" 
+         class="badge-interactive"
+         title="Visualizza il pathway molecolare KEGG hsa04115 in una nuova scheda">
+         PATHWAY EXPLORER
+         <span class="sr-only">(apre il diagramma molecolare su KEGG in una nuova scheda)</span>
+      </a>
     </div>
     <p class="text mt-10">
       In presenza di lesioni al genoma, la cellula attiva la risposta al danno del DNA (<strong>DDR</strong>, <i>DNA Damage Response</i>) ingaggiando pathway specifici di riparazione:
