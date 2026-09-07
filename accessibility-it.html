@@ -42,15 +42,15 @@
 <!-- Preload font -->
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* CSS Inline Critical - BiotechProject (Optimized Parsing Engine) */
+/* Critical CSS - BiotechProject Standard */
 #main-content{opacity:1}
 @supports (selector(html:has(body))){#main-content{opacity:0;transition:opacity .3s ease}}
-body{background-color:#000f16;font-family:'Sansation',sans-serif;color:#a7ffeb;max-width:900px;line-height:1.6}
+body{background-color:#000f16;font-family:'Sansation',sans-serif;color:#a7ffeb;max-width:900px;line-height:1.6;contain:paint layout}
 h1,h2{color:#00e676}
 ul{padding-left:20px}
 footer{margin-top:50px;font-size:.9em;color:#64ffda}
 a:hover img{transform:translateY(-2px) scale(1.05);filter:drop-shadow(0 0 8px rgba(0,230,118,.5))}
-.canvas-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden}
+.canvas-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;transform:translateZ(0)}
 .staff-layout-container{padding-top:30px;width:100%;min-height:1px}
 .tech-nav-container{min-height:56px}
 .logo-wrapper-cls{min-height:215px}
@@ -59,7 +59,14 @@ a:hover img{transform:translateY(-2px) scale(1.05);filter:drop-shadow(0 0 8px rg
 .table-spec-text{font-family:'Sansation',sans-serif;font-weight:700;font-style:italic}
 td strong{color:#00e676;font-weight:700}
 
-/* LOCK GEOMETRICO ISO-DESKTOP (Lighthouse Zero-CLS) */
+/* STILI MOBILE (<768px) */
+@media(max-width:768px){
+  .biotechbody{background-attachment:scroll;background-position:center 20%;background-image:linear-gradient(to bottom,rgba(1,8,8,.94),rgba(1,8,8,.75)),url("https://gitechnolo.github.io/biotechproject/Biotech-file/images/background.avif")}
+  .staff-layout-container{padding-left:18px;padding-right:18px;box-sizing:border-box}
+  .biotechbody p{line-height:1.6;margin-bottom:1.5rem;text-align:justify;font-size:.95rem;background:rgba(0,8,8,.4);padding:12px;border-radius:6px}
+}
+
+/* LOCK GEOMETRICO ISO-DESKTOP (Zero-CLS) */
 @media (min-width:1101px){
   html{overflow-y:scroll!important}
   .canvas-wrapper{contain:strict!important;pointer-events:none}
@@ -70,6 +77,7 @@ td strong{color:#00e676;font-weight:700}
 }
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
+<!-- Resilience & Opacity Controller - Standard BiotechProject -->
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>   
 <!-- Dati Strutturati (JSON-LD) Accessibilità -->
 <script type="application/ld+json">{ "@context": "https://schema.org", "@graph": [ { "@type": "WebPage", "@id": "https://gitechnolo.github.io/biotechproject/accessibility-it.html#webpage", "url": "https://gitechnolo.github.io/biotechproject/accessibility-it.html", "name": "Dichiarazione di Accessibilità | Biotech Project - Conformità WCAG 2.2 AAA", "description": "Dichiarazione di conformità agli standard di accessibilità WCAG 2.2 Livello AAA e normativa italiana D.Lgs. 106/2018.", "inLanguage": "it-IT", "datePublished": "2025-09-15", "dateModified": "2026-08-07", "isPartOf":{ "@type": "WebSite", "@id": "https://gitechnolo.github.io/biotechproject/#website", "url": "https://gitechnolo.github.io/biotechproject/", "name": "Biotech Project"}, "author":{ "@type": "Organization", "@id": "https://gitechnolo.github.io/biotechproject/#organization", "name": "Biotech Project", "url": "https://gitechnolo.github.io/biotechproject/"}, "publisher":{ "@id": "https://gitechnolo.github.io/biotechproject/#organization"}, "accessibilityFeature": [ "highContrastDisplay", "readingOrder", "structuralMedia", "unconstrainedFocus", "displayTransformability" ], "accessibilityHazard": "none", "isAccessibleForFree": true, "mainEntity":{ "@type": "Thing", "name": "Conformità WCAG 2.2 Livello AAA", "sameAs": "https://www.w3.org/WAI/standards-guidelines/wcag/"}, "about": [ { "@type": "Thing", "name": "Accessibilità Web"}, { "@type": "Thing", "name": "D.Lgs. 106/2018"}, { "@type": "Thing", "name": "Inclusione Digitale"} ], "breadcrumb":{ "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitechnolo.github.io/biotechproject/"}, { "@type": "ListItem", "position": 2, "name": "Dichiarazione di Accessibilità", "item": "https://gitechnolo.github.io/biotechproject/accessibility-it.html"} ]}} ]} </script>
