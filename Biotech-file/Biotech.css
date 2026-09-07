@@ -626,11 +626,70 @@ video::cue {color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); backgroun
 
 /* Augurio moderno */
 .greeting-time {color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px; margin-bottom: -3px; /* Distanza tra saluto e augurio */ line-height: 1.1; /* Mantiene compattezza proteggendo le lettere estese (saluto e augurio) */}
-.modern-greeting { position: relative; top: -45px;color: #b2dfdb; font-family: 'Sansation', sans-serif; font-size: 1em; text-align: center; margin: 15px auto 5px auto; max-width: 400px; font-style: italic; opacity: 0.95; text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 85%); mask-image: linear-gradient(to bottom, black 70%, transparent 95%); letter-spacing: 0.5px;}   
-/* Contenitore per orologio, conto alla rovescia e augurio - Per smartphone */
-@media (max-width:480px){.modern-clock,.modern-countdown,.modern-greeting{font-size:1em;padding:6px 10px}.container_welcome{gap:6px;margin-top:-30px}}
-/* Contenitore per orologio, conto alla rovescia e augurio - Per tablet */
-@media (min-width:768px) and (max-width:1024px){.container_welcome{gap:12px}}
+/* === AUGURIO MODERNO E STRUTTURA FLUIDA === */
+.modern-greeting { 
+    position: relative; 
+    top: 0; /* ELIMINATO top: -45px */
+    color: #b2dfdb; 
+    font-family: 'Sansation', sans-serif; 
+    font-size: 1em; 
+    text-align: center; 
+    margin: 5px auto; 
+    max-width: 400px; 
+    font-style: italic; 
+    opacity: 0.95; 
+    text-shadow: 0 0 6px rgba(0, 230, 118, 0.5); 
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 85%); 
+    mask-image: linear-gradient(to bottom, black 70%, transparent 95%); 
+    letter-spacing: 0.5px;
+}
+
+.modern-countdown {
+    position: relative;
+    top: 0; /* ELIMINATO top: -12px */
+    color: #a7ffeb;
+    font-family: 'Sansation', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 380px; 
+    padding: 8px 16px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-mask-image: linear-gradient(black 25%, transparent 100%);
+    mask-image: linear-gradient(black 25%, transparent 100%);
+    opacity: 0.99;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    overflow: hidden;
+}
+
+/* --- MEDIA QUERIES PULITE (SENZA MARGINI NEGATIVI) --- */
+
+/* Smartphone (< 480px) */
+@media (max-width: 480px) {
+    .container_welcome {
+        gap: 4px;      /* Gestisce lo spazio tra gli elementi in modo naturale */
+        margin-top: 0; /* ELIMINATO margin-top: -30px */
+    }
+    .modern-clock, 
+    .modern-countdown, 
+    .modern-greeting {
+        font-size: 0.95em;
+        padding: 6px 10px;
+    }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container_welcome {
+        gap: 8px;
+    }
+}
 /* TOOLTIP TECNOLOGICO BIO-TECH - OTTIMIZZATO */
 .biotech-tooltip {
     display: none;

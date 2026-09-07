@@ -84,23 +84,18 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 /* Mostra i controlli al passaggio del mouse o quando il video è attivo (gestito dallo script) */
 #ytVideoContainer:hover .yt-video-controls{ transform: translateY(0)}
 .biotech-modal-trigger{ background: none; border: none; padding: 0; font: inherit; cursor: pointer}
-/* Stabilizzazione CLS con altezza calibrata e zero scatti */
- #clock2{ min-height: 72px; display: flex; flex-direction: column; align-items: center; justify-content: center;}
- #clock2 .hud-inline-row {
-    font-size: 0.65em;         /* Preserva al 100% la dimensione originale */
-    white-space: nowrap;        /* Impedisce l'andata a capo (zero CLS) */
-    overflow: hidden;
-    text-overflow: ellipsis;   /* Gestisce con '...' i testi lunghi su schermi stretti */
-    min-height: 1.4em;          /* Riserva l'altezza della riga */
+/* Pre-allocazione dello spazio per prevenire il CLS (Above-The-Fold) */
+  #clock2 {
+    min-height: 72px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
   }
-/* Stile originale sui valori in verde neon */
-  #clock2 .hud-inline-row .bio-data-value {
-    font-size: 1.1em;
+  #clock2 .hud-inline-row {
+    min-height: 1.4em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
