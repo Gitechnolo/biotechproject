@@ -45,12 +45,17 @@
 /* Critical CSS - BiotechProject Standard */
 #main-content{opacity:1}
 @supports (selector(html:has(body))){#main-content{opacity:0;transition:opacity .3s ease}}
-body{background-color:#000f16;font-family:'Sansation',sans-serif;color:#a7ffeb;max-width:900px;line-height:1.6;contain:paint layout}
+
+/* RIMOSSO contain:paint layout dal body per non spezzare position:fixed del canvas */
+body{background-color:#000f16;font-family:'Sansation',sans-serif;color:#a7ffeb;max-width:900px;line-height:1.6}
 h1,h2{color:#00e676}
 ul{padding-left:20px}
 footer{margin-top:50px;font-size:.9em;color:#64ffda}
 a:hover img{transform:translateY(-2px) scale(1.05);filter:drop-shadow(0 0 8px rgba(0,230,118,.5))}
-.canvas-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;transform:translateZ(0)}
+
+/* Isolation per il Canvas: impedisce che influenzi o venga influenzato dal DOM */
+.canvas-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;pointer-events:none;will-change:transform}
+
 .staff-layout-container{padding-top:30px;width:100%;min-height:1px}
 .tech-nav-container{min-height:56px}
 .logo-wrapper-cls{min-height:215px}
@@ -69,7 +74,6 @@ td strong{color:#00e676;font-weight:700}
 /* LOCK GEOMETRICO ISO-DESKTOP (Zero-CLS) */
 @media (min-width:1101px){
   html{overflow-y:scroll!important}
-  .canvas-wrapper{contain:strict!important;pointer-events:none}
   .cyber-table{table-layout:fixed!important;contain:layout style!important;content-visibility:auto;contain-intrinsic-size:450px}
   .cyber-table th:nth-child(1),.cyber-table td:nth-child(1){width:25%!important}
   .cyber-table th:nth-child(2),.cyber-table td:nth-child(2){width:55%!important}
