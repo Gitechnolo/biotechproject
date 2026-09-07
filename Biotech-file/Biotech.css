@@ -14,15 +14,49 @@
 body, html {max-width: 100vw !important; overflow-x: hidden !important;}
 /* --- Importazione font personalizzati (OTTIMIZZATO PER CLS) --- */
 /* Regular */
-@font-face{font-family:'Sansation';src:url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff2');font-weight:normal;font-style:normal;font-display:swap;font-size-adjust:.5;}
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationRegular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Light */
-@font-face{font-family:'Sansation';src:url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;font-size-adjust:.5;}
-/* Bold  */
-@font-face{font-family:'Sansation';src:url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2');font-weight:bold;font-style:normal;font-display:swap;font-size-adjust:.5;}
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/Sansation-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Bold Italic */
-@font-face{font-family:'Sansation';src:url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2') format('woff2');font-weight:bold;font-style:italic;font-display:swap;font-size-adjust:.5;}
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationBoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Light Italic */
-@font-face{font-family:'Sansation';src:url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2') format('woff2');font-weight:300;font-style:italic;font-display:swap;font-size-adjust:.5;}
+@font-face {
+  font-family: 'Sansation';
+  src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/SansationLightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: optional; /* Cancella il residuo 0.002 di CLS senza preload */
+}
 @font-face {font-family: 'Atkinson Hyperlegible'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/AtkinsonHyperlegible-Bold.woff2') format('woff2'); font-weight: bold; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Atkinson Hyperlegible'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/AtkinsonHyperlegible-Regular.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: swap; size-adjust: 95%;}
 @font-face {font-family: 'Atkinson Hyperlegible'; src: url('https://gitechnolo.github.io/biotechproject/Biotech-file/AtkinsonHyperlegible-Italic.woff2') format('woff2'); font-weight: normal; font-style: italic; font-display: swap; size-adjust: 95%;}      
@@ -54,11 +88,36 @@ rp {font-size: 10px; color: hsla(60, 22%, 96%, 0.5);}
 /* Adatta su mobile */
 @media (max-width: 768px) {rt {font-size: 12px;   /* Più grande su schermi piccoli */ }}
 /* End annotazioni Ruby */
-/* Utility classes (Forza il rendering fallback con dimensioni simili) font-size-adjust: 0.5 */
-.sansation-bold{font-family:'Sansation',Arial,Helvetica,sans-serif;font-weight:bold;font-size:34px;color:#a7ffeb;-webkit-mask-image:linear-gradient(black,transparent);mask-image:linear-gradient(black,transparent);font-size-adjust:.5;}
-.sansation-bold-italic{font-family:'Sansation',Arial,Helvetica,sans-serif;font-weight:bold;font-style:italic;font-size-adjust:.5;}
-.sansation-light{font-family:'Sansation',Arial,Helvetica,sans-serif;font-weight:300;font-size-adjust:.5;}
-.sansation-light-italic{font-family:'Sansation',Arial,Helvetica,sans-serif;font-weight:300;font-style:italic;font-size-adjust:.5;}
+/* Utility classes */
+.sansation-bold {
+  font-family: 'Sansation', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.2;
+  color: #a7ffeb;
+  -webkit-mask-image: linear-gradient(black, transparent);
+  mask-image: linear-gradient(black, transparent);
+}
+
+.sansation-bold-italic {
+  font-family: 'Sansation', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.sansation-light {
+  font-family: 'Sansation', Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.sansation-light-italic {
+  font-family: 'Sansation', Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+}
 /* =========================================================
    Classi Font Atkinson Hyperlegible (Base)
    ========================================================= */
