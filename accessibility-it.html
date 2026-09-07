@@ -212,7 +212,26 @@ td strong { color: #00e676; font-weight: bold; }
     </div>
     <p>Il tuo contributo è essenziale. Se incontri ostacoli nell'accesso ai contenuti, <a href="mailto:teambiotechproject@proton.me?subject=Feedback" class="link-highlight">contattaci</a>.</p>
     
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" alt="Riepilogo performance: TBT 112ms, 10x efficienza memoria, TTI 0.3s" class="specials-img" width="895" height="500" decoding="async" loading="lazy" style="display: block; margin: 28px auto 1px auto;">
+    <picture>
+  <!-- Versione Mobile (stessa proporzione, ottimizzata per schermi <= 768px) -->
+  <source 
+    media="(max-width: 768px)" 
+    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile.avif" 
+    type="image/avif"
+    width="652" 
+    height="364">
+  
+  <!-- Versione Desktop (default/fallback per schermi larghi) -->
+  <img 
+    src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" 
+    alt="Performance Summary Chart: TBT 112ms, 10x memory efficiency, and 0.3s TTI" 
+    class="specials-img" 
+    width="895" 
+    height="500" 
+    decoding="async" 
+    loading="lazy" 
+    style="display: block; margin: 28px auto 1px auto; max-width: 100%; height: auto;">
+</picture>
     
     <p class="sansation-light-italic" style="text-align: center; margin-bottom: 48px; color: #64ffda; font-size: 1.1em;">“Biotech Project non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e humana.”</p>
     

@@ -211,7 +211,26 @@ td strong { color: #00e676; font-weight: bold; }
     </div>
     <p>If you encounter content access barriers, please <a href="mailto:teambiotechproject@proton.me?subject=Feedback" class="link-highlight">contact us</a>.</p>
     
-    <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" alt="Performance Summary Chart: TBT 112ms, 10x memory efficiency, and 0.3s TTI" class="specials-img" width="895" height="500" decoding="async" loading="lazy" style="display: block; margin: 28px auto 1px auto;">
+    <picture>
+  <!-- Versione Mobile (stessa proporzione, ottimizzata per schermi <= 768px) -->
+  <source 
+    media="(max-width: 768px)" 
+    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile.avif" 
+    type="image/avif"
+    width="652" 
+    height="364">
+  
+  <!-- Versione Desktop (default/fallback per schermi larghi) -->
+  <img 
+    src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" 
+    alt="Performance Summary Chart: TBT 112ms, 10x memory efficiency, and 0.3s TTI" 
+    class="specials-img" 
+    width="895" 
+    height="500" 
+    decoding="async" 
+    loading="lazy" 
+    style="display: block; margin: 28px auto 1px auto; max-width: 100%; height: auto;">
+</picture>
     
     <p class="sansation-light-italic" style="text-align: center; margin-bottom: 48px; color: #64ffda; font-size: 1.1em;">“Biotech Project is not just science: it's inclusion. Every line of code is designed to be accessible, resilient, and human.”</p>
     
