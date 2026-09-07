@@ -118,7 +118,7 @@ ol.atkinson-regular li::marker {
   font-weight: 700;
 }
 /* =========================================================
-   Atkinson Hyperlegible - Scheda contenitore isolamento testo dallo sfondo
+   Atkinson Hyperlegible - Scheda contenitore isolamento testo dallo sfondo.
    ========================================================= */
 .section-card {
   background-color: rgba(6, 20, 22, 0.96); /* Opacità al 96%: isola il testo ma mantiene la percezione di profondità */
