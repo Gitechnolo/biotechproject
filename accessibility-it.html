@@ -217,11 +217,12 @@ td strong { color: #00e676; font-weight: bold; }
     <p>Il tuo contributo è essenziale. Se incontri ostacoli nell'accesso ai contenuti, <a href="mailto:teambiotechproject@proton.me?subject=Feedback" class="link-highlight">contattaci</a>.</p>
     
     <picture>
-  <!-- Versione Mobile (1x per audit PageSpeed / 2x per schermi Retina) -->
+  <!-- Versione Mobile -->
   <source 
     media="(max-width: 768px)" 
-    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-1x.avif 1x,
-            https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-2x.avif 2x" 
+    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-1x.avif 326w,
+            https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-2x.avif 652w" 
+    sizes="(max-width: 768px) 100vw, 326px"
     type="image/avif">
   
   <!-- Fallback Desktop e Controller di Layout -->
@@ -233,7 +234,7 @@ td strong { color: #00e676; font-weight: bold; }
     height="500" 
     decoding="async" 
     loading="lazy" 
-    style="display: block; margin: 28px auto 1px auto; max-width: 100%; height: auto;">
+    style="display: block; margin: 28px auto 1px auto;">
 </picture>
     
     <p class="sansation-light-italic" style="text-align: center; margin-bottom: 48px; color: #64ffda; font-size: 1.1em;">“Biotech Project non è solo scienza: è inclusione. Ogni linea di codice è progettata per essere accessibile, resiliente e humana.”</p>
