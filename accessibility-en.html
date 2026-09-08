@@ -216,15 +216,19 @@ td strong { color: #00e676; font-weight: bold; }
     <p>If you encounter content access barriers, please <a href="mailto:teambiotechproject@proton.me?subject=Feedback" class="link-highlight">contact us</a>.</p>
     
     <picture>
-  <!-- Versione Mobile -->
+  <!-- Dispositivi Mobile con display Standard (1x) -->
+  <source 
+    media="(max-width: 768px) and (-webkit-max-device-pixel-ratio: 1.5), (max-width: 768px) and (max-resolution: 144dpi)" 
+    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-1x.avif" 
+    type="image/avif">
+
+  <!-- Dispositivi Mobile HD / Retina (2x+) -->
   <source 
     media="(max-width: 768px)" 
-    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-1x.avif 326w,
-            https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-2x.avif 652w" 
-    sizes="(max-width: 768px) 326px, 895px"
+    srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary-mobile-2x.avif" 
     type="image/avif">
   
-  <!-- Fallback Desktop e Controller di Layout -->
+  <!-- Fallback Desktop -->
   <img 
     src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Performance_Summary.avif" 
     alt="Performance Summary Chart: TBT 112ms, 10x memory efficiency, and 0.3s TTI" 
