@@ -108,6 +108,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     .grid-container50 { grid-template-columns: 1fr 1fr; } 
     .grid-container20x80 { grid-template-columns: 20% 80%; }
 }
+.grid-full-width{ grid-column: 1 / -1;} /* Posiziona il testo sotto le colonne (div) */
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -343,20 +344,22 @@ DESCRIZIONE: Approfondimento sulle macro-funzioni d'organo della cute: triade di
     </ul>
 
     <p class="text">
-      <strong class="yellowtext">Altre Funzioni Omeostatiche:</strong> 
-      2) Immunitaria (cellule di Langerhans e SALT); 3) Secretoria ed escretoria; 4) Respiratoria (<em>perspiratio insensibilis</em>); 5) Assorbimento percutaneo selettivo; 6) Sensoriale e somatosensoriale.
-    </p>
-
-    <p class="text">
-      <strong>Asse Endocrino e Biosintesi del Calcitriolo:</strong> Sotto irradiazione UVB (290–315 nm), il 7-deidrocolesterolo epidermico subisce una fotolisi elettrociclica convertendosi in previtamina D3, isomerizzata termicamente a colecalciferolo (vitamina D3). Dopo idrossilazione epatica (25-OH-D3) e renale (1,25-(OH)<sub>2</sub>-D3 o calcitriolo), l'ormone attivo modula l'omeostasi fosfo-calcica, induce la differenziazione cellulare e coordina l'immunomodulazione adattativa (la cui carenza è correlata a un maggior rischio di sclerosi multipla e diabete di tipo 1).
+      <strong class="yellowtext">Altre Funzioni Omeostatiche:</strong><br>
+      <strong>2) Immunitaria:</strong> Cellule di Langerhans e SALT.<br>
+      <strong>3) Secretoria ed escretoria:</strong> Ghiandole e sebo.<br>
+      <strong>4) Respiratoria:</strong> <em>Perspiratio insensibilis</em>.<br>
+      <strong>5) Assorbimento percutaneo selettivo:</strong> Permeabilità modulata.<br>
+      <strong>6) Sensoriale e somatosensoriale:</strong> Meccanocettori e terminazioni libere.
     </p>
   </div>
-  
   <div>
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/pelle_cute.avif" class="transparent specials-img" alt="Diagramma istologico e funzionale della cute umana" width="575" height="381" loading="lazy" decoding="async">
   </div>
+<!-- Blocco full-width posizionato sotto le due colonne (div) -->
+  <p class="text grid-full-width">
+    <strong>Asse Endocrino e Biosintesi del Calcitriolo:</strong> Sotto irradiazione UVB (290–315 nm), il 7-deidrocolesterolo epidermico subisce una fotolisi elettrociclica convertendosi in previtamina D3, isomerizzata termicamente a colecalciferolo (vitamina D3). Dopo idrossilazione epatica (25-OH-D3) e renale (1,25-(OH)<sub>2</sub>-D3 o calcitriolo), l'ormone attivo modula l'omeostasi fosfo-calcica, induce la differenziazione cellulare e coordina l'immunomodulazione adattativa (la cui carenza è correlata a un maggior rischio di sclerosi multipla e diabete di tipo 1).
+  </p>
 </section>
-
 
 <!-- ========================================================== 
 SEZIONE: Epidermide - Citotipi, Differenziamento e Stratificazione (epidermis_content)
