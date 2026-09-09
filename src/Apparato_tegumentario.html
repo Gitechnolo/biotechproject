@@ -108,7 +108,6 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     .grid-container50 { grid-template-columns: 1fr 1fr; } 
     .grid-container20x80 { grid-template-columns: 20% 80%; }
 }
-.grid-full-width{ grid-column: 1 / -1;} /* Posiziona il testo sotto le colonne (div) */
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -155,73 +154,49 @@ DESCRIZIONE: Involucro protettivo continuo (epidermide, derma, ipoderma e anness
   </p>
 
   <!-- Box Architettura Macroscopica e Compartimentale -->
-<section class="biotech-summary-box mb-15" aria-labelledby="integ-title">
-  <h2 class="biotechbold" id="integ-title">Architettura dei Compartimenti Tegumentari</h2>
+  <section class="biotech-summary-box mb-15" aria-labelledby="integ-title">
+    <h2 class="biotechbold" id="integ-title">Architettura dei Compartimenti Tegumentari</h2>
 
-  <div class="cyber-flowchart">
-    <div class="flow-branches">
-      <!-- EPIDERMIDE -->
-      <article class="flow-card extrinsic" role="article">
-        <div class="flex-between">
+    <div class="cyber-flowchart">
+      <div class="flow-branches">
+        <article class="flow-card extrinsic" role="article">
           <span class="flow-tag tag-extrinsic">Epitelio Avascolare</span>
-          <a href="#bibliografia" class="badge-interactive" aria-label="Vai al riferimento scientifico 1 sulla fisiologia epidermica">
-            REF #1
-          </a>
-        </div>
-        <h3 class="flow-title">Epidermide (Derivazione Ectodermica)</h3>
-        <p class="flow-desc">
-          Epitelio pavimentoso stratificato cheratinizzato ad elevato turnover. Popolazione cellulare: <strong>Cheratinociti</strong> (~90%), <strong>Melanociti</strong> neuroectodermici, <strong>Cellule di Langerhans</strong> (APC dendritiche mieloidi) e <strong>Cellule di Merkel</strong> (meccanocettori neuroendocrini associati a neuriti afferenti).
-        </p>
-      </article>
+          <h3 class="flow-title">Epidermide (Derivazione Ectodermica)</h3>
+          <p class="flow-desc">
+            Epitelio pavimentoso stratificato cheratinizzato ad elevato turnover. Popolazione cellulare: <strong>Cheratinociti</strong> (~90%), <strong>Melanociti</strong> neuroectodermici, <strong>Cellule di Langerhans</strong> (APC dendritiche mieloidi) e <strong>Cellule di Merkel</strong> (meccanocettori neuroendocrini associati a neuriti afferenti).
+          </p>
+        </article>
 
-      <!-- DERMA -->
-      <article class="flow-card intrinsic" role="article">
-        <div class="flex-between">
+        <article class="flow-card intrinsic" role="article">
           <span class="flow-tag tag-intrinsic">Stroma Connettivale</span>
-          <a href="#bibliografia" class="badge-interactive" aria-label="Vai al riferimento scientifico 3 sulla matrice dermica e fotoinvecchiamento">
-            REF #3
-          </a>
-        </div>
-        <h3 class="flow-title">Derma (Derivazione Mesodermica)</h3>
-        <p class="flow-desc">
-          Matrice extracellulare complessa suddivisa in <em>derma papillare</em> (connettivo lasso, collagene tipo III, anse capillari) e <em>derma reticolare</em> (connettivo denso irregolare, collagene tipo I, elastina, fibre elastiche). Ospita fibroblasti residenti, vasi linfatici/ematici e recettori sensitivi corpuscolati.
-        </p>
-      </article>
-    </div>
+          <h3 class="flow-title">Derma (Derivazione Mesodermica)</h3>
+          <p class="flow-desc">
+            Matrice extracellulare complessa suddivisa in <em>derma papillare</em> (connettivo lasso, collagene tipo III, anse capillari) e <em>derma reticolare</em> (connettivo denso irregolare, collagene tipo I, elastina, fibre elastiche). Ospita fibroblasti residenti, vasi linfatici/ematici e recettori sensitivi corpuscolati.
+          </p>
+        </article>
+      </div>
 
-    <div class="flow-arrow-down">&#x25BC;</div>
+      <div class="flow-arrow-down">&#x25BC;</div>
 
-    <div class="flow-branches">
-      <!-- IPODERMA -->
-      <article class="flow-card common" role="article">
-        <div class="flex-between">
+      <div class="flow-branches">
+        <article class="flow-card common" role="article">
           <span class="flow-tag tag-common">Pannicolo Adiposo</span>
-          <a href="#bibliografia" class="badge-interactive" aria-label="Vai al riferimento scientifico 8 sulle strategie cutanee">
-            REF #8
-          </a>
-        </div>
-        <h3 class="flow-title">Ipoderma (Tessuto Sottocutaneo)</h3>
-        <p class="flow-desc">
-          Tessuto connettivo lasso a prevalenza adiposa uniloculare (WAT), organizzato in lobuli separati da <em>retinacula cutis</em> fibrosi. Funge da riserva energetica di acidi grassi liberi, isolante termico, organo endocrino secernente adipochine e piano di scorrimento sulle fasce muscolari profonde.
-        </p>
-      </article>
+          <h3 class="flow-title">Ipoderma (Tessuto Sottocutaneo)</h3>
+          <p class="flow-desc">
+            Tessuto connettivo lasso a prevalenza adiposa uniloculare (WAT), organizzato in lobuli separati da <em>retinacula cutis</em> fibrosi. Funge da riserva energetica di acidi grassi liberi, isolante termico, organo endocrino secernente adipochine e piano di scorrimento sulle fasce muscolari profonde.
+          </p>
+        </article>
 
-      <!-- ANNESSI CUTANEI -->
-      <article class="flow-card lysis" role="article">
-        <div class="flex-between">
+        <article class="flow-card lysis" role="article">
           <span class="flow-tag tag-lysis">Unità Morfofunzionali</span>
-          <a href="#bibliografia" class="badge-interactive" aria-label="Vai al riferimento scientifico 6 sui peptidi antimicrobici degli annessi">
-            REF #6
-          </a>
-        </div>
-        <h3 class="flow-title">Annessi Cutanei</h3>
-        <p class="flow-desc">
-          Strutture ghiandolari a secrezione merocrina/eccrina (sudoripare) e olocrina (sebacee), integrate con strutture cheratinizzate specializzate: fusti piliferi ad elevata concentrazione di ponti disolfuro (-S-S-) e lamine ungueali ad accrescimento continuo dalla matrice ungueale.
-        </p>
-      </article>
+          <h3 class="flow-title">Annessi Cutanei</h3>
+          <p class="flow-desc">
+            Strutture ghiandolari a secrezione merocrina/eccrina (sudoripare) e olocrina (sebacee), integrate con strutture cheratinizzate specializzate: fusti piliferi ad elevata concentrazione di ponti disolfuro (-S-S-) e lamine ungueali ad accrescimento continuo dalla matrice ungueale.
+          </p>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="fisiologia-generale-cute" aria-labelledby="physio-title">
     <h2 class="secHeader" id="physio-title">Biometria e Omeostasi dell'Organo Cutaneo</h2>
@@ -268,49 +243,11 @@ DESCRIZIONE: Involucro protettivo continuo (epidermide, derma, ipoderma e anness
       </table>
     </div>
 
-    <!-- RESEARCH INSIGHT BOX 1: CINETICHE DI DIFFERENZIAMENTO E BARRIERA -->
-    <div class="research-insight-box mb-25" role="region" aria-label="Approfondimento scientifico: Cinetiche di differenziamento e omeostasi di barriera">
-      <div class="insight-header mb-10">
-        <h3 class="biotechbold">RESEARCH INSIGHT | Differenziamento Epidermico e Omeostasi di Barriera</h3>
-        
-        <div class="flex-between">
-          <a href="https://doi.org/10.1111/j.1600-0625.2008.00786.x" target="_blank" rel="noopener" class="badge-interactive">
-            REF #1 DOI
-            <span class="sr-only">(apre lo studio sulla fisiologia di barriera di Proksch et al. in una nuova scheda)</span>
-          </a>
-        </div>
-      </div>
-
-      <p class="text mb-10">
-        L'architettura epidermica si fonda su una <strong>citomorfosi cornea programmata</strong> orchestrata da un gradiente intracellulare di calcio (<strong>[Ca<sup>2+</sup>]<sub>i</sub></strong>). La transizione baso-apicale prevede uno switch trascrizionale primario: la down-regulation delle citocheratine precoci (<strong>CK5/CK14</strong>) e la simultanea up-regulation delle cheratine di differenziamento terminale (<strong>CK1/CK10</strong>).
-      </p>
-      <p class="text">
-        Questo processo culmina nell'esocitosi dei <strong>corpi lamellari di Odland</strong> (ricchi di glucosilceramidi e sfingomielinasi) e nella polimerizzazione dell'<strong>involucro cellulare cornificato (CE)</strong>. Tale struttura proteico-lipidica è stabilizzata da legami covalenti isopeptidici catalizzati dalle transglutaminasi epidermiche (<strong>TG1, TG3, TG5</strong>), garantendo il mantenimento del <strong>pH di superficie (4.5–5.5)</strong> e il contenimento della <strong>TEWL</strong>.
-      </p>
-    </div>
-
-    <!-- RESEARCH INSIGHT BOX 2: STRESS OSSIDATIVO E FOTOINVECCHIAMENTO -->
-    <div class="research-insight-box mb-25" role="region" aria-label="Approfondimento scientifico: Fisiopatologia da stress ossidativo e fotoinvecchiamento">
-      <div class="insight-header mb-10">
-        <h3 class="biotechbold">RESEARCH INSIGHT | Cascata Signaletico-Ossidativa e Photoaging Dermico</h3>
-        
-        <div class="flex-between">
-          <a href="https://doi.org/10.1038/jidsymp.2009.8" target="_blank" rel="noopener" class="badge-interactive">
-            REF #3 DOI
-            <span class="sr-only">(apre lo studio sul fotoinvecchiamento e metalloproteinasi di Quan et al. in una nuova scheda)</span>
-          </a>
-        </div>
-      </div>
-
-      <p class="text mb-10">
-        L'assorbimento di radiazioni ultraviolette (<strong>UVA/UVB</strong>) e particolato sottile (<strong>PM<sub>2.5</sub>/PM<sub>10</sub></strong>) induce un bursting foto-ossidativo con generazione di specie reattive dell'ossigeno (<strong>O<sub>2</sub><sup>•−</sup>, H<sub>2</sub>O<sub>2</sub>, <sup>•</sup>OH</strong>). L'accumulo di ROS attiva la via delle proteina chinasi mitogeno-attivate (<strong>MAPK/AP-1</strong>) e del fattore trascrizionale <strong>NF-κB</strong>.
-      </p>
-      <p class="text">
-        La conseguente iperesprimitività delle metalloproteinasi di matrice (<strong>MMP-1, MMP-3, MMP-9</strong>) frammenta la rete di collagene fibrillare e determina la disorganizzazione dell'elastina (<strong>elastoide solare</strong>). In parallelo, la perossidazione lipidica genera intermedi tossici come <strong>malondialdeide (MDA)</strong> e <strong>4-idrossinonenale (4-HNE)</strong>, inducendo saturazione dei meccanismi di riparazione per escissione di nucleotidi (<strong>NER</strong>) ed elusione del controllo di checkpoint nucleare.
-      </p>
-    </div>
-
     <div>
+      <p>
+        <strong>Cinetiche di Differenziamento e Citomorfosi Cornea:</strong> L'architettura epiteliale è mantenuta da un processo di <em>differenziazione terminale programmata</em> coordinato dal gradiente intracellulare di calcio ([Ca<sup>2+</sup>]<sub>i</sub>). I cheratinociti staminali dello strato basale originano cellule transit-amplifying che migrano verticalmente, down-regolando le citocheratine precoci (CK5/CK14) ed up-regolando le cheratine di differenziazione terminale (CK1/CK10), fino all'estrusione dei corpi lamellari (granuli di Odland) e all'assemblaggio dell'<em>involucro cellulare cornificato</em> (CE) mediato da transglutaminasi (TG1, TG3, TG5).
+      </p>
+
       <p class="mb-7">
         <strong>Fisiopatologia dello Stress Ossidativo e Fotoinvecchiamento:</strong> L'esposizione a radiazioni ionizzanti ultraviolette (UVA 320-400 nm, UVB 290-320 nm), xenobiotici e particolato atmosferico (PM<sub>2.5</sub>, PM<sub>10</sub>) induce la sovraproduzione di <em>specie reattive dell'ossigeno</em> (ROS: anione superossido O<sub>2</sub><sup>&bull;&minus;</sup>, perossido d'idrogeno H<sub>2</sub>O<sub>2</sub>, radicale idrossile <sup>&bull;</sup>OH). Questo stress attiva la cascata delle protein chinasi mitogeno-attivate (MAPK/AP-1) e del fattore trascrizionale NF-&kappa;B, determinando:
       </p>
@@ -330,7 +267,7 @@ DESCRIZIONE: Involucro protettivo continuo (epidermide, derma, ipoderma e anness
 SEZIONE: Fisiologia Sistematica e Funzioni della Cute (skin_functions_sec)
 DESCRIZIONE: Approfondimento sulle macro-funzioni d'organo della cute: triade di protezione e barriera multidimensionale (meccanica da impatto e taglio, fisica con schermatura UV eumelaninica e termoregolazione, chimica tramite film idrolipidico e lamelle lipidiche); funzioni omeostatiche accessorie (sorveglianza immunitaria SALT/Langerhans, perspiratio insensibilis, assorbimento percutaneo selettivo, somatosensorialità); asse endocrino-metabolico cutaneo (fotolisi UVB del 7-deidrocolesterolo in previtamina D3, isomerizzazione in colecalciferolo D3 e successiva attivazione epatorenale in calcitriolo per l'omeostasi fosfo-calcica e l'immunomodulazione adattativa).
 ========================================================== -->
-<section class="text-block grid-container50 mb-15" aria-labelledby="skin-functions-title" data-lang-key="skin_functions_sec">
+<section class="text-block grid-container50" aria-labelledby="skin-functions-title" data-lang-key="skin_functions_sec">
   <div>
     <h2 class="secHeader" id="skin-functions-title">Funzioni Sistematiche della Cute</h2>
     
@@ -344,28 +281,26 @@ DESCRIZIONE: Approfondimento sulle macro-funzioni d'organo della cute: triade di
     </ul>
 
     <p class="text">
-      <strong class="yellowtext">Altre Funzioni Omeostatiche:</strong><br>
-      <strong>2) Immunitaria:</strong> Cellule di Langerhans e SALT.<br>
-      <strong>3) Secretoria ed escretoria:</strong> Ghiandole e sebo.<br>
-      <strong>4) Respiratoria:</strong> <em>Perspiratio insensibilis</em>.<br>
-      <strong>5) Assorbimento percutaneo selettivo:</strong> Permeabilità modulata.<br>
-      <strong>6) Sensoriale e somatosensoriale:</strong> Meccanocettori e terminazioni libere.
+      <strong class="yellowtext">Altre Funzioni Omeostatiche:</strong> 
+      2) Immunitaria (cellule di Langerhans e SALT); 3) Secretoria ed escretoria; 4) Respiratoria (<em>perspiratio insensibilis</em>); 5) Assorbimento percutaneo selettivo; 6) Sensoriale e somatosensoriale.
+    </p>
+
+    <p class="text">
+      <strong>Asse Endocrino e Biosintesi del Calcitriolo:</strong> Sotto irradiazione UVB (290–315 nm), il 7-deidrocolesterolo epidermico subisce una fotolisi elettrociclica convertendosi in previtamina D3, isomerizzata termicamente a colecalciferolo (vitamina D3). Dopo idrossilazione epatica (25-OH-D3) e renale (1,25-(OH)<sub>2</sub>-D3 o calcitriolo), l'ormone attivo modula l'omeostasi fosfo-calcica, induce la differenziazione cellulare e coordina l'immunomodulazione adattativa (la cui carenza è correlata a un maggior rischio di sclerosi multipla e diabete di tipo 1).
     </p>
   </div>
+  
   <div>
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/pelle_cute.avif" class="transparent specials-img" alt="Diagramma istologico e funzionale della cute umana" width="575" height="381" loading="lazy" decoding="async">
   </div>
-<!-- Blocco full-width posizionato sotto le due colonne (div) -->
-  <p class="text grid-full-width">
-    <strong>Asse Endocrino e Biosintesi del Calcitriolo:</strong> Sotto irradiazione UVB (290–315 nm), il 7-deidrocolesterolo epidermico subisce una fotolisi elettrociclica convertendosi in previtamina D3, isomerizzata termicamente a colecalciferolo (vitamina D3). Dopo idrossilazione epatica (25-OH-D3) e renale (1,25-(OH)<sub>2</sub>-D3 o calcitriolo), l'ormone attivo modula l'omeostasi fosfo-calcica, induce la differenziazione cellulare e coordina l'immunomodulazione adattativa (la cui carenza è correlata a un maggior rischio di sclerosi multipla e diabete di tipo 1).
-  </p>
 </section>
+
 
 <!-- ========================================================== 
 SEZIONE: Epidermide - Citotipi, Differenziamento e Stratificazione (epidermis_content)
 DESCRIZIONE: Anatomia e trofismo dell'epitelio pavimentoso stratificato cheratinizzato avascolare tramite diffusione dermo-epidermica. Dettaglio dei quattro citotipi principali e relative funzioni biologiche: 1) Cheratinociti (~90%, citomorfosi cornea, estrusione corpi lamellari e cornificazione terminale); 2) Melanociti (rapporto 1:10 nello strato basale, sintesi nei melanosomi da tirosina e secrezione citocrina fotoprotettiva); 3) Cellule di Langerhans (APC dendritiche mieloidi dello strato spinoso per l'immunosorveglianza linfonodale); 4) Cellule di Merkel (meccanocettori a lento adattamento SA-I con dischi tattili). Panoramica della stratificazione istologica dinamica (basale, spinoso, granuloso, lucido palmo-plantare, corneo).
 ========================================================== -->
-<section class="text-block grid-container50 mb-15" aria-labelledby="epidermis-title" data-lang-key="epidermis_content">
+<section class="text-block grid-container50" aria-labelledby="epidermis-title" data-lang-key="epidermis_content">
   <div class="div2">
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/epidermide.avif" class="transparent specials-img" alt="Diagramma istologico e stratificazione cellulare dell'epidermide" width="732" height="764" loading="lazy" decoding="async">
   </div>
@@ -373,28 +308,25 @@ DESCRIZIONE: Anatomia e trofismo dell'epitelio pavimentoso stratificato cheratin
   <div class="div3">
     <h2 class="secHeader" id="epidermis-title">L’Epidermide: Architettura e Popolazioni Cellulari</h2>
     
-    <p class="text mb-5">
+    <p class="text">
       L’epidermide costituisce lo strato più superficiale della cute. Si configura istologicamente come un epitelio pavimentoso stratificato cheratinizzato, completamente avascolare, il cui trofismo metabolico dipende dalla diffusione passiva di ossigeno e nutrienti dal derma papillare attraverso la giunzione dermo-epidermica. L'epitelio integra quattro citotipi cooperanti:
     </p>
 
     <ul class="text">
-      <li class="mb-5">
+      <li>
         <strong>1. Cheratinociti (~90%):</strong> Vanno incontro alla <em>citomorfosi cornea</em>, originando per mitosi dalle cellule staminali/amplificanti basali e migrando superficialmente. Durante il transito si appiattiscono, accumulano citocheratine, estrudono lipidi idrofobici mediante i corpi lamellari (granuli di Odland) e completano la cornificazione con la dissoluzione di nucleo e organuli.
       </li>
-      <li class="mb-5">
+      <li>
         <strong>2. Melanociti:</strong> Cellule dendritiche neuroectodermiche nello strato basale (rapporto medio 1:10 con i cheratinociti). Sintetizzano melanina nei melanosomi per ossidazione della tirosina e la trasferiscono per <em>secrezione citocrina</em> ai cheratinociti per schermare il genoma dalle radiazioni UV.
       </li>
-      <li class="mb-5">
+      <li>
         <strong>3. Cellule di Langerhans:</strong> Cellule dendritiche immunocompetenti del sistema dei fagociti mononucleati, localizzate nello strato spinoso. Operano come APC professionali: campionano gli antigeni epidermici e migrano per via linfatica ai linfonodi regionali per attivare i linfociti T.
       </li>
       <li>
         <strong>4. Cellule di Merkel:</strong> Meccanocettori a lento adattamento (Tipo I) situati nello strato basale, associati a terminazioni nervose afferenti mieliniche (complessi neurite-cellula di Merkel) per la trasduzione della sensibilità tattile epicritica ad alta risoluzione spaziale.
       </li>
     </ul>
-  </div>
 
-  <!-- Blocco full-width posizionato sotto le due colonne (div) -->
-  <div class="grid-full-width">
     <p class="biotechbold">
       Organizzazione e Stratificazione Istologica Dinamica
     </p>
