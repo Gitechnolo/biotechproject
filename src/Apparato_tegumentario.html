@@ -391,7 +391,6 @@ DESCRIZIONE: Approfondimento sequenziale dei cinque strati epidermici.
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/strato_basale_germinativo.avif" class="transparent specials-img" alt="Rappresentazione schematica della stratificazione dell'epidermide, dallo strato basale a quello corneo" width="350" height="496" loading="lazy" decoding="async" style="display: block; margin: 0 auto; height: auto; max-width: 100%;">
   </figure>
 
-  <!-- Il data-lang-key racchiude SOLO i testi -->
   <div data-lang-key="epidermis_layers_content">
     <h3 id="epidermis-layers-title" class="secHeader">Strato basale o germinativo</h3>
     <p class="text mb-10">È lo strato più profondo e sottile dell'epidermide, costituito da un singolo strato di cheratinociti cuboidei o cilindrici, caratterizzati da un nucleo voluminoso e citoplasma basofilo. La sua funzione primaria è la proliferazione cellulare: le cellule staminali presenti si dividono attivamente (mitosi), generando nuove cellule che vengono spinte verso gli strati superficiali, avviando il processo di differenziazione. Nello strato basale sono inoltre presenti i melanociti, con un rapporto medio di circa 1 melanocita ogni 10 cheratinociti.</p>
@@ -418,19 +417,54 @@ SEZIONE: Cheratina e Cheratogenesi (keratin_process_content)
 DESCRIZIONE: Approfondimento biochimico su struttura dell'alfa-cheratina, ponti disolfuro, switch delle citocheratine (CK5/14 -> CK1/10) e cinetica del turnover epidermico.
 ========================================================== -->
 <section class="text-block" aria-labelledby="keratin-title">
+  
+  <!-- Blocco Testo & Modelli Strutturati Traducibili -->
   <div data-lang-key="keratin_process_content" class="mb-15">
     <h3 class="secHeader" id="keratin-title">La Cheratina e il Processo di Cheratogenesi</h3>
     
     <p class="text mb-15">
-      La cheratina è una proteina fibrosa e strutturale caratterizzata da catene polipeptidiche con conformazione ad &alpha;-elica. La sua elevata resistenza meccanica, stabilità chimica e insolubilità acquosa dipendono dall'abbondante concentrazione di cisteina, amminoacido solforato in grado di formare legami covalenti crociati stabili (ponti disolfuro, -S-S-) tra le catene adiacenti. Negli annessi cutanei (unghie e capelli), la densità di questi ponti intercatena determina direttamente il grado di rigidità e coesione del tessuto cheratinizzato.
+      La <strong>cheratina</strong> è una proteina fibrosa e strutturale appartenente ai filamenti intermedi del citoscheletro, presente in <strong>tutti gli strati dell'epidermide</strong> con isoforme e funzioni diverse. È caratterizzata da catene polipeptidiche con conformazione ad <strong>&alpha;-elica</strong>. La sua elevata resistenza meccanica, stabilità chimica e insolubilità acquosa dipendono dall'abbondante concentrazione di <strong>cisteina</strong>, amminoacido solforato in grado di formare legami covalenti crociati stabili (<strong>ponti disolfuro, -S-S-</strong>) tra le catene adiacenti. Negli annessi cutanei (unghie e capelli), la densità di questi ponti intercatena determina direttamente il grado di rigidità e coesione del tessuto cheratinizzato.
     </p>
 
+    <!-- DIAGRAMMA DI FLUSSO: STADI DELLA CHERATOGENESI -->
+    <div class="cyber-flowchart mb-15">
+      <div class="flow-branches">
+        <div class="flow-card extrinsic">
+          <span class="flow-tag tag-extrinsic">1. Strato Basale</span>
+          <div class="flow-title">CK5 / CK14</div>
+          <div class="flow-desc">Cheratina flessibile per proliferazione e ancoraggio emidesmosomiale alla lamina basale.</div>
+        </div>
+        
+        <div class="flow-card intrinsic">
+          <span class="flow-tag tag-intrinsic">2. Strato Spinoso</span>
+          <div class="flow-title">Switch CK1 / CK10</div>
+          <div class="flow-desc">Inizio del differenziamento e assemblaggio dei tonofilamenti ad alta resistenza.</div>
+        </div>
+      </div>
+      
+      <div class="flow-arrow-down">&darr;</div>
+      
+      <div class="flow-branches">
+        <div class="flow-card common">
+          <span class="flow-tag tag-common">3. Strato Granuloso</span>
+          <div class="flow-title">Granuli di Cheratogialina</div>
+          <div class="flow-desc">Sintesi di profilaggrina e aggregazione dei filamenti nella matrice interfilamentosa.</div>
+        </div>
+        
+        <div class="flow-card lysis">
+          <span class="flow-tag tag-lysis">4. Strato Corneo</span>
+          <div class="flow-title">Involucro Cornificato (CE)</div>
+          <div class="flow-desc">Cross-linking via transglutaminasi (TG1, TG3, TG5) e dissoluzione del nucleo.</div>
+        </div>
+      </div>
+    </div>
+
     <p class="text mb-15">
-      L'epidermide è un tessuto dinamico mantenuto da un continuo rinnovamento noto come <em>turnover epidermico</em>. Nello strato basale, le cellule staminali e le loro progenitrici a rapida proliferazione (<em>transit-amplifying</em>) si dividono per mitosi. Le cellule figlie intraprendono un percorso di migrazione e differenziamento verticale (cheratogenesi), durante il quale rimodellano il citoscheletro modificando l'espressione delle citocheratine da eterodimeri basali (CK5/CK14) a eterodimeri sovrabasali (CK1/CK10), fino al raggiungimento della cornificazione terminale.
+      L'epidermide è un tessuto dinamico mantenuto da un continuo rinnovamento noto come <em>turnover epidermico</em>. Nello strato basale, le cellule staminali e le loro progenitrici a rapida proliferazione (<em>transit-amplifying</em>) si dividono per mitosi. Le cellule figlie intraprendono un percorso di migrazione e differenziamento verticale (cheratogenesi), durante il quale rimodellano il citoscheletro modificando l'espressione delle citocheratine da eterodimeri basali (<strong>CK5/CK14</strong>) a eterodimeri sovrabasali (<strong>CK1/CK10</strong>), fino al raggiungimento della cornificazione terminale.
     </p>
 
     <!-- TABELLA SCIENTIFICA / DIAGNOSTICA INTEGRATA -->
-    <div class="cyber-table-container">
+    <div class="cyber-table-container mb-15">
       <table class="cyber-table">
         <thead>
           <tr>
@@ -446,9 +480,14 @@ DESCRIZIONE: Approfondimento biochimico su struttura dell'alfa-cheratina, ponti 
             <td>Mantenimento della plasticità cellulare e ancoraggio emidesmosomiale alla lamina basale.</td>
           </tr>
           <tr>
-            <td><strong>Strato Spinoso / Granuloso</strong></td>
+            <td><strong>Strato Spinoso</strong></td>
             <td>CK1 / CK10</td>
-            <td>Assemblaggio dei tonofilamenti ad alta resistenza e aggregazione mediante profilaggrina.</td>
+            <td>Assemblaggio dei tonofilamenti ad alta resistenza e inizio della barriera meccanica.</td>
+          </tr>
+          <tr>
+            <td><strong>Strato Granuloso</strong></td>
+            <td>CK1 / CK10 + Profilaggrina</td>
+            <td>Aggregazione dei filamenti di cheratina e preparazione della matrice interfilamentosa (Cheratogialina).</td>
           </tr>
           <tr>
             <td><strong>Strato Corneo</strong></td>
@@ -464,7 +503,7 @@ DESCRIZIONE: Approfondimento biochimico su struttura dell'alfa-cheratina, ponti 
     </p>
 
     <p class="text">
-      Il tempo di ricambio epidermico completo (<em>turnover time</em>) in un adulto giovane sano si attesta mediamente tra i 25 e i 28 giorni. Con il fisiologico invecchiamento cutaneo, questa finestra temporale subisce un progressivo e significativo prolungamento, compromettendo l'efficienza dei meccanismi di riparazione e rigenerazione tissutale.
+      Il tempo di ricambio epidermico completo (<em>turnover time</em>) in un adulto giovane sano si attesta mediamente tra i <strong>25 e i 28 giorni</strong>. Con il fisiologico invecchiamento cutaneo, questa finestra temporale subisce un progressivo e significativo prolungamento, compromettendo l'efficienza dei meccanismi di riparazione e rigenerazione tissutale.
     </p>
   </div>
 
