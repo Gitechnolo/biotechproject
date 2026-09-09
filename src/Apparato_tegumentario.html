@@ -982,22 +982,49 @@ DESCRIZIONE: Caratteristiche biochimiche della sostanza fondamentale, istologia 
       Riferimenti Scientifici e Bibliografia Clinico-Molecolare
     </h3>
     <p class="flow-desc">
-      Fonti primarie peer-reviewed, linee guida cliniche e review traslazionali utilizzate per la redazione del documento sull'apparato tegumentario, l'istologia cutanea, la biologia dei cheratinociti e la fisiopatologia di barriera.
+      Fonti primarie peer-reviewed, linee guida cliniche e review traslazionali utilizzate per la redazione del documento sull'apparato tegumentario, l'istologia cutanea, la biologia dei cheratinociti, la matrice dermica e la fisiopatologia di barriera.
     </p>
   </div>
 
-  <div class="cyber-table-container mb-15">
-    <table class="cyber-table">
+  <!-- Barra di Controllo Filtro -->
+  <div class="biblio-filter-bar">
+    <input 
+      type="search" 
+      id="biblio-search" 
+      class="cyber-input" 
+      placeholder="Cerca per autore, titolo, rivista o DOI..." 
+      aria-label="Cerca nella bibliografia"
+    >
+    <select 
+      id="biblio-topic-filter" 
+      class="cyber-select" 
+      aria-label="Filtra per argomento"
+    >
+      <option value="all">Tutti gli argomenti</option>
+      <option value="fisiologia">Fisiologia &amp; Barriera Cutanea</option>
+      <option value="biocatalisi">Melanogenesi &amp; endocrinologia</option>
+      <option value="neuro-sensoriale">Neurofisiologia &amp; Recettori TRP</option>
+      <option value="patologia">Patologia &amp; Trascrittomica</option>
+      <option value="anti-aging">Invecchiamento &amp; Fotoinvecchiamento</option>
+      <option value="open-knowledge">Open Knowledge</option>
+    </select>
+  </div>
+
+  <!-- Regione Live ARIA per notifica dinamica Screen Reader -->
+  <div id="biblio-aria-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="cyber-table-container">
+    <table id="biblio-table" class="cyber-table" aria-describedby="titolo-bibliografia">
       <thead>
         <tr>
-          <th style="width: 5%;">#</th>
-          <th style="width: 25%;">Autori &amp; Anno</th>
-          <th style="width: 45%;">Titolo &amp; Rivista</th>
-          <th style="width: 25%;">Identificatore DOI</th>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 25%;">Autori &amp; Anno</th>
+          <th scope="col" style="width: 45%;">Titolo &amp; Rivista</th>
+          <th scope="col" style="width: 25%;">Identificatore DOI</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr data-topic="fisiologia">
           <td><span class="flow-tag tag-common">1</span></td>
           <td><strong>Proksch, E., et al.</strong><br><small class="slate">(2008)</small></td>
           <td>
@@ -1005,46 +1032,111 @@ DESCRIZIONE: Caratteristiche biochimiche della sostanza fondamentale, istologia 
             <div class="flow-desc f-78">Experimental Dermatology, 17(12), 1063–1072</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1111/j.1600-0625.2008.00786.x" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
+            <a href="https://doi.org/10.1111/j.1600-0625.2008.00786.x" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1111/j.1600-0625.2008.00786.x (si apre in una nuova scheda)">
               10.1111/j.1600-0625.2008.00786.x
             </a>
           </td>
         </tr>
-        <tr>
+        <tr data-topic="biocatalisi">
           <td><span class="flow-tag tag-common">2</span></td>
+          <td><strong>Holick, M. F.</strong><br><small class="slate">(2007)</small></td>
+          <td>
+            <div class="flow-title f-85">Vitamin D deficiency</div>
+            <div class="flow-desc f-78">The New England Journal of Medicine, 357(3), 266–281</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1056/NEJMra070553" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1056/NEJMra070553 (si apre in una nuova scheda)">
+              10.1056/NEJMra070553
+            </a>
+          </td>
+        </tr>
+        <tr data-topic="anti-aging">
+          <td><span class="flow-tag tag-common">3</span></td>
+          <td><strong>Quan, T., et al.</strong><br><small class="slate">(2009)</small></td>
+          <td>
+            <div class="flow-title f-85">Matrix-degrading metalloproteinases in photoaging</div>
+            <div class="flow-desc f-78">Journal of Investigative Dermatology Symposium Proceedings, 14(1), 20–24</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1038/jidsymp.2009.8" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/jidsymp.2009.8 (si apre in una nuova scheda)">
+              10.1038/jidsymp.2009.8
+            </a>
+          </td>
+        </tr>
+        <tr data-topic="biocatalisi">
+          <td><span class="flow-tag tag-common">4</span></td>
+          <td><strong>Hearing, V. J.</strong><br><small class="slate">(2005)</small></td>
+          <td>
+            <div class="flow-title f-85">Biogenesis of pigment granules: a sensitive way to regulate melanocyte function</div>
+            <div class="flow-desc f-78">Journal of Dermatological Science, 37(1), 3–14</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1016/j.jdermsci.2004.08.014" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1016/j.jdermsci.2004.08.014 (si apre in una nuova scheda)">
+              10.1016/j.jdermsci.2004.08.014
+            </a>
+          </td>
+        </tr>
+        <tr data-topic="neuro-sensoriale">
+          <td><span class="flow-tag tag-common">5</span></td>
+          <td><strong>Caterina, M. J., et al.</strong><br><small class="slate">(1997)</small></td>
+          <td>
+            <div class="flow-title f-85">The capsaicin receptor: a heat-activated ion channel in the pain pathway</div>
+            <div class="flow-desc f-78">Nature, 389(6653), 816–824</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1038/39807" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/39807 (si apre in una nuova scheda)">
+              10.1038/39807
+            </a>
+          </td>
+        </tr>
+        <tr data-topic="fisiologia">
+          <td><span class="flow-tag tag-common">6</span></td>
+          <td><strong>Schittek, B., et al.</strong><br><small class="slate">(2001)</small></td>
+          <td>
+            <div class="flow-title f-85">Dermcidin: a novel human antibiotic peptide secreted by sweat glands</div>
+            <div class="flow-desc f-78">Nature Immunology, 2(12), 1133–1137</div>
+          </td>
+          <td>
+            <a href="https://doi.org/10.1038/ni732" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/ni732 (si apre in una nuova scheda)">
+              10.1038/ni732
+            </a>
+          </td>
+        </tr>
+        <tr data-topic="patologia">
+          <td><span class="flow-tag tag-common">7</span></td>
           <td><strong>Li, B., Tsoi, L. C., et al.</strong><br><small class="slate">(2014)</small></td>
           <td>
             <div class="flow-title f-85">Transcriptome Analysis of Psoriasis in a Large Case–Control Sample</div>
             <div class="flow-desc f-78">Journal of Investigative Dermatology, 134(7), 1828–1838</div>
           </td>
           <td>
-            <a href="https://doi.org/10.1038/jid.2014.28" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
+            <a href="https://doi.org/10.1038/jid.2014.28" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.1038/jid.2014.28 (si apre in una nuova scheda)">
               10.1038/jid.2014.28
             </a>
           </td>
         </tr>
-        <tr>
-          <td><span class="flow-tag tag-common">3</span></td>
+        <tr data-topic="anti-aging">
+          <td><span class="flow-tag tag-common">8</span></td>
           <td><strong>Ganceviciene, R., et al.</strong><br><small class="slate">(2012)</small></td>
           <td>
             <div class="flow-title f-85">Skin anti-aging strategies</div>
             <div class="flow-desc f-78">Dermato-Endocrinology, 4(3), 308–319</div>
           </td>
           <td>
-            <a href="https://doi.org/10.4161/derm.22804" target="_blank" rel="noopener" class="flow-tag tag-lysis" style="text-decoration: none;">
+            <a href="https://doi.org/10.4161/derm.22804" target="_blank" rel="noopener" class="flow-tag tag-lysis" aria-label="DOI 10.4161/derm.22804 (si apre in una nuova scheda)">
               10.4161/derm.22804
             </a>
           </td>
         </tr>
-        <tr>
-          <td><span class="flow-tag tag-common">4</span></td>
+        <tr data-topic="open-knowledge">
+          <td><span class="flow-tag tag-common">9</span></td>
           <td><strong>BiotechProject Team</strong><br><small class="slate">(2026)</small></td>
           <td>
             <div class="flow-title f-85">Iniziativa Open Knowledge &amp; Divulgazione Scientifica</div>
             <div class="flow-desc f-78">Contributi e revisione voci enciclopediche su Wikipedia (IT)</div>
           </td>
           <td>
-            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis">
+            <a href="https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo" target="_blank" rel="noopener noreferrer" class="flow-tag tag-lysis" aria-label="Wikipedia Contributi Gitechnolo (si apre in una nuova scheda)">
               wiki/Gitechnolo
             </a>
           </td>
@@ -1072,6 +1164,8 @@ DESCRIZIONE: Caratteristiche biochimiche della sostanza fondamentale, istologia 
 <div class="noscript-banner"><noscript><p lang="it">Per un'esperienza ottimale, abilita JavaScript nel tuo browser.</p><p lang="it">Benvenuto in <strong>Biotech Project</strong> – Innovazione al servizio della salute.</p></noscript></div>
 <!-- Script critico inline: nasconde il banner se JS è abilitato (Inline critical) -->
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script> 
+<script src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.js" defer></script>
+<!-- Script Gestione Filtro Bibliografia Specialistica (Accessibile WCAG AAA) -->
+<script>(function(){'use strict';var timer=null;function filterBiblio(){var searchInput=document.getElementById('biblio-search');var topicFilter=document.getElementById('biblio-topic-filter');var tableRows=document.querySelectorAll('#biblio-table tbody tr');var ariaStatus=document.getElementById('biblio-aria-status');if(!tableRows.length)return;var query=searchInput?searchInput.value.toLowerCase().trim():'';var selectedTopic=topicFilter?topicFilter.value:'all';requestAnimationFrame(function(){var visibleCount=0;var totalCount=tableRows.length;tableRows.forEach(function(row){var text=row.textContent.toLowerCase();var topic=row.getAttribute('data-topic');var matchesSearch=query===''||text.includes(query);var matchesTopic=selectedTopic==='all'||topic===selectedTopic;if(matchesSearch&&matchesTopic){row.style.removeProperty('display');visibleCount++;}else{row.style.setProperty('display','none','important');}});if(ariaStatus){if(visibleCount===totalCount){ariaStatus.textContent='Visualizzati tutti gli '+totalCount+' elementi della bibliografia.';}else if(visibleCount===0){ariaStatus.textContent='Nessun risultato trovato per i filtri selezionati.';}else{ariaStatus.textContent='Trovati '+visibleCount+' elementi su '+totalCount+'.';}}});}function debouncedFilter(){if(timer)clearTimeout(timer);timer=setTimeout(filterBiblio,200);}document.addEventListener('input',function(e){if(e.target&&e.target.id==='biblio-search')debouncedFilter();});document.addEventListener('change',function(e){if(e.target&&e.target.id==='biblio-topic-filter')filterBiblio();});})();</script>
 </body>
   </html>
