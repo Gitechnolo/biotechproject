@@ -1,23 +1,53 @@
 <!DOCTYPE html>
 <html lang="it" dir="ltr" class="no-js">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Valutazione Tecnica del Sito | Prestazioni & Accessibilità - Biotech Project</title>
-<meta name="description" content="Analisi della maturità tecnologica di Biotech Project: scopri i punteggi di velocità, accessibilità e le best practice web implementate.">
-<link rel="canonical" href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
-<meta property="og:title" content="Valutazione Tecnica del Sito | Biotech Project">
-<meta property="og:description" content="Report tecnico su performance e conformità agli standard web moderni.">
-<meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
-<meta property="og:image:alt" content="Dashboard delle prestazioni Biotech Project">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Valutazione Tecnica del Sito | Biotech Project">
-<meta name="twitter:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
-<link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
-<link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- SEO Title & Meta Description (Orientate alla stabilità) -->
+  <title>Valutazione Tecnica del Sito | Prestazioni & Accessibilità - Biotech Project</title>
+  <meta name="description" content="Dashboard in tempo reale sulla maturità tecnologica e resilienza SRE di Biotech Project: monitoraggio continuo su prestazioni, accessibilità e test di carico.">
+  <!-- Directives for Search Engine Crawlers (Robots) -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+  <!-- Favicon -->
+  <link rel="icon" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/favicon-biotech.png" type="image/png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+  <meta property="og:title" content="Valutazione Tecnica e Performance SRE | Biotech Project">
+  <meta property="og:description" content="Dashboard in tempo reale sulla maturità tecnologica e resilienza SRE di Biotech Project: monitoraggio continuo su prestazioni, accessibilità e test di carico.">
+  <meta property="og:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dashboard delle prestazioni e maturità tecnologica - Biotech Project">
+  <meta property="og:site_name" content="Biotech Project">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_US">
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@biotechproject">
+  <meta name="twitter:title" content="Valutazione Tecnica e Performance SRE | Biotech Project">
+  <meta name="twitter:description" content="Dashboard in tempo reale sulla maturità tecnologica e resilienza SRE di Biotech Project: monitoraggio continuo su prestazioni, accessibilità e test di carico.">
+  <meta name="twitter:image" content="https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png">
+  <meta name="twitter:image:alt" content="Dashboard delle prestazioni e maturità tecnologica - Biotech Project">
+  <!-- Timestamps e Metadata -->
+  <meta name="author" content="Biotech Project Team">
+  <meta name="article:author" content="https://www.linkedin.com/in/biotechproject">
+  <meta name="article:published_time" content="2025-09-15T09:05:00+02:00">
+  <meta name="article:modified_time" content="2026-09-12T09:25:16+02:00">
+  <!-- Highwire Press / Google Scholar Metadata -->
+  <meta name="citation_title" content="Valutazione Tecnica e Report di Performance SRE: Biotech Project">
+  <meta name="citation_author" content="Biotech Project Team">
+  <meta name="citation_publication_date" content="2026/09/12">
+  <meta name="citation_journal_title" content="Biotech Project Infrastructure Reports">
+  <meta name="citation_language" content="it">
+  <meta name="citation_fulltext_html_url" content="https://gitechnolo.github.io/biotechproject/Tech_Maturity.html">
+  <meta name="citation_reference" content="citation_title=Site Reliability Engineering: How Google Runs Production Systems; citation_author=B. Beyer; citation_author=C. Jones; citation_author=J. Petoff; citation_author=R. Murphy; citation_publication_date=2016">
+  <meta name="citation_reference" content="citation_title=Web Content Accessibility Guidelines (WCAG) 2.2; citation_author=W3C; citation_publication_date=2023; citation_doi=10.1145/3610910">
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://gitechnolo.github.io" crossorigin>
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" as="script">
 <link rel="preload" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/biotechlogo.avif" as="image" fetchpriority="high">
 <link rel="stylesheet" href="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech.min.css" media="print" onload="this.media='all'">
@@ -40,7 +70,8 @@ html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Valutazione Tecnica Biotech Project","description":"Analisi prestazioni, accessibilità e best practice Biotech.","author":{"@type":"Organization","name":"Biotech Project Team"},"publisher":{"@type":"Organization","name":"Biotech Project","logo":{"@type":"ImageObject","url":"https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}},"datePublished":"2025-08-02","dateModified":"2025-12-22"}</script>
+<!-- Schema.org structured data (JSON-LD) -->
+<script type="application/ld+json">{ "@context": "https://schema.org", "@graph": [ { "@type": "BreadcrumbList", "@id": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html#breadcrumb", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitechnolo.github.io/biotechproject/"}, { "@type": "ListItem", "position": 2, "name": "Maturità Tecnologica", "item": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html"} ]}, { "@type": "TechArticle", "@id": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html#article", "headline": "Valutazione Tecnica del Sito | Prestazioni & Accessibilità - Biotech Project", "name": "Valutazione Tecnica del Sito | Prestazioni & Accessibilità", "description": "Dashboard per l'analisi in tempo reale delle prestazioni, tempi di risposta e della resilienza ad alto carico dell'infrastruttura Biotech Project.", "url": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html", "mainEntityOfPage": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html", "image": [ { "@type": "ImageObject", "url": "https://gitechnolo.github.io/biotechproject/Biotech-file/images/tech-audit-preview.png", "width": 1200, "height": 630, "caption": "Dashboard delle prestazioni e maturità tecnologica - Biotech Project"} ], "datePublished": "2025-09-15T09:05:00+02:00", "dateModified": "2026-09-12T09:25:16+02:00", "inLanguage": "it-IT", "about": [ { "@type": "Thing", "name": "Web Performance Optimization", "sameAs": "https://en.wikipedia.org/wiki/Web_performance"}, { "@type": "Thing", "name": "Site Reliability Engineering", "sameAs": "https://en.wikipedia.org/wiki/Site_Reliability_Engineering"}, { "@type": "Thing", "name": "WCAG 2.2", "sameAs": "https://www.w3.org/TR/WCAG22/"} ], "isAccessibleForFree": true, "author":{ "@type": "Organization", "name": "Biotech Project Team", "url": "https://gitechnolo.github.io/biotechproject/", "founder":{ "@type": "Person", "name": "Gitechnolo", "jobTitle": "Fondatore & Sviluppatore", "sameAs": [ "https://it.wikipedia.org/wiki/Speciale:Contributi/Gitechnolo", "https://github.com/gitechnolo" ]}}, "publisher":{ "@type": "Organization", "name": "Biotech Project", "logo":{ "@type": "ImageObject", "url": "https://gitechnolo.github.io/biotechproject/Biotech-file/images/logo-biotech.png"}, "sameAs": [ "https://www.linkedin.com/in/biotechproject", "https://github.com/gitechnolo/biotechproject" ]}, "isPartOf":{ "@type": "WebSite", "name": "Biotech Project", "url": "https://gitechnolo.github.io/biotechproject/"}}, { "@type": "ItemList", "@id": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html#monitored-pages", "name": "Pagine Monitorate dall'Audit Prestazionale", "numberOfItems": 26, "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Homepage", "url": "https://gitechnolo.github.io/biotechproject/index.html"}, { "@type": "ListItem", "position": 2, "name": "Cuore", "url": "https://gitechnolo.github.io/biotechproject/Cuore.html"}, { "@type": "ListItem", "position": 3, "name": "Cuore (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Cuore-semplice.html"}, { "@type": "ListItem", "position": 4, "name": "Apparato respiratorio", "url": "https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html"}, { "@type": "ListItem", "position": 5, "name": "Apparato respiratorio (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html"}, { "@type": "ListItem", "position": 6, "name": "Apparato digerente", "url": "https://gitechnolo.github.io/biotechproject/Apparato_digerente.html"}, { "@type": "ListItem", "position": 7, "name": "Apparato digerente (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html"}, { "@type": "ListItem", "position": 8, "name": "Apparato tegumentario", "url": "https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html"}, { "@type": "ListItem", "position": 9, "name": "Apparato tegumentario (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html"}, { "@type": "ListItem", "position": 10, "name": "Sistema linfatico", "url": "https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html"}, { "@type": "ListItem", "position": 11, "name": "Sistema linfatico (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html"}, { "@type": "ListItem", "position": 12, "name": "Dermatologia", "url": "https://gitechnolo.github.io/biotechproject/Dermatologia.html"}, { "@type": "ListItem", "position": 13, "name": "Dermatologia (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html"}, { "@type": "ListItem", "position": 14, "name": "Cellula", "url": "https://gitechnolo.github.io/biotechproject/Cellula.html"}, { "@type": "ListItem", "position": 15, "name": "Cellula (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Cellula-semplice.html"}, { "@type": "ListItem", "position": 16, "name": "Capelli", "url": "https://gitechnolo.github.io/biotechproject/Capelli.html"}, { "@type": "ListItem", "position": 17, "name": "Capelli (versione semplificata)", "url": "https://gitechnolo.github.io/biotechproject/Capelli-semplice.html"}, { "@type": "ListItem", "position": 18, "name": "Staff", "url": "https://gitechnolo.github.io/biotechproject/Staff.html"}, { "@type": "ListItem", "position": 19, "name": "Progetti", "url": "https://gitechnolo.github.io/biotechproject/Progetti.html"}, { "@type": "ListItem", "position": 20, "name": "Marketing", "url": "https://gitechnolo.github.io/biotechproject/Marketing.html"}, { "@type": "ListItem", "position": 21, "name": "Supporto OS", "url": "https://gitechnolo.github.io/biotechproject/O.S_support.html"}, { "@type": "ListItem", "position": 22, "name": "Forum Tablet", "url": "https://gitechnolo.github.io/biotechproject/Tablet_forum.html"}, { "@type": "ListItem", "position": 23, "name": "Specials", "url": "https://gitechnolo.github.io/biotechproject/Specials.html"}, { "@type": "ListItem", "position": 24, "name": "Maturità tecnologica", "url": "https://gitechnolo.github.io/biotechproject/Tech_Maturity.html"}, { "@type": "ListItem", "position": 25, "name": "Accessibilità (informazioni)", "url": "https://gitechnolo.github.io/biotechproject/accessibility-it.html"}, { "@type": "ListItem", "position": 26, "name": "Accessibility (information)", "url": "https://gitechnolo.github.io/biotechproject/accessibility-en.html"} ]} ]} </script>
 </head>
 <body class="biotechbody" data-modern-menu>
 <!-- Link "Skip to main" salto per tastiera (accessibilità) -->
