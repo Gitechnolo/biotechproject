@@ -582,146 +582,191 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
   </div>
 </section>
 
-<!-- Atomo, Componenti e Struttura -->
-<div data-lang-key="atom_intro_components">
-  <h2 class="secHeader biotechcenter mt-15">L’ATOMO ⚛️</h2>
-  <p class="text">L’atomo è la più piccola particella di un elemento chimico che ne <strong>conserva le caratteristiche specifiche</strong> e l'identità.</p>
-  
-  <h2 class="subtitle">Componenti Principali</h2>
-  <span class="text">È costituito da:</span>
-  <div class="text" style="padding: 1px; border-left: 3px solid #9fe8d0; background-color: rgba(138, 43, 226, 0.1);">
-    <ul>
-      <li><strong>Nucleo:</strong> Composto da <strong>protoni</strong> (carica positiva) e <strong>neutroni</strong> (privi di carica). Concentra quasi tutta la massa dell’atomo (>99.9%).</li>
-      <li><strong>Elettroni:</strong> Particelle con carica negativa che si muovono attorno al nucleo occupando <strong>orbitali</strong>, regioni di spazio dove è <span class="biotechbold">massima la probabilità</span> di trovarli (modello quantomeccanico).</li>
+<!-- ==========================================
+  SEZIONE: ATOMO E LEGAMI CHIMICI (atomic_structure_bonds)
+  DESCRIZIONE: Struttura atomica, ioni, tavola periodica, legami forti (ionico, covalente, metallico) e legami deboli (idrogeno, van der Waals).
+  WCAG 2.2 AAA | WAI-ARIA Accessible | Riferimenti Scientifici e Media Integrati
+  ========================================== -->
+<section id="atomo-legami-chimici" class="text-block" aria-labelledby="titolo-atomo-legami" data-lang-key="atomic_structure_bonds">
+
+  <!-- TITOLO PRINCIPALE DELLA SEZIONE -->
+  <h2 id="titolo-atomo-legami" class="secHeader biotechcenter mb-15 fs30">L’ATOMO E I LEGAMI CHIMICI ⚛️</h2>
+
+  <!-- SOTTOSEZIONE 1: ATOMO E COMPONENTI -->
+  <div class="mb-30">
+    <p class="text mb-15">
+      L’atomo è la più piccola particella di un elemento chimico che ne <strong>conserva le caratteristiche specifiche</strong> e l'identità.
+    </p>
+    
+    <h3 class="subtitle mb-10">Componenti Principali</h3>
+    <p class="text mb-10">È costituito da:</p>
+    <div class="text mb-15" style="padding: 10px; border-left: 3px solid #9fe8d0; background-color: rgba(138, 43, 226, 0.1); border-radius: 0 5px 5px 0;">
+      <ul style="padding-left: 20px;">
+        <li class="mb-5"><strong>Nucleo:</strong> Composto da <strong>protoni</strong> (carica positiva) e <strong>neutroni</strong> (privi di carica). Concentra quasi tutta la massa dell’atomo (&gt;99.9%).</li>
+        <li><strong>Elettroni:</strong> Particelle con carica negativa che si muovono attorno al nucleo occupando <strong>orbitali</strong>, regioni di spazio dove è <span class="biotechbold">massima la probabilità</span> di trovarli (modello quantomeccanico).</li>
+      </ul>
+    </div>
+
+    <h3 class="subtitle mb-10">Concetto Fondamentale</h3>
+    <div class="yellowtext mb-15" style="padding: 10px; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 5px; background-color: rgba(0, 230, 118, 0.05);">
+      Un <span class="orangetext">atomo elettricamente neutro</span> ha un numero di protoni uguale al numero di elettroni, risultando in una <strong>carica netta = 0</strong>.
+    </div>
+  </div>
+
+  <!-- SOTTOSEZIONE 2: IONI E TAVOLA PERIODICA -->
+  <div class="mb-30">
+    <h3 class="secHeader mb-10">Ioni 🧪</h3>
+    <p class="text mb-10">
+      Lo <span class="orangetext">IONE</span> è un atomo (o un gruppo di atomi) che ha <strong>ceduto o acquistato</strong> uno o più elettroni, assumendo una carica elettrica netta.
+    </p>
+    <dl class="text mb-15" style="padding-left: 10px;">
+      <dt><span class="greentext biotechbold">ANIONE</span></dt>
+      <dd class="mb-5">Si forma per <strong>acquisto di elettroni</strong>; la carica risultante è <strong>negativa</strong>.</dd>
+      <dt><span class="greentext biotechbold">CATIONE</span></dt>
+      <dd>Si forma per <strong>cessione di elettroni</strong>; la carica risultante è <strong>positiva</strong>.</dd>
+    </dl>
+
+    <h3 class="secHeader mb-10">Tavola Periodica degli Elementi 📊</h3>
+    <p class="text mb-10">
+      Gli elementi sono ordinati per <strong>numero atomico crescente</strong> (Z), secondo il principio di periodicità formulato da Mendeleev nel 1869.
+    </p>
+    
+    <h4 class="subtitle mb-5">Contenuto della Casella</h4>
+    <ol class="text mb-15" style="padding-left: 20px;">
+      <li class="mb-5">Al centro: il <span class="orangetext">simbolo chimico</span> (es. Na, Cl).</li>
+      <li class="mb-5">In evidenza: il <strong>numero atomico Z</strong> (numero di protoni; definisce l'identità dell'elemento).</li>
+      <li>Solitamente in basso: la <strong>massa atomica relativa</strong> (espressa in <strong>u</strong>, unità di massa atomica unificata; è la media ponderata delle masse dei suoi isotopi naturali).</li>
+    </ol>
+  </div>
+
+  <!-- SOTTOSEZIONE 3: TEORIA DEI LEGAMI, LEWIS E OTTETTO -->
+  <div class="mb-30">
+    <h3 class="secHeader mb-10">Legami Chimici e Stabilità 🔗</h3>
+    <p class="text mb-10">
+      Gli atomi interagiscono per raggiungere uno stato di <strong>minima energia potenziale</strong>, formando aggregati più stabili.
+    </p>
+    <div class="yellowtext mb-15" style="padding: 10px; background-color: rgba(159, 232, 208, 0.1); border-left: 3px solid #9fe8d0; border-radius: 0 5px 5px 0;">
+      Il legame si forma spontaneamente perché il sistema risultante ha un <strong>contenuto energetico inferiore</strong> rispetto agli atomi isolati. Minore energia potenziale = <span class="orangetext">maggiore stabilità</span>.
+    </div>
+
+    <h4 class="subtitle mb-5">Teoria di Lewis e della Valenza</h4>
+    <p class="text mb-10">
+      Gli atomi interagiscono per raggiungere una <strong>configurazione elettronica esterna stabile</strong> (minima energia), spesso simile a quella dei gas nobili.
+    </p>
+
+    <h4 class="subtitle mb-5">La Regola dell’Ottetto</h4>
+    <p class="text mb-10">
+      I <strong>gas nobili</strong> (gruppo 18) sono chimicamente inerti perché possiedono il guscio di valenza completo: <strong>8 elettroni</strong> (ottetto), eccetto l’elio che è stabile con 2 (duetto).
+    </p>
+    
+    <blockquote class="quotes mb-10">
+      <strong>Regola:</strong> “Gli atomi tendono a cedere, acquistare o condividere elettroni per raggiungere la configurazione elettronica del gas nobile più vicino (8 elettroni nel livello esterno, o 2 per H e He).”
+    </blockquote>
+    
+    <p class="text mb-15">
+      <em>Nota scientifica: Questa regola è un'ottima approssimazione per gli elementi dei periodi 2 e 3, ma presenta eccezioni (es. molecole carenti di elettroni, ottetto espanso nei periodi superiori).</em>
+    </p>
+
+    <h4 class="subtitle mb-5">Energia di Legame ⚡</h4>
+    <p class="yellowtext mb-15" style="padding: 10px; background-color: rgba(255, 235, 59, 0.05); border: 1px solid rgba(255, 235, 59, 0.2); border-radius: 5px;">
+      L’<span class="biotechbold">energia di legame</span> è l’energia minima richiesta per rompere una mole di legami chimici nello stato gassoso (espressa in kJ/mol). È una misura diretta della forza del legame: valori elevati indicano legami forti e molecole termodinamicamente stabili. La <span class="greentext">distanza di legame</span> è la distanza di equilibrio tra i nuclei degli atomi legati.
+    </p>
+  </div>
+
+  <!-- SOTTOSEZIONE 4: LEGAMI FORTI (INTRAMOLECOLARI) -->
+  <div class="mb-30">
+    <h3 class="secHeader biotechcenter mb-15 fs28">LEGAMI FORTI (INTRAMOLECOLARI) 🔩</h3>
+    
+    <!-- 1. Legame Ionico -->
+    <h4 class="secHeader mb-10">1. Legame Ionico</h4>
+    <div class="text mb-15" style="border-left: 3px solid #a7ffeb; padding-left: 12px;">
+      <p class="mb-10"><strong>Definizione:</strong> Forza di attrazione elettrostatica che si instaura tra ioni di carica opposta. Si forma tipicamente tra atomi con un'<strong>elevata differenza di elettronegatività (Δχ ≥ 1,7)</strong>, comportando un trasferimento di densità elettronica quasi totale.</p>
+      <h5 class="subtitle mb-5">COME SI FORMA:</h5>
+      <ol class="text mb-10" style="padding-left: 20px;">
+        <li class="mb-5">Avviene il <strong>trasferimento di uno o più elettroni</strong> di valenza da un atomo a un altro.</li>
+        <li class="mb-5">L'atomo meno elettronegativo (generalmente un metallo) cede elettroni, trasformandosi in un <strong>catione</strong> (ione positivo).</li>
+        <li>L'atomo più elettronegativo (generalmente un non-metallo) acquista gli elettroni, trasformandosi in un <strong>anione</strong> (ione negativo).</li>
+      </ol>
+      <p>Non forma molecole isolate, ma strutture geometriche ordinate tridimensionali chiamate <strong>reticoli cristallini</strong> (es. Cloruro di Sodio, NaCl).</p>
+    </div>
+
+    <!-- Immagine Legame Ionico -->
+    <figure class="mb-25">
+      <div class="flex-center flex-wrap gap-10 mb-5">
+        <img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Legame_ionico.avif" width="480" height="198" alt="Rappresentazione schematica del trasferimento elettronico nel legame ionico" loading="lazy" decoding="async">
+        <img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cristallino.avif" width="192" height="170" alt="Struttura reticolare cristallina del cloruro di sodio" loading="lazy" decoding="async">
+      </div>
+      <figcaption class="sansation-light-italic text-center">RETICOLO CRISTALLINO FORMATO DAGLI IONI Na<sup>+</sup> E Cl<sup>-</sup> TENUTI INSIEME DA LEGAMI IONICI</figcaption>
+    </figure>
+
+    <!-- 2. Legame Covalente -->
+    <h4 class="secHeader mb-10">2. Legame Covalente</h4>
+    <p class="text mb-10">Si realizza mediante la condivisione di elettroni tra atomi non metallici aventi elettronegatività simile o identica (Δχ &lt; 1,7).</p>
+    
+    <h5 class="subtitle mb-5">COME SI FORMA:</h5>
+    <p class="yellowtext mb-10" style="padding: 8px; background-color: rgba(137, 43, 226, 0.1); border-radius: 4px;">
+      I due atomi mettono in <span class="biotechbold">condivisione una o più coppie (doppietti) di elettroni</span> in orbitali molecolari, permettendo a ciascun atomo di completare il proprio guscio di valenza (regola dell'ottetto).*
+    </p>
+
+    <h5 class="subtitle mb-5">Tipi di Legame Covalente:</h5>
+    <dl class="text mb-15" style="padding-left: 15px;">
+      <dt><span class="greentext biotechbold">Puro (od Omopolare):</span></dt>
+      <dd class="mb-5">Si instaura tra atomi identici o con differenza di elettronegatività trascurabile (Δχ ≤ 0,4). La nube elettronica è distribuita in modo simmetrico tra i due nuclei (es. H<sub>2</sub>, O<sub>2</sub>, CH<sub>4</sub>).</dd>
+      <dt><span class="greentext biotechbold">Polare:</span></dt>
+      <dd class="mb-5">Si forma tra atomi con differente elettronegatività (0,4 &lt; Δχ &lt; 1,7). Gli elettroni di legame sono attratti maggiormente dall'atomo più elettronegativo, generando una <strong>parziale carica negativa (δ<sup>-</sup>)</strong> su di esso e una <strong>parziale carica positiva (δ<sup>+</sup>)</strong> sull'altro. La molecola costituisce così un <strong>dipolo elettrico</strong> (es. HCl, H<sub>2</sub>O).</dd>
+      <dt><span class="greentext biotechbold">Dativo (o di Coordinazione):</span></dt>
+      <dd>La coppia di elettroni condivisa proviene interamente da un solo atomo (<strong>donatore</strong>, dotato di un doppietto solitario) e viene ospitata in un orbitale vuoto dell'altro atomo (<strong>accettore</strong>). Una volta formato, è sperimentalmente indistinguibile da un comune legame covalente; viene spesso rappresentato graficamente con una freccia (→) (es. H<sub>3</sub>O<sup>+</sup>, NH<sub>4</sub><sup>+</sup>).</dd>
+    </dl>
+    <p class="text mb-15"><em>*Nota: Esistono eccezioni alla regola dell'ottetto, come l'ottetto incompleto (es. composti del Boro), l'ottetto espanso (es. SF<sub>6</sub>) o molecole con numero dispari di elettroni.</em></p>
+
+    <!-- Immagine Legame Covalente -->
+    <figure class="mb-25">
+      <img class="transparent specials-img mb-5" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Covalente.avif" width="480" height="200" alt="Rappresentazione del legame covalente con condivisione di elettroni" loading="lazy" decoding="async">
+      <figcaption class="sansation-light-italic text-center">Legame covalente: condivisione di coppie di elettroni di valenza tra atomi per raggiungere la stabilità elettronica.</figcaption>
+    </figure>
+
+    <!-- 3. Legame Metallico -->
+    <h4 class="secHeader mb-10">3. Legame Metallico ⚙️</h4>
+    <p class="text mb-10">
+      È descritto dal modello del "mare di elettroni" (o modello di Drude-Lorentz): la struttura è costituita da un reticolo geometrico di <strong>ioni positivi</strong> (fissi) immersi in una nube diffusa di elettroni di valenza altamente delocalizzati e liberi di muoversi nell'intero solido.
+    </p>
+    <p class="yellowtext mb-15" style="padding: 8px; background-color: rgba(138, 43, 226, 0.1); border-radius: 4px;">
+      La coesione del legame metallico è garantita dall'attrazione elettrostatica omnidirezionale tra gli elettroni di valenza condivisi ("mobili") e i core ionici positivi.
+    </p>
+
+    <!-- Immagine Legame Metallico -->
+    <figure class="mb-25">
+      <img class="transparent specials-img mb-5" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Ione_metallico.avif" width="338" height="149" alt="Ione metallico immerso in un mare di elettroni delocalizzati" loading="lazy" decoding="async">
+      <figcaption class="sansation-light-italic text-center">Modello del legame metallico: cationi metallici stabilizzati da un mare di elettroni delocalizzati, responsabili delle proprietà di conducibilità e malleabilità.</figcaption>
+    </figure>
+  </div>
+
+  <!-- SOTTOSEZIONE 5: LEGAMI DEBOLI (FORZE INTERMOLECOLARI) -->
+  <div class="mb-15">
+    <h3 class="secHeader biotechcenter mb-15 fs28">LEGAMI DEBOLI (Forze Intermolecolari) 💧</h3>
+    <p class="text mb-10">
+      I <strong>legami deboli</strong> presentano un'energia di legame <strong>nettamente inferiore</strong> rispetto ai legami interatomici (intramolecolari), ma sono fondamentali per determinare le proprietà macroscopiche e lo stato fisico dei composti molecolari.
+    </p>
+    
+    <h4 class="subtitle mb-5">Tipologie:</h4>
+    <ul class="text mb-15" style="padding-left: 20px;">
+      <li class="mb-5"><strong>Forze di van der Waals:</strong> comprendono le interazioni dipolo-dipolo (tra molecole polari) e le forze di dispersione di London (presenti in tutte le molecole, ma dominanti tra quelle non polari).</li>
+      <li><strong>Legame a Idrogeno:</strong> un tipo particolarmente forte di interazione dipolo-dipolo.</li>
     </ul>
+
+    <h4 class="secHeader mb-10">Legame a Idrogeno</h4>
+    <p class="text mb-10">
+      Si stabilisce quando un atomo di idrogeno, legato covalentemente a un elemento <strong>altamente elettronegativo e di piccole dimensioni</strong> (come <strong>fluoro, ossigeno o azoto</strong>), viene attratto dal doppietto elettronico solitario di un altro atomo elettronegativo di una molecola vicina.
+    </p>
+    <p class="yellowtext mb-10" style="padding: 8px; background-color: rgba(255, 235, 59, 0.05); border: 1px solid rgba(255, 235, 59, 0.2); border-radius: 4px;">
+      Si manifesta in molecole <strong>fortemente polari</strong> come l'acqua (H<sub>2</sub>O) e l'ammoniaca (NH<sub>3</sub>). È la più intensa tra le forze intermolecolari: sebbene i legami più forti possano raggiungere i 50 kJ/mol (es. nell'HF), nell'acqua i legami a idrogeno si attestano tipicamente tra <strong>20–25 kJ/mol</strong>. Questa energia è comunque significativamente inferiore a quella di un legame covalente intramolecolare (es. il legame O-H richiede circa 460 kJ/mol per essere scisso).
+    </p>
+    <p>
+      Nel ghiaccio, i legami a idrogeno costringono le molecole a disporsi secondo una geometria <strong>tetraedrica</strong> che genera un reticolo cristallino <strong>esagonale</strong> molto aperto. Questo aumenta il volume e <strong>riduce la densità</strong> del solido rispetto al liquido, permettendo al ghiaccio di galleggiare. In fase liquida, questi legami si rompono e si riformano continuamente, conferendo all'acqua un'elevata coesione, alta tensione superficiale, alto calore specifico ed elevati punti di transizione di fase.
+    </p>
   </div>
-</div>
-<!-- Tavola Periodica e Concetti Base -->
-<div data-lang-key="atom_ions_periodic">
-  <h2 class="subtitle">Concetto Fondamentale</h2>
-  <div class="yellowtext" style="padding: 1px; border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 5px;">
-    Un <span class="orangetext">atomo elettricamente neutro</span> ha un numero di protoni uguale al numero di elettroni, risultando in una <strong>carica netta = 0</strong>.
-  </div>
 
-  <h2 class="secHeader mt-15">Ioni 🧪</h2>
-  <p class="text">Lo <span class="orangetext">IONE</span> è un atomo (o un gruppo di atomi) che ha <strong>ceduto o acquistato</strong> uno o più elettroni, assumendo una carica elettrica netta.</p>
-  <dl class="text">
-    <dt><span class="greentext">ANIONE</span></dt>
-    <dd>Si forma per <strong>acquisto di elettroni</strong>; la carica risultante è <strong>negativa</strong>.</dd>
-    <dt><span class="greentext">CATIONE</span></dt>
-    <dd>Si forma per <strong>cessione di elettroni</strong>; la carica risultante è <strong>positiva</strong>.</dd>
-  </dl>
-
-  <h2 class="secHeader mt-15">Tavola Periodica degli Elementi 📊</h2>
-  <p class="text">Gli elementi sono ordinati per <strong>numero atomico crescente</strong> (Z), secondo il principio di periodicità formulato da Mendeleev nel 1869.</p>
-  
-  <h2 class="subtitle">Contenuto della Casella</h2>
-  <ol class="text">
-    <li>Al centro: il <span class="orangetext">simbolo chimico</span> (es. Na, Cl).</li>
-    <li>In evidenza: il <strong>numero atomico Z</strong> (numero di protoni; definisce l'identità dell'elemento).</li>
-    <li>Solitamente in basso: la <strong>massa atomica relativa</strong> (espressa in <strong>u</strong>, unità di massa atomica unificata; è la media ponderata delle masse dei suoi isotopi naturali).</li>
-  </ol>
-</div>
-<!-- Teoria dei Legami, Lewis e Regola dell'Ottetto -->
-<div data-lang-key="bonds_stability_lewis_octet">
-  <h2 class="secHeader mt-15">Legami Chimici e Stabilità 🔗</h2>
-  <p class="text">Gli atomi interagiscono per raggiungere uno stato di <strong>minima energia potenziale</strong>, formando aggregati più stabili.</p>
-  <p class="yellowtext" style="padding: 0.5px; background-color: rgba(159, 232, 208, 0.1);">
-    Il legame si forma spontaneamente perché il sistema risultante ha un <strong>contenuto energetico inferiore</strong> rispetto agli atomi isolati. Minore energia potenziale = <span class="orangetext">maggiore stabilità</span>.
-  </p>
-
-  <h2 class="subtitle">Teoria di Lewis e della Valenza</h2>
-  <p class="text">Gli atomi interagiscono per raggiungere una <strong>configurazione elettronica esterna stabile</strong> (minima energia), spesso simile a quella dei gas nobili.</p>
-
-  <h2 class="secHeader mt-15">La Regola dell’Ottetto</h2>
-  <p class="text">I <strong>gas nobili</strong> (gruppo 18) sono chimicamente inerti perché possiedono il guscio di valenza completo: <strong>8 elettroni</strong> (ottetto), eccetto l’elio che è stabile con 2 (duetto).</p>
-  
-  <div class="quotes">
-    <strong>Regola:</strong> “Gli atomi tendono a cedere, acquistare o condividere elettroni per raggiungere la configurazione elettronica del gas nobile più vicino (8 elettroni nel livello esterno, o 2 per H e He).”
-  </div>
-  
-  <p class="text">
-    <em>Nota scientifica: Questa regola è un'ottima approssimazione per gli elementi dei periodi 2 e 3, ma presenta eccezioni (es. molecole carenti di elettroni, ottetto espanso nei periodi superiori).</em>
-  </p>
-</div>
-<!-- Energia di Legame -->
-<div data-lang-key="bond_energy_definition">
-  <h2 class="secHeader mt-15">Energia di Legame ⚡</h2>
-  <p class="yellowtext">
-    L’<span class="biotechbold">energia di legame</span> è l’energia minima richiesta per rompere una mole di legami chimici nello stato gassoso (espressa in kJ/mol). È una misura diretta della forza del legame: valori elevati indicano legami forti e molecole termodinamicamente stabili. La <span class="greentext">distanza di legame</span> è la distanza di equilibrio tra i nuclei degli atomi legati.
-  </p>
-</div>
- 
-<!-- Sezione LEGAMI FORTI (INTRAMOLECOLARI) (Chiave: bonds_ionic) -->
-<div data-lang-key="bonds_ionic">
-<h2 class="secHeader biotechcenter mt-15 fs30">LEGAMI FORTI (INTRAMOLECOLARI) 🔩</h2>
-<h2 class="secHeader">1. Legame Ionico</h2>
- <div class="text" style="border-left: 3px solid #a7ffeb; padding-left: 10px;">
-<p><strong>Definizione:</strong> Forza di attrazione elettrostatica che si instaura tra ioni di carica opposta. Si forma tipicamente tra atomi con un'<strong>elevata differenza di elettronegatività (△χ ≥ 1,7)</strong>, comportando un trasferimento di densità elettronica quasi totale.</p>
-<h2 class="subtitle mt-5">COME SI FORMA:</h2>
-<ol class="text">
- <li>Avviene il <strong>trasferimento di uno o più elettroni</strong> di valenza da un atomo a un altro.</li>
- <li>L'atomo meno elettronegativo (generalmente un metallo) cede elettroni, trasformandosi in un <strong>catione</strong> (ione positivo).</li>
- <li>L'atomo più elettronegativo (generalmente un non-metallo) acquista gli elettroni, trasformandosi in un <strong>anione</strong> (ione negativo).</li>
-</ol>
-<p>Non forma molecole isolate, ma strutture geometriche ordinate tridimensionali chiamate <strong>reticoli cristallini</strong> (es. Cloruro di Sodio, NaCl).</p>
- </div>
-</div>
-<!-- (Immagine + Didascalia tradotta separatamente) -->
-<figure>
-<img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Legame_ionico.avif" width="480" height="198" alt="Rappresentazione schematica del legame ionico" loading="lazy" decoding="async">
-<img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Cristallino.avif" width="192" height="170" alt="Struttura reticolare cristallina" loading="lazy">
-<!-- La chiave qui traduce SOLO il testo della didascalia -->
-<figcaption class="sansation-light-italic" data-lang-key="caption_ionico">RETICOLO CRISTALLINO FORMATO DAGLI IONI Na<sup>+</sup> E Cl<sup>-</sup> TENUTI INSIEME DA LEGAMI IONICI</figcaption>
-</figure>
-<!-- Legame Covalente (Chiave: bonds_covalent) -->
-<div data-lang-key="bonds_covalent">
-<h2 class="secHeader mt-15">2. Legame Covalente</h2>
-<p class="text">Si realizza mediante la condivisione di elettroni tra atomi non metallici aventi elettronegatività simile o identica (△χ &lt; 1,7).</p>
-<h2 class="subtitle">COME SI FORMA:</h2>
-<p class="yellowtext" style="padding: 0.5px; background-color: rgba(137, 43, 226, 0.1);">I due atomi mettono in <span class="biotechbold"><strong>condivisione una o più coppie (doppietti) di elettroni</strong></span> in orbitali molecolari, permettendo a ciascun atomo di completare il proprio guscio di valenza (regola dell'ottetto).*</p>
-<h2 class="subtitle">Tipi di Legame Covalente:</h2>
-<dl class="text" style="margin-left: 20px;">
-<dt><span class="greentext">Puro (od Omopolare):</span></dt>
- <dd>Si instaura tra atomi identici o con differenza di elettronegatività trascurabile (△χ ≤ 0,4). La nube elettronica è distribuita in modo simmetrico tra i due nuclei (es. H<sub>2</sub>, O<sub>2</sub>, CH<sub>4</sub>).</dd>
-<dt><span class="greentext">Polare:</span></dt>
- <dd>Si forma tra atomi con differente elettronegatività (0,4 &lt; △χ &lt; 1,7). Gli elettroni di legame sono attratti maggiormente dall'atomo più elettronegativo, generando una <strong>parziale carica negativa (δ<sup>-</sup>)</strong> su di esso e una <strong>parziale carica positiva (δ<sup>+</sup>)</strong> sull'altro. La molecola costituisce così un <strong>dipolo elettrico</strong> (es. HCl, H<sub>2</sub>O).</dd>
-<dt><span class="greentext">Dativo (o di Coordinazione):</span></dt>
- <dd>La coppia di elettroni condivisa proviene interamente da un solo atomo (<strong>donatore</strong>, dotato di un doppietto solitario) e viene ospitata in un orbitale vuoto dell'altro atomo (<strong>accettore</strong>). Una volta formato, è sperimentalmente indistinguibile da un comune legame covalente; viene spesso rappresentato graficamente con una freccia (→) (es. H<sub>3</sub>O<sup>+</sup>, NH<sub>4</sub><sup>+</sup>).</dd>
-</dl>
-<p class="text"><em>*Nota: Esistono eccezioni alla regola dell'ottetto, come l'ottetto incompleto (es. composti del Boro), l'ottetto espanso (es. SF<sub>6</sub>) o molecole con numero dispari di elettroni.</em></p>
-</div>
-<!-- (Immagine + Didascalia tradotta separatamente) -->
-<figure>
-<img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Covalente.avif" width="480" height="200" alt="Rappresentazione del legame covalente con condivisione di elettroni" loading="lazy" decoding="async">
-<figcaption class="sansation-light-italic" data-lang-key="caption_covalent">Legame covalente: condivisione di coppie di elettroni di valenza tra atomi per raggiungere la stabilità elettronica.</figcaption>
-</figure>
-<!-- Legame Metallico (Chiave: bonds_metallic) -->
-<div data-lang-key="bonds_metallic">
-<h2 class="secHeader mt-15">3. Legame Metallico ⚙️</h2>
-<p class="text">È descritto dal modello del "mare di elettroni" (o modello di Drude-Lorentz): la struttura è costituita da un reticolo geometrico di <strong>ioni positivi</strong> (fissi) immersi in una nube diffusa di elettroni di valenza altamente delocalizzati e liberi di muoversi nell'intero solido.</p>
-<p class="yellowtext" style="padding: 0.5px; background-color: rgba(138, 43, 226, 0.1);">La coesione del legame metallico è garantita dall'attrazione elettrostatica omnidirezionale tra gli elettroni di valenza condivisi ("mobili") e i core ionici positivi.</p>
-</div>
-<!-- (Immagine + Didascalia tradotta separatamente) -->
-<figure>
-<img class="transparent specials-img" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Ione_metallico.avif" width="338" height="149" alt="Ione metallico immerso in un mare di elettroni delocalizzati" loading="lazy" decoding="async">
-<figcaption class="sansation-light-italic" data-lang-key="caption_metallic">Modello del legame metallico: cationi metallici stabilizzati da un mare di elettroni delocalizzati, responsabili delle proprietà di conducibilità e malleabilità.</figcaption>
-</figure>
-
-<!-- Legami Deboli (Forze Intermolecolari) (Chiave: bonds_weak) -->
-<div data-lang-key="bonds_weak">
-<h2 class="secHeader biotechcenter mt-15 fs30">LEGAMI DEBOLI (Forze Intermolecolari) 💧</h2>
-<p class="text">I <strong>legami deboli</strong> presentano un'energia di legame <strong>nettamente inferiore</strong> rispetto ai legami interatomici (intramolecolari), ma sono fondamentali per determinare le proprietà macroscopiche e lo stato fisico dei composti molecolari.</p>
-<h2 class="subtitle">Tipologie:</h2>
-<ul class="text">
- <li><strong>Forze di van der Waals:</strong> comprendono le interazioni dipolo-dipolo (tra molecole polari) e le forze di dispersione di London (presenti in tutte le molecole, ma dominanti tra quelle non polari).</li>
- <li><strong>Legame a Idrogeno</strong> (un tipo particolarmente forte di interazione dipolo-dipolo).</li>
-</ul>
-<h2 class="secHeader">Legame a Idrogeno</h2>
-<p class="text">Si stabilisce quando un atomo di idrogeno, legato covalentemente a un elemento <strong>altamente elettronegativo e di piccole dimensioni</strong> (come <strong>fluoro, ossigeno o azoto</strong>), viene attratto dal doppietto elettronico solitario di un altro atomo elettronegativo di una molecola vicina.</p>
-<p class="yellowtext">Si manifesta in molecole <strong>fortemente polari</strong> come l'acqua (H<sub>2</sub>O) e l'ammoniaca (NH<sub>3</sub>). È la più intensa tra le forze intermolecolari: sebbene i legami più forti possano raggiungere i 50 kJ/mol (es. nell'HF), nell'acqua i legami a idrogeno si attestano tipicamente tra <strong>20–25 kJ/mol</strong>. Questa energia è comunque significativamente inferiore a quella di un legame covalente intramolecolare (es. il legame O-H richiede circa 460 kJ/mol per essere scisso).</p>
-<p class="text mb-30">Nel ghiaccio, i legami a idrogeno costringono le molecole a disporsi secondo una geometria <strong>tetraedrica</strong> che genera un reticolo cristallino <strong>esagonale</strong> molto aperto. Questo aumenta il volume e <strong>riduce la densità</strong> del solido rispetto al liquido, permettendo al ghiaccio di galleggiare. In fase liquida, questi legami si rompono e si riformano continuamente, conferendo all'acqua un'elevata coesione, alta tensione superficiale, alto calore specifico ed elevati punti di transizione di fase.</p>
-</div>   
+</section>   
 
 <!-- Reazioni Chimiche (Chiave: reactions) -->
 <div data-lang-key="reactions">
