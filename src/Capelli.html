@@ -1401,7 +1401,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
   DESCRIZIONE: Chimica delle formulazioni cosmetiche (tensioattivi, siliconi, polimeri), meccanismi di colorazione (Henné, ossidativa), classificazione prodotti (shampoo, balsami, leave-in), e quadro normativo UE (Reg. 1223/2009, Reg. UE 2024/1328 su siliconi ciclici).
   WCAG 2.2 AAA | WAI-ARIA Accessible
   ========================================== -->
-<section data-lang-key="capelli_formulazioni_colorazione" class="mb-30">
+<section data-lang-key="capelli_formulazioni_colorazione" class="mb-30 text-block">
 
   <!-- Blocco 1: Introduzione e Formulazioni -->
   <div class="mb-25">
@@ -1674,7 +1674,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
   DESCRIZIONE: Chimica formulativa e detersione (tensioattivi, EDTA, pH, modificatori reologici), dinamica micellare di asportazione del sebo, trattamenti antiforfora/antiseborroici (normativa UE e attivi), chimica dei siliconi (filmogenesi, Reg. UE 2024/1328, non-comedogenicità), dermocosmesi post-shampoo (balsami cationici, maschere lamellari, lozioni filmogene e attivi leave-in).
   WCAG 2.2 AAA | WAI-ARIA Accessible
   ========================================== -->
-<section data-lang-key="shampoo_post_shampoo" class="mb-30">
+<section data-lang-key="shampoo_post_shampoo" class="text-block mb-30">
 
     <!-- BLOCK 1: SHAMPOO PER CAPELLI -->
     <div class="mb-30">
@@ -1884,27 +1884,30 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
 </section>
 
 <!-- ==========================================
-  SEZIONE: DERMATOLOGIA E TRICOLOGIA (dermatology_hair_anomalies)
+  SEZIONE: DERMATOLOGIA E TRICOLOGIA (dermatology_hair_anomalies_section)
   DESCRIZIONE: Anomalie della pigmentazione (ipercromie, ipocromie, regola ABCDE, melanoma, vitiligine, albinismo), classificazione anatomo-patologica delle lesioni cutanee elementari (primitive, secondarie, quadri polimorfi) e diagnosi strutturale delle anomalie del fusto del capello (fratture acquisite/congenite e alterazioni della regolarità/morfologia assiale).
   WCAG 2.2 AAA | WAI-ARIA Accessible
   ========================================== -->
-<section data-lang-key="dermatology_hair_anomalies">
+<section data-lang-key="dermatology_hair_anomalies_section" aria-labelledby="dermatology-main-title">
 
-  <!-- SUB-SEZIONE 1: ANOMALIE DELLA PIGMENTAZIONE (DISCROMIE) -->
+  <!-- =========================================================================
+       SUB-SEZIONE 1: ANOMALIE DELLA PIGMENTAZIONE (DISCROMIE)
+       ========================================================================= -->
   <article class="discromie-container mb-25">
-    <h2 class="secHeader biotechcenter mb-10">ANOMALIE DELLA PIGMENTAZIONE (DISCROMIE) 🔬</h2>
+    <h2 id="dermatology-main-title" class="secHeader biotechcenter mb-10">
+      ANOMALIE DELLA PIGMENTAZIONE (DISCROMIE) <span role="img" aria-label="Microscopio">🔬</span>
+    </h2>
+    
     <p class="text mb-15">
       La <span class="biotechbold">Melanina</span>, sintetizzata dai <strong>melanociti</strong> (cellule dendritiche dello strato basale), è il pigmento biologico responsabile del fototipo cutaneo. Le discromie sono alterazioni qualitative o quantitative della normale pigmentazione, classificate in <strong>ipocromie</strong> (deficit di pigmento) e <strong>ipercromie</strong> (eccesso di pigmento).
     </p>
 
-    <!-- Sub-sezione: Ipercromie -->
     <h3 class="subtitle mb-10">Ipercromie (Melanodermie)</h3>
     <p class="text mb-15">
-      Si distinguono in forme <strong>generalizzate</strong> (correlate a patologie sistemiche quali il morbo di Addison, l'emocromatosi o specifiche carenze vitaminiche) o <strong>localizzate</strong>.
+      Si distinguono in forms <strong>generalizzate</strong> (correlate a patologie sistemiche quali il morbo di Addison, l'emocromatosi o specifiche carenze vitaminiche) o <strong>localizzate</strong>.
     </p>
-        
+
     <dl class="text mb-15">
-      <!-- Focus Efelidi -->
       <dt class="mb-5"><span class="orangetext biotechbold">Efelidi (Freckles):</span></dt>
       <dd class="mb-10">
         <ul>
@@ -1914,7 +1917,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         </ul>
       </dd>
 
-      <!-- Focus Lentigo Solare -->
       <dt class="mb-5"><span class="orangetext biotechbold">Lentigo Solare (Lentigo Attinica / Senile):</span></dt>
       <dd class="mb-10">
         <ul>
@@ -1924,14 +1926,12 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         </ul>
       </dd>
 
-      <!-- Focus Nevi Melanocitici -->
       <dt class="mb-5"><span class="orangetext biotechbold">Nevi Melanocitici (Nevo Acquisito):</span></dt>
       <dd class="mb-10">
         <p class="mb-10">
           Proliferazione melanocitaria benigna organizzata in nidi di melanociti nevici. Si classificano in base alla sede istologica in: giunzionali (piani), composti (moderatamente rilevati) o dermici (tuberosi o papillomatosi). I <strong>nevi displastici</strong> (atipici) richiedono stretto monitoraggio clinico per il rischio di evoluzione o simulazione del <strong>melanoma maligno</strong>.
         </p>
 
-        <!-- Box Regola ABCDE strutturato come Research Insight -->
         <div class="research-insight-box mb-15">
           <div class="insight-header mb-10">
             <h4 class="biotechbold yellowtext">Protocollo Clinico: Regola ABCDE per lo Screening del Melanoma</h4>
@@ -1949,21 +1949,18 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         </div>
       </dd>
 
-      <!-- Altre Ipercromie -->
       <dt class="mb-5"><span class="orangetext biotechbold">Altre Ipercromie Localizzate:</span></dt>
       <dd class="mb-15">
         <strong>Melasma</strong> (incluso il cloasma gravidico ad eziopatogenesi ormonale), lentigo attinica, iperpigmentazione post-infiammatoria (PIH) e tinea versicolor (pitiriasi versicolor) nella sua manifestazione ipercromica.
       </dd>
     </dl>
 
-    <!-- Sub-sezione: Ipocromie -->
     <h3 class="subtitle mb-10">Ipocromie (Leucodermie)</h3>
     <p class="text mb-15">
       Condizioni cliniche caratterizzate da una marcata riduzione o dalla totale assenza di sintesi della melanina.
     </p>
-        
+
     <dl class="text mb-15">
-      <!-- Focus Vitiligine -->
       <dt class="mb-5"><span class="greentext biotechbold">Vitiligine:</span></dt>
       <dd class="mb-10">
         <ul>
@@ -1973,7 +1970,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         </ul>
       </dd>
 
-      <!-- Focus Albinismo -->
       <dt class="mb-5"><span class="greentext biotechbold">Albinismo Oculo-Cutaneo (OCA):</span></dt>
       <dd class="mb-10">
         <ul>
@@ -1983,24 +1979,24 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         </ul>
       </dd>
 
-      <!-- Altre Ipocromie -->
       <dt class="mb-5"><span class="greentext biotechbold">Altre Ipocromie:</span></dt>
       <dd class="mb-15">
         Pitiriasi alba (comune manifestazione ipocromica in soggetti con dermatite atopica), tinea versicolor nella sua fase ipocromica post-infettiva, nevo anemico (difetto congenito dei recettori adrenergici vascolari) e ipomelanosi guttata idiopatica (tipica del crono-invecchiamento degli arti).
       </dd>
-    </dl>      
+    </dl>
   </article>
 
-  <!-- SUB-SEZIONE 2: LESIONI ELEMENTARI CUTANEE --> 
+  <!-- =========================================================================
+       SUB-SEZIONE 2: LESIONI ELEMENTARI CUTANEE
+       ========================================================================= -->
   <article class="dermatology-lesions-container mb-25">
     <h2 class="secHeader biotechcenter mb-10">
-      LESIONI ELEMENTARI CUTANEE: Classificazione e Diagnosi 🔬
+      LESIONI ELEMENTARI CUTANEE: Classificazione e Diagnosi <span role="img" aria-label="Microscopio">🔬</span>
     </h2>
     <p class="text mb-15">
       Le lesioni elementari rappresentano l'unità morfologica e anatomo-patologica fondamentale della risposta cutanea a insulti endogeni o esogeni. La diagnosi dermatologica si articola sull'analisi sistemica della loro morfologia, estensione, configurazione, distribuzione topografica e disposizione spaziale.
     </p>
 
-    <!-- Schema di Classificazione Generale con cyber-flowchart -->
     <div class="cyber-flowchart mb-20">
       <div class="flow-branches">
         <div class="flow-card intrinsic">
@@ -2029,7 +2025,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
       </div>
     </div>
 
-    <!-- Lesioni Primitive Detail Grid -->
     <h3 class="subtitle mb-10">Lesioni Primitive (Iniziali)</h3>
     <div class="cyber-flowchart mb-15">
       <div class="flow-branches">
@@ -2082,7 +2077,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
       </div>
     </div>
 
-    <!-- Lesioni Secondarie Detail Grid -->
     <h3 class="subtitle mb-10">Lesioni Secondarie (Evolutive)</h3>
     <div class="cyber-flowchart mb-15">
       <div class="flow-branches">
@@ -2126,20 +2120,19 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
     </div>
   </article>
 
-  <!-- SUB-SEZIONE 3: ANOMALIE DEL FUSTO DEL CAPELLO (FRATTURE STRUTTURALI) -->
+  <!-- =========================================================================
+       SUB-SEZIONE 3: ANOMALIE DEL FUSTO DEL CAPELLO (FRATTURE)
+       ========================================================================= -->
   <article class="hair-fractures-container mb-25">
     <h2 class="secHeader biotechcenter mb-10">
-      ANOMALIE DEL FUSTO DEL CAPELLO: FRATTURE E DEFORMITÀ STRUTTURALI 💔
+      ANOMALIE DEL FUSTO DEL CAPELLO: FRATTURE E DEFORMITÀ STRUTTURALI <span role="img" aria-label="Cuore spezzato">💔</span>
     </h2>
     <p class="text mb-15">
       Le anomalie del fusto del capello sono alterazioni strutturali che compromettono la resistenza meccanica della fibra cheratinica, classificabili in base alla localizzazione del danno (cuticola, corteccia, midollo) e all'eziologia (acquisita/traumatica vs genetica/congenita).
     </p>
 
-    <!-- Griglia Schede Fratture con Flowchart / Card System -->
     <div class="cyber-flowchart mb-15">
       <div class="flow-branches">
-
-        <!-- 1. Tricoressi Nodosa -->
         <div class="flow-card extrinsic">
           <span class="flow-tag tag-extrinsic">Frattura Acquisita</span>
           <div class="flow-title">1. Tricoressi Nodosa (A Pennello)</div>
@@ -2148,8 +2141,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Eziologia:</strong> Traumi fisico-chimici cumulativi (calore, decolorazioni, permanenti).
           </div>
         </div>
-
-        <!-- 2. Tricodistrofia -->
         <div class="flow-card intrinsic">
           <span class="flow-tag tag-intrinsic">Congenita / Carenza di Zolfo</span>
           <div class="flow-title">2. Tricodistrofia (Frattura Netta)</div>
@@ -2158,8 +2149,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Associazione:</strong> Segno della <strong>Tricotiodistrofia (TTD)</strong> per deficit di cistina.
           </div>
         </div>
-
-        <!-- 3. Tricoressi Invaginata -->
         <div class="flow-card intrinsic">
           <span class="flow-tag tag-intrinsic">Patognomonico</span>
           <div class="flow-title">3. Tricoressi Invaginata (Capelli a Bambù)</div>
@@ -2168,8 +2157,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Associazione:</strong> <strong>Sindrome di Netherton</strong> (mutazione <em>SPINK5</em>).
           </div>
         </div>
-
-        <!-- 4. Punta di Matita -->
         <div class="flow-card lysis">
           <span class="flow-tag tag-lysis">Arresto Mitotico</span>
           <div class="flow-title">4. Capelli a Punta di Matita</div>
@@ -2178,8 +2165,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Associazione:</strong> <strong>Alopecia Areata</strong> e anagen distrofico da chemioterapia.
           </div>
         </div>
-
-        <!-- 5. Tricoptilòsi -->
         <div class="flow-card extrinsic">
           <span class="flow-tag tag-extrinsic">Degrado Fisico-Chimico</span>
           <div class="flow-title">5. Tricoptilòsi (Doppia Punta)</div>
@@ -2188,8 +2173,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Eziologia:</strong> Esclusivamente acquisita da traumi meccanico-chimici.
           </div>
         </div>
-
-        <!-- 6. Tricoclasìa -->
         <div class="flow-card extrinsic">
           <span class="flow-tag tag-extrinsic">Frattura Incompleta</span>
           <div class="flow-title">6. Tricoclasìa (Legno Verde)</div>
@@ -2198,25 +2181,23 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Eziologia:</strong> Traumi fisici moderati o piegamenti meccanici.
           </div>
         </div>
-
       </div>
     </div>
   </article>
 
-  <!-- SUB-SEZIONE 4: ANOMALIE DEL FUSTO DEL CAPELLO (REGOLARITÀ E DEFORMITÀ) -->
+  <!-- =========================================================================
+       SUB-SEZIONE 4: REGOLARITÀ E STRUTTURA DEL FUSTO
+       ========================================================================= -->
   <article class="hair-deformities-container mb-15">
     <h2 class="secHeader biotechcenter mb-10">
-      ALTERAZIONI DELLA REGOLARITÀ E STRUTTURA DEL FUSTO 📏
+      ALTERAZIONI DELLA REGOLARITÀ E STRUTTURA DEL FUSTO <span role="img" aria-label="Righello">📏</span>
     </h2>
     <p class="text mb-15">
       Anomalie della morfologia longitudinale o trasversale del capello. La distinzione clinica fondamentale risiede nella regolarità del difetto (spesso genetica) rispetto all'irregolarità (spesso acquisita o traumatica).
     </p>
 
-    <!-- Griglia Deformità Strutturali -->
     <div class="cyber-flowchart mb-15">
       <div class="flow-branches">
-
-        <!-- 1. Monilethrix -->
         <div class="flow-card intrinsic">
           <span class="flow-tag tag-intrinsic">Ereditaria Regolare</span>
           <div class="flow-title">1. Monilethrix (Capelli a Collana)</div>
@@ -2225,8 +2206,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Eziologia:</strong> Mutazioni geni cheratina (<em>KRT81, KRT83, KRT86</em>) o Desmogleina 4 (<em>DSG4</em>).
           </div>
         </div>
-
-        <!-- 2. Pseudomonilethrix -->
         <div class="flow-card extrinsic">
           <span class="flow-tag tag-extrinsic">Artefatto Acquisito</span>
           <div class="flow-title">2. Pseudomonilethrix</div>
@@ -2235,8 +2214,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Differenza dal Monilethrix:</strong> Origine traumatica/meccanica, non ereditaria.
           </div>
         </div>
-
-        <!-- 3. Pili Torti -->
         <div class="flow-card intrinsic">
           <span class="flow-tag tag-intrinsic">Torsione Assiale</span>
           <div class="flow-title">3. Pili Torti (Capelli Ritorti)</div>
@@ -2245,8 +2222,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Associazione:</strong> <strong>Sindrome di Menkes</strong> (mutazione <em>ATP7A</em>, carenza di rame).
           </div>
         </div>
-
-        <!-- 4. Capelli Affusolati -->
         <div class="flow-card lysis">
           <span class="flow-tag tag-lysis">Rallentamento Mitotico</span>
           <div class="flow-title">4. Capelli Affusolati (Tapered Hairs)</div>
@@ -2255,8 +2230,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Significato:</strong> Inibizione temporanea della matrice follicolare (Alopecia Areata, tricotillomania).
           </div>
         </div>
-
-        <!-- 5. Pili trianguli et canaliculi -->
         <div class="flow-card intrinsic">
           <span class="flow-tag tag-intrinsic">Sezione Triangolare</span>
           <div class="flow-title">5. Scanalature Longitudinali</div>
@@ -2265,8 +2238,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Patognomonico:</strong> <strong>Sindrome dei Capelli Impettinabili (UHS)</strong>, capelli "a lana di vetro".
           </div>
         </div>
-
-        <!-- 6. Pili Annulati -->
         <div class="flow-card intrinsic">
           <span class="flow-tag tag-intrinsic">Bande Aeree</span>
           <div class="flow-title">6. Pili Annulati (Capelli Anellati)</div>
@@ -2275,8 +2246,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Clinica:</strong> Ereditaria (locus 12q). I capelli non sono fragili; alterazione estetica.
           </div>
         </div>
-
-        <!-- 7. Pili Bifurcati -->
         <div class="flow-card common">
           <span class="flow-tag tag-common">Duplicazione Parziale</span>
           <div class="flow-title">7. Pili Bifurcati</div>
@@ -2285,8 +2254,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Meccanismo:</strong> Formazione temporanea di una matrice secondaria o duplicazione della papilla.
           </div>
         </div>
-
-        <!-- 8. Pili Multigemini -->
         <div class="flow-card common">
           <span class="flow-tag tag-common">Ostio Condiviso</span>
           <div class="flow-title">8. Pili Multigemini</div>
@@ -2295,7 +2262,6 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             <strong>Diagnosi differenziale:</strong> Distinto dalla Tricostasi Spinulosa (capelli telogen intrappolati).
           </div>
         </div>
-
       </div>
     </div>
   </article>
