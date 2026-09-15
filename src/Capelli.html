@@ -76,7 +76,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .image-text-wrapper, .image-text-wrapper-reversed{ display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start; flex-wrap: wrap;}.image-text-wrapper{ flex-direction: row;}.image-text-wrapper-reversed{ flex-direction: row-reverse;}.image-side{ flex: 0 0 400px; max-width: 100%;} .text-side{ flex: 1; min-width: 280px;}
 /* 4. ADATTAMENTO MOBILE RESPONSIVE (< 768px) */
 @media (max-width: 768px){ .image-text-wrapper, .image-text-wrapper-reversed{ flex-direction: column;} .image-text-wrapper .image-side, .image-text-wrapper-reversed .image-side{ flex: 1 1 auto; width: 100%; margin: 0 auto; text-align: center;}}
-.mt-15{ margin-top: 15px} .mt-5{ margin-top: 5px} .f22{ font-size: 22px;} .pl-40{ padding-left: 40px}
+.mt-15{ margin-top: 15px} .f22{ font-size: 22px;} .pl-40{ padding-left: 40px}
 .note{ border-left: 3px solid #FFD166; padding-left: 10px;} .note2{ border-left: 3px solid #00bfff; padding-left: 10px;} .fs30{font-size:30px;color:#B5EAD7} .note3{padding: 1px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .eq{ text-align: center; font-style: italic; background-color: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px} .note4{padding: 10px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .note5{padding: 15px; background-color: rgba(138, 43, 226, 0.1);} .red{border-left: 3px solid red; padding-left: 10px;}
 .biotech-img{margin:2px auto;max-width:100%;border-radius:12px;box-shadow:0 4px 16px rgba(0,230,118,.2);backdrop-filter:blur(2px);border:1px solid rgba(0,230,118,.3);transition:transform .3s ease,box-shadow .3s ease;will-change:transform,box-shadow;}
 </style> 
@@ -1401,60 +1401,99 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
   DESCRIZIONE: Chimica delle formulazioni cosmetiche, meccanismi di colorazione e quadro normativo UE.
   WCAG 2.2 AAA | WAI-ARIA Accessible Compliant | Cyber-Biotech UI Enhanced
   ========================================== -->
-<section data-lang-key="capelli_formulazioni_colorazione" class="mb-30 text-block" aria-labelledby="sec-title-formulazioni">
+<section data-lang-key="capelli_formulazioni_colorazione" class="mb-15 text-block" aria-labelledby="sec-title-formulazioni">
 
-  <!-- Blocco 1: Introduzione e Formulazioni -->
+  <!-- Blocco 1: Introduzione e Filosofie di Formulazione -->
   <div class="mb-25">
     <h2 id="sec-title-formulazioni" class="secHeader mb-15">
       Formulazioni per Capelli: Chimica e Funzionalità 
       <span aria-hidden="true">💇‍♀️</span>
     </h2>
     
-    <h3 class="subtitle mb-10">Origine delle Materie Prime e Filosofie di Formulazione</h3>
-    <p class="text mb-10">Gli ingredienti cosmetici possono essere di origine minerale, animale, vegetale o di <strong>sintesi</strong> (ottenuti in laboratorio attraverso reazioni chimiche controllate), che attualmente costituiscono la maggior parte dei componenti per garantire stabilità e riproducibilità.</p>
+    <p class="text mb-15">
+      Gli ingredienti cosmetici possono essere di origine minerale, animale, vegetale o di <strong>sintesi</strong> (ottenuti in laboratorio attraverso reazioni chimiche controllate), che attualmente costituiscono la maggior parte dei componenti per garantire stabilità e riproducibilità.
+    </p>
+
+    <!-- CARD EFFICACI 1: Confronto immediato USA vs UE -->
+    <div class="flow-branches">
+      <article class="flow-card extrinsic">
+        <span class="flow-tag tag-extrinsic">Approccio USA</span>
+        <h3 class="flow-title">Filosofia Americana</h3>
+        <div class="flow-desc">
+          Storicamente orientata su <strong>stabilità</strong>, <strong>gradevolezza sensoriale</strong> e <strong>performance</strong>, favorendo l'uso di ingredienti di sintesi o minerali ad alte prestazioni.
+        </div>
+      </article>
+
+      <article class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Regolamento UE 1223/2009</span>
+        <h3 class="flow-title">Filosofia Europea</h3>
+        <div class="flow-desc">
+          Adotta il <strong>principio di precauzione</strong> (approccio cautelativo che limita le sostanze prima che causino danni), con normative severe su sicurezza tossicologica, sostenibilità e biodegradabilità.
+        </div>
+      </article>
+    </div>
+
+    <!-- CARD EFFICACI 2: I 3 Ruoli dell'Alcol -->
+    <h3 class="subtitle mt-15 mb-10">Ruolo dell'Alcol Denaturato</h3>
+    <p class="text mb-10">
+      L'alcol denaturato (etanolo reso improprio all'uso alimentare tramite denatonio benzoato) è un componente ubiquitario (onnipresente nelle formule) con tre funzioni tecnologiche principali:
+    </p>
+
+    <div class="flow-branches">
+      <article class="flow-card common">
+        <span class="flow-tag tag-common">Solvente</span>
+        <h4 class="flow-title">Azione Solvente</h4>
+        <div class="flow-desc">Scioglie resine, grassi e sostanze organiche insolubili in acqua.</div>
+      </article>
+
+      <article class="flow-card intrinsic">
+        <span class="flow-tag tag-intrinsic">Veicolazione</span>
+        <h4 class="flow-title">Eccipiente & Vettore</h4>
+        <div class="flow-desc">Facilita la penetrazione di attivi nel fusto e regala una rapida sensazione di freschezza per evaporazione.</div>
+      </article>
+
+      <article class="flow-card lysis">
+        <span class="flow-tag tag-lysis">Igiene & Viscosità</span>
+        <h4 class="flow-title">Antisettico & Co-solvente</h4>
+        <div class="flow-desc">Riduce la carica microbica e abbassa la viscosità nei gel, migliorandone la fluidità.</div>
+      </article>
+    </div>
+
+    <!-- TESTO FLUIDO: Spray, Lacche e Propellenti -->
+    <h3 class="subtitle mt-15 mb-10">Spray, Lacche e Propellenti</h3>
+    <p class="text mb-10">
+      I propellenti moderni per nebulizzare il prodotto sono idrocarburi leggeri (<strong>Butano, Isobutano, Propano</strong>), che hanno sostituito i <strong>CFC</strong> (clorofluorocarburi, vecchi gas dannosi per l'atmosfera) vietati dal Protocollo di Montreal. I moderni propellenti hanno un ODP (<em>Ozone Depletion Potential</em>) = 0, sebbene siano classificati come <strong>COV</strong> (Composti Organici Volatili) con un potenziale impatto sul riscaldamento globale.
+    </p>
+    <p class="text">
+      Nelle lacche, accanto agli alcoli, si usano <strong>solventi volatili</strong> (es. eteri o acetati) che facilitano l'evaporazione rapida e la formazione del film. I solventi clorurati (es. diclorometano) sono ormai quasi assenti per la loro elevata tossicità.
+    </p>
     
-    <dl class="text note mb-15">
-      <dt><strong class="orangetext">Filosofia USA:</strong></dt>
-      <dd class="mb-5">Storicamente orientata su stabilità, gradevolezza sensoriale e performance, con una regolamentazione che favorisce l'uso di ingredienti di sintesi o minerali ad alte prestazioni.</dd>
-      <dt><strong class="orangetext">Filosofia Europea (Reg. UE 1223/2009):</strong></dt>
-      <dd>Adotta il principio di <strong>precauzione</strong> (approccio cautelativo che limita le sostanze prima che causino danni), con normative severe su sicurezza tossicologica, sostenibilità e biodegradabilità. Spinge verso l'uso di ingredienti "green" o naturali, pur mantenendo l'uso di sintesi laddove garantiscano sicurezza e stabilità superiore.</dd>
-    </dl>
-    
-    <h3 class="subtitle mb-10">Ruolo dell'Alcol Denaturato</h3>
-    <p class="text mb-10">L'alcol denaturato (etanolo reso improprio all'uso alimentare tramite agenti amaricanti come il denatonio benzoato) è un componente ubiquitario (onnipresente nelle formule) con molteplici funzioni tecnologiche:</p>
-    <ul class="text mb-15">
-      <li class="mb-5"><strong class="biotechbold">Solvente:</strong> Scioglie resine, grassi e sostanze organiche insolubili in acqua.</li>
-      <li class="mb-5"><strong class="biotechbold">Eccipiente e Vettore:</strong> Facilita la penetrazione di attivi nel fusto e conferisce una rapida sensazione di freschezza per evaporazione.</li>
-      <li><strong class="biotechbold">Antisettico e Co-solvente:</strong> Riduce la carica microbica (azione igienizzante) e abbassa la viscosità nelle formulazioni gel, migliorando la fluidità.</li>
-    </ul>
-    
-    <h3 class="subtitle mb-10">Spray, Lacche e Propellenti</h3>
-    <p class="text mb-10">I propellenti moderni per nebulizzare il prodotto sono idrocarburi leggeri (<strong>Butano, Isobutano, Propano</strong>), che hanno sostituito i <strong>CFC</strong> (clorofluorocarburi, vecchi gas dannosi per l'atmosfera) vietati dal Protocollo di Montreal per il loro impatto sullo strato di ozono. I moderni propellenti hanno un ODP (<em>Ozone Depletion Potential</em>, indice di potenziale distruzione dell'ozono) = 0, sebbene siano classificati come <strong>COV</strong> (Composti Organici Volatili, sostanze gassose che evaporano facilmente nell'aria) con un potenziale impatto sul riscaldamento globale.</p>
-    <p class="text mb-15">Nelle lacche, accanto agli alcoli, si usano <strong>solventi volatili</strong> (es. eteri o acetati) che facilitano l'evaporazione rapida e la formazione del film. I solventi clorurati (es. diclorometano) sono ormai quasi assenti per la loro elevata tossicità e limitazioni normative.</p>
-    
-    <!-- Componente Research Insight Box per gli Additivi -->
-    <aside class="research-insight-box mb-15" aria-labelledby="insight-title">
+    <!-- BOX RESEARCH INSIGHT -->
+    <aside class="research-insight-box mt-15 mb-20" aria-labelledby="insight-title">
       <div class="insight-header mb-10">
         <h4 id="insight-title" class="biotechbold text-neon">Additivi Funzionali, Preservanti e Rinforzanti</h4>
         <span class="badge-interactive" role="note">Bio-Tech Insight</span>
       </div>
       <ul class="interactive-filter-list text">
-        <li class="mb-5">
-          <strong class="greentext">Vitamine:</strong> La <strong>Niacinamide</strong> (Vitamina B₃) è un precursore dei coenzimi NAD/NADP (molecole chiave per produrre energia nelle cellule), fondamentale per il metabolismo energetico cellulare e la sintesi di ceramidi (i "mattoni" lipidici del capello), rafforzando la barriera e la lucentezza.
+        <li class="mb-10">
+          <strong class="greentext">Vitamine (Niacinamide - Vit. B₃):</strong> Precursore dei coenzimi NAD/NADP, fondamentale per il metabolismo energetico cellulare e la sintesi di ceramidi (i "mattoni" lipidici del capello), rafforzando la barriera e la lucentezza.
         </li>
-        <li class="mb-5">
-          <strong class="greentext">Pantenolo:</strong> Provitamina B₅. Se applicato sul cuoio capelluto si converte enzimaticamente in <strong>acido pantotenico</strong> (componente del <strong>Coenzima A</strong>, essenziale per la vita cellulare); sul fusto del capello agisce invece come potente umettante igroscopico (sostanza che attrae e trattiene l'acqua), migliorando idratazione, elasticità e resistenza meccanica.
+        <li class="mb-10">
+          <strong class="greentext">Pantenolo (Provitamina B₅):</strong> Sul cuoio capelluto si converte in acido pantotenico (componente del Coenzima A); sul fusto del capello agisce come potente umettante igroscopico (attrae e trattiene l'acqua), migliorando idratazione, elasticità e resistenza meccanica.
         </li>
         <li>
-          <strong class="greentext">Preservanti e Booster:</strong> Sistemi come i parabeni a catena lunga ancora ammessi (es. <strong>Butilparaossibenzoato</strong>, rigorosamente limitato allo 0,14% cumulativo secondo il Reg. UE) e il <strong>Propilenglicole</strong> (glicole multifunzione: umettante e "potenziatore" del sistema conservante che riduce l'attività dell'acqua, <em>a<sub>w</sub></em>, cioè la percentuale di acqua disponibile per i batteri, senza essere un conservante attivo iscritto in Allegato V).
+          <strong class="greentext">Preservanti e Booster:</strong> Uso di parabeni a catena corta/lunga nei limiti di legge (es. Butilparaossibenzoato max 0,14% secondo il Reg. UE). Il <strong>Propilenglicole</strong> agisce da umettante e potenziatore del sistema conservante riducendo l'attività dell'acqua (<em>a<sub>w</sub></em>) disponibile per i batteri.
         </li>
       </ul>
     </aside>
     
-    <h3 class="subtitle mb-10">Gel, Schiume e il Potere Fissativo</h3>
-    <p class="text mb-10">I <strong>Gel</strong> sono fissatori ad alto contenuto di polimeri in base acquosa/alcolica, mentre le <strong>Mousse</strong> (schiume) offrono un fissativo più leggero grazie alla struttura aerata.</p>
-    <ul class="text mb-15" style="border-left: 3px solid #00e676; padding-left: 12px;">
-      <li class="mb-5"><strong class="biotechbold">Eccipienti Grassi:</strong> Spesso derivati vegetali (es. olio di ricino) per conferire plasticità (flessibilità) al film e ridurre l'effetto "crosta" (l'antiestetica pellicola rigida e bianca che si sfalda).</li>
+    <!-- TESTO FLUIDO: Gel e Schiume -->
+    <h3 class="subtitle mt-15 mb-10">Gel, Schiume e il Potere Fissativo</h3>
+    <p class="text mb-10">
+      I <strong>Gel</strong> sono fissatori ad alto contenuto di polimeri in base acquosa/alcolica, mentre le <strong>Mousse</strong> (schiume) offrono un fissativo più leggero grazie alla struttura aerata.
+    </p>
+    <ul class="text mb-20" style="border-left: 3px solid #00e676; padding-left: 12px; list-style: none;">
+      <li class="mb-5"><strong class="biotechbold">Eccipienti Grassi:</strong> Derivati vegetali (es. olio di ricino) aggiunti per conferire plasticità (flessibilità) al film e ridurre l'effetto "crosta" (la pellicola rigida che si sfalda).</li>
       <li><strong class="biotechbold">Addensanti (Gomme):</strong> Derivati della cellulosa (<strong>Idrossietilcellulosa, Idrossipropilcellulosa</strong>) aumentano la viscosità della fase acquosa, stabilizzano la schiuma e potenziano l'azione fissativa.</li>
     </ul>
   </div>
@@ -1469,9 +1508,10 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
     <div class="text-side">
       <h3 class="subtitle mb-10">Agenti Filmogeni e l'Effetto Naturale</h3>
       <p class="text mb-10">I <strong>Filmogeni</strong> sono polimeri (catene di molecole) che formano un film continuo sul fusto, conferendo corpo, consistenza e scorrevolezza. La tecnologia è evoluta dai polimeri rigidi a sistemi ibridi.</p>
+      
       <div class="yellowtext note5">
-        <p class="mb-5"><strong class="biotechbold">Polivinilpirrolidone (PVP):</strong> Polimero storico idrofilo (che ama l'acqua). Crea un film rigido e cristallino, solubile in acqua. È responsabile del classico <strong>effetto bagnato</strong> e della sensazione di "crosta" in alta umidità.</p>
-        <p><strong class="biotechbold">Sistemi Moderni (PVP + Silicone):</strong> L'aggiunta di <strong>Polidimetilsilossano</strong> (silicone) crea uno strato esterno idrofobo (che respinge l'acqua) che protegge il PVP dall'umidità atmosferica. Mantiene la tenuta (<em>hold</em>) <strong>senza effetto bagnato</strong>, garantendo un look naturale e pettinabilità.</p>
+        <p class="mb-10"><strong class="biotechbold">Polivinilpirrolidone (PVP):</strong> Polimero storico idrofilo (che ama l'acqua). Crea un film rigido e cristallino, solubile in acqua. È responsabile del classico <strong>effetto bagnato</strong> e della sensazione di "crosta" in alta umidità.</p>
+        <p class="mb-0"><strong class="biotechbold">Sistemi Moderni (PVP + Silicone):</strong> L'aggiunta di <strong>Polidimetilsilossano</strong> (silicone) crea uno strato esterno idrofobo (che respinge l'acqua) che protegge il PVP dall'umidità atmosferica. Mantiene la tenuta (<em>hold</em>) <strong>senza effetto bagnato</strong>, garantendo un look naturale e pettinabilità.</p>
       </div>
     </div>
   </div>
@@ -1480,13 +1520,13 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
   <div class="mb-25">
     <p class="text mb-15">Nelle mousse, per stabilizzare la schiuma e favorire la distribuzione, si usa spesso un <strong>copolimero siliconico</strong> (es. <em>Dimethicone Copolyol</em>). La componente polieterea idrofila lo rende solubile in acqua/alcol, mentre la parte siliconica conferisce lucentezza e riduce l'effetto appiccicoso.</p>
     
-    <h3 class="subtitle mb-10">Avvertenze per i Fissativi e Tricoressi</h3>
-    <p class="text mb-15">L'uso eccessivo di gel o lacche, specialmente su capelli <strong>fragili o trattati chimicamente</strong>, può rigidizzare il fusto rendendolo suscettibile a fratture meccaniche. La rimozione aggressiva (spazzolatura a secco) di residui polimerici può causare <strong>Tricoressi Nodosa</strong> (frattura e sfibratura del capello con tipico aspetto "a pennello"). I fissativi vanno sempre rimossi con un lavaggio delicato in acqua tiepida, mai meccanicamente a secco.</p>
+    <h3 class="subtitle mt-15 mb-10">Avvertenze per i Fissativi e Tricoressi</h3>
+    <p class="text">L'uso eccessivo di gel o lacche, specialmente su capelli <strong>fragili o trattati chimicamente</strong>, può rigidizzare il fusto rendendolo suscettibile a fratture meccaniche. La rimozione aggressiva (spazzolatura a secco) di residui polimerici può causare <strong>Tricoressi Nodosa</strong> (frattura e sfibratura del capello con tipico aspetto "a pennello"). I fissativi vanno sempre rimossi con un lavaggio delicato in acqua tiepida, mai meccanicamente a secco.</p>
     
-    <h3 class="subtitle mb-10">Tinture per Capelli: Classificazione Chimica</h3>
-    <p class="text mb-10">La colorazione si basa sull'assorbimento selettivo della luce da parte di molecole cromofore (strutture chimiche capaci di assorbire determinate lunghezze d'onda del colore). Le tinture si classificano in base al meccanismo di azione e alla persistenza:</p>
+    <h3 class="subtitle mt-15 mb-10">Tinture per Capelli: Classificazione Chimica</h3>
+    <p class="text mb-10">La colorazione si basa sull'assorbimento selettivo della luce da parte di molecole cromofore. Le tinture si classificano in base al meccanismo di azione e alla persistenza:</p>
     
-    <!-- Tabella Diagnostica Cybernetic per la Classificazione Tinture -->
+    <!-- Tabella Diagnostica Cybernetic -->
     <div class="cyber-table-container mb-15" role="region" aria-label="Tabella comparativa sulla classificazione delle tinture per capelli" tabindex="0">
       <table class="cyber-table">
         <caption class="visually-hidden">Classificazione chimica delle tinture per capelli per meccanismo d'azione e durata</caption>
@@ -1528,7 +1568,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
     </div>
   </div>   
 
-  <h2 class="secHeader biotechcenter mb-15">
+  <h2 class="secHeader biotechcenter mt-15 mb-15">
     MECCANISMI DI COLORAZIONE DEI CAPELLI 
     <span aria-hidden="true">🎨</span>
   </h2>
@@ -1616,7 +1656,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
 
   <!-- Blocco 6: Tabelle Diagnostiche Ingredienti Critici -->
   <div class="mb-15">
-    <h3 class="secHeader mb-15">
+    <h3 class="secHeader mt-15 mb-15">
       INGREDIENTI CRITICI e Sostanze con Restrizione (Reg. CE 1223/2009) 
       <span aria-hidden="true">🛑</span>
     </h3>
@@ -1640,7 +1680,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
           </tr>
           <tr>
             <td><strong class="orangetext">MEA / TEA / DEA</strong></td>
-            <td>La DEA (Dietanolammina) e derivati possono reagire con agenti nitrificanti formando <strong>nitrosamine</strong> cancerogene.</td>
+            <td>La DEA (Dietanolammina) e derivati possono reagire con agenti nitrificanti forming <strong>nitrosamine</strong> cancerogene.</td>
             <td>DEA vietata con agenti nitrificanti. Limite nitrosamine &lt; <strong>50 µg/kg</strong>.</td>
           </tr>
           <tr>
