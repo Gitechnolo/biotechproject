@@ -78,32 +78,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 @media (max-width: 768px){ .image-text-wrapper, .image-text-wrapper-reversed{ flex-direction: column;} .image-text-wrapper .image-side, .image-text-wrapper-reversed .image-side{ flex: 1 1 auto; width: 100%; margin: 0 auto; text-align: center;}}
 .mt-15{ margin-top: 15px} .mt-5{ margin-top: 5px} .f22{ font-size: 22px;} .pl-40{ padding-left: 40px}
 .note{ border-left: 3px solid #FFD166; padding-left: 10px;} .note2{ border-left: 3px solid #00bfff; padding-left: 10px;} .fs30{font-size:30px;color:#B5EAD7} .note3{padding: 1px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .eq{ text-align: center; font-style: italic; background-color: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px} .note4{padding: 10px; border-left: 3px solid #FFD166; background-color: rgba(255, 209, 102, 0.1);} .note5{padding: 15px; background-color: rgba(138, 43, 226, 0.1);} .red{border-left: 3px solid red; padding-left: 10px;}
-table{border:0;padding:4px;border-spacing:4px;font-weight:bold;font-size:18px;text-align:center;}
-/* Ridimensionamento tabelle su device capelli.html, accessibility-it/en*/
-@media only screen and (max-width: 768px){table, thead, tbody, th, td, tr{display: block} thead{ display: none;} tr{ margin: 10px 0; border-bottom: 2px solid #ccc;} td{ position: relative; padding-left: 50% !important; border: none} td:before{ content: attr(data-label) ": "; position: absolute; left: 0; width: 45%; font-weight: bold; white-space: nowrap}}   
-/* Formattazione tabelle capelli.html*/
-.Pilosebaceo{padding:8px;box-shadow:0 4px 16px rgba(0,230,118,.2);backdrop-filter:blur(2px);border:1px solid rgba(0,230,118,.3);transition:transform .3s ease,box-shadow .3s ease;will-change:transform,box-shadow;}
-.tab{width:100%;border-collapse:collapse;margin-top:10px;box-shadow:0 4px 16px rgba(0,230,118,.2);backdrop-filter:blur(2px);border:1px solid rgba(0,230,118,.3);table-layout:fixed;}
 .biotech-img{margin:2px auto;max-width:100%;border-radius:12px;box-shadow:0 4px 16px rgba(0,230,118,.2);backdrop-filter:blur(2px);border:1px solid rgba(0,230,118,.3);transition:transform .3s ease,box-shadow .3s ease;will-change:transform,box-shadow;}
-/* End tabelle capelli.html*/
-/* ==========================================
-   RESET DI PROTEZIONE & MOBILE PER CYBER-TABLE
-   Isolato al 100%: Agisce unicamente sulla bibliografia (.cyber-table)
-   ========================================== */
-/* 1. Reset Desktop / Globale della sola Cyber-Table */
-.cyber-table-container table.cyber-table{ font-weight: normal !important; font-size: 14px !important; text-align: left !important; border-spacing: 0 !important; padding: 0 !important; width: 100% !important}
-.cyber-table-container table.cyber-table th,.cyber-table-container table.cyber-table td{ text-align: left !important}
-/* 2. Gestione specifica per Smartphone e Tablet (<= 768px) */
-@media only screen and (max-width: 768px) {
-  /* Annulla la trasformazione in block per la sola cyber-table */
-  .cyber-table-container table.cyber-table, .cyber-table-container table.cyber-table tbody, .cyber-table-container table.cyber-table th, .cyber-table-container table.cyber-table td, .cyber-table-container table.cyber-table tr{ display: table-cell !important} .cyber-table-container table.cyber-table tr{ display: table-row !important; border-bottom: none !important; margin: 0 !important}
-  /* Nasconde l'intestazione thead solo su mobile per evitare il disallineamento a destra */
-  .cyber-table-container table.cyber-table thead{ display: none !important;}
-  /* Ripristina le celle del corpo: allineate a sinistra e senza spinta padding: 50% */
-  .cyber-table-container table.cyber-table td{ padding-left: 12px !important; position: static !important; text-align: left !important;}
-  /* Rimuove l'inserimento dell'attributo pseudo-elemento data-label */
-  .cyber-table-container table.cyber-table td:before{ content: none !important;}
-}
 </style> 
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -1735,7 +1710,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         
         <h2 class="subtitle mb-10">Classi di Tensioattivi e Carica Elettrica</h2>
         <div class="cyber-table-container mb-25">
-            <table class="cyber-table text tab">
+            <table class="cyber-table text">
                 <thead>
                     <tr>
                         <th>Tipo</th>
