@@ -1694,193 +1694,219 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
 
 </section>
 
-<!--Sezione: SHAMPOO PER CAPELLI: Funzione e Composizione (Chiave: shampoo_full_section) -->
-<div data-lang-key="shampoo_full_section">
-    <h2 class="secHeader mt-15">SHAMPOO PER CAPELLI: Funzione e Composizione 🧼</h2>
-    <p class="text">Lo shampoo è un sistema colloidale acquoso complesso. La sua funzione primaria è la rimozione meccanica di sebo e sporco tramite l'azione sinergica di tensioattivi, senza alterare la barriera fisiologica del cuoio capelluto.</p>
-    
-    <h2 class="subtitle mt-15">Matrice Formulativa e Ruoli Funzionali</h2>
-    <p class="text">Una formulazione standard è costituita prevalentemente da <strong>acqua deionizzata</strong> (70-80%) come solvente universale e da un sistema tensioattivo (10-15%) responsabile della detersione. A questi si aggiungono componenti funzionali critici per la stabilità e la tollerabilità del prodotto.</p>
-    
-    <ul class="text" style="column-count: 2;">
-        <li>
-            <strong>Sistema Tensioattivo:</strong> Una miscela bilanciata di tensioattivi primari (pulizia) e secondari (addolcenti). <em>(Vedi tabella successiva per classificazione chimica e cariche).</em>
-        </li>
-        <li>
-            <strong>Agenti Chelanti (Sequestranti):</strong> Molecole come l'<strong>EDTA</strong> o i citrati sono essenziali per legare gli ioni di calcio e magnesio presenti nell'acqua dura. Senza di essi, i tensioattivi precipiterebbero riducendo la schiuma e lasciando residui opachi sul capello.
-        </li>
-        <li>
-            <strong>Sistema Tampone (pH):</strong> Additivi come l'<strong>acido citrico</strong> o lattico mantengono il prodotto a pH 4.5–5.5. Questo range è cruciale per rispettare il <strong>mantello acido</strong> del cuoio capelluto e mantenere le cuticole del capello chiuse e lucide.
-        </li>
-        <li>
-            <strong>Modificatori Reologici:</strong> Sali (cloruro di sodio) o polimeri cellulosici che aumentano la viscosità della soluzione, migliorando la maneggevolezza del prodotto durante l'applicazione.
-        </li>
-        <li>
-            <strong>Sistema Conservante:</strong> Necessario data l'alta percentuale di acqua e la presenza di nutrienti organici. Previene la contaminazione microbica (batteri e muffe) durante la vita del prodotto.
-        </li>
-        <li>
-            <strong>Agenti Condizionanti:</strong> Polimeri o siliconi che depositano un film sottile sulla fibra. <em>(Il meccanismo di deposizione elettrostatica è trattato nel blocco successivo).</em>
-        </li>
-        <li>
-            <strong>Additivi Estetici:</strong> Profumi, coloranti e agenti opacizzanti (es. glicole distearato) che conferiscono l'aspetto perlaceo e il profumo caratteristico, senza influenza diretta sulla detersione.
-        </li>
-    </ul>   
-    
-    <h2 class="subtitle mt-15">Classi di Tensioattivi e Carica Elettrica</h2>
-    <table class="text tab">
-        <thead>
-            <tr style="background-color: rgba(0, 191, 255, 0.2);">
-                <th class="Pilosebaceo">Tipo</th>
-                <th class="Pilosebaceo">Carica Netta</th>
-                <th class="Pilosebaceo">Esempio Chimico</th>
-                <th class="Pilosebaceo">Ruolo Funzionale</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="Pilosebaceo" data-label="Tipo">Anionici</td>
-                <td class="Pilosebaceo" data-label="Carica">Negativa (-)</td>
-                <td class="Pilosebaceo" data-label="Esempio">Sodium Laureth Sulfate (SLES), SLS</td>
-                <td class="Pilosebaceo" data-label="Uso Specifico">Detergenza primaria e schiuma abbondante. Possono essere aggressivi se non bilanciati.</td>
-            </tr>
-            <tr>
-                <td class="Pilosebaceo" data-label="Tipo">Anfoteri (Zwitterionici)</td>
-                <td class="Pilosebaceo" data-label="Carica">Variabile (pH-dipendente)</td>
-                <td class="Pilosebaceo" data-label="Esempio">Cocamidopropyl Betaine</td>
-                <td class="Pilosebaceo" data-label="Uso Specifico">Addolcenti e stabilizzanti di schiuma. A pH fisiologico (5.5) riducono l'irritazione degli anionici.</td>
-            </tr>
-            <tr>
-                <td class="Pilosebaceo" data-label="Tipo">Non-Ionici</td>
-                <td class="Pilosebaceo" data-label="Carica">Neutra (0)</td>
-                <td class="Pilosebaceo" data-label="Esempio">Decyl Glucoside, Alcanolammidi</td>
-                <td class="Pilosebaceo" data-label="Uso Specifico">Detergenza ultra-delicata, co-tensioattivi per pelli sensibili. Eccellente tollerabilità.</td>
-            </tr>
-            <tr>
-                <td class="Pilosebaceo" data-label="Tipo">Cationici</td>
-                <td class="Pilosebaceo" data-label="Carica">Positiva (+)</td>
-                <td class="Pilosebaceo" data-label="Esempio">Cetrimonium Chloride, Polyquaternium</td>
-                <td class="Pilosebaceo" data-label="Uso Specifico">Condizionanti e antistatici. <strong>Non detergenti</strong>: si legano alla cheratina carica negativamente.</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- ==========================================
+  SEZIONE: SHAMPOO E TRATTAMENTI POST-SHAMPOO (shampoo_post_shampoo)
+  DESCRIZIONE: Chimica formulativa e detersione (tensioattivi, EDTA, pH, modificatori reologici), dinamica micellare di asportazione del sebo, trattamenti antiforfora/antiseborroici (normativa UE e attivi), chimica dei siliconi (filmogenesi, Reg. UE 2024/1328, non-comedogenicità), dermocosmesi post-shampoo (balsami cationici, maschere lamellari, lozioni filmogene e attivi leave-in).
+  WCAG 2.2 AAA | WAI-ARIA Accessible
+  ========================================== -->
+<section data-lang-key="shampoo_post_shampoo" class="mb-30">
 
-    <h2 class="subtitle mt-15">Meccanismo di Detersione (Micelle)</h2>
-    <p class="text">I tensioattivi sono <strong>molecole anfipatiche</strong> caratterizzate da una doppia affinità chimica:</p>
-    <ul class="text">
-        <li><strong>Coda Idrocarburica (Idrofobica/Lipofila):</strong> Affine ai grassi, si orienta verso lo sporco lipidico e il sebo.</li>
-        <li><strong>Testa Polare (Idrofilica):</strong> Affine all'acqua, garantisce la solubilità del complesso in fase acquosa.</li>
-    </ul>
-    <p class="text">Oltre una soglia critica di concentrazione (<strong>CMC - Concentrazione Micellare Critica</strong>), le molecole si auto-assemblano in aggregati sferici detti <strong>micelle</strong>. Le code idrofobiche si proteggono dall'acqua orientandosi verso il centro, mentre le teste idrofiliche interagiscono con il solvente esterno.</p>
-    <p class="text">Durante il lavaggio, la coda lipofila penetra nel sebo, lo frammenta e lo ingloba nel nucleo della micella (emulsificazione). La micella, carica esternamente, viene poi risciacquata via. A specifiche concentrazioni e in presenza di elettroliti, le micelle possono allungarsi in strutture cilindriche ("vermicelli"), incrementando la <strong>viscosità</strong> del prodotto.</p>
+    <!-- BLOCK 1: SHAMPOO PER CAPELLI -->
+    <div class="mb-30">
+        <h2 class="secHeader mb-10">SHAMPOO PER CAPELLI: Funzione e Composizione 🧼</h2>
+        <p class="text mb-15">Lo shampoo è un sistema colloidale acquoso complesso. La sua funzione primaria è la rimozione meccanica di sebo e sporco tramite l'azione sinergica di tensioattivi, senza alterare la barriera fisiologica del cuoio capelluto.</p>
+        
+        <h2 class="subtitle mb-10">Matrice Formulativa e Ruoli Funzionali</h2>
+        <p class="text mb-15">Una formulazione standard è costituita prevalentemente da <strong>acqua deionizzata</strong> (70-80%) come solvente universale e da un sistema tensioattivo (10-15%) responsabile della detersione. A questi si aggiungono componenti funzionali critici per la stabilità e la tollerabilità del prodotto.</p>
+        
+        <ul class="text mb-25" style="column-count: 2;">
+            <li class="mb-7">
+                <strong>Sistema Tensioattivo:</strong> Una miscela bilanciata di tensioattivi primari (pulizia) e secondari (addolcenti). <em>(Vedi tabella successiva per classificazione chimica e cariche).</em>
+            </li>
+            <li class="mb-7">
+                <strong>Agenti Chelanti (Sequestranti):</strong> Molecole come l'<strong>EDTA</strong> o i citrati sono essenziali per legare gli ioni di calcio e magnesio presenti nell'acqua dura. Senza di essi, i tensioattivi precipiterebbero riducendo la schiuma e lasciando residui opachi sul capello.
+            </li>
+            <li class="mb-7">
+                <strong>Sistema Tampone (pH):</strong> Additivi come l'<strong>acido citrico</strong> o lattico mantengono il prodotto a pH 4.5–5.5. Questo range è cruciale per rispettare il <strong>mantello acido</strong> del cuoio capelluto e mantenere le cuticole del capello chiuse e lucide.
+            </li>
+            <li class="mb-7">
+                <strong>Modificatori Reologici:</strong> Sali (cloruro di sodio) o polimeri cellulosici che aumentano la viscosità della soluzione, migliorando la maneggevolezza del prodotto durante l'applicazione.
+            </li>
+            <li class="mb-7">
+                <strong>Sistema Conservante:</strong> Necessario data l'alta percentuale di acqua e la presenza di nutrienti organici. Previene la contaminazione microbica (batteri e muffe) durante la vita del prodotto.
+            </li>
+            <li class="mb-7">
+                <strong>Agenti Condizionanti:</strong> Polimeri o siliconi che depositano un film sottile sulla fibra. <em>(Il meccanismo di deposizione elettrostatica è trattato nel blocco successivo).</em>
+            </li>
+            <li class="mb-7">
+                <strong>Additivi Estetici:</strong> Profumi, coloranti e agenti opacizzanti (es. glicole distearato) che conferiscono l'aspetto perlaceo e il profumo caratteristico, senza influenza diretta sulla detersione.
+            </li>
+        </ul>   
+        
+        <h2 class="subtitle mb-10">Classi di Tensioattivi e Carica Elettrica</h2>
+        <div class="cyber-table-container mb-25">
+            <table class="cyber-table text tab">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Carica Netta</th>
+                        <th>Esempio Chimico</th>
+                        <th>Ruolo Funzionale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Tipo">Anionici</td>
+                        <td data-label="Carica">Negativa (-)</td>
+                        <td data-label="Esempio">Sodium Laureth Sulfate (SLES), SLS</td>
+                        <td data-label="Uso Specifico">Detergenza primaria e schiuma abbondante. Possono essere aggressivi se non bilanciati.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tipo">Anfoteri (Zwitterionici)</td>
+                        <td data-label="Carica">Variabile (pH-dipendente)</td>
+                        <td data-label="Esempio">Cocamidopropyl Betaine</td>
+                        <td data-label="Uso Specifico">Addolcenti e stabilizzanti di schiuma. A pH fisiologico (5.5) riducono l'irritazione degli anionici.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tipo">Non-Ionici</td>
+                        <td data-label="Carica">Neutra (0)</td>
+                        <td data-label="Esempio">Decyl Glucoside, Alcanolammidi</td>
+                        <td data-label="Uso Specifico">Detergenza ultra-delicata, co-tensioattivi per pelli sensibili. Eccellente tollerabilità.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tipo">Cationici</td>
+                        <td data-label="Carica">Positiva (+)</td>
+                        <td data-label="Esempio">Cetrimonium Chloride, Polyquaternium</td>
+                        <td data-label="Uso Specifico">Condizionanti e antistatici. <strong>Non detergenti</strong>: si legano alla cheratina carica negativamente.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <h2 class="subtitle mt-15">Shampoo Curativi (Antiforfora e Antiseborroici)</h2>
-    <p class="text">Formulazioni speciali contenenti attivi ad azione specifica per normalizzare il turnover cellulare o contrastare la proliferazione microbica (<em>Malassezia spp.</em>).</p>
-    
-    <dl class="text">
-        <dt><span class="greentext">Antiforfora (Antimicotici e Citostatici):</span></dt>
-        <dd>
-            <!-- NOTA TECNICA REGOLATORIA 2026: Lo Zinco Piritione è stato escluso dalle formulazioni cosmetiche (Reg. UE 2021/1902) in quanto classificato CMR 1B. Sostituito con Piroctone Olamina e Climbazolo. -->
-            Utilizzano attivi ammessi dal Regolamento Cosmetico UE come <strong>Piroctone Olamina</strong> e <strong>Climbazolo</strong>. Lo Zinco Piritione è vietato in UE in quanto sostanza CMR 1B. In ambito esclusivamente farmacologico (medicinali OTC o prescrizione) si ricorre invece al <strong>Ketoconazolo</strong> o al <strong>Disolfuro di Selenio</strong>. 
-            <br><em>Nota:</em> I catrami di carbone fossile sono vietati in UE; si utilizzano invece oli vegetali (Cade, Betulla) per l'azione cheratolitica e antipruriginosa.
-        </dd>
-        <dt><span class="greentext">Antiseborroici:</span></dt>
-        <dd>
-            <ul class="mt-5">
-                <li><span class="biotechbold">Detergenti Delicati:</span> Tensioattivi non ionici o anfoteri (es. derivati del glucosio) che puliscono senza stripare eccessivamente il film idrolipidico, evitando la <strong>seborrea reattiva</strong>.</li>
-                <li><span class="biotechbold">Attivi Sebo-Regolatori:</span> Ingredienti come lo <strong>Zinco PCA</strong> o estratti vegetali (es. <em>Serenoa Repens</em>) che modulano l'attività della <em>5-alfa-reduttasi</em>, riducendo la produzione di sebo.</li>
-            </ul>
-        </dd>
-    </dl>
+        <h2 class="subtitle mb-10">Meccanismo di Detersione (Dinamica Micellare)</h2>
+        <p class="text mb-15">I tensioattivi sono <strong>molecole anfipatiche</strong> dotate di una coda idrofobica (lipofila) e di una testa idrofilica polare. La rimozione dello sporco segue un processo sequenziale ben definito:</p>
 
-    <h2 class="subtitle mt-15">Siliconi in Cosmetica</h2>
-    <p class="text">I siliconi (polimeri inorganici a base di silicio-ossigeno, es. <strong>Dimeticone</strong>, <strong>Ciclometicone</strong>) formano un film occlusivo traspirante sulla superficie del capello. Questo <strong>riduce</strong> l'attrito (pettinabilità), conferisce lucentezza e protegge dall'umidità. Sono chimicamente <strong>inerti, ipoallergenici e non irritanti</strong>.</p>
-    <p class="text">
-        La distinzione chiave è tra siliconi volatili (ciclici) e non volatili (lineari). 
-        <br><strong>Normativa:</strong> Il Regolamento (UE) 2024/1328 sulle restrizioni dei siliconi ciclici D4, D5 e D6 nei prodotti rinse-off è in pieno regime. L'intervento è mirato al profilo bioaccumulabile e persistente (PBT/vPvB) a livello ambientale, non a tossicità per la salute umana.
-        <br><strong>Comedogenicità:</strong> I siliconi moderni (es. Dimeticone ad alto peso molecolare) sono generalmente <strong>non comedogenici</strong> poiché le loro macromolecole sono troppo grandi per ostruire i follicoli piliferi.
-    </p> 
-</div>
-<!-- =========================================================================
-     SEZIONE: DERMOCOSMESI POST-SHAMPOO (Condizionamento e Tricologia Funzionale) - (Chiave: ps_section)
-     Riferimento Chimico-Normativo ed Ecocinetico: Regolamento (CE) n. 1223/2009 aggiornato 2026
-     ========================================================================= -->
-<div data-lang-key="ps_section">
-<!-- Titolo Principale della Sezione -->
-<h2 class="secHeader biotechcenter mt-15">PRODOTTI DOPO-SHAMPOO: Condizionamento e Trattamento Chimico-Funzionale 🧴</h2>
+        <!-- DIAGRAMMA DI FLUSSO: MECCANISMO MICELLARE -->
+        <div class="cyber-flowchart mb-25">
+            <div class="flow-card common">
+                <span class="flow-tag tag-common">Fase 1: Orientamento Anfipatico</span>
+                <div class="flow-title">Interazione Lipofila</div>
+                <div class="flow-desc">In ambiente acquoso, le code idrofobiche dei tensioattivi si orientano verso il sebo e i detriti lipidici depositati sulla fibra o sulla cute.</div>
+            </div>
 
-<!-- SUB-SEZIONE 1: Balsami Condizionanti (Conditioners) -->
-<!-- Focus formulativo: Neutralizzazione cariche cuticolari tramite tensioattivi cationici anfipatici -->
-<h2 class="subtitle mt-15">1. Balsami Condizionanti (Conditioner)</h2>
-<p class="text">
-Formulazioni progettate per ripristinare le proprietà tribologiche della fibra capillare, incrementando <strong>elasticità, levigatezza cuticolare, lucentezza e pettinabilità</strong> (riduzione delle forze di attrito dinamico) e neutralizzando le cariche elettrostatiche superficiali. Sistemi indicati per fibre xerotiche, chimicamente trattate o strutturalmente danneggiate.
-</p>
-<ul class="text note2">
-<!-- Chimica degli ingredienti base approvati e conformi 2026 -->
- <li>
- <strong>Composizione (Fase Interfacciale):</strong> Alcoli grassi a catena lineare agenti come co-emulsionanti e agenti strutturanti (es. Cetearyl Alcohol), <em>tensioattivi cationici anfipatici</em> (sali di ammonio quaternario a lunga catena alchilica come <em>Behentrimonium Chloride</em> o <em>Cetrimonium Chloride</em>), polimeri siliconici ad alto peso molecolare (dimeticone e amodimeticone funzionalizzato), esteri emollienti sintetici, proteine idrolizzate a basso peso molecolare (<em>microincapsulate</em> per stabilizzazione e facilitata veicolazione) e polimeri filmogeni sostantivi.
- </li>
- <!-- Spiegazione chimico-fisica del punto isoelettrico della cheratina -->
- <li>
- <strong>Meccanismo Chimico-Fisico (Approfondimento Molecolare):</strong> Come anticipato nella matrice dello shampoo, le cariche positive del condizionante si legano per attrazione elettrostatica ai siti anionici liberi (gruppi carbossilici ionizzati COO<sup>-</sup> dei residui di acido aspartico e glutammico) della cheratina esposta. Il punto isoelettrico della cheratina (pH &sim; 3.7) viene alterato dai trattamenti alcalini o dai lavaggi, incrementando la densità di carica negativa che questo sistema va a saturare, favorendo l'allineamento e la chiusura delle cuticole.
- </li>
- <li>
- <strong>Persistenza e Cinetica:</strong> Interazione prevalentemente <strong>reversibile</strong> e di superficie; il film condizionante è soggetto a desorbimento e progressiva rimozione cinetica mediante i successivi lavaggi con tensioattivi anionici.
- </li>
- <!-- Avvertenze sul fenomeno di accumulo (buildup) e migrazione lipidica -->
- <li>
- <strong>Controindicazioni Dermatologiche:</strong> Se applicati in prossimità dell'ostio follicolare o su cuoio capelluto a tendenza seborroica, possono indurre il fenomeno dell'<em>accumulo superficiale</em> (<em>surface buildup</em>, deposizione resistente al risciacquo) e accelerare la migrazione capillare del sebo fluido lungo lo stelo per capillarità.
- </li>
-</ul>
+            <div class="flow-arrow-down">↓</div>
 
-<!-- SUB-SEZIONE 2: Maschere Nutrienti (Hair Masks) -->
-<!-- Sistemi emulsionati ad alta viscosità per il ripristino del CMC e ripristino lipidico profondo -->
-<h2 class="subtitle mt-15">2. Maschere Nutrienti (Hair Masks)</h2>
-<p class="text">
-Sistemi emulsionati ad <strong>alta viscosità</strong> e consistenza reologica pseudoplastica, formulati per applicazioni topiche post-shampoo con tempi di contatto prolungati (5-15 minuti). Sono finalizzati al ripristino strutturale del Complesso delle Membrane Cellulari (CMC cuticolare) e all'integrazione lipidica profonda dello strato idrofobico esterno.
-</p>
-<div class="yellowtext note5">
-<!-- Architettura colloidale e stabilizzazione delle fases a cristalli liquidi -->
-<p>
-<strong>Struttura Colloidale:</strong> Emulsioni prevalentemente <strong>olio in acqua (O/A)</strong> organizzate in fasi lamellari a cristalli liquidi, stabilizzate da tensioattivi non ionici etossilati ad alto HLB (polisorbati) o tensioattivi cationici biodegradabili a struttura esterea (<em>esterquat</em>, come i sali di di-alchilestere ammonio quaternario).
-</p>
-<!-- Fisiopatologia e avvertenze da Over-conditioning -->
-<p class="orangetext">
-<strong>Fisiopatologia da Sovracondizionamento:</strong> Un regime di <em>applicazione</em> iper-frequente o un risciacquo termico inadeguato satura la porosità cuticolare, determinando l'<em>appesantimento reologico della fibra</em>, la perdita del volume naturale e l'insorgenza precoce di untuosità superficiale per coalescenza dei lipidi applicati con il sebo endogeno (<em>effetto grasso</em>).
-</p>
-</div>
+            <div class="flow-card intrinsic">
+                <span class="flow-tag tag-intrinsic">Fase 2: Soglia CMC & Aggregazione</span>
+                <div class="flow-title">Formazione delle Micelle</div>
+                <div class="flow-desc">Superata la Concentrazione Micellare Critica (CMC), le molecole si auto-assemblano in aggregati sferici (o cilindrici/"vermicelli"), inglobando lo sporco al centro.</div>
+            </div>
 
-<!-- SUB-SEZIONE 3: Lozioni Fissanti (Styling Lotions) -->
-<!-- Fissaggio reologico tramite polimeri sintetici e bio-based film-formers -->
-<h2 class="subtitle mt-15">3. Lozioni Fissanti (Styling Lotions)</h2>
-<p class="text">
-Formulazioni topiche <strong>senza risciacquo</strong> (<em>leave-in</em>) ingegnerizzate per depositarsi sulla cuticola e creare ponti inter-fibra transitori tramite <strong>polimeri sintetici omopolimerici o bio-based film-formers</strong> (es. PVP, VP/VA Copolymer, derivati del vinilacetato o polimeri polisaccaridici modificati). Agiscono modificando temporaneamente la rigidità strutturale e conferendo memoria di forma geometrica allo styling.
-<br><em>Nota Chimico-Fisica: Un sovradosaggio o un'evaporazione ultrarapida del solvente altera la coesione del film polimerico rispetto al substrato cheratinico, determinando il fenomeno dello <strong>sfaldamento</strong> (<em>flaking</em>, frattura microscopica del film in scaglie biancastre visibili, macroscopicamente confondibili con la desquamazione forforacea).</em>
-</p>
+            <div class="flow-arrow-down">↓</div>
 
-<!-- SUB-SEZIONE 4: Lozioni Trattanti Funzionali (Leave-in Treatments) -->
-<!-- Sistemi veicolanti per applicazioni topiche ad assorbimento transcutaneo/follicolare -->
-<h2 class="subtitle mt-15">4. Lozioni Trattanti Funzionali (Leave-in Treatments)</h2>
-<p class="text">
-Soluzioni idroalcoliche, idroglicoliche o microemulsioni senza risciacquo, applicate sull'unità pilosebacea o sulle lunghezze, destinate a fungere da veicolo per il rilascio prolungato e l'assorbimento transcutaneo (trans-epidermico e trans-follicolare) di <strong>principi attivi</strong> e ingredienti target.
-</p>
-<dl class="text note">
-<!-- Focus Sicurezza e Tossicologia: Sostituzione obbligatoria dello Zinco Piritione (Vietato) con Piroctone Olamine/Climbazole -->
-<dt><span class="greentext">Lozioni Antiforfora (Regolatori del Turn-over Cellulare):</span></dt>
-<dd>
-Rispetto ai prodotti a risciacquo, queste lozioni topiche garantiscono un tempo di contatto prolungato per gli agenti <strong>antimicrobici e cheratolitici</strong> conformi all'Allegato V del Reg. 1223/2009 (es. Piroctone Olamine ad azione mirata contro <em>Malassezia furfur</em>, Climbazole e acido salicilico ad azione cheratolitica mediante solubilizzazione del cemento intercorneocitario). <strong>Nota accademica: In linea con il divieto dello Zinco Piritione (CMR 1B) già discusso nella sezione shampoo, l'integrazione di questi attivi leave-in è rigorosamente calibrata per evitare risposte di ipersensibilità cutanea.</strong>
-</dd>
-<!-- Focus Sebo-regolazione: Modulatori enzimatici della lipogenesi ed esfolianti selettivi -->
-<dt><span class="greentext">Lozioni Antiseborroiche (Modulatori della Lipogenesi):</span></dt>
-<dd>
-Mirano alla riduzione dell'attività biosintetica delle ghiandole sebacee e al controllo della fluidità del sebo direttamente all'ostio. Utilizzano <strong>zolfo colloidale</strong> bio-disponibile (inibitore dell'iperproliferazione sebacea), azeloglicina (potente inibitore competitivo dell'enzima 5-alpha-reduttasi e normalizzante del flusso lipidico), acidi esfolianti beta-idrossilati (Acido Salicilico lipofilo) ed estratti botanici titolati in tannini e flavonoidi ad azione astringente e lenitiva (es. <em>Salvia officinalis</em>, <em>Urtica dioica</em>, <em>Aloe barbadensis</em>).
-</dd>
-<!-- Focus Tricologia e Ciclo del Capello: Inibizione biochimica della 5-alpha-reduttasi e modulazione del DHT -->
-<dt><span class="greentext">Lozioni Coadiuvanti Anticaduta (Focus Tricogeno):</span></dt>
-<dd>
-Sistemi avanzati mirati al prolungamento della fase Anagen e al contrasto della miniaturizzazione follicolare causata dagli androgeni. Contengono complessi peptidici biomimetici stabili, stimolanti del microcircolo endoteliale e promotori del VEGF (es. Caffeina per via transcutanea, Biotina come cofattore enzimatico essenziale, Nicotinati ad azione vasodilatatrice locale), antiossidanti contro il distress ossidativo del bulbo e, come pilastro biochimico, <strong>inibitori locali del Diidrotestosterone (DHT)</strong> attuati mediante il blocco dell'isoenzima 5-alpha-reduttasi cutaneo (es. frazione fitosterolica purificata e titolata di <em>Serenoa repens</em>).
-</dd>
-</dl>
-</div>
+            <div class="flow-card lysis">
+                <span class="flow-tag tag-lysis">Fase 3: Asportazione Meccanica</span>
+                <div class="flow-title">Emulsificazione & Risciacquo</div>
+                <div class="flow-desc">Le teste idrofiliche esterne interagiscono con l'acqua di risciacquo, permettendo la completa solubilizzazione e rimozione della struttura micellare idrofoba.</div>
+            </div>
+        </div>
+
+        <h2 class="subtitle mb-10">Shampoo Curativi (Antiforfora e Antiseborroici)</h2>
+        <p class="text mb-10">Formulazioni speciali contenenti attivi ad azione specifica per normalizzare il turnover cellulare o contrastare la proliferazione microbica (<em>Malassezia spp.</em>).</p>
+        
+        <dl class="text mb-25">
+            <dt class="mb-5"><span class="greentext">Antiforfora (Antimicotici e Citostatici):</span></dt>
+            <dd class="mb-15">
+                Utilizzano attivi ammessi dal Regolamento Cosmetico UE come <strong>Piroctone Olamina</strong> e <strong>Climbazolo</strong>. Lo Zinco Piritione è vietato in UE in quanto sostanza CMR 1B. In ambito esclusivamente farmacologico (medicinali OTC o prescrizione) si ricorre invece al <strong>Ketoconazolo</strong> o al <strong>Disolfuro di Selenio</strong>. 
+                <br><em>Nota:</em> I catrami di carbone fossile sono vietati in UE; si utilizzano invece oli vegetali (Cade, Betulla) per l'azione cheratolitica e antipruriginosa.
+            </dd>
+            <dt class="mb-5"><span class="greentext">Antiseborroici:</span></dt>
+            <dd>
+                <ul class="mb-5">
+                    <li class="mb-5"><span class="biotechbold">Detergenti Delicati:</span> Tensioattivi non ionici o anfoteri (es. derivati del glucosio) che puliscono senza stripare eccessivamente il film idrolipidico, evitando la <strong>seborrea reattiva</strong>.</li>
+                    <li class="mb-5"><span class="biotechbold">Attivi Sebo-Regolatori:</span> Ingredienti come lo <strong>Zinco PCA</strong> o estratti vegetali (es. <em>Serenoa Repens</em>) che modulano l'attività della <em>5-alfa-reduttasi</em>, riducendo la produzione di sebo.</li>
+                </ul>
+            </dd>
+        </dl>
+
+        <h2 class="subtitle mb-10">Siliconi in Cosmetica</h2>
+        <p class="text mb-10">I siliconi (polimeri inorganici a base di silicio-ossigeno, es. <strong>Dimeticone</strong>, <strong>Ciclometicone</strong>) formano un film occlusivo traspirante sulla superficie del capello. Questo <strong>riduce</strong> l'attrito (pettinabilità), conferisce lucentezza e protegge dall'umidità. Sono chimicamente <strong>inerti, ipoallergenici e non irritanti</strong>.</p>
+        <p class="text">
+            La distinzione chiave è tra siliconi volatili (ciclici) e non volatili (lineari). 
+            <br><strong>Normativa:</strong> Il Regolamento (UE) 2024/1328 sulle restrizioni dei siliconi ciclici D4, D5 e D6 nei prodotti rinse-off è in pieno regime. L'intervento è mirato al profilo bioaccumulabile e persistente (PBT/vPvB) a livello ambientalista, non a tossicità per la salute umana.
+            <br><strong>Comedogenicità:</strong> I siliconi moderni (es. Dimeticone ad alto peso molecolare) sono generalmente <strong>non comedogenici</strong> poiché le loro macromolecole sono troppo grandi per ostruire i follicoli piliferi.
+        </p> 
+    </div>
+
+    <!-- BLOCK 2: DERMOCOSMESI POST-SHAMPOO -->
+    <div>
+        <h2 class="secHeader biotechcenter mb-10">PRODOTTI DOPO-SHAMPOO: Condizionamento e Trattamento Chimico-Funzionale 🧴</h2>
+
+        <h2 class="subtitle mb-10">1. Balsami Condizionanti (Conditioner)</h2>
+        <p class="text mb-10">
+            Formulazioni progettate per ripristinare le proprietà tribologiche della fibra capillare, incrementando <strong>elasticità, levigatezza cuticolare, lucentezza e pettinabilità</strong> (riduzione delle forze di attrito dinamico) e neutralizzando le cariche elettrostatiche superficiali. Sistemi indicati per fibre xerotiche, chimicamente trattate o strutturalmente danneggiate.
+        </p>
+        <ul class="text note2 mb-25">
+            <li class="mb-7">
+                <strong>Composizione (Fase Interfacciale):</strong> Alcoli grassi a catena lineare agenti come co-emulsionanti e agenti strutturanti (es. Cetearyl Alcohol), <em>tensioattivi cationici anfipatici</em> (sali di ammonio quaternario a lunga catena alchilica come <em>Behentrimonium Chloride</em> o <em>Cetrimonium Chloride</em>), polimeri siliconici ad alto peso molecolare (dimeticone e amodimeticone funzionalizzato), esteri emollienti sintetici, proteine idrolizzate a basso peso molecolare (<em>microincapsulate</em> per stabilizzazione e facilitata veicolazione) e polimeri filmogeni sostantivi.
+            </li>
+            <li class="mb-7">
+                <strong>Meccanismo Chimico-Fisico (Approfondimento Molecolare):</strong> Le cariche positive del condizionante si legano per attrazione elettrostatica ai siti anionici liberi (gruppi carbossilici ionizzati COO<sup>-</sup> dei residui di acido aspartico e glutammico) della cheratina esposta. Il punto isoelettrico della cheratina (pH &sim; 3.7) viene alterato dai trattamenti alcalini o dai lavaggi, incrementando la densità di carica negativa che questo sistema va a saturare, favorendo l'allineamento e la chiusura delle cuticole.
+            </li>
+            <li class="mb-7">
+                <strong>Persistenza e Cinetica:</strong> Interazione prevalentemente <strong>reversibile</strong> e di superficie; il film condizionante è soggetto a desorbimento e progressiva rimozione cinetica mediante i successivi lavaggi con tensioattivi anionici.
+            </li>
+            <li class="mb-7">
+                <strong>Controindicazioni Dermatologiche:</strong> Se applicati in prossimità dell'ostio follicolare o su cuoio capelluto a tendenza seborroica, possono indurre il fenomeno dell'<em>accumulo superficiale</em> (<em>surface buildup</em>, deposizione resistente al risciacquo) e accelerare la migrazione capillare del sebo fluido lungo lo stelo per capillarità.
+            </li>
+        </ul>
+
+        <h2 class="subtitle mb-10">2. Maschere Nutrienti (Hair Masks)</h2>
+        <p class="text mb-10">
+            Sistemi emulsionati ad <strong>alta viscosità</strong> e consistenza reologica pseudoplastica, formulati per applicazioni topiche post-shampoo con tempi di contatto prolungati (5-15 minuti). Sono finalizzati al ripristino strutturale del Complesso delle Membrane Cellulari (CMC cuticolare) e all'integrazione lipidica profonda dello strato idrofobico esterno.
+        </p>
+        <div class="research-insight-box mb-25">
+            <p class="mb-10">
+                <strong>Struttura Colloidale:</strong> Emulsioni prevalentemente <strong>olio in acqua (O/A)</strong> organizzate in fasi lamellari a cristalli liquidi, stabilizzate da tensioattivi non ionici etossilati ad alto HLB (polisorbati) o tensioattivi cationici biodegradabili a struttura esterea (<em>esterquat</em>, come i sali di di-alchilestere ammonio quaternario).
+            </p>
+            <p class="orangetext">
+                <strong>Fisiopatologia da Sovracondizionamento:</strong> Un regime di <em>applicazione</em> iper-frequente o un risciacquo termico inadeguato satura la porosità cuticolare, determinando l'<em>appesantimento reologico della fibra</em>, la perdita del volume naturale e l'insorgenza precoce di untuosità superficiale per coalescenza dei lipidi applicati con il sebo endogeno (<em>effetto grasso</em>).
+            </p>
+        </div>
+
+        <h2 class="subtitle mb-10">3. Lozioni Fissanti (Styling Lotions)</h2>
+        <p class="text mb-25">
+            Formulazioni topiche <strong>senza risciacquo</strong> (<em>leave-in</em>) ingegnerizzate per depositarsi sulla cuticola e creare ponti inter-fibra transitori tramite <strong>polimeri sintetici omopolimerici o bio-based film-formers</strong> (es. PVP, VP/VA Copolymer, derivati del vinilacetato o polimeri polisaccaridici modificati). Agiscono modificando temporaneamente la rigidità strutturale e conferendo memoria di forma geometrica allo styling.
+            <br><em>Nota Chimico-Fisica: Un sovradosaggio o un'evaporazione ultrarapida del solvente altera la coesione del film polimerico rispetto al substrato cheratinico, determinando il fenomeno dello <strong>sfaldamento</strong> (<em>flaking</em>, frattura microscopica del film in scaglie biancastre visibili, macroscopicamente confondibili con la desquamazione forforacea).</em>
+        </p>
+
+        <h2 class="subtitle mb-10">4. Lozioni Trattanti Funzionali (Leave-in Treatments)</h2>
+        <p class="text mb-15">
+            Soluzioni idroalcoliche, idroglicoliche o microemulsioni senza risciacquo, applicate sull'unità pilosebacea o sulle lunghezze, destinate a fungere da veicolo per il rilascio prolungato e l'assorbimento transcutaneo di principi attivi target.
+        </p>
+
+        <!-- CARDS DI RAMIFICAZIONE: LOZIONI FUNZIONALI -->
+        <div class="flow-branches mb-25">
+            <!-- Ramo Antiforfora -->
+            <div class="flow-card extrinsic">
+                <span class="flow-tag tag-extrinsic">Antiforfora & Turnover</span>
+                <div class="flow-title">Lozioni Antimicrobiche</div>
+                <div class="flow-desc">
+                    Garantiscono contatto prolungato per attivi conformi al Reg. 1223/2009 (Piroctone Olamine contro <em>Malassezia furfur</em>, Climbazolo e Acido Salicilico cheratolitico). Formulazioni senza Zinco Piritione (CMR 1B) per evitare risposte di ipersensibilità.
+                </div>
+            </div>
+
+            <!-- Ramo Antiseborroiche -->
+            <div class="flow-card intrinsic">
+                <span class="flow-tag tag-intrinsic">Antiseborroiche & Sebo-Controllo</span>
+                <div class="flow-title">Modulatori della Lipogenesi</div>
+                <div class="flow-desc">
+                    Riducano la sintesi sebacea all'ostio mediante Zolfo Colloidale, Azeloglicina (inibitore della 5-$\alpha$-reduttasi), BHA lipofili ed estratti vegetali astringenti/lenitivi (Salvia, Ortica, Aloe vera).
+                </div>
+            </div>
+        </div>
+
+        <!-- Scheda Singola Estesa per Anticaduta -->
+        <div class="flow-card common mb-25">
+            <span class="flow-tag tag-common">Coadiuvanti Anticaduta & Focus Tricogeno</span>
+            <div class="flow-title">Stimolazione Follicolare e Blocco DHT</div>
+            <div class="flow-desc">
+                Sistemi avanzati per estendere la fase Anagen e contrastare la miniaturizzazione androgenetica. Utilizzano complessi peptidici biomimetici, stimolanti microcircolatori/VEGF (Caffeina, Nicotinati, Biotina) e l'<strong>inibizione locale del DHT</strong> tramite il blocco dell'isoenzima 5-$\alpha$-reduttasi (es. fitosteroli di <em>Serenoa repens</em>).
+            </div>
+        </div>
+    </div>
+
+</section>
 <!-- =========================================================================
      SEZIONE: ANOMALIE DELLA PIGMENTAZIONE (DISCROMIE) - (Chiave: discromie_section)
      Riferimento Istopatologico e Clinico-Oncologico (Linee Guida Melanoma 2026)
