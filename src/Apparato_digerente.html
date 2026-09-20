@@ -86,10 +86,36 @@ h1,.modern-logo{content-visibility:visible!important}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{display:block;margin:15px auto 20px;max-width:90vw;height:auto;aspect-ratio:720/180;border-radius:8px;border:0;opacity:.9}
 .pulse-logo{opacity:.9}
-div.gallery{border:1px solid #ccc;border-radius:6px}
-div.gallery:hover{border:1px solid #777;border-radius:6px}
-div.gallery img{width:100%;height:auto}
-div.desc{font-family:'Sansation',Tahoma,Verdana,sans-serif;padding:15px;text-align:center;font-size:16px;font-weight:bold;color:hwb(56 32% 7%);font-style:italic}
+/* GALLERIE BIOENERGETICHE: Selettori by-class (funziona su div e figure) */
+.gallery {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  display: block; /* Migliore stabilità rispetto a inline-block */
+}
+
+.gallery:hover {
+  border: 1px solid #777;
+  border-radius: 6px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block; /* Rimuove lo spazio bianco sotto l'immagine */
+}
+
+.desc {
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: hwb(56 32% 7%);
+  font-style: italic;
+  margin: 0;
+}
 *{box-sizing:border-box}
 .responsive{padding:0 6px;float:left;width:24.99999%}
 .clearfix:after{content:"";display:table;clear:both}
@@ -326,40 +352,49 @@ DESCRIZIONE: Descrizione anatomica del tubo digerente, fisiologia della masticaz
   </p>
 </section>
 <!-- Illustrazioni bioenergetiche (scala molecolare/sistemica): controllo nervoso della deglutizione, pompa protonica gastrica, idrolisi enzimatica ai microvilli, trasporto portale/epatico -->
-<h2 class="sr-only">Illustrazioni bioenergetiche della digestione: dalla pompa protonica gastrica al metabolismo epatico</h2>
+<section aria-labelledby="titolo-illustrazioni-digestione" text-block>
+  <h2 id="titolo-illustrazioni-digestione" class="sr-only">Illustrazioni bioenergetiche della digestione: dalla pompa protonica gastrica al metabolismo epatico</h2>
 
-<div class="responsive"><div class="gallery">
-  <!-- Immagine 1: Controllo Nervoso (masticazione/deglutizione) -->
-  <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_masticazione_deglutizione.avif" aria-label="Ingrandisci: Controllo nervoso della masticazione e deglutizione. Per tornare indietro premi Alt + freccia a sinistra">
-    <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_masticazione_deglutizione.avif" alt="Schema del controllo nervoso della masticazione e deglutizione: corteccia, bulbo e onda peristaltica" width="1200" height="1696" loading="lazy" decoding="async">
-  </a>
-  <div class="desc" data-lang-key="ctrl_nervo_masticazione_deglutizione">Controllo nervoso della deglutizione</div>
-</div></div>
+  <!-- Immagine 1: Controllo Nervoso -->
+  <div class="responsive">
+    <figure class="gallery">
+      <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_masticazione_deglutizione.avif" aria-label="Ingrandisci: Controllo nervoso della masticazione e deglutizione. Per tornare indietro premi Alt + freccia a sinistra">
+        <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_masticazione_deglutizione.avif" alt="Schema del controllo nervoso della masticazione e deglutizione: corteccia, bulbo e onda peristaltica" width="1200" height="1696" loading="lazy" decoding="async">
+      </a>
+      <figcaption class="desc" data-lang-key="ctrl_nervo_masticazione_deglutizione">Controllo nervoso della deglutizione</figcaption>
+    </figure>
+  </div>
 
-<div class="responsive"><div class="gallery">
-  <!-- Immagine 2: Cellula parietale / Pompa protonica -->
-  <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_cellula_parietale_pompa_protonica.avif" aria-label="Ingrandisci: Pompa protonica e bioenergetica della cellula parietale gastrica. Per tornare indietro premi Alt + freccia a sinistra">
-    <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_cellula_parietale_pompa_protonica.avif" alt="Schema della pompa protonica H+/K+ ATPasi nella membrana della cellula parietale gastrica, con mitocondri che forniscono ATP" width="1200" height="1696" loading="lazy" decoding="async">
-  </a>
-  <div class="desc" data-lang-key="bioenergetica_pompa_protonica_gastrica">Pompa protonica gastrica (H⁺/K⁺ ATPasi)</div>
-</div></div>
+  <!-- Immagine 2: Pompa Protonica -->
+  <div class="responsive">
+    <figure class="gallery">
+      <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_cellula_parietale_pompa_protonica.avif" aria-label="Ingrandisci: Pompa protonica e bioenergetica della cellula parietale gastrica. Per tornare indietro premi Alt + freccia a sinistra">
+        <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_cellula_parietale_pompa_protonica.avif" alt="Schema della pompa protonica H+/K+ ATPasi nella membrana della cellula parietale gastrica, con mitocondri che forniscono ATP" width="1200" height="1696" loading="lazy" decoding="async">
+      </a>
+      <figcaption class="desc" data-lang-key="bioenergetica_pompa_protonica_gastrica">Pompa protonica gastrica (H⁺/K⁺ ATPasi)</figcaption>
+    </figure>
+  </div>
 
-<div class="responsive"><div class="gallery">
-  <!-- Immagine 3: Microvilli / idrolisi enzimatica -->
-  <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_intestinale_emulsione_lipidi_idrolisi_enzimatica.avif" aria-label="Ingrandisci: Emulsione dei lipidi e idrolisi enzimatica a livello dei microvilli intestinali. Per tornare indietro premi Alt + freccia a sinistra">
-    <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_intestinale_emulsione_lipidi_idrolisi_enzimatica.avif" alt="Schema dell'idrolisi enzimatica e dell'emulsione dei lipidi a livello dei microvilli intestinali (orletto a spazzola)" width="1200" height="1696" loading="lazy" decoding="async">
-  </a>
-  <div class="desc" data-lang-key="digestione_enzimatica_microvilli">Digestione enzimatica e assorbimento intestinale</div>
-</div></div>
+  <!-- Immagine 3: Digestione Intestinale -->
+  <div class="responsive">
+    <figure class="gallery">
+      <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_intestinale_emulsione_lipidi_idrolisi_enzimatica.avif" aria-label="Ingrandisci: Emulsione dei lipidi e idrolisi enzimatica a livello dei microvilli intestinali. Per tornare indietro premi Alt + freccia a sinistra">
+        <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_intestinale_emulsione_lipidi_idrolisi_enzimatica.avif" alt="Schema dell'idrolisi enzimatica e dell'emulsione dei lipidi a livello dei microvilli intestinali (orletto a spazzola)" width="1200" height="1696" loading="lazy" decoding="async">
+      </a>
+      <figcaption class="desc" data-lang-key="digestione_enzimatica_microvilli">Digestione enzimatica e assorbimento intestinale</figcaption>
+    </figure>
+  </div>
 
-<div class="responsive"><div class="gallery">
-  <!-- Immagine 4: Trasporto portale / metabolismo epatico -->
-  <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_assorbimento_metabolismo_epatico.avif" aria-label="Ingrandisci: Assorbimento dei nutrienti e metabolismo epatico tramite vena porta. Per tornare indietro premi Alt + freccia a sinistra">
-    <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_assorbimento_metabolismo_epatico.avif" alt="Schema del trasporto dei nutrienti assorbiti verso il fegato attraverso la vena porta epatica, con trasportatori SGLT1 e per gli aminoacidi" width="1200" height="1696" loading="lazy" decoding="async">
-  </a>
-  <div class="desc" data-lang-key="trasporto_portale_metabolismo_epatico">Assorbimento e metabolismo epatico</div>
-</div></div>
-
+  <!-- Immagine 4: Metabolismo Epatico -->
+  <div class="responsive">
+    <figure class="gallery">
+      <a class="biotech-simple-link" href="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_assorbimento_metabolismo_epatico.avif" aria-label="Ingrandisci: Assorbimento dei nutrienti e metabolismo epatico tramite vena porta. Per tornare indietro premi Alt + freccia a sinistra">
+        <img class="transparent" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Digestione_assorbimento_metabolismo_epatico.avif" alt="Schema del trasporto dei nutrienti assorbiti verso il fegato attraverso la vena porta epatica, con trasportatori SGLT1 e per gli aminoacidi" width="1200" height="1696" loading="lazy" decoding="async">
+      </a>
+      <figcaption class="desc" data-lang-key="trasporto_portale_metabolismo_epatico">Assorbimento e metabolismo epatico</figcaption>
+    </figure>
+  </div>
+</section>
 <div class="clearfix"></div>
 
 <!-- ==========================================
