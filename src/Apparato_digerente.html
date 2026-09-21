@@ -86,11 +86,50 @@ h1,.modern-logo{content-visibility:visible!important}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{display:block;margin:15px auto 20px;max-width:90vw;height:auto;aspect-ratio:720/180;border-radius:8px;border:0;opacity:.9}
 .pulse-logo{opacity:.9}
-/* GALLERIE BIOENERGETICHE: Selettori by-class (funziona su div e figure) */
-.gallery{ border: 1px solid #ccc; border-radius: 6px; margin: 0; padding: 0; display: block; }
-.gallery:hover{ border: 1px solid #777; border-radius: 6px}
-.gallery img{ width: 100%; height: auto; display: block; }
-.desc{ font-family: 'Sansation', Tahoma, Verdana, sans-serif; padding: 15px; text-align: center; font-size: 16px; font-weight: bold; color: hwb(56 32% 7%); font-style: italic; margin: 0}
+/* GALLERIE BIOENERGETICHE: Selettori by-class */
+.gallery {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden; /* Garantisce che l'immagine rispetti il border-radius dei bordi superiori */
+}
+
+.gallery:hover {
+  border: 1px solid #777;
+  border-radius: 6px;
+}
+
+/* Rende il link un blocco a tutta larghezza */
+.gallery a.biotech-simple-link {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* Adatta l'immagine al 100% della cornice */
+.gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover; /* Assicura il riempimento perfetto della cornice */
+  border-top-left-radius: 5px;  /* Segue l'arrotondamento del bordo interno */
+  border-top-right-radius: 5px;
+}
+
+.desc {
+  font-family: 'Sansation', Tahoma, Verdana, sans-serif;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: hwb(56 32% 7%);
+  font-style: italic;
+  margin: 0;
+}
 *{box-sizing:border-box}
 .responsive{padding:0 6px;float:left;width:24.99999%}
 .clearfix:after{content:"";display:table;clear:both}
