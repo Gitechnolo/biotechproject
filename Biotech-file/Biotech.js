@@ -1151,22 +1151,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // D. Focus Trap & Keydown Carosello
-    document.addEventListener('keydown', (e) => {
-      if (modal.style.display === "none" || modal.style.display === "") return;
-      if (e.key === "Escape") closeModal();
-      if (modalCarouselContent?.style.display !== "none") {
-        if (e.key === "ArrowLeft") plusSlides(-1);
-        if (e.key === "ArrowRight") plusSlides(1);
-      }
-      if (e.key === 'Tab') {
-        const focusable = Array.from(modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next, .demo')).filter(el => el.offsetParent !== null);
-        if (focusable.length > 0) {
-          const first = focusable[0], last = focusable[focusable.length - 1];
-          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        }
-      }
-    });
+document.addEventListener('keydown', (e) => {
+  if (modal.style.display === "none" || modal.style.display === "") return;
+  if (e.key === "Escape") closeModal();
+  if (modalCarouselContent?.style.display !== "none") {
+    if (e.key === "ArrowLeft") plusSlides(-1);
+    if (e.key === "ArrowRight") plusSlides(1);
+  }
+  if (e.key === 'Tab') {
+    const focusable = Array.from(modal.querySelectorAll('button, [tabindex="0"], .close, .prev, .next, .demo'))
+      .filter(el => {
+        const style = window.getComputedStyle(el);
+        return style.display !== 'none' && style.visibility !== 'hidden';
+      });
+    if (focusable.length > 0) {
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+});
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
   }
 
