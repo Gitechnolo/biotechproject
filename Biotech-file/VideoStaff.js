@@ -27,24 +27,42 @@
 // CORE: CARICAMENTO DINAMICO VIDEO PER STAFF.HTML
 // ————————————————————————————————————————————————————————
 
+document.addEventListener('DOMContentLoaded', () => {
+  const videoPoster = document.getElementById('videoPoster');
+  const initialPlayBtn = document.getElementById('ytPlayPause');
+
+  if (videoPoster) {
+    // Gestione Click
+    videoPoster.addEventListener('click', loadAndPlayVideo);
+
+    // Gestione Tastiera (Invio e Spazio)
+    videoPoster.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); 
+        loadAndPlayVideo();
+      }
+    });
+  }
+
+  // Permette l'avvio del video anche cliccando sul pulsante Play nei controlli prima del caricamento
+  if (initialPlayBtn) {
+    initialPlayBtn.addEventListener('click', loadAndPlayVideo, { once: true });
+  }
+});
+
 function loadAndPlayVideo() {
   const container = document.getElementById('ytVideoContainer');
   const img = document.getElementById('videoPoster');
-  if (!img) return;
+  if (!img || !container) return;
 
   // 1. Crea l'elemento video
-const video = document.createElement('video');
-video.id = 'ytVideo';
-video.controls = false;
-video.preload = 'metadata';
-video.poster = img.src;
-video.style.width = '100%';
-video.style.height = '100%';       // Sostituito 'auto' con '100%'
-video.style.objectFit = 'cover';    // Aggiunto per mantenere le proporzioni
-video.style.display = 'block';
-video.style.maxHeight = '600px';
-video.style.borderRadius = '8px';
-video.setAttribute('playsinline', ''); // Importante per iOS
+  const video = document.createElement('video');
+  video.id = 'ytVideo';
+  video.controls = false;
+  video.preload = 'metadata';
+  video.poster = img.src;
+  video.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block; max-height:600px; border-radius:8px;';
+  video.setAttribute('playsinline', '');
 
   // 2. Sorgente video (Auto del futuro)
   const source = document.createElement('source');
@@ -55,16 +73,15 @@ video.setAttribute('playsinline', ''); // Importante per iOS
   // 3. Sostituisci l'immagine con il video
   container.replaceChild(video, img);
 
-  // 4. Mostra i controlli
+  // 4. Inizializza i controlli e avvia (la visibilità è gestita interamente dal CSS)
   const controls = document.querySelector('.yt-video-controls');
-  if (controls) {
-    controls.style.display = 'flex';
-  }
-
-  // 5. Inizializza i controlli e avvia
   initializeVideoControls(video, controls);
+
   video.play().catch(e => console.log("Riproduzione manuale richiesta:", e));
-  triggerWandererSync(); // Sincronizzazione con il protocollo del Wanderer
+  
+  if (typeof triggerWandererSync === 'function') {
+    triggerWandererSync(); // Sincronizzazione con il protocollo del Wanderer
+  }
 }
 
 // Funzione per gestire i controlli personalizzati
@@ -82,34 +99,40 @@ function initializeVideoControls(video, controls) {
   const fullscreenBtn = controls.querySelector('#ytFullscreen');
   const exitFullscreenBtn = controls.querySelector('#ytExitFullscreen');
 
-  function formatTime(time) {
+  const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  };
+
+  // Sostituzione pulita del pulsante Play per rimuovere il listener temporaneo 'once'
+  if (playPauseBtn) {
+    const newPlayBtn = playPauseBtn.cloneNode(true);
+    playPauseBtn.parentNode.replaceChild(newPlayBtn, playPauseBtn);
+    const newIcon = newPlayBtn.querySelector('#ytPlayPauseIcon') || playPauseIcon;
+
+    newPlayBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(e => console.error("Errore riproduzione:", e));
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('play', () => { if (newIcon) newIcon.textContent = '⏸️'; });
+    video.addEventListener('pause', () => { if (newIcon) newIcon.textContent = '▶️'; });
   }
-
-  // Play/Pause
-  playPauseBtn?.addEventListener('click', () => {
-    if (video.paused) {
-      video.play().catch(e => console.error("Errore riproduzione:", e));
-    } else {
-      video.pause();
-    }
-  });
-
-  video.addEventListener('play', () => { playPauseIcon.textContent = '⏸️'; });
-  video.addEventListener('pause', () => { playPauseIcon.textContent = '▶️'; });
 
   // Progresso
   video.addEventListener('timeupdate', () => {
-    progressBar.value = video.currentTime;
-    currentTime.textContent = formatTime(video.currentTime);
+    if (progressBar) progressBar.value = video.currentTime;
+    if (currentTime) currentTime.textContent = formatTime(video.currentTime);
   });
 
   video.addEventListener('loadedmetadata', () => {
-    progressBar.max = video.duration;
-    durationEl.textContent = formatTime(video.duration);
-    currentTime.textContent = formatTime(video.currentTime);
+    if (progressBar) progressBar.max = video.duration;
+    if (durationEl) durationEl.textContent = formatTime(video.duration);
+    if (currentTime) currentTime.textContent = formatTime(video.currentTime);
   });
 
   progressBar?.addEventListener('input', () => {
@@ -119,17 +142,17 @@ function initializeVideoControls(video, controls) {
   // Volume
   volumeControl?.addEventListener('input', () => {
     video.volume = volumeControl.value;
-    muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
+    if (muteIcon) muteIcon.textContent = (video.muted || volumeControl.value == 0) ? '🔇' : '🔊';
   });
 
   video.addEventListener('volumechange', () => {
-    muteIcon.textContent = video.muted || video.volume === 0 ? '🔇' : '🔊';
+    if (muteIcon) muteIcon.textContent = (video.muted || video.volume === 0) ? '🔇' : '🔊';
   });
 
   // Mute/Unmute
   muteBtn?.addEventListener('click', () => {
     video.muted = !video.muted;
-    muteIcon.textContent = video.muted ? '🔇' : '🔊';
+    if (muteIcon) muteIcon.textContent = video.muted ? '🔇' : '🔊';
   });
 
   // Fullscreen
@@ -148,48 +171,17 @@ function initializeVideoControls(video, controls) {
 
   // Gestione UI fullscreen
   document.addEventListener('fullscreenchange', () => {
-    if (document.fullscreenElement === video) {
-      fullscreenBtn.style.display = 'none';
-      exitFullscreenBtn.style.display = 'flex';
-    } else {
-      fullscreenBtn.style.display = 'flex';
-      exitFullscreenBtn.style.display = 'none';
-    }
+    const isFs = document.fullscreenElement === video;
+    if (fullscreenBtn) fullscreenBtn.style.display = isFs ? 'none' : 'flex';
+    if (exitFullscreenBtn) exitFullscreenBtn.style.display = isFs ? 'flex' : 'none';
   });
 
   // Tasti rapidi
   video.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') { e.preventDefault(); playPauseBtn?.click(); }
+    if (e.code === 'Space') { e.preventDefault(); controls.querySelector('#ytPlayPause')?.click(); }
     else if (e.code === 'KeyM') { e.preventDefault(); muteBtn?.click(); }
     else if (e.code === 'KeyF') { e.preventDefault(); fullscreenBtn?.click(); }
   });
-}
-
-// ========================================================
-// INIZIALIZZAZIONE AUTOMATICA (Specifico per Staff.html)
-// ========================================================
-document.addEventListener('DOMContentLoaded', () => {
-  const videoPoster = document.getElementById('videoPoster');
-  
-  if (videoPoster) {
-    // Gestione Click
-    videoPoster.addEventListener('click', loadAndPlayVideo);
-
-    // Gestione Tastiera (Invio e Spazio)
-    videoPoster.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault(); 
-        loadAndPlayVideo();
-      }
-    });
-  }
-});   
-// Accessibilità video: supporto tastiera ai poster. Caricamento video solo al click (lazy load avanzato)
-function handleVideoPosterKey(event) {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    loadAndPlayVideo();
-  }
 }
 // End Accessibilità video 
 
