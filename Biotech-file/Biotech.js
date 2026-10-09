@@ -1000,6 +1000,32 @@ function closeModal() {
 }
 
 // --- 3. FUNZIONI DI SUPPORTO VIDEO (On-Demand) ---
+
+// 3.1 Setup iniziale: collega gli eventi sia al poster che al pulsante Play
+document.addEventListener('DOMContentLoaded', () => {
+  const img = document.getElementById('videoPoster');
+  const initialPlayBtn = document.getElementById('ytPlayPause');
+
+  if (img) {
+    // Avvio al click sul poster
+    img.addEventListener('click', loadAndPlayVideo);
+
+    // Accessibilità: Avvio tramite tastiera (Tasto Invio o Spazio sul poster)
+    img.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter' || e.code === 'Space') {
+        e.preventDefault();
+        loadAndPlayVideo();
+      }
+    });
+  }
+
+  // Avvio al click sul pulsante Play (se cliccato prima che il video sia caricato)
+  if (initialPlayBtn) {
+    initialPlayBtn.addEventListener('click', loadAndPlayVideo, { once: true });
+  }
+});
+
+// 3.2 Sostituzione Poster -> Elemento <video> e avvio
 function loadAndPlayVideo() {
   const container = document.getElementById('ytVideoContainer');
   const img = document.getElementById('videoPoster');
@@ -1033,13 +1059,16 @@ function loadAndPlayVideo() {
   });
 
   container.replaceChild(video, img);
-  const controls = document.querySelector('.yt-video-controls');
-  if (controls) controls.style.display = 'flex';
 
+  const controls = document.querySelector('.yt-video-controls');
+  
+  // Rimuove il vecchio listener 'once' usato per l'avvio e inizializza i veri controlli video
   initializeVideoControls(video, controls);
+  
   video.play().catch(e => console.log("Richiesta interazione per Play:", e));
 }
 
+// 3.3 Logica dei controlli personalizzati
 function initializeVideoControls(video, controls) {
   if (!controls) return;
   const q = (id) => controls.querySelector(id);
@@ -1049,14 +1078,34 @@ function initializeVideoControls(video, controls) {
 
   const format = (s) => { const m = Math.floor(s/60), sec = Math.floor(s%60); return `${m}:${sec<10?'0':''}${sec}`; };
 
-  playBtn?.addEventListener('click', () => video.paused ? video.play() : video.pause());
-  video.addEventListener('play', () => { if(icon) icon.textContent = '⏸️'; });
-  video.addEventListener('pause', () => { if(icon) icon.textContent = '▶️'; });
-  video.addEventListener('timeupdate', () => { if(progress) progress.value = video.currentTime; if(curTime) curTime.textContent = format(video.currentTime); });
-  video.addEventListener('loadedmetadata', () => { if(progress) progress.max = video.duration; if(durTime) durTime.textContent = format(video.duration); });
+  // Rimozione di eventuali vecchi listener sul pulsante Play
+  const newPlayBtn = playBtn.cloneNode(true);
+  playBtn.parentNode.replaceChild(newPlayBtn, playBtn);
+  const newIcon = newPlayBtn.querySelector('#ytPlayPauseIcon') || icon;
+
+  newPlayBtn.addEventListener('click', () => video.paused ? video.play() : video.pause());
+
+  video.addEventListener('play', () => { if(newIcon) newIcon.textContent = '⏸️'; });
+  video.addEventListener('pause', () => { if(newIcon) newIcon.textContent = '▶️'; });
+  video.addEventListener('timeupdate', () => { 
+    if(progress) progress.value = video.currentTime; 
+    if(curTime) curTime.textContent = format(video.currentTime); 
+  });
+  video.addEventListener('loadedmetadata', () => { 
+    if(progress) progress.max = video.duration; 
+    if(durTime) durTime.textContent = format(video.duration); 
+  });
+
   progress?.addEventListener('input', () => video.currentTime = progress.value);
-  vol?.addEventListener('input', () => { video.volume = vol.value; if(muteIcon) muteIcon.textContent = (video.muted || vol.value == 0) ? '🔇' : '🔊'; });
-  muteBtn?.addEventListener('click', () => { video.muted = !video.muted; if(muteIcon) muteIcon.textContent = video.muted ? '🔇' : '🔊'; });
+  vol?.addEventListener('input', () => { 
+    video.volume = vol.value; 
+    if(muteIcon) muteIcon.textContent = (video.muted || vol.value == 0) ? '🔇' : '🔊'; 
+  });
+  muteBtn?.addEventListener('click', () => { 
+    video.muted = !video.muted; 
+    if(muteIcon) muteIcon.textContent = video.muted ? '🔇' : '🔊'; 
+  });
+
   fsBtn?.addEventListener('click', () => video.requestFullscreen?.() || video.webkitRequestFullscreen?.());
   exitFsBtn?.addEventListener('click', () => document.exitFullscreen?.());
 
@@ -1066,8 +1115,9 @@ function initializeVideoControls(video, controls) {
     if(exitFsBtn) exitFsBtn.style.display = isFs ? 'flex' : 'none';
   });
 
+  // Scorciatoie da tastiera
   video.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') { e.preventDefault(); playBtn?.click(); }
+    if (e.code === 'Space') { e.preventDefault(); newPlayBtn.click(); }
     if (e.code === 'KeyM') { e.preventDefault(); muteBtn?.click(); }
     if (e.code === 'KeyF') { e.preventDefault(); fsBtn?.click(); }
   });
