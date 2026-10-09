@@ -87,7 +87,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 /* Applica l'aspect-ratio al CONTENITORE, non solo all'immagine [CLS: 0.000] */
 #ytVideoContainer{ aspect-ratio: 633 / 281; width: 100%; max-width: 633px; background: rgba(255,255,255,0.03); overflow: hidden; position: relative}
 /* L'immagine poster si adatta al contenitore già bloccato */
-#videoPoster{ width: 100%; height: 100%; object-fit: cover; display: block}
+#videoPoster{ width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer;}
 /* Evita che la comparsa dei controlli sposti la pagina */
 .yt-video-controls{display:flex; position: absolute; bottom: 0; left: 0; z-index: 10; transform: translateY(100%); transition: transform 0.3s ease}
 /* Mostra i controlli al passaggio del mouse o quando il video è attivo (gestito dallo script) */
@@ -332,7 +332,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 </section>
 <div id="ytVideoContainer">
 <!-- Poster caricato come immagine con priorità bassa. (accessibilità video con supporto tastiera) -->
-<img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" alt="Anteprima video: Foresta verticale di Singapore" loading="lazy" decoding="sync" role="button" tabindex="0" aria-label="Riproduci video: Foresta verticale di Singapore" style="width:100%; display:block; cursor:pointer;" width="633" height="281">
+<img id="videoPoster" src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Singapore_boscoartificiale-Metropoli.avif" alt="Anteprima video: Foresta verticale di Singapore" loading="lazy" decoding="sync" role="button" tabindex="0" aria-label="Riproduci video: Foresta verticale di Singapore" width="633" height="281">
 <!-- Controlli (inizialmente nascosti) -->
 <div class="yt-video-controls"><button id="ytPlayPause" aria-label="Play/Pause"><span id="ytPlayPauseIcon">▶️</span></button><input type="range" id="ytProgress" aria-label="Progresso range" min="0" value="0" step="0.01" class="yt-range"><span id="ytCurrentTime" class="yt-Ctime">0:00</span>/ <span id="ytDuration" class="yt-video-duration">0:00</span><button id="ytMute" aria-label="Mute/Unmute"><span id="ytMuteIcon">🔊</span></button><input type="range" id="ytVolume" aria-label="Volume" min="0" max="1" step="0.01" value="1" class="yt-vol"><button id="ytFullscreen" aria-label="Attiva modalità schermo intero" title="Enter Fullscreen">⛶</button><button id="ytExitFullscreen" style="display:none;" aria-label="Esci dalla modalità schermo intero" title="Exit Fullscreen">⤫</button></div>
 </div>
