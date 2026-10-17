@@ -287,7 +287,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   SEZIONE: Anatomia e Struttura dell'Apparato Respiratorio - (anatomia_e_struttura_respiratoria)
   DESCRIZIONE: Organizzazione funzionale, istologia delle vie aeree, albero bronchiale, microambiente alveolare e dinamica pleurica.
   ========================================== -->
-<section class="text text-block mb-15" data-lang-key="anatomia_e_struttura_respiratoria">
+<section class="text text-block mb-25" data-lang-key="anatomia_e_struttura_respiratoria" aria-labelledby="anatomia-e-struttura-respiratoria">
   <h2 id="anatomia-e-struttura-respiratoria" class="biotechbold mb-15">Anatomia e Struttura dell'Apparato Respiratorio</h2>
 
   <p class="mb-15">
@@ -299,16 +299,16 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   </p>   
 
   <!-- 1. TABELLA TRANSIZIONE ANATOMO-ISTOLOGICA -->
-  <p class="mb-15"><strong>1. Organizzazione Anatomica e Transizione Istologica dell'Albero Respiratorio:</strong></p>
-  <div class="cyber-table-container mb-20">
+  <h3 id="titolo-tabella-istologica" class="biotechbold mb-15">1. Organizzazione Anatomica e Transizione Istologica dell'Albero Respiratorio:</h3>
+  <div class="cyber-table-container mb-20" role="region" aria-labelledby="titolo-tabella-istologica" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Tratto / Struttura</th>
-          <th>Zona Funzionale</th>
-          <th>Tipo di Epitelio</th>
-          <th>Supporto Cartilagineo e Muscolare</th>
-          <th>Funzione Prevalente</th>
+          <th scope="col">Tratto / Struttura</th>
+          <th scope="col">Zona Funzionale</th>
+          <th scope="col">Tipo di Epitelio</th>
+          <th scope="col">Supporto Cartilagineo e Muscolare</th>
+          <th scope="col">Funzione Prevalente</th>
         </tr>
       </thead>
       <tbody>
@@ -352,15 +352,15 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   </div>
 
   <!-- 2. TABELLA CITOTIPI SPECIALIZZATI -->
-  <p class="mb-15"><strong>2. Citotipi Specializzati del Parenchima e Microambiente Alveolare:</strong></p>
-  <div class="cyber-table-container mb-20">
+  <h3 id="titolo-tabella-citotipi" class="biotechbold mb-15">2. Citotipi Specializzati del Parenchima e Microambiente Alveolare:</h3>
+  <div class="cyber-table-container mb-20" role="region" aria-labelledby="titolo-tabella-citotipi" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Citotipo</th>
-          <th>Localizzazione</th>
-          <th>Caratteristiche Morfologiche</th>
-          <th>Funzione Fisiologica Chiave</th>
+          <th scope="col">Citotipo</th>
+          <th scope="col">Localizzazione</th>
+          <th scope="col">Caratteristiche Morfologiche</th>
+          <th scope="col">Funzione Fisiologica Chiave</th>
         </tr>
       </thead>
       <tbody>
@@ -394,11 +394,11 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- RESEARCH INSIGHT BOX: SURFATTANTE E FISIOPATOLOGIA DEGLI PNEUMOCITI DI TIPO II -->
   <div class="research-insight-box mb-20">
-    <div class="insight-header">
+    <div class="insight-header flex-between">
       <h4 class="biotechbold"><span class="yellowtext">RESEARCH INSIGHT |</span> Dinamica Molecolare del Surfattante e Stabilità Alveolare</h4>
-      <a href="https://doi.org/10.1016/S0925-4439(98)00060-X" target="_blank" rel="noopener" class="badge-interactive">
-        REF #5 DOI
-        <span class="sr-only">(apre lo studio di Goerke sulle proprietà fisiche e funzionali del surfattante in una nuova scheda)</span>
+      <a href="#ref-5" class="badge-interactive" aria-label="Riferimento 5 (passa alla bibliografia)">
+        REF #5
+        <span class="sr-only">(passa alla bibliografia - Riferimento 5 sullo studio di Goerke sulle proprietà fisiche e funzionali del surfattante)</span>
       </a>
     </div>
     <p class="text mb-10">
