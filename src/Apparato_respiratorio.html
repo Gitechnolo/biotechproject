@@ -587,7 +587,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   SEZIONE: Patofisiologia Respiratoria Avanzata - (patofisiologia_respiratoria)
   DESCRIZIONE: Fisiopatologia dei deficit ventilatori (ostruttivi vs restrittivi), indici spirometrici, ARDS, danno alveolare diffuso e alterazioni dell'accoppiamento V/Q (spazio morto e shunt).
   ========================================== -->
-<section class="text text-block mb-25" data-lang-key="patofisiologia_respiratoria">
+<section class="text text-block mb-25" data-lang-key="patofisiologia_respiratoria" aria-labelledby="patofisiologia-respiratoria">
   <!-- Titolo Sezione -->
   <h2 id="patofisiologia-respiratoria" class="secHeader">Patofisiologia Respiratoria Avanzata</h2>
 
@@ -597,14 +597,14 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   </p>
 
   <!-- TABELLA COMPARATIVA: OSTRUTTIVO VS RESTRITTIVO -->
-  <p class="mb-15"><strong>Confronto Spirometrico e Pletismografico: Deficit Ostruttivo vs Deficit Restrittivo</strong></p>
-  <div class="cyber-table-container mb-15">
+  <h3 id="titolo-tabella-ostruttivo-restrittivo" class="biotechbold mb-15">Confronto Spirometrico e Pletismografico: Deficit Ostruttivo vs Deficit Restrittivo</h3>
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-ostruttivo-restrittivo" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Parametro Spirometrico / Pletismografico</th>
-          <th>Deficit Ostruttivo (es. BPCO, Asma)</th>
-          <th>Deficit Restrittivo (es. Fibrosi, Malattie Parete)</th>
+          <th scope="col">Parametro Spirometrico / Pletismografico</th>
+          <th scope="col">Deficit Ostruttivo (es. BPCO, Asma)</th>
+          <th scope="col">Deficit Restrittivo (es. Fibrosi, Malattie Parete)</th>
         </tr>
       </thead>
       <tbody>
@@ -637,21 +637,21 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     </table>
   </div>
 
-    <!-- 2. ARDS e Danno Alveolare Diffuso -->
+  <!-- 2. ARDS e Danno Alveolare Diffuso -->
   <p class="mb-15">
     La <span class="orangetext">Sindrome da Distress Respiratorio Acuto (ARDS)</span> rappresenta la manifestazione clinica estrema del <span class="biotechbold">Danno Alveolare Diffuso (DAD)</span>, innescato da insulti diretti (polmonite, aspirazione) o indiretti (sepsi, traumi severi). La flogosi iperpermeabilizza la barriera emato-gassosa: l'essudato proteico alveolare inattiva il surfattante e forma <span class="biotechbold">membrane ialine</span> acellulari. Il de-reclutamento alveolare innesca uno <span class="orangetext">shunt intrapolmonare funzionale</span> severo (Q<sub>s</sub>/Q<sub>t</sub>) refrattario all'ossigenoterapia standard ad alti flussi (P<sub>aO<sub>2</sub></sub>/FiO<sub>2</sub> &le; 300 mmHg).
   </p>
 
   <!-- 3. Mismatch V/Q: Espressione Fisiopatologica dello Spazio Morto e dello Shunt -->
-  <p class="mb-15"><strong>Alterazioni dell'Accoppiamento Ventilazione/Perfusione (V/Q):</strong></p>
-  <div class="cyber-table-container mb-15">
+  <h3 id="titolo-tabella-vq" class="biotechbold mb-15">Alterazioni dell'Accoppiamento Ventilazione/Perfusione (V/Q):</h3>
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-vq" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Condizione Fisiopatologica</th>
-          <th>Rapporto V/Q</th>
-          <th>Meccanismo e Modello Clinico</th>
-          <th>Risposta all'O<sub>2</sub> Terapia</th>
+          <th scope="col">Condizione Fisiopatologica</th>
+          <th scope="col">Rapporto V/Q</th>
+          <th scope="col">Meccanismo e Modello Clinico</th>
+          <th scope="col">Risposta all'O<sub>2</sub> Terapia</th>
         </tr>
       </thead>
       <tbody>
