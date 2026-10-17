@@ -789,7 +789,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   SEZIONE: Emogasanalisi Clinica, Equilibrio Acido-Base e Compenso Renale - (emogasanalisi_acido_base)
   DESCRIZIONE: Principi di emogasanalisi (EGA), equazione di Henderson-Hasselbalch, alterazioni dell'equilibrio acido-base, tabella cyber dei compensi, Anion Gap, Base Excess, Delta Ratio, valutazione dell'ossigenazione (P/F) e algoritmo decisionale a 6 step.
   ========================================== -->
-<section class="text text-block mb-25" data-lang-key="emogasanalisi_acido_base">
+<section class="text text-block mb-25" data-lang-key="emogasanalisi_acido_base" aria-labelledby="emogasanalisi-equilibrio-acido-base">
   <!-- Titolo Sezione -->
   <h2 id="emogasanalisi-equilibrio-acido-base" class="secHeader">Emogasanalisi Clinica, Equilibrio Acido-Base e Ossigenazione</h2>
 
@@ -797,27 +797,28 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="mb-15">
     L'omeostasi del pH ematico (intervallo fisiologico 7.35–7.45) è fondamentale per preservare la struttura terziaria delle proteine e la funzione enzimatica. Il principale sistema tampone extracellulare è rappresentato dalla coppia <span class="biotechbold">acido carbonico/bicarbonato (H<sub>2</sub>CO<sub>3</sub>/HCO<sub>3</sub><sup>-</sup>)</span>, un sistema aperto in cui la componente volatile (CO<sub>2</sub>) è regolata dalla ventilazione polmonare e la componente metabolica (HCO<sub>3</sub><sup>-</sup>) è controllata dal riassorbimento e dalla secrezione tubulare renale. Matematicamente, l'equilibrio è descritto dall'<span class="yellowtext">equazione di Henderson-Hasselbalch</span>:
   </p>
-  <p class="mb-15" style="text-align: center; font-style: italic;">
-    pH = pK<sub>a</sub> + log<sub>10</sub> ([HCO<sub>3</sub><sup>-</sup>] / (0.03 &middot; P<sub>aCO<sub>2</sub></sub>))
+  <p class="mb-15">
+    <em>pH = pK<sub>a</sub> + log<sub>10</sub> ([HCO<sub>3</sub><sup>-</sup>] / (0.03 &middot; P<sub>aCO<sub>2</sub></sub>))</em>
   </p>
   <p class="mb-15">
     dove pK<sub>a</sub> è pari a 6.1 e 0.03 rappresenta il coefficiente di solubilità della CO<sub>2</sub> nel plasma a 37 °C. Un incremento della P<sub>aCO<sub>2</sub></sub> sposta l'equilibrio verso la formazione di ioni H<sup>+</sup> inducendo acidemia, mentre la sua riduzione (iperventilazione) promuove l'alcalemia.
   </p>
 
   <!-- 2. TABELLA CYBER: Disturbi Acido-Base Primari e Meccanismi di Compenso -->
+  <h3 id="titolo-tabella-acidi-base" class="biotechbold mb-15">Disturbi Acido-Base Primari e Meccanismi di Compenso:</h3>
   <p class="mb-15">
     Le alterazioni dell'equilibrio acido-base si dividono in <span class="biotechbold">respiratorie</span> (primitive variazioni della P<sub>aCO<sub>2</sub></sub>) e <span class="biotechbold">metaboliche</span> (primitive variazioni di HCO<sub>3</sub><sup>-</sup>). L'organismo attiva risposte compensatorie per riportare il pH verso la norma, senza tuttavia ipercompensare mai completamente:
   </p>
 
-  <div class="cyber-table-container">
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-acidi-base" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Disturbo Acido-Base</th>
-          <th>pH</th>
-          <th>Alterazione Primaria</th>
-          <th>Meccanismo Compensatorio</th>
-          <th>Entità e Tempi del Compenso</th>
+          <th scope="col">Disturbo Acido-Base</th>
+          <th scope="col">pH</th>
+          <th scope="col">Alterazione Primaria</th>
+          <th scope="col">Meccanismo Compensatorio</th>
+          <th scope="col">Entità e Tempi del Compenso</th>
         </tr>
       </thead>
       <tbody>
@@ -858,8 +859,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     L'interpretazione avanzata della componente metabolica sfrutta tre parametri fondamentali: il <span class="yellowtext">Divario Anionico (Anion Gap)</span>, l'<span class="biotechbold">Eccesso di Basi (Base Excess, BE)</span> e il <span class="yellowtext">Delta Ratio</span> per lo svelamento dei disturbi misti.
   </p>
 
-  <p style="text-align: center; font-style: italic;" class="mb-15">
-    Anion Gap = [Na<sup>+</sup>] - ([Cl<sup>-</sup>] + [HCO<sub>3</sub><sup>-</sup>]) &emsp; (Fisiologico: 8–12 mEq/L)
+  <p class="mb-15">
+    <em>Anion Gap = [Na<sup>+</sup>] - ([Cl<sup>-</sup>] + [HCO<sub>3</sub><sup>-</sup>]) &emsp; (Fisiologico: 8–12 mEq/L)</em>
   </p>
 
   <p class="mb-15">
@@ -870,17 +871,18 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     In presenza di un'acidosi metabolica ad Anion Gap elevato, il calcolo del <span class="biotechbold">Delta Ratio (&Delta;AG / &Delta;HCO<sub>3</sub><sup>-</sup>)</span> permette di identificare la coesistenza di un secondo disturbo metabolico mascherato:
   </p>
 
-  <p style="text-align: center; font-style: italic;" class="mb-15">
-    Delta Ratio = (Anion Gap calcolato &minus; 12) / (24 &minus; [HCO<sub>3</sub><sup>-</sup>] misurato)
+  <p class="mb-15">
+    <em>Delta Ratio = (Anion Gap calcolato &minus; 12) / (24 &minus; [HCO<sub>3</sub><sup>-</sup>] misurato)</em>
   </p>
 
-  <div class="cyber-table-container mb-15">
+  <h3 id="titolo-tabella-delta-ratio" class="biotechbold mb-15">Interpretazione del Delta Ratio:</h3>
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-delta-ratio" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Valore Delta Ratio</th>
-          <th>Interpretazione Clinica</th>
-          <th>Esempi Patologici</th>
+          <th scope="col">Valore Delta Ratio</th>
+          <th scope="col">Interpretazione Clinica</th>
+          <th scope="col">Esempi Patologici</th>
         </tr>
       </thead>
       <tbody>
@@ -910,21 +912,22 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     La seconda pietra angolare dell'EGA è la valutazione dell'efficienza degli scambi gassosi e dell'ossigenazione parenchimale mediante la pressione parziale di O<sub>2</sub> (P<sub>aO<sub>2</sub></sub>, fisiologica 80–100 mmHg), la saturazione arteriosa (S<sub>aO<sub>2</sub></sub> &gt; 95%) e il calcolo del <span class="yellowtext">Rapporto P/F (Indice di Horovitz)</span>:
   </p>
 
-  <p style="text-align: center; font-style: italic;" class="mb-15">
-    Rapporto P/F = P<sub>aO<sub>2</sub></sub> (in mmHg) / F<sub>iO<sub>2</sub></sub> (frazione inspirata espresso in decimale, es. 0.21 in aria ambiente)
+  <p class="mb-15">
+    <em>Rapporto P/F = P<sub>aO<sub>2</sub></sub> (in mmHg) / F<sub>iO<sub>2</sub></sub> (frazione inspirata espresso in decimale, es. 0.21 in aria ambiente)</em>
   </p>
 
   <p class="mb-15">
     Un valore fisiologico di P/F è &gt; 400–450 mmHg. Una sua riduzione critica definisce la gravità dell'ipossiemia ed è il parametro cardine secondo la classificazione di Berlino per la <strong>Sindrome da Distress Respiratorio Acuto (ARDS)</strong>:
   </p>
 
-  <div class="cyber-table-container mb-15">
+  <h3 id="titolo-tabella-pf" class="biotechbold mb-15">Classificazione della Gravità dell'ARDS (Indice di Horovitz):</h3>
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-pf" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Valore Rapporto P/F</th>
-          <th>Stato di Ossigenazione</th>
-          <th>Inquadramento Clinico</th>
+          <th scope="col">Valore Rapporto P/F</th>
+          <th scope="col">Stato di Ossigenazione</th>
+          <th scope="col">Inquadramento Clinico</th>
         </tr>
       </thead>
       <tbody>
@@ -955,25 +958,22 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <p class="mb-15">
     Per identificare la causa primaria dell'ipossiemia (ipoventilazione vs alterazione V/Q o shunt), si calcola il <span class="biotechbold">Gradiente Alveolo-Arterioso di O<sub>2</sub> [P(A-a)O<sub>2</sub>]</span> (valore normale &lt; 15–20 mmHg):
   </p>
-  <p style="text-align: center; font-style: italic;" class="mb-15">
+  <p class="biotechcenter sansation-light-italic mb-15">
     P(A-a)O<sub>2</sub> = [ (P<sub>atm</sub> &minus; P<sub>H2O</sub>) &middot; F<sub>iO<sub>2</sub></sub> &minus; (P<sub>aCO<sub>2</sub></sub> / R) ] &minus; P<sub>aO<sub>2</sub></sub>
   </p>
 
   <hr class="line">
 
   <!-- 5. ALGORITMO DECISIONALE A 6 STEP PER L'EGA CLINICA -->
-  <p class="mb-15">
-    Per prevenire errori diagnostici, la lettura dell'emogasanalisi deve seguire un <strong>algoritmo sequenziale a 6 step</strong> al letto del paziente:
-  </p>
-
-  <div class="cyber-flowchart">
+  <h3 id="titolo-flowchart-ega" class="biotechbold mb-15">Algoritmo Decisionale a 6 Step per l'EGA Clinica:</h3>
+  <div class="cyber-flowchart" role="region" aria-labelledby="titolo-flowchart-ega">
     <div class="flow-card common">
       <span class="flow-tag tag-common">STEP 1</span>
       <div class="flow-title">Valutazione del pH</div>
       <div class="flow-desc">Determinare lo stato acido-base primario: Acidemia (pH &lt; 7.35) vs Alcalemia (pH &gt; 7.45) vs pH nella norma (fisiologico o disturbo totalmente compensato/misto).</div>
     </div>
     
-    <div class="flow-arrow-down">&darr;</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
 
     <div class="flow-card intrinsic">
       <span class="flow-tag tag-intrinsic">STEP 2</span>
@@ -981,7 +981,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="flow-desc">Valutare la P<sub>aCO<sub>2</sub></sub> e i Bicarbonati (HCO<sub>3</sub><sup>-</sup>). Riconoscere se la variazione del pH è guidata dalla componente respiratoria (P<sub>aCO<sub>2</sub></sub>) o metabolica (HCO<sub>3</sub><sup>-</sup> / BE).</div>
     </div>
 
-    <div class="flow-arrow-down">&darr;</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
 
     <div class="flow-card extrinsic">
       <span class="flow-tag tag-extrinsic">STEP 3</span>
@@ -989,7 +989,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="flow-desc">Calcolare la compensazione attesa usando le formule fisiologiche. Se la risposta misurata differisce da quella teorica, è presente un <strong>disturbo acido-base misto</strong>.</div>
     </div>
 
-    <div class="flow-arrow-down">&darr;</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
 
     <div class="flow-card intrinsic">
       <span class="flow-tag tag-intrinsic">STEP 4</span>
@@ -997,7 +997,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="flow-desc">In tutte le acidosi metaboliche, calcolare l'AG. Se AG &gt; 12, valutare il Delta Ratio per escludere una seconda alterazione metabolica occulta.</div>
     </div>
 
-    <div class="flow-arrow-down">&darr;</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
 
     <div class="flow-card common">
       <span class="flow-tag tag-common">STEP 5</span>
@@ -1005,7 +1005,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <div class="flow-desc">Esaminare P<sub>aO<sub>2</sub></sub>, S<sub>aO<sub>2</sub></sub> e Rapporto P/F per identificare insufficienza respiratoria, graduare la gravità dell'ARDS ed estrarre il gradiente P(A-a)O<sub>2</sub>.</div>
     </div>
 
-    <div class="flow-arrow-down">&darr;</div>
+    <div class="flow-arrow-down" aria-hidden="true">&darr;</div>
 
     <div class="flow-card lysis">
       <span class="flow-tag tag-lysis">STEP 6</span>
