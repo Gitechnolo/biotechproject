@@ -417,7 +417,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   SEZIONE: Fisiologia della Respirazione e Regolazione Neuro-Chimica - (fisiologia_respiratoria_e_regolazione)
   DESCRIZIONE: Meccanica ventilatoria, trasporto ed emocinetica dei gas, volumi polmonari, accoppiamento V/Q, neurogenesi del ritmo (Pre-BötC, RTN/pFRG) e chemoccezione.
   ========================================== -->
-<section class="text text-block mb-25" data-lang-key="fisiologia_respiratoria_e_regolazione">
+<section class="text text-block mb-25" data-lang-key="fisiologia_respiratoria_e_regolazione" aria-labelledby="fisiologia-respiratoria-e-regolazione">
   <!-- Titolo Sezione -->
   <h2 id="fisiologia-respiratoria-e-regolazione" class="secHeader">Fisiologia della Respirazione e Regolazione Neuro-Chimica</h2>
 
@@ -432,16 +432,16 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   </p>   
 
   <!-- 3. TABELLA CYBER 1: Volumi Polmonari Statici e Capacità -->
-  <p class="mb-15"><strong>1. Volumi e Capacità Polmonari Statici (Spirometria):</strong></p>
+  <h3 id="titolo-tabella-volumi" class="biotechbold mb-15">Volumi e Capacità Polmonari Statici (Spirometria):</h3>
 
-  <div class="cyber-table-container mb-15">
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-volumi" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Parametro Spirometrico</th>
-          <th>Sigla</th>
-          <th>Valore Medio (Adulto)</th>
-          <th>Definizione Fisiologica</th>
+          <th scope="col">Parametro Spirometrico</th>
+          <th scope="col">Sigla</th>
+          <th scope="col">Valore Medio (Adulto)</th>
+          <th scope="col">Definizione Fisiologica</th>
         </tr>
       </thead>
       <tbody>
@@ -511,15 +511,15 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   </p>
 
   <!-- 6. TABELLA CYBER 2: Centri di Neurogenesi del Ritmo e Chemoccezione -->
-  <p class="mb-15"><strong>2. Centri Troncoencefalici di Neurogenesi e Recettori Chemocettivi:</strong></p>
+  <h3 id="titolo-tabella-centri" class="biotechbold mb-15">2. Centri Troncoencefalici di Neurogenesi e Recettori Chemocettivi:</h3>
 
-  <div class="cyber-table-container mb-15">
+  <div class="cyber-table-container mb-15" role="region" aria-labelledby="titolo-tabella-centri" tabindex="0">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Struttura / Centro Neurale</th>
-          <th>Sede Anatomica</th>
-          <th>Funzione Fisiologica Primaria</th>
+          <th scope="col">Struttura / Centro Neurale</th>
+          <th scope="col">Sede Anatomica</th>
+          <th scope="col">Funzione Fisiologica Primaria</th>
         </tr>
       </thead>
       <tbody>
@@ -563,11 +563,11 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- RESEARCH INSIGHT BOX: MECCANOTRASDUZIONE E REGOLAZIONE DEL RITMO RESPIRATORIO -->
   <div class="research-insight-box mb-20">
-    <div class="insight-header">
+    <div class="insight-header flex-between">
       <h4 class="biotechbold"><span class="yellowtext">RESEARCH INSIGHT |</span> Meccanotrasduzione Polmonare e Controllo Riflesso</h4>
-      <a href="https://doi.org/10.3389/fphys.2026.1885524" target="_blank" rel="noopener" class="badge-interactive">
-        REF #2 DOI
-        <span class="sr-only">(apre lo studio di Tao et al. sui canali Piezo1 e la meccanotrasduzione respiratoria in una nuova scheda)</span>
+      <a href="#ref-2" class="badge-interactive" aria-label="Riferimento 2 (passa alla bibliografia)">
+        REF #2
+        <span class="sr-only">(passa alla bibliografia - Riferimento 2 sullo studio di Tao et al. sui canali Piezo1 e la meccanotrasduzione respiratoria)</span>
       </a>
     </div>
     <p class="text mb-10">
