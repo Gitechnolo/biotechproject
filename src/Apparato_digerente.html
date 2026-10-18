@@ -895,11 +895,11 @@ DESCRIZIONE: Galleria di schemi bioenergetici su scala molecolare e sistemica: c
   </p>
 </section>
 <!-- ==========================================
-SEZIONE 6: Approfondimento Biochimico (apparato_digerente_approfondimento_biochimico)
-DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Tricarbossilico) e Ciclo dell'Urea.
-========================================== -->
-<section class="text text-block" aria-labelledby="main-title-6" data-lang-key="apparato_digerente_approfondimento_biochimico">
-  <h2 class="secHeader">APPROFONDIMENTO BIOCHIMICO</h2>
+  SEZIONE 6: Approfondimento Biochimico (apparato_digerente_approfondimento_biochimico)
+  DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Tricarbossilico) e Ciclo dell'Urea.
+  ========================================== -->
+<section class="text text-block mb-25" aria-labelledby="main-title-6" data-lang-key="apparato_digerente_approfondimento_biochimico">
+  <h2 class="secHeader" id="main-title-6">APPROFONDIMENTO BIOCHIMICO</h2>
 
   <div class="mb-15">
     <p><strong>In sintesi:</strong> La digestione non si limita alla scissione meccanica, ma è il punto di partenza di complesse vie metaboliche. Capire la cinetica enzimatica, il Ciclo di Krebs (il motore energetico della cellula) e il Ciclo dell'Urea (il sistema di smaltimento dell'azoto) è fondamentale per comprendere come i nutrienti vengono trasformati in energia e biomolecole, e come l'organismo gestisce i prodotti di scarto tossici.</p>
@@ -911,9 +911,9 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
     La velocità con cui un enzima catalizza una reazione non è lineare rispetto alla concentrazione del substrato, ma segue una curva iperbolica descritta dall'equazione di <strong class="biotechbold">Michaelis-Menten</strong>. Questo modello descrive la relazione tra la velocità di reazione (<em>V</em>) e la concentrazione del substrato (<em>[S]</em>).
   </p>
   
-  <p class="text">L'equazione fondamentale è:</p>
+  <p class="text mb-10">L'equazione fondamentale è:</p>
   
-  <div class="biochem-formula" style="text-align: center; margin: 20px 0; padding: 15px; background: rgba(10, 16, 26, 0.6); border-radius: 8px; border: 1px solid rgba(0, 230, 118, 0.2);">
+  <div class="mb-10" style="text-align: center; padding: 15px; background: rgba(10, 16, 26, 0.6); border-radius: 8px; border: 1px solid rgba(0, 230, 118, 0.2);">
     <p style="font-size: 1.35em; margin: 0; color: #00e676; font-family: 'Consolas', 'Fira Code', monospace;">
       <em>V</em> = 
       <span style="display: inline-block; vertical-align: middle; text-align: center; margin-left: 5px;">
@@ -924,7 +924,7 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
   </div>
 
   <p class="text">Dove:</p>
-  <ul class="text-list">
+  <ul class="text-list mb-15">
     <li><strong class="biotechbold">V<sub>max</sub></strong> è la velocità massima teorica della reazione, raggiunta quando tutti i siti attivi dell'enzima sono saturi dal substrato.</li>
     <li><strong class="biotechbold">K<sub>m</sub> (Costante di Michaelis)</strong> è la concentrazione di substrato alla quale la velocità di reazione è pari alla metà di V<sub>max</sub>. È un indice inverso dell'<strong class="orangetext">affinità</strong> dell'enzima per il substrato: un K<sub>m</sub> basso indica alta affinità (l'enzima lavora efficientemente anche a basse concentrazioni), mentre un K<sub>m</sub> alto indica bassa affinità.</li>
   </ul>
@@ -934,31 +934,31 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
     La <strong class="greentext">cinetica di Michaelis-Menten</strong> è fondamentale per comprendere la regolazione metabolica e la farmacodinamica. Gli inibitori enzimatici alterano i parametri cinetici con modalità caratteristiche:
   </p>
 
-  <div class="cyber-table-container">
+  <div class="cyber-table-container mb-25">
     <table class="cyber-table">
       <thead>
         <tr>
-          <th>Tipo di Inibizione</th>
-          <th>Effetto su V<sub>max</sub></th>
-          <th>Effetto su K<sub>m</sub></th>
-          <th>Meccanismo d'Azione</th>
+          <th scope="col">Tipo di Inibizione</th>
+          <th scope="col">Effetto su V<sub>max</sub></th>
+          <th scope="col">Effetto su K<sub>m</sub></th>
+          <th scope="col">Meccanismo d'Azione</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong class="orangetext">Competitiva</strong></td>
+          <td class="col-25"><strong class="orangetext">Competitiva</strong></td>
           <td>Invariata</td>
           <td><span class="orangetext">Aumenta</span> (apparente)</td>
           <td>L'inibitore si lega al <em>sito attivo</em> libero. Superabile aumentando [S].</td>
         </tr>
         <tr>
-          <td><strong class="orangetext">Non Competitiva</strong></td>
+          <td class="col-25"><strong class="orangetext">Non Competitiva</strong></td>
           <td><span class="orangetext">Diminuisce</span></td>
           <td>Invariata</td>
           <td>L'inibitore si lega a un <em>sito allosterico</em> sia sull'enzima libero che sul complesso ES.</td>
         </tr>
         <tr>
-          <td><strong class="orangetext">Incompetitiva</strong></td>
+          <td class="col-25"><strong class="orangetext">Incompetitiva</strong></td>
           <td><span class="orangetext">Diminuisce</span></td>
           <td><span class="greentext">Diminuisce</span> (apparente)</td>
           <td>L'inibitore si lega <em>esclusivamente</em> al complesso Enzima-Substrato (ES).</td>
@@ -967,44 +967,46 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
     </table>
   </div>
 
+  <hr class="line" />
+
   <!-- CICLO DI KREBS CON FLOWCHART -->
   <h3 class="biotechbold">IL CICLO DI KREBS (CICLO DELL'ACIDO TRICARBOSSILICO)</h3>
-  <p class="text">
+  <p class="text mb-15">
     Il Ciclo di Krebs, situato nella <strong class="biotechbold">matrice mitocondriale</strong>, è la via metabolica centrale dell'ossidazione completa dei nutrienti. È il punto di convergenza per il catabolismo di glucidi, lipidi e amminoacidi, e la fonte principale di potere riducente (NADH, FADH<sub>2</sub>) per la catena respiratoria.
   </p>
 
-  <div class="cyber-flowchart">
+  <div class="cyber-flowchart mb-15">
     <!-- TAPPA 1 -->
     <div class="flow-card intrinsic">
-      <span class="flow-tag tag-intrinsic">Fase Iniziale · Tappa 1</span>
-      <div class="flow-title">Condensazione & Sintesi del Citrato</div>
+      <span class="flow-tag tag-intrinsic">Fase Iniziale &middot; Tappa 1</span>
+      <div class="flow-title">Condensazione &amp; Sintesi del Citrato</div>
       <div class="flow-desc">L'<strong>Acetil-CoA</strong> (2C) si condensa con l'<strong>Ossalacetato</strong> (4C) per formare <strong>Citrato</strong> (6C). Reazione irreversibile e fortemente esoergonica catalizzata dalla <em>citrato sintasi</em>.</div>
     </div>
 
-    <div class="flow-arrow-down">&#8595;</div>
+    <div class="flow-arrow-down">&downarrow;</div>
 
     <!-- TAPPA 2 -->
     <div class="flow-card extrinsic">
-      <span class="flow-tag tag-extrinsic">Fase Ossidativa · Tappe 2 - 4</span>
-      <div class="flow-title">Isomerizzazione & Decarbossilazione Ossidativa</div>
+      <span class="flow-tag tag-extrinsic">Fase Ossidativa &middot; Tappe 2 - 4</span>
+      <div class="flow-title">Isomerizzazione &amp; Decarbossilazione Ossidativa</div>
       <div class="flow-desc">Il Citrato viene convertito in Isocitrato e subisce due decarbossilazioni ossidative successive (via <em>isocitrato DH</em> e <em>&alpha;-chetoglutarato DH</em>), liberando <strong>2 CO<sub>2</sub></strong> e generando <strong>2 NADH</strong> + <strong>Succinil-CoA</strong> (4C).</div>
     </div>
 
-    <div class="flow-arrow-down">&#8595;</div>
+    <div class="flow-arrow-down">&downarrow;</div>
 
     <!-- TAPPA 3 -->
     <div class="flow-card lysis">
-      <span class="flow-tag tag-lysis">Fase Energetica · Tappa 5</span>
+      <span class="flow-tag tag-lysis">Fase Energetica &middot; Tappa 5</span>
       <div class="flow-title">Fosforilazione a Livello del Substrato</div>
       <div class="flow-desc">La scissione del legame tioestere ad alta energia del Succinil-CoA (via <em>succinil-CoA sintetasi</em>) è accoppiata alla sintesi diretta di <strong>1 GTP / ATP</strong> e alla formazione di <strong>Succinato</strong>.</div>
     </div>
 
-    <div class="flow-arrow-down">&#8595;</div>
+    <div class="flow-arrow-down">&downarrow;</div>
 
     <!-- TAPPA 4 -->
     <div class="flow-card common">
-      <span class="flow-tag tag-common">Fase di Rigenerazione · Tappe 6 - 8</span>
-      <div class="flow-title">Deidrogenazione & Rigenerazione dell'Ossalacetato</div>
+      <span class="flow-tag tag-common">Fase di Rigenerazione &middot; Tappe 6 - 8</span>
+      <div class="flow-title">Deidrogenazione &amp; Rigenerazione dell'Ossalacetato</div>
       <div class="flow-desc">Il Succinato viene ossidato a Fumarato (generando <strong>1 FADH<sub>2</sub></strong> via <em>succinato DH</em>), idratato a L-Malato e infine ossidato a <strong>Ossalacetato</strong> (generando <strong>1 NADH</strong> via <em>malato DH</em>), riavviando il ciclo.</div>
     </div>
   </div>
@@ -1012,14 +1014,14 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
   <p class="text">
     <strong class="biotechbold">Resa netta per ogni molecola di Acetil-CoA ossidata:</strong>
   </p>
-  <ul class="text-list">
+  <ul class="text-list mb-15">
     <li><strong class="greentext">3 NADH</strong> (trasferiscono 6 elettroni ad alta energia alla catena respiratoria).</li>
     <li><strong class="greentext">1 FADH<sub>2</sub></strong> (donatore di elettroni al Complesso II mitocondriale).</li>
     <li><strong class="greentext">1 GTP / ATP</strong> (generato per fosforilazione a livello del substrato via succinil-CoA sintetasi).</li>
     <li><strong class="greentext">2 CO<sub>2</sub></strong> (sottoprodotti di scarto della decarbossilazione ossidativa).</li>
   </ul>
 
-  <p class="text">
+  <p class="text mb-15">
     Il Ciclo di Krebs è una via <strong class="biotechbold">anfibolica</strong> (catabolica e anabolica): fornisce intermedi per la gluconeogenesi, la sintesi di acidi grassi, amminoacidi e porfirine. È regolato allostericamente da carica energetica (ATP/ADP) e stato redox (NADH/NAD<sup>+</sup>).
   </p>
 
@@ -1027,46 +1029,46 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
 
   <!-- CICLO DELL'UREA CON FLOWCHART -->
   <h3 class="biotechbold">IL CICLO DELL'UREA: SMALTIMENTO DELL'AZOTO</h3>
-  <p class="text">
+  <p class="text mb-15">
     Il catabolismo degli amminoacidi libera gruppi amminici (-NH<sub>2</sub>) sotto forma di <strong class="orangetext">ammoniaca (NH<sub>3</sub>/NH<sub>4</sub><sup>+</sup>)</strong>, neurotossica a concentrazioni micromolari. Il fegato converte l'ammoniaca in <strong class="biotechbold">urea</strong> tramite un ciclo metabolico che richiede la cooperazione anatomica tra mitocondrio e citosol.
   </p>
 
-  <div class="cyber-flowchart">
+  <div class="cyber-flowchart mb-15">
     <!-- FASE MITOCONDRO -->
     <div class="flow-card intrinsic">
-      <span class="flow-tag tag-intrinsic">Fase Mitocondriale · Tappa 1</span>
+      <span class="flow-tag tag-intrinsic">Fase Mitocondriale &middot; Tappa 1</span>
       <div class="flow-title">Formazione del Carbamoil Fosfato</div>
       <div class="flow-desc">NH<sub>4</sub><sup>+</sup> + HCO<sub>3</sub><sup>-</sup> + 2 ATP &rarr; <strong>Carbamoil Fosfato</strong> + 2 ADP + P<sub>i</sub>. Catalizzata dalla <em>Carbamoil Fosfato Sintetasi I (CPS I)</em>, enzima chiave e regolato allostericamente dall'N-acetilglutammato.</div>
     </div>
 
-    <div class="flow-arrow-down">&#8595;</div>
+    <div class="flow-arrow-down">&downarrow;</div>
 
     <div class="flow-card intrinsic">
-      <span class="flow-tag tag-intrinsic">Fase Mitocondriale · Tappa 2</span>
-      <div class="flow-title">Sintesi della Citrullina & Transit Citosolico</div>
+      <span class="flow-tag tag-intrinsic">Fase Mitocondriale &middot; Tappa 2</span>
+      <div class="flow-title">Sintesi della Citrullina &amp; Transito Citosolico</div>
       <div class="flow-desc">Il Carbamoil Fosfato reagisce con l'<strong>Ornitina</strong> (via <em>Ornitina Transcarbamilasi - OTC</em>) formando <strong>Citrullina</strong>, che viene traslocata nel citosol.</div>
     </div>
 
-    <div class="flow-arrow-down">&#8595;</div>
+    <div class="flow-arrow-down">&downarrow;</div>
 
     <!-- FASE CITOSOL -->
     <div class="flow-card extrinsic">
-      <span class="flow-tag tag-extrinsic">Fase Citosolica · Tappa 3 & 4</span>
-      <div class="flow-title">Condensazione & Scissione Argininosuccinato</div>
+      <span class="flow-tag tag-extrinsic">Fase Citosolica &middot; Tappa 3 &amp; 4</span>
+      <div class="flow-title">Condensazione &amp; Scissione Argininosuccinato</div>
       <div class="flow-desc">La Citrullina si lega all'<strong>Aspartato</strong> (che apporta il secondo gruppo amminico) consumando 1 ATP &rarr; AMP + PPi (equivalente a 2 ATP). L'Argininosuccinato viene poi scisso in <strong>Arginina</strong> e <strong>Fumarato</strong> (ponte verso il Ciclo di Krebs).</div>
     </div>
 
-    <div class="flow-arrow-down">&#8595;</div>
+    <div class="flow-arrow-down">&downarrow;</div>
 
     <!-- RISULTATO FINALE -->
     <div class="flow-card common">
-      <span class="flow-tag tag-common">Fase Citosolica / Finale · Tappa 5</span>
-      <div class="flow-title">Idrolisi dell'Arginina & Rigenerazione Ornitina</div>
+      <span class="flow-tag tag-common">Fase Citosolica / Finale &middot; Tappa 5</span>
+      <div class="flow-title">Idrolisi dell'Arginina &amp; Rigenerazione Ornitina</div>
       <div class="flow-desc">L'<em>Arginasi</em> scinde l'Arginina liberando <strong>Urea</strong> (destinata all'escrezione renale) e rigenerando l'<strong>Ornitina</strong>, che rientra nel mitocondrio per riavviare il ciclo.</div>
     </div>
   </div>
 
-  <p class="text">
+  <p class="text mb-15">
     Il ciclo consuma il corrispettivo stechiometrico di <strong class="biotechbold">4 legami fosfato ad alta energia</strong> (3 ATP &rarr; 2 ADP + 1 AMP) per ogni molecola di urea prodotta. Difetti genetici a carico degli enzimi del ciclo (es. deficit di OTC) determinano grave iperammonemia e richiedono restrizione proteica ed escretori alternativi dell'azoto.
   </p>
 
@@ -1077,7 +1079,7 @@ DESCRIZIONE: Cinetica enzimatica (Michaelis-Menten), Ciclo di Krebs (Acido Trica
   <p class="text">
     Questi tre sistemi operano in stretta coordinazione metabolica:
   </p>
-  <ul class="text-list">
+  <ul class="text-list mb-15">
     <li>Il <strong class="biotechbold">Fumarato</strong> prodotto nel ciclo dell'urea entra direttamente nel mitocondrio e alimenta il Ciclo di Krebs (<em>bicicletta di Krebs-Urea</em>).</li>
     <li>L'<strong class="biotechbold">ATP</strong> prodotto dalla catena respiratoria via Krebs/NADH sostiene il costo energetico del ciclo dell'urea e delle biosintesi epatiche.</li>
     <li>I parametri cinetici enzimatici (<strong class="greentext">K<sub>m</sub> e V<sub>max</sub></strong>) determinano la flessibilità con cui il fegato passa dallo stato post-prandiale al digiuno prolungato.</li>
