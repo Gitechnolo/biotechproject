@@ -469,7 +469,7 @@ lang/
 
 
 ## 📅 Ultima Data di Verifica
-**17 Settembre 2026**
+**18 Ottobre 2026**
 
 ## 🔮 Aggiornamenti recenti (riassunto)
 
