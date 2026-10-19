@@ -225,7 +225,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 * **Validatie**: [View Accessibility Statement (#19)](https://github.com/Gitechnolo/biotechproject/issues/19)
 
 ### [ADR-007] Resilient WCAG 2.2 AAA Audit (Stateless Edge)
-* **Besluit**: Stateless Edge WCAG 2.2 AAA Audit
+* **Besluit**: Stateless Edge WCAG 2.2 AAA Audit.
 * **Motivering**: De "Zero-Framework" aanpak elimineert zware externe bibliotheken, terwijl de "Semantic Snapshotter" de interfacestatus efficiënt vastlegt. Dit vermindert de afhankelijkheid van infrastructuur en bevordert de gelijkheid in de gezondheidszorg (Health Equity) in regio's met beperkte connectiviteit.
 * **Resultaat**: Ultra-lichte (~2KB) toegankelijkheidsaudit via Copilot, wat de werking in klinische omgevingen met een lage bandbreedte garandeert.
 * **Validatie**: [View Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
