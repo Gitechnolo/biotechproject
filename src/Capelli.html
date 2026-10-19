@@ -1731,7 +1731,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
   DESCRIZIONE: Chimica formulativa e detersione (tensioattivi, EDTA, pH, modificatori reologici), dinamica micellare di asportazione del sebo, trattamenti antiforfora/antiseborroici (normativa UE e attivi), chimica dei siliconi (filmogenesi, Reg. UE 2024/1328, non-comedogenicità), dermocosmesi post-shampoo (balsami cationici, maschere lamellari, lozioni filmogene e attivi leave-in).
   WCAG 2.2 AAA | WAI-ARIA Accessible
   ========================================== -->
-<section data-lang-key="shampoo_post_shampoo" class="text-block mb-30" aria-labelledby="sec-shampoo-main-title">
+<section class="text-block mb-30" aria-labelledby="sec-shampoo-main-title" data-lang-key="shampoo_post_shampoo">
 
     <!-- BLOCK 1: SHAMPOO PER CAPELLI -->
     <article class="mb-30">
@@ -1746,25 +1746,25 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         <p class="text mb-15">Una formulazione standard è costituita prevalentemente da <strong>acqua deionizzata</strong> (70-80%) come solvente universale e da un sistema tensioattivo (10-15%) responsabile della detersione. A questi si aggiungono componenti funzionali critici per la stabilità e la tollerabilità del prodotto.</p>
         
         <ul class="text mb-25">
-            <li class="mb-7">
+            <li>
                 <strong>Sistema Tensioattivo:</strong> Una miscela bilanciata di tensioattivi primari (pulizia) e secondari (addolcenti). <em>(Vedi tabella successiva per classificazione chimica e cariche).</em>
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Agenti Chelanti (Sequestranti):</strong> Molecole come l'<strong>EDTA</strong> o i citrati sono essenziali per legare gli ioni di calcio e magnesio presenti nell'acqua dura. Senza di essi, i tensioattivi precipiterebbero riducendo la schiuma e lasciando residui opachi sul capello.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Sistema Tampone (pH):</strong> Additivi come l'<strong>acido citrico</strong> o lattico mantengono il prodotto a pH 4.5–5.5. Questo range è cruciale per rispettare il <strong>mantello acido</strong> del cuoio capelluto e mantenere le cuticole del capello chiuse e lucide.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Modificatori Reologici:</strong> Sali (cloruro di sodio) o polimeri cellulosici che aumentano la viscosità della soluzione, migliorando la maneggevolezza del prodotto durante l'applicazione.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Sistema Conservante:</strong> Necessario data l'alta percentuale di acqua e la presenza di nutrienti organici. Previene la contaminazione microbica (batteri e muffe) durante la vita del prodotto.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Agenti Condizionanti:</strong> Polimeri o siliconi che depositano un film sottile sulla fibra. <em>(Il meccanismo di deposizione elettrostatica è trattato nel blocco successivo).</em>
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Additivi Estetici:</strong> Profumi, coloranti e agenti opacizzanti (es. glicole distearato) che conferiscono l'aspetto perlaceo e il profumo caratteristico, senza influenza diretta sulla detersione.
             </li>
         </ul>   
@@ -1775,10 +1775,10 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
                 <caption class="sr-only">Classificazione dei tensioattivi per carica elettrica, esempio chimico e ruolo funzionale</caption>
                 <thead>
                     <tr>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Carica Netta</th>
-                        <th scope="col">Esempio Chimico</th>
-                        <th scope="col">Ruolo Funzionale</th>
+                        <th scope="col" class="col-25">Tipo</th>
+                        <th scope="col" class="col-20">Carica Netta</th>
+                        <th scope="col" class="col-30">Esempio Chimico</th>
+                        <th scope="col" class="col-25">Ruolo Funzionale</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1821,7 +1821,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
                 <div class="flow-desc">In ambiente acquoso, le code idrofobiche dei tensioattivi si orientano verso il sebo e i detriti lipidici depositati sulla fibra o sulla cute.</div>
             </li>
 
-            <li aria-hidden="true" class="flow-arrow-down">↓</li>
+            <li aria-hidden="true" class="flow-arrow-down">&#9660;</li>
 
             <li class="flow-card intrinsic">
                 <span class="flow-tag tag-intrinsic">Fase 2: Soglia CMC &amp; Aggregazione</span>
@@ -1829,7 +1829,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
                 <div class="flow-desc">Superata la Concentrazione Micellare Critica (CMC), le molecole si auto-assemblano in aggregati sferici (o cilindrici/"vermicelli"), inglobando lo sporco al centro.</div>
             </li>
 
-            <li aria-hidden="true" class="flow-arrow-down">↓</li>
+            <li aria-hidden="true" class="flow-arrow-down">&#9660;</li>
 
             <li class="flow-card lysis">
                 <span class="flow-tag tag-lysis">Fase 3: Asportazione Meccanica</span>
@@ -1850,9 +1850,9 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             
             <dt class="mb-5"><span class="greentext">Antiseborroici:</span></dt>
             <dd>
-                <ul>
-                    <li class="mb-5"><span class="biotechbold">Detergenti Delicati:</span> Tensioattivi non ionici o anfoteri (es. derivati del glucosio) che puliscono senza stripare eccessivamente il film idrolipidico, evitando la <strong>seborrea reattiva</strong>.</li>
-                    <li class="mb-5"><span class="biotechbold">Attivi Sebo-Regolatori:</span> Ingredienti come lo <strong>Zinco PCA</strong> o estratti vegetali (es. <em>Serenoa Repens</em>) che modulano l'attività della 5-alfa-reduttasi, riducendo la produzione di sebo.</li>
+                <ul class="text" style="list-style: none; padding-left: 0;">
+                    <li><span class="biotechbold">Detergenti Delicati:</span> Tensioattivi non ionici o anfoteri (es. derivati del glucosio) che puliscono senza stripare eccessivamente il film idrolipidico, evitando la <strong>seborrea reattiva</strong>.</li>
+                    <li><span class="biotechbold">Attivi Sebo-Regolatori:</span> Ingredienti come lo <strong>Zinco PCA</strong> o estratti vegetali (es. <em>Serenoa Repens</em>) che modulano l'attività della 5-alfa-reduttasi, riducendo la produzione di sebo.</li>
                 </ul>
             </dd>
         </dl>
@@ -1878,16 +1878,16 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
             Formulazioni progettate per ripristinare le proprietà tribologiche della fibra capillare, incrementando <strong>elasticità, levigatezza cuticolare, lucentezza e pettinabilità</strong> (riduzione delle forze di attrito dinamico) e neutralizzando le cariche elettrostatiche superficiali. Sistemi indicati per fibre xerotiche, chimicamente trattate o strutturalmente danneggiate.
         </p>
         <ul class="text note2 mb-25">
-            <li class="mb-7">
+            <li>
                 <strong>Composizione (Fase Interfacciale):</strong> Alcoli grassi a catena lineare agenti come co-emulsionanti e agenti strutturanti (es. Cetearyl Alcohol), <em>tensioattivi cationici anfipatici</em> (sali di ammonio quaternario a lunga catena alchilica come <em>Behentrimonium Chloride</em> o <em>Cetrimonium Chloride</em>), polimeri siliconici ad alto peso molecolare (dimeticone e amodimeticone funzionalizzato), esteri emollienti sintetici, proteine idrolizzate a basso peso molecolare (<em>microincapsulate</em> per stabilizzazione e facilitata veicolazione) e polimeri filmogeni sostantivi.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Meccanismo Chimico-Fisico (Approfondimento Molecolare):</strong> Le cariche positive del condizionante si legano per attrazione elettrostatica ai siti anionici liberi (gruppi carbossilici ionizzati COO<sup>-</sup> dei residui di acido aspartico e glutammico) della cheratina esposta. Il punto isoelettrico della cheratina (pH ~ 3.7) viene alterato dai trattamenti alcalini o dai lavaggi, incrementando la densità di carica negativa che questo sistema va a saturare, favorendo l'allineamento e la chiusura delle cuticole.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Persistenza e Cinetica:</strong> Interazione prevalentemente <strong>reversibile</strong> e di superficie; il film condizionante è soggetto a desorbimento e progressiva rimozione cinetica mediante i successivi lavaggi con tensioattivi anionici.
             </li>
-            <li class="mb-7">
+            <li>
                 <strong>Controindicazioni Dermatologiche:</strong> Se applicati in prossimità dell'ostio follicolare o su cuoio capelluto a tendenza seborroica, possono indurre il fenomeno dell'<em>accumulo superficiale</em> (<em>surface buildup</em>, deposizione resistente al risciacquo) e accelerare la migrazione capillare del sebo fluido lungo lo stelo per capillarità.
             </li>
         </ul>
@@ -1908,7 +1908,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         <h3 class="subtitle mb-10">3. Lozioni Fissanti (Styling Lotions)</h3>
         <p class="text mb-25">
             Formulazioni topiche <strong>senza risciacquo</strong> (<em>leave-in</em>) ingegnerizzate per depositarsi sulla cuticola e creare ponti inter-fibra transitori tramite <strong>polimeri sintetici omopolimerici o bio-based film-formers</strong> (es. PVP, VP/VA Copolymer, derivati del vinilacetato o polimeri polisaccaridici modificati). Agiscono modificando temporaneamente la rigidità strutturale e conferendo memoria di forma geometrica allo styling.
-            <br><em>Nota Chimico-Fisica: Un sovradosaggio o un'evaporazione ultrarapida del solvente altera la coesione del film polimerico rispetto al substrato cheratinico, determinando il fenomeno dello <strong>sfaldamento</strong> (<em>flaking</em>, frattura microscopica del film in scaglie biancastre visibili, macroscopicamente confondibili con la desquamazione forforacea).</em>
+            <br><em>Nota Chimico-Fisica: Un sovradosaggio o un'evaporazione ultrarapida del solvente altera la coesione del film polimerico rispetto al substrato cheratinico, determinando il fenomeno dello <strong>sfaldamento</strong> (flaking, frattura microscopica del film in scaglie biancastre visibili, macroscopicamente confondibili con la desquamazione forforacea).</em>
         </p>
 
         <h3 class="subtitle mb-10">4. Lozioni Trattanti Funzionali (Leave-in Treatments)</h3>
@@ -1917,7 +1917,7 @@ DESCRIZIONE: Trattazione completa del ciclo biologico (Anagen, Catagen, Telogen,
         </p>
 
         <!-- CARDS DI RAMIFICAZIONE SOTTO FORMA DI LISTA STRUTTURATA -->
-        <ul class="flow-branches mb-25">
+        <ul class="flow-branches mb-25" style="list-style: none; padding-left: 0;">
             <!-- Ramo Antiforfora -->
             <li class="flow-card extrinsic">
                 <span class="flow-tag tag-extrinsic">Antiforfora &amp; Turnover</span>
