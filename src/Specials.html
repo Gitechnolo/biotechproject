@@ -73,6 +73,11 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   background: rgba(220, 230, 220, 0.5); /* Sfondo semi-trasparente e centrata*/
   backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3);}
 .f-sb-cw {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;}
+.slate-gloss {
+  color: #94a3b8;
+  font-size: 0.82rem; /* Mantiene la dimensione leggibile, evitando il rimpicciolimento eccessivo di <small> */
+  line-height: 1.4;
+}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -101,31 +106,38 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
 <!-- ==========================================
   SEZIONE: Bio-Robotica e Soft Robotics (tech-content-wrapper)
-  DESCRIZIONE: Modulo scientifico su gerarchia di pluripotenza, meccanotransduzione (Piezo1/2), bio-attuatori, Xenobots, organoidi cerebrali e quadro etico. Include badge interattivi, banche dati live e flowchart dinamico.
+  DESCRIZIONE: Modulo scientifico avanzato con chiarimenti parentetici e link interni alla bibliografia (user retention).
   ========================================== -->
-<section class="tech-content-wrapper" aria-labelledby="main-stem-cells-title" data-lang-key="tech-content-wrapper">
+<section class="text text-block tech-content-wrapper" aria-labelledby="main-stem-cells-title" data-lang-key="tech-content-wrapper">
   
-  <!-- Titolo Principale Sintetizzato -->
+  <!-- Titolo Principale -->
   <h1 id="main-stem-cells-title" class="sansation-bold">
     Bio-Robotica: L'Incontro tra Biologia e Ingegneria per un Futuro Bio-Ibrido
   </h1>
 
+  <!-- Executive Summary -->
+  <div class="mb-15">
+    <p><strong>In sintesi:</strong> La bio-robotica converge l'ingegneria dei materiali e la biologia cellulare, sfruttando tessuti viventi come attuatori intelligenti ed efficienti dal punto di vista energetico. Dalle staminali ai bio-ibridi e all'intelligenza organoidale, il paradigma tecnologico supera i limiti dei motori tradizionali integrandosi in armonia con i sistemi biologici.</p>
+  </div>
+
   <!-- SEZIONE 1: Gerarchia e Differenziamento -->
   <div class="mb-25">
-    <div class="f-sb-cw">
-      <h2 class="secHeader" style="margin-bottom: 0;">Biologia Differenziativa e Gerarchia di Pluripotenza</h2>
-      <!-- Badge 1: Single-Cell Atlas Explorer -->
-      <a href="https://data.humancellatlas.org/" 
-         target="_blank" 
-         rel="noopener" 
-         class="badge-interactive">
-         EXPLORER LIVE
-         <span class="sr-only">(apre la banca dati Single-Cell su Human Cell Atlas in una nuova scheda)</span>
-      </a>
+    <div class="f-sb-cw mb-10">
+      <h2 class="secHeader">Biologia Differenziativa e Gerarchia di Pluripotenza</h2>
+      <div class="flex-between">
+        <a href="#ref-1" class="badge-interactive nowrap" aria-label="Riferimento 1 (passa alla bibliografia)">
+          REF #1
+          <span class="sr-only">(passa alla bibliografia - Riferimento 1 su Zakrzewski et al.)</span>
+        </a>
+        <a href="https://data.humancellatlas.org/" target="_blank" rel="noopener" class="badge-interactive nowrap">
+          EXPLORER LIVE
+          <span class="sr-only">(apre la banca dati Single-Cell su Human Cell Atlas in una nuova scheda)</span>
+        </a>
+      </div>
     </div>
 
-    <p class="mb-15">
-      Le cellule staminali costituiscono il substrato biologico fondamentale per l'ingegneria dei tessuti e il modellamento di dispositivi bio-ibridi. Caratterizzate dalla capacità di autorinnovamento e da un potenziale di differenziamento orchestrato da fattori di trascrizione e segnali biofisici microambientali, esse si articolano lungo una rigida gerarchia di potenza: dalle cellule staminali embrionali (ESC) e pluripotenti indotte (iPSC) fino ai progenitori multipotenti tessuto-specifici.
+    <p class="text mb-15">
+      Le <strong class="yellowtext">cellule staminali</strong> costituiscono il substrato biologico fondamentale per l'ingegneria dei tessuti e il modellamento di dispositivi bio-ibridi. Caratterizzate dalla capacità di <strong class="biotechbold">autorinnovamento</strong> e da un potenziale di differenziamento orchestrato da fattori di trascrizione e segnali biofisici microambientali, esse si articolano lungo una rigida gerarchia di potenza: dalle <strong class="yellowtext">cellule staminali embrionali (ESC)</strong> e <strong class="yellowtext">pluripotenti indotte (iPSC)</strong> <span class="slate-gloss">(cellule adulte "riprogrammate" per tornare allo stato embrionale)</span> fino ai progenitori multipotenti tessuto-specifici <span class="slate-gloss">(capaci di generare solo determinati tipi di cellule)</span>.
     </p>
 
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Final_stem_cell_differentiation.avif" 
@@ -140,19 +152,19 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
       <table class="cyber-table">
         <thead>
           <tr>
-            <th>Tipologia Cellulare</th>
-            <th>Potenziale di Differenziamento</th>
-            <th>Applicazione Bio-Ibrida / Bionica</th>
+            <th scope="col" class="col-25">Tipologia Cellulare</th>
+            <th scope="col" class="col-30">Potenziale di Differenziamento</th>
+            <th scope="col" class="col-45">Applicazione Bio-Ibrida / Bionica</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>ESC / iPSC</strong></td>
+            <td><strong class="yellowtext">ESC / iPSC</strong></td>
             <td>Pluripotente (Endoderma, Mesoderma, Ectoderma)</td>
-            <td>Generazione di bio-attuatori (cardiomiociti, miociti scheletrici) e organoidi.</td>
+            <td>Generazione di bio-attuatori (<strong class="greentext">cardiomiociti</strong>, miociti scheletrici) e organoidi <span class="slate-gloss">(mini-organi coltivati in provetta)</span>.</td>
           </tr>
           <tr>
-            <td><strong>Progenitori Multipotenti</strong></td>
+            <td><strong class="yellowtext">Progenitori Multipotenti</strong></td>
             <td>Limitato a uno specifico lineage tissutale</td>
             <td>Mantenimento dell'omeostasi e riparazione parenchimale localizzata.</td>
           </tr>
@@ -163,11 +175,24 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <hr class="line">
 
-  <!-- SEZIONE 2: Meccanotrasduzione, Optogenetica e Attuazione -->
+  <!-- SEZIONE 2: Meccanotransduzione, Optogenetica e Attuazione -->
   <div class="mb-25">
-    <h2 class="secHeader">Integrazione Bio-Ibrida: Meccanotrasduzione e Attuazione Cellulare</h2>
-    <p class="mb-15">
-      L'intersezione tra ingegneria dei tessuti e bionica d'avanguardia ha promosso lo sviluppo di sistemi bio-ibridi, in cui miociti scheletrici e cardiomiociti differenziati da iPSC operano come attuatori biologici integrati. Tali complessi convertono la dinamica biochimica in forza meccanica attraverso processi di meccanotransduzione mediati da canali ionici meccanosensibili (es. Piezo1/2), complessi integrinici d'adesione focale e sistemi di stimolazione optogenetica per il controllo remoto della contrazione tramite impulsi luminosi.
+    <div class="f-sb-cw mb-10">
+      <h2 class="secHeader">Integrazione Bio-Ibrida: Meccanotransduzione e Attuazione</h2>
+      <div class="flex-between" style="gap: 8px;">
+        <a href="#ref-2" class="badge-interactive nowrap" aria-label="Riferimento 2 (passa alla bibliografia)">
+          REF #2 (Piezo)
+          <span class="sr-only">(passa alla bibliografia - Riferimento 2 su Coste et al.)</span>
+        </a>
+        <a href="#ref-4" class="badge-interactive nowrap" aria-label="Riferimento 4 (passa alla bibliografia)">
+          REF #4 (Opto)
+          <span class="sr-only">(passa alla bibliografia - Riferimento 4 su Raman et al.)</span>
+        </a>
+      </div>
+    </div>
+    
+    <p class="text mb-15">
+      L'intersezione tra ingegneria dei tessuti e bionica d'avanguardia ha promosso lo sviluppo di sistemi bio-ibridi, in cui miociti scheletrici e cardiomiociti differenziati da iPSC operano come attuatori biologici integrati <span class="slate-gloss">(motori viventi capaci di contrarsi)</span>. Tali complessi convertono la dinamica biochimica in <strong class="greentext">forza meccanica</strong> attraverso processi di meccanotransduzione <span class="slate-gloss">(la conversione di una spinta o pressione fisica in un segnale chimico o elettrico)</span> mediati da <strong class="yellowtext">canali ionici meccanosensibili (es. Piezo1/2)</strong> <span class="slate-gloss">(veri e propri interruttori molecolari che si aprono quando la cellula viene deformata)</span>, complessi integrinici d'adesione focale e sistemi di stimolazione optogenetica <span class="slate-gloss">(tecnica che permette di attivare le cellule tramite impulsi di luce laser)</span> per il controllo remoto della contrazione.
     </p>
 
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Protein translation.avif" 
@@ -185,38 +210,34 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
         <div class="flow-desc">Stimolo dal microambiente, scaffold sintetico o impulsi luminosi optogenetici.</div>
       </div>
 
-      <div class="flow-arrow-down">▼</div>
+      <div class="flow-arrow-down">&downarrow;</div>
 
       <div class="flow-branches">
         <div class="flow-card extrinsic">
           <div class="flex-between">
             <span class="flow-tag tag-extrinsic">Canali Piezo1/2</span>
-            <!-- Badge Interattivo Piezo (Science DOI) -->
-            <a href="https://doi.org/10.1126/science.1193270" 
-               target="_blank" 
-               rel="noopener" 
-               class="badge-interactive">
-               SCIENCE DOI
-               <span class="sr-only">(apre lo studio sui canali meccanosensibili Piezo1/2 su Science in una nuova scheda)</span>
+            <a href="#ref-2" class="badge-interactive" aria-label="Vai al riferimento 2 di Coste et al. nella bibliografia">
+               REF #2 (COSTE)
+               <span class="sr-only">(scorri alla bibliografia per visualizzare lo studio Coste et al. su Science)</span>
             </a>
           </div>
           <div class="flow-title">Trasduzione Ionica</div>
-          <div class="flow-desc">Apertura dei varchi meccanosensibili per il flusso di ioni.</div>
+          <div class="flow-desc">Apertura dei varchi meccanosensibili per il flusso ionico transmembrana.</div>
         </div>
 
         <div class="flow-card extrinsic">
           <span class="flow-tag tag-extrinsic">Adesioni Focali</span>
           <div class="flow-title">Cascade Integrinica</div>
-          <div class="flow-desc">Riorganizzazione del citoscheletro e ancoraggio alla matrice.</div>
+          <div class="flow-desc">Riorganizzazione del citoscheletro e ancoraggio dinamico alla matrice extracellulare.</div>
         </div>
       </div>
 
-      <div class="flow-arrow-down">▼</div>
+      <div class="flow-arrow-down">&downarrow;</div>
 
       <div class="flow-card common">
         <span class="flow-tag tag-common">Fase Finale: Output</span>
         <div class="flow-title">Lavoro Meccanico &amp; Self-Healing</div>
-        <div class="flow-desc">Rimodellamento adattivo, autoriparazione e superamento della fatica dei polimeri.</div>
+        <div class="flow-desc">Rimodellamento adattivo, autoriparazione tissutale e superamento della fatica dei polimeri sintetici.</div>
       </div>
     </div>
   </div>
@@ -225,10 +246,28 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- SEZIONE 3: Bio-Energetica, Soft Robotics e Sfide Ingegneristiche -->
   <div class="mb-25">
-    <h2 class="secHeader" data-lang-key="applications">Efficienza Metabolica e Bio-attuazione</h2>
-    <p class="mb-15" data-lang-key="future-applications-description">
-      Un vantaggio chiave dell'uso di tessuti muscolari coltivati da staminali risiede nella gestione termica e nella biocompatibilità intrinseca. A differenza dei motori elettrici convenzionali, che dissipano calore e richiedono schermature rigide, i bio-attuatori operano mediante l'idrolisi dell'ATP, convertendo l'energia chimica in movimento senza surriscaldamento locale. Questo approccio converge con i principi della Soft Robotics: la flessibilità strutturale degli scaffold polimerici e dei tessuti organici permette ai robot di operare in sicurezza all'interno del corpo umano o in ecosistemi fragili, garantendo una navigazione fluida in ambienti non strutturati. Le sfide ingegneristiche attuali concentrano la ricerca sulla vascolarizzazione microvascolare degli scaffold e sulla proroga della vita utile dei bio-attuatori oltre la scala di laboratorio.
+    <div class="f-sb-cw mb-10">
+      <h2 class="secHeader" data-lang-key="applications">Efficienza Metabolica e Bio-attuazione</h2>
+      <a href="#ref-5" class="badge-interactive nowrap" aria-label="Riferimento 5 (passa alla bibliografia)">
+        REF #5
+        <span class="sr-only">(passa alla bibliografia - Riferimento 5 su Webster-Wood et al.)</span>
+      </a>
+    </div>
+    
+    <p class="text mb-15" data-lang-key="future-applications-description">
+      Un vantaggio chiave dell'uso di tessuti muscolari coltivati da staminali risiede nella gestione termica e nella biocompatibilità intrinseca. A differenza dei <strong class="orangetext">motori elettrici convenzionali</strong>, che dissipano calore e richiedono schermature rigide, i bio-attuatori operano mediante l'idrolisi dell'<strong class="greentext">ATP</strong> <span class="slate-gloss">(la "moneta energetica" fondamentale utilizzata dalle cellule per compiere lavoro)</span>, convertendo l'energia chimica in movimento senza surriscaldamento locale. Questo approccio converge con i principi della <strong class="biotechbold">Soft Robotics</strong>: la flessibilità strutturale degli scaffold polimerici <span class="slate-gloss">(le impalcature microscopiche biodegradabili su cui vengono collocate le cellule)</span> e dei tessuti organici permette ai robot di operare in sicurezza all'interno del corpo umano o in ecosistemi fragili.
     </p>
+    
+    <!-- PARAGRAFO SU LIMITI E VASCOLARIZZAZIONE -->
+    <div class="research-insight-box mb-15">
+      <div class="insight-header">
+        <h4 class="biotechbold">SFIDE INGEGNERISTICHE CRITICHE</h4>
+        <span class="badge-interactive">LIMITI FISIOLOGICI</span>
+      </div>
+      <p class="text">
+        Nonostante la biocompatibilità, i bio-attuatori presentano una densità di potenza e forza inferiori ai motori sintetici equivalenti. La ricerca attuale si concentra sulla <strong class="yellowtext">vascolarizzazione microvascolare</strong> degli scaffold <span class="slate-gloss">(la creazione di microscopici vasi sanguigni artificiali all'interno della struttura)</span> per superare il limite critico di diffusione dell'ossigeno (<strong class="orangetext">&sim;150 &micro;m</strong>) <span class="slate-gloss">(distanza oltre la quale le cellule più interne rischiano di soffocare per mancanza di nutrimento)</span> e sulla proroga della vita utile dei bio-attuatori oltre la scala di laboratorio.
+      </p>
+    </div>
 
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Biotech-menu/Dermatologia/Soft_Robotics_1.avif" 
          alt="Schema tecnico di un attuatore elastomerico flessibile per la soft robotics" 
@@ -242,68 +281,73 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
   <!-- SEZIONE 4: Interfacce Brain-Computer & Organoidi (DishBrain / Embodied Computing) -->
   <div class="mb-25">
-    <div class="f-sb-cw">
-      <h2 class="secHeader" style="margin-bottom: 0;">Interfacce Neuro-Elettroniche e Reti Neurali in Vitro</h2>
-      <!-- Badge 2: DishBrain Paper (Neuron DOI) -->
-      <a href="https://doi.org/10.1016/j.neuron.2022.09.001" 
-         target="_blank" 
-         rel="noopener" 
-         class="badge-interactive">
-         NEURON DOI
-         <span class="sr-only">(apre lo studio DishBrain sulle reti neurali embodied su Neuron in una nuova scheda)</span>
+    <div class="f-sb-cw mb-10">
+      <h2 class="secHeader">Interfacce Neuro-Elettroniche e Reti Neurali in Vitro</h2>
+      <a href="#ref-8" class="badge-interactive nowrap" aria-label="Riferimento 8 (passa alla bibliografia)">
+        REF #8 (DishBrain)
+        <span class="sr-only">(passa alla bibliografia - Riferimento 8 su Kagan et al.)</span>
       </a>
     </div>
-    <p>
-      Le interfacce cervello-computer (BCI) di nuova generazione sfruttano colture bidimensionali e tridimensionali (organoidi cerebrali) di neuroni funzionali derivati da iPSC. Interfacciate con matrici di microelettrodi (MEA) o transistor a effetto di campo (OECT), queste reti neurali <em>in vitro</em> permettono di decodificare pattern complessi di potenziale d'azione, studiare i meccanismi di neuroplasticità e dimostrare forme di apprendimento adattivo (embodied intelligence) in risposta a feedback ambientali in tempo reale.
+    
+    <p class="text mb-10">
+      Le <strong class="biotechbold">interfacce cervello-computer (BCI)</strong> di nuova generazione sfruttano colture bidimensionali e tridimensionali (<strong class="yellowtext">organoidi cerebrali</strong>) di neuroni funzionali derivati da iPSC. Interfacciate con matrici di microelettrodi (<strong class="greentext">MEA</strong>) o transistor a effetto di campo (<strong class="greentext">OECT</strong>) <span class="slate-gloss">(microchip capaci di rilevare e stimolare i segnali elettrici neuronali con altissima precisione)</span>, queste reti neurali <em>in vitro</em> permettono di decodificare pattern complessi di potenziale d'azione, studiare i meccanismi di neuroplasticità <span class="slate-gloss">(la capacità dei neuroni di riorganizzarsi e creare nuove connessioni in risposta all'esperienza)</span> e dimostrare forme di apprendimento adattivo (<strong class="biotechbold">embodied intelligence</strong>) in risposta a feedback ambientali in tempo reale.
     </p>
+    
+    <div class="research-insight-box">
+      <div class="insight-header">
+        <h4 class="biotechbold">COGNIZIONE INCARNATA (EMBODIED COGNITION)</h4>
+        <span class="badge-interactive">KAGAN ET AL., 2022</span>
+      </div>
+      <p class="text">
+        Studi recenti, come il lavoro pionieristico <em>"DishBrain"</em>, hanno dimostrato come colture neuronali <em>in vitro</em> possano apprendere compiti complessi <span class="slate-gloss">(come posizionare una racchetta virtuale per giocare a Pong)</span> in pochi minuti, aprendo la strada a una nuova era di calcolo biologico reattivo.
+      </p>
+    </div>
   </div>
 
   <!-- SEZIONE 5: Xenobots -->
   <div class="mb-25">
-    <div class="f-sb-cw">
-      <h2 class="secHeader" style="margin-bottom: 0;">Xenobots: Morfogenesi Computazionale e Bio-Design Programmabile</h2>
-      <!-- Badge 3: Xenobots PNAS DOI -->
-      <a href="https://doi.org/10.1073/pnas.1910837117" 
-         target="_blank" 
-         rel="noopener" 
-         class="badge-interactive">
-         PNAS DOI
-         <span class="sr-only">(apre lo studio sulla progettazione di Xenobots su PNAS in una nuova scheda)</span>
+    <div class="f-sb-cw mb-10">
+      <h2 class="secHeader">Xenobots: Morfogenesi Computazionale e Bio-Design</h2>
+      <a href="#ref-7" class="badge-interactive nowrap" aria-label="Riferimento 7 (passa alla bibliografia)">
+        REF #7
+        <span class="sr-only">(passa alla bibliografia - Riferimento 7 su Kriegman et al.)</span>
       </a>
     </div>
-    <p>
-      Gli Xenobots rappresentano il paradigma del bio-design programmabile <em>in silico</em>. Derivati dall'assemblaggio guidato di cellule epidermiche e cardiache embrionali di <em>Xenopus laevis</em>, questi agenti biologici autonomi sono progettati mediante algoritmi evolutivi per compiere specifici compiti cinematici. Essendo privi di componenti sintetiche o metalliche, mostrano completa biodegradabilità e biocompatibilità.
+    
+    <p class="text">
+      Gli <strong class="text-neon">Xenobots</strong> rappresentano il paradigma del bio-design programmabile <em>in silico</em> <span class="slate-gloss">(ovvero modellato al computer prima di essere assemblato in laboratorio)</span>. Derivati dall'assemblaggio guidato di cellule epidermiche e cardiache embrionali del rospo <em><strong class="yellowtext">Xenopus laevis</strong></em>, questi agenti biologici autonomi <span class="slate-gloss">(veri e propri micro-robot viventi di dimensioni millimetriche)</span> sono progettati mediante algoritmi evolutivi per compiere specifici compiti cinematici. Essendo privi di componenti sintetiche o metalliche, mostrano completa <strong class="greentext">biodegradabilità e biocompatibilità</strong>.
     </p>
   </div>
 
   <!-- SEZIONE 6: Robotica Ecologica -->
   <div class="mb-25">
-    <h2 class="secHeader">Robotica Ecologica, Biosensing e Sostenibilità Ambientale</h2>
-    <p>
-      L'integrazione di biosensori cellulari all'interno di piattaforme bio-ibride autonome offre opportunità inedite nel monitoraggio ecologico sostenibile. Sfruttando il chemiotassismo naturale e le risposte fisiologiche dei tessuti vitali ai gradienti chimici, questi robot ecologici agiscono come unità d'analisi <em>in situ</em> per il rilevamento di microinquinanti e tossine senza generare e-waste.
+    <h2 class="secHeader">Robotica Ecologica, Biosensing e Sostenibilità</h2>
+    <p class="text">
+      L'integrazione di <strong class="yellowtext">biosensori cellulari</strong> all'interno di piattaforme bio-ibride autonome offre opportunità inedite nel monitoraggio ecologico sostenibile. Sfruttando il <strong class="greentext">chemiotassismo naturale</strong> <span class="slate-gloss">(la capacità biologica delle cellule di orientarsi e spostarsi verso sostanze chimiche o nutrienti nell'ambiente)</span> e le risposte fisiologiche dei tessuti vitali ai gradienti chimici, questi robot ecologici agiscono come unità d'analisi <em>in situ</em> per il rilevamento di microinquinanti e tossine senza generare rifiuti elettronici (<strong class="orangetext">e-waste</strong>).
     </p>
   </div>
 
   <!-- SEZIONE 7: Bio-Computazione & Etica -->
   <div class="mb-25">
-    <div class="f-sb-cw">
-      <h2 class="secHeader" style="margin-bottom: 0;">Frontiere della Bio-Computazione e Quadrante Etico-Normativo</h2>
-      <!-- Badge 4: Organoid Intelligence Frontiers DOI -->
-      <a href="https://doi.org/10.3389/fsci.2023.1017235" 
-         target="_blank" 
-         rel="noopener" 
-         class="badge-interactive">
-         ORGANOID INTEL
-         <span class="sr-only">(apre il manifesto Organoid Intelligence su Frontiers in Science in una nuova scheda)</span>
+    <div class="f-sb-cw mb-10">
+      <h2 class="secHeader">Frontiere della Bio-Computazione e Quadrante Etico</h2>
+      <a href="#ref-9" class="badge-interactive nowrap" aria-label="Riferimento 9 (passa alla bibliografia)">
+        REF #9 (OI)
+        <span class="sr-only">(passa alla bibliografia - Riferimento 9 su Smirnova et al.)</span>
       </a>
     </div>
-    <p class="mb-15">
-      La convergenza tra bio-informatica, ingegneria tissutale e hardware al silicio sta ridefinendo i confini dei sistemi autonomi. Le prospettive a lungo termine puntano all'integrazione di circuiti computazionali biologici dotati di capacità di apprendimento associativo non-supervisionato.
+    
+    <p class="text mb-15">
+      La convergenza tra bio-informatica, ingegneria tissutale e hardware al silicio sta ridefinendo i confini dei sistemi autonomi. Le prospettive a lungo termine puntano all'integrazione di circuiti computazionali biologici dotati di capacità di apprendimento associativo non-supervisionato, un campo che ha dato origine alla definizione di <strong class="text-neon">Organoid Intelligence (OI)</strong> <span class="slate-gloss">(l'uso di reti di organoidi cerebrali per elaborare dati in parallelo riducendo drasticamente il consumo energetico rispetto ai supercomputer tradizionali)</span>.
     </p>
 
-    <div>
-      <p class="highlight-text">
-        "L'integrazione di materia biologica vivente in architetture artificiali impone l'elaborazione di un rigoroso quadro bioetico e regolatorio, necessario a garantire che il progresso della robotica bio-ibrida rimanga ancorato alla sicurezza della biosfera e alla tutela della dignità umana."
+    <div class="research-insight-box">
+      <div class="insight-header">
+        <h4 class="biotechbold">QUADRO BIOETICO E NORMATIVO</h4>
+        <span class="badge-interactive">SMIRNOVA ET AL., 2023</span>
+      </div>
+      <p class="text">
+        <em>"L'integrazione di materia biologica vivente in architetture artificiali impone l'elaborazione di un rigoroso quadro bioetico e regolatorio, necessario a garantire che il progresso della robotica bio-ibrida rimanga ancorato alla sicurezza della biosfera e alla tutela della dignità umana. A tal fine, si fa riferimento al Regolamento Europeo sui Dispositivi Medici (<strong class="yellowtext">MDR 2017/745</strong>) e alle linee guida emergenti sulla ricerca su sistemi neurali in vitro"</em>.
       </p>
     </div>
   </div>
