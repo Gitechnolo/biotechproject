@@ -153,7 +153,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
         </span>
     </div>
 
-    <!-- Diagramma-->
+    <!-- Diagramma -->
     <div class="mermaid">
         graph TD
             %% Styling Palette di base
@@ -172,7 +172,8 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
             end
 
             subgraph ACCESSIBILITY ["3. Accessibility & NFR Governance (AAA)"]
-                ADI --> AN[Live Announcer / ARIA Live Region] --> TAB[Accessible Data Table injection]
+                ADI --> AN[Live Announcer / ARIA Live Region]
+                ADI --> TAB[Accessible Data Table injection]
                 ADR[ADR-011 Long-Task Watchdog <br/> TBT 0ms / Zero Idle Waste] -.-> NE
             end
 
