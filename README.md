@@ -3,7 +3,7 @@
 </div>
 
 # BiotechProject 🧬 🇬🇧
-[![SRE Resilience](https://img.shields.io/badge/SRE_RESILIENCE-CLINICAL_GRADE-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/actions)
+[![TBT Mobile](https://img.shields.io/badge/TBT_MOBILE-0_MS-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
 [![Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?style=for-the-badge&label=SPONSORS&labelColor=333333&color=E91E63)](https://github.com/sponsors/Gitechnolo)
 [![Accessibility](https://img.shields.io/badge/ACCESSIBILITY-WCAG_2.2_AAA-00C853?style=for-the-badge&logo=github&labelColor=333333)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
@@ -18,7 +18,7 @@
 
 > 💡 **Executive Briefing (March 28, 2026):**
 >
-> This project has **Achieved WCAG 2.2 AAA Gold Standard** and evolved from a performance-driven experiment into a **Strategic Blueprint for Resilient Health Architecture**.  
+> This project has reached **WCAG 2.2 Level AAA conformance** (verified through automated and manual audits) and evolved from a performance-driven experiment into a documented reference for resilient, low-dependency web architecture.  
 > We have formalized our "Stateless Edge" methodology in a new report that addresses global health inequities caused by latency and cognitive barriers.  
 >
 > 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
@@ -42,16 +42,30 @@ Where biotechnology meets code to build digital tools for research and innovatio
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Final Hardened Stability (May 8, 2026)**
-> 
-> The parallel architecture has reached full stabilization. By integrating a new **On-Demand Media Pipeline** with the `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), we have achieved **Absolute Main-Thread Liberation**.  
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (May 8, 2026)**
 >
-> **Current Performance Benchmarks:**
-> * **TBT (Total Blocking Time):** Reduced to **46ms** (Desktop) and an **unprecedented 0ms** (Mobile).
-> * **CLS (Visual Stability):** Achieved **0.0000 (Absolute Zero)** through geometric enforcement.
-> * **A11y:** Hardened **WCAG 2.2 AAA** layer with synchronized dual-language media orchestration.
+> The parallel architecture is stable. Offloading the rendering pipeline to
+> `BiotechCoreWorker` via `OffscreenCanvas`, combined with an On-Demand Media
+> Pipeline ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
+> keeps the main thread free for interaction and accessibility handling.
 >
-> **Status:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
+> **Latest measured benchmarks** (Lighthouse 13.5.0, audit 4 Oct 2026):
+>
+> | Metric | Desktop | Mobile (Moto G Power, slow 4G) |
+> | :--- | :--- | :--- |
+> | FCP | 0.3 s | 1.3 s |
+> | LCP | 0.4 s | 2.5 s |
+> | TBT | 0 ms | 0 ms |
+> | CLS | 0.015 | 0 |
+> | Speed Index | 0.4 s | 1.3 s |
+>
+> Raw data: [`data/performance-latest.json`](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
+>
+> **Accessibility:** WCAG 2.2 Level AAA conformance verified through automated
+> audits and manual screen-reader testing. Dual-language media controls are
+> keyboard-operable.
+>
+> **Status:** `STABLE` | `v6.4.0` 🟢
 
 ---
 
@@ -75,7 +89,7 @@ It's a collaborative space for developers, researchers, educators, and enthusias
 </div>
 
 ## 🗺️ Strategic Roadmap & Evolution
-To maintain transparency and clinical-grade reliability, we track our long-term milestones through a public roadmap. This ensures our "Resilience & Scalability 2026" vision remains aligned with global health equity standards.
+To maintain transparency, we track our long-term milestones through a public roadmap. This ensures our "Resilience & Scalability 2026" vision remains aligned with global health equity standards.
 
 👉 **View Full Strategic Roadmap:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
 
@@ -83,7 +97,7 @@ To maintain transparency and clinical-grade reliability, we track our long-term 
 
 ## 💖 Support the Mission
 
-BiotechProject is building the future of resilient, clinical-grade digital health. Your support directly funds our **Stateless Edge** research, **WCAG 2.2 AAA** audits, and global health equity infrastructure.
+BiotechProject builds resilient, privacy-preserving digital health tools. Your support directly funds our **Stateless Edge** research, **WCAG 2.2 AAA** audits, and global health equity infrastructure.
 
 | Tier | Focus | Key Benefits | Action |
 | :--- | :--- | :--- | :---: |
@@ -150,18 +164,16 @@ BiotechProject is building the future of resilient, clinical-grade digital healt
 ✅ **Responsive and accessible design**  
 → Works across all devices, with strong focus on usability and WCAG compliance
 
-✅ **Privacy-by-Architecture**
-→ 100% client-side data processing ensures bio-sensitive data never leaves the user's browser, aligning with GDPR/HIPAA standards by design.
 
 ---
 
 ## 🎯 Target Audience & Strategic Vision
 
-The BiotechProject is engineered for stakeholders who prioritize resilience as a clinical requirement:
+The BiotechProject is engineered for stakeholders who prioritize resilience as a hard constraint:
 
 * **Health Systems & Health Initiatives**: Designed to scale metabolic digital twins with zero server-side compute costs, leveraging high-performance Vanilla JS for complex client-side logic.
 * **Global Health Equity**: Engineered specifically for users in low-connectivity regions, ensuring sub-second (0.3s) load times even on legacy devices through SRE-grade optimization.
-* * **Neurodivergent Patients**: Engineered with native **WCAG 2.2** design principles. Now achieving full **AAA** compliance, our 'Comfort Mode' and stateless architecture ensure a cognitively safe, sensory-optimized environment for healthcare interaction.
+* **Neurodivergent Patients**: Engineered with native **WCAG 2.2** design principles. Now achieving full **AAA** compliance, our 'Comfort Mode' and stateless architecture ensure a cognitively safe, sensory-optimized environment for healthcare interaction.
 * **SRE & Systems Engineers**: A blueprint for "SRE-for-Humans," where performance metrics (95% aggregate score) are treated as a commitment to user inclusion and reliability.
 
 ---
@@ -183,7 +195,7 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neural Convergence & Multi-Sector Intelligence** | Proactive Bio-Cyber Forecasting | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
-| **011v6.4** | **Parallel Rendering & Thread Offloading** | **TBT 78ms / CLS 0.0001 (Golden Tier)** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
+| **011v6.4** | **Parallel Rendering & Thread Offloading** | TBT 78 ms / CLS 0.0001 at ADR acceptance (May 2026) | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
 <summary><b>Click to expand: Full ADR Rationale</b></summary>
@@ -378,10 +390,10 @@ Conformance has been verified through:
 - Full keyboard navigation (tab, shift+tab, enter, space, arrows)
 - W3C code validation and semantic structure inspection
 
-**Last Verification Date**: 28 March 2026
+**Date**: 04 October 2026
 
 > [!NOTE]
-> We have achieved the highest level of digital inclusion for clinical software, including **Enhanced Focus Appearance (2.4.11)**, setting a new benchmark for open-source scientific resilience.
+> We have achieved the highest level of digital inclusion **Enhanced Focus Appearance (2.4.11)**, setting a new benchmark for open-source scientific resilience.
 
 📄 **Full documentation:**
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
