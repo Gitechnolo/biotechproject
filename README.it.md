@@ -3,7 +3,7 @@
 </div>
 
 # BiotechProject 🧬 🇮🇹
-[![SRE Resilience](https://img.shields.io/badge/SRE_RESILIENCE-CLINICAL_GRADE-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/actions)
+[![TBT Mobile](https://img.shields.io/badge/TBT_MOBILE-0_MS-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
 [![Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?style=for-the-badge&label=SPONSORS&labelColor=333333&color=E91E63)](https://github.com/sponsors/Gitechnolo)
 [![Accessibility](https://img.shields.io/badge/ACCESSIBILITY-WCAG_2.2_AAA-00C853?style=for-the-badge&logo=github&labelColor=333333)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
@@ -18,7 +18,7 @@
 
 > 💡 **Executive Briefing (28 marzo 2026):**
 >
-> Questo progetto ha **raggiunto lo standard d'oro WCAG 2.2 AAA** ed è evoluto da un esperimento focalizzato sulle performance in un **Strategic Blueprint per un'architettura sanitaria resiliente**.  
+> Questo progetto ha raggiunto la **conformità WCAG 2.2 Level AAA** (verificata tramite audit automatici e manuali) ed è evoluto da un esperimento focalizzato sulle performance in un **riferimento documentato per un'architettura web resiliente e a basse dipendenze**[cite: 1].  
 > Abbiamo formalizzato la nostra metodologia "Stateless Edge" in un nuovo report che affronta le disuguaglianze sanitarie globali causate dalla latenza e dalle barriere cognitive.  
 >
 > 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY_IT.md)  
@@ -42,16 +42,30 @@ Dove la biotecnologia incontra il codice per costruire strumenti digitali per ri
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Stabilità Finale Consolidata (8 Maggio 2026)**
-> 
-> L'architettura parallela ha raggiunto la piena stabilizzazione. Grazie all'integrazione di una nuova **Pipeline Media On-Demand** con il `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), abbiamo ottenuto la **Liberazione Assoluta del Main-Thread**.
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (8 Maggio 2026)**
 >
-> **Benchmark Prestazionali Attuali:**
-> * **TBT (Total Blocking Time):** Ridotto a **46ms** (Desktop) e a un valore **senza precedenti di 0ms** (Mobile).
-> * **CLS (Visual Stability):** Raggiunto lo **0.0000 (Zero Assoluto)** tramite enforcing geometrico.
-> * **A11y:** Layer **WCAG 2.2 AAA** consolidato con orchestrazione media bilingue sincronizzata.
+> L'architettura parallela è stabile. L'offload della pipeline di rendering a
+> `BiotechCoreWorker` tramite `OffscreenCanvas`, combinato con una Pipeline Media
+> On-Demand ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
+> mantiene il thread principale libero per l'interazione e la gestione dell'accessibilità.
 >
-> **Stato:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
+> **Ultime metriche misurate** (Lighthouse 13.5.0, audit 4 Ottobre 2026):
+>
+> | Metrica | Desktop | Mobile (Moto G Power, slow 4G) |
+> | :--- | :--- | :--- |
+> | FCP | 0.3 s | 1.3 s |
+> | LCP | 0.4 s | 2.5 s |
+> | TBT | 0 ms | 0 ms |
+> | CLS | 0.015 | 0 |
+> | Speed Index | 0.4 s | 1.3 s |
+>
+> Raw data: [`data/performance-latest.json`](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
+>
+> **Accessibilità:** Conformità WCAG 2.2 Level AAA verificata tramite audit
+> automatizzati e test manuali con screen reader. I controlli multimediali bilingui sono
+> utilizzabili da tastiera.
+>
+> **Stato:** `STABLE` | `v6.4.0` 🟢
 
 ---
 
@@ -75,7 +89,7 @@ BiotechProject è un **laboratorio digitale aperto** che unisce **biotecnologie,
 </div>
 
 ## 🗺️ Roadmap Strategica ed Evoluzione
-Per mantenere la trasparenza e un'affidabilità di grado clinico, monitoriamo i nostri traguardi a lungo termine attraverso una roadmap pubblica. Questo garantisce che la nostra visione "Resilience & Scalability 2026" rimanga allineata con gli standard globali di equità sanitaria.
+Per mantenere la trasparenza, monitoriamo i nostri traguardi a lungo termine attraverso una roadmap pubblica. Questo garantisce che la nostra visione "Resilience & Scalability 2026" rimanga allineata con gli standard globali di equità sanitaria.
 
 👉 **Visualizza la Roadmap Strategica Completa:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
 
@@ -83,7 +97,7 @@ Per mantenere la trasparenza e un'affidabilità di grado clinico, monitoriamo i 
 
 ## 💖 Supporta la Missione
 
-BiotechProject sta costruendo il futuro della sanità digitale resiliente e di livello clinico. Il tuo supporto finanzia direttamente la nostra ricerca sulla **Stateless Edge**, gli audit **WCAG 2.2 AAA** e l'infrastruttura per l'equità sanitaria globale.
+BiotechProject sviluppa strumenti di sanità digitale resilienti e protettivi per la privacy. Il tuo supporto finanzia direttamente la nostra ricerca sulla **Stateless Edge**, gli audit **WCAG 2.2 AAA** e l'infrastruttura per l'equità sanitaria globale.
 
 | Tier | Focus | Benefici Chiave | Azione |
 | :--- | :--- | :--- | :---: |
@@ -150,18 +164,15 @@ BiotechProject sta costruendo il futuro della sanità digitale resiliente e di l
 ✅ **Design responsive e accessibile**  
 → Funziona su tutti i dispositivi, con forte attenzione a usabilità e conformità WCAG
 
-✅ **Privacy-by-Architecture**  
-→ Elaborazione dati 100% client-side in modo che i dati bio-sensibili non lascino mai il browser dell'utente, allineato a GDPR/HIPAA by design.
-
 ---
 
 ## 🎯 Pubblico target e Visione Strategica
 
-BiotechProject è progettato per stakeholder che considerano la resilienza un requisito clinico:
+BiotechProject è progettato per stakeholder che considerano la resilienza un requisito fondamentale:
 
-* **Sistemi sanitari e iniziative in salute**: progettato per scalare digital twin metabolici con costi di calcolo server-side zero, sfruttando Vanilla JS ad alte prestazioni per logica cliente complessa.
+* **Sistemi sanitari e iniziative in salute**: progettato per scalare digital twin metabolici con costi di calcolo server-side zero, sfruttando Vanilla JS ad alte prestazioni per logica client-side complessa.
 * **Equità sanitaria globale**: pensato per utenti in zone a connettività ridotta, garantendo tempi di caricamento sotto 1 secondo (0,3s) anche su dispositivi legacy grazie a ottimizzazioni SRE-grade.
-* **Pazienti neurodivergenti**: conformità nativa al **WCAG 2.2 AAA Gold Standard** e "Comfort Mode" offrono un ambiente cognitivamente sicuro per l'interazione sanitaria, riducendo il sovraccarico sensoriale.
+* **Pazienti neurodivergenti**: Progettati con principi di design nativi **WCAG 2.2**. Raggiungendo la piena conformità **AAA**, la nostra 'Comfort Mode' e l'architettura stateless garantiscono un ambiente cognitivamente sicuro e ottimizzato dal punto di vista sensoriale per l'interazione sanitaria.
 * **SRE e sistemi engineer**: un blueprint per "SRE-for-Humans", dove le metriche di performance (punteggio aggregato 95%) sono un impegno per inclusione e affidabilità.
 
 ---
@@ -183,7 +194,7 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Convergenza Neurale e Intelligence Multi-Settore** | Forecasting Bio-Cyber Proattivo | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
-| **011v6.4** | **Rendering Parallelo & Thread Offloading** | **TBT 78ms / CLS 0.0001 (Livello Golden)** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
+| **011v6.4** | **Rendering Parallelo & Thread Offloading** | TBT 78 ms / CLS 0.0001 all'accettazione dell'ADR (Maggio 2026) | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
 <summary><b>Click per espandere: Rationale completo ADR</b></summary>
@@ -201,7 +212,7 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 * **Validazione**: [Visualizza Issue #13](https://github.com/Gitechnolo/biotechproject/issues/13)
 
 ### [ADR-003] AI-Assisted SRE Auditing
-* **Decisione**: orchestrazione mult-modello (Gemini + Copilot) per revisione del codice.
+* **Decisione**: orchestrazione multi-modello (Gemini + Copilot) per revisione del codice.
 * **Razionale**: supera le allucinazioni dei singoli LLM tramite "consensus" sulla type safety.
 * **Risultato**: punteggio di maturità tecnico dell'87%.
 * **Validazione**: [Visualizza Issue #14](https://github.com/Gitechnolo/biotechproject/issues/14)
@@ -219,14 +230,14 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 * **Validazione**: [Visualizza Issue #17](https://github.com/Gitechnolo/biotechproject/issues/17)
 
 ### [ADR-006] AAA Accessibility Baseline
-* **Decisione**: implementazione della conformità **WCAG 2.2 Level AAA**, inclusi miglioramenti di Enhanced Focus Appearance e supporto cognitivo avanzato.
+* **Decisione**: implementazione della conformità **WCAG 2.2 Level AAA**, inclusi miglioramenti di Enhanced Focus Appearance (2.4.11).
 * **Razionale**: Eleva l'inclusione digitale nel software clinico al massimo standard, garantendo sicurezza cognitiva e ottimizzazione sensoriale.
 * **Risultato**: Piena conformità WCAG 2.2.
 * **Validazione**: [Visualizza Issue #19](https://github.com/Gitechnolo/biotechproject/issues/19)
 
 ### [ADR-007] Audit WCAG 2.2 AAA Resiliente (Stateless Edge)
 * **Decisione**: Audit WCAG 2.2 AAA Stateless Edge
-* **Motivazione**: L'approccio "Zero-Framework" elimina le pesanti librerie esterne, mentre il "Semantic Snapshotter" cattura lo stato dell'interfaccia in modo efficiente, riducendo la dipendenza dall'infrastruttura e migliorando l'equità sanitaria (Health Equity) nelle regioni a bassa connettività.
+* **Motivazione**: L'approccio "Zero-Framework" elimina le pesanti librerie esterne, mentre il "Semantic Snapshotter" cattura lo stato dell'interfaccia in modo efficiente, riducendo la dipendenza dall'infrastruttura e migliorando l'equità sanitaria nelle regioni a bassa connettività.
 * **Risultato**: Audit di accessibilità ultra-leggero (~2KB) tramite Copilot, garantendo l'operatività in ambienti clinici a bassa larghezza di banda.
 * **Validazione**: [Visualizza Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20)
 
@@ -245,13 +256,13 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 ### [ADR-010] Convergenza Neurale: Modellazione Predittiva Multi-Settore
 * **Decisione**: Implementazione del **Neural Inference Engine (v6.1)** per l'analisi cross-settoriale.
 * **Razionale**: Evolvere oltre la resilienza statica verso il forecasting proattivo, unendo i dataset OMS (Bio) e Gartner (Cyber).
-* **Risultato**: Sincronizzazione in tempo real-time tra il canvas accelerato via GPU e il DOM semantico, garantendo l'accessibilità di tutti i punti dati predittivi.
+* **Risultato**: Sincronizzazione in tempo reale tra il canvas accelerato via GPU e il DOM semantico, garantendo l'accessibilità di tutti i punti dati predittivi.
 * **Validazione**: [Visualizza Logica Neurale (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
 
 ### [ADR-011] Neural Core v6.3.3: Hardened SRE Guardian & Privacy Zero-Knowledge
 * **Decisione**: Implementazione della crittografia AES-GCM all'interno di `BiotechCoreWorker.js` e cicli di feedback neurale in `BiotechResilience.js`.
 * **Razionale**: Evolvere da una semplice resilienza predittiva a una **Architettura Hardened Zero-Knowledge**. Integrando la crittografia di grado militare con il Motore di Inferenza Neurale, i dati bio-sensibili vengono protetti mantenendo prestazioni d'élite.
-* **Risultato**: Un livello di privacy conforme allo "standard Proton" che ottiene un **TBT verificato di 106ms (Warm Stable)** e uno **Speed Index 1**, garantendo la sovranità digitale senza degradazione dell'esperienza utente (UX).
+* **Risultato**: Un livello di privacy conforme allo "standard Proton" che ottiene un **TBT verificato di 106ms (Warm Stable)** e uno **Speed Index 1**, garantendo la sovranità digitale senza degradazione dell'esperienza utente.
 * **Validazione**: [Visualizza Evoluzione Hardened e Report Zero-Knowledge (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
 
 ### [ADR-011v6.4] Neural Core v6.4.0: Parallel Rendering Shift
@@ -272,7 +283,7 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 * **Resilienza Stress-Test SRE:** **Punteggio Globale dell'88%** (5.000 utenti simultanei).
 
 > [!IMPORTANT]
-> **Validazione della Resilienza:** Il sistema mantiene l'**Alta Disponibilità (High Availability)** anche in condizioni estreme di classe SRE (rallentamento CPU 4x e strozzamento della rete 3G/4G), dimostrando l'efficacia dell'attuale livello di ottimizzazione.
+> **Validazione della Resilienza:** Il sistema mantiene l'**Alta Disponibilità** anche in condizioni estreme di classe SRE (rallentamento CPU 4x e strozzamento della rete 3G/4G), dimostrando l'efficacia dell'attuale livello di ottimizzazione.
 
 **Aggiornamento 19 ottobre 2026:** Sono stati integrati gli ultimi risultati dell'audit provenienti dal **SRE Scalability Engine 2026**. Il delta tra i punteggi baseline e quelli sotto stress conferma un'architettura robusta con un degrado prestazionale minimo sotto carico.
 
@@ -307,21 +318,21 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 
 [![SRE Audit Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Gitechnolo/biotechproject/main/data/performance-results.json)](https://github.com/Gitechnolo/biotechproject/actions)
 > [!IMPORTANT]  
-> **Nota metodologica:** le date nella colonna "Last Audit" rappresentano la più recente **Global System Validation**. Include scansioni di sicurezza automatiche, stress-test di performance (Lighthouse) e controlli d'integrità dei link. Anche se il contenuto non cambia, l'affidabilità è ricertificata a ogni ciclo di audit.
+> **Nota metodologica:** Le date elencate nella colonna "Last Audit" rappresentano la più recente **Global System Validation**. Questo include scansioni di sicurezza automatiche, stress-test di performance (Lighthouse) e controlli di integrità dei link. Anche se il contenuto di un asset specifico rimane invariato, la sua affidabilità viene ricertificata durante ogni ciclo di audit.
 
 <details>
 <summary><b>🧬 Anatomia & Sistemi Biologici (Standard & Easy-Read)</b></summary>
 
 | Sistema | ⚡ Scientific standard | 📝 Dyslexia-friendly | 📅 Last Audit |
 | :--- | :--- | :--- | :--- |
-| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-28 |
-| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-28 |
-| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-28 |
-| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-28 |
-| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-28 |
-| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-28 |
-| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-28 |
-| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-28 |
+| **Digestive System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-10-23 |
+| **Respiratory System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-10-23 |
+| **Integumentary System** | [View](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-10-23 |
+| **Lymphatic System** | [View](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-10-23 |
+| **Heart / Cardiac** | [View](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-10-23 |
+| **Cell Biology** | [View](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-10-23 |
+| **Dermatology** | [View](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-10-23 |
+| **Hair / Capelli** | [View](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-10-23 |
 
 </details>
 
@@ -330,20 +341,20 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 
 | Resource | Access Link | 📅 Last Audit |
 | :--- | :--- | :--- |
-| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-03-28 |
-| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-03-28 |
-| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-03-28 |
-| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-03-28 |
-| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-03-28 |
+| 🚀 **Tech Maturity Score** | [Interactive Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-10-23 |
+| 📈 **Marketing Strategy** | [Strategic Analysis](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-10-23 |
+| 🏗️ **Project Portfolio** | [Project Overview](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-10-23 |
+| 👥 **Staff & Team** | [Governance & Members](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-10-23 |
+| 💬 **Tablet Forum** | [Community Discussion](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-10-23 |
 
 </details>
 
 <details>
 <summary><b>♿ Accessibilità & Inclusione</b></summary>
 
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Aggiornato: 2026-03-28*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Aggiornato: 2026-03-28*
-- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Aggiornato: 2026-03-28*
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Aggiornato: 2026-10-23*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Aggiornato: 2026-10-23*
+- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Aggiornato: 2026-10-23*
 
 </details>
 
@@ -351,7 +362,7 @@ L'ecosistema implementa un **sistema avanzato di tracciamento della maturità te
 
 ## 🌐 Accessibilità e Conformità
 
-BiotechProject è progettato con una mentalità SRE **Accessibility-First** (l'accessibilità prima di tutto). Il nostro mandato "Zero-Framework" ci permette di controllare il 100% del DOM, garantendo che i pattern inclusivi siano nativi e non correzioni posticce.
+BiotechProject è progettato con una mentalità SRE **Accessibility-First**. Il nostro mandato "Zero-Framework" ci permette di controllare il 100% del DOM, garantendo che i pattern inclusivi siano nativi e non correzioni posticce.
 
 <details>
 <summary><b>🎥 Visualizza Audit di Accessibilità: Navigazione da tastiera e Focus (30s)</b></summary>
@@ -368,16 +379,21 @@ https://github.com/user-attachments/assets/89187047-929d-4e61-ae8d-2a09e997aaa2
 
 </details>
 
-- **Stato attuale**: pienamente conforme al **WCAG 2.2 Level AAA Gold Standard**.
-- **Target**: mantenere e monitorare la conformità AAA come benchmark di resilienza clinica.
+- **Stato attuale**: Pienamente conforme alla **Conformità WCAG 2.2 Level AAA**.
+- **Target**: Raggiunta la conformità WCAG 2.2 Level AAA.
 
-Conformità verificata attraverso:
+La conformità è stata verificata attraverso:
 - Audit automatizzati (Lighthouse, axe, WAVE)
 - Test manuali con screen reader (NVDA, VoiceOver)
 - Navigazione completa da tastiera (tab, shift+tab, enter, space, arrows)
-- Valutazione W3C del codice e ispezione semantica strutturale
+- Validazione del codice W3C e ispezione della struttura semantica
 
-📄 **Dichiarazione completa:**  
+**Data dell'ultima verifica**: 28 Marzo 2026
+
+> [!NOTE]
+> Abbiamo raggiunto il livello più alto di inclusione digitale per il software clinico, inclusa la **Enhanced Focus Appearance (2.4.11)**, stabilendo un nuovo punto di riferimento per la resilienza scientifica open source.
+
+📄 **Documentazione completa:**
 👉 [Read Accessibility Statement (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)  
 👉 [Leggi la Dichiarazione di Accessibilità (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html)
 
@@ -392,7 +408,7 @@ Conformità verificata attraverso:
 
 ## Accessibilità & Case Study
 
-Siamo impegnati a costruire una piattaforma inclusiva. Esplora come abbiamo implementato il **Gold Standard WCAG 2.2 AAA** e supporto multilingue:
+Siamo impegnati a costruire una piattaforma inclusiva. Esplora come abbiamo implementato la conformità WCAG 2.2 AAA e il supporto multilingue:
 
 [![Case Study - Building an Accessible Biotech Platform](https://img.shields.io/badge/Case%20Study-BiotechProject%20Accessibility-brightgreen?logo=github&labelColor=222)](https://github.com/Gitechnolo/biotechproject/discussions/4)
 
@@ -407,7 +423,7 @@ Questo progetto funge da solida base per:
 
 > [!IMPORTANT]
 > **Il Valore Umano delle Prestazioni:**  
-> In linea con la missione della **Fondazione Mondo Digitale**, crediamo che l'eccellenza tecnica sia uno strumento di equità sociale. Ogni millisecondo di ottimizzazione (TBT) e ogni standard di accessibilità (AAA) che implementiamo garantisce che gli strumenti scientifici di alto livello rimangano accessibili a tutti, indipendentemente dall'età del dispositivo, dalla velocità di connessione o dalle abilità cognitive/motorie. **Per noi, la performance non è solo una metrica; è un impegno verso l'inclusione digitale.**
+> In linea con la missione della **Fondazione Mondo Digitale**, crediamo che l'eccellenza tecnica sia uno strumento di equità sociale. Ogni millisecondo di ottimizzazione (TBT) e ogni standard di accessibilità (AAA) che implementiamo garantisce che gli strumenti scientifici di alto livello rimangano accessibili a tutti - indipendentemente dall'età del dispositivo, dalla velocità di connessione o dalle abilità cognitive/motorie. **Per noi, la performance non è solo una metrica; è un impegno verso l'inclusione digitale.**
 
 > [!NOTE]
 > ### 🏛️ Hub Istituzionale e Accademico (Aggiornamento: 8 Maggio 2026)
@@ -433,7 +449,7 @@ Il sistema permette:
 - ✅ Traduzione dei contenuti in tempo reale  
 - ✅ Persistenza della lingua scelta tra le pagine (come Wikipedia o Google)  
 - ✅ Supporto a versioni semplificate per utenti dislessici  
-- ✅ Estendibilità facile per contribuenti
+- ✅ Estendibilità facile per contribuenti  
 
 ### 🧩 Architettura del sistema
 
