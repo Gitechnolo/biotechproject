@@ -18,7 +18,7 @@
 
 > 💡 **Executive Briefing (28 marzo 2026):**
 >
-> Questo progetto ha raggiunto la **conformità WCAG 2.2 Level AAA** (verificata tramite audit automatici e manuali) ed è evoluto da un esperimento focalizzato sulle performance in un **riferimento documentato per un'architettura web resiliente e a basse dipendenze**[cite: 1].  
+> Questo progetto ha raggiunto la **conformità WCAG 2.2 Level AAA** (verificata tramite audit automatici e manuali) ed è evoluto da un esperimento focalizzato sulle performance in un **riferimento documentato per un'architettura web resiliente e a basse dipendenze**.  
 > Abbiamo formalizzato la nostra metodologia "Stateless Edge" in un nuovo report che affronta le disuguaglianze sanitarie globali causate dalla latenza e dalle barriere cognitive.  
 >
 > 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY_IT.md)  
