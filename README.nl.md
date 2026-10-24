@@ -3,7 +3,7 @@
 </div>
 
 # BiotechProject 🧬 🇳🇱
-[![SRE Resilience](https://img.shields.io/badge/SRE_RESILIENCE-CLINICAL_GRADE-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/actions)
+[![TBT Mobile](https://img.shields.io/badge/TBT_MOBILE-0_MS-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
 [![Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?style=for-the-badge&label=SPONSORS&labelColor=333333&color=E91E63)](https://github.com/sponsors/Gitechnolo)
 [![Accessibility](https://img.shields.io/badge/ACCESSIBILITY-WCAG_2.2_AAA-00C853?style=for-the-badge&logo=github&labelColor=333333)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
@@ -42,22 +42,34 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Finale Geharde Stabiliteit (8 mei 2026)**
-> 
-> De parallelle architectuur heeft volledige stabilisatie bereikt. Door de integratie van een nieuwe **On-Demand Media Pipeline** met de `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), hebben we **Absolute Main-Thread Bevrijding** gerealiseerd.  
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (8 mei 2026)**
 >
-> **Huidige Prestatie-Benchmarks:**
-> * **TBT (Total Blocking Time):** Verlaagd naar **46ms** (Desktop) en een **ongekende 0ms** (Mobile).
-> * **CLS (Visuele Stabiliteit):** **0.0000 (Absoluut Nulpunt)** bereikt door geometrische handhaving.
-> * **A11y:** Geharde **WCAG 2.2 AAA** laag met gesynchroniseerde tweetalige media-orkestratie.
+> De parallelle architectuur is stabiel. Het offloaden van de rendering pipeline naar
+> `BiotechCoreWorker` via `OffscreenCanvas`, gecombineerd met een On-Demand Media
+> Pipeline ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
+> houdt de main thread vrij voor interactie en toegankelijkheidsbeheer.
 >
-> **Status:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
+> **Laatst gemeten benchmarks** (Lighthouse 13.5.0, audit 4 okt 2026):
+>
+> | Metriek | Desktop | Mobile (Moto G Power, trage 4G) |
+> | :--- | :--- | :--- |
+> | FCP | 0.3 s | 1.3 s |
+> | LCP | 0.4 s | 2.5 s |
+> | TBT | 0 ms | 0 ms |
+> | CLS | 0.015 | 0 |
+> | Speed Index | 0.4 s | 1.3 s |
+>
+> Ruwe data: [`data/performance-latest.json`](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
+>
+> **Toegankelijkheid:** WCAG 2.2 Level AAA conformiteit geverifieerd via geautomatiseerde audits en handmatige screen-reader tests. Tweetalige mediabediening is te bedienen via het toetsenbord.
+>
+> **Status:** `STABLE` | `v6.4.0` 🟢
 
 ---
 
 ## 🌱 Wat is BiotechProject?
 
-BiotechProject is een **open digitaal laboratorium** dat **biotechnologie, bio-informatica, gezondheid en toegankelijke webontwikkeling** combineert in een geïntegreerd ecosysteem dat ontworpen is om:
+BiotechProject is een **open digitaal laboratorium** dat **biotechnologie, bio-informatica, gezondheid en toegankelijke webontwikkeling** combineert in een geïntegreerd ecosysteem dat ontworpen is om te zijn:
 
 - 🔍 **Wetenschappelijk betrouwbaar en transparant** te zijn
 - 💻 **Technisch robuust** te zijn
@@ -150,9 +162,6 @@ BiotechProject bouwt aan de toekomst van veerkrachtige digitale gezondheidszorg 
 ✅ **Responsive en toegankelijk ontwerp**  
 → Werkt op alle apparaten, met sterke focus op bruikbaarheid en WCAG compliance
 
-✅ **Privacy-by-Architecture**
-→ 100% client-side gegevensverwerking zorgt ervoor dat bio-gevoelige gegevens nooit de browser van de gebruiker verlaten, afgestemd op GDPR/HIPAA standaarden by design.
-
 ---
 
 ## 🎯 Doelgroep en Strategische Visie
@@ -183,7 +192,7 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Neurale Convergentie & Multisectorale Intelligentie** | Proactieve Bio-Cyber Voorspelling | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
-| **011v6.4** | **Parallel Rendering & Thread Offloading** | **TBT 78ms / CLS 0.0001 (Golden Tier)** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
+| **011v6.4** | **Parallel Rendering & Thread Offloading** | TBT 78 ms / CLS 0.0001 bij ADR acceptatie (mei 2026) | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
 <summary><b>Klik om uit te vouwen: Volledige ADR Rechtvaardiging</b></summary>
@@ -268,8 +277,8 @@ Dit project volgt een rigoureus besluitvormingsproces om enterprise-grade veerkr
 
 Het ecosysteem implementeert een **geavanceerd systeem voor het volgen van technologische volwassenheid**. Per **19 oktober 2026** is de architectuur gevalideerd op twee primaire prestatieniveaus:
 
-- **Standaardprestaties (Baseline):** **99% Geaggregeerde Score** (ideale omstandigheden).
-- **SRE Stress-Test Veerkracht:** **88% Globale Score** (5.000 gelijktijdige gebruikers).
+*   **Standaardprestaties (Baseline):** **99% Geaggregeerde Score** (ideale omstandigheden).
+*   **SRE Stress-Test Veerkracht:** **88% Globale Score** (5.000 gelijktijdige gebruikers).
 
 > [!IMPORTANT]
 > **Validatie van Veerkracht:** Het systeem behoudt **Hoge Beschikbaarheid (High Availability)** zelfs onder extreme SRE-omstandigheden (4x CPU-vertraging en 3G/4G-netwerkbeperking), wat de effectiviteit van de huidige optimalisatielaag bewijst.
@@ -277,8 +286,8 @@ Het ecosysteem implementeert een **geavanceerd systeem voor het volgen van techn
 **Update 19 oktober 2026:** De nieuwste auditresultaten van de **SRE Scalability Engine 2026** zijn geïntegreerd. Het verschil tussen de baseline- en stress-scores bevestigt een robuuste architectuur met minimale prestatievermindering onder belasting.
 
 ### 📂 Nieuwste Auditrapporten
-- 📄 **[SRE Performance Stress-Test Report - 19 oktober 2026 (PDF)](docs/biotech-performance-report.pdf)**
-- 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 19 oktober 2026 (PDF)](docs/biotech-performance-report.pdf)**
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Kenmerken
 * ✅ **Real-time Performance Monitoring**: Metrics (0–100) bijgewerkt elke 24h via GitHub Actions.
@@ -314,14 +323,14 @@ Het ecosysteem implementeert een **geavanceerd systeem voor het volgen van techn
 
 | Systeem | ⚡ Wetenschappelijke standaard | 📝 Dyslexie-vriendelijk | 📅 Laatste Audit |
 | :--- | :--- | :--- | :--- |
-| **Spijsverteringssysteem** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-28 |
-| **Ademhalingssysteem** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-28 |
-| **Huidstelsel** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-28 |
-| **Lymfestelsel** | [Bekijk](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-28 |
-| **Hart / Hart** | [Bekijk](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-28 |
-| **Celbiologie** | [Bekijk](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-28 |
-| **Dermatologie** | [Bekijk](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-28 |
-| **Haar** | [Bekijk](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-28 |
+| **Spijsverteringssysteem** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-10-23 |
+| **Ademhalingssysteem** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-10-23 |
+| **Huidstelsel** | [Bekijk](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-10-23 |
+| **Lymfestelsel** | [Bekijk](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-10-23 |
+| **Hart / Hart** | [Bekijk](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-10-23 |
+| **Celbiologie** | [Bekijk](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-10-23 |
+| **Dermatologie** | [Bekijk](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-10-23 |
+| **Haar** | [Bekijk](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Easy-Read](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-10-23 |
 
 </details>
 
@@ -330,20 +339,20 @@ Het ecosysteem implementeert een **geavanceerd systeem voor het volgen van techn
 
 | Resource | Toegang Link | 📅 Laatste Audit |
 | :--- | :--- | :--- |
-| 🚀 **Tech Maturity Score** | [Interactief Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-03-28 |
-| 📈 **Marketing Strategie** | [Strategische Analyse](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-03-28 |
-| 🏗️ **Project Portfolio** | [Project Overzicht](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-03-28 |
-| 👥 **Staff en Team** | [Governance en Leden](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-03-28 |
-| 💬 **Tablet Forum** | [Community Discussie](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-03-28 |
+| 🚀 **Tech Maturity Score** | [Interactief Dashboard](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-10-23 |
+| 📈 **Marketing Strategie** | [Strategische Analyse](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-10-23 |
+| 🏗️ **Project Portfolio** | [Project Overzicht](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-10-23 |
+| 👥 **Staff en Team** | [Governance en Leden](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-10-23 |
+| 💬 **Tablet Forum** | [Community Discussie](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-10-23 |
 
 </details>
 
 <details>
 <summary><b>♿ Toegankelijkheid en Inclusie</b></summary>
 
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Bijgewerkt: 2026-03-28*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Bijgewerkt: 2026-03-28*
-- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Bijgewerkt: 2026-03-28*
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Bijgewerkt: 2026-10-23*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Bijgewerkt: 2026-10-23*
+- ✨ **Special Modules**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Bijgewerkt: 2026-10-23*
 
 </details>
 
@@ -442,7 +451,7 @@ Het systeem stelt in staat:
 - **Common.json**: bevat gedeelde teksten (menu, footer, taal knop)  
 - **Geen backend vereist**: alles draait in pure JavaScript  
 - **LocalStorage**: onthoudt de geselecteerde taal van de gebruiker  
-- **`data-lang-key`**: HTML attribuut om vertaalbare elementen te identificeren  
+- **`data-lang-key`**: HTML attribuut om vertaalbare elementen te identificeren
 
 ### 📁 Structuur van de `lang/` folder
 
