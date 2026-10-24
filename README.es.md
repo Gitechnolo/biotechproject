@@ -3,7 +3,7 @@
 </div>
 
 # BiotechProject 🧬 🇪🇸
-[![SRE Resilience](https://img.shields.io/badge/SRE_RESILIENCE-CLINICAL_GRADE-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/actions)
+[![TBT Mobile](https://img.shields.io/badge/TBT_MOBILE-0_MS-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
 [![Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?style=for-the-badge&label=SPONSORS&labelColor=333333&color=E91E63)](https://github.com/sponsors/Gitechnolo)
 [![Accessibility](https://img.shields.io/badge/ACCESSIBILITY-WCAG_2.2_AAA-00C853?style=for-the-badge&logo=github&labelColor=333333)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
@@ -42,16 +42,28 @@ Donde la biotecnología se encuentra con el código para construir herramientas 
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Neural Core v6.4.0 - Final Hardened Stability (8 de mayo de 2026)**
-> 
-> La arquitectura paralela ha alcanzado su estabilización completa. Mediante la integración de una nueva **Pipeline de Medios On-Demand** con el `BiotechCoreWorker` ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)), hemos logrado la **Liberación Absoluta del Main-Thread**.  
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (8 de mayo de 2026)**
 >
-> **Benchmarks de Rendimiento Actual:**
-> * **TBT (Total Blocking Time):** Reducido a **46ms** (Desktop) y un **histórico 0ms** (Mobile).
-> * **CLS (Estabilidad Visual):** Alcanzado **0.0000 (Cero Absoluto)** mediante ejecución geométrica.
-> * **A11y:** Capa **WCAG 2.2 AAA** consolidada con orquestación de medios bilingüe sincronizada.
+> La arquitectura paralela es estable. Delegar el pipeline de renderizado al
+> `BiotechCoreWorker` mediante `OffscreenCanvas`, combinada con una Pipeline de Medios On-Demand
+> ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
+> mantiene el hilo principal libre para la interacción y la gestión de la accesibilidad.
 >
-> **Estado:** `INFRASTRUCTURE_STABILIZED` | `SRE-v6.4.0-STABLE-COMPLETE` 🟢
+> **Últimos benchmarks medidos** (Lighthouse 13.5.0, auditoría del 4 de oct de 2026):
+>
+> | Métrica | Desktop | Mobile (Moto G Power, 4G lento) |
+> | :--- | :--- | :--- |
+> | FCP | 0.3 s | 1.3 s |
+> | LCP | 0.4 s | 2.5 s |
+> | TBT | 0 ms | 0 ms |
+> | CLS | 0.015 | 0 |
+> | Speed Index | 0.4 s | 1.3 s |
+>
+> Datos brutos: [`data/performance-latest.json`](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
+>
+> **Accesibilidad:** Conformidad WCAG 2.2 Nivel AAA verificada mediante auditorías automatizadas y pruebas manuales con lectores de pantalla. Los controles de medios bilingües son operables por teclado.
+>
+> **Estado:** `STABLE` | `v6.4.0` 🟢
 
 ---
 
@@ -149,9 +161,6 @@ BiotechProject está construyendo el futuro de la salud digital resiliente y de 
 ✅ **Diseño responsivo y accesible**  
 → Funciona en todos los dispositivos, con fuerte énfasis en usabilidad y cumplimiento WCAG
 
-✅ **Privacy-by-Architecture**
-→ Procesamiento de datos 100% del lado del cliente garantiza que los datos bio-sensibles nunca salgan del navegador del usuario, alineado con estándares GDPR/HIPAA by design.
-
 ---
 
 ## 🎯 Público Objetivo y Visión Estratégica
@@ -182,7 +191,7 @@ Este proyecto sigue un proceso riguroso de toma de decisiones para asegurar resi
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Convergencia Neural e Inteligencia Multisectorial** | Pronóstico Bio-Cyber Proactivo | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
-| **011v6.4** | **Renderizado Paralelo y Offloading de Hilos** | **TBT 78ms / CLS 0,0001 (Golden Tier)** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
+| **011v6.4** | **Renderizado Paralelo y Offloading de Hilos** | TBT 78 ms / CLS 0,0001 en la aceptación del ADR (mayo de 2026) | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
 <summary><b>Haz clic para expandir: Justificación Completa ADR</b></summary>
@@ -313,14 +322,14 @@ El ecosistema implementa un **sistema avanzado de seguimiento de madurez tecnol�
 
 | Sistema | ⚡ Estándar científico | 📝 Amigable dislexia | 📅 Última Auditoría |
 | :--- | :--- | :--- | :--- |
-| **Sistema Digestivo** | [Ver](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-03-28 |
-| **Sistema Respiratorio** | [Ver](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-03-28 |
-| **Sistema Tegumentario** | [Ver](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-03-28 |
-| **Sistema Linfático** | [Ver](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-03-28 |
-| **Corazón / Cardíaco** | [Ver](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-03-28 |
-| **Biología Celular** | [Ver](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-03-28 |
-| **Dermatología** | [Ver](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-03-28 |
-| **Cabello** | [Ver](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-03-28 |
+| **Sistema Digestivo** | [Ver](https://gitechnolo.github.io/biotechproject/Apparato_digerente.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Apparato_digerente-semplice.html) | 2026-10-23 |
+| **Sistema Respiratorio** | [Ver](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Apparato_respiratorio-semplice.html) | 2026-10-23 |
+| **Sistema Tegumentario** | [Ver](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Apparato_tegumentario-semplice.html) | 2026-10-23 |
+| **Sistema Linfático** | [Ver](https://gitechnolo.github.io/biotechproject/Sistema_linfatico.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Sistema_linfatico-semplice.html) | 2026-10-23 |
+| **Corazón / Cardíaco** | [Ver](https://gitechnolo.github.io/biotechproject/Cuore.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Cuore-semplice.html) | 2026-10-23 |
+| **Biología Celular** | [Ver](https://gitechnolo.github.io/biotechproject/Cellula.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Cellula-semplice.html) | 2026-10-23 |
+| **Dermatologia** | [Ver](https://gitechnolo.github.io/biotechproject/Dermatologia.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Dermatologia-semplice.html) | 2026-10-23 |
+| **Cabello** | [Ver](https://gitechnolo.github.io/biotechproject/Capelli.html) | [Lectura Fácil](https://gitechnolo.github.io/biotechproject/Capelli-semplice.html) | 2026-10-23 |
 
 </details>
 
@@ -329,20 +338,20 @@ El ecosistema implementa un **sistema avanzado de seguimiento de madurez tecnol�
 
 | Recurso | Enlace de Acceso | 📅 Última Auditoría |
 | :--- | :--- | :--- |
-| 🚀 **Puntuación de Madurez Técnica** | [Panel Interactivo](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-03-28 |
-| 📈 **Estrategia de Marketing** | [Análisis Estratégico](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-03-28 |
-| 🏗️ **Portafolio de Proyectos** | [Vista General de Proyectos](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-03-28 |
-| 👥 **Equipo y Staff** | [Gobernanza y Miembros](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-03-28 |
-| 💬 **Foro Tablet** | [Discusión Comunitaria](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-03-28 |
+| 🚀 **Puntuación de Madurez Técnica** | [Panel Interactivo](https://gitechnolo.github.io/biotechproject/Tech_Maturity.html) | 2026-10-23 |
+| 📈 **Estrategia de Marketing** | [Análisis Estratégico](https://gitechnolo.github.io/biotechproject/Marketing.html) | 2026-10-23 |
+| 🏗️ **Portafolio de Proyectos** | [Vista General de Proyectos](https://gitechnolo.github.io/biotechproject/Progetti.html) | 2026-10-23 |
+| 👥 **Equipo y Staff** | [Gobernanza y Miembros](https://gitechnolo.github.io/biotechproject/Staff.html) | 2026-10-23 |
+| 💬 **Foro Tablet** | [Discusión Comunitaria](https://gitechnolo.github.io/biotechproject/Tablet_forum.html) | 2026-10-23 |
 
 </details>
 
 <details>
 <summary><b>♿ Accesibilidad e Inclusión</b></summary>
 
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Actualizado: 2026-03-28*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Actualizado: 2026-03-28*
-- ✨ **Módulos Especiales**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Actualizado: 2026-03-28*
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Actualizado: 2026-10-23*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Actualizado: 2026-10-23*
+- ✨ **Módulos Especiales**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Actualizado: 2026-10-23*
 
 </details>
 
