@@ -3,7 +3,7 @@
 </div>
 
 # BiotechProject 🧬 🇧🇷
-[![SRE Resilience](https://img.shields.io/badge/SRE_RESILIENCE-CLINICAL_GRADE-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/actions)
+[![TBT Mobile](https://img.shields.io/badge/TBT_MOBILE-0_MS-6A1B9A?style=for-the-badge&labelColor=333333)](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
 [![Sponsors](https://img.shields.io/github/sponsors/Gitechnolo?style=for-the-badge&label=SPONSORS&labelColor=333333&color=E91E63)](https://github.com/sponsors/Gitechnolo)
 [![Accessibility](https://img.shields.io/badge/ACCESSIBILITY-WCAG_2.2_AAA-00C853?style=for-the-badge&logo=github&labelColor=333333)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
@@ -18,8 +18,8 @@
 
 > 💡 **Executive Briefing (28 de março de 2026):**
 >
-> Este projeto **alcançou o padrão de ouro WCAG 2.2 AAA** e evoluiu de um experimento focado em performance para um **Strategic Blueprint para uma arquitetura de saúde resiliente**.  
-> Formalizamos nossa metodologia "Stateless Edge" em um novo relatório que aborda as desigualdades globais de saúde causadas pela latência e barreiras cognitivas.  
+> Este projeto alcançou a **conformidade WCAG 2.2 Nível AAA** (verificada por meio de auditorias automatizadas e manuais) e evoluiu de um experimento voltado para o desempenho em uma referência documentada para uma arquitetura web resiliente e de baixa dependência.  
+> Formalizamos nossa metodologia "Stateless Edge" em um novo relatório que aborda as disparidades globais de saúde causadas pela latência e barreiras cognitivas.  
 >
 > 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
 > 👉 **Ler o Relatório Estratégico:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
@@ -44,14 +44,14 @@ Onde a biotecnologia encontra o código para construir ferramentas digitais para
 > [!TIP]
 > **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (8 de maio de 2026)**
 >
-> A arquitetura paralela é estável. Offloading the rendering pipeline to
-> `BiotechCoreWorker` via `OffscreenCanvas`, combinado com uma Pipeline Multimediale On-Demand
+> A arquitetura paralela é estável. Descarregar a pipeline de renderização para
+> `BiotechCoreWorker` via `OffscreenCanvas`, combinada com uma Pipeline de Mídia On-Demand
 > ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
-> mantém o thread principal livre para interação e gerenciamento de acessibilidade.
+> mantém a thread principal livre para interação e gerenciamento de acessibilidade.
 >
 > **Últimos benchmarks medidos** (Lighthouse 13.5.0, audit 4 de out de 2026):
 >
-> | Métricas | Desktop | Mobile (Moto G Power, 4G lento) |
+> | Métrica | Desktop | Mobile (Moto G Power, 4G lento) |
 > | :--- | :--- | :--- |
 > | FCP | 0.3 s | 1.3 s |
 > | LCP | 0.4 s | 2.5 s |
@@ -75,9 +75,9 @@ O BiotechProject é um **laboratório digital aberto** que combina **biotecnolog
 - 💻 **Tecnicamente robusto**
 - 📚 **Voltado para a educação e a pesquisa** (desde professores do ensino médio até laboratórios universitários)
 - 🌐 **Acessível a todos**, garantindo a inclusão digital para qualquer usuário
-- 📖 **Comprometido com o Conhecimento Aberto (Open Knowledge)**, contribuindo diretamente para a divulgação científica pública (ex.: Wikipedia)
+- 📖 **Comprometido com o Conhecimento Aberto**, contribuindo diretamente para a divulgação da ciência pública (ex.: Wikipedia)
 
-Ele foi criado para interligar a pesquisa acadêmica, o ensino e a sociedade — demonstrando como a tecnologia web moderna e a bioinformática podem capacitar educadores, estudantes e pesquisadores. **Esta missão está profundamente enraizada na tradição do humanismo digital italiano, transformando dados científicos e códigos complexos em ferramentas abertas e acessíveis para a emancipação social e científica.**
+Ele foi criado para interligar a pesquisa acadêmica, o ensino e a sociedade, mostrando como a tecnologia web moderna e a bioinformatica podem capacitar educadores, estudantes e pesquisadores. **Esta missão está profundamente enraizada na tradição do humanismo digital italiano, transformando dados científicos e códigos complexos em ferramentas abertas e acessíveis para a emancipação social e científica.**
 
 É um espaço colaborativo para desenvolvedores, pesquisadores, educadores e entusiastas que desejam construir uma ponte para a inclusão, a ciência aberta e a inovação científica.
 
@@ -86,7 +86,7 @@ Ele foi criado para interligar a pesquisa acadêmica, o ensino e a sociedade —
   <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
 </div>
 
-## 🗺️ Roadmap Estratégico e Evolução
+## 🗺️ Roadmap Estratégico & Evolução
 Para manter a transparência, acompanhamos nossos marcos de longo prazo por meio de um roadmap público. Isso garante que nossa visão "Resilience & Scalability 2026" permaneça alinhada com os padrões globais de equidade em saúde.
 
 👉 **Visualizar Roadmap Estratégico Completo:** [BiotechProject Roadmap 2026](https://github.com/users/Gitechnolo/projects/2/views/1)
@@ -242,7 +242,7 @@ Este projeto segue um processo rigoroso de tomada de decisão para garantir resi
 
 ### [ADR-008] Infraestrutura: Implementação do Nightly SRE Reliability Gate & Integridade Imutável
 * **Decisão**: Implantação de um portal de integridade noturno automatizado para impor a imutabilidade arquitetural.
-* **Justificativa**: Garante que as pontuações de 100% no Lighthouse e a conformidade com WCAG 2.2 AAA não sofram regressões com novos contribuições. Em ambientes clínicos, a integridade do software é um requisito de segurança.
+* **Justificativa**: Garante que as pontuações de 100% no Lighthouse e a conformidade com WCAG 2.2 AAA não sofram regressões com novas contribuições. Em ambientes clínicos, a integridade do software é um requisito de segurança.
 * **Resultado**: Ciclo de validação automatizado de 24h com "Tolerância Zero" para degradação de desempenho.
 * **Validação**: [View Infrastructure (#21)](https://github.com/Gitechnolo/biotechproject/issues/21)
 
@@ -317,7 +317,7 @@ O ecossistema implementa um **sistema avançado de rastreamento de maturidade te
 
 [![SRE Audit Status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Gitechnolo/biotechproject/main/data/performance-results.json)](https://github.com/Gitechnolo/biotechproject/actions)
 > [!IMPORTANT]  
-> **Nota de Metodologia:** As datas listadas na coluna "Última Auditoria" representan a **Validação Global do Sistema** mais recente. Isso inclui varreduras de segurança automatizadas, testes de estresse de desempenho (Lighthouse) e verificações de integridade de links. Mesmo que o conteúdo de um ativo específico permaneça inalterado, sua confiabilidade é recertificada durante cada ciclo de auditoria.
+> **Nota de Metodologia:** As datas listadas na coluna "Last Audit" representam a **Validação Global do Sistema** mais recente. Isso inclui varreduras de segurança automatizadas, testes de estresse de desempenho (Lighthouse) e verificações de integridade de links. Mesmo que o conteúdo de um ativo específico permaneça inalterado, sua confiabilidade é recertificada durante cada ciclo de auditoria.
 
 
 <details>
@@ -352,9 +352,9 @@ O ecossistema implementa um **sistema avançado de rastreamento de maturidade te
 <details>
 <summary><b>♿ Acessibilidade e Inclusão</b></summary>
 
-- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Atualizado: 2026-10-23*
-- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Atualizado: 2026-10-23*
-- ✨ **Módulos Especiais**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Atualizado: 2026-10-23*
+- 🇮🇹 **Dichiarazione di Accessibilità**: [Leggi (IT)](https://gitechnolo.github.io/biotechproject/accessibility-it.html) — *Updated: 2026-10-23*
+- 🇬🇧 **Accessibility Statement**: [Read (EN)](https://gitechnolo.github.io/biotechproject/accessibility-en.html) — *Updated: 2026-10-23*
+- ✨ **Módulos Especiais**: [Specials](https://gitechnolo.github.io/biotechproject/Specials.html) — *Updated: 2026-10-23*
 
 </details>
 
@@ -451,7 +451,7 @@ O sistema permite:
 - **Common.json**: contém textos compartilhados (menu, rodapé, botão de idioma)  
 - **Nenhum backend necessário**: tudo roda em JavaScript puro  
 - **LocalStorage**: lembra o idioma selecionado pelo usuário  
-- **`data-lang-key`**: atributo HTML para identificar elementos traduzíveis 
+- **`data-lang-key`**: atributo HTML para identificar elementos traduzíveis
 
 ### 📁 Estrutura da pasta `lang/`
 
