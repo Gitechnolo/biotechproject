@@ -252,26 +252,26 @@ async function runBiotechEngineV63() {
     /* --- Console log espliciti, trasparenti e dettagliati --- */
     console.group("%c BiotechProject Systems — Audit & Provenance ", SRE_NEU.group);
     console.log(
-        "%c📊 DATA_MODE%c Dataset sintetico dimostrativo (%s). Nessun feed di rete live collegato.",
+        "%c📊 DATA_MODE%c Synthetic demo dataset (%s). No live network feed connected.",
         SRE_NEU.sint + SRE_NEU.data, "color:#ccc;font-family:monospace;",
         d.provenance.mode
     );
     console.log(
-        "%c📈 MODEL%c %s (α=%s, β=%s) — Modello statistico di Holt (smussamento esponenziale doppio). Non è una rete neurale e non apprende continuamente.",
+        "%c📈 MODEL%c %s (α=%s, β=%s) — Holt's linear trend (double exponential smoothing). Not a neural network, no continuous learning.",
         SRE_NEU.sint + SRE_NEU.core, "color:#ccc;font-family:monospace;",
         d.modelParams.name, d.modelParams.market.alpha, d.modelParams.market.beta
     );
     console.log(
-        "%c📐 SIGMA%c Deviazione standard dei residui (σ) per il calcolo delle bande di confidenza al 95%: market %s | cyber %s | equity %s",
+        "%c📐 SIGMA%c Residual standard deviation (σ) for 95% confidence bands: market %s | cyber %s | equity %s",
         SRE_NEU.sint + SRE_NEU.inf, "color:#ccc;font-family:monospace;",
         d.modelParams.market.sigma, d.modelParams.cyber.sigma, d.modelParams.equity.sigma
     );
     console.log(
-        "%c♿ A11Y%c WCAG 2.2 compliant: navigazione da tastiera attiva (Frecce/Home/End), live-announcer, tabella sr-only e consent gate audio.",
+        "%c♿ A11Y%c WCAG 2.2 compliant: active keyboard navigation (Arrows/Home/End), live-announcer, sr-only table, audio consent gate.",
         SRE_NEU.sint + SRE_NEU.core, "color:#ccc;font-family:monospace;"
     );
     console.log(
-        "%c⚡ PERF%c Repaint on-demand via requestAnimationFrame (nessun loop di rendering continuo).",
+        "%c⚡ PERF%c On-demand repaint via requestAnimationFrame (no continuous render loop).",
         SRE_NEU.sint + SRE_NEU.core, "color:#ccc;font-family:monospace;"
     );
     console.groupEnd();
@@ -482,49 +482,49 @@ async function runBiotechEngineV63() {
   }
 
   // --- HUD & LEGENDA AGGIORNATA (Zero sovrapposizioni) ---
-  function renderProUI(ctx, canvas, data, startX, baseY) {
-      ctx.save();
-      ctx.textAlign = "left"; 
+  function renderProUI(ctx, canvas, d, startX, baseY) {
+    ctx.save();
+    ctx.textAlign = "left";
 
-      // GUIDA A SINISTRA (Posizionata a x=30, fuori dall'area utile del grafico che parte da startX=80)
-      const glossX = 30;
-      const glossY = 25;
-      ctx.font = "italic 9px monospace";
-      ctx.fillStyle = "rgba(231, 231, 231, 0.85)";
-      ctx.fillText("INTERPRETATION GUIDE:", glossX, glossY);
+    // LEGENDA / GUIDA A SINISTRA (in alto)
+    const glossX = 30;
+    const glossY = 25;
+    ctx.font = "italic 9px monospace";
+    ctx.fillStyle = "rgba(231, 231, 231, 0.85)";
+    ctx.fillText("INTERPRETATION GUIDE:", glossX, glossY);
 
-      if (activeYearIndex !== -1) {
-          const isForecast = activeYearIndex >= data.marketHist.length;
-          ctx.fillStyle = "#00ff55";
-          ctx.fillText(
-              `PROBING: ${data.years[activeYearIndex]} | ${isForecast ? 'FORECAST' : 'OBSERVED'}`,
-              glossX, glossY + 12
-          );
-      } else {
-          ctx.fillText("HOVER/NAVIGATE TO PROBE DATA", glossX, glossY + 12);
-      }
+    if (activeYearIndex !== -1) {
+        const isForecast = activeYearIndex >= d.marketHist.length;
+        ctx.fillStyle = "#00ff55";
+        ctx.fillText(
+            `PROBING: ${d.years[activeYearIndex]} | ${isForecast ? 'FORECAST' : 'OBSERVED'}`,
+            glossX, glossY + 12
+        );
+    } else {
+        ctx.fillText("HOVER/NAVIGATE TO PROBE DATA", glossX, glossY + 12);
+    }
 
-      // HUD A DESTRA (Spostato a sinistra del bordo estremo per leggibilità pulita)
-      const xHUD = canvas.width - 180; 
-      const yHUD = 25; 
-      ctx.font = "bold 11px 'Sansation', monospace";
+    // HUD A DESTRA: Più in basso (vicino al livello superiore del grafico) e più grande
+    const xHUD = canvas.width - 170; 
+    const yHUD = baseY - 150; // Riportato più in basso come nel layout originale
+    ctx.font = "bold 13px 'Sansation', monospace"; // Font ingrandito per maggiore impatto
 
-      const lastCyber  = data.cyberFore[data.cyberFore.length - 1];
-      const lastMarket = data.marketFore[data.marketFore.length - 1];
+    const lastCyber  = d.cyberFore[d.cyberFore.length - 1];
+    const lastMarket = d.marketFore[d.marketFore.length - 1];
 
-      const items = [
-          { text: `> [CYBER] ${lastCyber}.0`, col: "#ff66ff" },
-          { text: `> [MARKET] ${lastMarket}B`, col: "#00ff55" },
-          { text: `> [EQUITY] ${(data.equityScore * 100).toFixed(1)}%`, col: "#00d4ff" }
-      ];
+    const items = [
+        { text: `> [CYBER] ${lastCyber}.0`, col: "#ff66ff" },
+        { text: `> [MARKET] ${lastMarket}B`, col: "#00ff55" },
+        { text: `> [EQUITY] ${(d.equityScore * 100).toFixed(1)}%`, col: "#00d4ff" }
+    ];
 
-      items.forEach((item, i) => {
-          ctx.fillStyle = item.col;
-          ctx.fillText(item.text, xHUD, yHUD + (i * 15));
-      });
+    items.forEach((item, i) => {
+        ctx.fillStyle = item.col;
+        ctx.fillText(item.text, xHUD, yHUD + (i * 20)); // Interlinea aumentata a 20px per il font più grande
+    });
 
-      ctx.restore();
-  }
+    ctx.restore();
+}
 
     function renderConfidenceBand(ctx, bands, histLen, sX, stX, mY, offset, col) {
         if (!bands || !bands.length) return;
