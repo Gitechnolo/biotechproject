@@ -68,7 +68,7 @@ const BiotechGuardian = (() => {
     };
 
     const initObserver = () => {
-        // 1. MONITORAGGIO LONG TASKS (FPS Drop)
+        // 1. MONITORAGGIO LONG TASKS (FPS Drop) - FIX: Rimosso 'buffered: true' non valido per longtask
         if (window.PerformanceObserver) {
             try {
                 const observer = new PerformanceObserver((list) => {
@@ -78,21 +78,20 @@ const BiotechGuardian = (() => {
                         }
                     });
                 });
-                observer.observe({ type: 'longtask', buffered: true });
+                observer.observe({ type: 'longtask' });
             } catch (e) {
                 console.log("%c🛡️ Guardian: LongTask Observer not supported", "color: #888;");
             }
         }
 
         // 2. AMBIENT SENSING (Input per Predictive Throttling)
-        // Monitoraggio passivo della velocità di scroll
         window.addEventListener('scroll', () => {
             const currentPos = window.scrollY;
-            interactionBuffer.velocity = Math.abs(currentPos - lastScrollPos);
+            // FIX: Utilizzo di += per accumulare il delta di scroll nell'intervallo invece di sovrascriverlo
+            interactionBuffer.velocity += Math.abs(currentPos - lastScrollPos);
             lastScrollPos = currentPos;
         }, { passive: true });
 
-        // Monitoraggio densità interazioni (Click/Mousedown)
         window.addEventListener('mousedown', () => {
             interactionBuffer.density += 1;
         }, { passive: true });
@@ -100,8 +99,6 @@ const BiotechGuardian = (() => {
         // Ciclo di sincronizzazione con il Worker
         setInterval(() => {
             if (interactionBuffer.velocity > 0 || interactionBuffer.density > 0) {
-                // Invio dati al Worker per inferenza neurale locale
-                // Assicurati che BiotechWorker sia inizializzato globalmente
                 if (window.BiotechWorker) {
                     window.BiotechWorker.postMessage({
                         action: 'PREDICTIVE_LOAD_INFERENCE',
@@ -127,7 +124,8 @@ const BiotechGuardian = (() => {
                 if (lastMark.duration > CONFIG.LATENCY_MAX) {
                     reportDegradation('MOD03_LATENCY', lastMark.duration);
                 }
-                if (marks.length > 10) performance.clearMeasures('biotech-mod03-exec');
+                // FIX: Sostituito clearMeasures con clearMarks per evitare memory leak se si usano performance.mark()
+                if (marks.length > 10) performance.clearMarks('biotech-mod03-exec');
             }
         }, 5000);
     };
