@@ -145,7 +145,7 @@ let triggerCanvasDraw = () => {};
 function renderProUI(ctx, canvas, data, startX, baseY) {
     ctx.save();
     
-    // IMPORTANTE: Resetta l'allineamento del testo a sinistra
+    // IMPORTANTE: Forza l'allineamento del testo a sinistra per l'HUD e la guida
     ctx.textAlign = "left"; 
 
     // LEGENDA A SINISTRA
@@ -167,9 +167,9 @@ function renderProUI(ctx, canvas, data, startX, baseY) {
         ctx.fillText("HOVER OR NAVIGATE GRAPH TO PROBE SPECIFIC DATA", glossX, glossY + 25);
     }
 
-    // HUD A DESTRA (Spostato a yHUD = 70 per evitare la sovrapposizione in alto)
-    const xHUD = canvas.width - 190; // Posizionato in modo sicuro prima del margine destro
-    const yHUD = 70;
+    // HUD A DESTRA (Spostato a yHUD = 70 per evitare la sovrapposizione con il Sync Point in alto)
+    const xHUD = canvas.width - 200; 
+    const yHUD = 70; 
     ctx.font = "bold 12px 'Sansation', monospace";
 
     const lastCyber  = data.cyberFore[data.cyberFore.length - 1];
