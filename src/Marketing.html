@@ -104,43 +104,56 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
   <div class="staff-col">
     <div class="staff-card">
       <div class="staff-container">
-<h1 class="sansation-bold mb-15" data-lang-key="intelligence_title">Hub di Bio-Cyber Intelligence e Proiezioni Neurali</h1>
-<p class="text" data-lang-key="intelligence_intro">Qui analizziamo le tendenze globali nei settori del Marketing Cibernetico e della Bio-Health, illustrando come le nostre architetture neurali permettano alle aziende di scalare in questi mercati ad alta densità tecnologica. In un ecosistema in costante mutamento, la nostra missione è trasformare i dati predittivi in asset strategici per superare le sfide della transizione cibernetica.</p><br>
-<p class="biotechcenter" data-lang-key="network_analysis_full">Analisi di Rete: <span class="cyan">Bio-Health</span> & <span class="mag">Marketing Cibernetico</span> <span class="sansation-light-italic">(Tendenze Evolutive Globali)</span></p>   
+<h1 class="sansation-bold mb-15" data-lang-key="intelligence_title">Hub di Analisi Predittiva e Modellazione Statistica dei Mercati Biotech</h1>
+<p class="text" data-lang-key="intelligence_intro">Qui analizziamo le tendenze simulate nei settori del Marketing Cibernetico e della Bio-Health, illustrando come i nostri modelli statistici di previsione permettano di valutare scenari di mercato ad alta densità tecnologica. In un ecosistema in evoluzione, la nostra missione è trasformare serie storiche e modelli di trend in asset strategici per la pianificazione aziendale.</p><br>
+
+<p class="biotechcenter" data-lang-key="network_analysis_full">Analisi di Trend: <span class="cyan">Bio-Health</span> & <span class="mag">Marketing Cibernetico</span> <span class="sansation-light-italic">(Proiezioni Statistiche 2017-2032)</span></p>   
+
 <!-- Sezione di analisi del mercato con grafico e sonificazione -->
 <section class="market-analysis-layer" aria-labelledby="graph-heading">
-<h2 id="graph-heading" class="biotech-section-title">Biotech Market Neural Inference </h2>
-<div class="mb-15 biotechcenter">
-    <span class="pronounceable">
-      <button id="enable-audio-btn" 
-              class="pronounce-btn" 
-              data-term="Enable Sonification" 
-              aria-label="Attiva Sonificazione dei dati (Trend Acustico)" 
-              title="Attiva feedback sonoro per i trend dei dati">
-        <span aria-hidden="true">🔊</span> 
-        <span class="pronunciation-text" style="font-size: 10px;">ENABLE SONIFICATION</span>
-      </button>
-    </span>
-</div>
-<div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-<canvas id="marketGraph" 
-        tabindex="0"
-        width="800" 
-        height="400" 
-        class="specialsMarket-img" 
-        role="img" 
-        aria-label="Grafico delle proiezioni di mercato Biotech (2017-2032). Usa le frecce Destra e Sinistra per esplorare i dati cronologicamente." 
-        aria-describedby="accessible-table-container">
-</canvas>
-<div id="accessible-table-container"></div>
+    <h2 id="graph-heading" class="biotech-section-title">Biotech Market Statistical Forecast</h2>
+    <div class="mb-15 biotechcenter">
+        <span class="pronounceable">
+          <button id="enable-audio-btn" 
+                  class="pronounce-btn" 
+                  data-term="Enable Sonification" 
+                  aria-label="Attiva Sonificazione dei dati (Trend Acustico)" 
+                  title="Attiva feedback sonoro per i trend dei dati">
+            <span aria-hidden="true">🔊</span> 
+            <span class="pronunciation-text" style="font-size: 10px;">ENABLE SONIFICATION</span>
+          </button>
+        </span>
+        <span id="audio-status-label" style="font-size: 10px; margin-left: 10px; color: #d800d8;">Sonificazione: standby</span>
+    </div>
+    
+    <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    
+    <canvas id="marketGraph" 
+            width="800" 
+            height="400" 
+            class="specialsMarket-img" 
+            aria-describedby="accessible-table-container">
+    </canvas>
+    
+    <div id="accessible-table-container"></div>
 </section>
 <!-- Fine sezione di analisi del mercato -->
-<div class="biotechcenter mb-25"><p class="sansation-light-italic" data-lang-key="network_system_title">Sistema di analisi di rete BiotechProject</p></div>    
-<p class="text" data-lang-key="network_system_intro"><span class="biotechbold">Il nostro sistema sfrutta architetture di rete avanzate per l'analisi dei mercati:</span><br>Le proiezioni per il settore della cibernetica indicano una crescita costante con un incremento stimato del 50% entro il 2028, puntando a un raddoppio del valore di adozione entro il 2032. Questo trend è supportato dalla crescente convergenza tra automazione industriale e infrastrutture di sicurezza neurale. Utilizziamo modelli addestrati su dataset multidimensionali che integrano serie temporali e sentiment analysis in tempo reale. Progettati per l'apprendimento continuo, i nostri algoritmi garantiscono che l'accuratezza predittiva rimanga elevata anche in mercati ad alta volatilità, fornendo alle aziende una comprensione profonda delle dinamiche attuali per supportare decisioni strategiche basate sui dati.</p>   
-<p class="text mb-25" data-lang-key="predictive_analysis">Siamo in grado di identificare correlazioni profonde tra eventi globali e fluttuazioni di mercato, elevando sensibilmente la precisione delle proiezioni.<br>Grazie a queste tecnologie avanzate, elaboriamo volumi massivi di dati in tempo reale, individuando tendenze e pattern complessi che sfuggirebbero a un'analisi tradizionale.<br>Questo garantisce un vantaggio competitivo cruciale per le aziende del settore, permettendo loro di anticipare i movimenti del mercato e ottimizzare le proprie strategie in modo proattivo.</p>   
-<div><p class="biotechbold" data-lang-key="neural_datasets">Dataset di Addestramento & Input Neurale:</p></div>
-<ul class="list"><li data-lang-key="source_cyber">Marketing Cibernetico: Statista & Gartner (Network Feed)</li><li data-lang-key="source_health">Bio-Health Systems: WHO & Mayo Clinic (Metriche Health-EQ)</li><li data-lang-key="source_ai">Evoluzione AI: Forbes & McKinsey (Contesto di Inferenza)</li></ul>
-<div class="sansation-light-italic"><em><span data-lang-key="ai_validation">Analisi validata tramite integrazione neurale di dataset globali certificati per proiezioni cross-settoriali in tempo reale.</span></em></div>
+
+<div class="biotechcenter mb-25"><p class="sansation-light-italic" data-lang-key="network_system_title">Sistema di analisi e previsione statistica BiotechProject</p></div>    
+
+<p class="text" data-lang-key="network_system_intro"><span class="biotechbold">Il nostro sistema sfrutta modelli statistici avanzati per l'analisi e la stima dei mercati:</span><br>Le proiezioni per il settore della cibernetica si basano sul modello di smussamento esponenziale di Holt (trend lineare doppio), stimando traiettorie di crescita basate su dati storici dimostrativi. Utilizziamo parametri di riferimento calibrati su serie storiche multidimensionali per consentire una valutazione coerente della volatilità e supportare decisioni strategiche basate su evidenze numeriche trasparenti.</p>   
+
+<p class="text mb-25" data-lang-key="predictive_analysis">Siamo in grado di identificare trend strutturali e calcolare bande di confidenza al 95% per le stime future, elevando la trasparenza e il rigore delle proiezioni.<br>Grazie a queste metodologie, elaboriamo serie storiche e calcoliamo margini di errore statistici (deviazione standard dei residui), offrendo un quadro chiaro e privo di ambiguità.<br>Questo garantisce un supporto analitico rigoroso per le aziende del settore, permettendo loro di valutare scenari di mercato basati su proiezioni matematiche verificabili.</p>   
+
+<div><p class="biotechbold" data-lang-key="neural_datasets">Parametri di Riferimento & Dataset Dimostrativi:</p></div>
+<ul class="list">
+    <li data-lang-key="source_cyber">Marketing Cibernetico: Trend di riferimento metodologico (Statista & Gartner benchmark)</li>
+    <li data-lang-key="source_health">Bio-Health Systems: Metriche di crescita standard (WHO & standard di settore)</li>
+    <li data-lang-key="source_ai">Modellazione Statistica: Smussamento esponenziale di Holt (Orizzonte temporale 2017-2032)</li>
+</ul>
+
+<div class="sansation-light-italic"><em><span data-lang-key="ai_validation">Analisi generata tramite modello statistico di Holt su dataset sintetico dimostrativo (nessun feed di rete live collegato).</span></em></div>
+
 <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Circadian-Axial_Synchronization_Engine_Architecture.avif" alt="Biotech Project Circadian Axial Synchronization Engine Architecture" class="specials-img center" width="895" height="537" decoding="async" loading="lazy">
 <div class="biotechcenter mb-30"><p class="sansation-light-italic" data-lang-key="engine_core_description">Architettura Core: il motore deterministico per il monitoraggio biomolecolare in tempo reale - Home BiotechProject. </p></div>
 <!-- Badge di accessibilità -->
