@@ -12,7 +12,8 @@
     "source_ai": "Modellazione Statistica: Smussamento esponenziale di Holt (Orizzonte temporale 2017-2032)",
     "ai_validation": "Analisi generata tramite modello statistico di Holt su dataset sintetico dimostrativo (nessun feed di rete live collegato).",
     "arch_reliability_statement": "L'affidabilità delle stime non dipende solo dal modello statistico, ma dall'integrità dell'infrastruttura che lo esegue. Ecco l'architettura deterministica che garantisce stabilità, sincronizzazione e degrado controllato nelle condizioni reali d'uso.",
-    "engine_core_description": "Architettura Core: il motore deterministico per il monitoraggio biomolecolare in tempo reale - Home BiotechProject."
+    "engine_core_description": "Architettura Core: il motore deterministico per il monitoraggio biomolecolare in tempo reale - Home BiotechProject.",
+    "engine_methodology_note": "Nota metodologica: le logiche \"Neural\", \"Adaptive\" e \"Predictive\" implementano <strong>euristiche deterministiche con adattamento contestuale</strong> (network/battery-aware, memoria storica su localStorage), secondo il paradigma <em>adaptive control</em>, non modelli di machine learning."
   },
   "en": {
     "intelligence_title": "Predictive Analysis and Statistical Modeling Hub for Biotech Markets",
@@ -27,6 +28,7 @@
     "source_ai": "Statistical Modeling: Holt's linear trend smoothing (Time horizon 2017-2032)",
     "ai_validation": "Analysis generated via Holt's statistical model on synthetic demo dataset (no live network feed connected).",
     "arch_reliability_statement": "The reliability of estimations depends not only on the statistical model, but on the integrity of the execution infrastructure. Here is the deterministic architecture ensuring stability, synchronization, and graceful degradation under real operational conditions.",
-    "engine_core_description": "Core Architecture: the deterministic engine for real-time biomolecular monitoring - Home BiotechProject."
+    "engine_core_description": "Core Architecture: the deterministic engine for real-time biomolecular monitoring - Home BiotechProject.",
+    "engine_methodology_note": "Methodological note: \"Neural\", \"Adaptive\", and \"Predictive\" logics implement <strong>deterministic heuristics with contextual adaptation</strong> (network/battery-aware, historical memory via localStorage), following the <em>adaptive control</em> paradigm, not machine learning models."
   }
 }
