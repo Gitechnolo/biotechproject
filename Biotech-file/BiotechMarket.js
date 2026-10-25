@@ -1,5 +1,5 @@
 /**
- * BIOTECH PROJECT | MARKET VISUALIZATION MODULE v6.5 (FINAL)
+ * BIOTECH PROJECT | MARKET VISUALIZATION MODULE v6.4 (FINAL)
  * ============================================================================
  * [DATA]     Historical series are SYNTHETIC DEMO values. No live network
  *            source is connected in this build. See SOURCE_PROVENANCE.
@@ -190,7 +190,7 @@ function activateDataIndex(index, d) {
 /* ------------------------------------------------------------------ *
  *  ENGINE PRINCIPALE
  * ------------------------------------------------------------------ */
-async function runBiotechEngineV65() {
+async function runBiotechEngineV64() {
     const canvas = document.getElementById('marketGraph');
     if (!canvas) return console.warn('[BiotechProject] Canvas #marketGraph not found.');
 
@@ -528,11 +528,11 @@ async function runBiotechEngineV65() {
         triggerCanvasDraw();
     });
 }
-runBiotechEngineV65();
+runBiotechEngineV64();
 
 /*
 ================================================================================
-  BIOTECH PROJECT | MARKET VISUALIZATION & STATISTICAL ANALYTICS MODULE v6.5
+  BIOTECH PROJECT | MARKET VISUALIZATION & STATISTICAL ANALYTICS MODULE v6.4
 ================================================================================
 
   [SYSTEM_SPECIFICATIONS]
