@@ -192,7 +192,7 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 | **007** | **Audit WCAG 2.2 AAA Stateless Edge** | Audit di accessibilità ultra-leggero (~2KB) tramite Copilot per ambienti clinici a bassa larghezza di banda. | [Issue #20](https://github.com/Gitechnolo/biotechproject/issues/20) |
 | **008** | **Gate di Affidabilità SRE Notturno** | Integrità Immutabile e Validazione 24h | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
-| **010** | **Convergenza Neurale e Intelligence Multi-Settore** | Forecasting Bio-Cyber Proattivo | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26) |
+| **010** | **Forecasting Deterministico & Provenance** | Trend Statistici Spiegabili & Bande 95% σ | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26#issuecomment-6399096057) |
 | **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
 | **011v6.4** | **Rendering Parallelo & Thread Offloading** | TBT 78 ms / CLS 0.0001 all'accettazione dell'ADR (Maggio 2026) | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
@@ -253,11 +253,11 @@ Questo progetto segue un rigoroso processo decisionale per garantire resilienza 
 * **Risultato**: Recupero istantaneo di 70KB di banda e 0% di overhead GPU tramite snapshot CSS statici.
 * **Validazione**: [Visualizza Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23)
 
-### [ADR-010] Convergenza Neurale: Modellazione Predittiva Multi-Settore
-* **Decisione**: Implementazione del **Neural Inference Engine (v6.1)** per l'analisi cross-settoriale.
-* **Razionale**: Evolvere oltre la resilienza statica verso il forecasting proattivo, unendo i dataset OMS (Bio) e Gartner (Cyber).
-* **Risultato**: Sincronizzazione in tempo reale tra il canvas accelerato via GPU e il DOM semantico, garantendo l'accessibilità di tutti i punti dati predittivi.
-* **Validazione**: [Visualizza Logica Neurale (#26)](https://github.com/Gitechnolo/biotechproject/issues/26)
+### [ADR-010] Modellazione Predittiva Deterministica & Provenance Audit
+- **Decisione**: Implementazione dell'**Holt Forecasting Engine (v6.4)** per l'analisi dei trend statistici spiegabili.
+- **Razionale**: Dare priorità alla trasparenza e alla prevedibilità matematica rispetto a euristiche a scatola chiusa ("AI Washing"), utilizzando una rigorosa provenienza dei metadati (`synthetic-demo`).
+- **Risultato**: Sincronizzazione in tempo reale tra il canvas accelerato via GPU e il DOM semantico, garantendo la conformità WCAG 2.2 Livello AA per tutta la telemetria e bande di intervallo di confidenza al 95% ($\sigma$).
+- **Validazione**: [Visualizza Evoluzione Architetturale & Dettagli v6.4 (#26)](https://github.com/Gitechnolo/biotechproject/issues/26#issuecomment-6399096057)
 
 ### [ADR-011] Neural Core v6.3.3: Hardened SRE Guardian & Privacy Zero-Knowledge
 * **Decisione**: Implementazione della crittografia AES-GCM all'interno di `BiotechCoreWorker.js` e cicli di feedback neurale in `BiotechResilience.js`.
