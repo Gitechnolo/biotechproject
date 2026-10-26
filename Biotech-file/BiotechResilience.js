@@ -1,33 +1,33 @@
 /**
- * =============================================================================
- * BIOTECH-SRE-RESILIENCE-MAP // VERSION 6.4.0-HARDENED (NEURAL HYBRID)
- * =============================================================================
- * [STRATEGY]: Adaptive Hybrid Resilience (Immune Memory + Media Pipeline Sync)
- * [GOAL]: Zero-Latency UX Adaptation & Absolute Layout Stabilization.
- * [COMPLIANCE]: ADR-011-PRO / WCAG 2.2 AAA / SRE Hardened v6.4.
- * -----------------------------------------------------------------------------
- * PERFORMANCE VERIFIED (v6.4.0-FINAL-HARDENED Audit):
- * ⚡ SPEED INDEX: 1 [OPTIMAL] - Top 1% Performance Tier.
- * ⚡ FCP / LCP: 1741ms (Perfect Sync) | TBT: 46ms (Desktop) / 0ms (Mobile) - Max Relief
- * ⚡ CLS: 0.0000 - Absolute Zero achieved via On-Demand Media Geometric Lock.
- * -----------------------------------------------------------------------------
- * 1. DETERMINISTIC LAYER (Immune Memory & Geometric Lock)
- * ║─► Vault: LocalStorage 'biotech_resilience_signal' for state persistence.
- * ║─► Media Enforcement: Replaces legacy truncation with strict aspect-ratio
- * ║   containment for real-time video orchestration under network stress.
+- =============================================================================
+- BIOTECH-SRE-RESILIENCE-MAP // VERSION 6.4.0-HARDENED (DETERMINISTIC HYBRID)
+- =============================================================================
+- [STRATEGY]: Adaptive Hybrid Resilience (Immune Memory + Media Pipeline Sync)
+- [GOAL]: Zero-Latency UX Adaptation & Absolute Layout Stabilization.
+- [COMPLIANCE]: ADR-011-PRO / WCAG 2.2 AA / SRE Hardened v6.4.
+- -----------------------------------------------------------------------------
+- PERFORMANCE VERIFIED (v6.4.0-FINAL-HARDENED Audit):
+- ⚡ SPEED INDEX: 1 [OPTIMAL] - Top 1% Performance Tier.
+- ⚡ FCP / LCP: 1741ms (Perfect Sync) | TBT: 46ms (Desktop) / 0ms (Mobile) - Max Relief
+- ⚡ CLS: 0.0000 - Absolute Zero achieved via On-Demand Media Geometric Lock.
+- -----------------------------------------------------------------------------
+- DETERMINISTIC LAYER (Immune Memory & Geometric Lock)
+- ║─► Vault: LocalStorage 'biotech_resilience_signal' for state persistence.
+- ║─► Media Enforcement: Replaces legacy truncation with strict aspect-ratio
+- ║   containment for real-time video orchestration under network stress.
  *
- * 2. CONTEXTUAL & NEURAL LAYER (Hybrid Sensing & Telemetry)
- * ║─► Network Guard: Sincrono. Interception of 2G/3G/Save-Data signals.
- * ║─► Energy Guard: Asincrono. Background battery monitoring (<15%).
- * ║─► Media Watchdog: Passive telemetry link monitoring lazy-loading latency.
+- 2. CONTEXTUAL & DETERMINISTIC LAYER (Hybrid Sensing & Telemetry)
+- ║─► Network Guard: Sincrono. Interception of 2G/3G/Save-Data signals.
+- ║─► Energy Guard: Asincrono. Background battery monitoring (<15%).
+- ║─► Media Watchdog: Passive telemetry link monitoring lazy-loading latency.
  *
- * 3. RESPONSE & HEALING (Self-Healing System)
- * ║─► Pruning: Atomic CSS injection via insertRule() for 0ms overhead.
- * ║─► Auto-Healing: requestIdleCallback (Post-load) for hardware recovery.
- * ╚─► Sync Task: Bridging TTFB and Media Pipeline states to Neural Matrix.
- * -----------------------------------------------------------------------------
- * STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // 2026
- * =============================================================================
+- 3. RESPONSE & HEALING (Self-Healing System)
+- ║─► Pruning: Atomic CSS injection via insertRule() for 0ms overhead.
+- ║─► Auto-Healing: requestIdleCallback (Post-load) for hardware recovery.
+- ╚─► Sync Task: Bridging TTFB and Media Pipeline states to Deterministic Engine.
+- -----------------------------------------------------------------------------
+- STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // 2026
+- =============================================================================
  */
 const BiotechResilience = (() => {
     const SIGNAL_KEY = 'biotech_resilience_signal';
@@ -94,7 +94,7 @@ const BiotechResilience = (() => {
                 applyResilience('REACTIVE', reason);
             });
 
-            // --- STEP C: SRE AUTO-HEALING, DIAGNOSTICS & NEURAL SYNC (Post-Load) ---
+            // --- STEP C: SRE AUTO-HEALING, DIAGNOSTICS & DETERMINISTIC SYNC (Post-Load) ---
 window.addEventListener('load', () => {
     // Usiamo requestIdleCallback se disponibile per la massima fluidità, altrimenti setTimeout
     const scheduleTask = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
@@ -114,15 +114,15 @@ window.addEventListener('load', () => {
             localStorage.setItem(SIGNAL_KEY, 'stable');
         }
 
-        // 2. Ponte Neurale v2.0.1 (Integrazione Leggera)
-        // Comunica al Worker la latenza reale per affinare i pesi della matrice
+        // 2. Sincronizzazione con il Worker Deterministico
+        // Comunica al Worker la latenza reale per l'inferenza statistica
         if (window.BiotechWorker) {
             window.BiotechWorker.postMessage({
                 action: 'PREDICTIVE_LOAD_INFERENCE',
                 payload: { 
                     velocity: 0, // In questo contesto la velocità è statica
                     density: ttfb, // Usiamo il TTFB come indicatore di densità di carico
-                    actualLoad: (ttfb > 800 || totalLoad > 3000) ? 0.9 : 0.1 // Feedback per l'apprendimento
+                    actualLoad: (ttfb > 800 || totalLoad > 3000) ? 0.9 : 0.1 // Feedback per il motore Holt
                 },
                 taskId: `resilience_sync_${Date.now()}`
             });
@@ -143,7 +143,7 @@ BiotechResilience.boot();
   Status:           INFRASTRUCTURE_FULLY_STABILIZED (v6.4.0-STABLE-COMPLETE)
   Intelligence:     PREDICTIVE_VAULT + ON-DEMAND MEDIA TELEMETRY [OK]
   Core Pruning:     ATOMIC_INJECTION_STABLE + GEOMETRIC LOCK [OK]
-  Compliance:       WCAG 2.2 AAA / ADR-011-PRO / GDPR Privacy-by-Design
+  Compliance:       WCAG 2.2 AA / ADR-011-PRO / GDPR Privacy-by-Design
   Timestamp:        2026-05-08 (Post-Audit Hardened Deployment)
 --------------------------------------------------------------------------------
     God give me style and give me grace
@@ -151,5 +151,5 @@ BiotechResilience.boot();
 
     -- (God Put a Smile upon Your Face, by Coldplay)
 --------------------------------------------------------------------------------
-* END OF FILE - BIOTECH_RESILIENCE_ENGINE... SYSTEM_IMMUNE_HARDENED // MEDIA_PIPELINE_HARDENED
+- END OF FILE - BIOTECH_RESILIENCE_ENGINE... SYSTEM_IMMUNE_HARDENED // MEDIA_PIPELINE_HARDENED
 */
