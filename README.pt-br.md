@@ -167,7 +167,7 @@ O BiotechProject constrói ferramentas de saúde digital resilientes e que prese
 
 ## 🎯 Público-Alvo & Visão Estratégica
 
-O BiotechProject é projetado para stakeholders que priorizam a resiliência como um requisito rígido:
+O BiotechProject é projetado para stakeholders que priorizam a resiliência como um requisito rígido;
 
 * **Sistemas de Saúde e Iniciativas de Saúde**: Projetado para escalar gêmeos digitais metabólicos com custos zero de computação do lado do servidor, aproveitando Vanilla JS de alto desempenho para lógica complexa do lado do cliente.
 * **Equidade em Saúde Global**: Projetado especificamente para usuários em regiões de baixa conectividade, garantindo tempos de carregamento sub-segundo (0.3s) mesmo em dispositivos legados através de otimização de nível SRE.
