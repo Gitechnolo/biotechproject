@@ -194,7 +194,7 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 | **008** | **Nightly SRE Reliability Gate** | Immutable Integrity & 24h Validation | [Issue #21](https://github.com/Gitechnolo/biotechproject/issues/21) |
 | **009** | **Resilient Edge: Asset Pruning** | -70KB Payload / Zero GPU Jitter | [Issue #23](https://github.com/Gitechnolo/biotechproject/issues/23) |
 | **010** | **Deterministic Forecasting & Provenance** | Explainable Statistical Trends & 95% σ Bands | [Issue #26](https://github.com/Gitechnolo/biotechproject/issues/26#issuecomment-6399096057) |
-| **011** | **Neural Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
+| **011** | **Deterministic Core: Hardened SRE Guardian** | **TBT: 106ms & Zero-Knowledge Vault** | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956) |
 | **011v6.4** | **Parallel Rendering & Thread Offloading** | TBT 78 ms / CLS 0.0001 at ADR acceptance (May 2026) | [Issue #27](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) |
 
 <details>
@@ -260,17 +260,17 @@ This project follow a rigorous decision-making process to ensure enterprise-grad
 - **Outcome**: Real-time synchronization between the GPU-accelerated canvas and the semantic DOM, guaranteeing WCAG 2.2 Level AA compliance for all telemetry and $95\%$ confidence interval bands ($\sigma$).
 - **Validation**: [View Architectural Evolution & v6.4 Details (#26)](https://github.com/Gitechnolo/biotechproject/issues/26#issuecomment-6399096057)
 
-### [ADR-011] Neural Core v6.3.3: Hardened SRE Guardian & Zero-Knowledge Privacy
-* **Decision**: Implementation of AES-GCM encryption within `BiotechCoreWorker.js` and neural feedback loops in `BiotechResilience.js`.
-* **Rationale**: To evolve from simple predictive resilience to a **Hardened Zero-Knowledge Architecture**. By integrating military-grade encryption with the Neural Inference Engine, the system protects bio-sensitive data while maintaining elite performance.
-* **Outcome**: A "Proton-standard" privacy layer that achieves a verified **TBT of 106ms (Warm Stable)** and a **Speed Index 1**, ensuring digital sovereignty without UX degradation.
-* **Validation**: [View Hardened Evolution & Zero-Knowledge Report (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
+### [ADR-011] Deterministic Core v6.3.3: Hardened SRE Guardian & Zero-Knowledge Privacy
+- **Decision**: Implementation of AES-GCM encryption within `BiotechCoreWorker.js` and heuristic feedback loops in `BiotechResilience.js`.
+- **Rationale**: To evolve from simple predictive resilience to a **Hardened Zero-Knowledge Architecture**. By integrating military-grade encryption with the Deterministic Telemetry Worker, the system protects bio-sensitive data while maintaining elite performance and auditability.
+- **Outcome**: A "Proton-standard" privacy layer that achieves a verified **TBT of 106ms (Warm Stable)** and a **Speed Index 1**, ensuring digital sovereignty and mathematical transparency without UX degradation.
+- **Validation**: [View Hardened Evolution & Zero-Knowledge Report (#27)](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956)
 
-### [ADR-011v6.4] Neural Core v6.4.0: Parallel Rendering Shift
-* **Decision**: Transition to a Multithreaded **OffscreenCanvas** architecture via `BiotechCoreWorker`.
-* **Rationale**: Decouple UI responsiveness from graphical/mathematical complexity (Particle Engine & QRedshift).
-* **Outcome**: **Main-Thread Liberation**. TBT reduced by 26% (78ms). CLS stabilized at 0.0001.
-* **Validation**: [View v6.4.0 Benchmark Report](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)
+### [ADR-011v6.4] Deterministic Core v6.4.0: Parallel Rendering Shift
+- **Decision**: Transition to a Multithreaded **OffscreenCanvas** architecture via `BiotechCoreWorker`.
+- **Rationale**: Decouple UI responsiveness from graphical/mathematical complexity (Particle Engine & QRedshift).
+- **Outcome**: **Main-Thread Liberation**. TBT reduced by 26% (78ms). CLS stabilized at 0.0001.
+- **Validation**: [View v6.4.0 Benchmark Report](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827)
 
 </details>
 
@@ -488,9 +488,9 @@ lang/
 **Key recent architectural milestones:**
 
 *   **Parallel Rendering Shift (v6.4.0):** Fully decoupled the Visual Pipeline from the Main Thread. By offloading the Particle Engine and `QRedshift` filters to the `BiotechCoreWorker` via `OffscreenCanvas`, we achieved a **26% reduction in TBT** and a **near-zero CLS**.
-*   **Neural Core v6.2 (Immune System):** Deployed `BiotechGuardian.js` for passive performance monitoring and `BiotechPatchEngine.js` for autonomous self-healing.
-*   **Interactive SRE Terminal:** Integrated a real-time telemetry dashboard with `aria-live` sonification for high-accessibility health logs.
-*   **Lighthouse Excellence:** Maintained **100% aggregate scores** via automated SRE integrity gates.
+- **Deterministic Core v6.2 (Immune System):** Deployed `BiotechGuardian.js` for passive performance monitoring and `BiotechPatchEngine.js` for autonomous self-healing.
+- **Interactive SRE Terminal:** Integrated a real-time telemetry dashboard with `aria-live` sonification for high-accessibility health logs.
+- **Lighthouse Excellence:** Maintained **100% aggregate scores** via automated SRE integrity gates.
 
 
 
