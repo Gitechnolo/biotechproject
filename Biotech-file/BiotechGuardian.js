@@ -2,7 +2,7 @@
 - BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog) [v6.4.0-HARDENED]
 - -------------------------------------------------------------------------
 - ARCHITECTURE: Active Multi-Heuristic Observer, Telemetry & Media Sync
-- MONITORING: Long-Tasks (FPS) | Deterministic Telemetry Sync | Media Lazy-Loading State
+- MONITORING: Long-Tasks (FPS) | Deterministic Telemetry Sync
 - STRATEGY: Hybrid (Stealth Background & ADR-011 Dashboard Integration)
 - -------------------------------------------------------------------------
 BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM (v6.4.0-FINAL)
@@ -11,12 +11,11 @@ BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM (v6.4.0-FINAL)
  [INTERNAL SENSORS]
         ║
         ╠══ PerformanceObserver (longtask) ══╗
-        ╠══ Ambient Sensing (Scroll/Density) ╬══[ SRE EVALUATION ENGINE ]
-        ╚══ Media Lazy-Loading Telemetry ════╝               ║
-                                                            ║
-             ╔══════════════════════════════════════════════╝
+        ╚══ Ambient Sensing (Scroll/Density) ╣
+                                             ║
+             ╔═══════════════════════════════╝
              ║
-             ╠══ THRESHOLD CHECK (ADR-010: 10FPS / 150ms)
+             ╠══ THRESHOLD CHECK (ADR-010: 10FPS / 100ms)
              ╠══ DETERMINISTIC SYNC (Worker Predictive Throttling)
              ║
              ╠══ MEDIA PIPELINE SYNERGY ──► [ON-DEMAND VIDEO ORCHESTRATION]
@@ -38,7 +37,6 @@ STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // 2026
 const BiotechGuardian = (() => {
     const CONFIG = {
         FPS_LIMIT: 10,     // Soglia ADR-010 (100ms per task)
-        LATENCY_MAX: 150,  // ms per il Modulo 03
         COOLDOWN: 3000,    // Evita notifiche multiple ravvicinate
         SAMPLE_RATE: 250   // Intervallo invio dati al Telemetry Worker
     };
@@ -115,19 +113,6 @@ const BiotechGuardian = (() => {
                 interactionBuffer.density = 0;
             }
         }, CONFIG.SAMPLE_RATE);
-
-        // 3. MONITORAGGIO LATENZA MODULO 03 (FIX: Lettura corretta delle Performance Measure)
-        setInterval(() => {
-            const measures = performance.getEntriesByName('biotech-mod03-exec', 'measure');
-            if (measures.length > 0) {
-                const lastMeasure = measures[measures.length - 1];
-                if (lastMeasure.duration > CONFIG.LATENCY_MAX) {
-                    reportDegradation('MOD03_LATENCY', lastMeasure.duration);
-                }
-                // FIX: Utilizzo di clearMeasures per evitare memory leak sul buffer delle misure
-                if (measures.length > 10) performance.clearMeasures('biotech-mod03-exec');
-            }
-        }, 5000);
     };
 
     return {
