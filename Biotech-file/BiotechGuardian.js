@@ -116,16 +116,16 @@ const BiotechGuardian = (() => {
             }
         }, CONFIG.SAMPLE_RATE);
 
-        // 3. MONITORAGGIO LATENZA MODULO 03
+        // 3. MONITORAGGIO LATENZA MODULO 03 (FIX: Lettura corretta delle Performance Measure)
         setInterval(() => {
-            const marks = performance.getEntriesByName('biotech-mod03-exec');
-            if (marks.length > 0) {
-                const lastMark = marks[marks.length - 1];
-                if (lastMark.duration > CONFIG.LATENCY_MAX) {
-                    reportDegradation('MOD03_LATENCY', lastMark.duration);
+            const measures = performance.getEntriesByName('biotech-mod03-exec', 'measure');
+            if (measures.length > 0) {
+                const lastMeasure = measures[measures.length - 1];
+                if (lastMeasure.duration > CONFIG.LATENCY_MAX) {
+                    reportDegradation('MOD03_LATENCY', lastMeasure.duration);
                 }
-                // FIX: Sostituito clearMeasures con clearMarks per evitare memory leak se si usano performance.mark()
-                if (marks.length > 10) performance.clearMarks('biotech-mod03-exec');
+                // FIX: Utilizzo di clearMeasures per evitare memory leak sul buffer delle misure
+                if (measures.length > 10) performance.clearMeasures('biotech-mod03-exec');
             }
         }, 5000);
     };
