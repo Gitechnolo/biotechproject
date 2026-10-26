@@ -1,10 +1,10 @@
 /**
- * BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog) [v6.4.0-HARDENED]
- * -------------------------------------------------------------------------
- * ARCHITECTURE: Active Multi-Heuristic Observer, Telemetry & Media Sync
- * MONITORING: Long-Tasks (FPS) | Neural Core Weights | Media Lazy-Loading State
- * STRATEGY: Hybrid (Stealth Background & ADR-011 Dashboard Integration)
- * -------------------------------------------------------------------------
+- BIOTECH PROJECT | SRE GUARDIAN SYSTEM (Performance Watchdog) [v6.4.0-HARDENED]
+- -------------------------------------------------------------------------
+- ARCHITECTURE: Active Multi-Heuristic Observer, Telemetry & Media Sync
+- MONITORING: Long-Tasks (FPS) | Deterministic Telemetry Sync | Media Lazy-Loading State
+- STRATEGY: Hybrid (Stealth Background & ADR-011 Dashboard Integration)
+- -------------------------------------------------------------------------
 BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM (v6.4.0-FINAL)
 ==================================================================
 
@@ -17,7 +17,7 @@ BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM (v6.4.0-FINAL)
              ╔══════════════════════════════════════════════╝
              ║
              ╠══ THRESHOLD CHECK (ADR-010: 10FPS / 150ms)
-             ╠══ NEURAL SYNC (Worker Predictive Throttling)
+             ╠══ DETERMINISTIC SYNC (Worker Predictive Throttling)
              ║
              ╠══ MEDIA PIPELINE SYNERGY ──► [ON-DEMAND VIDEO ORCHESTRATION]
              ║                              (Strict Aspect-Ratio Control)
@@ -25,12 +25,12 @@ BIOTECHPROJECT | SERVICE STRUCTURE: GUARDIAN SYSTEM (v6.4.0-FINAL)
              ╚══ BROADCAST: 'biotech:resilience-needed' (CustomEvent)
 
 -------------------------------------------------------------------------
-* PERFORMANCE BENCHMARK (REAL-TIME SENSING - HARDENED COMPLETE)
-* -------------------------------------------------------------------------
-* ⚡ Main Thread Absolute Liberation: TBT 46ms (Desktop) | 0ms (Mobile) ─► Max Relief
-* ⚡ Visual Stability: CLS 0.0000 (Absolute Zero / Mobile Geometric Lock)
-* ⚡ Observer Impact: < 0.01% CPU Overhead (Passive Event Listeners)
-* ⚡ Predictive Sync: 250ms Heartbeat Active (Neural Core & Media Link)
+- PERFORMANCE BENCHMARK (REAL-TIME SENSING - HARDENED COMPLETE)
+- -------------------------------------------------------------------------
+- ⚡ Main Thread Absolute Liberation: TBT 46ms (Desktop) | 0ms (Mobile) ─► Max Relief
+- ⚡ Visual Stability: CLS 0.0000 (Absolute Zero / Mobile Geometric Lock)
+- ⚡ Observer Impact: < 0.01% CPU Overhead (Passive Event Listeners)
+- ⚡ Predictive Sync: 250ms Heartbeat Active (Deterministic Worker & Media Link)
 -------------------------------------------------------------------------
 STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // 2026
 */
@@ -40,12 +40,12 @@ const BiotechGuardian = (() => {
         FPS_LIMIT: 10,     // Soglia ADR-010 (100ms per task)
         LATENCY_MAX: 150,  // ms per il Modulo 03
         COOLDOWN: 3000,    // Evita notifiche multiple ravvicinate
-        SAMPLE_RATE: 250   // Intervallo invio dati al Neural Worker
+        SAMPLE_RATE: 250   // Intervallo invio dati al Telemetry Worker
     };
 
     let lastAlertTime = 0;
     
-    // Stato interno per Ambient Sensing (Neural Core)
+    // Stato interno per Ambient Sensing (Deterministic Telemetry)
     let lastScrollPos = typeof window !== 'undefined' ? window.scrollY : 0;
     let interactionBuffer = { velocity: 0, density: 0 };
 
@@ -106,7 +106,7 @@ const BiotechGuardian = (() => {
                             velocity: interactionBuffer.velocity, 
                             density: interactionBuffer.density 
                         },
-                        taskId: `neural_sync_${Date.now()}`
+                        taskId: `deterministic_sync_${Date.now()}`
                     });
                 }
                 
@@ -134,7 +134,7 @@ const BiotechGuardian = (() => {
         init: () => {
             setTimeout(() => {
                 initObserver();
-                console.log("%c🛡️ Guardian: Stealth Monitoring & Neural Sync Active", "color: #4CAF50; font-weight: bold;");
+                console.log("%c🛡️ Guardian: Stealth Monitoring & Deterministic Sync Active", "color: #4CAF50; font-weight: bold;");
             }, 1000);
         }
     };
