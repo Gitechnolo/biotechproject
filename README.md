@@ -488,7 +488,7 @@ lang/
 **Key recent architectural milestones:**
 
 *   **Parallel Rendering Shift (v6.4.0):** Fully decoupled the Visual Pipeline from the Main Thread. By offloading the Particle Engine and `QRedshift` filters to the `BiotechCoreWorker` via `OffscreenCanvas`, we achieved a **26% reduction in TBT** and a **near-zero CLS**.
-- **Deterministic Core v6.2 (Immune System):** Deployed `BiotechGuardian.js` for passive performance monitoring and `BiotechPatchEngine.js` for autonomous self-healing.
+- **Deterministic Core v6.4.0 (Immune System):** Deployed `BiotechGuardian.js` for passive performance monitoring and `BiotechPatchEngine.js` for autonomous self-healing.
 - **Interactive SRE Terminal:** Integrated a real-time telemetry dashboard with `aria-live` sonification for high-accessibility health logs.
 - **Lighthouse Excellence:** Maintained **100% aggregate scores** via automated SRE integrity gates.
 
