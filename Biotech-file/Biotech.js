@@ -1,5 +1,5 @@
 /**
- * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR [v6.4.0 - STABLE COMPLETE]
+ * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR [v6.4.0 - STABLE HARDENED]
  * -------------------------------------------------------------------------
  * ARCHITECTURE: Multithreaded Worker-Driven Rendering | Zero-Dependency
  * RELIABILITY: SRE Passive Guardian & Neural Bio-Immune System [ADR-011-PRO]
@@ -10,7 +10,7 @@
 BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (FINAL HARDENED v6.4.0)
 =====================================================================
 
-[ROOT] index.html / Biotech.js (Core Orchestrator & Event Bridge)
+[ROOT] index.html / Biotech.js (Core Orchestrator & Single Worker Bridge)
  ║
  ╠══ SRE RELIABILITY LAYER (The Bio-Immune System)
  ║   ║
@@ -72,36 +72,40 @@ const SRE_LOG_MAIN = {
 };
 
 /* ==========================================================================
-   WORKER CORE INTEGRATION [ADR-011 / 60fps / Legacy Optimized]
+   WORKER CORE INTEGRATION (SINGLE UNIFIED INSTANCE) [ADR-011 / 60fps]
    ========================================================================== */
-const BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js'); // In produzione, questo percorso dovrebbe essere gestito dinamicamente o tramite un sistema di build per garantire la compatibilità con la struttura del progetto.
+if (!window.BiotechWorker) {
+    try {
+        window.BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js');
+    } catch (e) {
+        console.error("⚠️ SRE: Worker Thread Allocation Failed", e);
+    }
+}
 
 /**
  * Task Orchestrator con Fallback e Timeout
  */
 const workerQuery = (action, payload, timeout = 5000) => {
-    // Generatore ID compatibile con vecchi browser (no crypto required)
     const taskId = Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
     
     return new Promise((resolve, reject) => {
-        // Gestione del Timeout: evita che la UI rimanga appesa su 3G lento
         const timer = setTimeout(() => {
-            BiotechWorker.removeEventListener('message', handler);
+            window.BiotechWorker.removeEventListener('message', handler);
             reject(new Error(`Timeout: Worker non ha risposto entro ${timeout}ms`));
         }, timeout);
 
         const handler = (e) => {
             if (e.data && e.data.taskId === taskId) {
-                clearTimeout(timer); // Cancella il timeout se riceve risposta
-                BiotechWorker.removeEventListener('message', handler);
+                clearTimeout(timer);
+                window.BiotechWorker.removeEventListener('message', handler);
                 e.data.success ? resolve(e.data.data) : reject(e.data.error);
             }
         };
 
-        BiotechWorker.addEventListener('message', handler);
+        window.BiotechWorker.addEventListener('message', handler);
 
         try {
-            BiotechWorker.postMessage({ action, payload, taskId });
+            window.BiotechWorker.postMessage({ action, payload, taskId });
         } catch (err) {
             clearTimeout(timer);
             reject("PostMessage Fallito: " + err.message);
@@ -109,17 +113,18 @@ const workerQuery = (action, payload, timeout = 5000) => {
     });
 };
 
-// Inizializzazione con percorso corretto per la struttura cartelle
+// Inizializzazione motore di traduzione nel Worker
 workerQuery('INIT_TRANSLATION_ENGINE', { 
-    fileUrl: '../lang/common.json' 
-}, 10000) // Timeout più lungo (10s) per il primo caricamento su 3G
+    fileUrl: '../lang/common.json',
+    userSalt: btoa(navigator.userAgent).substring(0, 16),
+    options: { filter: true }
+}, 10000)
 .then(() => {
-    console.log(`%c🧬 CORE %c Worker: Ready (Legacy Mode Active) `, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core, 
+    console.log(`%c🧬 CORE %c Worker: Ready (Unified Thread Active) `, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core, 
     'background: rgba(0, 255, 162, 0.1); color: #00ffa2; padding: 2px 6px; border: 1px solid #00ffa2; border-left: none; border-radius: 0 3px 3px 0;');
 })
 .catch(err => {
     console.warn(`%c⚠️ Worker Error: Fallback al thread principale`, "color:#f44336;", err);
-    // Qui potresti inserire una funzione di fallback che carica i JSON normalmente
 });
 
 /**
@@ -138,49 +143,42 @@ const BiotechSystem = (function() {
         elements: {}
     };
 
-    // Sincronizzazione rapida con l'orologio biologico (1 check all'avvio + 1 check ogni ora)
-function updateCircadianState(isFirstRun = false) {
-  const now = new Date();
-  const hour = now.getHours();
-  
-  // 1. Determina la fase del ciclo circadiano (NIGHT, TWILIGHT, DAYLIGHT)
-  let phase;
-  if (hour >= 19 || hour < 6) phase = 'NIGHT';
-  else if (hour === 18 || hour === 6) phase = 'TWILIGHT';
-  else phase = 'DAYLIGHT';
+    function updateCircadianState(isFirstRun = false) {
+        const now = new Date();
+        const hour = now.getHours();
+        
+        let phase;
+        if (hour >= 19 || hour < 6) phase = 'NIGHT';
+        else if (hour === 18 || hour === 6) phase = 'TWILIGHT';
+        else phase = 'DAYLIGHT';
 
-  // 2. TRIGGER: Esci subito se la fase non è cambiata (ZERO spreco di risorse)
-  if (phase === state.currentPhase && !isFirstRun) return;
+        if (phase === state.currentPhase && !isFirstRun) return;
 
-  // 3. Aggiorna lo stato corrente della fase
-  state.currentPhase = phase;
-  state.isNight = (phase === 'NIGHT');
+        state.currentPhase = phase;
+        state.isNight = (phase === 'NIGHT');
 
-  // 4. Configura il log e l'interfaccia per la nuova fase
-  const config = {
-    NIGHT:    { color: '#6A1B9A', emoji: '🌙', label: 'Night' },
-    TWILIGHT: { color: '#FF9800', emoji: hour === 18 ? '🌇' : '🌅', label: 'Twilight' },
-    DAYLIGHT: { color: '#FF6F00', emoji: '☀️', label: 'Daylight' }
-  }[phase];
+        const config = {
+            NIGHT:    { color: '#6A1B9A', emoji: '🌙', label: 'Night' },
+            TWILIGHT: { color: '#FF9800', emoji: hour === 18 ? '🌇' : '🌅', label: 'Twilight' },
+            DAYLIGHT: { color: '#FF6F00', emoji: '☀️', label: 'Daylight' }
+        }[phase];
 
-  console.log(
-    `%c ${config.emoji} BiotechSystem %c ${config.label} | ${now.toLocaleTimeString('it-IT')}`,
-    SRE_LOG_MAIN.syntax + `background: ${config.color}; color: #fff; font-weight: bold;`,
-    SRE_LOG_MAIN.syntax + 'color: #888;'
-  );
-  updateVisuals();
-}
+        console.log(
+            `%c ${config.emoji} BiotechSystem %c ${config.label} | ${now.toLocaleTimeString('it-IT')}`,
+            SRE_LOG_MAIN.syntax + `background: ${config.color}; color: #fff; font-weight: bold;`,
+            SRE_LOG_MAIN.syntax + 'color: #888;'
+        );
+        updateVisuals();
+    }
 
     // ==========================================================================
     // MODULE 01: VISUAL SYNTHESIZER (OFFSCREEN CANVAS ENGINE)
-    // Biocircadian Visual Synthesizer (Neural Sync v6.3.3)
     // ==========================================================================
     const ParticlesEngine = {
         init(canvasId) {
             const canvas = document.getElementById(canvasId);
             if (!canvas) return null;
 
-            // Trasferiamo il controllo del canvas al Worker (Offscreen Mode)[cite: 3]
             let offscreen;
             try {
                 offscreen = canvas.transferControlToOffscreen();
@@ -193,8 +191,7 @@ function updateCircadianState(isFirstRun = false) {
             const width = window.innerWidth * dpr;
             const height = window.innerHeight * dpr;
 
-            // Inizializziamo il Worker con il Canvas e le dimensioni corrette[cite: 3]
-            BiotechWorker.postMessage({
+            window.BiotechWorker.postMessage({
                 action: 'INIT_OFFSCREEN_CANVAS',
                 payload: {
                     canvas: offscreen,
@@ -202,14 +199,14 @@ function updateCircadianState(isFirstRun = false) {
                     height: height,
                     isNight: state.isNight
                 }
-            }, [offscreen]); // Il canvas viene trasferito fisicamente[cite: 3]
+            }, [offscreen]);
 
             const resize = () => {
                 const newDpr = window.devicePixelRatio || 1;
                 const newWidth = window.innerWidth * newDpr;
                 const newHeight = window.innerHeight * newDpr;
                 
-                BiotechWorker.postMessage({
+                window.BiotechWorker.postMessage({
                     action: 'RESIZE_CANVAS',
                     payload: { width: newWidth, height: newHeight }
                 });
@@ -217,7 +214,7 @@ function updateCircadianState(isFirstRun = false) {
 
             return {
                 destroy: () => {
-                    BiotechWorker.postMessage({
+                    window.BiotechWorker.postMessage({
                         action: 'TOGGLE_SYSTEM',
                         payload: { isActive: false }
                     });
@@ -229,12 +226,10 @@ function updateCircadianState(isFirstRun = false) {
 
     // ==========================================================================
     // MODULE 02: QREDSHIFT ADAPTIVE FILTER
-    // QRedshift Adaptive Filter (Neural Worker Sync v6.3.3)
     // ==========================================================================
     function updateVisuals() {
         const { particles, dna, toggleBtn, floatingIcon } = state.elements;
         
-        // --- LOGICA CROMATICA CIRCADIANA ---
         const filterStr = state.isNight 
             ? 'sepia(0.6) hue-rotate(-30deg) brightness(0.95)' 
             : 'sepia(0.2) hue-rotate(0deg) brightness(1)';
@@ -242,7 +237,6 @@ function updateCircadianState(isFirstRun = false) {
         document.body.classList.toggle('night-mode', state.isNight);
 
         if (state.isActive) {
-            // STATO: ATTIVO (RESILIENCE MODE)
             document.body.classList.add('qredshift-active');
             document.body.classList.remove('qredshift-disabled');
             document.body.style.filter = filterStr;
@@ -250,20 +244,16 @@ function updateCircadianState(isFirstRun = false) {
             if (particles) particles.classList.remove('is-hidden');
             if (dna) dna.style.display = '';
 
-            // Gestione Sync con il Worker
             if (!state.particlesController && particles) {
-                // Primo avvio: Inizializzazione Lazy del controller Offscreen[cite: 3, 7]
                 state.particlesController = ParticlesEngine.init('particles-canvas');
                 if (state.particlesController) state.particlesController.resize();
             } else {
-                // Riattivazione o Cambio Circadiano: Notifica il Worker senza distruggere il controller
-                BiotechWorker.postMessage({
+                window.BiotechWorker.postMessage({
                     action: 'TOGGLE_SYSTEM',
                     payload: { isActive: true, isNight: state.isNight }
                 });
             }
         } else {
-            // STATO: IBERNATO (PRIVACY OBLIVION)[cite: 3, 7]
             document.body.classList.remove('qredshift-active');
             document.body.classList.add('qredshift-disabled');
             document.body.style.filter = 'none';
@@ -271,15 +261,12 @@ function updateCircadianState(isFirstRun = false) {
             if (particles) particles.classList.add('is-hidden');
             if (dna) dna.style.display = 'none';
 
-            // Non distruggiamo l'oggetto controller (perché il canvas è già trasferito)
-            // Chiediamo al Worker di fermare il loop di rendering[cite: 7]
-            BiotechWorker.postMessage({
+            window.BiotechWorker.postMessage({
                 action: 'TOGGLE_SYSTEM',
                 payload: { isActive: false }
             });
         }
 
-        // --- SINCRONIZZAZIONE UI (Aria-Labels & Icons) ---
         const activeIcon = state.isNight ? '🌙' : '☀️';
         const offIcon = '🌑';
         const statusLabel = state.isActive ? 'Sistema Comfort Attivo' : 'Sistema Comfort Ibernato';
@@ -315,19 +302,16 @@ function updateCircadianState(isFirstRun = false) {
     }
 
     function setupUI() {
-        // 1. Riferimenti DOM Originali
         state.elements.menu = document.getElementById('tech-main-menu');
         state.elements.particles = document.getElementById('particles-canvas');
         state.elements.dna = document.querySelector('.dna-container-8');
         state.elements.floatingIcon = document.querySelector('.qredshift-icon');
 
-        // 2. Riferimenti SRE Guardian (Nuovi)
         state.elements.wing = document.getElementById('sre-wing');
         state.elements.logDisplay = document.getElementById('sre-log-display');
         state.elements.ledPatch = document.getElementById('led-patch');
         const stressBtn = document.getElementById('sre-stress-btn');
 
-        // 3. Logica Interattiva Guardian (Gestione Hover & Stealth)
         if (state.elements.wing) {
             const wing = state.elements.wing;
             wing.style.opacity = "0.5";
@@ -339,7 +323,6 @@ function updateCircadianState(isFirstRun = false) {
             });
 
             wing.addEventListener('mouseleave', () => {
-                // Ritorna stealth solo se non è in corso un'allerta
                 if (!wing.classList.contains('is-alerting')) {
                     wing.style.opacity = "0.5";
                     wing.style.transform = "scale(1)";
@@ -347,7 +330,6 @@ function updateCircadianState(isFirstRun = false) {
             });
         }
 
-        // 4. Aggancio Eventi SRE (Sostituisce l'onclick HTML)
         if (stressBtn) {
             stressBtn.addEventListener('click', () => {
                 if (typeof simulateStress === "function") {
@@ -356,7 +338,6 @@ function updateCircadianState(isFirstRun = false) {
             });
         }
 
-        // 5. Setup Pulsante Menu (Codice Originale BiotechProject)
         if (state.elements.menu) {
             const menuItem = document.createElement('div');
             menuItem.className = 'tech-menu-item';
@@ -369,29 +350,26 @@ function updateCircadianState(isFirstRun = false) {
             state.elements.toggleBtn = btn;
         }
 
-        // 6. Setup Icona Flottante (Codice Originale BiotechProject)
         if (state.elements.floatingIcon) {
             state.elements.floatingIcon.addEventListener('click', toggleSystem);
         }
 
-        // 7. Sincronizzazione Visuale finale
         updateVisuals(); 
     }
 
     function init() {
-    updateCircadianState();
-    setupUI();
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    const resizeObserver = new ResizeObserver(() => {
-        if (state.particlesController) state.particlesController.resize();
-    });
-    resizeObserver.observe(document.body);
+        updateCircadianState(true);
+        setupUI();
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        const resizeObserver = new ResizeObserver(() => {
+            if (state.particlesController) state.particlesController.resize();
+        });
+        resizeObserver.observe(document.body);
 
-    // Aggiorna ogni ora per mantenere la sincronizzazione del sistema (background) con l'orologio biologico.
-    setInterval(() => {
-        updateCircadianState();
-    }, 3600000);
-}
+        setInterval(() => {
+            updateCircadianState();
+        }, 3600000);
+    }
 
     return { init };
 })();
@@ -412,7 +390,6 @@ window.addEventListener('biotech:resilience-needed', (e) => {
 
     if (ledPatch) ledPatch.className = "led led-amber";
     
-    // Aggiornamento sicuro (No .innerHTML per GitHub Audit)
     if (logDisplay) {
         logDisplay.textContent = `> ${report.type} DETECTED: ${report.value}ms. Patching...`;
     }
@@ -429,7 +406,6 @@ window.addEventListener('biotech:resilience-needed', (e) => {
     }, 5000); 
 });
 
-// Funzione di Stress Test accessibile globalmente dal pulsante
 function simulateStress() {
     const start = performance.now();
     let work = 0;
@@ -446,11 +422,7 @@ document.addEventListener('DOMContentLoaded', BiotechSystem.init);
 
 // ==========================================================================
 // MODULE 03: PERFORMANCE OPTIMIZATION HELPERS
-// Features: Throttling, Debouncing, and Predictive Smart Pre-fetching
 // ==========================================================================
-// ... throttle, debounce, initSmartPrefetch, ecc ...
-
-// THROTTLE: Fluidità a 60/120fps per scroll e resize.
 const throttle = (fn) => {
   let ticking = false;
   return (...args) => {
@@ -464,7 +436,6 @@ const throttle = (fn) => {
   };
 };
 
-// DEBOUNCE: Ideale per input e pre-fetching.
 const debounce = (fn, delay) => {
   let timer;
   return (...args) => {
@@ -473,8 +444,6 @@ const debounce = (fn, delay) => {
   };
 };
 
-// SMART PRE-FETCHING: Carica le pagine in background prima del click.
-// Si attiva solo se l'utente sosta sul link per almeno 200ms.
 function initSmartPrefetch() {
   const menuLinks = document.querySelectorAll('#tech-main-menu a[href]');
   const prefetchedLinks = new Set();
@@ -482,12 +451,10 @@ function initSmartPrefetch() {
   menuLinks.forEach(link => {
     const url = link.href;
 
-    // Ignora link esterni, anchor interne o file già scaricati
     if (!url.startsWith(window.location.origin) || url.includes('#') || prefetchedLinks.has(url)) {
       return;
     }
 
-    // Quando l'utente passa il mouse sul link...
     link.addEventListener('mouseenter', () => {
       link._prefetchTimer = setTimeout(() => {
         if (!prefetchedLinks.has(url)) {
@@ -499,17 +466,15 @@ function initSmartPrefetch() {
           prefetchedLinks.add(url);
           console.log(`%c📡 Pre-fetching: ${url}`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.pre);   
         }
-      }, 200); // Ritardo di 200ms per evitare pre-fetch accidentali
+      }, 200);
     });
 
-    // Se il mouse esce prima dei 200ms, annulla il pre-fetch
     link.addEventListener('mouseleave', () => {
       clearTimeout(link._prefetchTimer);
     });
   });
 }
 
-// LAZY LOADING: Caricamento anticipato delle immagini.
 function initLazyLoading() {
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('img[data-src]').forEach(img => img.src = img.dataset.src);
@@ -535,7 +500,6 @@ function initLazyLoading() {
   document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
 }
 
-// LOAD SCRIPT: Caricamento asincrono con priorità gestita.
 function loadScript(src, callback, priority = 'low') {
   if (document.querySelector(`script[src="${src}"]`)) {
     if (callback) callback();
@@ -549,10 +513,6 @@ function loadScript(src, callback, priority = 'low') {
   document.head.appendChild(script);
 }
 
-// —————————————————————————————————————————————————————————————————————————————
-// 💡 INIZIALIZZAZIONE CENTRALIZZATA (Idle Mode)
-// —————————————————————————————————————————————————————————————————————————————
-
 if ('requestIdleCallback' in window) {
   requestIdleCallback(() => {
     initLazyLoading();
@@ -564,25 +524,14 @@ if ('requestIdleCallback' in window) {
     initSmartPrefetch();
   });
 }  
-// ---End PERFORMANCE HELPERS ---
 
 // ==========================================================================
 // MODULE 04: CORE UI SYSTEM & ACCESSIBILITY ORCHESTRATOR
-// Scope: Navigation, Interactive Modals, Speech Synthesis, and Dynamic Theming
-// Strategy: "Exit-Early" Pattern & Event Delegation for Memory Efficiency
-// Standards: WCAG 2.1 AAA | ARIA 1.2 State Management
 // ==========================================================================
-
 (function () {
-  // 1. EXIT EARLY: Se la pagina non richiede il menu moderno, interrompiamo tutto.
   if (!document.body.hasAttribute('data-modern-menu')) return;
 
-  /**
-   * Punto di ingresso unico per tutti i moduli interattivi.
-   */
   document.addEventListener('DOMContentLoaded', function () {
-    
-    // --- [A] CORE NAV SYSTEM (Menu & Dropdowns) ---
     const navContainer = document.getElementById('tech-main-menu');
     let openDropdown = null;
 
@@ -606,7 +555,6 @@ if ('requestIdleCallback' in window) {
       });
     }
 
-    // --- [B] NAVIGAZIONE DA TASTIERA ---
     const toggleBtn = document.getElementById("keyboard-nav-toggle");
     const body = document.body;
     let keyboardNavActive = false;
@@ -629,18 +577,10 @@ if ('requestIdleCallback' in window) {
 
     setTimeout(() => toggleBtn?.classList.remove("hint"), 2500);
 
-    // --- [C] TEMA DINAMICO ---
     initThemeToggle();
-
-    // --- [D] GESTIONE PRONUNCIA E MODAL (Integrale) ---
     initSpeechAndModals();
 
-    // ———————————————————————————————————————————————————————
-    // 🔹 FUNZIONI INTERNE DI INIZIALIZZAZIONE (Helper)
-    // ———————————————————————————————————————————————————————
-
     function initSpeechAndModals() {
-      // 1. Gestione click sui pulsanti di pronuncia (🔊)
       const audioButtons = document.querySelectorAll('.pronounce-btn');
       audioButtons.forEach(btn => {
         btn.addEventListener('click', (event) => {
@@ -652,7 +592,6 @@ if ('requestIdleCallback' in window) {
         });
       });
 
-      // 2. Gestione link Modal (Inoltra alla Modale Singola se presente, altrimenti al Carosello)
       const modalLinks = document.querySelectorAll('.biotech-modal-trigger');
       modalLinks.forEach(link => {
         const triggerModal = (event) => {
@@ -721,10 +660,6 @@ if ('requestIdleCallback' in window) {
     }
   });
 
-  // ———————————————————————————————————————————————————————
-  // 🔹 LOGICA DI SUPPORTO (Utility esterne)
-  // ———————————————————————————————————————————————————————
-  
   function speakTerm(term, language = 'italiano') {
     if (!term) return;
 
@@ -749,7 +684,6 @@ if ('requestIdleCallback' in window) {
     utterance.pitch = 1.0;  
     utterance.volume = 1.0; 
 
-    // Gestione annuncio Screen Reader
     const announcement = document.getElementById('sr-announcement');
     if (announcement) {
       announcement.textContent = `Lettura avviata: ${term}.`;
@@ -758,7 +692,7 @@ if ('requestIdleCallback' in window) {
       }, 1000);
     }
 
-console.log(`%c🎤 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.speech, '', 'font-weight: bold; color: #2196F3;', '' );
+    console.log(`%c🎤 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.speech, '', 'font-weight: bold; color: #2196F3;', '' );
     speechSynthesis.speak(utterance);
   }
 
@@ -816,12 +750,7 @@ console.log(`%c🎤 SPEECH %c Pronounce: "${term}" (%c${utterance.lang}%c)`, SRE
   
 // ==========================================================================
 // MODULE 05: CONTENT DELIVERY & MEDIA ORCHESTRATION
-// Scope: Dynamic i18n (JSON-based), Modal Architecture, & On-Demand Video Loading
-// Strategy: Asynchronous Resource Fetching, Focus Trapping, & Resource Lazy-Loading
-// Performance: Video-on-demand (Zero initial payload), JSON Caching
 // ==========================================================================
-
-// --- VARIABILI GLOBALI CONDIVISE ---
 let currentLang = 'it';
 let lastFocusedElement = null;
 let slideIndex = 1;
@@ -832,7 +761,6 @@ const translatablePages = [
   'Apparato_tegumentario', 'Sistema_linfatico', 'Specials', 'Capelli'
 ];
 
-// --- 1. FUNZIONI DI SUPPORTO TRADUZIONE ---
 function getPageKey(pageName) {
   const map = {
     'index': 'home', 'Tech_Maturity': 'tech_maturity', 'Apparato_digerente': 'apparato_digerente',
@@ -954,7 +882,6 @@ function toggleLanguage() {
   setLanguage(newLang);
 }
 
-// --- 2. FUNZIONI DI SUPPORTO MODAL & CAROSELLO ---
 function resetAllZoom() {
   document.querySelectorAll('.zoom-container').forEach(container => {
     container.classList.remove('zoomed');
@@ -999,18 +926,12 @@ function closeModal() {
   }, delay);
 }
 
-// --- 3. FUNZIONI DI SUPPORTO VIDEO (On-Demand) ---
-
-// 3.1 Setup iniziale: collega gli eventi sia al poster che al pulsante Play
 document.addEventListener('DOMContentLoaded', () => {
   const img = document.getElementById('videoPoster');
   const initialPlayBtn = document.getElementById('ytPlayPause');
 
   if (img) {
-    // Avvio al click sul poster
     img.addEventListener('click', loadAndPlayVideo);
-
-    // Accessibilità: Avvio tramite tastiera (Tasto Invio o Spazio sul poster)
     img.addEventListener('keydown', (e) => {
       if (e.code === 'Enter' || e.code === 'Space') {
         e.preventDefault();
@@ -1019,13 +940,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Avvio al click sul pulsante Play (se cliccato prima che il video sia caricato)
   if (initialPlayBtn) {
     initialPlayBtn.addEventListener('click', loadAndPlayVideo, { once: true });
   }
 });
 
-// 3.2 Sostituzione Poster -> Elemento <video> e avvio
 function loadAndPlayVideo() {
   const container = document.getElementById('ytVideoContainer');
   const img = document.getElementById('videoPoster');
@@ -1061,14 +980,11 @@ function loadAndPlayVideo() {
   container.replaceChild(video, img);
 
   const controls = document.querySelector('.yt-video-controls');
-  
-  // Rimuove il vecchio listener 'once' usato per l'avvio e inizializza i veri controlli video
   initializeVideoControls(video, controls);
   
   video.play().catch(e => console.log("Richiesta interazione per Play:", e));
 }
 
-// 3.3 Logica dei controlli personalizzati
 function initializeVideoControls(video, controls) {
   if (!controls) return;
   const q = (id) => controls.querySelector(id);
@@ -1078,7 +994,6 @@ function initializeVideoControls(video, controls) {
 
   const format = (s) => { const m = Math.floor(s/60), sec = Math.floor(s%60); return `${m}:${sec<10?'0':''}${sec}`; };
 
-  // Rimozione di eventuali vecchi listener sul pulsante Play
   const newPlayBtn = playBtn.cloneNode(true);
   playBtn.parentNode.replaceChild(newPlayBtn, playBtn);
   const newIcon = newPlayBtn.querySelector('#ytPlayPauseIcon') || icon;
@@ -1115,7 +1030,6 @@ function initializeVideoControls(video, controls) {
     if(exitFsBtn) exitFsBtn.style.display = isFs ? 'flex' : 'none';
   });
 
-  // Scorciatoie da tastiera
   video.addEventListener('keydown', (e) => {
     if (e.code === 'Space') { e.preventDefault(); newPlayBtn.click(); }
     if (e.code === 'KeyM') { e.preventDefault(); muteBtn?.click(); }
@@ -1123,17 +1037,14 @@ function initializeVideoControls(video, controls) {
   });
 }
 
-// --- 4. UNICO DOMCONTENTLOADED (IL DIRETTORE D'ORCHESTRA) ---
 document.addEventListener('DOMContentLoaded', async () => {
   console.log(`%c🎻 Unified system startup...`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.dom);   
 
-  // A. Inizializza Lingua
   try {
     await initTranslations();
     window.toggleLanguage = toggleLanguage;
   } catch (err) { console.error('Errore lingua:', err); }
 
-  // B. Inizializza Modal e Carosello
   const modal = document.getElementById("myModal");
   if (modal) {
     const modalImg = document.getElementById("img01");
@@ -1186,7 +1097,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindAction(document.getElementById('prevSlide'), () => plusSlides(-1));
     bindAction(document.getElementById('nextSlide'), () => plusSlides(1));
 
-    // C. Logica Zoom Carosello
     document.querySelectorAll('.zoom-container').forEach(container => {
       const img = container.querySelector('img');
       container.addEventListener('click', () => container.classList.toggle('zoomed'));
@@ -1200,7 +1110,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     });
 
-    // D. Focus Trap & Keydown Carosello
     document.addEventListener('keydown', (e) => {
       if (modal.style.display === "none" || modal.style.display === "") return;
       if (e.key === "Escape") closeModal();
@@ -1220,7 +1129,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
   }
 
-  // B2. Inizializza Modale Singola (Isolata dal Carosello)
   const singleModal = document.getElementById("singleModal");
   if (singleModal) {
     const singleImg = document.getElementById("singleImg");
@@ -1271,7 +1179,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // E. Inizializza Video (Solo se il poster esiste)
   const videoPoster = document.getElementById('videoPoster');
   if (videoPoster) {
     const triggerVideo = (e) => {
@@ -1285,12 +1192,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-
-// === Ultima modifica pagina ===
-/**
- * Aggiorna il div lastModified sincronizzandolo con la lingua attiva.
- * Non richiede voci nel JSON.
- */
 function updateLastModified(lang) {
   const el = document.getElementById('lastModified');
   if (!el) return;
@@ -1298,8 +1199,6 @@ function updateLastModified(lang) {
   const lastModifiedDate = new Date(document.lastModified);
   if (isNaN(lastModifiedDate)) return;
 
-  // Sincronizzazione terminologica con l'Audit Globale (README/SRE)
-  // Etichetta hard-coded per garantire performance e zero dipendenze JSON
   const isEn = (lang === 'en');
   const label = isEn ? 'Last SRE Audit' : 'Ultima verifica SRE';
   const locale = isEn ? 'en-US' : 'it-IT';
@@ -1312,69 +1211,63 @@ function updateLastModified(lang) {
     minute: '2-digit'
   };
 
-  // Stringa finale
   el.textContent = `${label}: ${lastModifiedDate.toLocaleString(locale, options)}`;
 } 
-// === End ultima modifica pagina ===
 
 // ==========================================================================
 // [ADR-010/011-PRO] GUARDIAN & NEURAL RESILIENCE DYNAMIC ACTIVATION
-// Attiva il monitoraggio SRE & Neural Core Hardened a sistema stabilizzato.
 // ==========================================================================
 (function() {
   const activateGuardian = () => {
-    
-    // 1. Inizializzazione Globale del Neural Worker (v2.0.1-STABLE)
     try {
-      window.BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js');
-      
-      // Generiamo un Salt Dinamico per la Zero-Knowledge Persistence (ADR-011-PRO)
-      // Nota: In produzione questo potrebbe essere legato all'ID sessione utente
-      const dynamicSalt = btoa(navigator.userAgent).substring(0, 16);
-
-      // Inizializzazione immediata con Payload Hardened
-      window.BiotechWorker.postMessage({
-        action: 'INIT_TRANSLATION_ENGINE',
-        payload: { 
-          fileUrl: '../lang/common.json', // Percorso del file i18n
-          userSalt: dynamicSalt,
-          options: { filter: true } 
-        },
-        taskId: 'core_init_v2'
-      });
-
-      // Listener per il monitoraggio dello stato di salute del Worker
-      window.BiotechWorker.onmessage = (e) => {
-        if (e.data.error === "Worker in Recovery Mode") {
-          console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
-        }
-      };
-
-      console.log(`%c🔒 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
-      
+      // Sfruttiamo direttamente il worker globale già inizializzato (window.BiotechWorker)
+      if (window.BiotechWorker) {
+        window.BiotechWorker.onmessage = (e) => {
+          if (e.data.error === "Worker in Recovery Mode") {
+            console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
+          }
+        };
+        console.log(`%c🔒 Neural Core: Thread Active & Synchronized [Zero-Knowledge Encryption Ready]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+      }
     } catch (e) {
-      console.error("⚠️ SRE: Neural Core Thread Allocation Failed (Hardened Mode)", e);
+      console.error("⚠️ SRE: Neural Core Thread Verification Failed", e);
     }
 
-    // 2. Import dinamico del Guardian per preservare il TTI < 0.3s
-    // Il Guardian ora troverà il window.BiotechWorker già inizializzato e pronto
-    import('./BiotechGuardian.js')
+    // 1. Carica il Guardian (Sensore)
+    import('./Biotech-file/BiotechGuardian.js')
       .then(() => {
         console.log(`%c🛡️ SRE Guardian: Online & Monitoring Neural Sync`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.guardian);
       })
       .catch(err => {
         console.warn(`%c⚠️ SRE Guardian: Load Bypass`, SRE_LOG_MAIN.syntax + 'background:#f44336;color:#fff;', err);
       });
+
+    // 2. Carica la Resilience (Prevenzione)
+    import('./Biotech-file/BiotechResilience.js')
+      .then(() => {
+        console.log(`%c🧬 SRE Resilience: Online & Deterministic Boot`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.guardian);
+      })
+      .catch(err => {
+        console.warn(`%c⚠️ SRE Resilience: Load Bypass`, SRE_LOG_MAIN.syntax + 'background:#f44336;color:#fff;', err);
+      });
+
+    // 3. Carica il Patch Engine (Risposta)
+    import('./Biotech-file/BiotechPatchEngine.js')
+      .then(() => {
+        console.log(`%c💉 SRE Patch Engine: Online & Immune Response Armed`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.patch);
+      })
+      .catch(err => {
+        console.warn(`%c⚠️ SRE Patch Engine: Load Bypass`, SRE_LOG_MAIN.syntax + 'background:#f44336;color:#fff;', err);
+      });
   };
 
-  // Esecuzione in fase Idle (Priority: Low) per non competere con il rendering critico
   if (document.readyState === 'complete') {
-    // Piccolo delay aggiuntivo per garantire che il thread principale sia libero
     setTimeout(activateGuardian, 500); 
   } else {
     window.addEventListener('load', () => setTimeout(activateGuardian, 500));
   }
 })();
+
 /*
 ================================================================================
       BIOTECHPROJECT - SYSTEM AUDIT LOG & ARCHITECTURAL SIGN-OFF [v6.4.0-STABLE]
@@ -1388,7 +1281,7 @@ function updateLastModified(lang) {
   Immune System:    GUARDIAN_NEURAL_SYNC_HARDENED + MEDIA WATCHDOG [OK]
   Resilience:       BIOTECH_RESILIENCE_V6.4 (ON-DEMAND MEDIA ORCHESTRATION) [OK]
   Compliance:       WCAG 2.2 AAA / ADR-011-PRO / SRE-v6.4.0-STABLE-COMPLETE [OK]
-  Timestamp:        2026-05-08 16:30:00 UTC
+  Timestamp:        2026-05-08 17:00:00 UTC
 --------------------------------------------------------------------------------
   What a wicked game you play, to make me feel this way.
    What a wicked thing to do, to let me dream of you.
