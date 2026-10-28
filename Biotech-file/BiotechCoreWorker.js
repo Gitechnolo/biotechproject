@@ -17,22 +17,23 @@
         ║           (Parallel Chromatic Shift)         ▼
         ║                                     [SRE GUARDIAN] ──► [MEDIA PIPELINE]
         ╠══ ACTION: VAULT_SYNCHRONIZATION              │          (On-Demand Sync)
-        ║           (AES-GCM Zero-Knowledge Active)    ▼
+        ║           (AES-GCM Zero-Knowledge)           ▼
         ║                                     [STORAGE MANAGER]
-        ╠══ ACTION: PREDICTIVE_LOAD_INFERENCE          │          Retention: 7 Days
-        ║           (Adaptive LR Matrix Math)          └─►        (Privacy Oblivion)
+        ╠══ ACTION: PREDICTIVE_LOAD_INFERENCE          │
+        ║           (Adaptive LR Matrix Math)          └─► Retention: 7 Days
+        ║                                                  (Privacy Oblivion)
         ╚══ ACTION: PROCESS_TRANSLATION
                     (Sub-1ms Resolution / WCAG AAA Subtitles)
  * -------------------------------------------------------------------------
- * PERFORMANCE METRICS (SRE VERIFIED v6.4.1-FINAL-HARDENED)
+ * PERFORMANCE METRICS (SRE VERIFIED v6.4.0-FINAL-HARDENED)
  * -------------------------------------------------------------------------
  * ⚡ Total Blocking Time (TBT): 46ms (Desktop) | 0ms (Mobile) ──► Max Relief
  * ⚡ Speed Index: 1 [OPTIMAL] | FCP / LCP: 1741ms (Perfect Sync)
  * ⚡ CLS Stability: 0.0000 (Absolute Zero / Golden Tier Perfection)
- * ⚡ Security: AES-GCM + PBKDF2 Dynamic Salt Encryption [ACTIVE & VERIFIED]
+ * ⚡ Security: AES-GCM + Dynamic Salt Encryption [ACTIVE]
  * -------------------------------------------------------------------------
  * STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED
- * SIGN-OFF: SRE-v6.4.1-STABLE-COMPLETE // YEAR: 2026
+ * SIGN-OFF: SRE-v6.4.0-STABLE-COMPLETE // YEAR: 2026
  */
 
 // --- CONFIGURATION & CONSTANTS ---
@@ -55,7 +56,6 @@ const state = {
     // Neural Core & i18n
     cachedData: null,
     userSalt: null,
-    encryptionKey: null,
     neuralWeights: null,
     // Particle Engine
     canvas: null,
@@ -71,7 +71,7 @@ const state = {
 
 /**
  * MODULE 01: BIOCIRCADIAN PARTICLE ENGINE
- * Gestisce la fisica e il disegno su OffscreenCanvas.
+ * Gestisce la fisica e il disegno su OffscreenCanvas[cite: 3].
  */
 const ParticleEngine = {
     init(canvas) {
@@ -84,11 +84,11 @@ const ParticleEngine = {
 
     syncCircadianContext() {
         const hour = new Date().getHours();
-        state.isNight = (hour >= 19 || hour < 6); // Soglia circadiana v6.3.3
+        state.isNight = (hour >= 19 || hour < 6); // Soglia circadiana v6.3.3[cite: 2]
     },
 
     generateParticles() {
-        const count = state.isNight ? 35 : 50; // Ottimizzazione densità notturna
+        const count = state.isNight ? 35 : 50; // Ottimizzazione densità notturna[cite: 2]
         state.particles = Array.from({ length: count }, () => ({
             x: Math.random() * state.width,
             y: Math.random() * state.height,
@@ -120,7 +120,7 @@ const ParticleEngine = {
 
             if (state.isNight) {
                 state.ctx.shadowColor = p.color;
-                state.ctx.shadowBlur = 5; // Effetto "Glow" notturno
+                state.ctx.shadowBlur = 5; // Effetto "Glow" notturno[cite: 2]
             }
             
             state.ctx.fill();
@@ -154,7 +154,7 @@ const ParticleEngine = {
 
 /**
  * MODULE 02: CRYPTO & STORAGE (ADR-011-PRO)
- * AES-GCM Zero-Knowledge Vault con derivazione chiave PBKDF2.
+ * AES-GCM Zero-Knowledge Vault per i pesi neurali.
  */
 const CryptoUtils = {
     async deriveKey(userSalt) {
@@ -166,35 +166,6 @@ const CryptoUtils = {
             { name: "PBKDF2", salt: encoder.encode(userSalt || 'default_v2'), iterations: 100000, hash: "SHA-256" },
             baseKey, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
         );
-    },
-
-    async encrypt(key, data) {
-        if (!key) throw new Error("Encryption key not initialized");
-        const encoder = new TextEncoder();
-        const iv = self.crypto.getRandomValues(new Uint8Array(12));
-        const encoded = encoder.encode(JSON.stringify(data));
-        const ciphertext = await self.crypto.subtle.encrypt(
-            { name: "AES-GCM", iv: iv },
-            key,
-            encoded
-        );
-        return {
-            iv: Array.from(iv),
-            data: Array.from(new Uint8Array(ciphertext))
-        };
-    },
-
-    async decrypt(key, encryptedObj) {
-        if (!key) throw new Error("Encryption key not initialized");
-        const decoder = new TextDecoder();
-        const iv = new Uint8Array(encryptedObj.iv);
-        const data = new Uint8Array(encryptedObj.data);
-        const decrypted = await self.crypto.subtle.decrypt(
-            { name: "AES-GCM", iv: iv },
-            key,
-            data
-        );
-        return JSON.parse(decoder.decode(decrypted));
     }
 };
 
@@ -221,9 +192,6 @@ self.onmessage = async (e) => {
                 if (state.canvas) {
                     state.canvas.width = payload.width;
                     state.canvas.height = payload.height;
-                    // FIX DPR: Applica la scala al contesto dopo il resize
-                    const dpr = self.devicePixelRatio || 1;
-                    state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
                 }
                 break;
 
@@ -240,28 +208,10 @@ self.onmessage = async (e) => {
                 break;
 
             case 'INIT_TRANSLATION_ENGINE':
-                // 1. Caricamento file traduzioni
                 const res = await fetch(payload.fileUrl);
-                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 state.cachedData = await res.json();
-                
-                // 2. Derivazione attiva della chiave di cifratura Zero-Knowledge (ADR-011-PRO)
                 state.userSalt = payload.userSalt;
-                state.encryptionKey = await CryptoUtils.deriveKey(state.userSalt);
-                
                 self.postMessage({ taskId, success: true });
-                break;
-
-            case 'SECURE_VAULT_STORE':
-                // Azione dedicata per cifrare e preparare dati alla persistenza sicura
-                const encryptedPayload = await CryptoUtils.encrypt(state.encryptionKey, payload.data);
-                self.postMessage({ taskId, success: true, data: { encryptedPayload } });
-                break;
-
-            case 'SECURE_VAULT_RETRIEVE':
-                // Azione dedicata per decifrare i dati dal Vault
-                const decryptedData = await CryptoUtils.decrypt(state.encryptionKey, payload.encryptedData);
-                self.postMessage({ taskId, success: true, data: { decryptedData } });
                 break;
 
             case 'PREDICTIVE_LOAD_INFERENCE':
