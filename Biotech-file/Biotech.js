@@ -109,6 +109,47 @@ const workerQuery = (action, payload, timeout = 5000) => {
     });
 };
 
+/**
+ * ==========================================================================
+ * MODULE: BIOTECH ZERO-KNOWLEDGE VAULT BRIDGE (Client Interface)
+ * ==========================================================================
+ */
+const BiotechVault = {
+    /**
+     * Salva dati in modo sicuro e cifrato tramite il Worker (Zero-Knowledge)
+     * @param {string} key - Chiave identificativa del record
+     * @param {Object|string} data - Dati da cifrare e salvare
+     */
+    async save(key, data) {
+        try {
+            await workerQuery('SAVE_SECURE_DATA', { key, data }, 5000);
+            console.log(`%c🔒 Vault: Dati salvati e cifrati (${key})`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+            return true;
+        } catch (err) {
+            console.error(`%c❌ Vault Error (Save):`, "color: #f44336;", err);
+            throw err;
+        }
+    },
+
+    /**
+     * Recupera e decifra dati in modo sicuro dal Worker
+     * @param {string} key - Chiave identificativa del record
+     */
+    async load(key) {
+        try {
+            const data = await workerQuery('LOAD_SECURE_DATA', { key }, 5000);
+            console.log(`%c🔓 Vault: Dati recuperati e decifrati (${key})`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+            return data;
+        } catch (err) {
+            console.error(`%c❌ Vault Error (Load):`, "color: #f44336;", err);
+            throw err;
+        }
+    }
+};
+
+// vault accessibile globalmente se necessario
+window.BiotechVault = BiotechVault;
+
 // Inizializzazione con percorso corretto per la struttura cartelle
 workerQuery('INIT_TRANSLATION_ENGINE', { 
     fileUrl: '../lang/common.json' 
@@ -180,7 +221,7 @@ function updateCircadianState(isFirstRun = false) {
             const canvas = document.getElementById(canvasId);
             if (!canvas) return null;
 
-            // Trasferiamo il controllo del canvas al Worker (Offscreen Mode)[cite: 3]
+            // Trasferiamo il controllo del canvas al Worker (Offscreen Mode)
             let offscreen;
             try {
                 offscreen = canvas.transferControlToOffscreen();
@@ -193,7 +234,7 @@ function updateCircadianState(isFirstRun = false) {
             const width = window.innerWidth * dpr;
             const height = window.innerHeight * dpr;
 
-            // Inizializziamo il Worker con il Canvas e le dimensioni corrette[cite: 3]
+            // Inizializziamo il Worker con il Canvas e le dimensioni corrette
             BiotechWorker.postMessage({
                 action: 'INIT_OFFSCREEN_CANVAS',
                 payload: {
@@ -202,7 +243,7 @@ function updateCircadianState(isFirstRun = false) {
                     height: height,
                     isNight: state.isNight
                 }
-            }, [offscreen]); // Il canvas viene trasferito fisicamente[cite: 3]
+            }, [offscreen]); // Il canvas viene trasferito fisicamente
 
             const resize = () => {
                 const newDpr = window.devicePixelRatio || 1;
@@ -252,7 +293,7 @@ function updateCircadianState(isFirstRun = false) {
 
             // Gestione Sync con il Worker
             if (!state.particlesController && particles) {
-                // Primo avvio: Inizializzazione Lazy del controller Offscreen[cite: 3, 7]
+                // Primo avvio: Inizializzazione Lazy del controller Offscreen
                 state.particlesController = ParticlesEngine.init('particles-canvas');
                 if (state.particlesController) state.particlesController.resize();
             } else {
@@ -263,7 +304,7 @@ function updateCircadianState(isFirstRun = false) {
                 });
             }
         } else {
-            // STATO: IBERNATO (PRIVACY OBLIVION)[cite: 3, 7]
+            // STATO: IBERNATO (PRIVACY OBLIVION)
             document.body.classList.remove('qredshift-active');
             document.body.classList.add('qredshift-disabled');
             document.body.style.filter = 'none';
@@ -272,7 +313,7 @@ function updateCircadianState(isFirstRun = false) {
             if (dna) dna.style.display = 'none';
 
             // Non distruggiamo l'oggetto controller (perché il canvas è già trasferito)
-            // Chiediamo al Worker di fermare il loop di rendering[cite: 7]
+            // Chiediamo al Worker di fermare il loop di rendering
             BiotechWorker.postMessage({
                 action: 'TOGGLE_SYSTEM',
                 payload: { isActive: false }

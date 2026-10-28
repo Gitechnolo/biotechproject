@@ -3,7 +3,7 @@
  * -------------------------------------------------------------------------
  * STRATEGY: Off-Main-Thread Pipeline | Zero-Knowledge | ADR-011-PRO
  * ROLE: Unified Engine for Rendering (OffscreenCanvas), i18n & Neural Logic
- * REINFORCEMENT: On-Demand Media Pipeline Integration (May 2026 Audit)
+ * REINFORCEMENT: On-Demand Media Pipeline Integration & Secure Vault [2026]
  * -------------------------------------------------------------------------
    NEURAL & VISUAL WORKER TOPOLOGY 2026 (FINAL HARDENED)
    =====================================================
@@ -71,7 +71,7 @@ const state = {
 
 /**
  * MODULE 01: BIOCIRCADIAN PARTICLE ENGINE
- * Gestisce la fisica e il disegno su OffscreenCanvas[cite: 3].
+ * Gestisce la fisica e il disegno su OffscreenCanvas.
  */
 const ParticleEngine = {
     init(canvas) {
@@ -84,11 +84,11 @@ const ParticleEngine = {
 
     syncCircadianContext() {
         const hour = new Date().getHours();
-        state.isNight = (hour >= 19 || hour < 6); // Soglia circadiana v6.3.3[cite: 2]
+        state.isNight = (hour >= 19 || hour < 6); // Soglia circadiana v6.3.3
     },
 
     generateParticles() {
-        const count = state.isNight ? 35 : 50; // Ottimizzazione densità notturna[cite: 2]
+        const count = state.isNight ? 35 : 50; // Ottimizzazione densità notturna
         state.particles = Array.from({ length: count }, () => ({
             x: Math.random() * state.width,
             y: Math.random() * state.height,
@@ -120,7 +120,7 @@ const ParticleEngine = {
 
             if (state.isNight) {
                 state.ctx.shadowColor = p.color;
-                state.ctx.shadowBlur = 5; // Effetto "Glow" notturno[cite: 2]
+                state.ctx.shadowBlur = 5; // Effetto "Glow" notturno
             }
             
             state.ctx.fill();
@@ -153,8 +153,8 @@ const ParticleEngine = {
 };
 
 /**
- * MODULE 02: CRYPTO & STORAGE (ADR-011-PRO)
- * AES-GCM Zero-Knowledge Vault per i pesi neurali.
+ * MODULE 02: CRYPTO & STORAGE (ADR-011-PRO HARDENED)
+ * AES-GCM Zero-Knowledge Vault per i dati utente e i pesi neurali.
  */
 const CryptoUtils = {
     async deriveKey(userSalt) {
@@ -166,6 +166,116 @@ const CryptoUtils = {
             { name: "PBKDF2", salt: encoder.encode(userSalt || 'default_v2'), iterations: 100000, hash: "SHA-256" },
             baseKey, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
         );
+    },
+
+    async encrypt(data, userSalt) {
+        const key = await this.deriveKey(userSalt);
+        const iv = self.crypto.getRandomValues(new Uint8Array(12));
+        const encoded = new TextEncoder().encode(JSON.stringify(data));
+        const ciphertext = await self.crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, encoded);
+        return {
+            ciphertext: Array.from(new Uint8Array(ciphertext)),
+            iv: Array.from(iv)
+        };
+    },
+
+    async decrypt(ciphertextArray, ivArray, userSalt) {
+        const key = await this.deriveKey(userSalt);
+        const ciphertext = new Uint8Array(ciphertextArray);
+        const iv = new Uint8Array(ivArray);
+        const decrypted = await self.crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+        return JSON.parse(new TextDecoder().decode(decrypted));
+    }
+};
+
+/**
+ * INDEXEDDB SECURE VAULT MANAGER (Zero-Knowledge Persistence & 7-Day Oblivion)
+ */
+const VaultDB = {
+    open() {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(CONFIG.DB_NAME, CONFIG.VERSION);
+            request.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(CONFIG.STORE_NAME)) {
+                    db.createObjectStore(CONFIG.STORE_NAME);
+                }
+            };
+            request.onsuccess = (e) => resolve(e.target.result);
+            request.onerror = (e) => reject(e.target.error);
+        });
+    },
+
+    // Automatic purge for expired data exceeding the 7-day ethical retention window
+    async purgeExpired(db) {
+        return new Promise((resolve) => {
+            const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
+            const store = tx.objectStore(CONFIG.STORE_NAME);
+            const req = store.openCursor();
+            const now = Date.now();
+            const maxAge = CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000;
+
+            req.onsuccess = (e) => {
+                const cursor = e.target.result;
+                if (cursor) {
+                    const val = cursor.value;
+                    if (val && val.timestamp && (now - val.timestamp > maxAge)) {
+                        store.delete(cursor.key);
+                        console.log(`[Vault] Purged expired secure record: ${cursor.key} (Exceeded 7-day oblivion)`);
+                    }
+                    cursor.continue();
+                } else {
+                    resolve();
+                }
+            };
+            req.onerror = () => resolve();
+        });
+    },
+
+    async set(key, encryptedBundle) {
+        const db = await this.open();
+        await this.purgeExpired(db); // Run cleanup before writing
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
+            const store = tx.objectStore(CONFIG.STORE_NAME);
+            
+            const bundleWithTimestamp = {
+                ...encryptedBundle,
+                timestamp: Date.now()
+            };
+
+            store.put(bundleWithTimestamp, key);
+            tx.oncomplete = () => {
+                console.log(`[Vault] Secure data encrypted and stored for key: "${key}"`);
+                resolve(true);
+            };
+            tx.onerror = () => reject(tx.error);
+        });
+    },
+
+    async get(key) {
+        const db = await this.open();
+        await this.purgeExpired(db); // Run cleanup during read
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(CONFIG.STORE_NAME, 'readonly');
+            const store = tx.objectStore(CONFIG.STORE_NAME);
+            const req = store.get(key);
+            req.onsuccess = () => {
+                const res = req.result;
+                if (!res) {
+                    resolve(null);
+                    return;
+                }
+                const now = Date.now();
+                const maxAge = CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000;
+                if (res.timestamp && (now - res.timestamp > maxAge)) {
+                    resolve(null);
+                } else {
+                    resolve(res);
+                }
+            };
+            req.onerror = () => reject(req.error);
+        });
     }
 };
 
@@ -215,9 +325,27 @@ self.onmessage = async (e) => {
                 break;
 
             case 'PREDICTIVE_LOAD_INFERENCE':
-                // Calcolo neurale per Speed Index 1
                 const score = (payload.velocity * 0.5) + (payload.density * 0.2);
                 self.postMessage({ taskId, success: true, data: { score } });
+                break;
+
+            // --- ZERO-KNOWLEDGE VAULT HANDLERS ---
+            case 'SAVE_SECURE_DATA':
+                if (!state.userSalt) throw new Error("Worker not initialized with user salt.");
+                const encrypted = await CryptoUtils.encrypt(payload.data, state.userSalt);
+                await VaultDB.set(payload.key, encrypted);
+                self.postMessage({ taskId, success: true });
+                break;
+
+            case 'LOAD_SECURE_DATA':
+                if (!state.userSalt) throw new Error("Worker not initialized with user salt.");
+                const storedBundle = await VaultDB.get(payload.key);
+                if (!storedBundle) {
+                    self.postMessage({ taskId, success: true, data: null });
+                    break;
+                }
+                const decryptedData = await CryptoUtils.decrypt(storedBundle.ciphertext, storedBundle.iv, state.userSalt);
+                self.postMessage({ taskId, success: true, data: decryptedData });
                 break;
 
             default:
