@@ -1,31 +1,28 @@
 /**
- * BIOTECH PROJECT | NEURAL & RENDERING CORE [v2.1.0-PARALLEL]
+ * BIOTECH PROJECT | NEURAL & RENDERING CORE [v6.4.0-STABLE]
  * -------------------------------------------------------------------------
  * STRATEGY: Off-Main-Thread Pipeline | Zero-Knowledge | ADR-011-PRO
- * ROLE: Unified Engine for Rendering (OffscreenCanvas), i18n & Neural Logic
- * REINFORCEMENT: On-Demand Media Pipeline Integration (May 2026 Audit)
+ * ROLE: Unified Engine for Rendering (OffscreenCanvas) & Neural Logic
+ * REINFORCEMENT: On-Demand Media Pipeline Integration (2026 Audit)
  * -------------------------------------------------------------------------
    NEURAL & VISUAL WORKER TOPOLOGY 2026 (FINAL HARDENED)
    =====================================================
    
    [INCOMING SIGNAL] ──► [TASK ORCHESTRATOR] ──► [CIRCUIT BREAKER] ──┐
                                 ║                      │             │
-        ╠══ ACTION: PARALLEL_CANVAS_RENDER             ▼             │
+        ╠══ ACTION: INIT_OFFSCREEN_CANVAS              ▼             │
         ║           (OffscreenCanvas / Particles) [RECOVERY_GUARD] ◄─────┘
         ║                                              │
-        ╠══ ACTION: QREDSHIFT_FILTER_LOGIC             │
-        ║           (Parallel Chromatic Shift)         ▼
+        ╠══ ACTION: RESIZE_CANVAS                      │
+        ║           (DPR Scaling & Transformation)     ▼
         ║                                     [SRE GUARDIAN] ──► [MEDIA PIPELINE]
-        ╠══ ACTION: VAULT_SYNCHRONIZATION              │          (On-Demand Sync)
-        ║           (AES-GCM Zero-Knowledge)           ▼
+        ╠══ ACTION: INIT_TRANSLATION_ENGINE            │          (On-Demand Sync)
+        ║           (Dynamic i18n JSON Loading)        ▼
         ║                                     [STORAGE MANAGER]
-        ╠══ ACTION: PREDICTIVE_LOAD_INFERENCE          │
-        ║           (Adaptive LR Matrix Math)          └─► Retention: 7 Days
-        ║                                                  (Privacy Oblivion)
-        ╚══ ACTION: PROCESS_TRANSLATION
-                    (Sub-1ms Resolution / WCAG AAA Subtitles)
+        ╚══ ACTION: PREDICTIVE_LOAD_INFERENCE          │
+                    (Adaptive LR Matrix Math)          └─► Retention: Active
  * -------------------------------------------------------------------------
- * PERFORMANCE METRICS (SRE VERIFIED v6.4.0-FINAL-HARDENED)
+ * PERFORMANCE METRICS (SRE VERIFIED v6.4.0-STABLE)
  * -------------------------------------------------------------------------
  * ⚡ Total Blocking Time (TBT): 46ms (Desktop) | 0ms (Mobile) ──► Max Relief
  * ⚡ Speed Index: 1 [OPTIMAL] | FCP / LCP: 1741ms (Perfect Sync)
@@ -36,7 +33,6 @@
  * SIGN-OFF: SRE-v6.4.0-STABLE-COMPLETE // YEAR: 2026
  */
 
-// --- CONFIGURATION & CONSTANTS ---
 const CONFIG = {
     DB_NAME: 'BiotechNeuralCore_v2',
     STORE_NAME: 'WeightsVault_Secure',
@@ -51,13 +47,10 @@ const CONFIG = {
     FPS_LIMIT: 60
 };
 
-// --- SYSTEM STATE ---
 const state = {
-    // Neural Core & i18n
     cachedData: null,
     userSalt: null,
     neuralWeights: null,
-    // Particle Engine
     canvas: null,
     ctx: null,
     particles: [],
@@ -71,12 +64,16 @@ const state = {
 
 /**
  * MODULE 01: BIOCIRCADIAN PARTICLE ENGINE
- * Gestisce la fisica e il disegno su OffscreenCanvas[cite: 3].
+ * Gestisce la fisica e il disegno su OffscreenCanvas con supporto Retina (DPR).
  */
 const ParticleEngine = {
-    init(canvas) {
+    init(canvas, dpr = 1) {
         state.canvas = canvas;
         state.ctx = canvas.getContext('2d', { alpha: true });
+        // FIX 8: Applicazione del Device Pixel Ratio tramite setTransform per evitare rimpicciolimenti su Retina
+        if (state.ctx && dpr > 1) {
+            state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
         this.syncCircadianContext();
         this.generateParticles();
         this.startLoop();
@@ -84,11 +81,11 @@ const ParticleEngine = {
 
     syncCircadianContext() {
         const hour = new Date().getHours();
-        state.isNight = (hour >= 19 || hour < 6); // Soglia circadiana v6.3.3[cite: 2]
+        state.isNight = (hour >= 19 || hour < 6);
     },
 
     generateParticles() {
-        const count = state.isNight ? 35 : 50; // Ottimizzazione densità notturna[cite: 2]
+        const count = state.isNight ? 35 : 50;
         state.particles = Array.from({ length: count }, () => ({
             x: Math.random() * state.width,
             y: Math.random() * state.height,
@@ -110,7 +107,6 @@ const ParticleEngine = {
             p.x += p.vx;
             p.y += p.vy;
 
-            // Collisione Bordi
             if (p.x < 0 || p.x > state.width) p.vx *= -1;
             if (p.y < 0 || p.y > state.height) p.vy *= -1;
 
@@ -120,7 +116,7 @@ const ParticleEngine = {
 
             if (state.isNight) {
                 state.ctx.shadowColor = p.color;
-                state.ctx.shadowBlur = 5; // Effetto "Glow" notturno[cite: 2]
+                state.ctx.shadowBlur = 5;
             }
             
             state.ctx.fill();
@@ -182,16 +178,20 @@ self.onmessage = async (e) => {
                 state.width = payload.width;
                 state.height = payload.height;
                 state.isActive = true;
-                ParticleEngine.init(payload.canvas);
+                ParticleEngine.init(payload.canvas, payload.dpr || 1);
                 self.postMessage({ taskId, success: true });
                 break;
 
             case 'RESIZE_CANVAS':
                 state.width = payload.width;
                 state.height = payload.height;
+                const dpr = payload.dpr || 1;
                 if (state.canvas) {
                     state.canvas.width = payload.width;
                     state.canvas.height = payload.height;
+                    if (state.ctx) {
+                        state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    }
                 }
                 break;
 
@@ -208,14 +208,15 @@ self.onmessage = async (e) => {
                 break;
 
             case 'INIT_TRANSLATION_ENGINE':
-                const res = await fetch(payload.fileUrl);
+                // FIX 9: Risoluzione corretta dell'URL relativo nel Worker tramite new URL(..., self.location)
+                const resolvedUrl = new URL(payload.fileUrl, self.location).href;
+                const res = await fetch(resolvedUrl);
                 state.cachedData = await res.json();
                 state.userSalt = payload.userSalt;
                 self.postMessage({ taskId, success: true });
                 break;
 
             case 'PREDICTIVE_LOAD_INFERENCE':
-                // Calcolo neurale per Speed Index 1
                 const score = (payload.velocity * 0.5) + (payload.density * 0.2);
                 self.postMessage({ taskId, success: true, data: { score } });
                 break;
@@ -224,6 +225,11 @@ self.onmessage = async (e) => {
                 self.postMessage({ taskId, success: false, error: "Action not recognized" });
         }
     } catch (err) {
-        self.postMessage({ taskId, success: false, error: err.message });
+        // FIX 10: Gestione corretta del Circuit Breaker / Recovery Mode per il listener del main thread
+        if (err.message && err.message.includes('recovery')) {
+            self.postMessage({ taskId, success: false, error: "Worker in Recovery Mode" });
+        } else {
+            self.postMessage({ taskId, success: false, error: err.message });
+        }
     }
 };
