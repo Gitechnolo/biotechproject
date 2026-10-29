@@ -34,7 +34,7 @@
 
 const BiotechPatchEngine = (() => {
     let lastAction = 0;
-    const COOLDOWN = 5000; // Allineato al Guardian per evitare eventi fantasma
+    const COOLDOWN = 5000; // Allineato al Guardian, evita eventi fantasma
     const HEALING_TIMEOUT = 10000; // 10 secondi di quiete per tornare a STABLE
 
     /**
@@ -53,10 +53,10 @@ const BiotechPatchEngine = (() => {
             const currentStatus = document.documentElement.getAttribute('data-resilience');
 
             // PROTEZIONE GERARCHICA:
-            // Non sovrascrivere mai se siamo già in modalità 'high' (massima protezione).
+            // Non sovrascrive mai se già in modalità 'high' (massima protezione).
             if (currentStatus !== 'high') {
                 
-                // Eleviamo lo stato a 'clinical'
+                // Eleva lo stato a 'clinical'
                 document.documentElement.setAttribute('data-resilience', 'clinical');
                 
                 // Aggiornamento ARIA Buffer per l'accessibilità (WCAG 2.2 AAA)
@@ -68,7 +68,7 @@ const BiotechPatchEngine = (() => {
                 // Reset del timer di guarigione ad ogni nuovo evento
                 resetHealingTimer();
 
-                // Log diagnostico in stile SRE
+                // Log diagnostico SRE
                 const logStyle = (typeof SRE_LOG_MAIN !== 'undefined') 
                     ? SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.patch 
                     : 'background: #ff9800; color: #fff; padding: 2px 5px; font-weight: bold; border-radius: 3px;';
