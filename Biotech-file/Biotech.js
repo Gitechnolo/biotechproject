@@ -20,8 +20,8 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (FINAL HARDENED v6.4.0)
  ║   ╠── SERVICE: BiotechResilience.js [ON-DEMAND MEDIA ORCHESTRATION]
  ║   ║            (Network Latency / TTFB / Geometric Aspect-Ratio Lock)
  ║   ║
- ║   ╚── SERVICE: BiotechPatchEngine.js [INTELLIGENT IMMUNE RESPONSE]
- ║                (Event-Driven Cooldown / Hierarchy Protection & A11y Subtitles)
+ ║   ╚── SERVICE: BiotechPatchEngine.js [BI-DIRECTIONAL STATE RECOVERY]
+ ║                (Event-Driven Cooldown / Quiet Window Watchdog & Auto-Healing)
  ║
  ╠══ COMPUTATIONAL & RENDERING CORE (Off-Main-Thread) [v2.1.0-PARALLEL]
  ║   ║
@@ -56,7 +56,7 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (FINAL HARDENED v6.4.0)
 * CLS: 0.0000 (Absolute Zero Mobile Lock) ──► Golden Tier Architecture
 * Security: ADR-011-PRO (Zero-Knowledge + AES-GCM) [ACTIVE]
 -------------------------------------------------------------------------
-* STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // 2026
+* STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // AUTO_HEALING_ACTIVE 
 */
 const SRE_LOG_MAIN = {
   syntax: 'font-family: "Segoe UI", Tahoma, sans-serif; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 3px;',
@@ -1426,7 +1426,7 @@ function updateLastModified(lang) {
   Performance:      SPEED_INDEX: 1 | FCP / LCP: 1741ms | TBT: 46ms (0ms Mobile)
   Visual Stability: CLS: 0.0000 (Absolute Zero / Mobile Geometric Lock) [GOLDEN]
   Neural Memory:    INDEXEDDB_ETHICAL_RETENTION (7-DAY OBLIVION) [OK]
-  Immune System:    GUARDIAN_NEURAL_SYNC_HARDENED + MEDIA WATCHDOG [OK]
+  Immune System:    GUARDIAN_NEURAL_SYNC_HARDENED + MEDIA WATCHDOG + AUTO_HEALING [OK]
   Resilience:       BIOTECH_RESILIENCE_V6.4 (ON-DEMAND MEDIA ORCHESTRATION) [OK]
   Compliance:       WCAG 2.2 AAA / ADR-011-PRO / SRE-v6.4.0-STABLE-COMPLETE [OK]
   Timestamp:        2026-05-08 16:30:00 UTC

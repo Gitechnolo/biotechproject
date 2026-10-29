@@ -1,19 +1,20 @@
 /**
  * =============================================================================
- * BIOTECH-SRE-PATCH-ENGINE // VERSION 6.4.0-HARDENED (INTELLIGENT IMMUNE RESPONSE)
+ * BIOTECH-SRE-PATCH-ENGINE // VERSION 6.4.0-HARDENED (BI-DIRECTIONAL AUTO-HEALING)
  * =============================================================================
- * [STRATEGY]: Event-Driven Resilience Scaler & Media Orchestration Shield
- * [GOAL]: Dynamic UX adaptation & Zero-Jank Containment without safety downgrades.
+ * [STRATEGY]: Quiet Window Watchdog & Event-Driven Resilience Scaler
+ * [GOAL]: Dynamic UX adaptation & Zero-Jank Containment with automatic recovery.
  * [COMPLIANCE]: ADR-008 (Anti-Loop) / WCAG 2.2 AAA (Synchronized Subtitles & A11Y).
  * -----------------------------------------------------------------------------
- * 1. SIGNAL PROCESSING (Event-Driven)
+ * 1. SIGNAL PROCESSING & WATCHDOG (Event-Driven & Quiet Window)
  * ║─► Receiver: Listens for 'biotech:resilience-needed' from SRE Guardian.
+ * ║─► Auto-Healing Watchdog: Polling interval (2s) checks for 10s quiescence to restore 'STABLE'.
  * ║─► Analysis: Parses Telemetry Reports (Long Tasks / Media Lazy-Loading Latency).
  *
- * 2. EXECUTION LOGIC (State Hierarchy & Media Synergy) [v6.4.0-FINAL]
+ * 2. EXECUTION LOGIC (State Hierarchy & Self-Healing) [v6.4.0-FINAL]
  * ║─► High Priority: If state is 'HIGH' (Memory/3G), no downgrade to 'CLINICAL'.
  * ║─► Reactive: Escalates 'STABLE' to 'CLINICAL' upon stress detection.
- * ║─► Media Enforcement: Triggers strict aspect-ratio containment to lock CLS.
+ * ║─► Bi-Directional Recovery: Automatically reverts to 'STABLE' after 10s of quiet.
  * ║─► Frame Sync: Uses requestAnimationFrame for zero-jank UI updates.
  *
  * 3. FEEDBACK & ACCESSIBILITY
@@ -27,21 +28,23 @@
  * 💎 Geometric Lock: CLS 0.0000 achieved during fallback remediation
  * ♿ Hardened A11y Layer: Keyboard controls & dual subtitles at zero overhead
  * -----------------------------------------------------------------------------
- * STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // 2026
+ * STATUS: INFRASTRUCTURE_FULLY_STABILIZED // AUTO_HEALING_ACTIVE // 2026
  * =============================================================================
  */
 
 const BiotechPatchEngine = (() => {
     let lastAction = 0;
-    const COOLDOWN = 5000; // 5s di "Stato di Grazia" (ADR-008)
+    const COOLDOWN = 5000; // Allineato al Guardian per evitare eventi fantasma
+    const HEALING_TIMEOUT = 10000; // 10 secondi di quiete per tornare a STABLE
 
     /**
      * Gestisce l'emergenza segnalata dal Guardian.
-     * Implementa la protezione gerarchica: HIGH > CLINICAL > STABLE
      */
     const handleEmergency = (event) => {
         const now = performance.now();
-        if (now - lastAction < COOLDOWN) return; // Protezione Anti-Loop
+        
+        // Protezione Anti-Loop (ADR-008)
+        if (now - lastAction < COOLDOWN) return;
 
         lastAction = now;
         const report = event.detail;
@@ -62,6 +65,9 @@ const BiotechPatchEngine = (() => {
                     buffer.innerText = "Ottimizzazione automatica delle performance in corso per garantire la stabilità.";
                 }
 
+                // Reset del timer di guarigione ad ogni nuovo evento
+                resetHealingTimer();
+
                 // Log diagnostico in stile SRE
                 const logStyle = (typeof SRE_LOG_MAIN !== 'undefined') 
                     ? SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.patch 
@@ -69,11 +75,41 @@ const BiotechPatchEngine = (() => {
                 
                 console.log(`%c🛠️ Patch: Applied Clinical Mode (${report.type}: ${report.value}ms)`, logStyle);
             } else {
-                // Notifica silenziosa: il sistema è già al massimo della protezione
-                console.log(`%c🛡️ Patch: Hierarchy Shield Active - System already in HIGH mode. Ignoring Clinical downgrade.`, 
+                console.log(`%c🛡️ Patch: Hierarchy Shield Active - System already in HIGH mode.`, 
                     'color: #00ffa2; font-family: monospace; font-size: 10px;');
             }
         });
+    };
+
+    /**
+     * Resetta il timer di guarigione
+     */
+    const resetHealingTimer = () => {
+        lastAction = performance.now();
+    };
+
+    /**
+     * Verifica se il sistema può tornare a STABLE
+     */
+    const checkHealing = () => {
+        const now = performance.now();
+        const currentStatus = document.documentElement.getAttribute('data-resilience');
+
+        // Se siamo in clinical e non abbiamo ricevuto stress per HEALING_TIMEOUT
+        if (currentStatus === 'clinical' && (now - lastAction > HEALING_TIMEOUT)) {
+            document.documentElement.removeAttribute('data-resilience');
+            
+            // Reset del segnale di persistenza in localStorage
+            localStorage.removeItem('biotech_resilience_signal');
+
+            const buffer = document.getElementById('biotech-alert-buffer');
+            if (buffer) {
+                buffer.innerText = "Sistema tornato allo stato ottimale.";
+            }
+            
+            console.log(`%c🌿 Patch: System recovered to STABLE mode.`, 
+                'background: #4CAF50; color: #fff; padding: 2px 5px; font-weight: bold;');
+        }
     };
 
     return {
@@ -83,11 +119,14 @@ const BiotechPatchEngine = (() => {
         listen: () => {
             window.addEventListener('biotech:resilience-needed', handleEmergency);
             
+            // Avvia il loop di guarigione automatica
+            setInterval(checkHealing, 2000); // Controlla ogni 2 secondi
+
             const readyStyle = (typeof SRE_LOG_MAIN !== 'undefined') 
                 ? SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.patch 
                 : 'background: #333; color: #ff9800; padding: 2px 5px; border: 1px solid #ff9800;';
                 
-            console.log(`%c💉 Patch Engine: System Ready & Immune Response Active`, readyStyle);
+            console.log(`%c💉 Patch Engine: System Ready & Auto-Healing Active`, readyStyle);
         }
     };
 })();
