@@ -55,6 +55,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .yt-video-controls { display: flex; position: absolute; bottom: 0; left: 0; z-index: 10; transform: translateY(100%); transition: transform 0.3s ease; }
 /* Mostra i controlli al passaggio del mouse o quando il video è attivo */
 #ytVideoContainer:hover .yt-video-controls { transform: translateY(0); }
+/* === Override Banner Team (21:9) === */
+.infografica-img.team-banner{ aspect-ratio: 21 / 9 !important; width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto}
+.infografica-container.team-banner-container{ margin: 0 auto; max-width: 1292px; text-align: center}
+/* === Fine Override Banner Team === */
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -138,6 +142,29 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
           </div>
 
         </div>
+
+<figure class="infografica-container team-banner-container">
+  <figcaption class="sansation-light-italic biotechcenter bio-progress-data">
+    <span data-lang-key="team-banner">
+      Dati di performance progetto.
+    </span>
+  </figcaption>
+  <img class="infografica-img transparent specials-img team-banner" 
+       src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team.avif" 
+       srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team-364.avif 364w, 
+               https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team-576.avif 576w, 
+               https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team-650.avif 650w, 
+               https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team-850.avif 850w, 
+               https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team-1292.avif 1292w, 
+               https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team.avif 1408w" 
+       sizes="(min-width: 1324px) 1292px, (min-width: 768px) 571px, calc(100vw - 32px)" 
+       alt="Il team di BiotechProject discute i dati di performance del progetto. Sullo sfondo, un display mostra le metriche desktop e mobile (FCP, LCP, TBT, CLS, Speed Index)." 
+       loading="lazy" 
+       decoding="async" 
+       width="1408" 
+       height="597">
+</figure>     
+
 <!-- ==========================================================
 SEZIONE: Meet The Staff (staff-section)
 DESCRIZIONE: Presentazione della comunità di professionisti, valori etici (inclusione, trasparenza), missione di accessibilità scientifica, contributo Open Knowledge e invito alla collaborazione.
