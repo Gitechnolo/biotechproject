@@ -58,6 +58,7 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 /* === Override Banner Team (21:9) === */
 .infografica-img.team-banner{ aspect-ratio: 21 / 9 !important; width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto}
 .infografica-container.team-banner-container{ margin: 10px auto 15px auto; max-width: 1292px; text-align: center}
+.ext-link-icon {text-decoration: none; display: inline-block;}
 /* === Fine Override Banner Team === */
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
@@ -145,10 +146,15 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 
 <figure class="infografica-container team-banner-container">
   <figcaption class="sansation-light-italic biotechcenter bio-progress-data">
-    <span data-lang-key="team-banner">
-      Dati di performance progetto.
-    </span>
-  </figcaption>
+  <a href="https://gitechnolo.github.io/biotechproject/docs/compliance/Page_Speed_test.avif"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Dati di performance progetto (si apre in una nuova scheda)"> 
+    <span aria-hidden="true" class="ext-link-icon">🔗</span> 
+    <span data-lang-key="team-banner">Dati di performance progetto</span>
+    <span class="visually-hidden">(report Lighthouse del 4 ottobre 2026)</span>
+  </a>
+</figcaption>
   <img class="infografica-img transparent specials-img team-banner" 
        src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team.avif" 
        srcset="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Team-364.avif 364w, 
