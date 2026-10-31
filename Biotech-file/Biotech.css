@@ -162,6 +162,7 @@ a[target="_blank"] span[aria-hidden="true"] {
     text-decoration: none;
     margin-right: 4px;
 }
+.ext-link-icon {text-decoration: none; display: inline-block;}
 img {border-radius: 6px; max-width: 100%; height: auto; display: block;}   
 p {font-family: 'Sansation', Tahoma, Verdana, sans-serif; font-size: 16px; font-weight: normal; color: rgb(212, 211, 211); text-shadow: 0 0 4px rgba(138, 43, 226, 0.6), 0 0 8px rgba(138, 43, 226, 0.3); transition: color 1.3s, text-shadow 1.8s; cursor: default;}
 p:hover {color: #ffffff; text-shadow: 0 0 4px rgba(138, 43, 226, 0.5), 0 0 6px rgba(138, 43, 226, 0.2); transition: color 0.3s ease, text-shadow 0.3s ease; cursor: default;}
