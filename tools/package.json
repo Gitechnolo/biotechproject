@@ -8,7 +8,7 @@
     "generate": "node generate-performance.js"
   },
   "dependencies": {
-    "lighthouse": "^12.0.0",
+    "lighthouse": "^13.6.0",
     "chrome-launcher": "^0.15.1"
   },
   "engines": {
