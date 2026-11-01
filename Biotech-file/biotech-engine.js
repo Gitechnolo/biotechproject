@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DIZIONARI SCIENTIFICI INTEGRALI ---
     const bioExplanations = {
         it: {
-            "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Meccanismo di pulizia del SNC. Durante il sonno, gli astrociti facilitano il lavaggio dei rifiuti metabolici tramite il liquido cerebrospinale.",
+            "RIGENERAZIONE GLINFATICA": "SISTEMA GLINFATICO: Pulizia del SNC tramite liquido cerebrospinale durante il sonno.",
             "PULIZIA CEREBRALE": "Attivazione dei flussi glinfatici per la rimozione di beta-amiloide e detriti metabolici neurali.",
             "INIZIO PULIZIA": "Transizione biochimica: calo della temperatura centrale e avvio della pulizia glinfatica.",
             "PICCO DI CORTISOLO": "Fase di massima attivazione surrenale per preparare l'organismo alle richieste energetiche diurne.",
@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "BUIO TOTALE": "Assenza di fotoni per massimizzare la secrezione di melatonina.",
             "LUCE ART. 10K LUX": "Fotobiomodulazione invernale: simula lo spettro solare.",
             "SOLE DIRETTO 10M": "Ottimizza il rilascio di melatonina circa 14 ore dopo.",
-            "INTEGRA VITAMINA D": "Sintesi ridotta per inclinazione assiale. Integrare Vitamina D3 per supportare l'omeostasi minerale e l'espressione genica circadiana.",
-            "STIMOLO ORESSIGENICO": "Fase di attivazione dei segnali della fame mediata da grelina e neuropeptide Y.",
+            "INTEGRA VITAMINA D": "Sintesi ridotta. Integrare Vitamina D3 per l'omeostasi minerale.",
+            "STIMOLO ORESSIGENICO": "Attivazione dei segnali della fame mediata da grelina.",
             "IDRATAZIONE + SALI": "Ripristino elettroliti per il potenziale d'azione.",
             "THERMO-RELAX (CALDO)": "Favorisce la vasodilatazione per abbassare la temperatura.",
             "ALLENAMENTO RESISTENZA": "Stimolo meccanico per massimizzare il rilascio di miochine.",
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "default": "Dato bio-sincronizzato tramite modulo Biotech Core."
         },
         en: {
-            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance mechanism. During sleep, astrocytes facilitate waste flushing via cerebrospinal fluid.",
+            "GLYMPHATIC REGEN": "GLYMPHATIC SYSTEM: CNS clearance via cerebrospinal fluid during sleep.",
             "BRAIN CLEARANCE": "Activation of glymphatic flows for the removal of beta-amyloid and neural metabolic debris.",
             "CLEARANCE START": "Biochemical transition: core temperature drop and start of glymphatic clearance.",
             "CORTISOL SPIKE": "Peak adrenal activation phase to prepare the organism for daytime energy demands.",
@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "TOTAL DARKNESS": "Absence of photons to maximize pineal melatonin production.",
             "10K LUX ART. LIGHT": "Winter photobiomodulation: simulates the full solar spectrum.",
             "DIRECT SUN 10M": "Optimizes melatonin release approximately 14 hours later.",
-            "VITAMIN D INTAKE": "Reduced synthesis due to axial tilt. Supplement Vitamin D3 to support mineral homeostasis and circadian gene expression.",
-            "OREXIGENIC STIMULUS": "Hunger signal activation mediated by ghrelin and neuropeptide Y.",
+            "VITAMIN D INTAKE": "Reduced synthesis. Supplement D3 for mineral homeostasis.",
+            "OREXIGENIC STIMULUS": "Hunger signal activation driven by ghrelin.",
             "HYDRATION + SALTS": "Electrolyte restoration for optimal neural action potential.",
             "WARM THERMO-RELAX": "Promotes vasodilation to help lower core body temperature.",
             "RESISTANCE TRAINING": "Mechanical stimulus to maximize myokine release.",
