@@ -66,6 +66,7 @@ html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var
 .portfolio-row { display: flex; flex-wrap: wrap; gap: 1.5rem; min-height: 300px; }
 .metric { opacity: 0; transform: translateY(15px); }
 .portfolio-loaded .metric{ opacity: 1; transform: translateY(0); transition: opacity 0.6s ease-out, transform 0.6s ease-out;}
+.text-mint { color: #B5EAD7; }
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -167,8 +168,22 @@ html, body { margin: 0; padding: 0; background-color: var(--bg-dark); color: var
 </div>
 <div class="biotechcenter mb-5"><button class="refresh-btn" data-lang-key="refresh-btn-bottom-label" aria-label="Aggiorna dati del report" title="Aggiorna i dati del report in tempo reale"><span aria-hidden="true">🔄</span><span data-lang-key="refresh-btn-bottom-label">Aggiorna dati</span></button></div>
 <div class="resilience-summary"><span class="resilience-label">Global Resilience Score</span><div class="resilience-value-wrapper"><strong id="global-resilience-score" class="resilience-number">--</strong><span class="resilience-percent">%</span></div></div>
-<div class="report-note text-block"><p data-lang-key="sre-description">I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei per validare la scalabilità della logica distribuita. </p><span data-lang-key="sre-net-label">PROFILO RETE</span>: <strong data-lang-key="sre-net-value">3G/4G + Stress Sovraccarico</strong>(<small data-lang-key="sre-net-detail">5.000 Virtual Users | TTFB Drift</small>)<br><span data-lang-key="sre-hw-label">PROFILO HARDWARE</span>: <strong data-lang-key="sre-hw-value">Mobile Legacy</strong>(<small data-lang-key="sre-hw-detail">CPU: 4x | Heap Memory &lt; 12MB</small>)<br><span data-lang-key="sre-method-label">METODOLOGIA</span>: <strong data-lang-key="sre-method-value">Simulated Throttling</strong>(<small data-lang-key="sre-method-detail">SRE Scalability Engine 2026</small>) <p data-lang-key="sre-stability-note" style="color: #a0aec0; margin-top: 10px;">Nota: I risultati riflettono uno scenario di picco critico. In condizioni di navigazione standard, le prestazioni medie sono stimate superiori al 90%.</p></div>
-<div class="report-note text-block" style="padding: 0px; margin-top: 20px;"><p>🍃 <strong data-lang-key="sre-carbon-title">Efficienza SRE e Sostenibilità</strong></p><p style="color: #B5EAD7;" data-lang-key="sre-efficiency">Questo sistema riduce l'impronta di carbonio del 85% delegando la logica dei Gemelli Metabolici allo Stateless Edge.</p><p style="color: #B5EAD7;" data-lang-key="sre-test-metrics">Sotto stress test (5.000 utenti), manteniamo un TTI di 1.2s garantendo la disponibilità totale delle informazioni senza sovraccarico dei server.</p></div>  
+<section class="report-note text-block" data-lang-key="sre-full-report-section" aria-label="SRE System Report">
+  <!-- Primo Box -->
+  <div class="mb-25">
+    <p>I test simulano contesti d'uso reali con uno stress test massivo di 5.000 utenti simultanei per validare la scalabilità della logica distribuita.</p>
+    <span>PROFILO RETE</span>: <strong>3G/4G + Stress Sovraccarico</strong> (<small>5.000 Virtual Users | TTFB Drift</small>)<br>
+    <span>PROFILO HARDWARE</span>: <strong>Mobile Legacy</strong> (<small>CPU: 4x | Heap Memory &lt; 12MB</small>)<br>
+    <span>METODOLOGIA</span>: <strong>Simulated Throttling</strong> (<small>SRE Scalability Engine 2026</small>)<br>
+    <p class="slate f-85">Nota: I risultati riflettono uno scenario di picco critico. In condizioni di navigazione standard, le prestazioni medie sono stimate superiori al 90%.</p>
+  </div>
+  <!-- Secondo Box -->
+  <div>
+    <p class="mb-7">🍃 <strong class="sre-title">Efficienza SRE e Sostenibilità</strong></p>
+    <p class="text-mint">Questo sistema riduce l'impronta di carbonio del 85% delegando la logica dei Gemelli Metabolici allo Stateless Edge.</p>
+    <p class="text-mint">Sotto stress test (5.000 utenti), manteniamo un TTI di 1.2s garantendo la disponibilità totale delle informazioni senza sovraccarico dei server.</p>
+  </div>
+</section>  
 <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Architectural_Excellence_Biotech.avif" alt="Architectural Excellence in Biotech" class="specials-img" width="895" height="488" decoding="async" loading="lazy" style="display: block; margin: 5px auto 48px auto;">
 <!-- Badge di accessibilità -->
 <div class="biotechcenter"><a href="https://gitechnolo.github.io/biotechproject/accessibility-en.html" class="hover-effect" hreflang="en" aria-label="BiotechProject Accessibility Statement - Certified WCAG 2.2 AAA compliant"><img src="https://gitechnolo.github.io/biotechproject/Biotech-file/biotech-accessibility-badge.svg" alt="Official badge: BiotechProject Accessibility Compliance - Triple-A Level" width="165" height="60" loading="lazy" decoding="async"></a></div>
