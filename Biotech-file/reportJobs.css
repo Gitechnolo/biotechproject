@@ -552,6 +552,7 @@
   line-height: 1.6;
 }
 
+.visual-report h2,
 .visual-report h3 {
   color: var(--primary-text);
   text-align: center;
