@@ -70,8 +70,15 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .specialsGit-img{ display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; image-rendering: auto; }
 .specialsGit-img:hover{ transform: scale(1.02); box-shadow: 0 8px 24px rgba(0, 230, 118, 0.35)}
 .biotech-manifesto-container .terminal-window{background:rgba(1,8,8,.95);border:1px solid rgba(0,230,118,.4);border-radius:12px;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);box-shadow:0 20px 50px rgba(0,0,0,.8);overflow:hidden;display:flex;flex-direction:column}.biotech-manifesto-container .terminal-header{background:rgba(0,230,118,.1);padding:12px 20px;display:flex;align-items:center;border-bottom:1px solid rgba(0,230,118,.2)}.biotech-manifesto-container .terminal-dots{display:flex;gap:8px;margin-right:20px}.biotech-manifesto-container .dot{width:12px;height:12px;border-radius:50%}.biotech-manifesto-container .red{background:#ff5f56}.biotech-manifesto-container .yellow{background:#ffbd2e}.biotech-manifesto-container .green{background:#27c93f}.biotech-manifesto-container .terminal-title{font-family:monospace;color:#a7ffeb;font-size:.85rem;opacity:.7}.biotech-manifesto-container .terminal-content{padding:40px 6%;font-family:Sansation,sans-serif;color:#e0f2f1;line-height:1.8}.biotech-manifesto-container .command-line{font-family:monospace;color:#00e676;margin-bottom:30px;font-size:1.1rem}.biotech-manifesto-container .prompt{color:#00bfff;margin-right:10px}.biotech-manifesto-container .type-line{font-size:clamp(1rem,1.2vw,1.25rem);margin-bottom:25px;min-height:1.2em;opacity:0!important;transform:translateY(15px);transition:opacity .8s ease-out,transform .8s ease-out;will-change:opacity,transform}.biotech-manifesto-container .type-line.is-visible{opacity:1!important;transform:translateY(0)!important}.biotech-manifesto-container .final-statement-box{margin-top:40px;padding:25px;border:1px solid rgba(0,230,118,.3);background:rgba(0,230,118,.08);border-radius:8px;text-align:center;min-height:80px;display:flex;justify-content:center;align-items:center}.biotech-manifesto-container .final-statement-box .type-line{color:#00e676!important;font-weight:700;margin-bottom:0}@media (max-width:768px){.biotech-manifesto-container .terminal-content{padding:30px 20px}.biotech-manifesto-container{width:98%}}
-/* Stile mobile per la matrice di impatto (Ottimizzato WCAG AAA) */
-@media (max-width: 768px){ .impact-table, .impact-table tbody, .impact-table tr, .impact-table td{ display: block !important; width: 100%; text-align: center !important; box-sizing: border-box} .impact-table thead{ position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important} .impact-table td{ padding: 10px 15px !important} .impact-table tr{ border-bottom: 1px solid rgba(255,255,255,.15); padding-bottom: 15px} .impact-table tr td:first-child{ padding-top: 25px !important; font-weight: bold} .impact-table tr:last-child{ border-bottom: none}}
+/* --- Utility aggiuntive, rimossi style inline --- */
+.px-15 { padding-left: 15px; padding-right: 15px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.max-w-895 { max-width: 895px; }
+.mt-20 { margin-top: 20px; }
+.text-cyan-light { color: #e0f2f1; font-size: 0.95em; line-height: 1.6; }
+.text-teal-light { color: #80cbc4; font-size: 0.9em; line-height: 1.6; }
+.text-teal-muted { color: #4db6ac; }
+.matrix-title{ font-size: 0.9rem; font-weight: 700; color: #00e676; margin-bottom: 10px}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -145,70 +152,76 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
     <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Resilience.avif" alt="Diagramma dell'architettura Biotech Project Stateless Edge: visualizzazione del flusso dati crittografato client-side" class="specialsGit-img" width="895" height="716" decoding="async" loading="lazy">
 </a>
 
-<div class="mb-30" style="padding: 0 15px;">
-    <p class="biotechcenter sansation-bold">
-        <span aria-hidden="true">🛡️</span> <span data-lang-key="legacy-shielding-title">Schermatura Legacy e Responsabilità Zero</span>
-    </p>
-    <p class="biotechcenter text" style="color: #e0f2f1; font-size: 0.95em; line-height: 1.6; max-width: 800px; margin: 0 auto;" data-lang-key="legacy-shielding-desc">
-        BiotechProject non richiede lo smantellamento delle infrastrutture esistenti. Funziona come un <strong>Layer di Sicurezza Sovrano</strong> che scherma i database legacy, trasformando flussi di dati vulnerabili in asset crittografati <strong>Zero-Knowledge</strong> sul dispositivo dell'utente. <br><br>
-        Abbiamo risolto il trilemma della sanità digitale: <strong>Velocità Nativa</strong>, <strong>Inviolabilità Totale</strong> e <strong>Costi di gestione Zero</strong>. Il dato biologico è finalmente un asset protetto dal silicio.
-    </p>
-    <p class="biotechcenter" style="color: #80cbc4; font-size: 0.9em; line-height: 1.6; max-width: 800px; margin: 20px auto 0 auto;">
-        <span aria-hidden="true">🌐</span> <span data-lang-key="strategic-evolution"><strong>Evoluzione Strategica Multi-Settore:</strong> Sebbene l'architettura nasca con rigore <strong>Clinical Grade</strong>, i suoi pilastri di Privacy-by-Architecture e Resilienza SRE la rendono una piattaforma agnostica, pronta per settori critici come il <strong>Fintech</strong>, la <strong>Pubblica Amministrazione</strong> e la <strong>Cybersecurity</strong> nazionale.</span>
-    </p>
-</div>
-
-<p class="biotechcenter sansation-light-italic" style="color: #4db6ac; max-width: 800px; margin: 0 auto;" data-lang-key="matrix-lead">L'architettura è progettata per essere finanziariamente sostenibile e legalmente sicura: abbiamo eliminato il rischio tecnologico per massimizzare il valore sociale.</p>
-
-<div class="impact-matrix-container" style="overflow-x: auto;">
-    <p class="sansation-bold matrix-title" data-lang-key="matrix-title">
-        <span aria-hidden="true">🔍</span> BUSINESS IMPACT MATRIX (Audit 2026)
-    </p>
-    <table class="impact-table">
-        <thead>
-            <tr>
-                <th scope="col" data-lang-key="matrix-head-arch">Architettura SRE</th>
-                <th scope="col" data-lang-key="matrix-head-biz">Vantaggio Strategico (Business Value)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong data-lang-key="matrix-tech-1">Zero-Framework Mandate</strong></td>
-                <td data-lang-key="matrix-val-1">Abbattimento costi infrastrutturali del 90%. Scalabilità senza server pesanti.</td>
-            </tr>
-            <tr>
-                <td><strong data-lang-key="matrix-tech-2">Zero-Knowledge Privacy</strong></td>
-                <td data-lang-key="matrix-val-2">Rischio legale e sanzioni GDPR azzerati: le chiavi dati restano solo all'utente.</td>
-            </tr>
-            <tr>
-                <td><strong data-lang-key="matrix-tech-3">Immune System Autonomo</strong></td>
-                <td data-lang-key="matrix-val-3">Continuità operativa (Uptime 100%) senza necessità di costosi team di supporto 24/7.</td>
-            </tr>
-            <tr>
-                <td><strong data-lang-key="matrix-tech-4">WCAG 2.2 AAA Compliance</strong></td>
-                <td data-lang-key="matrix-val-4">Accesso universale: il prodotto è pronto per il mercato pubblico e clinico globale.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<p class="biotechcenter text" style="color: #a7ffeb;" data-lang-key="call-to-action">Unisciti al progetto, contribuisci con le tue idee e aiutaci a plasmare il futuro della biotecnologia.</p>   
-
-<section class="about" aria-labelledby="collaboration-heading">
-    <h2 id="collaboration-heading" class="sr-only">Informazioni sul Progetto e Collaborazione</h2>
+<section class="legacy-shielding-section mb-30" aria-labelledby="shielding-heading" data-lang-key="legacy-shielding-section">
+    <h2 id="shielding-heading" class="sr-only">Schermatura Legacy e Responsabilità Zero</h2>
     
-    <p class="sidenavtext" data-lang-key="project-info">
-        Un progetto per il futuro della biotecnologia. Creato da <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a> - Versione: 1.0.0
-    </p>
-    
-    <p class="sidenavtext">
-        <span data-lang-key="collaboration-call">Puntiamo alla Sovranità Digitale: contribuisci al codice o avvia una ricerca collaborativa su </span> 
-        <a href="https://gitlab.com/progettisti/biotechproject" target="_blank" rel="noopener noreferrer">GitLab</a>!
-    </p>
-    
-    <p class="biotechcenter sansation-light-italic" style="color: #4db6ac; max-width: 800px; margin: 0 auto;" data-lang-key="project-gitlab">
-        Offriamo GitLab come canale per la ricerca collaborativa on-premise, garantendo che le istituzioni mantengano il controllo totale dei propri asset.
-    </p>
+    <div class="px-15">
+        <p class="biotechcenter sansation-bold">
+            <span aria-hidden="true">🛡️</span> <span>Schermatura Legacy e Responsabilità Zero</span>
+        </p>
+        <p class="biotechcenter text max-w-895 mx-auto text-cyan-light">
+            BiotechProject non richiede lo smantellamento delle infrastrutture esistenti. Funziona come un <strong>Layer di Sicurezza Sovrano</strong> che scherma i database legacy, trasformando flussi di dati vulnerabili in asset crittografati <strong>Zero-Knowledge</strong> sul dispositivo dell'utente. <br><br>
+            Abbiamo risolto il trilemma della sanità digitale: <strong>Velocità Nativa</strong>, <strong>Massima Sicurezza Crittografica</strong> e <strong>Costi di gestione Zero</strong>. Il dato biologico è finalmente un asset protetto dal silicio.
+        </p>
+        <p class="biotechcenter max-w-895 mx-auto mt-20 text-teal-light">
+            <span aria-hidden="true">🌐</span> <strong>Evoluzione Strategica Multi-Settore:</strong> Sebbene l'architettura nasca con rigore <strong>Clinical Grade</strong>, i suoi pilastri di Privacy-by-Architecture e Resilienza SRE la rendono una piattaforma agnostica, pronta per settori critici come il <strong>Fintech</strong>, la <strong>Pubblica Amministrazione</strong> e la <strong>Cybersecurity</strong> nazionale.
+        </p>
+    </div>
+
+    <p class="biotechcenter sansation-light-italic max-w-895 mx-auto text-teal-muted mb-25">Sostenibile, legale e sicura: rischio tecnologico minimizzato per massimizzare il valore sociale.</p>
+
+    <div class="max-w-895 mx-auto">
+        <div class="cyber-table-container">
+            <p class="sansation-bold matrix-title mb-10">
+                <span aria-hidden="true">🔍</span> BUSINESS IMPACT MATRIX (Audit 2026)
+            </p>
+            <table class="cyber-table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="col-30">Architettura SRE</th>
+                        <th scope="col" class="col-70">Vantaggio Strategico (Business Value)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Zero-Framework Mandate</strong></td>
+                        <td>Abbattimento costi infrastrutturali del 90%. Scalabilità senza server pesanti.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zero-Knowledge Privacy</strong></td>
+                        <td>Rischio legale e sanzioni GDPR azzerati: le chiavi dati restano solo all'utente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Immune System Autonomo</strong></td>
+                        <td>Continuità operativa (Uptime 100%) senza necessità di costosi team di supporto 24/7.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WCAG 2.2 AAA Compliance</strong></td>
+                        <td>Accesso universale: il prodotto è pronto per il mercato pubblico e clinico globale.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="biotechcenter text text-neon mb-25">Unisciti al progetto, contribuisci con le tue idee e aiutaci a plasmare il futuro della biotecnologia.</p>   
+
+    <div class="about" aria-labelledby="collaboration-heading">
+        <h2 id="collaboration-heading" class="sr-only">Informazioni sul Progetto e Collaborazione</h2>
+        
+        <p class="sidenavtext mb-10">
+            Un progetto per il futuro della biotecnologia. Creato da <a href="https://gitechnolo.github.io/biotechproject/Staff.html" hreflang="it">Staff</a> - Versione: 1.0.0
+        </p>
+        
+        <p class="sidenavtext mb-10">
+            <span>Puntiamo alla Sovranità Digitale: contribuisci al codice o avvia una ricerca collaborativa su </span> 
+            <a href="https://gitlab.com/progettisti/biotechproject" target="_blank" rel="noopener noreferrer">GitLab</a>!
+        </p>
+        
+        <p class="biotechcenter sansation-light-italic max-w-895 mx-auto text-teal-muted">
+            Canale GitLab on-premise per la ricerca: controllo totale e sovranità garantiti alle istituzioni.
+        </p>
+    </div>
 </section>
 <div class="light-controls">
     <button id="btn-on" data-lang-key="light-on" class="tech-nav-btn">Accendi la luce</button>
