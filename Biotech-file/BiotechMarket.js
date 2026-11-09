@@ -387,7 +387,10 @@ async function runBiotechEngineV64() {
         // B. BANDE DI CONFIDENZA
         renderConfidenceBand(ctx, d.bands.market, HIST_LEN, startX, stepX, mapY, 0, "#00ff55");
         renderConfidenceBand(ctx, d.bands.cyber,  HIST_LEN, startX, stepX, mapY, 0, "#ff66ff");
-        renderConfidenceBand(ctx, d.bands.equity, HIST_LEN, startX, stepX, mapY, 0, "#00d4ff");
+        
+        // FIX: La banda equity deve essere scalata come la linea (x1.6)
+        const mapYEquity = (val) => mapY(val * EQUITY_PLOT_SCALE);
+        renderConfidenceBand(ctx, d.bands.equity, HIST_LEN, startX, stepX, mapYEquity, 0, "#00d4ff");
 
         // C. SYNC POINT
         /* L'ancoraggio temporale (T-2023) è hardcodato per definire
