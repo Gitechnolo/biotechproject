@@ -357,33 +357,30 @@ function exportHolidayData(format = 'json') {
 })();
 
 // Light effect functions
-// 1. Seleziona gli elementi necessari dal DOM
 const btnToggle = document.getElementById('btn-toggle');
 const img = document.getElementById('myImage');
 const statusText = document.getElementById('accessible-status');
 
-// 2. Gestione unificata del click (Toggle State)
 if (btnToggle && img && statusText) {
     btnToggle.addEventListener('click', () => {
-        // Legge lo stato attuale da aria-pressed
         const isOn = btnToggle.getAttribute('aria-pressed') === 'true';
 
         if (isOn) {
             // --- STATO: SPEGNIMENTO ---
             btnToggle.setAttribute('aria-pressed', 'false');
-            btnToggle.textContent = 'Accendi la luce'; // O gestito via dizionario i18n
             img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulboff.avif';
-            img.alt = 'Lampadina spenta';
+            img.alt = 'Lightbulb off';
             img.classList.remove('bulb-glow');
-            statusText.textContent = 'La luce è stata spenta.';
+            btnToggle.textContent = 'Turn on the light';
+            statusText.textContent = 'The light has been turned off.';
         } else {
             // --- STATO: ACCENSIONE ---
             btnToggle.setAttribute('aria-pressed', 'true');
-            btnToggle.textContent = 'Spegni la luce';
             img.src = 'https://gitechnolo.github.io/biotechproject/Biotech-file/images/pic_bulbon.avif';
-            img.alt = 'Lampadina accesa e splendente';
+            img.alt = 'Lit lightbulb';
             img.classList.add('bulb-glow');
-            statusText.textContent = 'La luce è stata accesa.';
+            btnToggle.textContent = 'Turn off the light';
+            statusText.textContent = 'The light has been turned on.';
         }
     });
 }
