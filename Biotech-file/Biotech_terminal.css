@@ -16,8 +16,7 @@
  * - Biotech Holiday Themes (Thematic Colors & Gradients)
  *
  * [SECTION 3] BUSINESS IMPACT MATRIX (The Core)
- * - Matrix Containers & Titles (.impact-matrix-container, .matrix-title)
- * - Tabular Data Layout (.impact-table)
+ * - Matrix & Titles (.matrix-title)
  *
  * =============================================================================
  */
@@ -229,56 +228,51 @@
    [SECTION 3] BUSINESS IMPACT MATRIX (The Core)
    ============================================================================= */
 /* ==== BIOTECH PROJECT: BUSINESS IMPACT MATRIX ==== */
-/* Container della Matrice */
-.impact-matrix-container {
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 15px;
-    background: rgba(0, 77, 64, 0.2);
-    border-radius: 8px;
-    border: 1px solid rgba(224, 242, 241, 0.1);
+/* --- Utility aggiuntive, rimossi style inline --- */
+.px-15 { padding-left: 15px; padding-right: 15px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.max-w-895 { max-width: 895px; }
+.mt-20 { margin-top: 20px; }
+.text-cyan-light { color: #e0f2f1; font-size: 0.95em; line-height: 1.6; }
+.text-teal-light { color: #80cbc4; font-size: 0.9em; line-height: 1.6; }
+.text-teal-muted { color: #4db6ac; }
+.matrix-title{ font-size: 0.9rem; font-weight: 700; color: #00e676; margin-bottom: 10px}
+
+/* Stile base immagine lampadina con transizione fluida */
+#myImage {
+    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+    opacity: 0.7; /* Leggermente attenuata quando spenta */
+    will-change: opacity, filter;
+    display: block;
 }
 
-/* Titolo della Tabella */
-.matrix-title {
-    font-size: 0.9em;
-    color: #4db6ac;
-    margin-bottom: 15px;
-    text-align: center;
+/* Stato acceso con glow caldo e diffuso, perfettamente sagomato sulla lampadina */
+#myImage.bulb-glow {
+    opacity: 1;
+    filter: drop-shadow(0 -25px 40px rgb(255, 255, 180)) 
+            drop-shadow(0 0 35px rgb(255, 255, 180)) 
+            drop-shadow(0 25px 25px rgb(255, 255, 180)) 
+            drop-shadow(-25px -10px 35px rgb(255, 255, 180)) 
+            drop-shadow(25px -10px 35px rgb(255, 255, 180));
 }
 
-/* Struttura Tabella */
-.impact-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85em;
-    color: #e0f2f1;
+/* Struttura del contenitore dei controlli */
+.light-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+    gap: 20px;
 }
 
-/* Header e Celle */
-.impact-table th, 
-.impact-table td {
-    text-align: left;
-    padding: 12px 10px;
-}
-
-.impact-table th {
-    color: #80cbc4;
-    border-bottom: 1px solid rgba(224, 242, 241, 0.2);
-}
-
-.impact-table td {
-    border-bottom: 1px solid rgba(224, 242, 241, 0.1);
-}
-
-/* Rimuove il bordo dall'ultima riga */
-.impact-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* Enfasi sui termini tecnici */
-.impact-table strong {
-    color: #b2dfdb;
+/* Proporzioni geometriche dell'immagine */
+.light-controls img {
+    aspect-ratio: 100 / 180;
+    width: 100px;
+    height: auto;
+    display: block;
 }
 
 /**
