@@ -149,7 +149,7 @@ BiotechResilience.boot();
     God give me style and give me grace
     God put a smile upon my face
 
-    -- (God Put a Smile upon Your Face, by Coldplay)
+    -- (God Put a Smile upon Your Face, by Coldplay).
 --------------------------------------------------------------------------------
 - END OF FILE - BIOTECH_RESILIENCE_ENGINE... SYSTEM_IMMUNE_HARDENED // MEDIA_PIPELINE_HARDENED
 */
