@@ -164,26 +164,9 @@ const BiotechResilience = (() => {
 BiotechResilience.boot();
 
 /* =============================================================================
-      BIOTECHPROJECT - SRE HYBRID SENTINEL & RESILIENCE SIGN-OFF [v6.4.0-FINAL]
+ * BIOTECH_RESILIENCE_ENGINE // SYSTEM_IMMUNE_HARDENED (v6.4.0-FINAL)
 ================================================================================
-  Status:           INFRASTRUCTURE_FULLY_STABILIZED (v6.4.0-STABLE-COMPLETE)
-  Intelligence:     PREDICTIVE_VAULT + ON-DEMAND MEDIA TELEMETRY [OK]
-  Core Pruning:     ATOMIC_INJECTION_STABLE + GEOMETRIC LOCK [OK]
-  Compliance:       WCAG 2.2 AA / ADR-011-PRO / GDPR Privacy-by-Design
-  Timestamp:        2026-11-12 (Production Release Signed)
---------------------------------------------------------------------------------
-  [EVOLUTION RATIONALE & 3G PERFORMANCE TEST INSIGHTS]:
-  - Motivazione: Superamento del limite "Default Rich" che esponeva i dispositivi 
-    datati e le reti degradate a latenze elevate, timeout critici (es. Worker e sfondi) 
-    e consumi energetici anomali durante il bootstrap.
-  - Risultati Test in 3G (Latenza 400ms):
-    * Stabilizzazione del CLS: Eliminati i salti visivi e l'instabilità di layout 
-      registrati nella versione precedente.
-    * Resilienza di Rete: Gestione ottimizzata dei flussi in condizioni di banda 
-      limitata, prevenendo i timeout critici sul caricamento delle risorse asincrone.
-    * Zero-Regression Guarantee: Salvaguardia totale delle metriche Lighthouse su 
-      Desktop e Mobile 4G grazie alla strategia "Silent Sampling + Smart Promotion".
---------------------------------------------------------------------------------
+
     God give me style and give me grace
     God put a smile upon my face
 
