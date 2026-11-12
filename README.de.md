@@ -42,28 +42,25 @@ Wo Biotechnologie auf Code trifft, um digitale Werkzeuge für Forschung und Inno
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (8. Mai 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Meilenstein: Core v6.4.0-HARDENED – Mobile 3G-Resilienz und Layout-Stabilität (12. November 2026)**
 >
-> Die parallele Architektur ist stabil. Das Auslagern der Rendering-Pipeline auf den
-> `BiotechCoreWorker` über `OffscreenCanvas`, kombiniert mit einer On-Demand Media
-> Pipeline ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
-> hält den Main-Thread frei für Interaktion und Barrierefreiheits-Handling.
+> Die Resilienz-Engine hat die vollständige Produktionshärtung erreicht. Durch die Implementierung der Strategie **"Silent Sampling + Smart Promotion"** ([ADR-011v6.4-HARDENED](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-6811684075)), gesteuert durch einen TTFB-Schwellenwert von 600ms, eliminiert die Architektur erfolgreich die Fragilität des 3G-Netzwerks und Layout-Sprünge (CLS) unter starkem Throttling.
 >
-> **Aktuell gemessene Benchmarks** (Lighthouse 13.5.0, Audit vom 4. Okt. 2026):
+> **Zuletzt gemessene Metriken** (iPhone 12, simuliertes langsames 3G / 400ms Latenz):
 >
-> | Metrik | Desktop | Mobile (Moto G Power, langsames 4G) |
-> | :--- | :--- | :--- |
-> | FCP | 0.3 s | 1.3 s |
-> | LCP | 0.4 s | 2.5 s |
-> | TBT | 0 ms | 0 ms |
-> | CLS | 0.015 | 0 |
-> | Speed Index | 0.4 s | 1.3 s |
+> | Metrik | Vorherige Baseline (Instabil) | v6.4.0-HARDENED (Mobile 3G) | Status |
+> | :--- | :--- | :--- | :--- |
+> | **CLS (Visuelle Stabilität)** | ~0.17 | **0.012 - 0.090** | **Verbessert (Stufe "Gut")** 🟢 |
+> | **TTFB (Time to First Byte)** | ~1980ms | **1941 - 1965ms** | **Optimierter resilienter Sync** 🟢 |
+> | **Interaktives DOM** | ~2600ms | **2450 - 2494ms** | **Schnellere Interaktivität** 🟢 |
 >
-> Rohdaten: [`data/performance-latest.json`](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
+> Rohdaten der Telemetrie:
+> - Baseline: [`biotech-bench-3g-baseline-unstable.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-3g-baseline-unstable.json)
+> - Hardened 3G: [`biotech-bench-v6.4.0-hardened-3gslow.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-hardened-3gslow.json)
 >
 > **Barrierefreiheit:** WCAG 2.2 Level AAA Konformität verifiziert durch automatisierte Audits und manuelle Screenreader-Tests. Die zweisprachigen Mediensteuerungen sind über die Tastatur bedienbar.
 >
-> **Status:** `STABLE` | `v6.4.0` 🟢
+> **Status:** `PRODUCTION_HARDENED` | `v6.4.0-HARDENED` 🟢
 
 ---
 
@@ -475,7 +472,7 @@ lang/
 
 
 ## 📅 Letztes Prüfdatum
-**19. Oktober 2026**
+**12. November 2026**
 
 ## 🔮 Aktuelle Updates (Zusammenfassung)
 
