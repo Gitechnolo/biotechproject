@@ -42,28 +42,25 @@ Waar biotechnologie ontmoet code om digitale tools te bouwen voor onderzoek en i
 [![Vulnerabilities](https://img.shields.io/badge/vulnerabilities-none-brightgreen)](https://github.com/Gitechnolo/biotechproject/security)
 
 > [!TIP]
-> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0 - Parallel Rendering Stabilized (8 mei 2026)**
+> **<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20"> Milestone: Core v6.4.0-HARDENED - Mobiele 3G-veerkracht en Lay-outstabiliteit (12 november 2026)**
 >
-> De parallelle architectuur is stabiel. Het offloaden van de rendering pipeline naar
-> `BiotechCoreWorker` via `OffscreenCanvas`, gecombineerd met een On-Demand Media
-> Pipeline ([ADR-011v6.4](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4406119895)),
-> houdt de main thread vrij voor interactie en toegankelijkheidsbeheer.
+> De veerkracht-engine heeft volledige productieverharding bereikt. Door de strategie **"Silent Sampling + Smart Promotion"** ([ADR-011v6.4-HARDENED](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-6811684075)) te implementeren, aangestuurd door een TTFB-drempel van 600ms, elimineert de architectuur met succes de kwetsbaarheid van het 3G-netwerk en lay-outverschuivingen (CLS) onder zware throttling.
 >
-> **Laatst gemeten benchmarks** (Lighthouse 13.5.0, audit 4 okt 2026):
+> **Laatst gemeten statistieken** (iPhone 12, gesimuleerd traag 3G / 400ms latentie):
 >
-> | Metriek | Desktop | Mobile (Moto G Power, trage 4G) |
-> | :--- | :--- | :--- |
-> | FCP | 0.3 s | 1.3 s |
-> | LCP | 0.4 s | 2.5 s |
-> | TBT | 0 ms | 0 ms |
-> | CLS | 0.015 | 0 |
-> | Speed Index | 0.4 s | 1.3 s |
+> | Metriek | Vorige baseline (Onstabiel) | v6.4.0-HARDENED (Mobiel 3G) | Status |
+> | :--- | :--- | :--- | :--- |
+> | **CLS (Visuele Stabiliteit)** | ~0.17 | **0.012 - 0.090** | **Verbeterd (Niveau "Goed")** 🟢 |
+> | **TTFB (Time to First Byte)** | ~1980ms | **1941 - 1965ms** | **Geoptimaliseerde Veerkrachtige Sync** 🟢 |
+> | **Interactieve DOM** | ~2600ms | **2450 - 2494ms** | **Snellere interactiviteit** 🟢 |
 >
-> Ruwe data: [`data/performance-latest.json`](https://github.com/Gitechnolo/biotechproject/blob/main/data/performance-latest.json)
+> Ruwe telemetrierapporten:
+> - Baseline: [`biotech-bench-3g-baseline-unstable.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-3g-baseline-unstable.json)
+> - Hardened 3G: [`biotech-bench-v6.4.0-hardened-3gslow.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-hardened-3gslow.json)
 >
 > **Toegankelijkheid:** WCAG 2.2 Level AAA conformiteit geverifieerd via geautomatiseerde audits en handmatige screen-reader tests. Tweetalige mediabediening is te bedienen via het toetsenbord.
 >
-> **Status:** `STABLE` | `v6.4.0` 🟢
+> **Status:** `PRODUCTION_HARDENED` | `v6.4.0-HARDENED` 🟢
 
 ---
 
@@ -479,7 +476,7 @@ lang/
 
 
 ## 📅 Laatste Verificatiedatum
-**19 oktober 2026**
+**12 november 2026**
 
 ## 🔮 Recente updates (samenvatting)
 
