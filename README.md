@@ -55,8 +55,8 @@ Where biotechnology meets code to build digital tools for research and innovatio
 > | **DOM Interactive** | ~2600ms | **2450 - 2494ms** | **Faster Interactivity** 🟢 |
 >
 > Raw telemetry reports:
-> - Baseline: [`docs/compliance/biotech-bench-3g-baseline-unstable.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-3g-baseline-unstable.json)
-> - Hardened 3G: [`docs/compliance/biotech-bench-v6.4.0-hardened-3gslow.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-hardened-3gslow.json)
+> - Baseline: [`biotech-bench-3g-baseline-unstable.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-3g-baseline-unstable.json)
+> - Hardened 3G: [`biotech-bench-v6.4.0-hardened-3gslow.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-hardened-3gslow.json)
 >
 > **Accessibility:** WCAG 2.2 Level AAA conformance verified through automated
 > audits and manual screen-reader testing. Dual-language media controls are
