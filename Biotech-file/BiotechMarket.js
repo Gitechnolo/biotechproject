@@ -139,6 +139,9 @@ async function fetchIntegratedAnalytics() {
 
 /* ------------------------------------------------------------------ *
 -  SONIFICAZIONE (Web Audio API)
+-  -------------------------------------------------------------------
+-  Implementa la ridondanza sensoriale (WCAG 2.2) trasformando i trend visivi in segnali acustici discreti (pitch-mapping).
+-  Permette il monitoraggio rapido delle anomalie senza carico visivo continuo (approccio standard nei sistemi di telemetria e cockpit).
 - ------------------------------------------------------------------ */
 const BiotechAudio = {
     ctx: null,
@@ -152,7 +155,7 @@ const BiotechAudio = {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
 
-        osc.frequency.setValueAtTime(200 + (value * 1.5), this.ctx.currentTime);
+        osc.frequency.setValueAtTime(200 + (value * 1.5), this.ctx.currentTime); // Grandezza numerica alla frequenza (altezza) di un'onda sonora. Più il valore del dato sale, più la nota diventa acuta; più scende, più diventa grave.
         osc.type = (type === 'cyber') ? 'square' : 'sine';
 
         gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
