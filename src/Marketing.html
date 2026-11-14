@@ -62,21 +62,28 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
 .canvas-wrapper{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden}.staff-layout-container{ padding-top: 30px; width: 100%; min-height: 1px}.tech-nav-container {min-height: 56px;}
 .logo-wrapper-cls{ min-height: 215px; display: flex; align-items: center; justify-content: center}
 .modern-logo{ display: block; margin: 15px auto 20px; max-width: 90vw; height: auto; aspect-ratio: 720 / 180; border-radius: 8px; border: 0; opacity: 0.9}.pulse-logo{ opacity: 0.9}
-.specialsMarket-img {display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;}
-/* Reset preventivo del focus di default del browser. */
+/* --- DESIGN SYSTEM & CSS VARIABLES --- */
+:root{ --theme-market: #00ff55; --theme-cyber: #ff66ff; --theme-equity: #00d4ff; --theme-neutral: #e7e7e7; --theme-glow: #00ff55; --theme-standby: #d800d8}
+/* --- STILI GENERALI & UTILITIES --- */
+.container{ max-width: 895px; margin: 0 auto} 
+.cyan{ color: var(--theme-equity)} 
+.mag{ color: var(--theme-standby)} 
+.center{ display: block; margin: 28px auto 5px auto}
+/* --- TITOLI & SEZIONI --- */
+.biotech-section-title{ font-family: 'Sansation', 'Segoe UI', Roboto, sans-serif; font-size: 1.4rem; color: var(--theme-neutral); margin-top: 20px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid var(--theme-market); padding-left: 10px}
+/* --- IMMAGINI & CANVAS --- */
+.specialsMarket-img{ display: block; margin: 18px auto; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 230, 118, 0.2); background: none; backdrop-filter: blur(2px); border: 1px solid rgba(0, 230, 118, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease}
+/* Reset preventivo del focus di default del browser */
 .specialsMarket-img:focus{ outline: none}
-/* Stato di Focus Avanzato SOLO per Navigazione da Tastiera (WCAG 3.0 / SRE Approved) */
-.specialsMarket-img:focus-visible {
-  outline: 2px solid #00ff55;                  /* Bordo verde neon solido */
-  outline-offset: 4px;                          /* Distanziato dal canvas */
-  box-shadow: 0 0 20px rgba(0, 255, 85, 0.6);    /* Effetto Glow Cyberpunk */
-  transform: scale(1.015);                      /* Leggero ingrandimento (rifinito a 1.015 per stabilità) */
-  border-color: #00ff55;                        /* Bordo reale verde se presente */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transizione fluida per l'attivazione */
-}
-/* Stile sezione di analisi del mercato */
-.biotech-section-title{ font-family: 'Sansation', 'Segoe UI', Roboto, sans-serif; font-size: 1.4rem; color: #e7e7e7; margin-top: 20px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; border-left: 3px solid #00ff55; padding-left: 10px;}
-.container{max-width: 895px; margin: 0 auto} .cyan{color: #00d4ff;} .mag{color: #d800d8;} .center{display: block; margin: 28px auto 5px auto;}
+/* Stato di Focus Avanzato per Navigazione da Tastiera (WCAG / SRE Approved) */
+.specialsMarket-img:focus-visible{ outline: 2px solid var(--theme-market); outline-offset: 4px; box-shadow: 0 0 20px rgba(0, 255, 85, 0.6); transform: scale(1.015); border-color: var(--theme-market); transition: transform 0.2s ease, box-shadow 0.2s ease;}
+/* --- STATI VISIVI & DOM --- */
+#main-content{ opacity: 0; transition: opacity 0.4s ease-in-out}
+#main-content.is-visible{ opacity: 1}
+/* --- ETICHETTE AUDIO (Stati) --- */
+.audio-status{ font-family: "Segoe UI", Roboto, sans-serif; font-weight: bold; font-size: 10px; margin-left: 10px;}
+.audio-status.active{ color: var(--theme-market);}
+.audio-status.standby{ color: var(--theme-standby);}
 </style>
 <script src="https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechResilience.js" defer></script>
 <script>;!function(e,t){const d=document,f=()=>(n=d.getElementById(e))&&(n.style.opacity="1");var n,c,o;f()||(o=new MutationObserver(((e,t)=>{f()&&(t.disconnect(),clearTimeout(c))})).observe(d.documentElement,{childList:!0,subtree:!0}),c=setTimeout((()=>{f(),o&&o.disconnect()}),t))}("main-content",80);</script>
@@ -120,10 +127,10 @@ html, body {margin: 0; padding: 0; background-color: rgba(1,8,8,.94); color: #d4
                   aria-label="Attiva Sonificazione dei dati (Trend Acustico)" 
                   title="Attiva feedback sonoro per i trend dei dati">
             <span aria-hidden="true">🔊</span> 
-            <span class="pronunciation-text" style="font-size: 10px;">ENABLE SONIFICATION</span>
+            <span class="pronunciation-text">ENABLE SONIFICATION</span>
           </button>
         </span>
-        <span id="audio-status-label" style="font-size: 10px; margin-left: 10px; color: #d800d8;">Sonificazione: standby</span>
+        <span id="audio-status-label" class="audio-status standby">Standby</span>
     </div>
     
     <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>

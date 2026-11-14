@@ -29,7 +29,16 @@ const SRE_NEU = {
     text:  _logText
 };
 const CANVAS_FONT = "'Sansation', monospace";
-const THEME_COLORS={market:"#00ff55",cyber:"#ff66ff",equity:"#00d4ff",neutral:"#e7e7e7",glow:"#00ff55"};
+
+// Sincronizzazione dinamica dei colori tramite le CSS Custom Properties del foglio di stile
+const computedStyle = getComputedStyle(document.documentElement);
+const THEME_COLORS = {
+    market:  computedStyle.getPropertyValue('--theme-market').trim()  || '#00ff55',
+    cyber:   computedStyle.getPropertyValue('--theme-cyber').trim()   || '#ff66ff',
+    equity:  computedStyle.getPropertyValue('--theme-equity').trim()  || '#00d4ff',
+    neutral: computedStyle.getPropertyValue('--theme-neutral').trim() || '#e7e7e7',
+    glow:    computedStyle.getPropertyValue('--theme-glow').trim()    || '#00ff55'
+};
 
 /* ------------------------------------------------------------------ *
 -  PROVENIENZA DATI — obbligatoria per audit
@@ -231,7 +240,7 @@ async function runBiotechEngineV64() {
     injectAccessibleData(d);
 
     const mainContent = document.getElementById('main-content');
-    if (mainContent) mainContent.style.opacity = "1";
+    if (mainContent) mainContent.classList.add('is-visible');
 
     /* --- Console log in Inglese (Audit & Provenance) - Utilizzo SRE_NEU.text --- */
     console.group("%c BiotechProject Systems — Audit & Provenance ", SRE_NEU.group);
@@ -261,6 +270,8 @@ async function runBiotechEngineV64() {
 
     /* --- Toggle audio (explicit consent) --- */
     const audioBtn = document.getElementById('enable-audio-btn');
+    const statusLabel = document.getElementById('audio-status-label');
+
     if (audioBtn) {
         audioBtn.setAttribute('aria-pressed', 'false');
         audioBtn.addEventListener('click', (e) => {
@@ -269,18 +280,19 @@ async function runBiotechEngineV64() {
             isSonificationEnabled = !isSonificationEnabled;
             audioBtn.setAttribute('aria-pressed', String(isSonificationEnabled));
 
-            const statusLabel = document.getElementById('audio-status-label');
             if (isSonificationEnabled) {
                 audioBtn.classList.add('active');
                 if (statusLabel) {
-                    statusLabel.textContent = "Sonification: active";
-                    statusLabel.style.color = THEME_COLORS.market;
+                    statusLabel.textContent = "Active"; 
+                    statusLabel.classList.remove('standby');
+                    statusLabel.classList.add('active');
                 }
             } else {
                 audioBtn.classList.remove('active');
                 if (statusLabel) {
-                    statusLabel.textContent = "Sonification: standby";
-                    statusLabel.style.color = "#d800d8";
+                    statusLabel.textContent = "Standby"; 
+                    statusLabel.classList.remove('active');
+                    statusLabel.classList.add('standby');
                 }
             }
         });
