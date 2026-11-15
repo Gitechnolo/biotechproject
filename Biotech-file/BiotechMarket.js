@@ -239,10 +239,7 @@ async function runBiotechEngineV64() {
     const d = await fetchIntegratedAnalytics();
     injectAccessibleData(d);
 
-    const mainContent = document.getElementById('main-content');
-    if (mainContent) mainContent.classList.add('is-visible');
-
-    /* --- Console log in Inglese (Audit & Provenance) - Utilizzo SRE_NEU.text --- */
+        /* --- Console log in Inglese (Audit & Provenance) - Utilizzo SRE_NEU.text --- */
     console.group("%c BiotechProject Systems — Audit & Provenance ", SRE_NEU.group);
     console.log(
         "%c📊 DATA_MODE%c Synthetic demo dataset (%s). No live network feed connected.",
