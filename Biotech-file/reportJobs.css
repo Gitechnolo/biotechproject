@@ -860,6 +860,34 @@
 }
 
 /* ==========================================================================
+   UTILITY CLASSES DI STATO (portfolio.js)
+   ========================================================================== */
+.is-hidden { 
+  display: none !important; 
+}
+
+.is-flex { 
+  display: flex !important; 
+}
+
+.is-visible { 
+  display: block !important; 
+}
+
+.filter-message-styled {
+  color: #a0aec0;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  display: block;
+}
+
+.score-inline-block { 
+  display: inline-block !important; 
+  vertical-align: middle; 
+}
+
+/* ==========================================================================
    END OF FILE: reportJobs.css
    ARCHITECTURAL INTEGRITY VERIFIED
    

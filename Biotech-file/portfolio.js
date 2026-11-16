@@ -346,21 +346,20 @@ function createPerformanceCard(page) {
   const trendDetails = card.querySelector('.trend-details');
 
   fadebox.addEventListener('focus', () => {
-    trendDetails.style.display = 'block';
+    trendDetails.classList.add('is-visible');
   });
 
   fadebox.addEventListener('blur', () => {
-    trendDetails.style.display = 'none';
+    trendDetails.classList.remove('is-visible');
   });
 
   fadebox.addEventListener('click', () => {
-    const isDisplayed = trendDetails.style.display === 'block';
-    trendDetails.style.display = isDisplayed ? 'none' : 'block';
+    trendDetails.classList.toggle('is-visible');
   });
 
   fadebox.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      trendDetails.style.display = 'none';
+      trendDetails.classList.remove('is-visible');
       fadebox.blur();
     }
   });
@@ -388,7 +387,7 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
   
   if (scoreEl) {
     scoreEl.textContent = `${performanceScoreValue}%`;
-    scoreEl.style.display = 'inline-block'; 
+    scoreEl.classList.add('score-inline-block'); 
   }
 
   if (trendIndicator) {
@@ -397,14 +396,10 @@ function aggiornaPerformanceScore(performanceScoreValue = 85) {
     // Inseriamo la freccia testuale
     trendIndicator.textContent = trend > 0 ? '↑' : trend < 0 ? '↓' : '→';
     
-    // Gestione colori: usiamo le tue classi esistenti
+    // Gestione colori: usiamo le classi esistenti
     trendIndicator.className = ''; 
     const statusClass = trend > 0 ? 'trend-up' : trend < 0 ? 'trend-down' : 'trend-equal';
-    trendIndicator.classList.add(statusClass);
-    
-    // Forza la visibilità locale senza cambiare il CSS esterno
-    trendIndicator.style.display = 'inline-block';
-    trendIndicator.style.verticalAlign = 'middle';
+    trendIndicator.classList.add(statusClass, 'score-inline-block');
   }
 }
 function subtractDays(date, days) {
@@ -568,10 +563,12 @@ function filterSelection(filter) {
 
   cards.forEach(card => {
     if (filter === 'all' || card.classList.contains(filter)) {
-      card.style.display = 'flex';
+      card.classList.remove('is-hidden');
+      card.classList.add('is-flex');
       visibleCount++;
     } else {
-      card.style.display = 'none';
+      card.classList.add('is-hidden');
+      card.classList.remove('is-flex');
     }
   });
 
@@ -583,8 +580,7 @@ function filterSelection(filter) {
   if (!msgEl) {
     msgEl = document.createElement('p');
     msgEl.id = 'filter-message';
-    msgEl.className = 'sansation-light-italic'; 
-    msgEl.style.cssText = 'color: #a0aec0; text-align: center; padding: 20px; width: 100%;';
+    msgEl.className = 'sansation-light-italic filter-message-styled is-hidden'; 
     msgEl.setAttribute('role', 'status'); // Annuncio per screen reader
     msgEl.setAttribute('data-lang-key', 'filter-empty');
     container.parentNode.insertBefore(msgEl, container.nextSibling);
@@ -592,7 +588,7 @@ function filterSelection(filter) {
 
   // 4. Logica di visualizzazione e traduzione dinamica
   if (visibleCount === 0) {
-    msgEl.style.display = 'block';
+    msgEl.classList.remove('is-hidden');
     
     // Determiniamo la lingua attuale (fallback su 'it')
     const lang = (typeof currentLang !== 'undefined') ? currentLang : 'it';
@@ -609,7 +605,7 @@ function filterSelection(filter) {
       : 'Nessuna pagina trovata con questo stato di maturità.');
   } else {
     // Nascondiamo il messaggio se ci sono risultati
-    msgEl.style.display = 'none';
+    msgEl.classList.add('is-hidden');
   }
 }
 function getTrendArrow(current, previous) {
