@@ -888,6 +888,13 @@
 }
 
 /* ==========================================================================
+   DEVICE & ARCHITECTURE MEDIA UTILITIES - Gestione spaziatura immagine responsive (zero inline styles)
+   ========================================================================== */
+.specials-img-spaced {
+  margin: 5px auto 48px auto;
+}
+
+/* ==========================================================================
    END OF FILE: reportJobs.css
    ARCHITECTURAL INTEGRITY VERIFIED
    
