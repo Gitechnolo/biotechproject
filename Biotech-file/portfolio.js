@@ -1,16 +1,16 @@
 /**
- * BIOTECH PROJECT | PERFORMANCE & TECHNOLOGICAL MATURITY SYSTEM [v6.2]
- * -------------------------------------------------------------------------
- * ARCHITECTURE: Event-Driven UI Orchestrator
- * STRATEGY: Progressive Hydration & Layout Isolation [ADR-011.2]
- * COMPLIANCE: WCAG 2.2 Level AAA | SRE-Hardened Lighthouse 2026
- * -------------------------------------------------------------------------
- * SUMMARY:
- * Resilience: Integrated with BiotechGuardian.js for real-time stress adaptation.
- * Analytics: Visualizes SRE Scalability metrics & Immune System response states.
- * Pipeline: Atomic Render Locking with Layout Containment (Chunk Size: 4)
- * Results: 0ms TBT (Mobile) | 0.043 CLS (Desktop) | 80% Reflow Reduction.
- * -------------------------------------------------------------------------
+- BIOTECH PROJECT | PERFORMANCE & TECHNOLOGICAL MATURITY SYSTEM [v6.2]
+- -------------------------------------------------------------------------
+- ARCHITECTURE: Event-Driven UI Orchestrator
+- STRATEGY: Progressive Hydration & Layout Isolation [ADR-011.2]
+- COMPLIANCE: WCAG 2.2 Level AAA | SRE-Hardened Lighthouse 2026
+- -------------------------------------------------------------------------
+- SUMMARY:
+- Resilience: Integrated with BiotechGuardian.js for real-time stress adaptation.
+- Analytics: Visualizes SRE Scalability metrics & Immune System response states.
+- Pipeline: Atomic Render Locking with Layout Containment (Chunk Size: 4)
+- Results: 0ms TBT (Mobile/Desktop) | 0.034 CLS (Mobile) | 80% Reflow Reduction.
+- -------------------------------------------------------------------------
  
 BIOTECH PORTFOLIO | MODULE TREE 2026 (SRE-HARDENED)
 ========================================================
