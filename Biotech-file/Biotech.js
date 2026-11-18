@@ -75,6 +75,19 @@ const SRE_LOG_MAIN = {
    WORKER CORE INTEGRATION [ADR-011 / 60fps / Legacy Optimized]
    ========================================================================== */
 const BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js'); // In produzione, questo percorso dovrebbe essere gestito dinamicamente o tramite un sistema di build per garantire la compatibilità con la struttura del progetto.
+window.BiotechWorker = BiotechWorker;
+
+window.vaultReady = false;
+let resolveVaultReady;
+let rejectVaultReady;
+const vaultReadyPromise = new Promise((resolve, reject) => {
+    resolveVaultReady = resolve;
+    rejectVaultReady = reject;
+});
+window.vaultReadyPromise = vaultReadyPromise;
+vaultReadyPromise.catch(err => {
+    console.warn("%c⚠️ Worker initialization failed; secure vault unavailable", "color:#f44336;", err);
+});
 
 /**
  * Task Orchestrator con Fallback e Timeout
@@ -122,8 +135,10 @@ const BiotechVault = {
      */
     async save(key, data) {
         try {
+            if (!window.vaultReady) throw new Error('VAULT_NOT_READY');
+            await vaultReadyPromise;
             await workerQuery('SAVE_SECURE_DATA', { key, data }, 5000);
-            console.log(`%c🔒 Vault: Dati salvati e cifrati (${key})`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+            console.log(`%c🔒 Vault: Data saved and encrypted`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
             return true;
         } catch (err) {
             console.error(`%c❌ Vault Error (Save):`, "color: #f44336;", err);
@@ -137,8 +152,10 @@ const BiotechVault = {
      */
     async load(key) {
         try {
+            if (!window.vaultReady) throw new Error('VAULT_NOT_READY');
+            await vaultReadyPromise;
             const data = await workerQuery('LOAD_SECURE_DATA', { key }, 5000);
-            console.log(`%c🔓 Vault: Dati recuperati e decifrati (${key})`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
+            console.log(`%c🔓 Vault: Data retrieved and decrypted`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
             return data;
         } catch (err) {
             console.error(`%c❌ Vault Error (Load):`, "color: #f44336;", err);
@@ -149,19 +166,6 @@ const BiotechVault = {
 
 // vault accessibile globalmente se necessario
 window.BiotechVault = BiotechVault;
-
-// Inizializzazione con percorso corretto per la struttura cartelle
-workerQuery('INIT_TRANSLATION_ENGINE', { 
-    fileUrl: '../lang/common.json' 
-}, 10000) // Timeout più lungo (10s) per il primo caricamento su 3G
-.then(() => {
-    console.log(`%c🧬 CORE %c Worker: Ready (Legacy Mode Active) `, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core, 
-    'background: rgba(0, 255, 162, 0.1); color: #00ffa2; padding: 2px 6px; border: 1px solid #00ffa2; border-left: none; border-radius: 0 3px 3px 0;');
-})
-.catch(err => {
-    console.warn(`%c⚠️ Worker Error: Fallback al thread principale`, "color:#f44336;", err);
-    // Qui potresti inserire una funzione di fallback che carica i JSON normalmente
-});
 
 /**
  * BIOTECH PROJECT | CORE SYSTEM ORCHESTRATOR - DUAL UI SYNC 2026
@@ -1367,14 +1371,54 @@ function updateLastModified(lang) {
     
     // 1. Inizializzazione Globale del Neural Worker (v2.0.1-STABLE)
     try {
-      window.BiotechWorker = new Worker('https://gitechnolo.github.io/biotechproject/Biotech-file/BiotechCoreWorker.js');
-      
-      // Generiamo un Salt Dinamico per la Zero-Knowledge Persistence (ADR-011-PRO)
-      // Nota: In produzione questo potrebbe essere legato all'ID sessione utente
-      const dynamicSalt = btoa(navigator.userAgent).substring(0, 16);
+      let dynamicSalt = sessionStorage.getItem('biotech_session_salt');
+      if (dynamicSalt === null || dynamicSalt.length === 0) {
+        dynamicSalt = Array.from(
+          crypto.getRandomValues(new Uint8Array(16)),
+          byte => byte.toString(16).padStart(2, '0')
+        ).join('');
+        sessionStorage.setItem('biotech_session_salt', dynamicSalt);
+      }
 
-      // Inizializzazione immediata con Payload Hardened
-      window.BiotechWorker.postMessage({
+      let initTimer;
+      const cleanupInitListeners = () => {
+        clearTimeout(initTimer);
+        BiotechWorker.removeEventListener('message', initHandler);
+        BiotechWorker.removeEventListener('error', workerErrorHandler);
+        BiotechWorker.removeEventListener('messageerror', workerMessageErrorHandler);
+      };
+      const failInitialization = error => {
+        cleanupInitListeners();
+        rejectVaultReady(error);
+      };
+      const initHandler = e => {
+        if (!e.data || e.data.taskId !== 'core_init_v2') return;
+        cleanupInitListeners();
+        if (e.data.success === true) {
+          window.vaultReady = true;
+          resolveVaultReady();
+          console.log(`%c🧬 CORE %c Worker: Ready (Legacy Mode Active) `, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core,
+            'background: rgba(0, 255, 162, 0.1); color: #00ffa2; padding: 2px 6px; border: 1px solid #00ffa2; border-left: none; border-radius: 0 3px 3px 0;');
+        } else {
+          rejectVaultReady(new Error(e.data.error || 'Worker initialization failed'));
+        }
+      };
+      const workerErrorHandler = e => {
+        failInitialization(e.error || new Error(e.message || 'Worker initialization failed'));
+      };
+      const workerMessageErrorHandler = () => {
+        failInitialization(new Error('Worker initialization message could not be deserialized'));
+      };
+
+      BiotechWorker.addEventListener('message', initHandler);
+      BiotechWorker.addEventListener('error', workerErrorHandler);
+      BiotechWorker.addEventListener('messageerror', workerMessageErrorHandler);
+      initTimer = setTimeout(() => {
+        failInitialization(new Error('Worker initialization timed out'));
+      }, 10000);
+
+      try {
+        BiotechWorker.postMessage({
         action: 'INIT_TRANSLATION_ENGINE',
         payload: { 
           fileUrl: '../lang/common.json', // Percorso del file i18n
@@ -1382,10 +1426,14 @@ function updateLastModified(lang) {
           options: { filter: true } 
         },
         taskId: 'core_init_v2'
-      });
+        });
+      } catch (e) {
+        cleanupInitListeners();
+        throw e;
+      }
 
       // Listener per il monitoraggio dello stato di salute del Worker
-      window.BiotechWorker.onmessage = (e) => {
+      BiotechWorker.onmessage = (e) => {
         if (e.data.error === "Worker in Recovery Mode") {
           console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
         }
@@ -1394,6 +1442,7 @@ function updateLastModified(lang) {
       console.log(`%c🔒 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
       
     } catch (e) {
+      rejectVaultReady(e);
       console.error("⚠️ SRE: Neural Core Thread Allocation Failed (Hardened Mode)", e);
     }
 

@@ -221,7 +221,7 @@ const VaultDB = {
                     const val = cursor.value;
                     if (val && val.timestamp && (now - val.timestamp > maxAge)) {
                         store.delete(cursor.key);
-                        console.log(`[Vault] Purged expired secure record: ${cursor.key} (Exceeded 7-day oblivion)`);
+                        console.log(`[Vault] Purged expired secure record (Exceeded 7-day oblivion)`);
                     }
                     cursor.continue();
                 } else {
@@ -246,7 +246,7 @@ const VaultDB = {
 
             store.put(bundleWithTimestamp, key);
             tx.oncomplete = () => {
-                console.log(`[Vault] Secure data encrypted and stored for key: "${key}"`);
+                console.log(`[Vault] Secure data encrypted and stored`);
                 resolve(true);
             };
             tx.onerror = () => reject(tx.error);
