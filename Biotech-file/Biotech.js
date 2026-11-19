@@ -1392,10 +1392,7 @@ function updateLastModified(lang) {
         rejectVaultReady(error);
       };
       const initHandler = e => {
-        // [Hardened] Validazione STRICT: taskId e action devono coincidere.
-        // Il worker garantisce l'inclusione di action in ogni risposta.
-        if (!e?.data || e.data.taskId !== 'core_init_v2' || e.data.action !== 'INIT_TRANSLATION_ENGINE') return;
-        
+        if (!e.data || e.data.taskId !== 'core_init_v2') return;
         cleanupInitListeners();
         if (e.data.success === true) {
           window.vaultReady = true;
@@ -1422,13 +1419,13 @@ function updateLastModified(lang) {
 
       try {
         BiotechWorker.postMessage({
-          action: 'INIT_TRANSLATION_ENGINE',
-          payload: { 
-            fileUrl: '../lang/common.json', // Percorso del file i18n
-            userSalt: dynamicSalt,
-            options: { filter: true } 
-          },
-          taskId: 'core_init_v2'
+        action: 'INIT_TRANSLATION_ENGINE',
+        payload: { 
+          fileUrl: '../lang/common.json', // Percorso del file i18n
+          userSalt: dynamicSalt,
+          options: { filter: true } 
+        },
+        taskId: 'core_init_v2'
         });
       } catch (e) {
         cleanupInitListeners();
@@ -1436,14 +1433,9 @@ function updateLastModified(lang) {
       }
 
       // Listener per il monitoraggio dello stato di salute del Worker
-      // [Hardened] Null-safety per prevenire crash su payload malformati o null
       BiotechWorker.onmessage = (e) => {
-        try {
-          if (e?.data?.error === "Worker in Recovery Mode") {
-            console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
-          }
-        } catch (err) {
-          console.error("Health monitor exception:", err);
+        if (e.data.error === "Worker in Recovery Mode") {
+          console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
         }
       };
 
