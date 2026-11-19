@@ -293,7 +293,11 @@ self.onmessage = async (e) => {
                 state.height = payload.height;
                 state.isActive = true;
                 ParticleEngine.init(payload.canvas);
-                self.postMessage({ taskId, success: true });
+                self.postMessage({ 
+                    action: 'INIT_OFFSCREEN_CANVAS', 
+                    taskId, 
+                    success: true 
+                });
                 break;
 
             case 'RESIZE_CANVAS':
@@ -314,19 +318,32 @@ self.onmessage = async (e) => {
                 } else {
                     ParticleEngine.stop();
                 }
-                self.postMessage({ taskId, success: true });
+                self.postMessage({ 
+                    action: 'TOGGLE_SYSTEM', 
+                    taskId, 
+                    success: true 
+                });
                 break;
 
             case 'INIT_TRANSLATION_ENGINE':
                 const res = await fetch(payload.fileUrl);
                 state.cachedData = await res.json();
                 state.userSalt = payload.userSalt;
-                self.postMessage({ taskId, success: true });
+                self.postMessage({ 
+                    action: 'INIT_TRANSLATION_ENGINE', 
+                    taskId, 
+                    success: true 
+                });
                 break;
 
             case 'PREDICTIVE_LOAD_INFERENCE':
                 const score = (payload.velocity * 0.5) + (payload.density * 0.2);
-                self.postMessage({ taskId, success: true, data: { score } });
+                self.postMessage({ 
+                    action: 'PREDICTIVE_LOAD_INFERENCE', 
+                    taskId, 
+                    success: true, 
+                    data: { score } 
+                });
                 break;
 
             // --- ZERO-KNOWLEDGE VAULT HANDLERS ---
@@ -334,24 +351,49 @@ self.onmessage = async (e) => {
                 if (!state.userSalt) throw new Error("Worker not initialized with user salt.");
                 const encrypted = await CryptoUtils.encrypt(payload.data, state.userSalt);
                 await VaultDB.set(payload.key, encrypted);
-                self.postMessage({ taskId, success: true });
+                self.postMessage({ 
+                    action: 'SAVE_SECURE_DATA', 
+                    taskId, 
+                    success: true 
+                });
                 break;
 
             case 'LOAD_SECURE_DATA':
                 if (!state.userSalt) throw new Error("Worker not initialized with user salt.");
                 const storedBundle = await VaultDB.get(payload.key);
                 if (!storedBundle) {
-                    self.postMessage({ taskId, success: true, data: null });
+                    self.postMessage({ 
+                        action: 'LOAD_SECURE_DATA', 
+                        taskId, 
+                        success: true, 
+                        data: null 
+                    });
                     break;
                 }
                 const decryptedData = await CryptoUtils.decrypt(storedBundle.ciphertext, storedBundle.iv, state.userSalt);
-                self.postMessage({ taskId, success: true, data: decryptedData });
+                self.postMessage({ 
+                    action: 'LOAD_SECURE_DATA', 
+                    taskId, 
+                    success: true, 
+                    data: decryptedData 
+                });
                 break;
 
             default:
-                self.postMessage({ taskId, success: false, error: "Action not recognized" });
+                self.postMessage({ 
+                    action: action, 
+                    taskId, 
+                    success: false, 
+                    error: "Action not recognized" 
+                });
         }
     } catch (err) {
-        self.postMessage({ taskId, success: false, error: err.message });
+        // Questo blocco cattura anche gli errori di INIT_TRANSLATION_ENGINE
+        self.postMessage({ 
+            action: action, 
+            taskId, 
+            success: false, 
+            error: err.message 
+        });
     }
 };
