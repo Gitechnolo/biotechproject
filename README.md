@@ -8,28 +8,28 @@
 [![Accessibility](https://img.shields.io/badge/ACCESSIBILITY-WCAG_2.2_AAA-00C853?style=for-the-badge&logo=github&labelColor=333333)](https://gitechnolo.github.io/biotechproject/accessibility-en.html)
 
 🌐 **Read in other languages:**  
-[Italiano 🇮🇹](README.it.md) | 
-[English 🇬🇧](README.md) | 
-[Español 🇪🇸](README.es.md) | 
-[Français 🇫🇷](README.fr.md) | 
-[Deutsch 🇩🇪](README.de.md) | 
-[Dutch 🇳🇱](README.nl.md) |
-[Português (BR) 🇧🇷](README.pt-br.md)
+[Italiano 🇮🇹](https://github.com/Gitechnolo/biotechproject/blob/main/README.it.md) | 
+[English 🇬🇧](https://github.com/Gitechnolo/biotechproject/blob/main/README.md) | 
+[Español 🇪🇸](https://github.com/Gitechnolo/biotechproject/blob/main/README.es.md) | 
+[Français 🇫🇷](https://github.com/Gitechnolo/biotechproject/blob/main/README.fr.md) | 
+[Deutsch 🇩🇪](https://github.com/Gitechnolo/biotechproject/blob/main/README.de.md) | 
+[Dutch 🇳🇱](https://github.com/Gitechnolo/biotechproject/blob/main/README.nl.md) |
+[Português (BR) 🇧🇷](https://github.com/Gitechnolo/biotechproject/blob/main/README.pt-br.md)
 
 > 💡 **Executive Briefing (March 28, 2026):**
 >
 > This project has reached **WCAG 2.2 Level AAA conformance** (verified through automated and manual audits) and evolved from a performance-driven experiment into a documented reference for resilient, low-dependency web architecture.  
 > We have formalized our "Stateless Edge" methodology in a new report that addresses global health inequities caused by latency and cognitive barriers.  
 >
-> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md)  
-> 👉 **Read the Strategic Report:** [Architectural Equity & Global Resilience Report (PDF)](docs/Architectural_Equity_Resilience_Report.pdf)
+> 🏛️ **Executive & Stakeholder Hub:** [EXECUTIVE_SUMMARY.md](https://github.com/Gitechnolo/biotechproject/blob/main/docs/EXECUTIVE_SUMMARY.md)  
+> 👉 **Read the Strategic Report:** [Architectural Equity & Global Resilience Report (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf)
 
 
 > 🌍 *"We don't all speak the same languages, but we speak the same language: collaboration."*  
 > English is not a barrier - it's a bridge.  
 > 🔹 To contribute or review project guidelines, visit the main English files;  
-> - [Contributing Guidelines](CONTRIBUTING.md)  
-> - [Code of Conduct](CODE_OF_CONDUCT.md)  
+> - [Contributing Guidelines](https://github.com/Gitechnolo/biotechproject/blob/main/CONTRIBUTING.md)  
+> - [Code of Conduct](https://github.com/Gitechnolo/biotechproject/blob/main/CODE_OF_CONDUCT.md)  
 > Using English supports international collaboration.
 
 **An open source project that unites science, health, and web technology.**  
@@ -82,7 +82,7 @@ It's a collaborative space for developers, researchers, educators, and enthusias
 
 <div align="center">
   <h3>🗺️ Our Strategic Vision for Scalability</h3>
-  <img src="Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/Strategic_Roadmap_for_Global_Scalability.webp" alt="BiotechProject Strategic Roadmap diagram showing three phases (I: Days 1-30, II: Days 31-60, III: Days 61-90) leading to Strategic Outcomes like Scalability Blueprint and Health Equity Certification. It highlights key technical milestones like Stateless Edge Deployment, Resource Optimization, and Privacy by Architecture." width="100%" />
 </div>
 
 ## 🗺️ Strategic Roadmap & Evolution
@@ -286,8 +286,8 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 **Update 19 October 2026:** Integrated the latest audit results from the **SRE Scalability Engine 2026**. The delta between baseline and stress scores confirms a robust architecture with minimal performance degradation under load.
 
 ### 📂 Latest Audit Records
-* 📄 **[SRE Performance Stress-Test Report - 19 October 2026 (PDF)](docs/biotech-performance-report.pdf)**
-* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
+* 📄 **[SRE Performance Stress-Test Report - 19 October 2026 (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf)**
+* 📄 **[Executive Summary: Metabolic Digital Twin Architecture (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Metabolic-Digital-Twin-Executive-Summary.pdf)**
 
 ### Dashboard Features
 * ✅ **Real-time Performance Monitoring**: Metrics (0–100) updated every 24h via GitHub Actions.
@@ -300,7 +300,7 @@ The ecosystem implements an **advanced technological maturity tracking system**.
 <summary><b>📸 Scan for mobile access (AAA Standard)</b></summary>
 <div align="center">
   <br>
-  <img src="Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code per accedere alla Dashboard di Maturità Tecnologica di BiotechProject" width="220" />
+  <img src="https://gitechnolo.github.io/biotechproject/Biotech-file/images/qrcode-tech-maturity.png" alt="QR Code per accedere alla Dashboard di Maturità Tecnologica di BiotechProject" width="220" />
   <p><i>Point your camera to verify performance and WCAG 2.2 AAA accessibility in real-time on your smartphone.</i></p>
 </div>
 </details>
@@ -428,7 +428,7 @@ This project serves as a robust foundation for:
 > ### 🏛️ Institutional & Academic Hub (Update: May 8, 2026)
 > **v6.4.0 Strategic Partnership Report**. This document defines our roadmap for "Resilience by Design" and invites academic stakeholders to explore our engagement tracks.
 > 
-> 👉 **View the Updated Strategic Partnership Document:** [BiotechProject x Academic Partners (PDF)](docs/Institutional_Collaboration_Charter_2026.pdf)
+> 👉 **View the Updated Strategic Partnership Document:** [BiotechProject x Academic Partners (PDF)](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Institutional_Collaboration_Charter_2026.pdf)
 > 
 > *Includes detailed engagement tracks: **(A) Graduation Thesis**, **(B) Research Lab Case-Study**, and **(C) Strategic EU Grant Partnerships**.*
 
@@ -497,8 +497,8 @@ You're welcome!
 BiotechProject is an **open project for everyone**, inspired by the collaborative spirit of Wikipedia.
 
 🔹 To get started:
-- Read the [**Contributing Guidelines**](CONTRIBUTING.md)
-- Follow the [**Code of Conduct**](CODE_OF_CONDUCT.md)
+- Read the [**Contributing Guidelines**](https://github.com/Gitechnolo/biotechproject/blob/main/CONTRIBUTING.md)
+- Follow the [**Code of Conduct**](https://github.com/Gitechnolo/biotechproject/blob/main/CODE_OF_CONDUCT.md)
 
 You can help with:
 - Scientific content
@@ -524,8 +524,8 @@ Every contribution, big or small, helps make science more accessible.
 
 This project implements a **Dual-Licensing Strategy** to ensure the integrity of both architectural logic and scientific educational content:
 
-* **Source Code**: [MIT License](LICENSE-MIT.md) - © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
-* **Scientific Content (Text, Graphics, Educational Material)**: [Creative Commons Attribution 4.0 International](LICENSE-CC-BY-4.0.md)
+* **Source Code**: [MIT License](https://github.com/Gitechnolo/biotechproject/blob/main/LICENSE-MIT.md) - © 2025-2026 Fabrizio ([@Gitechnolo](https://github.com/Gitechnolo))
+* **Scientific Content (Text, Graphics, Educational Material)**: [Creative Commons Attribution 4.0 International](https://github.com/Gitechnolo/biotechproject/blob/main/LICENSE-CC-BY-4.0.md)
 
 > “Anyone can contribute. Just respect the origin, and keep building with care.”   
 
