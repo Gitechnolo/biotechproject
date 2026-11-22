@@ -137,7 +137,7 @@ BiotechProject builds resilient, privacy-preserving digital health tools. Your s
 * **Your Name Here** – Become our first Supporter or Developer!
 
 > [!IMPORTANT]
-> **Why Sponsor?** BiotechProject is an independent mission. Every sponsorship ensures our architecture remains secure, stateless, and accessible to everyone. For custom partnership inquiries or grants, contact our **[Strategic Outreach Team](mailto:teambiotechproject%40proton%2e-me)**.
+> **Why Sponsor?** BiotechProject is an independent mission. Every sponsorship ensures our architecture remains secure, stateless, and accessible to everyone. For custom partnership inquiries or grants, contact our **[Strategic Outreach Team](mailto:teambiotechproject@proton.me)**.
 
 ---
 
