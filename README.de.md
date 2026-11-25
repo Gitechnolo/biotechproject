@@ -148,7 +148,7 @@ BiotechProject baut die Zukunft einer resilienten digitalen Gesundheit auf klini
 → Automatisierte Tests, Analysen und Updates bei jeder Änderung
 
 ✅ **Clientseitige Ruhendverschlüsselung (Zero-Knowledge-Roadmap)**
-→ Integrierte **AES-GCM-256-Verschlüsselung** in einem dedizierten Web Worker mit nicht exportierbarem Geräteschlüssel (`extractable: false` in `VaultKeys_Device`), versionierten `v: 2`-Payloads (mit verschlüsseltem internem Zeitstempel), `INIT_CORE`-Entkopplung und automatischer 7-Tage-Aufbewahrungsbereinigung. Schützt Daten im Ruhezustand bereits heute clientseitig und entwickelt sich mit Einführung der Authentifizierung in Richtung Zero-Knowledge (Ableitung aus Benutzergeheimnis / WebAuthn PRF sowie strikte CSP).
+→ Integrierte **AES-GCM-256-Verschlüsselung** in einem dedizierten Web Worker mit nicht exportierbarem Geräteschlüssel (`extractable: false` in `VaultKeys_Device`), versionierten `v: 2`-Payloads (mit verschlüsseltem internem Zeitstempel), `INIT_CORE`-Entkopplung und automatischer 7-Tage-Aufbewahrungsbereinigung. Schützt Daten im Ruhezustand bereits heute clientseitig und entwickelt sich mit Einführung der Authentifizierung in Richtung Zero-Knowledge (Ableitung aus Benutzergeheimnis / WebAuthn PRF sowie strikte CSP)
 
 ✅ **Automatisiertes Performance-Dashboard**  
 → Kontinuierliche Analyse aller Seiten mit Aktualisierung von `performance-data.json`
