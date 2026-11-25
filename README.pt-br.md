@@ -147,8 +147,8 @@ O BiotechProject constrói ferramentas de saúde digital resilientes e que prese
 ✅ **Fluxo de trabalho CI/CD integrado**  
 → Testes automatizados, análise e atualizações em cada mudança
 
-✅ **Privacy-by-Architecture (Zero-Knowledge)**
-→ Criptografia **AES-GCM** integrada com salts de ambiente dinâmicos. O processamento 100% client-side garante que os dados do usuário permaneçam indecifráveis mesmo em caso de inspeção do armazenamento local, alinhando-se ao padrão "Proton" de soberania digital.
+✅ **Criptografia em Repouso no Lado do Cliente (Roadmap Zero-Knowledge)**
+→ Criptografia **AES-GCM 256** integrada em um Web Worker dedicado com chave de dispositivo não extraível (`extractable: false` em `VaultKeys_Device`), payloads versionados `v: 2` (com carimbo de data/hora interno criptografado), desacoplamento `INIT_CORE` e limpeza automática de retenção em 7 dias. Protege dados em repouso no lado do cliente na linha de base atual, evoluindo para um modelo Zero-Knowledge (derivação a partir de segredo do usuário / WebAuthn PRF e CSP restritiva) com a introdução da autenticação.
 
 ✅ **Painel de desempenho automatizado**  
 → Análise contínua de todas as páginas com atualizações para `performance-data.json`
