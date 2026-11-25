@@ -137,7 +137,7 @@ BiotechProject sviluppa strumenti di sanità digitale resilienti e protettivi pe
 * **Il Tuo Nome Qui** – Diventa il nostro primo Supporter o Developer!
 
 > [!IMPORTANT]
-> **Perché Sponsorizzare?** BiotechProject è una missione indipendente. Ogni sponsorizzazione garantisce che la nostra architettura rimanga sicura, stateless e accessibile a tutti. Per richieste di partnership personalizzate o sovvenzioni, contatta il nostro **[Strategic Outreach Team](mailto:teambiotechproject%40proton%2e-me)**.
+> **Perché Sponsorizzare?** BiotechProject è una missione indipendente. Ogni sponsorizzazione garantisce che la nostra architettura rimanga sicura, stateless e accessibile a tutti. Per richieste di partnership personalizzate o sovvenzioni, contatta il nostro **[Strategic Outreach Team](mailto:teambiotechproject@proton.me)**.
 
 ---
 
@@ -149,8 +149,8 @@ BiotechProject sviluppa strumenti di sanità digitale resilienti e protettivi pe
 ✅ **Workflow CI/CD integrato**  
 → Test, analisi e aggiornamenti automatici ad ogni modifica
 
-✅ **Privacy-by-Architecture (Zero-Knowledge)**
-→ Crittografia **AES-GCM** integrata con salt di ambiente dinamici. L'elaborazione 100% client-side garantisce che i dati utente rimangano indecifrabili anche in caso di ispezione dello storage locale, allineandosi allo standard "Proton" di sovranità digitale.
+✅ **Cifratura Client-Side a Riposo (Roadmap Zero-Knowledge)**
+→ Crittografia **AES-GCM** su Web Worker con salt dinamico di sessione (`sessionStorage`) e retention a 7 giorni. Protegge i dati a riposo lato client nella baseline attuale, in evoluzione verso un modello Zero-Knowledge con l'introduzione dell'autenticazione.
 
 ✅ **Dashboard di performance automatica**  
 → Analisi continua di tutte le pagine con aggiornamento di `performance-data.json`
