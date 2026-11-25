@@ -10,12 +10,12 @@
 - **The Proof:** [ADR-011: System Integrity & Immune Response](https://github.com/Gitechnolo/biotechproject/issues/27) and [ADR-011v6.4-HARDENED](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-6811684075).
 
 ### 2. Parallel Rendering: Main-Thread Liberation (v6.4)
-- **The Vision:** Absolute fluidity achieved. We have fully decoupled the UI from graphical complexity via **BiotechCoreWorker** (`OffscreenCanvas`), eliminating main-thread blocking for all rendering tasks and dedicating 100% of the main thread to user interaction and A11y.
-- **The Proof:** Validated under real-world degraded network conditions (simulated Slow 3G / 400ms latency on iPhone 12), maintaining **CLS within the "Good" tier (0.012 – 0.090)** and accelerating **Interactive DOM to 2450 – 2494ms**.
+- **The Vision:** Absolute fluidity achieved. We have decoupled UI responsiveness from heavy rendering and initialization paths via **BiotechCoreWorker** (`OffscreenCanvas`) and `INIT_CORE` lifecycle coordination, preserving main-thread availability for user interaction and accessibility.
+- **The Proof:** Validated under degraded network conditions (simulated Slow 3G / 400ms latency), keeping **TBT within 16–42 ms** and **CLS at 0.0126** in the November 20, 2026 hardened audit runs.
 
-### 3. Security Without Compromise (Stateless & Encrypted)
-- **The Strategy:** Zero-Data Footprint. Our "Stateless" architecture ensures patient data never persists on the local hardware or external servers. **AES-GCM** military-grade encryption operates within a dedicated Worker thread, providing digital sovereignty with zero impact on the 60fps target.
-- **The Proof:** Refer to the [Zero-Knowledge Encryption & Speed Index 1](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4299425956).
+### 3. Security Without Compromise (Encrypted at Rest & Evolvable Baseline)
+- **The Strategy:** Encrypted Local Vault with Controlled Lifecycle. Sensitive records stored locally in IndexedDB (`WeightsVault_Secure`) are protected at rest with **AES-GCM 256** using a non-extractable device key (`extractable: false` in `VaultKeys_Device`), versioned `v: 2` payloads, encrypted internal timestamps, and a **7-day automatic retention window**—without degrading worker or main-thread responsiveness. In the current **pre-authentication baseline**, no user-held secret is yet present; hooks for future evolution (user-secret / WebAuthn PRF key derivation, `v: 3` payloads, and strict CSP) are explicitly documented in code and the threat model.
+- **The Proof:** Refer to [ADR-011: System Integrity & Immune Response](https://github.com/Gitechnolo/biotechproject/issues/27) and the compliance artifacts under `docs/compliance/`.
 
 ### 4. Universal Inclusivity (WCAG 2.2 AAA)
 - **The Vision:** A platform that leaves no one behind. Verified through automated audits and manual screen-reader testing, the system features keyboard-operable bilingual media controls and **ARIA Sonification** in "Clinical Mode," ensuring total accessibility even on legacy hardware or degraded networks (3G/Edge).
@@ -23,7 +23,7 @@
 
 > [!TIP]
 > **Architectural Paradigm: "AI-Distilled Logic, Edge-Native Autonomy"**
-> BiotechProject utilizes AI synthesis as a catalyst to translate sophisticated clinical protocols into **high-performance Vanilla JS 'Discrete Engines'**. This process ensures that while development is accelerated by cutting-edge tools, the final execution is **100% autonomous, air-gapped, and multithreaded**. The result is a system with zero operational costs and total data sovereignty, designed to remain indestructible at the Edge during critical medical use.
+> BiotechProject utilizes AI synthesis as a catalyst to translate sophisticated clinical protocols into **high-performance Vanilla JS 'Discrete Engines'**. This process ensures that while development is accelerated by cutting-edge tools, the final execution is **100% autonomous, air-gapped, and multithreaded**. The result is a system with zero operational costs and strong data control at the Edge, designed with explicit security boundaries and clean upgrade paths for future phases.
 
 ---
 
@@ -32,34 +32,35 @@
 | Stakeholder | Key Interest | Recommended Document | Real-World Benefit |
 | :--- | :--- | :--- | :--- |
 | **All Stakeholders** | **Project Lifecycle** | [**Strategic Roadmap 2026**](https://github.com/users/Gitechnolo/projects/2) | Full visibility on upcoming milestones, long-term stability, and active Issue tracking. |
-| **Clinician** | Privacy & UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Maximum confidentiality; fluid interface without micro-stutters even in low-signal wards. |
-| **Procurement** | Efficiency & Lifecycle | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Operational on existing legacy hardware; significantly lower maintenance costs. |
-| **IT Manager** | Scalability & Tech Stack | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) | Zero technical debt; modern multithreaded architecture ready for 2030. |
-| **Compliance/SRE** | Audit & Reliability | [ADR-011v6.4-HARDENED](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-6811684075) | Self-healing system with transparent, automated SRE audit logs and 3G telemetry. |
+| **Clinician** | Privacy & UX | [Resilience Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/Architectural_Equity_Resilience_Report.pdf) | Encrypted local storage with 7-day retention and fluid interface even in low-signal wards. |
+| **Procurement** | Efficiency & Lifecycle | [SRE Performance Report](https://github.com/Gitechnolo/biotechproject/blob/main/docs/biotech-performance-report.pdf) | Operational on existing legacy hardware; lower maintenance costs and clear evolution hooks. |
+| **IT Manager** | Scalability & Tech Stack | [Parallel Core Architecture](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-4359060827) | Clean worker lifecycle, versioned `v: 2` vault baseline, and documented path to auth/CSP. |
+| **Compliance/SRE** | Audit & Reliability | [ADR-011v6.4-HARDENED](https://github.com/Gitechnolo/biotechproject/issues/27#issuecomment-6811684075) | Verified baseline with threat model boundaries, compliance evidence, and 3G telemetry. |
 
 ---
 
-## 📊 Performance Benchmarks (v6.4.0-HARDENED — Mobile 3G Stress Test)
-*Measured on iPhone 12 under simulated Slow 3G (400ms latency):*
+## 📊 Performance Benchmarks (`v6.4.0-vault-hardened-3gslow` — Nov 19–20, 2026 Audit)
+*Measured under simulated Slow 3G (400ms latency):*
 
-| Metric | Target | Previous Baseline (Unstable) | Result (`v6.4.0-HARDENED`) | Status / Delta |
+| Metric | Nov 19 Reference (`2026-11-19.json`) | Nov 20 Run 3 (`2026-11-20.json`) | Nov 20 Range (Runs 1–3) | Status / Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **Visual Stability (CLS)** | less than 0.10 | ~0.17 | **0.012 – 0.090** | 🟢 **Improved ("Good" Tier)** |
-| **Time to First Byte (TTFB)** | Resilient Sync | ~1980ms | **1941 – 1965ms** | 🟢 **Optimized Resilient Sync** |
-| **Interactive DOM** | less than 2500ms | ~2600ms | **2450 – 2494ms** | 🟢 **Faster Interactivity** |
+| **Total Blocking Time (TBT)** | `9 ms` | `22 ms` | `16 – 42 ms` | 🟢 **Main thread well controlled under vault hardening** |
+| **Visual Stability (CLS)** | `0.0910` | `0.0126` | `0.0126` (constant) | 🟢 **Well below 0.10 threshold** |
+| **Document Time (`docTime`)** | `7012 ms` | `6565 ms` | `6457 – 6565 ms` | 🟢 **Faster document completion** |
+| **Largest Contentful Paint (LCP)** | `4016 ms` (`IMG#videoPoster`) | `5743 ms` (`IMG#videoPoster`) | `5680 – 5743 ms` | ℹ️ **Settles on lazy `IMG#videoPoster` after earlier text paint** |
 
 ### 💡 Update Technical Notes & Raw Telemetry
-- **Silent Sampling + Smart Promotion:** Guided by a **600ms TTFB threshold**, the resilience engine evaluates network conditions silently before promoting heavy assets, preventing layout shifts (CLS) and main-thread starvation on constrained clinical or field networks.
+- **Vault & Lifecycle Hardening:** `vaultReady` (`INIT_CORE`) decouples core vault readiness from translation loading, uses non-extractable `AES-GCM 256` keys (`extractable: false`), stores `v: 2` payloads without plaintext on disk, and enforces a 7-day retention policy while documenting pre-auth same-origin limits.
 - **Raw Telemetry Reports:**
-  - Baseline (Unstable 3G): [`biotech-bench-3g-baseline-unstable.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-3g-baseline-unstable.json)
-  - Production Hardened (3G Slow): [`biotech-bench-v6.4.0-hardened-3gslow.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-hardened-3gslow.json)
+  - Comment Reference (Nov 19, 2026): [`biotech-bench-v6.4.0-vault-hardened-3gslow-2026-11-19.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-vault-hardened-3gslow-2026-11-19.json)
+  - Hardened Audit (Nov 20, 2026): [`biotech-bench-v6.4.0-vault-hardened-3gslow-2026-11-20.json`](https://github.com/Gitechnolo/biotechproject/blob/main/docs/compliance/biotech-bench-v6.4.0-vault-hardened-3gslow-2026-11-20.json)
 
 ---
 
 ## 🌐 Internationalization & Accessibility
 
 > [!NOTE]
-> **Language Localization:** This documentation is maintained in English to ensure terminological consistency with global SRE and Medical standards. For international stakeholders, we recommend using browser-native translation tools (Edge/Chrome/Safari), which provide 99% accuracy for our technical nomenclature and ADR structures.
+> **Language Localization:** This documentation is maintained in English to ensure terminological consistency with global SRE and Medical standards. For international stakeholders, we recommend using browser-native translation tools (Edge/Chrome/Safari), which provide high accuracy for our technical nomenclature and ADR structures.
 
 ---
 
