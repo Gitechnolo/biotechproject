@@ -150,7 +150,7 @@ BiotechProject sviluppa strumenti di sanità digitale resilienti e protettivi pe
 → Test, analisi e aggiornamenti automatici ad ogni modifica
 
 ✅ **Cifratura Client-Side a Riposo (Roadmap Zero-Knowledge)**
-→ Crittografia **AES-GCM** su Web Worker con salt dinamico di sessione (`sessionStorage`) e retention a 7 giorni. Protegge i dati a riposo lato client nella baseline attuale, in evoluzione verso un modello Zero-Knowledge con l'introduzione dell'autenticazione.
+→ Crittografia **AES-GCM 256** su Web Worker con chiave di dispositivo non estraibile (`extractable: false` in `VaultKeys_Device`), payload versionati `v: 2` (con timestamp cifrato interno), disaccoppiamento `INIT_CORE` e retention automatica a 7 giorni. Protegge i dati a riposo lato client nella baseline attuale, in evoluzione verso un modello Zero-Knowledge (derivazione da segreto utente / WebAuthn PRF e CSP restrittiva) con l'introduzione dell'autenticazione.
 
 ✅ **Dashboard di performance automatica**  
 → Analisi continua di tutte le pagine con aggiornamento di `performance-data.json`
