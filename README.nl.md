@@ -147,8 +147,8 @@ BiotechProject bouwt aan de toekomst van veerkrachtige digitale gezondheidszorg 
 ✅ **Geïntegreerde CI/CD workflow**  
 → Geautomatiseerde testen, analyse en updates bij elke wijziging
 
-✅ **Privacy-by-Architecture (Zero-Knowledge)**
-→ Geïntegreerde **AES-GCM encryptie** met dynamische omgevings-salts. De 100% client-side verwerking garandeert dat gebruikersgegevens oncijferbaar blijven, zelfs bij inspectie van de lokale opslag, in lijn met de "Proton"-standaard voor digitale soevereiniteit.
+✅ **Client-Side Versleuteling in Rust (Zero-Knowledge Roadmap)**
+→ Geïntegreerde **AES-GCM 256-versleuteling** in een toegewijde Web Worker met een niet-extraheerbare apparaatsleutel (`extractable: false` in `VaultKeys_Device`), geversioneerde `v: 2`-payloads (met versleuteld intern tijdstempel), `INIT_CORE`-ontkoppeling en automatische opschoning na 7 dagen bewaartermijn. Beschermt gegevens in rust aan de clientzijde in de huidige baseline en evolueert met de introductie van authenticatie richting een Zero-Knowledge-model (afleiding vanuit gebruikersgeheim / WebAuthn PRF en strikte CSP).
 
 ✅ **Geautomatiseerd performance dashboard**  
 → Continue analyse van alle pagina's met updates naar `performance-data.json`
