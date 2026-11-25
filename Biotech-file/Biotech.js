@@ -3,9 +3,9 @@
  * -------------------------------------------------------------------------
  * ARCHITECTURE: Multithreaded Worker-Driven Rendering | Zero-Dependency
  * RELIABILITY: SRE Passive Guardian & Neural Bio-Immune System [ADR-011-PRO]
- * PERFORMANCE: On-Demand Media Pipeline | Speed Index 1 | TBT Minimization
+ * PERFORMANCE: On-Demand Media Pipeline | TBT Minimization
  * VERIFIED: FCP / LCP: 1741ms | TBT: 46ms (0ms Mobile) | CLS: 0.0000 (Absolute Zero)
- * COMPLIANCE: ADR-011-PRO Ethical Retention & Zero-Knowledge Encryption
+ * COMPLIANCE: ADR-011-PRO Ethical Retention & Device Encryption-at-Rest
  * -------------------------------------------------------------------------
 BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (FINAL HARDENED v6.4.0)
 =====================================================================
@@ -27,7 +27,7 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (FINAL HARDENED v6.4.0)
  ║   ║
  ║   ╚── WORKER: BiotechCoreWorker.js [NEURAL ENGINE + AES-GCM + RENDERING]
  ║               ║
- ║               ╠── [SEC] Zero-Knowledge Vault (AES-GCM Encryption)
+ ║               ╠── [SEC] Device Vault (AES-GCM encryption-at-rest)
  ║               ║
  ║               ╠── [VIS] Biocircadian Visual Synthesizer (Parallel Canvas)
  ║               ║         (OffscreenCanvas Rendering / Particle Engine)
@@ -50,11 +50,10 @@ BIOTECHPROJECT | SYSTEM ARCHITECTURE MAP 2026 (FINAL HARDENED v6.4.0)
 -------------------------------------------------------------------------
 * SRE PERFORMANCE BENCHMARK (FINAL HARDENED AUDIT v6.4.0-STABLE)
 * -------------------------------------------------------------------------
-* Speed Index: 1 (OPTIMAL) ──► Top 1% Visual Completion Tier
-* FCP / LCP: 1741ms (Perfect Sync Achieve)
+* FCP / LCP: 1741ms (Target)
 * TBT: 46ms Desktop | 0ms Mobile ──► Main-Thread Absolute Liberation
 * CLS: 0.0000 (Absolute Zero Mobile Lock) ──► Golden Tier Architecture
-* Security: ADR-011-PRO (Zero-Knowledge + AES-GCM) [ACTIVE]
+* Security: ADR-011-PRO (Device encryption-at-rest + AES-GCM) [ACTIVE]
 -------------------------------------------------------------------------
 * STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED // AUTO_HEALING_ACTIVE 
 */
@@ -124,12 +123,15 @@ const workerQuery = (action, payload, timeout = 5000) => {
 
 /**
  * ==========================================================================
- * MODULE: BIOTECH ZERO-KNOWLEDGE VAULT BRIDGE (Client Interface)
+ * MODULE: BIOTECH VAULT BRIDGE (Client Interface)
+ * [ZERO-KNOWLEDGE ROADMAP]: All'introduzione del login, questa interfaccia
+ * resterà invariata mentre la chiave nel worker passerà da device key
+ * locale a derivazione da segreto utente (passphrase/KDF o WebAuthn PRF).
  * ==========================================================================
  */
 const BiotechVault = {
     /**
-     * Salva dati in modo sicuro e cifrato tramite il Worker (Zero-Knowledge)
+     * Salva dati cifrati tramite il Worker
      * @param {string} key - Chiave identificativa del record
      * @param {Object|string} data - Dati da cifrare e salvare
      */
@@ -147,7 +149,7 @@ const BiotechVault = {
     },
 
     /**
-     * Recupera e decifra dati in modo sicuro dal Worker
+     * Recupera e decifra dati tramite il Worker
      * @param {string} key - Chiave identificativa del record
      */
     async load(key) {
@@ -493,7 +495,6 @@ document.addEventListener('DOMContentLoaded', BiotechSystem.init);
 // MODULE 03: PERFORMANCE OPTIMIZATION HELPERS
 // Features: Throttling, Debouncing, and Predictive Smart Pre-fetching
 // ==========================================================================
-// ... throttle, debounce, initSmartPrefetch, ecc ...
 
 // THROTTLE: Fluidità a 60/120fps per scroll e resize.
 const throttle = (fn) => {
@@ -1365,21 +1366,17 @@ function updateLastModified(lang) {
 // ==========================================================================
 // [ADR-010/011-PRO] GUARDIAN & NEURAL RESILIENCE DYNAMIC ACTIVATION
 // Attiva il monitoraggio SRE & Neural Core Hardened a sistema stabilizzato.
+//
+// [EVOLUZIONE FUTURA - ZERO-KNOWLEDGE CON LOGIN]:
+// INIT_CORE inizializza il core/vault in modo indipendente da i18n.
+// Quando verrà introdotto il login, qui potrà essere gestito o agganciato
+// lo sblocco della chiave derivata da segreto utente (KDF / WebAuthn PRF).
 // ==========================================================================
 (function() {
   const activateGuardian = () => {
     
     // 1. Inizializzazione Globale del Neural Worker (v2.0.1-STABLE)
     try {
-      let dynamicSalt = sessionStorage.getItem('biotech_session_salt');
-      if (dynamicSalt === null || dynamicSalt.length === 0) {
-        dynamicSalt = Array.from(
-          crypto.getRandomValues(new Uint8Array(16)),
-          byte => byte.toString(16).padStart(2, '0')
-        ).join('');
-        sessionStorage.setItem('biotech_session_salt', dynamicSalt);
-      }
-
       let initTimer;
       const cleanupInitListeners = () => {
         clearTimeout(initTimer);
@@ -1394,13 +1391,13 @@ function updateLastModified(lang) {
       const initHandler = e => {
         // [Hardened] Validazione STRICT: taskId e action devono coincidere.
         // Il worker garantisce l'inclusione di action in ogni risposta.
-        if (!e?.data || e.data.taskId !== 'core_init_v2' || e.data.action !== 'INIT_TRANSLATION_ENGINE') return;
+        if (!e?.data || e.data.taskId !== 'core_init_v2' || e.data.action !== 'INIT_CORE') return;
         
         cleanupInitListeners();
         if (e.data.success === true) {
           window.vaultReady = true;
           resolveVaultReady();
-          console.log(`%c🧬 CORE %c Worker: Ready (Legacy Mode Active) `, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core,
+          console.log(`%c🧬 CORE %c Worker: Ready (Device Vault Active) `, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core,
             'background: rgba(0, 255, 162, 0.1); color: #00ffa2; padding: 2px 6px; border: 1px solid #00ffa2; border-left: none; border-radius: 0 3px 3px 0;');
         } else {
           rejectVaultReady(new Error(e.data.error || 'Worker initialization failed'));
@@ -1422,12 +1419,8 @@ function updateLastModified(lang) {
 
       try {
         BiotechWorker.postMessage({
-          action: 'INIT_TRANSLATION_ENGINE',
-          payload: { 
-            fileUrl: '../lang/common.json', // Percorso del file i18n
-            userSalt: dynamicSalt,
-            options: { filter: true } 
-          },
+          action: 'INIT_CORE',
+          payload: {},
           taskId: 'core_init_v2'
         });
       } catch (e) {
@@ -1435,19 +1428,15 @@ function updateLastModified(lang) {
         throw e;
       }
 
-      // Listener per il monitoraggio dello stato di salute del Worker
-      // [Hardened] Null-safety per prevenire crash su payload malformati o null
-      BiotechWorker.onmessage = (e) => {
-        try {
-          if (e?.data?.error === "Worker in Recovery Mode") {
-            console.warn("%c⚠️ SRE: Neural Core Circuit Breaker OPEN. System in safety mode.", "background: #ff9800; color: #000;");
-          }
-        } catch (err) {
-          console.error("Health monitor exception:", err);
-        }
-      };
+      // Caricamento traduzioni separato: un errore qui non blocca vaultReady
+      workerQuery('INIT_TRANSLATION_ENGINE', {
+        fileUrl: '../lang/common.json',
+        options: { filter: true }
+      }, 10000).catch(error => {
+        console.error('[Main] Translation initialization failed:', error);
+      });
 
-      console.log(`%c🔒 Neural Core: v2.0.1-STABLE Thread Active [Zero-Knowledge Encryption Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.worker || '');
+      console.log(`%c🔒 Neural Core: Thread Active [Device Encryption-at-Rest Enabled]`, SRE_LOG_MAIN.syntax + SRE_LOG_MAIN.core);
       
     } catch (e) {
       rejectVaultReady(e);
@@ -1479,7 +1468,7 @@ function updateLastModified(lang) {
 ================================================================================
   Status:           INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED
   Neural Engine:    v2.1.0-PARALLEL (Off-Main-Thread Rendering) [ACTIVE]
-  Encryption:       AES-GCM Zero-Knowledge Persistence (Dynamic Salt) [SECURE]
+  Encryption:       AES-GCM device-side persistence (non-extractable key) [SECURE]
   Performance:      SPEED_INDEX: 1 | FCP / LCP: 1741ms | TBT: 46ms (0ms Mobile)
   Visual Stability: CLS: 0.0000 (Absolute Zero / Mobile Geometric Lock) [GOLDEN]
   Neural Memory:    INDEXEDDB_ETHICAL_RETENTION (7-DAY OBLIVION) [OK]

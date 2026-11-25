@@ -1,11 +1,10 @@
 /**
  * BIOTECH PROJECT | NEURAL & RENDERING CORE [v2.1.0-PARALLEL]
  * -------------------------------------------------------------------------
- * STRATEGY: Off-Main-Thread Pipeline | Zero-Knowledge | ADR-011-PRO
+ * STRATEGY: Off-Main-Thread Pipeline | Device Vault (ZK Roadmap) | ADR-011-PRO
  * ROLE: Unified Engine for Rendering (OffscreenCanvas), i18n & Neural Logic
  * REINFORCEMENT: On-Demand Media Pipeline Integration & Secure Vault [2026]
  * -------------------------------------------------------------------------
-   NEURAL & VISUAL WORKER TOPOLOGY 2026 (FINAL HARDENED)
    =====================================================
    
    [INCOMING SIGNAL] ──► [TASK ORCHESTRATOR] ──► [CIRCUIT BREAKER] ──┐
@@ -17,7 +16,7 @@
         ║           (Parallel Chromatic Shift)         ▼
         ║                                     [SRE GUARDIAN] ──► [MEDIA PIPELINE]
         ╠══ ACTION: VAULT_SYNCHRONIZATION              │          (On-Demand Sync)
-        ║           (AES-GCM Zero-Knowledge)           ▼
+        ║           (AES-GCM device vault)             ▼
         ║                                     [STORAGE MANAGER]
         ╠══ ACTION: PREDICTIVE_LOAD_INFERENCE          │
         ║           (Adaptive LR Matrix Math)          └─► Retention: 7 Days
@@ -28,21 +27,32 @@
  * PERFORMANCE METRICS (SRE VERIFIED v6.4.0-FINAL-HARDENED)
  * -------------------------------------------------------------------------
  * ⚡ Total Blocking Time (TBT): 46ms (Desktop) | 0ms (Mobile) ──► Max Relief
- * ⚡ Speed Index: 1 [OPTIMAL] | FCP / LCP: 1741ms (Perfect Sync)
+ * ⚡ FCP / LCP: 1741ms (Target)
  * ⚡ CLS Stability: 0.0000 (Absolute Zero / Golden Tier Perfection)
- * ⚡ Security: AES-GCM + Dynamic Salt Encryption [ACTIVE]
+ * ⚡ Security: AES-GCM device vault (non-extractable key) [ACTIVE]
  * -------------------------------------------------------------------------
  * STATUS: INFRASTRUCTURE_FULLY_STABILIZED // MEDIA_PIPELINE_HARDENED
  * SIGN-OFF: SRE-v6.4.0-STABLE-COMPLETE // YEAR: 2026
+
+ * [PREDISPOSIZIONE ZERO-KNOWLEDGE / LOGIN FUTURO]:
+ * Oggi la chiave AES-GCM 256 è generata sul dispositivo (extractable: false)
+ * in assenza di autenticazione. Quando verrà introdotto il login:
+ *   1. VaultKeys potrà derivare la chiave da segreto utente (es. PBKDF2/Argon2id
+ *      su passphrase o WebAuthn PRF) anziché usare solo una chiave locale;
+ *   2. CryptoUtils / payload potrà introdurre una nuova versione (es. v:3) con
+ *      migrazione graduale dei record esistenti;
+ *   3. Il main thread e i task del worker resteranno disaccoppiati da i18n.
+ * -------------------------------------------------------------------------
  */
 
 // --- CONFIGURATION & CONSTANTS ---
 const CONFIG = {
     DB_NAME: 'BiotechNeuralCore_v2',
     STORE_NAME: 'WeightsVault_Secure',
-    VERSION: 2,
+    KEY_STORE_NAME: 'VaultKeys_Device',
+    VERSION: 3,
     RETENTION_DAYS: 7,
-    ENCRYPTION_SALT: 'biotech_neural_salt_v2',
+    PAYLOAD_VERSION: 2,
     PARTICLE_COLORS: [
         "rgba(180, 220, 255, 0.26)", "rgba(220, 255, 180, 0.22)",
         "rgba(255, 220, 180, 0.19)", "rgba(200, 255, 220, 0.21)",
@@ -55,7 +65,6 @@ const CONFIG = {
 const state = {
     // Neural Core & i18n
     cachedData: null,
-    userSalt: null,
     neuralWeights: null,
     // Particle Engine
     canvas: null,
@@ -153,43 +162,81 @@ const ParticleEngine = {
 };
 
 /**
- * MODULE 02: CRYPTO & STORAGE (ADR-011-PRO HARDENED)
- * AES-GCM Zero-Knowledge Vault per i dati utente e i pesi neurali.
+ * MODULE 02: DEVICE KEY MANAGER (ADR-011-PRO)
+ * Chiave AES-GCM 256 non estraibile (extractable: false) salvata in IndexedDB.
+ * [PREDISPOSIZIONE ZERO-KNOWLEDGE]: Quando arriverà il login, qui potrà
+ * essere innestata la derivazione da segreto utente (passphrase/KDF o WebAuthn PRF)
+ * mantenendo la chiave in memoria di sessione/sblocco senza esporla in chiaro.
  */
-const CryptoUtils = {
-    async deriveKey(userSalt) {
-        const encoder = new TextEncoder();
-        const baseKey = await self.crypto.subtle.importKey(
-            "raw", encoder.encode(CONFIG.ENCRYPTION_SALT), { name: "PBKDF2" }, false, ["deriveKey"]
-        );
-        return await self.crypto.subtle.deriveKey(
-            { name: "PBKDF2", salt: encoder.encode(userSalt || 'default_v2'), iterations: 100000, hash: "SHA-256" },
-            baseKey, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
-        );
+const VaultKeys = {
+    _keyPromise: null,
+
+    get() {
+        if (!this._keyPromise) {
+            this._keyPromise = this._loadOrCreate();
+        }
+        return this._keyPromise;
     },
 
-    async encrypt(data, userSalt) {
-        const key = await this.deriveKey(userSalt);
+    async _loadOrCreate() {
+        const db = await VaultDB.open();
+        return new Promise((resolve, reject) => {
+            const tx = db.transaction(CONFIG.KEY_STORE_NAME, 'readwrite');
+            const store = tx.objectStore(CONFIG.KEY_STORE_NAME);
+            const req = store.get('device_key');
+
+            req.onsuccess = () => {
+                if (req.result) {
+                    resolve(req.result);
+                    return;
+                }
+                self.crypto.subtle.generateKey(
+                    { name: 'AES-GCM', length: 256 },
+                    false,
+                    ['encrypt', 'decrypt']
+                ).then((key) => {
+                    store.put(key, 'device_key');
+                    tx.oncomplete = () => resolve(key);
+                }).catch(reject);
+            };
+            req.onerror = () => reject(req.error);
+        });
+    }
+};
+
+/**
+ * MODULE 03: CRYPTO UTILS (Payload v2 con timestamp cifrato)
+ * [PREDISPOSIZIONE ZERO-KNOWLEDGE]: Il campo `v` nel bundle cifrato consente
+ * in futuro una migrazione graduale verso nuovi formati/chiavi legate al login
+ * (es. v:3) senza rompere la compatibilità durante la transizione.
+ */
+const CryptoUtils = {
+    async encrypt(data, key) {
         const iv = self.crypto.getRandomValues(new Uint8Array(12));
-        const encoded = new TextEncoder().encode(JSON.stringify(data));
-        const ciphertext = await self.crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, encoded);
+        const encoded = new TextEncoder().encode(JSON.stringify({ t: Date.now(), d: data }));
+        const ciphertext = await self.crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoded);
         return {
-            ciphertext: Array.from(new Uint8Array(ciphertext)),
-            iv: Array.from(iv)
+            v: CONFIG.PAYLOAD_VERSION,
+            iv: Array.from(iv),
+            ct: Array.from(new Uint8Array(ciphertext))
         };
     },
 
-    async decrypt(ciphertextArray, ivArray, userSalt) {
-        const key = await this.deriveKey(userSalt);
-        const ciphertext = new Uint8Array(ciphertextArray);
-        const iv = new Uint8Array(ivArray);
-        const decrypted = await self.crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext);
+    async decrypt(bundle, key) {
+        if (!bundle || bundle.v !== CONFIG.PAYLOAD_VERSION) {
+            throw new Error('UNSUPPORTED_PAYLOAD_VERSION');
+        }
+        const decrypted = await self.crypto.subtle.decrypt(
+            { name: 'AES-GCM', iv: new Uint8Array(bundle.iv) },
+            key,
+            new Uint8Array(bundle.ct)
+        );
         return JSON.parse(new TextDecoder().decode(decrypted));
     }
 };
 
 /**
- * INDEXEDDB SECURE VAULT MANAGER (Zero-Knowledge Persistence & 7-Day Oblivion)
+ * INDEXEDDB SECURE VAULT MANAGER (Encryption-at-Rest & 7-Day Oblivion)
  */
 const VaultDB = {
     open() {
@@ -197,8 +244,12 @@ const VaultDB = {
             const request = indexedDB.open(CONFIG.DB_NAME, CONFIG.VERSION);
             request.onupgradeneeded = (e) => {
                 const db = e.target.result;
-                if (!db.objectStoreNames.contains(CONFIG.STORE_NAME)) {
-                    db.createObjectStore(CONFIG.STORE_NAME);
+                if (db.objectStoreNames.contains(CONFIG.STORE_NAME)) {
+                    db.deleteObjectStore(CONFIG.STORE_NAME);
+                }
+                db.createObjectStore(CONFIG.STORE_NAME);
+                if (!db.objectStoreNames.contains(CONFIG.KEY_STORE_NAME)) {
+                    db.createObjectStore(CONFIG.KEY_STORE_NAME);
                 }
             };
             request.onsuccess = (e) => resolve(e.target.result);
@@ -208,21 +259,16 @@ const VaultDB = {
 
     // Automatic purge for expired data exceeding the 7-day ethical retention window
     async purgeExpired(db) {
-        return new Promise((resolve) => {
-            const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
-            const store = tx.objectStore(CONFIG.STORE_NAME);
-            const req = store.openCursor();
-            const now = Date.now();
-            const maxAge = CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000;
+        const cryptoKey = await VaultKeys.get();
+        const keys = [];
 
+        await new Promise((resolve) => {
+            const tx = db.transaction(CONFIG.STORE_NAME, 'readonly');
+            const req = tx.objectStore(CONFIG.STORE_NAME).openCursor();
             req.onsuccess = (e) => {
                 const cursor = e.target.result;
                 if (cursor) {
-                    const val = cursor.value;
-                    if (val && val.timestamp && (now - val.timestamp > maxAge)) {
-                        store.delete(cursor.key);
-                        console.log(`[Vault] Purged expired secure record (Exceeded 7-day oblivion)`);
-                    }
+                    keys.push(cursor.key);
                     cursor.continue();
                 } else {
                     resolve();
@@ -230,6 +276,35 @@ const VaultDB = {
             };
             req.onerror = () => resolve();
         });
+
+        const now = Date.now();
+        const maxAge = CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000;
+
+        for (const k of keys) {
+            await new Promise((resolve) => {
+                const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
+                const store = tx.objectStore(CONFIG.STORE_NAME);
+                const g = store.get(k);
+                g.onsuccess = async () => {
+                    const val = g.result;
+                    if (!val || val.v !== CONFIG.PAYLOAD_VERSION) {
+                        store.delete(k);
+                        return resolve();
+                    }
+                    try {
+                        const payload = await CryptoUtils.decrypt(val, cryptoKey);
+                        if (!payload.t || (now - payload.t > maxAge)) {
+                            store.delete(k);
+                            console.log(`[Vault] Purged expired secure record (Exceeded 7-day oblivion)`);
+                        }
+                    } catch (_) {
+                        store.delete(k);
+                    }
+                    resolve();
+                };
+                g.onerror = () => resolve();
+            });
+        }
     },
 
     async set(key, encryptedBundle) {
@@ -238,13 +313,7 @@ const VaultDB = {
         return new Promise((resolve, reject) => {
             const tx = db.transaction(CONFIG.STORE_NAME, 'readwrite');
             const store = tx.objectStore(CONFIG.STORE_NAME);
-            
-            const bundleWithTimestamp = {
-                ...encryptedBundle,
-                timestamp: Date.now()
-            };
-
-            store.put(bundleWithTimestamp, key);
+            store.put(encryptedBundle, key);
             tx.oncomplete = () => {
                 console.log(`[Vault] Secure data encrypted and stored`);
                 resolve(true);
@@ -260,18 +329,28 @@ const VaultDB = {
             const tx = db.transaction(CONFIG.STORE_NAME, 'readonly');
             const store = tx.objectStore(CONFIG.STORE_NAME);
             const req = store.get(key);
-            req.onsuccess = () => {
+            req.onsuccess = async () => {
                 const res = req.result;
                 if (!res) {
                     resolve(null);
                     return;
                 }
-                const now = Date.now();
-                const maxAge = CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000;
-                if (res.timestamp && (now - res.timestamp > maxAge)) {
+                if (res.v !== CONFIG.PAYLOAD_VERSION) {
                     resolve(null);
-                } else {
-                    resolve(res);
+                    return;
+                }
+                try {
+                    const cryptoKey = await VaultKeys.get();
+                    const payload = await CryptoUtils.decrypt(res, cryptoKey);
+                    const now = Date.now();
+                    const maxAge = CONFIG.RETENTION_DAYS * 24 * 60 * 60 * 1000;
+                    if (!payload.t || (now - payload.t > maxAge)) {
+                        resolve(null);
+                    } else {
+                        resolve(payload.d);
+                    }
+                } catch (_) {
+                    resolve(null);
                 }
             };
             req.onerror = () => reject(req.error);
@@ -288,6 +367,18 @@ self.onmessage = async (e) => {
 
     try {
         switch (action) {
+            case 'INIT_CORE':
+                // Pre-riscalda/inizializza la chiave del vault indipendentemente da i18n.
+                // [ZERO-KNOWLEDGE ROADMAP]: In futuro qui potrà essere gestito lo stato
+                // di sblocco legato all'autenticazione utente.
+                await VaultKeys.get();
+                self.postMessage({
+                    action: 'INIT_CORE',
+                    taskId,
+                    success: true
+                });
+                break;
+
             case 'INIT_OFFSCREEN_CANVAS':
                 state.width = payload.width;
                 state.height = payload.height;
@@ -328,7 +419,6 @@ self.onmessage = async (e) => {
             case 'INIT_TRANSLATION_ENGINE':
                 const res = await fetch(payload.fileUrl);
                 state.cachedData = await res.json();
-                state.userSalt = payload.userSalt;
                 self.postMessage({ 
                     action: 'INIT_TRANSLATION_ENGINE', 
                     taskId, 
@@ -346,10 +436,10 @@ self.onmessage = async (e) => {
                 });
                 break;
 
-            // --- ZERO-KNOWLEDGE VAULT HANDLERS ---
-            case 'SAVE_SECURE_DATA':
-                if (!state.userSalt) throw new Error("Worker not initialized with user salt.");
-                const encrypted = await CryptoUtils.encrypt(payload.data, state.userSalt);
+            // --- DEVICE VAULT HANDLERS (ZK Roadmap) ---
+            case 'SAVE_SECURE_DATA': {
+                const key = await VaultKeys.get();
+                const encrypted = await CryptoUtils.encrypt(payload.data, key);
                 await VaultDB.set(payload.key, encrypted);
                 self.postMessage({ 
                     action: 'SAVE_SECURE_DATA', 
@@ -357,27 +447,18 @@ self.onmessage = async (e) => {
                     success: true 
                 });
                 break;
+            }
 
-            case 'LOAD_SECURE_DATA':
-                if (!state.userSalt) throw new Error("Worker not initialized with user salt.");
-                const storedBundle = await VaultDB.get(payload.key);
-                if (!storedBundle) {
-                    self.postMessage({ 
-                        action: 'LOAD_SECURE_DATA', 
-                        taskId, 
-                        success: true, 
-                        data: null 
-                    });
-                    break;
-                }
-                const decryptedData = await CryptoUtils.decrypt(storedBundle.ciphertext, storedBundle.iv, state.userSalt);
+            case 'LOAD_SECURE_DATA': {
+                const data = await VaultDB.get(payload.key);
                 self.postMessage({ 
                     action: 'LOAD_SECURE_DATA', 
                     taskId, 
                     success: true, 
-                    data: decryptedData 
+                    data
                 });
                 break;
+            }
 
             default:
                 self.postMessage({ 
@@ -388,7 +469,9 @@ self.onmessage = async (e) => {
                 });
         }
     } catch (err) {
-        // Questo blocco cattura anche gli errori di INIT_TRANSLATION_ENGINE
+        if (action === 'INIT_TRANSLATION_ENGINE') {
+            console.error('[Worker] Translation initialization failed:', err);
+        }
         self.postMessage({ 
             action: action, 
             taskId, 
