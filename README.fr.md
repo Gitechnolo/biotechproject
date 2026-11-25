@@ -147,9 +147,8 @@ BiotechProject construit l'avenir d'une santé numérique résiliente et de nive
 ✅ **Workflow CI/CD intégré**  
 → Tests automatisés, analyse et mises à jour à chaque modification
 
-✅ **Confidentialité par Architecture (Zero-Knowledge)**
-→ Chiffrement **AES-GCM** intégré avec des sels d'environnement dynamiques. Le traitement 100% côté client garantit que les données utilisateur restent indéchiffrables même en cas d'inspection du stockage local, s'alignant sur le standard « Proton » de souveraineté numérique.
-
+✅ **Chiffrement Côté Client au Repos (Feuille de Route Zero-Knowledge)**
+→ Chiffrement **AES-GCM 256** intégré dans un Web Worker dédié avec clé d'appareil non extractible (`extractable: false` dans `VaultKeys_Device`), charges utiles versionnées `v: 2` (avec horodatage interne chiffré), découplage `INIT_CORE` et purge automatique de rétention à 7 jours. Protège les données au repos côté client dans la version de référence actuelle, avec une évolution prévue vers un modèle Zero-Knowledge (dérivation depuis secret utilisateur / WebAuthn PRF et CSP restrictive) lors de l'introduction de l'authentification.
 ✅ **Tableau de bord de performance automatisé**  
 → Analyse continue de toutes les pages avec mises à jour de `performance-data.json`
 
