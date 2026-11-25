@@ -150,7 +150,7 @@ BiotechProject builds resilient, privacy-preserving digital health tools. Your s
 → Automated testing, analysis, and updates on every change
 
 ✅ **Client-Side Encryption-at-Rest (Zero-Knowledge Roadmap)**
-→ Integrated **AES-GCM encryption** in a dedicated Web Worker with per-session random salt (`sessionStorage`) and automatic 7-day retention purge. Designed for client-side at-rest protection today, with credential/PRF-based key derivation and strict CSP planned alongside authentication.
+→ Integrated **AES-GCM 256 encryption** in a dedicated Web Worker with a non-extractable device key (`extractable: false` in `VaultKeys_Device`), versioned `v: 2` payloads (with encrypted internal timestamps), `INIT_CORE` decoupling, and automatic 7-day retention purge. Designed for client-side at-rest protection today, with user-secret/WebAuthn PRF key derivation and strict CSP planned alongside authentication.
 
 ✅ **Automated performance dashboard**  
 → Continuous analysis of all pages with updates to `performance-data.json`
